@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Kirolos Sedra | Software Engineer</title>
+
+  <meta
+    name="description"
+    content="Kirolos Sedra — Software Engineer working across software systems, wireless technologies, AI/ML, and engineering research."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --background: #0b0d10;
+      --surface: #12161b;
+      --text: #f4f5f7;
+      --muted: #a7adb7;
+      --accent: #65d46e;
+      --border: #252b33;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 50% 20%,
+          rgba(101, 212, 110, 0.08),
+          transparent 35%
+        ),
+        var(--background);
+
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+
+      padding: 80px 32px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero {
+      max-width: 850px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 28px;
+
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+      background: var(--accent);
+
+      box-shadow: 0 0 18px rgba(101, 212, 110, 0.7);
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin-bottom: 30px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .intro {
+      max-width: 720px;
+
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      line-height: 1.7;
+
+      color: var(--muted);
+
+      margin-bottom: 42px;
+    }
+
+    .intro strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-width: 135px;
+      padding: 13px 20px;
+
+      border-radius: 8px;
+      border: 1px solid var(--border);
+
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: #3a424d;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      color: #071008;
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      background: #75df7d;
+    }
+
+    footer {
+      width: 100%;
+      max-width: 1200px;
+
+      margin: 0 auto;
+      padding: 26px 32px;
+
+      color: #6f7680;
+      font-size: 0.85rem;
+
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 20px;
+      }
+
+      main {
+        padding: 60px 20px;
+      }
+
+      footer {
+        padding: 22px 20px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      kirolos<span>.dev</span>
+    </div>
+
+    <a
+      href="https://github.com/kirolossedra"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      GitHub ↗
+    </a>
+  </nav>
+
+  <main>
+    <section class="hero">
+
+      <div class="status">
+        <span class="status-dot"></span>
+        Portfolio under construction
+      </div>
+
+      <h1>
+        Hi, I'm<br />
+        Kirolos<span>.</span>
+      </h1>
+
+      <p class="intro">
+        I'm a <strong>Software Engineer</strong> working at the intersection of
+        software systems, wireless technologies, AI/ML, and engineering
+        research.
+        <br /><br />
+        A full portfolio is coming soon.
+      </p>
+
+      <div class="actions">
+
+        <a
+          class="button primary"
+          href="https://github.com/kirolossedra"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View GitHub
+        </a>
+
+        <a
+          class="button"
+          href="mailto:your-email@example.com"
+        >
+          Contact Me
+        </a>
+
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Kirolos Sedra · kirolos.dev
+  </footer>
+
+</body>
+</html>
