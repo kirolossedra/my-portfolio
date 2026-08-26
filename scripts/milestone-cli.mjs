@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { extname } from 'node:path';
 
 const apiBase = (process.env.PORTFOLIO_API_URL ?? 'https://kirolos-portfolio-api.linc-ministry.workers.dev').replace(/\/$/, '');
-const token = process.env.PORTFOLIO_ADMIN_TOKEN;
+const token = process.env.PORTFOLIO_ADMIN_SESSION;
 const [command, ...args] = process.argv.slice(2);
 
 const CONTENT_TYPES = {
@@ -29,7 +29,7 @@ function usage() {
 
 Environment:
   PORTFOLIO_API_URL       Optional; defaults to the production Worker URL.
-  PORTFOLIO_ADMIN_TOKEN   Required until GitHub OAuth replaces temporary CLI authentication.`);
+  PORTFOLIO_ADMIN_SESSION Short-lived GitHub-authenticated session copied from /admin.`);
 }
 
 if (!command) {
@@ -38,7 +38,7 @@ if (!command) {
 }
 
 if (!token) {
-  console.error('PORTFOLIO_ADMIN_TOKEN is required until GitHub OAuth is configured.');
+  console.error('PORTFOLIO_ADMIN_SESSION is required. Sign in at /admin and copy the CLI session.');
   process.exit(1);
 }
 

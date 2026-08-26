@@ -1,5 +1,9 @@
 export interface Env {
   DB: D1Database;
-  ADMIN_API_TOKEN?: string;
   FRONTEND_ORIGIN?: string;
+  GITHUB_CALLBACK_URL?: string;
+  GITHUB_CLIENT_ID?: string;
+  GITHUB_CLIENT_SECRET?: string;
+  ADMIN_GITHUB_USER_ID?: string;
+  SESSION_SECRET?: string;
 }

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import AdminPage from './admin/admin-page.tsx';
+import AuthCallbackPage from './admin/auth-callback-page.tsx';
 import LifeTimeline from './components/life-timeline.tsx';
 import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import { loadMilestone, loadMilestones } from './data/milestones.ts';
@@ -11,7 +13,7 @@ function getMilestoneSlugFromPath(): string | undefined {
   return match?.[1] ? decodeURIComponent(match[1]) : undefined;
 }
 
-export default function App() {
+function PublicPortfolio() {
   const milestoneSlug = getMilestoneSlugFromPath();
   const [milestones, setMilestones] = useState<TimelineMilestone[]>([]);
   const [milestoneDetail, setMilestoneDetail] = useState<MilestoneDetail | null>(null);
@@ -73,9 +75,7 @@ export default function App() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#history">History</a>
-          <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">
-            GitHub ↗
-          </a>
+          <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
         </nav>
       </header>
 
@@ -87,9 +87,7 @@ export default function App() {
             A living record of the work, transitions, people, and ideas that shaped
             the engineer behind them.
           </p>
-          <a className="hero-link" href="#history">
-            Follow the timeline <span aria-hidden="true">↓</span>
-          </a>
+          <a className="hero-link" href="#history">Follow the timeline <span aria-hidden="true">↓</span></a>
         </section>
 
         <section className="history-section" id="history" aria-labelledby="history-title">
@@ -104,9 +102,7 @@ export default function App() {
           </div>
 
           {status === 'loading' && <p className="timeline-state">Loading timeline…</p>}
-          {status === 'error' && (
-            <p className="timeline-state timeline-state--error">{errorMessage}</p>
-          )}
+          {status === 'error' && <p className="timeline-state timeline-state--error">{errorMessage}</p>}
           {status === 'ready' && <LifeTimeline items={milestones} />}
         </section>
       </main>
@@ -117,4 +113,11 @@ export default function App() {
       </footer>
     </div>
   );
+}
+
+export default function App() {
+  const path = window.location.pathname;
+  if (path === '/admin/auth/callback') return <AuthCallbackPage />;
+  if (/^\/admin\/?$/.test(path)) return <AdminPage />;
+  return <PublicPortfolio />;
 }

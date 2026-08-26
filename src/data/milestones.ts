@@ -4,24 +4,13 @@ import type {
   MilestoneDetail,
   TimelineMilestone,
 } from '../../shared/milestone.ts';
-
-const DEFAULT_API_BASE_URL = 'https://kirolos-portfolio-api.linc-ministry.workers.dev';
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? DEFAULT_API_BASE_URL).replace(/\/$/, '');
+import { API_BASE_URL, responseError } from '../lib/api.ts';
 
 async function apiRequest<T>(path: string): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${path}`, {
-    headers: {
-      Accept: 'application/json',
-    },
+    headers: { Accept: 'application/json' },
   });
-
-  if (!response.ok) {
-    const message = response.status === 404
-      ? 'The requested portfolio content was not found.'
-      : `Portfolio API request failed (${response.status}).`;
-    throw new Error(message);
-  }
-
+  if (!response.ok) throw await responseError(response);
   return response.json() as Promise<T>;
 }
 

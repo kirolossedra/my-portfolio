@@ -13,28 +13,6 @@ export class HttpError extends Error {
   }
 }
 
-function safeEqual(left: string, right: string): boolean {
-  if (left.length !== right.length) return false;
-  let difference = 0;
-  for (let index = 0; index < left.length; index += 1) {
-    difference |= left.charCodeAt(index) ^ right.charCodeAt(index);
-  }
-  return difference === 0;
-}
-
-export function requireAdmin(request: Request, env: Env): void {
-  if (!env.ADMIN_API_TOKEN) {
-    throw new HttpError(503, 'admin_not_configured', 'Admin API authentication is not configured.');
-  }
-
-  const authorization = request.headers.get('Authorization');
-  const token = authorization?.startsWith('Bearer ') ? authorization.slice(7) : '';
-
-  if (!token || !safeEqual(token, env.ADMIN_API_TOKEN)) {
-    throw new HttpError(401, 'unauthorized', 'A valid admin bearer token is required.');
-  }
-}
-
 export async function parseJsonBody(request: Request): Promise<unknown> {
   const contentType = request.headers.get('Content-Type') ?? '';
   if (!contentType.toLowerCase().includes('application/json')) {
@@ -55,32 +33,33 @@ function configuredAdminOrigin(env: Env): string {
 export function assertAllowedAdminOrigin(request: Request, env: Env): void {
   const requestOrigin = request.headers.get('Origin');
   if (requestOrigin && requestOrigin !== configuredAdminOrigin(env)) {
-    throw new HttpError(403, 'origin_not_allowed', 'This origin is not allowed for admin requests.');
+    throw new HttpError(403, 'origin_not_allowed', 'This origin is not allowed for authenticated requests.');
   }
 }
 
-function corsOrigin(env: Env, admin: boolean): string {
-  return admin ? configuredAdminOrigin(env) : '*';
+function corsOrigin(env: Env, restricted: boolean): string {
+  return restricted ? configuredAdminOrigin(env) : '*';
 }
 
 export function jsonResponse(
   env: Env,
   data: unknown,
   status = 200,
-  admin = false,
+  restricted = false,
 ): Response {
   return new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': admin ? 'no-store' : 'public, max-age=60, stale-while-revalidate=300',
-      'Access-Control-Allow-Origin': corsOrigin(env, admin),
+      'Cache-Control': restricted ? 'no-store' : 'public, max-age=60, stale-while-revalidate=300',
+      'Access-Control-Allow-Origin': corsOrigin(env, restricted),
       Vary: 'Origin',
+      'X-Content-Type-Options': 'nosniff',
     },
   });
 }
 
-export function errorResponse(env: Env, error: unknown, admin = false): Response {
+export function errorResponse(env: Env, error: unknown, restricted = false): Response {
   const known = error instanceof HttpError;
   const payload: ApiErrorResponse = {
     error: {
@@ -89,15 +68,15 @@ export function errorResponse(env: Env, error: unknown, admin = false): Response
     },
   };
 
-  return jsonResponse(env, payload, known ? error.status : 500, admin);
+  return jsonResponse(env, payload, known ? error.status : 500, restricted);
 }
 
-export function optionsResponse(env: Env, admin: boolean): Response {
+export function optionsResponse(env: Env, restricted: boolean): Response {
   return new Response(null, {
     status: 204,
     headers: {
-      'Access-Control-Allow-Origin': corsOrigin(env, admin),
-      'Access-Control-Allow-Methods': admin ? 'GET, POST, PUT, DELETE, OPTIONS' : 'GET, OPTIONS',
+      'Access-Control-Allow-Origin': corsOrigin(env, restricted),
+      'Access-Control-Allow-Methods': restricted ? 'GET, POST, PUT, DELETE, OPTIONS' : 'GET, OPTIONS',
       'Access-Control-Allow-Headers': 'Authorization, Content-Type',
       'Access-Control-Max-Age': '86400',
       Vary: 'Origin',

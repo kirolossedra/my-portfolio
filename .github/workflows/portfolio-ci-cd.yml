@@ -37,6 +37,9 @@ jobs:
       - name: Reject active object-storage integration
         run: npm run check:no-r2
 
+      - name: Reject legacy permanent admin-token authentication
+        run: npm run check:no-legacy-auth
+
       - name: Lint
         run: npm run lint
 

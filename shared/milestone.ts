@@ -85,3 +85,18 @@ export interface MilestoneImageWriteInput {
   displayOrder?: number;
   isCover?: boolean;
 }
+
+export interface AdminSession {
+  githubUserId: string;
+  githubLogin: string;
+  expiresAt: string;
+}
+
+export interface AuthExchangeInput {
+  code: string;
+}
+
+export interface AuthExchangeResponse {
+  token: string;
+  session: AdminSession;
+}

@@ -1,4 +1,16 @@
-import type { ApiItemResponse, ApiListResponse, TimelineMilestone } from '../shared/milestone.ts';
+import type {
+  ApiItemResponse,
+  ApiListResponse,
+  AuthExchangeResponse,
+  TimelineMilestone,
+} from '../shared/milestone.ts';
+import {
+  beginGitHubOAuth,
+  completeGitHubOAuth,
+  exchangeOneTimeCode,
+  requireAdminSession,
+  validateAuthExchangeInput,
+} from './auth.ts';
 import type { Env } from './env.ts';
 import {
   assertAllowedAdminOrigin,
@@ -7,7 +19,6 @@ import {
   jsonResponse,
   optionsResponse,
   parseJsonBody,
-  requireAdmin,
 } from './http.ts';
 import {
   addMilestoneImage,
@@ -43,13 +54,37 @@ function requestOrigin(request: Request): string {
   return `${url.protocol}//${url.host}`;
 }
 
-function decodeBase64(base64Data: string): Uint8Array {
+function decodeBase64ToArrayBuffer(base64Data: string): ArrayBuffer {
   const binary = atob(base64Data);
-  const bytes = new Uint8Array(binary.length);
+  const buffer = new ArrayBuffer(binary.length);
+  const bytes = new Uint8Array(buffer);
   for (let index = 0; index < binary.length; index += 1) {
     bytes[index] = binary.charCodeAt(index);
   }
-  return bytes;
+  return buffer;
+}
+
+async function handleAuth(request: Request, env: Env, url: URL): Promise<Response> {
+  if (request.method === 'GET' && url.pathname === '/api/auth/github') {
+    return beginGitHubOAuth(env);
+  }
+
+  if (request.method === 'GET' && url.pathname === '/api/auth/github/callback') {
+    return completeGitHubOAuth(request, env);
+  }
+
+  if (request.method === 'POST' && url.pathname === '/api/auth/exchange') {
+    const input = validateAuthExchangeInput(await parseJsonBody(request));
+    const data: AuthExchangeResponse = await exchangeOneTimeCode(env, input);
+    return jsonResponse(env, { data }, 200, true);
+  }
+
+  if (request.method === 'GET' && url.pathname === '/api/auth/session') {
+    const data = await requireAdminSession(request, env);
+    return jsonResponse(env, { data }, 200, true);
+  }
+
+  throw new HttpError(404, 'not_found', 'Authentication route was not found.');
 }
 
 async function handlePublic(request: Request, env: Env, url: URL): Promise<Response> {
@@ -79,9 +114,9 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
   if (request.method === 'GET' && imageMatch?.[1]) {
     const imageId = parsePositiveId(imageMatch[1]);
     const image = await getPublishedImageById(env.DB, imageId);
-    const bytes = decodeBase64(image.base64_data);
+    const body = decodeBase64ToArrayBuffer(image.base64_data);
 
-    return new Response(bytes, {
+    return new Response(body, {
       status: 200,
       headers: {
         'Content-Type': image.mime_type,
@@ -97,7 +132,7 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
 }
 
 async function handleAdmin(request: Request, env: Env, url: URL): Promise<Response> {
-  requireAdmin(request, env);
+  await requireAdminSession(request, env);
 
   if (request.method === 'GET' && url.pathname === '/api/admin/milestones') {
     const data = await listAllMilestones(env.DB, requestOrigin(request));
@@ -167,22 +202,30 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
   throw new HttpError(404, 'not_found', 'Admin API route was not found.');
 }
 
+function isRestrictedBrowserRoute(pathname: string): boolean {
+  return pathname.startsWith('/api/admin/')
+    || pathname === '/api/auth/exchange'
+    || pathname === '/api/auth/session';
+}
+
 export async function handleRequest(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
   const admin = url.pathname.startsWith('/api/admin/');
+  const auth = url.pathname.startsWith('/api/auth/');
+  const restricted = isRestrictedBrowserRoute(url.pathname);
 
   try {
-    if (admin) {
+    if (restricted) {
       assertAllowedAdminOrigin(request, env);
     }
 
     if (request.method === 'OPTIONS') {
-      return optionsResponse(env, admin);
+      return optionsResponse(env, restricted);
     }
 
-    return admin
-      ? await handleAdmin(request, env, url)
-      : await handlePublic(request, env, url);
+    if (auth) return await handleAuth(request, env, url);
+    if (admin) return await handleAdmin(request, env, url);
+    return await handlePublic(request, env, url);
   } catch (error) {
     if (!(error instanceof HttpError) || error.status >= 500) {
       console.error('Portfolio API request failed', {
@@ -191,7 +234,7 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
         error,
       });
     }
-    return errorResponse(env, error, admin);
+    return errorResponse(env, error, restricted);
   }
 }
 
