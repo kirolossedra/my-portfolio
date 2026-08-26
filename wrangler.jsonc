@@ -1,0 +1,26 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kirolos-portfolio-api",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-08-25",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "FRONTEND_ORIGIN": "https://kirolos.dev"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kirolos-portfolio-db",
+      "database_id": "68f1f658-cf8e-4e12-b5e2-5b925130cf52",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ASSETS",
+      "bucket_name": "kirolos-portfolio-assets"
+    }
+  ]
+}
