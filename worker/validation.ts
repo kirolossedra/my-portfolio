@@ -3,6 +3,7 @@ import type {
   MilestoneSectionWriteInput,
   MilestoneWriteInput,
 } from '../shared/milestone.ts';
+import type { OpinionModerationInput, OpinionSubmissionInput } from '../shared/opinion.ts';
 import { HttpError } from './http.ts';
 
 export const ALLOWED_IMAGE_MIME_TYPES = new Set([
@@ -164,4 +165,50 @@ export function validateImagesWriteInput(value: unknown): MilestoneImageWriteInp
     throw new HttpError(400, 'multiple_cover_images', 'Only one image can be marked as the cover image.');
   }
   return images;
+}
+
+
+export function validateOpinionSubmissionInput(value: unknown): OpinionSubmissionInput {
+  const record = asRecord(value, 'Opinion');
+  const website = optionalString(record, 'website') ?? '';
+  if (website) {
+    throw new HttpError(400, 'invalid_submission', 'Opinion submission could not be accepted.');
+  }
+
+  const displayName = requiredString(record, 'displayName');
+  if (displayName.length > 80) {
+    throw new HttpError(400, 'invalid_payload', 'displayName must be 80 characters or fewer.');
+  }
+
+  const relationship = optionalString(record, 'relationship');
+  if (relationship && relationship.length > 120) {
+    throw new HttpError(400, 'invalid_payload', 'relationship must be 120 characters or fewer.');
+  }
+
+  const opinion = requiredString(record, 'opinion');
+  if (opinion.length < 12 || opinion.length > 600) {
+    throw new HttpError(400, 'invalid_payload', 'opinion must be between 12 and 600 characters.');
+  }
+
+  const consentToPublish = booleanValue(record, 'consentToPublish', false);
+  if (!consentToPublish) {
+    throw new HttpError(400, 'consent_required', 'Consent to publish is required for an opinion submission.');
+  }
+
+  return {
+    displayName,
+    relationship,
+    opinion,
+    consentToPublish: true,
+    website: '',
+  };
+}
+
+export function validateOpinionModerationInput(value: unknown): OpinionModerationInput {
+  const record = asRecord(value, 'Opinion moderation');
+  const status = requiredString(record, 'status');
+  if (status !== 'approved' && status !== 'rejected') {
+    throw new HttpError(400, 'invalid_payload', 'status must be approved or rejected.');
+  }
+  return { status };
 }

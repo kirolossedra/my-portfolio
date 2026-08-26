@@ -4,6 +4,8 @@ import {
   base64ByteSize,
   validateImageWriteInput,
   validateMilestoneWriteInput,
+  validateOpinionModerationInput,
+  validateOpinionSubmissionInput,
 } from '../validation.ts';
 
 describe('milestone input validation', () => {
@@ -67,5 +69,44 @@ describe('Base64 image validation', () => {
       base64Data: 'not-base64!!!',
       altText: 'Broken',
     })).toThrow(HttpError);
+  });
+});
+
+
+describe('opinion validation', () => {
+  it('accepts a consented public opinion and trims fields', () => {
+    const result = validateOpinionSubmissionInput({
+      displayName: '  Ada  ',
+      relationship: '  Collaborator  ',
+      opinion: '  Thoughtful engineering partner.  ',
+      consentToPublish: true,
+      website: '',
+    });
+
+    expect(result.displayName).toBe('Ada');
+    expect(result.relationship).toBe('Collaborator');
+    expect(result.opinion).toBe('Thoughtful engineering partner.');
+  });
+
+  it('requires explicit publication consent', () => {
+    expect(() => validateOpinionSubmissionInput({
+      displayName: 'Ada',
+      opinion: 'Thoughtful engineering partner.',
+      consentToPublish: false,
+    })).toThrow(HttpError);
+  });
+
+  it('rejects honeypot submissions', () => {
+    expect(() => validateOpinionSubmissionInput({
+      displayName: 'Bot',
+      opinion: 'This is a spam submission body.',
+      consentToPublish: true,
+      website: 'https://spam.example',
+    })).toThrow(HttpError);
+  });
+
+  it('accepts only explicit moderation outcomes', () => {
+    expect(validateOpinionModerationInput({ status: 'approved' })).toEqual({ status: 'approved' });
+    expect(() => validateOpinionModerationInput({ status: 'pending' })).toThrow(HttpError);
   });
 });

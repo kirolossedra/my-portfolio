@@ -1,3 +1,4 @@
+import type { AdminOpinion } from '../../shared/opinion.ts';
 import type {
   AdminMilestoneSummary,
   AdminSession,
@@ -105,4 +106,21 @@ export async function addAdminImage(id: number, image: MilestoneImageWriteInput)
 
 export async function deleteAdminImage(milestoneId: number, imageId: number): Promise<void> {
   await request(`/api/admin/milestones/${milestoneId}/images/${imageId}`, { method: 'DELETE' });
+}
+
+
+export async function listAdminOpinions(): Promise<AdminOpinion[]> {
+  const response = await request<ApiListResponse<AdminOpinion>>('/api/admin/opinions');
+  return response.data;
+}
+
+export async function moderateAdminOpinion(id: number, status: 'approved' | 'rejected'): Promise<void> {
+  await request(`/api/admin/opinions/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify({ status }),
+  });
+}
+
+export async function deleteAdminOpinion(id: number): Promise<void> {
+  await request(`/api/admin/opinions/${id}`, { method: 'DELETE' });
 }

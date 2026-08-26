@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent } from 'react';
 import MilestoneModal from './milestone-modal.tsx';
+import SeasonTransitionEffect from './season-transition-effect.tsx';
 import {
   compareMilestoneDates,
   formatMilestoneDate,
   timelinePosition,
 } from '../lib/date-utils.ts';
+import { seasonForMonth, type Season } from '../lib/season-utils.ts';
 import type { TimelineMilestone } from '../../shared/milestone.ts';
 
 const DEFAULT_PIXELS_PER_MONTH = 14;
@@ -31,6 +33,11 @@ type EventStyle = CSSProperties & {
   '--event-y': string;
 };
 
+type SeasonEffect = {
+  season: Season;
+  key: number;
+};
+
 function isTouchInteraction(): boolean {
   return window.matchMedia('(hover: none), (pointer: coarse)').matches;
 }
@@ -40,7 +47,10 @@ export default function LifeTimeline({
   pixelsPerMonth = DEFAULT_PIXELS_PER_MONTH,
 }: LifeTimelineProps) {
   const timelineRef = useRef<HTMLDivElement>(null);
+  const lastSeasonRef = useRef<Season | null>(null);
+  const effectSequenceRef = useRef(0);
   const [activeMilestone, setActiveMilestone] = useState<TimelineMilestone | null>(null);
+  const [seasonEffect, setSeasonEffect] = useState<SeasonEffect | null>(null);
 
   const timeline = useMemo(() => {
     const sorted = [...items].sort(compareMilestoneDates);
@@ -69,6 +79,8 @@ export default function LifeTimeline({
     const root = timelineRef.current;
     if (!root) return undefined;
 
+    lastSeasonRef.current = null;
+
     const events = root.querySelectorAll<HTMLElement>('[data-timeline-event]');
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -91,6 +103,24 @@ export default function LifeTimeline({
       const traversed = viewportAnchor - rect.top;
       const progress = Math.min(1, Math.max(0, traversed / Math.max(rect.height, 1)));
       root.style.setProperty('--timeline-progress', progress.toFixed(4));
+
+      let active: PositionedMilestone | undefined;
+      for (const milestone of timeline.sorted) {
+        if (milestone.y <= traversed) active = milestone;
+        else break;
+      }
+
+      if (!active && traversed >= 0) active = timeline.sorted[0];
+      if (!active) return;
+
+      const season = seasonForMonth(active.date.month);
+      if (lastSeasonRef.current === null) {
+        lastSeasonRef.current = season;
+      } else if (lastSeasonRef.current !== season) {
+        lastSeasonRef.current = season;
+        effectSequenceRef.current += 1;
+        setSeasonEffect({ season, key: effectSequenceRef.current });
+      }
     };
 
     const requestProgressUpdate = () => {
@@ -118,8 +148,6 @@ export default function LifeTimeline({
     if (isTouchInteraction()) setActiveMilestone(milestone);
   };
 
-
-
   return (
     <>
       <div
@@ -145,10 +173,7 @@ export default function LifeTimeline({
               onClick={() => openOnTouch(milestone)}
             />
 
-            <div
-              className="timeline-card"
-              onClick={() => openOnTouch(milestone)}
-            >
+            <div className="timeline-card" onClick={() => openOnTouch(milestone)}>
               <span className="timeline-date">{formatMilestoneDate(milestone.date)}</span>
               <strong>{milestone.title}</strong>
               <span className="timeline-summary">{milestone.summary}</span>
@@ -180,6 +205,14 @@ export default function LifeTimeline({
           </article>
         ))}
       </div>
+
+      {seasonEffect && (
+        <SeasonTransitionEffect
+          season={seasonEffect.season}
+          effectKey={seasonEffect.key}
+          onComplete={() => setSeasonEffect(null)}
+        />
+      )}
 
       <MilestoneModal
         milestone={activeMilestone}

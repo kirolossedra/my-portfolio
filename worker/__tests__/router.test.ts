@@ -10,12 +10,28 @@ function mockDatabase(): D1Database {
         bind() { return this; },
         async first() {
           if (query.includes('SELECT 1')) return { ok: 1 };
+          if (query.includes('SELECT id FROM opinions')) return { id: 11 };
           if (query.includes('FROM milestone_images i')) {
             return { id: 7, mime_type: 'image/png', base64_data: 'AQID', byte_size: 3 };
           }
           return null;
         },
         async all() {
+          if (query.includes('FROM opinions')) {
+            return {
+              success: true,
+              results: [{
+                id: 11,
+                display_name: 'Ada',
+                relationship: 'Collaborator',
+                opinion_text: 'Thoughtful engineering partner.',
+                status: 'approved',
+                created_at: '2026-08-26T00:00:00.000Z',
+                reviewed_at: '2026-08-26T01:00:00.000Z',
+              }],
+              meta: {},
+            };
+          }
           return {
             success: true,
             results: query.includes('FROM milestones')
@@ -37,6 +53,9 @@ function mockDatabase(): D1Database {
               : [],
             meta: {},
           };
+        },
+        async run() {
+          return { success: true, meta: { last_row_id: 11 } };
         },
       };
     },
@@ -74,6 +93,56 @@ describe('portfolio worker router', () => {
     expect(response.status).toBe(200);
     expect(body.data[0]?.slug).toBe('foundation');
     expect(body.data[0]?.date).toEqual({ year: 2026, month: 8 });
+  });
+
+
+
+  it('serves only approved public opinions', async () => {
+    const response = await handleRequest(new Request('https://api.example.test/api/opinions'), env());
+    const body = await response.json() as { data: Array<{ id: number; displayName: string; opinion: string }> };
+    expect(response.status).toBe(200);
+    expect(body.data[0]).toMatchObject({ id: 11, displayName: 'Ada', opinion: 'Thoughtful engineering partner.' });
+  });
+
+  it('accepts public opinions as pending submissions from the portfolio origin', async () => {
+    const response = await handleRequest(
+      new Request('https://api.example.test/api/opinions', {
+        method: 'POST',
+        headers: {
+          Origin: 'https://kirolos.dev',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          displayName: 'Ada',
+          relationship: 'Collaborator',
+          opinion: 'Thoughtful engineering partner.',
+          consentToPublish: true,
+          website: '',
+        }),
+      }),
+      env(),
+    );
+    expect(response.status).toBe(202);
+    expect(await response.json()).toEqual({ data: { id: 11, status: 'pending' } });
+  });
+
+  it('rejects public opinion submissions from an untrusted browser origin', async () => {
+    const response = await handleRequest(
+      new Request('https://api.example.test/api/opinions', {
+        method: 'POST',
+        headers: {
+          Origin: 'https://attacker.example',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          displayName: 'Ada',
+          opinion: 'Thoughtful engineering partner.',
+          consentToPublish: true,
+        }),
+      }),
+      env(),
+    );
+    expect(response.status).toBe(403);
   });
 
   it('serves Base64-backed D1 images as binary image responses', async () => {
@@ -117,6 +186,25 @@ describe('portfolio worker router', () => {
       environment,
     );
     expect(response.status).toBe(200);
+  });
+
+
+  it('allows the authenticated administrator to approve an opinion', async () => {
+    const environment = env();
+    const response = await handleRequest(
+      new Request('https://api.example.test/api/admin/opinions/11', {
+        method: 'PUT',
+        headers: {
+          Authorization: await adminAuthorization(environment),
+          Origin: 'https://kirolos.dev',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: 'approved' }),
+      }),
+      environment,
+    );
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ data: { id: 11, status: 'approved' } });
   });
 
   it('rejects browser admin requests from untrusted origins before authentication', async () => {

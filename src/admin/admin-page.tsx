@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
+import OpinionsAdminPanel from './opinions-admin-panel.tsx';
 import type {
   AdminMilestoneSummary,
   AdminSession,
@@ -126,6 +127,7 @@ export default function AdminPage() {
   const [status, setStatus] = useState<'checking' | 'signed-out' | 'ready'>('checking');
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
+  const [workspace, setWorkspace] = useState<'timeline' | 'opinions'>('timeline');
 
   const selectedSummary = useMemo(
     () => milestones.find((item) => item.id === editor.id),
@@ -332,12 +334,17 @@ export default function AdminPage() {
       <header className="admin-header">
         <a className="brand" href="/">kirolos<span>.dev</span></a>
         <div>
+          <nav className="admin-workspace-nav" aria-label="Admin workspace">
+            <button className={workspace === 'timeline' ? 'is-active' : ''} type="button" onClick={() => setWorkspace('timeline')}>Timeline</button>
+            <button className={workspace === 'opinions' ? 'is-active' : ''} type="button" onClick={() => setWorkspace('opinions')}>Opinions</button>
+          </nav>
           <span>{session?.githubLogin}</span>
           <button type="button" onClick={copyCliSession}>Copy CLI session</button>
           <button type="button" onClick={logout}>Sign out</button>
         </div>
       </header>
 
+      {workspace === 'opinions' ? <OpinionsAdminPanel /> : (
       <main className="admin-layout">
         <aside className="admin-sidebar">
           <div className="admin-sidebar-heading">
@@ -412,6 +419,7 @@ export default function AdminPage() {
           </div>
         </section>
       </main>
+      )}
     </div>
   );
 }

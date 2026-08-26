@@ -4,6 +4,7 @@ import type {
   AuthExchangeResponse,
   TimelineMilestone,
 } from '../shared/milestone.ts';
+import type { OpinionSubmissionResponse, PublicOpinion } from '../shared/opinion.ts';
 import {
   beginGitHubOAuth,
   completeGitHubOAuth,
@@ -35,9 +36,18 @@ import {
   updateMilestone,
 } from './milestones-repository.ts';
 import {
+  deleteOpinion,
+  listAdminOpinions,
+  listApprovedOpinions,
+  moderateOpinion,
+  submitOpinion,
+} from './opinions-repository.ts';
+import {
   validateImagesWriteInput,
   validateImageWriteInput,
   validateMilestoneWriteInput,
+  validateOpinionModerationInput,
+  validateOpinionSubmissionInput,
   validateSectionsWriteInput,
 } from './validation.ts';
 
@@ -102,6 +112,19 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
     return jsonResponse(env, payload);
   }
 
+  if (request.method === 'GET' && url.pathname === '/api/opinions') {
+    const data = await listApprovedOpinions(env.DB);
+    const payload: ApiListResponse<PublicOpinion> = { data };
+    return jsonResponse(env, payload);
+  }
+
+  if (request.method === 'POST' && url.pathname === '/api/opinions') {
+    const input = validateOpinionSubmissionInput(await parseJsonBody(request));
+    const id = await submitOpinion(env.DB, input);
+    const data: OpinionSubmissionResponse = { id, status: 'pending' };
+    return jsonResponse(env, { data }, 202, true);
+  }
+
   const milestoneMatch = url.pathname.match(/^\/api\/milestones\/([^/]+)$/);
   if (request.method === 'GET' && milestoneMatch?.[1]) {
     const slug = decodeURIComponent(milestoneMatch[1]);
@@ -133,6 +156,27 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
 
 async function handleAdmin(request: Request, env: Env, url: URL): Promise<Response> {
   await requireAdminSession(request, env);
+
+  if (request.method === 'GET' && url.pathname === '/api/admin/opinions') {
+    const data = await listAdminOpinions(env.DB);
+    return jsonResponse(env, { data }, 200, true);
+  }
+
+  const opinionMatch = url.pathname.match(/^\/api\/admin\/opinions\/(\d+)$/);
+  if (opinionMatch?.[1]) {
+    const opinionId = parsePositiveId(opinionMatch[1]);
+
+    if (request.method === 'PUT') {
+      const input = validateOpinionModerationInput(await parseJsonBody(request));
+      await moderateOpinion(env.DB, opinionId, input);
+      return jsonResponse(env, { data: { id: opinionId, status: input.status } }, 200, true);
+    }
+
+    if (request.method === 'DELETE') {
+      await deleteOpinion(env.DB, opinionId);
+      return jsonResponse(env, { data: { id: opinionId } }, 200, true);
+    }
+  }
 
   if (request.method === 'GET' && url.pathname === '/api/admin/milestones') {
     const data = await listAllMilestones(env.DB, requestOrigin(request));
@@ -212,7 +256,8 @@ export async function handleRequest(request: Request, env: Env): Promise<Respons
   const url = new URL(request.url);
   const admin = url.pathname.startsWith('/api/admin/');
   const auth = url.pathname.startsWith('/api/auth/');
-  const restricted = isRestrictedBrowserRoute(url.pathname);
+  const opinionSubmission = url.pathname === '/api/opinions' && (request.method === 'POST' || request.method === 'OPTIONS');
+  const restricted = isRestrictedBrowserRoute(url.pathname) || opinionSubmission;
 
   try {
     if (restricted) {

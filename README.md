@@ -2,7 +2,7 @@
 
 `kirolos.dev` is a React + TypeScript portfolio deployed to Netlify and backed by a TypeScript Cloudflare Worker with Cloudflare D1 as the persistence layer.
 
-Milestones, long-form sections, and milestone photographs live in D1. Photographs are stored as Base64 text; the Worker decodes them and serves normal image responses.
+Milestones, long-form sections, milestone photographs, and moderated visitor opinions live in D1. Photographs are stored as Base64 text; the Worker decodes them and serves normal image responses. The public timeline also adds short, season-aware transition effects as the active milestone moves between seasons.
 
 ## Architecture
 
@@ -23,10 +23,11 @@ D1: kirolos-portfolio-db
   |- milestones
   |- milestone_sections
   |- milestone_images (Base64)
+  |- opinions (pending/approved/rejected)
   `- auth_exchange_codes (short-lived OAuth handoff only)
 ```
 
-Public visitors are read-only. Portfolio administration is restricted to one immutable GitHub numeric user ID through GitHub OAuth. There is no public registration, password database, Firebase Authentication, or multi-role user system.
+Public visitors can read published portfolio content and submit opinions into a pending moderation queue; they cannot publish, edit, or delete content. Portfolio administration is restricted to one immutable GitHub numeric user ID through GitHub OAuth. There is no public registration, password database, Firebase Authentication, or multi-role user system.
 
 ## Repository layout
 
@@ -156,9 +157,28 @@ After OAuth is configured, `/admin` provides:
 - ordered long-form sections;
 - Base64 photograph upload directly to D1;
 - existing image deletion;
-- short-lived session copy for CLI use.
+- short-lived session copy for CLI use;
+- opinion moderation with explicit approve/reject/delete actions.
 
 No application password exists.
+
+
+## Opinion bubbles
+
+`/opinions` is a dedicated public page. Approved opinions move continuously inside a viewport-sized stage and reverse direction at the stage boundaries. Motion is calculated with `requestAnimationFrame`, remeasured with `ResizeObserver`, and adapts to viewport changes. Visitors who prefer reduced motion receive a static layout instead.
+
+Public submissions collect only the fields needed for publication: display name, optional relationship/context, the opinion itself, and explicit publication consent. They enter D1 as `pending` and never become public until approved from `/admin`. A hidden honeypot field provides a lightweight bot signal without collecting additional visitor identifiers.
+
+## Seasonal timeline transitions
+
+The timeline retains its time-proportional geometry. As scrolling changes the active milestone to one whose month belongs to a different season, a short transition is triggered:
+
+- fall: restrained drifting leaves;
+- winter: snow;
+- spring: soft petals;
+- summer: a brief rain transition followed by a sunlight glow.
+
+The effects are transient, pointer-transparent, and disabled when `prefers-reduced-motion` is enabled. They are tied to milestone-season transitions rather than every calendar quarter, avoiding constant visual noise on long timelines.
 
 ## D1 image storage
 
@@ -192,6 +212,8 @@ Public milestone JSON contains image URLs rather than Base64 payloads. `GET /api
 | `GET` | `/api/milestones` | Published chronological timeline |
 | `GET` | `/api/milestones/:slug` | Published milestone detail |
 | `GET` | `/api/images/:id` | Published D1-backed image |
+| `GET` | `/api/opinions` | Approved public opinions |
+| `POST` | `/api/opinions` | Submit an opinion for moderation |
 
 ## Authentication API
 
@@ -217,6 +239,9 @@ All routes below require a valid GitHub-authenticated admin session in `Authoriz
 | `PUT` | `/api/admin/milestones/:id/images` | Replace image set |
 | `POST` | `/api/admin/milestones/:id/images` | Add Base64 image |
 | `DELETE` | `/api/admin/milestones/:id/images/:imageId` | Delete image |
+| `GET` | `/api/admin/opinions` | List all opinion submissions |
+| `PUT` | `/api/admin/opinions/:id` | Approve or reject an opinion |
+| `DELETE` | `/api/admin/opinions/:id` | Permanently delete an opinion |
 
 ## CLI milestone authoring
 
@@ -256,6 +281,7 @@ The migration chain is:
 0001-initial-portfolio-schema.sql
 0002-base64-milestone-images.sql
 0003-github-oauth.sql
+0004-opinions.sql
 ```
 
 Production migrations are applied by GitHub Actions before the Worker deploy:

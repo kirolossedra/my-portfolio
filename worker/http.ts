@@ -76,7 +76,7 @@ export function optionsResponse(env: Env, restricted: boolean): Response {
     status: 204,
     headers: {
       'Access-Control-Allow-Origin': corsOrigin(env, restricted),
-      'Access-Control-Allow-Methods': restricted ? 'GET, POST, PUT, DELETE, OPTIONS' : 'GET, OPTIONS',
+      'Access-Control-Allow-Methods': restricted ? 'GET, POST, PUT, DELETE, OPTIONS' : 'GET, POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Authorization, Content-Type',
       'Access-Control-Max-Age': '86400',
       Vary: 'Origin',
