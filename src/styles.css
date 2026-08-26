@@ -168,6 +168,7 @@ button {
 
 .timeline-canvas {
   --axis-x: 50%;
+  --timeline-progress: 0;
   position: relative;
   min-height: var(--timeline-height);
   width: 100%;
@@ -180,13 +181,17 @@ button {
   left: var(--axis-x);
   width: 1px;
   transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--line-strong) 5%,
-    var(--line-strong) 95%,
-    transparent
-  );
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.timeline-axis-progress {
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(var(--timeline-progress) * 100%);
+  background: linear-gradient(to bottom, var(--accent), var(--line-strong));
+  transform-origin: top;
+  transition: height 90ms linear;
 }
 
 .timeline-event {
@@ -194,8 +199,17 @@ button {
   top: var(--event-y);
   left: 0;
   width: 100%;
-  transform: translateY(-50%);
+  opacity: 0;
+  transform: translateY(calc(-50% + 24px));
   pointer-events: none;
+  transition:
+    opacity 520ms cubic-bezier(0.2, 0.72, 0.2, 1),
+    transform 620ms cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.timeline-event.is-visible {
+  opacity: 1;
+  transform: translateY(-50%);
 }
 
 .timeline-dot {
@@ -203,67 +217,69 @@ button {
   position: absolute;
   left: var(--axis-x);
   top: 50%;
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   padding: 0;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   border: 2px solid var(--bg);
   outline: 1px solid var(--accent);
   background: var(--accent);
-  cursor: pointer;
-  box-shadow: 0 0 0 7px var(--accent-soft);
+  cursor: default;
+  box-shadow: 0 0 0 6px var(--accent-soft);
   transition: box-shadow 180ms ease, transform 180ms ease;
-  z-index: 2;
+  z-index: 4;
 }
 
-.timeline-dot:hover,
-.timeline-dot:focus-visible {
-  transform: translate(-50%, -50%) scale(1.14);
-  box-shadow: 0 0 0 10px var(--accent-soft);
+.timeline-event:hover .timeline-dot,
+.timeline-event:focus-within .timeline-dot {
+  transform: translate(-50%, -50%) scale(1.12);
+  box-shadow: 0 0 0 9px var(--accent-soft);
 }
 
 .timeline-card {
   pointer-events: auto;
   position: relative;
-  width: calc(50% - 54px);
+  width: calc(50% - 58px);
   max-width: 430px;
+  min-height: 96px;
   padding: 0;
-  border: 0;
+  color: inherit;
   background: transparent;
   text-align: left;
-  cursor: pointer;
+  outline: none;
+  z-index: 3;
 }
 
 .timeline-event--left .timeline-card {
-  margin-right: calc(50% + 54px);
+  margin-right: calc(50% + 58px);
   margin-left: auto;
   text-align: right;
 }
 
 .timeline-event--right .timeline-card {
-  margin-left: calc(50% + 54px);
+  margin-left: calc(50% + 58px);
 }
 
 .timeline-card::after {
   content: '';
   position: absolute;
-  top: 50%;
-  width: 34px;
+  top: 18px;
+  width: 38px;
   height: 1px;
   background: var(--line-strong);
 }
 
 .timeline-event--left .timeline-card::after {
-  right: -44px;
+  right: -48px;
 }
 
 .timeline-event--right .timeline-card::after {
-  left: -44px;
+  left: -48px;
 }
 
 .timeline-date,
-.timeline-open {
+.timeline-touch-hint {
   display: block;
   color: var(--faint);
   font-size: 0.74rem;
@@ -271,7 +287,7 @@ button {
   text-transform: uppercase;
 }
 
-.timeline-card strong {
+.timeline-card > strong {
   display: block;
   margin-top: 8px;
   color: var(--text);
@@ -288,24 +304,134 @@ button {
   line-height: 1.55;
 }
 
-.timeline-open {
+.timeline-touch-hint {
+  display: none;
   margin-top: 10px;
-  opacity: 0;
-  transform: translateY(3px);
-  transition: opacity 180ms ease, transform 180ms ease;
-}
-
-.timeline-card:hover .timeline-open,
-.timeline-card:focus-visible .timeline-open {
-  opacity: 1;
-  transform: translateY(0);
   color: var(--accent);
 }
 
-.timeline-card:focus-visible {
-  outline: 1px solid var(--accent);
-  outline-offset: 10px;
-  border-radius: 2px;
+.timeline-hover-window {
+  position: absolute;
+  top: -22px;
+  width: min(520px, 43vw);
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(16, 20, 25, 0.98);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.985);
+  transform-origin: top center;
+  transition:
+    opacity 180ms ease,
+    transform 220ms cubic-bezier(0.2, 0.72, 0.2, 1),
+    visibility 0s linear 220ms;
+  z-index: 10;
+}
+
+.timeline-event--left .timeline-hover-window {
+  right: -4px;
+}
+
+.timeline-event--right .timeline-hover-window {
+  left: -4px;
+}
+
+
+
+@media (hover: hover) and (pointer: fine) {
+  .timeline-event:hover .timeline-hover-window,
+  .timeline-event:focus-within .timeline-hover-window {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition-delay: 70ms, 70ms, 0s;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .timeline-hover-window {
+    display: none;
+  }
+
+  .timeline-touch-hint {
+    display: block;
+  }
+
+  .timeline-card,
+  .timeline-dot {
+    cursor: pointer;
+  }
+}
+
+.timeline-hover-media {
+  min-height: 132px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #0d1013;
+}
+
+.timeline-hover-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline-hover-placeholder {
+  min-height: 132px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(143, 211, 151, 0.13), transparent 40%),
+    linear-gradient(145deg, #0e1216, #151a20);
+}
+
+.timeline-hover-placeholder span {
+  color: rgba(238, 240, 237, 0.84);
+  font-size: 2.45rem;
+  font-weight: 560;
+  letter-spacing: -0.065em;
+}
+
+.timeline-hover-copy {
+  align-self: center;
+}
+
+.timeline-hover-copy p {
+  margin: 0;
+  color: #bdc4be;
+  font-size: 0.88rem;
+  line-height: 1.62;
+}
+
+.timeline-story-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 4px;
+}
+
+.timeline-story-link:hover,
+.timeline-story-link:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.timeline-state {
+  color: var(--muted);
+}
+
+.timeline-state--error {
+  color: #d5a0a0;
 }
 
 .timeline-empty {
@@ -531,6 +657,11 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .timeline-event {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+
   *,
   *::before,
   *::after {
@@ -562,7 +693,7 @@ button {
     --axis-x: 18px;
   }
 
-  .timeline-event {
+  .timeline-event.is-visible {
     transform: translateY(-50%);
   }
 
@@ -580,11 +711,6 @@ button {
   .timeline-event--right .timeline-card::after {
     left: -44px;
     right: auto;
-  }
-
-  .timeline-open {
-    opacity: 1;
-    transform: none;
   }
 
   .milestone-modal {

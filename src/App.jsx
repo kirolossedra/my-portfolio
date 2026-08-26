@@ -1,19 +1,61 @@
+import { useEffect, useMemo, useState } from 'react';
 import LifeTimeline from './components/life-timeline';
 import MilestoneDetailPage from './components/milestone-detail-page';
-import { milestones } from './data/milestones';
+import { loadMilestones } from './data/milestones';
 
-function getMilestoneFromPath() {
+function getMilestoneSlugFromPath() {
   const match = window.location.pathname.match(/^\/milestones\/([^/]+)\/?$/);
-  if (!match) return undefined;
-
-  return milestones.find((milestone) => milestone.slug === match[1]) ?? null;
+  return match ? match[1] : undefined;
 }
 
 export default function App() {
-  const milestoneRoute = getMilestoneFromPath();
+  const [milestones, setMilestones] = useState([]);
+  const [timelineStatus, setTimelineStatus] = useState('loading');
+  const [timelineError, setTimelineError] = useState('');
+  const milestoneSlug = getMilestoneSlugFromPath();
 
-  if (milestoneRoute !== undefined) {
-    return <MilestoneDetailPage milestone={milestoneRoute} />;
+  useEffect(() => {
+    let cancelled = false;
+
+    loadMilestones()
+      .then((items) => {
+        if (cancelled) return;
+        setMilestones(items);
+        setTimelineStatus('ready');
+      })
+      .catch((error) => {
+        if (cancelled) return;
+        setTimelineError(error instanceof Error ? error.message : 'Could not load timeline.');
+        setTimelineStatus('error');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const routedMilestone = useMemo(() => {
+    if (milestoneSlug === undefined || timelineStatus !== 'ready') return undefined;
+    return milestones.find((milestone) => milestone.slug === milestoneSlug) ?? null;
+  }, [milestoneSlug, milestones, timelineStatus]);
+
+  if (milestoneSlug !== undefined) {
+    if (timelineStatus === 'loading') {
+      return <main className="detail-page detail-page--loading">Loading story…</main>;
+    }
+
+    if (timelineStatus === 'error') {
+      return (
+        <main className="detail-page detail-page--missing">
+          <a className="back-link" href="/">← Back to timeline</a>
+          <p className="eyebrow">Timeline unavailable</p>
+          <h1>Story could not be loaded.</h1>
+          <p>{timelineError}</p>
+        </main>
+      );
+    }
+
+    return <MilestoneDetailPage milestone={routedMilestone} />;
   }
 
   return (
@@ -33,12 +75,10 @@ export default function App() {
       <main>
         <section className="hero" aria-labelledby="hero-title">
           <p className="eyebrow">Personal portfolio</p>
-          <h1 id="hero-title">
-            A career is more than a list of outputs.
-          </h1>
+          <h1 id="hero-title">A career is more than a list of outputs.</h1>
           <p className="hero-copy">
-            This portfolio is being built as a living record of the work,
-            transitions, people, and ideas that shaped the engineer behind it.
+            A living record of the work, transitions, people, and ideas that shaped
+            the engineer behind them.
           </p>
           <a className="hero-link" href="#history">
             Follow the timeline <span aria-hidden="true">↓</span>
@@ -50,12 +90,19 @@ export default function App() {
             <p className="eyebrow">History</p>
             <h2 id="history-title">The path, in actual time.</h2>
             <p>
-              Distance between milestones is proportional to the number of
-              calendar months between them. Select any point to expand it.
+              The line grows with the page. Milestones reveal themselves as they enter
+              view, and the distance between dots reflects the calendar time between them.
+              Hover on desktop; tap on touch devices.
             </p>
           </div>
 
-          <LifeTimeline items={milestones} />
+          {timelineStatus === 'loading' && (
+            <p className="timeline-state">Loading timeline…</p>
+          )}
+          {timelineStatus === 'error' && (
+            <p className="timeline-state timeline-state--error">{timelineError}</p>
+          )}
+          {timelineStatus === 'ready' && <LifeTimeline items={milestones} />}
         </section>
       </main>
 
