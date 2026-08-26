@@ -51,7 +51,7 @@ function particleStyle(index: number, salt: number): ParticleStyle {
   const drift = -90 + seededValue(index, salt + 3) * 180;
   const size = 5 + seededValue(index, salt + 4) * 9;
   const rotation = -120 + seededValue(index, salt + 5) * 240;
-  const palette = FALL_PALETTE[index % FALL_PALETTE.length];
+  const palette = FALL_PALETTE[index % FALL_PALETTE.length] ?? FALL_PALETTE[0];
   const leafDirection = seededValue(index, salt + 6) > 0.5 ? 1 : -1;
   const leafScale = 0.82 + seededValue(index, salt + 7) * 0.62;
   const leafSize = (13 + seededValue(index, salt + 8) * 15) * leafScale;
