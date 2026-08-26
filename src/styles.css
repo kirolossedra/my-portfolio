@@ -177,9 +177,9 @@ button {
 .timeline-axis {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: var(--axis-x);
   width: 1px;
+  height: var(--timeline-axis-height, 100%);
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
@@ -268,6 +268,10 @@ button {
   width: 38px;
   height: 1px;
   background: var(--line-strong);
+}
+
+.timeline-mobile-connector {
+  display: none;
 }
 
 .timeline-event--left .timeline-card::after {
@@ -693,8 +697,20 @@ button {
     --axis-x: 18px;
   }
 
+  /*
+   * The dot remains at the mathematically correct calendar position. Only the
+   * readable card is displaced when nearby milestones would otherwise collide.
+   */
+  .timeline-event {
+    transform: translateY(24px);
+  }
+
   .timeline-event.is-visible {
-    transform: translateY(-50%);
+    transform: translateY(0);
+  }
+
+  .timeline-dot {
+    top: 0;
   }
 
   .timeline-card,
@@ -704,13 +720,52 @@ button {
     max-width: none;
     margin: 0 0 0 72px;
     text-align: left;
+    transform: translateY(var(--mobile-card-offset, -18px));
   }
 
   .timeline-card::after,
   .timeline-event--left .timeline-card::after,
   .timeline-event--right .timeline-card::after {
-    left: -44px;
-    right: auto;
+    display: none;
+  }
+
+  .timeline-mobile-connector {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: var(--axis-x);
+    overflow: visible;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .timeline-mobile-connector path {
+    fill: none;
+    stroke: rgba(176, 190, 181, 0.38);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .timeline-card > strong {
+    margin-top: 7px;
+    font-size: clamp(1.08rem, 5.1vw, 1.28rem);
+    line-height: 1.12;
+  }
+
+  .timeline-summary {
+    display: -webkit-box;
+    margin-top: 8px;
+    overflow: hidden;
+    font-size: 0.89rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .timeline-touch-hint {
+    margin-top: 9px;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
   }
 
   .milestone-modal {
