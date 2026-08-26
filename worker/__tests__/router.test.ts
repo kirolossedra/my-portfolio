@@ -10,7 +10,16 @@ function mockDatabase(): D1Database {
           return this;
         },
         async first() {
-          return query.includes('SELECT 1') ? { ok: 1 } : null;
+          if (query.includes('SELECT 1')) return { ok: 1 };
+          if (query.includes('FROM milestone_images i')) {
+            return {
+              id: 7,
+              mime_type: 'image/png',
+              base64_data: 'AQID',
+              byte_size: 3,
+            };
+          }
+          return null;
         },
         async all() {
           return {
@@ -28,7 +37,7 @@ function mockDatabase(): D1Database {
                   display_order: 0,
                   is_published: 1,
                   published_at: '2026-08-25T00:00:00.000Z',
-                  cover_r2_key: null,
+                  cover_image_id: null,
                   cover_alt_text: null,
                 }]
               : [],
@@ -74,6 +83,18 @@ describe('portfolio worker router', () => {
     expect(body.data[0]?.date).toEqual({ year: 2026, month: 8 });
   });
 
+  it('serves Base64-backed D1 images as binary image responses', async () => {
+    const response = await handleRequest(
+      new Request('https://api.example.test/api/images/7'),
+      env(),
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get('Content-Type')).toBe('image/png');
+    expect(response.headers.get('X-Content-Type-Options')).toBe('nosniff');
+    expect(Array.from(new Uint8Array(await response.arrayBuffer()))).toEqual([1, 2, 3]);
+  });
+
   it('blocks admin writes without the configured bearer token', async () => {
     const response = await handleRequest(
       new Request('https://api.example.test/api/admin/milestones', {
@@ -107,24 +128,23 @@ describe('portfolio worker router', () => {
     });
   });
 
-
-  it('rejects non-image uploads before writing to R2', async () => {
+  it('rejects non-image Base64 payloads before writing to D1', async () => {
     const response = await handleRequest(
-      new Request('https://api.example.test/api/admin/media/milestones/test.txt', {
-        method: 'PUT',
+      new Request('https://api.example.test/api/admin/milestones/1/images', {
+        method: 'POST',
         headers: {
           Authorization: 'Bearer secret',
-          'Content-Type': 'text/plain',
+          'Content-Type': 'application/json',
         },
-        body: 'not an image',
+        body: JSON.stringify({
+          mimeType: 'text/plain',
+          base64Data: 'AQID',
+          altText: 'Not an image',
+        }),
       }),
-      env({
-        ADMIN_API_TOKEN: 'secret',
-        ASSETS: {} as R2Bucket,
-      }),
+      env({ ADMIN_API_TOKEN: 'secret' }),
     );
 
     expect(response.status).toBe(415);
   });
-
 });

@@ -9,6 +9,7 @@ import type {
   TimelineMilestone,
 } from '../shared/milestone.ts';
 import { HttpError } from './http.ts';
+import { base64ByteSize } from './validation.ts';
 
 interface MilestoneRow {
   id: number;
@@ -22,17 +23,25 @@ interface MilestoneRow {
   display_order: number;
   is_published: number;
   published_at: string | null;
-  cover_r2_key: string | null;
+  cover_image_id: number | null;
   cover_alt_text: string | null;
 }
 
 interface MilestoneImageRow {
   id: number;
-  r2_key: string;
+  mime_type: string;
+  byte_size: number;
   alt_text: string;
   caption: string | null;
   display_order: number;
   is_cover: number;
+}
+
+interface MilestoneImageContentRow {
+  id: number;
+  mime_type: string;
+  base64_data: string;
+  byte_size: number;
 }
 
 interface MilestoneSectionRow {
@@ -55,7 +64,7 @@ const SELECT_MILESTONE_COLUMNS = `
     m.display_order,
     m.is_published,
     m.published_at,
-    cover.r2_key AS cover_r2_key,
+    cover.id AS cover_image_id,
     cover.alt_text AS cover_alt_text
   FROM milestones m
   LEFT JOIN milestone_images cover
@@ -68,13 +77,8 @@ const SELECT_MILESTONE_COLUMNS = `
     )
 `;
 
-function mediaUrl(origin: string, r2Key: string | null): string | null {
-  if (!r2Key) return null;
-  const encoded = r2Key
-    .split('/')
-    .map((part) => encodeURIComponent(part))
-    .join('/');
-  return `${origin}/api/media/${encoded}`;
+function imageUrl(origin: string, imageId: number | null): string | null {
+  return imageId ? `${origin}/api/images/${imageId}` : null;
 }
 
 function toTimelineMilestone(row: MilestoneRow, origin: string): TimelineMilestone {
@@ -88,7 +92,7 @@ function toTimelineMilestone(row: MilestoneRow, origin: string): TimelineMilesto
     title: row.title,
     summary: row.short_description,
     description: row.expanded_description ?? row.short_description,
-    imageSrc: mediaUrl(origin, row.cover_r2_key),
+    imageSrc: imageUrl(origin, row.cover_image_id),
     imageAlt: row.cover_alt_text ?? '',
   };
 }
@@ -105,8 +109,9 @@ function toAdminMilestone(row: MilestoneRow, origin: string): AdminMilestoneSumm
 function toImage(row: MilestoneImageRow, origin: string): MilestoneImage {
   return {
     id: row.id,
-    r2Key: row.r2_key,
-    imageSrc: mediaUrl(origin, row.r2_key),
+    imageSrc: `${origin}/api/images/${row.id}`,
+    mimeType: row.mime_type,
+    byteSize: row.byte_size,
     altText: row.alt_text,
     caption: row.caption,
     displayOrder: row.display_order,
@@ -124,9 +129,26 @@ function toSection(row: MilestoneSectionRow): MilestoneSection {
 }
 
 async function milestoneExists(db: D1Database, milestoneId: number): Promise<void> {
-  const row = await db.prepare('SELECT id FROM milestones WHERE id = ?1').bind(milestoneId).first<{ id: number }>();
+  const row = await db
+    .prepare('SELECT id FROM milestones WHERE id = ?1')
+    .bind(milestoneId)
+    .first<{ id: number }>();
   if (!row) {
     throw new HttpError(404, 'milestone_not_found', 'Milestone does not exist.');
+  }
+}
+
+async function imageExistsForMilestone(
+  db: D1Database,
+  milestoneId: number,
+  imageId: number,
+): Promise<void> {
+  const row = await db
+    .prepare('SELECT id FROM milestone_images WHERE id = ?1 AND milestone_id = ?2')
+    .bind(imageId, milestoneId)
+    .first<{ id: number }>();
+  if (!row) {
+    throw new HttpError(404, 'image_not_found', 'Milestone image was not found.');
   }
 }
 
@@ -163,7 +185,7 @@ async function milestoneDetailFromRow(
   const [imagesResult, sectionsResult] = await Promise.all([
     db
       .prepare(`
-        SELECT id, r2_key, alt_text, caption, display_order, is_cover
+        SELECT id, mime_type, byte_size, alt_text, caption, display_order, is_cover
         FROM milestone_images
         WHERE milestone_id = ?1
         ORDER BY is_cover DESC, display_order ASC, id ASC`)
@@ -223,6 +245,27 @@ export async function getMilestoneById(
   }
 
   return milestoneDetailFromRow(db, row, origin);
+}
+
+export async function getPublishedImageById(
+  db: D1Database,
+  imageId: number,
+): Promise<MilestoneImageContentRow> {
+  const row = await db
+    .prepare(`
+      SELECT i.id, i.mime_type, i.base64_data, i.byte_size
+      FROM milestone_images i
+      INNER JOIN milestones m ON m.id = i.milestone_id
+      WHERE i.id = ?1 AND m.is_published = 1
+      LIMIT 1`)
+    .bind(imageId)
+    .first<MilestoneImageContentRow>();
+
+  if (!row) {
+    throw new HttpError(404, 'image_not_found', 'Published milestone image was not found.');
+  }
+
+  return row;
 }
 
 export async function createMilestone(db: D1Database, input: MilestoneWriteInput): Promise<number> {
@@ -347,6 +390,36 @@ export async function replaceMilestoneSections(
   await db.batch(statements);
 }
 
+function imageInsertStatement(
+  db: D1Database,
+  milestoneId: number,
+  image: MilestoneImageWriteInput,
+  fallbackOrder: number,
+): D1PreparedStatement {
+  return db
+    .prepare(`
+      INSERT INTO milestone_images (
+        milestone_id,
+        mime_type,
+        base64_data,
+        byte_size,
+        alt_text,
+        caption,
+        display_order,
+        is_cover
+      ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`)
+    .bind(
+      milestoneId,
+      image.mimeType,
+      image.base64Data,
+      base64ByteSize(image.base64Data),
+      image.altText,
+      image.caption ?? null,
+      image.displayOrder ?? fallbackOrder,
+      image.isCover ? 1 : 0,
+    );
+}
+
 export async function replaceMilestoneImages(
   db: D1Database,
   milestoneId: number,
@@ -361,27 +434,40 @@ export async function replaceMilestoneImages(
 
   const statements: D1PreparedStatement[] = [
     db.prepare('DELETE FROM milestone_images WHERE milestone_id = ?1').bind(milestoneId),
-    ...images.map((image, index) =>
-      db
-        .prepare(`
-          INSERT INTO milestone_images (
-            milestone_id,
-            r2_key,
-            alt_text,
-            caption,
-            display_order,
-            is_cover
-          ) VALUES (?1, ?2, ?3, ?4, ?5, ?6)`)
-        .bind(
-          milestoneId,
-          image.r2Key,
-          image.altText,
-          image.caption ?? null,
-          image.displayOrder ?? index,
-          image.isCover ? 1 : 0,
-        ),
-    ),
+    ...images.map((image, index) => imageInsertStatement(db, milestoneId, image, index)),
   ];
 
   await db.batch(statements);
+}
+
+export async function addMilestoneImage(
+  db: D1Database,
+  milestoneId: number,
+  image: MilestoneImageWriteInput,
+): Promise<number> {
+  await milestoneExists(db, milestoneId);
+
+  if (image.isCover) {
+    await db
+      .prepare('UPDATE milestone_images SET is_cover = 0 WHERE milestone_id = ?1')
+      .bind(milestoneId)
+      .run();
+  }
+
+  const result = await imageInsertStatement(db, milestoneId, image, 0).run();
+  const imageId = Number(result.meta.last_row_id);
+  if (!Number.isInteger(imageId) || imageId <= 0) {
+    throw new HttpError(500, 'image_create_failed', 'Image was inserted but its identifier was unavailable.');
+  }
+  return imageId;
+}
+
+export async function deleteMilestoneImage(
+  db: D1Database,
+  milestoneId: number,
+  imageId: number,
+): Promise<void> {
+  await milestoneExists(db, milestoneId);
+  await imageExistsForMilestone(db, milestoneId, imageId);
+  await db.prepare('DELETE FROM milestone_images WHERE id = ?1').bind(imageId).run();
 }

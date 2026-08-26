@@ -1,6 +1,8 @@
 # Kirolos Portfolio
 
-`kirolos.dev` is a React + TypeScript portfolio deployed to Netlify, backed by a TypeScript Cloudflare Worker, Cloudflare D1 for structured content, and Cloudflare R2 for milestone media.
+`kirolos.dev` is a React + TypeScript portfolio deployed to Netlify and backed by a TypeScript Cloudflare Worker with Cloudflare D1 as the single persistence layer.
+
+Milestones, long-form sections, and milestone photographs all live in D1. Photographs are stored as Base64 text in the database; the Worker decodes them and serves normal image responses to the browser.
 
 ## Architecture
 
@@ -11,17 +13,19 @@ Browser
 kirolos.dev
 Netlify: React + TypeScript + Vite
   |
-  | HTTPS JSON API
+  | HTTPS JSON/image API
   v
 kirolos-portfolio-api.linc-ministry.workers.dev
 Cloudflare Worker: TypeScript
-  |                         |
-  v                         v
-D1: kirolos-portfolio-db    R2: kirolos-portfolio-assets
-milestones + metadata       milestone photographs/media
+  |
+  v
+D1: kirolos-portfolio-db
+  |- milestones
+  |- milestone_sections
+  `- milestone_images (Base64 image data)
 ```
 
-The browser is read-only. Public portfolio content is fetched from the Worker. Mutations are protected by an admin bearer token and are intended for the repository CLI, not a token embedded in browser JavaScript.
+The public browser is read-only. Public content is fetched from the Worker. Administrative mutations are currently protected by a temporary server-side bearer token. The intended next authentication phase is a single-admin GitHub OAuth flow restricted to the portfolio owner's immutable GitHub user ID; the token is not embedded in the frontend.
 
 ## Repository layout
 
@@ -29,23 +33,13 @@ The browser is read-only. Public portfolio content is fetched from the Worker. M
 src/                         React + TypeScript frontend
 shared/                      API contracts shared by frontend and Worker
 worker/                      Cloudflare Worker API
-migrations/                  D1 schema and seed migrations
-scripts/                     CLI authoring + migration helpers
+migrations/                  D1 schema migrations
+scripts/                     CLI authoring and repository gates
 examples/                    milestone payload templates
 .github/workflows/           CI/CD gates and production deployment
 netlify.toml                 Netlify SPA/deploy configuration
-wrangler.jsonc               Worker/D1/R2 infrastructure configuration
+wrangler.jsonc               Worker + D1 configuration
 ```
-
-## One-time JavaScript-to-TypeScript cleanup
-
-The modification delivery cannot physically delete files from an existing checkout. After copying the delivery over the repository, run once:
-
-```bash
-npm run cleanup:legacy
-```
-
-CI deliberately fails while the obsolete `.jsx`, `.js`, and static milestone JSON files remain. The cleanup removes only the exact legacy files replaced by this migration.
 
 ## Install
 
@@ -69,49 +63,65 @@ Authenticate Wrangler once:
 npx wrangler login
 ```
 
-Apply the D1 migrations to Wrangler's local D1 database:
+Apply all D1 migrations to Wrangler's local database:
 
 ```bash
 npm run db:migrate:local
 ```
 
-Create `.dev.vars` from `.dev.vars.example` and use a long random local admin token, then run:
+Create `.dev.vars` from `.dev.vars.example` and use a long random temporary admin token, then run:
 
 ```bash
 npm run worker:dev
 ```
 
-## Production infrastructure bootstrap
+## D1 image storage
 
-The D1 database and Worker already exist. The repository now treats `wrangler.jsonc` as the source of truth for the Worker configuration.
+Image binaries are converted to standard Base64 before they are written to `milestone_images.base64_data`.
 
-Create the R2 bucket once from the CLI:
+The current raw-image limit is **1,310,720 bytes (1.25 MiB)**. This deliberately leaves room below D1's per-row size ceiling after Base64 expansion and metadata are included. Optimize portfolio photographs before upload rather than treating the database as an original-photo archive.
 
-```bash
-npm run r2:create
+Supported image formats:
+
+- AVIF
+- GIF
+- JPEG
+- PNG
+- WebP
+
+The public API does not inject the Base64 payload into milestone JSON. Instead, milestone responses contain an image URL such as:
+
+```text
+/api/images/42
 ```
 
-Apply the idempotent initial D1 migration once. This also records the schema in Wrangler migrations and seeds the existing `kirolos.dev begins` milestone if it is absent:
+The Worker reads the Base64 value from D1, decodes it, and returns the original image bytes with the stored MIME type. This keeps the timeline JSON significantly smaller while still using D1 as the only image store.
+
+## Production database migrations
+
+The database and Worker already exist. The repository treats the migration directory and `wrangler.jsonc` as source of truth.
+
+Apply remote migrations manually when needed:
 
 ```bash
 npm run db:migrate:remote
 ```
 
-Create the production admin secret once:
+Normal production migration and deployment are automated by GitHub Actions.
+
+`0001-initial-portfolio-schema.sql` is historical and created the original image-metadata table. `0002-base64-milestone-images.sql` replaces that table with the Base64-backed schema. Because object storage was never enabled for this portfolio, the migration does not attempt to preserve unusable external-object references.
+
+## Temporary admin authentication
+
+Until GitHub OAuth is implemented, create the Worker secret once:
 
 ```bash
 npx wrangler secret put ADMIN_API_TOKEN
 ```
 
-Use a long random value. Do not add it to source control or to `VITE_*` variables. A browser-exposed admin token would turn the public portfolio into an administrative credential leak.
+Use a long random value. Never put it in source control or any `VITE_*` variable.
 
-Deploying manually is then only:
-
-```bash
-npm run worker:deploy
-```
-
-Normal production deployment is automated by GitHub Actions instead.
+The temporary token exists only so the CLI and protected admin API can operate while the single-admin GitHub OAuth flow is being implemented. It is not the long-term authentication design.
 
 ## Public API
 
@@ -120,61 +130,75 @@ Normal production deployment is automated by GitHub Actions instead.
 | `GET` | `/api/health` | Worker + D1 health check |
 | `GET` | `/api/milestones` | Published timeline milestones in chronological order |
 | `GET` | `/api/milestones/:slug` | Full published milestone with sections/images |
-| `GET` | `/api/media/:key` | R2-backed public media |
+| `GET` | `/api/images/:id` | Published Base64-backed D1 image, decoded to binary |
+
+Only images belonging to published milestones are exposed through the public image route.
 
 ## Admin API
 
-All routes require `Authorization: Bearer <ADMIN_API_TOKEN>`.
+All current admin routes require `Authorization: Bearer <ADMIN_API_TOKEN>` until GitHub OAuth replaces temporary token authentication.
 
 | Method | Route | Purpose |
 | --- | --- | --- |
 | `GET` | `/api/admin/milestones` | List published and draft milestones |
 | `POST` | `/api/admin/milestones` | Create a milestone |
 | `PUT` | `/api/admin/milestones/:id` | Replace milestone metadata/content |
-| `DELETE` | `/api/admin/milestones/:id` | Delete milestone and cascaded metadata |
+| `DELETE` | `/api/admin/milestones/:id` | Delete milestone and cascaded content |
 | `PUT` | `/api/admin/milestones/:id/sections` | Replace ordered long-form sections |
-| `PUT` | `/api/admin/milestones/:id/images` | Replace ordered R2 image metadata |
-| `PUT` | `/api/admin/media/:key` | Upload a media object to R2 |
-| `DELETE` | `/api/admin/media/:key` | Delete a media object from R2 |
+| `PUT` | `/api/admin/milestones/:id/images` | Replace all ordered Base64 images |
+| `POST` | `/api/admin/milestones/:id/images` | Add one Base64 image |
+| `DELETE` | `/api/admin/milestones/:id/images/:imageId` | Delete one image |
 
 ## Adding milestones without a dashboard
 
-Set the admin token in your terminal:
+Set the temporary admin token in the terminal:
 
 ```bash
 export PORTFOLIO_ADMIN_TOKEN='...'
 ```
 
-On PowerShell:
+PowerShell:
 
 ```powershell
 $env:PORTFOLIO_ADMIN_TOKEN='...'
 ```
 
-Then use the included CLI and the files in `examples/`:
+Create and manage milestones using the included CLI:
 
 ```bash
 npm run milestone -- create examples/milestone.json
 npm run milestone -- list
-```
-
-Add long-form sections:
-
-```bash
+npm run milestone -- update 1 examples/milestone.json
 npm run milestone -- sections 1 examples/milestone-sections.json
 ```
 
-Upload a photograph to R2:
+### Add a photograph directly from a file
+
+The CLI converts the file to Base64 locally and sends it to the protected Worker API:
 
 ```bash
-npm run milestone -- upload milestones/example-milestone/cover.jpg ./photo.jpg
+npm run milestone -- image-add 1 ./photo.jpg --alt="University campus" --cover
 ```
 
-Attach its metadata to the milestone:
+Optional metadata:
+
+```bash
+npm run milestone -- image-add 1 ./photo.jpg --alt="University campus" --caption="September 2024" --order=0 --cover
+```
+
+Delete an image:
+
+```bash
+npm run milestone -- image-delete 1 42
+```
+
+The bulk image endpoint remains available through:
 
 ```bash
 npm run milestone -- images 1 examples/milestone-images.json
 ```
+
+For normal use, `image-add` is preferable because it performs the Base64 conversion automatically.
 
 The milestone date is stored as integer `year` + `month`. React converts the calendar-month difference between milestones into proportional vertical distance, so adding database records does not require timeline component changes.
 
@@ -188,18 +212,15 @@ npm run verify
 
 It enforces:
 
-1. no obsolete JavaScript/static-data files remain;
-2. ESLint passes with zero warnings;
-3. frontend TypeScript passes strict type checking;
-4. Worker TypeScript passes strict type checking;
-5. Vitest passes;
-6. Wrangler can bundle the Worker with `--dry-run`.
+1. obsolete JavaScript/static-data migration files are absent;
+2. active application code contains no object-storage integration;
+3. ESLint passes with zero warnings;
+4. frontend TypeScript passes strict type checking;
+5. Worker TypeScript passes strict type checking;
+6. Vitest passes;
+7. Wrangler can bundle the Worker with `--dry-run`.
 
-CI additionally applies the D1 migration to a local Wrangler database before any deployment and builds the frontend production bundle. The frontend production build can also be checked locally with:
-
-```bash
-npm run build
-```
+CI additionally applies the full D1 migration chain to a local Wrangler database and builds the production frontend before any deployment.
 
 ## CI/CD
 
@@ -210,8 +231,6 @@ npm run build
 Only the quality gate runs. Nothing deploys.
 
 ### Push to `main`
-
-The pipeline is deliberately ordered:
 
 ```text
 quality gate
@@ -229,36 +248,37 @@ build React production bundle
 deploy prebuilt dist/ to Netlify
 ```
 
-If any stage fails, downstream production deployment stops. The previous production versions remain live.
+If any stage fails, downstream production deployment stops. Previous production versions remain live.
 
-Netlify's repository-triggered build is disabled through the `ignore = "exit 0"` rule in `netlify.toml`, preventing a second ungated deploy from racing the GitHub Actions pipeline. GitHub Actions is the sole production deployment path.
+Netlify's repository-triggered build is disabled through `netlify.toml`, preventing a second ungated deployment from racing GitHub Actions. GitHub Actions is the sole production deployment path.
 
 ## CI secrets
 
-The workflow requires four GitHub Actions secrets. After your first successful local `npm install`, commit the generated `package-lock.json`; the workflow automatically switches from `npm install` to deterministic `npm ci` when the lockfile exists.
-
-The required secrets are:
+The workflow requires these GitHub Actions secrets:
 
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 - `NETLIFY_AUTH_TOKEN`
 - `NETLIFY_SITE_ID`
 
-Cloudflare requires an API token for non-interactive CI. Create a narrowly scoped Worker deployment token once, rather than storing an account-wide key.
+The Cloudflare token only needs permissions required for Worker deployment and D1 migration. Object-storage permission is not required by this application.
 
-Netlify requires a personal access token for non-interactive CLI deployment. The existing site remains the deployment target; no new Netlify site is created.
+## Authentication roadmap
 
-After obtaining the values, add them from the CLI rather than clicking through repository settings:
+The next backend phase replaces the temporary bearer token with single-admin GitHub OAuth:
 
-```bash
-gh secret set CLOUDFLARE_API_TOKEN
-gh secret set CLOUDFLARE_ACCOUNT_ID
-gh secret set NETLIFY_AUTH_TOKEN
-gh secret set NETLIFY_SITE_ID
+```text
+/admin
+  -> GitHub OAuth
+  -> Worker callback
+  -> fetch GitHub identity
+  -> compare immutable GitHub numeric user ID
+  -> reject every other account
+  -> issue short-lived portfolio admin session
 ```
 
-Each command securely prompts for the value.
+There will be no public registration, password table, arbitrary portfolio users, or multi-role user management. The authorization model should reflect the actual system: one administrator and public read-only visitors.
 
 ## Deployment ownership
 
-The repository is the source of truth for application code, schema migrations, Worker bindings, build commands, and deployment gates. The Cloudflare and Netlify dashboards remain useful for observability, logs, rollback, and the small number of credentials that cannot safely live in Git.
+The repository is the source of truth for application code, schema migrations, Worker bindings, build commands, tests, and deployment gates. Cloudflare and Netlify dashboards remain primarily for observability, logs, rollback, and initial credential/bootstrap operations that cannot safely live in Git.

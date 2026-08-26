@@ -16,8 +16,9 @@ export interface TimelineMilestone {
 
 export interface MilestoneImage {
   id: number;
-  r2Key: string;
-  imageSrc: string | null;
+  imageSrc: string;
+  mimeType: string;
+  byteSize: number;
   altText: string;
   caption: string | null;
   displayOrder: number;
@@ -77,7 +78,8 @@ export interface MilestoneSectionWriteInput {
 }
 
 export interface MilestoneImageWriteInput {
-  r2Key: string;
+  mimeType: string;
+  base64Data: string;
   altText: string;
   caption?: string | null;
   displayOrder?: number;

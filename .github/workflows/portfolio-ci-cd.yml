@@ -34,6 +34,9 @@ jobs:
       - name: Reject legacy JavaScript migration files
         run: npm run check:legacy
 
+      - name: Reject active object-storage integration
+        run: npm run check:no-r2
+
       - name: Lint
         run: npm run lint
 

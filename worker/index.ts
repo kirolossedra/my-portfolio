@@ -10,9 +10,12 @@ import {
   requireAdmin,
 } from './http.ts';
 import {
+  addMilestoneImage,
   createMilestone,
   deleteMilestone,
+  deleteMilestoneImage,
   getMilestoneById,
+  getPublishedImageById,
   getPublishedMilestoneBySlug,
   listAllMilestones,
   listPublishedMilestones,
@@ -22,6 +25,7 @@ import {
 } from './milestones-repository.ts';
 import {
   validateImagesWriteInput,
+  validateImageWriteInput,
   validateMilestoneWriteInput,
   validateSectionsWriteInput,
 } from './validation.ts';
@@ -29,7 +33,7 @@ import {
 function parsePositiveId(value: string): number {
   const id = Number(value);
   if (!Number.isInteger(id) || id <= 0) {
-    throw new HttpError(400, 'invalid_id', 'Milestone id must be a positive integer.');
+    throw new HttpError(400, 'invalid_id', 'Identifier must be a positive integer.');
   }
   return id;
 }
@@ -39,27 +43,13 @@ function requestOrigin(request: Request): string {
   return `${url.protocol}//${url.host}`;
 }
 
-const ALLOWED_IMAGE_CONTENT_TYPES = new Set([
-  'image/avif',
-  'image/gif',
-  'image/jpeg',
-  'image/png',
-  'image/webp',
-]);
-const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
-
-function validateMediaUpload(request: Request): string {
-  const contentType = (request.headers.get('Content-Type') ?? '').split(';', 1)[0]?.trim().toLowerCase() ?? '';
-  if (!ALLOWED_IMAGE_CONTENT_TYPES.has(contentType)) {
-    throw new HttpError(415, 'unsupported_media_type', 'Milestone media must be an AVIF, GIF, JPEG, PNG, or WebP image.');
+function decodeBase64(base64Data: string): Uint8Array {
+  const binary = atob(base64Data);
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index += 1) {
+    bytes[index] = binary.charCodeAt(index);
   }
-
-  const contentLength = Number(request.headers.get('Content-Length'));
-  if (Number.isFinite(contentLength) && contentLength > MAX_IMAGE_BYTES) {
-    throw new HttpError(413, 'media_too_large', 'Milestone images must be 10 MB or smaller.');
-  }
-
-  return contentType;
+  return bytes;
 }
 
 async function handlePublic(request: Request, env: Env, url: URL): Promise<Response> {
@@ -85,27 +75,22 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
     return jsonResponse(env, payload);
   }
 
-  const mediaMatch = url.pathname.match(/^\/api\/media\/(.+)$/);
-  if (request.method === 'GET' && mediaMatch?.[1]) {
-    if (!env.ASSETS) {
-      throw new HttpError(503, 'media_not_configured', 'Portfolio media storage is not configured yet.');
-    }
+  const imageMatch = url.pathname.match(/^\/api\/images\/(\d+)$/);
+  if (request.method === 'GET' && imageMatch?.[1]) {
+    const imageId = parsePositiveId(imageMatch[1]);
+    const image = await getPublishedImageById(env.DB, imageId);
+    const bytes = decodeBase64(image.base64_data);
 
-    const key = mediaMatch[1]
-      .split('/')
-      .map((part) => decodeURIComponent(part))
-      .join('/');
-    const object = await env.ASSETS.get(key);
-    if (!object) {
-      throw new HttpError(404, 'media_not_found', 'Media object was not found.');
-    }
-
-    const headers = new Headers();
-    object.writeHttpMetadata(headers);
-    headers.set('etag', object.httpEtag);
-    headers.set('Cache-Control', 'public, max-age=3600');
-    headers.set('Access-Control-Allow-Origin', '*');
-    return new Response(object.body, { headers });
+    return new Response(bytes, {
+      status: 200,
+      headers: {
+        'Content-Type': image.mime_type,
+        'Content-Length': String(image.byte_size),
+        'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+        'Access-Control-Allow-Origin': '*',
+        'X-Content-Type-Options': 'nosniff',
+      },
+    });
   }
 
   throw new HttpError(404, 'not_found', 'API route was not found.');
@@ -125,6 +110,14 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
     return jsonResponse(env, { data: { id } }, 201, true);
   }
 
+  const imageItemMatch = url.pathname.match(/^\/api\/admin\/milestones\/(\d+)\/images\/(\d+)$/);
+  if (request.method === 'DELETE' && imageItemMatch?.[1] && imageItemMatch[2]) {
+    const milestoneId = parsePositiveId(imageItemMatch[1]);
+    const imageId = parsePositiveId(imageItemMatch[2]);
+    await deleteMilestoneImage(env.DB, milestoneId, imageId);
+    return jsonResponse(env, { data: { id: imageId } }, 200, true);
+  }
+
   const sectionsMatch = url.pathname.match(/^\/api\/admin\/milestones\/(\d+)\/sections$/);
   if (request.method === 'PUT' && sectionsMatch?.[1]) {
     const milestoneId = parsePositiveId(sectionsMatch[1]);
@@ -134,11 +127,20 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
   }
 
   const imagesMatch = url.pathname.match(/^\/api\/admin\/milestones\/(\d+)\/images$/);
-  if (request.method === 'PUT' && imagesMatch?.[1]) {
+  if (imagesMatch?.[1]) {
     const milestoneId = parsePositiveId(imagesMatch[1]);
-    const images = validateImagesWriteInput(await parseJsonBody(request));
-    await replaceMilestoneImages(env.DB, milestoneId, images);
-    return jsonResponse(env, { data: { id: milestoneId } }, 200, true);
+
+    if (request.method === 'PUT') {
+      const images = validateImagesWriteInput(await parseJsonBody(request));
+      await replaceMilestoneImages(env.DB, milestoneId, images);
+      return jsonResponse(env, { data: { id: milestoneId } }, 200, true);
+    }
+
+    if (request.method === 'POST') {
+      const image = validateImageWriteInput(await parseJsonBody(request));
+      const imageId = await addMilestoneImage(env.DB, milestoneId, image);
+      return jsonResponse(env, { data: { id: imageId } }, 201, true);
+    }
   }
 
   const milestoneMatch = url.pathname.match(/^\/api\/admin\/milestones\/(\d+)$/);
@@ -159,34 +161,6 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
     if (request.method === 'DELETE') {
       await deleteMilestone(env.DB, milestoneId);
       return jsonResponse(env, { data: { id: milestoneId } }, 200, true);
-    }
-  }
-
-  const mediaMatch = url.pathname.match(/^\/api\/admin\/media\/(.+)$/);
-  if (mediaMatch?.[1]) {
-    if (!env.ASSETS) {
-      throw new HttpError(503, 'media_not_configured', 'Portfolio media storage is not configured yet.');
-    }
-
-    const key = mediaMatch[1]
-      .split('/')
-      .map((part) => decodeURIComponent(part))
-      .join('/');
-
-    if (request.method === 'PUT') {
-      if (!request.body) {
-        throw new HttpError(400, 'empty_media_body', 'Media upload requires a request body.');
-      }
-      const contentType = validateMediaUpload(request);
-      await env.ASSETS.put(key, request.body, {
-        httpMetadata: { contentType },
-      });
-      return jsonResponse(env, { data: { key } }, 201, true);
-    }
-
-    if (request.method === 'DELETE') {
-      await env.ASSETS.delete(key);
-      return jsonResponse(env, { data: { key } }, 200, true);
     }
   }
 

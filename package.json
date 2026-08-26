@@ -18,11 +18,11 @@
     "worker:deploy": "wrangler deploy",
     "db:migrate:local": "wrangler d1 migrations apply kirolos-portfolio-db --local",
     "db:migrate:remote": "wrangler d1 migrations apply kirolos-portfolio-db --remote",
-    "verify": "npm run check:legacy && npm run lint && npm run typecheck && npm run test && npm run worker:dry-run",
+    "verify": "npm run check:legacy && npm run check:no-r2 && npm run lint && npm run typecheck && npm run test && npm run worker:dry-run",
     "milestone": "node scripts/milestone-cli.mjs",
-    "r2:create": "wrangler r2 bucket create kirolos-portfolio-assets",
     "cleanup:legacy": "node scripts/cleanup-legacy.mjs",
-    "check:legacy": "node scripts/check-no-legacy.mjs"
+    "check:legacy": "node scripts/check-no-legacy.mjs",
+    "check:no-r2": "node scripts/check-no-r2.mjs"
   },
   "dependencies": {
     "react": "19.1.1",
