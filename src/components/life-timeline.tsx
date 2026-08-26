@@ -258,7 +258,7 @@ export default function LifeTimeline({
       window.removeEventListener('resize', requestProgressUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [timeline.sorted, mobileLayout?.height]);
+  }, [timeline.sorted, timeline.height, mobileLayout?.height]);
 
   if (!timeline.sorted.length) {
     return <p className="timeline-empty">No published milestones yet.</p>;
