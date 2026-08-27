@@ -1,10 +1,10 @@
 import {
+  useCallback,
   useEffect,
   useMemo,
   useRef,
   useState,
   type CSSProperties,
-  type MouseEvent,
 } from 'react';
 import MilestoneModal from './milestone-modal.tsx';
 import SeasonTransitionEffect from './season-transition-effect.tsx';
@@ -46,8 +46,8 @@ type SeasonEffect = {
   key: number;
 };
 
-function isTouchInteraction(): boolean {
-  return window.matchMedia('(hover: none), (pointer: coarse)').matches;
+function supportsDesktopHover(): boolean {
+  return window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 }
 
 export default function LifeTimeline({
@@ -57,8 +57,10 @@ export default function LifeTimeline({
   const timelineRef = useRef<HTMLDivElement>(null);
   const lastSeasonRef = useRef<Season | null>(null);
   const effectSequenceRef = useRef(0);
+  const hoverOpenTimerRef = useRef<number | null>(null);
   const [activeMilestone, setActiveMilestone] = useState<TimelineMilestone | null>(null);
   const [seasonEffect, setSeasonEffect] = useState<SeasonEffect | null>(null);
+  const closeMilestone = useCallback(() => setActiveMilestone(null), []);
 
   const timeline = useMemo(() => {
     const sorted = [...items].sort(compareMilestoneDates);
@@ -142,12 +144,34 @@ export default function LifeTimeline({
     };
   }, [timeline.sorted, timeline.height]);
 
+  useEffect(() => () => {
+    if (hoverOpenTimerRef.current !== null) {
+      window.clearTimeout(hoverOpenTimerRef.current);
+    }
+  }, []);
+
   if (!timeline.sorted.length) {
     return <p className="timeline-empty">No published milestones yet.</p>;
   }
 
-  const openOnTouch = (milestone: TimelineMilestone) => {
-    if (isTouchInteraction()) setActiveMilestone(milestone);
+  const cancelScheduledHoverOpen = () => {
+    if (hoverOpenTimerRef.current === null) return;
+    window.clearTimeout(hoverOpenTimerRef.current);
+    hoverOpenTimerRef.current = null;
+  };
+
+  const openMilestone = (milestone: TimelineMilestone) => {
+    cancelScheduledHoverOpen();
+    setActiveMilestone(milestone);
+  };
+
+  const scheduleHoverOpen = (milestone: TimelineMilestone) => {
+    if (!supportsDesktopHover()) return;
+    cancelScheduledHoverOpen();
+    hoverOpenTimerRef.current = window.setTimeout(() => {
+      hoverOpenTimerRef.current = null;
+      setActiveMilestone(milestone);
+    }, 160);
   };
 
   return (
@@ -183,38 +207,26 @@ export default function LifeTimeline({
                 className="timeline-dot"
                 type="button"
                 aria-label={`Open ${milestone.title}`}
-                onClick={() => openOnTouch(milestone)}
+                aria-haspopup="dialog"
+                onClick={() => openMilestone(milestone)}
+                onMouseEnter={() => scheduleHoverOpen(milestone)}
+                onMouseLeave={cancelScheduledHoverOpen}
               />
 
-              <div className="timeline-card" onClick={() => openOnTouch(milestone)}>
+              <button
+                className="timeline-card"
+                type="button"
+                aria-haspopup="dialog"
+                aria-expanded={activeMilestone?.id === milestone.id}
+                onClick={() => openMilestone(milestone)}
+                onMouseEnter={() => scheduleHoverOpen(milestone)}
+                onMouseLeave={cancelScheduledHoverOpen}
+              >
                 <span className="timeline-date">{formatMilestoneDate(milestone.date)}</span>
                 <strong>{milestone.title}</strong>
                 <span className="timeline-summary">{milestone.summary}</span>
                 <span className="timeline-touch-hint" aria-hidden="true">Tap to expand</span>
-
-                <div className="timeline-hover-window">
-                  <div className="timeline-hover-media">
-                    {milestone.imageSrc ? (
-                      <img src={milestone.imageSrc} alt="" />
-                    ) : (
-                      <div className="timeline-hover-placeholder">
-                        <span>{milestone.date.year}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="timeline-hover-copy">
-                    <p>{milestone.description}</p>
-                    <a
-                      className="timeline-story-link"
-                      href={`/milestones/${encodeURIComponent(milestone.slug)}`}
-                      onClick={(event: MouseEvent<HTMLAnchorElement>) => event.stopPropagation()}
-                    >
-                      Read the full story <span aria-hidden="true">→</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              </button>
             </article>
           );
         })}
@@ -230,7 +242,7 @@ export default function LifeTimeline({
 
       <MilestoneModal
         milestone={activeMilestone}
-        onClose={() => setActiveMilestone(null)}
+        onClose={closeMilestone}
       />
     </>
   );
