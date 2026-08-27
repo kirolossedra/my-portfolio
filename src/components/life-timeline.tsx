@@ -219,8 +219,6 @@ export default function LifeTimeline({
                 aria-haspopup="dialog"
                 aria-expanded={activeMilestone?.id === milestone.id}
                 onClick={() => openMilestone(milestone)}
-                onMouseEnter={() => scheduleHoverOpen(milestone)}
-                onMouseLeave={cancelScheduledHoverOpen}
               >
                 <span className="timeline-date">{formatMilestoneDate(milestone.date)}</span>
                 <strong>{milestone.title}</strong>

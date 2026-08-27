@@ -225,14 +225,14 @@ button {
   border: 2px solid var(--bg);
   outline: 1px solid var(--accent);
   background: var(--accent);
-  cursor: default;
+  cursor: pointer;
   box-shadow: 0 0 0 6px var(--accent-soft);
   transition: box-shadow 180ms ease, transform 180ms ease;
   z-index: 4;
 }
 
-.timeline-event:hover .timeline-dot,
-.timeline-event:focus-within .timeline-dot {
+.timeline-dot:hover,
+.timeline-dot:focus-visible {
   transform: translate(-50%, -50%) scale(1.12);
   box-shadow: 0 0 0 9px var(--accent-soft);
 }
