@@ -171,7 +171,7 @@ Public submissions collect only the fields needed for publication: display name,
 
 ## Seasonal timeline transitions
 
-The timeline retains its time-proportional geometry. As scrolling changes the active milestone to one whose month belongs to a different season, a short transition is triggered:
+The timeline keeps milestones in chronological order while using equal center-to-center spacing between every dot. This prevents short calendar gaps from collapsing the interface and keeps the rhythm consistent across desktop and mobile. As scrolling changes the active milestone to one whose month belongs to a different season, a short transition is triggered:
 
 - fall: restrained drifting leaves;
 - winter: snow;

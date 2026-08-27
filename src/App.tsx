@@ -95,11 +95,11 @@ function PublicPortfolio() {
         <section className="history-section" id="history" aria-labelledby="history-title">
           <div className="section-heading">
             <p className="eyebrow">History</p>
-            <h2 id="history-title">The path, in actual time.</h2>
+            <h2 id="history-title">The path, milestone by milestone.</h2>
             <p>
               The line grows with the page. Milestones reveal themselves as they enter
-              view, and the distance between dots reflects the calendar time between them.
-              Hover on desktop; tap on touch devices.
+              view, with every dot spaced evenly for a calm, readable rhythm on every screen.
+              Dates preserve the chronology. Hover on desktop; tap on touch devices.
             </p>
           </div>
 

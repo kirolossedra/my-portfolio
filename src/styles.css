@@ -270,9 +270,6 @@ button {
   background: var(--line-strong);
 }
 
-.timeline-mobile-connector {
-  display: none;
-}
 
 .timeline-event--left .timeline-card::after {
   right: -48px;
@@ -697,10 +694,6 @@ button {
     --axis-x: 18px;
   }
 
-  /*
-   * The dot remains at the mathematically correct calendar position. Only the
-   * readable card is displaced when nearby milestones would otherwise collide.
-   */
   .timeline-event {
     transform: translateY(24px);
   }
@@ -720,30 +713,17 @@ button {
     max-width: none;
     margin: 0 0 0 72px;
     text-align: left;
-    transform: translateY(var(--mobile-card-offset, -18px));
+    transform: translateY(-18px);
   }
 
   .timeline-card::after,
   .timeline-event--left .timeline-card::after,
   .timeline-event--right .timeline-card::after {
-    display: none;
-  }
-
-  .timeline-mobile-connector {
     display: block;
-    position: absolute;
-    top: 0;
-    left: var(--axis-x);
-    overflow: visible;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .timeline-mobile-connector path {
-    fill: none;
-    stroke: rgba(176, 190, 181, 0.38);
-    stroke-width: 1;
-    vector-effect: non-scaling-stroke;
+    top: 18px;
+    left: -44px;
+    right: auto;
+    width: 34px;
   }
 
   .timeline-card > strong {

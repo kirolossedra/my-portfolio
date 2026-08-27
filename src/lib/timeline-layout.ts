@@ -1,48 +1,40 @@
-export interface TimelineLabelMeasurement {
-  id: number;
-  anchorY: number;
+export interface EqualTimelineLayoutOptions {
+  topPadding?: number;
+  gap?: number;
+  bottomPadding?: number;
+}
+
+export interface EqualTimelineLayout {
+  positions: number[];
   height: number;
 }
 
-export interface TimelineLabelLayoutOptions {
-  naturalOffset?: number;
-  minimumGap?: number;
-}
-
-export interface TimelineLabelLayout {
-  offsets: Record<number, number>;
-  contentBottom: number;
-}
-
-const DEFAULT_NATURAL_OFFSET = -18;
-const DEFAULT_MINIMUM_GAP = 28;
+const DEFAULT_TOP_PADDING = 110;
+const DEFAULT_GAP = 220;
+const DEFAULT_BOTTOM_PADDING = 150;
 
 /**
- * Keeps timeline dots at their true chronological coordinates while moving only
- * the readable cards when those cards would collide. The returned offset is
- * relative to each milestone's unchanged anchor/dot Y position.
+ * Places milestones at a fixed center-to-center distance. Calendar dates still
+ * determine chronological ordering, but no longer distort the visual spacing.
  */
-export function resolveTimelineLabelLayout(
-  measurements: TimelineLabelMeasurement[],
-  options: TimelineLabelLayoutOptions = {},
-): TimelineLabelLayout {
-  const naturalOffset = options.naturalOffset ?? DEFAULT_NATURAL_OFFSET;
-  const minimumGap = options.minimumGap ?? DEFAULT_MINIMUM_GAP;
-  const ordered = [...measurements].sort((a, b) => a.anchorY - b.anchorY || a.id - b.id);
+export function buildEqualTimelineLayout(
+  count: number,
+  options: EqualTimelineLayoutOptions = {},
+): EqualTimelineLayout {
+  const safeCount = Math.max(0, Math.floor(count));
+  const topPadding = Math.max(0, options.topPadding ?? DEFAULT_TOP_PADDING);
+  const gap = Math.max(1, options.gap ?? DEFAULT_GAP);
+  const bottomPadding = Math.max(0, options.bottomPadding ?? DEFAULT_BOTTOM_PADDING);
 
-  const offsets: Record<number, number> = {};
-  let previousBottom = Number.NEGATIVE_INFINITY;
-  let contentBottom = 0;
-
-  for (const item of ordered) {
-    const safeHeight = Math.max(0, item.height);
-    const naturalTop = item.anchorY + naturalOffset;
-    const resolvedTop = Math.max(naturalTop, previousBottom + minimumGap);
-
-    offsets[item.id] = resolvedTop - item.anchorY;
-    previousBottom = resolvedTop + safeHeight;
-    contentBottom = Math.max(contentBottom, previousBottom);
+  if (safeCount === 0) {
+    return { positions: [], height: 0 };
   }
 
-  return { offsets, contentBottom };
+  const positions = Array.from({ length: safeCount }, (_, index) => topPadding + index * gap);
+  const lastPosition = positions[positions.length - 1] ?? topPadding;
+
+  return {
+    positions,
+    height: lastPosition + bottomPadding,
+  };
 }
