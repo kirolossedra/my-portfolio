@@ -38,3 +38,16 @@ export function buildEqualTimelineLayout(
     height: lastPosition + bottomPadding,
   };
 }
+
+/**
+ * A milestone is revealed only after the growing timeline reaches its dot.
+ * Because this is derived from the current scroll traversal rather than a
+ * one-way observer, the same threshold naturally hides the milestone again
+ * when the user scrolls back above it.
+ */
+export function isTimelineMilestoneRevealed(
+  milestoneY: number,
+  traversedY: number,
+): boolean {
+  return traversedY >= milestoneY;
+}

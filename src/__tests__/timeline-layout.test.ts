@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { buildEqualTimelineLayout } from '../lib/timeline-layout.ts';
+import {
+  buildEqualTimelineLayout,
+  isTimelineMilestoneRevealed,
+} from '../lib/timeline-layout.ts';
 
 describe('equal milestone timeline layout', () => {
   it('uses exactly the same gap between every milestone dot', () => {
@@ -34,5 +37,24 @@ describe('equal milestone timeline layout', () => {
 
   it('handles an empty timeline without creating phantom space', () => {
     expect(buildEqualTimelineLayout(0)).toEqual({ positions: [], height: 0 });
+  });
+});
+
+describe('reversible milestone reveal threshold', () => {
+  it('reveals when scrolling down past a dot and hides at the same threshold when scrolling back up', () => {
+    const milestoneY = 540;
+
+    expect(isTimelineMilestoneRevealed(milestoneY, 539)).toBe(false);
+    expect(isTimelineMilestoneRevealed(milestoneY, 540)).toBe(true);
+    expect(isTimelineMilestoneRevealed(milestoneY, 720)).toBe(true);
+    expect(isTimelineMilestoneRevealed(milestoneY, 539)).toBe(false);
+  });
+
+  it('keeps later milestones hidden until the timeline reaches their own dots', () => {
+    const positions = [110, 330, 550];
+    const traversedY = 400;
+
+    expect(positions.map((y) => isTimelineMilestoneRevealed(y, traversedY)))
+      .toEqual([true, true, false]);
   });
 });

@@ -12,7 +12,10 @@ import {
   compareMilestoneDates,
   formatMilestoneDate,
 } from '../lib/date-utils.ts';
-import { buildEqualTimelineLayout } from '../lib/timeline-layout.ts';
+import {
+  buildEqualTimelineLayout,
+  isTimelineMilestoneRevealed,
+} from '../lib/timeline-layout.ts';
 import { seasonForMonth, type Season } from '../lib/season-utils.ts';
 import type { TimelineMilestone } from '../../shared/milestone.ts';
 
@@ -85,19 +88,9 @@ export default function LifeTimeline({
 
     lastSeasonRef.current = null;
 
-    const cards = root.querySelectorAll<HTMLElement>('.timeline-card');
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.closest<HTMLElement>('[data-timeline-event]')?.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.22, rootMargin: '0px 0px -7% 0px' },
+    const events = Array.from(
+      root.querySelectorAll<HTMLElement>('[data-timeline-event]'),
     );
-
-    cards.forEach((card) => revealObserver.observe(card));
 
     let frame = 0;
     const updateProgress = () => {
@@ -107,6 +100,14 @@ export default function LifeTimeline({
       const traversed = viewportAnchor - rect.top;
       const progress = Math.min(1, Math.max(0, traversed / Math.max(timeline.height, 1)));
       root.style.setProperty('--timeline-progress', progress.toFixed(4));
+
+      events.forEach((event, index) => {
+        const milestone = timeline.sorted[index];
+        event.classList.toggle(
+          'is-visible',
+          milestone !== undefined && isTimelineMilestoneRevealed(milestone.y, traversed),
+        );
+      });
 
       let active: PositionedMilestone | undefined;
       for (const milestone of timeline.sorted) {
@@ -137,7 +138,6 @@ export default function LifeTimeline({
     window.addEventListener('resize', requestProgressUpdate);
 
     return () => {
-      revealObserver.disconnect();
       window.removeEventListener('scroll', requestProgressUpdate);
       window.removeEventListener('resize', requestProgressUpdate);
       if (frame) window.cancelAnimationFrame(frame);
