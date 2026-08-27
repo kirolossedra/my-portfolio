@@ -61,7 +61,8 @@ export default function OpinionsPage() {
       <header className="site-nav">
         <a className="brand" href="/" aria-label="kirolos.dev home">kirolos<span>.dev</span></a>
         <nav aria-label="Primary navigation">
-          <a href="/">History</a>
+          <a href="/#history">History</a>
+          <a href="/skills">Skills</a>
           <a href="#leave-opinion">Leave an opinion</a>
         </nav>
       </header>

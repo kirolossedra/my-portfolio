@@ -2,7 +2,7 @@
 
 `kirolos.dev` is a React + TypeScript portfolio deployed to Netlify and backed by a TypeScript Cloudflare Worker with Cloudflare D1 as the persistence layer.
 
-Milestones, long-form sections, milestone photographs, and moderated visitor opinions live in D1. Photographs are stored as Base64 text; the Worker decodes them and serves normal image responses. The public timeline also adds short, season-aware transition effects as the active milestone moves between seasons.
+Milestones, long-form sections, milestone photographs, and moderated visitor opinions live in D1. Photographs are stored as Base64 text; the Worker decodes them and serves normal image responses. The public timeline also adds short, season-aware transition effects as the active milestone moves between seasons. `/skills` is a source- and commit-evidence page derived from the LInC One and EurekaVault repositories.
 
 ## Architecture
 
@@ -168,6 +168,21 @@ No application password exists.
 `/opinions` is a dedicated public page. Approved opinions move continuously inside a viewport-sized stage and reverse direction at the stage boundaries. Motion is calculated with `requestAnimationFrame`, remeasured with `ResizeObserver`, and adapts to viewport changes. Visitors who prefer reduced motion receive a static layout instead.
 
 Public submissions collect only the fields needed for publication: display name, optional relationship/context, the opinion itself, and explicit publication consent. They enter D1 as `pending` and never become public until approved from `/admin`. A hidden honeypot field provides a lightweight bot signal without collecting additional visitor identifiers.
+
+## Skills evidence page
+
+`/skills` presents an exhaustive, prioritized capability feed derived from the current LInC One and EurekaVault source trees plus their GitHub commit evolution. Each project uses a side-by-side desktop layout with a sticky visual evidence panel and a scrolling skill feed. On smaller screens the same content stacks into a single readable flow.
+
+Skill rows are scroll-reversible: a capability reveals when the viewport progress line reaches it and hides through the same transition when scrolling back above its threshold. `prefers-reduced-motion` disables the animation and shows the content directly.
+
+Public project imagery used by the page lives under:
+
+```text
+public/media/projects/linc-one/
+public/media/projects/eureka-vault/
+```
+
+The skill evidence itself is intentionally static and versioned in `src/data/project-skills.ts`; it does not require a new backend table or public API.
 
 ## Seasonal timeline transitions
 

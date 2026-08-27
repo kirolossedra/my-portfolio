@@ -4,6 +4,7 @@ import AuthCallbackPage from './admin/auth-callback-page.tsx';
 import LifeTimeline from './components/life-timeline.tsx';
 import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import OpinionsPage from './opinions-page.tsx';
+import SkillsPage from './skills-page.tsx';
 import { loadMilestone, loadMilestones } from './data/milestones.ts';
 import type { MilestoneDetail, TimelineMilestone } from '../shared/milestone.ts';
 
@@ -76,6 +77,7 @@ function PublicPortfolio() {
         </a>
         <nav aria-label="Primary navigation">
           <a href="#history">History</a>
+          <a href="/skills">Skills</a>
           <a href="/opinions">Opinions</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
         </nav>
@@ -122,5 +124,6 @@ export default function App() {
   if (path === '/admin/auth/callback') return <AuthCallbackPage />;
   if (/^\/admin\/?$/.test(path)) return <AdminPage />;
   if (/^\/opinions\/?$/.test(path)) return <OpinionsPage />;
+  if (/^\/skills\/?$/.test(path)) return <SkillsPage />;
   return <PublicPortfolio />;
 }
