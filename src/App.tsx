@@ -99,9 +99,9 @@ function PublicPortfolio() {
             <p className="eyebrow">History</p>
             <h2 id="history-title">The path, milestone by milestone.</h2>
             <p>
-              The line grows with the page. Milestones reveal themselves as they enter
-              view, with every dot spaced evenly for a calm, readable rhythm on every screen.
-              Dates preserve the chronology. Hover on desktop; tap on touch devices.
+              Follow the milestones vertically with the page or switch to a horizontal path.
+              Both views preserve the chronology and reversible reveal rhythm. Hover on desktop;
+              tap on touch devices, and swipe sideways in horizontal view.
             </p>
           </div>
 

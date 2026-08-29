@@ -22,12 +22,17 @@ import type { TimelineMilestone } from '../../shared/milestone.ts';
 const DEFAULT_MILESTONE_GAP = 220;
 const TOP_PADDING = 110;
 const BOTTOM_PADDING = 150;
+const HORIZONTAL_LEADING_PADDING = 170;
+const HORIZONTAL_TRAILING_PADDING = 190;
+const HORIZONTAL_MILESTONE_GAP = 300;
 
 type TimelineSide = 'left' | 'right';
+type TimelineOrientation = 'vertical' | 'horizontal';
 
 type PositionedMilestone = TimelineMilestone & {
   side: TimelineSide;
   y: number;
+  x: number;
 };
 
 interface LifeTimelineProps {
@@ -37,11 +42,13 @@ interface LifeTimelineProps {
 
 type TimelineStyle = CSSProperties & {
   '--timeline-height': string;
+  '--timeline-width': string;
   '--timeline-axis-height': string;
 };
 
 type EventStyle = CSSProperties & {
   '--event-y': string;
+  '--event-x': string;
 };
 
 type SeasonEffect = {
@@ -63,23 +70,34 @@ export default function LifeTimeline({
   const hoverOpenTimerRef = useRef<number | null>(null);
   const [activeMilestone, setActiveMilestone] = useState<TimelineMilestone | null>(null);
   const [seasonEffect, setSeasonEffect] = useState<SeasonEffect | null>(null);
+  const [orientation, setOrientation] = useState<TimelineOrientation>('vertical');
   const closeMilestone = useCallback(() => setActiveMilestone(null), []);
 
   const timeline = useMemo(() => {
     const sorted = [...items].sort(compareMilestoneDates);
-    const layout = buildEqualTimelineLayout(sorted.length, {
+    const verticalLayout = buildEqualTimelineLayout(sorted.length, {
       topPadding: TOP_PADDING,
       gap: milestoneGap,
       bottomPadding: BOTTOM_PADDING,
+    });
+    const horizontalLayout = buildEqualTimelineLayout(sorted.length, {
+      topPadding: HORIZONTAL_LEADING_PADDING,
+      gap: HORIZONTAL_MILESTONE_GAP,
+      bottomPadding: HORIZONTAL_TRAILING_PADDING,
     });
 
     const positions: PositionedMilestone[] = sorted.map((item, index) => ({
       ...item,
       side: index % 2 === 0 ? 'left' : 'right',
-      y: layout.positions[index] ?? TOP_PADDING,
+      y: verticalLayout.positions[index] ?? TOP_PADDING,
+      x: horizontalLayout.positions[index] ?? HORIZONTAL_LEADING_PADDING,
     }));
 
-    return { sorted: positions, height: layout.height };
+    return {
+      sorted: positions,
+      height: verticalLayout.height,
+      width: horizontalLayout.height,
+    };
   }, [items, milestoneGap]);
 
   useEffect(() => {
@@ -87,31 +105,26 @@ export default function LifeTimeline({
     if (!root) return undefined;
 
     lastSeasonRef.current = null;
+    if (orientation === 'vertical') root.scrollLeft = 0;
 
     const events = Array.from(
       root.querySelectorAll<HTMLElement>('[data-timeline-event]'),
     );
 
-    let frame = 0;
-    const updateProgress = () => {
-      frame = 0;
-      const rect = root.getBoundingClientRect();
-      const viewportAnchor = window.innerHeight * 0.68;
-      const traversed = viewportAnchor - rect.top;
-      const progress = Math.min(1, Math.max(0, traversed / Math.max(timeline.height, 1)));
-      root.style.setProperty('--timeline-progress', progress.toFixed(4));
-
+    const revealAt = (traversed: number) => {
       events.forEach((event, index) => {
         const milestone = timeline.sorted[index];
+        const position = orientation === 'vertical' ? milestone?.y : milestone?.x;
         event.classList.toggle(
           'is-visible',
-          milestone !== undefined && isTimelineMilestoneRevealed(milestone.y, traversed),
+          position !== undefined && isTimelineMilestoneRevealed(position, traversed),
         );
       });
 
       let active: PositionedMilestone | undefined;
       for (const milestone of timeline.sorted) {
-        if (milestone.y <= traversed) active = milestone;
+        const position = orientation === 'vertical' ? milestone.y : milestone.x;
+        if (position <= traversed) active = milestone;
         else break;
       }
 
@@ -128,21 +141,53 @@ export default function LifeTimeline({
       }
     };
 
+    let frame = 0;
+    const updateProgress = () => {
+      frame = 0;
+
+      if (orientation === 'horizontal') {
+        const viewportAnchor = root.scrollLeft + root.clientWidth * 0.68;
+        const progress = Math.min(
+          1,
+          Math.max(0, viewportAnchor / Math.max(timeline.width, 1)),
+        );
+        root.style.setProperty('--timeline-progress', progress.toFixed(4));
+        revealAt(viewportAnchor);
+        return;
+      }
+
+      const rect = root.getBoundingClientRect();
+      const viewportAnchor = window.innerHeight * 0.68;
+      const traversed = viewportAnchor - rect.top;
+      const progress = Math.min(
+        1,
+        Math.max(0, traversed / Math.max(timeline.height, 1)),
+      );
+      root.style.setProperty('--timeline-progress', progress.toFixed(4));
+      revealAt(traversed);
+    };
+
     const requestProgressUpdate = () => {
       if (frame) return;
       frame = window.requestAnimationFrame(updateProgress);
     };
 
     updateProgress();
-    window.addEventListener('scroll', requestProgressUpdate, { passive: true });
     window.addEventListener('resize', requestProgressUpdate);
 
+    if (orientation === 'horizontal') {
+      root.addEventListener('scroll', requestProgressUpdate, { passive: true });
+    } else {
+      window.addEventListener('scroll', requestProgressUpdate, { passive: true });
+    }
+
     return () => {
-      window.removeEventListener('scroll', requestProgressUpdate);
       window.removeEventListener('resize', requestProgressUpdate);
+      root.removeEventListener('scroll', requestProgressUpdate);
+      window.removeEventListener('scroll', requestProgressUpdate);
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [timeline.sorted, timeline.height]);
+  }, [orientation, timeline.sorted, timeline.height, timeline.width]);
 
   useEffect(() => () => {
     if (hoverOpenTimerRef.current !== null) {
@@ -174,30 +219,63 @@ export default function LifeTimeline({
     }, 160);
   };
 
+  const toggleOrientation = () => {
+    cancelScheduledHoverOpen();
+    setOrientation((current) => (
+      current === 'vertical' ? 'horizontal' : 'vertical'
+    ));
+  };
+
+  const nextOrientation = orientation === 'vertical' ? 'Horizontal' : 'Vertical';
+
   return (
     <>
+      <div className="timeline-toolbar">
+        <span className="timeline-view-status" aria-live="polite">
+          {orientation === 'vertical'
+            ? 'Vertical timeline'
+            : 'Horizontal timeline · swipe or scroll sideways'}
+        </span>
+        <button
+          className="timeline-view-toggle"
+          type="button"
+          onClick={toggleOrientation}
+          aria-label={`Switch to ${nextOrientation.toLowerCase()} timeline`}
+        >
+          <span className="timeline-view-toggle-icon" aria-hidden="true">
+            {orientation === 'vertical' ? '↔' : '↕'}
+          </span>
+          {nextOrientation}
+        </button>
+      </div>
+
       <div
         ref={timelineRef}
-        className="timeline-canvas"
+        className={`timeline-canvas timeline-canvas--${orientation}`}
+        role="region"
+        aria-label={`${orientation} milestone timeline`}
+        tabIndex={orientation === 'horizontal' ? 0 : undefined}
         style={
           {
             '--timeline-height': `${timeline.height}px`,
+            '--timeline-width': `${timeline.width}px`,
             '--timeline-axis-height': `${timeline.height}px`,
           } as TimelineStyle
         }
       >
-        <div className="timeline-axis" aria-hidden="true">
-          <span className="timeline-axis-progress" />
-        </div>
+        <div className="timeline-track">
+          <div className="timeline-axis" aria-hidden="true">
+            <span className="timeline-axis-progress" />
+          </div>
 
-        {timeline.sorted.map((milestone) => {
-          return (
+          {timeline.sorted.map((milestone) => (
             <article
               className={`timeline-event timeline-event--${milestone.side}`}
               key={milestone.id}
               style={
                 {
                   '--event-y': `${milestone.y}px`,
+                  '--event-x': `${milestone.x}px`,
                 } as EventStyle
               }
               data-timeline-event
@@ -226,8 +304,8 @@ export default function LifeTimeline({
                 <span className="timeline-touch-hint" aria-hidden="true">Tap to expand</span>
               </button>
             </article>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
       {seasonEffect && (
