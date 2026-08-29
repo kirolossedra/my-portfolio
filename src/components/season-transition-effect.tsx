@@ -22,6 +22,23 @@ type ParticleStyle = CSSProperties & {
   '--leaf-size': string;
   '--leaf-tumble-duration': string;
   '--leaf-tumble-delay': string;
+  '--snow-opacity': string;
+  '--snow-blur': string;
+  '--snow-sway-a': string;
+  '--snow-sway-b': string;
+  '--snow-sway-c': string;
+  '--snow-end-drift': string;
+  '--snow-spin-a': string;
+  '--snow-spin-b': string;
+  '--snow-spin-c': string;
+  '--snow-spin': string;
+  '--snow-flutter-duration': string;
+  '--snow-flutter-delay': string;
+  '--snow-size': string;
+  '--snow-delay': string;
+  '--snow-duration': string;
+  '--snow-fade-opacity': string;
+  '--snow-glow': string;
 };
 
 interface SeasonTransitionEffectProps {
@@ -59,6 +76,14 @@ function particleStyle(index: number, salt: number): ParticleStyle {
   const sway = 20 + seededValue(index, salt + 10) * 52;
   const leafStartRotation = -55 + seededValue(index, salt + 11) * 110;
   const leafSpin = (220 + seededValue(index, salt + 12) * 430) * leafDirection;
+  const snowDepth = 0.18 + seededValue(index, salt + 16) * 0.82;
+  const snowDirection = seededValue(index, salt + 17) > 0.5 ? 1 : -1;
+  const snowSway = 18 + seededValue(index, salt + 18) * 68;
+  const snowWind = -28 + seededValue(index, salt + 19) * 56;
+  const snowSize = 2.5 + snowDepth * 8.5;
+  const snowDuration = 5.85 - snowDepth * 1.85 + seededValue(index, salt + 20) * 0.65;
+  const snowDelay = seededValue(index, salt + 21) * 0.72;
+  const snowSpin = (-155 + seededValue(index, salt + 22) * 310) * snowDirection;
 
   return {
     '--particle-x': `${x}%`,
@@ -81,6 +106,23 @@ function particleStyle(index: number, salt: number): ParticleStyle {
     '--leaf-size': `${leafSize}px`,
     '--leaf-tumble-duration': `${1.35 + seededValue(index, salt + 14) * 1.45}s`,
     '--leaf-tumble-delay': `${-seededValue(index, salt + 15) * 1.8}s`,
+    '--snow-opacity': `${0.34 + snowDepth * 0.58}`,
+    '--snow-blur': `${(1 - snowDepth) * 0.9}px`,
+    '--snow-sway-a': `${snowWind + snowSway * snowDirection}px`,
+    '--snow-sway-b': `${snowWind * 0.45 - snowSway * 0.58 * snowDirection}px`,
+    '--snow-sway-c': `${snowWind * 0.8 + snowSway * 0.42 * snowDirection}px`,
+    '--snow-end-drift': `${snowWind * 1.45 + snowSway * 0.16 * snowDirection}px`,
+    '--snow-spin-a': `${snowSpin * -0.12}deg`,
+    '--snow-spin-b': `${snowSpin * 0.34}deg`,
+    '--snow-spin-c': `${snowSpin * 0.68}deg`,
+    '--snow-spin': `${snowSpin}deg`,
+    '--snow-flutter-duration': `${1.25 + seededValue(index, salt + 23) * 1.7}s`,
+    '--snow-flutter-delay': `${-seededValue(index, salt + 24) * 1.5}s`,
+    '--snow-size': `${snowSize}px`,
+    '--snow-delay': `${snowDelay}s`,
+    '--snow-duration': `${snowDuration}s`,
+    '--snow-fade-opacity': `${(0.34 + snowDepth * 0.58) * 0.88}`,
+    '--snow-glow': `${snowSize * 0.65}px`,
   };
 }
 
@@ -96,19 +138,26 @@ function fallLeafVariant(index: number): string {
   return 'season-fall-leaf--maple';
 }
 
+function snowflakeVariant(index: number): string {
+  return index % 6 === 0 || index % 11 === 0
+    ? 'season-snowflake--crystal'
+    : 'season-snowflake--soft';
+}
+
 export default function SeasonTransitionEffect({
   season,
   effectKey,
   onComplete,
 }: SeasonTransitionEffectProps) {
   useEffect(() => {
-    const duration = season === 'fall' ? 6500 : season === 'summer' ? 3900 : 3400;
+    const duration =
+      season === 'fall' ? 6500 : season === 'winter' ? 7300 : season === 'summer' ? 3900 : 3400;
     const timeout = window.setTimeout(onComplete, duration);
     return () => window.clearTimeout(timeout);
   }, [effectKey, onComplete, season]);
 
   const count =
-    season === 'fall' ? 36 : season === 'winter' ? 30 : season === 'summer' ? 22 : 20;
+    season === 'fall' ? 36 : season === 'winter' ? 54 : season === 'summer' ? 22 : 20;
 
   return (
     <div className={`season-transition season-transition--${season}`} aria-hidden="true">
@@ -121,6 +170,9 @@ export default function SeasonTransitionEffect({
             key={`${season}-${effectKey}-${index}`}
             style={particleStyle(index, effectKey + season.length)}
           >
+            {season === 'winter' && (
+              <span className={`season-snowflake ${snowflakeVariant(index)}`} />
+            )}
             {season === 'fall' && (
               <span className={`season-fall-leaf ${fallLeafVariant(index)}`}>
                 <span className="season-fall-leaf-body" />
