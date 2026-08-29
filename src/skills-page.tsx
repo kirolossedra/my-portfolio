@@ -17,11 +17,11 @@ export default function SkillsPage() {
       <main className="skills-page">
         <section className="skills-hero">
           <p className="eyebrow">Skills, with evidence</p>
-          <h1>What building the systems actually teaches.</h1>
+          <h1>Two systems. One rolling record.</h1>
           <p>
-            Not a flat keyword cloud. This is an exhaustive read of two real products: their source trees,
-            architecture, tests, documentation, and GitHub commit evolution. The strongest capabilities lead;
-            the smaller implementation skills unfold as you continue down the page.
+            The projects now run side by side like closing credits: the strongest capabilities arrive first,
+            then progressively finer implementation evidence. Both columns move on their own, while wheel,
+            touch, and keyboard scrolling remain fully yours whenever you want to inspect something.
           </p>
           <div className="skills-hero-jump">
             <a href="#linc-one">LInC One ↓</a>
@@ -29,9 +29,7 @@ export default function SkillsPage() {
           </div>
         </section>
 
-        {projectSkillProfiles.map((project, index) => (
-          <ProjectSkillsShowcase key={project.id} project={project} reverse={index % 2 === 1} />
-        ))}
+        <ProjectSkillsShowcase projects={projectSkillProfiles} />
       </main>
 
       <footer className="site-footer">

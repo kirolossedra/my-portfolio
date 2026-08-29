@@ -2900,3 +2900,482 @@ button {
     transition: none;
   }
 }
+
+/* Skills v2 — anime split-screen rolling credits */
+.skills-credits-stage {
+  position: relative;
+  width: min(calc(100% - 32px), 1540px);
+  margin: 0 auto 150px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  overflow: hidden;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 26px;
+  background: #080a0c;
+  isolation: isolate;
+}
+
+.skills-credits-panel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.3vw, 52px) clamp(28px, 4vw, 66px) clamp(30px, 3vw, 48px);
+}
+
+.skills-credits-panel--linc-one {
+  padding-right: clamp(54px, 5.4vw, 90px);
+  background:
+    radial-gradient(circle at 12% 4%, rgba(139, 30, 30, 0.13), transparent 35%),
+    linear-gradient(160deg, #15110f 0%, #0b0c0d 52%, #090a0b 100%);
+}
+
+.skills-credits-panel--eureka-vault {
+  padding-left: clamp(54px, 5.4vw, 90px);
+  background:
+    radial-gradient(circle at 89% 3%, rgba(214, 162, 31, 0.09), transparent 35%),
+    linear-gradient(200deg, #101113 0%, #090b0e 55%, #08090a 100%);
+}
+
+.skills-credits-project-head {
+  position: relative;
+  z-index: 2;
+  min-height: 262px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-content: start;
+  gap: 13px 18px;
+}
+
+.skills-credits-project-head h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4.3vw, 5.1rem);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+  font-weight: 620;
+}
+
+.skills-credits-summary {
+  grid-column: 1 / -1;
+  max-width: 620px;
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.62;
+}
+
+.skills-credits-project-head .project-stack {
+  grid-column: 1 / -1;
+  margin-top: 1px;
+}
+
+.skills-auto-toggle {
+  align-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--faint);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.skills-auto-toggle span {
+  color: var(--accent);
+  font-size: 0.58rem;
+}
+
+.skills-auto-toggle.is-active {
+  border-color: rgba(143, 211, 151, 0.27);
+  background: rgba(143, 211, 151, 0.055);
+  color: #dbe2dc;
+}
+
+.skills-auto-toggle:hover,
+.skills-auto-toggle:focus-visible {
+  color: var(--text);
+  border-color: rgba(143, 211, 151, 0.42);
+  outline: none;
+}
+
+.skills-auto-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(143, 211, 151, 0.14);
+}
+
+.skills-credit-frame {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.075);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.skills-credit-rail {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 0.53rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.skills-credit-rail i {
+  height: 1px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.skills-credit-viewport {
+  position: relative;
+  height: clamp(510px, 63dvh, 760px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+}
+
+.skills-credit-viewport::-webkit-scrollbar {
+  width: 5px;
+}
+
+.skills-credit-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skills-credit-viewport::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.skills-credit-viewport:focus-visible {
+  outline: 1px solid rgba(143, 211, 151, 0.34);
+  outline-offset: -5px;
+}
+
+.skills-credit-track {
+  display: grid;
+  row-gap: 44px;
+  padding: 52px 0;
+}
+
+.skill-credit-set,
+.skill-credit-entry {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-credit-set {
+  display: grid;
+  gap: 0;
+}
+
+.skill-credit-chapter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 26px 0 16px;
+  color: var(--accent);
+  font-size: 0.55rem;
+  font-weight: 830;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.skill-credit-entry:first-child .skill-credit-chapter {
+  margin-top: 0;
+}
+
+.skill-credit-chapter i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, rgba(143, 211, 151, 0.24), transparent);
+}
+
+.skill-credit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 16px 0 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.skill-credit-index {
+  padding-top: 4px;
+  color: rgba(255, 255, 255, 0.19);
+  font-size: 0.57rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.skill-credit small,
+.skill-credit strong,
+.skill-credit p {
+  display: block;
+}
+
+.skill-credit small {
+  color: var(--faint);
+  font-size: 0.56rem;
+  font-weight: 760;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.skill-credit strong {
+  margin-top: 5px;
+  color: #d8ddda;
+  font-size: clamp(0.94rem, 1.15vw, 1.08rem);
+  font-weight: 530;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+}
+
+.skill-credit p {
+  max-width: 530px;
+  margin: 7px 0 0;
+  color: #858e88;
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.skill-credit--major {
+  padding-block: 22px 24px;
+}
+
+.skill-credit--major strong {
+  color: #f1f3f1;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.18rem, 1.7vw, 1.54rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.skill-credit--strong strong {
+  font-size: clamp(1rem, 1.28vw, 1.18rem);
+  color: #e0e4e1;
+}
+
+.skill-credit--detail {
+  padding-block: 12px 14px;
+}
+
+.skill-credit--detail strong {
+  color: #bdc4bf;
+  font-size: 0.91rem;
+}
+
+.skills-credits-evolution {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding-top: 20px;
+}
+
+.skills-credits-evolution > div {
+  min-width: 0;
+}
+
+.skills-credits-evolution span {
+  color: var(--accent);
+  font-size: 0.53rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.skills-credits-evolution p {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.31);
+  font-size: 0.51rem;
+  line-height: 1.35;
+}
+
+/* Manga/anime split: a broken rift rather than a geometric border. */
+.skills-anime-divider {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: clamp(38px, 4vw, 62px);
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: #07090a;
+  clip-path: polygon(
+    42% 0, 67% 0,
+    55% 7%, 78% 13%, 44% 20%, 70% 27%,
+    34% 35%, 63% 43%, 26% 51%, 66% 59%,
+    35% 67%, 71% 75%, 43% 83%, 64% 91%,
+    53% 100%, 28% 100%,
+    39% 91%, 17% 83%, 48% 75%, 18% 67%,
+    46% 59%, 11% 51%, 43% 43%, 17% 35%,
+    47% 27%, 21% 20%, 50% 13%, 31% 7%
+  );
+  filter:
+    drop-shadow(-2px 0 0 rgba(255, 255, 255, 0.11))
+    drop-shadow(2px 0 0 rgba(255, 255, 255, 0.08));
+}
+
+.skills-anime-divider span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(143, 211, 151, 0.16) 48%, transparent 82%);
+}
+
+@media (max-width: 1120px) {
+  .skills-credits-panel {
+    padding-inline: 34px;
+  }
+
+  .skills-credits-panel--linc-one {
+    padding-right: 56px;
+  }
+
+  .skills-credits-panel--eureka-vault {
+    padding-left: 56px;
+  }
+
+  .skills-credits-project-head {
+    min-height: 292px;
+  }
+
+  .skills-credits-evolution {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 860px) {
+  .skills-credits-stage {
+    width: min(calc(100% - 24px), 760px);
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    border-radius: 20px;
+  }
+
+  .skills-credits-panel {
+    padding: 34px 26px 42px;
+  }
+
+  .skills-credits-panel--linc-one {
+    padding-bottom: 66px;
+  }
+
+  .skills-credits-panel--eureka-vault {
+    padding-top: 66px;
+  }
+
+  .skills-credits-project-head {
+    min-height: auto;
+    margin-bottom: 22px;
+  }
+
+  .skills-credit-viewport {
+    height: clamp(440px, 60dvh, 620px);
+  }
+
+  .skills-anime-divider {
+    top: 50%;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: 54px;
+    transform: translateY(-50%);
+    clip-path: polygon(
+      0 42%, 0 68%,
+      7% 54%, 13% 77%, 20% 43%, 27% 69%,
+      35% 34%, 43% 63%, 51% 26%, 59% 66%,
+      67% 35%, 75% 71%, 83% 43%, 91% 64%,
+      100% 53%, 100% 28%,
+      91% 39%, 83% 17%, 75% 48%, 67% 18%,
+      59% 46%, 51% 11%, 43% 43%, 35% 17%,
+      27% 47%, 20% 21%, 13% 50%, 7% 31%
+    );
+    filter:
+      drop-shadow(0 -2px 0 rgba(255, 255, 255, 0.11))
+      drop-shadow(0 2px 0 rgba(255, 255, 255, 0.08));
+  }
+
+  .skills-anime-divider span {
+    background: linear-gradient(to right, transparent, rgba(143, 211, 151, 0.16) 48%, transparent 82%);
+  }
+}
+
+@media (max-width: 620px) {
+  .skills-credits-stage {
+    margin-bottom: 90px;
+  }
+
+  .skills-credits-panel {
+    padding-inline: 18px;
+  }
+
+  .skills-credits-project-head {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-credits-project-head h2 {
+    font-size: clamp(2.7rem, 14vw, 4.2rem);
+  }
+
+  .skills-auto-toggle {
+    justify-self: start;
+    min-height: 42px;
+  }
+
+  .skills-credits-summary {
+    font-size: 0.78rem;
+  }
+
+  .skills-credit-viewport {
+    height: min(570px, 64dvh);
+  }
+
+  .skills-credit-track {
+    row-gap: 32px;
+    padding-block: 42px;
+  }
+
+  .skill-credit {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .skill-credit--major strong {
+    font-size: 1.18rem;
+  }
+
+  .skills-credits-evolution {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-credits-evolution > div {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 8px;
+    padding: 6px 0;
+  }
+
+  .skills-credits-evolution p {
+    margin: 0;
+    font-size: 0.58rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-auto-toggle {
+    display: none;
+  }
+}

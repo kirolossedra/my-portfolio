@@ -1,163 +1,192 @@
-import { useEffect, useRef } from 'react';
-import type { ProjectSkillProfile } from '../data/project-skills.ts';
-import { shouldRevealSkill, skillRevealLine } from '../lib/scroll-reveal.ts';
+import { useEffect, useRef, useState } from 'react';
+import type { ProjectSkill, ProjectSkillProfile, SkillPriority } from '../data/project-skills.ts';
 
-function LincLook() {
+const priorityLabels: Record<SkillPriority, string> = {
+  major: 'Major capabilities',
+  strong: 'Strong implementation',
+  detail: 'Granular engineering evidence',
+};
+
+function CreditSkill({ skill, index }: { skill: ProjectSkill; index: number }) {
   return (
-    <div className="project-look project-look--linc" aria-label="LInC One visual preview">
-      <div className="project-look-window project-look-window--linc">
-        <div className="project-look-window-bar">
-          <span /><span /><span />
-          <small>lincministry.com</small>
-        </div>
-        <div className="linc-look-hero">
-          <img src="/media/projects/linc-one/linc-logo.png" alt="LInC One logo" />
-          <div>
-            <span>LINC ONE</span>
-            <strong>Connect. Grow. Serve.</strong>
-            <small>تواصل · انمُ · اخدم</small>
-          </div>
-        </div>
-        <div className="linc-look-grid">
-          <span>People</span><span>Ministry</span><span>Library</span><span>Attendance</span>
-        </div>
-        <div className="linc-look-bezalel"><i>✦</i><span>Bezalel AI</span><small>grounded, server-mediated assistance</small></div>
-        <div className="linc-look-slogan">
-          <img src="/media/projects/linc-one/discipleship-slogan-preview.webp" alt="The Roots discipleship program artwork" />
-        </div>
-      </div>
-      <div className="project-evidence-card">
-        <span>Repository evolution</span>
-        <ol>
-          <li>Firebase product surface</li>
-          <li>Hono trust boundaries</li>
-          <li>Canonical identity</li>
-          <li>Quality gates</li>
-          <li>Ministry + Discipleship</li>
-        </ol>
+    <div className={`skill-credit skill-credit--${skill.priority}`}>
+      <span className="skill-credit-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+      <div>
+        <small>{skill.category}</small>
+        <strong>{skill.label}</strong>
+        {skill.detail && <p>{skill.detail}</p>}
       </div>
     </div>
   );
 }
 
-function EurekaLook() {
+function CreditSet({ project, duplicate = false }: { project: ProjectSkillProfile; duplicate?: boolean }) {
+  let previousPriority: SkillPriority | null = null;
+
   return (
-    <div className="project-look project-look--eureka" aria-label="EurekaVault visual preview">
-      <div className="project-look-window project-look-window--eureka">
-        <div className="project-look-window-bar">
-          <span /><span /><span />
-          <small>EurekaVault</small>
-        </div>
-        <div className="eureka-look-shell">
-          <aside>
-            <b>ε</b>
-            <i /><i /><i /><i /><i />
-          </aside>
-          <div className="eureka-look-main">
-            <div className="eureka-look-heading"><span>PERSONAL VAULT</span><strong>Prompt Blocks</strong></div>
-            <div className="eureka-look-graph">
-              <div className="eureka-node eureka-node--input">Prompt</div>
-              <div className="eureka-wire eureka-wire--one" />
-              <div className="eureka-node eureka-node--transform">Transform</div>
-              <div className="eureka-wire eureka-wire--two" />
-              <div className="eureka-node eureka-node--constraint">Mindset</div>
-              <div className="eureka-wire eureka-wire--three" />
-              <div className="eureka-node eureka-node--output">Output</div>
-            </div>
-            <div className="eureka-look-footer"><span>Versioned</span><span>Inspectable</span><span>Typed DAG</span></div>
-          </div>
-        </div>
-      </div>
-      <div className="project-evidence-card project-evidence-card--eureka">
-        <span>Commit-backed growth</span>
-        <div className="eureka-velocity-thumb"><img src="/media/projects/eureka-vault/weekly-velocity.svg" alt="EurekaVault weekly commit velocity chart" /></div>
-      </div>
-    </div>
+    <ol className="skill-credit-set" aria-hidden={duplicate || undefined}>
+      {project.skills.map((skill, index) => {
+        const showGroup = skill.priority !== previousPriority;
+        previousPriority = skill.priority;
+        return (
+          <li className="skill-credit-entry" key={`${skill.category}-${skill.label}`}>
+            {showGroup && (
+              <div className="skill-credit-chapter">
+                <span>{priorityLabels[skill.priority]}</span>
+                <i />
+              </div>
+            )}
+            <CreditSkill skill={skill} index={index} />
+          </li>
+        );
+      })}
+    </ol>
   );
 }
 
-function ProjectLook({ project }: { project: ProjectSkillProfile }) {
-  return project.id === 'linc-one' ? <LincLook /> : <EurekaLook />;
-}
-
-export default function ProjectSkillsShowcase({ project, reverse = false }: { project: ProjectSkillProfile; reverse?: boolean }) {
-  const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
+function ProjectCreditsPanel({ project, side }: { project: ProjectSkillProfile; side: 'left' | 'right' }) {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const firstSetRef = useRef<HTMLDivElement | null>(null);
+  const lastInteractionRef = useRef(0);
+  const [autoScroll, setAutoScroll] = useState(true);
 
   useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = itemRefs.current.filter((item): item is HTMLLIElement => Boolean(item));
+    const viewport = viewportRef.current;
+    const firstSetWrapper = firstSetRef.current;
+    if (!viewport || !firstSetWrapper) return;
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
+      setAutoScroll(false);
+      viewport.scrollTop = 0;
       return;
     }
 
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const revealLine = skillRevealLine(window.scrollY, window.innerHeight);
-      items.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        const absoluteCenter = window.scrollY + rect.top + rect.height * 0.5;
-        item.classList.toggle('is-visible', shouldRevealSkill(absoluteCenter, revealLine));
-      });
-    };
-    const schedule = () => {
-      if (frame) return;
-      frame = window.requestAnimationFrame(update);
+    let animationFrame = 0;
+    let lastFrame = performance.now();
+    let loopHeight = 0;
+
+    const measure = () => {
+      const set = firstSetWrapper.querySelector<HTMLElement>('.skill-credit-set');
+      if (!set) return;
+      const track = firstSetWrapper.parentElement;
+      const trackStyles = track ? window.getComputedStyle(track) : null;
+      const gap = Number.parseFloat(trackStyles?.rowGap || trackStyles?.gap || '0') || 0;
+      loopHeight = set.getBoundingClientRect().height + gap;
+      if (loopHeight > 0 && viewport.scrollTop < loopHeight * 0.4) {
+        viewport.scrollTop = loopHeight;
+      }
     };
 
-    update();
-    window.addEventListener('scroll', schedule, { passive: true });
-    window.addEventListener('resize', schedule);
-    return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', schedule);
-      window.removeEventListener('resize', schedule);
+    const normalize = () => {
+      if (loopHeight <= 0) return;
+      if (viewport.scrollTop >= loopHeight * 2) viewport.scrollTop -= loopHeight;
+      if (viewport.scrollTop <= loopHeight * 0.18) viewport.scrollTop += loopHeight;
     };
-  }, []);
+
+    const animate = (now: number) => {
+      const delta = Math.min(48, now - lastFrame);
+      lastFrame = now;
+      normalize();
+
+      const interactionCoolingOff = now - lastInteractionRef.current < 1650;
+      if (autoScroll && !interactionCoolingOff && !document.hidden) {
+        const pixelsPerMs = side === 'left' ? 0.020 : 0.022;
+        viewport.scrollTop += delta * pixelsPerMs;
+        normalize();
+      }
+
+      animationFrame = window.requestAnimationFrame(animate);
+    };
+
+    const markInteraction = () => {
+      lastInteractionRef.current = performance.now();
+    };
+
+    const handleKey = (event: KeyboardEvent) => {
+      if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)) {
+        markInteraction();
+      }
+    };
+
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(firstSetWrapper);
+
+    viewport.addEventListener('wheel', markInteraction, { passive: true });
+    viewport.addEventListener('touchstart', markInteraction, { passive: true });
+    viewport.addEventListener('touchmove', markInteraction, { passive: true });
+    viewport.addEventListener('pointerdown', markInteraction, { passive: true });
+    viewport.addEventListener('keydown', handleKey);
+    animationFrame = window.requestAnimationFrame(animate);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      resizeObserver.disconnect();
+      viewport.removeEventListener('wheel', markInteraction);
+      viewport.removeEventListener('touchstart', markInteraction);
+      viewport.removeEventListener('touchmove', markInteraction);
+      viewport.removeEventListener('pointerdown', markInteraction);
+      viewport.removeEventListener('keydown', handleKey);
+    };
+  }, [autoScroll, side]);
 
   return (
-    <section className={`project-skills-section${reverse ? ' project-skills-section--reverse' : ''}`} id={project.id}>
-      <div className="project-skills-sticky">
-        <div className="project-skills-copy">
+    <article className={`skills-credits-panel skills-credits-panel--${project.id}`} id={project.id}>
+      <header className="skills-credits-project-head">
+        <div>
           <p className="eyebrow">{project.eyebrow}</p>
           <h2>{project.name}</h2>
-          <p>{project.summary}</p>
-          <div className="project-stack" aria-label={`${project.name} technologies`}>
-            {project.stack.map((item) => <span key={item}>{item}</span>)}
-          </div>
         </div>
-        <ProjectLook project={project} />
-        <div className="project-evolution" aria-label={`${project.name} repository evolution`}>
-          {project.evolution.map((item, index) => (
-            <div key={item}><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
-          ))}
+        <button
+          type="button"
+          className={`skills-auto-toggle${autoScroll ? ' is-active' : ''}`}
+          onClick={() => setAutoScroll((current) => !current)}
+          aria-pressed={autoScroll}
+        >
+          <span aria-hidden="true">{autoScroll ? '▶' : 'Ⅱ'}</span>
+          {autoScroll ? 'Auto rolling' : 'Manual scroll'}
+        </button>
+        <p className="skills-credits-summary">{project.summary}</p>
+        <div className="project-stack" aria-label={`${project.name} technologies`}>
+          {project.stack.map((item) => <span key={item}>{item}</span>)}
+        </div>
+      </header>
+
+      <div className="skills-credit-frame">
+        <div className="skills-credit-rail" aria-hidden="true"><span>SKILLS / CREDITS</span><i /></div>
+        <div
+          className="skills-credit-viewport"
+          ref={viewportRef}
+          tabIndex={0}
+          aria-label={`${project.name} skills credits. Auto-scrolls; use wheel, touch, or keyboard to scroll manually.`}
+        >
+          <div className="skills-credit-track">
+            <div ref={firstSetRef}><CreditSet project={project} duplicate /></div>
+            <CreditSet project={project} />
+            <CreditSet project={project} duplicate />
+          </div>
         </div>
       </div>
 
-      <div className="project-skill-feed">
-        <div className="project-skill-feed-heading">
-          <span>{project.skills.length} extracted capabilities</span>
-          <p>Higher-signal skills arrive first. Keep scrolling for the increasingly granular engineering evidence.</p>
-        </div>
-        <ul>
-          {project.skills.map((skill, index) => (
-            <li
-              key={`${skill.category}-${skill.label}`}
-              className={`project-skill-item project-skill-item--${skill.priority}`}
-              ref={(node: HTMLLIElement | null) => { itemRefs.current[index] = node; }}
-            >
-              <span className="project-skill-bullet" aria-hidden="true" />
-              <div>
-                <small>{skill.category}</small>
-                <strong>{skill.label}</strong>
-                {skill.detail && <p>{skill.detail}</p>}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <footer className="skills-credits-evolution" aria-label={`${project.name} repository evolution`}>
+        {project.evolution.map((item, index) => (
+          <div key={item}><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>
+        ))}
+      </footer>
+    </article>
+  );
+}
+
+export default function ProjectSkillsShowcase({ projects }: { projects: ProjectSkillProfile[] }) {
+  if (projects.length < 2) return null;
+  const [left, right] = projects;
+
+  return (
+    <section className="skills-credits-stage" aria-label="Project skills split-screen credits">
+      <ProjectCreditsPanel project={left!} side="left" />
+      <div className="skills-anime-divider" aria-hidden="true"><span /></div>
+      <ProjectCreditsPanel project={right!} side="right" />
     </section>
   );
 }
