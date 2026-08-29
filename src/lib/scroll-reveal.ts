@@ -7,3 +7,7 @@ export function skillRevealLine(scrollY: number, viewportHeight: number): number
 export function shouldRevealSkill(itemCenter: number, revealLine: number): boolean {
   return itemCenter <= revealLine;
 }
+
+export function autoScrollDistance(elapsedMs: number, pixelsPerSecond: number): number {
+  return Math.max(0, elapsedMs) * (pixelsPerSecond / 1000);
+}

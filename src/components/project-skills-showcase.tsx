@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import type { ProjectSkillProfile } from '../data/project-skills.ts';
-import { shouldRevealSkill, skillRevealLine } from '../lib/scroll-reveal.ts';
+import { autoScrollDistance, shouldRevealSkill, skillRevealLine } from '../lib/scroll-reveal.ts';
 
 const AUTO_SCROLL_PX_PER_SECOND = 26;
 const SKILL_LOOP_COPIES = 4;
@@ -121,6 +121,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
     let dragStartY = 0;
     let dragStartScrollTop = 0;
     let normalizing = false;
+    let autoScrollWasActive = false;
 
     const scheduleReveal = () => {
       if (revealFrame) return;
@@ -160,6 +161,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
 
     const onPointerDown = (event: PointerEvent) => {
       if (event.pointerType === 'mouse' && event.button === 0) {
+        resetAutoScrollClock();
         mouseHeld = true;
         mouseDragging = true;
         dragPointerId = event.pointerId;
@@ -193,6 +195,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
     };
 
     const onTouchStart = () => {
+      resetAutoScrollClock();
       touchHeld = true;
     };
 
@@ -200,19 +203,27 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
       touchHeld = false;
     };
 
+    const resetAutoScrollClock = () => {
+      lastTime = performance.now();
+      autoScrollWasActive = false;
+    };
+
     const tick = (now: number) => {
-      const elapsed = Math.min(48, now - lastTime);
+      const elapsed = now - lastTime;
       lastTime = now;
+      const autoScrollIsActive = !mouseHeld && !touchHeld && !document.hidden && isFeedVisible();
 
       // Auto motion is the baseline. Native wheel/touch scrolling changes the
       // same scrollTop directly, so the user can speed it up or reverse it.
       // Holding/dragging the feed is the only thing that intentionally stops
       // the baseline while the hand is on the credits.
-      if (!mouseHeld && !touchHeld && !document.hidden && isFeedVisible()) {
-        feed.scrollTop += AUTO_SCROLL_PX_PER_SECOND * (elapsed / 1000);
+      if (autoScrollIsActive && autoScrollWasActive) {
+        feed.scrollTop += autoScrollDistance(elapsed, AUTO_SCROLL_PX_PER_SECOND);
         normalizeLoop();
         updateReveal();
       }
+
+      autoScrollWasActive = autoScrollIsActive;
 
       frame = window.requestAnimationFrame(tick);
     };
@@ -226,6 +237,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
     window.addEventListener('pointerup', releasePointer, { passive: true });
     window.addEventListener('pointercancel', releasePointer, { passive: true });
     window.addEventListener('resize', scheduleReveal);
+    document.addEventListener('visibilitychange', resetAutoScrollClock);
 
     updateReveal();
     frame = window.requestAnimationFrame(tick);
@@ -243,6 +255,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
       window.removeEventListener('pointerup', releasePointer);
       window.removeEventListener('pointercancel', releasePointer);
       window.removeEventListener('resize', scheduleReveal);
+      document.removeEventListener('visibilitychange', resetAutoScrollClock);
     };
   }, []);
 
