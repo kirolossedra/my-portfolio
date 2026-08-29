@@ -3,6 +3,7 @@ import type { ProjectSkillProfile } from '../data/project-skills.ts';
 import { autoScrollDistance, shouldRevealSkill, skillRevealLine } from '../lib/scroll-reveal.ts';
 
 const AUTO_SCROLL_PX_PER_SECOND = 26;
+const AUTO_SCROLL_TICK_MS = 32;
 const SKILL_LOOP_COPIES = 4;
 
 function LincLook() {
@@ -111,7 +112,7 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
       return;
     }
 
-    let frame = 0;
+    let autoScrollTimer = 0;
     let revealFrame = 0;
     let lastTime = performance.now();
     let mouseHeld = false;
@@ -208,7 +209,8 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
       autoScrollWasActive = false;
     };
 
-    const tick = (now: number) => {
+    const tick = () => {
+      const now = performance.now();
       const elapsed = now - lastTime;
       lastTime = now;
       const autoScrollIsActive = !mouseHeld && !touchHeld && !document.hidden && isFeedVisible();
@@ -224,8 +226,6 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
       }
 
       autoScrollWasActive = autoScrollIsActive;
-
-      frame = window.requestAnimationFrame(tick);
     };
 
     feed.addEventListener('scroll', onScroll, { passive: true });
@@ -240,10 +240,10 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
     document.addEventListener('visibilitychange', resetAutoScrollClock);
 
     updateReveal();
-    frame = window.requestAnimationFrame(tick);
+    autoScrollTimer = window.setInterval(tick, AUTO_SCROLL_TICK_MS);
 
     return () => {
-      if (frame) window.cancelAnimationFrame(frame);
+      if (autoScrollTimer) window.clearInterval(autoScrollTimer);
       if (revealFrame) window.cancelAnimationFrame(revealFrame);
       feed.style.userSelect = '';
       feed.removeEventListener('scroll', onScroll);
