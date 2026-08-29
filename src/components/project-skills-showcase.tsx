@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 import type { ProjectSkillProfile } from '../data/project-skills.ts';
 import { shouldRevealSkill, skillRevealLine } from '../lib/scroll-reveal.ts';
 
-const AUTO_SCROLL_PX_PER_SECOND = 24;
-const MANUAL_SCROLL_GRACE_MS = 700;
+const AUTO_SCROLL_PX_PER_SECOND = 26;
+const SKILL_LOOP_COPIES = 4;
 
 function LincLook() {
   return (
@@ -86,103 +86,162 @@ function ProjectLook({ project }: { project: ProjectSkillProfile }) {
 export default function ProjectSkillsShowcase({ project, reverse = false }: { project: ProjectSkillProfile; reverse?: boolean }) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const feedRef = useRef<HTMLDivElement | null>(null);
-  const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
 
   useEffect(() => {
-    const section = sectionRef.current;
     const feed = feedRef.current;
-    if (!section || !feed) return;
+    if (!feed) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items = itemRefs.current.filter((item): item is HTMLLIElement => Boolean(item));
+    const primaryList = feed.querySelector<HTMLUListElement>('[data-skill-loop-primary="true"]');
+    const cloneLists = Array.from(feed.querySelectorAll<HTMLUListElement>('[data-skill-loop-copy="true"]'));
+
+    const getItems = () => Array.from(feed.querySelectorAll<HTMLLIElement>('.project-skill-item'));
 
     const updateReveal = () => {
       const revealLine = skillRevealLine(feed.scrollTop, feed.clientHeight);
-      items.forEach((item) => {
+      getItems().forEach((item) => {
         const itemCenter = item.offsetTop + item.offsetHeight * 0.5;
         item.classList.toggle('is-visible', shouldRevealSkill(itemCenter, revealLine));
       });
     };
 
     if (reduceMotion) {
-      items.forEach((item) => item.classList.add('is-visible'));
+      cloneLists.forEach((list) => { list.hidden = true; });
+      getItems().forEach((item) => item.classList.add('is-visible'));
       return;
     }
 
     let frame = 0;
+    let revealFrame = 0;
     let lastTime = performance.now();
-    let sectionVisible = false;
-    let pointerHeld = false;
-    let manualUntil = 0;
+    let mouseHeld = false;
+    let touchHeld = false;
+    let mouseDragging = false;
+    let dragPointerId: number | null = null;
+    let dragStartY = 0;
+    let dragStartScrollTop = 0;
+    let normalizing = false;
 
     const scheduleReveal = () => {
-      window.requestAnimationFrame(updateReveal);
+      if (revealFrame) return;
+      revealFrame = window.requestAnimationFrame(() => {
+        revealFrame = 0;
+        updateReveal();
+      });
     };
 
-    const markManualScroll = () => {
-      manualUntil = performance.now() + MANUAL_SCROLL_GRACE_MS;
+    const normalizeLoop = () => {
+      if (!primaryList || normalizing) return;
+
+      const loopStart = primaryList.offsetTop;
+      const loopHeight = primaryList.offsetHeight;
+      if (loopHeight <= 0) return;
+
+      // Keep two complete copies ahead of the viewport. When we cross that
+      // boundary, move back by exactly one copy; because the content is
+      // identical, the credits continue without a visible reset.
+      const wrapAt = loopStart + loopHeight * 2;
+      if (feed.scrollTop >= wrapAt) {
+        normalizing = true;
+        while (feed.scrollTop >= wrapAt) feed.scrollTop -= loopHeight;
+        normalizing = false;
+      }
+    };
+
+    const isFeedVisible = () => {
+      const rect = feed.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < window.innerHeight;
+    };
+
+    const onScroll = () => {
+      normalizeLoop();
       scheduleReveal();
     };
 
-    const onPointerDown = () => {
-      pointerHeld = true;
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse' && event.button === 0) {
+        mouseHeld = true;
+        mouseDragging = true;
+        dragPointerId = event.pointerId;
+        dragStartY = event.clientY;
+        dragStartScrollTop = feed.scrollTop;
+        feed.style.userSelect = 'none';
+        feed.setPointerCapture?.(event.pointerId);
+      }
     };
 
-    const onPointerUp = () => {
-      pointerHeld = false;
-      manualUntil = performance.now() + 220;
+    const onPointerMove = (event: PointerEvent) => {
+      if (!mouseDragging || event.pointerId !== dragPointerId) return;
+      event.preventDefault();
+      feed.scrollTop = dragStartScrollTop - (event.clientY - dragStartY);
+      normalizeLoop();
+      scheduleReveal();
+    };
+
+    const releasePointer = (event: PointerEvent) => {
+      if (mouseDragging && event.pointerId === dragPointerId) {
+        mouseHeld = false;
+        mouseDragging = false;
+        dragPointerId = null;
+        feed.style.userSelect = '';
+        try {
+          if (feed.hasPointerCapture?.(event.pointerId)) feed.releasePointerCapture(event.pointerId);
+        } catch {
+          // The browser may already have released capture after a cancel.
+        }
+      }
+    };
+
+    const onTouchStart = () => {
+      touchHeld = true;
+    };
+
+    const onTouchEnd = () => {
+      touchHeld = false;
     };
 
     const tick = (now: number) => {
       const elapsed = Math.min(48, now - lastTime);
       lastTime = now;
 
-      const maxScroll = Math.max(0, feed.scrollHeight - feed.clientHeight);
-      const userHasControl = pointerHeld || now < manualUntil;
-
-      if (sectionVisible && !userHasControl && feed.scrollTop < maxScroll - 0.5) {
-        feed.scrollTop = Math.min(maxScroll, feed.scrollTop + AUTO_SCROLL_PX_PER_SECOND * (elapsed / 1000));
+      // Auto motion is the baseline. Native wheel/touch scrolling changes the
+      // same scrollTop directly, so the user can speed it up or reverse it.
+      // Holding/dragging the feed is the only thing that intentionally stops
+      // the baseline while the hand is on the credits.
+      if (!mouseHeld && !touchHeld && !document.hidden && isFeedVisible()) {
+        feed.scrollTop += AUTO_SCROLL_PX_PER_SECOND * (elapsed / 1000);
+        normalizeLoop();
         updateReveal();
       }
 
       frame = window.requestAnimationFrame(tick);
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (!entry) return;
-        sectionVisible = entry.isIntersecting && entry.intersectionRatio > 0.08;
-        lastTime = performance.now();
-      },
-      { threshold: [0, 0.08, 0.25, 0.5] },
-    );
-
-    observer.observe(section);
-    feed.addEventListener('scroll', scheduleReveal, { passive: true });
-    feed.addEventListener('wheel', markManualScroll, { passive: true });
-    feed.addEventListener('touchstart', onPointerDown, { passive: true });
-    feed.addEventListener('touchend', onPointerUp, { passive: true });
-    feed.addEventListener('touchcancel', onPointerUp, { passive: true });
+    feed.addEventListener('scroll', onScroll, { passive: true });
     feed.addEventListener('pointerdown', onPointerDown, { passive: true });
-    window.addEventListener('pointerup', onPointerUp, { passive: true });
-    window.addEventListener('pointercancel', onPointerUp, { passive: true });
+    feed.addEventListener('pointermove', onPointerMove);
+    feed.addEventListener('touchstart', onTouchStart, { passive: true });
+    feed.addEventListener('touchend', onTouchEnd, { passive: true });
+    feed.addEventListener('touchcancel', onTouchEnd, { passive: true });
+    window.addEventListener('pointerup', releasePointer, { passive: true });
+    window.addEventListener('pointercancel', releasePointer, { passive: true });
     window.addEventListener('resize', scheduleReveal);
 
     updateReveal();
     frame = window.requestAnimationFrame(tick);
 
     return () => {
-      observer.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
-      feed.removeEventListener('scroll', scheduleReveal);
-      feed.removeEventListener('wheel', markManualScroll);
-      feed.removeEventListener('touchstart', onPointerDown);
-      feed.removeEventListener('touchend', onPointerUp);
-      feed.removeEventListener('touchcancel', onPointerUp);
+      if (revealFrame) window.cancelAnimationFrame(revealFrame);
+      feed.style.userSelect = '';
+      feed.removeEventListener('scroll', onScroll);
       feed.removeEventListener('pointerdown', onPointerDown);
-      window.removeEventListener('pointerup', onPointerUp);
-      window.removeEventListener('pointercancel', onPointerUp);
+      feed.removeEventListener('pointermove', onPointerMove);
+      feed.removeEventListener('touchstart', onTouchStart);
+      feed.removeEventListener('touchend', onTouchEnd);
+      feed.removeEventListener('touchcancel', onTouchEnd);
+      window.removeEventListener('pointerup', releasePointer);
+      window.removeEventListener('pointercancel', releasePointer);
       window.removeEventListener('resize', scheduleReveal);
     };
   }, []);
@@ -220,22 +279,28 @@ export default function ProjectSkillsShowcase({ project, reverse = false }: { pr
           <span>{project.skills.length} extracted capabilities</span>
           <p>Higher-signal skills arrive first. Scroll or swipe whenever you want to take control of the rolling credits.</p>
         </div>
-        <ul>
-          {project.skills.map((skill, index) => (
-            <li
-              key={`${skill.category}-${skill.label}`}
-              className={`project-skill-item project-skill-item--${skill.priority}`}
-              ref={(node: HTMLLIElement | null) => { itemRefs.current[index] = node; }}
-            >
-              <span className="project-skill-bullet" aria-hidden="true" />
-              <div>
-                <small>{skill.category}</small>
-                <strong>{skill.label}</strong>
-                {skill.detail && <p>{skill.detail}</p>}
-              </div>
-            </li>
-          ))}
-        </ul>
+        {Array.from({ length: SKILL_LOOP_COPIES }, (_, copyIndex) => (
+          <ul
+            key={`skill-loop-${copyIndex}`}
+            data-skill-loop-primary={copyIndex === 0 ? 'true' : undefined}
+            data-skill-loop-copy={copyIndex === 0 ? undefined : 'true'}
+            aria-hidden={copyIndex === 0 ? undefined : true}
+          >
+            {project.skills.map((skill) => (
+              <li
+                key={`${copyIndex}-${skill.category}-${skill.label}`}
+                className={`project-skill-item project-skill-item--${skill.priority}`}
+              >
+                <span className="project-skill-bullet" aria-hidden="true" />
+                <div>
+                  <small>{skill.category}</small>
+                  <strong>{skill.label}</strong>
+                  {skill.detail && <p>{skill.detail}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </section>
   );
