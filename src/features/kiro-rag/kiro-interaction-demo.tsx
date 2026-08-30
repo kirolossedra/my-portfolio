@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
-import type { KiroAvatarState } from './avatar/kiro-avatar.types.ts';
+import type { KiroAvatarState } from './model3d/kiro-model.types.ts';
 
 interface KiroInteractionDemoProps {
   state: KiroAvatarState;

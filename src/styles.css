@@ -4142,3 +4142,205 @@ button {
     transition: none;
   }
 }
+
+/* Kiro Rag — GLB runtime */
+.kiro-rag-page--glb {
+  padding-top: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.kiro-rag-hero--glb {
+  align-items: stretch;
+}
+
+.kiro-rag-avatar-stage--glb {
+  min-height: clamp(31rem, 55vw, 45rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(circle at 50% 38%, rgba(78, 185, 255, 0.13), transparent 40%),
+    radial-gradient(circle at 50% 82%, rgba(239, 185, 79, 0.09), transparent 34%),
+    rgba(4, 9, 18, 0.72);
+}
+
+.kiro-glb-avatar {
+  position: relative;
+  width: 100%;
+  min-height: inherit;
+  height: 100%;
+  isolation: isolate;
+  touch-action: pan-y;
+}
+
+.kiro-glb-avatar canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+.kiro-glb-avatar__status {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.55rem;
+  padding: 2rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.kiro-glb-avatar__status::before {
+  content: '';
+  width: 3.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(239, 185, 79, 0.38);
+  box-shadow: inset 0 0 0 0.45rem rgba(239, 185, 79, 0.055);
+  margin-bottom: 0.5rem;
+}
+
+.kiro-glb-avatar.is-loading .kiro-glb-avatar__status::before {
+  border-top-color: var(--kiro-gold);
+  animation: kiro-glb-loading 0.9s linear infinite;
+}
+
+.kiro-glb-avatar__status strong {
+  color: #f7f4ec;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.kiro-glb-avatar__status span {
+  max-width: 28rem;
+  color: rgba(239, 244, 255, 0.68);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.kiro-glb-avatar__status code,
+.kiro-model-diagnostics code {
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.45rem;
+  border: 1px solid rgba(78, 185, 255, 0.18);
+  background: rgba(78, 185, 255, 0.07);
+  color: #a9dcff;
+  font-size: 0.8rem;
+}
+
+.kiro-model-diagnostics {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: clamp(1.4rem, 4vw, 4rem);
+  margin-top: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.kiro-model-diagnostics h2 {
+  margin: 0.3rem 0 0.8rem;
+}
+
+.kiro-model-diagnostics p {
+  margin: 0;
+  color: rgba(239, 244, 255, 0.7);
+  line-height: 1.7;
+}
+
+.kiro-model-diagnostics__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.kiro-model-diagnostics__stats div {
+  display: grid;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.kiro-model-diagnostics__stats dt {
+  color: rgba(239, 244, 255, 0.55);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.kiro-model-diagnostics__stats dd {
+  margin: 0;
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 650;
+}
+
+.kiro-model-diagnostics__lists,
+.kiro-model-diagnostics__warnings {
+  grid-column: 1 / -1;
+}
+
+.kiro-model-diagnostics__lists {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.kiro-model-diagnostics__lists div {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.kiro-model-diagnostics__lists strong {
+  color: var(--kiro-gold);
+}
+
+.kiro-model-diagnostics__lists span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: rgba(239, 244, 255, 0.64);
+}
+
+.kiro-model-diagnostics__warnings {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 1rem 1rem 1rem 2rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(239, 185, 79, 0.16);
+  background: rgba(239, 185, 79, 0.05);
+  color: rgba(255, 235, 196, 0.78);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+@keyframes kiro-glb-loading {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 800px) {
+  .kiro-rag-avatar-stage--glb {
+    min-height: 29rem;
+  }
+
+  .kiro-model-diagnostics {
+    grid-template-columns: 1fr;
+  }
+
+  .kiro-model-diagnostics__lists div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiro-glb-avatar.is-loading .kiro-glb-avatar__status::before {
+    animation: none;
+  }
+}
