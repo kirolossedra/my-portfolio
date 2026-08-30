@@ -12,9 +12,12 @@ export interface KiroBounds {
 
 export type KiroWarp = (point: KiroPoint) => KiroPoint;
 
-function expandTriangle(points: readonly KiroPoint[], amount: number): KiroPoint[] {
-  const cx = (points[0].x + points[1].x + points[2].x) / 3;
-  const cy = (points[0].y + points[1].y + points[2].y) / 3;
+type KiroTriangle = readonly [KiroPoint, KiroPoint, KiroPoint];
+
+function expandTriangle(points: KiroTriangle, amount: number): [KiroPoint, KiroPoint, KiroPoint] {
+  const [p0, p1, p2] = points;
+  const cx = (p0.x + p1.x + p2.x) / 3;
+  const cy = (p0.y + p1.y + p2.y) / 3;
   return points.map((point) => {
     const dx = point.x - cx;
     const dy = point.y - cy;
@@ -23,14 +26,14 @@ function expandTriangle(points: readonly KiroPoint[], amount: number): KiroPoint
       x: point.x + (dx / length) * amount,
       y: point.y + (dy / length) * amount,
     };
-  });
+  }) as [KiroPoint, KiroPoint, KiroPoint];
 }
 
 function drawTriangle(
   ctx: CanvasRenderingContext2D,
   image: CanvasImageSource,
-  source: readonly [KiroPoint, KiroPoint, KiroPoint],
-  destination: readonly [KiroPoint, KiroPoint, KiroPoint],
+  source: KiroTriangle,
+  destination: KiroTriangle,
 ) {
   const [s0, s1, s2] = source;
   const [d0, d1, d2] = destination;
@@ -65,6 +68,14 @@ function drawTriangle(
   ctx.restore();
 }
 
+function getGridPoint(points: readonly KiroPoint[][], row: number, column: number): KiroPoint {
+  const point = points[row]?.[column];
+  if (!point) {
+    throw new RangeError(`Kiro mesh grid point [${row}, ${column}] is outside the generated grid.`);
+  }
+  return point;
+}
+
 export function drawWarpedGrid(
   ctx: CanvasRenderingContext2D,
   image: CanvasImageSource,
@@ -94,10 +105,10 @@ export function drawWarpedGrid(
       const s10 = { x: sx1, y: sy0 };
       const s01 = { x: sx0, y: sy1 };
       const s11 = { x: sx1, y: sy1 };
-      const d00 = points[row][column];
-      const d10 = points[row][column + 1];
-      const d01 = points[row + 1][column];
-      const d11 = points[row + 1][column + 1];
+      const d00 = getGridPoint(points, row, column);
+      const d10 = getGridPoint(points, row, column + 1);
+      const d01 = getGridPoint(points, row + 1, column);
+      const d11 = getGridPoint(points, row + 1, column + 1);
       drawTriangle(ctx, image, [s00, s10, s11], [d00, d10, d11]);
       drawTriangle(ctx, image, [s00, s11, s01], [d00, d11, d01]);
     }
