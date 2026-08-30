@@ -108,7 +108,6 @@ export default function KiroGlbAvatar({
 
     let disposed = false;
     let animationFrame = 0;
-    let resizeObserver: ResizeObserver | undefined;
     const scene = new Scene();
     scene.background = null;
 
@@ -148,7 +147,7 @@ export default function KiroGlbAvatar({
       if (loadedModel) frameModel(camera, loadedModel, camera.aspect);
     };
 
-    resizeObserver = new ResizeObserver(resize);
+    const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(host);
     resize();
 
@@ -208,7 +207,7 @@ export default function KiroGlbAvatar({
       disposed = true;
       window.cancelAnimationFrame(animationFrame);
       reducedMotionQuery.removeEventListener('change', onReducedMotion);
-      resizeObserver?.disconnect();
+      resizeObserver.disconnect();
       controllerRef.current?.dispose();
       controllerRef.current = null;
       const loaded = modelContainer.children[0] as Group | undefined;
