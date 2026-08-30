@@ -5,6 +5,7 @@ import LifeTimeline from './components/life-timeline.tsx';
 import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import OpinionsPage from './opinions-page.tsx';
 import SkillsPage from './skills-page.tsx';
+import KiroRagPage from './kiro-rag-page.tsx';
 import { loadMilestone, loadMilestones } from './data/milestones.ts';
 import type { MilestoneDetail, TimelineMilestone } from '../shared/milestone.ts';
 
@@ -79,6 +80,7 @@ function PublicPortfolio() {
           <a href="#history">History</a>
           <a href="/skills">Skills</a>
           <a href="/opinions">Opinions</a>
+          <a href="/kiro-rag">Kiro Rag</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
         </nav>
       </header>
@@ -125,5 +127,6 @@ export default function App() {
   if (/^\/admin\/?$/.test(path)) return <AdminPage />;
   if (/^\/opinions\/?$/.test(path)) return <OpinionsPage />;
   if (/^\/skills\/?$/.test(path)) return <SkillsPage />;
+  if (/^\/kiro-rag\/?$/.test(path)) return <KiroRagPage />;
   return <PublicPortfolio />;
 }

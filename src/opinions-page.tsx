@@ -63,6 +63,7 @@ export default function OpinionsPage() {
         <nav aria-label="Primary navigation">
           <a href="/#history">History</a>
           <a href="/skills">Skills</a>
+          <a href="/kiro-rag">Kiro Rag</a>
           <a href="#leave-opinion">Leave an opinion</a>
         </nav>
       </header>

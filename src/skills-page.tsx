@@ -10,6 +10,7 @@ export default function SkillsPage() {
           <a href="/#history">History</a>
           <a href="/skills" aria-current="page">Skills</a>
           <a href="/opinions">Opinions</a>
+          <a href="/kiro-rag">Kiro Rag</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
         </nav>
       </header>

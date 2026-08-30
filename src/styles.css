@@ -3018,3 +3018,358 @@ button {
     transition: none;
   }
 }
+
+/* Kiro Rag — canonical 2D avatar foundation */
+.kiro-rag-shell {
+  --kiro-gold: #efb94f;
+  --kiro-gold-soft: rgba(239, 185, 79, 0.13);
+  --kiro-blue: #4eb9ff;
+  --kiro-blue-soft: rgba(78, 185, 255, 0.12);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(35, 120, 206, 0.16), transparent 31rem),
+    radial-gradient(circle at 88% 36%, rgba(239, 185, 79, 0.08), transparent 24rem),
+    var(--bg);
+}
+
+.kiro-rag-shell .brand span,
+.kiro-rag-shell .eyebrow {
+  color: var(--kiro-gold);
+}
+
+.site-nav nav a[aria-current="page"] {
+  color: var(--text);
+}
+
+.kiro-rag-page {
+  overflow: clip;
+}
+
+.kiro-rag-hero {
+  width: min(calc(100% - 48px), 1240px);
+  min-height: calc(100dvh - 76px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+  align-items: center;
+  gap: clamp(42px, 7vw, 104px);
+  padding: clamp(74px, 10vh, 120px) 0;
+}
+
+.kiro-rag-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.kiro-rag-copy h1 {
+  margin: 0;
+  font-size: clamp(4.4rem, 9.8vw, 8.8rem);
+  line-height: 0.86;
+  letter-spacing: -0.07em;
+  font-weight: 650;
+}
+
+.kiro-rag-lead {
+  max-width: 650px;
+  margin: 34px 0 0;
+  color: #b6bdc4;
+  font-size: clamp(1.08rem, 1.9vw, 1.32rem);
+  line-height: 1.7;
+}
+
+.kiro-rag-principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 34px;
+}
+
+.kiro-rag-principles span {
+  padding: 8px 11px;
+  border: 1px solid rgba(239, 185, 79, 0.18);
+  border-radius: 999px;
+  background: var(--kiro-gold-soft);
+  color: #dfd2b6;
+  font-size: 0.76rem;
+  letter-spacing: 0.025em;
+}
+
+.kiro-rag-avatar-stage {
+  position: relative;
+  min-width: 0;
+  display: grid;
+  place-items: center;
+}
+
+.kiro-rag-stage-glow {
+  position: absolute;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(78, 185, 255, 0.22), rgba(78, 185, 255, 0.04) 50%, transparent 72%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.kiro-avatar {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 680px);
+  margin: 0;
+}
+
+.kiro-avatar-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: clamp(22px, 4vw, 46px);
+  background: #07172b;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(78, 185, 255, 0.035) inset;
+}
+
+.kiro-avatar-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 80px rgba(2, 10, 23, 0.26);
+  pointer-events: none;
+}
+
+.kiro-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.kiro-avatar figcaption {
+  margin-top: 13px;
+  color: #697580;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.kiro-rag-system,
+.kiro-rag-states {
+  width: min(calc(100% - 48px), 1240px);
+  margin: 0 auto;
+  padding: clamp(96px, 12vw, 156px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.kiro-rag-system-copy {
+  max-width: 800px;
+}
+
+.kiro-rag-system h2,
+.kiro-rag-states h2 {
+  margin: 0;
+  font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 620;
+}
+
+.kiro-rag-system-copy > p:last-child,
+.kiro-rag-states-heading > p:last-child {
+  max-width: 760px;
+  margin: 26px 0 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.kiro-rag-flow {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  align-items: stretch;
+  gap: 14px;
+  margin-top: 64px;
+}
+
+.kiro-rag-flow > div {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 24px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.kiro-rag-flow > div span {
+  color: var(--kiro-blue);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.kiro-rag-flow > div strong {
+  font-size: 1rem;
+  font-weight: 620;
+}
+
+.kiro-rag-flow > div small {
+  color: var(--faint);
+  font-size: 0.77rem;
+  line-height: 1.52;
+}
+
+.kiro-rag-flow > b {
+  align-self: center;
+  color: #39424b;
+  font-weight: 500;
+}
+
+.kiro-rag-states-heading {
+  max-width: 880px;
+}
+
+.kiro-rag-state-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 58px;
+}
+
+.kiro-rag-state-card {
+  min-height: 210px;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(78, 185, 255, 0.045), transparent 45%),
+    rgba(255, 255, 255, 0.018);
+}
+
+.kiro-rag-state-card > span {
+  color: var(--kiro-gold);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.kiro-rag-state-card h3 {
+  margin: 42px 0 10px;
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+}
+
+.kiro-rag-state-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+  .kiro-rag-hero {
+    grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1fr);
+    gap: 34px;
+  }
+
+  .kiro-rag-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .kiro-rag-flow > b {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .kiro-rag-shell .site-nav {
+    width: min(calc(100% - 28px), var(--content));
+  }
+
+  .kiro-rag-shell .site-nav nav {
+    gap: 12px;
+  }
+
+  .kiro-rag-shell .site-nav nav a {
+    font-size: 0.78rem;
+  }
+
+  .kiro-rag-shell .site-nav nav a:last-child {
+    display: none;
+  }
+
+  .kiro-rag-hero,
+  .kiro-rag-system,
+  .kiro-rag-states {
+    width: min(calc(100% - 32px), 1240px);
+  }
+
+  .kiro-rag-hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 90px 0 92px;
+  }
+
+  .kiro-rag-copy {
+    max-width: 680px;
+  }
+
+  .kiro-rag-copy h1 {
+    font-size: clamp(4.5rem, 20vw, 7.2rem);
+  }
+
+  .kiro-rag-avatar-stage {
+    margin-top: 12px;
+  }
+
+  .kiro-avatar {
+    width: min(100%, 590px);
+  }
+
+  .kiro-rag-state-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .kiro-rag-shell .site-nav nav a:first-child,
+  .kiro-rag-shell .site-nav nav a:nth-child(3) {
+    display: none;
+  }
+
+  .kiro-rag-flow,
+  .kiro-rag-state-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kiro-rag-state-card {
+    min-height: 180px;
+  }
+}
+
+/* Shared navigation fit after adding Kiro Rag */
+@media (max-width: 620px) {
+  .site-nav nav {
+    gap: 12px;
+  }
+
+  .site-nav nav a {
+    font-size: 0.8rem;
+  }
+
+  .site-nav nav a[href^="https://github.com/"] {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav nav {
+    gap: 10px;
+  }
+
+  .opinions-shell .site-nav nav a:first-child {
+    display: none;
+  }
+}
