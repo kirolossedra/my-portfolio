@@ -1,25 +1,17 @@
 import { useState } from 'react';
 import KiroAvatar from './features/kiro-rag/avatar/kiro-avatar.tsx';
-import type {
-  KiroAvatarState,
-  KiroExpression,
-  KiroPoseOverride,
-} from './features/kiro-rag/avatar/kiro-avatar.types.ts';
-import KiroRigLab from './features/kiro-rag/kiro-rig-lab.tsx';
+import type { KiroAvatarState } from './features/kiro-rag/avatar/kiro-avatar.types.ts';
+import KiroInteractionDemo from './features/kiro-rag/kiro-interaction-demo.tsx';
 
-const stateCards = [
-  ['Idle', 'Autonomous hover, blink, subtle breathing and independent flame flicker.'],
-  ['Thinking', 'Head tilt, upward gaze, asymmetric brows, thinking mouth and arrow pulse.'],
-  ['Retrieving', 'Focused face, forward board pitch, brighter arrow and stronger dual thrust.'],
-  ['Answering', 'Talking mouth cycle while the same face and rig stay under React control.'],
-  ['Success', 'Lift, brighter expression, arm response, cape reaction and confirmation flash.'],
-  ['Error', 'Asymmetric face, body wobble and intentionally unbalanced thruster response.'],
+const capabilities = [
+  ['Mesh deformation', 'The character is warped as continuous image surfaces instead of rotating disconnected PNG body parts.'],
+  ['Bounded face model', 'Gaze, blink, brows, mouth and head movement are constrained to ranges that preserve the approved Kiro identity.'],
+  ['Continuous parameters', 'KiroRag drives normalized parameters; named states are only targets, not separate animations or images.'],
+  ['Spring motion', 'Changes settle through damped interpolation, avoiding abrupt jumps when application state changes.'],
 ] as const;
 
 export default function KiroRagPage() {
   const [state, setState] = useState<KiroAvatarState>('idle');
-  const [expression, setExpression] = useState<KiroExpression | undefined>(undefined);
-  const [pose, setPose] = useState<KiroPoseOverride>({});
 
   return (
     <div className="site-shell kiro-rag-shell">
@@ -34,77 +26,65 @@ export default function KiroRagPage() {
         </nav>
       </header>
 
-      <main className="kiro-rag-page">
-        <section className="kiro-rag-hero" aria-labelledby="kiro-rag-title">
+      <main className="kiro-rag-page kiro-rag-page--model-v3">
+        <section className="kiro-rag-hero kiro-rag-hero--model-v3" aria-labelledby="kiro-rag-title">
           <div className="kiro-rag-copy">
             <p className="eyebrow">Portfolio intelligence</p>
             <h1 id="kiro-rag-title">Kiro Rag</h1>
             <p className="kiro-rag-lead">
-              The approved Kiro artwork is now an articulated 2D React character: face, gaze, brows, mouth, head, arms, elbows, legs, knees, cape, board, arrow and both thrusters are independently addressable.
+              Kiro is now rendered as a constrained 2D deformation model inside React. The canonical artwork remains the texture source; behavior comes from continuous parameters rather than sliced body parts or canned GIFs.
             </p>
-            <div className="kiro-rag-principles" aria-label="Kiro Rag rig capabilities">
-              <span>Source-derived visual identity</span>
-              <span>Parameterized React rig</span>
-              <span>State + pose overrides</span>
+            <div className="kiro-rag-principles" aria-label="Kiro model principles">
+              <span>Canonical artwork</span>
+              <span>Continuous mesh</span>
+              <span>State-driven behavior</span>
             </div>
+            <KiroInteractionDemo state={state} onStateChange={setState} />
           </div>
 
-          <div className="kiro-rag-avatar-stage">
-            <div className="kiro-rag-stage-glow" aria-hidden="true" />
+          <div className="kiro-rag-avatar-stage kiro-rag-avatar-stage--model-v3">
             <KiroAvatar
               state={state}
-              expression={expression}
-              pose={pose}
-              followPointer
+              interactiveGaze
               autoBlink
               showStateLabel
             />
           </div>
-
-          <KiroRigLab
-            state={state}
-            setState={setState}
-            expression={expression}
-            setExpression={setExpression}
-            pose={pose}
-            setPose={setPose}
-          />
         </section>
 
         <section className="kiro-rag-system" aria-labelledby="kiro-system-title">
           <div className="kiro-rag-system-copy">
-            <p className="eyebrow">Real rig, not state images</p>
-            <h2 id="kiro-system-title">Animations are combinations of parameters.</h2>
+            <p className="eyebrow">Model architecture</p>
+            <h2 id="kiro-system-title">React controls intent. The renderer controls deformation.</h2>
             <p>
-              KiroRag can set a semantic state such as retrieval, then optionally override any pose parameter. New animations do not require generating a new Kiro image: they are sequences of the same reusable joints, facial controls and effects.
+              Application state is converted into bounded model parameters, smoothed through a small physics layer, then rendered onto one canvas. Arms, cape, body and board use weighted surface deformation; face parts follow the same head deformation field so they cannot drift away from the face.
             </p>
           </div>
 
           <div className="kiro-rag-flow" aria-label="Kiro Rag control architecture">
-            <div><span>01</span><strong>KiroRag state</strong><small>Idle, thinking, retrieval, answering, success or error</small></div>
+            <div><span>01</span><strong>KiroRag event</strong><small>Question, retrieval, answer, completion or failure</small></div>
             <b aria-hidden="true">→</b>
-            <div><span>02</span><strong>Expression preset</strong><small>Eyes, brows, mouth and gaze resolve from semantic intent</small></div>
+            <div><span>02</span><strong>Parameter target</strong><small>Gaze, expression, body energy, board and effects</small></div>
             <b aria-hidden="true">→</b>
-            <div><span>03</span><strong>Pose overrides</strong><small>Any joint or effect can be changed continuously at runtime</small></div>
+            <div><span>03</span><strong>Damped controller</strong><small>Continuous transitions with safe parameter bounds</small></div>
             <b aria-hidden="true">→</b>
-            <div><span>04</span><strong>2D source rig</strong><small>One stable Kiro identity, many repeatable motions</small></div>
+            <div><span>04</span><strong>Canvas mesh</strong><small>One Kiro texture system, smoothly deformed at runtime</small></div>
           </div>
         </section>
 
-        <section className="kiro-rag-states" aria-labelledby="kiro-states-title">
+        <section className="kiro-model-capabilities" aria-labelledby="kiro-capabilities-title">
           <div className="kiro-rag-states-heading">
-            <p className="eyebrow">Semantic animation vocabulary</p>
-            <h2 id="kiro-states-title">The presets are examples, not the limit.</h2>
+            <p className="eyebrow">Why this version is different</p>
+            <h2 id="kiro-capabilities-title">No raw joint sliders in the product UI.</h2>
             <p>
-              Each state is just a named bundle of pose values. The same API can create new gestures, gaze targets, reactions and animation sequences without adding another rendered character.
+              The model exposes normalized behavior dimensions to code, while the visible experience stays restrained. That keeps Kiro expressive without asking users to manipulate anatomy or allowing invalid poses.
             </p>
           </div>
-
-          <div className="kiro-rag-state-grid">
-            {stateCards.map(([name, description], index) => (
-              <article className="kiro-rag-state-card" key={name}>
+          <div className="kiro-model-capabilities__grid">
+            {capabilities.map(([title, description], index) => (
+              <article key={title}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
-                <h3>{name}</h3>
+                <h3>{title}</h3>
                 <p>{description}</p>
               </article>
             ))}

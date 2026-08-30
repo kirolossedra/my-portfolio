@@ -3840,3 +3840,305 @@ button {
     display: none;
   }
 }
+
+/* Kiro Rag model v3 — canvas mesh renderer. */
+.kiro-rag-hero--model-v3 {
+  grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+  align-items: center;
+}
+
+.kiro-rag-avatar-stage--model-v3 {
+  isolation: isolate;
+}
+
+.kiro-avatar--model-v3 {
+  width: min(100%, 700px);
+}
+
+.kiro-model-stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: clamp(22px, 4vw, 42px);
+  background: #06172b;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(92, 185, 255, 0.035);
+  touch-action: pan-y;
+}
+
+.kiro-model-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 86px rgba(1, 8, 18, 0.24);
+  pointer-events: none;
+}
+
+.kiro-model-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: var(--kiro-model-ready, 0);
+  transition: opacity 220ms ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.kiro-model-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+}
+
+.kiro-model-state {
+  width: max-content;
+  max-width: 100%;
+  margin: 13px auto 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.kiro-model-state span {
+  color: #667481;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.kiro-model-state strong {
+  color: #d8dee4;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+
+.kiro-behavior-probe {
+  max-width: 660px;
+  margin-top: 34px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.kiro-behavior-probe__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+  color: #89959f;
+  font-size: 0.72rem;
+}
+
+.kiro-behavior-probe__dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #75808a;
+  box-shadow: 0 0 0 3px rgba(117, 128, 138, 0.08);
+}
+
+.kiro-behavior-probe__dot.is-retrieving,
+.kiro-behavior-probe__dot.is-answering {
+  background: #79c6ff;
+  box-shadow: 0 0 0 3px rgba(121, 198, 255, 0.09);
+}
+
+.kiro-behavior-probe__dot.is-success {
+  background: #d8bd76;
+  box-shadow: 0 0 0 3px rgba(216, 189, 118, 0.09);
+}
+
+.kiro-behavior-probe__dot.is-error {
+  background: #cf8d7d;
+  box-shadow: 0 0 0 3px rgba(207, 141, 125, 0.09);
+}
+
+.kiro-behavior-probe__field {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.kiro-behavior-probe__field > span {
+  color: #707d87;
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.kiro-behavior-probe__field > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.kiro-behavior-probe input {
+  min-width: 0;
+  min-height: 46px;
+  padding: 0 13px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  outline: none;
+  background: rgba(4, 10, 18, 0.48);
+  color: #e8ecef;
+  font: inherit;
+  font-size: 0.88rem;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.kiro-behavior-probe input:focus {
+  border-color: rgba(120, 194, 244, 0.42);
+  box-shadow: 0 0 0 3px rgba(120, 194, 244, 0.08);
+}
+
+.kiro-behavior-probe button {
+  min-width: 72px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid rgba(239, 185, 79, 0.28);
+  border-radius: 12px;
+  background: rgba(239, 185, 79, 0.1);
+  color: #eddaa9;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+
+.kiro-behavior-probe button:hover,
+.kiro-behavior-probe button:focus-visible {
+  border-color: rgba(239, 185, 79, 0.5);
+  background: rgba(239, 185, 79, 0.15);
+}
+
+.kiro-behavior-probe > p {
+  margin: 11px 0 0;
+  color: #66737e;
+  font-size: 0.67rem;
+  line-height: 1.55;
+}
+
+.kiro-model-capabilities {
+  width: min(calc(100% - 48px), 1240px);
+  margin: 0 auto;
+  padding: clamp(96px, 12vw, 156px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.kiro-model-capabilities h2 {
+  margin: 0;
+  font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 620;
+}
+
+.kiro-model-capabilities .kiro-rag-states-heading > p:last-child {
+  max-width: 790px;
+  margin: 26px 0 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.kiro-model-capabilities__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 58px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.kiro-model-capabilities__grid article {
+  min-height: 210px;
+  padding: 30px;
+  background: #0a1017;
+}
+
+.kiro-model-capabilities__grid article > span {
+  color: #5f6a74;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+.kiro-model-capabilities__grid h3 {
+  margin: 36px 0 0;
+  color: #e2e6e9;
+  font-size: 1.18rem;
+  font-weight: 600;
+}
+
+.kiro-model-capabilities__grid p {
+  margin: 12px 0 0;
+  color: #7f8992;
+  font-size: 0.82rem;
+  line-height: 1.64;
+}
+
+@media (max-width: 900px) {
+  .kiro-rag-hero--model-v3 {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .kiro-rag-avatar-stage--model-v3 {
+    width: min(100%, 680px);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .kiro-rag-hero--model-v3 {
+    width: min(calc(100% - 28px), 1240px);
+    padding-top: 52px;
+  }
+
+  .kiro-behavior-probe {
+    padding: 14px;
+  }
+
+  .kiro-behavior-probe__field > div {
+    grid-template-columns: 1fr;
+  }
+
+  .kiro-behavior-probe button {
+    width: 100%;
+  }
+
+  .kiro-model-capabilities {
+    width: min(calc(100% - 28px), 1240px);
+  }
+
+  .kiro-model-capabilities__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kiro-model-capabilities__grid article {
+    min-height: 175px;
+    padding: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiro-model-canvas {
+    transition: none;
+  }
+}
