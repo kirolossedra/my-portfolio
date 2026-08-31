@@ -11,6 +11,7 @@
 - [Generation Not Integrated](#generation-not-integrated)
 - [Browser Not Wired](#browser-not-wired)
 - [Deployment Not Selected/Completed](#deployment-not-selectedcompleted)
+- [Deployment Evaluation Addendum](#deployment-evaluation-addendum)
 
 <a id="active-known-issues"></a>
 ## Active Known Issues
@@ -56,6 +57,99 @@ The Kiro query input is a timer-driven behavior probe. It simulates state transi
 ## Deployment Not Selected/Completed
 
 The heavy Python runtime needs a persistent model-capable deployment target. Current Netlify + Cloudflare Worker deployment does not host it.
+
+
+<a id="deployment-evaluation-addendum"></a>
+## Deployment Evaluation Addendum
+
+The existing statement above — that deployment is not selected/completed — remains correct. The following evidence narrows **why** it remains incomplete.
+
+### Local Docker containerization — PASS
+
+The active runtime has now been successfully built and exercised inside a Linux Docker container.
+
+Validated:
+
+- Pinecone connection and 2,808-vector namespace;
+- Nomic query embedding on CPU;
+- CrossEncoder loading on CPU;
+- BM25 and metadata recall;
+- evidence/concept gates;
+- semantic dedupe through Pinecone-fetched vectors;
+- `/health`;
+- the real retrieval HTTP endpoint;
+- no local `embeddings.npy` matrix loaded by the runtime.
+
+Containerization itself is therefore no longer an open technical question.
+
+### CPU-only PyTorch packaging requirement
+
+The initial Docker build pulled large NVIDIA/CUDA packages through generic PyTorch dependency resolution and exhausted the local root filesystem.
+
+The corrected build explicitly installed PyTorch from:
+
+```text
+https://download.pytorch.org/whl/cpu
+```
+
+This is now a concrete packaging rule for the current CPU deployment path.
+
+### Measured runtime memory
+
+The initialized container was measured at:
+
+```text
+1.293 GiB RAM
+```
+
+This is a measured baseline, not a claim that the runtime cannot be optimized further.
+
+### Cloudflare Containers blocker
+
+Wrangler successfully authenticated, but:
+
+```text
+npx wrangler containers list
+```
+
+returned an authorization error stating that Cloudflare Containers require the Workers Paid plan.
+
+No Cloudflare Container, binding or RAG Worker route was deployed.
+
+Status:
+
+**BLOCKED BY CURRENT ACCOUNT PLAN.**
+
+### Render Free blocker
+
+Render's current Free web-service plan provides 512 MB RAM.
+
+The current 1.293 GiB runtime footprint is approximately 2.6x that allocation.
+
+No Render deployment was attempted because the resource mismatch was identified first.
+
+Status:
+
+**CURRENT RUNTIME DOES NOT FIT RENDER FREE AS-IS.**
+
+### Hosting decision remains open
+
+No replacement hosting architecture has been selected.
+
+Do not document any of these as decided until implementation resumes:
+
+- Render after memory optimization;
+- ONNX;
+- quantization;
+- a smaller model;
+- removing/replacing the CrossEncoder;
+- another free host;
+- paid Cloudflare Containers;
+- another paid provider.
+
+Full deployment evidence:
+
+- [../../docs/qc/rag/2026-08-31-containerization-and-hosting-evaluation.md](../../docs/qc/rag/2026-08-31-containerization-and-hosting-evaluation.md)
 
 ## Related Documentation
 

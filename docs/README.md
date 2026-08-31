@@ -7,6 +7,7 @@
 - [Whole-Project Map](#whole-project-map)
 - [Architecture](#architecture)
 - [Operations](#operations)
+- [RAG Deployment Endeavour](#rag-deployment-endeavour)
 - [Data and Testing](#data-and-testing)
 - [Versions and Evolution](#versions-and-evolution)
 - [Subsystem Documentation](#subsystem-documentation)
@@ -81,6 +82,21 @@ flowchart LR
 - [Portfolio scripts](../scripts/README.md)
 - [RAG system](../rag/README.md)
 - [Historical RAG README v1.0.0](../rag/docs/historical-rag-readme-v1.md) - complete preserved pre-Pinecone/pre-runtime snapshot
+
+
+<a id="rag-deployment-endeavour"></a>
+## RAG Deployment Endeavour
+
+The RAG deployment work has progressed beyond a bare local Python process: the active Pinecone-backed runtime has now been successfully built and exercised inside a Linux Docker container. Production hosting is still unresolved.
+
+The full chronology, exact test evidence and hosting blockers are preserved in:
+
+- [RAG containerization and hosting evaluation](qc/rag/2026-08-31-containerization-and-hosting-evaluation.md)
+- [Deployment operations update](operations/deployment.md#rag-containerization-and-hosting-evaluation---2026-08-31)
+- [RAG provider-integration update](../rag/docs/cloudflare-integration.md#2026-08-31-deployment-evaluation-update)
+- [RAG deployment blockers](../rag/docs/known-issues.md#deployment-evaluation-addendum)
+
+The checkpoint is intentionally narrow: Dockerization passed, Cloudflare Containers were blocked by the current account plan, Render Free was evaluated against the measured container footprint and found too small for the runtime as currently built, and no replacement hosting direction has yet been selected.
 
 ## Related Documentation
 

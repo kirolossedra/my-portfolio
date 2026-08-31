@@ -1,0 +1,138 @@
+RAG CONTAINERIZATION AND HOSTING EVALUATION — SANITIZED TERMINAL EVIDENCE
+Date: 2026-08-31
+Scope: local Docker validation and production-host feasibility.
+Secret values and account identifiers are intentionally omitted.
+
+================================================================================
+1. DOCKER VERSION
+================================================================================
+
+$ docker --version
+Docker version 28.2.2, build 28.2.2-0ubuntu1~24.04.1
+
+================================================================================
+2. DOCKER HOST
+================================================================================
+
+Server Version: 28.2.2
+Kernel Version: 6.14.0-37-generic
+Operating System: Ubuntu 24.04.3 LTS
+OSType: linux
+Architecture: x86_64
+CPUs: 22
+Total Memory: 15.14GiB
+
+================================================================================
+3. DISK AFTER RECOVERY
+================================================================================
+
+$ docker builder prune -af && df -h /
+
+Total reclaimed space: 0B
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/nvme0n1p6   57G   41G   13G  77% /
+
+================================================================================
+4. CPU-ONLY PYTORCH CHECK
+================================================================================
+
+$ grep -n "pytorch.org\|torch" rag/Dockerfile
+16:    && pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch \
+
+================================================================================
+5. SUCCESSFUL IMAGE BUILD
+================================================================================
+
+Step 7/11 : COPY runtime/rag-api-pinecone-v1.py runtime/rag-api-pinecone-v1.py
+ ---> 7db986759c94
+Step 8/11 : COPY rag-corpus/embeddings-v2/embedding-records.jsonl rag-corpus/embeddings-v2/embedding-records.jsonl
+ ---> 08e32e6ee2a9
+Step 9/11 : COPY rag-corpus/embeddings-v2/embedding-manifest.json rag-corpus/embeddings-v2/embedding-manifest.json
+ ---> 39660a80d0d3
+Step 10/11 : EXPOSE 8000
+ ---> e78719d6e7be
+Step 11/11 : CMD ["python", "runtime/rag-api-pinecone-v1.py"]
+ ---> 2c5148f0ab3c
+Successfully built 2c5148f0ab3c
+Successfully tagged portfolio-rag:v1
+
+================================================================================
+6. CONTAINER STARTUP
+================================================================================
+
+<All keys matched successfully>
+Loading weights: 100%
+SUCCESS (cpu: CPU)
+[8/9] Connect and validate Pinecone ....... SUCCESS (portfolio-career-rag-v1 / corpus-v1; 2,808 vectors)
+[9/9] Run end-to-end retrieval smoke ...... SUCCESS (top=10; 6.380s)
+
+RAG API RUNTIME INITIALIZATION: SUCCESS
+Dense backend:      Pinecone
+Local matrix:       NOT LOADED
+BM25:               ENABLED
+Metadata recall:    ENABLED
+Concept gate:       ENABLED
+Evidence gate:      ENABLED
+CrossEncoder:       ENABLED
+Semantic dedupe:    Pinecone fetched vectors
+Gemini generation:  NOT YET WIRED
+
+INFO: Application startup complete.
+INFO: Uvicorn running on http://0.0.0.0:8000
+
+================================================================================
+7. HEALTH
+================================================================================
+
+$ curl http://localhost:8000/health
+
+{"status":"ok","runtime_schema_version":"1.0.0","retrieval_schema_version":"3.1.0-pinecone","documents":2808,"repositories":134,"dense_backend":"pinecone","pinecone_index":"portfolio-career-rag-v1","pinecone_namespace":"corpus-v1","pinecone_vector_count":2808,"embedding_model":"nomic-ai/nomic-embed-text-v1.5","embedding_dimensions":512,"reranker_model":"cross-encoder/ms-marco-MiniLM-L6-v2","generation_model":null,"generation_status":"not_integrated","startup_utc":"2026-08-31T18:16:52.716029+00:00"}
+
+================================================================================
+8. NODE 18 TOOLING FAILURE
+================================================================================
+
+npm WARN EBADENGINE   required: { node: '>=20' },
+npm WARN EBADENGINE   current: { node: 'v18.19.1', npm: '9.2.0' }
+
+npm ERR! path .../node_modules/netlify-cli
+npm ERR! SyntaxError: Unexpected token 'with'
+npm ERR! Node.js v18.19.1
+
+After Node 22 was selected, npm ci completed successfully.
+
+================================================================================
+9. CLOUDFLARE CONTAINERS ACCESS PROBE
+================================================================================
+
+$ npx wrangler containers list
+
+ERROR:
+Unauthorized: You do not have access to Cloudflare Containers.
+Deploying containers requires the Workers Paid plan.
+
+No Container deployment or RAG Worker binding was performed after this result.
+
+================================================================================
+10. RUNNING CONTAINER MEMORY
+================================================================================
+
+$ docker stats --no-stream portfolio-rag
+
+CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O       PIDS
+92f62210f0b1   portfolio-rag   0.22%     1.293GiB / 15.14GiB   8.54%     608MB / 1.63MB   379MB / 638MB   110
+
+================================================================================
+11. HOSTING INTERPRETATION
+================================================================================
+
+Dockerization:                PASS
+Pinecone from Docker:         PASS
+Container /health:            PASS
+Container retrieval:          EXERCISED
+Cloudflare Containers:        BLOCKED BY ACCOUNT PLAN
+Current runtime RAM:          ~1.293 GiB
+Render Free documented RAM:   512 MB
+Production RAG host:          NOT SELECTED
+Gemini:                       NOT INTEGRATED
+Browser live RAG:             NOT INTEGRATED
