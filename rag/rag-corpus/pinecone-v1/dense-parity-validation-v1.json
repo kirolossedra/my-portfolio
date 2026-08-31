@@ -1,0 +1,1643 @@
+{
+  "file_id": "RAG-PINECONE-DENSE-PARITY-7a42b9e9-7dae-4662-8d40-8b5dd7b7d312",
+  "version_id": "RAG-PINECONE-DENSE-PARITY-v1.0.0-aca0b86b-0ece-4273-b110-b52575c08ac5",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-08-31T13:56:01.010411+00:00",
+  "generator": {
+    "script": "validate-pinecone-dense-parity-v1.py",
+    "file_id": "RAG-PINECONE-PARITY-90555eec-72f5-434d-9311-66b6aae27688",
+    "version_id": "RAG-PINECONE-PARITY-v1.0.0-b324d78a-86fa-4ecf-b4e6-067271e23cf6",
+    "version": "1.0.0"
+  },
+  "query": "What evidence shows experience with authorization architecture?",
+  "embedding": {
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "query_prefix": "search_query:",
+    "native_dimension": 768,
+    "stored_dimension": 512,
+    "stored_query_l2_norm": 0.9999999403953552
+  },
+  "pinecone": {
+    "index_name": "portfolio-career-rag-v1",
+    "namespace": "corpus-v1",
+    "dimension": 512,
+    "metric": "cosine"
+  },
+  "criteria": {
+    "top1_must_match": true,
+    "minimum_overlap_at_10": 0.9,
+    "minimum_overlap_at_25": 0.9,
+    "minimum_overlap_at_50": 0.9,
+    "maximum_shared_score_delta": 0.001
+  },
+  "checks": {
+    "top1_same_document": true,
+    "top10_overlap_at_least_90_percent": true,
+    "top25_overlap_at_least_90_percent": true,
+    "top50_overlap_at_least_90_percent": true,
+    "shared_score_delta_within_tolerance": false
+  },
+  "overall_result": "FAIL",
+  "comparison": {
+    "overlap_at_10": {
+      "k": 10,
+      "shared_count": 10,
+      "overlap_ratio": 1.0,
+      "local_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-126-rd010",
+        "repo-016-rd012"
+      ],
+      "pinecone_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-016-rd012",
+        "repo-126-rd010"
+      ]
+    },
+    "overlap_at_25": {
+      "k": 25,
+      "shared_count": 24,
+      "overlap_ratio": 0.96,
+      "local_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-126-rd010",
+        "repo-016-rd012",
+        "repo-123-rd008",
+        "repo-098-rd018",
+        "repo-098-rd017",
+        "repo-119-rd003",
+        "repo-125-rd004",
+        "repo-014-rd035",
+        "repo-034-rd013",
+        "repo-131-rd007",
+        "repo-113-rd005",
+        "repo-117-rd019",
+        "repo-017-rd012",
+        "repo-014-rd019",
+        "repo-119-rd004",
+        "repo-126-rd001",
+        "repo-014-rd037"
+      ],
+      "pinecone_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-016-rd012",
+        "repo-126-rd010",
+        "repo-123-rd008",
+        "repo-098-rd018",
+        "repo-098-rd017",
+        "repo-119-rd003",
+        "repo-014-rd035",
+        "repo-034-rd013",
+        "repo-131-rd007",
+        "repo-125-rd004",
+        "repo-113-rd005",
+        "repo-117-rd019",
+        "repo-017-rd012",
+        "repo-119-rd004",
+        "repo-014-rd019",
+        "repo-014-rd009",
+        "repo-014-rd037"
+      ]
+    },
+    "overlap_at_50": {
+      "k": 50,
+      "shared_count": 49,
+      "overlap_ratio": 0.98,
+      "local_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-126-rd010",
+        "repo-016-rd012",
+        "repo-123-rd008",
+        "repo-098-rd018",
+        "repo-098-rd017",
+        "repo-119-rd003",
+        "repo-125-rd004",
+        "repo-014-rd035",
+        "repo-034-rd013",
+        "repo-131-rd007",
+        "repo-113-rd005",
+        "repo-117-rd019",
+        "repo-017-rd012",
+        "repo-014-rd019",
+        "repo-119-rd004",
+        "repo-126-rd001",
+        "repo-014-rd037",
+        "repo-124-rd006",
+        "repo-014-rd009",
+        "repo-014-rd012",
+        "repo-113-rd003",
+        "repo-098-rd011",
+        "repo-129-rd006",
+        "repo-095-rd010",
+        "repo-014-rd025",
+        "repo-038-rd012",
+        "repo-098-rd012",
+        "repo-095-rd005",
+        "repo-119-rd020",
+        "repo-087-rd012",
+        "repo-110-rd006",
+        "repo-113-rd019",
+        "repo-098-rd014",
+        "repo-126-rd005",
+        "repo-119-rd005",
+        "repo-131-rd008",
+        "repo-113-rd018",
+        "repo-016-rd004",
+        "repo-113-rd020",
+        "repo-106-rd009",
+        "repo-119-rd017",
+        "repo-123-rd022"
+      ],
+      "pinecone_ids": [
+        "repo-123-rd009",
+        "repo-126-rd004",
+        "repo-038-rd008",
+        "repo-014-rd008",
+        "repo-127-rd003",
+        "repo-133-rd006",
+        "repo-119-rd022",
+        "repo-116-rd015",
+        "repo-016-rd012",
+        "repo-126-rd010",
+        "repo-123-rd008",
+        "repo-098-rd018",
+        "repo-098-rd017",
+        "repo-119-rd003",
+        "repo-014-rd035",
+        "repo-034-rd013",
+        "repo-131-rd007",
+        "repo-125-rd004",
+        "repo-113-rd005",
+        "repo-117-rd019",
+        "repo-017-rd012",
+        "repo-119-rd004",
+        "repo-014-rd019",
+        "repo-014-rd009",
+        "repo-014-rd037",
+        "repo-126-rd001",
+        "repo-014-rd012",
+        "repo-113-rd003",
+        "repo-124-rd006",
+        "repo-098-rd011",
+        "repo-014-rd025",
+        "repo-038-rd012",
+        "repo-129-rd006",
+        "repo-095-rd010",
+        "repo-095-rd005",
+        "repo-098-rd012",
+        "repo-119-rd020",
+        "repo-113-rd019",
+        "repo-087-rd012",
+        "repo-119-rd005",
+        "repo-131-rd008",
+        "repo-098-rd014",
+        "repo-113-rd018",
+        "repo-016-rd004",
+        "repo-106-rd009",
+        "repo-126-rd005",
+        "repo-110-rd006",
+        "repo-119-rd017",
+        "repo-123-rd022",
+        "repo-037-rd007"
+      ]
+    },
+    "maximum_shared_score_delta": 0.0025883320429687107,
+    "shared_score_deltas": [
+      {
+        "document_id": "repo-123-rd009",
+        "local_score": 0.7548233270645142,
+        "pinecone_score": 0.755417,
+        "absolute_delta": 0.000593672935485845
+      },
+      {
+        "document_id": "repo-126-rd004",
+        "local_score": 0.7408523559570312,
+        "pinecone_score": 0.743440688,
+        "absolute_delta": 0.0025883320429687107
+      },
+      {
+        "document_id": "repo-038-rd008",
+        "local_score": 0.7387570142745972,
+        "pinecone_score": 0.739172041,
+        "absolute_delta": 0.0004150267254028339
+      },
+      {
+        "document_id": "repo-014-rd008",
+        "local_score": 0.7340492010116577,
+        "pinecone_score": 0.735179961,
+        "absolute_delta": 0.0011307599883423336
+      },
+      {
+        "document_id": "repo-127-rd003",
+        "local_score": 0.733733057975769,
+        "pinecone_score": 0.734689772,
+        "absolute_delta": 0.0009567140242309202
+      },
+      {
+        "document_id": "repo-133-rd006",
+        "local_score": 0.7324856519699097,
+        "pinecone_score": 0.733556807,
+        "absolute_delta": 0.001071155030090365
+      },
+      {
+        "document_id": "repo-119-rd022",
+        "local_score": 0.7310785055160522,
+        "pinecone_score": 0.73172003,
+        "absolute_delta": 0.0006415244839477197
+      },
+      {
+        "document_id": "repo-116-rd015",
+        "local_score": 0.7283074855804443,
+        "pinecone_score": 0.729217589,
+        "absolute_delta": 0.0009101034195556634
+      },
+      {
+        "document_id": "repo-126-rd010",
+        "local_score": 0.7262118458747864,
+        "pinecone_score": 0.726001799,
+        "absolute_delta": 0.00021004687478642925
+      },
+      {
+        "document_id": "repo-016-rd012",
+        "local_score": 0.7259067296981812,
+        "pinecone_score": 0.726558745,
+        "absolute_delta": 0.000652015301818798
+      },
+      {
+        "document_id": "repo-123-rd008",
+        "local_score": 0.7242119312286377,
+        "pinecone_score": 0.724495,
+        "absolute_delta": 0.0002830687713623048
+      },
+      {
+        "document_id": "repo-098-rd018",
+        "local_score": 0.7223635911941528,
+        "pinecone_score": 0.72318846,
+        "absolute_delta": 0.0008248688058472009
+      },
+      {
+        "document_id": "repo-098-rd017",
+        "local_score": 0.7217001914978027,
+        "pinecone_score": 0.722549498,
+        "absolute_delta": 0.0008493065021972779
+      },
+      {
+        "document_id": "repo-119-rd003",
+        "local_score": 0.7212700247764587,
+        "pinecone_score": 0.7223683,
+        "absolute_delta": 0.001098275223541223
+      },
+      {
+        "document_id": "repo-125-rd004",
+        "local_score": 0.7208874225616455,
+        "pinecone_score": 0.720907271,
+        "absolute_delta": 1.9848438354452824e-05
+      },
+      {
+        "document_id": "repo-014-rd035",
+        "local_score": 0.7208821177482605,
+        "pinecone_score": 0.72218138,
+        "absolute_delta": 0.0012992622517394858
+      },
+      {
+        "document_id": "repo-034-rd013",
+        "local_score": 0.7205891609191895,
+        "pinecone_score": 0.721347809,
+        "absolute_delta": 0.0007586480808104978
+      },
+      {
+        "document_id": "repo-131-rd007",
+        "local_score": 0.7204424142837524,
+        "pinecone_score": 0.721122801,
+        "absolute_delta": 0.0006803867162475941
+      },
+      {
+        "document_id": "repo-113-rd005",
+        "local_score": 0.7186319828033447,
+        "pinecone_score": 0.719686568,
+        "absolute_delta": 0.0010545851966552444
+      },
+      {
+        "document_id": "repo-117-rd019",
+        "local_score": 0.7180391550064087,
+        "pinecone_score": 0.718395293,
+        "absolute_delta": 0.00035613799359135445
+      },
+      {
+        "document_id": "repo-017-rd012",
+        "local_score": 0.7167218923568726,
+        "pinecone_score": 0.717388213,
+        "absolute_delta": 0.0006663206431274382
+      },
+      {
+        "document_id": "repo-014-rd019",
+        "local_score": 0.7159336805343628,
+        "pinecone_score": 0.716837,
+        "absolute_delta": 0.0009033194656371535
+      },
+      {
+        "document_id": "repo-119-rd004",
+        "local_score": 0.7152112126350403,
+        "pinecone_score": 0.717233717,
+        "absolute_delta": 0.002022504364959765
+      },
+      {
+        "document_id": "repo-126-rd001",
+        "local_score": 0.7150570750236511,
+        "pinecone_score": 0.715538085,
+        "absolute_delta": 0.00048100997634892284
+      },
+      {
+        "document_id": "repo-014-rd037",
+        "local_score": 0.7148556709289551,
+        "pinecone_score": 0.715700209,
+        "absolute_delta": 0.000844538071044898
+      },
+      {
+        "document_id": "repo-124-rd006",
+        "local_score": 0.7148127555847168,
+        "pinecone_score": 0.714773238,
+        "absolute_delta": 3.951758471676392e-05
+      },
+      {
+        "document_id": "repo-014-rd009",
+        "local_score": 0.7147411704063416,
+        "pinecone_score": 0.715755522,
+        "absolute_delta": 0.0010143515936584802
+      },
+      {
+        "document_id": "repo-014-rd012",
+        "local_score": 0.7144412994384766,
+        "pinecone_score": 0.715276778,
+        "absolute_delta": 0.0008354785615234395
+      },
+      {
+        "document_id": "repo-113-rd003",
+        "local_score": 0.7143290042877197,
+        "pinecone_score": 0.714908659,
+        "absolute_delta": 0.0005796547122802753
+      },
+      {
+        "document_id": "repo-098-rd011",
+        "local_score": 0.7141613960266113,
+        "pinecone_score": 0.714466155,
+        "absolute_delta": 0.00030475897338866353
+      },
+      {
+        "document_id": "repo-129-rd006",
+        "local_score": 0.7133336663246155,
+        "pinecone_score": 0.713493407,
+        "absolute_delta": 0.00015974067538448988
+      },
+      {
+        "document_id": "repo-095-rd010",
+        "local_score": 0.7129957675933838,
+        "pinecone_score": 0.713396132,
+        "absolute_delta": 0.00040036440661617156
+      },
+      {
+        "document_id": "repo-014-rd025",
+        "local_score": 0.7128523588180542,
+        "pinecone_score": 0.713811934,
+        "absolute_delta": 0.0009595751819457821
+      },
+      {
+        "document_id": "repo-038-rd012",
+        "local_score": 0.7128230333328247,
+        "pinecone_score": 0.713567793,
+        "absolute_delta": 0.0007447596671752432
+      },
+      {
+        "document_id": "repo-098-rd012",
+        "local_score": 0.7122728824615479,
+        "pinecone_score": 0.712535918,
+        "absolute_delta": 0.0002630355384521943
+      },
+      {
+        "document_id": "repo-095-rd005",
+        "local_score": 0.712096631526947,
+        "pinecone_score": 0.712680876,
+        "absolute_delta": 0.0005842444730529417
+      },
+      {
+        "document_id": "repo-119-rd020",
+        "local_score": 0.7116410732269287,
+        "pinecone_score": 0.712377608,
+        "absolute_delta": 0.0007365347730713401
+      },
+      {
+        "document_id": "repo-087-rd012",
+        "local_score": 0.7113974094390869,
+        "pinecone_score": 0.711734831,
+        "absolute_delta": 0.00033742156091309816
+      },
+      {
+        "document_id": "repo-110-rd006",
+        "local_score": 0.7110175490379333,
+        "pinecone_score": 0.710500777,
+        "absolute_delta": 0.0005167720379333218
+      },
+      {
+        "document_id": "repo-113-rd019",
+        "local_score": 0.7108796238899231,
+        "pinecone_score": 0.712106764,
+        "absolute_delta": 0.001227140110076852
+      },
+      {
+        "document_id": "repo-098-rd014",
+        "local_score": 0.7106890678405762,
+        "pinecone_score": 0.711286604,
+        "absolute_delta": 0.0005975361594238171
+      },
+      {
+        "document_id": "repo-126-rd005",
+        "local_score": 0.7106621861457825,
+        "pinecone_score": 0.710594237,
+        "absolute_delta": 6.794914578245326e-05
+      },
+      {
+        "document_id": "repo-119-rd005",
+        "local_score": 0.7102794647216797,
+        "pinecone_score": 0.711511672,
+        "absolute_delta": 0.0012322072783202964
+      },
+      {
+        "document_id": "repo-131-rd008",
+        "local_score": 0.710064172744751,
+        "pinecone_score": 0.711303771,
+        "absolute_delta": 0.001239598255248997
+      },
+      {
+        "document_id": "repo-113-rd018",
+        "local_score": 0.7100617289543152,
+        "pinecone_score": 0.711147368,
+        "absolute_delta": 0.0010856390456848164
+      },
+      {
+        "document_id": "repo-016-rd004",
+        "local_score": 0.7098479270935059,
+        "pinecone_score": 0.711097777,
+        "absolute_delta": 0.001249849906494127
+      },
+      {
+        "document_id": "repo-106-rd009",
+        "local_score": 0.7091810703277588,
+        "pinecone_score": 0.710676253,
+        "absolute_delta": 0.0014951826722412465
+      },
+      {
+        "document_id": "repo-119-rd017",
+        "local_score": 0.7088261246681213,
+        "pinecone_score": 0.710027754,
+        "absolute_delta": 0.0012016293318786175
+      },
+      {
+        "document_id": "repo-123-rd022",
+        "local_score": 0.7085247039794922,
+        "pinecone_score": 0.70967108,
+        "absolute_delta": 0.0011463760205078222
+      }
+    ]
+  },
+  "local_top_50": [
+    {
+      "rank": 1,
+      "document_id": "repo-123-rd009",
+      "score": 0.7548233270645142,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "interpretation",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 2,
+      "document_id": "repo-126-rd004",
+      "score": 0.7408523559570312,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.595
+    },
+    {
+      "rank": 3,
+      "document_id": "repo-038-rd008",
+      "score": 0.7387570142745972,
+      "repository_index": 38,
+      "repository_name": "Door-Lock-System",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.2335
+    },
+    {
+      "rank": 4,
+      "document_id": "repo-014-rd008",
+      "score": 0.7340492010116577,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5021
+    },
+    {
+      "rank": 5,
+      "document_id": "repo-127-rd003",
+      "score": 0.733733057975769,
+      "repository_index": 127,
+      "repository_name": "RobohubDemo",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.432
+    },
+    {
+      "rank": 6,
+      "document_id": "repo-133-rd006",
+      "score": 0.7324856519699097,
+      "repository_index": 133,
+      "repository_name": "AQS-BLE-PE",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 7,
+      "document_id": "repo-119-rd022",
+      "score": 0.7310785055160522,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 8,
+      "document_id": "repo-116-rd015",
+      "score": 0.7283074855804443,
+      "repository_index": 116,
+      "repository_name": "test3",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 9,
+      "document_id": "repo-126-rd010",
+      "score": 0.7262118458747864,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 10,
+      "document_id": "repo-016-rd012",
+      "score": 0.7259067296981812,
+      "repository_index": 16,
+      "repository_name": "kirolossedra",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.351
+    },
+    {
+      "rank": 11,
+      "document_id": "repo-123-rd008",
+      "score": 0.7242119312286377,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4057
+    },
+    {
+      "rank": 12,
+      "document_id": "repo-098-rd018",
+      "score": 0.7223635911941528,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5786
+    },
+    {
+      "rank": 13,
+      "document_id": "repo-098-rd017",
+      "score": 0.7217001914978027,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5888
+    },
+    {
+      "rank": 14,
+      "document_id": "repo-119-rd003",
+      "score": 0.7212700247764587,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4894
+    },
+    {
+      "rank": 15,
+      "document_id": "repo-125-rd004",
+      "score": 0.7208874225616455,
+      "repository_index": 125,
+      "repository_name": "Password-Hashing-Function-for-Bitwarden",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 16,
+      "document_id": "repo-014-rd035",
+      "score": 0.7208821177482605,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3504
+    },
+    {
+      "rank": 17,
+      "document_id": "repo-034-rd013",
+      "score": 0.7205891609191895,
+      "repository_index": 34,
+      "repository_name": "Port-AUTOSAR-ARM",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 18,
+      "document_id": "repo-131-rd007",
+      "score": 0.7204424142837524,
+      "repository_index": 131,
+      "repository_name": "WSDL-Inter-project-Item-Tracking",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5066
+    },
+    {
+      "rank": 19,
+      "document_id": "repo-113-rd005",
+      "score": 0.7186319828033447,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5608
+    },
+    {
+      "rank": 20,
+      "document_id": "repo-117-rd019",
+      "score": 0.7180391550064087,
+      "repository_index": 117,
+      "repository_name": "Apple-Publication",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 21,
+      "document_id": "repo-017-rd012",
+      "score": 0.7167218923568726,
+      "repository_index": 17,
+      "repository_name": "Go-Back-N-Protocol",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 22,
+      "document_id": "repo-014-rd019",
+      "score": 0.7159336805343628,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.3785
+    },
+    {
+      "rank": 23,
+      "document_id": "repo-119-rd004",
+      "score": 0.7152112126350403,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "chronology",
+      "semantic_area": "chronology_growth",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4519
+    },
+    {
+      "rank": 24,
+      "document_id": "repo-126-rd001",
+      "score": 0.7150570750236511,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "mixed",
+      "specificity_score": 0.3624
+    },
+    {
+      "rank": 25,
+      "document_id": "repo-014-rd037",
+      "score": 0.7148556709289551,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.64
+    },
+    {
+      "rank": 26,
+      "document_id": "repo-124-rd006",
+      "score": 0.7148127555847168,
+      "repository_index": 124,
+      "repository_name": "MyCV",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4885
+    },
+    {
+      "rank": 27,
+      "document_id": "repo-014-rd009",
+      "score": 0.7147411704063416,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3664
+    },
+    {
+      "rank": 28,
+      "document_id": "repo-014-rd012",
+      "score": 0.7144412994384766,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4677
+    },
+    {
+      "rank": 29,
+      "document_id": "repo-113-rd003",
+      "score": 0.7143290042877197,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4542
+    },
+    {
+      "rank": 30,
+      "document_id": "repo-098-rd011",
+      "score": 0.7141613960266113,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6849
+    },
+    {
+      "rank": 31,
+      "document_id": "repo-129-rd006",
+      "score": 0.7133336663246155,
+      "repository_index": 129,
+      "repository_name": "CV-Highly-Organized",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 32,
+      "document_id": "repo-095-rd010",
+      "score": 0.7129957675933838,
+      "repository_index": 95,
+      "repository_name": "Quizedra",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6978
+    },
+    {
+      "rank": 33,
+      "document_id": "repo-014-rd025",
+      "score": 0.7128523588180542,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3588
+    },
+    {
+      "rank": 34,
+      "document_id": "repo-038-rd012",
+      "score": 0.7128230333328247,
+      "repository_index": 38,
+      "repository_name": "Door-Lock-System",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.2703
+    },
+    {
+      "rank": 35,
+      "document_id": "repo-098-rd012",
+      "score": 0.7122728824615479,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 36,
+      "document_id": "repo-095-rd005",
+      "score": 0.712096631526947,
+      "repository_index": 95,
+      "repository_name": "Quizedra",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.595
+    },
+    {
+      "rank": 37,
+      "document_id": "repo-119-rd020",
+      "score": 0.7116410732269287,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5091
+    },
+    {
+      "rank": 38,
+      "document_id": "repo-087-rd012",
+      "score": 0.7113974094390869,
+      "repository_index": 87,
+      "repository_name": "Milestone",
+      "retrieval_class": "interpretation",
+      "semantic_area": "engineering_judgment",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.28
+    },
+    {
+      "rank": 39,
+      "document_id": "repo-110-rd006",
+      "score": 0.7110175490379333,
+      "repository_index": 110,
+      "repository_name": "SedraFTPVariant",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5032
+    },
+    {
+      "rank": 40,
+      "document_id": "repo-113-rd019",
+      "score": 0.7108796238899231,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.508
+    },
+    {
+      "rank": 41,
+      "document_id": "repo-098-rd014",
+      "score": 0.7106890678405762,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.2681
+    },
+    {
+      "rank": 42,
+      "document_id": "repo-126-rd005",
+      "score": 0.7106621861457825,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.58
+    },
+    {
+      "rank": 43,
+      "document_id": "repo-119-rd005",
+      "score": 0.7102794647216797,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6296
+    },
+    {
+      "rank": 44,
+      "document_id": "repo-131-rd008",
+      "score": 0.710064172744751,
+      "repository_index": 131,
+      "repository_name": "WSDL-Inter-project-Item-Tracking",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5982
+    },
+    {
+      "rank": 45,
+      "document_id": "repo-113-rd018",
+      "score": 0.7100617289543152,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 46,
+      "document_id": "repo-016-rd004",
+      "score": 0.7098479270935059,
+      "repository_index": 16,
+      "repository_name": "kirolossedra",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3494
+    },
+    {
+      "rank": 47,
+      "document_id": "repo-113-rd020",
+      "score": 0.7092546820640564,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 48,
+      "document_id": "repo-106-rd009",
+      "score": 0.7091810703277588,
+      "repository_index": 106,
+      "repository_name": "Thesis-Scripts",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6231
+    },
+    {
+      "rank": 49,
+      "document_id": "repo-119-rd017",
+      "score": 0.7088261246681213,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "testing_quality",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 50,
+      "document_id": "repo-123-rd022",
+      "score": 0.7085247039794922,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3749
+    }
+  ],
+  "pinecone_top_50": [
+    {
+      "rank": 1,
+      "document_id": "repo-123-rd009",
+      "score": 0.755417,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "interpretation",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 2,
+      "document_id": "repo-126-rd004",
+      "score": 0.743440688,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.595
+    },
+    {
+      "rank": 3,
+      "document_id": "repo-038-rd008",
+      "score": 0.739172041,
+      "repository_index": 38,
+      "repository_name": "Door-Lock-System",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.2335
+    },
+    {
+      "rank": 4,
+      "document_id": "repo-014-rd008",
+      "score": 0.735179961,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5021
+    },
+    {
+      "rank": 5,
+      "document_id": "repo-127-rd003",
+      "score": 0.734689772,
+      "repository_index": 127,
+      "repository_name": "RobohubDemo",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.432
+    },
+    {
+      "rank": 6,
+      "document_id": "repo-133-rd006",
+      "score": 0.733556807,
+      "repository_index": 133,
+      "repository_name": "AQS-BLE-PE",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 7,
+      "document_id": "repo-119-rd022",
+      "score": 0.73172003,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 8,
+      "document_id": "repo-116-rd015",
+      "score": 0.729217589,
+      "repository_index": 116,
+      "repository_name": "test3",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 9,
+      "document_id": "repo-016-rd012",
+      "score": 0.726558745,
+      "repository_index": 16,
+      "repository_name": "kirolossedra",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.351
+    },
+    {
+      "rank": 10,
+      "document_id": "repo-126-rd010",
+      "score": 0.726001799,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 11,
+      "document_id": "repo-123-rd008",
+      "score": 0.724495,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4057
+    },
+    {
+      "rank": 12,
+      "document_id": "repo-098-rd018",
+      "score": 0.72318846,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5786
+    },
+    {
+      "rank": 13,
+      "document_id": "repo-098-rd017",
+      "score": 0.722549498,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5888
+    },
+    {
+      "rank": 14,
+      "document_id": "repo-119-rd003",
+      "score": 0.7223683,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4894
+    },
+    {
+      "rank": 15,
+      "document_id": "repo-014-rd035",
+      "score": 0.72218138,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3504
+    },
+    {
+      "rank": 16,
+      "document_id": "repo-034-rd013",
+      "score": 0.721347809,
+      "repository_index": 34,
+      "repository_name": "Port-AUTOSAR-ARM",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 17,
+      "document_id": "repo-131-rd007",
+      "score": 0.721122801,
+      "repository_index": 131,
+      "repository_name": "WSDL-Inter-project-Item-Tracking",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5066
+    },
+    {
+      "rank": 18,
+      "document_id": "repo-125-rd004",
+      "score": 0.720907271,
+      "repository_index": 125,
+      "repository_name": "Password-Hashing-Function-for-Bitwarden",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 19,
+      "document_id": "repo-113-rd005",
+      "score": 0.719686568,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5608
+    },
+    {
+      "rank": 20,
+      "document_id": "repo-117-rd019",
+      "score": 0.718395293,
+      "repository_index": 117,
+      "repository_name": "Apple-Publication",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 21,
+      "document_id": "repo-017-rd012",
+      "score": 0.717388213,
+      "repository_index": 17,
+      "repository_name": "Go-Back-N-Protocol",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 22,
+      "document_id": "repo-119-rd004",
+      "score": 0.717233717,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "chronology",
+      "semantic_area": "chronology_growth",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4519
+    },
+    {
+      "rank": 23,
+      "document_id": "repo-014-rd019",
+      "score": 0.716837,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.3785
+    },
+    {
+      "rank": 24,
+      "document_id": "repo-014-rd009",
+      "score": 0.715755522,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3664
+    },
+    {
+      "rank": 25,
+      "document_id": "repo-014-rd037",
+      "score": 0.715700209,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.64
+    },
+    {
+      "rank": 26,
+      "document_id": "repo-126-rd001",
+      "score": 0.715538085,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "mixed",
+      "specificity_score": 0.3624
+    },
+    {
+      "rank": 27,
+      "document_id": "repo-014-rd012",
+      "score": 0.715276778,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4677
+    },
+    {
+      "rank": 28,
+      "document_id": "repo-113-rd003",
+      "score": 0.714908659,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4542
+    },
+    {
+      "rank": 29,
+      "document_id": "repo-124-rd006",
+      "score": 0.714773238,
+      "repository_index": 124,
+      "repository_name": "MyCV",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.4885
+    },
+    {
+      "rank": 30,
+      "document_id": "repo-098-rd011",
+      "score": 0.714466155,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6849
+    },
+    {
+      "rank": 31,
+      "document_id": "repo-014-rd025",
+      "score": 0.713811934,
+      "repository_index": 14,
+      "repository_name": "DMA-Model",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3588
+    },
+    {
+      "rank": 32,
+      "document_id": "repo-038-rd012",
+      "score": 0.713567793,
+      "repository_index": 38,
+      "repository_name": "Door-Lock-System",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.2703
+    },
+    {
+      "rank": 33,
+      "document_id": "repo-129-rd006",
+      "score": 0.713493407,
+      "repository_index": 129,
+      "repository_name": "CV-Highly-Organized",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "identity_access_security",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.34
+    },
+    {
+      "rank": 34,
+      "document_id": "repo-095-rd010",
+      "score": 0.713396132,
+      "repository_index": 95,
+      "repository_name": "Quizedra",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6978
+    },
+    {
+      "rank": 35,
+      "document_id": "repo-095-rd005",
+      "score": 0.712680876,
+      "repository_index": 95,
+      "repository_name": "Quizedra",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.595
+    },
+    {
+      "rank": 36,
+      "document_id": "repo-098-rd012",
+      "score": 0.712535918,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 37,
+      "document_id": "repo-119-rd020",
+      "score": 0.712377608,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5091
+    },
+    {
+      "rank": 38,
+      "document_id": "repo-113-rd019",
+      "score": 0.712106764,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.508
+    },
+    {
+      "rank": 39,
+      "document_id": "repo-087-rd012",
+      "score": 0.711734831,
+      "repository_index": 87,
+      "repository_name": "Milestone",
+      "retrieval_class": "interpretation",
+      "semantic_area": "engineering_judgment",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.28
+    },
+    {
+      "rank": 40,
+      "document_id": "repo-119-rd005",
+      "score": 0.711511672,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6296
+    },
+    {
+      "rank": 41,
+      "document_id": "repo-131-rd008",
+      "score": 0.711303771,
+      "repository_index": 131,
+      "repository_name": "WSDL-Inter-project-Item-Tracking",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5982
+    },
+    {
+      "rank": 42,
+      "document_id": "repo-098-rd014",
+      "score": 0.711286604,
+      "repository_index": 98,
+      "repository_name": "RogersExperiment",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "neutral",
+      "specificity_score": 0.2681
+    },
+    {
+      "rank": 43,
+      "document_id": "repo-113-rd018",
+      "score": 0.711147368,
+      "repository_index": 113,
+      "repository_name": "Indoor-Journal-",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "architecture_system_design",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.47
+    },
+    {
+      "rank": 44,
+      "document_id": "repo-016-rd004",
+      "score": 0.711097777,
+      "repository_index": 16,
+      "repository_name": "kirolossedra",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3494
+    },
+    {
+      "rank": 45,
+      "document_id": "repo-106-rd009",
+      "score": 0.710676253,
+      "repository_index": 106,
+      "repository_name": "Thesis-Scripts",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.6231
+    },
+    {
+      "rank": 46,
+      "document_id": "repo-126-rd005",
+      "score": 0.710594237,
+      "repository_index": 126,
+      "repository_name": "Aquaseninsg-Auto-Test-Kit",
+      "retrieval_class": "interpretation",
+      "semantic_area": "authorship_provenance",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.58
+    },
+    {
+      "rank": 47,
+      "document_id": "repo-110-rd006",
+      "score": 0.710500777,
+      "repository_index": 110,
+      "repository_name": "SedraFTPVariant",
+      "retrieval_class": "interpretation",
+      "semantic_area": "other_repository_evidence",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.5032
+    },
+    {
+      "rank": 48,
+      "document_id": "repo-119-rd017",
+      "score": 0.710027754,
+      "repository_index": 119,
+      "repository_name": "LogicApp",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "testing_quality",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.24
+    },
+    {
+      "rank": 49,
+      "document_id": "repo-123-rd022",
+      "score": 0.70967108,
+      "repository_index": 123,
+      "repository_name": "LInC-Church-Management",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.3749
+    },
+    {
+      "rank": 50,
+      "document_id": "repo-037-rd007",
+      "score": 0.709314406,
+      "repository_index": 37,
+      "repository_name": "Fan-Controller",
+      "retrieval_class": "direct_evidence",
+      "semantic_area": "implementation_skills",
+      "evidence_polarity": "positive",
+      "specificity_score": 0.2087
+    }
+  ],
+  "duration_seconds": 4.277
+}

@@ -1,0 +1,40 @@
+{
+  "file_id": "RAG-PINECONE-VALIDATION-bbc35b3d-320b-412a-b692-4a1b0ebcdb23",
+  "version_id": "RAG-PINECONE-VALIDATION-v1.0.0-bc2bd587-371c-409f-9ea7-eb71df1bdb35",
+  "schema_version": "1.0.0",
+  "generated_at_utc": "2026-08-31T13:21:24.184998+00:00",
+  "generator": {
+    "script": "upsert-pinecone-v1.py",
+    "file_id": "RAG-PINECONE-UPLOADER-a2749bcb-b781-4e82-af03-24889097b52a",
+    "version_id": "RAG-PINECONE-UPLOADER-v1.0.0-31799700-4c06-4f27-8d69-b3acc2fc71d0",
+    "version": "1.0.0"
+  },
+  "source": {
+    "embedding_count": 2808,
+    "embedding_dimensions": 512,
+    "embedding_dtype": "float32",
+    "document_count": 2808
+  },
+  "pinecone": {
+    "index_name": "portfolio-career-rag-v1",
+    "namespace": "corpus-v1",
+    "metric": "cosine",
+    "dimension": 512,
+    "vector_type": "dense",
+    "existing_count_before_upsert": 0,
+    "final_namespace_count": 2808,
+    "sample_ids_fetched": [
+      "repo-001-rd001",
+      "repo-072-rd003",
+      "repo-134-rd024"
+    ]
+  },
+  "validation": {
+    "local_alignment": "PASS",
+    "index_configuration": "PASS",
+    "upsert": "PASS",
+    "namespace_count": "PASS",
+    "round_trip_fetch": "PASS"
+  },
+  "duration_seconds": 17.452
+}

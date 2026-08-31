@@ -1,0 +1,889 @@
+{
+  "file_id": "RAG-PINECONE-DENSE-PARITY-6719c1c8-9cfb-4874-8869-1ace284ba6ae",
+  "version_id": "RAG-PINECONE-DENSE-PARITY-v2.0.0-9acf3a39-0d56-4185-8c1d-56ef709857e9",
+  "schema_version": "2.0.0",
+  "generated_at_utc": "2026-08-31T14:01:44.406785+00:00",
+  "generator": {
+    "script": "validate-pinecone-dense-parity-v2.py",
+    "file_id": "RAG-PINECONE-PARITY-a53761c3-2c45-4f54-beb6-2f1658adce6f",
+    "version_id": "RAG-PINECONE-PARITY-v2.0.0-5b97bdb9-7bd0-478f-8d4a-8f823cc98161",
+    "version": "2.0.0"
+  },
+  "query": "What evidence shows experience with authorization architecture?",
+  "embedding": {
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "query_prefix": "search_query:",
+    "native_dimension": 768,
+    "stored_dimension": 512
+  },
+  "pinecone": {
+    "index_name": "portfolio-career-rag-v1",
+    "namespace": "corpus-v1",
+    "metric": "cosine"
+  },
+  "ann_candidate_parity": {
+    "checks": {
+      "same_top1": true,
+      "overlap_at_10": true,
+      "overlap_at_25": true,
+      "overlap_at_50": true
+    },
+    "same_top1": true,
+    "overlap_at_10": {
+      "k": 10,
+      "shared": 10,
+      "ratio": 1.0,
+      "only_local": [],
+      "only_pinecone": []
+    },
+    "overlap_at_25": {
+      "k": 25,
+      "shared": 24,
+      "ratio": 0.96,
+      "only_local": [
+        "repo-126-rd001"
+      ],
+      "only_pinecone": [
+        "repo-014-rd009"
+      ]
+    },
+    "overlap_at_50": {
+      "k": 50,
+      "shared": 49,
+      "ratio": 0.98,
+      "only_local": [
+        "repo-113-rd020"
+      ],
+      "only_pinecone": [
+        "repo-037-rd007"
+      ]
+    },
+    "result": "PASS"
+  },
+  "stored_vector_fidelity": {
+    "checks": {
+      "max_vector_delta_within_tolerance": true,
+      "recomputed_cosine_within_tolerance": true
+    },
+    "maximum_vector_absolute_delta": 0.0,
+    "maximum_recomputed_cosine_delta": 0.0,
+    "rows": [
+      {
+        "document_id": "repo-014-rd008",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7340491414070129,
+        "fetched_vector_exact_cosine": 0.7340491414070129,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd009",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7147412300109863,
+        "fetched_vector_exact_cosine": 0.7147412300109863,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7144412994384766,
+        "fetched_vector_exact_cosine": 0.7144412994384766,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd019",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7159336805343628,
+        "fetched_vector_exact_cosine": 0.7159336805343628,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd025",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7128522396087646,
+        "fetched_vector_exact_cosine": 0.7128522396087646,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd035",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7208821177482605,
+        "fetched_vector_exact_cosine": 0.7208821177482605,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-014-rd037",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7148557305335999,
+        "fetched_vector_exact_cosine": 0.7148557305335999,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-016-rd004",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7098479866981506,
+        "fetched_vector_exact_cosine": 0.7098479866981506,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-016-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7259066700935364,
+        "fetched_vector_exact_cosine": 0.7259066700935364,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-017-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7167218923568726,
+        "fetched_vector_exact_cosine": 0.7167218923568726,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-034-rd013",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7205891609191895,
+        "fetched_vector_exact_cosine": 0.7205891609191895,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-037-rd007",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7084943056106567,
+        "fetched_vector_exact_cosine": 0.7084943056106567,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-038-rd008",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7387570142745972,
+        "fetched_vector_exact_cosine": 0.7387570142745972,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-038-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7128230333328247,
+        "fetched_vector_exact_cosine": 0.7128230333328247,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-087-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7113974094390869,
+        "fetched_vector_exact_cosine": 0.7113974094390869,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-095-rd005",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.712096631526947,
+        "fetched_vector_exact_cosine": 0.712096631526947,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-095-rd010",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7129957675933838,
+        "fetched_vector_exact_cosine": 0.7129957675933838,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-098-rd011",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7141613960266113,
+        "fetched_vector_exact_cosine": 0.7141613960266113,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-098-rd012",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7122728824615479,
+        "fetched_vector_exact_cosine": 0.7122728824615479,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-098-rd014",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7106890678405762,
+        "fetched_vector_exact_cosine": 0.7106890678405762,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-098-rd017",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.721700131893158,
+        "fetched_vector_exact_cosine": 0.721700131893158,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-098-rd018",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7223635315895081,
+        "fetched_vector_exact_cosine": 0.7223635315895081,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-106-rd009",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7091810703277588,
+        "fetched_vector_exact_cosine": 0.7091810703277588,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-110-rd006",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7110176086425781,
+        "fetched_vector_exact_cosine": 0.7110176086425781,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-113-rd003",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7143290042877197,
+        "fetched_vector_exact_cosine": 0.7143290042877197,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-113-rd005",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7186321020126343,
+        "fetched_vector_exact_cosine": 0.7186321020126343,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-113-rd018",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.71006178855896,
+        "fetched_vector_exact_cosine": 0.71006178855896,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-113-rd019",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7108795642852783,
+        "fetched_vector_exact_cosine": 0.7108795642852783,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-113-rd020",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7092546820640564,
+        "fetched_vector_exact_cosine": 0.7092546820640564,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-116-rd015",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7283074855804443,
+        "fetched_vector_exact_cosine": 0.7283074855804443,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-117-rd019",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7180392146110535,
+        "fetched_vector_exact_cosine": 0.7180392146110535,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd003",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.721269965171814,
+        "fetched_vector_exact_cosine": 0.721269965171814,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd004",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7152111530303955,
+        "fetched_vector_exact_cosine": 0.7152111530303955,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd005",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7102794647216797,
+        "fetched_vector_exact_cosine": 0.7102794647216797,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd017",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7088261842727661,
+        "fetched_vector_exact_cosine": 0.7088261842727661,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd020",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7116410732269287,
+        "fetched_vector_exact_cosine": 0.7116410732269287,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-119-rd022",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7310784459114075,
+        "fetched_vector_exact_cosine": 0.7310784459114075,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-123-rd008",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7242119312286377,
+        "fetched_vector_exact_cosine": 0.7242119312286377,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-123-rd009",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7548233270645142,
+        "fetched_vector_exact_cosine": 0.7548233270645142,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-123-rd022",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7085247039794922,
+        "fetched_vector_exact_cosine": 0.7085247039794922,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-124-rd006",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7148126363754272,
+        "fetched_vector_exact_cosine": 0.7148126363754272,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-125-rd004",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7208874225616455,
+        "fetched_vector_exact_cosine": 0.7208874225616455,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-126-rd001",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7150570750236511,
+        "fetched_vector_exact_cosine": 0.7150570750236511,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-126-rd004",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7408523559570312,
+        "fetched_vector_exact_cosine": 0.7408523559570312,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-126-rd005",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7106622457504272,
+        "fetched_vector_exact_cosine": 0.7106622457504272,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-126-rd010",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7262117862701416,
+        "fetched_vector_exact_cosine": 0.7262117862701416,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-127-rd003",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.733733057975769,
+        "fetched_vector_exact_cosine": 0.733733057975769,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-129-rd006",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7133337259292603,
+        "fetched_vector_exact_cosine": 0.7133337259292603,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-131-rd007",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7204424142837524,
+        "fetched_vector_exact_cosine": 0.7204424142837524,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-131-rd008",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7100640535354614,
+        "fetched_vector_exact_cosine": 0.7100640535354614,
+        "recomputed_score_absolute_delta": 0.0
+      },
+      {
+        "document_id": "repo-133-rd006",
+        "max_vector_absolute_delta": 0.0,
+        "local_exact_cosine": 0.7324855923652649,
+        "fetched_vector_exact_cosine": 0.7324855923652649,
+        "recomputed_score_absolute_delta": 0.0
+      }
+    ],
+    "result": "PASS"
+  },
+  "pinecone_ann_reported_scores_note": "Pinecone ANN scores are retained for diagnostics but are not required to numerically equal exhaustive NumPy cosine scores.",
+  "local_top_50": [
+    {
+      "document_id": "repo-123-rd009",
+      "score": 0.7548233270645142,
+      "vector_index": 2574
+    },
+    {
+      "document_id": "repo-126-rd004",
+      "score": 0.7408523559570312,
+      "vector_index": 2631
+    },
+    {
+      "document_id": "repo-038-rd008",
+      "score": 0.7387570142745972,
+      "vector_index": 938
+    },
+    {
+      "document_id": "repo-014-rd008",
+      "score": 0.7340492010116577,
+      "vector_index": 504
+    },
+    {
+      "document_id": "repo-127-rd003",
+      "score": 0.733733057975769,
+      "vector_index": 2651
+    },
+    {
+      "document_id": "repo-133-rd006",
+      "score": 0.7324856519699097,
+      "vector_index": 2769
+    },
+    {
+      "document_id": "repo-119-rd022",
+      "score": 0.7310785055160522,
+      "vector_index": 2490
+    },
+    {
+      "document_id": "repo-116-rd015",
+      "score": 0.7283074855804443,
+      "vector_index": 2409
+    },
+    {
+      "document_id": "repo-126-rd010",
+      "score": 0.7262118458747864,
+      "vector_index": 2637
+    },
+    {
+      "document_id": "repo-016-rd012",
+      "score": 0.7259067296981812,
+      "vector_index": 585
+    },
+    {
+      "document_id": "repo-123-rd008",
+      "score": 0.7242119312286377,
+      "vector_index": 2573
+    },
+    {
+      "document_id": "repo-098-rd018",
+      "score": 0.7223635911941528,
+      "vector_index": 1958
+    },
+    {
+      "document_id": "repo-098-rd017",
+      "score": 0.7217001914978027,
+      "vector_index": 1957
+    },
+    {
+      "document_id": "repo-119-rd003",
+      "score": 0.7212700247764587,
+      "vector_index": 2471
+    },
+    {
+      "document_id": "repo-125-rd004",
+      "score": 0.7208874225616455,
+      "vector_index": 2612
+    },
+    {
+      "document_id": "repo-014-rd035",
+      "score": 0.7208821177482605,
+      "vector_index": 531
+    },
+    {
+      "document_id": "repo-034-rd013",
+      "score": 0.7205891609191895,
+      "vector_index": 891
+    },
+    {
+      "document_id": "repo-131-rd007",
+      "score": 0.7204424142837524,
+      "vector_index": 2729
+    },
+    {
+      "document_id": "repo-113-rd005",
+      "score": 0.7186319828033447,
+      "vector_index": 2329
+    },
+    {
+      "document_id": "repo-117-rd019",
+      "score": 0.7180391550064087,
+      "vector_index": 2439
+    },
+    {
+      "document_id": "repo-017-rd012",
+      "score": 0.7167218923568726,
+      "vector_index": 602
+    },
+    {
+      "document_id": "repo-014-rd019",
+      "score": 0.7159336805343628,
+      "vector_index": 515
+    },
+    {
+      "document_id": "repo-119-rd004",
+      "score": 0.7152112126350403,
+      "vector_index": 2472
+    },
+    {
+      "document_id": "repo-126-rd001",
+      "score": 0.7150570750236511,
+      "vector_index": 2628
+    },
+    {
+      "document_id": "repo-014-rd037",
+      "score": 0.7148556709289551,
+      "vector_index": 533
+    },
+    {
+      "document_id": "repo-124-rd006",
+      "score": 0.7148127555847168,
+      "vector_index": 2598
+    },
+    {
+      "document_id": "repo-014-rd009",
+      "score": 0.7147411704063416,
+      "vector_index": 505
+    },
+    {
+      "document_id": "repo-014-rd012",
+      "score": 0.7144412994384766,
+      "vector_index": 508
+    },
+    {
+      "document_id": "repo-113-rd003",
+      "score": 0.7143290042877197,
+      "vector_index": 2327
+    },
+    {
+      "document_id": "repo-098-rd011",
+      "score": 0.7141613960266113,
+      "vector_index": 1951
+    },
+    {
+      "document_id": "repo-129-rd006",
+      "score": 0.7133336663246155,
+      "vector_index": 2692
+    },
+    {
+      "document_id": "repo-095-rd010",
+      "score": 0.7129957675933838,
+      "vector_index": 1878
+    },
+    {
+      "document_id": "repo-014-rd025",
+      "score": 0.7128523588180542,
+      "vector_index": 521
+    },
+    {
+      "document_id": "repo-038-rd012",
+      "score": 0.7128230333328247,
+      "vector_index": 942
+    },
+    {
+      "document_id": "repo-098-rd012",
+      "score": 0.7122728824615479,
+      "vector_index": 1952
+    },
+    {
+      "document_id": "repo-095-rd005",
+      "score": 0.712096631526947,
+      "vector_index": 1873
+    },
+    {
+      "document_id": "repo-119-rd020",
+      "score": 0.7116410732269287,
+      "vector_index": 2488
+    },
+    {
+      "document_id": "repo-087-rd012",
+      "score": 0.7113974094390869,
+      "vector_index": 1700
+    },
+    {
+      "document_id": "repo-110-rd006",
+      "score": 0.7110175490379333,
+      "vector_index": 2254
+    },
+    {
+      "document_id": "repo-113-rd019",
+      "score": 0.7108796238899231,
+      "vector_index": 2343
+    },
+    {
+      "document_id": "repo-098-rd014",
+      "score": 0.7106890678405762,
+      "vector_index": 1954
+    },
+    {
+      "document_id": "repo-126-rd005",
+      "score": 0.7106621861457825,
+      "vector_index": 2632
+    },
+    {
+      "document_id": "repo-119-rd005",
+      "score": 0.7102794647216797,
+      "vector_index": 2473
+    },
+    {
+      "document_id": "repo-131-rd008",
+      "score": 0.710064172744751,
+      "vector_index": 2730
+    },
+    {
+      "document_id": "repo-113-rd018",
+      "score": 0.7100617289543152,
+      "vector_index": 2342
+    },
+    {
+      "document_id": "repo-016-rd004",
+      "score": 0.7098479270935059,
+      "vector_index": 577
+    },
+    {
+      "document_id": "repo-113-rd020",
+      "score": 0.7092546820640564,
+      "vector_index": 2344
+    },
+    {
+      "document_id": "repo-106-rd009",
+      "score": 0.7091810703277588,
+      "vector_index": 2153
+    },
+    {
+      "document_id": "repo-119-rd017",
+      "score": 0.7088261246681213,
+      "vector_index": 2485
+    },
+    {
+      "document_id": "repo-123-rd022",
+      "score": 0.7085247039794922,
+      "vector_index": 2587
+    }
+  ],
+  "pinecone_top_50": [
+    {
+      "document_id": "repo-123-rd009",
+      "score": 0.755417
+    },
+    {
+      "document_id": "repo-126-rd004",
+      "score": 0.743440688
+    },
+    {
+      "document_id": "repo-038-rd008",
+      "score": 0.739172041
+    },
+    {
+      "document_id": "repo-014-rd008",
+      "score": 0.735179961
+    },
+    {
+      "document_id": "repo-127-rd003",
+      "score": 0.734689772
+    },
+    {
+      "document_id": "repo-133-rd006",
+      "score": 0.733556807
+    },
+    {
+      "document_id": "repo-119-rd022",
+      "score": 0.73172003
+    },
+    {
+      "document_id": "repo-116-rd015",
+      "score": 0.729217589
+    },
+    {
+      "document_id": "repo-016-rd012",
+      "score": 0.726558745
+    },
+    {
+      "document_id": "repo-126-rd010",
+      "score": 0.726001799
+    },
+    {
+      "document_id": "repo-123-rd008",
+      "score": 0.724495
+    },
+    {
+      "document_id": "repo-098-rd018",
+      "score": 0.72318846
+    },
+    {
+      "document_id": "repo-098-rd017",
+      "score": 0.722549498
+    },
+    {
+      "document_id": "repo-119-rd003",
+      "score": 0.7223683
+    },
+    {
+      "document_id": "repo-014-rd035",
+      "score": 0.72218138
+    },
+    {
+      "document_id": "repo-034-rd013",
+      "score": 0.721347809
+    },
+    {
+      "document_id": "repo-131-rd007",
+      "score": 0.721122801
+    },
+    {
+      "document_id": "repo-125-rd004",
+      "score": 0.720907271
+    },
+    {
+      "document_id": "repo-113-rd005",
+      "score": 0.719686568
+    },
+    {
+      "document_id": "repo-117-rd019",
+      "score": 0.718395293
+    },
+    {
+      "document_id": "repo-017-rd012",
+      "score": 0.717388213
+    },
+    {
+      "document_id": "repo-119-rd004",
+      "score": 0.717233717
+    },
+    {
+      "document_id": "repo-014-rd019",
+      "score": 0.716837
+    },
+    {
+      "document_id": "repo-014-rd009",
+      "score": 0.715755522
+    },
+    {
+      "document_id": "repo-014-rd037",
+      "score": 0.715700209
+    },
+    {
+      "document_id": "repo-126-rd001",
+      "score": 0.715538085
+    },
+    {
+      "document_id": "repo-014-rd012",
+      "score": 0.715276778
+    },
+    {
+      "document_id": "repo-113-rd003",
+      "score": 0.714908659
+    },
+    {
+      "document_id": "repo-124-rd006",
+      "score": 0.714773238
+    },
+    {
+      "document_id": "repo-098-rd011",
+      "score": 0.714466155
+    },
+    {
+      "document_id": "repo-014-rd025",
+      "score": 0.713811934
+    },
+    {
+      "document_id": "repo-038-rd012",
+      "score": 0.713567793
+    },
+    {
+      "document_id": "repo-129-rd006",
+      "score": 0.713493407
+    },
+    {
+      "document_id": "repo-095-rd010",
+      "score": 0.713396132
+    },
+    {
+      "document_id": "repo-095-rd005",
+      "score": 0.712680876
+    },
+    {
+      "document_id": "repo-098-rd012",
+      "score": 0.712535918
+    },
+    {
+      "document_id": "repo-119-rd020",
+      "score": 0.712377608
+    },
+    {
+      "document_id": "repo-113-rd019",
+      "score": 0.712106764
+    },
+    {
+      "document_id": "repo-087-rd012",
+      "score": 0.711734831
+    },
+    {
+      "document_id": "repo-119-rd005",
+      "score": 0.711511672
+    },
+    {
+      "document_id": "repo-131-rd008",
+      "score": 0.711303771
+    },
+    {
+      "document_id": "repo-098-rd014",
+      "score": 0.711286604
+    },
+    {
+      "document_id": "repo-113-rd018",
+      "score": 0.711147368
+    },
+    {
+      "document_id": "repo-016-rd004",
+      "score": 0.711097777
+    },
+    {
+      "document_id": "repo-106-rd009",
+      "score": 0.710676253
+    },
+    {
+      "document_id": "repo-126-rd005",
+      "score": 0.710594237
+    },
+    {
+      "document_id": "repo-110-rd006",
+      "score": 0.710500777
+    },
+    {
+      "document_id": "repo-119-rd017",
+      "score": 0.710027754
+    },
+    {
+      "document_id": "repo-123-rd022",
+      "score": 0.70967108
+    },
+    {
+      "document_id": "repo-037-rd007",
+      "score": 0.709314406
+    }
+  ],
+  "overall_result": "PASS",
+  "duration_seconds": 4.516
+}
