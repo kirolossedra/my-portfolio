@@ -12,6 +12,7 @@
 - [Stage 04 — Retrieval Reference](#stage-04--retrieval-reference)
 - [Stage 05 — Vector Index](#stage-05--vector-index)
 - [Stage 06 — Validation](#stage-06--validation)
+- [Cloudflare Embedding Migration](#cloudflare-embedding-migration)
 - [Path Resolution Contract](#path-resolution-contract)
 - [Cloudflare Migration Rule](#cloudflare-migration-rule)
 
@@ -45,7 +46,8 @@ scripts/
 │   ├── nomic/
 │   │   └── generate-rag-embeddings-v3-documents-local.py
 │   └── cloudflare/
-│       └── README.md
+│       ├── README.md
+│       └── generate-rag-embeddings-v4-cloudflare.mjs
 ├── 04-retrieval-reference/
 │   ├── README.md
 │   └── build-rag-retrieval-v3-evidence-aware-local.py
@@ -79,6 +81,14 @@ python rag/scripts/01-corpus/prepare-rag-corpus.py
 
 `validate-pinecone-dense-parity-v1.py` is retained as historical debugging evidence. It is **not** the Pinecone acceptance gate.
 
+The Cloudflare migration currently branches at Stage 03:
+
+```text
+node rag/scripts/03-embeddings/cloudflare/generate-rag-embeddings-v4-cloudflare.mjs
+  -> rag-corpus/embeddings-cloudflare-v1/
+  -> Stage 05 Vectorize publication (next)
+```
+
 ## Stage 01 — Corpus
 
 Converts the repository-analysis Markdown source batches into the canonical normalized corpus under `rag-corpus/`.
@@ -100,8 +110,8 @@ Converts retrieval documents into vector representations.
 
 - Historical v1: hosted/paid embedding path.
 - Historical v2: local Nomic over the old tiny chunks.
-- Active v3/Nomic: pinned local Nomic over the 2,808 evidence-aware documents.
-- Next candidate: Cloudflare Workers AI/Qwen. It must be added under `03-embeddings/cloudflare/` as a **parallel embedding generation**, not by overwriting the validated Nomic artifacts.
+- Active reference v3/Nomic: pinned local Nomic over the 2,808 evidence-aware documents.
+- Implemented candidate v4/Cloudflare: Workers AI `@cf/qwen/qwen3-embedding-0.6b` over the same 2,808 evidence-aware documents, producing 1,024-D vectors under `rag-corpus/embeddings-cloudflare-v1/`.
 
 ## Stage 04 — Retrieval Reference
 
@@ -132,6 +142,10 @@ Pinecone history:
 - v2: correct separation of ANN candidate parity from exact stored-vector fidelity; this is the active acceptance gate.
 
 Cloudflare Vectorize gets its own validator family under `06-validation/cloudflare-vectorize/`.
+
+## Cloudflare Embedding Migration
+
+Stage 03 now contains the implemented Cloudflare Workers AI v4 candidate at `03-embeddings/cloudflare/generate-rag-embeddings-v4-cloudflare.mjs`. It writes `rag-corpus/embeddings-cloudflare-v1/` in parallel with the validated Nomic artifacts.
 
 ## Path Resolution Contract
 
@@ -165,4 +179,5 @@ portfolio-career-rag-v1
 corpus-v1
 ```
 
-The next implementation belongs in the already-reserved Cloudflare stage directories.
+The Stage 03 Cloudflare embedding implementation now exists; Stage 05 Vectorize publication and Stage 06 Vectorize validation remain next.
+
