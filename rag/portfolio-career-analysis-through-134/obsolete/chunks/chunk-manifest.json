@@ -1,0 +1,51 @@
+{
+  "chunk_schema_version": "1.0.0",
+  "generated_at_utc": "2026-08-30T23:33:37.870447+00:00",
+  "generator": "build-rag-chunks.py",
+  "step": 2,
+  "input": {
+    "path": "rag-corpus/repositories.jsonl",
+    "sha256": "29a5d64b25e1a01fd050f52f818dc7b900a077887b2ca02aa4c5eef6fde1a382",
+    "size_bytes": 30929918,
+    "repository_count": 134
+  },
+  "output": {
+    "directory": "rag-corpus/chunks",
+    "primary_chunk_file": "rag-corpus/chunks/chunks.jsonl",
+    "per_repository_directory": "rag-corpus/chunks/by-repository/"
+  },
+  "chunking": {
+    "strategy": "non-overlapping atomic Markdown sections; oversized sections split semantically",
+    "target_words": 650,
+    "hard_max_words": 900,
+    "embedding_context_overlap_words": 80,
+    "authoritative_text_field": "text",
+    "recommended_embedding_field": "embedding_text"
+  },
+  "stats": {
+    "repository_count": 134,
+    "chunk_count": 11642,
+    "source_unit_count": 11464,
+    "split_source_unit_count": 48,
+    "chunk_word_count_total": 1039924,
+    "chunk_word_count_min": 1,
+    "chunk_word_count_median": 53,
+    "chunk_word_count_max": 900,
+    "chunks_with_skill_ratings": 81,
+    "chunks_with_categories": 5521,
+    "repositories_with_chunks": 134,
+    "empty_chunks": 0,
+    "oversized_chunks": 0,
+    "duplicate_chunk_ids": 0,
+    "coverage_failures": 0
+  },
+  "validation": {
+    "repository_coverage": "PASS",
+    "chunk_id_uniqueness": "PASS",
+    "source_unit_text_coverage": "PASS",
+    "chunk_hashes": "PASS",
+    "hard_word_limit": "PASS",
+    "empty_chunk_check": "PASS",
+    "input_modified": false
+  }
+}

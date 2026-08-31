@@ -1,0 +1,94 @@
+{
+  "artifacts": {
+    "document-catalog.json": {
+      "bytes": 156612,
+      "sha256": "e3b0c71992b7978540a9432d96fff36615cb5baea5e3010c6258d844ff2e3dd0"
+    },
+    "document-validation-report.txt": {
+      "bytes": 1845,
+      "sha256": "4f2bce9a7df9b558cadf3db8a5ec19e4ac98c4a3e0b871db36a609a228e4bd5e"
+    },
+    "documents.jsonl": {
+      "bytes": 32283775,
+      "sha256": "a10c2b2d9d4e79e8a6e6629cc15b18cb1123513b45df44dc73e668b44c1bee58"
+    },
+    "excluded-source-units.jsonl": {
+      "bytes": 22521515,
+      "sha256": "8066f303e601669d6a88e0b5de918bb65d337b95e0b24cf814bd0b13871c260e"
+    }
+  },
+  "created_at_utc": "2026-08-31T03:27:42+00:00",
+  "input": {
+    "bytes": 30929918,
+    "path": "rag-corpus/repositories.jsonl",
+    "repository_count": 134,
+    "sha256": "29a5d64b25e1a01fd050f52f818dc7b900a077887b2ca02aa4c5eef6fde1a382"
+  },
+  "next_pipeline_input": "rag-corpus/retrieval-documents-v2/documents.jsonl",
+  "pipeline_name": "evidence-aware retrieval-document compilation",
+  "pipeline_step": "Step 2 v2",
+  "policy": {
+    "citation_fields": [
+      "text",
+      "source_fragments"
+    ],
+    "embedding_field": "embedding_text",
+    "generic_title_repository_threshold": 34,
+    "grouping": "source blocks grouped repository-wide by retrieval class + stable semantic area, then packed to target size",
+    "hard_max_document_words": 820,
+    "hard_max_source_block_words": 650,
+    "retrieval_classes": [
+      "direct_evidence",
+      "interpretation",
+      "limitation",
+      "chronology",
+      "metadata"
+    ],
+    "soft_min_words": 70,
+    "target_words": 380,
+    "template_detection": "cross-repository normalized source-block frequency + explicit recurring scaffold phrases",
+    "template_handling": "excluded only from derived retrieval payload; Step 1 canonical source remains untouched",
+    "template_repository_threshold": 8
+  },
+  "schema_version": "2.0.0",
+  "script": "build-rag-retrieval-documents-v2.py",
+  "statistics": {
+    "document_words_max": 705,
+    "document_words_median": 138,
+    "document_words_min": 10,
+    "documents": 2808,
+    "documents_by_class": {
+      "chronology": 201,
+      "direct_evidence": 651,
+      "interpretation": 1444,
+      "limitation": 159,
+      "metadata": 353
+    },
+    "documents_by_evidence_level": {
+      "conceptual_exposure": 51,
+      "implemented_or_concrete": 137,
+      "interpretive": 488,
+      "methodology_or_interpretive": 379,
+      "repository_limitation": 250,
+      "repository_specific": 1503
+    },
+    "documents_by_polarity": {
+      "mixed": 244,
+      "negative": 249,
+      "neutral": 830,
+      "positive": 1485
+    },
+    "embedding_words_max": 758,
+    "embedding_words_median": 181,
+    "embedding_words_min": 34,
+    "excluded_blocks": 46682,
+    "fallback_documents": 0,
+    "fallback_repositories": 0,
+    "repositories_covered": 134,
+    "repository_total": 134,
+    "retained_blocks": 30930,
+    "source_blocks_total": 77612,
+    "template_blocks_suppressed": 39342,
+    "tiny_generic_blocks_suppressed": 7340
+  }
+}

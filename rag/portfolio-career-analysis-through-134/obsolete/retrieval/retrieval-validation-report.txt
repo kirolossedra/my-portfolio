@@ -1,0 +1,48 @@
+Portfolio GitHub RAG pipeline — Step 4 exact retrieval validation report
+
+STATUS: PASS
+
+INPUT
+  rag-corpus\embeddings\embeddings.npy
+  rag-corpus\embeddings\embedding-records.jsonl
+  rag-corpus\embeddings\embedding-manifest.json
+
+OUTPUT
+  rag-corpus/retrieval/retrieval-config.json
+  rag-corpus/retrieval/retrieval-validation-report.txt
+  rag-corpus/retrieval/test-results/
+
+COST / EXECUTION
+  Paid API used: NO
+  API key required: NO
+  Model training: NO
+  Retrieval cost: $0
+  Query embedding device: cpu (CPU)
+
+VECTOR SPACE
+  Model: nomic-ai/nomic-embed-text-v1.5
+  Revision: e9b6763023c676ca8431644204f50c2b100d9aab
+  Dimensions: 512
+  Query prefix: 'search_query: '
+  Similarity: exact cosine
+
+CORPUS
+  Vectors: 11,642
+  Evidence records: 11,642
+  Repositories: 134/134
+
+VALIDATION
+  Step 3 artifact hashes: PASS
+  Matrix <-> record alignment: PASS
+  Repository coverage: PASS
+  NaN/Inf vectors: 0
+  Zero vectors: 0
+  Maximum unit-norm error: 0.0000001491
+  Exact-search self-test samples: 32
+  Exact-search self-test failures: 0
+  Minimum sampled self-similarity: 0.99999976
+
+INTERACTIVE TESTING
+  Top K: 10
+  Full evidence is saved in test-results; terminal evidence is previewed.
+  Type :quit or :exit to save the current session and finish.

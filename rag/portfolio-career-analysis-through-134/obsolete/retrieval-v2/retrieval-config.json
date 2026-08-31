@@ -1,0 +1,100 @@
+{
+  "corpus": {
+    "avg_bm25_doc_length": 104.30278302697131,
+    "bm25_unique_terms": 18099,
+    "record_count": 11642,
+    "repository_count": 134,
+    "repository_total": 134,
+    "vector_count": 11642
+  },
+  "cost": {
+    "api_key_required": false,
+    "model_training": false,
+    "paid_api_used": false,
+    "retrieval_cost_usd": 0
+  },
+  "dense_embedding": {
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "model_revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "native_dimensions": 768,
+    "query_prefix": "search_query: ",
+    "similarity": "cosine",
+    "stored_dimensions": 512
+  },
+  "dependencies": {
+    "numpy": "2.5.2",
+    "python": "3.14.6",
+    "sentence-transformers": "6.0.0",
+    "torch": "2.13.0",
+    "transformers": "5.16.1"
+  },
+  "generated_at_utc": "2026-08-31T02:54:55.390826+00:00",
+  "input": {
+    "manifest": "rag-corpus\\embeddings\\embedding-manifest.json",
+    "records": "rag-corpus\\embeddings\\embedding-records.jsonl",
+    "records_sha256": "f1d5a8560a3a7bdefe5dcf1e43893ebcaeb17d4af90a4aee4dc4c44ebaec37eb",
+    "step3_embedding_schema_version": "2.0.0",
+    "vectors": "rag-corpus\\embeddings\\embeddings.npy",
+    "vectors_sha256": "35c9d9f7db9227042148636a352c451b0a89e3f5e8f431edcc67516f057e0bbd"
+  },
+  "pipeline_step": "4-v2",
+  "reranker": {
+    "device": "cpu",
+    "device_name": "CPU",
+    "max_length": 512,
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "model_revision": "4bebbd56fc380a66525f95b03d4ec1a4b41a4f1e"
+  },
+  "retrieval": {
+    "bm25_candidates": 350,
+    "chronology_diversity_query_aware": true,
+    "dense_candidates": 350,
+    "fused_pre_rerank": 120,
+    "hard_global_template_deletion": false,
+    "max_results_per_repository": 2,
+    "metadata_candidates": 250,
+    "negative_evidence_query_aware": true,
+    "rerank_candidates": 80,
+    "stages": [
+      "query-analysis",
+      "exact-dense",
+      "bm25",
+      "metadata-lexical",
+      "rrf",
+      "evidence-quality",
+      "cross-encoder",
+      "score-fusion",
+      "diversity-selection"
+    ],
+    "top_k": 10,
+    "weights": {
+      "bm25": 0.13,
+      "cross": 0.48,
+      "dense": 0.18,
+      "metadata": 0.09,
+      "quality": 0.05,
+      "rrf": 0.07
+    }
+  },
+  "retrieval_schema_version": "2.0.0",
+  "script": "build-rag-retrieval-v2-hybrid-local.py",
+  "validation": {
+    "bm25_self_test": {
+      "toy_documents": 2,
+      "winner": 0
+    },
+    "dense_math": {
+      "failures": 0,
+      "minimum_self_similarity": 0.9999997615814209,
+      "sample_count": 32
+    },
+    "repository_coverage": "PASS",
+    "reranker_self_test": {
+      "irrelevant_score": 1.0826673133124132e-05,
+      "pass": true,
+      "relevant_score": 0.9656716585159302
+    },
+    "step3_hashes": "PASS",
+    "unit_vectors": "PASS"
+  }
+}

@@ -1,0 +1,2536 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 12,
+  "repository_total": 134,
+  "repository_name": "Behavioral-Design-Patterns",
+  "header_title": "`Behavioral-Design-Patterns`",
+  "repository_slug": "kirolossedra/Behavioral-Design-Patterns",
+  "repository_url": "https://github.com/kirolossedra/Behavioral-Design-Patterns",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-001-015.md",
+    "line_start": 23559,
+    "line_end": 25521,
+    "sha256": "e8c5dc69024c7845bc9ba373422fc27d0f7cde0ddb41f6e206ec7bfa229eb95b"
+  },
+  "chronology_summary": {
+    "created": "February 18, 2023, 21:27:05 UTC",
+    "first_commit": "March 3, 2023, 20:05:24 UTC",
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": "N/A — educational study repository",
+    "portfolio_evidence_weight": "3.5/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/Behavioral-Design-Patterns",
+    "chronology_index": "012 / 134",
+    "visibility": "Public",
+    "fork": "No",
+    "repository_created": "February 18, 2023, 21:27:05 UTC",
+    "first_commit": "March 3, 2023, 20:05:24 UTC",
+    "first_commit_sha": "5f7fc7131c1d0f2a16e8a4925f7ceb2cb1064119",
+    "first_imported_project": "Chain of Responsibility",
+    "latest_commit": "March 3, 2023, 20:09:57 UTC",
+    "latest_commit_sha": "08c0ab380fca26bdfbb2fe0413838bfb863e000d",
+    "latest_imported_project": "State",
+    "exact_total_commits": "8",
+    "first_latest_commit_span": "4 min 33 sec",
+    "repo_creation_first_source_commit_gap": "12 d 22 h 38 m 19 s",
+    "repo_creation_latest_commit_span": "12 d 22 h 42 m 52 s",
+    "primary_language": "Java",
+    "maven_projects": "8",
+    "java_compiler_configuration": "Java 19",
+    "ide_evidence": "NetBeans Maven project templates",
+    "final_java_source_files": "8",
+    "approx_java_source_size": "13.4 KB / 650 source lines",
+    "direct_behavioral_implementations": "7 / 11",
+    "visitor": "Named project, but only Hello World stub",
+    "command": "Not implemented as GoF pattern",
+    "interpreter": "Not observed",
+    "iterator": "Not observed",
+    "compiled_target_evidence": "Retained for the 7 substantive examples",
+    "visitor_compiled_target_evidence": "Not retained",
+    "root_readme": "None observed",
+    "tests": "None",
+    "ci_cd": "None",
+    "gitignore": "Not observed",
+    "branches": "main only",
+    "branch_protection": "No",
+    "license": "None",
+    "topic": "behavioral-design-patterns",
+    "product_maturity": "N/A — educational study repository",
+    "engineering_maturity": "2.25/5",
+    "behavioral_pattern_practice_maturity": "3.0/5",
+    "portfolio_evidence_weight": "3.5/5",
+    "career_skill_evidence_value": "4.25/5",
+    "lifecycle": "Dormant/completed study artifact",
+    "repository_commits": "8",
+    "git_import_span": "4 min 33 sec",
+    "named_maven_projects": "8",
+    "substantive_pattern_implementations": "7",
+    "stub_projects": "1",
+    "canonical_behavioral_patterns": "11",
+    "direct_coverage": "63.6%",
+    "java_source_files": "8",
+    "approx_java_source": "650 LOC",
+    "retained_compiled_target_trees": "7",
+    "contributors_observed": "1",
+    "ci_workflows": "0",
+    "production_users": "N/A"
+  },
+  "retrieval_tags": [
+    "java",
+    "java19",
+    "maven",
+    "netbeans",
+    "oop",
+    "design-patterns",
+    "gof",
+    "behavioral-patterns",
+    "chain-of-responsibility",
+    "mediator",
+    "memento",
+    "observer",
+    "state",
+    "strategy",
+    "template-method",
+    "visitor",
+    "command",
+    "interpreter",
+    "iterator",
+    "polymorphism",
+    "interfaces",
+    "abstract-class",
+    "delegation",
+    "event-notification",
+    "state-restoration",
+    "algorithm-substitution",
+    "workflow-template",
+    "request-chain",
+    "coordination",
+    "arraylist",
+    "list",
+    "educational-project",
+    "tutorial-driven",
+    "2023"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Project identity"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **Behavioral Design Patterns — Java/Maven Study Suite with Seven Implemented GoF Patterns and One Visitor Stub**\n\nRepository 012 is the third repository in the explicit early-2023 GoF design-pattern learning sequence.\n\nIt follows:\n\n- Repository 010 — Creational Design Patterns\n- Repository 011 — Structural Design Patterns\n- Repository 012 — Behavioral Design Patterns\n\nThe final tree contains eight named behavioral-pattern project directories:\n\n1. `ChainOfResponsibility`\n2. `MediatorPattern`\n3. `MementoPattern`\n4. `ObserverPattern`\n5. `StatePattern`\n6. `StrategyPattern`\n7. `TemplatePatternDemo`\n8. `VisitorPatternDemo`\n\nHowever, the directory count overstates the implementation coverage.\n\n`VisitorPatternDemo` contains only a NetBeans-generated Java application whose `main()` prints:\n\n`Hello World!`\n\nIt contains none of the defining Visitor roles or mechanics:\n\n- visitor interface;\n- concrete visitor;\n- element interface;\n- `accept(...)`;\n- visit overloads;\n- double dispatch.\n\nTherefore the final repository contains:\n\n> **7 directly implemented behavioral patterns**\n\nplus:\n\n> **1 named but unimplemented Visitor placeholder**\n\nThe canonical GoF behavioral category contains 11 patterns:\n\n- Chain of Responsibility\n- Command\n- Interpreter\n- Iterator\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method\n- Visitor\n\nThus the correct final coverage is:\n\n- **7 / 11 directly implemented**\n- **1 / 11 placeholder only — Visitor**\n- **3 / 11 absent — Command, Interpreter, Iterator**\n\nThere is an interface named `Command` inside the Mediator example, but it merely exposes `land()` for `Flight` and `Runway`.\n\nThat is **not** an implementation of the GoF Command pattern.\n\nThis distinction is mandatory for anti-inflation.\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "1. RAG Metadata"
+      ],
+      "text": "## 1. RAG Metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Behavioral-Design-Patterns` |\n| Chronology index | **012 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Repository created | **February 18, 2023, 21:27:05 UTC** |\n| First commit | **March 3, 2023, 20:05:24 UTC** |\n| First commit SHA | `5f7fc7131c1d0f2a16e8a4925f7ceb2cb1064119` |\n| First imported project | **Chain of Responsibility** |\n| Latest commit | **March 3, 2023, 20:09:57 UTC** |\n| Latest commit SHA | `08c0ab380fca26bdfbb2fe0413838bfb863e000d` |\n| Latest imported project | **State** |\n| Exact total commits | **8** |\n| First→latest commit span | **4 min 33 sec** |\n| Repo creation→first source commit gap | **12 d 22 h 38 m 19 s** |\n| Repo creation→latest commit span | **12 d 22 h 42 m 52 s** |\n| Primary language | **Java** |\n| Maven projects | **8** |\n| Java compiler configuration | **Java 19** |\n| IDE evidence | **NetBeans Maven project templates** |\n| Final Java source files | **8** |\n| Approx. Java source size | **~13.4 KB / ~650 source lines** |\n| Direct behavioral implementations | **7 / 11** |\n| Visitor | **Named project, but only Hello World stub** |\n| Command | **Not implemented as GoF pattern** |\n| Interpreter | **Not observed** |\n| Iterator | **Not observed** |\n| Compiled `target/` evidence | **Retained for the 7 substantive examples** |\n| Visitor compiled `target/` evidence | **Not retained** |\n| Root README | **None observed** |\n| Tests | None |\n| CI/CD | None |\n| `.gitignore` | Not observed |\n| Branches | `main` only |\n| Branch protection | No |\n| License | None |\n| Topic | `behavioral-design-patterns` |\n| Product maturity | **N/A — educational study repository** |\n| Engineering maturity | **2.25/5** |\n| Behavioral-pattern practice maturity | **3.0/5** |\n| Portfolio Evidence Weight | **3.5/5** |\n| Career-skill evidence value | **4.25/5** |\n| Lifecycle | Dormant/completed study artifact |\n\n### Retrieval tags\n\n`java`, `java19`, `maven`, `netbeans`, `oop`, `design-patterns`, `gof`, `behavioral-patterns`, `chain-of-responsibility`, `mediator`, `memento`, `observer`, `state`, `strategy`, `template-method`, `visitor`, `command`, `interpreter`, `iterator`, `polymorphism`, `interfaces`, `abstract-class`, `delegation`, `event-notification`, `state-restoration`, `algorithm-substitution`, `workflow-template`, `request-chain`, `coordination`, `arraylist`, `list`, `educational-project`, `tutorial-driven`, `2023`\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s159"
+      ],
+      "titles": [
+        "56. Repository 012 bottom line"
+      ],
+      "text": "## 56. Repository 012 bottom line\n`Behavioral-Design-Patterns` completes the first observed three-category GoF study sequence.\n\nIt directly implements:\n\n- Chain of Responsibility;\n- Mediator;\n- Memento;\n- Observer;\n- State;\n- Strategy;\n- Template Method.\n\nIt does **not** directly implement:\n\n- Command;\n- Interpreter;\n- Iterator;\n- Visitor.\n\nVisitor exists only as a named Maven/NetBeans Hello World scaffold.\n\nThe repository's strongest direct evidence is:\n\n- behavioral OOP vocabulary;\n- delegation;\n- observer notification;\n- state snapshot/restore;\n- interchangeable strategies;\n- fixed workflow templates;\n- handler chains;\n- Maven/Java recurrence.\n\nIts strongest weaknesses are:\n\n- incomplete behavioral coverage;\n- Visitor stub;\n- weak Mediator example;\n- shallow State example;\n- no tests;\n- no CI;\n- no README/docs;\n- committed generated build artifacts;\n- machine-local compiler metadata;\n- generic upload commits.\n\n### Key ratings\n\n- Java: **3.0/5**\n- Maven: **2.75/5**\n- OOP fundamentals: **3.5/5**\n- Behavioral-pattern breadth: **3.0/5**\n- Chain of Responsibility: **3.25/5**\n- Mediator: **2.5/5**\n- Memento: **3.0/5**\n- Observer: **3.25/5**\n- State: **2.5/5**\n- Strategy: **3.25/5**\n- Template Method: **3.5/5**\n- Visitor: **0.5/5 exposure; 0 direct implementation**\n- Engineering maturity: **2.25/5**\n- Testing: **0/5**\n- Documentation: **0.25/5**\n- Portfolio Evidence Weight: **3.5/5**\n- Career-skill evidence value: **4.25/5**\n\n### Career-level conclusion\n\n> **The most important result is not that another tutorial repository exists. It is that Repositories 010–012 together form a deliberately organized Java/OOP design-pattern curriculum spanning creational, structural, and behavioral categories. Across the suite, 17 of 23 GoF patterns are directly implemented, with Prototype discussed and Visitor scaffolded but not implemented. This establishes substantial early design-pattern literacy and abstraction practice while simultaneously exposing the next engineering maturity gap: testing, documentation, repository hygiene, real-system application, and contextual pattern selection.**\n\n---\n\n**End of Repository 012 / 134.**\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s004",
+        "s009",
+        "s153"
+      ],
+      "titles": [
+        "2. Chronology",
+        "Correct chronology interpretation",
+        "52. Current relevance / recency"
+      ],
+      "text": "## 2. Chronology\n### Repository creation\n\nRepository created:\n\n**2023-02-18 21:27:05 UTC**\n\nRepository 011 was created:\n\n**2023-02-18 21:26:42 UTC**\n\nDifference:\n\n**23 seconds**\n\nThis is extremely strong evidence that the Structural and Behavioral repositories were intentionally created as companion categories in the same design-pattern study suite.\n\n### Relationship to Repository 010\n\nRepository 010's Builder source had been uploaded at:\n\n**2023-02-18 21:21:56 UTC**\n\nRepository 011 was created:\n\n**4 min 46 sec later**\n\nRepository 012 was created:\n\n**5 min 09 sec later**\n\nThe sequence is therefore:\n\n```text\nCreational-pattern implementation activity\n        ↓\nStructural repo created\n        ↓ 23 sec\nBehavioral repo created\n```\n\nThe most reasonable interpretation is a planned multi-repository GoF study organization.\n\n### Long empty shell period\n\nAlthough Repo 012 was created February 18, no source commit is observed until March 3.\n\nCreation→first source gap:\n\n**12 d 22 h 38 m 19 s**\n\nTherefore:\n\n> repository creation date ≠ implementation date.\n\n### March 3 import burst\n\nAll eight projects are imported within:\n\n**4 min 33 sec**\n\nExact observed import order:\n\n| Order | Time UTC | Project | Commit |\n|---:|---|---|---|\n| 1 | 20:05:24 | Chain of Responsibility | `5f7fc713...` |\n| 2 | 20:06:34 | Mediator | `aea01e9d...` |\n| 3 | 20:06:53 | Memento | `02c5e0a2...` |\n| 4 | 20:07:15 | Observer | `88bb5b05...` |\n| 5 | 20:08:48 | Template Method | `f6043f8d...` |\n| 6 | 20:09:06 | Visitor placeholder | `076cc2cb...` |\n| 7 | 20:09:38 | Strategy | `a4535604...` |\n| 8 | 20:09:57 | State | `08c0ab38...` |\n\nEvery commit message is:\n\n`Add files via upload`\n\n### Correct chronology interpretation\n\nThese are not eight implementations written in four minutes.\n\nThe commits carry local-project artifacts and generated Maven status, so the best interpretation is:\n\n> **locally prepared NetBeans/Maven examples were batch-imported into GitHub.**\n\n### Relationship to Repository 011 implementation activity\n\nRepository 011's last pattern import:\n\n**2023-03-03 19:25:38 UTC**\n\nRepository 012's first pattern import:\n\n**2023-03-03 20:05:24 UTC**\n\nGap:\n\n**39 min 46 sec**\n\nThus Structural and Behavioral pattern imports occur in the same evening.\n\nRepository 010's final documentation/UML edit occurs afterward, at:\n\n**2023-03-03 20:41:06 UTC**\n\nTherefore all three pattern repositories are observably active on the same date.\n\n---\n\n## Correct chronology interpretation\nThese are not eight implementations written in four minutes.\n\nThe commits carry local-project artifacts and generated Maven status, so the best interpretation is:\n\n> **locally prepared NetBeans/Maven examples were batch-imported into GitHub.**\n\n## 52. Current relevance / recency\nRepo 012 evidence is from:\n\n**March 2023**\n\nand has no later activity.\n\nBy 2026 this is historical evidence.\n\n### Use it for\n\n- foundations;\n- learning trajectory;\n- early Java/OOP breadth;\n- design vocabulary.\n\n### Do not use it alone for\n\n- current seniority;\n- current Java proficiency;\n- production architecture expertise.\n\n---"
+    },
+    "skills": {
+      "section_ids": [
+        "s129",
+        "s141"
+      ],
+      "titles": [
+        "46. Career-skill evidence value",
+        "49. Skill lifecycle"
+      ],
+      "text": "## 46. Career-skill evidence value\n**4.25/5**\n\nThis is slightly higher as career-history evidence than the individual showcase value because it completes the three-category study narrative.\n\nIt lets the corpus answer:\n\n- Did the developer deliberately study GoF patterns?\n- Which categories?\n- How complete was each?\n- What was directly implemented?\n- What remained missing?\n- Was Java/OOP study recurring?\n- Did pattern study overlap algorithm practice?\n\n---\n\n## 49. Skill lifecycle\n### Java — Reinforced again\n\nRepos 010–012 form a concentrated multi-repository Java/OOP study cluster.\n\nCurrent historical Java evidence:\n\n- object construction patterns;\n- structural composition patterns;\n- behavioral collaboration patterns.\n\n### Maven — Reinforced\n\nNow repeated across 18 project containers in this pattern suite.\n\n### Design patterns — Advanced in breadth\n\nThe corpus progresses:\n\n```text\nCreational\n    ↓\nStructural\n    ↓\nBehavioral\n```\n\n### Observer / Strategy / Template / State / Memento / Mediator / Chain\n\nFirst direct observed evidence appears here.\n\n### Testing\n\nStill no authored automated tests.\n\n### CI\n\nStill absent.\n\n### Repository hygiene\n\nRepeated weakness.\n\n---"
+    },
+    "scale": {
+      "section_ids": [
+        "s121"
+      ],
+      "titles": [
+        "39. Scale dimensions"
+      ],
+      "text": "## 39. Scale dimensions\n| Dimension | Value |\n|---|---|\n| Repository commits | **8** |\n| Git import span | **4 min 33 sec** |\n| Named Maven projects | **8** |\n| Substantive pattern implementations | **7** |\n| Stub projects | **1** |\n| Canonical behavioral patterns | **11** |\n| Direct coverage | **63.6%** |\n| Java source files | **8** |\n| Approx Java source | **~650 LOC** |\n| Retained compiled target trees | **7** |\n| Contributors observed | **1** |\n| Tests | **0** |\n| CI workflows | **0** |\n| Production users | N/A |\n\n---"
+    },
+    "maturity": {
+      "section_ids": [
+        "s124",
+        "s126"
+      ],
+      "titles": [
+        "42. Product maturity",
+        "43. Engineering maturity"
+      ],
+      "text": "## 42. Product maturity\n**N/A**\n\nNo market-facing product exists.\n\n### Educational artifact maturity\n\n**2.75/5**\n\nStrength:\n- seven real behavioral examples;\n- coherent category.\n\nWeakness:\n- incomplete coverage;\n- Visitor placeholder;\n- no docs;\n- no tests;\n- weak hygiene.\n\n---\n\n## 43. Engineering maturity\n**2.25/5**\n\nSame general maturity tier as Repos 010–011.\n\nPattern vocabulary grows faster than:\n\n- testing;\n- repository discipline;\n- documentation;\n- production integration.\n\n---"
+    },
+    "testing": {
+      "section_ids": [
+        "s094",
+        "s119",
+        "s146"
+      ],
+      "titles": [
+        "32. Testing",
+        "38.6 No testing while studying abstractions",
+        "Testing"
+      ],
+      "text": "## 32. Testing\nNo:\n\n- `src/test/java`;\n- JUnit;\n- assertions;\n- Maven test dependencies;\n- behavior tests;\n- pattern-contract tests.\n\n### Rating\n\n**0/5 authored automated testing**\n\n### Missed opportunities\n\nTesting would have been especially valuable for:\n\n- Chain handler selection;\n- Mediator landing state;\n- Memento restoration;\n- Observer fan-out;\n- State transitions;\n- Strategy output;\n- Template sequence.\n\nThe complete absence of tests across the three pattern repositories is a major recurring quality-engineering gap.\n\n---\n\n## 38.6 No testing while studying abstractions\nPattern exercises are excellent candidates for small unit tests, but none exist.\n\n## Testing\nStill no authored automated tests."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s097"
+      ],
+      "titles": [
+        "33. CI/CD"
+      ],
+      "text": "## 33. CI/CD\nNo CI.\n\nNo GitHub Actions.\n\nNo deployment.\n\n### CI rating\n\n**0/5**\n\nDeployment:\n\n**N/A**\n\n---"
+    },
+    "documentation": {
+      "section_ids": [
+        "s099",
+        "s100",
+        "s120"
+      ],
+      "titles": [
+        "34. Documentation",
+        "Documentation rating",
+        "38.7 Pattern breadth without applicability documentation"
+      ],
+      "text": "## 34. Documentation\nNo root README.\n\nNo pattern README files are observed.\n\nNo UML.\n\nNo explanation of:\n\n- intent;\n- structure;\n- tradeoffs;\n- applicability;\n- differences between similar patterns;\n- references/provenance;\n- run instructions.\n\n### Documentation rating\n\n**0.25/5**\n\nThis is weaker than Repo 010 and similar to/below Repo 011.\n\n---\n\n## Documentation rating\n**0.25/5**\n\nThis is weaker than Repo 010 and similar to/below Repo 011.\n\n---\n\n## 38.7 Pattern breadth without applicability documentation\nKnowing shape is not the same as knowing selection tradeoffs.\n\n---"
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s091",
+        "s148"
+      ],
+      "titles": [
+        "31. Repository hygiene",
+        "Repository hygiene"
+      ],
+      "text": "## 31. Repository hygiene\nThe same source-control issue from Repos 010 and 011 repeats.\n\nSeven substantive projects contain committed:\n\n- `target/`;\n- `.class` files;\n- `maven-status`;\n- generated compiler metadata;\n- local machine input paths.\n\nNo `.gitignore` is observed.\n\n### Rating\n\n**1.25/5**\n\n### Longitudinal result\n\nThis is now a recurring three-repository hygiene weakness.\n\nThe developer was learning architecture concepts faster than source-control cleanup discipline was improving.\n\n---\n\n## Repository hygiene\nRepeated weakness.\n\n---"
+    },
+    "strengths": {
+      "section_ids": [
+        "s040"
+      ],
+      "titles": [
+        "11. Observer strengths"
+      ],
+      "text": "## 11. Observer strengths\n- three concrete observers;\n- one subject;\n- observable state changes;\n- automatic fan-out;\n- different response behavior per observer;\n- uses `List<Observer>` generically.\n\n### Limitations\n\nNo:\n- detach/unsubscribe;\n- duplicate protection;\n- event typing;\n- asynchronous delivery;\n- exception isolation;\n- ordering policy;\n- weak references;\n- thread safety.\n\nObserver constructors self-register, which is convenient for the demo but creates hidden side effects.\n\n### Anti-inflation\n\nThis is not event-bus, reactive-stream, or distributed pub/sub expertise.\n\n---\n\n# State"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s015",
+        "s023",
+        "s032",
+        "s113"
+      ],
+      "titles": [
+        "5. Chain weaknesses",
+        "7. Mediator weaknesses",
+        "9. Memento weaknesses",
+        "38. Mistakes / anti-patterns / lessons"
+      ],
+      "text": "## 5. Chain weaknesses\n### Custom `Number` name collision\n\nThe example defines its own:\n\n`Number`\n\nwhich shadows/conflicts conceptually with Java's standard:\n\n`java.lang.Number`.\n\nThat is poor naming.\n\n### Fixed chain construction\n\nThe chain is hard-coded inside `buildChain()`.\n\nNo dynamic registration/configuration.\n\n### Silent terminal behavior\n\nBase `Processor.process()` simply does nothing when:\n\n`nextProcessor == null`.\n\nThere is no:\n- unhandled-request signal;\n- default handler;\n- error.\n\n### No tests\n\nA simple parameterized test could verify routing for:\n- negative;\n- zero;\n- positive values.\n\n---\n\n# Mediator\n\n## 7. Mediator weaknesses\n### Registered participants are not actually used\n\n`ATCMediator` stores:\n\n- `Flight flight`\n- `Runway runway`\n\nbut neither field participates in later coordination.\n\nThe `registerFlight()` and `registerRunway()` methods therefore have little behavioral effect.\n\n### Shared flag rather than real mediation\n\nMost coordination is only:\n\n`boolean land`\n\nwith getters/setters.\n\nThat is closer to shared coordination state than rich mediator-controlled interaction.\n\n### Runway constructor grants landing status\n\nConstructing a `Runway` immediately executes:\n\n`setLandingStatus(true)`.\n\nThis couples object creation with system permission state.\n\n### Landing status remains true\n\nAfter successful `Flight.land()`, code sets:\n\n`setLandingStatus(true)`\n\nagain.\n\nThe example does not model runway occupation or transition back to unavailable state.\n\n### `Command` is not Command pattern\n\nThe interface:\n\n```text\ninterface Command {\n    void land();\n}\n```\n\nonly gives Flight and Runway a shared operation.\n\nThere is no:\n- command object encapsulating a request;\n- invoker;\n- receiver;\n- execute/undo history.\n\nTherefore:\n\n> **Command pattern = 0 direct evidence in this repository.**\n\n---\n\n# Memento\n\n## 9. Memento weaknesses\n### Encapsulation is only partial\n\n`Memento` exposes:\n\n`getState()`.\n\nBecause all classes are in the same package/file context, the caretaker model does not strictly prevent external inspection of stored state.\n\nA stronger Memento design would better hide snapshot internals from caretaker logic.\n\n### Only String state\n\nNo:\n- complex object graph;\n- deep copy;\n- immutable aggregate;\n- serialization concerns.\n\n### No history controls\n\nNo:\n- undo pointer;\n- redo;\n- maximum history;\n- branching histories;\n- bounds checking around `get(index)`.\n\n### Product relevance\n\nThis is not evidence of production undo/redo engineering.\n\nIt is pattern-mechanics evidence.\n\n---\n\n# Observer\n\n## 38. Mistakes / anti-patterns / lessons\n### 38.1 Folder name ≠ implementation\n\nVisitor demonstrates why repository analysis must inspect source, not infer capability from directory names.\n\n### 38.2 Class/interface name ≠ pattern\n\nMediator's `Command` interface does not make the project evidence of Command pattern.\n\n### 38.3 State skeleton without behavioral delegation\n\nA state reference alone does not capture the full benefit of State.\n\n### 38.4 Mediator with unused registered components\n\nA mediator should actually coordinate participants, not merely store unused references plus a shared flag.\n\n### 38.5 Generated output in Git\n\nRepeated across all three pattern repos.\n\n### 38.6 No testing while studying abstractions\n\nPattern exercises are excellent candidates for small unit tests, but none exist.\n\n### 38.7 Pattern breadth without applicability documentation\n\nKnowing shape is not the same as knowing selection tradeoffs.\n\n---"
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s156"
+      ],
+      "titles": [
+        "53. Failure potential"
+      ],
+      "text": "## 53. Failure potential\nProduct failure:\n\n**N/A**\n\nEducational failure potential:\n- misclassifying Visitor as implemented;\n- misclassifying `Command` interface as Command pattern;\n- overestimating State/Mediator depth;\n- learning canonical shapes without tradeoff context.\n\nThe repository itself demonstrates why source-level inspection is essential.\n\n---"
+    },
+    "human_impact": {
+      "section_ids": [
+        "s157"
+      ],
+      "titles": [
+        "54. Human impact"
+      ],
+      "text": "## 54. Human impact\nDirect impact is low.\n\nPotential positive:\n- stronger architectural vocabulary;\n- clearer object responsibility reasoning;\n- exposure to collaboration and state-management patterns.\n\nPotential downside:\n- cargo-cult pattern application;\n- pattern memorization without contextual selection;\n- pattern overuse.\n\n---"
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s104"
+      ],
+      "titles": [
+        "36. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 36. Engineering decisions and tradeoffs\n### Separate Maven project per pattern\n\nPositive:\n- isolates examples;\n- makes category boundaries visible.\n\nNegative:\n- duplicates project boilerplate;\n- no parent POM;\n- no aggregate build.\n\n### Abstract interfaces/classes\n\nPositive:\n- pattern roles are visible;\n- substitution is understandable.\n\nNegative:\n- many classes live in one Java source file;\n- examples are not structured as reusable libraries.\n\n### Batch Git imports\n\nPositive:\n- one project per commit makes repository accumulation understandable.\n\nNegative:\n- all messages generic;\n- no source-development history;\n- cannot infer implementation duration.\n\n### Generated build output committed\n\nNegative engineering choice.\n\n---"
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s109",
+        "s112"
+      ],
+      "titles": [
+        "37. Engineering judgment",
+        "Engineering judgment rating"
+      ],
+      "text": "## 37. Engineering judgment\n### Positive signals\n\n1. deliberate third-stage pattern study after creational and structural categories;\n2. broad behavioral vocabulary;\n3. correctly demonstrates several classic forms;\n4. uses abstractions repeatedly;\n5. separates strategies from context;\n6. uses `final` appropriately in Template Method;\n7. uses a handler chain correctly;\n8. demonstrates observer fan-out;\n9. demonstrates snapshot/restore;\n10. imports all work as Maven projects.\n\n### Negative signals\n\n1. Visitor is only a stub despite directory naming;\n2. Command is missing despite an unrelated interface with that name;\n3. Interpreter absent;\n4. Iterator absent;\n5. Mediator registration fields unused;\n6. Mediator coordination semantics weak;\n7. State context does not own/delegate behavior;\n8. no tests;\n9. no documentation;\n10. generated build artifacts committed;\n11. no `.gitignore`;\n12. generic commit messages;\n13. tutorial-heavy examples;\n14. no real-system application.\n\n### Engineering judgment rating\n\n**2.75/5**\n\n---\n\n## Engineering judgment rating\n**2.75/5**\n\n---"
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s128"
+      ],
+      "titles": [
+        "45. Portfolio Evidence Weight"
+      ],
+      "text": "## 45. Portfolio Evidence Weight\n**3.5/5**\n\nWhy:\n- direct Java source;\n- seven implementations;\n- exact companion-repo chronology;\n- Maven recurrence;\n- broad OOP concepts.\n\nReductions:\n- tutorial/reference-like;\n- incomplete behavioral catalog;\n- Visitor stub;\n- no tests;\n- no docs;\n- poor repo hygiene.\n\n---"
+    },
+    "limitations": {
+      "section_ids": [
+        "s158"
+      ],
+      "titles": [
+        "55. RAG anti-inflation warnings"
+      ],
+      "text": "## 55. RAG anti-inflation warnings\n1. Repository folder names do not equal implemented capabilities.\n2. Visitor is only Hello World.\n3. Command is absent despite an interface named `Command`.\n4. Interpreter is absent.\n5. Iterator is absent.\n6. Eight commits in four minutes are imports, not implementation duration.\n7. Generated `.class` files only prove retained local build output.\n8. Java 19 config does not imply Java-19-specific expertise.\n9. No tests exist.\n10. No CI exists.\n11. No documentation exists.\n12. Tutorial-style examples should be credited as study/implementation, not invention.\n13. Behavioral pattern count is **7 direct**, not 8.\n14. Combined GoF direct count after Repo012 is **17 / 23**, not 19 / 23.\n15. Historical repository evidence does not prove current proficiency.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s093",
+        "s149"
+      ],
+      "titles": [
+        "Longitudinal result",
+        "50. First / Previous / Current / Corpus-Max Ledger"
+      ],
+      "text": "## Longitudinal result\nThis is now a recurring three-repository hygiene weakness.\n\nThe developer was learning architecture concepts faster than source-control cleanup discipline was improving.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max Ledger\n| Skill | First observed | Previous max | Repo 012 | Corpus max |\n|---|---|---:|---:|---:|\n| Java | Repo010 | 3.0 | **3.0** | **3.0** |\n| Maven | Repo010 | 2.75 | **2.75** | **2.75** |\n| OOP fundamentals | earlier / Repo010 explicit | 3.5 | **3.5** | **3.5** |\n| Design-pattern breadth | Repo010 | 3.25 | **3.0 behavioral** | **3.25** |\n| Behavioral patterns | **Repo012** | none | **3.0** | **3.0** |\n| Chain of Responsibility | **Repo012** | none | **3.25** | **3.25** |\n| Mediator | **Repo012** | none | **2.5** | **2.5** |\n| Memento | **Repo012** | none | **3.0** | **3.0** |\n| Observer | **Repo012** | none | **3.25** | **3.25** |\n| State | **Repo012** | none | **2.5** | **2.5** |\n| Strategy | **Repo012** | none | **3.25** | **3.25** |\n| Template Method | **Repo012** | none | **3.5** | **3.5** |\n| Visitor | **Repo012 stub** | none | **0.5 exposure** | **0.5 exposure** |\n| Command pattern | not observed | none | **0** | not observed |\n| Interpreter | not observed | none | **0** | not observed |\n| Iterator pattern | not observed | none | **0** | not observed |\n| Event notification | **Repo012** | none | **3.25** | **3.25** |\n| Snapshot/restore | **Repo012** | none | **3.0** | **3.0** |\n| Workflow template abstraction | **Repo012** | none | **3.5** | **3.5** |\n| Authored automated testing | none | 0 | **0** | remains weak |\n| CI/CD | none | 0 | **0** | remains absent |\n\n---"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **Behavioral Design Patterns — Java/Maven Study Suite with Seven Implemented GoF Patterns and One Visitor Stub**\n\nRepository 012 is the third repository in the explicit early-2023 GoF design-pattern learning sequence.\n\nIt follows:\n\n- Repository 010 — Creational Design Patterns\n- Repository 011 — Structural Design Patterns\n- Repository 012 — Behavioral Design Patterns\n\nThe final tree contains eight named behavioral-pattern project directories:\n\n1. `ChainOfResponsibility`\n2. `MediatorPattern`\n3. `MementoPattern`\n4. `ObserverPattern`\n5. `StatePattern`\n6. `StrategyPattern`\n7. `TemplatePatternDemo`\n8. `VisitorPatternDemo`\n\nHowever, the directory count overstates the implementation coverage.\n\n`VisitorPatternDemo` contains only a NetBeans-generated Java application whose `main()` prints:\n\n`Hello World!`\n\nIt contains none of the defining Visitor roles or mechanics:\n\n- visitor interface;\n- concrete visitor;\n- element interface;\n- `accept(...)`;\n- visit overloads;\n- double dispatch.\n\nTherefore the final repository contains:\n\n> **7 directly implemented behavioral patterns**\n\nplus:\n\n> **1 named but unimplemented Visitor placeholder**\n\nThe canonical GoF behavioral category contains 11 patterns:\n\n- Chain of Responsibility\n- Command\n- Interpreter\n- Iterator\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method\n- Visitor\n\nThus the correct final coverage is:\n\n- **7 / 11 directly implemented**\n- **1 / 11 placeholder only — Visitor**\n- **3 / 11 absent — Command, Interpreter, Iterator**\n\nThere is an interface named `Command` inside the Mediator example, but it merely exposes `land()` for `Flight` and `Runway`.\n\nThat is **not** an implementation of the GoF Command pattern.\n\nThis distinction is mandatory for anti-inflation.\n\n---",
+      "source_line_start": 23561,
+      "source_line_end": 23635
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG Metadata",
+      "normalized_title": "RAG Metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG Metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Behavioral-Design-Patterns` |\n| Chronology index | **012 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Repository created | **February 18, 2023, 21:27:05 UTC** |\n| First commit | **March 3, 2023, 20:05:24 UTC** |\n| First commit SHA | `5f7fc7131c1d0f2a16e8a4925f7ceb2cb1064119` |\n| First imported project | **Chain of Responsibility** |\n| Latest commit | **March 3, 2023, 20:09:57 UTC** |\n| Latest commit SHA | `08c0ab380fca26bdfbb2fe0413838bfb863e000d` |\n| Latest imported project | **State** |\n| Exact total commits | **8** |\n| First→latest commit span | **4 min 33 sec** |\n| Repo creation→first source commit gap | **12 d 22 h 38 m 19 s** |\n| Repo creation→latest commit span | **12 d 22 h 42 m 52 s** |\n| Primary language | **Java** |\n| Maven projects | **8** |\n| Java compiler configuration | **Java 19** |\n| IDE evidence | **NetBeans Maven project templates** |\n| Final Java source files | **8** |\n| Approx. Java source size | **~13.4 KB / ~650 source lines** |\n| Direct behavioral implementations | **7 / 11** |\n| Visitor | **Named project, but only Hello World stub** |\n| Command | **Not implemented as GoF pattern** |\n| Interpreter | **Not observed** |\n| Iterator | **Not observed** |\n| Compiled `target/` evidence | **Retained for the 7 substantive examples** |\n| Visitor compiled `target/` evidence | **Not retained** |\n| Root README | **None observed** |\n| Tests | None |\n| CI/CD | None |\n| `.gitignore` | Not observed |\n| Branches | `main` only |\n| Branch protection | No |\n| License | None |\n| Topic | `behavioral-design-patterns` |\n| Product maturity | **N/A — educational study repository** |\n| Engineering maturity | **2.25/5** |\n| Behavioral-pattern practice maturity | **3.0/5** |\n| Portfolio Evidence Weight | **3.5/5** |\n| Career-skill evidence value | **4.25/5** |\n| Lifecycle | Dormant/completed study artifact |\n\n### Retrieval tags\n\n`java`, `java19`, `maven`, `netbeans`, `oop`, `design-patterns`, `gof`, `behavioral-patterns`, `chain-of-responsibility`, `mediator`, `memento`, `observer`, `state`, `strategy`, `template-method`, `visitor`, `command`, `interpreter`, `iterator`, `polymorphism`, `interfaces`, `abstract-class`, `delegation`, `event-notification`, `state-restoration`, `algorithm-substitution`, `workflow-template`, `request-chain`, `coordination`, `arraylist`, `list`, `educational-project`, `tutorial-driven`, `2023`\n\n---",
+      "source_line_start": 23635,
+      "source_line_end": 23688
+    },
+    {
+      "id": "s003",
+      "level": 3,
+      "title": "Retrieval tags",
+      "normalized_title": "Retrieval tags",
+      "key": "retrieval_tags",
+      "path": [
+        "1. RAG Metadata",
+        "Retrieval tags"
+      ],
+      "content": "`java`, `java19`, `maven`, `netbeans`, `oop`, `design-patterns`, `gof`, `behavioral-patterns`, `chain-of-responsibility`, `mediator`, `memento`, `observer`, `state`, `strategy`, `template-method`, `visitor`, `command`, `interpreter`, `iterator`, `polymorphism`, `interfaces`, `abstract-class`, `delegation`, `event-notification`, `state-restoration`, `algorithm-substitution`, `workflow-template`, `request-chain`, `coordination`, `arraylist`, `list`, `educational-project`, `tutorial-driven`, `2023`\n\n---",
+      "source_line_start": 23682,
+      "source_line_end": 23688
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "2. Chronology",
+      "normalized_title": "Chronology",
+      "key": "chronology",
+      "path": [
+        "2. Chronology"
+      ],
+      "content": "### Repository creation\n\nRepository created:\n\n**2023-02-18 21:27:05 UTC**\n\nRepository 011 was created:\n\n**2023-02-18 21:26:42 UTC**\n\nDifference:\n\n**23 seconds**\n\nThis is extremely strong evidence that the Structural and Behavioral repositories were intentionally created as companion categories in the same design-pattern study suite.\n\n### Relationship to Repository 010\n\nRepository 010's Builder source had been uploaded at:\n\n**2023-02-18 21:21:56 UTC**\n\nRepository 011 was created:\n\n**4 min 46 sec later**\n\nRepository 012 was created:\n\n**5 min 09 sec later**\n\nThe sequence is therefore:\n\n```text\nCreational-pattern implementation activity\n        ↓\nStructural repo created\n        ↓ 23 sec\nBehavioral repo created\n```\n\nThe most reasonable interpretation is a planned multi-repository GoF study organization.\n\n### Long empty shell period\n\nAlthough Repo 012 was created February 18, no source commit is observed until March 3.\n\nCreation→first source gap:\n\n**12 d 22 h 38 m 19 s**\n\nTherefore:\n\n> repository creation date ≠ implementation date.\n\n### March 3 import burst\n\nAll eight projects are imported within:\n\n**4 min 33 sec**\n\nExact observed import order:\n\n| Order | Time UTC | Project | Commit |\n|---:|---|---|---|\n| 1 | 20:05:24 | Chain of Responsibility | `5f7fc713...` |\n| 2 | 20:06:34 | Mediator | `aea01e9d...` |\n| 3 | 20:06:53 | Memento | `02c5e0a2...` |\n| 4 | 20:07:15 | Observer | `88bb5b05...` |\n| 5 | 20:08:48 | Template Method | `f6043f8d...` |\n| 6 | 20:09:06 | Visitor placeholder | `076cc2cb...` |\n| 7 | 20:09:38 | Strategy | `a4535604...` |\n| 8 | 20:09:57 | State | `08c0ab38...` |\n\nEvery commit message is:\n\n`Add files via upload`\n\n### Correct chronology interpretation\n\nThese are not eight implementations written in four minutes.\n\nThe commits carry local-project artifacts and generated Maven status, so the best interpretation is:\n\n> **locally prepared NetBeans/Maven examples were batch-imported into GitHub.**\n\n### Relationship to Repository 011 implementation activity\n\nRepository 011's last pattern import:\n\n**2023-03-03 19:25:38 UTC**\n\nRepository 012's first pattern import:\n\n**2023-03-03 20:05:24 UTC**\n\nGap:\n\n**39 min 46 sec**\n\nThus Structural and Behavioral pattern imports occur in the same evening.\n\nRepository 010's final documentation/UML edit occurs afterward, at:\n\n**2023-03-03 20:41:06 UTC**\n\nTherefore all three pattern repositories are observably active on the same date.\n\n---",
+      "source_line_start": 23688,
+      "source_line_end": 23799
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Repository creation",
+      "normalized_title": "Repository creation",
+      "key": "repository_creation",
+      "path": [
+        "2. Chronology",
+        "Repository creation"
+      ],
+      "content": "Repository created:\n\n**2023-02-18 21:27:05 UTC**\n\nRepository 011 was created:\n\n**2023-02-18 21:26:42 UTC**\n\nDifference:\n\n**23 seconds**\n\nThis is extremely strong evidence that the Structural and Behavioral repositories were intentionally created as companion categories in the same design-pattern study suite.",
+      "source_line_start": 23690,
+      "source_line_end": 23706
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Relationship to Repository 010",
+      "normalized_title": "Relationship to Repository 010",
+      "key": "relationship_to_repository_010",
+      "path": [
+        "2. Chronology",
+        "Relationship to Repository 010"
+      ],
+      "content": "Repository 010's Builder source had been uploaded at:\n\n**2023-02-18 21:21:56 UTC**\n\nRepository 011 was created:\n\n**4 min 46 sec later**\n\nRepository 012 was created:\n\n**5 min 09 sec later**\n\nThe sequence is therefore:\n\n```text\nCreational-pattern implementation activity\n        ↓\nStructural repo created\n        ↓ 23 sec\nBehavioral repo created\n```\n\nThe most reasonable interpretation is a planned multi-repository GoF study organization.",
+      "source_line_start": 23706,
+      "source_line_end": 23732
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Long empty shell period",
+      "normalized_title": "Long empty shell period",
+      "key": "long_empty_shell_period",
+      "path": [
+        "2. Chronology",
+        "Long empty shell period"
+      ],
+      "content": "Although Repo 012 was created February 18, no source commit is observed until March 3.\n\nCreation→first source gap:\n\n**12 d 22 h 38 m 19 s**\n\nTherefore:\n\n> repository creation date ≠ implementation date.",
+      "source_line_start": 23732,
+      "source_line_end": 23744
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "March 3 import burst",
+      "normalized_title": "March 3 import burst",
+      "key": "march_3_import_burst",
+      "path": [
+        "2. Chronology",
+        "March 3 import burst"
+      ],
+      "content": "All eight projects are imported within:\n\n**4 min 33 sec**\n\nExact observed import order:\n\n| Order | Time UTC | Project | Commit |\n|---:|---|---|---|\n| 1 | 20:05:24 | Chain of Responsibility | `5f7fc713...` |\n| 2 | 20:06:34 | Mediator | `aea01e9d...` |\n| 3 | 20:06:53 | Memento | `02c5e0a2...` |\n| 4 | 20:07:15 | Observer | `88bb5b05...` |\n| 5 | 20:08:48 | Template Method | `f6043f8d...` |\n| 6 | 20:09:06 | Visitor placeholder | `076cc2cb...` |\n| 7 | 20:09:38 | Strategy | `a4535604...` |\n| 8 | 20:09:57 | State | `08c0ab38...` |\n\nEvery commit message is:\n\n`Add files via upload`",
+      "source_line_start": 23744,
+      "source_line_end": 23767
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Correct chronology interpretation",
+      "normalized_title": "Correct chronology interpretation",
+      "key": "correct_chronology_interpretation",
+      "path": [
+        "2. Chronology",
+        "Correct chronology interpretation"
+      ],
+      "content": "These are not eight implementations written in four minutes.\n\nThe commits carry local-project artifacts and generated Maven status, so the best interpretation is:\n\n> **locally prepared NetBeans/Maven examples were batch-imported into GitHub.**",
+      "source_line_start": 23767,
+      "source_line_end": 23775
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Relationship to Repository 011 implementation activity",
+      "normalized_title": "Relationship to Repository 011 implementation activity",
+      "key": "relationship_to_repository_011_implementation_activity",
+      "path": [
+        "2. Chronology",
+        "Relationship to Repository 011 implementation activity"
+      ],
+      "content": "Repository 011's last pattern import:\n\n**2023-03-03 19:25:38 UTC**\n\nRepository 012's first pattern import:\n\n**2023-03-03 20:05:24 UTC**\n\nGap:\n\n**39 min 46 sec**\n\nThus Structural and Behavioral pattern imports occur in the same evening.\n\nRepository 010's final documentation/UML edit occurs afterward, at:\n\n**2023-03-03 20:41:06 UTC**\n\nTherefore all three pattern repositories are observably active on the same date.\n\n---",
+      "source_line_start": 23775,
+      "source_line_end": 23799
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "3. Final repository structure",
+      "normalized_title": "Final repository structure",
+      "key": "final_repository_structure",
+      "path": [
+        "3. Final repository structure"
+      ],
+      "content": "Conceptually:\n\n```text\nBehavioral-Design-Patterns/\n├── ChainOfResponsibility/\n│   ├── pom.xml\n│   ├── src/main/java/.../ChainOfResponsibility.java\n│   └── target/\n├── MediatorPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../MediatorPattern.java\n│   └── target/\n├── MementoPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../MementoPattern.java\n│   └── target/\n├── ObserverPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../ObserverPattern.java\n│   └── target/\n├── StatePattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../StatePattern.java\n│   └── target/\n├── StrategyPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../StrategyPattern.java\n│   └── target/\n├── TemplatePatternDemo/\n│   ├── pom.xml\n│   ├── src/main/java/.../TemplatePatternDemo.java\n│   └── target/\n└── VisitorPatternDemo/\n    ├── pom.xml\n    └── src/main/java/.../VisitorPatternDemo.java\n```\n\nImportant:\n\n> `VisitorPatternDemo` does **not** retain the compiled `target/` tree that the seven substantive examples retain.\n\nNo root:\n- README;\n- test directory;\n- CI workflow;\n- `.gitignore`\n\nis observed.\n\n---\n\n# Chain of Responsibility",
+      "source_line_start": 23799,
+      "source_line_end": 23854
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "4. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "4. Implementation"
+      ],
+      "content": "Classes:\n\n- `Chain`\n- abstract `Processor`\n- `NegativeProcessor`\n- `ZeroProcessor`\n- `PositiveProcessor`\n- custom `Number`.\n\nThe chain is constructed as:\n\n```text\nNegativeProcessor\n    ↓\nZeroProcessor\n    ↓\nPositiveProcessor\n```\n\nEach processor:\n\n1. checks whether it can handle the number;\n2. handles it if appropriate;\n3. otherwise delegates to the next processor.\n\nThe main method sends:\n\n- `90`\n- `-50`\n- `0`\n- `91`\n\nthrough the same chain.\n\n### Directly demonstrated concepts\n\n- handler chaining;\n- request forwarding;\n- decoupling caller from final handler;\n- abstract base handler;\n- runtime delegation.\n\n### Rating\n\n**3.25/5**\n\nThis is one of the stronger examples in Repo 012.\n\n---",
+      "source_line_start": 23854,
+      "source_line_end": 23906
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Directly demonstrated concepts",
+      "normalized_title": "Directly demonstrated concepts",
+      "key": "directly_demonstrated_concepts",
+      "path": [
+        "4. Implementation",
+        "Directly demonstrated concepts"
+      ],
+      "content": "- handler chaining;\n- request forwarding;\n- decoupling caller from final handler;\n- abstract base handler;\n- runtime delegation.",
+      "source_line_start": 23890,
+      "source_line_end": 23898
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "4. Implementation",
+        "Rating"
+      ],
+      "content": "**3.25/5**\n\nThis is one of the stronger examples in Repo 012.\n\n---",
+      "source_line_start": 23898,
+      "source_line_end": 23906
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "5. Chain weaknesses",
+      "normalized_title": "Chain weaknesses",
+      "key": "chain_weaknesses",
+      "path": [
+        "5. Chain weaknesses"
+      ],
+      "content": "### Custom `Number` name collision\n\nThe example defines its own:\n\n`Number`\n\nwhich shadows/conflicts conceptually with Java's standard:\n\n`java.lang.Number`.\n\nThat is poor naming.\n\n### Fixed chain construction\n\nThe chain is hard-coded inside `buildChain()`.\n\nNo dynamic registration/configuration.\n\n### Silent terminal behavior\n\nBase `Processor.process()` simply does nothing when:\n\n`nextProcessor == null`.\n\nThere is no:\n- unhandled-request signal;\n- default handler;\n- error.\n\n### No tests\n\nA simple parameterized test could verify routing for:\n- negative;\n- zero;\n- positive values.\n\n---\n\n# Mediator",
+      "source_line_start": 23906,
+      "source_line_end": 23948
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Custom `Number` name collision",
+      "normalized_title": "Custom Number name collision",
+      "key": "custom_number_name_collision",
+      "path": [
+        "5. Chain weaknesses",
+        "Custom `Number` name collision"
+      ],
+      "content": "The example defines its own:\n\n`Number`\n\nwhich shadows/conflicts conceptually with Java's standard:\n\n`java.lang.Number`.\n\nThat is poor naming.",
+      "source_line_start": 23908,
+      "source_line_end": 23920
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Fixed chain construction",
+      "normalized_title": "Fixed chain construction",
+      "key": "fixed_chain_construction",
+      "path": [
+        "5. Chain weaknesses",
+        "Fixed chain construction"
+      ],
+      "content": "The chain is hard-coded inside `buildChain()`.\n\nNo dynamic registration/configuration.",
+      "source_line_start": 23920,
+      "source_line_end": 23926
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Silent terminal behavior",
+      "normalized_title": "Silent terminal behavior",
+      "key": "silent_terminal_behavior",
+      "path": [
+        "5. Chain weaknesses",
+        "Silent terminal behavior"
+      ],
+      "content": "Base `Processor.process()` simply does nothing when:\n\n`nextProcessor == null`.\n\nThere is no:\n- unhandled-request signal;\n- default handler;\n- error.",
+      "source_line_start": 23926,
+      "source_line_end": 23937
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "No tests",
+      "normalized_title": "No tests",
+      "key": "no_tests",
+      "path": [
+        "5. Chain weaknesses",
+        "No tests"
+      ],
+      "content": "A simple parameterized test could verify routing for:\n- negative;\n- zero;\n- positive values.\n\n---\n\n# Mediator",
+      "source_line_start": 23937,
+      "source_line_end": 23948
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "6. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "6. Implementation"
+      ],
+      "content": "Participants:\n\n- `IATCMediator`\n- `ATCMediator`\n- `Flight`\n- `Runway`\n- interface named `Command`.\n\nThe example models simplified air-traffic-control coordination.\n\n`Flight` and `Runway` both depend on:\n\n`IATCMediator`\n\nrather than directly depending on each other.\n\nThe mediator exposes:\n\n- register flight;\n- register runway;\n- landing-state query;\n- landing-state mutation.\n\n### Intended pattern idea\n\n```text\nFlight ──┐\n         │\n         ▼\n     ATC Mediator\n         ▲\n         │\nRunway ──┘\n```\n\n### Rating\n\n**2.5/5**\n\nThe abstraction exists, but the mediation logic is weak.\n\n---",
+      "source_line_start": 23948,
+      "source_line_end": 23993
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Intended pattern idea",
+      "normalized_title": "Intended pattern idea",
+      "key": "intended_pattern_idea",
+      "path": [
+        "6. Implementation",
+        "Intended pattern idea"
+      ],
+      "content": "```text\nFlight ──┐\n         │\n         ▼\n     ATC Mediator\n         ▲\n         │\nRunway ──┘\n```",
+      "source_line_start": 23973,
+      "source_line_end": 23985
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "6. Implementation",
+        "Rating"
+      ],
+      "content": "**2.5/5**\n\nThe abstraction exists, but the mediation logic is weak.\n\n---",
+      "source_line_start": 23985,
+      "source_line_end": 23993
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "7. Mediator weaknesses",
+      "normalized_title": "Mediator weaknesses",
+      "key": "mediator_weaknesses",
+      "path": [
+        "7. Mediator weaknesses"
+      ],
+      "content": "### Registered participants are not actually used\n\n`ATCMediator` stores:\n\n- `Flight flight`\n- `Runway runway`\n\nbut neither field participates in later coordination.\n\nThe `registerFlight()` and `registerRunway()` methods therefore have little behavioral effect.\n\n### Shared flag rather than real mediation\n\nMost coordination is only:\n\n`boolean land`\n\nwith getters/setters.\n\nThat is closer to shared coordination state than rich mediator-controlled interaction.\n\n### Runway constructor grants landing status\n\nConstructing a `Runway` immediately executes:\n\n`setLandingStatus(true)`.\n\nThis couples object creation with system permission state.\n\n### Landing status remains true\n\nAfter successful `Flight.land()`, code sets:\n\n`setLandingStatus(true)`\n\nagain.\n\nThe example does not model runway occupation or transition back to unavailable state.\n\n### `Command` is not Command pattern\n\nThe interface:\n\n```text\ninterface Command {\n    void land();\n}\n```\n\nonly gives Flight and Runway a shared operation.\n\nThere is no:\n- command object encapsulating a request;\n- invoker;\n- receiver;\n- execute/undo history.\n\nTherefore:\n\n> **Command pattern = 0 direct evidence in this repository.**\n\n---\n\n# Memento",
+      "source_line_start": 23993,
+      "source_line_end": 24060
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Registered participants are not actually used",
+      "normalized_title": "Registered participants are not actually used",
+      "key": "registered_participants_are_not_actually_used",
+      "path": [
+        "7. Mediator weaknesses",
+        "Registered participants are not actually used"
+      ],
+      "content": "`ATCMediator` stores:\n\n- `Flight flight`\n- `Runway runway`\n\nbut neither field participates in later coordination.\n\nThe `registerFlight()` and `registerRunway()` methods therefore have little behavioral effect.",
+      "source_line_start": 23995,
+      "source_line_end": 24006
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Shared flag rather than real mediation",
+      "normalized_title": "Shared flag rather than real mediation",
+      "key": "shared_flag_rather_than_real_mediation",
+      "path": [
+        "7. Mediator weaknesses",
+        "Shared flag rather than real mediation"
+      ],
+      "content": "Most coordination is only:\n\n`boolean land`\n\nwith getters/setters.\n\nThat is closer to shared coordination state than rich mediator-controlled interaction.",
+      "source_line_start": 24006,
+      "source_line_end": 24016
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Runway constructor grants landing status",
+      "normalized_title": "Runway constructor grants landing status",
+      "key": "runway_constructor_grants_landing_status",
+      "path": [
+        "7. Mediator weaknesses",
+        "Runway constructor grants landing status"
+      ],
+      "content": "Constructing a `Runway` immediately executes:\n\n`setLandingStatus(true)`.\n\nThis couples object creation with system permission state.",
+      "source_line_start": 24016,
+      "source_line_end": 24024
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Landing status remains true",
+      "normalized_title": "Landing status remains true",
+      "key": "landing_status_remains_true",
+      "path": [
+        "7. Mediator weaknesses",
+        "Landing status remains true"
+      ],
+      "content": "After successful `Flight.land()`, code sets:\n\n`setLandingStatus(true)`\n\nagain.\n\nThe example does not model runway occupation or transition back to unavailable state.",
+      "source_line_start": 24024,
+      "source_line_end": 24034
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "`Command` is not Command pattern",
+      "normalized_title": "Command is not Command pattern",
+      "key": "command_is_not_command_pattern",
+      "path": [
+        "7. Mediator weaknesses",
+        "`Command` is not Command pattern"
+      ],
+      "content": "The interface:\n\n```text\ninterface Command {\n    void land();\n}\n```\n\nonly gives Flight and Runway a shared operation.\n\nThere is no:\n- command object encapsulating a request;\n- invoker;\n- receiver;\n- execute/undo history.\n\nTherefore:\n\n> **Command pattern = 0 direct evidence in this repository.**\n\n---\n\n# Memento",
+      "source_line_start": 24034,
+      "source_line_end": 24060
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "8. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "8. Implementation"
+      ],
+      "content": "Participants:\n\n- `Originator`\n- `Memento`\n- `CareTaker`.\n\nFlow:\n\n1. Originator changes state.\n2. Originator creates snapshot.\n3. CareTaker stores snapshots.\n4. Originator restores from selected snapshot.\n\nMain demonstrates multiple saved states and later restoration.\n\n### Direct evidence\n\n- state snapshots;\n- restoration;\n- history list;\n- originator/caretaker separation.\n\n### Rating\n\n**3.0/5**\n\nA straightforward canonical implementation.\n\n---",
+      "source_line_start": 24060,
+      "source_line_end": 24092
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Direct evidence",
+      "normalized_title": "Direct evidence",
+      "key": "direct_evidence",
+      "path": [
+        "8. Implementation",
+        "Direct evidence"
+      ],
+      "content": "- state snapshots;\n- restoration;\n- history list;\n- originator/caretaker separation.",
+      "source_line_start": 24077,
+      "source_line_end": 24084
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "8. Implementation",
+        "Rating"
+      ],
+      "content": "**3.0/5**\n\nA straightforward canonical implementation.\n\n---",
+      "source_line_start": 24084,
+      "source_line_end": 24092
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "9. Memento weaknesses",
+      "normalized_title": "Memento weaknesses",
+      "key": "memento_weaknesses",
+      "path": [
+        "9. Memento weaknesses"
+      ],
+      "content": "### Encapsulation is only partial\n\n`Memento` exposes:\n\n`getState()`.\n\nBecause all classes are in the same package/file context, the caretaker model does not strictly prevent external inspection of stored state.\n\nA stronger Memento design would better hide snapshot internals from caretaker logic.\n\n### Only String state\n\nNo:\n- complex object graph;\n- deep copy;\n- immutable aggregate;\n- serialization concerns.\n\n### No history controls\n\nNo:\n- undo pointer;\n- redo;\n- maximum history;\n- branching histories;\n- bounds checking around `get(index)`.\n\n### Product relevance\n\nThis is not evidence of production undo/redo engineering.\n\nIt is pattern-mechanics evidence.\n\n---\n\n# Observer",
+      "source_line_start": 24092,
+      "source_line_end": 24131
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Encapsulation is only partial",
+      "normalized_title": "Encapsulation is only partial",
+      "key": "encapsulation_is_only_partial",
+      "path": [
+        "9. Memento weaknesses",
+        "Encapsulation is only partial"
+      ],
+      "content": "`Memento` exposes:\n\n`getState()`.\n\nBecause all classes are in the same package/file context, the caretaker model does not strictly prevent external inspection of stored state.\n\nA stronger Memento design would better hide snapshot internals from caretaker logic.",
+      "source_line_start": 24094,
+      "source_line_end": 24104
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Only String state",
+      "normalized_title": "Only String state",
+      "key": "only_string_state",
+      "path": [
+        "9. Memento weaknesses",
+        "Only String state"
+      ],
+      "content": "No:\n- complex object graph;\n- deep copy;\n- immutable aggregate;\n- serialization concerns.",
+      "source_line_start": 24104,
+      "source_line_end": 24112
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "No history controls",
+      "normalized_title": "No history controls",
+      "key": "no_history_controls",
+      "path": [
+        "9. Memento weaknesses",
+        "No history controls"
+      ],
+      "content": "No:\n- undo pointer;\n- redo;\n- maximum history;\n- branching histories;\n- bounds checking around `get(index)`.",
+      "source_line_start": 24112,
+      "source_line_end": 24121
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Product relevance",
+      "normalized_title": "Product relevance",
+      "key": "product_relevance",
+      "path": [
+        "9. Memento weaknesses",
+        "Product relevance"
+      ],
+      "content": "This is not evidence of production undo/redo engineering.\n\nIt is pattern-mechanics evidence.\n\n---\n\n# Observer",
+      "source_line_start": 24121,
+      "source_line_end": 24131
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "10. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "10. Implementation"
+      ],
+      "content": "Participants:\n\n- `Subject`\n- abstract `Observer`\n- `BinaryObserver`\n- `OctalObserver`\n- `HexaObserver`.\n\nObservers attach themselves to the subject.\n\nWhen:\n\n`Subject.setState(...)`\n\nis called, the subject synchronously calls:\n\n`notifyAllObservers()`.\n\nEach observer reads the subject state and renders it differently.\n\n### Direct evidence\n\n- subscription;\n- one-to-many notification;\n- event propagation;\n- observer polymorphism;\n- subject-held observer collection;\n- synchronous update loop.\n\n### Rating\n\n**3.25/5**\n\nThis is a clear behavioral-pattern example.\n\n---",
+      "source_line_start": 24131,
+      "source_line_end": 24170
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Direct evidence",
+      "normalized_title": "Direct evidence",
+      "key": "direct_evidence",
+      "path": [
+        "10. Implementation",
+        "Direct evidence"
+      ],
+      "content": "- subscription;\n- one-to-many notification;\n- event propagation;\n- observer polymorphism;\n- subject-held observer collection;\n- synchronous update loop.",
+      "source_line_start": 24153,
+      "source_line_end": 24162
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "10. Implementation",
+        "Rating"
+      ],
+      "content": "**3.25/5**\n\nThis is a clear behavioral-pattern example.\n\n---",
+      "source_line_start": 24162,
+      "source_line_end": 24170
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "11. Observer strengths",
+      "normalized_title": "Observer strengths",
+      "key": "observer_strengths",
+      "path": [
+        "11. Observer strengths"
+      ],
+      "content": "- three concrete observers;\n- one subject;\n- observable state changes;\n- automatic fan-out;\n- different response behavior per observer;\n- uses `List<Observer>` generically.\n\n### Limitations\n\nNo:\n- detach/unsubscribe;\n- duplicate protection;\n- event typing;\n- asynchronous delivery;\n- exception isolation;\n- ordering policy;\n- weak references;\n- thread safety.\n\nObserver constructors self-register, which is convenient for the demo but creates hidden side effects.\n\n### Anti-inflation\n\nThis is not event-bus, reactive-stream, or distributed pub/sub expertise.\n\n---\n\n# State",
+      "source_line_start": 24170,
+      "source_line_end": 24201
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "11. Observer strengths",
+        "Limitations"
+      ],
+      "content": "No:\n- detach/unsubscribe;\n- duplicate protection;\n- event typing;\n- asynchronous delivery;\n- exception isolation;\n- ordering policy;\n- weak references;\n- thread safety.\n\nObserver constructors self-register, which is convenient for the demo but creates hidden side effects.",
+      "source_line_start": 24179,
+      "source_line_end": 24193
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Anti-inflation",
+      "normalized_title": "Anti-inflation",
+      "key": "anti_inflation",
+      "path": [
+        "11. Observer strengths",
+        "Anti-inflation"
+      ],
+      "content": "This is not event-bus, reactive-stream, or distributed pub/sub expertise.\n\n---\n\n# State",
+      "source_line_start": 24193,
+      "source_line_end": 24201
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "12. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "12. Implementation"
+      ],
+      "content": "Participants:\n\n- `State`\n- `StartState`\n- `StopState`\n- `Context`.\n\nConcrete state objects expose:\n\n`doAction(Context)`\n\nand assign themselves into the context.\n\nThe main method:\n\n1. creates a context;\n2. creates `StartState`;\n3. invokes state directly;\n4. prints context state;\n5. creates `StopState`;\n6. invokes it directly;\n7. prints context state.\n\n### Rating\n\n**2.5/5**\n\nIt demonstrates the structural skeleton, but only weakly demonstrates the actual behavioral value of State.\n\n---",
+      "source_line_start": 24201,
+      "source_line_end": 24234
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "12. Implementation",
+        "Rating"
+      ],
+      "content": "**2.5/5**\n\nIt demonstrates the structural skeleton, but only weakly demonstrates the actual behavioral value of State.\n\n---",
+      "source_line_start": 24226,
+      "source_line_end": 24234
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "13. State limitation — context does not delegate behavior",
+      "normalized_title": "State limitation — context does not delegate behavior",
+      "key": "state_limitation_context_does_not_delegate_behavior",
+      "path": [
+        "13. State limitation — context does not delegate behavior"
+      ],
+      "content": "A stronger State pattern typically has the client call behavior on the:\n\n`Context`\n\nwhile the context delegates to its current state.\n\nHere, the client directly calls:\n\n`startState.doAction(context)`\n\nand later:\n\n`stopState.doAction(context)`.\n\nThe context mainly stores a state reference.\n\n### Consequence\n\nThe example demonstrates:\n\n> **state objects and transitions**\n\nmore than:\n\n> **an object changing behavior automatically as internal state changes.**\n\nNo state transition logic is embedded in state behavior beyond setting itself into context.\n\n---\n\n# Strategy",
+      "source_line_start": 24234,
+      "source_line_end": 24268
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Consequence",
+      "normalized_title": "Consequence",
+      "key": "consequence",
+      "path": [
+        "13. State limitation — context does not delegate behavior",
+        "Consequence"
+      ],
+      "content": "The example demonstrates:\n\n> **state objects and transitions**\n\nmore than:\n\n> **an object changing behavior automatically as internal state changes.**\n\nNo state transition logic is embedded in state behavior beyond setting itself into context.\n\n---\n\n# Strategy",
+      "source_line_start": 24252,
+      "source_line_end": 24268
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "14. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "14. Implementation"
+      ],
+      "content": "Strategy interface:\n\n`Strategy`\n\nConcrete strategies:\n\n- `OperationAdd`\n- `OperationSubstract`\n- `OperationMultiply`.\n\nContext accepts a strategy and delegates:\n\n`executeStrategy(num1, num2)`.\n\nMain demonstrates three interchangeable algorithms.\n\n### Direct evidence\n\n- interchangeable behavior;\n- dependency on strategy abstraction;\n- runtime strategy selection;\n- delegation to chosen algorithm.\n\n### Rating\n\n**3.25/5**\n\nThis is a clear compact Strategy example.\n\n---",
+      "source_line_start": 24268,
+      "source_line_end": 24301
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Direct evidence",
+      "normalized_title": "Direct evidence",
+      "key": "direct_evidence",
+      "path": [
+        "14. Implementation",
+        "Direct evidence"
+      ],
+      "content": "- interchangeable behavior;\n- dependency on strategy abstraction;\n- runtime strategy selection;\n- delegation to chosen algorithm.",
+      "source_line_start": 24286,
+      "source_line_end": 24293
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "14. Implementation",
+        "Rating"
+      ],
+      "content": "**3.25/5**\n\nThis is a clear compact Strategy example.\n\n---",
+      "source_line_start": 24293,
+      "source_line_end": 24301
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "15. Strategy limitations",
+      "normalized_title": "Strategy limitations",
+      "key": "strategy_limitations",
+      "path": [
+        "15. Strategy limitations"
+      ],
+      "content": "### Context recreated instead of strategy changed in-place\n\nThe main program replaces the entire `Context` for each operation.\n\nA setter could demonstrate changing strategy on an existing context.\n\nStill, constructor injection is valid Strategy use.\n\n### Naming defect\n\n`OperationSubstract`\n\nshould be:\n\n`OperationSubtract`.\n\n### Domain simplicity\n\nArithmetic operations are deliberately trivial.\n\nThe repository demonstrates pattern mechanics, not algorithm-selection engineering at product scale.\n\n---\n\n# Template Method",
+      "source_line_start": 24301,
+      "source_line_end": 24329
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Context recreated instead of strategy changed in-place",
+      "normalized_title": "Context recreated instead of strategy changed in-place",
+      "key": "context_recreated_instead_of_strategy_changed_in_place",
+      "path": [
+        "15. Strategy limitations",
+        "Context recreated instead of strategy changed in-place"
+      ],
+      "content": "The main program replaces the entire `Context` for each operation.\n\nA setter could demonstrate changing strategy on an existing context.\n\nStill, constructor injection is valid Strategy use.",
+      "source_line_start": 24303,
+      "source_line_end": 24311
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Naming defect",
+      "normalized_title": "Naming defect",
+      "key": "naming_defect",
+      "path": [
+        "15. Strategy limitations",
+        "Naming defect"
+      ],
+      "content": "`OperationSubstract`\n\nshould be:\n\n`OperationSubtract`.",
+      "source_line_start": 24311,
+      "source_line_end": 24319
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Domain simplicity",
+      "normalized_title": "Domain simplicity",
+      "key": "domain_simplicity",
+      "path": [
+        "15. Strategy limitations",
+        "Domain simplicity"
+      ],
+      "content": "Arithmetic operations are deliberately trivial.\n\nThe repository demonstrates pattern mechanics, not algorithm-selection engineering at product scale.\n\n---\n\n# Template Method",
+      "source_line_start": 24319,
+      "source_line_end": 24329
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "16. Implementation",
+      "normalized_title": "Implementation",
+      "key": "implementation",
+      "path": [
+        "16. Implementation"
+      ],
+      "content": "Abstract base:\n\n`Game`\n\nDefines abstract steps:\n\n- `initialize()`\n- `startPlay()`\n- `endPlay()`.\n\nDefines final template method:\n\n`play()`.\n\nConcrete subclasses:\n\n- `Cricket`\n- `Football`\n\noverride the variable steps.\n\nThe client calls:\n\n`game.play()`\n\nfor both.\n\n### Rating\n\n**3.5/5**\n\nThis is the strongest behavioral example in the repository.\n\n---",
+      "source_line_start": 24329,
+      "source_line_end": 24366
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "16. Implementation",
+        "Rating"
+      ],
+      "content": "**3.5/5**\n\nThis is the strongest behavioral example in the repository.\n\n---",
+      "source_line_start": 24358,
+      "source_line_end": 24366
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "17. Why Template Method is stronger",
+      "normalized_title": "Why Template Method is stronger",
+      "key": "why_template_method_is_stronger",
+      "path": [
+        "17. Why Template Method is stronger"
+      ],
+      "content": "The example correctly makes:\n\n`play()`\n\n`final`.\n\nThat protects the algorithm skeleton:\n\n```text\ninitialize\n    ↓\nstart\n    ↓\nend\n```\n\nwhile allowing subclasses to vary each step.\n\nThis directly communicates the pattern's central tradeoff:\n\n> fixed high-level algorithm, customizable subclass steps.\n\n### Limitations\n\nNo:\n- hook methods;\n- optional steps;\n- pre/post conditions;\n- exception semantics;\n- composition-based alternative comparison.\n\nStill, the pattern is cleanly demonstrated.\n\n---\n\n# Visitor",
+      "source_line_start": 24366,
+      "source_line_end": 24405
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "17. Why Template Method is stronger",
+        "Limitations"
+      ],
+      "content": "No:\n- hook methods;\n- optional steps;\n- pre/post conditions;\n- exception semantics;\n- composition-based alternative comparison.\n\nStill, the pattern is cleanly demonstrated.\n\n---\n\n# Visitor",
+      "source_line_start": 24390,
+      "source_line_end": 24405
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "18. Visitor is not implemented",
+      "normalized_title": "Visitor is not implemented",
+      "key": "visitor_is_not_implemented",
+      "path": [
+        "18. Visitor is not implemented"
+      ],
+      "content": "`VisitorPatternDemo.java` contains only:\n\n```text\npublic static void main(String[] args) {\n    System.out.println(\"Hello World!\");\n}\n```\n\nNo Visitor architecture exists.\n\nThe Maven POM configures Java 19 and the project name, but that is only project scaffolding.\n\n### Missing defining roles\n\nNo:\n- `Visitor`;\n- `ConcreteVisitor`;\n- `Element`;\n- `ConcreteElement`;\n- `accept(Visitor)`;\n- `visitor.visit(this)`.\n\n### Rating\n\n**0.5/5 exposure / placeholder**\n\n### Direct implementation score\n\n**0/5**\n\n### Build evidence\n\nUnlike the seven substantive examples, the final Visitor directory contains:\n\n- `pom.xml`;\n- `src`;\n\nbut no retained `target/`.\n\nTherefore there is no retained compiled-artifact evidence for the Visitor placeholder.\n\n---\n\n# Missing behavioral patterns",
+      "source_line_start": 24405,
+      "source_line_end": 24452
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Missing defining roles",
+      "normalized_title": "Missing defining roles",
+      "key": "missing_defining_roles",
+      "path": [
+        "18. Visitor is not implemented",
+        "Missing defining roles"
+      ],
+      "content": "No:\n- `Visitor`;\n- `ConcreteVisitor`;\n- `Element`;\n- `ConcreteElement`;\n- `accept(Visitor)`;\n- `visitor.visit(this)`.",
+      "source_line_start": 24419,
+      "source_line_end": 24429
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "18. Visitor is not implemented",
+        "Rating"
+      ],
+      "content": "**0.5/5 exposure / placeholder**",
+      "source_line_start": 24429,
+      "source_line_end": 24433
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Direct implementation score",
+      "normalized_title": "Direct implementation score",
+      "key": "direct_implementation_score",
+      "path": [
+        "18. Visitor is not implemented",
+        "Direct implementation score"
+      ],
+      "content": "**0/5**",
+      "source_line_start": 24433,
+      "source_line_end": 24437
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "Build evidence",
+      "normalized_title": "Build evidence",
+      "key": "build_evidence",
+      "path": [
+        "18. Visitor is not implemented",
+        "Build evidence"
+      ],
+      "content": "Unlike the seven substantive examples, the final Visitor directory contains:\n\n- `pom.xml`;\n- `src`;\n\nbut no retained `target/`.\n\nTherefore there is no retained compiled-artifact evidence for the Visitor placeholder.\n\n---\n\n# Missing behavioral patterns",
+      "source_line_start": 24437,
+      "source_line_end": 24452
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "19. Command",
+      "normalized_title": "Command",
+      "key": "command",
+      "path": [
+        "19. Command"
+      ],
+      "content": "**Not implemented.**\n\nThe `Command` interface inside Mediator must not be counted.\n\nDirect score:\n\n**0/5**",
+      "source_line_start": 24452,
+      "source_line_end": 24462
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "20. Interpreter",
+      "normalized_title": "Interpreter",
+      "key": "interpreter",
+      "path": [
+        "20. Interpreter"
+      ],
+      "content": "No implementation observed.\n\nDirect score:\n\n**0/5**",
+      "source_line_start": 24462,
+      "source_line_end": 24470
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "21. Iterator",
+      "normalized_title": "Iterator",
+      "key": "iterator",
+      "path": [
+        "21. Iterator"
+      ],
+      "content": "No implementation observed.\n\nDirect score:\n\n**0/5**\n\n---",
+      "source_line_start": 24470,
+      "source_line_end": 24480
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "22. Behavioral pattern coverage matrix",
+      "normalized_title": "Behavioral pattern coverage matrix",
+      "key": "behavioral_pattern_coverage_matrix",
+      "path": [
+        "22. Behavioral pattern coverage matrix"
+      ],
+      "content": "| Pattern | Status | Score / 5 |\n|---|---|---:|\n| Chain of Responsibility | Implemented | **3.25** |\n| Command | Absent | **0** |\n| Interpreter | Absent | **0** |\n| Iterator | Absent | **0** |\n| Mediator | Implemented, weak coordination model | **2.5** |\n| Memento | Implemented | **3.0** |\n| Observer | Implemented | **3.25** |\n| State | Implemented, structural/basic | **2.5** |\n| Strategy | Implemented | **3.25** |\n| Template Method | Implemented | **3.5** |\n| Visitor | Placeholder only | **0.5 exposure / 0 implementation** |\n\n### Direct implementation coverage\n\n**7 / 11 = 63.6%**\n\n### Named/visible exposure\n\n8 / 11 if Visitor folder presence is included as mere exposure.\n\nThat does **not** raise direct implementation count.\n\n---",
+      "source_line_start": 24480,
+      "source_line_end": 24508
+    },
+    {
+      "id": "s067",
+      "level": 3,
+      "title": "Direct implementation coverage",
+      "normalized_title": "Direct implementation coverage",
+      "key": "direct_implementation_coverage",
+      "path": [
+        "22. Behavioral pattern coverage matrix",
+        "Direct implementation coverage"
+      ],
+      "content": "**7 / 11 = 63.6%**",
+      "source_line_start": 24496,
+      "source_line_end": 24500
+    },
+    {
+      "id": "s068",
+      "level": 3,
+      "title": "Named/visible exposure",
+      "normalized_title": "Named/visible exposure",
+      "key": "named_visible_exposure",
+      "path": [
+        "22. Behavioral pattern coverage matrix",
+        "Named/visible exposure"
+      ],
+      "content": "8 / 11 if Visitor folder presence is included as mere exposure.\n\nThat does **not** raise direct implementation count.\n\n---",
+      "source_line_start": 24500,
+      "source_line_end": 24508
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "23. Java evidence",
+      "normalized_title": "Java evidence",
+      "key": "java_evidence",
+      "path": [
+        "23. Java evidence"
+      ],
+      "content": "Repository 012 reinforces the Java/OOP track established by Repos 010–011.\n\n### Direct Java concepts\n\n- abstract classes;\n- interfaces;\n- inheritance;\n- polymorphism;\n- composition;\n- delegation;\n- static behavior;\n- lists;\n- `ArrayList`;\n- method overriding;\n- final methods;\n- exceptions indirectly through previous repo;\n- multiple packages;\n- constructors;\n- encapsulation basics.\n\n### Rating\n\n**3.0/5**\n\nThe repository increases breadth and recurrence, but not production depth.\n\n---",
+      "source_line_start": 24508,
+      "source_line_end": 24538
+    },
+    {
+      "id": "s070",
+      "level": 3,
+      "title": "Direct Java concepts",
+      "normalized_title": "Direct Java concepts",
+      "key": "direct_java_concepts",
+      "path": [
+        "23. Java evidence",
+        "Direct Java concepts"
+      ],
+      "content": "- abstract classes;\n- interfaces;\n- inheritance;\n- polymorphism;\n- composition;\n- delegation;\n- static behavior;\n- lists;\n- `ArrayList`;\n- method overriding;\n- final methods;\n- exceptions indirectly through previous repo;\n- multiple packages;\n- constructors;\n- encapsulation basics.",
+      "source_line_start": 24512,
+      "source_line_end": 24530
+    },
+    {
+      "id": "s071",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "23. Java evidence",
+        "Rating"
+      ],
+      "content": "**3.0/5**\n\nThe repository increases breadth and recurrence, but not production depth.\n\n---",
+      "source_line_start": 24530,
+      "source_line_end": 24538
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "24. Maven recurrence",
+      "normalized_title": "Maven recurrence",
+      "key": "maven_recurrence",
+      "path": [
+        "24. Maven recurrence"
+      ],
+      "content": "Eight additional Maven POMs are present.\n\nThe Visitor POM explicitly configures:\n\n- Java source 19;\n- Java target 19;\n- JAR packaging;\n- main class.\n\nThe substantive examples use the same NetBeans/Maven structure.\n\n### Cumulative early design-pattern Maven evidence\n\nRepo 010:\n\n**3 projects**\n\nRepo 011:\n\n**7 projects**\n\nRepo 012:\n\n**8 projects**\n\nTotal project containers across the three design-pattern repos:\n\n**18 Maven projects**\n\nBut one of those — Visitor — is only a stub.\n\n### Maven rating\n\n**2.75/5**\n\nThis is recurrence, not advanced Maven depth.\n\n---",
+      "source_line_start": 24538,
+      "source_line_end": 24579
+    },
+    {
+      "id": "s073",
+      "level": 3,
+      "title": "Cumulative early design-pattern Maven evidence",
+      "normalized_title": "Cumulative early design-pattern Maven evidence",
+      "key": "cumulative_early_design_pattern_maven_evidence",
+      "path": [
+        "24. Maven recurrence",
+        "Cumulative early design-pattern Maven evidence"
+      ],
+      "content": "Repo 010:\n\n**3 projects**\n\nRepo 011:\n\n**7 projects**\n\nRepo 012:\n\n**8 projects**\n\nTotal project containers across the three design-pattern repos:\n\n**18 Maven projects**\n\nBut one of those — Visitor — is only a stub.",
+      "source_line_start": 24551,
+      "source_line_end": 24571
+    },
+    {
+      "id": "s074",
+      "level": 3,
+      "title": "Maven rating",
+      "normalized_title": "Maven rating",
+      "key": "maven_rating",
+      "path": [
+        "24. Maven recurrence",
+        "Maven rating"
+      ],
+      "content": "**2.75/5**\n\nThis is recurrence, not advanced Maven depth.\n\n---",
+      "source_line_start": 24571,
+      "source_line_end": 24579
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "25. NetBeans workflow recurrence",
+      "normalized_title": "NetBeans workflow recurrence",
+      "key": "netbeans_workflow_recurrence",
+      "path": [
+        "25. NetBeans workflow recurrence"
+      ],
+      "content": "Generated NetBeans template comments recur.\n\nSeven substantive project trees retain Maven compiler status with machine-local paths under:\n\n`C:\\Users\\sedra\\OneDrive\\Documents\\NetBeansProjects\\...`\n\n### Interpretation\n\nDirect evidence of:\n- local Windows Java development;\n- NetBeans project creation;\n- Maven compilation.\n\nAlso direct evidence of:\n- generated metadata accidentally committed.\n\n---",
+      "source_line_start": 24579,
+      "source_line_end": 24599
+    },
+    {
+      "id": "s076",
+      "level": 3,
+      "title": "Interpretation",
+      "normalized_title": "Interpretation",
+      "key": "interpretation",
+      "path": [
+        "25. NetBeans workflow recurrence",
+        "Interpretation"
+      ],
+      "content": "Direct evidence of:\n- local Windows Java development;\n- NetBeans project creation;\n- Maven compilation.\n\nAlso direct evidence of:\n- generated metadata accidentally committed.\n\n---",
+      "source_line_start": 24587,
+      "source_line_end": 24599
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "26. OOP and behavioral-design breadth",
+      "normalized_title": "OOP and behavioral-design breadth",
+      "key": "oop_and_behavioral_design_breadth",
+      "path": [
+        "26. OOP and behavioral-design breadth"
+      ],
+      "content": "Repo 012 adds explicit practice in:\n\n- chained delegation;\n- central coordination;\n- snapshot/restore;\n- one-to-many notification;\n- encapsulated state objects;\n- interchangeable algorithms;\n- fixed workflow templates.\n\n### OOP fundamentals\n\n**3.5/5**\n\n### Behavioral design-pattern breadth\n\n**3.0/5**\n\n### Why not higher\n\n- 4 of 11 patterns lack implementation;\n- Visitor is empty;\n- examples are pedagogical;\n- Mediator and State are shallow;\n- no real application context;\n- no tests.\n\n---",
+      "source_line_start": 24599,
+      "source_line_end": 24630
+    },
+    {
+      "id": "s078",
+      "level": 3,
+      "title": "OOP fundamentals",
+      "normalized_title": "OOP fundamentals",
+      "key": "oop_fundamentals",
+      "path": [
+        "26. OOP and behavioral-design breadth",
+        "OOP fundamentals"
+      ],
+      "content": "**3.5/5**",
+      "source_line_start": 24611,
+      "source_line_end": 24615
+    },
+    {
+      "id": "s079",
+      "level": 3,
+      "title": "Behavioral design-pattern breadth",
+      "normalized_title": "Behavioral design-pattern breadth",
+      "key": "behavioral_design_pattern_breadth",
+      "path": [
+        "26. OOP and behavioral-design breadth",
+        "Behavioral design-pattern breadth"
+      ],
+      "content": "**3.0/5**",
+      "source_line_start": 24615,
+      "source_line_end": 24619
+    },
+    {
+      "id": "s080",
+      "level": 3,
+      "title": "Why not higher",
+      "normalized_title": "Why not higher",
+      "key": "why_not_higher",
+      "path": [
+        "26. OOP and behavioral-design breadth",
+        "Why not higher"
+      ],
+      "content": "- 4 of 11 patterns lack implementation;\n- Visitor is empty;\n- examples are pedagogical;\n- Mediator and State are shallow;\n- no real application context;\n- no tests.\n\n---",
+      "source_line_start": 24619,
+      "source_line_end": 24630
+    },
+    {
+      "id": "s081",
+      "level": 2,
+      "title": "27. Delegation and behavioral composition",
+      "normalized_title": "Delegation and behavioral composition",
+      "key": "delegation_and_behavioral_composition",
+      "path": [
+        "27. Delegation and behavioral composition"
+      ],
+      "content": "Repeated behavioral delegation appears in:\n\n- Chain → next handler;\n- Observer → subject notifies observers;\n- Strategy → context delegates to strategy;\n- Template Method → abstract algorithm delegates variable steps to subclasses;\n- Mediator → participants depend on mediator state.\n\n### Rating\n\n**3.5/5 conceptual exposure**\n\nThis reinforces Repo 011's structural composition/delegation evidence.\n\n---",
+      "source_line_start": 24630,
+      "source_line_end": 24648
+    },
+    {
+      "id": "s082",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "27. Delegation and behavioral composition",
+        "Rating"
+      ],
+      "content": "**3.5/5 conceptual exposure**\n\nThis reinforces Repo 011's structural composition/delegation evidence.\n\n---",
+      "source_line_start": 24640,
+      "source_line_end": 24648
+    },
+    {
+      "id": "s083",
+      "level": 2,
+      "title": "28. Event-driven concepts",
+      "normalized_title": "Event-driven concepts",
+      "key": "event_driven_concepts",
+      "path": [
+        "28. Event-driven concepts"
+      ],
+      "content": "Observer provides the first explicit classic one-to-many event-notification model in the design-pattern suite.\n\n### Evidence\n\n- observer registration;\n- state-change trigger;\n- fan-out notification;\n- subscriber-specific response.\n\n### Rating\n\n**Observer/event-notification concept: 3.25/5**\n\n### Anti-inflation\n\nNot equivalent to:\n- message queues;\n- Kafka;\n- event sourcing;\n- RxJava;\n- asynchronous distributed events.\n\n---",
+      "source_line_start": 24648,
+      "source_line_end": 24674
+    },
+    {
+      "id": "s084",
+      "level": 3,
+      "title": "Evidence",
+      "normalized_title": "Evidence",
+      "key": "evidence",
+      "path": [
+        "28. Event-driven concepts",
+        "Evidence"
+      ],
+      "content": "- observer registration;\n- state-change trigger;\n- fan-out notification;\n- subscriber-specific response.",
+      "source_line_start": 24652,
+      "source_line_end": 24659
+    },
+    {
+      "id": "s085",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "28. Event-driven concepts",
+        "Rating"
+      ],
+      "content": "**Observer/event-notification concept: 3.25/5**",
+      "source_line_start": 24659,
+      "source_line_end": 24663
+    },
+    {
+      "id": "s086",
+      "level": 3,
+      "title": "Anti-inflation",
+      "normalized_title": "Anti-inflation",
+      "key": "anti_inflation",
+      "path": [
+        "28. Event-driven concepts",
+        "Anti-inflation"
+      ],
+      "content": "Not equivalent to:\n- message queues;\n- Kafka;\n- event sourcing;\n- RxJava;\n- asynchronous distributed events.\n\n---",
+      "source_line_start": 24663,
+      "source_line_end": 24674
+    },
+    {
+      "id": "s087",
+      "level": 2,
+      "title": "29. State/history concepts",
+      "normalized_title": "State/history concepts",
+      "key": "state_history_concepts",
+      "path": [
+        "29. State/history concepts"
+      ],
+      "content": "Memento introduces:\n\n- snapshot;\n- history list;\n- restore.\n\nState introduces:\n- explicit state object;\n- context state reference.\n\nTogether they show first concentrated evidence around:\n\n> **behavior/state evolution over time**\n\nat the object-design level.\n\n### Rating\n\n**state-history modeling: 3.0/5**\n\n---",
+      "source_line_start": 24674,
+      "source_line_end": 24698
+    },
+    {
+      "id": "s088",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "29. State/history concepts",
+        "Rating"
+      ],
+      "content": "**state-history modeling: 3.0/5**\n\n---",
+      "source_line_start": 24692,
+      "source_line_end": 24698
+    },
+    {
+      "id": "s089",
+      "level": 2,
+      "title": "30. Workflow abstraction",
+      "normalized_title": "Workflow abstraction",
+      "key": "workflow_abstraction",
+      "path": [
+        "30. Workflow abstraction"
+      ],
+      "content": "Template Method demonstrates a fixed sequence with polymorphic step implementation.\n\nThis is valuable because it differs from Strategy:\n\n- Strategy swaps the whole algorithm/behavior.\n- Template Method fixes the high-level algorithm and varies selected steps.\n\n### Design distinction evidence\n\n**3.25/5**\n\nThis supports pattern-vocabulary breadth, though still in canonical examples.\n\n---",
+      "source_line_start": 24698,
+      "source_line_end": 24715
+    },
+    {
+      "id": "s090",
+      "level": 3,
+      "title": "Design distinction evidence",
+      "normalized_title": "Design distinction evidence",
+      "key": "design_distinction_evidence",
+      "path": [
+        "30. Workflow abstraction",
+        "Design distinction evidence"
+      ],
+      "content": "**3.25/5**\n\nThis supports pattern-vocabulary breadth, though still in canonical examples.\n\n---",
+      "source_line_start": 24707,
+      "source_line_end": 24715
+    },
+    {
+      "id": "s091",
+      "level": 2,
+      "title": "31. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "31. Repository hygiene"
+      ],
+      "content": "The same source-control issue from Repos 010 and 011 repeats.\n\nSeven substantive projects contain committed:\n\n- `target/`;\n- `.class` files;\n- `maven-status`;\n- generated compiler metadata;\n- local machine input paths.\n\nNo `.gitignore` is observed.\n\n### Rating\n\n**1.25/5**\n\n### Longitudinal result\n\nThis is now a recurring three-repository hygiene weakness.\n\nThe developer was learning architecture concepts faster than source-control cleanup discipline was improving.\n\n---",
+      "source_line_start": 24715,
+      "source_line_end": 24741
+    },
+    {
+      "id": "s092",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "31. Repository hygiene",
+        "Rating"
+      ],
+      "content": "**1.25/5**",
+      "source_line_start": 24729,
+      "source_line_end": 24733
+    },
+    {
+      "id": "s093",
+      "level": 3,
+      "title": "Longitudinal result",
+      "normalized_title": "Longitudinal result",
+      "key": "longitudinal_result",
+      "path": [
+        "31. Repository hygiene",
+        "Longitudinal result"
+      ],
+      "content": "This is now a recurring three-repository hygiene weakness.\n\nThe developer was learning architecture concepts faster than source-control cleanup discipline was improving.\n\n---",
+      "source_line_start": 24733,
+      "source_line_end": 24741
+    },
+    {
+      "id": "s094",
+      "level": 2,
+      "title": "32. Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "32. Testing"
+      ],
+      "content": "No:\n\n- `src/test/java`;\n- JUnit;\n- assertions;\n- Maven test dependencies;\n- behavior tests;\n- pattern-contract tests.\n\n### Rating\n\n**0/5 authored automated testing**\n\n### Missed opportunities\n\nTesting would have been especially valuable for:\n\n- Chain handler selection;\n- Mediator landing state;\n- Memento restoration;\n- Observer fan-out;\n- State transitions;\n- Strategy output;\n- Template sequence.\n\nThe complete absence of tests across the three pattern repositories is a major recurring quality-engineering gap.\n\n---",
+      "source_line_start": 24741,
+      "source_line_end": 24772
+    },
+    {
+      "id": "s095",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "32. Testing",
+        "Rating"
+      ],
+      "content": "**0/5 authored automated testing**",
+      "source_line_start": 24752,
+      "source_line_end": 24756
+    },
+    {
+      "id": "s096",
+      "level": 3,
+      "title": "Missed opportunities",
+      "normalized_title": "Missed opportunities",
+      "key": "missed_opportunities",
+      "path": [
+        "32. Testing",
+        "Missed opportunities"
+      ],
+      "content": "Testing would have been especially valuable for:\n\n- Chain handler selection;\n- Mediator landing state;\n- Memento restoration;\n- Observer fan-out;\n- State transitions;\n- Strategy output;\n- Template sequence.\n\nThe complete absence of tests across the three pattern repositories is a major recurring quality-engineering gap.\n\n---",
+      "source_line_start": 24756,
+      "source_line_end": 24772
+    },
+    {
+      "id": "s097",
+      "level": 2,
+      "title": "33. CI/CD",
+      "normalized_title": "CI/CD",
+      "key": "ci_cd",
+      "path": [
+        "33. CI/CD"
+      ],
+      "content": "No CI.\n\nNo GitHub Actions.\n\nNo deployment.\n\n### CI rating\n\n**0/5**\n\nDeployment:\n\n**N/A**\n\n---",
+      "source_line_start": 24772,
+      "source_line_end": 24790
+    },
+    {
+      "id": "s098",
+      "level": 3,
+      "title": "CI rating",
+      "normalized_title": "CI rating",
+      "key": "ci_rating",
+      "path": [
+        "33. CI/CD",
+        "CI rating"
+      ],
+      "content": "**0/5**\n\nDeployment:\n\n**N/A**\n\n---",
+      "source_line_start": 24780,
+      "source_line_end": 24790
+    },
+    {
+      "id": "s099",
+      "level": 2,
+      "title": "34. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "34. Documentation"
+      ],
+      "content": "No root README.\n\nNo pattern README files are observed.\n\nNo UML.\n\nNo explanation of:\n\n- intent;\n- structure;\n- tradeoffs;\n- applicability;\n- differences between similar patterns;\n- references/provenance;\n- run instructions.\n\n### Documentation rating\n\n**0.25/5**\n\nThis is weaker than Repo 010 and similar to/below Repo 011.\n\n---",
+      "source_line_start": 24790,
+      "source_line_end": 24816
+    },
+    {
+      "id": "s100",
+      "level": 3,
+      "title": "Documentation rating",
+      "normalized_title": "Documentation rating",
+      "key": "documentation_rating",
+      "path": [
+        "34. Documentation",
+        "Documentation rating"
+      ],
+      "content": "**0.25/5**\n\nThis is weaker than Repo 010 and similar to/below Repo 011.\n\n---",
+      "source_line_start": 24808,
+      "source_line_end": 24816
+    },
+    {
+      "id": "s101",
+      "level": 2,
+      "title": "35. Provenance / originality confidence",
+      "normalized_title": "Provenance / originality confidence",
+      "key": "provenance_originality_confidence",
+      "path": [
+        "35. Provenance / originality confidence"
+      ],
+      "content": "The code uses canonical teaching-style examples:\n\n- numeric processors;\n- air-traffic-control mediator;\n- state snapshot strings;\n- binary/octal/hex observers;\n- start/stop state;\n- arithmetic strategies;\n- cricket/football template.\n\nThe structures and comments strongly suggest tutorial/reference-driven learning.\n\n### Confidence table\n\n| Claim | Confidence |\n|---|---|\n| Repository controlled by user | High |\n| Commits authored by user account | High |\n| Projects imported by user | High |\n| Seven substantive examples compiled locally | High |\n| User practiced behavioral pattern mechanics | High |\n| Exact examples independently invented | Low |\n| Production pattern-selection expertise | Low–Medium |\n| Visitor implemented | **False** |\n| Command implemented | **False** |\n| Full behavioral GoF coverage | **False** |\n\n### Safe RAG language\n\nUse:\n\n> “Practiced seven GoF behavioral patterns in Java/Maven through small educational examples.”\n\nAvoid:\n\n> “Implemented the complete behavioral GoF catalog.”\n\n---",
+      "source_line_start": 24816,
+      "source_line_end": 24857
+    },
+    {
+      "id": "s102",
+      "level": 3,
+      "title": "Confidence table",
+      "normalized_title": "Confidence table",
+      "key": "confidence_table",
+      "path": [
+        "35. Provenance / originality confidence",
+        "Confidence table"
+      ],
+      "content": "| Claim | Confidence |\n|---|---|\n| Repository controlled by user | High |\n| Commits authored by user account | High |\n| Projects imported by user | High |\n| Seven substantive examples compiled locally | High |\n| User practiced behavioral pattern mechanics | High |\n| Exact examples independently invented | Low |\n| Production pattern-selection expertise | Low–Medium |\n| Visitor implemented | **False** |\n| Command implemented | **False** |\n| Full behavioral GoF coverage | **False** |",
+      "source_line_start": 24830,
+      "source_line_end": 24845
+    },
+    {
+      "id": "s103",
+      "level": 3,
+      "title": "Safe RAG language",
+      "normalized_title": "Safe RAG language",
+      "key": "safe_rag_language",
+      "path": [
+        "35. Provenance / originality confidence",
+        "Safe RAG language"
+      ],
+      "content": "Use:\n\n> “Practiced seven GoF behavioral patterns in Java/Maven through small educational examples.”\n\nAvoid:\n\n> “Implemented the complete behavioral GoF catalog.”\n\n---",
+      "source_line_start": 24845,
+      "source_line_end": 24857
+    },
+    {
+      "id": "s104",
+      "level": 2,
+      "title": "36. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "36. Engineering decisions and tradeoffs"
+      ],
+      "content": "### Separate Maven project per pattern\n\nPositive:\n- isolates examples;\n- makes category boundaries visible.\n\nNegative:\n- duplicates project boilerplate;\n- no parent POM;\n- no aggregate build.\n\n### Abstract interfaces/classes\n\nPositive:\n- pattern roles are visible;\n- substitution is understandable.\n\nNegative:\n- many classes live in one Java source file;\n- examples are not structured as reusable libraries.\n\n### Batch Git imports\n\nPositive:\n- one project per commit makes repository accumulation understandable.\n\nNegative:\n- all messages generic;\n- no source-development history;\n- cannot infer implementation duration.\n\n### Generated build output committed\n\nNegative engineering choice.\n\n---",
+      "source_line_start": 24857,
+      "source_line_end": 24896
+    },
+    {
+      "id": "s105",
+      "level": 3,
+      "title": "Separate Maven project per pattern",
+      "normalized_title": "Separate Maven project per pattern",
+      "key": "separate_maven_project_per_pattern",
+      "path": [
+        "36. Engineering decisions and tradeoffs",
+        "Separate Maven project per pattern"
+      ],
+      "content": "Positive:\n- isolates examples;\n- makes category boundaries visible.\n\nNegative:\n- duplicates project boilerplate;\n- no parent POM;\n- no aggregate build.",
+      "source_line_start": 24859,
+      "source_line_end": 24870
+    },
+    {
+      "id": "s106",
+      "level": 3,
+      "title": "Abstract interfaces/classes",
+      "normalized_title": "Abstract interfaces/classes",
+      "key": "abstract_interfaces_classes",
+      "path": [
+        "36. Engineering decisions and tradeoffs",
+        "Abstract interfaces/classes"
+      ],
+      "content": "Positive:\n- pattern roles are visible;\n- substitution is understandable.\n\nNegative:\n- many classes live in one Java source file;\n- examples are not structured as reusable libraries.",
+      "source_line_start": 24870,
+      "source_line_end": 24880
+    },
+    {
+      "id": "s107",
+      "level": 3,
+      "title": "Batch Git imports",
+      "normalized_title": "Batch Git imports",
+      "key": "batch_git_imports",
+      "path": [
+        "36. Engineering decisions and tradeoffs",
+        "Batch Git imports"
+      ],
+      "content": "Positive:\n- one project per commit makes repository accumulation understandable.\n\nNegative:\n- all messages generic;\n- no source-development history;\n- cannot infer implementation duration.",
+      "source_line_start": 24880,
+      "source_line_end": 24890
+    },
+    {
+      "id": "s108",
+      "level": 3,
+      "title": "Generated build output committed",
+      "normalized_title": "Generated build output committed",
+      "key": "generated_build_output_committed",
+      "path": [
+        "36. Engineering decisions and tradeoffs",
+        "Generated build output committed"
+      ],
+      "content": "Negative engineering choice.\n\n---",
+      "source_line_start": 24890,
+      "source_line_end": 24896
+    },
+    {
+      "id": "s109",
+      "level": 2,
+      "title": "37. Engineering judgment",
+      "normalized_title": "Engineering judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "37. Engineering judgment"
+      ],
+      "content": "### Positive signals\n\n1. deliberate third-stage pattern study after creational and structural categories;\n2. broad behavioral vocabulary;\n3. correctly demonstrates several classic forms;\n4. uses abstractions repeatedly;\n5. separates strategies from context;\n6. uses `final` appropriately in Template Method;\n7. uses a handler chain correctly;\n8. demonstrates observer fan-out;\n9. demonstrates snapshot/restore;\n10. imports all work as Maven projects.\n\n### Negative signals\n\n1. Visitor is only a stub despite directory naming;\n2. Command is missing despite an unrelated interface with that name;\n3. Interpreter absent;\n4. Iterator absent;\n5. Mediator registration fields unused;\n6. Mediator coordination semantics weak;\n7. State context does not own/delegate behavior;\n8. no tests;\n9. no documentation;\n10. generated build artifacts committed;\n11. no `.gitignore`;\n12. generic commit messages;\n13. tutorial-heavy examples;\n14. no real-system application.\n\n### Engineering judgment rating\n\n**2.75/5**\n\n---",
+      "source_line_start": 24896,
+      "source_line_end": 24934
+    },
+    {
+      "id": "s110",
+      "level": 3,
+      "title": "Positive signals",
+      "normalized_title": "Positive signals",
+      "key": "positive_signals",
+      "path": [
+        "37. Engineering judgment",
+        "Positive signals"
+      ],
+      "content": "1. deliberate third-stage pattern study after creational and structural categories;\n2. broad behavioral vocabulary;\n3. correctly demonstrates several classic forms;\n4. uses abstractions repeatedly;\n5. separates strategies from context;\n6. uses `final` appropriately in Template Method;\n7. uses a handler chain correctly;\n8. demonstrates observer fan-out;\n9. demonstrates snapshot/restore;\n10. imports all work as Maven projects.",
+      "source_line_start": 24898,
+      "source_line_end": 24911
+    },
+    {
+      "id": "s111",
+      "level": 3,
+      "title": "Negative signals",
+      "normalized_title": "Negative signals",
+      "key": "negative_signals",
+      "path": [
+        "37. Engineering judgment",
+        "Negative signals"
+      ],
+      "content": "1. Visitor is only a stub despite directory naming;\n2. Command is missing despite an unrelated interface with that name;\n3. Interpreter absent;\n4. Iterator absent;\n5. Mediator registration fields unused;\n6. Mediator coordination semantics weak;\n7. State context does not own/delegate behavior;\n8. no tests;\n9. no documentation;\n10. generated build artifacts committed;\n11. no `.gitignore`;\n12. generic commit messages;\n13. tutorial-heavy examples;\n14. no real-system application.",
+      "source_line_start": 24911,
+      "source_line_end": 24928
+    },
+    {
+      "id": "s112",
+      "level": 3,
+      "title": "Engineering judgment rating",
+      "normalized_title": "Engineering judgment rating",
+      "key": "engineering_judgment_rating",
+      "path": [
+        "37. Engineering judgment",
+        "Engineering judgment rating"
+      ],
+      "content": "**2.75/5**\n\n---",
+      "source_line_start": 24928,
+      "source_line_end": 24934
+    },
+    {
+      "id": "s113",
+      "level": 2,
+      "title": "38. Mistakes / anti-patterns / lessons",
+      "normalized_title": "Mistakes / anti-patterns / lessons",
+      "key": "mistakes_anti_patterns_lessons",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons"
+      ],
+      "content": "### 38.1 Folder name ≠ implementation\n\nVisitor demonstrates why repository analysis must inspect source, not infer capability from directory names.\n\n### 38.2 Class/interface name ≠ pattern\n\nMediator's `Command` interface does not make the project evidence of Command pattern.\n\n### 38.3 State skeleton without behavioral delegation\n\nA state reference alone does not capture the full benefit of State.\n\n### 38.4 Mediator with unused registered components\n\nA mediator should actually coordinate participants, not merely store unused references plus a shared flag.\n\n### 38.5 Generated output in Git\n\nRepeated across all three pattern repos.\n\n### 38.6 No testing while studying abstractions\n\nPattern exercises are excellent candidates for small unit tests, but none exist.\n\n### 38.7 Pattern breadth without applicability documentation\n\nKnowing shape is not the same as knowing selection tradeoffs.\n\n---",
+      "source_line_start": 24934,
+      "source_line_end": 24966
+    },
+    {
+      "id": "s114",
+      "level": 3,
+      "title": "38.1 Folder name ≠ implementation",
+      "normalized_title": "Folder name ≠ implementation",
+      "key": "folder_name_implementation",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.1 Folder name ≠ implementation"
+      ],
+      "content": "Visitor demonstrates why repository analysis must inspect source, not infer capability from directory names.",
+      "source_line_start": 24936,
+      "source_line_end": 24940
+    },
+    {
+      "id": "s115",
+      "level": 3,
+      "title": "38.2 Class/interface name ≠ pattern",
+      "normalized_title": "Class/interface name ≠ pattern",
+      "key": "class_interface_name_pattern",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.2 Class/interface name ≠ pattern"
+      ],
+      "content": "Mediator's `Command` interface does not make the project evidence of Command pattern.",
+      "source_line_start": 24940,
+      "source_line_end": 24944
+    },
+    {
+      "id": "s116",
+      "level": 3,
+      "title": "38.3 State skeleton without behavioral delegation",
+      "normalized_title": "State skeleton without behavioral delegation",
+      "key": "state_skeleton_without_behavioral_delegation",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.3 State skeleton without behavioral delegation"
+      ],
+      "content": "A state reference alone does not capture the full benefit of State.",
+      "source_line_start": 24944,
+      "source_line_end": 24948
+    },
+    {
+      "id": "s117",
+      "level": 3,
+      "title": "38.4 Mediator with unused registered components",
+      "normalized_title": "Mediator with unused registered components",
+      "key": "mediator_with_unused_registered_components",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.4 Mediator with unused registered components"
+      ],
+      "content": "A mediator should actually coordinate participants, not merely store unused references plus a shared flag.",
+      "source_line_start": 24948,
+      "source_line_end": 24952
+    },
+    {
+      "id": "s118",
+      "level": 3,
+      "title": "38.5 Generated output in Git",
+      "normalized_title": "Generated output in Git",
+      "key": "generated_output_in_git",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.5 Generated output in Git"
+      ],
+      "content": "Repeated across all three pattern repos.",
+      "source_line_start": 24952,
+      "source_line_end": 24956
+    },
+    {
+      "id": "s119",
+      "level": 3,
+      "title": "38.6 No testing while studying abstractions",
+      "normalized_title": "No testing while studying abstractions",
+      "key": "no_testing_while_studying_abstractions",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.6 No testing while studying abstractions"
+      ],
+      "content": "Pattern exercises are excellent candidates for small unit tests, but none exist.",
+      "source_line_start": 24956,
+      "source_line_end": 24960
+    },
+    {
+      "id": "s120",
+      "level": 3,
+      "title": "38.7 Pattern breadth without applicability documentation",
+      "normalized_title": "Pattern breadth without applicability documentation",
+      "key": "pattern_breadth_without_applicability_documentation",
+      "path": [
+        "38. Mistakes / anti-patterns / lessons",
+        "38.7 Pattern breadth without applicability documentation"
+      ],
+      "content": "Knowing shape is not the same as knowing selection tradeoffs.\n\n---",
+      "source_line_start": 24960,
+      "source_line_end": 24966
+    },
+    {
+      "id": "s121",
+      "level": 2,
+      "title": "39. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "39. Scale dimensions"
+      ],
+      "content": "| Dimension | Value |\n|---|---|\n| Repository commits | **8** |\n| Git import span | **4 min 33 sec** |\n| Named Maven projects | **8** |\n| Substantive pattern implementations | **7** |\n| Stub projects | **1** |\n| Canonical behavioral patterns | **11** |\n| Direct coverage | **63.6%** |\n| Java source files | **8** |\n| Approx Java source | **~650 LOC** |\n| Retained compiled target trees | **7** |\n| Contributors observed | **1** |\n| Tests | **0** |\n| CI workflows | **0** |\n| Production users | N/A |\n\n---",
+      "source_line_start": 24966,
+      "source_line_end": 24987
+    },
+    {
+      "id": "s122",
+      "level": 2,
+      "title": "40. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "40. Complexity dimensions"
+      ],
+      "content": "| Complexity dimension | Score / 5 | Notes |\n|---|---:|---|\n| OOP conceptual complexity | **3.25** | multiple behavioral abstractions |\n| Behavioral-design breadth | **3.0** | 7/11 direct |\n| Algorithmic complexity | 1.75 | simple examples |\n| State complexity | 2.5 | state/memento |\n| Event complexity | 2.5 | synchronous observer |\n| Coordination complexity | 2.0 | shallow mediator |\n| Build complexity | 2.0 | standalone Maven |\n| Data complexity | 1.0 | trivial |\n| Concurrency | 0 | absent |\n| Integration complexity | 1.0 | no external systems |\n| Product complexity | N/A | not product |\n\n---",
+      "source_line_start": 24987,
+      "source_line_end": 25005
+    },
+    {
+      "id": "s123",
+      "level": 2,
+      "title": "41. Standard product / engineering matrix",
+      "normalized_title": "Standard product / engineering matrix",
+      "key": "standard_product_engineering_matrix",
+      "path": [
+        "41. Standard product / engineering matrix"
+      ],
+      "content": "| Dimension | Score / 5 | Notes |\n|---|---:|---|\n| Problem clarity | **4.5** | behavioral-pattern study |\n| User value clarity | N/A | study artifact |\n| Product focus | N/A | not product |\n| Domain specificity | **5** | GoF behavioral patterns |\n| Domain correctness evidence | **2.75** | several good examples, incomplete coverage |\n| Functional completeness | **2.75** | 7/11 + stub |\n| Feature coherence | **5** | single category |\n| User workflow completeness | N/A | no product workflow |\n| UI clarity | N/A | console |\n| Visual design | N/A | none |\n| Interaction design | N/A | trivial |\n| Responsive design | N/A | none |\n| Accessibility | N/A | none |\n| Internationalization | N/A | none |\n| Architecture | **3.0 conceptual** | pattern abstractions |\n| Separation of concerns | **3.0** | pattern roles |\n| Code organization | 2.5 | project-per-pattern |\n| Maintainability | 2.0 | small but rough |\n| Extensibility | **3.0 conceptual** | abstraction-focused |\n| Reusability | 2.5 | educational examples |\n| Data modeling | 1.5 | trivial |\n| Data provenance | N/A | no dataset |\n| Data governance | N/A | none |\n| Data scalability | N/A | none |\n| Algorithmic design | 1.75 | not focus |\n| Performance | N/A | trivial |\n| Reliability | 2.25 | compiled examples, untested |\n| Error handling | 1.5 | minimal |\n| Security | N/A | none |\n| Privacy | N/A | no data |\n| Authentication | N/A | none |\n| Authorization | N/A | none |\n| Backend maturity | N/A | none |\n| API design | 2.75 | small object contracts |\n| Database design | N/A | none |\n| Testing | **0** | none |\n| Testability | **3.25** | easy to unit-test |\n| CI | 0 | none |\n| CD/deployment | N/A | none |\n| Observability | N/A | none |\n| Logging | 1 | console |\n| Monitoring | N/A | none |\n| Documentation | **0.25** | essentially absent |\n| Onboarding/developer experience | 1.5 | folder names only |\n| Dependency hygiene | **4** | standard-library examples |\n| Repository hygiene | **1.25** | generated outputs/local paths |\n| Version-control usage | 2.0 | one import commit/project |\n| Commit quality | **1.5** | all `Add files via upload` |\n| Product analytics | N/A | none |\n| User feedback loop | N/A | none |\n| Business model | N/A | none |\n| Market validation | N/A | none |\n| Competitive differentiation | N/A | canonical study content |\n| Distribution readiness | N/A | none |\n| Operational maturity | N/A | none |\n| Compliance readiness | N/A | none |\n| Cultural/content stewardship | N/A | none |\n| Educational trustworthiness | **2.75** | decent examples, stub/incomplete docs |\n| Scalability — traffic | N/A | no service |\n| Scalability — data | N/A | none |\n| Scalability — team | 1.5 | solo |\n| Scalability — features | 2.5 | separate projects, no aggregator |\n| Product maturity | N/A | not product |\n| Engineering maturity | **2.25** | study artifact |\n| Behavioral-pattern maturity | **3.0** | broad but incomplete |\n| Portfolio differentiation | **2.5** | common study material |\n| Career-skill evidence | **4.25** | important full-suite chronology |\n\n---",
+      "source_line_start": 25005,
+      "source_line_end": 25079
+    },
+    {
+      "id": "s124",
+      "level": 2,
+      "title": "42. Product maturity",
+      "normalized_title": "Product maturity",
+      "key": "product_maturity",
+      "path": [
+        "42. Product maturity"
+      ],
+      "content": "**N/A**\n\nNo market-facing product exists.\n\n### Educational artifact maturity\n\n**2.75/5**\n\nStrength:\n- seven real behavioral examples;\n- coherent category.\n\nWeakness:\n- incomplete coverage;\n- Visitor placeholder;\n- no docs;\n- no tests;\n- weak hygiene.\n\n---",
+      "source_line_start": 25079,
+      "source_line_end": 25102
+    },
+    {
+      "id": "s125",
+      "level": 3,
+      "title": "Educational artifact maturity",
+      "normalized_title": "Educational artifact maturity",
+      "key": "educational_artifact_maturity",
+      "path": [
+        "42. Product maturity",
+        "Educational artifact maturity"
+      ],
+      "content": "**2.75/5**\n\nStrength:\n- seven real behavioral examples;\n- coherent category.\n\nWeakness:\n- incomplete coverage;\n- Visitor placeholder;\n- no docs;\n- no tests;\n- weak hygiene.\n\n---",
+      "source_line_start": 25085,
+      "source_line_end": 25102
+    },
+    {
+      "id": "s126",
+      "level": 2,
+      "title": "43. Engineering maturity",
+      "normalized_title": "Engineering maturity",
+      "key": "engineering_maturity",
+      "path": [
+        "43. Engineering maturity"
+      ],
+      "content": "**2.25/5**\n\nSame general maturity tier as Repos 010–011.\n\nPattern vocabulary grows faster than:\n\n- testing;\n- repository discipline;\n- documentation;\n- production integration.\n\n---",
+      "source_line_start": 25102,
+      "source_line_end": 25117
+    },
+    {
+      "id": "s127",
+      "level": 2,
+      "title": "44. Portfolio differentiation",
+      "normalized_title": "Portfolio differentiation",
+      "key": "portfolio_differentiation",
+      "path": [
+        "44. Portfolio differentiation"
+      ],
+      "content": "**2.5/5**\n\nThe value is not uniqueness.\n\nDesign-pattern repositories are common.\n\nThe value is:\n\n> **career chronology and evidence of deliberate software-design study.**\n\n---",
+      "source_line_start": 25117,
+      "source_line_end": 25131
+    },
+    {
+      "id": "s128",
+      "level": 2,
+      "title": "45. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "45. Portfolio Evidence Weight"
+      ],
+      "content": "**3.5/5**\n\nWhy:\n- direct Java source;\n- seven implementations;\n- exact companion-repo chronology;\n- Maven recurrence;\n- broad OOP concepts.\n\nReductions:\n- tutorial/reference-like;\n- incomplete behavioral catalog;\n- Visitor stub;\n- no tests;\n- no docs;\n- poor repo hygiene.\n\n---",
+      "source_line_start": 25131,
+      "source_line_end": 25152
+    },
+    {
+      "id": "s129",
+      "level": 2,
+      "title": "46. Career-skill evidence value",
+      "normalized_title": "Career-skill evidence value",
+      "key": "career_skill_evidence_value",
+      "path": [
+        "46. Career-skill evidence value"
+      ],
+      "content": "**4.25/5**\n\nThis is slightly higher as career-history evidence than the individual showcase value because it completes the three-category study narrative.\n\nIt lets the corpus answer:\n\n- Did the developer deliberately study GoF patterns?\n- Which categories?\n- How complete was each?\n- What was directly implemented?\n- What remained missing?\n- Was Java/OOP study recurring?\n- Did pattern study overlap algorithm practice?\n\n---",
+      "source_line_start": 25152,
+      "source_line_end": 25170
+    },
+    {
+      "id": "s130",
+      "level": 2,
+      "title": "47. Comparison with Repositories 010 and 011",
+      "normalized_title": "Comparison with Repositories 010 and 011",
+      "key": "comparison_with_repositories_010_and_011",
+      "path": [
+        "47. Comparison with Repositories 010 and 011"
+      ],
+      "content": "| Dimension | Repo 010 Creational | Repo 011 Structural | Repo 012 Behavioral |\n|---|---:|---:|---:|\n| Canonical category size | 5 | 7 | 11 |\n| Direct implementations | **3** | **7** | **7** |\n| Additional mention/stub | Prototype mention | none | Visitor stub |\n| Missing direct patterns | 2 | 0 | 4 |\n| Java/Maven | yes | yes | yes |\n| Tests | 0 | 0 | 0 |\n| CI | 0 | 0 | 0 |\n| README/docs | some | almost none | none |\n| Generated target committed | yes | yes | yes for substantive projects |\n| Pattern breadth score | 3.0 | **3.25** | 3.0 |\n\n### Key difference\n\nRepo 011 is the only one of the three with complete canonical category implementation coverage.\n\n---",
+      "source_line_start": 25170,
+      "source_line_end": 25191
+    },
+    {
+      "id": "s131",
+      "level": 3,
+      "title": "Key difference",
+      "normalized_title": "Key difference",
+      "key": "key_difference",
+      "path": [
+        "47. Comparison with Repositories 010 and 011",
+        "Key difference"
+      ],
+      "content": "Repo 011 is the only one of the three with complete canonical category implementation coverage.\n\n---",
+      "source_line_start": 25185,
+      "source_line_end": 25191
+    },
+    {
+      "id": "s132",
+      "level": 2,
+      "title": "48. Combined GoF status after Repository 012",
+      "normalized_title": "Combined GoF status after Repository 012",
+      "key": "combined_gof_status_after_repository_012",
+      "path": [
+        "48. Combined GoF status after Repository 012"
+      ],
+      "content": "The GoF catalog contains:\n\n**23 patterns**\n\n### Directly implemented so far\n\n#### Creational — 3\n\n- Builder\n- Factory Method\n- Singleton\n\n#### Structural — 7\n\n- Adapter\n- Bridge\n- Composite\n- Decorator\n- Facade\n- Flyweight\n- Proxy\n\n#### Behavioral — 7\n\n- Chain of Responsibility\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method\n\n### Total direct GoF implementations\n\n**17 / 23 = 73.9%**\n\n### Additional non-implementation exposure\n\n- Prototype — discussed/mentioned in Repo 010\n- Visitor — named scaffold/stub in Repo 012\n\n### Completely absent direct evidence in the three-repo suite\n\n- Abstract Factory\n- Command\n- Interpreter\n- Iterator\n\n### Important anti-inflation\n\nDo not report:\n\n> “implemented 19 patterns”\n\nbecause Prototype and Visitor are not direct implementations.\n\nCorrect statement:\n\n> **17 GoF patterns directly implemented; 2 additional patterns referenced/scaffolded; 4 not directly evidenced.**\n\n---",
+      "source_line_start": 25191,
+      "source_line_end": 25255
+    },
+    {
+      "id": "s133",
+      "level": 3,
+      "title": "Directly implemented so far",
+      "normalized_title": "Directly implemented so far",
+      "key": "directly_implemented_so_far",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Directly implemented so far"
+      ],
+      "content": "#### Creational — 3\n\n- Builder\n- Factory Method\n- Singleton\n\n#### Structural — 7\n\n- Adapter\n- Bridge\n- Composite\n- Decorator\n- Facade\n- Flyweight\n- Proxy\n\n#### Behavioral — 7\n\n- Chain of Responsibility\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method",
+      "source_line_start": 25197,
+      "source_line_end": 25225
+    },
+    {
+      "id": "s134",
+      "level": 4,
+      "title": "Creational — 3",
+      "normalized_title": "Creational — 3",
+      "key": "creational_3",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Directly implemented so far",
+        "Creational — 3"
+      ],
+      "content": "- Builder\n- Factory Method\n- Singleton",
+      "source_line_start": 25199,
+      "source_line_end": 25205
+    },
+    {
+      "id": "s135",
+      "level": 4,
+      "title": "Structural — 7",
+      "normalized_title": "Structural — 7",
+      "key": "structural_7",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Directly implemented so far",
+        "Structural — 7"
+      ],
+      "content": "- Adapter\n- Bridge\n- Composite\n- Decorator\n- Facade\n- Flyweight\n- Proxy",
+      "source_line_start": 25205,
+      "source_line_end": 25215
+    },
+    {
+      "id": "s136",
+      "level": 4,
+      "title": "Behavioral — 7",
+      "normalized_title": "Behavioral — 7",
+      "key": "behavioral_7",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Directly implemented so far",
+        "Behavioral — 7"
+      ],
+      "content": "- Chain of Responsibility\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method",
+      "source_line_start": 25215,
+      "source_line_end": 25225
+    },
+    {
+      "id": "s137",
+      "level": 3,
+      "title": "Total direct GoF implementations",
+      "normalized_title": "Total direct GoF implementations",
+      "key": "total_direct_gof_implementations",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Total direct GoF implementations"
+      ],
+      "content": "**17 / 23 = 73.9%**",
+      "source_line_start": 25225,
+      "source_line_end": 25229
+    },
+    {
+      "id": "s138",
+      "level": 3,
+      "title": "Additional non-implementation exposure",
+      "normalized_title": "Additional non-implementation exposure",
+      "key": "additional_non_implementation_exposure",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Additional non-implementation exposure"
+      ],
+      "content": "- Prototype — discussed/mentioned in Repo 010\n- Visitor — named scaffold/stub in Repo 012",
+      "source_line_start": 25229,
+      "source_line_end": 25234
+    },
+    {
+      "id": "s139",
+      "level": 3,
+      "title": "Completely absent direct evidence in the three-repo suite",
+      "normalized_title": "Completely absent direct evidence in the three-repo suite",
+      "key": "completely_absent_direct_evidence_in_the_three_repo_suite",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Completely absent direct evidence in the three-repo suite"
+      ],
+      "content": "- Abstract Factory\n- Command\n- Interpreter\n- Iterator",
+      "source_line_start": 25234,
+      "source_line_end": 25241
+    },
+    {
+      "id": "s140",
+      "level": 3,
+      "title": "Important anti-inflation",
+      "normalized_title": "Important anti-inflation",
+      "key": "important_anti_inflation",
+      "path": [
+        "48. Combined GoF status after Repository 012",
+        "Important anti-inflation"
+      ],
+      "content": "Do not report:\n\n> “implemented 19 patterns”\n\nbecause Prototype and Visitor are not direct implementations.\n\nCorrect statement:\n\n> **17 GoF patterns directly implemented; 2 additional patterns referenced/scaffolded; 4 not directly evidenced.**\n\n---",
+      "source_line_start": 25241,
+      "source_line_end": 25255
+    },
+    {
+      "id": "s141",
+      "level": 2,
+      "title": "49. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "49. Skill lifecycle"
+      ],
+      "content": "### Java — Reinforced again\n\nRepos 010–012 form a concentrated multi-repository Java/OOP study cluster.\n\nCurrent historical Java evidence:\n\n- object construction patterns;\n- structural composition patterns;\n- behavioral collaboration patterns.\n\n### Maven — Reinforced\n\nNow repeated across 18 project containers in this pattern suite.\n\n### Design patterns — Advanced in breadth\n\nThe corpus progresses:\n\n```text\nCreational\n    ↓\nStructural\n    ↓\nBehavioral\n```\n\n### Observer / Strategy / Template / State / Memento / Mediator / Chain\n\nFirst direct observed evidence appears here.\n\n### Testing\n\nStill no authored automated tests.\n\n### CI\n\nStill absent.\n\n### Repository hygiene\n\nRepeated weakness.\n\n---",
+      "source_line_start": 25255,
+      "source_line_end": 25301
+    },
+    {
+      "id": "s142",
+      "level": 3,
+      "title": "Java — Reinforced again",
+      "normalized_title": "Java — Reinforced again",
+      "key": "java_reinforced_again",
+      "path": [
+        "49. Skill lifecycle",
+        "Java — Reinforced again"
+      ],
+      "content": "Repos 010–012 form a concentrated multi-repository Java/OOP study cluster.\n\nCurrent historical Java evidence:\n\n- object construction patterns;\n- structural composition patterns;\n- behavioral collaboration patterns.",
+      "source_line_start": 25257,
+      "source_line_end": 25267
+    },
+    {
+      "id": "s143",
+      "level": 3,
+      "title": "Maven — Reinforced",
+      "normalized_title": "Maven — Reinforced",
+      "key": "maven_reinforced",
+      "path": [
+        "49. Skill lifecycle",
+        "Maven — Reinforced"
+      ],
+      "content": "Now repeated across 18 project containers in this pattern suite.",
+      "source_line_start": 25267,
+      "source_line_end": 25271
+    },
+    {
+      "id": "s144",
+      "level": 3,
+      "title": "Design patterns — Advanced in breadth",
+      "normalized_title": "Design patterns — Advanced in breadth",
+      "key": "design_patterns_advanced_in_breadth",
+      "path": [
+        "49. Skill lifecycle",
+        "Design patterns — Advanced in breadth"
+      ],
+      "content": "The corpus progresses:\n\n```text\nCreational\n    ↓\nStructural\n    ↓\nBehavioral\n```",
+      "source_line_start": 25271,
+      "source_line_end": 25283
+    },
+    {
+      "id": "s145",
+      "level": 3,
+      "title": "Observer / Strategy / Template / State / Memento / Mediator / Chain",
+      "normalized_title": "Observer / Strategy / Template / State / Memento / Mediator / Chain",
+      "key": "observer_strategy_template_state_memento_mediator_chain",
+      "path": [
+        "49. Skill lifecycle",
+        "Observer / Strategy / Template / State / Memento / Mediator / Chain"
+      ],
+      "content": "First direct observed evidence appears here.",
+      "source_line_start": 25283,
+      "source_line_end": 25287
+    },
+    {
+      "id": "s146",
+      "level": 3,
+      "title": "Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "49. Skill lifecycle",
+        "Testing"
+      ],
+      "content": "Still no authored automated tests.",
+      "source_line_start": 25287,
+      "source_line_end": 25291
+    },
+    {
+      "id": "s147",
+      "level": 3,
+      "title": "CI",
+      "normalized_title": "CI",
+      "key": "ci",
+      "path": [
+        "49. Skill lifecycle",
+        "CI"
+      ],
+      "content": "Still absent.",
+      "source_line_start": 25291,
+      "source_line_end": 25295
+    },
+    {
+      "id": "s148",
+      "level": 3,
+      "title": "Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "49. Skill lifecycle",
+        "Repository hygiene"
+      ],
+      "content": "Repeated weakness.\n\n---",
+      "source_line_start": 25295,
+      "source_line_end": 25301
+    },
+    {
+      "id": "s149",
+      "level": 2,
+      "title": "50. First / Previous / Current / Corpus-Max Ledger",
+      "normalized_title": "First / Previous / Current / Corpus-Max Ledger",
+      "key": "first_previous_current_corpus_max_ledger",
+      "path": [
+        "50. First / Previous / Current / Corpus-Max Ledger"
+      ],
+      "content": "| Skill | First observed | Previous max | Repo 012 | Corpus max |\n|---|---|---:|---:|---:|\n| Java | Repo010 | 3.0 | **3.0** | **3.0** |\n| Maven | Repo010 | 2.75 | **2.75** | **2.75** |\n| OOP fundamentals | earlier / Repo010 explicit | 3.5 | **3.5** | **3.5** |\n| Design-pattern breadth | Repo010 | 3.25 | **3.0 behavioral** | **3.25** |\n| Behavioral patterns | **Repo012** | none | **3.0** | **3.0** |\n| Chain of Responsibility | **Repo012** | none | **3.25** | **3.25** |\n| Mediator | **Repo012** | none | **2.5** | **2.5** |\n| Memento | **Repo012** | none | **3.0** | **3.0** |\n| Observer | **Repo012** | none | **3.25** | **3.25** |\n| State | **Repo012** | none | **2.5** | **2.5** |\n| Strategy | **Repo012** | none | **3.25** | **3.25** |\n| Template Method | **Repo012** | none | **3.5** | **3.5** |\n| Visitor | **Repo012 stub** | none | **0.5 exposure** | **0.5 exposure** |\n| Command pattern | not observed | none | **0** | not observed |\n| Interpreter | not observed | none | **0** | not observed |\n| Iterator pattern | not observed | none | **0** | not observed |\n| Event notification | **Repo012** | none | **3.25** | **3.25** |\n| Snapshot/restore | **Repo012** | none | **3.0** | **3.0** |\n| Workflow template abstraction | **Repo012** | none | **3.5** | **3.5** |\n| Authored automated testing | none | 0 | **0** | remains weak |\n| CI/CD | none | 0 | **0** | remains absent |\n\n---",
+      "source_line_start": 25301,
+      "source_line_end": 25329
+    },
+    {
+      "id": "s150",
+      "level": 2,
+      "title": "51. Career trajectory effect",
+      "normalized_title": "Career trajectory effect",
+      "key": "career_trajectory_effect",
+      "path": [
+        "51. Career trajectory effect"
+      ],
+      "content": "Repositories 010–012 together materially change the interpretation of early 2023.\n\nThe portfolio now shows three simultaneous learning directions:\n\n```text\n                    2023\n                      │\n          ┌───────────┼───────────┐\n          │           │           │\n          ▼           ▼           ▼\n     Algorithms    Java/OOP     GoF design\n     / LeetCode     tooling      patterns\n                                  │\n                ┌─────────────────┼─────────────────┐\n                ▼                 ▼                 ▼\n           Creational         Structural        Behavioral\n```\n\nThis is not yet production architecture.\n\nBut it is evidence that the developer was deliberately expanding from:\n\n> implementation mechanics\n\ninto:\n\n> abstraction, responsibility distribution, collaboration patterns, and object behavior.\n\n### Strongest career interpretation\n\n> **By March 2023, the developer had established a deliberate Java/OOP design-pattern study program spanning all three GoF categories, with 17 of the 23 canonical patterns directly implemented across three repositories.**\n\n### Required caveat\n\n> **The examples are educational/tutorial-driven and several are shallow or defective; this demonstrates pattern literacy and study breadth, not senior production architecture.**\n\n---",
+      "source_line_start": 25329,
+      "source_line_end": 25369
+    },
+    {
+      "id": "s151",
+      "level": 3,
+      "title": "Strongest career interpretation",
+      "normalized_title": "Strongest career interpretation",
+      "key": "strongest_career_interpretation",
+      "path": [
+        "51. Career trajectory effect",
+        "Strongest career interpretation"
+      ],
+      "content": "> **By March 2023, the developer had established a deliberate Java/OOP design-pattern study program spanning all three GoF categories, with 17 of the 23 canonical patterns directly implemented across three repositories.**",
+      "source_line_start": 25359,
+      "source_line_end": 25363
+    },
+    {
+      "id": "s152",
+      "level": 3,
+      "title": "Required caveat",
+      "normalized_title": "Required caveat",
+      "key": "required_caveat",
+      "path": [
+        "51. Career trajectory effect",
+        "Required caveat"
+      ],
+      "content": "> **The examples are educational/tutorial-driven and several are shallow or defective; this demonstrates pattern literacy and study breadth, not senior production architecture.**\n\n---",
+      "source_line_start": 25363,
+      "source_line_end": 25369
+    },
+    {
+      "id": "s153",
+      "level": 2,
+      "title": "52. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "52. Current relevance / recency"
+      ],
+      "content": "Repo 012 evidence is from:\n\n**March 2023**\n\nand has no later activity.\n\nBy 2026 this is historical evidence.\n\n### Use it for\n\n- foundations;\n- learning trajectory;\n- early Java/OOP breadth;\n- design vocabulary.\n\n### Do not use it alone for\n\n- current seniority;\n- current Java proficiency;\n- production architecture expertise.\n\n---",
+      "source_line_start": 25369,
+      "source_line_end": 25394
+    },
+    {
+      "id": "s154",
+      "level": 3,
+      "title": "Use it for",
+      "normalized_title": "Use it for",
+      "key": "use_it_for",
+      "path": [
+        "52. Current relevance / recency",
+        "Use it for"
+      ],
+      "content": "- foundations;\n- learning trajectory;\n- early Java/OOP breadth;\n- design vocabulary.",
+      "source_line_start": 25379,
+      "source_line_end": 25386
+    },
+    {
+      "id": "s155",
+      "level": 3,
+      "title": "Do not use it alone for",
+      "normalized_title": "Do not use it alone for",
+      "key": "do_not_use_it_alone_for",
+      "path": [
+        "52. Current relevance / recency",
+        "Do not use it alone for"
+      ],
+      "content": "- current seniority;\n- current Java proficiency;\n- production architecture expertise.\n\n---",
+      "source_line_start": 25386,
+      "source_line_end": 25394
+    },
+    {
+      "id": "s156",
+      "level": 2,
+      "title": "53. Failure potential",
+      "normalized_title": "Failure potential",
+      "key": "failure_potential",
+      "path": [
+        "53. Failure potential"
+      ],
+      "content": "Product failure:\n\n**N/A**\n\nEducational failure potential:\n- misclassifying Visitor as implemented;\n- misclassifying `Command` interface as Command pattern;\n- overestimating State/Mediator depth;\n- learning canonical shapes without tradeoff context.\n\nThe repository itself demonstrates why source-level inspection is essential.\n\n---",
+      "source_line_start": 25394,
+      "source_line_end": 25410
+    },
+    {
+      "id": "s157",
+      "level": 2,
+      "title": "54. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "54. Human impact"
+      ],
+      "content": "Direct impact is low.\n\nPotential positive:\n- stronger architectural vocabulary;\n- clearer object responsibility reasoning;\n- exposure to collaboration and state-management patterns.\n\nPotential downside:\n- cargo-cult pattern application;\n- pattern memorization without contextual selection;\n- pattern overuse.\n\n---",
+      "source_line_start": 25410,
+      "source_line_end": 25426
+    },
+    {
+      "id": "s158",
+      "level": 2,
+      "title": "55. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "55. RAG anti-inflation warnings"
+      ],
+      "content": "1. Repository folder names do not equal implemented capabilities.\n2. Visitor is only Hello World.\n3. Command is absent despite an interface named `Command`.\n4. Interpreter is absent.\n5. Iterator is absent.\n6. Eight commits in four minutes are imports, not implementation duration.\n7. Generated `.class` files only prove retained local build output.\n8. Java 19 config does not imply Java-19-specific expertise.\n9. No tests exist.\n10. No CI exists.\n11. No documentation exists.\n12. Tutorial-style examples should be credited as study/implementation, not invention.\n13. Behavioral pattern count is **7 direct**, not 8.\n14. Combined GoF direct count after Repo012 is **17 / 23**, not 19 / 23.\n15. Historical repository evidence does not prove current proficiency.\n\n---",
+      "source_line_start": 25426,
+      "source_line_end": 25446
+    },
+    {
+      "id": "s159",
+      "level": 2,
+      "title": "56. Repository 012 bottom line",
+      "normalized_title": "Repository 012 bottom line",
+      "key": "repository_012_bottom_line",
+      "path": [
+        "56. Repository 012 bottom line"
+      ],
+      "content": "`Behavioral-Design-Patterns` completes the first observed three-category GoF study sequence.\n\nIt directly implements:\n\n- Chain of Responsibility;\n- Mediator;\n- Memento;\n- Observer;\n- State;\n- Strategy;\n- Template Method.\n\nIt does **not** directly implement:\n\n- Command;\n- Interpreter;\n- Iterator;\n- Visitor.\n\nVisitor exists only as a named Maven/NetBeans Hello World scaffold.\n\nThe repository's strongest direct evidence is:\n\n- behavioral OOP vocabulary;\n- delegation;\n- observer notification;\n- state snapshot/restore;\n- interchangeable strategies;\n- fixed workflow templates;\n- handler chains;\n- Maven/Java recurrence.\n\nIts strongest weaknesses are:\n\n- incomplete behavioral coverage;\n- Visitor stub;\n- weak Mediator example;\n- shallow State example;\n- no tests;\n- no CI;\n- no README/docs;\n- committed generated build artifacts;\n- machine-local compiler metadata;\n- generic upload commits.\n\n### Key ratings\n\n- Java: **3.0/5**\n- Maven: **2.75/5**\n- OOP fundamentals: **3.5/5**\n- Behavioral-pattern breadth: **3.0/5**\n- Chain of Responsibility: **3.25/5**\n- Mediator: **2.5/5**\n- Memento: **3.0/5**\n- Observer: **3.25/5**\n- State: **2.5/5**\n- Strategy: **3.25/5**\n- Template Method: **3.5/5**\n- Visitor: **0.5/5 exposure; 0 direct implementation**\n- Engineering maturity: **2.25/5**\n- Testing: **0/5**\n- Documentation: **0.25/5**\n- Portfolio Evidence Weight: **3.5/5**\n- Career-skill evidence value: **4.25/5**\n\n### Career-level conclusion\n\n> **The most important result is not that another tutorial repository exists. It is that Repositories 010–012 together form a deliberately organized Java/OOP design-pattern curriculum spanning creational, structural, and behavioral categories. Across the suite, 17 of 23 GoF patterns are directly implemented, with Prototype discussed and Visitor scaffolded but not implemented. This establishes substantial early design-pattern literacy and abstraction practice while simultaneously exposing the next engineering maturity gap: testing, documentation, repository hygiene, real-system application, and contextual pattern selection.**\n\n---\n\n**End of Repository 012 / 134.**\n\n---",
+      "source_line_start": 25446,
+      "source_line_end": 25522
+    },
+    {
+      "id": "s160",
+      "level": 3,
+      "title": "Key ratings",
+      "normalized_title": "Key ratings",
+      "key": "key_ratings",
+      "path": [
+        "56. Repository 012 bottom line",
+        "Key ratings"
+      ],
+      "content": "- Java: **3.0/5**\n- Maven: **2.75/5**\n- OOP fundamentals: **3.5/5**\n- Behavioral-pattern breadth: **3.0/5**\n- Chain of Responsibility: **3.25/5**\n- Mediator: **2.5/5**\n- Memento: **3.0/5**\n- Observer: **3.25/5**\n- State: **2.5/5**\n- Strategy: **3.25/5**\n- Template Method: **3.5/5**\n- Visitor: **0.5/5 exposure; 0 direct implementation**\n- Engineering maturity: **2.25/5**\n- Testing: **0/5**\n- Documentation: **0.25/5**\n- Portfolio Evidence Weight: **3.5/5**\n- Career-skill evidence value: **4.25/5**",
+      "source_line_start": 25493,
+      "source_line_end": 25513
+    },
+    {
+      "id": "s161",
+      "level": 3,
+      "title": "Career-level conclusion",
+      "normalized_title": "Career-level conclusion",
+      "key": "career_level_conclusion",
+      "path": [
+        "56. Repository 012 bottom line",
+        "Career-level conclusion"
+      ],
+      "content": "> **The most important result is not that another tutorial repository exists. It is that Repositories 010–012 together form a deliberately organized Java/OOP design-pattern curriculum spanning creational, structural, and behavioral categories. Across the suite, 17 of 23 GoF patterns are directly implemented, with Prototype discussed and Visitor scaffolded but not implemented. This establishes substantial early design-pattern literacy and abstraction practice while simultaneously exposing the next engineering maturity gap: testing, documentation, repository hygiene, real-system application, and contextual pattern selection.**\n\n---\n\n**End of Repository 012 / 134.**\n\n---",
+      "source_line_start": 25513,
+      "source_line_end": 25522
+    }
+  ],
+  "raw_analysis": "# Repository 012 / 134 — `Behavioral-Design-Patterns`\n\n## Project identity\n\n**Descriptive name:** **Behavioral Design Patterns — Java/Maven Study Suite with Seven Implemented GoF Patterns and One Visitor Stub**\n\nRepository 012 is the third repository in the explicit early-2023 GoF design-pattern learning sequence.\n\nIt follows:\n\n- Repository 010 — Creational Design Patterns\n- Repository 011 — Structural Design Patterns\n- Repository 012 — Behavioral Design Patterns\n\nThe final tree contains eight named behavioral-pattern project directories:\n\n1. `ChainOfResponsibility`\n2. `MediatorPattern`\n3. `MementoPattern`\n4. `ObserverPattern`\n5. `StatePattern`\n6. `StrategyPattern`\n7. `TemplatePatternDemo`\n8. `VisitorPatternDemo`\n\nHowever, the directory count overstates the implementation coverage.\n\n`VisitorPatternDemo` contains only a NetBeans-generated Java application whose `main()` prints:\n\n`Hello World!`\n\nIt contains none of the defining Visitor roles or mechanics:\n\n- visitor interface;\n- concrete visitor;\n- element interface;\n- `accept(...)`;\n- visit overloads;\n- double dispatch.\n\nTherefore the final repository contains:\n\n> **7 directly implemented behavioral patterns**\n\nplus:\n\n> **1 named but unimplemented Visitor placeholder**\n\nThe canonical GoF behavioral category contains 11 patterns:\n\n- Chain of Responsibility\n- Command\n- Interpreter\n- Iterator\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method\n- Visitor\n\nThus the correct final coverage is:\n\n- **7 / 11 directly implemented**\n- **1 / 11 placeholder only — Visitor**\n- **3 / 11 absent — Command, Interpreter, Iterator**\n\nThere is an interface named `Command` inside the Mediator example, but it merely exposes `land()` for `Flight` and `Runway`.\n\nThat is **not** an implementation of the GoF Command pattern.\n\nThis distinction is mandatory for anti-inflation.\n\n---\n\n## 1. RAG Metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Behavioral-Design-Patterns` |\n| Chronology index | **012 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Repository created | **February 18, 2023, 21:27:05 UTC** |\n| First commit | **March 3, 2023, 20:05:24 UTC** |\n| First commit SHA | `5f7fc7131c1d0f2a16e8a4925f7ceb2cb1064119` |\n| First imported project | **Chain of Responsibility** |\n| Latest commit | **March 3, 2023, 20:09:57 UTC** |\n| Latest commit SHA | `08c0ab380fca26bdfbb2fe0413838bfb863e000d` |\n| Latest imported project | **State** |\n| Exact total commits | **8** |\n| First→latest commit span | **4 min 33 sec** |\n| Repo creation→first source commit gap | **12 d 22 h 38 m 19 s** |\n| Repo creation→latest commit span | **12 d 22 h 42 m 52 s** |\n| Primary language | **Java** |\n| Maven projects | **8** |\n| Java compiler configuration | **Java 19** |\n| IDE evidence | **NetBeans Maven project templates** |\n| Final Java source files | **8** |\n| Approx. Java source size | **~13.4 KB / ~650 source lines** |\n| Direct behavioral implementations | **7 / 11** |\n| Visitor | **Named project, but only Hello World stub** |\n| Command | **Not implemented as GoF pattern** |\n| Interpreter | **Not observed** |\n| Iterator | **Not observed** |\n| Compiled `target/` evidence | **Retained for the 7 substantive examples** |\n| Visitor compiled `target/` evidence | **Not retained** |\n| Root README | **None observed** |\n| Tests | None |\n| CI/CD | None |\n| `.gitignore` | Not observed |\n| Branches | `main` only |\n| Branch protection | No |\n| License | None |\n| Topic | `behavioral-design-patterns` |\n| Product maturity | **N/A — educational study repository** |\n| Engineering maturity | **2.25/5** |\n| Behavioral-pattern practice maturity | **3.0/5** |\n| Portfolio Evidence Weight | **3.5/5** |\n| Career-skill evidence value | **4.25/5** |\n| Lifecycle | Dormant/completed study artifact |\n\n### Retrieval tags\n\n`java`, `java19`, `maven`, `netbeans`, `oop`, `design-patterns`, `gof`, `behavioral-patterns`, `chain-of-responsibility`, `mediator`, `memento`, `observer`, `state`, `strategy`, `template-method`, `visitor`, `command`, `interpreter`, `iterator`, `polymorphism`, `interfaces`, `abstract-class`, `delegation`, `event-notification`, `state-restoration`, `algorithm-substitution`, `workflow-template`, `request-chain`, `coordination`, `arraylist`, `list`, `educational-project`, `tutorial-driven`, `2023`\n\n---\n\n## 2. Chronology\n\n### Repository creation\n\nRepository created:\n\n**2023-02-18 21:27:05 UTC**\n\nRepository 011 was created:\n\n**2023-02-18 21:26:42 UTC**\n\nDifference:\n\n**23 seconds**\n\nThis is extremely strong evidence that the Structural and Behavioral repositories were intentionally created as companion categories in the same design-pattern study suite.\n\n### Relationship to Repository 010\n\nRepository 010's Builder source had been uploaded at:\n\n**2023-02-18 21:21:56 UTC**\n\nRepository 011 was created:\n\n**4 min 46 sec later**\n\nRepository 012 was created:\n\n**5 min 09 sec later**\n\nThe sequence is therefore:\n\n```text\nCreational-pattern implementation activity\n        ↓\nStructural repo created\n        ↓ 23 sec\nBehavioral repo created\n```\n\nThe most reasonable interpretation is a planned multi-repository GoF study organization.\n\n### Long empty shell period\n\nAlthough Repo 012 was created February 18, no source commit is observed until March 3.\n\nCreation→first source gap:\n\n**12 d 22 h 38 m 19 s**\n\nTherefore:\n\n> repository creation date ≠ implementation date.\n\n### March 3 import burst\n\nAll eight projects are imported within:\n\n**4 min 33 sec**\n\nExact observed import order:\n\n| Order | Time UTC | Project | Commit |\n|---:|---|---|---|\n| 1 | 20:05:24 | Chain of Responsibility | `5f7fc713...` |\n| 2 | 20:06:34 | Mediator | `aea01e9d...` |\n| 3 | 20:06:53 | Memento | `02c5e0a2...` |\n| 4 | 20:07:15 | Observer | `88bb5b05...` |\n| 5 | 20:08:48 | Template Method | `f6043f8d...` |\n| 6 | 20:09:06 | Visitor placeholder | `076cc2cb...` |\n| 7 | 20:09:38 | Strategy | `a4535604...` |\n| 8 | 20:09:57 | State | `08c0ab38...` |\n\nEvery commit message is:\n\n`Add files via upload`\n\n### Correct chronology interpretation\n\nThese are not eight implementations written in four minutes.\n\nThe commits carry local-project artifacts and generated Maven status, so the best interpretation is:\n\n> **locally prepared NetBeans/Maven examples were batch-imported into GitHub.**\n\n### Relationship to Repository 011 implementation activity\n\nRepository 011's last pattern import:\n\n**2023-03-03 19:25:38 UTC**\n\nRepository 012's first pattern import:\n\n**2023-03-03 20:05:24 UTC**\n\nGap:\n\n**39 min 46 sec**\n\nThus Structural and Behavioral pattern imports occur in the same evening.\n\nRepository 010's final documentation/UML edit occurs afterward, at:\n\n**2023-03-03 20:41:06 UTC**\n\nTherefore all three pattern repositories are observably active on the same date.\n\n---\n\n## 3. Final repository structure\n\nConceptually:\n\n```text\nBehavioral-Design-Patterns/\n├── ChainOfResponsibility/\n│   ├── pom.xml\n│   ├── src/main/java/.../ChainOfResponsibility.java\n│   └── target/\n├── MediatorPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../MediatorPattern.java\n│   └── target/\n├── MementoPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../MementoPattern.java\n│   └── target/\n├── ObserverPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../ObserverPattern.java\n│   └── target/\n├── StatePattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../StatePattern.java\n│   └── target/\n├── StrategyPattern/\n│   ├── pom.xml\n│   ├── src/main/java/.../StrategyPattern.java\n│   └── target/\n├── TemplatePatternDemo/\n│   ├── pom.xml\n│   ├── src/main/java/.../TemplatePatternDemo.java\n│   └── target/\n└── VisitorPatternDemo/\n    ├── pom.xml\n    └── src/main/java/.../VisitorPatternDemo.java\n```\n\nImportant:\n\n> `VisitorPatternDemo` does **not** retain the compiled `target/` tree that the seven substantive examples retain.\n\nNo root:\n- README;\n- test directory;\n- CI workflow;\n- `.gitignore`\n\nis observed.\n\n---\n\n# Chain of Responsibility\n\n## 4. Implementation\n\nClasses:\n\n- `Chain`\n- abstract `Processor`\n- `NegativeProcessor`\n- `ZeroProcessor`\n- `PositiveProcessor`\n- custom `Number`.\n\nThe chain is constructed as:\n\n```text\nNegativeProcessor\n    ↓\nZeroProcessor\n    ↓\nPositiveProcessor\n```\n\nEach processor:\n\n1. checks whether it can handle the number;\n2. handles it if appropriate;\n3. otherwise delegates to the next processor.\n\nThe main method sends:\n\n- `90`\n- `-50`\n- `0`\n- `91`\n\nthrough the same chain.\n\n### Directly demonstrated concepts\n\n- handler chaining;\n- request forwarding;\n- decoupling caller from final handler;\n- abstract base handler;\n- runtime delegation.\n\n### Rating\n\n**3.25/5**\n\nThis is one of the stronger examples in Repo 012.\n\n---\n\n## 5. Chain weaknesses\n\n### Custom `Number` name collision\n\nThe example defines its own:\n\n`Number`\n\nwhich shadows/conflicts conceptually with Java's standard:\n\n`java.lang.Number`.\n\nThat is poor naming.\n\n### Fixed chain construction\n\nThe chain is hard-coded inside `buildChain()`.\n\nNo dynamic registration/configuration.\n\n### Silent terminal behavior\n\nBase `Processor.process()` simply does nothing when:\n\n`nextProcessor == null`.\n\nThere is no:\n- unhandled-request signal;\n- default handler;\n- error.\n\n### No tests\n\nA simple parameterized test could verify routing for:\n- negative;\n- zero;\n- positive values.\n\n---\n\n# Mediator\n\n## 6. Implementation\n\nParticipants:\n\n- `IATCMediator`\n- `ATCMediator`\n- `Flight`\n- `Runway`\n- interface named `Command`.\n\nThe example models simplified air-traffic-control coordination.\n\n`Flight` and `Runway` both depend on:\n\n`IATCMediator`\n\nrather than directly depending on each other.\n\nThe mediator exposes:\n\n- register flight;\n- register runway;\n- landing-state query;\n- landing-state mutation.\n\n### Intended pattern idea\n\n```text\nFlight ──┐\n         │\n         ▼\n     ATC Mediator\n         ▲\n         │\nRunway ──┘\n```\n\n### Rating\n\n**2.5/5**\n\nThe abstraction exists, but the mediation logic is weak.\n\n---\n\n## 7. Mediator weaknesses\n\n### Registered participants are not actually used\n\n`ATCMediator` stores:\n\n- `Flight flight`\n- `Runway runway`\n\nbut neither field participates in later coordination.\n\nThe `registerFlight()` and `registerRunway()` methods therefore have little behavioral effect.\n\n### Shared flag rather than real mediation\n\nMost coordination is only:\n\n`boolean land`\n\nwith getters/setters.\n\nThat is closer to shared coordination state than rich mediator-controlled interaction.\n\n### Runway constructor grants landing status\n\nConstructing a `Runway` immediately executes:\n\n`setLandingStatus(true)`.\n\nThis couples object creation with system permission state.\n\n### Landing status remains true\n\nAfter successful `Flight.land()`, code sets:\n\n`setLandingStatus(true)`\n\nagain.\n\nThe example does not model runway occupation or transition back to unavailable state.\n\n### `Command` is not Command pattern\n\nThe interface:\n\n```text\ninterface Command {\n    void land();\n}\n```\n\nonly gives Flight and Runway a shared operation.\n\nThere is no:\n- command object encapsulating a request;\n- invoker;\n- receiver;\n- execute/undo history.\n\nTherefore:\n\n> **Command pattern = 0 direct evidence in this repository.**\n\n---\n\n# Memento\n\n## 8. Implementation\n\nParticipants:\n\n- `Originator`\n- `Memento`\n- `CareTaker`.\n\nFlow:\n\n1. Originator changes state.\n2. Originator creates snapshot.\n3. CareTaker stores snapshots.\n4. Originator restores from selected snapshot.\n\nMain demonstrates multiple saved states and later restoration.\n\n### Direct evidence\n\n- state snapshots;\n- restoration;\n- history list;\n- originator/caretaker separation.\n\n### Rating\n\n**3.0/5**\n\nA straightforward canonical implementation.\n\n---\n\n## 9. Memento weaknesses\n\n### Encapsulation is only partial\n\n`Memento` exposes:\n\n`getState()`.\n\nBecause all classes are in the same package/file context, the caretaker model does not strictly prevent external inspection of stored state.\n\nA stronger Memento design would better hide snapshot internals from caretaker logic.\n\n### Only String state\n\nNo:\n- complex object graph;\n- deep copy;\n- immutable aggregate;\n- serialization concerns.\n\n### No history controls\n\nNo:\n- undo pointer;\n- redo;\n- maximum history;\n- branching histories;\n- bounds checking around `get(index)`.\n\n### Product relevance\n\nThis is not evidence of production undo/redo engineering.\n\nIt is pattern-mechanics evidence.\n\n---\n\n# Observer\n\n## 10. Implementation\n\nParticipants:\n\n- `Subject`\n- abstract `Observer`\n- `BinaryObserver`\n- `OctalObserver`\n- `HexaObserver`.\n\nObservers attach themselves to the subject.\n\nWhen:\n\n`Subject.setState(...)`\n\nis called, the subject synchronously calls:\n\n`notifyAllObservers()`.\n\nEach observer reads the subject state and renders it differently.\n\n### Direct evidence\n\n- subscription;\n- one-to-many notification;\n- event propagation;\n- observer polymorphism;\n- subject-held observer collection;\n- synchronous update loop.\n\n### Rating\n\n**3.25/5**\n\nThis is a clear behavioral-pattern example.\n\n---\n\n## 11. Observer strengths\n\n- three concrete observers;\n- one subject;\n- observable state changes;\n- automatic fan-out;\n- different response behavior per observer;\n- uses `List<Observer>` generically.\n\n### Limitations\n\nNo:\n- detach/unsubscribe;\n- duplicate protection;\n- event typing;\n- asynchronous delivery;\n- exception isolation;\n- ordering policy;\n- weak references;\n- thread safety.\n\nObserver constructors self-register, which is convenient for the demo but creates hidden side effects.\n\n### Anti-inflation\n\nThis is not event-bus, reactive-stream, or distributed pub/sub expertise.\n\n---\n\n# State\n\n## 12. Implementation\n\nParticipants:\n\n- `State`\n- `StartState`\n- `StopState`\n- `Context`.\n\nConcrete state objects expose:\n\n`doAction(Context)`\n\nand assign themselves into the context.\n\nThe main method:\n\n1. creates a context;\n2. creates `StartState`;\n3. invokes state directly;\n4. prints context state;\n5. creates `StopState`;\n6. invokes it directly;\n7. prints context state.\n\n### Rating\n\n**2.5/5**\n\nIt demonstrates the structural skeleton, but only weakly demonstrates the actual behavioral value of State.\n\n---\n\n## 13. State limitation — context does not delegate behavior\n\nA stronger State pattern typically has the client call behavior on the:\n\n`Context`\n\nwhile the context delegates to its current state.\n\nHere, the client directly calls:\n\n`startState.doAction(context)`\n\nand later:\n\n`stopState.doAction(context)`.\n\nThe context mainly stores a state reference.\n\n### Consequence\n\nThe example demonstrates:\n\n> **state objects and transitions**\n\nmore than:\n\n> **an object changing behavior automatically as internal state changes.**\n\nNo state transition logic is embedded in state behavior beyond setting itself into context.\n\n---\n\n# Strategy\n\n## 14. Implementation\n\nStrategy interface:\n\n`Strategy`\n\nConcrete strategies:\n\n- `OperationAdd`\n- `OperationSubstract`\n- `OperationMultiply`.\n\nContext accepts a strategy and delegates:\n\n`executeStrategy(num1, num2)`.\n\nMain demonstrates three interchangeable algorithms.\n\n### Direct evidence\n\n- interchangeable behavior;\n- dependency on strategy abstraction;\n- runtime strategy selection;\n- delegation to chosen algorithm.\n\n### Rating\n\n**3.25/5**\n\nThis is a clear compact Strategy example.\n\n---\n\n## 15. Strategy limitations\n\n### Context recreated instead of strategy changed in-place\n\nThe main program replaces the entire `Context` for each operation.\n\nA setter could demonstrate changing strategy on an existing context.\n\nStill, constructor injection is valid Strategy use.\n\n### Naming defect\n\n`OperationSubstract`\n\nshould be:\n\n`OperationSubtract`.\n\n### Domain simplicity\n\nArithmetic operations are deliberately trivial.\n\nThe repository demonstrates pattern mechanics, not algorithm-selection engineering at product scale.\n\n---\n\n# Template Method\n\n## 16. Implementation\n\nAbstract base:\n\n`Game`\n\nDefines abstract steps:\n\n- `initialize()`\n- `startPlay()`\n- `endPlay()`.\n\nDefines final template method:\n\n`play()`.\n\nConcrete subclasses:\n\n- `Cricket`\n- `Football`\n\noverride the variable steps.\n\nThe client calls:\n\n`game.play()`\n\nfor both.\n\n### Rating\n\n**3.5/5**\n\nThis is the strongest behavioral example in the repository.\n\n---\n\n## 17. Why Template Method is stronger\n\nThe example correctly makes:\n\n`play()`\n\n`final`.\n\nThat protects the algorithm skeleton:\n\n```text\ninitialize\n    ↓\nstart\n    ↓\nend\n```\n\nwhile allowing subclasses to vary each step.\n\nThis directly communicates the pattern's central tradeoff:\n\n> fixed high-level algorithm, customizable subclass steps.\n\n### Limitations\n\nNo:\n- hook methods;\n- optional steps;\n- pre/post conditions;\n- exception semantics;\n- composition-based alternative comparison.\n\nStill, the pattern is cleanly demonstrated.\n\n---\n\n# Visitor\n\n## 18. Visitor is not implemented\n\n`VisitorPatternDemo.java` contains only:\n\n```text\npublic static void main(String[] args) {\n    System.out.println(\"Hello World!\");\n}\n```\n\nNo Visitor architecture exists.\n\nThe Maven POM configures Java 19 and the project name, but that is only project scaffolding.\n\n### Missing defining roles\n\nNo:\n- `Visitor`;\n- `ConcreteVisitor`;\n- `Element`;\n- `ConcreteElement`;\n- `accept(Visitor)`;\n- `visitor.visit(this)`.\n\n### Rating\n\n**0.5/5 exposure / placeholder**\n\n### Direct implementation score\n\n**0/5**\n\n### Build evidence\n\nUnlike the seven substantive examples, the final Visitor directory contains:\n\n- `pom.xml`;\n- `src`;\n\nbut no retained `target/`.\n\nTherefore there is no retained compiled-artifact evidence for the Visitor placeholder.\n\n---\n\n# Missing behavioral patterns\n\n## 19. Command\n\n**Not implemented.**\n\nThe `Command` interface inside Mediator must not be counted.\n\nDirect score:\n\n**0/5**\n\n## 20. Interpreter\n\nNo implementation observed.\n\nDirect score:\n\n**0/5**\n\n## 21. Iterator\n\nNo implementation observed.\n\nDirect score:\n\n**0/5**\n\n---\n\n## 22. Behavioral pattern coverage matrix\n\n| Pattern | Status | Score / 5 |\n|---|---|---:|\n| Chain of Responsibility | Implemented | **3.25** |\n| Command | Absent | **0** |\n| Interpreter | Absent | **0** |\n| Iterator | Absent | **0** |\n| Mediator | Implemented, weak coordination model | **2.5** |\n| Memento | Implemented | **3.0** |\n| Observer | Implemented | **3.25** |\n| State | Implemented, structural/basic | **2.5** |\n| Strategy | Implemented | **3.25** |\n| Template Method | Implemented | **3.5** |\n| Visitor | Placeholder only | **0.5 exposure / 0 implementation** |\n\n### Direct implementation coverage\n\n**7 / 11 = 63.6%**\n\n### Named/visible exposure\n\n8 / 11 if Visitor folder presence is included as mere exposure.\n\nThat does **not** raise direct implementation count.\n\n---\n\n## 23. Java evidence\n\nRepository 012 reinforces the Java/OOP track established by Repos 010–011.\n\n### Direct Java concepts\n\n- abstract classes;\n- interfaces;\n- inheritance;\n- polymorphism;\n- composition;\n- delegation;\n- static behavior;\n- lists;\n- `ArrayList`;\n- method overriding;\n- final methods;\n- exceptions indirectly through previous repo;\n- multiple packages;\n- constructors;\n- encapsulation basics.\n\n### Rating\n\n**3.0/5**\n\nThe repository increases breadth and recurrence, but not production depth.\n\n---\n\n## 24. Maven recurrence\n\nEight additional Maven POMs are present.\n\nThe Visitor POM explicitly configures:\n\n- Java source 19;\n- Java target 19;\n- JAR packaging;\n- main class.\n\nThe substantive examples use the same NetBeans/Maven structure.\n\n### Cumulative early design-pattern Maven evidence\n\nRepo 010:\n\n**3 projects**\n\nRepo 011:\n\n**7 projects**\n\nRepo 012:\n\n**8 projects**\n\nTotal project containers across the three design-pattern repos:\n\n**18 Maven projects**\n\nBut one of those — Visitor — is only a stub.\n\n### Maven rating\n\n**2.75/5**\n\nThis is recurrence, not advanced Maven depth.\n\n---\n\n## 25. NetBeans workflow recurrence\n\nGenerated NetBeans template comments recur.\n\nSeven substantive project trees retain Maven compiler status with machine-local paths under:\n\n`C:\\Users\\sedra\\OneDrive\\Documents\\NetBeansProjects\\...`\n\n### Interpretation\n\nDirect evidence of:\n- local Windows Java development;\n- NetBeans project creation;\n- Maven compilation.\n\nAlso direct evidence of:\n- generated metadata accidentally committed.\n\n---\n\n## 26. OOP and behavioral-design breadth\n\nRepo 012 adds explicit practice in:\n\n- chained delegation;\n- central coordination;\n- snapshot/restore;\n- one-to-many notification;\n- encapsulated state objects;\n- interchangeable algorithms;\n- fixed workflow templates.\n\n### OOP fundamentals\n\n**3.5/5**\n\n### Behavioral design-pattern breadth\n\n**3.0/5**\n\n### Why not higher\n\n- 4 of 11 patterns lack implementation;\n- Visitor is empty;\n- examples are pedagogical;\n- Mediator and State are shallow;\n- no real application context;\n- no tests.\n\n---\n\n## 27. Delegation and behavioral composition\n\nRepeated behavioral delegation appears in:\n\n- Chain → next handler;\n- Observer → subject notifies observers;\n- Strategy → context delegates to strategy;\n- Template Method → abstract algorithm delegates variable steps to subclasses;\n- Mediator → participants depend on mediator state.\n\n### Rating\n\n**3.5/5 conceptual exposure**\n\nThis reinforces Repo 011's structural composition/delegation evidence.\n\n---\n\n## 28. Event-driven concepts\n\nObserver provides the first explicit classic one-to-many event-notification model in the design-pattern suite.\n\n### Evidence\n\n- observer registration;\n- state-change trigger;\n- fan-out notification;\n- subscriber-specific response.\n\n### Rating\n\n**Observer/event-notification concept: 3.25/5**\n\n### Anti-inflation\n\nNot equivalent to:\n- message queues;\n- Kafka;\n- event sourcing;\n- RxJava;\n- asynchronous distributed events.\n\n---\n\n## 29. State/history concepts\n\nMemento introduces:\n\n- snapshot;\n- history list;\n- restore.\n\nState introduces:\n- explicit state object;\n- context state reference.\n\nTogether they show first concentrated evidence around:\n\n> **behavior/state evolution over time**\n\nat the object-design level.\n\n### Rating\n\n**state-history modeling: 3.0/5**\n\n---\n\n## 30. Workflow abstraction\n\nTemplate Method demonstrates a fixed sequence with polymorphic step implementation.\n\nThis is valuable because it differs from Strategy:\n\n- Strategy swaps the whole algorithm/behavior.\n- Template Method fixes the high-level algorithm and varies selected steps.\n\n### Design distinction evidence\n\n**3.25/5**\n\nThis supports pattern-vocabulary breadth, though still in canonical examples.\n\n---\n\n## 31. Repository hygiene\n\nThe same source-control issue from Repos 010 and 011 repeats.\n\nSeven substantive projects contain committed:\n\n- `target/`;\n- `.class` files;\n- `maven-status`;\n- generated compiler metadata;\n- local machine input paths.\n\nNo `.gitignore` is observed.\n\n### Rating\n\n**1.25/5**\n\n### Longitudinal result\n\nThis is now a recurring three-repository hygiene weakness.\n\nThe developer was learning architecture concepts faster than source-control cleanup discipline was improving.\n\n---\n\n## 32. Testing\n\nNo:\n\n- `src/test/java`;\n- JUnit;\n- assertions;\n- Maven test dependencies;\n- behavior tests;\n- pattern-contract tests.\n\n### Rating\n\n**0/5 authored automated testing**\n\n### Missed opportunities\n\nTesting would have been especially valuable for:\n\n- Chain handler selection;\n- Mediator landing state;\n- Memento restoration;\n- Observer fan-out;\n- State transitions;\n- Strategy output;\n- Template sequence.\n\nThe complete absence of tests across the three pattern repositories is a major recurring quality-engineering gap.\n\n---\n\n## 33. CI/CD\n\nNo CI.\n\nNo GitHub Actions.\n\nNo deployment.\n\n### CI rating\n\n**0/5**\n\nDeployment:\n\n**N/A**\n\n---\n\n## 34. Documentation\n\nNo root README.\n\nNo pattern README files are observed.\n\nNo UML.\n\nNo explanation of:\n\n- intent;\n- structure;\n- tradeoffs;\n- applicability;\n- differences between similar patterns;\n- references/provenance;\n- run instructions.\n\n### Documentation rating\n\n**0.25/5**\n\nThis is weaker than Repo 010 and similar to/below Repo 011.\n\n---\n\n## 35. Provenance / originality confidence\n\nThe code uses canonical teaching-style examples:\n\n- numeric processors;\n- air-traffic-control mediator;\n- state snapshot strings;\n- binary/octal/hex observers;\n- start/stop state;\n- arithmetic strategies;\n- cricket/football template.\n\nThe structures and comments strongly suggest tutorial/reference-driven learning.\n\n### Confidence table\n\n| Claim | Confidence |\n|---|---|\n| Repository controlled by user | High |\n| Commits authored by user account | High |\n| Projects imported by user | High |\n| Seven substantive examples compiled locally | High |\n| User practiced behavioral pattern mechanics | High |\n| Exact examples independently invented | Low |\n| Production pattern-selection expertise | Low–Medium |\n| Visitor implemented | **False** |\n| Command implemented | **False** |\n| Full behavioral GoF coverage | **False** |\n\n### Safe RAG language\n\nUse:\n\n> “Practiced seven GoF behavioral patterns in Java/Maven through small educational examples.”\n\nAvoid:\n\n> “Implemented the complete behavioral GoF catalog.”\n\n---\n\n## 36. Engineering decisions and tradeoffs\n\n### Separate Maven project per pattern\n\nPositive:\n- isolates examples;\n- makes category boundaries visible.\n\nNegative:\n- duplicates project boilerplate;\n- no parent POM;\n- no aggregate build.\n\n### Abstract interfaces/classes\n\nPositive:\n- pattern roles are visible;\n- substitution is understandable.\n\nNegative:\n- many classes live in one Java source file;\n- examples are not structured as reusable libraries.\n\n### Batch Git imports\n\nPositive:\n- one project per commit makes repository accumulation understandable.\n\nNegative:\n- all messages generic;\n- no source-development history;\n- cannot infer implementation duration.\n\n### Generated build output committed\n\nNegative engineering choice.\n\n---\n\n## 37. Engineering judgment\n\n### Positive signals\n\n1. deliberate third-stage pattern study after creational and structural categories;\n2. broad behavioral vocabulary;\n3. correctly demonstrates several classic forms;\n4. uses abstractions repeatedly;\n5. separates strategies from context;\n6. uses `final` appropriately in Template Method;\n7. uses a handler chain correctly;\n8. demonstrates observer fan-out;\n9. demonstrates snapshot/restore;\n10. imports all work as Maven projects.\n\n### Negative signals\n\n1. Visitor is only a stub despite directory naming;\n2. Command is missing despite an unrelated interface with that name;\n3. Interpreter absent;\n4. Iterator absent;\n5. Mediator registration fields unused;\n6. Mediator coordination semantics weak;\n7. State context does not own/delegate behavior;\n8. no tests;\n9. no documentation;\n10. generated build artifacts committed;\n11. no `.gitignore`;\n12. generic commit messages;\n13. tutorial-heavy examples;\n14. no real-system application.\n\n### Engineering judgment rating\n\n**2.75/5**\n\n---\n\n## 38. Mistakes / anti-patterns / lessons\n\n### 38.1 Folder name ≠ implementation\n\nVisitor demonstrates why repository analysis must inspect source, not infer capability from directory names.\n\n### 38.2 Class/interface name ≠ pattern\n\nMediator's `Command` interface does not make the project evidence of Command pattern.\n\n### 38.3 State skeleton without behavioral delegation\n\nA state reference alone does not capture the full benefit of State.\n\n### 38.4 Mediator with unused registered components\n\nA mediator should actually coordinate participants, not merely store unused references plus a shared flag.\n\n### 38.5 Generated output in Git\n\nRepeated across all three pattern repos.\n\n### 38.6 No testing while studying abstractions\n\nPattern exercises are excellent candidates for small unit tests, but none exist.\n\n### 38.7 Pattern breadth without applicability documentation\n\nKnowing shape is not the same as knowing selection tradeoffs.\n\n---\n\n## 39. Scale dimensions\n\n| Dimension | Value |\n|---|---|\n| Repository commits | **8** |\n| Git import span | **4 min 33 sec** |\n| Named Maven projects | **8** |\n| Substantive pattern implementations | **7** |\n| Stub projects | **1** |\n| Canonical behavioral patterns | **11** |\n| Direct coverage | **63.6%** |\n| Java source files | **8** |\n| Approx Java source | **~650 LOC** |\n| Retained compiled target trees | **7** |\n| Contributors observed | **1** |\n| Tests | **0** |\n| CI workflows | **0** |\n| Production users | N/A |\n\n---\n\n## 40. Complexity dimensions\n\n| Complexity dimension | Score / 5 | Notes |\n|---|---:|---|\n| OOP conceptual complexity | **3.25** | multiple behavioral abstractions |\n| Behavioral-design breadth | **3.0** | 7/11 direct |\n| Algorithmic complexity | 1.75 | simple examples |\n| State complexity | 2.5 | state/memento |\n| Event complexity | 2.5 | synchronous observer |\n| Coordination complexity | 2.0 | shallow mediator |\n| Build complexity | 2.0 | standalone Maven |\n| Data complexity | 1.0 | trivial |\n| Concurrency | 0 | absent |\n| Integration complexity | 1.0 | no external systems |\n| Product complexity | N/A | not product |\n\n---\n\n## 41. Standard product / engineering matrix\n\n| Dimension | Score / 5 | Notes |\n|---|---:|---|\n| Problem clarity | **4.5** | behavioral-pattern study |\n| User value clarity | N/A | study artifact |\n| Product focus | N/A | not product |\n| Domain specificity | **5** | GoF behavioral patterns |\n| Domain correctness evidence | **2.75** | several good examples, incomplete coverage |\n| Functional completeness | **2.75** | 7/11 + stub |\n| Feature coherence | **5** | single category |\n| User workflow completeness | N/A | no product workflow |\n| UI clarity | N/A | console |\n| Visual design | N/A | none |\n| Interaction design | N/A | trivial |\n| Responsive design | N/A | none |\n| Accessibility | N/A | none |\n| Internationalization | N/A | none |\n| Architecture | **3.0 conceptual** | pattern abstractions |\n| Separation of concerns | **3.0** | pattern roles |\n| Code organization | 2.5 | project-per-pattern |\n| Maintainability | 2.0 | small but rough |\n| Extensibility | **3.0 conceptual** | abstraction-focused |\n| Reusability | 2.5 | educational examples |\n| Data modeling | 1.5 | trivial |\n| Data provenance | N/A | no dataset |\n| Data governance | N/A | none |\n| Data scalability | N/A | none |\n| Algorithmic design | 1.75 | not focus |\n| Performance | N/A | trivial |\n| Reliability | 2.25 | compiled examples, untested |\n| Error handling | 1.5 | minimal |\n| Security | N/A | none |\n| Privacy | N/A | no data |\n| Authentication | N/A | none |\n| Authorization | N/A | none |\n| Backend maturity | N/A | none |\n| API design | 2.75 | small object contracts |\n| Database design | N/A | none |\n| Testing | **0** | none |\n| Testability | **3.25** | easy to unit-test |\n| CI | 0 | none |\n| CD/deployment | N/A | none |\n| Observability | N/A | none |\n| Logging | 1 | console |\n| Monitoring | N/A | none |\n| Documentation | **0.25** | essentially absent |\n| Onboarding/developer experience | 1.5 | folder names only |\n| Dependency hygiene | **4** | standard-library examples |\n| Repository hygiene | **1.25** | generated outputs/local paths |\n| Version-control usage | 2.0 | one import commit/project |\n| Commit quality | **1.5** | all `Add files via upload` |\n| Product analytics | N/A | none |\n| User feedback loop | N/A | none |\n| Business model | N/A | none |\n| Market validation | N/A | none |\n| Competitive differentiation | N/A | canonical study content |\n| Distribution readiness | N/A | none |\n| Operational maturity | N/A | none |\n| Compliance readiness | N/A | none |\n| Cultural/content stewardship | N/A | none |\n| Educational trustworthiness | **2.75** | decent examples, stub/incomplete docs |\n| Scalability — traffic | N/A | no service |\n| Scalability — data | N/A | none |\n| Scalability — team | 1.5 | solo |\n| Scalability — features | 2.5 | separate projects, no aggregator |\n| Product maturity | N/A | not product |\n| Engineering maturity | **2.25** | study artifact |\n| Behavioral-pattern maturity | **3.0** | broad but incomplete |\n| Portfolio differentiation | **2.5** | common study material |\n| Career-skill evidence | **4.25** | important full-suite chronology |\n\n---\n\n## 42. Product maturity\n\n**N/A**\n\nNo market-facing product exists.\n\n### Educational artifact maturity\n\n**2.75/5**\n\nStrength:\n- seven real behavioral examples;\n- coherent category.\n\nWeakness:\n- incomplete coverage;\n- Visitor placeholder;\n- no docs;\n- no tests;\n- weak hygiene.\n\n---\n\n## 43. Engineering maturity\n\n**2.25/5**\n\nSame general maturity tier as Repos 010–011.\n\nPattern vocabulary grows faster than:\n\n- testing;\n- repository discipline;\n- documentation;\n- production integration.\n\n---\n\n## 44. Portfolio differentiation\n\n**2.5/5**\n\nThe value is not uniqueness.\n\nDesign-pattern repositories are common.\n\nThe value is:\n\n> **career chronology and evidence of deliberate software-design study.**\n\n---\n\n## 45. Portfolio Evidence Weight\n\n**3.5/5**\n\nWhy:\n- direct Java source;\n- seven implementations;\n- exact companion-repo chronology;\n- Maven recurrence;\n- broad OOP concepts.\n\nReductions:\n- tutorial/reference-like;\n- incomplete behavioral catalog;\n- Visitor stub;\n- no tests;\n- no docs;\n- poor repo hygiene.\n\n---\n\n## 46. Career-skill evidence value\n\n**4.25/5**\n\nThis is slightly higher as career-history evidence than the individual showcase value because it completes the three-category study narrative.\n\nIt lets the corpus answer:\n\n- Did the developer deliberately study GoF patterns?\n- Which categories?\n- How complete was each?\n- What was directly implemented?\n- What remained missing?\n- Was Java/OOP study recurring?\n- Did pattern study overlap algorithm practice?\n\n---\n\n## 47. Comparison with Repositories 010 and 011\n\n| Dimension | Repo 010 Creational | Repo 011 Structural | Repo 012 Behavioral |\n|---|---:|---:|---:|\n| Canonical category size | 5 | 7 | 11 |\n| Direct implementations | **3** | **7** | **7** |\n| Additional mention/stub | Prototype mention | none | Visitor stub |\n| Missing direct patterns | 2 | 0 | 4 |\n| Java/Maven | yes | yes | yes |\n| Tests | 0 | 0 | 0 |\n| CI | 0 | 0 | 0 |\n| README/docs | some | almost none | none |\n| Generated target committed | yes | yes | yes for substantive projects |\n| Pattern breadth score | 3.0 | **3.25** | 3.0 |\n\n### Key difference\n\nRepo 011 is the only one of the three with complete canonical category implementation coverage.\n\n---\n\n## 48. Combined GoF status after Repository 012\n\nThe GoF catalog contains:\n\n**23 patterns**\n\n### Directly implemented so far\n\n#### Creational — 3\n\n- Builder\n- Factory Method\n- Singleton\n\n#### Structural — 7\n\n- Adapter\n- Bridge\n- Composite\n- Decorator\n- Facade\n- Flyweight\n- Proxy\n\n#### Behavioral — 7\n\n- Chain of Responsibility\n- Mediator\n- Memento\n- Observer\n- State\n- Strategy\n- Template Method\n\n### Total direct GoF implementations\n\n**17 / 23 = 73.9%**\n\n### Additional non-implementation exposure\n\n- Prototype — discussed/mentioned in Repo 010\n- Visitor — named scaffold/stub in Repo 012\n\n### Completely absent direct evidence in the three-repo suite\n\n- Abstract Factory\n- Command\n- Interpreter\n- Iterator\n\n### Important anti-inflation\n\nDo not report:\n\n> “implemented 19 patterns”\n\nbecause Prototype and Visitor are not direct implementations.\n\nCorrect statement:\n\n> **17 GoF patterns directly implemented; 2 additional patterns referenced/scaffolded; 4 not directly evidenced.**\n\n---\n\n## 49. Skill lifecycle\n\n### Java — Reinforced again\n\nRepos 010–012 form a concentrated multi-repository Java/OOP study cluster.\n\nCurrent historical Java evidence:\n\n- object construction patterns;\n- structural composition patterns;\n- behavioral collaboration patterns.\n\n### Maven — Reinforced\n\nNow repeated across 18 project containers in this pattern suite.\n\n### Design patterns — Advanced in breadth\n\nThe corpus progresses:\n\n```text\nCreational\n    ↓\nStructural\n    ↓\nBehavioral\n```\n\n### Observer / Strategy / Template / State / Memento / Mediator / Chain\n\nFirst direct observed evidence appears here.\n\n### Testing\n\nStill no authored automated tests.\n\n### CI\n\nStill absent.\n\n### Repository hygiene\n\nRepeated weakness.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max Ledger\n\n| Skill | First observed | Previous max | Repo 012 | Corpus max |\n|---|---|---:|---:|---:|\n| Java | Repo010 | 3.0 | **3.0** | **3.0** |\n| Maven | Repo010 | 2.75 | **2.75** | **2.75** |\n| OOP fundamentals | earlier / Repo010 explicit | 3.5 | **3.5** | **3.5** |\n| Design-pattern breadth | Repo010 | 3.25 | **3.0 behavioral** | **3.25** |\n| Behavioral patterns | **Repo012** | none | **3.0** | **3.0** |\n| Chain of Responsibility | **Repo012** | none | **3.25** | **3.25** |\n| Mediator | **Repo012** | none | **2.5** | **2.5** |\n| Memento | **Repo012** | none | **3.0** | **3.0** |\n| Observer | **Repo012** | none | **3.25** | **3.25** |\n| State | **Repo012** | none | **2.5** | **2.5** |\n| Strategy | **Repo012** | none | **3.25** | **3.25** |\n| Template Method | **Repo012** | none | **3.5** | **3.5** |\n| Visitor | **Repo012 stub** | none | **0.5 exposure** | **0.5 exposure** |\n| Command pattern | not observed | none | **0** | not observed |\n| Interpreter | not observed | none | **0** | not observed |\n| Iterator pattern | not observed | none | **0** | not observed |\n| Event notification | **Repo012** | none | **3.25** | **3.25** |\n| Snapshot/restore | **Repo012** | none | **3.0** | **3.0** |\n| Workflow template abstraction | **Repo012** | none | **3.5** | **3.5** |\n| Authored automated testing | none | 0 | **0** | remains weak |\n| CI/CD | none | 0 | **0** | remains absent |\n\n---\n\n## 51. Career trajectory effect\n\nRepositories 010–012 together materially change the interpretation of early 2023.\n\nThe portfolio now shows three simultaneous learning directions:\n\n```text\n                    2023\n                      │\n          ┌───────────┼───────────┐\n          │           │           │\n          ▼           ▼           ▼\n     Algorithms    Java/OOP     GoF design\n     / LeetCode     tooling      patterns\n                                  │\n                ┌─────────────────┼─────────────────┐\n                ▼                 ▼                 ▼\n           Creational         Structural        Behavioral\n```\n\nThis is not yet production architecture.\n\nBut it is evidence that the developer was deliberately expanding from:\n\n> implementation mechanics\n\ninto:\n\n> abstraction, responsibility distribution, collaboration patterns, and object behavior.\n\n### Strongest career interpretation\n\n> **By March 2023, the developer had established a deliberate Java/OOP design-pattern study program spanning all three GoF categories, with 17 of the 23 canonical patterns directly implemented across three repositories.**\n\n### Required caveat\n\n> **The examples are educational/tutorial-driven and several are shallow or defective; this demonstrates pattern literacy and study breadth, not senior production architecture.**\n\n---\n\n## 52. Current relevance / recency\n\nRepo 012 evidence is from:\n\n**March 2023**\n\nand has no later activity.\n\nBy 2026 this is historical evidence.\n\n### Use it for\n\n- foundations;\n- learning trajectory;\n- early Java/OOP breadth;\n- design vocabulary.\n\n### Do not use it alone for\n\n- current seniority;\n- current Java proficiency;\n- production architecture expertise.\n\n---\n\n## 53. Failure potential\n\nProduct failure:\n\n**N/A**\n\nEducational failure potential:\n- misclassifying Visitor as implemented;\n- misclassifying `Command` interface as Command pattern;\n- overestimating State/Mediator depth;\n- learning canonical shapes without tradeoff context.\n\nThe repository itself demonstrates why source-level inspection is essential.\n\n---\n\n## 54. Human impact\n\nDirect impact is low.\n\nPotential positive:\n- stronger architectural vocabulary;\n- clearer object responsibility reasoning;\n- exposure to collaboration and state-management patterns.\n\nPotential downside:\n- cargo-cult pattern application;\n- pattern memorization without contextual selection;\n- pattern overuse.\n\n---\n\n## 55. RAG anti-inflation warnings\n\n1. Repository folder names do not equal implemented capabilities.\n2. Visitor is only Hello World.\n3. Command is absent despite an interface named `Command`.\n4. Interpreter is absent.\n5. Iterator is absent.\n6. Eight commits in four minutes are imports, not implementation duration.\n7. Generated `.class` files only prove retained local build output.\n8. Java 19 config does not imply Java-19-specific expertise.\n9. No tests exist.\n10. No CI exists.\n11. No documentation exists.\n12. Tutorial-style examples should be credited as study/implementation, not invention.\n13. Behavioral pattern count is **7 direct**, not 8.\n14. Combined GoF direct count after Repo012 is **17 / 23**, not 19 / 23.\n15. Historical repository evidence does not prove current proficiency.\n\n---\n\n## 56. Repository 012 bottom line\n\n`Behavioral-Design-Patterns` completes the first observed three-category GoF study sequence.\n\nIt directly implements:\n\n- Chain of Responsibility;\n- Mediator;\n- Memento;\n- Observer;\n- State;\n- Strategy;\n- Template Method.\n\nIt does **not** directly implement:\n\n- Command;\n- Interpreter;\n- Iterator;\n- Visitor.\n\nVisitor exists only as a named Maven/NetBeans Hello World scaffold.\n\nThe repository's strongest direct evidence is:\n\n- behavioral OOP vocabulary;\n- delegation;\n- observer notification;\n- state snapshot/restore;\n- interchangeable strategies;\n- fixed workflow templates;\n- handler chains;\n- Maven/Java recurrence.\n\nIts strongest weaknesses are:\n\n- incomplete behavioral coverage;\n- Visitor stub;\n- weak Mediator example;\n- shallow State example;\n- no tests;\n- no CI;\n- no README/docs;\n- committed generated build artifacts;\n- machine-local compiler metadata;\n- generic upload commits.\n\n### Key ratings\n\n- Java: **3.0/5**\n- Maven: **2.75/5**\n- OOP fundamentals: **3.5/5**\n- Behavioral-pattern breadth: **3.0/5**\n- Chain of Responsibility: **3.25/5**\n- Mediator: **2.5/5**\n- Memento: **3.0/5**\n- Observer: **3.25/5**\n- State: **2.5/5**\n- Strategy: **3.25/5**\n- Template Method: **3.5/5**\n- Visitor: **0.5/5 exposure; 0 direct implementation**\n- Engineering maturity: **2.25/5**\n- Testing: **0/5**\n- Documentation: **0.25/5**\n- Portfolio Evidence Weight: **3.5/5**\n- Career-skill evidence value: **4.25/5**\n\n### Career-level conclusion\n\n> **The most important result is not that another tutorial repository exists. It is that Repositories 010–012 together form a deliberately organized Java/OOP design-pattern curriculum spanning creational, structural, and behavioral categories. Across the suite, 17 of 23 GoF patterns are directly implemented, with Prototype discussed and Visitor scaffolded but not implemented. This establishes substantial early design-pattern literacy and abstraction practice while simultaneously exposing the next engineering maturity gap: testing, documentation, repository hygiene, real-system application, and contextual pattern selection.**\n\n---\n\n**End of Repository 012 / 134.**\n\n---\n"
+}

@@ -1,0 +1,110 @@
+{
+  "corpus_profile": {
+    "documents": 2808,
+    "evidence_levels": {
+      "conceptual_exposure": 51,
+      "implemented_or_concrete": 137,
+      "interpretive": 488,
+      "methodology_or_interpretive": 379,
+      "repository_limitation": 250,
+      "repository_specific": 1503
+    },
+    "norm_max": 1.00000012629101,
+    "norm_median": 1.0000000015132984,
+    "norm_min": 0.9999998748418729,
+    "polarities": {
+      "mixed": 244,
+      "negative": 249,
+      "neutral": 830,
+      "positive": 1485
+    },
+    "repositories": 134,
+    "repository_total": 134,
+    "retrieval_classes": {
+      "chronology": 201,
+      "direct_evidence": 651,
+      "interpretation": 1444,
+      "limitation": 159,
+      "metadata": 353
+    },
+    "semantic_areas": {
+      "architecture_system_design": 136,
+      "authorship_provenance": 207,
+      "chronology_growth": 201,
+      "deployment_operations": 85,
+      "engineering_judgment": 188,
+      "human_impact": 97,
+      "identity_access_security": 217,
+      "implementation_skills": 286,
+      "limitations_risks": 159,
+      "maturity_readiness": 66,
+      "metadata_documentation": 142,
+      "other_repository_evidence": 591,
+      "performance_scale": 92,
+      "product_responsibility": 201,
+      "testing_quality": 140
+    }
+  },
+  "cost": {
+    "api_key_required": false,
+    "model_training": false,
+    "paid_api_used": false,
+    "retrieval_cost_usd": 0
+  },
+  "dependencies": {
+    "numpy": "2.5.2",
+    "sentence-transformers": "6.0.0",
+    "torch": "2.13.0",
+    "transformers": "5.16.1"
+  },
+  "embedding": {
+    "dense_similarity": "exact cosine",
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "native_dimensions": 768,
+    "query_prefix": "search_query: ",
+    "revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "stored_dimensions": 512,
+    "transform": "layer_norm -> first 512 -> L2 normalize"
+  },
+  "generated_at_utc": "2026-08-31T11:57:06.703295+00:00",
+  "input": {
+    "documents": 2808,
+    "manifest": "rag-corpus\\embeddings-v2\\embedding-manifest.json",
+    "matrix_sha256": "e03f48ddf2a1f8631a22a34995ecf6d4416b45a657a7b7a54c2ca09917bb7e82",
+    "records": "rag-corpus\\embeddings-v2\\embedding-records.jsonl",
+    "records_sha256": "cdbef026d4237a7fce1f0066359dc176bacb5b90ec64a66a9ab150b94622132f",
+    "repositories": 134,
+    "vectors": "rag-corpus\\embeddings-v2\\embeddings.npy"
+  },
+  "pipeline_step": 4,
+  "reranker": {
+    "device": "cpu",
+    "device_name": "CPU",
+    "model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "revision": "4bebbd56fc380a66525f95b03d4ec1a4b41a4f1e"
+  },
+  "retrieval": {
+    "architecture": "dense + BM25 + metadata -> RRF -> primary-concept gate -> evidence-quality -> CrossEncoder -> polarity gate -> diversity",
+    "bm25_candidates": 500,
+    "cross_encoder_candidates": 120,
+    "dense_candidates": 500,
+    "final_weights": {
+      "bm25": 0.07,
+      "cross_encoder": 0.64,
+      "dense": 0.1,
+      "evidence_quality": 0.09,
+      "metadata": 0.06,
+      "rrf": 0.04
+    },
+    "max_results_per_repository": 2,
+    "metadata_candidates": 400,
+    "negative_evidence_deleted": false,
+    "primary_concept_gate": true,
+    "query_aware_polarity_gate": true,
+    "rrf_k": 60.0,
+    "semantic_duplicate_threshold": 0.955,
+    "top_k": 10
+  },
+  "retrieval_schema_version": "3.0.0",
+  "script": "build-rag-retrieval-v3-evidence-aware-local.py"
+}

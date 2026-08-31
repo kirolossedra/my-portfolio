@@ -1,0 +1,49 @@
+Portfolio GitHub RAG — Step 4 v3 retrieval validation report
+========================================================================
+Generated UTC: 2026-08-31T11:57:06.703295+00:00
+
+STATUS
+  STEP 4 v3 INITIALIZATION: SUCCESS
+
+INPUT
+  rag-corpus\embeddings-v2\embeddings.npy
+  rag-corpus\embeddings-v2\embedding-records.jsonl
+  rag-corpus\embeddings-v2\embedding-manifest.json
+
+CORPUS
+  Evidence-aware documents: 2808
+  Repositories covered: 134/134
+  Retrieval classes: {"chronology": 201, "direct_evidence": 651, "interpretation": 1444, "limitation": 159, "metadata": 353}
+  Semantic areas: {"architecture_system_design": 136, "authorship_provenance": 207, "chronology_growth": 201, "deployment_operations": 85, "engineering_judgment": 188, "human_impact": 97, "identity_access_security": 217, "implementation_skills": 286, "limitations_risks": 159, "maturity_readiness": 66, "metadata_documentation": 142, "other_repository_evidence": 591, "performance_scale": 92, "product_responsibility": 201, "testing_quality": 140}
+  Evidence levels: {"conceptual_exposure": 51, "implemented_or_concrete": 137, "interpretive": 488, "methodology_or_interpretive": 379, "repository_limitation": 250, "repository_specific": 1503}
+
+RETRIEVAL ARCHITECTURE
+  Exact dense cosine: recall signal only
+  BM25 lexical: enabled
+  Metadata/topic/skill retrieval: enabled
+  Reciprocal Rank Fusion: enabled
+  Primary-concept gate: enabled
+  Evidence-level and polarity gating: enabled
+  CrossEncoder: cross-encoder/ms-marco-MiniLM-L6-v2
+  CrossEncoder final weight: 0.64
+  Semantic duplicate suppression: enabled
+  Repository diversity: enabled
+  Negative/limitation evidence retained for matching queries: YES
+
+VALIDATION
+  Exact-search self-test: PASS (32 samples; failures 0)
+  Query/evidence logic tests: PASS (4 tests; failures 0)
+  Matrix/record referential integrity: PASS
+  Source-document SHA-256 checks: PASS
+  134-repository coverage: PASS
+
+COST
+  Paid API requests: 0
+  API keys required: 0
+  Model training: NO
+  Retrieval cost: $0
+
+OUTPUT
+  rag-corpus\retrieval-v3\retrieval-config.json
+  rag-corpus\retrieval-v3\retrieval-validation-report.txt
+  rag-corpus\retrieval-v3\test-results/

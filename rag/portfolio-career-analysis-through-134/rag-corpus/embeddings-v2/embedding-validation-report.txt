@@ -1,0 +1,76 @@
+Portfolio GitHub RAG pipeline — Step 3 v3 evidence-document embedding validation report
+
+STATUS: PASS
+
+COST / PRIVACY
+  Paid API used: NO
+  API key required: NO
+  Paid API requests: 0
+  Embedding generation cost: $0
+  Embedding inference: local on this machine
+
+INPUT
+  rag-corpus\retrieval-documents-v2\documents.jsonl
+  SHA-256: a10c2b2d9d4e79e8a6e6629cc15b18cb1123513b45df44dc73e668b44c1bee58
+  Documents: 2808
+  Repositories: 134/134
+
+LOCAL EMBEDDING CONFIGURATION
+  Provider/runtime: local-sentence-transformers
+  Model: nomic-ai/nomic-embed-text-v1.5
+  Pinned revision: e9b6763023c676ca8431644204f50c2b100d9aab
+  License: Apache-2.0
+  Native dimensions: 768
+  Stored dimensions: 512
+  Max sequence length: 8192 tokens
+  Document prefix: search_document: 
+  Future query prefix: search_query: 
+  Matryoshka: layer_norm -> first 512 -> L2 normalize
+  Similarity: cosine
+  Matrix dtype: float32
+  Device: cpu (CPU)
+
+TOKEN VALIDATION
+  Token min/median/max: 68/315/1343
+  Limit: 8192
+  Documents over limit: 0
+  Silent truncation permitted: NO
+
+VECTOR VALIDATION
+  Matrix shape: (2808, 512)
+  Valid vectors: 2808/2808
+  Missing vectors: 0
+  Duplicate document IDs: 0
+  NaN/Inf vectors: 0
+  Zero vectors: 0
+  L2 norm min/median/max: 1.000000/1.000000/1.000000
+
+CHECKPOINT / LOCAL-INFERENCE ACCOUNTING
+  Logical batches: 44
+  Newly embedded batches: 44
+  Resumed batches: 0
+  Smallest encode micro-batch used: 8
+  Paid API requests: 0
+
+OUTPUT
+  rag-corpus/embeddings-v2/embeddings.npy
+  rag-corpus/embeddings-v2/embedding-records.jsonl
+  rag-corpus/embeddings-v2/embedding-manifest.json
+  rag-corpus/embeddings-v2/embedding-validation-report.txt
+
+REFERENTIAL INTEGRITY
+  embeddings.npy row N <-> embedding-records.jsonl vector_index N: PASS
+  Step 2 v2 retrieval-document ordering preserved: PASS
+  authoritative `text` preserved: PASS
+  `source_fragments` provenance preserved: PASS
+  original `embedding_text` preserved: PASS
+  repository coverage: PASS
+  no silent token truncation: PASS
+
+NEXT PIPELINE INPUT
+  rag-corpus/embeddings-v2/embeddings.npy
+  rag-corpus/embeddings-v2/embedding-records.jsonl
+  rag-corpus/embeddings-v2/embedding-manifest.json
+
+Runtime employer queries MUST use the same pinned model/revision and
+the `search_query: ` prefix before cosine similarity search.

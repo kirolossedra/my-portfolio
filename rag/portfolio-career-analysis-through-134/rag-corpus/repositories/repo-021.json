@@ -1,0 +1,1461 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 21,
+  "repository_total": 134,
+  "repository_name": "Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+  "header_title": "`Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification`",
+  "repository_slug": "kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+  "repository_url": "https://github.com/kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-016-027-corrected.md",
+    "line_start": 4034,
+    "line_end": 5022,
+    "sha256": "feb88f601ea67c57000f5670f7fbf31069287ca8f27189caaf8e55571671195d"
+  },
+  "chronology_summary": {
+    "created": "2023-03-23 03:54:53 UTC",
+    "first_commit": "2023-03-23 03:54:54 UTC",
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": "N/A — design/verification exercise",
+    "portfolio_evidence_weight": "4.25/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+    "chronology_index": "021 / 134",
+    "visibility": "Public",
+    "fork": "No",
+    "created": "2023-03-23 03:54:53 UTC",
+    "first_commit": "2023-03-23 03:54:54 UTC",
+    "latest_commit": "2023-04-17 18:17:51 UTC",
+    "exact_commits": "17",
+    "active_span": "25 d 14 h 22 m 57 s",
+    "primary_language": "SystemVerilog",
+    "final_source": "GameDesign.sv, README",
+    "source_size": "12 KB",
+    "default_branch": "main",
+    "branches": "main only",
+    "branch_protection": "None",
+    "directed_test_cases_documented": "6 principal README scenarios, additional source tests",
+    "self_checking_pass_fail": "Yes",
+    "uvm": "No",
+    "sva": "No",
+    "functional_coverage": "No",
+    "constrained_random": "No",
+    "ci": "None",
+    "synthesis_fpga": "None observed",
+    "reproducibility": "limited by missing clock.sv",
+    "product_maturity": "N/A — design/verification exercise",
+    "verification_maturity": "2.75/5",
+    "systemverilog_maturity": "3.25/5",
+    "engineering_maturity": "2.5/5",
+    "portfolio_evidence_weight": "4.25/5",
+    "career_skill_evidence": "4.5/5"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Project identity"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **SystemVerilog Multi-Mode Circular Counter Game with Directed Self-Checking Verification**\n\nRepository 021 is a meaningful verification milestone.\n\nRepo 015 explicitly planned verification but stopped before UVM/hazard implementation.\n\nRepo 021 contains an actual authored testbench that:\n\n- defines test scenarios;\n- drives reset/init/control sequences;\n- observes outputs;\n- records per-test pass/fail status;\n- prints a test-case report.\n\nThis is the first strong direct corpus evidence of **self-checking HDL verification authored by the developer**.\n\nHowever, it is not UVM, SVA, constrained-random or coverage-driven verification.\n\nThe final repository contains:\n\n- `GameDesign.sv`\n- `README.md`\n\n`GameDesign.sv` includes:\n\n```systemverilog\n`include \"clock.sv\"\n```\n\nbut `clock.sv` is absent from the final tree.\n\nTherefore a clean checkout is not self-contained.\n\nCorrect classification:\n\n> **A SystemVerilog digital-design exercise with a substantial directed self-checking testbench and explicit test planning, but with important RTL/testbench correctness and reproducibility weaknesses.**\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "1. RAG metadata"
+      ],
+      "text": "## 1. RAG metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification` |\n| Chronology index | **021 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-03-23 03:54:53 UTC** |\n| First commit | **2023-03-23 03:54:54 UTC** |\n| Latest commit | **2023-04-17 18:17:51 UTC** |\n| Exact commits | **17** |\n| Active span | **25 d 14 h 22 m 57 s** |\n| Primary language | **SystemVerilog** |\n| Final source | `GameDesign.sv`, README |\n| Source size | ~12 KB |\n| Default branch | `main` |\n| Branches | `main` only |\n| Branch protection | None |\n| Directed test cases documented | 6 principal README scenarios, additional source tests |\n| Self-checking pass/fail | Yes |\n| UVM | No |\n| SVA | No |\n| Functional coverage | No |\n| Constrained random | No |\n| CI | None |\n| Synthesis/FPGA | None observed |\n| Reproducibility | limited by missing `clock.sv` |\n| Product maturity | N/A — design/verification exercise |\n| Verification maturity | **2.75/5** |\n| SystemVerilog maturity | **3.25/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **4.25/5** |\n| Career-skill evidence | **4.5/5** |\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s084",
+        "s086"
+      ],
+      "titles": [
+        "42. Expanded longitudinal summary vector",
+        "44. Bottom line"
+      ],
+      "text": "## 42. Expanded longitudinal summary vector\n| Axis | Repo021 effect |\n|---|---|\n| SystemVerilog depth | modest increase |\n| Verification execution | major increase |\n| Test planning | major increase |\n| Hardware product scale | small |\n| Reproducibility | weak |\n| Formal/coverage methods | absent |\n| Career differentiation | high for early portfolio |\n| Engineering-process evidence | strong relative to neighboring repos |\n\n## 44. Bottom line\nRepository 021 is one of the most important hardware-learning milestones so far because it converts verification from an aspiration into executable checks.\n\nThe design itself is modest—a multi-mode circular counter wrapped in winner/loser game semantics—but the verification behavior is more important than the DUT complexity.\n\nThe developer now:\n\n- enumerates behavioral test cases;\n- thinks about redundant/useless cases;\n- constructs directed stimulus;\n- checks expected winner/loser/reset outcomes;\n- stores test status;\n- produces a pass/fail report.\n\nThat is a real improvement over prior waveform-only checking.\n\nThe next maturity frontier remains clear:\n\n> **clock-synchronized reusable testbench tasks → clean self-contained builds → assertions → constrained random → functional coverage → scoreboards/reference models → UVM where justified.**\n\n### Key ratings\n\n- SystemVerilog: **3.25/5**\n- Digital control design: **2.75/5**\n- Directed self-checking verification: **3.0/5**\n- Verification planning: **3.25/5**\n- Testbench architecture: **2.75/5**\n- Reset discipline: **2.5/5**\n- UVM: **0/5**\n- SVA: **0/5**\n- Functional coverage: **0/5**\n- Constrained random: **0/5**\n- Reproducibility: **1.5/5**\n- Verification maturity: **2.75/5**\n- Portfolio Evidence Weight: **4.25/5**\n- Career-skill evidence: **4.5/5**\n\n### Career-level conclusion\n\n> **By April 2023, the hardware trajectory has moved beyond merely writing RTL and visually inspecting waveforms. The developer is now authoring explicit behavioral test plans and programmatic pass/fail checks. Verification is still directed and relatively ad hoc, but this is the first clear implementation evidence of a verification mindset rather than verification intent alone.**\n\n---\n\n**End of Repository 021 / 134.**\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s045",
+        "s080"
+      ],
+      "titles": [
+        "21. Chronology and lifecycle interpretation — expanded",
+        "38. Current relevance / recency"
+      ],
+      "text": "## 21. Chronology and lifecycle interpretation — expanded\nRepository 021 spans roughly late March through April 2023 and contains multiple source revisions rather than a one-shot publication snapshot. That difference matters.\n\nCompared with Repo015's short rewrite window, Repo021 provides stronger evidence of an iterative loop:\n\n```text\ninitial RTL / test intent\n        ↓\nsource revision\n        ↓\nverification expansion\n        ↓\nfinal update\n```\n\nThe repository therefore has greater value for **engineering-process evidence**, even though the DUT itself is smaller than the pipelined CPU attempt.\n\n## 38. Current relevance / recency\nRepo021 is historical early-2023 verification evidence. It should remain the **first strong self-checking HDL milestone**, but later verification repositories should determine present capability.\n\nDo not infer current UVM/SVA expertise from this project because they are specifically absent."
+    },
+    "architecture": {
+      "section_ids": [
+        "s020",
+        "s030",
+        "s048"
+      ],
+      "titles": [
+        "RTL architecture rating",
+        "Testbench architecture",
+        "24. Source tree / architecture — expanded"
+      ],
+      "text": "## RTL architecture rating\n**2.5/5**\n\n---\n\n## Testbench architecture\n**2.75/5**\n\n---\n\n## 24. Source tree / architecture — expanded\nThe design is conceptually decomposed into synchronous responsibilities:\n\n```text\nmode/control inputs\n      ↓\n counter update logic\n      ↓\n winner/loser decision\n      ↓\n round score update\n      ↓\n game-over / who-won state\n```\n\nThe testbench adds a parallel verification path:\n\n```text\nclock/reset/stimulus\n      ↓\nselected test scenario\n      ↓\nwait fixed simulation interval\n      ↓\ninspect DUT outputs\n      ↓\nrecord pass/fail in Testcases[]\n      ↓\nprint summary\n```\n\n### Architectural tension\n\nThe intended conceptual separation is reasonable, but the RTL physically assigns several shared signals from multiple clocked blocks. That weakens synthesis correctness and makes ownership of state ambiguous.\n\nThe key lesson is:\n\n> **separating responsibilities into blocks is only beneficial when each state element has a clear single update owner.**"
+    },
+    "scale": {
+      "section_ids": [
+        "s054"
+      ],
+      "titles": [
+        "28. Scale dimensions"
+      ],
+      "text": "## 28. Scale dimensions\n| Scale | Observed |\n|---|---|\n| DUT scope | small multi-mode counter/game |\n| Score/state variables | several synchronous outputs/counters |\n| Directed cases | explicit scenario set, incomplete result-array initialization |\n| Simulation environment | single testbench |\n| Assertions | 0 |\n| Covergroups | 0 |\n| Randomized transactions | 0 |\n| Hardware target | none |\n| Team | individual/unknown |\n\nThis is small-scale verification with genuine execution logic."
+    },
+    "testing": {
+      "section_ids": [
+        "s004",
+        "s005",
+        "s015",
+        "s039"
+      ],
+      "titles": [
+        "3. Verification planning",
+        "Verification-planning rating",
+        "Verification execution",
+        "17. Verification career trajectory"
+      ],
+      "text": "## 3. Verification planning\nREADME explicitly lists test objectives rather than merely describing the design.\n\nExamples include:\n\n- up-by-2 path avoiding 7 so loser should win;\n- up-by-1 from zero;\n- alternation between 6 and 7 to favor winner;\n- initializing at 7 then incrementing by 2;\n- mixed +1/+2 pattern;\n- reset behavior.\n\nThe README also labels several proposed tests as:\n\n**Useless**\n\nwhich is interesting engineering evidence: the developer is reasoning about test redundancy/value rather than blindly accumulating cases.\n\n### Verification-planning rating\n\n**3.25/5**\n\n---\n\n## Verification-planning rating\n**3.25/5**\n\n---\n\n## Verification execution\nRepo015 **1.25/5 → Repo021 2.75/5**\n\n---\n\n## 17. Verification career trajectory\nThe hardware verification progression now becomes:\n\n```text\nRepos004–005\nmanual stimulus / waveform-level checking\n        ↓\nRepo014\nlarger integration scenario + waveform inspection\n        ↓\nRepo015\nSystemVerilog + explicit UVM/hazard verification ambition\n        ↓\nRepo021\ndirected self-checking tests with pass/fail results\n```\n\n### Important interpretation\n\nRepo 021 is the first point where the portfolio shows:\n\n> **the testbench evaluating expected outcomes programmatically.**\n\nThat is a real maturity gain.\n\n---"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s068"
+      ],
+      "titles": [
+        "32. CI/CD / simulation automation"
+      ],
+      "text": "## 32. CI/CD / simulation automation\nNo CI workflow is observed.\n\nA mature next step for this specific repository would have been lightweight simulation automation:\n- install/open-source simulator;\n- compile all `.sv` files;\n- fail on missing `clock.sv`;\n- run testbench to completion;\n- parse nonzero/failing test result;\n- archive waveform/log if desired.\n\nThis would be CI, not deployment. There is no meaningful CD target for the current simulation-only project.\n\n### Ratings\n\n- CI: **0/5**\n- Simulation automation potential: **high**\n- Deployment: N/A"
+    },
+    "documentation": {
+      "section_ids": [
+        "s034",
+        "s070",
+        "s071"
+      ],
+      "titles": [
+        "Reproducibility",
+        "33. Documentation — expanded",
+        "Documentation rating"
+      ],
+      "text": "## Reproducibility\n**1.5/5**\n\n---\n\n## 33. Documentation — expanded\nThe README/test-case table is more valuable than the documentation in several earlier HDL repos because it records intended behaviors.\n\nStrengths:\n- makes test intent visible;\n- distinguishes cases;\n- supports verification planning.\n\nWeaknesses:\n- missing dependency is not documented;\n- timing/latency assumptions are not explained;\n- no compile/run instructions;\n- no tool/version requirement;\n- no explicit known RTL issues.\n\n### Documentation rating\n\n**3.0/5** remains fair.\n\n## Documentation rating\n**3.0/5** remains fair."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s072"
+      ],
+      "titles": [
+        "34. Repository hygiene / build discipline"
+      ],
+      "text": "## 34. Repository hygiene / build discipline\nPositive:\n- compact source-focused repo;\n- multiple source revisions;\n- no large generated binary tree highlighted.\n\nWeak:\n- missing `clock.sv` breaks self-containment;\n- no simulator script/Makefile;\n- no CI;\n- no lint configuration;\n- no synthesis target;\n- no automated termination contract.\n\n### Ratings\n\n- Repository hygiene: **2.5/5**\n- Reproducibility: **1.5/5**\n- Source iteration discipline: **3.25/5**"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s062"
+      ],
+      "titles": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded"
+      ],
+      "text": "## 31. Mistakes / anti-patterns / likely lessons — expanded\n### Multiple procedural ownership\n\nSignals driven from multiple `always` blocks create ambiguity and synthesis risk. The likely lesson is to define **one sequential owner per state register** and derive combinational next-state separately where appropriate.\n\n### Nonblocking-assignment latency\n\nA downstream clocked block sees the previous cycle's value. Score/game-over logic therefore contains hidden pipeline-like latency. This is not necessarily wrong, but undocumented latency is a verification hazard.\n\n### Fixed-delay tests\n\nTesting by “wait N time units then inspect” becomes brittle. Clock-event synchronization and reusable tasks make intent clearer.\n\n### Incomplete test-results array\n\nA self-checking report is only as trustworthy as its bookkeeping. Uninitialized/unassigned slots can produce false failures or ambiguous output.\n\n### Missing dependency\n\nA repository that references `clock.sv` but does not contain it cannot reproduce cleanly from checkout."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s081"
+      ],
+      "titles": [
+        "39. Product / engineering failure potential"
+      ],
+      "text": "## 39. Product / engineering failure potential\nBecause the project is simulated, direct physical harm is low. If this RTL were intended for synthesis, the key risks would be:\n- multiple drivers;\n- timing-latency misunderstandings;\n- incomplete test-result bookkeeping;\n- unreproducible missing dependency;\n- lack of coverage/constraint closure.\n\nThe project itself illustrates why verification must be proportionate to the consequences of failure."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s082"
+      ],
+      "titles": [
+        "40. Human impact"
+      ],
+      "text": "## 40. Human impact\nDirect human impact is educational. The broader engineering lesson is important: hardware behavior can be opaque, and users downstream of hardware systems depend on engineers making state transitions and verification evidence explicit.\n\nThe repository's strongest positive signal is the move toward **checking expected behavior rather than assuming it from implementation intent**."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s047",
+        "s050"
+      ],
+      "titles": [
+        "23. Contribution / authorship confidence",
+        "25. Capability relationship"
+      ],
+      "text": "## 23. Contribution / authorship confidence\nThe source and testbench appear directly maintained in the user's repository and no imported UVM/course framework is identified in the current evidence.\n\nSafe credit:\n- RTL implementation present in the repository;\n- directed test-case planning;\n- self-checking comparisons/results;\n- iterative source changes.\n\nUnknown:\n- whether the initial problem specification was instructor-provided;\n- authorship of any missing `clock.sv` dependency.\n\nAttribution confidence for the implemented RTL/testbench is **medium-high to high**.\n\n## 25. Capability relationship\n| Relationship | Evidence |\n|---|---|\n| Implemented | SystemVerilog RTL and directed testbench checks |\n| Designed | counter/game state decomposition and test scenarios |\n| Used | macros, `logic`, arrays, clocked processes, nonblocking assignments |\n| Configured | modes, reset, test sequences |\n| Integrated | DUT + external/missing clock dependency + testbench |\n| Operated | simulation workflow inferred from testbench/reporting |\n| Led/Owned | small educational project, no team evidence |"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s051",
+        "s063"
+      ],
+      "titles": [
+        "26. Responsibility scope",
+        "Multiple procedural ownership"
+      ],
+      "text": "## 26. Responsibility scope\nDirect technical responsibility includes:\n- coding DUT state behavior;\n- defining mode behavior;\n- implementing reset paths;\n- creating scenario-based tests;\n- deciding expected outcomes;\n- recording pass/fail status.\n\nNot evidenced:\n- synthesis constraints;\n- timing closure;\n- FPGA bring-up;\n- verification-plan sign-off;\n- coverage closure;\n- UVM environment architecture;\n- formal verification;\n- production silicon responsibility.\n\n### Responsibility rating\n\n**2.75/5 educational design + verification ownership**\n\n## Multiple procedural ownership\nSignals driven from multiple `always` blocks create ambiguity and synthesis risk. The likely lesson is to define **one sequential owner per state register** and derive combinational next-state separately where appropriate."
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s055"
+      ],
+      "titles": [
+        "29. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 29. Engineering decisions and tradeoffs\n### Decision — directed tests instead of UVM\n\nFor this DUT size, simple directed checks are arguably the more proportionate choice.\n\n**Benefit:** low overhead, direct expected-output reasoning, executable results.\n\n**Cost:** limited reuse, no coverage closure, no scalable transaction abstraction.\n\nThis creates an important comparison with Repo015: naming UVM without implementing it is weaker evidence than a simpler methodology that actually runs checks.\n\n### Decision — multiple clocked blocks by responsibility\n\n**Benefit:** readable conceptual decomposition.\n\n**Cost:** shared-signal assignments create multiple-driver/scheduling hazards.\n\n### Decision — fixed-delay synchronization\n\n**Benefit:** easy to write.\n\n**Cost:** tests are coupled to clock period and hidden latency; changes can break tests for reasons unrelated to behavior.\n\n### Decision — result array and summary report\n\n**Benefit:** moves from waveform inspection to explicit pass/fail aggregation.\n\n**Cost:** incomplete initialization undermines report trustworthiness."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s060"
+      ],
+      "titles": [
+        "30. Engineering judgment evidence"
+      ],
+      "text": "## 30. Engineering judgment evidence\nStrong signals:\n- writes down behavioral cases;\n- distinguishes useful/redundant cases;\n- makes testbench self-evaluating;\n- adds reset testing;\n- iterates source over weeks;\n- chooses a simple verification method suitable for a small DUT.\n\nWeak signals:\n- multi-driver RTL;\n- implicit one-cycle latencies are not documented;\n- fixed time delays rather than edge/event synchronization;\n- incomplete result-array setup;\n- missing clock dependency;\n- no clean simulation termination.\n\n### Judgment rating\n\n**2.75/5**, with verification judgment stronger than RTL architecture judgment."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s079"
+      ],
+      "titles": [
+        "37. Portfolio Evidence Weight — expanded rationale"
+      ],
+      "text": "## 37. Portfolio Evidence Weight — expanded rationale\n**4.25/5** is justified despite the modest DUT.\n\nWhy high:\n- first strong self-checking HDL verification evidence;\n- explicit test planning;\n- multi-week source evolution;\n- important trajectory progression.\n\nWhy not higher:\n- missing dependency;\n- multiple-driver defects;\n- no assertions/coverage/randomization;\n- no automated CI;\n- no hardware/synthesis validation."
+    },
+    "limitations": {
+      "section_ids": [
+        "s085"
+      ],
+      "titles": [
+        "43. RAG anti-inflation warnings"
+      ],
+      "text": "## 43. RAG anti-inflation warnings\n1. “Verification” is real, but it is directed testing—not UVM.\n2. No SVA exists.\n3. No functional coverage exists.\n4. No constrained-random verification exists.\n5. No scoreboard/reference model exists.\n6. Missing `clock.sv` means checkout is incomplete.\n7. Multiple clocked blocks drive shared signals.\n8. Fixed-delay tests are timing-coupled.\n9. The 15-entry result array contains fewer visibly initialized cases.\n10. No synthesis/FPGA validation is shown.\n11. Test success output is not equivalent to formal coverage closure.\n12. Historical evidence does not prove current verification proficiency.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s074",
+        "s083",
+        "s084"
+      ],
+      "titles": [
+        "35. First / previous / current / corpus-max ledger — expanded",
+        "41. Cumulative career state after Repository 021",
+        "42. Expanded longitudinal summary vector"
+      ],
+      "text": "## 35. First / previous / current / corpus-max ledger — expanded\n| Skill | Previous max | Repo021 | Corpus state |\n|---|---:|---:|---:|\n| SystemVerilog | Repo015 3.0 | **3.25** | new modest max |\n| Directed HDL verification | ~2.75 | **3.0** | reinforced/advanced |\n| Self-checking HDL testing | weak/none | **3.0** | first strong evidence |\n| Verification planning | limited | **3.25** | first strong evidence |\n| Reset discipline | weak | **2.5** | improvement |\n| Sequential-timing reasoning | present in HDL repos | **2.75** | reinforced |\n| UVM | 0 | **0** | remains absent |\n| SVA | 0 | **0** | remains absent |\n| Functional coverage | 0 | **0** | remains absent |\n| Constrained random | 0 | **0** | remains absent |\n\n## 41. Cumulative career state after Repository 021\nBy Repo021, the hardware trajectory has three distinct layers:\n\n```text\nRTL implementation foundations\n        ↓\ncomponent/system integration\n        ↓\nexplicit self-checking verification\n```\n\nThat makes verification a demonstrated capability rather than merely a project-title aspiration.\n\nThe wider career corpus is now simultaneously developing:\n- hardware/verification;\n- Java application engineering;\n- ML foundations;\n- networking concepts;\n- autonomous sensing.\n\n## 42. Expanded longitudinal summary vector\n| Axis | Repo021 effect |\n|---|---|\n| SystemVerilog depth | modest increase |\n| Verification execution | major increase |\n| Test planning | major increase |\n| Hardware product scale | small |\n| Reproducibility | weak |\n| Formal/coverage methods | absent |\n| Career differentiation | high for early portfolio |\n| Engineering-process evidence | strong relative to neighboring repos |"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **SystemVerilog Multi-Mode Circular Counter Game with Directed Self-Checking Verification**\n\nRepository 021 is a meaningful verification milestone.\n\nRepo 015 explicitly planned verification but stopped before UVM/hazard implementation.\n\nRepo 021 contains an actual authored testbench that:\n\n- defines test scenarios;\n- drives reset/init/control sequences;\n- observes outputs;\n- records per-test pass/fail status;\n- prints a test-case report.\n\nThis is the first strong direct corpus evidence of **self-checking HDL verification authored by the developer**.\n\nHowever, it is not UVM, SVA, constrained-random or coverage-driven verification.\n\nThe final repository contains:\n\n- `GameDesign.sv`\n- `README.md`\n\n`GameDesign.sv` includes:\n\n```systemverilog\n`include \"clock.sv\"\n```\n\nbut `clock.sv` is absent from the final tree.\n\nTherefore a clean checkout is not self-contained.\n\nCorrect classification:\n\n> **A SystemVerilog digital-design exercise with a substantial directed self-checking testbench and explicit test planning, but with important RTL/testbench correctness and reproducibility weaknesses.**\n\n---",
+      "source_line_start": 4036,
+      "source_line_end": 4077
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG metadata",
+      "normalized_title": "RAG metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification` |\n| Chronology index | **021 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-03-23 03:54:53 UTC** |\n| First commit | **2023-03-23 03:54:54 UTC** |\n| Latest commit | **2023-04-17 18:17:51 UTC** |\n| Exact commits | **17** |\n| Active span | **25 d 14 h 22 m 57 s** |\n| Primary language | **SystemVerilog** |\n| Final source | `GameDesign.sv`, README |\n| Source size | ~12 KB |\n| Default branch | `main` |\n| Branches | `main` only |\n| Branch protection | None |\n| Directed test cases documented | 6 principal README scenarios, additional source tests |\n| Self-checking pass/fail | Yes |\n| UVM | No |\n| SVA | No |\n| Functional coverage | No |\n| Constrained random | No |\n| CI | None |\n| Synthesis/FPGA | None observed |\n| Reproducibility | limited by missing `clock.sv` |\n| Product maturity | N/A — design/verification exercise |\n| Verification maturity | **2.75/5** |\n| SystemVerilog maturity | **3.25/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **4.25/5** |\n| Career-skill evidence | **4.5/5** |\n\n---",
+      "source_line_start": 4077,
+      "source_line_end": 4114
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "2. Design behavior",
+      "normalized_title": "Design behavior",
+      "key": "design_behavior",
+      "path": [
+        "2. Design behavior"
+      ],
+      "content": "The DUT `MMC_Game` implements a 3-bit circular counter controlled by two-bit modes:\n\n- up by 1;\n- up by 2;\n- down by 1;\n- down by 2.\n\nThe counter wraps across the 0–7 range.\n\nGame semantics:\n\n- landing on 7 increments the winner side;\n- landing on 0 increments the loser side;\n- first side to score `0xF` causes game over;\n- output `who` indicates winner/loser;\n- reset/init inputs alter state.\n\nThis gives a compact stateful design with:\n\n- counter mode control;\n- wraparound;\n- round detection;\n- accumulated statistics;\n- terminal game condition.\n\n---",
+      "source_line_start": 4114,
+      "source_line_end": 4143
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "3. Verification planning",
+      "normalized_title": "Verification planning",
+      "key": "verification_planning",
+      "path": [
+        "3. Verification planning"
+      ],
+      "content": "README explicitly lists test objectives rather than merely describing the design.\n\nExamples include:\n\n- up-by-2 path avoiding 7 so loser should win;\n- up-by-1 from zero;\n- alternation between 6 and 7 to favor winner;\n- initializing at 7 then incrementing by 2;\n- mixed +1/+2 pattern;\n- reset behavior.\n\nThe README also labels several proposed tests as:\n\n**Useless**\n\nwhich is interesting engineering evidence: the developer is reasoning about test redundancy/value rather than blindly accumulating cases.\n\n### Verification-planning rating\n\n**3.25/5**\n\n---",
+      "source_line_start": 4143,
+      "source_line_end": 4168
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Verification-planning rating",
+      "normalized_title": "Verification-planning rating",
+      "key": "verification_planning_rating",
+      "path": [
+        "3. Verification planning",
+        "Verification-planning rating"
+      ],
+      "content": "**3.25/5**\n\n---",
+      "source_line_start": 4162,
+      "source_line_end": 4168
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "4. Self-checking testbench",
+      "normalized_title": "Self-checking testbench",
+      "key": "self_checking_testbench",
+      "path": [
+        "4. Self-checking testbench"
+      ],
+      "content": "The testbench declares a test-results array and uses checks such as:\n\n```text\nif (who == LOSER_WON)\n    Testcases[n] = Test_Success\nelse\n    Testcases[n] = Test_Failed\n```\n\nAt the end it iterates over results and prints:\n\n- Success\n- Failed\n\nThis is qualitatively different from earlier waveform-only testbenches.\n\n### First direct strong evidence\n\n**Authored self-checking HDL tests**\n\n### Rating\n\n**Directed self-checking verification: 3.0/5**\n\nThis raises the corpus verification maximum substantially.\n\n---",
+      "source_line_start": 4168,
+      "source_line_end": 4198
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "First direct strong evidence",
+      "normalized_title": "First direct strong evidence",
+      "key": "first_direct_strong_evidence",
+      "path": [
+        "4. Self-checking testbench",
+        "First direct strong evidence"
+      ],
+      "content": "**Authored self-checking HDL tests**",
+      "source_line_start": 4186,
+      "source_line_end": 4190
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "4. Self-checking testbench",
+        "Rating"
+      ],
+      "content": "**Directed self-checking verification: 3.0/5**\n\nThis raises the corpus verification maximum substantially.\n\n---",
+      "source_line_start": 4190,
+      "source_line_end": 4198
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "5. Test coverage intent",
+      "normalized_title": "Test coverage intent",
+      "key": "test_coverage_intent",
+      "path": [
+        "5. Test coverage intent"
+      ],
+      "content": "The directed tests cover multiple dimensions:\n\n- each increment/decrement mode;\n- wraparound behavior;\n- winner/loser game outcomes;\n- initialization;\n- reset;\n- alternating control sequences.\n\nThis demonstrates deliberate scenario partitioning.\n\n### Strength\n\nThe tests are tied to expected behavioral outcomes.\n\n### Weakness\n\nThere is no formal coverage metric proving state/control combinations are complete.\n\n### Functional test-design rating\n\n**3.0/5**\n\n---",
+      "source_line_start": 4198,
+      "source_line_end": 4225
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Strength",
+      "normalized_title": "Strength",
+      "key": "strength",
+      "path": [
+        "5. Test coverage intent",
+        "Strength"
+      ],
+      "content": "The tests are tied to expected behavioral outcomes.",
+      "source_line_start": 4211,
+      "source_line_end": 4215
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Weakness",
+      "normalized_title": "Weakness",
+      "key": "weakness",
+      "path": [
+        "5. Test coverage intent",
+        "Weakness"
+      ],
+      "content": "There is no formal coverage metric proving state/control combinations are complete.",
+      "source_line_start": 4215,
+      "source_line_end": 4219
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Functional test-design rating",
+      "normalized_title": "Functional test-design rating",
+      "key": "functional_test_design_rating",
+      "path": [
+        "5. Test coverage intent",
+        "Functional test-design rating"
+      ],
+      "content": "**3.0/5**\n\n---",
+      "source_line_start": 4219,
+      "source_line_end": 4225
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "6. UVM comparison with Repo 015",
+      "normalized_title": "UVM comparison with Repo 015",
+      "key": "uvm_comparison_with_repo_015",
+      "path": [
+        "6. UVM comparison with Repo 015"
+      ],
+      "content": "Repo 015:\n- UVM named in repo title;\n- README explicitly says UVM files remain TODO;\n- actual UVM = 0.\n\nRepo 021:\n- no UVM branding;\n- actually implements behavioral checks.\n\nThis is a meaningful maturity lesson:\n\n> **Simple executed verification is stronger evidence than sophisticated methodology listed only as a plan.**\n\n### UVM\n\n**0/5**\n\n### Verification execution\n\nRepo015 **1.25/5 → Repo021 2.75/5**\n\n---",
+      "source_line_start": 4225,
+      "source_line_end": 4250
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "UVM",
+      "normalized_title": "UVM",
+      "key": "uvm",
+      "path": [
+        "6. UVM comparison with Repo 015",
+        "UVM"
+      ],
+      "content": "**0/5**",
+      "source_line_start": 4240,
+      "source_line_end": 4244
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Verification execution",
+      "normalized_title": "Verification execution",
+      "key": "verification_execution",
+      "path": [
+        "6. UVM comparison with Repo 015",
+        "Verification execution"
+      ],
+      "content": "Repo015 **1.25/5 → Repo021 2.75/5**\n\n---",
+      "source_line_start": 4244,
+      "source_line_end": 4250
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "7. No SVA / constrained random / functional coverage",
+      "normalized_title": "No SVA / constrained random / functional coverage",
+      "key": "no_sva_constrained_random_functional_coverage",
+      "path": [
+        "7. No SVA / constrained random / functional coverage"
+      ],
+      "content": "No evidence of:\n\n- `assert property`;\n- SystemVerilog properties/sequences;\n- covergroups;\n- coverpoints;\n- cross coverage;\n- `rand`;\n- constraints;\n- randomized transactions;\n- transaction-level scoreboard;\n- reference model.\n\n### Ratings\n\n- SVA: **0/5**\n- functional coverage: **0/5**\n- constrained random: **0/5**\n- UVM: **0/5**\n\nThe verification approach is deterministic directed testing.\n\n---",
+      "source_line_start": 4250,
+      "source_line_end": 4276
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Ratings",
+      "normalized_title": "Ratings",
+      "key": "ratings",
+      "path": [
+        "7. No SVA / constrained random / functional coverage",
+        "Ratings"
+      ],
+      "content": "- SVA: **0/5**\n- functional coverage: **0/5**\n- constrained random: **0/5**\n- UVM: **0/5**\n\nThe verification approach is deterministic directed testing.\n\n---",
+      "source_line_start": 4265,
+      "source_line_end": 4276
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "8. RTL organization",
+      "normalized_title": "RTL organization",
+      "key": "rtl_organization",
+      "path": [
+        "8. RTL organization"
+      ],
+      "content": "The design separates behavior into multiple clocked blocks:\n\n- counter;\n- winner/loser round decision;\n- score increment;\n- game-over detection.\n\nConceptually, this separates responsibilities.\n\nHowever, several blocks drive the same variables.\n\n### Multiple procedural drivers\n\nSignals such as:\n\n- `winner`;\n- `loser`;\n- `gameover`;\n- `who`;\n- `count`;\n- `winner_count`;\n- `loser_count`\n\nare assigned from more than one `always` block.\n\nThis is problematic for synthesis and can create scheduling/race ambiguity.\n\n### RTL architecture rating\n\n**2.5/5**\n\n---",
+      "source_line_start": 4276,
+      "source_line_end": 4311
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Multiple procedural drivers",
+      "normalized_title": "Multiple procedural drivers",
+      "key": "multiple_procedural_drivers",
+      "path": [
+        "8. RTL organization",
+        "Multiple procedural drivers"
+      ],
+      "content": "Signals such as:\n\n- `winner`;\n- `loser`;\n- `gameover`;\n- `who`;\n- `count`;\n- `winner_count`;\n- `loser_count`\n\nare assigned from more than one `always` block.\n\nThis is problematic for synthesis and can create scheduling/race ambiguity.",
+      "source_line_start": 4289,
+      "source_line_end": 4305
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "RTL architecture rating",
+      "normalized_title": "RTL architecture rating",
+      "key": "rtl_architecture_rating",
+      "path": [
+        "8. RTL organization",
+        "RTL architecture rating"
+      ],
+      "content": "**2.5/5**\n\n---",
+      "source_line_start": 4305,
+      "source_line_end": 4311
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "9. Reset behavior",
+      "normalized_title": "Reset behavior",
+      "key": "reset_behavior",
+      "path": [
+        "9. Reset behavior"
+      ],
+      "content": "Asynchronous reset is included in several blocks.\n\nThis is an improvement over Repo 015, where reset was declared but unused.\n\n### Positive\n\n- count/state outputs reset;\n- winner/loser counts reset;\n- gameover reset.\n\n### Weakness\n\nBecause the same signals have multiple procedural drivers, reset semantics are fragmented.\n\n### Reset discipline\n\n**2.5/5**\n\nThis is a meaningful corpus improvement.\n\n---",
+      "source_line_start": 4311,
+      "source_line_end": 4335
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Positive",
+      "normalized_title": "Positive",
+      "key": "positive",
+      "path": [
+        "9. Reset behavior",
+        "Positive"
+      ],
+      "content": "- count/state outputs reset;\n- winner/loser counts reset;\n- gameover reset.",
+      "source_line_start": 4317,
+      "source_line_end": 4323
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Weakness",
+      "normalized_title": "Weakness",
+      "key": "weakness",
+      "path": [
+        "9. Reset behavior",
+        "Weakness"
+      ],
+      "content": "Because the same signals have multiple procedural drivers, reset semantics are fragmented.",
+      "source_line_start": 4323,
+      "source_line_end": 4327
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Reset discipline",
+      "normalized_title": "Reset discipline",
+      "key": "reset_discipline",
+      "path": [
+        "9. Reset behavior",
+        "Reset discipline"
+      ],
+      "content": "**2.5/5**\n\nThis is a meaningful corpus improvement.\n\n---",
+      "source_line_start": 4327,
+      "source_line_end": 4335
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "10. Counter-mode implementation",
+      "normalized_title": "Counter-mode implementation",
+      "key": "counter_mode_implementation",
+      "path": [
+        "10. Counter-mode implementation"
+      ],
+      "content": "Four modes are represented with macros.\n\nThere is redundancy in the up-by-2 block: after conditional assignments, another unconditional `count <= count + 2` is issued.\n\nBecause of 3-bit wraparound, the final arithmetic may still produce intended values for some edge cases, but the duplicate assignment makes intent less clear and relies on last nonblocking assignment behavior.\n\n### Control-logic rating\n\n**2.75/5**\n\n---",
+      "source_line_start": 4335,
+      "source_line_end": 4349
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Control-logic rating",
+      "normalized_title": "Control-logic rating",
+      "key": "control_logic_rating",
+      "path": [
+        "10. Counter-mode implementation",
+        "Control-logic rating"
+      ],
+      "content": "**2.75/5**\n\n---",
+      "source_line_start": 4343,
+      "source_line_end": 4349
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "11. Sequential timing / score latency",
+      "normalized_title": "Sequential timing / score latency",
+      "key": "sequential_timing_score_latency",
+      "path": [
+        "11. Sequential timing / score latency"
+      ],
+      "content": "Winner/loser flags are assigned in one clocked block, while score counters consume those flags in another clocked block.\n\nBecause nonblocking assignments use pre-edge values, score updates occur based on the prior cycle's winner/loser flag.\n\nSimilarly, game-over logic observes prior score values.\n\nThis creates implicit multi-cycle latency.\n\nIt may be acceptable if intentionally modeled, but it is not documented and complicates test timing.\n\n### Sequential timing discipline\n\n**2.5/5**\n\n---",
+      "source_line_start": 4349,
+      "source_line_end": 4367
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Sequential timing discipline",
+      "normalized_title": "Sequential timing discipline",
+      "key": "sequential_timing_discipline",
+      "path": [
+        "11. Sequential timing / score latency",
+        "Sequential timing discipline"
+      ],
+      "content": "**2.5/5**\n\n---",
+      "source_line_start": 4361,
+      "source_line_end": 4367
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "12. Testbench brittleness",
+      "normalized_title": "Testbench brittleness",
+      "key": "testbench_brittleness",
+      "path": [
+        "12. Testbench brittleness"
+      ],
+      "content": "Tests rely heavily on long fixed delays such as hundreds or thousands of simulation time units.\n\nThat makes them:\n\n- harder to understand;\n- coupled to clock timing;\n- fragile under design timing changes.\n\nA more mature testbench would use event/clock synchronization and reusable tasks.\n\n### Testbench architecture\n\n**2.75/5**\n\n---",
+      "source_line_start": 4367,
+      "source_line_end": 4385
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Testbench architecture",
+      "normalized_title": "Testbench architecture",
+      "key": "testbench_architecture",
+      "path": [
+        "12. Testbench brittleness",
+        "Testbench architecture"
+      ],
+      "content": "**2.75/5**\n\n---",
+      "source_line_start": 4379,
+      "source_line_end": 4385
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "13. Test-results array defect",
+      "normalized_title": "Test-results array defect",
+      "key": "test_results_array_defect",
+      "path": [
+        "13. Test-results array defect"
+      ],
+      "content": "The testbench declares:\n\n```text\nint Testcases[15]\n```\n\nbut visibly assigns only a subset of those entries.\n\nIt then uses `foreach` over all 15.\n\nUnassigned entries can remain unknown/default and be reported as failures or ambiguous results.\n\nTherefore the summary report may contain meaningless extra test outcomes.\n\nThis limits the cleanliness of the self-checking mechanism.\n\n---",
+      "source_line_start": 4385,
+      "source_line_end": 4405
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "14. Missing clock dependency",
+      "normalized_title": "Missing clock dependency",
+      "key": "missing_clock_dependency",
+      "path": [
+        "14. Missing clock dependency"
+      ],
+      "content": "The source includes:\n\n`clock.sv`\n\nbut the final Git tree has no such file.\n\n### Consequence\n\nThe repository is not self-contained for compilation.\n\nThis repeats a reproducibility problem seen in Repo 014 (`MINI_CPU.v`) and Repo 015 (missing memory initialization files).\n\n### Reproducibility\n\n**1.5/5**\n\n---",
+      "source_line_start": 4405,
+      "source_line_end": 4425
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Consequence",
+      "normalized_title": "Consequence",
+      "key": "consequence",
+      "path": [
+        "14. Missing clock dependency",
+        "Consequence"
+      ],
+      "content": "The repository is not self-contained for compilation.\n\nThis repeats a reproducibility problem seen in Repo 014 (`MINI_CPU.v`) and Repo 015 (missing memory initialization files).",
+      "source_line_start": 4413,
+      "source_line_end": 4419
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Reproducibility",
+      "normalized_title": "Reproducibility",
+      "key": "reproducibility",
+      "path": [
+        "14. Missing clock dependency",
+        "Reproducibility"
+      ],
+      "content": "**1.5/5**\n\n---",
+      "source_line_start": 4419,
+      "source_line_end": 4425
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "15. No simulation termination",
+      "normalized_title": "No simulation termination",
+      "key": "no_simulation_termination",
+      "path": [
+        "15. No simulation termination"
+      ],
+      "content": "No clear `$finish` appears in the final testbench excerpt.\n\nWith an external/free-running clock, the simulation may continue after reporting unless the environment stops it.\n\n### Test lifecycle maturity\n\n**1.75/5**\n\n---",
+      "source_line_start": 4425,
+      "source_line_end": 4437
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Test lifecycle maturity",
+      "normalized_title": "Test lifecycle maturity",
+      "key": "test_lifecycle_maturity",
+      "path": [
+        "15. No simulation termination",
+        "Test lifecycle maturity"
+      ],
+      "content": "**1.75/5**\n\n---",
+      "source_line_start": 4431,
+      "source_line_end": 4437
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "16. Source evolution",
+      "normalized_title": "Source evolution",
+      "key": "source_evolution",
+      "path": [
+        "16. Source evolution"
+      ],
+      "content": "Unlike snapshot-only repos, `GameDesign.sv` has multiple source commits:\n\n- initial March source;\n- later April source upload;\n- final April update.\n\nThat gives direct evidence of iterative design/verification work over nearly four weeks.\n\n### Source-iteration rating\n\n**3.25/5**\n\nThis is stronger than Repo 015's short rewrite window.\n\n---",
+      "source_line_start": 4437,
+      "source_line_end": 4455
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Source-iteration rating",
+      "normalized_title": "Source-iteration rating",
+      "key": "source_iteration_rating",
+      "path": [
+        "16. Source evolution",
+        "Source-iteration rating"
+      ],
+      "content": "**3.25/5**\n\nThis is stronger than Repo 015's short rewrite window.\n\n---",
+      "source_line_start": 4447,
+      "source_line_end": 4455
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "17. Verification career trajectory",
+      "normalized_title": "Verification career trajectory",
+      "key": "verification_career_trajectory",
+      "path": [
+        "17. Verification career trajectory"
+      ],
+      "content": "The hardware verification progression now becomes:\n\n```text\nRepos004–005\nmanual stimulus / waveform-level checking\n        ↓\nRepo014\nlarger integration scenario + waveform inspection\n        ↓\nRepo015\nSystemVerilog + explicit UVM/hazard verification ambition\n        ↓\nRepo021\ndirected self-checking tests with pass/fail results\n```\n\n### Important interpretation\n\nRepo 021 is the first point where the portfolio shows:\n\n> **the testbench evaluating expected outcomes programmatically.**\n\nThat is a real maturity gain.\n\n---",
+      "source_line_start": 4455,
+      "source_line_end": 4483
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Important interpretation",
+      "normalized_title": "Important interpretation",
+      "key": "important_interpretation",
+      "path": [
+        "17. Verification career trajectory",
+        "Important interpretation"
+      ],
+      "content": "Repo 021 is the first point where the portfolio shows:\n\n> **the testbench evaluating expected outcomes programmatically.**\n\nThat is a real maturity gain.\n\n---",
+      "source_line_start": 4473,
+      "source_line_end": 4483
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "18. SystemVerilog recurrence",
+      "normalized_title": "SystemVerilog recurrence",
+      "key": "systemverilog_recurrence",
+      "path": [
+        "18. SystemVerilog recurrence"
+      ],
+      "content": "Repo 015 first introduced SystemVerilog.\n\nRepo 021 reinforces it with:\n\n- `logic`;\n- procedural RTL;\n- testbench arrays;\n- macros;\n- module integration;\n- output checking.\n\n### Rating\n\n**SystemVerilog: 3.25/5**\n\nCorpus maximum rises modestly due to recurrence plus stronger verification use.\n\n---",
+      "source_line_start": 4483,
+      "source_line_end": 4504
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Rating",
+      "normalized_title": "Rating",
+      "key": "rating",
+      "path": [
+        "18. SystemVerilog recurrence",
+        "Rating"
+      ],
+      "content": "**SystemVerilog: 3.25/5**\n\nCorpus maximum rises modestly due to recurrence plus stronger verification use.\n\n---",
+      "source_line_start": 4496,
+      "source_line_end": 4504
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "19. Standard evaluation matrix",
+      "normalized_title": "Standard evaluation matrix",
+      "key": "standard_evaluation_matrix",
+      "path": [
+        "19. Standard evaluation matrix"
+      ],
+      "content": "| Dimension | Score / 5 | Notes |\n|---|---:|---|\n| Problem clarity | **4.0** |\n| Domain specificity | **4.0** | digital design/verification |\n| Functional completeness | **3.0** |\n| Domain correctness | 2.5 | multi-driver/timing concerns |\n| Architecture | 2.5 |\n| Separation of concerns | 2.75 conceptual |\n| Code organization | 2.5 |\n| Maintainability | 2.0 |\n| Extensibility | 2.0 |\n| Algorithmic/control design | 2.75 |\n| Reliability | 2.25 |\n| Reset | **2.5** |\n| Error handling | N/A |\n| Testing | **3.0 directed** |\n| Testability | **3.5** |\n| Test planning | **3.25** |\n| Assertions | 0 |\n| Functional coverage | 0 |\n| Constrained random | 0 |\n| UVM | 0 |\n| CI | 0 |\n| Observability | **3.0** | explicit results |\n| Documentation | **3.0** | test-case table |\n| Reproducibility | 1.5 |\n| Repository hygiene | 3.0 |\n| Version-control usage | **3.25** |\n| Commit quality | 1.75 |\n| Product maturity | N/A |\n| Engineering maturity | **2.5** |\n| Verification maturity | **2.75** |\n| Portfolio differentiation | **4.0** |\n| Career-skill evidence | **4.5** |\n\n---",
+      "source_line_start": 4504,
+      "source_line_end": 4543
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "20. First / previous / current ledger",
+      "normalized_title": "First / previous / current ledger",
+      "key": "first_previous_current_ledger",
+      "path": [
+        "20. First / previous / current ledger"
+      ],
+      "content": "| Skill | Previous max | Repo021 | New corpus state |\n|---|---:|---:|---:|\n| SystemVerilog | Repo015 3.0 | **3.25** | **3.25** |\n| Directed HDL verification | ~2.75 | **3.0** | **3.0** |\n| Self-checking HDL tests | weak/none | **3.0** | **3.0** |\n| Test-case planning | earlier limited | **3.25** | **3.25** |\n| Reset discipline | ~1 | **2.5** | **2.5** |\n| UVM | 0 | **0** | not implemented |\n| SVA | 0 | **0** | not implemented |\n| Functional coverage | 0 | **0** | not implemented |\n| Constrained random | 0 | **0** | not implemented |\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->",
+      "source_line_start": 4543,
+      "source_line_end": 4562
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "21. Chronology and lifecycle interpretation — expanded",
+      "normalized_title": "Chronology and lifecycle interpretation — expanded",
+      "key": "chronology_and_lifecycle_interpretation_expanded",
+      "path": [
+        "21. Chronology and lifecycle interpretation — expanded"
+      ],
+      "content": "Repository 021 spans roughly late March through April 2023 and contains multiple source revisions rather than a one-shot publication snapshot. That difference matters.\n\nCompared with Repo015's short rewrite window, Repo021 provides stronger evidence of an iterative loop:\n\n```text\ninitial RTL / test intent\n        ↓\nsource revision\n        ↓\nverification expansion\n        ↓\nfinal update\n```\n\nThe repository therefore has greater value for **engineering-process evidence**, even though the DUT itself is smaller than the pipelined CPU attempt.",
+      "source_line_start": 4562,
+      "source_line_end": 4580
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "22. Origin / context",
+      "normalized_title": "Origin / context",
+      "key": "origin_context",
+      "path": [
+        "22. Origin / context"
+      ],
+      "content": "The project is a compact digital-design/verification exercise built around a configurable counter with winner/loser game semantics. Its educational purpose appears to be testing both RTL design and verification thinking.\n\nNo evidence supports:\n- commercial FPGA product;\n- deployed hardware;\n- ASIC flow;\n- external verification team;\n- formal safety requirements.\n\nCorrect classification:\n\n> **SystemVerilog RTL + directed self-checking verification exercise.**",
+      "source_line_start": 4580,
+      "source_line_end": 4595
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "23. Contribution / authorship confidence",
+      "normalized_title": "Contribution / authorship confidence",
+      "key": "contribution_authorship_confidence",
+      "path": [
+        "23. Contribution / authorship confidence"
+      ],
+      "content": "The source and testbench appear directly maintained in the user's repository and no imported UVM/course framework is identified in the current evidence.\n\nSafe credit:\n- RTL implementation present in the repository;\n- directed test-case planning;\n- self-checking comparisons/results;\n- iterative source changes.\n\nUnknown:\n- whether the initial problem specification was instructor-provided;\n- authorship of any missing `clock.sv` dependency.\n\nAttribution confidence for the implemented RTL/testbench is **medium-high to high**.",
+      "source_line_start": 4595,
+      "source_line_end": 4611
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "24. Source tree / architecture — expanded",
+      "normalized_title": "Source tree / architecture — expanded",
+      "key": "source_tree_architecture_expanded",
+      "path": [
+        "24. Source tree / architecture — expanded"
+      ],
+      "content": "The design is conceptually decomposed into synchronous responsibilities:\n\n```text\nmode/control inputs\n      ↓\n counter update logic\n      ↓\n winner/loser decision\n      ↓\n round score update\n      ↓\n game-over / who-won state\n```\n\nThe testbench adds a parallel verification path:\n\n```text\nclock/reset/stimulus\n      ↓\nselected test scenario\n      ↓\nwait fixed simulation interval\n      ↓\ninspect DUT outputs\n      ↓\nrecord pass/fail in Testcases[]\n      ↓\nprint summary\n```\n\n### Architectural tension\n\nThe intended conceptual separation is reasonable, but the RTL physically assigns several shared signals from multiple clocked blocks. That weakens synthesis correctness and makes ownership of state ambiguous.\n\nThe key lesson is:\n\n> **separating responsibilities into blocks is only beneficial when each state element has a clear single update owner.**",
+      "source_line_start": 4611,
+      "source_line_end": 4651
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Architectural tension",
+      "normalized_title": "Architectural tension",
+      "key": "architectural_tension",
+      "path": [
+        "24. Source tree / architecture — expanded",
+        "Architectural tension"
+      ],
+      "content": "The intended conceptual separation is reasonable, but the RTL physically assigns several shared signals from multiple clocked blocks. That weakens synthesis correctness and makes ownership of state ambiguous.\n\nThe key lesson is:\n\n> **separating responsibilities into blocks is only beneficial when each state element has a clear single update owner.**",
+      "source_line_start": 4643,
+      "source_line_end": 4651
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "25. Capability relationship",
+      "normalized_title": "Capability relationship",
+      "key": "capability_relationship",
+      "path": [
+        "25. Capability relationship"
+      ],
+      "content": "| Relationship | Evidence |\n|---|---|\n| Implemented | SystemVerilog RTL and directed testbench checks |\n| Designed | counter/game state decomposition and test scenarios |\n| Used | macros, `logic`, arrays, clocked processes, nonblocking assignments |\n| Configured | modes, reset, test sequences |\n| Integrated | DUT + external/missing clock dependency + testbench |\n| Operated | simulation workflow inferred from testbench/reporting |\n| Led/Owned | small educational project, no team evidence |",
+      "source_line_start": 4651,
+      "source_line_end": 4663
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "26. Responsibility scope",
+      "normalized_title": "Responsibility scope",
+      "key": "responsibility_scope",
+      "path": [
+        "26. Responsibility scope"
+      ],
+      "content": "Direct technical responsibility includes:\n- coding DUT state behavior;\n- defining mode behavior;\n- implementing reset paths;\n- creating scenario-based tests;\n- deciding expected outcomes;\n- recording pass/fail status.\n\nNot evidenced:\n- synthesis constraints;\n- timing closure;\n- FPGA bring-up;\n- verification-plan sign-off;\n- coverage closure;\n- UVM environment architecture;\n- formal verification;\n- production silicon responsibility.\n\n### Responsibility rating\n\n**2.75/5 educational design + verification ownership**",
+      "source_line_start": 4663,
+      "source_line_end": 4687
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Responsibility rating",
+      "normalized_title": "Responsibility rating",
+      "key": "responsibility_rating",
+      "path": [
+        "26. Responsibility scope",
+        "Responsibility rating"
+      ],
+      "content": "**2.75/5 educational design + verification ownership**",
+      "source_line_start": 4683,
+      "source_line_end": 4687
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "27. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "27. Complexity dimensions"
+      ],
+      "content": "| Dimension | Rating | Notes |\n|---|---:|---|\n| RTL state complexity | **2.75/5** | multiple modes, scores, win state |\n| Sequential timing complexity | **3.0/5** | nonblocking update latency across blocks |\n| Verification-scenario complexity | **3.0/5** | multiple planned behaviors |\n| Architecture complexity | 2.5/5 | small DUT, multiple procedural blocks |\n| Integration complexity | 1.75/5 | missing external clock file |\n| Coverage complexity | 1.5/5 | no metric-driven closure |\n| Operational/hardware complexity | 0/5 | simulation only |\n\nRepo021's strongest complexity dimension is **reasoning about temporal behavior**, not design scale.",
+      "source_line_start": 4687,
+      "source_line_end": 4701
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "28. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "28. Scale dimensions"
+      ],
+      "content": "| Scale | Observed |\n|---|---|\n| DUT scope | small multi-mode counter/game |\n| Score/state variables | several synchronous outputs/counters |\n| Directed cases | explicit scenario set, incomplete result-array initialization |\n| Simulation environment | single testbench |\n| Assertions | 0 |\n| Covergroups | 0 |\n| Randomized transactions | 0 |\n| Hardware target | none |\n| Team | individual/unknown |\n\nThis is small-scale verification with genuine execution logic.",
+      "source_line_start": 4701,
+      "source_line_end": 4717
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "29. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "29. Engineering decisions and tradeoffs"
+      ],
+      "content": "### Decision — directed tests instead of UVM\n\nFor this DUT size, simple directed checks are arguably the more proportionate choice.\n\n**Benefit:** low overhead, direct expected-output reasoning, executable results.\n\n**Cost:** limited reuse, no coverage closure, no scalable transaction abstraction.\n\nThis creates an important comparison with Repo015: naming UVM without implementing it is weaker evidence than a simpler methodology that actually runs checks.\n\n### Decision — multiple clocked blocks by responsibility\n\n**Benefit:** readable conceptual decomposition.\n\n**Cost:** shared-signal assignments create multiple-driver/scheduling hazards.\n\n### Decision — fixed-delay synchronization\n\n**Benefit:** easy to write.\n\n**Cost:** tests are coupled to clock period and hidden latency; changes can break tests for reasons unrelated to behavior.\n\n### Decision — result array and summary report\n\n**Benefit:** moves from waveform inspection to explicit pass/fail aggregation.\n\n**Cost:** incomplete initialization undermines report trustworthiness.",
+      "source_line_start": 4717,
+      "source_line_end": 4747
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Decision — directed tests instead of UVM",
+      "normalized_title": "Decision — directed tests instead of UVM",
+      "key": "decision_directed_tests_instead_of_uvm",
+      "path": [
+        "29. Engineering decisions and tradeoffs",
+        "Decision — directed tests instead of UVM"
+      ],
+      "content": "For this DUT size, simple directed checks are arguably the more proportionate choice.\n\n**Benefit:** low overhead, direct expected-output reasoning, executable results.\n\n**Cost:** limited reuse, no coverage closure, no scalable transaction abstraction.\n\nThis creates an important comparison with Repo015: naming UVM without implementing it is weaker evidence than a simpler methodology that actually runs checks.",
+      "source_line_start": 4719,
+      "source_line_end": 4729
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Decision — multiple clocked blocks by responsibility",
+      "normalized_title": "Decision — multiple clocked blocks by responsibility",
+      "key": "decision_multiple_clocked_blocks_by_responsibility",
+      "path": [
+        "29. Engineering decisions and tradeoffs",
+        "Decision — multiple clocked blocks by responsibility"
+      ],
+      "content": "**Benefit:** readable conceptual decomposition.\n\n**Cost:** shared-signal assignments create multiple-driver/scheduling hazards.",
+      "source_line_start": 4729,
+      "source_line_end": 4735
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Decision — fixed-delay synchronization",
+      "normalized_title": "Decision — fixed-delay synchronization",
+      "key": "decision_fixed_delay_synchronization",
+      "path": [
+        "29. Engineering decisions and tradeoffs",
+        "Decision — fixed-delay synchronization"
+      ],
+      "content": "**Benefit:** easy to write.\n\n**Cost:** tests are coupled to clock period and hidden latency; changes can break tests for reasons unrelated to behavior.",
+      "source_line_start": 4735,
+      "source_line_end": 4741
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Decision — result array and summary report",
+      "normalized_title": "Decision — result array and summary report",
+      "key": "decision_result_array_and_summary_report",
+      "path": [
+        "29. Engineering decisions and tradeoffs",
+        "Decision — result array and summary report"
+      ],
+      "content": "**Benefit:** moves from waveform inspection to explicit pass/fail aggregation.\n\n**Cost:** incomplete initialization undermines report trustworthiness.",
+      "source_line_start": 4741,
+      "source_line_end": 4747
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "30. Engineering judgment evidence",
+      "normalized_title": "Engineering judgment evidence",
+      "key": "engineering_judgment_evidence",
+      "path": [
+        "30. Engineering judgment evidence"
+      ],
+      "content": "Strong signals:\n- writes down behavioral cases;\n- distinguishes useful/redundant cases;\n- makes testbench self-evaluating;\n- adds reset testing;\n- iterates source over weeks;\n- chooses a simple verification method suitable for a small DUT.\n\nWeak signals:\n- multi-driver RTL;\n- implicit one-cycle latencies are not documented;\n- fixed time delays rather than edge/event synchronization;\n- incomplete result-array setup;\n- missing clock dependency;\n- no clean simulation termination.\n\n### Judgment rating\n\n**2.75/5**, with verification judgment stronger than RTL architecture judgment.",
+      "source_line_start": 4747,
+      "source_line_end": 4769
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Judgment rating",
+      "normalized_title": "Judgment rating",
+      "key": "judgment_rating",
+      "path": [
+        "30. Engineering judgment evidence",
+        "Judgment rating"
+      ],
+      "content": "**2.75/5**, with verification judgment stronger than RTL architecture judgment.",
+      "source_line_start": 4765,
+      "source_line_end": 4769
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "31. Mistakes / anti-patterns / likely lessons — expanded",
+      "normalized_title": "Mistakes / anti-patterns / likely lessons — expanded",
+      "key": "mistakes_anti_patterns_likely_lessons_expanded",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded"
+      ],
+      "content": "### Multiple procedural ownership\n\nSignals driven from multiple `always` blocks create ambiguity and synthesis risk. The likely lesson is to define **one sequential owner per state register** and derive combinational next-state separately where appropriate.\n\n### Nonblocking-assignment latency\n\nA downstream clocked block sees the previous cycle's value. Score/game-over logic therefore contains hidden pipeline-like latency. This is not necessarily wrong, but undocumented latency is a verification hazard.\n\n### Fixed-delay tests\n\nTesting by “wait N time units then inspect” becomes brittle. Clock-event synchronization and reusable tasks make intent clearer.\n\n### Incomplete test-results array\n\nA self-checking report is only as trustworthy as its bookkeeping. Uninitialized/unassigned slots can produce false failures or ambiguous output.\n\n### Missing dependency\n\nA repository that references `clock.sv` but does not contain it cannot reproduce cleanly from checkout.",
+      "source_line_start": 4769,
+      "source_line_end": 4791
+    },
+    {
+      "id": "s063",
+      "level": 3,
+      "title": "Multiple procedural ownership",
+      "normalized_title": "Multiple procedural ownership",
+      "key": "multiple_procedural_ownership",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded",
+        "Multiple procedural ownership"
+      ],
+      "content": "Signals driven from multiple `always` blocks create ambiguity and synthesis risk. The likely lesson is to define **one sequential owner per state register** and derive combinational next-state separately where appropriate.",
+      "source_line_start": 4771,
+      "source_line_end": 4775
+    },
+    {
+      "id": "s064",
+      "level": 3,
+      "title": "Nonblocking-assignment latency",
+      "normalized_title": "Nonblocking-assignment latency",
+      "key": "nonblocking_assignment_latency",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded",
+        "Nonblocking-assignment latency"
+      ],
+      "content": "A downstream clocked block sees the previous cycle's value. Score/game-over logic therefore contains hidden pipeline-like latency. This is not necessarily wrong, but undocumented latency is a verification hazard.",
+      "source_line_start": 4775,
+      "source_line_end": 4779
+    },
+    {
+      "id": "s065",
+      "level": 3,
+      "title": "Fixed-delay tests",
+      "normalized_title": "Fixed-delay tests",
+      "key": "fixed_delay_tests",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded",
+        "Fixed-delay tests"
+      ],
+      "content": "Testing by “wait N time units then inspect” becomes brittle. Clock-event synchronization and reusable tasks make intent clearer.",
+      "source_line_start": 4779,
+      "source_line_end": 4783
+    },
+    {
+      "id": "s066",
+      "level": 3,
+      "title": "Incomplete test-results array",
+      "normalized_title": "Incomplete test-results array",
+      "key": "incomplete_test_results_array",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded",
+        "Incomplete test-results array"
+      ],
+      "content": "A self-checking report is only as trustworthy as its bookkeeping. Uninitialized/unassigned slots can produce false failures or ambiguous output.",
+      "source_line_start": 4783,
+      "source_line_end": 4787
+    },
+    {
+      "id": "s067",
+      "level": 3,
+      "title": "Missing dependency",
+      "normalized_title": "Missing dependency",
+      "key": "missing_dependency",
+      "path": [
+        "31. Mistakes / anti-patterns / likely lessons — expanded",
+        "Missing dependency"
+      ],
+      "content": "A repository that references `clock.sv` but does not contain it cannot reproduce cleanly from checkout.",
+      "source_line_start": 4787,
+      "source_line_end": 4791
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "32. CI/CD / simulation automation",
+      "normalized_title": "CI/CD / simulation automation",
+      "key": "ci_cd_simulation_automation",
+      "path": [
+        "32. CI/CD / simulation automation"
+      ],
+      "content": "No CI workflow is observed.\n\nA mature next step for this specific repository would have been lightweight simulation automation:\n- install/open-source simulator;\n- compile all `.sv` files;\n- fail on missing `clock.sv`;\n- run testbench to completion;\n- parse nonzero/failing test result;\n- archive waveform/log if desired.\n\nThis would be CI, not deployment. There is no meaningful CD target for the current simulation-only project.\n\n### Ratings\n\n- CI: **0/5**\n- Simulation automation potential: **high**\n- Deployment: N/A",
+      "source_line_start": 4791,
+      "source_line_end": 4811
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Ratings",
+      "normalized_title": "Ratings",
+      "key": "ratings",
+      "path": [
+        "32. CI/CD / simulation automation",
+        "Ratings"
+      ],
+      "content": "- CI: **0/5**\n- Simulation automation potential: **high**\n- Deployment: N/A",
+      "source_line_start": 4805,
+      "source_line_end": 4811
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "33. Documentation — expanded",
+      "normalized_title": "Documentation — expanded",
+      "key": "documentation_expanded",
+      "path": [
+        "33. Documentation — expanded"
+      ],
+      "content": "The README/test-case table is more valuable than the documentation in several earlier HDL repos because it records intended behaviors.\n\nStrengths:\n- makes test intent visible;\n- distinguishes cases;\n- supports verification planning.\n\nWeaknesses:\n- missing dependency is not documented;\n- timing/latency assumptions are not explained;\n- no compile/run instructions;\n- no tool/version requirement;\n- no explicit known RTL issues.\n\n### Documentation rating\n\n**3.0/5** remains fair.",
+      "source_line_start": 4811,
+      "source_line_end": 4831
+    },
+    {
+      "id": "s071",
+      "level": 3,
+      "title": "Documentation rating",
+      "normalized_title": "Documentation rating",
+      "key": "documentation_rating",
+      "path": [
+        "33. Documentation — expanded",
+        "Documentation rating"
+      ],
+      "content": "**3.0/5** remains fair.",
+      "source_line_start": 4827,
+      "source_line_end": 4831
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "34. Repository hygiene / build discipline",
+      "normalized_title": "Repository hygiene / build discipline",
+      "key": "repository_hygiene_build_discipline",
+      "path": [
+        "34. Repository hygiene / build discipline"
+      ],
+      "content": "Positive:\n- compact source-focused repo;\n- multiple source revisions;\n- no large generated binary tree highlighted.\n\nWeak:\n- missing `clock.sv` breaks self-containment;\n- no simulator script/Makefile;\n- no CI;\n- no lint configuration;\n- no synthesis target;\n- no automated termination contract.\n\n### Ratings\n\n- Repository hygiene: **2.5/5**\n- Reproducibility: **1.5/5**\n- Source iteration discipline: **3.25/5**",
+      "source_line_start": 4831,
+      "source_line_end": 4852
+    },
+    {
+      "id": "s073",
+      "level": 3,
+      "title": "Ratings",
+      "normalized_title": "Ratings",
+      "key": "ratings",
+      "path": [
+        "34. Repository hygiene / build discipline",
+        "Ratings"
+      ],
+      "content": "- Repository hygiene: **2.5/5**\n- Reproducibility: **1.5/5**\n- Source iteration discipline: **3.25/5**",
+      "source_line_start": 4846,
+      "source_line_end": 4852
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "35. First / previous / current / corpus-max ledger — expanded",
+      "normalized_title": "First / previous / current / corpus-max ledger — expanded",
+      "key": "first_previous_current_corpus_max_ledger_expanded",
+      "path": [
+        "35. First / previous / current / corpus-max ledger — expanded"
+      ],
+      "content": "| Skill | Previous max | Repo021 | Corpus state |\n|---|---:|---:|---:|\n| SystemVerilog | Repo015 3.0 | **3.25** | new modest max |\n| Directed HDL verification | ~2.75 | **3.0** | reinforced/advanced |\n| Self-checking HDL testing | weak/none | **3.0** | first strong evidence |\n| Verification planning | limited | **3.25** | first strong evidence |\n| Reset discipline | weak | **2.5** | improvement |\n| Sequential-timing reasoning | present in HDL repos | **2.75** | reinforced |\n| UVM | 0 | **0** | remains absent |\n| SVA | 0 | **0** | remains absent |\n| Functional coverage | 0 | **0** | remains absent |\n| Constrained random | 0 | **0** | remains absent |",
+      "source_line_start": 4852,
+      "source_line_end": 4867
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "36. Project-to-project comparison — expanded",
+      "normalized_title": "Project-to-project comparison — expanded",
+      "key": "project_to_project_comparison_expanded",
+      "path": [
+        "36. Project-to-project comparison — expanded"
+      ],
+      "content": "### Repo015 → Repo021\n\nRepo015 is a more ambitious DUT but weaker verification execution. Repo021 is a smaller DUT with stronger verification evidence.\n\nThis is a major methodological point:\n\n> **Engineering maturity is not proportional to project complexity. A small system with explicit executable checks can demonstrate stronger discipline than a large system with planned-but-unimplemented verification.**\n\n### Repo014 → Repo021\n\nRepo014 uses a broader integration testbench and waveform reasoning. Repo021 adds programmatic pass/fail checks, making the verification result less dependent on manual waveform interpretation.\n\n### Repo004/005 → Repo021\n\nThe early Verilog work establishes hardware-description fundamentals. Repo021 demonstrates a later shift toward verification as a first-class engineering task.",
+      "source_line_start": 4867,
+      "source_line_end": 4885
+    },
+    {
+      "id": "s076",
+      "level": 3,
+      "title": "Repo015 → Repo021",
+      "normalized_title": "Repo015 → Repo021",
+      "key": "repo015_repo021",
+      "path": [
+        "36. Project-to-project comparison — expanded",
+        "Repo015 → Repo021"
+      ],
+      "content": "Repo015 is a more ambitious DUT but weaker verification execution. Repo021 is a smaller DUT with stronger verification evidence.\n\nThis is a major methodological point:\n\n> **Engineering maturity is not proportional to project complexity. A small system with explicit executable checks can demonstrate stronger discipline than a large system with planned-but-unimplemented verification.**",
+      "source_line_start": 4869,
+      "source_line_end": 4877
+    },
+    {
+      "id": "s077",
+      "level": 3,
+      "title": "Repo014 → Repo021",
+      "normalized_title": "Repo014 → Repo021",
+      "key": "repo014_repo021",
+      "path": [
+        "36. Project-to-project comparison — expanded",
+        "Repo014 → Repo021"
+      ],
+      "content": "Repo014 uses a broader integration testbench and waveform reasoning. Repo021 adds programmatic pass/fail checks, making the verification result less dependent on manual waveform interpretation.",
+      "source_line_start": 4877,
+      "source_line_end": 4881
+    },
+    {
+      "id": "s078",
+      "level": 3,
+      "title": "Repo004/005 → Repo021",
+      "normalized_title": "Repo004/005 → Repo021",
+      "key": "repo004_005_repo021",
+      "path": [
+        "36. Project-to-project comparison — expanded",
+        "Repo004/005 → Repo021"
+      ],
+      "content": "The early Verilog work establishes hardware-description fundamentals. Repo021 demonstrates a later shift toward verification as a first-class engineering task.",
+      "source_line_start": 4881,
+      "source_line_end": 4885
+    },
+    {
+      "id": "s079",
+      "level": 2,
+      "title": "37. Portfolio Evidence Weight — expanded rationale",
+      "normalized_title": "Portfolio Evidence Weight — expanded rationale",
+      "key": "portfolio_evidence_weight_expanded_rationale",
+      "path": [
+        "37. Portfolio Evidence Weight — expanded rationale"
+      ],
+      "content": "**4.25/5** is justified despite the modest DUT.\n\nWhy high:\n- first strong self-checking HDL verification evidence;\n- explicit test planning;\n- multi-week source evolution;\n- important trajectory progression.\n\nWhy not higher:\n- missing dependency;\n- multiple-driver defects;\n- no assertions/coverage/randomization;\n- no automated CI;\n- no hardware/synthesis validation.",
+      "source_line_start": 4885,
+      "source_line_end": 4902
+    },
+    {
+      "id": "s080",
+      "level": 2,
+      "title": "38. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "38. Current relevance / recency"
+      ],
+      "content": "Repo021 is historical early-2023 verification evidence. It should remain the **first strong self-checking HDL milestone**, but later verification repositories should determine present capability.\n\nDo not infer current UVM/SVA expertise from this project because they are specifically absent.",
+      "source_line_start": 4902,
+      "source_line_end": 4908
+    },
+    {
+      "id": "s081",
+      "level": 2,
+      "title": "39. Product / engineering failure potential",
+      "normalized_title": "Product / engineering failure potential",
+      "key": "product_engineering_failure_potential",
+      "path": [
+        "39. Product / engineering failure potential"
+      ],
+      "content": "Because the project is simulated, direct physical harm is low. If this RTL were intended for synthesis, the key risks would be:\n- multiple drivers;\n- timing-latency misunderstandings;\n- incomplete test-result bookkeeping;\n- unreproducible missing dependency;\n- lack of coverage/constraint closure.\n\nThe project itself illustrates why verification must be proportionate to the consequences of failure.",
+      "source_line_start": 4908,
+      "source_line_end": 4919
+    },
+    {
+      "id": "s082",
+      "level": 2,
+      "title": "40. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "40. Human impact"
+      ],
+      "content": "Direct human impact is educational. The broader engineering lesson is important: hardware behavior can be opaque, and users downstream of hardware systems depend on engineers making state transitions and verification evidence explicit.\n\nThe repository's strongest positive signal is the move toward **checking expected behavior rather than assuming it from implementation intent**.",
+      "source_line_start": 4919,
+      "source_line_end": 4925
+    },
+    {
+      "id": "s083",
+      "level": 2,
+      "title": "41. Cumulative career state after Repository 021",
+      "normalized_title": "Cumulative career state after Repository 021",
+      "key": "cumulative_career_state_after_repository_021",
+      "path": [
+        "41. Cumulative career state after Repository 021"
+      ],
+      "content": "By Repo021, the hardware trajectory has three distinct layers:\n\n```text\nRTL implementation foundations\n        ↓\ncomponent/system integration\n        ↓\nexplicit self-checking verification\n```\n\nThat makes verification a demonstrated capability rather than merely a project-title aspiration.\n\nThe wider career corpus is now simultaneously developing:\n- hardware/verification;\n- Java application engineering;\n- ML foundations;\n- networking concepts;\n- autonomous sensing.",
+      "source_line_start": 4925,
+      "source_line_end": 4946
+    },
+    {
+      "id": "s084",
+      "level": 2,
+      "title": "42. Expanded longitudinal summary vector",
+      "normalized_title": "Expanded longitudinal summary vector",
+      "key": "expanded_longitudinal_summary_vector",
+      "path": [
+        "42. Expanded longitudinal summary vector"
+      ],
+      "content": "| Axis | Repo021 effect |\n|---|---|\n| SystemVerilog depth | modest increase |\n| Verification execution | major increase |\n| Test planning | major increase |\n| Hardware product scale | small |\n| Reproducibility | weak |\n| Formal/coverage methods | absent |\n| Career differentiation | high for early portfolio |\n| Engineering-process evidence | strong relative to neighboring repos |",
+      "source_line_start": 4946,
+      "source_line_end": 4959
+    },
+    {
+      "id": "s085",
+      "level": 2,
+      "title": "43. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "43. RAG anti-inflation warnings"
+      ],
+      "content": "1. “Verification” is real, but it is directed testing—not UVM.\n2. No SVA exists.\n3. No functional coverage exists.\n4. No constrained-random verification exists.\n5. No scoreboard/reference model exists.\n6. Missing `clock.sv` means checkout is incomplete.\n7. Multiple clocked blocks drive shared signals.\n8. Fixed-delay tests are timing-coupled.\n9. The 15-entry result array contains fewer visibly initialized cases.\n10. No synthesis/FPGA validation is shown.\n11. Test success output is not equivalent to formal coverage closure.\n12. Historical evidence does not prove current verification proficiency.\n\n---",
+      "source_line_start": 4959,
+      "source_line_end": 4976
+    },
+    {
+      "id": "s086",
+      "level": 2,
+      "title": "44. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "44. Bottom line"
+      ],
+      "content": "Repository 021 is one of the most important hardware-learning milestones so far because it converts verification from an aspiration into executable checks.\n\nThe design itself is modest—a multi-mode circular counter wrapped in winner/loser game semantics—but the verification behavior is more important than the DUT complexity.\n\nThe developer now:\n\n- enumerates behavioral test cases;\n- thinks about redundant/useless cases;\n- constructs directed stimulus;\n- checks expected winner/loser/reset outcomes;\n- stores test status;\n- produces a pass/fail report.\n\nThat is a real improvement over prior waveform-only checking.\n\nThe next maturity frontier remains clear:\n\n> **clock-synchronized reusable testbench tasks → clean self-contained builds → assertions → constrained random → functional coverage → scoreboards/reference models → UVM where justified.**\n\n### Key ratings\n\n- SystemVerilog: **3.25/5**\n- Digital control design: **2.75/5**\n- Directed self-checking verification: **3.0/5**\n- Verification planning: **3.25/5**\n- Testbench architecture: **2.75/5**\n- Reset discipline: **2.5/5**\n- UVM: **0/5**\n- SVA: **0/5**\n- Functional coverage: **0/5**\n- Constrained random: **0/5**\n- Reproducibility: **1.5/5**\n- Verification maturity: **2.75/5**\n- Portfolio Evidence Weight: **4.25/5**\n- Career-skill evidence: **4.5/5**\n\n### Career-level conclusion\n\n> **By April 2023, the hardware trajectory has moved beyond merely writing RTL and visually inspecting waveforms. The developer is now authoring explicit behavioral test plans and programmatic pass/fail checks. Verification is still directed and relatively ad hoc, but this is the first clear implementation evidence of a verification mindset rather than verification intent alone.**\n\n---\n\n**End of Repository 021 / 134.**\n\n---",
+      "source_line_start": 4976,
+      "source_line_end": 5023
+    },
+    {
+      "id": "s087",
+      "level": 3,
+      "title": "Key ratings",
+      "normalized_title": "Key ratings",
+      "key": "key_ratings",
+      "path": [
+        "44. Bottom line",
+        "Key ratings"
+      ],
+      "content": "- SystemVerilog: **3.25/5**\n- Digital control design: **2.75/5**\n- Directed self-checking verification: **3.0/5**\n- Verification planning: **3.25/5**\n- Testbench architecture: **2.75/5**\n- Reset discipline: **2.5/5**\n- UVM: **0/5**\n- SVA: **0/5**\n- Functional coverage: **0/5**\n- Constrained random: **0/5**\n- Reproducibility: **1.5/5**\n- Verification maturity: **2.75/5**\n- Portfolio Evidence Weight: **4.25/5**\n- Career-skill evidence: **4.5/5**",
+      "source_line_start": 4997,
+      "source_line_end": 5014
+    },
+    {
+      "id": "s088",
+      "level": 3,
+      "title": "Career-level conclusion",
+      "normalized_title": "Career-level conclusion",
+      "key": "career_level_conclusion",
+      "path": [
+        "44. Bottom line",
+        "Career-level conclusion"
+      ],
+      "content": "> **By April 2023, the hardware trajectory has moved beyond merely writing RTL and visually inspecting waveforms. The developer is now authoring explicit behavioral test plans and programmatic pass/fail checks. Verification is still directed and relatively ad hoc, but this is the first clear implementation evidence of a verification mindset rather than verification intent alone.**\n\n---\n\n**End of Repository 021 / 134.**\n\n---",
+      "source_line_start": 5014,
+      "source_line_end": 5023
+    }
+  ],
+  "raw_analysis": "# Repository 021 / 134 — `Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification`\n\n## Project identity\n\n**Descriptive name:** **SystemVerilog Multi-Mode Circular Counter Game with Directed Self-Checking Verification**\n\nRepository 021 is a meaningful verification milestone.\n\nRepo 015 explicitly planned verification but stopped before UVM/hazard implementation.\n\nRepo 021 contains an actual authored testbench that:\n\n- defines test scenarios;\n- drives reset/init/control sequences;\n- observes outputs;\n- records per-test pass/fail status;\n- prints a test-case report.\n\nThis is the first strong direct corpus evidence of **self-checking HDL verification authored by the developer**.\n\nHowever, it is not UVM, SVA, constrained-random or coverage-driven verification.\n\nThe final repository contains:\n\n- `GameDesign.sv`\n- `README.md`\n\n`GameDesign.sv` includes:\n\n```systemverilog\n`include \"clock.sv\"\n```\n\nbut `clock.sv` is absent from the final tree.\n\nTherefore a clean checkout is not self-contained.\n\nCorrect classification:\n\n> **A SystemVerilog digital-design exercise with a substantial directed self-checking testbench and explicit test planning, but with important RTL/testbench correctness and reproducibility weaknesses.**\n\n---\n\n## 1. RAG metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification` |\n| Chronology index | **021 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-03-23 03:54:53 UTC** |\n| First commit | **2023-03-23 03:54:54 UTC** |\n| Latest commit | **2023-04-17 18:17:51 UTC** |\n| Exact commits | **17** |\n| Active span | **25 d 14 h 22 m 57 s** |\n| Primary language | **SystemVerilog** |\n| Final source | `GameDesign.sv`, README |\n| Source size | ~12 KB |\n| Default branch | `main` |\n| Branches | `main` only |\n| Branch protection | None |\n| Directed test cases documented | 6 principal README scenarios, additional source tests |\n| Self-checking pass/fail | Yes |\n| UVM | No |\n| SVA | No |\n| Functional coverage | No |\n| Constrained random | No |\n| CI | None |\n| Synthesis/FPGA | None observed |\n| Reproducibility | limited by missing `clock.sv` |\n| Product maturity | N/A — design/verification exercise |\n| Verification maturity | **2.75/5** |\n| SystemVerilog maturity | **3.25/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **4.25/5** |\n| Career-skill evidence | **4.5/5** |\n\n---\n\n## 2. Design behavior\n\nThe DUT `MMC_Game` implements a 3-bit circular counter controlled by two-bit modes:\n\n- up by 1;\n- up by 2;\n- down by 1;\n- down by 2.\n\nThe counter wraps across the 0–7 range.\n\nGame semantics:\n\n- landing on 7 increments the winner side;\n- landing on 0 increments the loser side;\n- first side to score `0xF` causes game over;\n- output `who` indicates winner/loser;\n- reset/init inputs alter state.\n\nThis gives a compact stateful design with:\n\n- counter mode control;\n- wraparound;\n- round detection;\n- accumulated statistics;\n- terminal game condition.\n\n---\n\n## 3. Verification planning\n\nREADME explicitly lists test objectives rather than merely describing the design.\n\nExamples include:\n\n- up-by-2 path avoiding 7 so loser should win;\n- up-by-1 from zero;\n- alternation between 6 and 7 to favor winner;\n- initializing at 7 then incrementing by 2;\n- mixed +1/+2 pattern;\n- reset behavior.\n\nThe README also labels several proposed tests as:\n\n**Useless**\n\nwhich is interesting engineering evidence: the developer is reasoning about test redundancy/value rather than blindly accumulating cases.\n\n### Verification-planning rating\n\n**3.25/5**\n\n---\n\n## 4. Self-checking testbench\n\nThe testbench declares a test-results array and uses checks such as:\n\n```text\nif (who == LOSER_WON)\n    Testcases[n] = Test_Success\nelse\n    Testcases[n] = Test_Failed\n```\n\nAt the end it iterates over results and prints:\n\n- Success\n- Failed\n\nThis is qualitatively different from earlier waveform-only testbenches.\n\n### First direct strong evidence\n\n**Authored self-checking HDL tests**\n\n### Rating\n\n**Directed self-checking verification: 3.0/5**\n\nThis raises the corpus verification maximum substantially.\n\n---\n\n## 5. Test coverage intent\n\nThe directed tests cover multiple dimensions:\n\n- each increment/decrement mode;\n- wraparound behavior;\n- winner/loser game outcomes;\n- initialization;\n- reset;\n- alternating control sequences.\n\nThis demonstrates deliberate scenario partitioning.\n\n### Strength\n\nThe tests are tied to expected behavioral outcomes.\n\n### Weakness\n\nThere is no formal coverage metric proving state/control combinations are complete.\n\n### Functional test-design rating\n\n**3.0/5**\n\n---\n\n## 6. UVM comparison with Repo 015\n\nRepo 015:\n- UVM named in repo title;\n- README explicitly says UVM files remain TODO;\n- actual UVM = 0.\n\nRepo 021:\n- no UVM branding;\n- actually implements behavioral checks.\n\nThis is a meaningful maturity lesson:\n\n> **Simple executed verification is stronger evidence than sophisticated methodology listed only as a plan.**\n\n### UVM\n\n**0/5**\n\n### Verification execution\n\nRepo015 **1.25/5 → Repo021 2.75/5**\n\n---\n\n## 7. No SVA / constrained random / functional coverage\n\nNo evidence of:\n\n- `assert property`;\n- SystemVerilog properties/sequences;\n- covergroups;\n- coverpoints;\n- cross coverage;\n- `rand`;\n- constraints;\n- randomized transactions;\n- transaction-level scoreboard;\n- reference model.\n\n### Ratings\n\n- SVA: **0/5**\n- functional coverage: **0/5**\n- constrained random: **0/5**\n- UVM: **0/5**\n\nThe verification approach is deterministic directed testing.\n\n---\n\n## 8. RTL organization\n\nThe design separates behavior into multiple clocked blocks:\n\n- counter;\n- winner/loser round decision;\n- score increment;\n- game-over detection.\n\nConceptually, this separates responsibilities.\n\nHowever, several blocks drive the same variables.\n\n### Multiple procedural drivers\n\nSignals such as:\n\n- `winner`;\n- `loser`;\n- `gameover`;\n- `who`;\n- `count`;\n- `winner_count`;\n- `loser_count`\n\nare assigned from more than one `always` block.\n\nThis is problematic for synthesis and can create scheduling/race ambiguity.\n\n### RTL architecture rating\n\n**2.5/5**\n\n---\n\n## 9. Reset behavior\n\nAsynchronous reset is included in several blocks.\n\nThis is an improvement over Repo 015, where reset was declared but unused.\n\n### Positive\n\n- count/state outputs reset;\n- winner/loser counts reset;\n- gameover reset.\n\n### Weakness\n\nBecause the same signals have multiple procedural drivers, reset semantics are fragmented.\n\n### Reset discipline\n\n**2.5/5**\n\nThis is a meaningful corpus improvement.\n\n---\n\n## 10. Counter-mode implementation\n\nFour modes are represented with macros.\n\nThere is redundancy in the up-by-2 block: after conditional assignments, another unconditional `count <= count + 2` is issued.\n\nBecause of 3-bit wraparound, the final arithmetic may still produce intended values for some edge cases, but the duplicate assignment makes intent less clear and relies on last nonblocking assignment behavior.\n\n### Control-logic rating\n\n**2.75/5**\n\n---\n\n## 11. Sequential timing / score latency\n\nWinner/loser flags are assigned in one clocked block, while score counters consume those flags in another clocked block.\n\nBecause nonblocking assignments use pre-edge values, score updates occur based on the prior cycle's winner/loser flag.\n\nSimilarly, game-over logic observes prior score values.\n\nThis creates implicit multi-cycle latency.\n\nIt may be acceptable if intentionally modeled, but it is not documented and complicates test timing.\n\n### Sequential timing discipline\n\n**2.5/5**\n\n---\n\n## 12. Testbench brittleness\n\nTests rely heavily on long fixed delays such as hundreds or thousands of simulation time units.\n\nThat makes them:\n\n- harder to understand;\n- coupled to clock timing;\n- fragile under design timing changes.\n\nA more mature testbench would use event/clock synchronization and reusable tasks.\n\n### Testbench architecture\n\n**2.75/5**\n\n---\n\n## 13. Test-results array defect\n\nThe testbench declares:\n\n```text\nint Testcases[15]\n```\n\nbut visibly assigns only a subset of those entries.\n\nIt then uses `foreach` over all 15.\n\nUnassigned entries can remain unknown/default and be reported as failures or ambiguous results.\n\nTherefore the summary report may contain meaningless extra test outcomes.\n\nThis limits the cleanliness of the self-checking mechanism.\n\n---\n\n## 14. Missing clock dependency\n\nThe source includes:\n\n`clock.sv`\n\nbut the final Git tree has no such file.\n\n### Consequence\n\nThe repository is not self-contained for compilation.\n\nThis repeats a reproducibility problem seen in Repo 014 (`MINI_CPU.v`) and Repo 015 (missing memory initialization files).\n\n### Reproducibility\n\n**1.5/5**\n\n---\n\n## 15. No simulation termination\n\nNo clear `$finish` appears in the final testbench excerpt.\n\nWith an external/free-running clock, the simulation may continue after reporting unless the environment stops it.\n\n### Test lifecycle maturity\n\n**1.75/5**\n\n---\n\n## 16. Source evolution\n\nUnlike snapshot-only repos, `GameDesign.sv` has multiple source commits:\n\n- initial March source;\n- later April source upload;\n- final April update.\n\nThat gives direct evidence of iterative design/verification work over nearly four weeks.\n\n### Source-iteration rating\n\n**3.25/5**\n\nThis is stronger than Repo 015's short rewrite window.\n\n---\n\n## 17. Verification career trajectory\n\nThe hardware verification progression now becomes:\n\n```text\nRepos004–005\nmanual stimulus / waveform-level checking\n        ↓\nRepo014\nlarger integration scenario + waveform inspection\n        ↓\nRepo015\nSystemVerilog + explicit UVM/hazard verification ambition\n        ↓\nRepo021\ndirected self-checking tests with pass/fail results\n```\n\n### Important interpretation\n\nRepo 021 is the first point where the portfolio shows:\n\n> **the testbench evaluating expected outcomes programmatically.**\n\nThat is a real maturity gain.\n\n---\n\n## 18. SystemVerilog recurrence\n\nRepo 015 first introduced SystemVerilog.\n\nRepo 021 reinforces it with:\n\n- `logic`;\n- procedural RTL;\n- testbench arrays;\n- macros;\n- module integration;\n- output checking.\n\n### Rating\n\n**SystemVerilog: 3.25/5**\n\nCorpus maximum rises modestly due to recurrence plus stronger verification use.\n\n---\n\n## 19. Standard evaluation matrix\n\n| Dimension | Score / 5 | Notes |\n|---|---:|---|\n| Problem clarity | **4.0** |\n| Domain specificity | **4.0** | digital design/verification |\n| Functional completeness | **3.0** |\n| Domain correctness | 2.5 | multi-driver/timing concerns |\n| Architecture | 2.5 |\n| Separation of concerns | 2.75 conceptual |\n| Code organization | 2.5 |\n| Maintainability | 2.0 |\n| Extensibility | 2.0 |\n| Algorithmic/control design | 2.75 |\n| Reliability | 2.25 |\n| Reset | **2.5** |\n| Error handling | N/A |\n| Testing | **3.0 directed** |\n| Testability | **3.5** |\n| Test planning | **3.25** |\n| Assertions | 0 |\n| Functional coverage | 0 |\n| Constrained random | 0 |\n| UVM | 0 |\n| CI | 0 |\n| Observability | **3.0** | explicit results |\n| Documentation | **3.0** | test-case table |\n| Reproducibility | 1.5 |\n| Repository hygiene | 3.0 |\n| Version-control usage | **3.25** |\n| Commit quality | 1.75 |\n| Product maturity | N/A |\n| Engineering maturity | **2.5** |\n| Verification maturity | **2.75** |\n| Portfolio differentiation | **4.0** |\n| Career-skill evidence | **4.5** |\n\n---\n\n## 20. First / previous / current ledger\n\n| Skill | Previous max | Repo021 | New corpus state |\n|---|---:|---:|---:|\n| SystemVerilog | Repo015 3.0 | **3.25** | **3.25** |\n| Directed HDL verification | ~2.75 | **3.0** | **3.0** |\n| Self-checking HDL tests | weak/none | **3.0** | **3.0** |\n| Test-case planning | earlier limited | **3.25** | **3.25** |\n| Reset discipline | ~1 | **2.5** | **2.5** |\n| UVM | 0 | **0** | not implemented |\n| SVA | 0 | **0** | not implemented |\n| Functional coverage | 0 | **0** | not implemented |\n| Constrained random | 0 | **0** | not implemented |\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->\n\n## 21. Chronology and lifecycle interpretation — expanded\n\nRepository 021 spans roughly late March through April 2023 and contains multiple source revisions rather than a one-shot publication snapshot. That difference matters.\n\nCompared with Repo015's short rewrite window, Repo021 provides stronger evidence of an iterative loop:\n\n```text\ninitial RTL / test intent\n        ↓\nsource revision\n        ↓\nverification expansion\n        ↓\nfinal update\n```\n\nThe repository therefore has greater value for **engineering-process evidence**, even though the DUT itself is smaller than the pipelined CPU attempt.\n\n## 22. Origin / context\n\nThe project is a compact digital-design/verification exercise built around a configurable counter with winner/loser game semantics. Its educational purpose appears to be testing both RTL design and verification thinking.\n\nNo evidence supports:\n- commercial FPGA product;\n- deployed hardware;\n- ASIC flow;\n- external verification team;\n- formal safety requirements.\n\nCorrect classification:\n\n> **SystemVerilog RTL + directed self-checking verification exercise.**\n\n## 23. Contribution / authorship confidence\n\nThe source and testbench appear directly maintained in the user's repository and no imported UVM/course framework is identified in the current evidence.\n\nSafe credit:\n- RTL implementation present in the repository;\n- directed test-case planning;\n- self-checking comparisons/results;\n- iterative source changes.\n\nUnknown:\n- whether the initial problem specification was instructor-provided;\n- authorship of any missing `clock.sv` dependency.\n\nAttribution confidence for the implemented RTL/testbench is **medium-high to high**.\n\n## 24. Source tree / architecture — expanded\n\nThe design is conceptually decomposed into synchronous responsibilities:\n\n```text\nmode/control inputs\n      ↓\n counter update logic\n      ↓\n winner/loser decision\n      ↓\n round score update\n      ↓\n game-over / who-won state\n```\n\nThe testbench adds a parallel verification path:\n\n```text\nclock/reset/stimulus\n      ↓\nselected test scenario\n      ↓\nwait fixed simulation interval\n      ↓\ninspect DUT outputs\n      ↓\nrecord pass/fail in Testcases[]\n      ↓\nprint summary\n```\n\n### Architectural tension\n\nThe intended conceptual separation is reasonable, but the RTL physically assigns several shared signals from multiple clocked blocks. That weakens synthesis correctness and makes ownership of state ambiguous.\n\nThe key lesson is:\n\n> **separating responsibilities into blocks is only beneficial when each state element has a clear single update owner.**\n\n## 25. Capability relationship\n\n| Relationship | Evidence |\n|---|---|\n| Implemented | SystemVerilog RTL and directed testbench checks |\n| Designed | counter/game state decomposition and test scenarios |\n| Used | macros, `logic`, arrays, clocked processes, nonblocking assignments |\n| Configured | modes, reset, test sequences |\n| Integrated | DUT + external/missing clock dependency + testbench |\n| Operated | simulation workflow inferred from testbench/reporting |\n| Led/Owned | small educational project, no team evidence |\n\n## 26. Responsibility scope\n\nDirect technical responsibility includes:\n- coding DUT state behavior;\n- defining mode behavior;\n- implementing reset paths;\n- creating scenario-based tests;\n- deciding expected outcomes;\n- recording pass/fail status.\n\nNot evidenced:\n- synthesis constraints;\n- timing closure;\n- FPGA bring-up;\n- verification-plan sign-off;\n- coverage closure;\n- UVM environment architecture;\n- formal verification;\n- production silicon responsibility.\n\n### Responsibility rating\n\n**2.75/5 educational design + verification ownership**\n\n## 27. Complexity dimensions\n\n| Dimension | Rating | Notes |\n|---|---:|---|\n| RTL state complexity | **2.75/5** | multiple modes, scores, win state |\n| Sequential timing complexity | **3.0/5** | nonblocking update latency across blocks |\n| Verification-scenario complexity | **3.0/5** | multiple planned behaviors |\n| Architecture complexity | 2.5/5 | small DUT, multiple procedural blocks |\n| Integration complexity | 1.75/5 | missing external clock file |\n| Coverage complexity | 1.5/5 | no metric-driven closure |\n| Operational/hardware complexity | 0/5 | simulation only |\n\nRepo021's strongest complexity dimension is **reasoning about temporal behavior**, not design scale.\n\n## 28. Scale dimensions\n\n| Scale | Observed |\n|---|---|\n| DUT scope | small multi-mode counter/game |\n| Score/state variables | several synchronous outputs/counters |\n| Directed cases | explicit scenario set, incomplete result-array initialization |\n| Simulation environment | single testbench |\n| Assertions | 0 |\n| Covergroups | 0 |\n| Randomized transactions | 0 |\n| Hardware target | none |\n| Team | individual/unknown |\n\nThis is small-scale verification with genuine execution logic.\n\n## 29. Engineering decisions and tradeoffs\n\n### Decision — directed tests instead of UVM\n\nFor this DUT size, simple directed checks are arguably the more proportionate choice.\n\n**Benefit:** low overhead, direct expected-output reasoning, executable results.\n\n**Cost:** limited reuse, no coverage closure, no scalable transaction abstraction.\n\nThis creates an important comparison with Repo015: naming UVM without implementing it is weaker evidence than a simpler methodology that actually runs checks.\n\n### Decision — multiple clocked blocks by responsibility\n\n**Benefit:** readable conceptual decomposition.\n\n**Cost:** shared-signal assignments create multiple-driver/scheduling hazards.\n\n### Decision — fixed-delay synchronization\n\n**Benefit:** easy to write.\n\n**Cost:** tests are coupled to clock period and hidden latency; changes can break tests for reasons unrelated to behavior.\n\n### Decision — result array and summary report\n\n**Benefit:** moves from waveform inspection to explicit pass/fail aggregation.\n\n**Cost:** incomplete initialization undermines report trustworthiness.\n\n## 30. Engineering judgment evidence\n\nStrong signals:\n- writes down behavioral cases;\n- distinguishes useful/redundant cases;\n- makes testbench self-evaluating;\n- adds reset testing;\n- iterates source over weeks;\n- chooses a simple verification method suitable for a small DUT.\n\nWeak signals:\n- multi-driver RTL;\n- implicit one-cycle latencies are not documented;\n- fixed time delays rather than edge/event synchronization;\n- incomplete result-array setup;\n- missing clock dependency;\n- no clean simulation termination.\n\n### Judgment rating\n\n**2.75/5**, with verification judgment stronger than RTL architecture judgment.\n\n## 31. Mistakes / anti-patterns / likely lessons — expanded\n\n### Multiple procedural ownership\n\nSignals driven from multiple `always` blocks create ambiguity and synthesis risk. The likely lesson is to define **one sequential owner per state register** and derive combinational next-state separately where appropriate.\n\n### Nonblocking-assignment latency\n\nA downstream clocked block sees the previous cycle's value. Score/game-over logic therefore contains hidden pipeline-like latency. This is not necessarily wrong, but undocumented latency is a verification hazard.\n\n### Fixed-delay tests\n\nTesting by “wait N time units then inspect” becomes brittle. Clock-event synchronization and reusable tasks make intent clearer.\n\n### Incomplete test-results array\n\nA self-checking report is only as trustworthy as its bookkeeping. Uninitialized/unassigned slots can produce false failures or ambiguous output.\n\n### Missing dependency\n\nA repository that references `clock.sv` but does not contain it cannot reproduce cleanly from checkout.\n\n## 32. CI/CD / simulation automation\n\nNo CI workflow is observed.\n\nA mature next step for this specific repository would have been lightweight simulation automation:\n- install/open-source simulator;\n- compile all `.sv` files;\n- fail on missing `clock.sv`;\n- run testbench to completion;\n- parse nonzero/failing test result;\n- archive waveform/log if desired.\n\nThis would be CI, not deployment. There is no meaningful CD target for the current simulation-only project.\n\n### Ratings\n\n- CI: **0/5**\n- Simulation automation potential: **high**\n- Deployment: N/A\n\n## 33. Documentation — expanded\n\nThe README/test-case table is more valuable than the documentation in several earlier HDL repos because it records intended behaviors.\n\nStrengths:\n- makes test intent visible;\n- distinguishes cases;\n- supports verification planning.\n\nWeaknesses:\n- missing dependency is not documented;\n- timing/latency assumptions are not explained;\n- no compile/run instructions;\n- no tool/version requirement;\n- no explicit known RTL issues.\n\n### Documentation rating\n\n**3.0/5** remains fair.\n\n## 34. Repository hygiene / build discipline\n\nPositive:\n- compact source-focused repo;\n- multiple source revisions;\n- no large generated binary tree highlighted.\n\nWeak:\n- missing `clock.sv` breaks self-containment;\n- no simulator script/Makefile;\n- no CI;\n- no lint configuration;\n- no synthesis target;\n- no automated termination contract.\n\n### Ratings\n\n- Repository hygiene: **2.5/5**\n- Reproducibility: **1.5/5**\n- Source iteration discipline: **3.25/5**\n\n## 35. First / previous / current / corpus-max ledger — expanded\n\n| Skill | Previous max | Repo021 | Corpus state |\n|---|---:|---:|---:|\n| SystemVerilog | Repo015 3.0 | **3.25** | new modest max |\n| Directed HDL verification | ~2.75 | **3.0** | reinforced/advanced |\n| Self-checking HDL testing | weak/none | **3.0** | first strong evidence |\n| Verification planning | limited | **3.25** | first strong evidence |\n| Reset discipline | weak | **2.5** | improvement |\n| Sequential-timing reasoning | present in HDL repos | **2.75** | reinforced |\n| UVM | 0 | **0** | remains absent |\n| SVA | 0 | **0** | remains absent |\n| Functional coverage | 0 | **0** | remains absent |\n| Constrained random | 0 | **0** | remains absent |\n\n## 36. Project-to-project comparison — expanded\n\n### Repo015 → Repo021\n\nRepo015 is a more ambitious DUT but weaker verification execution. Repo021 is a smaller DUT with stronger verification evidence.\n\nThis is a major methodological point:\n\n> **Engineering maturity is not proportional to project complexity. A small system with explicit executable checks can demonstrate stronger discipline than a large system with planned-but-unimplemented verification.**\n\n### Repo014 → Repo021\n\nRepo014 uses a broader integration testbench and waveform reasoning. Repo021 adds programmatic pass/fail checks, making the verification result less dependent on manual waveform interpretation.\n\n### Repo004/005 → Repo021\n\nThe early Verilog work establishes hardware-description fundamentals. Repo021 demonstrates a later shift toward verification as a first-class engineering task.\n\n## 37. Portfolio Evidence Weight — expanded rationale\n\n**4.25/5** is justified despite the modest DUT.\n\nWhy high:\n- first strong self-checking HDL verification evidence;\n- explicit test planning;\n- multi-week source evolution;\n- important trajectory progression.\n\nWhy not higher:\n- missing dependency;\n- multiple-driver defects;\n- no assertions/coverage/randomization;\n- no automated CI;\n- no hardware/synthesis validation.\n\n## 38. Current relevance / recency\n\nRepo021 is historical early-2023 verification evidence. It should remain the **first strong self-checking HDL milestone**, but later verification repositories should determine present capability.\n\nDo not infer current UVM/SVA expertise from this project because they are specifically absent.\n\n## 39. Product / engineering failure potential\n\nBecause the project is simulated, direct physical harm is low. If this RTL were intended for synthesis, the key risks would be:\n- multiple drivers;\n- timing-latency misunderstandings;\n- incomplete test-result bookkeeping;\n- unreproducible missing dependency;\n- lack of coverage/constraint closure.\n\nThe project itself illustrates why verification must be proportionate to the consequences of failure.\n\n## 40. Human impact\n\nDirect human impact is educational. The broader engineering lesson is important: hardware behavior can be opaque, and users downstream of hardware systems depend on engineers making state transitions and verification evidence explicit.\n\nThe repository's strongest positive signal is the move toward **checking expected behavior rather than assuming it from implementation intent**.\n\n## 41. Cumulative career state after Repository 021\n\nBy Repo021, the hardware trajectory has three distinct layers:\n\n```text\nRTL implementation foundations\n        ↓\ncomponent/system integration\n        ↓\nexplicit self-checking verification\n```\n\nThat makes verification a demonstrated capability rather than merely a project-title aspiration.\n\nThe wider career corpus is now simultaneously developing:\n- hardware/verification;\n- Java application engineering;\n- ML foundations;\n- networking concepts;\n- autonomous sensing.\n\n## 42. Expanded longitudinal summary vector\n\n| Axis | Repo021 effect |\n|---|---|\n| SystemVerilog depth | modest increase |\n| Verification execution | major increase |\n| Test planning | major increase |\n| Hardware product scale | small |\n| Reproducibility | weak |\n| Formal/coverage methods | absent |\n| Career differentiation | high for early portfolio |\n| Engineering-process evidence | strong relative to neighboring repos |\n\n## 43. RAG anti-inflation warnings\n\n1. “Verification” is real, but it is directed testing—not UVM.\n2. No SVA exists.\n3. No functional coverage exists.\n4. No constrained-random verification exists.\n5. No scoreboard/reference model exists.\n6. Missing `clock.sv` means checkout is incomplete.\n7. Multiple clocked blocks drive shared signals.\n8. Fixed-delay tests are timing-coupled.\n9. The 15-entry result array contains fewer visibly initialized cases.\n10. No synthesis/FPGA validation is shown.\n11. Test success output is not equivalent to formal coverage closure.\n12. Historical evidence does not prove current verification proficiency.\n\n---\n\n## 44. Bottom line\n\nRepository 021 is one of the most important hardware-learning milestones so far because it converts verification from an aspiration into executable checks.\n\nThe design itself is modest—a multi-mode circular counter wrapped in winner/loser game semantics—but the verification behavior is more important than the DUT complexity.\n\nThe developer now:\n\n- enumerates behavioral test cases;\n- thinks about redundant/useless cases;\n- constructs directed stimulus;\n- checks expected winner/loser/reset outcomes;\n- stores test status;\n- produces a pass/fail report.\n\nThat is a real improvement over prior waveform-only checking.\n\nThe next maturity frontier remains clear:\n\n> **clock-synchronized reusable testbench tasks → clean self-contained builds → assertions → constrained random → functional coverage → scoreboards/reference models → UVM where justified.**\n\n### Key ratings\n\n- SystemVerilog: **3.25/5**\n- Digital control design: **2.75/5**\n- Directed self-checking verification: **3.0/5**\n- Verification planning: **3.25/5**\n- Testbench architecture: **2.75/5**\n- Reset discipline: **2.5/5**\n- UVM: **0/5**\n- SVA: **0/5**\n- Functional coverage: **0/5**\n- Constrained random: **0/5**\n- Reproducibility: **1.5/5**\n- Verification maturity: **2.75/5**\n- Portfolio Evidence Weight: **4.25/5**\n- Career-skill evidence: **4.5/5**\n\n### Career-level conclusion\n\n> **By April 2023, the hardware trajectory has moved beyond merely writing RTL and visually inspecting waveforms. The developer is now authoring explicit behavioral test plans and programmatic pass/fail checks. Verification is still directed and relatively ad hoc, but this is the first clear implementation evidence of a verification mindset rather than verification intent alone.**\n\n---\n\n**End of Repository 021 / 134.**\n\n---\n"
+}

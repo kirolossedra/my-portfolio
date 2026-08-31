@@ -1,0 +1,1315 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 34,
+  "repository_total": 134,
+  "repository_name": "Port-AUTOSAR-ARM",
+  "header_title": "`Port-AUTOSAR-ARM`",
+  "repository_slug": "kirolossedra/Port-AUTOSAR-ARM",
+  "repository_url": "https://github.com/kirolossedra/Port-AUTOSAR-ARM",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-028-039.md",
+    "line_start": 4041,
+    "line_end": 4844,
+    "sha256": "6e3b8173ef8ea2ec3fcf1c3546e93cea1c06da81fe16e27805e312c4f5b81534"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {
+    "repository": "kirolossedra/Port-AUTOSAR-ARM",
+    "chronology_index": "034 / 134",
+    "primary_language": "C",
+    "target": "TM4C123GH6PM / ARM Cortex-M4",
+    "owner_authored_file_dates": "Port.h 2022-02-05; Port.c 2022-02-06; PortPBcfg.c 2022-02-12",
+    "github_archival_period": "2024",
+    "autosar_release_constants": "4.0.3",
+    "core_owner_module": "Port",
+    "supporting_modules": "Dio, Det, Button, Led, OS/GPT/startup/config headers",
+    "configuration_style": "Pre-compile + post-build style structures",
+    "tests": "No automated tests observed",
+    "ci": "None",
+    "production_deployment": "None"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Embedded C",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Register-level GPIO",
+      "rating_5": 3.75,
+      "rating_raw": "3.75/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "TM4C123",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "AUTOSAR concepts",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Port/MCAL-style driver design",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Configuration architecture",
+      "rating_5": 3.25,
+      "rating_raw": "3.25/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Defensive API/DET concepts",
+      "rating_5": 3.0,
+      "rating_raw": "3.0/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "C correctness in final snapshot",
+      "rating_5": 2.0,
+      "rating_raw": "2.0/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Automotive production maturity",
+      "rating_5": 1.0,
+      "rating_raw": "1.0/5",
+      "source_section_id": "s024",
+      "source_section_title": "22. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    }
+  ],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Project identity"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **AUTOSAR-Style TM4C123 Port Driver and Layered Embedded Exercise**\n\nA historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\nCorrect classification:\n\n> **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002",
+        "s006"
+      ],
+      "titles": [
+        "1. RAG Metadata",
+        "5. AUTOSAR-style module metadata"
+      ],
+      "text": "## 1. RAG Metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Port-AUTOSAR-ARM` |\n| Chronology index | **034 / 134** |\n| Primary language | C |\n| Target | TM4C123GH6PM / ARM Cortex-M4 |\n| Owner-authored file dates | Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 |\n| GitHub archival period | 2024 |\n| AUTOSAR release constants | 4.0.3 |\n| Core owner module | Port |\n| Supporting modules | Dio, Det, Button, Led, OS/GPT/startup/config headers |\n| Configuration style | Pre-compile + post-build style structures |\n| Tests | No automated tests observed |\n| CI | None |\n| Production deployment | None |\n\n---\n\n## 5. AUTOSAR-style module metadata\n`Port.h` defines:\n\n- vendor/module/instance IDs;\n- software version 1.0.1;\n- AUTOSAR release 4.0.3;\n- service IDs;\n- DET error codes;\n- initialized/uninitialized state;\n- API feature switches via configuration headers.\n\nThis is strong evidence of learning standardized embedded-driver structure rather than writing only ad-hoc register code.\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s060",
+        "s070"
+      ],
+      "titles": [
+        "51. Expanded longitudinal summary vector",
+        "61. Repository 034 bottom line"
+      ],
+      "text": "## 51. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 61. Repository 034 bottom line\nA historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.0/5  \n**Engineering maturity:** 2.75/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity."
+    },
+    "chronology": {
+      "section_ids": [
+        "s067"
+      ],
+      "titles": [
+        "58. Current relevance / recency"
+      ],
+      "text": "## 58. Current relevance / recency\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---"
+    },
+    "technical_scope": {
+      "section_ids": [
+        "s039"
+      ],
+      "titles": [
+        "35. Technical realm"
+      ],
+      "text": "## 35. Technical realm\nRepository `Port-AUTOSAR-ARM` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Register-level GPIO: 3.75/5**\n- **Embedded C: 3.5/5**\n- **TM4C123: 3.5/5**\n- **AUTOSAR concepts: 3.5/5**\n- **Port/MCAL-style driver design: 3.5/5**\n\n---"
+    },
+    "architecture": {
+      "section_ids": [
+        "s042"
+      ],
+      "titles": [
+        "37. Architecture / data-flow synthesis"
+      ],
+      "text": "## 37. Architecture / data-flow synthesis\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---"
+    },
+    "skills": {
+      "section_ids": [
+        "s024",
+        "s025",
+        "s026",
+        "s047"
+      ],
+      "titles": [
+        "22. Direct skill evidence ratings",
+        "23. Skill lifecycle",
+        "24. Skill evidence dimensions",
+        "38. Artifact-to-skill evidence map"
+      ],
+      "text": "## 22. Direct skill evidence ratings\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Register-level GPIO | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| TM4C123 | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AUTOSAR concepts | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Port/MCAL-style driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Configuration architecture | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Defensive API/DET concepts | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C correctness in final snapshot | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Automotive production maturity | **1.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 23. Skill lifecycle\n- Historically predates the 2024 repository sequence: direct source dates place important embedded work in 2022.\n- Strongly upgrades direct embedded-driver evidence beyond Repo018 console C.\n- Later professional embedded repositories can supersede correctness/maturity while this remains important first/early architecture evidence.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 24. Skill evidence dimensions\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 38. Artifact-to-skill evidence map\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Port-AUTOSAR-ARM` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **034 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: TM4C123GH6PM / ARM Cortex-M4 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored file dates: Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| GitHub archival period: 2024 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| AUTOSAR release constants: 4.0.3 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Core owner module: Port | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Supporting modules: Dio, Det, Button, Led, OS/GPT/startup/config headers | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Configuration style: Pre-compile + post-build style structures | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---"
+    },
+    "business_domain": {
+      "section_ids": [
+        "s041"
+      ],
+      "titles": [
+        "36. Product / business / domain realm"
+      ],
+      "text": "## 36. Product / business / domain realm\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---"
+    },
+    "scale": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "27. Scale dimensions"
+      ],
+      "text": "## 27. Scale dimensions\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---"
+    },
+    "maturity": {
+      "section_ids": [
+        "s048",
+        "s061"
+      ],
+      "titles": [
+        "39. Reliability and defensive-engineering maturity",
+        "52. Product and engineering maturity"
+      ],
+      "text": "## 39. Reliability and defensive-engineering maturity\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 52. Product and engineering maturity\n| Measure | Rating |\n|---|---:|\n| Product maturity | **2.0/5** |\n| Engineering maturity | **2.75/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---"
+    },
+    "testing": {
+      "section_ids": [
+        "s035",
+        "s058"
+      ],
+      "titles": [
+        "31. Testing and verification maturity",
+        "49. Testing trajectory update"
+      ],
+      "text": "## 31. Testing and verification maturity\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 49. Testing trajectory update\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s049"
+      ],
+      "titles": [
+        "40. Security and privacy maturity"
+      ],
+      "text": "## 40. Security and privacy maturity\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s036"
+      ],
+      "titles": [
+        "32. CI/CD and deployment"
+      ],
+      "text": "## 32. CI/CD and deployment\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---"
+    },
+    "documentation": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "33. Documentation and reproducibility"
+      ],
+      "text": "## 33. Documentation and reproducibility\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---"
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s038"
+      ],
+      "titles": [
+        "34. Repository hygiene"
+      ],
+      "text": "## 34. Repository hygiene\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---"
+    },
+    "strengths": {
+      "section_ids": [
+        "s052"
+      ],
+      "titles": [
+        "43. Strengths"
+      ],
+      "text": "## 43. Strengths\n- Direct evidence of **Embedded C** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Register-level GPIO** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **TM4C123** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **AUTOSAR concepts** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Port/MCAL-style driver design** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Configuration architecture** at approximately **3.25/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s034",
+        "s053"
+      ],
+      "titles": [
+        "30. Mistakes, anti-patterns, and likely lessons",
+        "44. Weaknesses / engineering debt"
+      ],
+      "text": "## 30. Mistakes, anti-patterns, and likely lessons\n- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 44. Weaknesses / engineering debt\n- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---"
+    },
+    "production_evolution": {
+      "section_ids": [
+        "s054"
+      ],
+      "titles": [
+        "45. What production evolution would require"
+      ],
+      "text": "## 45. What production evolution would require\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---"
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s063"
+      ],
+      "titles": [
+        "54. Product / engineering failure potential"
+      ],
+      "text": "## 54. Product / engineering failure potential\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---"
+    },
+    "human_impact": {
+      "section_ids": [
+        "s064"
+      ],
+      "titles": [
+        "55. Human impact / dignity boundary"
+      ],
+      "text": "## 55. Human impact / dignity boundary\nGPIO/Port drivers control the physical boundary of embedded systems. A wrong pin mode or register write can disable safety functions or actuate unintended hardware. This educational snapshot has no evidence of the verification rigor required for real automotive responsibility.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---"
+    },
+    "evidence_inference": {
+      "section_ids": [
+        "s056"
+      ],
+      "titles": [
+        "47. Evidence vs. inference register"
+      ],
+      "text": "## 47. Evidence vs. inference register\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s005",
+        "s022",
+        "s023"
+      ],
+      "titles": [
+        "4. Attribution split inside one repository",
+        "21. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "text": "## 4. Attribution split inside one repository\nThe repository is mixed provenance.\n\nDirect owner markers:\n\n- `Port.h` — Author: `kirol`;\n- `Port.c` — Author: `kirol`;\n- `Port_PBcfg.c` — Author: `kirol`.\n\nExplicit external/course markers include:\n\n- `App.c` — Author: Mohamed Tarek;\n- `Dio.c` — Author: Mohamed Tarek.\n\nTherefore the portfolio should credit the **Port-driver implementation and related owner-marked work** directly, while treating the surrounding framework as integration/reference context.\n\n---\n\n## 21. Origin / contribution / attribution register\n- Port module files explicitly carry owner author markers and are credited directly.\n- Several surrounding framework/application files explicitly credit Mohamed Tarek and are treated as reference/course infrastructure.\n- No attempt is made to transfer external code authorship to the portfolio owner.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## Attribution rule\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "25. Responsibility scope"
+      ],
+      "text": "## 25. Responsibility scope\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---"
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "28. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 28. Engineering decisions and tradeoffs\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---"
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s033"
+      ],
+      "titles": [
+        "29. Engineering judgment evidence"
+      ],
+      "text": "## 29. Engineering judgment evidence\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---"
+    },
+    "limitations": {
+      "section_ids": [
+        "s069"
+      ],
+      "titles": [
+        "60. RAG anti-inflation warnings"
+      ],
+      "text": "## 60. RAG anti-inflation warnings\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s057",
+        "s059",
+        "s060",
+        "s065",
+        "s066",
+        "s068"
+      ],
+      "titles": [
+        "48. Career-field historicity after Repository 034",
+        "50. Systems-engineering trajectory update",
+        "51. Expanded longitudinal summary vector",
+        "56. Longitudinal project comparisons",
+        "57. First / Previous / Current / Corpus-Max ledger update",
+        "59. Cumulative career state after Repository 034"
+      ],
+      "text": "## 48. Career-field historicity after Repository 034\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 50. Systems-engineering trajectory update\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 51. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 56. Longitudinal project comparisons\n- Repo018: first direct C but no hardware; Repo034 is true register-level embedded C.\n- Repo035–038: AVR applications/drivers from similar historical era; Repo034 is more standardized/architecture-oriented.\n- Repo013/027/030: autonomous/sensor domain; Repo034 adds lower-level automotive-style platform software.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 57. First / Previous / Current / Corpus-Max ledger update\n| Ledger field | Update |\n|---|---|\n| Repository | `Port-AUTOSAR-ARM` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 59. Cumulative career state after Repository 034\nMajor historical upgrade: demonstrates that low-level driver architecture, MCU registers and AUTOSAR vocabulary existed in the skill graph by 2022, even though the code was archived later and correctness was immature.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **AUTOSAR-Style TM4C123 Port Driver and Layered Embedded Exercise**\n\nA historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\nCorrect classification:\n\n> **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\n---",
+      "source_line_start": 4043,
+      "source_line_end": 4055
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG Metadata",
+      "normalized_title": "RAG Metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG Metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Port-AUTOSAR-ARM` |\n| Chronology index | **034 / 134** |\n| Primary language | C |\n| Target | TM4C123GH6PM / ARM Cortex-M4 |\n| Owner-authored file dates | Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 |\n| GitHub archival period | 2024 |\n| AUTOSAR release constants | 4.0.3 |\n| Core owner module | Port |\n| Supporting modules | Dio, Det, Button, Led, OS/GPT/startup/config headers |\n| Configuration style | Pre-compile + post-build style structures |\n| Tests | No automated tests observed |\n| CI | None |\n| Production deployment | None |\n\n---",
+      "source_line_start": 4055,
+      "source_line_end": 4075
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "2. Evidence basis and inspection method",
+      "normalized_title": "Evidence basis and inspection method",
+      "key": "evidence_basis_and_inspection_method",
+      "path": [
+        "2. Evidence basis and inspection method"
+      ],
+      "content": "Evidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---",
+      "source_line_start": 4075,
+      "source_line_end": 4090
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "3. Historical-context rule",
+      "normalized_title": "Historical-context rule",
+      "key": "historical_context_rule",
+      "path": [
+        "3. Historical-context rule"
+      ],
+      "content": "The GitHub repository belongs to the 2024 archival sequence, but key owner-authored source headers date the Port work to **February 2022**.\n\nThe skill-acquisition chronology must therefore use the source dates for historical placement while retaining 2024 as the repository-publication/archive date.\n\nThis is a critical anti-distortion rule: uploading old code later must not make the skill look newly acquired in 2024.\n\n---",
+      "source_line_start": 4090,
+      "source_line_end": 4100
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "4. Attribution split inside one repository",
+      "normalized_title": "Attribution split inside one repository",
+      "key": "attribution_split_inside_one_repository",
+      "path": [
+        "4. Attribution split inside one repository"
+      ],
+      "content": "The repository is mixed provenance.\n\nDirect owner markers:\n\n- `Port.h` — Author: `kirol`;\n- `Port.c` — Author: `kirol`;\n- `Port_PBcfg.c` — Author: `kirol`.\n\nExplicit external/course markers include:\n\n- `App.c` — Author: Mohamed Tarek;\n- `Dio.c` — Author: Mohamed Tarek.\n\nTherefore the portfolio should credit the **Port-driver implementation and related owner-marked work** directly, while treating the surrounding framework as integration/reference context.\n\n---",
+      "source_line_start": 4100,
+      "source_line_end": 4119
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "5. AUTOSAR-style module metadata",
+      "normalized_title": "AUTOSAR-style module metadata",
+      "key": "autosar_style_module_metadata",
+      "path": [
+        "5. AUTOSAR-style module metadata"
+      ],
+      "content": "`Port.h` defines:\n\n- vendor/module/instance IDs;\n- software version 1.0.1;\n- AUTOSAR release 4.0.3;\n- service IDs;\n- DET error codes;\n- initialized/uninitialized state;\n- API feature switches via configuration headers.\n\nThis is strong evidence of learning standardized embedded-driver structure rather than writing only ad-hoc register code.\n\n---",
+      "source_line_start": 4119,
+      "source_line_end": 4135
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "6. Version compatibility checks",
+      "normalized_title": "Version compatibility checks",
+      "key": "version_compatibility_checks",
+      "path": [
+        "6. Version compatibility checks"
+      ],
+      "content": "The code performs compile-time AUTOSAR/software-version compatibility checks between Port, Std_Types, configuration and DET-related modules.\n\nThis demonstrates awareness of interface/version contracts.\n\nHowever several error messages/comments still say `Dio` inside Port files, revealing copy/adaptation debt.\n\n---",
+      "source_line_start": 4135,
+      "source_line_end": 4145
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "7. Post-build configuration",
+      "normalized_title": "Post-build configuration",
+      "key": "post_build_configuration",
+      "path": [
+        "7. Post-build configuration"
+      ],
+      "content": "`Port_PBcfg.c` creates a configuration object populated with many `CHANNEL_DEFAULT` entries plus explicit LED/switch channels.\n\nThis shows the key AUTOSAR idea of separating driver behavior from configuration data.\n\nThe configuration layer is more architecturally mature than hard-coding one pin inside the driver.\n\n---",
+      "source_line_start": 4145,
+      "source_line_end": 4155
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "8. Port initialization flow",
+      "normalized_title": "Port initialization flow",
+      "key": "port_initialization_flow",
+      "path": [
+        "8. Port initialization flow"
+      ],
+      "content": "`Port_Init` iterates configured pins, selects GPIO base addresses, enables peripheral clocks and configures direction, initial value, pull resistors and pin mode.\n\nThis is direct register-level hardware abstraction work.\n\nThe function touches multiple TM4C GPIO register families through base-address + offset calculations.\n\n---",
+      "source_line_start": 4155,
+      "source_line_end": 4165
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "9. Alternate-function breadth",
+      "normalized_title": "Alternate-function breadth",
+      "key": "alternate_function_breadth",
+      "path": [
+        "9. Alternate-function breadth"
+      ],
+      "content": "The Port code contains explicit mode paths for:\n\n- DIO;\n- UART;\n- ADC;\n- CAN;\n- SSI;\n- I2C;\n- PWM;\n- USB;\n- QEI;\n- GPT;\n- NMI;\n- analog comparator;\n- core/debug-related modes.\n\nThis is broad peripheral-multiplexing exposure even though not every mode is complete or validated.\n\n---",
+      "source_line_start": 4165,
+      "source_line_end": 4187
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "10. Special-pin unlock defect",
+      "normalized_title": "Special-pin unlock defect",
+      "key": "special_pin_unlock_defect",
+      "path": [
+        "10. Special-pin unlock defect"
+      ],
+      "content": "The code intends to recognize **PD7** and **PF0** as lock/commit-sensitive pins.\n\nBut the condition compares `port_num` to two different values simultaneously, e.g. `port_num == 3 && port_num == 7`.\n\nThat can never be true.\n\nThe likely intent was a combination of `port_num` and `pin_num`.\n\nThis is a high-value correctness lesson because special MCU pins require exact register conditions.\n\n---",
+      "source_line_start": 4187,
+      "source_line_end": 4201
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "11. C chained-comparison defect",
+      "normalized_title": "C chained-comparison defect",
+      "key": "c_chained_comparison_defect",
+      "path": [
+        "11. C chained-comparison defect"
+      ],
+      "content": "`Port_SetPinDirection` uses expressions such as:\n\n`PORTA_START_PIN <= Pin < PORTB_START_PIN`\n\nC does **not** interpret that as a mathematical range check. The left comparison becomes 0/1 and that result is then compared with the upper bound.\n\nThis can route pins to the wrong port and is a fundamental C semantic defect.\n\n---",
+      "source_line_start": 4201,
+      "source_line_end": 4213
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "12. Port-E direction bug",
+      "normalized_title": "Port-E direction bug",
+      "key": "port_e_direction_bug",
+      "path": [
+        "12. Port-E direction bug"
+      ],
+      "content": "In the Port-E input-direction branch, the code references `GPIO_PORTD_BASE_ADDRESS` and `PORTD_START_PIN`.\n\nThat appears to be a copy/paste error capable of modifying the wrong hardware register.\n\n---",
+      "source_line_start": 4213,
+      "source_line_end": 4221
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "13. Refresh-direction implementation defects",
+      "normalized_title": "Refresh-direction implementation defects",
+      "key": "refresh_direction_implementation_defects",
+      "path": [
+        "13. Refresh-direction implementation defects"
+      ],
+      "content": "The visible `Port_RefreshPortDirection` code includes severe issues:\n\n- `for(itr i=...)` with an unexplained iterator type;\n- references `ptr[Pin]` where `Pin` is not defined in the loop;\n- calls `Port_SetPinMode` while passing a direction field.\n\nThis indicates an unfinished/uncompiled path rather than a completed AUTOSAR API implementation.\n\n---",
+      "source_line_start": 4221,
+      "source_line_end": 4233
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "14. State/config pointer inconsistency",
+      "normalized_title": "State/config pointer inconsistency",
+      "key": "state_config_pointer_inconsistency",
+      "path": [
+        "14. State/config pointer inconsistency"
+      ],
+      "content": "The source uses variants including `PORT_STATUS`, `Port_Status`, `ptr`, `PortConf`, `PORT_INITIALIZED` and `PORT_UNINITIALIZED`.\n\nThese inconsistencies materially weaken compile confidence and show why standardized naming matters in low-level drivers.\n\n---",
+      "source_line_start": 4233,
+      "source_line_end": 4241
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "15. Type-definition ordering/inconsistency",
+      "normalized_title": "Type-definition ordering/inconsistency",
+      "key": "type_definition_ordering_inconsistency",
+      "path": [
+        "15. Type-definition ordering/inconsistency"
+      ],
+      "content": "`Port.h` visibly uses `Port_PinDirectionType` inside a structure before the typedef appears later in the file.\n\nAnother configuration structure refers to type names such as `Port_PinDirection` / `Port_InternalResistor` that are not defined in the inspected header excerpt.\n\nThis is strong evidence that the final snapshot is incomplete or internally inconsistent.\n\n---",
+      "source_line_start": 4241,
+      "source_line_end": 4251
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "16. Incomplete peripheral questions retained in code",
+      "normalized_title": "Incomplete peripheral questions retained in code",
+      "key": "incomplete_peripheral_questions_retained_in_code",
+      "path": [
+        "16. Incomplete peripheral questions retained in code"
+      ],
+      "content": "Comments such as:\n\n- “Should i enable RCGCADC and PLL ??”;\n- “RCGCSSI register???”\n\nare valuable historical evidence of active learning.\n\nThey also prevent the repository from being represented as a finished driver stack. The author was reasoning through clock/peripheral prerequisites, not delivering a validated production MCAL.\n\n---",
+      "source_line_start": 4251,
+      "source_line_end": 4264
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "17. Logical-versus-bitwise condition defect",
+      "normalized_title": "Logical-versus-bitwise condition defect",
+      "key": "logical_versus_bitwise_condition_defect",
+      "path": [
+        "17. Logical-versus-bitwise condition defect"
+      ],
+      "content": "A PWM pin-selection condition contains a single bitwise `|` between boolean expressions.\n\nWhile bitwise operations on 0/1 expressions can sometimes appear to work, this is semantically wrong for control-flow composition and can produce subtle precedence/readability defects.\n\n---",
+      "source_line_start": 4264,
+      "source_line_end": 4272
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "18. DET and defensive-programming exposure",
+      "normalized_title": "DET and defensive-programming exposure",
+      "key": "det_and_defensive_programming_exposure",
+      "path": [
+        "18. DET and defensive-programming exposure"
+      ],
+      "content": "Despite implementation flaws, the module includes a serious attempt at defensive API behavior:\n\n- null-configuration checks;\n- invalid-pin checks;\n- uninitialized-module checks;\n- changeability checks;\n- version-info API;\n- development error reporting.\n\nThis marks a meaningful progression from earlier bare-metal application exercises toward standardized driver contracts.\n\n---",
+      "source_line_start": 4272,
+      "source_line_end": 4287
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "19. Application/task context",
+      "normalized_title": "Application/task context",
+      "key": "application_task_context",
+      "path": [
+        "19. Application/task context"
+      ],
+      "content": "The surrounding `App.c` defines initialization plus periodic button, LED and application tasks at 20/40/60 ms conceptual intervals.\n\nBecause `App.c` explicitly credits Mohamed Tarek, this is contextual architecture evidence—not direct authorship credit.\n\nIt nevertheless shows the environment in which the Port driver was intended to participate.\n\n---",
+      "source_line_start": 4287,
+      "source_line_end": 4297
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "20. No production AUTOSAR claim",
+      "normalized_title": "No production AUTOSAR claim",
+      "key": "no_production_autosar_claim",
+      "path": [
+        "20. No production AUTOSAR claim"
+      ],
+      "content": "Nothing in this repository justifies claiming:\n\n- certified AUTOSAR MCAL development;\n- conformance testing;\n- MISRA compliance;\n- automotive safety lifecycle;\n- production ECU deployment;\n- generated ARXML/configuration tooling.\n\nCorrect wording is **AUTOSAR-style educational Port-driver implementation on TM4C123**.\n\n---",
+      "source_line_start": 4297,
+      "source_line_end": 4312
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "21. Origin / contribution / attribution register",
+      "normalized_title": "Origin / contribution / attribution register",
+      "key": "origin_contribution_attribution_register",
+      "path": [
+        "21. Origin / contribution / attribution register"
+      ],
+      "content": "- Port module files explicitly carry owner author markers and are credited directly.\n- Several surrounding framework/application files explicitly credit Mohamed Tarek and are treated as reference/course infrastructure.\n- No attempt is made to transfer external code authorship to the portfolio owner.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 4312,
+      "source_line_end": 4324
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Attribution rule",
+      "normalized_title": "Attribution rule",
+      "key": "attribution_rule",
+      "path": [
+        "21. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "content": "Credit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 4318,
+      "source_line_end": 4324
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "22. Direct skill evidence ratings",
+      "normalized_title": "Direct skill evidence ratings",
+      "key": "direct_skill_evidence_ratings",
+      "path": [
+        "22. Direct skill evidence ratings"
+      ],
+      "content": "| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Register-level GPIO | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| TM4C123 | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AUTOSAR concepts | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Port/MCAL-style driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Configuration architecture | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Defensive API/DET concepts | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C correctness in final snapshot | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Automotive production maturity | **1.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---",
+      "source_line_start": 4324,
+      "source_line_end": 4342
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "23. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "23. Skill lifecycle"
+      ],
+      "content": "- Historically predates the 2024 repository sequence: direct source dates place important embedded work in 2022.\n- Strongly upgrades direct embedded-driver evidence beyond Repo018 console C.\n- Later professional embedded repositories can supersede correctness/maturity while this remains important first/early architecture evidence.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---",
+      "source_line_start": 4342,
+      "source_line_end": 4352
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "24. Skill evidence dimensions",
+      "normalized_title": "Skill evidence dimensions",
+      "key": "skill_evidence_dimensions",
+      "path": [
+        "24. Skill evidence dimensions"
+      ],
+      "content": "| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---",
+      "source_line_start": 4352,
+      "source_line_end": 4365
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "25. Responsibility scope",
+      "normalized_title": "Responsibility scope",
+      "key": "responsibility_scope",
+      "path": [
+        "25. Responsibility scope"
+      ],
+      "content": "### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 4365,
+      "source_line_end": 4381
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Demonstrated responsibility",
+      "normalized_title": "Demonstrated responsibility",
+      "key": "demonstrated_responsibility",
+      "path": [
+        "25. Responsibility scope",
+        "Demonstrated responsibility"
+      ],
+      "content": "- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.",
+      "source_line_start": 4367,
+      "source_line_end": 4373
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Not demonstrated",
+      "normalized_title": "Not demonstrated",
+      "key": "not_demonstrated",
+      "path": [
+        "25. Responsibility scope",
+        "Not demonstrated"
+      ],
+      "content": "- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 4373,
+      "source_line_end": 4381
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "26. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "26. Complexity dimensions"
+      ],
+      "content": "| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---",
+      "source_line_start": 4381,
+      "source_line_end": 4394
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "27. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "27. Scale dimensions"
+      ],
+      "content": "Scale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---",
+      "source_line_start": 4394,
+      "source_line_end": 4406
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "28. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "28. Engineering decisions and tradeoffs"
+      ],
+      "content": "The repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---",
+      "source_line_start": 4406,
+      "source_line_end": 4419
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "29. Engineering judgment evidence",
+      "normalized_title": "Engineering judgment evidence",
+      "key": "engineering_judgment_evidence",
+      "path": [
+        "29. Engineering judgment evidence"
+      ],
+      "content": "Positive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---",
+      "source_line_start": 4419,
+      "source_line_end": 4429
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "30. Mistakes, anti-patterns, and likely lessons",
+      "normalized_title": "Mistakes, anti-patterns, and likely lessons",
+      "key": "mistakes_anti_patterns_and_likely_lessons",
+      "path": [
+        "30. Mistakes, anti-patterns, and likely lessons"
+      ],
+      "content": "- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---",
+      "source_line_start": 4429,
+      "source_line_end": 4445
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "31. Testing and verification maturity",
+      "normalized_title": "Testing and verification maturity",
+      "key": "testing_and_verification_maturity",
+      "path": [
+        "31. Testing and verification maturity"
+      ],
+      "content": "No stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---",
+      "source_line_start": 4445,
+      "source_line_end": 4456
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "32. CI/CD and deployment",
+      "normalized_title": "CI/CD and deployment",
+      "key": "ci_cd_and_deployment",
+      "path": [
+        "32. CI/CD and deployment"
+      ],
+      "content": "No mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---",
+      "source_line_start": 4456,
+      "source_line_end": 4464
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "33. Documentation and reproducibility",
+      "normalized_title": "Documentation and reproducibility",
+      "key": "documentation_and_reproducibility",
+      "path": [
+        "33. Documentation and reproducibility"
+      ],
+      "content": "Documentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---",
+      "source_line_start": 4464,
+      "source_line_end": 4472
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "34. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "34. Repository hygiene"
+      ],
+      "content": "Repository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---",
+      "source_line_start": 4472,
+      "source_line_end": 4480
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "35. Technical realm",
+      "normalized_title": "Technical realm",
+      "key": "technical_realm",
+      "path": [
+        "35. Technical realm"
+      ],
+      "content": "Repository `Port-AUTOSAR-ARM` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Register-level GPIO: 3.75/5**\n- **Embedded C: 3.5/5**\n- **TM4C123: 3.5/5**\n- **AUTOSAR concepts: 3.5/5**\n- **Port/MCAL-style driver design: 3.5/5**\n\n---",
+      "source_line_start": 4480,
+      "source_line_end": 4500
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Strongest local skill signals",
+      "normalized_title": "Strongest local skill signals",
+      "key": "strongest_local_skill_signals",
+      "path": [
+        "35. Technical realm",
+        "Strongest local skill signals"
+      ],
+      "content": "- **Register-level GPIO: 3.75/5**\n- **Embedded C: 3.5/5**\n- **TM4C123: 3.5/5**\n- **AUTOSAR concepts: 3.5/5**\n- **Port/MCAL-style driver design: 3.5/5**\n\n---",
+      "source_line_start": 4490,
+      "source_line_end": 4500
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "36. Product / business / domain realm",
+      "normalized_title": "Product / business / domain realm",
+      "key": "product_business_domain_realm",
+      "path": [
+        "36. Product / business / domain realm"
+      ],
+      "content": "The repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---",
+      "source_line_start": 4500,
+      "source_line_end": 4512
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "37. Architecture / data-flow synthesis",
+      "normalized_title": "Architecture / data-flow synthesis",
+      "key": "architecture_data_flow_synthesis",
+      "path": [
+        "37. Architecture / data-flow synthesis"
+      ],
+      "content": "The architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 4512,
+      "source_line_end": 4537
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Inputs / triggers",
+      "normalized_title": "Inputs / triggers",
+      "key": "inputs_triggers",
+      "path": [
+        "37. Architecture / data-flow synthesis",
+        "Inputs / triggers"
+      ],
+      "content": "- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;",
+      "source_line_start": 4516,
+      "source_line_end": 4520
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Processing",
+      "normalized_title": "Processing",
+      "key": "processing",
+      "path": [
+        "37. Architecture / data-flow synthesis",
+        "Processing"
+      ],
+      "content": "- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;",
+      "source_line_start": 4520,
+      "source_line_end": 4524
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Outputs / effects",
+      "normalized_title": "Outputs / effects",
+      "key": "outputs_effects",
+      "path": [
+        "37. Architecture / data-flow synthesis",
+        "Outputs / effects"
+      ],
+      "content": "- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.",
+      "source_line_start": 4524,
+      "source_line_end": 4528
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Missing production layers",
+      "normalized_title": "Missing production layers",
+      "key": "missing_production_layers",
+      "path": [
+        "37. Architecture / data-flow synthesis",
+        "Missing production layers"
+      ],
+      "content": "- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 4528,
+      "source_line_end": 4537
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "38. Artifact-to-skill evidence map",
+      "normalized_title": "Artifact-to-skill evidence map",
+      "key": "artifact_to_skill_evidence_map",
+      "path": [
+        "38. Artifact-to-skill evidence map"
+      ],
+      "content": "| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Port-AUTOSAR-ARM` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **034 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: TM4C123GH6PM / ARM Cortex-M4 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored file dates: Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| GitHub archival period: 2024 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| AUTOSAR release constants: 4.0.3 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Core owner module: Port | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Supporting modules: Dio, Det, Button, Led, OS/GPT/startup/config headers | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Configuration style: Pre-compile + post-build style structures | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---",
+      "source_line_start": 4537,
+      "source_line_end": 4556
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "39. Reliability and defensive-engineering maturity",
+      "normalized_title": "Reliability and defensive-engineering maturity",
+      "key": "reliability_and_defensive_engineering_maturity",
+      "path": [
+        "39. Reliability and defensive-engineering maturity"
+      ],
+      "content": "Reliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---",
+      "source_line_start": 4556,
+      "source_line_end": 4574
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "40. Security and privacy maturity",
+      "normalized_title": "Security and privacy maturity",
+      "key": "security_and_privacy_maturity",
+      "path": [
+        "40. Security and privacy maturity"
+      ],
+      "content": "Security is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---",
+      "source_line_start": 4574,
+      "source_line_end": 4588
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "41. Performance and resource-efficiency evidence",
+      "normalized_title": "Performance and resource-efficiency evidence",
+      "key": "performance_and_resource_efficiency_evidence",
+      "path": [
+        "41. Performance and resource-efficiency evidence"
+      ],
+      "content": "Performance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---",
+      "source_line_start": 4588,
+      "source_line_end": 4605
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "42. Maintainability and modularity",
+      "normalized_title": "Maintainability and modularity",
+      "key": "maintainability_and_modularity",
+      "path": [
+        "42. Maintainability and modularity"
+      ],
+      "content": "Maintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---",
+      "source_line_start": 4605,
+      "source_line_end": 4617
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "43. Strengths",
+      "normalized_title": "Strengths",
+      "key": "strengths",
+      "path": [
+        "43. Strengths"
+      ],
+      "content": "- Direct evidence of **Embedded C** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Register-level GPIO** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **TM4C123** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **AUTOSAR concepts** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Port/MCAL-style driver design** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Configuration architecture** at approximately **3.25/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---",
+      "source_line_start": 4617,
+      "source_line_end": 4630
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "44. Weaknesses / engineering debt",
+      "normalized_title": "Weaknesses / engineering debt",
+      "key": "weaknesses_engineering_debt",
+      "path": [
+        "44. Weaknesses / engineering debt"
+      ],
+      "content": "- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---",
+      "source_line_start": 4630,
+      "source_line_end": 4646
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "45. What production evolution would require",
+      "normalized_title": "What production evolution would require",
+      "key": "what_production_evolution_would_require",
+      "path": [
+        "45. What production evolution would require"
+      ],
+      "content": "A production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---",
+      "source_line_start": 4646,
+      "source_line_end": 4663
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "46. Project potential",
+      "normalized_title": "Project potential",
+      "key": "project_potential",
+      "path": [
+        "46. Project potential"
+      ],
+      "content": "The repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---",
+      "source_line_start": 4663,
+      "source_line_end": 4673
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "47. Evidence vs. inference register",
+      "normalized_title": "Evidence vs. inference register",
+      "key": "evidence_vs_inference_register",
+      "path": [
+        "47. Evidence vs. inference register"
+      ],
+      "content": "| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---",
+      "source_line_start": 4673,
+      "source_line_end": 4689
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "48. Career-field historicity after Repository 034",
+      "normalized_title": "Career-field historicity after Repository 034",
+      "key": "career_field_historicity_after_repository_034",
+      "path": [
+        "48. Career-field historicity after Repository 034"
+      ],
+      "content": "This repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---",
+      "source_line_start": 4689,
+      "source_line_end": 4699
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "49. Testing trajectory update",
+      "normalized_title": "Testing trajectory update",
+      "key": "testing_trajectory_update",
+      "path": [
+        "49. Testing trajectory update"
+      ],
+      "content": "This artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---",
+      "source_line_start": 4699,
+      "source_line_end": 4709
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "50. Systems-engineering trajectory update",
+      "normalized_title": "Systems-engineering trajectory update",
+      "key": "systems_engineering_trajectory_update",
+      "path": [
+        "50. Systems-engineering trajectory update"
+      ],
+      "content": "Systems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---",
+      "source_line_start": 4709,
+      "source_line_end": 4719
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "51. Expanded longitudinal summary vector",
+      "normalized_title": "Expanded longitudinal summary vector",
+      "key": "expanded_longitudinal_summary_vector",
+      "path": [
+        "51. Expanded longitudinal summary vector"
+      ],
+      "content": "| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---",
+      "source_line_start": 4719,
+      "source_line_end": 4733
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "52. Product and engineering maturity",
+      "normalized_title": "Product and engineering maturity",
+      "key": "product_and_engineering_maturity",
+      "path": [
+        "52. Product and engineering maturity"
+      ],
+      "content": "| Measure | Rating |\n|---|---:|\n| Product maturity | **2.0/5** |\n| Engineering maturity | **2.75/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---",
+      "source_line_start": 4733,
+      "source_line_end": 4746
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "53. Standardized product / engineering evaluation matrix",
+      "normalized_title": "Standardized product / engineering evaluation matrix",
+      "key": "standardized_product_engineering_evaluation_matrix",
+      "path": [
+        "53. Standardized product / engineering evaluation matrix"
+      ],
+      "content": "| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---",
+      "source_line_start": 4746,
+      "source_line_end": 4767
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "54. Product / engineering failure potential",
+      "normalized_title": "Product / engineering failure potential",
+      "key": "product_engineering_failure_potential",
+      "path": [
+        "54. Product / engineering failure potential"
+      ],
+      "content": "Failure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---",
+      "source_line_start": 4767,
+      "source_line_end": 4775
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "55. Human impact / dignity boundary",
+      "normalized_title": "Human impact / dignity boundary",
+      "key": "human_impact_dignity_boundary",
+      "path": [
+        "55. Human impact / dignity boundary"
+      ],
+      "content": "GPIO/Port drivers control the physical boundary of embedded systems. A wrong pin mode or register write can disable safety functions or actuate unintended hardware. This educational snapshot has no evidence of the verification rigor required for real automotive responsibility.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---",
+      "source_line_start": 4775,
+      "source_line_end": 4783
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "56. Longitudinal project comparisons",
+      "normalized_title": "Longitudinal project comparisons",
+      "key": "longitudinal_project_comparisons",
+      "path": [
+        "56. Longitudinal project comparisons"
+      ],
+      "content": "- Repo018: first direct C but no hardware; Repo034 is true register-level embedded C.\n- Repo035–038: AVR applications/drivers from similar historical era; Repo034 is more standardized/architecture-oriented.\n- Repo013/027/030: autonomous/sensor domain; Repo034 adds lower-level automotive-style platform software.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---",
+      "source_line_start": 4783,
+      "source_line_end": 4793
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "57. First / Previous / Current / Corpus-Max ledger update",
+      "normalized_title": "First / Previous / Current / Corpus-Max ledger update",
+      "key": "first_previous_current_corpus_max_ledger_update",
+      "path": [
+        "57. First / Previous / Current / Corpus-Max ledger update"
+      ],
+      "content": "| Ledger field | Update |\n|---|---|\n| Repository | `Port-AUTOSAR-ARM` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---",
+      "source_line_start": 4793,
+      "source_line_end": 4806
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "58. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "58. Current relevance / recency"
+      ],
+      "content": "Recency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---",
+      "source_line_start": 4806,
+      "source_line_end": 4814
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "59. Cumulative career state after Repository 034",
+      "normalized_title": "Cumulative career state after Repository 034",
+      "key": "cumulative_career_state_after_repository_034",
+      "path": [
+        "59. Cumulative career state after Repository 034"
+      ],
+      "content": "Major historical upgrade: demonstrates that low-level driver architecture, MCU registers and AUTOSAR vocabulary existed in the skill graph by 2022, even though the code was archived later and correctness was immature.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---",
+      "source_line_start": 4814,
+      "source_line_end": 4822
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "60. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "60. RAG anti-inflation warnings"
+      ],
+      "content": "- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---",
+      "source_line_start": 4822,
+      "source_line_end": 4835
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "61. Repository 034 bottom line",
+      "normalized_title": "Repository 034 bottom line",
+      "key": "repository_034_bottom_line",
+      "path": [
+        "61. Repository 034 bottom line"
+      ],
+      "content": "A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.0/5  \n**Engineering maturity:** 2.75/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.",
+      "source_line_start": 4835,
+      "source_line_end": 4845
+    }
+  ],
+  "raw_analysis": "# Repository 034 / 134 — `Port-AUTOSAR-ARM`\n\n## Project identity\n\n**Descriptive name:** **AUTOSAR-Style TM4C123 Port Driver and Layered Embedded Exercise**\n\nA historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\nCorrect classification:\n\n> **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\n---\n\n## 1. RAG Metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Port-AUTOSAR-ARM` |\n| Chronology index | **034 / 134** |\n| Primary language | C |\n| Target | TM4C123GH6PM / ARM Cortex-M4 |\n| Owner-authored file dates | Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 |\n| GitHub archival period | 2024 |\n| AUTOSAR release constants | 4.0.3 |\n| Core owner module | Port |\n| Supporting modules | Dio, Det, Button, Led, OS/GPT/startup/config headers |\n| Configuration style | Pre-compile + post-build style structures |\n| Tests | No automated tests observed |\n| CI | None |\n| Production deployment | None |\n\n---\n\n## 2. Evidence basis and inspection method\n\nEvidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---\n\n## 3. Historical-context rule\n\nThe GitHub repository belongs to the 2024 archival sequence, but key owner-authored source headers date the Port work to **February 2022**.\n\nThe skill-acquisition chronology must therefore use the source dates for historical placement while retaining 2024 as the repository-publication/archive date.\n\nThis is a critical anti-distortion rule: uploading old code later must not make the skill look newly acquired in 2024.\n\n---\n\n## 4. Attribution split inside one repository\n\nThe repository is mixed provenance.\n\nDirect owner markers:\n\n- `Port.h` — Author: `kirol`;\n- `Port.c` — Author: `kirol`;\n- `Port_PBcfg.c` — Author: `kirol`.\n\nExplicit external/course markers include:\n\n- `App.c` — Author: Mohamed Tarek;\n- `Dio.c` — Author: Mohamed Tarek.\n\nTherefore the portfolio should credit the **Port-driver implementation and related owner-marked work** directly, while treating the surrounding framework as integration/reference context.\n\n---\n\n## 5. AUTOSAR-style module metadata\n\n`Port.h` defines:\n\n- vendor/module/instance IDs;\n- software version 1.0.1;\n- AUTOSAR release 4.0.3;\n- service IDs;\n- DET error codes;\n- initialized/uninitialized state;\n- API feature switches via configuration headers.\n\nThis is strong evidence of learning standardized embedded-driver structure rather than writing only ad-hoc register code.\n\n---\n\n## 6. Version compatibility checks\n\nThe code performs compile-time AUTOSAR/software-version compatibility checks between Port, Std_Types, configuration and DET-related modules.\n\nThis demonstrates awareness of interface/version contracts.\n\nHowever several error messages/comments still say `Dio` inside Port files, revealing copy/adaptation debt.\n\n---\n\n## 7. Post-build configuration\n\n`Port_PBcfg.c` creates a configuration object populated with many `CHANNEL_DEFAULT` entries plus explicit LED/switch channels.\n\nThis shows the key AUTOSAR idea of separating driver behavior from configuration data.\n\nThe configuration layer is more architecturally mature than hard-coding one pin inside the driver.\n\n---\n\n## 8. Port initialization flow\n\n`Port_Init` iterates configured pins, selects GPIO base addresses, enables peripheral clocks and configures direction, initial value, pull resistors and pin mode.\n\nThis is direct register-level hardware abstraction work.\n\nThe function touches multiple TM4C GPIO register families through base-address + offset calculations.\n\n---\n\n## 9. Alternate-function breadth\n\nThe Port code contains explicit mode paths for:\n\n- DIO;\n- UART;\n- ADC;\n- CAN;\n- SSI;\n- I2C;\n- PWM;\n- USB;\n- QEI;\n- GPT;\n- NMI;\n- analog comparator;\n- core/debug-related modes.\n\nThis is broad peripheral-multiplexing exposure even though not every mode is complete or validated.\n\n---\n\n## 10. Special-pin unlock defect\n\nThe code intends to recognize **PD7** and **PF0** as lock/commit-sensitive pins.\n\nBut the condition compares `port_num` to two different values simultaneously, e.g. `port_num == 3 && port_num == 7`.\n\nThat can never be true.\n\nThe likely intent was a combination of `port_num` and `pin_num`.\n\nThis is a high-value correctness lesson because special MCU pins require exact register conditions.\n\n---\n\n## 11. C chained-comparison defect\n\n`Port_SetPinDirection` uses expressions such as:\n\n`PORTA_START_PIN <= Pin < PORTB_START_PIN`\n\nC does **not** interpret that as a mathematical range check. The left comparison becomes 0/1 and that result is then compared with the upper bound.\n\nThis can route pins to the wrong port and is a fundamental C semantic defect.\n\n---\n\n## 12. Port-E direction bug\n\nIn the Port-E input-direction branch, the code references `GPIO_PORTD_BASE_ADDRESS` and `PORTD_START_PIN`.\n\nThat appears to be a copy/paste error capable of modifying the wrong hardware register.\n\n---\n\n## 13. Refresh-direction implementation defects\n\nThe visible `Port_RefreshPortDirection` code includes severe issues:\n\n- `for(itr i=...)` with an unexplained iterator type;\n- references `ptr[Pin]` where `Pin` is not defined in the loop;\n- calls `Port_SetPinMode` while passing a direction field.\n\nThis indicates an unfinished/uncompiled path rather than a completed AUTOSAR API implementation.\n\n---\n\n## 14. State/config pointer inconsistency\n\nThe source uses variants including `PORT_STATUS`, `Port_Status`, `ptr`, `PortConf`, `PORT_INITIALIZED` and `PORT_UNINITIALIZED`.\n\nThese inconsistencies materially weaken compile confidence and show why standardized naming matters in low-level drivers.\n\n---\n\n## 15. Type-definition ordering/inconsistency\n\n`Port.h` visibly uses `Port_PinDirectionType` inside a structure before the typedef appears later in the file.\n\nAnother configuration structure refers to type names such as `Port_PinDirection` / `Port_InternalResistor` that are not defined in the inspected header excerpt.\n\nThis is strong evidence that the final snapshot is incomplete or internally inconsistent.\n\n---\n\n## 16. Incomplete peripheral questions retained in code\n\nComments such as:\n\n- “Should i enable RCGCADC and PLL ??”;\n- “RCGCSSI register???”\n\nare valuable historical evidence of active learning.\n\nThey also prevent the repository from being represented as a finished driver stack. The author was reasoning through clock/peripheral prerequisites, not delivering a validated production MCAL.\n\n---\n\n## 17. Logical-versus-bitwise condition defect\n\nA PWM pin-selection condition contains a single bitwise `|` between boolean expressions.\n\nWhile bitwise operations on 0/1 expressions can sometimes appear to work, this is semantically wrong for control-flow composition and can produce subtle precedence/readability defects.\n\n---\n\n## 18. DET and defensive-programming exposure\n\nDespite implementation flaws, the module includes a serious attempt at defensive API behavior:\n\n- null-configuration checks;\n- invalid-pin checks;\n- uninitialized-module checks;\n- changeability checks;\n- version-info API;\n- development error reporting.\n\nThis marks a meaningful progression from earlier bare-metal application exercises toward standardized driver contracts.\n\n---\n\n## 19. Application/task context\n\nThe surrounding `App.c` defines initialization plus periodic button, LED and application tasks at 20/40/60 ms conceptual intervals.\n\nBecause `App.c` explicitly credits Mohamed Tarek, this is contextual architecture evidence—not direct authorship credit.\n\nIt nevertheless shows the environment in which the Port driver was intended to participate.\n\n---\n\n## 20. No production AUTOSAR claim\n\nNothing in this repository justifies claiming:\n\n- certified AUTOSAR MCAL development;\n- conformance testing;\n- MISRA compliance;\n- automotive safety lifecycle;\n- production ECU deployment;\n- generated ARXML/configuration tooling.\n\nCorrect wording is **AUTOSAR-style educational Port-driver implementation on TM4C123**.\n\n---\n\n## 21. Origin / contribution / attribution register\n\n- Port module files explicitly carry owner author markers and are credited directly.\n- Several surrounding framework/application files explicitly credit Mohamed Tarek and are treated as reference/course infrastructure.\n- No attempt is made to transfer external code authorship to the portfolio owner.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## 22. Direct skill evidence ratings\n\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Register-level GPIO | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| TM4C123 | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AUTOSAR concepts | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Port/MCAL-style driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Configuration architecture | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Defensive API/DET concepts | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C correctness in final snapshot | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Automotive production maturity | **1.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 23. Skill lifecycle\n\n- Historically predates the 2024 repository sequence: direct source dates place important embedded work in 2022.\n- Strongly upgrades direct embedded-driver evidence beyond Repo018 console C.\n- Later professional embedded repositories can supersede correctness/maturity while this remains important first/early architecture evidence.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 24. Skill evidence dimensions\n\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 25. Responsibility scope\n\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---\n\n## 26. Complexity dimensions\n\n| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---\n\n## 27. Scale dimensions\n\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---\n\n## 28. Engineering decisions and tradeoffs\n\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---\n\n## 29. Engineering judgment evidence\n\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---\n\n## 30. Mistakes, anti-patterns, and likely lessons\n\n- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 31. Testing and verification maturity\n\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 32. CI/CD and deployment\n\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---\n\n## 33. Documentation and reproducibility\n\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---\n\n## 34. Repository hygiene\n\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---\n\n## 35. Technical realm\n\nRepository `Port-AUTOSAR-ARM` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Register-level GPIO: 3.75/5**\n- **Embedded C: 3.5/5**\n- **TM4C123: 3.5/5**\n- **AUTOSAR concepts: 3.5/5**\n- **Port/MCAL-style driver design: 3.5/5**\n\n---\n\n## 36. Product / business / domain realm\n\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---\n\n## 37. Architecture / data-flow synthesis\n\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---\n\n## 38. Artifact-to-skill evidence map\n\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Port-AUTOSAR-ARM` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **034 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: TM4C123GH6PM / ARM Cortex-M4 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored file dates: Port.h 2022-02-05; Port.c 2022-02-06; Port_PBcfg.c 2022-02-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| GitHub archival period: 2024 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| AUTOSAR release constants: 4.0.3 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Core owner module: Port | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Supporting modules: Dio, Det, Button, Led, OS/GPT/startup/config headers | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Configuration style: Pre-compile + post-build style structures | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---\n\n## 39. Reliability and defensive-engineering maturity\n\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 40. Security and privacy maturity\n\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---\n\n## 41. Performance and resource-efficiency evidence\n\nPerformance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---\n\n## 42. Maintainability and modularity\n\nMaintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---\n\n## 43. Strengths\n\n- Direct evidence of **Embedded C** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Register-level GPIO** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **TM4C123** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **AUTOSAR concepts** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Port/MCAL-style driver design** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Configuration architecture** at approximately **3.25/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---\n\n## 44. Weaknesses / engineering debt\n\n- Impossible PD7/PF0 condition.\n- Invalid chained comparisons in C.\n- Wrong Port-D references in Port-E branch.\n- Undefined/inconsistent state/config identifiers.\n- Refresh API appears incomplete/non-compiling.\n- Type-definition inconsistencies.\n- Unresolved peripheral-clock questions.\n- No unit/integration tests, lint, static analysis or CI.\n- No MISRA/conformance evidence.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---\n\n## 45. What production evolution would require\n\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---\n\n## 46. Project potential\n\nThe repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---\n\n## 47. Evidence vs. inference register\n\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---\n\n## 48. Career-field historicity after Repository 034\n\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 49. Testing trajectory update\n\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---\n\n## 50. Systems-engineering trajectory update\n\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 51. Expanded longitudinal summary vector\n\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 52. Product and engineering maturity\n\n| Measure | Rating |\n|---|---:|\n| Product maturity | **2.0/5** |\n| Engineering maturity | **2.75/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---\n\n## 53. Standardized product / engineering evaluation matrix\n\n| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---\n\n## 54. Product / engineering failure potential\n\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---\n\n## 55. Human impact / dignity boundary\n\nGPIO/Port drivers control the physical boundary of embedded systems. A wrong pin mode or register write can disable safety functions or actuate unintended hardware. This educational snapshot has no evidence of the verification rigor required for real automotive responsibility.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---\n\n## 56. Longitudinal project comparisons\n\n- Repo018: first direct C but no hardware; Repo034 is true register-level embedded C.\n- Repo035–038: AVR applications/drivers from similar historical era; Repo034 is more standardized/architecture-oriented.\n- Repo013/027/030: autonomous/sensor domain; Repo034 adds lower-level automotive-style platform software.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 57. First / Previous / Current / Corpus-Max ledger update\n\n| Ledger field | Update |\n|---|---|\n| Repository | `Port-AUTOSAR-ARM` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 58. Current relevance / recency\n\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---\n\n## 59. Cumulative career state after Repository 034\n\nMajor historical upgrade: demonstrates that low-level driver architecture, MCU registers and AUTOSAR vocabulary existed in the skill graph by 2022, even though the code was archived later and correctness was immature.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---\n\n## 60. RAG anti-inflation warnings\n\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---\n\n## 61. Repository 034 bottom line\n\nA historically important embedded-C repository centered on an owner-authored AUTOSAR-style Port module for TM4C123, surrounded by course/reference DIO/application infrastructure. It demonstrates direct register-level driver construction and AUTOSAR concepts, but contains serious correctness/type defects and is not production AUTOSAR.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.0/5  \n**Engineering maturity:** 2.75/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.\n"
+}

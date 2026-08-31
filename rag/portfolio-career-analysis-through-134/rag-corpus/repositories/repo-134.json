@@ -1,0 +1,1137 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 134,
+  "repository_total": 134,
+  "repository_name": "my-portfolio",
+  "header_title": "`my-portfolio`",
+  "repository_slug": "kirolossedra/my-portfolio",
+  "repository_url": "https://github.com/kirolossedra/my-portfolio",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-124-134.md",
+    "line_start": 3252,
+    "line_end": 3770,
+    "sha256": "4d152a9a54629b5e4874ffc88efee9e471bc2ed7a7a6c2775a46f01f0127eb2b"
+  },
+  "chronology_summary": {
+    "created": "2026-08-25",
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": "5.0/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/my-portfolio",
+    "chronology_index": "134 / 134",
+    "visibility": "Public",
+    "created": "2026-08-25",
+    "last_push_in_inspected_snapshot": "2026-08-30",
+    "primary_language": "TypeScript",
+    "frontend": "React 19 + Vite + TypeScript",
+    "api": "TypeScript Cloudflare Worker",
+    "database": "Cloudflare D1",
+    "deployment": "Cloudflare Worker + Netlify",
+    "authentication": "GitHub OAuth, single immutable numeric admin ID",
+    "d_runtime": "Three.js + rigged GLB boundary",
+    "portfolio_evidence_weight": "5.0/5"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [],
+  "intro": "**Descriptive classification:** production-oriented personal portfolio and career-intelligence platform built with React/TypeScript/Vite, Cloudflare Workers, Cloudflare D1, GitHub OAuth, Netlify, CI/CD, moderated public content, evidence-backed skills and a Three.js/GLB KiroRag avatar runtime.\n\nAs the final repository in the chronological corpus, `my-portfolio` is notable because it recursively consumes and presents evidence from earlier engineering work. It is both a software product and a meta-layer over the career corpus: milestones, skills, opinions and KiroRag are presentation/retrieval surfaces for accumulated technical history.",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s014",
+        "s017"
+      ],
+      "titles": [
+        "1. Identity and metadata",
+        "14. GitHub OAuth identity choice",
+        "17. Identity verification"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/my-portfolio` |\n| Chronology index | **134 / 134** |\n| Visibility | Public |\n| Created | **2026-08-25** |\n| Last push in inspected snapshot | **2026-08-30** |\n| Primary language | TypeScript |\n| Frontend | React 19 + Vite + TypeScript |\n| API | TypeScript Cloudflare Worker |\n| Database | Cloudflare D1 |\n| Deployment | Cloudflare Worker + Netlify |\n| Authentication | GitHub OAuth, single immutable numeric admin ID |\n| 3D runtime | Three.js + rigged GLB boundary |\n| Portfolio Evidence Weight | **5.0/5** |\n\n## 14. GitHub OAuth identity choice\nAdmin authorization uses an immutable **numeric GitHub user ID**, not username string matching. Username changes therefore do not alter authorization identity.\n\nThat is a strong identity-design choice.\n\n## 17. Identity verification\nAfter code exchange, the Worker calls GitHub's authenticated user endpoint and requires the returned numeric ID to equal `ADMIN_GITHUB_USER_ID`.\n\nThis enforces one-owner administration even if another GitHub account completes OAuth successfully."
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/my-portfolio` |\n| Chronology index | **134 / 134** |\n| Visibility | Public |\n| Created | **2026-08-25** |\n| Last push in inspected snapshot | **2026-08-30** |\n| Primary language | TypeScript |\n| Frontend | React 19 + Vite + TypeScript |\n| API | TypeScript Cloudflare Worker |\n| Database | Cloudflare D1 |\n| Deployment | Cloudflare Worker + Netlify |\n| Authentication | GitHub OAuth, single immutable numeric admin ID |\n| 3D runtime | Three.js + rigged GLB boundary |\n| Portfolio Evidence Weight | **5.0/5** |"
+    },
+    "summary": {
+      "section_ids": [
+        "s069"
+      ],
+      "titles": [
+        "69. Bottom line"
+      ],
+      "text": "## 69. Bottom line\n`my-portfolio` is a production-oriented **career platform**, not a static portfolio. It combines secure GitHub OAuth, D1-backed content, Cloudflare Worker APIs, Netlify delivery, rigorous CI/CD, moderated public interaction, evidence-based skill presentation and an extensible GLB/Three.js KiroRag interface. As Repository 134, it is an appropriate culmination of the corpus because it turns accumulated engineering history into a deployable, queryable and increasingly interactive professional product.\n\n<!-- END REPOSITORY 134 -->\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s066"
+      ],
+      "titles": [
+        "66. Current relevance"
+      ],
+      "text": "## 66. Current relevance\nHighly relevant to product engineering, full-stack TypeScript, cloud/serverless engineering, developer-facing applications, portfolio intelligence and secure web application roles."
+    },
+    "architecture": {
+      "section_ids": [
+        "s003",
+        "s004"
+      ],
+      "titles": [
+        "3. High-level architecture",
+        "4. Frontend architecture"
+      ],
+      "text": "## 3. High-level architecture\nThe README defines this production topology:\n\n```text\nBrowser\n  -> Netlify: React + TypeScript + Vite\n  -> HTTPS\n  -> Cloudflare Worker: TypeScript API\n  -> Cloudflare D1\n```\n\nD1 stores milestones, long-form sections, milestone images, moderated opinions and short-lived OAuth exchange codes.\n\n## 4. Frontend architecture\nThe frontend is organized into React application code, private admin functionality, components, data, features, libraries and dedicated pages for skills, opinions and KiroRag.\n\nThis is a materially more modular source layout than the single-file internal tools earlier in the corpus."
+    },
+    "skills": {
+      "section_ids": [
+        "s028",
+        "s047",
+        "s064"
+      ],
+      "titles": [
+        "28. Static skill evidence tradeoff",
+        "47. Direct authored skill evidence",
+        "64. Skill lifecycle"
+      ],
+      "text": "## 28. Static skill evidence tradeoff\nCurrent skill evidence is versioned statically in `src/data/project-skills.ts` rather than fetched live from GitHub.\n\nThat improves deterministic deployment and reviewability but requires updates when evidence changes. KiroRag is the natural future path toward more dynamic repository-aware retrieval.\n\n## 47. Direct authored skill evidence\n**Exceptional direct evidence:**\n\n- React 19 / TypeScript / Vite;\n- Cloudflare Workers;\n- Cloudflare D1 schema/migrations;\n- REST API design;\n- GitHub OAuth implementation;\n- HMAC signing and SHA-256 hashing through Web Crypto;\n- one-time authentication-code exchange design;\n- authorization by immutable provider identity;\n- Netlify deployment;\n- GitHub Actions CI/CD;\n- frontend/backend shared contracts;\n- testing/lint/type gates;\n- content moderation;\n- accessible animation systems;\n- Base64 binary serving from D1;\n- Three.js / GLB runtime integration;\n- portfolio/product UX;\n- evidence-backed skill presentation.\n\n## 64. Skill lifecycle\nThis repository consolidates earlier React, TypeScript, database, cloud, CI/CD and product-design skills while adding particularly strong late-corpus evidence for **Cloudflare Workers/D1, GitHub OAuth security design, migration gates and Three.js/GLB integration**.\n\nThe portfolio also begins to consume earlier repository evidence directly, turning the career corpus itself into a product input."
+    },
+    "scale": {
+      "section_ids": [
+        "s052"
+      ],
+      "titles": [
+        "52. Scale"
+      ],
+      "text": "## 52. Scale\nThe application is architected for a personal portfolio and modest public traffic, not a large social platform. D1/Workers/Netlify can scale beyond one user, but actual demonstrated user scale is not large.\n\nThe strongest evidence is architectural maturity rather than traffic volume."
+    },
+    "testing": {
+      "section_ids": [
+        "s017",
+        "s045"
+      ],
+      "titles": [
+        "17. Identity verification",
+        "45. Testing"
+      ],
+      "text": "## 17. Identity verification\nAfter code exchange, the Worker calls GitHub's authenticated user endpoint and requires the returned numeric ID to equal `ADMIN_GITHUB_USER_ID`.\n\nThis enforces one-owner administration even if another GitHub account completes OAuth successfully.\n\n## 45. Testing\nBoth frontend and Worker test directories exist, and Vitest is part of the required quality gate. The repository therefore demonstrates executed automated testing as a release precondition.\n\nWithout a test-coverage report, the corpus should not invent a coverage percentage."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s022",
+        "s056",
+        "s057"
+      ],
+      "titles": [
+        "22. Security migration gates",
+        "56. Security maturity",
+        "57. Privacy"
+      ],
+      "text": "## 22. Security migration gates\n`npm run verify` includes custom guards for:\n\n- obsolete JavaScript migration files;\n- removed R2/object-storage integration;\n- removed permanent admin-token authentication.\n\nThese checks encode architectural decisions as repository invariants.\n\n## 56. Security maturity\nSecurity is one of the repository's strongest areas:\n\n- signed/aged OAuth state;\n- provider token exchange server-side;\n- immutable numeric owner identity;\n- hashed one-time D1 exchange codes;\n- short TTLs;\n- signed audience-bound sessions;\n- origin enforcement;\n- runtime secret separation;\n- no custom password database;\n- gates against legacy long-lived auth.\n\nThis supports practical web-auth/security design evidence while not implying formal penetration-testing expertise.\n\n## 57. Privacy\nOpinion submissions intentionally collect only publication-relevant fields and consent. The site does not need a broad user account/profile database.\n\nThis is an example of data minimization aligned with product needs."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s042",
+        "s044"
+      ],
+      "titles": [
+        "42. Sequential deployment",
+        "44. Deployment ownership"
+      ],
+      "text": "## 42. Sequential deployment\nA push to `main` deploys only after the quality gate passes. Worker deployment applies remote D1 migrations first, then deploys the Worker; frontend deployment waits on the Worker and sends the built frontend to Netlify.\n\nThis encodes deployment dependency ordering explicitly.\n\n## 44. Deployment ownership\nThe repository is defined as source of truth for application code, migrations, Worker bindings, OAuth behavior, tests and deployment gates. Dashboard operations are minimized to unavoidable bootstrap/observability tasks.\n\nThis is infrastructure-as-code-style discipline even though not every cloud resource is provisioned declaratively."
+    },
+    "documentation": {
+      "section_ids": [
+        "s059"
+      ],
+      "titles": [
+        "59. Documentation maturity"
+      ],
+      "text": "## 59. Documentation maturity\nThe README is detailed and operational: architecture, local setup, OAuth bootstrap, secrets, API routes, CLI, migrations, CI/CD and deployment ownership are documented.\n\nThis substantially improves maintainability and makes the repository a strong RAG source."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s058"
+      ],
+      "titles": [
+        "58. Repository hygiene"
+      ],
+      "text": "## 58. Repository hygiene\nThe repository has explicit source layers, migrations, lockfile, environment example, CI, tests, scripts, shared contracts and documentation. Hygiene is high.\n\nLarge media files inflate repository size, but their presence is tied to portfolio presentation and Kiro assets rather than accidental build output."
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s055"
+      ],
+      "titles": [
+        "55. Mistakes / lessons / evolution"
+      ],
+      "text": "## 55. Mistakes / lessons / evolution\nThe repository history includes migration away from older JavaScript files, R2 integration and permanent admin-token authentication. Those removals are now protected by automated checks.\n\nThis is valuable evidence that architecture can improve through explicit deprecation rather than accumulating every past mechanism forever."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s060"
+      ],
+      "titles": [
+        "60. Product failure potential"
+      ],
+      "text": "## 60. Product failure potential\nAuthentication defects could expose private administration; migration errors could damage published portfolio data; moderation bugs could publish unapproved opinions; image constraints could break content; CI deployment ordering could cause frontend/backend incompatibility.\n\nThese are real production concerns even for a personal site."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s061"
+      ],
+      "titles": [
+        "61. Human impact"
+      ],
+      "text": "## 61. Human impact\nThe portfolio translates years of engineering artifacts into an accessible story for employers, collaborators and peers. Evidence-backed skills and KiroRag can reduce the gap between a résumé bullet and the underlying repository proof.\n\nThe product's strategic value therefore exceeds simple personal branding."
+    },
+    "responsibility": {
+      "section_ids": [
+        "s044"
+      ],
+      "titles": [
+        "44. Deployment ownership"
+      ],
+      "text": "## 44. Deployment ownership\nThe repository is defined as source of truth for application code, migrations, Worker bindings, OAuth behavior, tests and deployment gates. Dashboard operations are minimized to unavoidable bootstrap/observability tasks.\n\nThis is infrastructure-as-code-style discipline even though not every cloud resource is provisioned declaratively."
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s053"
+      ],
+      "titles": [
+        "53. Decisions and tradeoffs"
+      ],
+      "text": "## 53. Decisions and tradeoffs\nNotable decisions include:\n\n- D1 instead of Firebase for the new portfolio data layer;\n- Base64 D1 images instead of R2;\n- GitHub OAuth instead of a custom password database;\n- one immutable admin identity instead of generic roles;\n- short-lived exchange/session credentials instead of permanent admin tokens;\n- repository-enforced migration/security gates;\n- Netlify frontend plus Cloudflare Worker backend;\n- authored GLB capability inspection instead of fabricated cutout animation.\n\nThese choices are coherent with the product's single-owner requirements."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s054"
+      ],
+      "titles": [
+        "54. Engineering judgment"
+      ],
+      "text": "## 54. Engineering judgment\nThe most mature judgment appears in **constraint-aware simplification**. The application avoids multi-role auth because it does not need it, avoids permanent credentials, keeps runtime tokens short-lived, and uses explicit gates to prevent removed architecture from returning.\n\nThe design is not complex for complexity's sake; several choices deliberately narrow scope."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s063"
+      ],
+      "titles": [
+        "63. Portfolio Evidence Weight"
+      ],
+      "text": "## 63. Portfolio Evidence Weight\n**5.0/5.**\n\nAs the final repository, `my-portfolio` is one of the strongest direct demonstrations of current product-engineering maturity: secure full-stack architecture, database evolution, automated quality gates, deployment ownership and sophisticated UI/3D behavior are all present in one actively deployed product."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "1. Identity and metadata",
+      "normalized_title": "Identity and metadata",
+      "key": "identity_and_metadata",
+      "path": [
+        "1. Identity and metadata"
+      ],
+      "content": "| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/my-portfolio` |\n| Chronology index | **134 / 134** |\n| Visibility | Public |\n| Created | **2026-08-25** |\n| Last push in inspected snapshot | **2026-08-30** |\n| Primary language | TypeScript |\n| Frontend | React 19 + Vite + TypeScript |\n| API | TypeScript Cloudflare Worker |\n| Database | Cloudflare D1 |\n| Deployment | Cloudflare Worker + Netlify |\n| Authentication | GitHub OAuth, single immutable numeric admin ID |\n| 3D runtime | Three.js + rigged GLB boundary |\n| Portfolio Evidence Weight | **5.0/5** |",
+      "source_line_start": 3258,
+      "source_line_end": 3276
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "2. Product role in the career corpus",
+      "normalized_title": "Product role in the career corpus",
+      "key": "product_role_in_the_career_corpus",
+      "path": [
+        "2. Product role in the career corpus"
+      ],
+      "content": "The portfolio is not merely a static CV site. It acts as a durable presentation layer for chronological milestones, project evidence, public opinions and an emerging repository-aware assistant surface.\n\nThis makes it the natural final node of the 134-repository analysis: earlier artifacts become data/evidence that this application can expose to employers and other viewers.",
+      "source_line_start": 3276,
+      "source_line_end": 3282
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "3. High-level architecture",
+      "normalized_title": "High-level architecture",
+      "key": "high_level_architecture",
+      "path": [
+        "3. High-level architecture"
+      ],
+      "content": "The README defines this production topology:\n\n```text\nBrowser\n  -> Netlify: React + TypeScript + Vite\n  -> HTTPS\n  -> Cloudflare Worker: TypeScript API\n  -> Cloudflare D1\n```\n\nD1 stores milestones, long-form sections, milestone images, moderated opinions and short-lived OAuth exchange codes.",
+      "source_line_start": 3282,
+      "source_line_end": 3296
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "4. Frontend architecture",
+      "normalized_title": "Frontend architecture",
+      "key": "frontend_architecture",
+      "path": [
+        "4. Frontend architecture"
+      ],
+      "content": "The frontend is organized into React application code, private admin functionality, components, data, features, libraries and dedicated pages for skills, opinions and KiroRag.\n\nThis is a materially more modular source layout than the single-file internal tools earlier in the corpus.",
+      "source_line_start": 3296,
+      "source_line_end": 3302
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "5. Worker backend",
+      "normalized_title": "Worker backend",
+      "key": "worker_backend",
+      "path": [
+        "5. Worker backend"
+      ],
+      "content": "The Worker code is separated into authentication, HTTP handling, route dispatch, milestone persistence, opinion persistence, validation and environment contracts.\n\nThat decomposition supports direct backend TypeScript evidence rather than treating the Worker as one monolithic request handler.",
+      "source_line_start": 3302,
+      "source_line_end": 3308
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "6. Shared contracts",
+      "normalized_title": "Shared contracts",
+      "key": "shared_contracts",
+      "path": [
+        "6. Shared contracts"
+      ],
+      "content": "A `shared/` layer defines contracts used across frontend and Worker boundaries. This reduces duplicated payload assumptions and is direct evidence of type-driven full-stack design.",
+      "source_line_start": 3308,
+      "source_line_end": 3312
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "7. D1 schema migration chain",
+      "normalized_title": "D1 schema migration chain",
+      "key": "d1_schema_migration_chain",
+      "path": [
+        "7. D1 schema migration chain"
+      ],
+      "content": "Database state is versioned with explicit SQL migrations:\n\n- `0001-initial-portfolio-schema.sql`;\n- `0002-base64-milestone-images.sql`;\n- `0003-github-oauth.sql`;\n- `0004-opinions.sql`.\n\nThis is stronger database maturity than creating tables opportunistically at runtime.",
+      "source_line_start": 3312,
+      "source_line_end": 3323
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "8. Milestone data model",
+      "normalized_title": "Milestone data model",
+      "key": "milestone_data_model",
+      "path": [
+        "8. Milestone data model"
+      ],
+      "content": "Milestones support chronological metadata, short timeline text, expanded hover/touch descriptions, long-form introductions, ordered sections, multiple images, cover selection and publish/draft state.\n\nThe model therefore separates timeline summary from deep narrative.",
+      "source_line_start": 3323,
+      "source_line_end": 3329
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "9. Deterministic chronological presentation",
+      "normalized_title": "Deterministic chronological presentation",
+      "key": "deterministic_chronological_presentation",
+      "path": [
+        "9. Deterministic chronological presentation"
+      ],
+      "content": "Milestones maintain year/month and deterministic display order. The UI intentionally uses equal center-to-center visual spacing rather than raw temporal distance.\n\nThis is a product-design decision: readability of a career story is prioritized over literal time-scale geometry.",
+      "source_line_start": 3329,
+      "source_line_end": 3335
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "10. Reversible timeline interaction",
+      "normalized_title": "Reversible timeline interaction",
+      "key": "reversible_timeline_interaction",
+      "path": [
+        "10. Reversible timeline interaction"
+      ],
+      "content": "Milestone reveals are scroll-reversible. As the line reaches a dot the milestone appears, and scrolling back above it reverses the transition.\n\nThe behavior demonstrates deliberate stateful animation rather than one-way entrance effects.",
+      "source_line_start": 3335,
+      "source_line_end": 3341
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "11. Seasonal transitions",
+      "normalized_title": "Seasonal transitions",
+      "key": "seasonal_transitions",
+      "path": [
+        "11. Seasonal transitions"
+      ],
+      "content": "Timeline transitions trigger season-aware effects—fall leaves, winter snow, spring petals and summer rain/sunlight—when the active milestone crosses a seasonal boundary.\n\nEffects are transient, pointer-transparent and disabled under `prefers-reduced-motion`.",
+      "source_line_start": 3341,
+      "source_line_end": 3347
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "12. Accessibility / reduced motion",
+      "normalized_title": "Accessibility / reduced motion",
+      "key": "accessibility_reduced_motion",
+      "path": [
+        "12. Accessibility / reduced motion"
+      ],
+      "content": "Both timeline and opinion/skills experiences account for reduced-motion preferences. This is direct evidence of respecting platform accessibility settings in interaction design.",
+      "source_line_start": 3347,
+      "source_line_end": 3351
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "13. Public/private boundary",
+      "normalized_title": "Public/private boundary",
+      "key": "public_private_boundary",
+      "path": [
+        "13. Public/private boundary"
+      ],
+      "content": "Public visitors can read published content and submit opinions, but cannot publish, edit or delete portfolio data. Administration is restricted to the single portfolio owner.\n\nThis is a clear authorization model appropriate for a personal portfolio.",
+      "source_line_start": 3351,
+      "source_line_end": 3357
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "14. GitHub OAuth identity choice",
+      "normalized_title": "GitHub OAuth identity choice",
+      "key": "github_oauth_identity_choice",
+      "path": [
+        "14. GitHub OAuth identity choice"
+      ],
+      "content": "Admin authorization uses an immutable **numeric GitHub user ID**, not username string matching. Username changes therefore do not alter authorization identity.\n\nThat is a strong identity-design choice.",
+      "source_line_start": 3357,
+      "source_line_end": 3363
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "15. OAuth signed state",
+      "normalized_title": "OAuth signed state",
+      "key": "oauth_signed_state",
+      "path": [
+        "15. OAuth signed state"
+      ],
+      "content": "The Worker creates signed OAuth state containing a random nonce and issue time. It validates signature and maximum age on callback.\n\nThis protects the OAuth flow against forged/stale state values.",
+      "source_line_start": 3363,
+      "source_line_end": 3369
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "16. Server-side code exchange",
+      "normalized_title": "Server-side code exchange",
+      "key": "server_side_code_exchange",
+      "path": [
+        "16. Server-side code exchange"
+      ],
+      "content": "GitHub authorization codes are exchanged server-side using Worker secrets. The browser never receives the GitHub access token.\n\nThis is the correct secrecy boundary for OAuth client credentials and provider tokens.",
+      "source_line_start": 3369,
+      "source_line_end": 3375
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "17. Identity verification",
+      "normalized_title": "Identity verification",
+      "key": "identity_verification",
+      "path": [
+        "17. Identity verification"
+      ],
+      "content": "After code exchange, the Worker calls GitHub's authenticated user endpoint and requires the returned numeric ID to equal `ADMIN_GITHUB_USER_ID`.\n\nThis enforces one-owner administration even if another GitHub account completes OAuth successfully.",
+      "source_line_start": 3375,
+      "source_line_end": 3381
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "18. One-time handoff code",
+      "normalized_title": "One-time handoff code",
+      "key": "one_time_handoff_code",
+      "path": [
+        "18. One-time handoff code"
+      ],
+      "content": "The callback does not place the final admin session directly into a URL. Instead, it creates a short-lived random exchange code, stores only its SHA-256 hash in D1 and redirects the browser with the one-time plaintext code.\n\nThis is a strong credential-handoff design.",
+      "source_line_start": 3381,
+      "source_line_end": 3387
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "19. Transactional code consumption",
+      "normalized_title": "Transactional code consumption",
+      "key": "transactional_code_consumption",
+      "path": [
+        "19. Transactional code consumption"
+      ],
+      "content": "The exchange endpoint looks up and deletes the one-time code in a D1 batch. Codes expire after two minutes.\n\nThe intent is single-use, short-lived transfer from OAuth callback to the frontend session.",
+      "source_line_start": 3387,
+      "source_line_end": 3393
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "20. Signed admin session",
+      "normalized_title": "Signed admin session",
+      "key": "signed_admin_session",
+      "path": [
+        "20. Signed admin session"
+      ],
+      "content": "The Worker issues a signed HMAC-SHA-256 session with subject, GitHub login, issued-at, expiry and audience. Session lifetime is sixty minutes.\n\nValidation checks signature, audience, immutable owner ID and expiry.",
+      "source_line_start": 3393,
+      "source_line_end": 3399
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "21. Session storage model",
+      "normalized_title": "Session storage model",
+      "key": "session_storage_model",
+      "path": [
+        "21. Session storage model"
+      ],
+      "content": "The frontend keeps the admin session in `sessionStorage`, and CLI sessions are also short lived. There is no permanent application admin token.\n\nThe repository explicitly includes a gate that rejects reintroduction of the old long-lived admin-token mechanism.",
+      "source_line_start": 3399,
+      "source_line_end": 3405
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "22. Security migration gates",
+      "normalized_title": "Security migration gates",
+      "key": "security_migration_gates",
+      "path": [
+        "22. Security migration gates"
+      ],
+      "content": "`npm run verify` includes custom guards for:\n\n- obsolete JavaScript migration files;\n- removed R2/object-storage integration;\n- removed permanent admin-token authentication.\n\nThese checks encode architectural decisions as repository invariants.",
+      "source_line_start": 3405,
+      "source_line_end": 3415
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "23. Opinion system",
+      "normalized_title": "Opinion system",
+      "key": "opinion_system",
+      "path": [
+        "23. Opinion system"
+      ],
+      "content": "`/opinions` is a dedicated public page. Visitors submit display name, optional relationship/context, opinion text and explicit publication consent.\n\nSubmissions enter a pending moderation queue and never become public automatically.",
+      "source_line_start": 3415,
+      "source_line_end": 3421
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "24. Opinion moderation",
+      "normalized_title": "Opinion moderation",
+      "key": "opinion_moderation",
+      "path": [
+        "24. Opinion moderation"
+      ],
+      "content": "The authenticated admin can approve, reject or permanently delete submissions. Public reads return only approved opinions.\n\nThis establishes a simple but correct content-moderation lifecycle.",
+      "source_line_start": 3421,
+      "source_line_end": 3427
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "25. Lightweight bot signal",
+      "normalized_title": "Lightweight bot signal",
+      "key": "lightweight_bot_signal",
+      "path": [
+        "25. Lightweight bot signal"
+      ],
+      "content": "A hidden honeypot field provides a bot signal without collecting unnecessary visitor identifiers.\n\nThis is a privacy-conscious anti-abuse tradeoff appropriate to a low-volume personal site.",
+      "source_line_start": 3427,
+      "source_line_end": 3433
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "26. Opinion animation system",
+      "normalized_title": "Opinion animation system",
+      "key": "opinion_animation_system",
+      "path": [
+        "26. Opinion animation system"
+      ],
+      "content": "Approved opinions move continuously within a viewport-sized stage, reverse at boundaries and use `requestAnimationFrame` plus `ResizeObserver` to react to layout changes.\n\nReduced-motion users receive a static layout.",
+      "source_line_start": 3433,
+      "source_line_end": 3439
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "27. Skills evidence page",
+      "normalized_title": "Skills evidence page",
+      "key": "skills_evidence_page",
+      "path": [
+        "27. Skills evidence page"
+      ],
+      "content": "`/skills` is explicitly based on source and commit evidence from real project repositories. Capability rows reveal/hide with scroll progress, and the page uses project imagery plus a structured evidence feed.\n\nThis transforms the portfolio from self-declared skill badges toward evidence-backed capability presentation.",
+      "source_line_start": 3439,
+      "source_line_end": 3445
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "28. Static skill evidence tradeoff",
+      "normalized_title": "Static skill evidence tradeoff",
+      "key": "static_skill_evidence_tradeoff",
+      "path": [
+        "28. Static skill evidence tradeoff"
+      ],
+      "content": "Current skill evidence is versioned statically in `src/data/project-skills.ts` rather than fetched live from GitHub.\n\nThat improves deterministic deployment and reviewability but requires updates when evidence changes. KiroRag is the natural future path toward more dynamic repository-aware retrieval.",
+      "source_line_start": 3445,
+      "source_line_end": 3451
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "29. KiroRag product direction",
+      "normalized_title": "KiroRag product direction",
+      "key": "kirorag_product_direction",
+      "path": [
+        "29. KiroRag product direction"
+      ],
+      "content": "`/kiro-rag` introduces an interactive portfolio-intelligence identity called Kiro. The current inspected page is a runtime/control backbone for a rigged model and interaction states rather than yet proving a complete production RAG retrieval backend.\n\nThe RAG corpus must preserve this distinction.",
+      "source_line_start": 3451,
+      "source_line_end": 3457
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "30. GLB-first avatar boundary",
+      "normalized_title": "GLB-first avatar boundary",
+      "key": "glb_first_avatar_boundary",
+      "path": [
+        "30. GLB-first avatar boundary"
+      ],
+      "content": "The page expects a real rigged `kiro.glb`. React no longer fabricates anatomy from a flattened image cutout.\n\nThis is a substantial design improvement because animation capability is derived from an authored 3D asset rather than arbitrary DOM/image transforms.",
+      "source_line_start": 3457,
+      "source_line_end": 3463
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "31. Runtime model inspection",
+      "normalized_title": "Runtime model inspection",
+      "key": "runtime_model_inspection",
+      "path": [
+        "31. Runtime model inspection"
+      ],
+      "content": "The loader inspects actual bones, morph targets and animation clips before attempting control. Missing capabilities are reported rather than silently invented.\n\nThis is an excellent example of capability-driven integration.",
+      "source_line_start": 3463,
+      "source_line_end": 3469
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "32. Safe animation controller",
+      "normalized_title": "Safe animation controller",
+      "key": "safe_animation_controller",
+      "path": [
+        "32. Safe animation controller"
+      ],
+      "content": "Application states map to bounded semantic controls such as head intent, gaze, face, body, board and thruster behavior. The runtime avoids unconstrained arbitrary transforms.\n\nThe design establishes a contract between product state and model capability.",
+      "source_line_start": 3469,
+      "source_line_end": 3475
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "33. Authored plus procedural animation",
+      "normalized_title": "Authored plus procedural animation",
+      "key": "authored_plus_procedural_animation",
+      "path": [
+        "33. Authored plus procedural animation"
+      ],
+      "content": "Existing authored GLB animation clips are cross-faded when available. Small procedural behaviors fill only exposed rig capabilities.\n\nThis properly separates asset-authored animation from runtime augmentation.",
+      "source_line_start": 3475,
+      "source_line_end": 3481
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "34. Kiro state adapter",
+      "normalized_title": "Kiro state adapter",
+      "key": "kiro_state_adapter",
+      "path": [
+        "34. Kiro state adapter"
+      ],
+      "content": "The page models states such as idle/thinking/retrieval/answering/completion/failure and maps them through behavior targets into the rig controller.\n\nThat creates a clean future integration point between RAG state and avatar behavior.",
+      "source_line_start": 3481,
+      "source_line_end": 3487
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "35. Three.js evidence",
+      "normalized_title": "Three.js evidence",
+      "key": "three_js_evidence",
+      "path": [
+        "35. Three.js evidence"
+      ],
+      "content": "`three` is a production dependency, and the Kiro feature contains dedicated 3D-model code. This is strong direct evidence of current Three.js/GLB web integration.\n\nIt should not be inflated into general game-engine or professional 3D-artist expertise.",
+      "source_line_start": 3487,
+      "source_line_end": 3493
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "36. Image persistence in D1",
+      "normalized_title": "Image persistence in D1",
+      "key": "image_persistence_in_d1",
+      "path": [
+        "36. Image persistence in D1"
+      ],
+      "content": "Milestone images are stored as Base64 strings directly in D1. Public milestone JSON returns image URLs; a Worker image route decodes and serves normal binary responses.\n\nThis avoids R2/object storage at the cost of row-size and Base64 overhead.",
+      "source_line_start": 3493,
+      "source_line_end": 3499
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "37. Image size limit",
+      "normalized_title": "Image size limit",
+      "key": "image_size_limit",
+      "path": [
+        "37. Image size limit"
+      ],
+      "content": "Raw image size is capped at **1,310,720 bytes (1.25 MiB)** to leave margin under D1 row/string constraints after Base64 expansion.\n\nThis is evidence of implementation decisions being derived from platform limits.",
+      "source_line_start": 3499,
+      "source_line_end": 3505
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "38. API design",
+      "normalized_title": "API design",
+      "key": "api_design",
+      "path": [
+        "38. API design"
+      ],
+      "content": "The Worker exposes separate public, authentication and admin route groups. Admin endpoints require a valid signed session and origin enforcement.\n\nThis route separation makes authorization expectations explicit.",
+      "source_line_start": 3505,
+      "source_line_end": 3511
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "39. Milestone CLI",
+      "normalized_title": "Milestone CLI",
+      "key": "milestone_cli",
+      "path": [
+        "39. Milestone CLI"
+      ],
+      "content": "A Node-based authoring CLI supports milestone listing, creation, updates, sections, image add/delete and deletion using the same short-lived OAuth-backed session.\n\nThis gives the owner both GUI and command-line administration paths without reintroducing permanent secrets.",
+      "source_line_start": 3511,
+      "source_line_end": 3517
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "40. Local development model",
+      "normalized_title": "Local development model",
+      "key": "local_development_model",
+      "path": [
+        "40. Local development model"
+      ],
+      "content": "The repository documents local frontend development, local D1 migrations, Worker development and secret handling through `.dev.vars`.\n\n`.dev.vars` is explicitly excluded from source control.",
+      "source_line_start": 3517,
+      "source_line_end": 3523
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "41. CI quality gate",
+      "normalized_title": "CI quality gate",
+      "key": "ci_quality_gate",
+      "path": [
+        "41. CI quality gate"
+      ],
+      "content": "The GitHub Actions quality job performs:\n\n1. legacy-file rejection;\n2. no-R2 architecture gate;\n3. no-legacy-auth gate;\n4. ESLint;\n5. frontend TypeScript checking;\n6. Worker TypeScript checking;\n7. Vitest;\n8. local D1 migration validation;\n9. Vite production build;\n10. Wrangler dry-run bundling.\n\nThis is one of the strongest CI pipelines in the corpus.",
+      "source_line_start": 3523,
+      "source_line_end": 3540
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "42. Sequential deployment",
+      "normalized_title": "Sequential deployment",
+      "key": "sequential_deployment",
+      "path": [
+        "42. Sequential deployment"
+      ],
+      "content": "A push to `main` deploys only after the quality gate passes. Worker deployment applies remote D1 migrations first, then deploys the Worker; frontend deployment waits on the Worker and sends the built frontend to Netlify.\n\nThis encodes deployment dependency ordering explicitly.",
+      "source_line_start": 3540,
+      "source_line_end": 3546
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "43. Secret separation",
+      "normalized_title": "Secret separation",
+      "key": "secret_separation",
+      "path": [
+        "43. Secret separation"
+      ],
+      "content": "Cloudflare/Netlify deployment secrets live in GitHub Actions, while OAuth runtime secrets live in the Worker secret store. The README makes this distinction explicit.\n\nThat is good operational secret compartmentalization.",
+      "source_line_start": 3546,
+      "source_line_end": 3552
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "44. Deployment ownership",
+      "normalized_title": "Deployment ownership",
+      "key": "deployment_ownership",
+      "path": [
+        "44. Deployment ownership"
+      ],
+      "content": "The repository is defined as source of truth for application code, migrations, Worker bindings, OAuth behavior, tests and deployment gates. Dashboard operations are minimized to unavoidable bootstrap/observability tasks.\n\nThis is infrastructure-as-code-style discipline even though not every cloud resource is provisioned declaratively.",
+      "source_line_start": 3552,
+      "source_line_end": 3558
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "45. Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "45. Testing"
+      ],
+      "content": "Both frontend and Worker test directories exist, and Vitest is part of the required quality gate. The repository therefore demonstrates executed automated testing as a release precondition.\n\nWithout a test-coverage report, the corpus should not invent a coverage percentage.",
+      "source_line_start": 3558,
+      "source_line_end": 3564
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "46. Type safety",
+      "normalized_title": "Type safety",
+      "key": "type_safety",
+      "path": [
+        "46. Type safety"
+      ],
+      "content": "Frontend and Worker have separate TypeScript project checks. Shared contracts plus strict no-emit checks provide stronger compile-time boundary validation than a single permissive TS config.",
+      "source_line_start": 3564,
+      "source_line_end": 3568
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "47. Direct authored skill evidence",
+      "normalized_title": "Direct authored skill evidence",
+      "key": "direct_authored_skill_evidence",
+      "path": [
+        "47. Direct authored skill evidence"
+      ],
+      "content": "**Exceptional direct evidence:**\n\n- React 19 / TypeScript / Vite;\n- Cloudflare Workers;\n- Cloudflare D1 schema/migrations;\n- REST API design;\n- GitHub OAuth implementation;\n- HMAC signing and SHA-256 hashing through Web Crypto;\n- one-time authentication-code exchange design;\n- authorization by immutable provider identity;\n- Netlify deployment;\n- GitHub Actions CI/CD;\n- frontend/backend shared contracts;\n- testing/lint/type gates;\n- content moderation;\n- accessible animation systems;\n- Base64 binary serving from D1;\n- Three.js / GLB runtime integration;\n- portfolio/product UX;\n- evidence-backed skill presentation.",
+      "source_line_start": 3568,
+      "source_line_end": 3591
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "48. External/platform capability boundary",
+      "normalized_title": "External/platform capability boundary",
+      "key": "external_platform_capability_boundary",
+      "path": [
+        "48. External/platform capability boundary"
+      ],
+      "content": "GitHub, Cloudflare, Netlify, D1, React, Three.js and OAuth protocols are external technologies. The repository should receive credit for architecture and integration, not for underlying platform implementation.\n\nSimilarly, future repository RAG answers must attribute retrieved evidence to source repositories rather than to the portfolio itself.",
+      "source_line_start": 3591,
+      "source_line_end": 3597
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "49. Overall system capability",
+      "normalized_title": "Overall system capability",
+      "key": "overall_system_capability",
+      "path": [
+        "49. Overall system capability"
+      ],
+      "content": "The product can publish a rich chronological portfolio, store/administer media and narratives, moderate public opinions, present evidence-backed skills and host an interactive 3D career-intelligence interface.\n\nIt is a real deployed full-stack portfolio platform, not a static résumé page.",
+      "source_line_start": 3597,
+      "source_line_end": 3603
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "50. Responsibility",
+      "normalized_title": "Responsibility",
+      "key": "responsibility",
+      "path": [
+        "50. Responsibility"
+      ],
+      "content": "The repository shows end-to-end product responsibility across UX, data, API, authentication, security boundaries, CI/CD and deployment.\n\nThis is strong evidence for product engineering and architectural ownership.",
+      "source_line_start": 3603,
+      "source_line_end": 3609
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "51. Complexity",
+      "normalized_title": "Complexity",
+      "key": "complexity",
+      "path": [
+        "51. Complexity"
+      ],
+      "content": "**High.** Complexity is distributed across:\n\n- two deployment platforms;\n- database migrations;\n- security-sensitive OAuth/session design;\n- frontend/admin/public experiences;\n- image storage constraints;\n- moderation;\n- animations;\n- 3D asset runtime;\n- CI/CD ordering.",
+      "source_line_start": 3609,
+      "source_line_end": 3623
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "52. Scale",
+      "normalized_title": "Scale",
+      "key": "scale",
+      "path": [
+        "52. Scale"
+      ],
+      "content": "The application is architected for a personal portfolio and modest public traffic, not a large social platform. D1/Workers/Netlify can scale beyond one user, but actual demonstrated user scale is not large.\n\nThe strongest evidence is architectural maturity rather than traffic volume.",
+      "source_line_start": 3623,
+      "source_line_end": 3629
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "53. Decisions and tradeoffs",
+      "normalized_title": "Decisions and tradeoffs",
+      "key": "decisions_and_tradeoffs",
+      "path": [
+        "53. Decisions and tradeoffs"
+      ],
+      "content": "Notable decisions include:\n\n- D1 instead of Firebase for the new portfolio data layer;\n- Base64 D1 images instead of R2;\n- GitHub OAuth instead of a custom password database;\n- one immutable admin identity instead of generic roles;\n- short-lived exchange/session credentials instead of permanent admin tokens;\n- repository-enforced migration/security gates;\n- Netlify frontend plus Cloudflare Worker backend;\n- authored GLB capability inspection instead of fabricated cutout animation.\n\nThese choices are coherent with the product's single-owner requirements.",
+      "source_line_start": 3629,
+      "source_line_end": 3644
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "54. Engineering judgment",
+      "normalized_title": "Engineering judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "54. Engineering judgment"
+      ],
+      "content": "The most mature judgment appears in **constraint-aware simplification**. The application avoids multi-role auth because it does not need it, avoids permanent credentials, keeps runtime tokens short-lived, and uses explicit gates to prevent removed architecture from returning.\n\nThe design is not complex for complexity's sake; several choices deliberately narrow scope.",
+      "source_line_start": 3644,
+      "source_line_end": 3650
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "55. Mistakes / lessons / evolution",
+      "normalized_title": "Mistakes / lessons / evolution",
+      "key": "mistakes_lessons_evolution",
+      "path": [
+        "55. Mistakes / lessons / evolution"
+      ],
+      "content": "The repository history includes migration away from older JavaScript files, R2 integration and permanent admin-token authentication. Those removals are now protected by automated checks.\n\nThis is valuable evidence that architecture can improve through explicit deprecation rather than accumulating every past mechanism forever.",
+      "source_line_start": 3650,
+      "source_line_end": 3656
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "56. Security maturity",
+      "normalized_title": "Security maturity",
+      "key": "security_maturity",
+      "path": [
+        "56. Security maturity"
+      ],
+      "content": "Security is one of the repository's strongest areas:\n\n- signed/aged OAuth state;\n- provider token exchange server-side;\n- immutable numeric owner identity;\n- hashed one-time D1 exchange codes;\n- short TTLs;\n- signed audience-bound sessions;\n- origin enforcement;\n- runtime secret separation;\n- no custom password database;\n- gates against legacy long-lived auth.\n\nThis supports practical web-auth/security design evidence while not implying formal penetration-testing expertise.",
+      "source_line_start": 3656,
+      "source_line_end": 3673
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "57. Privacy",
+      "normalized_title": "Privacy",
+      "key": "privacy",
+      "path": [
+        "57. Privacy"
+      ],
+      "content": "Opinion submissions intentionally collect only publication-relevant fields and consent. The site does not need a broad user account/profile database.\n\nThis is an example of data minimization aligned with product needs.",
+      "source_line_start": 3673,
+      "source_line_end": 3679
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "58. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "58. Repository hygiene"
+      ],
+      "content": "The repository has explicit source layers, migrations, lockfile, environment example, CI, tests, scripts, shared contracts and documentation. Hygiene is high.\n\nLarge media files inflate repository size, but their presence is tied to portfolio presentation and Kiro assets rather than accidental build output.",
+      "source_line_start": 3679,
+      "source_line_end": 3685
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "59. Documentation maturity",
+      "normalized_title": "Documentation maturity",
+      "key": "documentation_maturity",
+      "path": [
+        "59. Documentation maturity"
+      ],
+      "content": "The README is detailed and operational: architecture, local setup, OAuth bootstrap, secrets, API routes, CLI, migrations, CI/CD and deployment ownership are documented.\n\nThis substantially improves maintainability and makes the repository a strong RAG source.",
+      "source_line_start": 3685,
+      "source_line_end": 3691
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "60. Product failure potential",
+      "normalized_title": "Product failure potential",
+      "key": "product_failure_potential",
+      "path": [
+        "60. Product failure potential"
+      ],
+      "content": "Authentication defects could expose private administration; migration errors could damage published portfolio data; moderation bugs could publish unapproved opinions; image constraints could break content; CI deployment ordering could cause frontend/backend incompatibility.\n\nThese are real production concerns even for a personal site.",
+      "source_line_start": 3691,
+      "source_line_end": 3697
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "61. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "61. Human impact"
+      ],
+      "content": "The portfolio translates years of engineering artifacts into an accessible story for employers, collaborators and peers. Evidence-backed skills and KiroRag can reduce the gap between a résumé bullet and the underlying repository proof.\n\nThe product's strategic value therefore exceeds simple personal branding.",
+      "source_line_start": 3697,
+      "source_line_end": 3703
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "62. Standard evaluation matrix",
+      "normalized_title": "Standard evaluation matrix",
+      "key": "standard_evaluation_matrix",
+      "path": [
+        "62. Standard evaluation matrix"
+      ],
+      "content": "| Dimension | Rating | Evidence |\n| --- | ---: | --- |\n| Product architecture | 5.0/5 | frontend/Worker/D1/deployment separation |\n| Frontend engineering | 4.9/5 | rich responsive animated React UI |\n| Backend engineering | 4.8/5 | structured Worker API/repositories/validation |\n| Database engineering | 4.7/5 | explicit D1 migrations and constraints |\n| Authentication/security | 5.0/5 | robust single-owner OAuth/session design |\n| Testing/quality gates | 4.8/5 | lint/type/test/migration/build/dry-run CI |\n| CI/CD | 5.0/5 | gated sequential Worker + Netlify deploy |\n| 3D web integration | 4.2/5 | GLB inspection/control runtime |\n| Documentation | 5.0/5 | complete operational README |\n| Demonstrated traffic scale | 2.5/5 | personal portfolio workload |",
+      "source_line_start": 3703,
+      "source_line_end": 3718
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "63. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "63. Portfolio Evidence Weight"
+      ],
+      "content": "**5.0/5.**\n\nAs the final repository, `my-portfolio` is one of the strongest direct demonstrations of current product-engineering maturity: secure full-stack architecture, database evolution, automated quality gates, deployment ownership and sophisticated UI/3D behavior are all present in one actively deployed product.",
+      "source_line_start": 3718,
+      "source_line_end": 3724
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "64. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "64. Skill lifecycle"
+      ],
+      "content": "This repository consolidates earlier React, TypeScript, database, cloud, CI/CD and product-design skills while adding particularly strong late-corpus evidence for **Cloudflare Workers/D1, GitHub OAuth security design, migration gates and Three.js/GLB integration**.\n\nThe portfolio also begins to consume earlier repository evidence directly, turning the career corpus itself into a product input.",
+      "source_line_start": 3724,
+      "source_line_end": 3730
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "65. Cumulative career effect",
+      "normalized_title": "Cumulative career effect",
+      "key": "cumulative_career_effect",
+      "path": [
+        "65. Cumulative career effect"
+      ],
+      "content": "Repo134 closes the chronological corpus with a clear pattern: the career evolved from learning algorithms/languages and building isolated applications, through embedded/IoT/wireless systems and enterprise backend work, toward **full product ownership, systems engineering, evidence governance and AI-assisted career intelligence**.\n\nThe final repository is therefore both another project and a synthesis layer over the projects before it.",
+      "source_line_start": 3730,
+      "source_line_end": 3736
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "66. Current relevance",
+      "normalized_title": "Current relevance",
+      "key": "current_relevance",
+      "path": [
+        "66. Current relevance"
+      ],
+      "content": "Highly relevant to product engineering, full-stack TypeScript, cloud/serverless engineering, developer-facing applications, portfolio intelligence and secure web application roles.",
+      "source_line_start": 3736,
+      "source_line_end": 3740
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "67. Career-level interpretation",
+      "normalized_title": "Career-level interpretation",
+      "key": "career_level_interpretation",
+      "path": [
+        "67. Career-level interpretation"
+      ],
+      "content": "The strongest signal is not that every technology in the corpus is expert-level. It is the ability to cross boundaries:\n\n- embedded ↔ cloud;\n- wireless measurement ↔ software analytics;\n- backend ↔ frontend;\n- implementation ↔ validation;\n- project work ↔ engineering governance;\n- raw repositories ↔ evidence-backed portfolio presentation.\n\nThat breadth should be retrieved with per-skill confidence rather than collapsed into one generic “full-stack engineer” label.",
+      "source_line_start": 3740,
+      "source_line_end": 3753
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "68. RAG warnings",
+      "normalized_title": "RAG warnings",
+      "key": "rag_warnings",
+      "path": [
+        "68. RAG warnings"
+      ],
+      "content": "- Do not claim KiroRag's complete repository-RAG backend exists unless later code proves it; the inspected repository clearly proves the presentation/runtime backbone and evidence pages.\n- Do not expose Worker secrets or private admin sessions.\n- Do not call GitHub username the authorization identity; numeric GitHub ID is authoritative.\n- Do not claim R2 is active; the repository explicitly gates against it.\n- Do not claim a permanent admin token exists; the repository explicitly removed and rejects it.\n- Do not infer large production traffic from serverless architecture.\n- Distinguish authored Three.js controller logic from the authored/third-party GLB asset and Mixamo/other animation provenance where applicable.\n- Keep source-repository evidence provenance when the portfolio displays skills.",
+      "source_line_start": 3753,
+      "source_line_end": 3764
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "69. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "69. Bottom line"
+      ],
+      "content": "`my-portfolio` is a production-oriented **career platform**, not a static portfolio. It combines secure GitHub OAuth, D1-backed content, Cloudflare Worker APIs, Netlify delivery, rigorous CI/CD, moderated public interaction, evidence-based skill presentation and an extensible GLB/Three.js KiroRag interface. As Repository 134, it is an appropriate culmination of the corpus because it turns accumulated engineering history into a deployable, queryable and increasingly interactive professional product.\n\n<!-- END REPOSITORY 134 -->\n\n---",
+      "source_line_start": 3764,
+      "source_line_end": 3771
+    }
+  ],
+  "raw_analysis": "# Repository 134 / 134 — `my-portfolio`\n\n**Descriptive classification:** production-oriented personal portfolio and career-intelligence platform built with React/TypeScript/Vite, Cloudflare Workers, Cloudflare D1, GitHub OAuth, Netlify, CI/CD, moderated public content, evidence-backed skills and a Three.js/GLB KiroRag avatar runtime.\n\nAs the final repository in the chronological corpus, `my-portfolio` is notable because it recursively consumes and presents evidence from earlier engineering work. It is both a software product and a meta-layer over the career corpus: milestones, skills, opinions and KiroRag are presentation/retrieval surfaces for accumulated technical history.\n\n## 1. Identity and metadata\n\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/my-portfolio` |\n| Chronology index | **134 / 134** |\n| Visibility | Public |\n| Created | **2026-08-25** |\n| Last push in inspected snapshot | **2026-08-30** |\n| Primary language | TypeScript |\n| Frontend | React 19 + Vite + TypeScript |\n| API | TypeScript Cloudflare Worker |\n| Database | Cloudflare D1 |\n| Deployment | Cloudflare Worker + Netlify |\n| Authentication | GitHub OAuth, single immutable numeric admin ID |\n| 3D runtime | Three.js + rigged GLB boundary |\n| Portfolio Evidence Weight | **5.0/5** |\n\n## 2. Product role in the career corpus\n\nThe portfolio is not merely a static CV site. It acts as a durable presentation layer for chronological milestones, project evidence, public opinions and an emerging repository-aware assistant surface.\n\nThis makes it the natural final node of the 134-repository analysis: earlier artifacts become data/evidence that this application can expose to employers and other viewers.\n\n## 3. High-level architecture\n\nThe README defines this production topology:\n\n```text\nBrowser\n  -> Netlify: React + TypeScript + Vite\n  -> HTTPS\n  -> Cloudflare Worker: TypeScript API\n  -> Cloudflare D1\n```\n\nD1 stores milestones, long-form sections, milestone images, moderated opinions and short-lived OAuth exchange codes.\n\n## 4. Frontend architecture\n\nThe frontend is organized into React application code, private admin functionality, components, data, features, libraries and dedicated pages for skills, opinions and KiroRag.\n\nThis is a materially more modular source layout than the single-file internal tools earlier in the corpus.\n\n## 5. Worker backend\n\nThe Worker code is separated into authentication, HTTP handling, route dispatch, milestone persistence, opinion persistence, validation and environment contracts.\n\nThat decomposition supports direct backend TypeScript evidence rather than treating the Worker as one monolithic request handler.\n\n## 6. Shared contracts\n\nA `shared/` layer defines contracts used across frontend and Worker boundaries. This reduces duplicated payload assumptions and is direct evidence of type-driven full-stack design.\n\n## 7. D1 schema migration chain\n\nDatabase state is versioned with explicit SQL migrations:\n\n- `0001-initial-portfolio-schema.sql`;\n- `0002-base64-milestone-images.sql`;\n- `0003-github-oauth.sql`;\n- `0004-opinions.sql`.\n\nThis is stronger database maturity than creating tables opportunistically at runtime.\n\n## 8. Milestone data model\n\nMilestones support chronological metadata, short timeline text, expanded hover/touch descriptions, long-form introductions, ordered sections, multiple images, cover selection and publish/draft state.\n\nThe model therefore separates timeline summary from deep narrative.\n\n## 9. Deterministic chronological presentation\n\nMilestones maintain year/month and deterministic display order. The UI intentionally uses equal center-to-center visual spacing rather than raw temporal distance.\n\nThis is a product-design decision: readability of a career story is prioritized over literal time-scale geometry.\n\n## 10. Reversible timeline interaction\n\nMilestone reveals are scroll-reversible. As the line reaches a dot the milestone appears, and scrolling back above it reverses the transition.\n\nThe behavior demonstrates deliberate stateful animation rather than one-way entrance effects.\n\n## 11. Seasonal transitions\n\nTimeline transitions trigger season-aware effects—fall leaves, winter snow, spring petals and summer rain/sunlight—when the active milestone crosses a seasonal boundary.\n\nEffects are transient, pointer-transparent and disabled under `prefers-reduced-motion`.\n\n## 12. Accessibility / reduced motion\n\nBoth timeline and opinion/skills experiences account for reduced-motion preferences. This is direct evidence of respecting platform accessibility settings in interaction design.\n\n## 13. Public/private boundary\n\nPublic visitors can read published content and submit opinions, but cannot publish, edit or delete portfolio data. Administration is restricted to the single portfolio owner.\n\nThis is a clear authorization model appropriate for a personal portfolio.\n\n## 14. GitHub OAuth identity choice\n\nAdmin authorization uses an immutable **numeric GitHub user ID**, not username string matching. Username changes therefore do not alter authorization identity.\n\nThat is a strong identity-design choice.\n\n## 15. OAuth signed state\n\nThe Worker creates signed OAuth state containing a random nonce and issue time. It validates signature and maximum age on callback.\n\nThis protects the OAuth flow against forged/stale state values.\n\n## 16. Server-side code exchange\n\nGitHub authorization codes are exchanged server-side using Worker secrets. The browser never receives the GitHub access token.\n\nThis is the correct secrecy boundary for OAuth client credentials and provider tokens.\n\n## 17. Identity verification\n\nAfter code exchange, the Worker calls GitHub's authenticated user endpoint and requires the returned numeric ID to equal `ADMIN_GITHUB_USER_ID`.\n\nThis enforces one-owner administration even if another GitHub account completes OAuth successfully.\n\n## 18. One-time handoff code\n\nThe callback does not place the final admin session directly into a URL. Instead, it creates a short-lived random exchange code, stores only its SHA-256 hash in D1 and redirects the browser with the one-time plaintext code.\n\nThis is a strong credential-handoff design.\n\n## 19. Transactional code consumption\n\nThe exchange endpoint looks up and deletes the one-time code in a D1 batch. Codes expire after two minutes.\n\nThe intent is single-use, short-lived transfer from OAuth callback to the frontend session.\n\n## 20. Signed admin session\n\nThe Worker issues a signed HMAC-SHA-256 session with subject, GitHub login, issued-at, expiry and audience. Session lifetime is sixty minutes.\n\nValidation checks signature, audience, immutable owner ID and expiry.\n\n## 21. Session storage model\n\nThe frontend keeps the admin session in `sessionStorage`, and CLI sessions are also short lived. There is no permanent application admin token.\n\nThe repository explicitly includes a gate that rejects reintroduction of the old long-lived admin-token mechanism.\n\n## 22. Security migration gates\n\n`npm run verify` includes custom guards for:\n\n- obsolete JavaScript migration files;\n- removed R2/object-storage integration;\n- removed permanent admin-token authentication.\n\nThese checks encode architectural decisions as repository invariants.\n\n## 23. Opinion system\n\n`/opinions` is a dedicated public page. Visitors submit display name, optional relationship/context, opinion text and explicit publication consent.\n\nSubmissions enter a pending moderation queue and never become public automatically.\n\n## 24. Opinion moderation\n\nThe authenticated admin can approve, reject or permanently delete submissions. Public reads return only approved opinions.\n\nThis establishes a simple but correct content-moderation lifecycle.\n\n## 25. Lightweight bot signal\n\nA hidden honeypot field provides a bot signal without collecting unnecessary visitor identifiers.\n\nThis is a privacy-conscious anti-abuse tradeoff appropriate to a low-volume personal site.\n\n## 26. Opinion animation system\n\nApproved opinions move continuously within a viewport-sized stage, reverse at boundaries and use `requestAnimationFrame` plus `ResizeObserver` to react to layout changes.\n\nReduced-motion users receive a static layout.\n\n## 27. Skills evidence page\n\n`/skills` is explicitly based on source and commit evidence from real project repositories. Capability rows reveal/hide with scroll progress, and the page uses project imagery plus a structured evidence feed.\n\nThis transforms the portfolio from self-declared skill badges toward evidence-backed capability presentation.\n\n## 28. Static skill evidence tradeoff\n\nCurrent skill evidence is versioned statically in `src/data/project-skills.ts` rather than fetched live from GitHub.\n\nThat improves deterministic deployment and reviewability but requires updates when evidence changes. KiroRag is the natural future path toward more dynamic repository-aware retrieval.\n\n## 29. KiroRag product direction\n\n`/kiro-rag` introduces an interactive portfolio-intelligence identity called Kiro. The current inspected page is a runtime/control backbone for a rigged model and interaction states rather than yet proving a complete production RAG retrieval backend.\n\nThe RAG corpus must preserve this distinction.\n\n## 30. GLB-first avatar boundary\n\nThe page expects a real rigged `kiro.glb`. React no longer fabricates anatomy from a flattened image cutout.\n\nThis is a substantial design improvement because animation capability is derived from an authored 3D asset rather than arbitrary DOM/image transforms.\n\n## 31. Runtime model inspection\n\nThe loader inspects actual bones, morph targets and animation clips before attempting control. Missing capabilities are reported rather than silently invented.\n\nThis is an excellent example of capability-driven integration.\n\n## 32. Safe animation controller\n\nApplication states map to bounded semantic controls such as head intent, gaze, face, body, board and thruster behavior. The runtime avoids unconstrained arbitrary transforms.\n\nThe design establishes a contract between product state and model capability.\n\n## 33. Authored plus procedural animation\n\nExisting authored GLB animation clips are cross-faded when available. Small procedural behaviors fill only exposed rig capabilities.\n\nThis properly separates asset-authored animation from runtime augmentation.\n\n## 34. Kiro state adapter\n\nThe page models states such as idle/thinking/retrieval/answering/completion/failure and maps them through behavior targets into the rig controller.\n\nThat creates a clean future integration point between RAG state and avatar behavior.\n\n## 35. Three.js evidence\n\n`three` is a production dependency, and the Kiro feature contains dedicated 3D-model code. This is strong direct evidence of current Three.js/GLB web integration.\n\nIt should not be inflated into general game-engine or professional 3D-artist expertise.\n\n## 36. Image persistence in D1\n\nMilestone images are stored as Base64 strings directly in D1. Public milestone JSON returns image URLs; a Worker image route decodes and serves normal binary responses.\n\nThis avoids R2/object storage at the cost of row-size and Base64 overhead.\n\n## 37. Image size limit\n\nRaw image size is capped at **1,310,720 bytes (1.25 MiB)** to leave margin under D1 row/string constraints after Base64 expansion.\n\nThis is evidence of implementation decisions being derived from platform limits.\n\n## 38. API design\n\nThe Worker exposes separate public, authentication and admin route groups. Admin endpoints require a valid signed session and origin enforcement.\n\nThis route separation makes authorization expectations explicit.\n\n## 39. Milestone CLI\n\nA Node-based authoring CLI supports milestone listing, creation, updates, sections, image add/delete and deletion using the same short-lived OAuth-backed session.\n\nThis gives the owner both GUI and command-line administration paths without reintroducing permanent secrets.\n\n## 40. Local development model\n\nThe repository documents local frontend development, local D1 migrations, Worker development and secret handling through `.dev.vars`.\n\n`.dev.vars` is explicitly excluded from source control.\n\n## 41. CI quality gate\n\nThe GitHub Actions quality job performs:\n\n1. legacy-file rejection;\n2. no-R2 architecture gate;\n3. no-legacy-auth gate;\n4. ESLint;\n5. frontend TypeScript checking;\n6. Worker TypeScript checking;\n7. Vitest;\n8. local D1 migration validation;\n9. Vite production build;\n10. Wrangler dry-run bundling.\n\nThis is one of the strongest CI pipelines in the corpus.\n\n## 42. Sequential deployment\n\nA push to `main` deploys only after the quality gate passes. Worker deployment applies remote D1 migrations first, then deploys the Worker; frontend deployment waits on the Worker and sends the built frontend to Netlify.\n\nThis encodes deployment dependency ordering explicitly.\n\n## 43. Secret separation\n\nCloudflare/Netlify deployment secrets live in GitHub Actions, while OAuth runtime secrets live in the Worker secret store. The README makes this distinction explicit.\n\nThat is good operational secret compartmentalization.\n\n## 44. Deployment ownership\n\nThe repository is defined as source of truth for application code, migrations, Worker bindings, OAuth behavior, tests and deployment gates. Dashboard operations are minimized to unavoidable bootstrap/observability tasks.\n\nThis is infrastructure-as-code-style discipline even though not every cloud resource is provisioned declaratively.\n\n## 45. Testing\n\nBoth frontend and Worker test directories exist, and Vitest is part of the required quality gate. The repository therefore demonstrates executed automated testing as a release precondition.\n\nWithout a test-coverage report, the corpus should not invent a coverage percentage.\n\n## 46. Type safety\n\nFrontend and Worker have separate TypeScript project checks. Shared contracts plus strict no-emit checks provide stronger compile-time boundary validation than a single permissive TS config.\n\n## 47. Direct authored skill evidence\n\n**Exceptional direct evidence:**\n\n- React 19 / TypeScript / Vite;\n- Cloudflare Workers;\n- Cloudflare D1 schema/migrations;\n- REST API design;\n- GitHub OAuth implementation;\n- HMAC signing and SHA-256 hashing through Web Crypto;\n- one-time authentication-code exchange design;\n- authorization by immutable provider identity;\n- Netlify deployment;\n- GitHub Actions CI/CD;\n- frontend/backend shared contracts;\n- testing/lint/type gates;\n- content moderation;\n- accessible animation systems;\n- Base64 binary serving from D1;\n- Three.js / GLB runtime integration;\n- portfolio/product UX;\n- evidence-backed skill presentation.\n\n## 48. External/platform capability boundary\n\nGitHub, Cloudflare, Netlify, D1, React, Three.js and OAuth protocols are external technologies. The repository should receive credit for architecture and integration, not for underlying platform implementation.\n\nSimilarly, future repository RAG answers must attribute retrieved evidence to source repositories rather than to the portfolio itself.\n\n## 49. Overall system capability\n\nThe product can publish a rich chronological portfolio, store/administer media and narratives, moderate public opinions, present evidence-backed skills and host an interactive 3D career-intelligence interface.\n\nIt is a real deployed full-stack portfolio platform, not a static résumé page.\n\n## 50. Responsibility\n\nThe repository shows end-to-end product responsibility across UX, data, API, authentication, security boundaries, CI/CD and deployment.\n\nThis is strong evidence for product engineering and architectural ownership.\n\n## 51. Complexity\n\n**High.** Complexity is distributed across:\n\n- two deployment platforms;\n- database migrations;\n- security-sensitive OAuth/session design;\n- frontend/admin/public experiences;\n- image storage constraints;\n- moderation;\n- animations;\n- 3D asset runtime;\n- CI/CD ordering.\n\n## 52. Scale\n\nThe application is architected for a personal portfolio and modest public traffic, not a large social platform. D1/Workers/Netlify can scale beyond one user, but actual demonstrated user scale is not large.\n\nThe strongest evidence is architectural maturity rather than traffic volume.\n\n## 53. Decisions and tradeoffs\n\nNotable decisions include:\n\n- D1 instead of Firebase for the new portfolio data layer;\n- Base64 D1 images instead of R2;\n- GitHub OAuth instead of a custom password database;\n- one immutable admin identity instead of generic roles;\n- short-lived exchange/session credentials instead of permanent admin tokens;\n- repository-enforced migration/security gates;\n- Netlify frontend plus Cloudflare Worker backend;\n- authored GLB capability inspection instead of fabricated cutout animation.\n\nThese choices are coherent with the product's single-owner requirements.\n\n## 54. Engineering judgment\n\nThe most mature judgment appears in **constraint-aware simplification**. The application avoids multi-role auth because it does not need it, avoids permanent credentials, keeps runtime tokens short-lived, and uses explicit gates to prevent removed architecture from returning.\n\nThe design is not complex for complexity's sake; several choices deliberately narrow scope.\n\n## 55. Mistakes / lessons / evolution\n\nThe repository history includes migration away from older JavaScript files, R2 integration and permanent admin-token authentication. Those removals are now protected by automated checks.\n\nThis is valuable evidence that architecture can improve through explicit deprecation rather than accumulating every past mechanism forever.\n\n## 56. Security maturity\n\nSecurity is one of the repository's strongest areas:\n\n- signed/aged OAuth state;\n- provider token exchange server-side;\n- immutable numeric owner identity;\n- hashed one-time D1 exchange codes;\n- short TTLs;\n- signed audience-bound sessions;\n- origin enforcement;\n- runtime secret separation;\n- no custom password database;\n- gates against legacy long-lived auth.\n\nThis supports practical web-auth/security design evidence while not implying formal penetration-testing expertise.\n\n## 57. Privacy\n\nOpinion submissions intentionally collect only publication-relevant fields and consent. The site does not need a broad user account/profile database.\n\nThis is an example of data minimization aligned with product needs.\n\n## 58. Repository hygiene\n\nThe repository has explicit source layers, migrations, lockfile, environment example, CI, tests, scripts, shared contracts and documentation. Hygiene is high.\n\nLarge media files inflate repository size, but their presence is tied to portfolio presentation and Kiro assets rather than accidental build output.\n\n## 59. Documentation maturity\n\nThe README is detailed and operational: architecture, local setup, OAuth bootstrap, secrets, API routes, CLI, migrations, CI/CD and deployment ownership are documented.\n\nThis substantially improves maintainability and makes the repository a strong RAG source.\n\n## 60. Product failure potential\n\nAuthentication defects could expose private administration; migration errors could damage published portfolio data; moderation bugs could publish unapproved opinions; image constraints could break content; CI deployment ordering could cause frontend/backend incompatibility.\n\nThese are real production concerns even for a personal site.\n\n## 61. Human impact\n\nThe portfolio translates years of engineering artifacts into an accessible story for employers, collaborators and peers. Evidence-backed skills and KiroRag can reduce the gap between a résumé bullet and the underlying repository proof.\n\nThe product's strategic value therefore exceeds simple personal branding.\n\n## 62. Standard evaluation matrix\n\n| Dimension | Rating | Evidence |\n| --- | ---: | --- |\n| Product architecture | 5.0/5 | frontend/Worker/D1/deployment separation |\n| Frontend engineering | 4.9/5 | rich responsive animated React UI |\n| Backend engineering | 4.8/5 | structured Worker API/repositories/validation |\n| Database engineering | 4.7/5 | explicit D1 migrations and constraints |\n| Authentication/security | 5.0/5 | robust single-owner OAuth/session design |\n| Testing/quality gates | 4.8/5 | lint/type/test/migration/build/dry-run CI |\n| CI/CD | 5.0/5 | gated sequential Worker + Netlify deploy |\n| 3D web integration | 4.2/5 | GLB inspection/control runtime |\n| Documentation | 5.0/5 | complete operational README |\n| Demonstrated traffic scale | 2.5/5 | personal portfolio workload |\n\n## 63. Portfolio Evidence Weight\n\n**5.0/5.**\n\nAs the final repository, `my-portfolio` is one of the strongest direct demonstrations of current product-engineering maturity: secure full-stack architecture, database evolution, automated quality gates, deployment ownership and sophisticated UI/3D behavior are all present in one actively deployed product.\n\n## 64. Skill lifecycle\n\nThis repository consolidates earlier React, TypeScript, database, cloud, CI/CD and product-design skills while adding particularly strong late-corpus evidence for **Cloudflare Workers/D1, GitHub OAuth security design, migration gates and Three.js/GLB integration**.\n\nThe portfolio also begins to consume earlier repository evidence directly, turning the career corpus itself into a product input.\n\n## 65. Cumulative career effect\n\nRepo134 closes the chronological corpus with a clear pattern: the career evolved from learning algorithms/languages and building isolated applications, through embedded/IoT/wireless systems and enterprise backend work, toward **full product ownership, systems engineering, evidence governance and AI-assisted career intelligence**.\n\nThe final repository is therefore both another project and a synthesis layer over the projects before it.\n\n## 66. Current relevance\n\nHighly relevant to product engineering, full-stack TypeScript, cloud/serverless engineering, developer-facing applications, portfolio intelligence and secure web application roles.\n\n## 67. Career-level interpretation\n\nThe strongest signal is not that every technology in the corpus is expert-level. It is the ability to cross boundaries:\n\n- embedded ↔ cloud;\n- wireless measurement ↔ software analytics;\n- backend ↔ frontend;\n- implementation ↔ validation;\n- project work ↔ engineering governance;\n- raw repositories ↔ evidence-backed portfolio presentation.\n\nThat breadth should be retrieved with per-skill confidence rather than collapsed into one generic “full-stack engineer” label.\n\n## 68. RAG warnings\n\n- Do not claim KiroRag's complete repository-RAG backend exists unless later code proves it; the inspected repository clearly proves the presentation/runtime backbone and evidence pages.\n- Do not expose Worker secrets or private admin sessions.\n- Do not call GitHub username the authorization identity; numeric GitHub ID is authoritative.\n- Do not claim R2 is active; the repository explicitly gates against it.\n- Do not claim a permanent admin token exists; the repository explicitly removed and rejects it.\n- Do not infer large production traffic from serverless architecture.\n- Distinguish authored Three.js controller logic from the authored/third-party GLB asset and Mixamo/other animation provenance where applicable.\n- Keep source-repository evidence provenance when the portfolio displays skills.\n\n## 69. Bottom line\n\n`my-portfolio` is a production-oriented **career platform**, not a static portfolio. It combines secure GitHub OAuth, D1-backed content, Cloudflare Worker APIs, Netlify delivery, rigorous CI/CD, moderated public interaction, evidence-based skill presentation and an extensible GLB/Three.js KiroRag interface. As Repository 134, it is an appropriate culmination of the corpus because it turns accumulated engineering history into a deployable, queryable and increasingly interactive professional product.\n\n<!-- END REPOSITORY 134 -->\n\n---\n"
+}

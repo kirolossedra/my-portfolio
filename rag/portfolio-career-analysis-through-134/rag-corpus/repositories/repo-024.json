@@ -1,0 +1,966 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 24,
+  "repository_total": 134,
+  "repository_name": "SQL-WORKSPACE",
+  "header_title": "`SQL-WORKSPACE`",
+  "repository_slug": "kirolossedra/SQL-WORKSPACE",
+  "repository_url": "https://github.com/kirolossedra/SQL-WORKSPACE",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-016-027-corrected.md",
+    "line_start": 6395,
+    "line_end": 6928,
+    "sha256": "279ef304cb027a5c0512f7bd282567f839ddebf99b1fa80bfdfad5f1c4f282c2"
+  },
+  "chronology_summary": {
+    "created": "2023-11-30 12:12:38 UTC",
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": "N/A",
+    "portfolio_evidence_weight": "2.5/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/SQL-WORKSPACE",
+    "chronology_index": "024 / 134",
+    "visibility": "Public",
+    "fork": "No",
+    "created": "2023-11-30 12:12:38 UTC",
+    "only_commit": "2023-11-30 12:13:14 UTC",
+    "exact_commits": "1",
+    "primary_language": "T-SQL",
+    "final_file": "FINDCOLUMNDATABASE.sql",
+    "product_maturity": "N/A",
+    "engineering_maturity": "1.5/5",
+    "portfolio_evidence_weight": "2.5/5",
+    "career_skill_evidence": "3.0/5"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s006"
+      ],
+      "titles": [
+        "Project identity",
+        "3. Practical context without unsupported identity claims"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **Single-Purpose SQL Server Metadata / Schema-Discovery Utility**\n\nRepository 024 is deliberately tiny:\n\n- one commit;\n- one T-SQL file;\n- no README;\n- no application.\n\nThe script searches SQL Server system catalogs for table/column names matching patterns.\n\nIts honest value is **practical database introspection**, not database architecture.\n\n---\n\n## 3. Practical context without unsupported identity claims\nThe script contains concrete database/table/column fragments, indicating it was written for a real discovery task.\n\nHowever, nothing in the repository proves:\n\n- employer;\n- client;\n- business ownership;\n- production environment identity.\n\nThose specifics must not be inferred.\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "1. RAG metadata"
+      ],
+      "text": "## 1. RAG metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/SQL-WORKSPACE` |\n| Chronology index | **024 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-11-30 12:12:38 UTC** |\n| Only commit | **2023-11-30 12:13:14 UTC** |\n| Exact commits | **1** |\n| Primary language | **T-SQL** |\n| Final file | `FIND_COLUMN_DATABASE.sql` |\n| Product maturity | N/A |\n| Engineering maturity | **1.5/5** |\n| Portfolio Evidence Weight | **2.5/5** |\n| Career-skill evidence | **3.0/5** |\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s050",
+        "s052"
+      ],
+      "titles": [
+        "31. Expanded longitudinal summary vector",
+        "33. Bottom line"
+      ],
+      "text": "## 31. Expanded longitudinal summary vector\n| Axis | Repo024 effect |\n|---|---|\n| SQL recurrence | increases |\n| SQL Server specificity | first clear evidence |\n| Database architecture | unchanged |\n| Practical tooling behavior | reinforced |\n| Product maturity | N/A |\n| Career evidence | narrow but useful |\n\n## 33. Bottom line\nThe strongest safe career statement is:\n\n> **By late 2023, SQL was being used pragmatically to inspect an existing SQL Server database and locate relevant tables/columns, not only to solve coding challenges.**\n\n### Key ratings\n\n- T-SQL: **2.5/5**\n- Metadata introspection: **2.75/5**\n- Joins/filtering: **2.5/5**\n- Database design: **0/5**\n- Testing: **0/5**\n- Engineering maturity: **1.5/5**\n- Portfolio Evidence Weight: **2.5/5**\n- Career-skill evidence: **3.0/5**\n\n---\n\n**End of Repository 024 / 134.**\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s017",
+        "s046"
+      ],
+      "titles": [
+        "9. Chronology and lifecycle interpretation",
+        "27. Current relevance / recency"
+      ],
+      "text": "## 9. Chronology and lifecycle interpretation\nRepo024 is a one-commit utility created and populated within roughly a minute. The correct interpretation is **captured working query / personal workspace artifact**, not a software-development lifecycle.\n\nThe absence of iteration is itself evidence: the repository appears to preserve a useful SQL Server discovery query rather than develop a database product.\n\n## 27. Current relevance / recency\nRepo024 is historical late-2023 evidence of SQL Server metadata discovery. Later SQL/data-engineering repositories should determine current depth.\n\nIts long-term value is as a **first practical SQL Server introspection marker**, not as a current DBA proficiency indicator."
+    },
+    "architecture": {
+      "section_ids": [
+        "s020"
+      ],
+      "titles": [
+        "12. Query architecture / data flow"
+      ],
+      "text": "## 12. Query architecture / data flow\nAlthough tiny, the query has a clear relational flow:\n\n```text\nselected SQL Server database\n        ↓\nsys.tables  ── object_id ──  sys.columns\n        ↓                       ↓\n     table metadata         column metadata\n              \\             /\n               INNER JOIN\n                   ↓\n        LIKE-based filtering\n                   ↓\n      ordered table/column pairs\n```\n\nThis is useful evidence of knowing that database structure can be inspected through metadata catalogs rather than manually browsing every table."
+    },
+    "skills": {
+      "section_ids": [
+        "s013"
+      ],
+      "titles": [
+        "8. Skill lifecycle"
+      ],
+      "text": "## 8. Skill lifecycle\n### First clearly observed\n\n- SQL Server-specific system-catalog introspection;\n- practical metadata-discovery SQL.\n\n### Reinforced\n\n- SQL;\n- joins;\n- pattern filtering;\n- database troubleshooting/discovery.\n\n### Not observed\n\n- database architecture;\n- query optimization;\n- application persistence;\n- DBA operations.\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->"
+    },
+    "scale": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "16. Scale dimensions"
+      ],
+      "text": "## 16. Scale dimensions\nThe query could operate on databases with many tables/columns, but repository evidence does not quantify the target schema.\n\nObserved scale:\n- 1 SQL file;\n- 1 commit;\n- 1 query;\n- 2 system catalog views;\n- no application;\n- no migrations;\n- no test database;\n- no deployment pipeline.\n\nDo not infer enterprise database scale from the use of SQL Server metadata."
+    },
+    "testing": {
+      "section_ids": [
+        "s034",
+        "s035"
+      ],
+      "titles": [
+        "20. Testing / verification",
+        "Testing rating"
+      ],
+      "text": "## 20. Testing / verification\nNo tests are present.\n\nFor this query, testing would mean validating against a known schema with cases such as:\n- matching/nonmatching table names;\n- matching/nonmatching column names;\n- duplicate column names across schemas;\n- views vs tables;\n- wildcard characters in search terms.\n\nBecause the task is read-only metadata discovery, failure risk is lower than for DDL/DML, but correctness still matters.\n\n### Testing rating\n\n**0/5 authored automation**\n\n## Testing rating\n**0/5 authored automation**"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s036"
+      ],
+      "titles": [
+        "21. CI/CD / deployment"
+      ],
+      "text": "## 21. CI/CD / deployment\nN/A for the current one-file query.\n\nNo migration tooling, database project, SQL linting, CI validation, deployment script or environment promotion is present.\n\nThis should not be turned into database DevOps evidence."
+    },
+    "documentation": {
+      "section_ids": [
+        "s037",
+        "s038"
+      ],
+      "titles": [
+        "22. Documentation",
+        "Documentation rating"
+      ],
+      "text": "## 22. Documentation\nThere is no README.\n\nThe query would benefit from documenting:\n- SQL Server requirement;\n- where to replace database/filter values;\n- expected output columns;\n- whether `%` wildcards are intentional;\n- why `sys.tables`/`sys.columns` are used;\n- read-only nature of the query.\n\n### Documentation rating\n\n**1.0/5**\n\n## Documentation rating\n**1.0/5**"
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s039",
+        "s040"
+      ],
+      "titles": [
+        "23. Repository hygiene / build/dependency discipline",
+        "Repository hygiene"
+      ],
+      "text": "## 23. Repository hygiene / build/dependency discipline\nPositive:\n- one focused source file;\n- no generated/vendor clutter;\n- no secrets identified in the analyzed description.\n\nWeak:\n- no README;\n- no environment metadata;\n- no sample schema;\n- no parameterization;\n- one snapshot only.\n\n### Repository hygiene\n\n**3.5/5 for minimal cleanliness; 1.5/5 for reproducible context**\n\n## Repository hygiene\n**3.5/5 for minimal cleanliness; 1.5/5 for reproducible context**"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s033"
+      ],
+      "titles": [
+        "19. Mistakes / anti-patterns / likely lessons"
+      ],
+      "text": "## 19. Mistakes / anti-patterns / likely lessons\nThere are no major algorithmic defects identified, but several maintainability issues matter:\n- hardcoded database/filter literals;\n- no schema name;\n- only tables, not views;\n- no parameterized reusable form;\n- no usage documentation.\n\nLikely lesson:\n\n> **A useful one-off query becomes reusable database tooling when context, parameters and output identity are made explicit.**"
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s047"
+      ],
+      "titles": [
+        "28. Product / query failure potential"
+      ],
+      "text": "## 28. Product / query failure potential\nBecause the query is read-only metadata discovery, direct data-destruction risk is low.\n\nLikely failure modes:\n- false negatives from filters;\n- ambiguous results across schemas;\n- hardcoded context pointing to wrong database;\n- assuming tables when relevant objects are views;\n- treating the result as proof of schema meaning rather than name matching."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s048"
+      ],
+      "titles": [
+        "29. Human impact"
+      ],
+      "text": "## 29. Human impact\nThe query is an internal productivity tool. Its human value is reducing time spent manually searching an unfamiliar schema.\n\nThe main human-centered risk is interpretive: metadata names are hints, not truth about business meaning. Engineers should avoid making consequential data decisions solely from matching column/table names without consulting domain context."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s019",
+        "s021"
+      ],
+      "titles": [
+        "11. Contribution / authorship confidence",
+        "13. Capability relationship"
+      ],
+      "text": "## 11. Contribution / authorship confidence\nThe single query is directly present in the user's repository and no external source attribution is visible in the current evidence.\n\nSafe credit:\n- composing/using a catalog query joining `sys.tables` and `sys.columns`;\n- pattern-filtering metadata;\n- ordering results for practical inspection.\n\nNot supported:\n- design of SQL Server system catalogs;\n- authorship of the target schema;\n- DBA ownership;\n- original invention of catalog-query patterns.\n\n## 13. Capability relationship\n| Relationship | Evidence |\n|---|---|\n| Implemented | one T-SQL metadata query |\n| Designed | query composition for a narrow discovery task |\n| Used | SQL Server system catalogs, join/filter/order |\n| Configured | database and pattern literals |\n| Integrated | executed against an existing SQL Server context, implied by query purpose but not runtime-proven here |\n| Operated | no broader DBA operations evidenced |\n| Led/Owned | none evidenced |"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "14. Responsibility scope"
+      ],
+      "text": "## 14. Responsibility scope\nThe direct responsibility is extremely narrow:\n- locate candidate tables/columns in an existing database;\n- express search criteria;\n- produce readable metadata output.\n\nNot evidenced:\n- schema ownership;\n- migration planning;\n- backup/recovery;\n- performance tuning;\n- security/permissions;\n- transaction management;\n- production incident ownership.\n\n### Responsibility rating\n\n**1.75/5 narrow practical database task**"
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "17. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 17. Engineering decisions and tradeoffs\n### Decision — system catalog query instead of manual browsing\n\n**Benefit:** repeatable, searchable and faster for large schemas.\n\n**Cost:** tied to SQL Server catalog conventions rather than portable SQL.\n\n### Decision — `LIKE` filters\n\n**Benefit:** flexible substring/pattern discovery.\n\n**Cost:** hardcoded patterns reduce reuse; escaping/wildcard semantics can surprise users.\n\n### Decision — hardcoded database context\n\n**Benefit:** immediately useful for a specific task.\n\n**Cost:** poor portability and potential accidental execution against the wrong context if copied carelessly.\n\n### Missing schema-name output\n\nIncluding schema would make results safer in databases where multiple schemas contain similarly named tables."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "18. Engineering judgment evidence"
+      ],
+      "text": "## 18. Engineering judgment evidence\nPositive:\n- uses system metadata rather than guesswork;\n- joins catalog entities on the correct relationship concept;\n- orders results for inspection;\n- keeps the tool minimal for a narrow problem.\n\nWeak:\n- no parameterization;\n- no schema qualification/output;\n- no documentation;\n- no reusable stored procedure/view;\n- no explanation of wildcard intent.\n\n### Judgment rating\n\n**2.25/5 for a narrow utility**"
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s045"
+      ],
+      "titles": [
+        "26. Portfolio Evidence Weight — expanded rationale"
+      ],
+      "text": "## 26. Portfolio Evidence Weight — expanded rationale\n**2.5/5** is justified despite the tiny size because the query adds a specific practical SQL Server capability not established elsewhere.\n\nIt remains below 3+ because:\n- one file/one commit;\n- no database design;\n- no application integration;\n- no tests/docs;\n- no production scale evidence."
+    },
+    "limitations": {
+      "section_ids": [
+        "s051"
+      ],
+      "titles": [
+        "32. RAG anti-inflation warnings"
+      ],
+      "text": "## 32. RAG anti-inflation warnings\n1. One query does not prove database-engineering expertise.\n2. T-SQL does not imply SQL Server administration.\n3. Hardcoded names do not identify an employer/client.\n4. No schema was authored.\n5. No performance tuning exists.\n6. No transactions/procedures/triggers exist.\n7. No tests or CI exist.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s041",
+        "s049",
+        "s050"
+      ],
+      "titles": [
+        "24. First / previous / current / corpus-max ledger",
+        "30. Cumulative career state after Repository 024",
+        "31. Expanded longitudinal summary vector"
+      ],
+      "text": "## 24. First / previous / current / corpus-max ledger\n| Skill | Previous | Repo024 | Corpus effect |\n|---|---:|---:|---:|\n| SQL | Repo009 challenge queries | **2.5/5 practical T-SQL** | reinforced in real-task-shaped context |\n| SQL Server | none strong | **2.5/5** | first clear vendor-specific evidence |\n| System catalog introspection | none | **2.75/5** | first observed |\n| Joins/filtering | prior SQL | **2.5/5** | reinforced |\n| Database design | none here | **0/5** | unchanged |\n| DBA operations | none | **0/5** | unchanged |\n\n## 30. Cumulative career state after Repository 024\nRepo024 strengthens the database thread without materially changing overall engineering maturity.\n\nThe portfolio now shows SQL in two modes:\n- coding/problem-solving exercises;\n- practical schema discovery.\n\nThat recurrence is more meaningful than the repository's raw size.\n\n## 31. Expanded longitudinal summary vector\n| Axis | Repo024 effect |\n|---|---|\n| SQL recurrence | increases |\n| SQL Server specificity | first clear evidence |\n| Database architecture | unchanged |\n| Practical tooling behavior | reinforced |\n| Product maturity | N/A |\n| Career evidence | narrow but useful |"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **Single-Purpose SQL Server Metadata / Schema-Discovery Utility**\n\nRepository 024 is deliberately tiny:\n\n- one commit;\n- one T-SQL file;\n- no README;\n- no application.\n\nThe script searches SQL Server system catalogs for table/column names matching patterns.\n\nIts honest value is **practical database introspection**, not database architecture.\n\n---",
+      "source_line_start": 6397,
+      "source_line_end": 6414
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG metadata",
+      "normalized_title": "RAG metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/SQL-WORKSPACE` |\n| Chronology index | **024 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-11-30 12:12:38 UTC** |\n| Only commit | **2023-11-30 12:13:14 UTC** |\n| Exact commits | **1** |\n| Primary language | **T-SQL** |\n| Final file | `FIND_COLUMN_DATABASE.sql` |\n| Product maturity | N/A |\n| Engineering maturity | **1.5/5** |\n| Portfolio Evidence Weight | **2.5/5** |\n| Career-skill evidence | **3.0/5** |\n\n---",
+      "source_line_start": 6414,
+      "source_line_end": 6434
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "2. Query behavior",
+      "normalized_title": "Query behavior",
+      "key": "query_behavior",
+      "path": [
+        "2. Query behavior"
+      ],
+      "content": "The script:\n\n- uses `USE ...` + `GO`;\n- selects from `sys.tables`;\n- joins `sys.columns` on `object_id`;\n- filters column names with `LIKE`;\n- filters table names with `LIKE`;\n- orders matching table/column pairs.\n\n### Direct skills\n\n- SQL Server / T-SQL;\n- system catalog usage;\n- metadata introspection;\n- `INNER JOIN`;\n- pattern matching;\n- ordered query output.\n\n### Ratings\n\n- T-SQL: **2.5/5**\n- SQL Server catalog querying: **2.75/5**\n- joins/filtering: **2.5/5**\n\n---",
+      "source_line_start": 6434,
+      "source_line_end": 6462
+    },
+    {
+      "id": "s004",
+      "level": 3,
+      "title": "Direct skills",
+      "normalized_title": "Direct skills",
+      "key": "direct_skills",
+      "path": [
+        "2. Query behavior",
+        "Direct skills"
+      ],
+      "content": "- SQL Server / T-SQL;\n- system catalog usage;\n- metadata introspection;\n- `INNER JOIN`;\n- pattern matching;\n- ordered query output.",
+      "source_line_start": 6445,
+      "source_line_end": 6454
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Ratings",
+      "normalized_title": "Ratings",
+      "key": "ratings",
+      "path": [
+        "2. Query behavior",
+        "Ratings"
+      ],
+      "content": "- T-SQL: **2.5/5**\n- SQL Server catalog querying: **2.75/5**\n- joins/filtering: **2.5/5**\n\n---",
+      "source_line_start": 6454,
+      "source_line_end": 6462
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "3. Practical context without unsupported identity claims",
+      "normalized_title": "Practical context without unsupported identity claims",
+      "key": "practical_context_without_unsupported_identity_claims",
+      "path": [
+        "3. Practical context without unsupported identity claims"
+      ],
+      "content": "The script contains concrete database/table/column fragments, indicating it was written for a real discovery task.\n\nHowever, nothing in the repository proves:\n\n- employer;\n- client;\n- business ownership;\n- production environment identity.\n\nThose specifics must not be inferred.\n\n---",
+      "source_line_start": 6462,
+      "source_line_end": 6477
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "4. Comparison with prior SQL",
+      "normalized_title": "Comparison with prior SQL",
+      "key": "comparison_with_prior_sql",
+      "path": [
+        "4. Comparison with prior SQL"
+      ],
+      "content": "Repo009 contained a few SQL challenge solutions.\n\nRepo024 broadens evidence from:\n\n> **platform challenge queries**\n\nto:\n\n> **practical SQL Server metadata discovery.**\n\nThat is a useful recurrence shift even though the repository is tiny.\n\n---",
+      "source_line_start": 6477,
+      "source_line_end": 6493
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "5. What is not observed",
+      "normalized_title": "What is not observed",
+      "key": "what_is_not_observed",
+      "path": [
+        "5. What is not observed"
+      ],
+      "content": "No:\n\n- schema design;\n- normalization;\n- DDL;\n- migrations;\n- stored procedures;\n- triggers;\n- indexes;\n- execution plans;\n- transactions;\n- locking;\n- ORM;\n- backup/restore;\n- administration.\n\nThese remain uncredited.\n\n---",
+      "source_line_start": 6493,
+      "source_line_end": 6515
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "6. Query quality / limitations",
+      "normalized_title": "Query quality / limitations",
+      "key": "query_quality_limitations",
+      "path": [
+        "6. Query quality / limitations"
+      ],
+      "content": "### Positive\n\n- concise;\n- correct catalog relationship concept;\n- readable aliases;\n- ordered output;\n- replaceable database comment.\n\n### Weak\n\n- hardcoded database/filter values;\n- no parameterization;\n- no schema name in output;\n- no view search;\n- no reusable stored procedure;\n- no README/usage example;\n- no tests.\n\n---",
+      "source_line_start": 6515,
+      "source_line_end": 6537
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Positive",
+      "normalized_title": "Positive",
+      "key": "positive",
+      "path": [
+        "6. Query quality / limitations",
+        "Positive"
+      ],
+      "content": "- concise;\n- correct catalog relationship concept;\n- readable aliases;\n- ordered output;\n- replaceable database comment.",
+      "source_line_start": 6517,
+      "source_line_end": 6525
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Weak",
+      "normalized_title": "Weak",
+      "key": "weak",
+      "path": [
+        "6. Query quality / limitations",
+        "Weak"
+      ],
+      "content": "- hardcoded database/filter values;\n- no parameterization;\n- no schema name in output;\n- no view search;\n- no reusable stored procedure;\n- no README/usage example;\n- no tests.\n\n---",
+      "source_line_start": 6525,
+      "source_line_end": 6537
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "7. Standard evaluation matrix",
+      "normalized_title": "Standard evaluation matrix",
+      "key": "standard_evaluation_matrix",
+      "path": [
+        "7. Standard evaluation matrix"
+      ],
+      "content": "| Dimension | Score / 5 |\n|---|---:|\n| Problem clarity | **4.0** |\n| Domain specificity | **4.0** |\n| Functional completeness | **3.5 for narrow task** |\n| Query design | **2.5** |\n| Metadata introspection | **2.75** |\n| Maintainability | 2.5 |\n| Extensibility | 1.5 |\n| Reliability | 2.5 |\n| Testing | **0** |\n| Documentation | **1.0** |\n| Repository hygiene | 3.5 |\n| Version-control usage | 1.0 |\n| Database design | **0** |\n| Product maturity | N/A |\n| Engineering maturity | **1.5** |\n| Career-skill evidence | **3.0** |\n\n---",
+      "source_line_start": 6537,
+      "source_line_end": 6560
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "8. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "8. Skill lifecycle"
+      ],
+      "content": "### First clearly observed\n\n- SQL Server-specific system-catalog introspection;\n- practical metadata-discovery SQL.\n\n### Reinforced\n\n- SQL;\n- joins;\n- pattern filtering;\n- database troubleshooting/discovery.\n\n### Not observed\n\n- database architecture;\n- query optimization;\n- application persistence;\n- DBA operations.\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->",
+      "source_line_start": 6560,
+      "source_line_end": 6586
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "First clearly observed",
+      "normalized_title": "First clearly observed",
+      "key": "first_clearly_observed",
+      "path": [
+        "8. Skill lifecycle",
+        "First clearly observed"
+      ],
+      "content": "- SQL Server-specific system-catalog introspection;\n- practical metadata-discovery SQL.",
+      "source_line_start": 6562,
+      "source_line_end": 6567
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Reinforced",
+      "normalized_title": "Reinforced",
+      "key": "reinforced",
+      "path": [
+        "8. Skill lifecycle",
+        "Reinforced"
+      ],
+      "content": "- SQL;\n- joins;\n- pattern filtering;\n- database troubleshooting/discovery.",
+      "source_line_start": 6567,
+      "source_line_end": 6574
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Not observed",
+      "normalized_title": "Not observed",
+      "key": "not_observed",
+      "path": [
+        "8. Skill lifecycle",
+        "Not observed"
+      ],
+      "content": "- database architecture;\n- query optimization;\n- application persistence;\n- DBA operations.\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->",
+      "source_line_start": 6574,
+      "source_line_end": 6586
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "9. Chronology and lifecycle interpretation",
+      "normalized_title": "Chronology and lifecycle interpretation",
+      "key": "chronology_and_lifecycle_interpretation",
+      "path": [
+        "9. Chronology and lifecycle interpretation"
+      ],
+      "content": "Repo024 is a one-commit utility created and populated within roughly a minute. The correct interpretation is **captured working query / personal workspace artifact**, not a software-development lifecycle.\n\nThe absence of iteration is itself evidence: the repository appears to preserve a useful SQL Server discovery query rather than develop a database product.",
+      "source_line_start": 6586,
+      "source_line_end": 6592
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "10. Origin / practical context",
+      "normalized_title": "Origin / practical context",
+      "key": "origin_practical_context",
+      "path": [
+        "10. Origin / practical context"
+      ],
+      "content": "The query's concrete database/table/column filters strongly suggest a real troubleshooting/discovery need, but the repository does not identify the organization or system.\n\nCorrect evidence boundary:\n- practical SQL Server task: **observed**;\n- production-like context: **plausible but not provable**;\n- employer/client identity: **unsupported**;\n- ownership of the underlying database schema: **unsupported**.\n\nThis should be treated as **work-shaped SQL evidence without invented workplace attribution**.",
+      "source_line_start": 6592,
+      "source_line_end": 6604
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "11. Contribution / authorship confidence",
+      "normalized_title": "Contribution / authorship confidence",
+      "key": "contribution_authorship_confidence",
+      "path": [
+        "11. Contribution / authorship confidence"
+      ],
+      "content": "The single query is directly present in the user's repository and no external source attribution is visible in the current evidence.\n\nSafe credit:\n- composing/using a catalog query joining `sys.tables` and `sys.columns`;\n- pattern-filtering metadata;\n- ordering results for practical inspection.\n\nNot supported:\n- design of SQL Server system catalogs;\n- authorship of the target schema;\n- DBA ownership;\n- original invention of catalog-query patterns.",
+      "source_line_start": 6604,
+      "source_line_end": 6619
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "12. Query architecture / data flow",
+      "normalized_title": "Query architecture / data flow",
+      "key": "query_architecture_data_flow",
+      "path": [
+        "12. Query architecture / data flow"
+      ],
+      "content": "Although tiny, the query has a clear relational flow:\n\n```text\nselected SQL Server database\n        ↓\nsys.tables  ── object_id ──  sys.columns\n        ↓                       ↓\n     table metadata         column metadata\n              \\             /\n               INNER JOIN\n                   ↓\n        LIKE-based filtering\n                   ↓\n      ordered table/column pairs\n```\n\nThis is useful evidence of knowing that database structure can be inspected through metadata catalogs rather than manually browsing every table.",
+      "source_line_start": 6619,
+      "source_line_end": 6639
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "13. Capability relationship",
+      "normalized_title": "Capability relationship",
+      "key": "capability_relationship",
+      "path": [
+        "13. Capability relationship"
+      ],
+      "content": "| Relationship | Evidence |\n|---|---|\n| Implemented | one T-SQL metadata query |\n| Designed | query composition for a narrow discovery task |\n| Used | SQL Server system catalogs, join/filter/order |\n| Configured | database and pattern literals |\n| Integrated | executed against an existing SQL Server context, implied by query purpose but not runtime-proven here |\n| Operated | no broader DBA operations evidenced |\n| Led/Owned | none evidenced |",
+      "source_line_start": 6639,
+      "source_line_end": 6651
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "14. Responsibility scope",
+      "normalized_title": "Responsibility scope",
+      "key": "responsibility_scope",
+      "path": [
+        "14. Responsibility scope"
+      ],
+      "content": "The direct responsibility is extremely narrow:\n- locate candidate tables/columns in an existing database;\n- express search criteria;\n- produce readable metadata output.\n\nNot evidenced:\n- schema ownership;\n- migration planning;\n- backup/recovery;\n- performance tuning;\n- security/permissions;\n- transaction management;\n- production incident ownership.\n\n### Responsibility rating\n\n**1.75/5 narrow practical database task**",
+      "source_line_start": 6651,
+      "source_line_end": 6671
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Responsibility rating",
+      "normalized_title": "Responsibility rating",
+      "key": "responsibility_rating",
+      "path": [
+        "14. Responsibility scope",
+        "Responsibility rating"
+      ],
+      "content": "**1.75/5 narrow practical database task**",
+      "source_line_start": 6667,
+      "source_line_end": 6671
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "15. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "15. Complexity dimensions"
+      ],
+      "content": "| Dimension | Rating |\n|---|---:|\n| Query complexity | **2.25/5** |\n| Relational reasoning | **2.5/5** |\n| Metadata/catalog understanding | **2.75/5** |\n| Data-model complexity | 1.0/5 — schema consumed, not designed |\n| Performance complexity | 0.5/5 |\n| Operational complexity | 0.5/5 |\n| Security complexity | 0/5 |\n| Repository complexity | 0.5/5 |\n\nThe repository's value comes from **specificity of context**, not size.",
+      "source_line_start": 6671,
+      "source_line_end": 6686
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "16. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "16. Scale dimensions"
+      ],
+      "content": "The query could operate on databases with many tables/columns, but repository evidence does not quantify the target schema.\n\nObserved scale:\n- 1 SQL file;\n- 1 commit;\n- 1 query;\n- 2 system catalog views;\n- no application;\n- no migrations;\n- no test database;\n- no deployment pipeline.\n\nDo not infer enterprise database scale from the use of SQL Server metadata.",
+      "source_line_start": 6686,
+      "source_line_end": 6702
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "17. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "17. Engineering decisions and tradeoffs"
+      ],
+      "content": "### Decision — system catalog query instead of manual browsing\n\n**Benefit:** repeatable, searchable and faster for large schemas.\n\n**Cost:** tied to SQL Server catalog conventions rather than portable SQL.\n\n### Decision — `LIKE` filters\n\n**Benefit:** flexible substring/pattern discovery.\n\n**Cost:** hardcoded patterns reduce reuse; escaping/wildcard semantics can surprise users.\n\n### Decision — hardcoded database context\n\n**Benefit:** immediately useful for a specific task.\n\n**Cost:** poor portability and potential accidental execution against the wrong context if copied carelessly.\n\n### Missing schema-name output\n\nIncluding schema would make results safer in databases where multiple schemas contain similarly named tables.",
+      "source_line_start": 6702,
+      "source_line_end": 6726
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Decision — system catalog query instead of manual browsing",
+      "normalized_title": "Decision — system catalog query instead of manual browsing",
+      "key": "decision_system_catalog_query_instead_of_manual_browsing",
+      "path": [
+        "17. Engineering decisions and tradeoffs",
+        "Decision — system catalog query instead of manual browsing"
+      ],
+      "content": "**Benefit:** repeatable, searchable and faster for large schemas.\n\n**Cost:** tied to SQL Server catalog conventions rather than portable SQL.",
+      "source_line_start": 6704,
+      "source_line_end": 6710
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Decision — `LIKE` filters",
+      "normalized_title": "Decision — LIKE filters",
+      "key": "decision_like_filters",
+      "path": [
+        "17. Engineering decisions and tradeoffs",
+        "Decision — `LIKE` filters"
+      ],
+      "content": "**Benefit:** flexible substring/pattern discovery.\n\n**Cost:** hardcoded patterns reduce reuse; escaping/wildcard semantics can surprise users.",
+      "source_line_start": 6710,
+      "source_line_end": 6716
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Decision — hardcoded database context",
+      "normalized_title": "Decision — hardcoded database context",
+      "key": "decision_hardcoded_database_context",
+      "path": [
+        "17. Engineering decisions and tradeoffs",
+        "Decision — hardcoded database context"
+      ],
+      "content": "**Benefit:** immediately useful for a specific task.\n\n**Cost:** poor portability and potential accidental execution against the wrong context if copied carelessly.",
+      "source_line_start": 6716,
+      "source_line_end": 6722
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Missing schema-name output",
+      "normalized_title": "Missing schema-name output",
+      "key": "missing_schema_name_output",
+      "path": [
+        "17. Engineering decisions and tradeoffs",
+        "Missing schema-name output"
+      ],
+      "content": "Including schema would make results safer in databases where multiple schemas contain similarly named tables.",
+      "source_line_start": 6722,
+      "source_line_end": 6726
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "18. Engineering judgment evidence",
+      "normalized_title": "Engineering judgment evidence",
+      "key": "engineering_judgment_evidence",
+      "path": [
+        "18. Engineering judgment evidence"
+      ],
+      "content": "Positive:\n- uses system metadata rather than guesswork;\n- joins catalog entities on the correct relationship concept;\n- orders results for inspection;\n- keeps the tool minimal for a narrow problem.\n\nWeak:\n- no parameterization;\n- no schema qualification/output;\n- no documentation;\n- no reusable stored procedure/view;\n- no explanation of wildcard intent.\n\n### Judgment rating\n\n**2.25/5 for a narrow utility**",
+      "source_line_start": 6726,
+      "source_line_end": 6745
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Judgment rating",
+      "normalized_title": "Judgment rating",
+      "key": "judgment_rating",
+      "path": [
+        "18. Engineering judgment evidence",
+        "Judgment rating"
+      ],
+      "content": "**2.25/5 for a narrow utility**",
+      "source_line_start": 6741,
+      "source_line_end": 6745
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "19. Mistakes / anti-patterns / likely lessons",
+      "normalized_title": "Mistakes / anti-patterns / likely lessons",
+      "key": "mistakes_anti_patterns_likely_lessons",
+      "path": [
+        "19. Mistakes / anti-patterns / likely lessons"
+      ],
+      "content": "There are no major algorithmic defects identified, but several maintainability issues matter:\n- hardcoded database/filter literals;\n- no schema name;\n- only tables, not views;\n- no parameterized reusable form;\n- no usage documentation.\n\nLikely lesson:\n\n> **A useful one-off query becomes reusable database tooling when context, parameters and output identity are made explicit.**",
+      "source_line_start": 6745,
+      "source_line_end": 6758
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "20. Testing / verification",
+      "normalized_title": "Testing / verification",
+      "key": "testing_verification",
+      "path": [
+        "20. Testing / verification"
+      ],
+      "content": "No tests are present.\n\nFor this query, testing would mean validating against a known schema with cases such as:\n- matching/nonmatching table names;\n- matching/nonmatching column names;\n- duplicate column names across schemas;\n- views vs tables;\n- wildcard characters in search terms.\n\nBecause the task is read-only metadata discovery, failure risk is lower than for DDL/DML, but correctness still matters.\n\n### Testing rating\n\n**0/5 authored automation**",
+      "source_line_start": 6758,
+      "source_line_end": 6775
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Testing rating",
+      "normalized_title": "Testing rating",
+      "key": "testing_rating",
+      "path": [
+        "20. Testing / verification",
+        "Testing rating"
+      ],
+      "content": "**0/5 authored automation**",
+      "source_line_start": 6771,
+      "source_line_end": 6775
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "21. CI/CD / deployment",
+      "normalized_title": "CI/CD / deployment",
+      "key": "ci_cd_deployment",
+      "path": [
+        "21. CI/CD / deployment"
+      ],
+      "content": "N/A for the current one-file query.\n\nNo migration tooling, database project, SQL linting, CI validation, deployment script or environment promotion is present.\n\nThis should not be turned into database DevOps evidence.",
+      "source_line_start": 6775,
+      "source_line_end": 6783
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "22. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "22. Documentation"
+      ],
+      "content": "There is no README.\n\nThe query would benefit from documenting:\n- SQL Server requirement;\n- where to replace database/filter values;\n- expected output columns;\n- whether `%` wildcards are intentional;\n- why `sys.tables`/`sys.columns` are used;\n- read-only nature of the query.\n\n### Documentation rating\n\n**1.0/5**",
+      "source_line_start": 6783,
+      "source_line_end": 6799
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Documentation rating",
+      "normalized_title": "Documentation rating",
+      "key": "documentation_rating",
+      "path": [
+        "22. Documentation",
+        "Documentation rating"
+      ],
+      "content": "**1.0/5**",
+      "source_line_start": 6795,
+      "source_line_end": 6799
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "23. Repository hygiene / build/dependency discipline",
+      "normalized_title": "Repository hygiene / build/dependency discipline",
+      "key": "repository_hygiene_build_dependency_discipline",
+      "path": [
+        "23. Repository hygiene / build/dependency discipline"
+      ],
+      "content": "Positive:\n- one focused source file;\n- no generated/vendor clutter;\n- no secrets identified in the analyzed description.\n\nWeak:\n- no README;\n- no environment metadata;\n- no sample schema;\n- no parameterization;\n- one snapshot only.\n\n### Repository hygiene\n\n**3.5/5 for minimal cleanliness; 1.5/5 for reproducible context**",
+      "source_line_start": 6799,
+      "source_line_end": 6817
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "23. Repository hygiene / build/dependency discipline",
+        "Repository hygiene"
+      ],
+      "content": "**3.5/5 for minimal cleanliness; 1.5/5 for reproducible context**",
+      "source_line_start": 6813,
+      "source_line_end": 6817
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "24. First / previous / current / corpus-max ledger",
+      "normalized_title": "First / previous / current / corpus-max ledger",
+      "key": "first_previous_current_corpus_max_ledger",
+      "path": [
+        "24. First / previous / current / corpus-max ledger"
+      ],
+      "content": "| Skill | Previous | Repo024 | Corpus effect |\n|---|---:|---:|---:|\n| SQL | Repo009 challenge queries | **2.5/5 practical T-SQL** | reinforced in real-task-shaped context |\n| SQL Server | none strong | **2.5/5** | first clear vendor-specific evidence |\n| System catalog introspection | none | **2.75/5** | first observed |\n| Joins/filtering | prior SQL | **2.5/5** | reinforced |\n| Database design | none here | **0/5** | unchanged |\n| DBA operations | none | **0/5** | unchanged |",
+      "source_line_start": 6817,
+      "source_line_end": 6828
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "25. Project-to-project comparison — expanded",
+      "normalized_title": "Project-to-project comparison — expanded",
+      "key": "project_to_project_comparison_expanded",
+      "path": [
+        "25. Project-to-project comparison — expanded"
+      ],
+      "content": "### Repo009 → Repo024\n\nRepo009's SQL evidence is challenge-oriented. Repo024 is much smaller but contextually more practical: it uses metadata catalogs to navigate an existing SQL Server schema.\n\nThis is an important distinction between **algorithmic SQL exercise evidence** and **engineering utility SQL evidence**.\n\n### Repo023 → Repo024\n\nBoth late-2023 repositories preserve small utilities. Repo023 does so in C++; Repo024 does so directly in T-SQL. Together they strengthen the picture of using repositories as a personal engineering toolbox.",
+      "source_line_start": 6828,
+      "source_line_end": 6840
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Repo009 → Repo024",
+      "normalized_title": "Repo009 → Repo024",
+      "key": "repo009_repo024",
+      "path": [
+        "25. Project-to-project comparison — expanded",
+        "Repo009 → Repo024"
+      ],
+      "content": "Repo009's SQL evidence is challenge-oriented. Repo024 is much smaller but contextually more practical: it uses metadata catalogs to navigate an existing SQL Server schema.\n\nThis is an important distinction between **algorithmic SQL exercise evidence** and **engineering utility SQL evidence**.",
+      "source_line_start": 6830,
+      "source_line_end": 6836
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Repo023 → Repo024",
+      "normalized_title": "Repo023 → Repo024",
+      "key": "repo023_repo024",
+      "path": [
+        "25. Project-to-project comparison — expanded",
+        "Repo023 → Repo024"
+      ],
+      "content": "Both late-2023 repositories preserve small utilities. Repo023 does so in C++; Repo024 does so directly in T-SQL. Together they strengthen the picture of using repositories as a personal engineering toolbox.",
+      "source_line_start": 6836,
+      "source_line_end": 6840
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "26. Portfolio Evidence Weight — expanded rationale",
+      "normalized_title": "Portfolio Evidence Weight — expanded rationale",
+      "key": "portfolio_evidence_weight_expanded_rationale",
+      "path": [
+        "26. Portfolio Evidence Weight — expanded rationale"
+      ],
+      "content": "**2.5/5** is justified despite the tiny size because the query adds a specific practical SQL Server capability not established elsewhere.\n\nIt remains below 3+ because:\n- one file/one commit;\n- no database design;\n- no application integration;\n- no tests/docs;\n- no production scale evidence.",
+      "source_line_start": 6840,
+      "source_line_end": 6851
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "27. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "27. Current relevance / recency"
+      ],
+      "content": "Repo024 is historical late-2023 evidence of SQL Server metadata discovery. Later SQL/data-engineering repositories should determine current depth.\n\nIts long-term value is as a **first practical SQL Server introspection marker**, not as a current DBA proficiency indicator.",
+      "source_line_start": 6851,
+      "source_line_end": 6857
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "28. Product / query failure potential",
+      "normalized_title": "Product / query failure potential",
+      "key": "product_query_failure_potential",
+      "path": [
+        "28. Product / query failure potential"
+      ],
+      "content": "Because the query is read-only metadata discovery, direct data-destruction risk is low.\n\nLikely failure modes:\n- false negatives from filters;\n- ambiguous results across schemas;\n- hardcoded context pointing to wrong database;\n- assuming tables when relevant objects are views;\n- treating the result as proof of schema meaning rather than name matching.",
+      "source_line_start": 6857,
+      "source_line_end": 6868
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "29. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "29. Human impact"
+      ],
+      "content": "The query is an internal productivity tool. Its human value is reducing time spent manually searching an unfamiliar schema.\n\nThe main human-centered risk is interpretive: metadata names are hints, not truth about business meaning. Engineers should avoid making consequential data decisions solely from matching column/table names without consulting domain context.",
+      "source_line_start": 6868,
+      "source_line_end": 6874
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "30. Cumulative career state after Repository 024",
+      "normalized_title": "Cumulative career state after Repository 024",
+      "key": "cumulative_career_state_after_repository_024",
+      "path": [
+        "30. Cumulative career state after Repository 024"
+      ],
+      "content": "Repo024 strengthens the database thread without materially changing overall engineering maturity.\n\nThe portfolio now shows SQL in two modes:\n- coding/problem-solving exercises;\n- practical schema discovery.\n\nThat recurrence is more meaningful than the repository's raw size.",
+      "source_line_start": 6874,
+      "source_line_end": 6884
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "31. Expanded longitudinal summary vector",
+      "normalized_title": "Expanded longitudinal summary vector",
+      "key": "expanded_longitudinal_summary_vector",
+      "path": [
+        "31. Expanded longitudinal summary vector"
+      ],
+      "content": "| Axis | Repo024 effect |\n|---|---|\n| SQL recurrence | increases |\n| SQL Server specificity | first clear evidence |\n| Database architecture | unchanged |\n| Practical tooling behavior | reinforced |\n| Product maturity | N/A |\n| Career evidence | narrow but useful |",
+      "source_line_start": 6884,
+      "source_line_end": 6895
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "32. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "32. RAG anti-inflation warnings"
+      ],
+      "content": "1. One query does not prove database-engineering expertise.\n2. T-SQL does not imply SQL Server administration.\n3. Hardcoded names do not identify an employer/client.\n4. No schema was authored.\n5. No performance tuning exists.\n6. No transactions/procedures/triggers exist.\n7. No tests or CI exist.\n\n---",
+      "source_line_start": 6895,
+      "source_line_end": 6907
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "33. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "33. Bottom line"
+      ],
+      "content": "The strongest safe career statement is:\n\n> **By late 2023, SQL was being used pragmatically to inspect an existing SQL Server database and locate relevant tables/columns, not only to solve coding challenges.**\n\n### Key ratings\n\n- T-SQL: **2.5/5**\n- Metadata introspection: **2.75/5**\n- Joins/filtering: **2.5/5**\n- Database design: **0/5**\n- Testing: **0/5**\n- Engineering maturity: **1.5/5**\n- Portfolio Evidence Weight: **2.5/5**\n- Career-skill evidence: **3.0/5**\n\n---\n\n**End of Repository 024 / 134.**\n\n---",
+      "source_line_start": 6907,
+      "source_line_end": 6929
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Key ratings",
+      "normalized_title": "Key ratings",
+      "key": "key_ratings",
+      "path": [
+        "33. Bottom line",
+        "Key ratings"
+      ],
+      "content": "- T-SQL: **2.5/5**\n- Metadata introspection: **2.75/5**\n- Joins/filtering: **2.5/5**\n- Database design: **0/5**\n- Testing: **0/5**\n- Engineering maturity: **1.5/5**\n- Portfolio Evidence Weight: **2.5/5**\n- Career-skill evidence: **3.0/5**\n\n---\n\n**End of Repository 024 / 134.**\n\n---",
+      "source_line_start": 6913,
+      "source_line_end": 6929
+    }
+  ],
+  "raw_analysis": "# Repository 024 / 134 — `SQL-WORKSPACE`\n\n## Project identity\n\n**Descriptive name:** **Single-Purpose SQL Server Metadata / Schema-Discovery Utility**\n\nRepository 024 is deliberately tiny:\n\n- one commit;\n- one T-SQL file;\n- no README;\n- no application.\n\nThe script searches SQL Server system catalogs for table/column names matching patterns.\n\nIts honest value is **practical database introspection**, not database architecture.\n\n---\n\n## 1. RAG metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/SQL-WORKSPACE` |\n| Chronology index | **024 / 134** |\n| Visibility | Public |\n| Fork | No |\n| Created | **2023-11-30 12:12:38 UTC** |\n| Only commit | **2023-11-30 12:13:14 UTC** |\n| Exact commits | **1** |\n| Primary language | **T-SQL** |\n| Final file | `FIND_COLUMN_DATABASE.sql` |\n| Product maturity | N/A |\n| Engineering maturity | **1.5/5** |\n| Portfolio Evidence Weight | **2.5/5** |\n| Career-skill evidence | **3.0/5** |\n\n---\n\n## 2. Query behavior\n\nThe script:\n\n- uses `USE ...` + `GO`;\n- selects from `sys.tables`;\n- joins `sys.columns` on `object_id`;\n- filters column names with `LIKE`;\n- filters table names with `LIKE`;\n- orders matching table/column pairs.\n\n### Direct skills\n\n- SQL Server / T-SQL;\n- system catalog usage;\n- metadata introspection;\n- `INNER JOIN`;\n- pattern matching;\n- ordered query output.\n\n### Ratings\n\n- T-SQL: **2.5/5**\n- SQL Server catalog querying: **2.75/5**\n- joins/filtering: **2.5/5**\n\n---\n\n## 3. Practical context without unsupported identity claims\n\nThe script contains concrete database/table/column fragments, indicating it was written for a real discovery task.\n\nHowever, nothing in the repository proves:\n\n- employer;\n- client;\n- business ownership;\n- production environment identity.\n\nThose specifics must not be inferred.\n\n---\n\n## 4. Comparison with prior SQL\n\nRepo009 contained a few SQL challenge solutions.\n\nRepo024 broadens evidence from:\n\n> **platform challenge queries**\n\nto:\n\n> **practical SQL Server metadata discovery.**\n\nThat is a useful recurrence shift even though the repository is tiny.\n\n---\n\n## 5. What is not observed\n\nNo:\n\n- schema design;\n- normalization;\n- DDL;\n- migrations;\n- stored procedures;\n- triggers;\n- indexes;\n- execution plans;\n- transactions;\n- locking;\n- ORM;\n- backup/restore;\n- administration.\n\nThese remain uncredited.\n\n---\n\n## 6. Query quality / limitations\n\n### Positive\n\n- concise;\n- correct catalog relationship concept;\n- readable aliases;\n- ordered output;\n- replaceable database comment.\n\n### Weak\n\n- hardcoded database/filter values;\n- no parameterization;\n- no schema name in output;\n- no view search;\n- no reusable stored procedure;\n- no README/usage example;\n- no tests.\n\n---\n\n## 7. Standard evaluation matrix\n\n| Dimension | Score / 5 |\n|---|---:|\n| Problem clarity | **4.0** |\n| Domain specificity | **4.0** |\n| Functional completeness | **3.5 for narrow task** |\n| Query design | **2.5** |\n| Metadata introspection | **2.75** |\n| Maintainability | 2.5 |\n| Extensibility | 1.5 |\n| Reliability | 2.5 |\n| Testing | **0** |\n| Documentation | **1.0** |\n| Repository hygiene | 3.5 |\n| Version-control usage | 1.0 |\n| Database design | **0** |\n| Product maturity | N/A |\n| Engineering maturity | **1.5** |\n| Career-skill evidence | **3.0** |\n\n---\n\n## 8. Skill lifecycle\n\n### First clearly observed\n\n- SQL Server-specific system-catalog introspection;\n- practical metadata-discovery SQL.\n\n### Reinforced\n\n- SQL;\n- joins;\n- pattern filtering;\n- database troubleshooting/discovery.\n\n### Not observed\n\n- database architecture;\n- query optimization;\n- application persistence;\n- DBA operations.\n\n---\n\n\n<!-- Canonical-depth restoration added 2026-08-30. Existing evidence preserved; missing early-corpus analytical dimensions restored below. -->\n\n## 9. Chronology and lifecycle interpretation\n\nRepo024 is a one-commit utility created and populated within roughly a minute. The correct interpretation is **captured working query / personal workspace artifact**, not a software-development lifecycle.\n\nThe absence of iteration is itself evidence: the repository appears to preserve a useful SQL Server discovery query rather than develop a database product.\n\n## 10. Origin / practical context\n\nThe query's concrete database/table/column filters strongly suggest a real troubleshooting/discovery need, but the repository does not identify the organization or system.\n\nCorrect evidence boundary:\n- practical SQL Server task: **observed**;\n- production-like context: **plausible but not provable**;\n- employer/client identity: **unsupported**;\n- ownership of the underlying database schema: **unsupported**.\n\nThis should be treated as **work-shaped SQL evidence without invented workplace attribution**.\n\n## 11. Contribution / authorship confidence\n\nThe single query is directly present in the user's repository and no external source attribution is visible in the current evidence.\n\nSafe credit:\n- composing/using a catalog query joining `sys.tables` and `sys.columns`;\n- pattern-filtering metadata;\n- ordering results for practical inspection.\n\nNot supported:\n- design of SQL Server system catalogs;\n- authorship of the target schema;\n- DBA ownership;\n- original invention of catalog-query patterns.\n\n## 12. Query architecture / data flow\n\nAlthough tiny, the query has a clear relational flow:\n\n```text\nselected SQL Server database\n        ↓\nsys.tables  ── object_id ──  sys.columns\n        ↓                       ↓\n     table metadata         column metadata\n              \\             /\n               INNER JOIN\n                   ↓\n        LIKE-based filtering\n                   ↓\n      ordered table/column pairs\n```\n\nThis is useful evidence of knowing that database structure can be inspected through metadata catalogs rather than manually browsing every table.\n\n## 13. Capability relationship\n\n| Relationship | Evidence |\n|---|---|\n| Implemented | one T-SQL metadata query |\n| Designed | query composition for a narrow discovery task |\n| Used | SQL Server system catalogs, join/filter/order |\n| Configured | database and pattern literals |\n| Integrated | executed against an existing SQL Server context, implied by query purpose but not runtime-proven here |\n| Operated | no broader DBA operations evidenced |\n| Led/Owned | none evidenced |\n\n## 14. Responsibility scope\n\nThe direct responsibility is extremely narrow:\n- locate candidate tables/columns in an existing database;\n- express search criteria;\n- produce readable metadata output.\n\nNot evidenced:\n- schema ownership;\n- migration planning;\n- backup/recovery;\n- performance tuning;\n- security/permissions;\n- transaction management;\n- production incident ownership.\n\n### Responsibility rating\n\n**1.75/5 narrow practical database task**\n\n## 15. Complexity dimensions\n\n| Dimension | Rating |\n|---|---:|\n| Query complexity | **2.25/5** |\n| Relational reasoning | **2.5/5** |\n| Metadata/catalog understanding | **2.75/5** |\n| Data-model complexity | 1.0/5 — schema consumed, not designed |\n| Performance complexity | 0.5/5 |\n| Operational complexity | 0.5/5 |\n| Security complexity | 0/5 |\n| Repository complexity | 0.5/5 |\n\nThe repository's value comes from **specificity of context**, not size.\n\n## 16. Scale dimensions\n\nThe query could operate on databases with many tables/columns, but repository evidence does not quantify the target schema.\n\nObserved scale:\n- 1 SQL file;\n- 1 commit;\n- 1 query;\n- 2 system catalog views;\n- no application;\n- no migrations;\n- no test database;\n- no deployment pipeline.\n\nDo not infer enterprise database scale from the use of SQL Server metadata.\n\n## 17. Engineering decisions and tradeoffs\n\n### Decision — system catalog query instead of manual browsing\n\n**Benefit:** repeatable, searchable and faster for large schemas.\n\n**Cost:** tied to SQL Server catalog conventions rather than portable SQL.\n\n### Decision — `LIKE` filters\n\n**Benefit:** flexible substring/pattern discovery.\n\n**Cost:** hardcoded patterns reduce reuse; escaping/wildcard semantics can surprise users.\n\n### Decision — hardcoded database context\n\n**Benefit:** immediately useful for a specific task.\n\n**Cost:** poor portability and potential accidental execution against the wrong context if copied carelessly.\n\n### Missing schema-name output\n\nIncluding schema would make results safer in databases where multiple schemas contain similarly named tables.\n\n## 18. Engineering judgment evidence\n\nPositive:\n- uses system metadata rather than guesswork;\n- joins catalog entities on the correct relationship concept;\n- orders results for inspection;\n- keeps the tool minimal for a narrow problem.\n\nWeak:\n- no parameterization;\n- no schema qualification/output;\n- no documentation;\n- no reusable stored procedure/view;\n- no explanation of wildcard intent.\n\n### Judgment rating\n\n**2.25/5 for a narrow utility**\n\n## 19. Mistakes / anti-patterns / likely lessons\n\nThere are no major algorithmic defects identified, but several maintainability issues matter:\n- hardcoded database/filter literals;\n- no schema name;\n- only tables, not views;\n- no parameterized reusable form;\n- no usage documentation.\n\nLikely lesson:\n\n> **A useful one-off query becomes reusable database tooling when context, parameters and output identity are made explicit.**\n\n## 20. Testing / verification\n\nNo tests are present.\n\nFor this query, testing would mean validating against a known schema with cases such as:\n- matching/nonmatching table names;\n- matching/nonmatching column names;\n- duplicate column names across schemas;\n- views vs tables;\n- wildcard characters in search terms.\n\nBecause the task is read-only metadata discovery, failure risk is lower than for DDL/DML, but correctness still matters.\n\n### Testing rating\n\n**0/5 authored automation**\n\n## 21. CI/CD / deployment\n\nN/A for the current one-file query.\n\nNo migration tooling, database project, SQL linting, CI validation, deployment script or environment promotion is present.\n\nThis should not be turned into database DevOps evidence.\n\n## 22. Documentation\n\nThere is no README.\n\nThe query would benefit from documenting:\n- SQL Server requirement;\n- where to replace database/filter values;\n- expected output columns;\n- whether `%` wildcards are intentional;\n- why `sys.tables`/`sys.columns` are used;\n- read-only nature of the query.\n\n### Documentation rating\n\n**1.0/5**\n\n## 23. Repository hygiene / build/dependency discipline\n\nPositive:\n- one focused source file;\n- no generated/vendor clutter;\n- no secrets identified in the analyzed description.\n\nWeak:\n- no README;\n- no environment metadata;\n- no sample schema;\n- no parameterization;\n- one snapshot only.\n\n### Repository hygiene\n\n**3.5/5 for minimal cleanliness; 1.5/5 for reproducible context**\n\n## 24. First / previous / current / corpus-max ledger\n\n| Skill | Previous | Repo024 | Corpus effect |\n|---|---:|---:|---:|\n| SQL | Repo009 challenge queries | **2.5/5 practical T-SQL** | reinforced in real-task-shaped context |\n| SQL Server | none strong | **2.5/5** | first clear vendor-specific evidence |\n| System catalog introspection | none | **2.75/5** | first observed |\n| Joins/filtering | prior SQL | **2.5/5** | reinforced |\n| Database design | none here | **0/5** | unchanged |\n| DBA operations | none | **0/5** | unchanged |\n\n## 25. Project-to-project comparison — expanded\n\n### Repo009 → Repo024\n\nRepo009's SQL evidence is challenge-oriented. Repo024 is much smaller but contextually more practical: it uses metadata catalogs to navigate an existing SQL Server schema.\n\nThis is an important distinction between **algorithmic SQL exercise evidence** and **engineering utility SQL evidence**.\n\n### Repo023 → Repo024\n\nBoth late-2023 repositories preserve small utilities. Repo023 does so in C++; Repo024 does so directly in T-SQL. Together they strengthen the picture of using repositories as a personal engineering toolbox.\n\n## 26. Portfolio Evidence Weight — expanded rationale\n\n**2.5/5** is justified despite the tiny size because the query adds a specific practical SQL Server capability not established elsewhere.\n\nIt remains below 3+ because:\n- one file/one commit;\n- no database design;\n- no application integration;\n- no tests/docs;\n- no production scale evidence.\n\n## 27. Current relevance / recency\n\nRepo024 is historical late-2023 evidence of SQL Server metadata discovery. Later SQL/data-engineering repositories should determine current depth.\n\nIts long-term value is as a **first practical SQL Server introspection marker**, not as a current DBA proficiency indicator.\n\n## 28. Product / query failure potential\n\nBecause the query is read-only metadata discovery, direct data-destruction risk is low.\n\nLikely failure modes:\n- false negatives from filters;\n- ambiguous results across schemas;\n- hardcoded context pointing to wrong database;\n- assuming tables when relevant objects are views;\n- treating the result as proof of schema meaning rather than name matching.\n\n## 29. Human impact\n\nThe query is an internal productivity tool. Its human value is reducing time spent manually searching an unfamiliar schema.\n\nThe main human-centered risk is interpretive: metadata names are hints, not truth about business meaning. Engineers should avoid making consequential data decisions solely from matching column/table names without consulting domain context.\n\n## 30. Cumulative career state after Repository 024\n\nRepo024 strengthens the database thread without materially changing overall engineering maturity.\n\nThe portfolio now shows SQL in two modes:\n- coding/problem-solving exercises;\n- practical schema discovery.\n\nThat recurrence is more meaningful than the repository's raw size.\n\n## 31. Expanded longitudinal summary vector\n\n| Axis | Repo024 effect |\n|---|---|\n| SQL recurrence | increases |\n| SQL Server specificity | first clear evidence |\n| Database architecture | unchanged |\n| Practical tooling behavior | reinforced |\n| Product maturity | N/A |\n| Career evidence | narrow but useful |\n\n## 32. RAG anti-inflation warnings\n\n1. One query does not prove database-engineering expertise.\n2. T-SQL does not imply SQL Server administration.\n3. Hardcoded names do not identify an employer/client.\n4. No schema was authored.\n5. No performance tuning exists.\n6. No transactions/procedures/triggers exist.\n7. No tests or CI exist.\n\n---\n\n## 33. Bottom line\n\nThe strongest safe career statement is:\n\n> **By late 2023, SQL was being used pragmatically to inspect an existing SQL Server database and locate relevant tables/columns, not only to solve coding challenges.**\n\n### Key ratings\n\n- T-SQL: **2.5/5**\n- Metadata introspection: **2.75/5**\n- Joins/filtering: **2.5/5**\n- Database design: **0/5**\n- Testing: **0/5**\n- Engineering maturity: **1.5/5**\n- Portfolio Evidence Weight: **2.5/5**\n- Career-skill evidence: **3.0/5**\n\n---\n\n**End of Repository 024 / 134.**\n\n---\n"
+}

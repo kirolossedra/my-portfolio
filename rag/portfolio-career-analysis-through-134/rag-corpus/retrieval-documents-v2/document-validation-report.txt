@@ -1,0 +1,63 @@
+Portfolio GitHub RAG pipeline — Step 2 v2 validation report
+========================================================================
+
+STATUS: SUCCESS
+
+INPUT
+  rag-corpus/repositories.jsonl
+
+OUTPUT
+  rag-corpus/retrieval-documents-v2/documents.jsonl
+  rag-corpus/retrieval-documents-v2/document-catalog.json
+  rag-corpus/retrieval-documents-v2/document-manifest.json
+  rag-corpus/retrieval-documents-v2/excluded-source-units.jsonl
+  rag-corpus/retrieval-documents-v2/by-repository/
+
+Repositories covered:             134/134
+Retrieval documents generated:    2808
+Source blocks examined:            77612
+Repeated/template blocks removed: 39342
+Tiny generic blocks removed:       7340
+Retained evidence blocks:          30930
+Fallback metadata documents:       0
+
+DOCUMENT WORDS
+  min / median / max: 10 / 138 / 705
+
+DOCUMENTS BY CLASS
+  chronology: 201
+  direct_evidence: 651
+  interpretation: 1444
+  limitation: 159
+  metadata: 353
+
+DOCUMENTS BY POLARITY
+  mixed: 244
+  negative: 249
+  neutral: 830
+  positive: 1485
+
+DOCUMENTS BY EVIDENCE LEVEL
+  conceptual_exposure: 51
+  implemented_or_concrete: 137
+  interpretive: 488
+  methodology_or_interpretive: 379
+  repository_limitation: 250
+  repository_specific: 1503
+
+INTEGRITY
+  Step 1 repository SHA-256 values verified: YES
+  134/134 repository coverage verified: YES
+  Source-fragment text hashes verified: YES
+  Source-fragment provenance bounds verified: YES
+  Duplicate document IDs: 0
+  Step 1 canonical corpus modified: NO
+
+NEXT PIPELINE INPUT
+  rag-corpus/retrieval-documents-v2/documents.jsonl
+
+STEP 3 v2 RULE
+  Embed `embedding_text`; retain `text` + `source_fragments` for evidence/citations.
+  Do NOT reuse old rag-corpus/chunks/chunks.jsonl.
+
+Manifest SHA-256 (after write): recorded in manifest file hash externally

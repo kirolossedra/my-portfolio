@@ -1,0 +1,117 @@
+{
+  "artifacts": {
+    "embedding-records.jsonl": {
+      "records": 11642,
+      "sha256": "f1d5a8560a3a7bdefe5dcf1e43893ebcaeb17d4af90a4aee4dc4c44ebaec37eb"
+    },
+    "embeddings.npy": {
+      "columns": 512,
+      "dtype": "float32",
+      "rows": 11642,
+      "sha256": "35c9d9f7db9227042148636a352c451b0a89e3f5e8f431edcc67516f057e0bbd"
+    }
+  },
+  "cost": {
+    "api_key_required": false,
+    "embedding_generation_cost_usd": 0,
+    "first_run_model_download": "public Hugging Face model; no API key required",
+    "paid_api_requests": 0,
+    "paid_api_used": false
+  },
+  "dependencies": {
+    "huggingface-hub": "1.29.0",
+    "numpy": "2.5.2",
+    "sentence-transformers": "6.0.0",
+    "torch": "2.13.0",
+    "transformers": "5.16.1"
+  },
+  "embedding": {
+    "authoritative_evidence_field": "text",
+    "document_prefix": "search_document: ",
+    "dtype": "float32",
+    "field_embedded": "embedding_text",
+    "initial_encode_micro_batch_size": 8,
+    "logical_checkpoint_batch_size": 64,
+    "matryoshka_transform": "layer_norm -> first 512 dimensions -> L2 normalize",
+    "max_sequence_length_tokens": 8192,
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "model_license": "Apache-2.0",
+    "model_revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "native_dimensions": 768,
+    "provider": "local-sentence-transformers",
+    "runtime_query_prefix": "search_query: ",
+    "similarity": "cosine",
+    "stored_dimensions": 512
+  },
+  "embedding_schema_version": "2.0.0",
+  "generated_at_utc": "2026-08-31T00:54:19.860207+00:00",
+  "input": {
+    "authoritative_text_character_total": 7577240,
+    "chunk_count": 11642,
+    "chunk_id_order_digest": "143a83c85f44c0e28c14b6b887a1bb5302d581d6aadc198fd81242c8c1a21781",
+    "embedding_text_character_total": 9297423,
+    "embedding_text_sha256_order_digest": "7625c0343e77b978d0d1a556fb9ff4a2ce3ea7208e8270e08a01a38e339e1eb2",
+    "path": "rag-corpus\\chunks\\chunks.jsonl",
+    "repository_count": 134,
+    "repository_total": 134,
+    "sha256": "4ec4c87bd7e29da6bf93436c0bc33e2c270b13af9d0f1b33163ab25615917bdc"
+  },
+  "integrity": {
+    "authoritative_text_preserved": "PASS",
+    "chunk_id_order_preserved": "PASS",
+    "duplicate_chunk_ids": 0,
+    "embedding_text_preserved": "PASS",
+    "invalid_vectors": 0,
+    "matrix_row_equals_record_vector_index": "PASS",
+    "nan_or_inf_vectors": 0,
+    "no_silent_token_truncation": "PASS",
+    "repository_coverage": "PASS",
+    "unit_normalized_vectors": "PASS",
+    "zero_vectors": 0
+  },
+  "matrix": {
+    "dimension": 512,
+    "dtype": "float32",
+    "duplicate_chunk_ids": 0,
+    "invalid_vector_count": 0,
+    "l2_norm_max": 1.0000001446669664,
+    "l2_norm_max_error_from_one": 1.4905061895831295e-07,
+    "l2_norm_median": 0.9999999993282775,
+    "l2_norm_min": 0.999999850949381,
+    "matrix_shape": [
+      11642,
+      512
+    ],
+    "repository_count": 134,
+    "vector_count": 11642,
+    "zero_vector_count": 0
+  },
+  "next_pipeline_input": {
+    "configuration": "rag-corpus/embeddings/embedding-manifest.json",
+    "records": "rag-corpus/embeddings/embedding-records.jsonl",
+    "vectors": "rag-corpus/embeddings/embeddings.npy"
+  },
+  "pipeline_step": 3,
+  "run": {
+    "credentials_required": false,
+    "logical_batch_count": 182,
+    "new_logical_batches": 182,
+    "paid_api_requests": 0,
+    "resumed_logical_batches": 0,
+    "smallest_encode_micro_batch_used": 8
+  },
+  "runtime": {
+    "credentials_required": false,
+    "device": "cpu",
+    "device_name": "CPU",
+    "network_needed_after_model_cached": false
+  },
+  "script": "embedding.py",
+  "token_validation": {
+    "limit": 8192,
+    "max_tokens": 2026,
+    "median_tokens": 129,
+    "min_tokens": 29,
+    "over_limit_count": 0
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "corpus": {
+    "record_count": 11642,
+    "repository_count": 134,
+    "repository_total": 134,
+    "vector_count": 11642
+  },
+  "cost": {
+    "api_key_required": false,
+    "model_training": false,
+    "paid_api_used": false,
+    "retrieval_cost_usd": 0
+  },
+  "dependencies": {
+    "numpy": "2.5.2",
+    "python": "3.14.6",
+    "sentence-transformers": "6.0.0",
+    "torch": "2.13.0",
+    "transformers": "5.16.1"
+  },
+  "generated_at_utc": "2026-08-31T01:27:59.679313+00:00",
+  "input": {
+    "manifest": "rag-corpus\\embeddings\\embedding-manifest.json",
+    "records": "rag-corpus\\embeddings\\embedding-records.jsonl",
+    "records_sha256": "f1d5a8560a3a7bdefe5dcf1e43893ebcaeb17d4af90a4aee4dc4c44ebaec37eb",
+    "step3_embedding_schema_version": "2.0.0",
+    "vectors": "rag-corpus\\embeddings\\embeddings.npy",
+    "vectors_sha256": "35c9d9f7db9227042148636a352c451b0a89e3f5e8f431edcc67516f057e0bbd"
+  },
+  "interactive_commands": {
+    ":exit": "save session and exit",
+    ":help": "show instructions",
+    ":quit": "save session and exit"
+  },
+  "next_pipeline_input": {
+    "evidence_records": "rag-corpus/embeddings/embedding-records.jsonl",
+    "human_evaluation_results": "rag-corpus/retrieval/test-results/",
+    "retrieval_configuration": "rag-corpus/retrieval/retrieval-config.json",
+    "validated_vectors": "rag-corpus/embeddings/embeddings.npy"
+  },
+  "pipeline_step": 4,
+  "retrieval": {
+    "algorithm": "exact cosine similarity over complete matrix",
+    "approximate_index": false,
+    "cosine_implementation": "matrix dot query_vector",
+    "document_prefix": "search_document: ",
+    "document_vectors_unit_normalized": true,
+    "dtype": "float32",
+    "matryoshka_transform": "layer_norm -> first 512 dimensions -> L2 normalize",
+    "model": "nomic-ai/nomic-embed-text-v1.5",
+    "model_revision": "e9b6763023c676ca8431644204f50c2b100d9aab",
+    "native_dimensions": 768,
+    "query_prefix": "search_query: ",
+    "query_vectors_unit_normalized": true,
+    "similarity": "cosine",
+    "stored_dimensions": 512,
+    "top_k": 10
+  },
+  "retrieval_schema_version": "1.0.0",
+  "runtime": {
+    "network_needed_after_model_cached": false,
+    "query_embedding_device": "cpu",
+    "query_embedding_device_name": "CPU"
+  },
+  "script": "build-rag-retrieval-v1-local.py",
+  "validation": {
+    "exact_search_mathematical_self_test": "PASS",
+    "finite_vectors": "PASS",
+    "matrix_record_alignment": "PASS",
+    "repository_coverage": "PASS",
+    "self_test_minimum_similarity": 0.9999997615814209,
+    "self_test_samples": 32,
+    "step3_artifact_hashes": "PASS",
+    "unit_normalization": "PASS",
+    "zero_vectors": 0
+  }
+}

@@ -1,0 +1,47 @@
+RAG CHUNKING VALIDATION REPORT
+===============================
+Generated (UTC): 2026-08-30T23:33:37.870447+00:00
+Chunk schema version: 1.0.0
+
+INPUT
+-----
+rag-corpus/repositories.jsonl
+Repositories read: 134
+
+OUTPUT
+------
+rag-corpus/chunks/chunks.jsonl
+rag-corpus/chunks/chunk-catalog.json
+rag-corpus/chunks/chunk-manifest.json
+rag-corpus/chunks/chunk-validation-report.txt
+rag-corpus/chunks/by-repository/*.chunks.jsonl
+
+STATISTICS
+----------
+Source units: 11464
+Chunks: 11642
+Oversized source units split: 48
+Total primary chunk words: 1039924
+Chunk words min/median/max: 1/53/900
+Chunks carrying canonical categories: 5521
+Chunks carrying structured skill rows: 81
+
+VALIDATION
+----------
+Repository coverage: PASS (134/134)
+Unique chunk IDs: PASS
+Non-empty chunk text: PASS
+Hard maximum <= 900 words: PASS
+Chunk SHA-256 validation: PASS
+Per-source-unit normalized text reconstruction: PASS
+Step 1 input modified: NO
+Original Markdown read directly: NO
+
+NEXT STAGE INPUT
+----------------
+rag-corpus/chunks/chunks.jsonl
+
+Use `embedding_text` for embeddings and preserve `text` as the authoritative
+evidence/citation payload.
+
+OVERALL RESULT: PASS

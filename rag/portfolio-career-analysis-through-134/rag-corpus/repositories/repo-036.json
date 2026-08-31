@@ -1,0 +1,1202 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 36,
+  "repository_total": 134,
+  "repository_name": "Simple-Calculator",
+  "header_title": "`Simple-Calculator`",
+  "repository_slug": "kirolossedra/Simple-Calculator",
+  "repository_url": "https://github.com/kirolossedra/Simple-Calculator",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-028-039.md",
+    "line_start": 5512,
+    "line_end": 6192,
+    "sha256": "6c426bb34ad80c89324d334522c45b2b378d222dc6aec24a2e2b7df872416dd2"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {
+    "repository": "kirolossedra/Simple-Calculator",
+    "chronology_index": "036 / 134",
+    "primary_language": "C",
+    "application_source_date": "2021-11-07",
+    "application_author_marker": "kirol",
+    "target": "AVR",
+    "ui": "4x4 keypad + LCD",
+    "expression_scope": "Two integer operands + one of + - /",
+    "driver_provenance": "Several support drivers explicitly credit Mohamed Tarek",
+    "tests": "None",
+    "ci": "None"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Embedded C application logic",
+      "rating_5": 3.25,
+      "rating_raw": "3.25/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Manual parsing",
+      "rating_5": 3.0,
+      "rating_raw": "3.0/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Keypad/LCD integration",
+      "rating_5": 3.25,
+      "rating_raw": "3.25/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "AVR",
+      "rating_5": 3.0,
+      "rating_raw": "3.0/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Driver reuse/integration",
+      "rating_5": 3.0,
+      "rating_raw": "3.0/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "C linkage discipline",
+      "rating_5": 1.75,
+      "rating_raw": "1.75/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Input validation",
+      "rating_5": 1.5,
+      "rating_raw": "1.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    }
+  ],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Project identity"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **AVR Keypad/LCD Calculator with Owner-Authored Expression Parsing**\n\nA small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\nCorrect classification:\n\n> **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "1. RAG Metadata"
+      ],
+      "text": "## 1. RAG Metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Simple-Calculator` |\n| Chronology index | **036 / 134** |\n| Primary language | C |\n| Application source date | **2021-11-07** |\n| Application author marker | `kirol` |\n| Target | AVR |\n| UI | 4x4 keypad + LCD |\n| Expression scope | Two integer operands + one of `+ - * /` |\n| Driver provenance | Several support drivers explicitly credit Mohamed Tarek |\n| Tests | None |\n| CI | None |\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s053",
+        "s063"
+      ],
+      "titles": [
+        "44. Expanded longitudinal summary vector",
+        "54. Repository 036 bottom line"
+      ],
+      "text": "## 44. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 54. Repository 036 bottom line\nA small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\n**Portfolio Evidence Weight:** 3.25/5  \n**Career-skill evidence value:** 3.5/5  \n**Product maturity:** 1.75/5  \n**Engineering maturity:** 2.5/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity."
+    },
+    "chronology": {
+      "section_ids": [
+        "s060"
+      ],
+      "titles": [
+        "51. Current relevance / recency"
+      ],
+      "text": "## 51. Current relevance / recency\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---"
+    },
+    "technical_scope": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "28. Technical realm"
+      ],
+      "text": "## 28. Technical realm\nRepository `Simple-Calculator` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C application logic: 3.25/5**\n- **Keypad/LCD integration: 3.25/5**\n- **Manual parsing: 3.0/5**\n- **AVR: 3.0/5**\n- **Driver reuse/integration: 3.0/5**\n\n---"
+    },
+    "architecture": {
+      "section_ids": [
+        "s035"
+      ],
+      "titles": [
+        "30. Architecture / data-flow synthesis"
+      ],
+      "text": "## 30. Architecture / data-flow synthesis\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---"
+    },
+    "skills": {
+      "section_ids": [
+        "s017",
+        "s018",
+        "s019",
+        "s040"
+      ],
+      "titles": [
+        "15. Direct skill evidence ratings",
+        "16. Skill lifecycle",
+        "17. Skill evidence dimensions",
+        "31. Artifact-to-skill evidence map"
+      ],
+      "text": "## 15. Direct skill evidence ratings\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C application logic | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Manual parsing | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Keypad/LCD integration | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Driver reuse/integration | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C linkage discipline | **1.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Input validation | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 16. Skill lifecycle\n- Historically places owner-authored embedded application logic in late 2021.\n- Reuses a growing driver library rather than rewriting all peripherals.\n- Adds simple parser/state interaction to the embedded portfolio.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 17. Skill evidence dimensions\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 31. Artifact-to-skill evidence map\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Simple-Calculator` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **036 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application source date: **2021-11-07** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author marker: `kirol` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| UI: 4x4 keypad + LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Expression scope: Two integer operands + one of `+ - * /` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Driver provenance: Several support drivers explicitly credit Mohamed Tarek | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Tests: None | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---"
+    },
+    "business_domain": {
+      "section_ids": [
+        "s034"
+      ],
+      "titles": [
+        "29. Product / business / domain realm"
+      ],
+      "text": "## 29. Product / business / domain realm\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---"
+    },
+    "scale": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "20. Scale dimensions"
+      ],
+      "text": "## 20. Scale dimensions\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---"
+    },
+    "maturity": {
+      "section_ids": [
+        "s041",
+        "s054"
+      ],
+      "titles": [
+        "32. Reliability and defensive-engineering maturity",
+        "45. Product and engineering maturity"
+      ],
+      "text": "## 32. Reliability and defensive-engineering maturity\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 45. Product and engineering maturity\n| Measure | Rating |\n|---|---:|\n| Product maturity | **1.75/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **3.25/5** |\n| Career-skill evidence value | **3.5/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---"
+    },
+    "testing": {
+      "section_ids": [
+        "s028",
+        "s051"
+      ],
+      "titles": [
+        "24. Testing and verification maturity",
+        "42. Testing trajectory update"
+      ],
+      "text": "## 24. Testing and verification maturity\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 42. Testing trajectory update\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s042"
+      ],
+      "titles": [
+        "33. Security and privacy maturity"
+      ],
+      "text": "## 33. Security and privacy maturity\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "25. CI/CD and deployment"
+      ],
+      "text": "## 25. CI/CD and deployment\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---"
+    },
+    "documentation": {
+      "section_ids": [
+        "s030"
+      ],
+      "titles": [
+        "26. Documentation and reproducibility"
+      ],
+      "text": "## 26. Documentation and reproducibility\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---"
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "27. Repository hygiene"
+      ],
+      "text": "## 27. Repository hygiene\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---"
+    },
+    "strengths": {
+      "section_ids": [
+        "s045"
+      ],
+      "titles": [
+        "36. Strengths"
+      ],
+      "text": "## 36. Strengths\n- Direct evidence of **Embedded C application logic** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **Manual parsing** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Keypad/LCD integration** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Driver reuse/integration** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **C linkage discipline** at approximately **1.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s027",
+        "s046"
+      ],
+      "titles": [
+        "23. Mistakes, anti-patterns, and likely lessons",
+        "37. Weaknesses / engineering debt"
+      ],
+      "text": "## 23. Mistakes, anti-patterns, and likely lessons\n- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 37. Weaknesses / engineering debt\n- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---"
+    },
+    "production_evolution": {
+      "section_ids": [
+        "s047"
+      ],
+      "titles": [
+        "38. What production evolution would require"
+      ],
+      "text": "## 38. What production evolution would require\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---"
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s056"
+      ],
+      "titles": [
+        "47. Product / engineering failure potential"
+      ],
+      "text": "## 47. Product / engineering failure potential\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---"
+    },
+    "human_impact": {
+      "section_ids": [
+        "s057"
+      ],
+      "titles": [
+        "48. Human impact / dignity boundary"
+      ],
+      "text": "## 48. Human impact / dignity boundary\nEven simple calculators demonstrate a principle relevant to higher-stakes systems: input validation is part of respecting the user’s intent. Silently accepting malformed sequences can produce confidently wrong output; later systems should reject ambiguity explicitly.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---"
+    },
+    "evidence_inference": {
+      "section_ids": [
+        "s049"
+      ],
+      "titles": [
+        "40. Evidence vs. inference register"
+      ],
+      "text": "## 40. Evidence vs. inference register\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s015",
+        "s016"
+      ],
+      "titles": [
+        "14. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "text": "## 14. Origin / contribution / attribution register\n- `Calculator.c` explicitly credits `kirol`.\n- Keypad support explicitly credits Mohamed Tarek and shared blobs are treated as reusable/course infrastructure.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## Attribution rule\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s020"
+      ],
+      "titles": [
+        "18. Responsibility scope"
+      ],
+      "text": "## 18. Responsibility scope\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---"
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "21. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 21. Engineering decisions and tradeoffs\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---"
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "22. Engineering judgment evidence"
+      ],
+      "text": "## 22. Engineering judgment evidence\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---"
+    },
+    "limitations": {
+      "section_ids": [
+        "s062"
+      ],
+      "titles": [
+        "53. RAG anti-inflation warnings"
+      ],
+      "text": "## 53. RAG anti-inflation warnings\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s050",
+        "s052",
+        "s053",
+        "s058",
+        "s059",
+        "s061"
+      ],
+      "titles": [
+        "41. Career-field historicity after Repository 036",
+        "43. Systems-engineering trajectory update",
+        "44. Expanded longitudinal summary vector",
+        "49. Longitudinal project comparisons",
+        "50. First / Previous / Current / Corpus-Max ledger update",
+        "52. Cumulative career state after Repository 036"
+      ],
+      "text": "## 41. Career-field historicity after Repository 036\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 43. Systems-engineering trajectory update\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 44. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 49. Longitudinal project comparisons\n- Repo035: timer/interrupt device; Repo036: user-input/parser device.\n- Repo037: stronger sensor/actuator integration and more owner-authored drivers.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max ledger update\n| Ledger field | Update |\n|---|---|\n| Repository | `Simple-Calculator` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 52. Cumulative career state after Repository 036\nReinforces early embedded application ownership and shows reuse of peripheral infrastructure, but not production-quality parser or firmware architecture.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **AVR Keypad/LCD Calculator with Owner-Authored Expression Parsing**\n\nA small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\nCorrect classification:\n\n> **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\n---",
+      "source_line_start": 5514,
+      "source_line_end": 5526
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG Metadata",
+      "normalized_title": "RAG Metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG Metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Simple-Calculator` |\n| Chronology index | **036 / 134** |\n| Primary language | C |\n| Application source date | **2021-11-07** |\n| Application author marker | `kirol` |\n| Target | AVR |\n| UI | 4x4 keypad + LCD |\n| Expression scope | Two integer operands + one of `+ - * /` |\n| Driver provenance | Several support drivers explicitly credit Mohamed Tarek |\n| Tests | None |\n| CI | None |\n\n---",
+      "source_line_start": 5526,
+      "source_line_end": 5544
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "2. Evidence basis and inspection method",
+      "normalized_title": "Evidence basis and inspection method",
+      "key": "evidence_basis_and_inspection_method",
+      "path": [
+        "2. Evidence basis and inspection method"
+      ],
+      "content": "Evidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---",
+      "source_line_start": 5544,
+      "source_line_end": 5559
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "3. Historical placement",
+      "normalized_title": "Historical placement",
+      "key": "historical_placement",
+      "path": [
+        "3. Historical placement"
+      ],
+      "content": "`Calculator.c` is explicitly dated 7 November 2021 and marked Author `kirol`.\n\nThe repository therefore provides historical evidence of embedded application work well before its later GitHub archival date.\n\n---",
+      "source_line_start": 5559,
+      "source_line_end": 5567
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "4. Input-buffer model",
+      "normalized_title": "Input-buffer model",
+      "key": "input_buffer_model",
+      "path": [
+        "4. Input-buffer model"
+      ],
+      "content": "The application stores keypad tokens in a 30-byte RAM buffer until `=` is entered.\n\nIt tracks the number of entered tokens and echoes numbers/operators to the LCD.\n\n---",
+      "source_line_start": 5567,
+      "source_line_end": 5575
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "5. Manual operator discovery",
+      "normalized_title": "Manual operator discovery",
+      "key": "manual_operator_discovery",
+      "path": [
+        "5. Manual operator discovery"
+      ],
+      "content": "The code scans the buffered tokens and treats values above 9 as operator candidates.\n\nBecause ASCII operator codes exceed 9, this works for the intended keypad mapping—but it is a brittle parser rule rather than an explicit token-type design.\n\nIf several operators are entered, the last qualifying index wins.\n\n---",
+      "source_line_start": 5575,
+      "source_line_end": 5585
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "6. Manual multi-digit number construction",
+      "normalized_title": "Manual multi-digit number construction",
+      "key": "manual_multi_digit_number_construction",
+      "path": [
+        "6. Manual multi-digit number construction"
+      ],
+      "content": "Operand values are reconstructed by multiplying each digit by powers of ten derived from its distance to the operator/end.\n\nThis is direct evidence of implementing numeric parsing rather than relying on `atoi` or a high-level expression evaluator.\n\n---",
+      "source_line_start": 5585,
+      "source_line_end": 5593
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "7. Supported arithmetic",
+      "normalized_title": "Supported arithmetic",
+      "key": "supported_arithmetic",
+      "path": [
+        "7. Supported arithmetic"
+      ],
+      "content": "The switch handles:\n\n- addition;\n- subtraction;\n- multiplication;\n- division.\n\nDivision casts operands to double for LCD output.\n\n---",
+      "source_line_start": 5593,
+      "source_line_end": 5606
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "8. Reset interaction",
+      "normalized_title": "Reset interaction",
+      "key": "reset_interaction",
+      "path": [
+        "8. Reset interaction"
+      ],
+      "content": "After displaying a result, the program waits for keypad code 127 (mapped to Delete) before clearing the LCD and starting the next calculation.\n\nThis creates a complete small interaction loop rather than a one-shot arithmetic demo.\n\n---",
+      "source_line_start": 5606,
+      "source_line_end": 5614
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "9. Shared driver provenance",
+      "normalized_title": "Shared driver provenance",
+      "key": "shared_driver_provenance",
+      "path": [
+        "9. Shared driver provenance"
+      ],
+      "content": "`keypad.c` / `keypad.h` explicitly credit Mohamed Tarek, and GPIO/common driver blobs recur identically in neighboring embedded repositories.\n\nTherefore the correct ownership split is:\n\n- direct: calculator parsing/orchestration in `Calculator.c`;\n- integration/reuse: keypad, LCD, GPIO support infrastructure;\n- not direct: authorship of every reused driver.\n\n---",
+      "source_line_start": 5614,
+      "source_line_end": 5626
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "10. Global definition in header",
+      "normalized_title": "Global definition in header",
+      "key": "global_definition_in_header",
+      "path": [
+        "10. Global definition in header"
+      ],
+      "content": "`keypad.h` defines `uint8 ready;` directly rather than declaring it `extern`.\n\nBecause that header is included by multiple translation units, modern toolchains can produce multiple-definition linker failures.\n\nThis is an important C linkage/design defect.\n\n---",
+      "source_line_start": 5626,
+      "source_line_end": 5636
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "11. Uninitialized operator index",
+      "normalized_title": "Uninitialized operator index",
+      "key": "uninitialized_operator_index",
+      "path": [
+        "11. Uninitialized operator index"
+      ],
+      "content": "`OpIndex` is declared without initialization.\n\nIf the input reaches `=` without a recognized operator, later loops and the switch use an indeterminate index.\n\n---",
+      "source_line_start": 5636,
+      "source_line_end": 5644
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "12. Division and arithmetic robustness",
+      "normalized_title": "Division and arithmetic robustness",
+      "key": "division_and_arithmetic_robustness",
+      "path": [
+        "12. Division and arithmetic robustness"
+      ],
+      "content": "There is no visible guard for:\n\n- division by zero;\n- arithmetic overflow;\n- malformed token sequences;\n- empty operands;\n- negative-number syntax;\n- decimal input;\n- multiple operators.\n\nThe parser is intentionally small and should not be represented as a general expression engine.\n\n---",
+      "source_line_start": 5644,
+      "source_line_end": 5660
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "13. Possible build hygiene defects",
+      "normalized_title": "Possible build hygiene defects",
+      "key": "possible_build_hygiene_defects",
+      "path": [
+        "13. Possible build hygiene defects"
+      ],
+      "content": "The source includes `<avr/delay.h>` rather than the more usual `<util/delay.h>` and uses an `itr` loop type in application code.\n\nWithout a build manifest/toolchain snapshot, compile success of the final repository cannot be assumed.\n\n---",
+      "source_line_start": 5660,
+      "source_line_end": 5668
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "14. Origin / contribution / attribution register",
+      "normalized_title": "Origin / contribution / attribution register",
+      "key": "origin_contribution_attribution_register",
+      "path": [
+        "14. Origin / contribution / attribution register"
+      ],
+      "content": "- `Calculator.c` explicitly credits `kirol`.\n- Keypad support explicitly credits Mohamed Tarek and shared blobs are treated as reusable/course infrastructure.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 5668,
+      "source_line_end": 5679
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Attribution rule",
+      "normalized_title": "Attribution rule",
+      "key": "attribution_rule",
+      "path": [
+        "14. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "content": "Credit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 5673,
+      "source_line_end": 5679
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "15. Direct skill evidence ratings",
+      "normalized_title": "Direct skill evidence ratings",
+      "key": "direct_skill_evidence_ratings",
+      "path": [
+        "15. Direct skill evidence ratings"
+      ],
+      "content": "| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C application logic | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Manual parsing | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Keypad/LCD integration | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Driver reuse/integration | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C linkage discipline | **1.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Input validation | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---",
+      "source_line_start": 5679,
+      "source_line_end": 5695
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "16. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "16. Skill lifecycle"
+      ],
+      "content": "- Historically places owner-authored embedded application logic in late 2021.\n- Reuses a growing driver library rather than rewriting all peripherals.\n- Adds simple parser/state interaction to the embedded portfolio.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---",
+      "source_line_start": 5695,
+      "source_line_end": 5705
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "17. Skill evidence dimensions",
+      "normalized_title": "Skill evidence dimensions",
+      "key": "skill_evidence_dimensions",
+      "path": [
+        "17. Skill evidence dimensions"
+      ],
+      "content": "| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---",
+      "source_line_start": 5705,
+      "source_line_end": 5718
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "18. Responsibility scope",
+      "normalized_title": "Responsibility scope",
+      "key": "responsibility_scope",
+      "path": [
+        "18. Responsibility scope"
+      ],
+      "content": "### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 5718,
+      "source_line_end": 5734
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Demonstrated responsibility",
+      "normalized_title": "Demonstrated responsibility",
+      "key": "demonstrated_responsibility",
+      "path": [
+        "18. Responsibility scope",
+        "Demonstrated responsibility"
+      ],
+      "content": "- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.",
+      "source_line_start": 5720,
+      "source_line_end": 5726
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Not demonstrated",
+      "normalized_title": "Not demonstrated",
+      "key": "not_demonstrated",
+      "path": [
+        "18. Responsibility scope",
+        "Not demonstrated"
+      ],
+      "content": "- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 5726,
+      "source_line_end": 5734
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "19. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "19. Complexity dimensions"
+      ],
+      "content": "| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---",
+      "source_line_start": 5734,
+      "source_line_end": 5747
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "20. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "20. Scale dimensions"
+      ],
+      "content": "Scale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---",
+      "source_line_start": 5747,
+      "source_line_end": 5759
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "21. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "21. Engineering decisions and tradeoffs"
+      ],
+      "content": "The repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---",
+      "source_line_start": 5759,
+      "source_line_end": 5772
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "22. Engineering judgment evidence",
+      "normalized_title": "Engineering judgment evidence",
+      "key": "engineering_judgment_evidence",
+      "path": [
+        "22. Engineering judgment evidence"
+      ],
+      "content": "Positive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---",
+      "source_line_start": 5772,
+      "source_line_end": 5782
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "23. Mistakes, anti-patterns, and likely lessons",
+      "normalized_title": "Mistakes, anti-patterns, and likely lessons",
+      "key": "mistakes_anti_patterns_and_likely_lessons",
+      "path": [
+        "23. Mistakes, anti-patterns, and likely lessons"
+      ],
+      "content": "- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---",
+      "source_line_start": 5782,
+      "source_line_end": 5796
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "24. Testing and verification maturity",
+      "normalized_title": "Testing and verification maturity",
+      "key": "testing_and_verification_maturity",
+      "path": [
+        "24. Testing and verification maturity"
+      ],
+      "content": "No stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---",
+      "source_line_start": 5796,
+      "source_line_end": 5807
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "25. CI/CD and deployment",
+      "normalized_title": "CI/CD and deployment",
+      "key": "ci_cd_and_deployment",
+      "path": [
+        "25. CI/CD and deployment"
+      ],
+      "content": "No mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---",
+      "source_line_start": 5807,
+      "source_line_end": 5815
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "26. Documentation and reproducibility",
+      "normalized_title": "Documentation and reproducibility",
+      "key": "documentation_and_reproducibility",
+      "path": [
+        "26. Documentation and reproducibility"
+      ],
+      "content": "Documentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---",
+      "source_line_start": 5815,
+      "source_line_end": 5823
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "27. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "27. Repository hygiene"
+      ],
+      "content": "Repository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---",
+      "source_line_start": 5823,
+      "source_line_end": 5831
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "28. Technical realm",
+      "normalized_title": "Technical realm",
+      "key": "technical_realm",
+      "path": [
+        "28. Technical realm"
+      ],
+      "content": "Repository `Simple-Calculator` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C application logic: 3.25/5**\n- **Keypad/LCD integration: 3.25/5**\n- **Manual parsing: 3.0/5**\n- **AVR: 3.0/5**\n- **Driver reuse/integration: 3.0/5**\n\n---",
+      "source_line_start": 5831,
+      "source_line_end": 5851
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Strongest local skill signals",
+      "normalized_title": "Strongest local skill signals",
+      "key": "strongest_local_skill_signals",
+      "path": [
+        "28. Technical realm",
+        "Strongest local skill signals"
+      ],
+      "content": "- **Embedded C application logic: 3.25/5**\n- **Keypad/LCD integration: 3.25/5**\n- **Manual parsing: 3.0/5**\n- **AVR: 3.0/5**\n- **Driver reuse/integration: 3.0/5**\n\n---",
+      "source_line_start": 5841,
+      "source_line_end": 5851
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "29. Product / business / domain realm",
+      "normalized_title": "Product / business / domain realm",
+      "key": "product_business_domain_realm",
+      "path": [
+        "29. Product / business / domain realm"
+      ],
+      "content": "The repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---",
+      "source_line_start": 5851,
+      "source_line_end": 5863
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "30. Architecture / data-flow synthesis",
+      "normalized_title": "Architecture / data-flow synthesis",
+      "key": "architecture_data_flow_synthesis",
+      "path": [
+        "30. Architecture / data-flow synthesis"
+      ],
+      "content": "The architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 5863,
+      "source_line_end": 5888
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Inputs / triggers",
+      "normalized_title": "Inputs / triggers",
+      "key": "inputs_triggers",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Inputs / triggers"
+      ],
+      "content": "- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;",
+      "source_line_start": 5867,
+      "source_line_end": 5871
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Processing",
+      "normalized_title": "Processing",
+      "key": "processing",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Processing"
+      ],
+      "content": "- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;",
+      "source_line_start": 5871,
+      "source_line_end": 5875
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Outputs / effects",
+      "normalized_title": "Outputs / effects",
+      "key": "outputs_effects",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Outputs / effects"
+      ],
+      "content": "- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.",
+      "source_line_start": 5875,
+      "source_line_end": 5879
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Missing production layers",
+      "normalized_title": "Missing production layers",
+      "key": "missing_production_layers",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Missing production layers"
+      ],
+      "content": "- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 5879,
+      "source_line_end": 5888
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "31. Artifact-to-skill evidence map",
+      "normalized_title": "Artifact-to-skill evidence map",
+      "key": "artifact_to_skill_evidence_map",
+      "path": [
+        "31. Artifact-to-skill evidence map"
+      ],
+      "content": "| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Simple-Calculator` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **036 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application source date: **2021-11-07** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author marker: `kirol` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| UI: 4x4 keypad + LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Expression scope: Two integer operands + one of `+ - * /` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Driver provenance: Several support drivers explicitly credit Mohamed Tarek | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Tests: None | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---",
+      "source_line_start": 5888,
+      "source_line_end": 5907
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "32. Reliability and defensive-engineering maturity",
+      "normalized_title": "Reliability and defensive-engineering maturity",
+      "key": "reliability_and_defensive_engineering_maturity",
+      "path": [
+        "32. Reliability and defensive-engineering maturity"
+      ],
+      "content": "Reliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---",
+      "source_line_start": 5907,
+      "source_line_end": 5925
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "33. Security and privacy maturity",
+      "normalized_title": "Security and privacy maturity",
+      "key": "security_and_privacy_maturity",
+      "path": [
+        "33. Security and privacy maturity"
+      ],
+      "content": "Security is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---",
+      "source_line_start": 5925,
+      "source_line_end": 5939
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "34. Performance and resource-efficiency evidence",
+      "normalized_title": "Performance and resource-efficiency evidence",
+      "key": "performance_and_resource_efficiency_evidence",
+      "path": [
+        "34. Performance and resource-efficiency evidence"
+      ],
+      "content": "Performance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---",
+      "source_line_start": 5939,
+      "source_line_end": 5956
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "35. Maintainability and modularity",
+      "normalized_title": "Maintainability and modularity",
+      "key": "maintainability_and_modularity",
+      "path": [
+        "35. Maintainability and modularity"
+      ],
+      "content": "Maintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---",
+      "source_line_start": 5956,
+      "source_line_end": 5968
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "36. Strengths",
+      "normalized_title": "Strengths",
+      "key": "strengths",
+      "path": [
+        "36. Strengths"
+      ],
+      "content": "- Direct evidence of **Embedded C application logic** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **Manual parsing** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Keypad/LCD integration** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Driver reuse/integration** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **C linkage discipline** at approximately **1.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---",
+      "source_line_start": 5968,
+      "source_line_end": 5981
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "37. Weaknesses / engineering debt",
+      "normalized_title": "Weaknesses / engineering debt",
+      "key": "weaknesses_engineering_debt",
+      "path": [
+        "37. Weaknesses / engineering debt"
+      ],
+      "content": "- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---",
+      "source_line_start": 5981,
+      "source_line_end": 5995
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "38. What production evolution would require",
+      "normalized_title": "What production evolution would require",
+      "key": "what_production_evolution_would_require",
+      "path": [
+        "38. What production evolution would require"
+      ],
+      "content": "A production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---",
+      "source_line_start": 5995,
+      "source_line_end": 6012
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "39. Project potential",
+      "normalized_title": "Project potential",
+      "key": "project_potential",
+      "path": [
+        "39. Project potential"
+      ],
+      "content": "The repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---",
+      "source_line_start": 6012,
+      "source_line_end": 6022
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "40. Evidence vs. inference register",
+      "normalized_title": "Evidence vs. inference register",
+      "key": "evidence_vs_inference_register",
+      "path": [
+        "40. Evidence vs. inference register"
+      ],
+      "content": "| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---",
+      "source_line_start": 6022,
+      "source_line_end": 6038
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "41. Career-field historicity after Repository 036",
+      "normalized_title": "Career-field historicity after Repository 036",
+      "key": "career_field_historicity_after_repository_036",
+      "path": [
+        "41. Career-field historicity after Repository 036"
+      ],
+      "content": "This repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---",
+      "source_line_start": 6038,
+      "source_line_end": 6048
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "42. Testing trajectory update",
+      "normalized_title": "Testing trajectory update",
+      "key": "testing_trajectory_update",
+      "path": [
+        "42. Testing trajectory update"
+      ],
+      "content": "This artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---",
+      "source_line_start": 6048,
+      "source_line_end": 6058
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "43. Systems-engineering trajectory update",
+      "normalized_title": "Systems-engineering trajectory update",
+      "key": "systems_engineering_trajectory_update",
+      "path": [
+        "43. Systems-engineering trajectory update"
+      ],
+      "content": "Systems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---",
+      "source_line_start": 6058,
+      "source_line_end": 6068
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "44. Expanded longitudinal summary vector",
+      "normalized_title": "Expanded longitudinal summary vector",
+      "key": "expanded_longitudinal_summary_vector",
+      "path": [
+        "44. Expanded longitudinal summary vector"
+      ],
+      "content": "| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---",
+      "source_line_start": 6068,
+      "source_line_end": 6082
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "45. Product and engineering maturity",
+      "normalized_title": "Product and engineering maturity",
+      "key": "product_and_engineering_maturity",
+      "path": [
+        "45. Product and engineering maturity"
+      ],
+      "content": "| Measure | Rating |\n|---|---:|\n| Product maturity | **1.75/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **3.25/5** |\n| Career-skill evidence value | **3.5/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---",
+      "source_line_start": 6082,
+      "source_line_end": 6095
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "46. Standardized product / engineering evaluation matrix",
+      "normalized_title": "Standardized product / engineering evaluation matrix",
+      "key": "standardized_product_engineering_evaluation_matrix",
+      "path": [
+        "46. Standardized product / engineering evaluation matrix"
+      ],
+      "content": "| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---",
+      "source_line_start": 6095,
+      "source_line_end": 6116
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "47. Product / engineering failure potential",
+      "normalized_title": "Product / engineering failure potential",
+      "key": "product_engineering_failure_potential",
+      "path": [
+        "47. Product / engineering failure potential"
+      ],
+      "content": "Failure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---",
+      "source_line_start": 6116,
+      "source_line_end": 6124
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "48. Human impact / dignity boundary",
+      "normalized_title": "Human impact / dignity boundary",
+      "key": "human_impact_dignity_boundary",
+      "path": [
+        "48. Human impact / dignity boundary"
+      ],
+      "content": "Even simple calculators demonstrate a principle relevant to higher-stakes systems: input validation is part of respecting the user’s intent. Silently accepting malformed sequences can produce confidently wrong output; later systems should reject ambiguity explicitly.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---",
+      "source_line_start": 6124,
+      "source_line_end": 6132
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "49. Longitudinal project comparisons",
+      "normalized_title": "Longitudinal project comparisons",
+      "key": "longitudinal_project_comparisons",
+      "path": [
+        "49. Longitudinal project comparisons"
+      ],
+      "content": "- Repo035: timer/interrupt device; Repo036: user-input/parser device.\n- Repo037: stronger sensor/actuator integration and more owner-authored drivers.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---",
+      "source_line_start": 6132,
+      "source_line_end": 6141
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "50. First / Previous / Current / Corpus-Max ledger update",
+      "normalized_title": "First / Previous / Current / Corpus-Max ledger update",
+      "key": "first_previous_current_corpus_max_ledger_update",
+      "path": [
+        "50. First / Previous / Current / Corpus-Max ledger update"
+      ],
+      "content": "| Ledger field | Update |\n|---|---|\n| Repository | `Simple-Calculator` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---",
+      "source_line_start": 6141,
+      "source_line_end": 6154
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "51. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "51. Current relevance / recency"
+      ],
+      "content": "Recency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---",
+      "source_line_start": 6154,
+      "source_line_end": 6162
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "52. Cumulative career state after Repository 036",
+      "normalized_title": "Cumulative career state after Repository 036",
+      "key": "cumulative_career_state_after_repository_036",
+      "path": [
+        "52. Cumulative career state after Repository 036"
+      ],
+      "content": "Reinforces early embedded application ownership and shows reuse of peripheral infrastructure, but not production-quality parser or firmware architecture.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---",
+      "source_line_start": 6162,
+      "source_line_end": 6170
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "53. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "53. RAG anti-inflation warnings"
+      ],
+      "content": "- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---",
+      "source_line_start": 6170,
+      "source_line_end": 6183
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "54. Repository 036 bottom line",
+      "normalized_title": "Repository 036 bottom line",
+      "key": "repository_036_bottom_line",
+      "path": [
+        "54. Repository 036 bottom line"
+      ],
+      "content": "A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\n**Portfolio Evidence Weight:** 3.25/5  \n**Career-skill evidence value:** 3.5/5  \n**Product maturity:** 1.75/5  \n**Engineering maturity:** 2.5/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.",
+      "source_line_start": 6183,
+      "source_line_end": 6193
+    }
+  ],
+  "raw_analysis": "# Repository 036 / 134 — `Simple-Calculator`\n\n## Project identity\n\n**Descriptive name:** **AVR Keypad/LCD Calculator with Owner-Authored Expression Parsing**\n\nA small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\nCorrect classification:\n\n> **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\n---\n\n## 1. RAG Metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Simple-Calculator` |\n| Chronology index | **036 / 134** |\n| Primary language | C |\n| Application source date | **2021-11-07** |\n| Application author marker | `kirol` |\n| Target | AVR |\n| UI | 4x4 keypad + LCD |\n| Expression scope | Two integer operands + one of `+ - * /` |\n| Driver provenance | Several support drivers explicitly credit Mohamed Tarek |\n| Tests | None |\n| CI | None |\n\n---\n\n## 2. Evidence basis and inspection method\n\nEvidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---\n\n## 3. Historical placement\n\n`Calculator.c` is explicitly dated 7 November 2021 and marked Author `kirol`.\n\nThe repository therefore provides historical evidence of embedded application work well before its later GitHub archival date.\n\n---\n\n## 4. Input-buffer model\n\nThe application stores keypad tokens in a 30-byte RAM buffer until `=` is entered.\n\nIt tracks the number of entered tokens and echoes numbers/operators to the LCD.\n\n---\n\n## 5. Manual operator discovery\n\nThe code scans the buffered tokens and treats values above 9 as operator candidates.\n\nBecause ASCII operator codes exceed 9, this works for the intended keypad mapping—but it is a brittle parser rule rather than an explicit token-type design.\n\nIf several operators are entered, the last qualifying index wins.\n\n---\n\n## 6. Manual multi-digit number construction\n\nOperand values are reconstructed by multiplying each digit by powers of ten derived from its distance to the operator/end.\n\nThis is direct evidence of implementing numeric parsing rather than relying on `atoi` or a high-level expression evaluator.\n\n---\n\n## 7. Supported arithmetic\n\nThe switch handles:\n\n- addition;\n- subtraction;\n- multiplication;\n- division.\n\nDivision casts operands to double for LCD output.\n\n---\n\n## 8. Reset interaction\n\nAfter displaying a result, the program waits for keypad code 127 (mapped to Delete) before clearing the LCD and starting the next calculation.\n\nThis creates a complete small interaction loop rather than a one-shot arithmetic demo.\n\n---\n\n## 9. Shared driver provenance\n\n`keypad.c` / `keypad.h` explicitly credit Mohamed Tarek, and GPIO/common driver blobs recur identically in neighboring embedded repositories.\n\nTherefore the correct ownership split is:\n\n- direct: calculator parsing/orchestration in `Calculator.c`;\n- integration/reuse: keypad, LCD, GPIO support infrastructure;\n- not direct: authorship of every reused driver.\n\n---\n\n## 10. Global definition in header\n\n`keypad.h` defines `uint8 ready;` directly rather than declaring it `extern`.\n\nBecause that header is included by multiple translation units, modern toolchains can produce multiple-definition linker failures.\n\nThis is an important C linkage/design defect.\n\n---\n\n## 11. Uninitialized operator index\n\n`OpIndex` is declared without initialization.\n\nIf the input reaches `=` without a recognized operator, later loops and the switch use an indeterminate index.\n\n---\n\n## 12. Division and arithmetic robustness\n\nThere is no visible guard for:\n\n- division by zero;\n- arithmetic overflow;\n- malformed token sequences;\n- empty operands;\n- negative-number syntax;\n- decimal input;\n- multiple operators.\n\nThe parser is intentionally small and should not be represented as a general expression engine.\n\n---\n\n## 13. Possible build hygiene defects\n\nThe source includes `<avr/delay.h>` rather than the more usual `<util/delay.h>` and uses an `itr` loop type in application code.\n\nWithout a build manifest/toolchain snapshot, compile success of the final repository cannot be assumed.\n\n---\n\n## 14. Origin / contribution / attribution register\n\n- `Calculator.c` explicitly credits `kirol`.\n- Keypad support explicitly credits Mohamed Tarek and shared blobs are treated as reusable/course infrastructure.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## 15. Direct skill evidence ratings\n\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C application logic | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Manual parsing | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Keypad/LCD integration | **3.25/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Driver reuse/integration | **3.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| C linkage discipline | **1.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Input validation | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 16. Skill lifecycle\n\n- Historically places owner-authored embedded application logic in late 2021.\n- Reuses a growing driver library rather than rewriting all peripherals.\n- Adds simple parser/state interaction to the embedded portfolio.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 17. Skill evidence dimensions\n\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 18. Responsibility scope\n\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---\n\n## 19. Complexity dimensions\n\n| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---\n\n## 20. Scale dimensions\n\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---\n\n## 21. Engineering decisions and tradeoffs\n\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---\n\n## 22. Engineering judgment evidence\n\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---\n\n## 23. Mistakes, anti-patterns, and likely lessons\n\n- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 24. Testing and verification maturity\n\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 25. CI/CD and deployment\n\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---\n\n## 26. Documentation and reproducibility\n\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---\n\n## 27. Repository hygiene\n\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---\n\n## 28. Technical realm\n\nRepository `Simple-Calculator` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C application logic: 3.25/5**\n- **Keypad/LCD integration: 3.25/5**\n- **Manual parsing: 3.0/5**\n- **AVR: 3.0/5**\n- **Driver reuse/integration: 3.0/5**\n\n---\n\n## 29. Product / business / domain realm\n\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---\n\n## 30. Architecture / data-flow synthesis\n\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---\n\n## 31. Artifact-to-skill evidence map\n\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Simple-Calculator` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **036 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application source date: **2021-11-07** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author marker: `kirol` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| UI: 4x4 keypad + LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Expression scope: Two integer operands + one of `+ - * /` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Driver provenance: Several support drivers explicitly credit Mohamed Tarek | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Tests: None | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---\n\n## 32. Reliability and defensive-engineering maturity\n\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 33. Security and privacy maturity\n\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---\n\n## 34. Performance and resource-efficiency evidence\n\nPerformance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---\n\n## 35. Maintainability and modularity\n\nMaintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---\n\n## 36. Strengths\n\n- Direct evidence of **Embedded C application logic** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **Manual parsing** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Keypad/LCD integration** at approximately **3.25/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **Driver reuse/integration** at approximately **3.0/5** within the bounded scope of this artifact.\n- Direct evidence of **C linkage discipline** at approximately **1.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---\n\n## 37. Weaknesses / engineering debt\n\n- Uninitialized `OpIndex`.\n- No divide-by-zero handling.\n- Brittle `RAM[i] > 9` operator detection.\n- Multiple operators not rejected.\n- `ready` defined in header.\n- Potential include/iterator compile issues.\n- No tests or malformed-input cases.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---\n\n## 38. What production evolution would require\n\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---\n\n## 39. Project potential\n\nThe repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---\n\n## 40. Evidence vs. inference register\n\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---\n\n## 41. Career-field historicity after Repository 036\n\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 42. Testing trajectory update\n\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---\n\n## 43. Systems-engineering trajectory update\n\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 44. Expanded longitudinal summary vector\n\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 45. Product and engineering maturity\n\n| Measure | Rating |\n|---|---:|\n| Product maturity | **1.75/5** |\n| Engineering maturity | **2.5/5** |\n| Portfolio Evidence Weight | **3.25/5** |\n| Career-skill evidence value | **3.5/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---\n\n## 46. Standardized product / engineering evaluation matrix\n\n| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---\n\n## 47. Product / engineering failure potential\n\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---\n\n## 48. Human impact / dignity boundary\n\nEven simple calculators demonstrate a principle relevant to higher-stakes systems: input validation is part of respecting the user’s intent. Silently accepting malformed sequences can produce confidently wrong output; later systems should reject ambiguity explicitly.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---\n\n## 49. Longitudinal project comparisons\n\n- Repo035: timer/interrupt device; Repo036: user-input/parser device.\n- Repo037: stronger sensor/actuator integration and more owner-authored drivers.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max ledger update\n\n| Ledger field | Update |\n|---|---|\n| Repository | `Simple-Calculator` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 51. Current relevance / recency\n\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---\n\n## 52. Cumulative career state after Repository 036\n\nReinforces early embedded application ownership and shows reuse of peripheral infrastructure, but not production-quality parser or firmware architecture.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---\n\n## 53. RAG anti-inflation warnings\n\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---\n\n## 54. Repository 036 bottom line\n\nA small embedded calculator whose application logic is owner-authored and sits on reusable keypad/LCD/GPIO drivers. It manually parses multi-digit operands and one binary operator from keypad input.\n\n**Portfolio Evidence Weight:** 3.25/5  \n**Career-skill evidence value:** 3.5/5  \n**Product maturity:** 1.75/5  \n**Engineering maturity:** 2.5/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.\n"
+}

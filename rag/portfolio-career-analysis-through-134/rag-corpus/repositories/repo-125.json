@@ -1,0 +1,755 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 125,
+  "repository_total": 134,
+  "repository_name": "Password-Hashing-Function-for-Bitwarden",
+  "header_title": "`Password-Hashing-Function-for-Bitwarden`",
+  "repository_slug": "kirolossedra/Password-Hashing-Function-for-Bitwarden",
+  "repository_url": "https://github.com/kirolossedra/Password-Hashing-Function-for-Bitwarden",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-124-134.md",
+    "line_start": 269,
+    "line_end": 551,
+    "sha256": "4bd6ce55210ccf21cf9bcf9674517c32268452dc3b9f43b40514799d942e3e00"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": "Browser cryptography / deterministic credential derivation",
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": "3.6/5 for security learning; 2.5/5 as production-security evidence"
+  },
+  "metadata": {
+    "repository": "kirolossedra/Password-Hashing-Function-for-Bitwarden",
+    "chronology_index": "125 / 134",
+    "first_observed_implementation": "2026-05-16 (index.html)",
+    "visibility": "Private",
+    "main_artifact": "Standalone HTML/CSS/JavaScript page",
+    "technical_realm": "Browser cryptography / deterministic credential derivation",
+    "correct_classification": "Cryptographic utility experiment",
+    "portfolio_evidence_weight": "3.6/5 for security learning; 2.5/5 as production-security evidence"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Browser JavaScript",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "Direct standalone application"
+    },
+    {
+      "skill": "Web Crypto API",
+      "rating_5": 3.8,
+      "rating_raw": "3.8/5",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "Direct PBKDF2/SHA-256 use"
+    },
+    {
+      "skill": "Applied cryptography",
+      "rating_5": 3.0,
+      "rating_raw": "3.0/5",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "Standard primitives used competently; lifecycle gaps remain"
+    },
+    {
+      "skill": "Security threat modeling",
+      "rating_5": 3.2,
+      "rating_raw": "3.2/5",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "Several important concerns implied/visible, not formalized"
+    },
+    {
+      "skill": "Password-management engineering",
+      "rating_5": 2.4,
+      "rating_raw": "2.4/5",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "Generator experiment, not vault/auth system"
+    },
+    {
+      "skill": "Bitwarden engineering",
+      "rating_5": null,
+      "rating_raw": "0/5 from this repo",
+      "source_section_id": "s030",
+      "source_section_title": "30. Skill ratings",
+      "evidence": "No integration evidence"
+    }
+  ],
+  "intro": "**Descriptive classification:** deterministic browser-side password-derivation experiment using Web Crypto PBKDF2; not a Bitwarden integration.\n\nThe repository contains a small standalone browser utility that turns a master key plus service/account context into a deterministic password. It is technically useful because it revisits the weak cryptographic construction seen much earlier in Repo057 and replaces the ad-hoc SHA-256-to-PRNG design with Web Crypto PBKDF2. Its most important engineering lesson, however, is that a stronger primitive does not automatically make a complete password-management design safe.",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Password-Hashing-Function-for-Bitwarden` |\n| Chronology index | **125 / 134** |\n| First observed implementation | **2026-05-16** (`index.html`) |\n| Visibility | Private |\n| Main artifact | Standalone HTML/CSS/JavaScript page |\n| Technical realm | Browser cryptography / deterministic credential derivation |\n| Correct classification | Cryptographic utility experiment |\n| Portfolio Evidence Weight | **3.6/5 for security learning; 2.5/5 as production-security evidence** |"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Password-Hashing-Function-for-Bitwarden` |\n| Chronology index | **125 / 134** |\n| First observed implementation | **2026-05-16** (`index.html`) |\n| Visibility | Private |\n| Main artifact | Standalone HTML/CSS/JavaScript page |\n| Technical realm | Browser cryptography / deterministic credential derivation |\n| Correct classification | Cryptographic utility experiment |\n| Portfolio Evidence Weight | **3.6/5 for security learning; 2.5/5 as production-security evidence** |"
+    },
+    "summary": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "37. Bottom line"
+      ],
+      "text": "## 37. Bottom line\nRepo125 is a compact but technically meaningful **deterministic password-derivation experiment**. It materially improves on an earlier weak security construction by adopting Web Crypto PBKDF2, while simultaneously exposing more advanced design questions around canonicalization, rotation, versioning, browser integrity and secret lifecycle. Its value is precisely that it shows security reasoning becoming less primitive and more systems-oriented.\n\n<!-- END REPOSITORY 125 -->\n\n---"
+    },
+    "architecture": {
+      "section_ids": [
+        "s003"
+      ],
+      "titles": [
+        "3. Architecture"
+      ],
+      "text": "## 3. Architecture\nThe utility is intentionally local and client-side:\n\n1. user supplies master secret;\n2. user supplies service/account context;\n3. browser derives bytes with Web Crypto;\n4. derived bytes are transformed into a password satisfying character-class rules;\n5. password can be copied to the clipboard.\n\nThere is no server, database, remote account or stored vault."
+    },
+    "skills": {
+      "section_ids": [
+        "s019",
+        "s030"
+      ],
+      "titles": [
+        "19. Direct authored skill evidence",
+        "30. Skill ratings"
+      ],
+      "text": "## 19. Direct authored skill evidence\n- Web Crypto API use.\n- PBKDF2 parameterization.\n- deterministic derivation logic.\n- password-policy transformation.\n- browser input/clipboard workflow.\n- security tradeoff reasoning visible in the construction.\n\n## 30. Skill ratings\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Browser JavaScript | **3.5/5** | Direct standalone application |\n| Web Crypto API | **3.8/5** | Direct PBKDF2/SHA-256 use |\n| Applied cryptography | **3.0/5** | Standard primitives used competently; lifecycle gaps remain |\n| Security threat modeling | **3.2/5** | Several important concerns implied/visible, not formalized |\n| Password-management engineering | **2.4/5** | Generator experiment, not vault/auth system |\n| Bitwarden engineering | **0/5 from this repo** | No integration evidence |"
+    },
+    "scale": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "23. Scale"
+      ],
+      "text": "## 23. Scale\nSingle-user, local browser scale. No concurrency, service load, distributed state or multi-user administration is evidenced."
+    },
+    "testing": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "24. Testing"
+      ],
+      "text": "## 24. Testing\nA strong test suite for this tool would need stable test vectors covering:\n\n- identical inputs produce identical outputs;\n- a one-character context change changes output;\n- every supported length is respected;\n- required character classes are present;\n- Unicode/case/whitespace canonicalization behavior is explicit;\n- version/rotation parameters produce predictable changes;\n- invalid length/input values are rejected.\n\nThe inspected repository does not establish a comprehensive automated test harness."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s008",
+        "s009",
+        "s018"
+      ],
+      "titles": [
+        "8. Security improvement over Repo057",
+        "9. Threat model",
+        "18. Authentication versus storage distinction"
+      ],
+      "text": "## 8. Security improvement over Repo057\nRepo057 used SHA-256 as a seed for Python's ordinary PRNG, which was explicitly unsuitable for credential storage/generation. Repo125 shows visible learning: the design moves to a standard KDF implementation supplied by the browser's cryptographic subsystem.\n\nThe longitudinal signal is therefore not “password security mastered”; it is **“cryptographic primitive selection improved after an earlier weak construction.”**\n\n## 9. Threat model\nA deterministic password generator has an unusually concentrated secret: compromise of the master key plus enough context information can reproduce many generated credentials.\n\nUnlike a random password vault, there may be no independently random per-site secret to limit blast radius. This changes the threat model and makes master-secret protection, phishing resistance and scheme versioning central design concerns.\n\n## 18. Authentication versus storage distinction\nThis repository generates passwords; it does not implement authentication, password verification, salted password storage, server-side credential hashing or vault encryption.\n\nThose are different security problems and should not be conflated in RAG retrieval."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "25. CI/CD and deployment"
+      ],
+      "text": "## 25. CI/CD and deployment\nNo substantial CI/CD or deployment pipeline is evidenced. The artifact is a standalone web page.\n\nFor security-sensitive code, reproducible builds, static analysis and integrity-checked release artifacts would materially improve confidence."
+    },
+    "documentation": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "26. Documentation"
+      ],
+      "text": "## 26. Documentation\nThe UI warns that knowledge of the master key and service context allows reproduction. That is an important user-facing security disclosure.\n\nThe design would benefit from a formal threat-model document and an explicit non-production warning explaining the absence of rotation/version state."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "27. Repository hygiene"
+      ],
+      "text": "## 27. Repository hygiene\nPrivate visibility appropriately reduces casual exposure. The repository should still avoid committing real generated credentials, master keys or service-specific secrets.\n\nNo sensitive values are reproduced in this corpus."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "31. Product failure potential"
+      ],
+      "text": "## 31. Product failure potential\nFailure can have high impact because a design flaw or master-secret compromise could affect multiple downstream accounts. The highest-risk failure modes are scheme ambiguity, master-secret theft, hosted-page compromise, accidental context mismatch and lack of a planned credential-rotation mechanism."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "32. Human impact"
+      ],
+      "text": "## 32. Human impact\nThe tool handles secrets that protect external accounts. Even as an experiment, its human-risk surface is much higher than its small codebase suggests.\n\nThat makes conservative language essential: it is useful security learning, not a production password-manager recommendation."
+    },
+    "responsibility": {
+      "section_ids": [
+        "s021"
+      ],
+      "titles": [
+        "21. Responsibility and ownership"
+      ],
+      "text": "## 21. Responsibility and ownership\nThe implementation is compact enough that the repository strongly supports direct ownership of the utility itself. There is no large framework or starter-code provenance obscuring the central logic.\n\nThe cryptographic algorithms themselves are standard primitives; credit is for selection/integration, not invention of PBKDF2 or SHA-256."
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "28. Decisions and tradeoffs"
+      ],
+      "text": "## 28. Decisions and tradeoffs\nKey design choices include:\n\n- deterministic reproducibility over random per-site vault storage;\n- local execution over server-side derivation;\n- standard KDF over custom PRNG construction;\n- policy-compatible password alphabet over direct raw-key representation;\n- usability through clipboard copy over minimizing local secret persistence.\n\nEach choice has a clear benefit and a security cost."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "29. Engineering judgment"
+      ],
+      "text": "## 29. Engineering judgment\nThe move from the Repo057 construction to PBKDF2 is a positive judgment signal. The remaining gaps show why security engineering cannot be reduced to “use a cryptographic function.”\n\nThe next level of maturity would be designing explicit scheme versions, rotation counters, canonical identifiers, stronger memory-hard KDF options and test vectors."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s035"
+      ],
+      "titles": [
+        "35. Portfolio Evidence Weight"
+      ],
+      "text": "## 35. Portfolio Evidence Weight\n**3.6/5 for applied-security growth; 2.5/5 for production-security claims.**\n\nIts strongest value is comparative: it demonstrates a more appropriate primitive and creates an excellent discussion point about why KDF choice is only one part of a secure credential lifecycle."
+    },
+    "limitations": {
+      "section_ids": [
+        "s020",
+        "s036"
+      ],
+      "titles": [
+        "20. Capabilities not evidenced",
+        "36. RAG retrieval warnings"
+      ],
+      "text": "## 20. Capabilities not evidenced\nNo direct evidence of:\n\n- Argon2/scrypt deployment;\n- secure enclave/keychain integration;\n- password-manager vault encryption;\n- browser extension security;\n- Bitwarden internals;\n- formal cryptographic review;\n- server-side credential storage;\n- production security audit.\n\n## 36. RAG retrieval warnings\n- Never describe this as a Bitwarden plugin or Bitwarden source contribution.\n- Never describe it as password-storage code.\n- Do not present the design as production-secure without qualification.\n- Retrieve Repo057 when answering questions about security learning trajectory.\n- Do not expose any actual master secret, derived password or private repository content beyond generalized technical evidence."
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s033"
+      ],
+      "titles": [
+        "33. Longitudinal career effect"
+      ],
+      "text": "## 33. Longitudinal career effect\nRepo125 is valuable because it records **security learning through correction**. The corpus can compare it directly to Repo057 and show a concrete improvement from unsafe ordinary PRNG use to a standard KDF and native cryptographic API.\n\nThis is stronger evidence of engineering growth than simply listing “cryptography” as a skill."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "1. Identity and metadata",
+      "normalized_title": "Identity and metadata",
+      "key": "identity_and_metadata",
+      "path": [
+        "1. Identity and metadata"
+      ],
+      "content": "| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Password-Hashing-Function-for-Bitwarden` |\n| Chronology index | **125 / 134** |\n| First observed implementation | **2026-05-16** (`index.html`) |\n| Visibility | Private |\n| Main artifact | Standalone HTML/CSS/JavaScript page |\n| Technical realm | Browser cryptography / deterministic credential derivation |\n| Correct classification | Cryptographic utility experiment |\n| Portfolio Evidence Weight | **3.6/5 for security learning; 2.5/5 as production-security evidence** |",
+      "source_line_start": 275,
+      "source_line_end": 288
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "2. Naming and provenance correction",
+      "normalized_title": "Naming and provenance correction",
+      "key": "naming_and_provenance_correction",
+      "path": [
+        "2. Naming and provenance correction"
+      ],
+      "content": "The repository name references Bitwarden, but the inspected evidence does **not** show modification of Bitwarden, use of Bitwarden APIs, a Bitwarden extension, or integration with Bitwarden's vault model.\n\nThe defensible claim is therefore **“built a browser-based deterministic password derivation experiment”**, not **“developed a Bitwarden hashing function.”**",
+      "source_line_start": 288,
+      "source_line_end": 294
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "3. Architecture",
+      "normalized_title": "Architecture",
+      "key": "architecture",
+      "path": [
+        "3. Architecture"
+      ],
+      "content": "The utility is intentionally local and client-side:\n\n1. user supplies master secret;\n2. user supplies service/account context;\n3. browser derives bytes with Web Crypto;\n4. derived bytes are transformed into a password satisfying character-class rules;\n5. password can be copied to the clipboard.\n\nThere is no server, database, remote account or stored vault.",
+      "source_line_start": 294,
+      "source_line_end": 306
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "4. Cryptographic primitive",
+      "normalized_title": "Cryptographic primitive",
+      "key": "cryptographic_primitive",
+      "path": [
+        "4. Cryptographic primitive"
+      ],
+      "content": "The implementation uses `crypto.subtle` and PBKDF2 with SHA-256 rather than a hand-rolled pseudo-random generator. This is a real improvement in cryptographic API selection.\n\nThe work factor is fixed at approximately 150,000 iterations. That creates deliberate computational cost, but a fixed count is not automatically appropriate forever or across devices.",
+      "source_line_start": 306,
+      "source_line_end": 312
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "5. Deterministic salt/context design",
+      "normalized_title": "Deterministic salt/context design",
+      "key": "deterministic_salt_context_design",
+      "path": [
+        "5. Deterministic salt/context design"
+      ],
+      "content": "The service/account identity contributes to deterministic derivation, allowing the same master secret to generate different outputs for different contexts.\n\nThis is conceptually similar to a domain-separated key derivation scheme, but the design needs stronger canonicalization and versioning before it can be treated as a durable credential system.",
+      "source_line_start": 312,
+      "source_line_end": 318
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "6. Password composition logic",
+      "normalized_title": "Password composition logic",
+      "key": "password_composition_logic",
+      "path": [
+        "6. Password composition logic"
+      ],
+      "content": "The generated password is constrained to contain multiple character classes rather than simply encoding raw derived bytes. The implementation deliberately ensures uppercase, lowercase, numeric and symbol presence, then fills and shuffles the remainder deterministically.\n\nThat demonstrates practical awareness of password-policy constraints, but such constraints are a compatibility layer rather than the cryptographic core.",
+      "source_line_start": 318,
+      "source_line_end": 324
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "7. Web Crypto API evidence",
+      "normalized_title": "Web Crypto API evidence",
+      "key": "web_crypto_api_evidence",
+      "path": [
+        "7. Web Crypto API evidence"
+      ],
+      "content": "Direct evidence includes:\n\n- browser-native cryptographic key import;\n- PBKDF2 key derivation;\n- SHA-256 selection;\n- typed byte handling;\n- deterministic post-processing;\n- clipboard integration;\n- client-side input validation.\n\nThis is substantially stronger security-API evidence than Repo057.",
+      "source_line_start": 324,
+      "source_line_end": 338
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "8. Security improvement over Repo057",
+      "normalized_title": "Security improvement over Repo057",
+      "key": "security_improvement_over_repo057",
+      "path": [
+        "8. Security improvement over Repo057"
+      ],
+      "content": "Repo057 used SHA-256 as a seed for Python's ordinary PRNG, which was explicitly unsuitable for credential storage/generation. Repo125 shows visible learning: the design moves to a standard KDF implementation supplied by the browser's cryptographic subsystem.\n\nThe longitudinal signal is therefore not “password security mastered”; it is **“cryptographic primitive selection improved after an earlier weak construction.”**",
+      "source_line_start": 338,
+      "source_line_end": 344
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "9. Threat model",
+      "normalized_title": "Threat model",
+      "key": "threat_model",
+      "path": [
+        "9. Threat model"
+      ],
+      "content": "A deterministic password generator has an unusually concentrated secret: compromise of the master key plus enough context information can reproduce many generated credentials.\n\nUnlike a random password vault, there may be no independently random per-site secret to limit blast radius. This changes the threat model and makes master-secret protection, phishing resistance and scheme versioning central design concerns.",
+      "source_line_start": 344,
+      "source_line_end": 350
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "10. Work-factor tradeoff",
+      "normalized_title": "Work-factor tradeoff",
+      "key": "work_factor_tradeoff",
+      "path": [
+        "10. Work-factor tradeoff"
+      ],
+      "content": "PBKDF2 slows brute-force guessing, but the iteration count represents a tradeoff between usability and resistance to offline guessing. A fixed hard-coded value becomes stale as hardware improves.\n\nA production scheme would need explicit algorithm parameters/version metadata so the derivation process can evolve without silently changing every generated password.",
+      "source_line_start": 350,
+      "source_line_end": 356
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "11. Canonicalization risk",
+      "normalized_title": "Canonicalization risk",
+      "key": "canonicalization_risk",
+      "path": [
+        "11. Canonicalization risk"
+      ],
+      "content": "Determinism means context strings become part of the credential identity. Differences such as capitalization, whitespace, URL form, service renaming or account aliases can generate completely different passwords.\n\nA mature scheme therefore needs a clear canonicalization contract and preferably a user-visible stable identifier rather than relying on informal typing habits.",
+      "source_line_start": 356,
+      "source_line_end": 362
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "12. Rotation and versioning problem",
+      "normalized_title": "Rotation and versioning problem",
+      "key": "rotation_and_versioning_problem",
+      "path": [
+        "12. Rotation and versioning problem"
+      ],
+      "content": "The repository lacks an obvious rotation counter/version namespace. If one site requires a password change, the system needs a deterministic way to derive a new credential without changing the master secret or losing the ability to reproduce the correct generation.\n\nThis is one of the strongest design lessons from the repository: credential derivation requires **lifecycle state**, not just a KDF.",
+      "source_line_start": 362,
+      "source_line_end": 368
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "13. Modulo-bias and mapping detail",
+      "normalized_title": "Modulo-bias and mapping detail",
+      "key": "modulo_bias_and_mapping_detail",
+      "path": [
+        "13. Modulo-bias and mapping detail"
+      ],
+      "content": "Mapping arbitrary bytes into a character alphabet with modulo arithmetic can introduce small distribution bias unless rejection sampling or another unbiased mapping is used. For ordinary password alphabets the practical impact may be modest, but the issue matters when evaluating cryptographic correctness.\n\nThe repository demonstrates competent use of cryptographic primitives but not a formally analyzed uniform-output construction.",
+      "source_line_start": 368,
+      "source_line_end": 374
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "14. Deterministic shuffle analysis",
+      "normalized_title": "Deterministic shuffle analysis",
+      "key": "deterministic_shuffle_analysis",
+      "path": [
+        "14. Deterministic shuffle analysis"
+      ],
+      "content": "The same derived material is used to arrange required characters into a deterministic order. This is functional, but a more rigorous design would define independent subkeys/streams for character selection and permutation through explicit domain separation.\n\nThat would make the construction easier to reason about and test.",
+      "source_line_start": 374,
+      "source_line_end": 380
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "15. Clipboard exposure",
+      "normalized_title": "Clipboard exposure",
+      "key": "clipboard_exposure",
+      "path": [
+        "15. Clipboard exposure"
+      ],
+      "content": "Copy-to-clipboard is convenient but introduces a local exposure path. Clipboard managers, other applications or accidental paste operations may retain the generated password.\n\nA production-quality tool would consider timed clipboard clearing, user warnings and platform behavior.",
+      "source_line_start": 380,
+      "source_line_end": 386
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "16. Browser trust boundary",
+      "normalized_title": "Browser trust boundary",
+      "key": "browser_trust_boundary",
+      "path": [
+        "16. Browser trust boundary"
+      ],
+      "content": "Keeping derivation client-side avoids network transmission of the master secret. That is a meaningful positive property.\n\nHowever, the security boundary becomes the integrity of the HTML/JavaScript itself and the browser environment. If the page is remotely hosted and compromised, injected script could exfiltrate the master secret before Web Crypto matters.",
+      "source_line_start": 386,
+      "source_line_end": 392
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "17. XSS and supply-chain consequence",
+      "normalized_title": "XSS and supply-chain consequence",
+      "key": "xss_and_supply_chain_consequence",
+      "path": [
+        "17. XSS and supply-chain consequence"
+      ],
+      "content": "The utility's security depends on there being no malicious script, compromised CDN dependency or extension access. A strong KDF cannot compensate for a compromised execution environment.\n\nFor a sensitive local utility, a static offline package with minimal dependencies and integrity-verifiable distribution would be easier to defend.",
+      "source_line_start": 392,
+      "source_line_end": 398
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "18. Authentication versus storage distinction",
+      "normalized_title": "Authentication versus storage distinction",
+      "key": "authentication_versus_storage_distinction",
+      "path": [
+        "18. Authentication versus storage distinction"
+      ],
+      "content": "This repository generates passwords; it does not implement authentication, password verification, salted password storage, server-side credential hashing or vault encryption.\n\nThose are different security problems and should not be conflated in RAG retrieval.",
+      "source_line_start": 398,
+      "source_line_end": 404
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "19. Direct authored skill evidence",
+      "normalized_title": "Direct authored skill evidence",
+      "key": "direct_authored_skill_evidence",
+      "path": [
+        "19. Direct authored skill evidence"
+      ],
+      "content": "- Web Crypto API use.\n- PBKDF2 parameterization.\n- deterministic derivation logic.\n- password-policy transformation.\n- browser input/clipboard workflow.\n- security tradeoff reasoning visible in the construction.",
+      "source_line_start": 404,
+      "source_line_end": 413
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "20. Capabilities not evidenced",
+      "normalized_title": "Capabilities not evidenced",
+      "key": "capabilities_not_evidenced",
+      "path": [
+        "20. Capabilities not evidenced"
+      ],
+      "content": "No direct evidence of:\n\n- Argon2/scrypt deployment;\n- secure enclave/keychain integration;\n- password-manager vault encryption;\n- browser extension security;\n- Bitwarden internals;\n- formal cryptographic review;\n- server-side credential storage;\n- production security audit.",
+      "source_line_start": 413,
+      "source_line_end": 426
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "21. Responsibility and ownership",
+      "normalized_title": "Responsibility and ownership",
+      "key": "responsibility_and_ownership",
+      "path": [
+        "21. Responsibility and ownership"
+      ],
+      "content": "The implementation is compact enough that the repository strongly supports direct ownership of the utility itself. There is no large framework or starter-code provenance obscuring the central logic.\n\nThe cryptographic algorithms themselves are standard primitives; credit is for selection/integration, not invention of PBKDF2 or SHA-256.",
+      "source_line_start": 426,
+      "source_line_end": 432
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "22. Complexity",
+      "normalized_title": "Complexity",
+      "key": "complexity",
+      "path": [
+        "22. Complexity"
+      ],
+      "content": "Code size is small. Security reasoning complexity is moderate-to-high because deterministic credential generation has lifecycle and threat-model consequences that are not visible from the happy path.\n\nThis is a good example of a project whose **risk complexity exceeds its source-code complexity**.",
+      "source_line_start": 432,
+      "source_line_end": 438
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "23. Scale",
+      "normalized_title": "Scale",
+      "key": "scale",
+      "path": [
+        "23. Scale"
+      ],
+      "content": "Single-user, local browser scale. No concurrency, service load, distributed state or multi-user administration is evidenced.",
+      "source_line_start": 438,
+      "source_line_end": 442
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "24. Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "24. Testing"
+      ],
+      "content": "A strong test suite for this tool would need stable test vectors covering:\n\n- identical inputs produce identical outputs;\n- a one-character context change changes output;\n- every supported length is respected;\n- required character classes are present;\n- Unicode/case/whitespace canonicalization behavior is explicit;\n- version/rotation parameters produce predictable changes;\n- invalid length/input values are rejected.\n\nThe inspected repository does not establish a comprehensive automated test harness.",
+      "source_line_start": 442,
+      "source_line_end": 456
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "25. CI/CD and deployment",
+      "normalized_title": "CI/CD and deployment",
+      "key": "ci_cd_and_deployment",
+      "path": [
+        "25. CI/CD and deployment"
+      ],
+      "content": "No substantial CI/CD or deployment pipeline is evidenced. The artifact is a standalone web page.\n\nFor security-sensitive code, reproducible builds, static analysis and integrity-checked release artifacts would materially improve confidence.",
+      "source_line_start": 456,
+      "source_line_end": 462
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "26. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "26. Documentation"
+      ],
+      "content": "The UI warns that knowledge of the master key and service context allows reproduction. That is an important user-facing security disclosure.\n\nThe design would benefit from a formal threat-model document and an explicit non-production warning explaining the absence of rotation/version state.",
+      "source_line_start": 462,
+      "source_line_end": 468
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "27. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "27. Repository hygiene"
+      ],
+      "content": "Private visibility appropriately reduces casual exposure. The repository should still avoid committing real generated credentials, master keys or service-specific secrets.\n\nNo sensitive values are reproduced in this corpus.",
+      "source_line_start": 468,
+      "source_line_end": 474
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "28. Decisions and tradeoffs",
+      "normalized_title": "Decisions and tradeoffs",
+      "key": "decisions_and_tradeoffs",
+      "path": [
+        "28. Decisions and tradeoffs"
+      ],
+      "content": "Key design choices include:\n\n- deterministic reproducibility over random per-site vault storage;\n- local execution over server-side derivation;\n- standard KDF over custom PRNG construction;\n- policy-compatible password alphabet over direct raw-key representation;\n- usability through clipboard copy over minimizing local secret persistence.\n\nEach choice has a clear benefit and a security cost.",
+      "source_line_start": 474,
+      "source_line_end": 486
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "29. Engineering judgment",
+      "normalized_title": "Engineering judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "29. Engineering judgment"
+      ],
+      "content": "The move from the Repo057 construction to PBKDF2 is a positive judgment signal. The remaining gaps show why security engineering cannot be reduced to “use a cryptographic function.”\n\nThe next level of maturity would be designing explicit scheme versions, rotation counters, canonical identifiers, stronger memory-hard KDF options and test vectors.",
+      "source_line_start": 486,
+      "source_line_end": 492
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "30. Skill ratings",
+      "normalized_title": "Skill ratings",
+      "key": "skill_ratings",
+      "path": [
+        "30. Skill ratings"
+      ],
+      "content": "| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Browser JavaScript | **3.5/5** | Direct standalone application |\n| Web Crypto API | **3.8/5** | Direct PBKDF2/SHA-256 use |\n| Applied cryptography | **3.0/5** | Standard primitives used competently; lifecycle gaps remain |\n| Security threat modeling | **3.2/5** | Several important concerns implied/visible, not formalized |\n| Password-management engineering | **2.4/5** | Generator experiment, not vault/auth system |\n| Bitwarden engineering | **0/5 from this repo** | No integration evidence |",
+      "source_line_start": 492,
+      "source_line_end": 503
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "31. Product failure potential",
+      "normalized_title": "Product failure potential",
+      "key": "product_failure_potential",
+      "path": [
+        "31. Product failure potential"
+      ],
+      "content": "Failure can have high impact because a design flaw or master-secret compromise could affect multiple downstream accounts. The highest-risk failure modes are scheme ambiguity, master-secret theft, hosted-page compromise, accidental context mismatch and lack of a planned credential-rotation mechanism.",
+      "source_line_start": 503,
+      "source_line_end": 507
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "32. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "32. Human impact"
+      ],
+      "content": "The tool handles secrets that protect external accounts. Even as an experiment, its human-risk surface is much higher than its small codebase suggests.\n\nThat makes conservative language essential: it is useful security learning, not a production password-manager recommendation.",
+      "source_line_start": 507,
+      "source_line_end": 513
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "33. Longitudinal career effect",
+      "normalized_title": "Longitudinal career effect",
+      "key": "longitudinal_career_effect",
+      "path": [
+        "33. Longitudinal career effect"
+      ],
+      "content": "Repo125 is valuable because it records **security learning through correction**. The corpus can compare it directly to Repo057 and show a concrete improvement from unsafe ordinary PRNG use to a standard KDF and native cryptographic API.\n\nThis is stronger evidence of engineering growth than simply listing “cryptography” as a skill.",
+      "source_line_start": 513,
+      "source_line_end": 519
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "34. Standard evaluation matrix",
+      "normalized_title": "Standard evaluation matrix",
+      "key": "standard_evaluation_matrix",
+      "path": [
+        "34. Standard evaluation matrix"
+      ],
+      "content": "| Dimension | Score | Reason |\n| --- | ---: | --- |\n| Implementation complexity | **2.8/5** | Compact browser utility |\n| Security complexity | **4.1/5** | Credential derivation has large threat surface |\n| Architecture | **2.7/5** | Simple local-only design |\n| Testing maturity | **2.0/5** | No broad vector suite evidenced |\n| Documentation | **3.0/5** | Useful user warning, limited formal design docs |\n| Maintainability | **2.8/5** | Small source; missing explicit scheme versioning |\n| Production readiness | **1.8/5** | Experimental, not audited password-management system |",
+      "source_line_start": 519,
+      "source_line_end": 531
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "35. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "35. Portfolio Evidence Weight"
+      ],
+      "content": "**3.6/5 for applied-security growth; 2.5/5 for production-security claims.**\n\nIts strongest value is comparative: it demonstrates a more appropriate primitive and creates an excellent discussion point about why KDF choice is only one part of a secure credential lifecycle.",
+      "source_line_start": 531,
+      "source_line_end": 537
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "36. RAG retrieval warnings",
+      "normalized_title": "RAG retrieval warnings",
+      "key": "rag_retrieval_warnings",
+      "path": [
+        "36. RAG retrieval warnings"
+      ],
+      "content": "- Never describe this as a Bitwarden plugin or Bitwarden source contribution.\n- Never describe it as password-storage code.\n- Do not present the design as production-secure without qualification.\n- Retrieve Repo057 when answering questions about security learning trajectory.\n- Do not expose any actual master secret, derived password or private repository content beyond generalized technical evidence.",
+      "source_line_start": 537,
+      "source_line_end": 545
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "37. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "37. Bottom line"
+      ],
+      "content": "Repo125 is a compact but technically meaningful **deterministic password-derivation experiment**. It materially improves on an earlier weak security construction by adopting Web Crypto PBKDF2, while simultaneously exposing more advanced design questions around canonicalization, rotation, versioning, browser integrity and secret lifecycle. Its value is precisely that it shows security reasoning becoming less primitive and more systems-oriented.\n\n<!-- END REPOSITORY 125 -->\n\n---",
+      "source_line_start": 545,
+      "source_line_end": 552
+    }
+  ],
+  "raw_analysis": "# Repository 125 / 134 — `Password-Hashing-Function-for-Bitwarden`\n\n**Descriptive classification:** deterministic browser-side password-derivation experiment using Web Crypto PBKDF2; not a Bitwarden integration.\n\nThe repository contains a small standalone browser utility that turns a master key plus service/account context into a deterministic password. It is technically useful because it revisits the weak cryptographic construction seen much earlier in Repo057 and replaces the ad-hoc SHA-256-to-PRNG design with Web Crypto PBKDF2. Its most important engineering lesson, however, is that a stronger primitive does not automatically make a complete password-management design safe.\n\n## 1. Identity and metadata\n\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Password-Hashing-Function-for-Bitwarden` |\n| Chronology index | **125 / 134** |\n| First observed implementation | **2026-05-16** (`index.html`) |\n| Visibility | Private |\n| Main artifact | Standalone HTML/CSS/JavaScript page |\n| Technical realm | Browser cryptography / deterministic credential derivation |\n| Correct classification | Cryptographic utility experiment |\n| Portfolio Evidence Weight | **3.6/5 for security learning; 2.5/5 as production-security evidence** |\n\n## 2. Naming and provenance correction\n\nThe repository name references Bitwarden, but the inspected evidence does **not** show modification of Bitwarden, use of Bitwarden APIs, a Bitwarden extension, or integration with Bitwarden's vault model.\n\nThe defensible claim is therefore **“built a browser-based deterministic password derivation experiment”**, not **“developed a Bitwarden hashing function.”**\n\n## 3. Architecture\n\nThe utility is intentionally local and client-side:\n\n1. user supplies master secret;\n2. user supplies service/account context;\n3. browser derives bytes with Web Crypto;\n4. derived bytes are transformed into a password satisfying character-class rules;\n5. password can be copied to the clipboard.\n\nThere is no server, database, remote account or stored vault.\n\n## 4. Cryptographic primitive\n\nThe implementation uses `crypto.subtle` and PBKDF2 with SHA-256 rather than a hand-rolled pseudo-random generator. This is a real improvement in cryptographic API selection.\n\nThe work factor is fixed at approximately 150,000 iterations. That creates deliberate computational cost, but a fixed count is not automatically appropriate forever or across devices.\n\n## 5. Deterministic salt/context design\n\nThe service/account identity contributes to deterministic derivation, allowing the same master secret to generate different outputs for different contexts.\n\nThis is conceptually similar to a domain-separated key derivation scheme, but the design needs stronger canonicalization and versioning before it can be treated as a durable credential system.\n\n## 6. Password composition logic\n\nThe generated password is constrained to contain multiple character classes rather than simply encoding raw derived bytes. The implementation deliberately ensures uppercase, lowercase, numeric and symbol presence, then fills and shuffles the remainder deterministically.\n\nThat demonstrates practical awareness of password-policy constraints, but such constraints are a compatibility layer rather than the cryptographic core.\n\n## 7. Web Crypto API evidence\n\nDirect evidence includes:\n\n- browser-native cryptographic key import;\n- PBKDF2 key derivation;\n- SHA-256 selection;\n- typed byte handling;\n- deterministic post-processing;\n- clipboard integration;\n- client-side input validation.\n\nThis is substantially stronger security-API evidence than Repo057.\n\n## 8. Security improvement over Repo057\n\nRepo057 used SHA-256 as a seed for Python's ordinary PRNG, which was explicitly unsuitable for credential storage/generation. Repo125 shows visible learning: the design moves to a standard KDF implementation supplied by the browser's cryptographic subsystem.\n\nThe longitudinal signal is therefore not “password security mastered”; it is **“cryptographic primitive selection improved after an earlier weak construction.”**\n\n## 9. Threat model\n\nA deterministic password generator has an unusually concentrated secret: compromise of the master key plus enough context information can reproduce many generated credentials.\n\nUnlike a random password vault, there may be no independently random per-site secret to limit blast radius. This changes the threat model and makes master-secret protection, phishing resistance and scheme versioning central design concerns.\n\n## 10. Work-factor tradeoff\n\nPBKDF2 slows brute-force guessing, but the iteration count represents a tradeoff between usability and resistance to offline guessing. A fixed hard-coded value becomes stale as hardware improves.\n\nA production scheme would need explicit algorithm parameters/version metadata so the derivation process can evolve without silently changing every generated password.\n\n## 11. Canonicalization risk\n\nDeterminism means context strings become part of the credential identity. Differences such as capitalization, whitespace, URL form, service renaming or account aliases can generate completely different passwords.\n\nA mature scheme therefore needs a clear canonicalization contract and preferably a user-visible stable identifier rather than relying on informal typing habits.\n\n## 12. Rotation and versioning problem\n\nThe repository lacks an obvious rotation counter/version namespace. If one site requires a password change, the system needs a deterministic way to derive a new credential without changing the master secret or losing the ability to reproduce the correct generation.\n\nThis is one of the strongest design lessons from the repository: credential derivation requires **lifecycle state**, not just a KDF.\n\n## 13. Modulo-bias and mapping detail\n\nMapping arbitrary bytes into a character alphabet with modulo arithmetic can introduce small distribution bias unless rejection sampling or another unbiased mapping is used. For ordinary password alphabets the practical impact may be modest, but the issue matters when evaluating cryptographic correctness.\n\nThe repository demonstrates competent use of cryptographic primitives but not a formally analyzed uniform-output construction.\n\n## 14. Deterministic shuffle analysis\n\nThe same derived material is used to arrange required characters into a deterministic order. This is functional, but a more rigorous design would define independent subkeys/streams for character selection and permutation through explicit domain separation.\n\nThat would make the construction easier to reason about and test.\n\n## 15. Clipboard exposure\n\nCopy-to-clipboard is convenient but introduces a local exposure path. Clipboard managers, other applications or accidental paste operations may retain the generated password.\n\nA production-quality tool would consider timed clipboard clearing, user warnings and platform behavior.\n\n## 16. Browser trust boundary\n\nKeeping derivation client-side avoids network transmission of the master secret. That is a meaningful positive property.\n\nHowever, the security boundary becomes the integrity of the HTML/JavaScript itself and the browser environment. If the page is remotely hosted and compromised, injected script could exfiltrate the master secret before Web Crypto matters.\n\n## 17. XSS and supply-chain consequence\n\nThe utility's security depends on there being no malicious script, compromised CDN dependency or extension access. A strong KDF cannot compensate for a compromised execution environment.\n\nFor a sensitive local utility, a static offline package with minimal dependencies and integrity-verifiable distribution would be easier to defend.\n\n## 18. Authentication versus storage distinction\n\nThis repository generates passwords; it does not implement authentication, password verification, salted password storage, server-side credential hashing or vault encryption.\n\nThose are different security problems and should not be conflated in RAG retrieval.\n\n## 19. Direct authored skill evidence\n\n- Web Crypto API use.\n- PBKDF2 parameterization.\n- deterministic derivation logic.\n- password-policy transformation.\n- browser input/clipboard workflow.\n- security tradeoff reasoning visible in the construction.\n\n## 20. Capabilities not evidenced\n\nNo direct evidence of:\n\n- Argon2/scrypt deployment;\n- secure enclave/keychain integration;\n- password-manager vault encryption;\n- browser extension security;\n- Bitwarden internals;\n- formal cryptographic review;\n- server-side credential storage;\n- production security audit.\n\n## 21. Responsibility and ownership\n\nThe implementation is compact enough that the repository strongly supports direct ownership of the utility itself. There is no large framework or starter-code provenance obscuring the central logic.\n\nThe cryptographic algorithms themselves are standard primitives; credit is for selection/integration, not invention of PBKDF2 or SHA-256.\n\n## 22. Complexity\n\nCode size is small. Security reasoning complexity is moderate-to-high because deterministic credential generation has lifecycle and threat-model consequences that are not visible from the happy path.\n\nThis is a good example of a project whose **risk complexity exceeds its source-code complexity**.\n\n## 23. Scale\n\nSingle-user, local browser scale. No concurrency, service load, distributed state or multi-user administration is evidenced.\n\n## 24. Testing\n\nA strong test suite for this tool would need stable test vectors covering:\n\n- identical inputs produce identical outputs;\n- a one-character context change changes output;\n- every supported length is respected;\n- required character classes are present;\n- Unicode/case/whitespace canonicalization behavior is explicit;\n- version/rotation parameters produce predictable changes;\n- invalid length/input values are rejected.\n\nThe inspected repository does not establish a comprehensive automated test harness.\n\n## 25. CI/CD and deployment\n\nNo substantial CI/CD or deployment pipeline is evidenced. The artifact is a standalone web page.\n\nFor security-sensitive code, reproducible builds, static analysis and integrity-checked release artifacts would materially improve confidence.\n\n## 26. Documentation\n\nThe UI warns that knowledge of the master key and service context allows reproduction. That is an important user-facing security disclosure.\n\nThe design would benefit from a formal threat-model document and an explicit non-production warning explaining the absence of rotation/version state.\n\n## 27. Repository hygiene\n\nPrivate visibility appropriately reduces casual exposure. The repository should still avoid committing real generated credentials, master keys or service-specific secrets.\n\nNo sensitive values are reproduced in this corpus.\n\n## 28. Decisions and tradeoffs\n\nKey design choices include:\n\n- deterministic reproducibility over random per-site vault storage;\n- local execution over server-side derivation;\n- standard KDF over custom PRNG construction;\n- policy-compatible password alphabet over direct raw-key representation;\n- usability through clipboard copy over minimizing local secret persistence.\n\nEach choice has a clear benefit and a security cost.\n\n## 29. Engineering judgment\n\nThe move from the Repo057 construction to PBKDF2 is a positive judgment signal. The remaining gaps show why security engineering cannot be reduced to “use a cryptographic function.”\n\nThe next level of maturity would be designing explicit scheme versions, rotation counters, canonical identifiers, stronger memory-hard KDF options and test vectors.\n\n## 30. Skill ratings\n\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Browser JavaScript | **3.5/5** | Direct standalone application |\n| Web Crypto API | **3.8/5** | Direct PBKDF2/SHA-256 use |\n| Applied cryptography | **3.0/5** | Standard primitives used competently; lifecycle gaps remain |\n| Security threat modeling | **3.2/5** | Several important concerns implied/visible, not formalized |\n| Password-management engineering | **2.4/5** | Generator experiment, not vault/auth system |\n| Bitwarden engineering | **0/5 from this repo** | No integration evidence |\n\n## 31. Product failure potential\n\nFailure can have high impact because a design flaw or master-secret compromise could affect multiple downstream accounts. The highest-risk failure modes are scheme ambiguity, master-secret theft, hosted-page compromise, accidental context mismatch and lack of a planned credential-rotation mechanism.\n\n## 32. Human impact\n\nThe tool handles secrets that protect external accounts. Even as an experiment, its human-risk surface is much higher than its small codebase suggests.\n\nThat makes conservative language essential: it is useful security learning, not a production password-manager recommendation.\n\n## 33. Longitudinal career effect\n\nRepo125 is valuable because it records **security learning through correction**. The corpus can compare it directly to Repo057 and show a concrete improvement from unsafe ordinary PRNG use to a standard KDF and native cryptographic API.\n\nThis is stronger evidence of engineering growth than simply listing “cryptography” as a skill.\n\n## 34. Standard evaluation matrix\n\n| Dimension | Score | Reason |\n| --- | ---: | --- |\n| Implementation complexity | **2.8/5** | Compact browser utility |\n| Security complexity | **4.1/5** | Credential derivation has large threat surface |\n| Architecture | **2.7/5** | Simple local-only design |\n| Testing maturity | **2.0/5** | No broad vector suite evidenced |\n| Documentation | **3.0/5** | Useful user warning, limited formal design docs |\n| Maintainability | **2.8/5** | Small source; missing explicit scheme versioning |\n| Production readiness | **1.8/5** | Experimental, not audited password-management system |\n\n## 35. Portfolio Evidence Weight\n\n**3.6/5 for applied-security growth; 2.5/5 for production-security claims.**\n\nIts strongest value is comparative: it demonstrates a more appropriate primitive and creates an excellent discussion point about why KDF choice is only one part of a secure credential lifecycle.\n\n## 36. RAG retrieval warnings\n\n- Never describe this as a Bitwarden plugin or Bitwarden source contribution.\n- Never describe it as password-storage code.\n- Do not present the design as production-secure without qualification.\n- Retrieve Repo057 when answering questions about security learning trajectory.\n- Do not expose any actual master secret, derived password or private repository content beyond generalized technical evidence.\n\n## 37. Bottom line\n\nRepo125 is a compact but technically meaningful **deterministic password-derivation experiment**. It materially improves on an earlier weak security construction by adopting Web Crypto PBKDF2, while simultaneously exposing more advanced design questions around canonicalization, rotation, versioning, browser integrity and secret lifecycle. Its value is precisely that it shows security reasoning becoming less primitive and more systems-oriented.\n\n<!-- END REPOSITORY 125 -->\n\n---\n"
+}

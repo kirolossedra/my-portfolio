@@ -1,0 +1,811 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 128,
+  "repository_total": 134,
+  "repository_name": "Thesis",
+  "header_title": "`Thesis`",
+  "repository_slug": "kirolossedra/Thesis",
+  "repository_url": "https://github.com/kirolossedra/Thesis",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-124-134.md",
+    "line_start": 1250,
+    "line_end": 1561,
+    "sha256": "e53d89fe81e6b20ed9ded5cb2673217f27798e159e4ca6f9c4d8a9a675e614e2"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": "4.7/5 for research methodology and data engineering"
+  },
+  "metadata": {
+    "repository": "kirolossedra/Thesis",
+    "chronology_index": "128 / 134",
+    "visibility": "Private",
+    "active_evidence_window": "June 2026 uploads/processing work",
+    "primary_inspected_artifact": "scripts/extract-mcs-allfwd.py",
+    "domain": "Wireless/mobile-robot thesis data processing",
+    "product_class": "Research preprocessing/evidence pipeline",
+    "portfolio_evidence_weight": "4.7/5 for research methodology and data engineering"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Python research scripting",
+      "rating_5": 4.6,
+      "rating_raw": "4.6/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Substantial direct code"
+    },
+    {
+      "skill": "Data preprocessing",
+      "rating_5": 4.7,
+      "rating_raw": "4.7/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Core repository purpose"
+    },
+    {
+      "skill": "Time-series alignment",
+      "rating_5": 4.8,
+      "rating_raw": "4.8/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Exact interval semantics"
+    },
+    {
+      "skill": "Experiment provenance",
+      "rating_5": 4.9,
+      "rating_raw": "4.9/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Raw rows/source files/cleanup/guards"
+    },
+    {
+      "skill": "Wireless metric processing",
+      "rating_5": 4.4,
+      "rating_raw": "4.4/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "DL/UL MCS extraction"
+    },
+    {
+      "skill": "Statistical analysis",
+      "rating_5": null,
+      "rating_raw": "3.0/5 from this repo",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Preprocessing focus, not full stats pipeline"
+    },
+    {
+      "skill": "Research methodology",
+      "rating_5": 4.8,
+      "rating_raw": "4.8/5",
+      "source_section_id": "s034",
+      "source_section_title": "34. Skill ratings",
+      "evidence": "Defensive scientific workflow"
+    }
+  ],
+  "intro": "**Descriptive classification:** thesis research post-processing and measurement-provenance repository focused on exact time alignment and extraction of wireless-link metrics.\n\nThe repository is private and modest in size, but the inspected source demonstrates a mature concern that is central to experimental research: preserving the exact relationship between motion events and wireless measurements. The strongest artifact is a substantial extraction script that reads motion logs and wireless-link logs, clips samples to exact forward-motion intervals, preserves raw evidence and explicitly handles stale outputs and ambiguous source files.",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Thesis` |\n| Chronology index | **128 / 134** |\n| Visibility | Private |\n| Active evidence window | June 2026 uploads/processing work |\n| Primary inspected artifact | `scripts/extract-mcs-allfwd.py` |\n| Domain | Wireless/mobile-robot thesis data processing |\n| Product class | Research preprocessing/evidence pipeline |\n| Portfolio Evidence Weight | **4.7/5 for research methodology and data engineering** |"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Thesis` |\n| Chronology index | **128 / 134** |\n| Visibility | Private |\n| Active evidence window | June 2026 uploads/processing work |\n| Primary inspected artifact | `scripts/extract-mcs-allfwd.py` |\n| Domain | Wireless/mobile-robot thesis data processing |\n| Product class | Research preprocessing/evidence pipeline |\n| Portfolio Evidence Weight | **4.7/5 for research methodology and data engineering** |"
+    },
+    "summary": {
+      "section_ids": [
+        "s041"
+      ],
+      "titles": [
+        "41. Bottom line"
+      ],
+      "text": "## 41. Bottom line\n`Thesis` is a high-value **research correctness and provenance** repository. Its strongest signal is not the amount of Python code; it is the deliberate refusal to let ambiguous logs, rounded timestamps, stale outputs or hidden interval assumptions silently define the dataset. That is mature experimental software engineering and a strong capstone to the wireless-research trajectory.\n\n<!-- END REPOSITORY 128 -->\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "37. Current relevance"
+      ],
+      "text": "## 37. Current relevance\nHighly relevant to research software, data analysis, wireless validation, test engineering, performance analysis and any role where logs from physical experiments must be transformed into defensible datasets."
+    },
+    "architecture": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "22. Architecture"
+      ],
+      "text": "## 22. Architecture\nThe preprocessing architecture is intentionally file-based:\n\n```text\nmotion event log\n        +\nwireless link logs\n        |\n        v\nsource discovery + validation\n        |\n        v\ntimestamp parsing\n        |\n        v\ninterval clipping / MCS extraction\n        |\n        v\nnormalized per-event outputs + diagnostics\n```\n\nFor a thesis-sized workflow this is reasonable and transparent."
+    },
+    "skills": {
+      "section_ids": [
+        "s020",
+        "s034"
+      ],
+      "titles": [
+        "20. Direct authored skill evidence",
+        "34. Skill ratings"
+      ],
+      "text": "## 20. Direct authored skill evidence\n- Python research-data processing.\n- timestamp parsing and interval matching.\n- recursive filesystem workflows.\n- MCS extraction from radio/network logs.\n- provenance-preserving data transformation.\n- defensive input discovery.\n- diagnostic accounting.\n- experiment-specific normalization.\n\n## 34. Skill ratings\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python research scripting | **4.6/5** | Substantial direct code |\n| Data preprocessing | **4.7/5** | Core repository purpose |\n| Time-series alignment | **4.8/5** | Exact interval semantics |\n| Experiment provenance | **4.9/5** | Raw rows/source files/cleanup/guards |\n| Wireless metric processing | **4.4/5** | DL/UL MCS extraction |\n| Statistical analysis | **3.0/5 from this repo** | Preprocessing focus, not full stats pipeline |\n| Research methodology | **4.8/5** | Defensive scientific workflow |"
+    },
+    "scale": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "25. Scale"
+      ],
+      "text": "## 25. Scale\nExpected scale is multiple experiment logs/runs rather than massive datasets. The code optimizes for inspectability and correctness over distributed processing.\n\nThat is appropriate to the domain."
+    },
+    "testing": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "29. Testing maturity"
+      ],
+      "text": "## 29. Testing maturity\nThe code is written defensively, but the inspected evidence does not establish a formal automated unit-test suite. This is a gap because preprocessing algorithms benefit enormously from fixture-based tests.\n\nA small library of synthetic logs could validate every important boundary and parsing condition."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s030"
+      ],
+      "titles": [
+        "30. CI/CD"
+      ],
+      "text": "## 30. CI/CD\nNo major CI/CD system is proven. For private thesis processing, a lightweight test workflow on every change would still be valuable because it prevents late-stage figure regeneration from changing semantics unexpectedly."
+    },
+    "documentation": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "31. Documentation"
+      ],
+      "text": "## 31. Documentation\nCode comments document key rules unusually clearly. The repository-level README is minimal, so the methodology is concentrated in source rather than an experiment-data dictionary.\n\nA top-level processing specification would make the logic easier for reviewers to audit without reading implementation details."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "32. Repository hygiene"
+      ],
+      "text": "## 32. Repository hygiene\nPositive hygiene includes explicit stale-output removal and source validation. Private visibility also reduces exposure of experiment details.\n\nThe repository should continue to keep generated figures/outputs distinguishable from raw logs and source code so provenance remains unambiguous."
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "28. Mistakes and lessons"
+      ],
+      "text": "## 28. Mistakes and lessons\nThe existence of stale backward outputs and a later all-forward workflow indicates methodology evolved. The correct lesson is positive: old assumptions were not hidden; processing was changed and stale derivatives were deliberately removed.\n\nThe remaining lesson is to externalize experiment constants such as the 57-second window into a run manifest or configuration with explicit rationale."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s038"
+      ],
+      "titles": [
+        "38. Product failure potential"
+      ],
+      "text": "## 38. Product failure potential\nA preprocessing bug can be scientifically severe: it may produce clean plots and statistically significant results from the wrong sample population. This is a classic silent failure.\n\nTherefore correctness, provenance and reproducibility are more important than throughput for this system."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s039"
+      ],
+      "titles": [
+        "39. Human impact"
+      ],
+      "text": "## 39. Human impact\nThe direct users are the researcher and reviewers. Correct processing protects research credibility and reduces the chance that decisions or publications are based on misaligned measurements."
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "26. Decisions and tradeoffs"
+      ],
+      "text": "## 26. Decisions and tradeoffs\nMajor decisions include:\n\n- exact timestamp boundaries rather than rounded seconds;\n- forward-only interpretation rather than inferred alternation;\n- file-based transparent outputs rather than opaque database ingestion;\n- source-line preservation rather than normalized-only records;\n- failing on ambiguous motion-log discovery rather than guessing;\n- cleanup of stale outputs before regeneration.\n\nThese decisions favor reproducibility over convenience."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "27. Engineering judgment"
+      ],
+      "text": "## 27. Engineering judgment\nThe strongest judgment signal is knowing where preprocessing can silently invalidate results. Exact interval semantics and source ambiguity are treated as first-class engineering problems.\n\nThis is more mature than adding statistical sophistication on top of incorrectly segmented data."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s036"
+      ],
+      "titles": [
+        "36. Portfolio Evidence Weight"
+      ],
+      "text": "## 36. Portfolio Evidence Weight\n**4.7/5 for research methodology and data engineering.**\n\nIt is one of the best corpus examples of correctness-oriented preprocessing. The score is held below the absolute maximum only because the repository does not independently contain the entire thesis methodology, statistics and final conclusions."
+    },
+    "limitations": {
+      "section_ids": [
+        "s021",
+        "s040"
+      ],
+      "titles": [
+        "21. Capabilities not evidenced",
+        "40. RAG retrieval warnings"
+      ],
+      "text": "## 21. Capabilities not evidenced\nThis repository alone does not prove:\n\n- thesis defense outcome;\n- final statistical conclusions;\n- radio-driver implementation;\n- Wi-Fi/5G stack development;\n- novel MCS algorithms;\n- database/data-warehouse scale ETL;\n- publication acceptance.\n\nThose claims require other artifacts.\n\n## 40. RAG retrieval warnings\n- Do not expose private experiment paths or identifiers.\n- Do not infer thesis conclusions from preprocessing code.\n- Do not say the repository implements wireless MCS algorithms; it extracts reported MCS values.\n- Preserve the exact-timestamp and all-forward methodological distinctions.\n- Retrieve Repo127/107/113 when explaining the collection-to-analysis pipeline."
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s035"
+      ],
+      "titles": [
+        "35. Longitudinal comparison"
+      ],
+      "text": "## 35. Longitudinal comparison\nRepo127 makes live samples observable and synchronized. Repo128 determines exactly which samples belong in each analytical window. Repo107/113 demonstrate field/lab collection; this repository demonstrates the increasingly formal downstream evidence discipline needed for thesis-quality analysis."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "1. Identity and metadata",
+      "normalized_title": "Identity and metadata",
+      "key": "identity_and_metadata",
+      "path": [
+        "1. Identity and metadata"
+      ],
+      "content": "| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Thesis` |\n| Chronology index | **128 / 134** |\n| Visibility | Private |\n| Active evidence window | June 2026 uploads/processing work |\n| Primary inspected artifact | `scripts/extract-mcs-allfwd.py` |\n| Domain | Wireless/mobile-robot thesis data processing |\n| Product class | Research preprocessing/evidence pipeline |\n| Portfolio Evidence Weight | **4.7/5 for research methodology and data engineering** |",
+      "source_line_start": 1256,
+      "source_line_end": 1269
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "2. Repository role in the broader thesis system",
+      "normalized_title": "Repository role in the broader thesis system",
+      "key": "repository_role_in_the_broader_thesis_system",
+      "path": [
+        "2. Repository role in the broader thesis system"
+      ],
+      "content": "Earlier repositories contain collection scripts, mobile-robot experiments, Wi-Fi/5G procedures and visualization. Repo128 is different: it sits downstream of acquisition and decides exactly which wireless samples belong to which physical motion interval.\n\nThat makes it a **measurement-provenance repository**. Errors here can change the statistical population later used in figures or conclusions.",
+      "source_line_start": 1269,
+      "source_line_end": 1275
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "3. Evidence basis",
+      "normalized_title": "Evidence basis",
+      "key": "evidence_basis",
+      "path": [
+        "3. Evidence basis"
+      ],
+      "content": "The strongest inspected commit adds a roughly 800-line Python extractor. The source is detailed enough to establish direct authorship of the processing workflow, including log discovery, parsing, interval definition, clipping, output management and diagnostic counts.\n\nThe private repository name `Thesis` does not by itself prove the contents or acceptance of the final thesis manuscript; this entry remains bounded to inspected research tooling.",
+      "source_line_start": 1275,
+      "source_line_end": 1281
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "4. Exact timestamp policy",
+      "normalized_title": "Exact timestamp policy",
+      "key": "exact_timestamp_policy",
+      "path": [
+        "4. Exact timestamp policy"
+      ],
+      "content": "The script explicitly preserves millisecond precision and states that motion timestamps are used exactly rather than floored, ceiled or rounded.\n\nThis is an important methodological choice because apparently minor time quantization can systematically include or exclude samples around trajectory boundaries.",
+      "source_line_start": 1281,
+      "source_line_end": 1287
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "5. Interval-membership rule",
+      "normalized_title": "Interval-membership rule",
+      "key": "interval_membership_rule",
+      "path": [
+        "5. Interval-membership rule"
+      ],
+      "content": "Wireless records are included when their timestamps satisfy the closed interval relationship:\n\n`start_timestamp <= sample_timestamp <= stop_timestamp`.\n\nMaking the boundary rule explicit is good scientific software practice. The alternative—implicit parser/loop behavior—would make edge cases difficult to reproduce.",
+      "source_line_start": 1287,
+      "source_line_end": 1295
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "6. Motion-event interpretation",
+      "normalized_title": "Motion-event interpretation",
+      "key": "motion_event_interpretation",
+      "path": [
+        "6. Motion-event interpretation"
+      ],
+      "content": "The workflow treats all extracted events as forward-motion intervals and does not alternate directions based on event order. That is valuable because it avoids injecting a directional assumption that the source log no longer supports.\n\nThe corpus should preserve this as a methodological correction rather than interpreting all trajectories through a generic odd/even rule.",
+      "source_line_start": 1295,
+      "source_line_end": 1301
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "7. Motion-log parsing",
+      "normalized_title": "Motion-log parsing",
+      "key": "motion_log_parsing",
+      "path": [
+        "7. Motion-log parsing"
+      ],
+      "content": "The script parses event starts/stops, duration-related fields and timezone/timestamp content from the motion log. Events are globally sorted before wireless clipping.\n\nThis shows that event chronology is reconstructed deliberately rather than assumed from arbitrary file ordering.",
+      "source_line_start": 1301,
+      "source_line_end": 1307
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "8. Wireless-link parsing",
+      "normalized_title": "Wireless-link parsing",
+      "key": "wireless_link_parsing",
+      "path": [
+        "8. Wireless-link parsing"
+      ],
+      "content": "The extractor targets downlink and uplink MCS fields from wireless logs while retaining the original line content. This creates two useful representations:\n\n- normalized values suitable for later analysis;\n- original evidence suitable for debugging or audit.",
+      "source_line_start": 1307,
+      "source_line_end": 1314
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "9. Raw-evidence preservation",
+      "normalized_title": "Raw-evidence preservation",
+      "key": "raw_evidence_preservation",
+      "path": [
+        "9. Raw-evidence preservation"
+      ],
+      "content": "Keeping the raw absolute log row alongside extracted values is a strong provenance decision. If a result looks wrong later, the processed output can be traced back to the original measurement text without rerunning the entire experiment.\n\nThis is a recurring maturity signal across late research repositories: normalized data no longer replaces raw evidence.",
+      "source_line_start": 1314,
+      "source_line_end": 1320
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "10. Encoding resilience",
+      "normalized_title": "Encoding resilience",
+      "key": "encoding_resilience",
+      "path": [
+        "10. Encoding resilience"
+      ],
+      "content": "The implementation attempts multiple text encodings when reading logs. This is practical research software engineering because logs generated by vendor tools, terminals or copied environments are often not perfectly standardized.\n\nThe tradeoff is that silent fallback must not hide genuine data corruption; diagnostics should still identify undecodable files.",
+      "source_line_start": 1320,
+      "source_line_end": 1326
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "11. Recursive log discovery",
+      "normalized_title": "Recursive log discovery",
+      "key": "recursive_log_discovery",
+      "path": [
+        "11. Recursive log discovery"
+      ],
+      "content": "Wireless logs can be found recursively rather than from a single hard-coded filename. This supports experiments whose run folders or nested exports evolve over time.\n\nFlexible discovery is useful, but it also raises the risk of accidentally including stale or duplicate files.",
+      "source_line_start": 1326,
+      "source_line_end": 1332
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "12. Single-motion-log safety guard",
+      "normalized_title": "Single-motion-log safety guard",
+      "key": "single_motion_log_safety_guard",
+      "path": [
+        "12. Single-motion-log safety guard"
+      ],
+      "content": "The script can require that exactly one motion log be present. This is an excellent defensive feature because accidental retention of an old motion log could silently generate a plausible but incorrect extraction.\n\nIt treats ambiguous input as an error condition rather than guessing.",
+      "source_line_start": 1332,
+      "source_line_end": 1338
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "13. Stale-output handling",
+      "normalized_title": "Stale-output handling",
+      "key": "stale_output_handling",
+      "path": [
+        "13. Stale-output handling"
+      ],
+      "content": "The workflow removes stale generated MCS outputs and explicitly eliminates backward-direction artifacts that no longer belong to the all-forward methodology.\n\nThis prevents old files from masquerading as current results—an important issue in iterative research directories.",
+      "source_line_start": 1338,
+      "source_line_end": 1344
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "14. Global event ordering",
+      "normalized_title": "Global event ordering",
+      "key": "global_event_ordering",
+      "path": [
+        "14. Global event ordering"
+      ],
+      "content": "Sorting all motion events before extraction ensures output chronology does not depend on source file enumeration or parser discovery order.\n\nThis is small implementation detail with large reproducibility value.",
+      "source_line_start": 1344,
+      "source_line_end": 1350
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "15. Elapsed-time normalization",
+      "normalized_title": "Elapsed-time normalization",
+      "key": "elapsed_time_normalization",
+      "path": [
+        "15. Elapsed-time normalization"
+      ],
+      "content": "Wireless time is normalized relative to the first wireless sample and the workflow enforces a maximum experiment horizon of **57.00 seconds** for the relevant processing path.\n\nThe 57-second boundary is domain-specific and must be documented in the experiment design; hard-coded experimental constants without provenance can become fragile if trajectories change.",
+      "source_line_start": 1350,
+      "source_line_end": 1356
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "16. Boundary correctness",
+      "normalized_title": "Boundary correctness",
+      "key": "boundary_correctness",
+      "path": [
+        "16. Boundary correctness"
+      ],
+      "content": "Because exact timestamps and a fixed maximum horizon matter, high-value tests should explicitly include samples at:\n\n- exactly the motion start;\n- just before motion start;\n- exactly motion stop;\n- just after motion stop;\n- exactly 57.00 seconds;\n- just beyond the 57.00-second cutoff.\n\nThese edge cases are more important than generic “script runs” tests.",
+      "source_line_start": 1356,
+      "source_line_end": 1369
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "17. Dropped-row accounting",
+      "normalized_title": "Dropped-row accounting",
+      "key": "dropped_row_accounting",
+      "path": [
+        "17. Dropped-row accounting"
+      ],
+      "content": "The script counts rows that are dropped during extraction. This is a strong diagnostic feature because preprocessing should reveal how much source evidence was excluded rather than silently returning a smaller dataset.\n\nA mature analysis can then distinguish “no samples existed” from “samples existed but failed parsing/interval criteria.”",
+      "source_line_start": 1369,
+      "source_line_end": 1375
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "18. Source-file recording",
+      "normalized_title": "Source-file recording",
+      "key": "source_file_recording",
+      "path": [
+        "18. Source-file recording"
+      ],
+      "content": "Outputs preserve or report the source files used. That directly supports reproducibility and later audit.\n\nThis is especially important when the repository contains several repeated experimental runs with similar filenames.",
+      "source_line_start": 1375,
+      "source_line_end": 1381
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "19. Research-correctness orientation",
+      "normalized_title": "Research-correctness orientation",
+      "key": "research_correctness_orientation",
+      "path": [
+        "19. Research-correctness orientation"
+      ],
+      "content": "The code demonstrates a shift from convenience scripting toward **methodological defensive programming**. Safety guards, stale-file removal, exact boundaries and explicit diagnostics all exist to prevent incorrect scientific conclusions rather than merely runtime exceptions.",
+      "source_line_start": 1381,
+      "source_line_end": 1385
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "20. Direct authored skill evidence",
+      "normalized_title": "Direct authored skill evidence",
+      "key": "direct_authored_skill_evidence",
+      "path": [
+        "20. Direct authored skill evidence"
+      ],
+      "content": "- Python research-data processing.\n- timestamp parsing and interval matching.\n- recursive filesystem workflows.\n- MCS extraction from radio/network logs.\n- provenance-preserving data transformation.\n- defensive input discovery.\n- diagnostic accounting.\n- experiment-specific normalization.",
+      "source_line_start": 1385,
+      "source_line_end": 1396
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "21. Capabilities not evidenced",
+      "normalized_title": "Capabilities not evidenced",
+      "key": "capabilities_not_evidenced",
+      "path": [
+        "21. Capabilities not evidenced"
+      ],
+      "content": "This repository alone does not prove:\n\n- thesis defense outcome;\n- final statistical conclusions;\n- radio-driver implementation;\n- Wi-Fi/5G stack development;\n- novel MCS algorithms;\n- database/data-warehouse scale ETL;\n- publication acceptance.\n\nThose claims require other artifacts.",
+      "source_line_start": 1396,
+      "source_line_end": 1410
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "22. Architecture",
+      "normalized_title": "Architecture",
+      "key": "architecture",
+      "path": [
+        "22. Architecture"
+      ],
+      "content": "The preprocessing architecture is intentionally file-based:\n\n```text\nmotion event log\n        +\nwireless link logs\n        |\n        v\nsource discovery + validation\n        |\n        v\ntimestamp parsing\n        |\n        v\ninterval clipping / MCS extraction\n        |\n        v\nnormalized per-event outputs + diagnostics\n```\n\nFor a thesis-sized workflow this is reasonable and transparent.",
+      "source_line_start": 1410,
+      "source_line_end": 1434
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "23. Responsibility",
+      "normalized_title": "Responsibility",
+      "key": "responsibility",
+      "path": [
+        "23. Responsibility"
+      ],
+      "content": "The inspected script contains enough project-specific rules to support strong direct ownership of the preprocessing method. The radio measurements themselves may come from external tools/hardware, but the mapping from logs to analytical windows is clearly repository-specific work.",
+      "source_line_start": 1434,
+      "source_line_end": 1438
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "24. Complexity",
+      "normalized_title": "Complexity",
+      "key": "complexity",
+      "path": [
+        "24. Complexity"
+      ],
+      "content": "Algorithmic complexity is not the dominant challenge. The hard part is semantic correctness across messy logs, timestamps, directories and experiment rules.\n\nThis is characteristic of real research data engineering: simple comparisons can carry high scientific consequence.",
+      "source_line_start": 1438,
+      "source_line_end": 1444
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "25. Scale",
+      "normalized_title": "Scale",
+      "key": "scale",
+      "path": [
+        "25. Scale"
+      ],
+      "content": "Expected scale is multiple experiment logs/runs rather than massive datasets. The code optimizes for inspectability and correctness over distributed processing.\n\nThat is appropriate to the domain.",
+      "source_line_start": 1444,
+      "source_line_end": 1450
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "26. Decisions and tradeoffs",
+      "normalized_title": "Decisions and tradeoffs",
+      "key": "decisions_and_tradeoffs",
+      "path": [
+        "26. Decisions and tradeoffs"
+      ],
+      "content": "Major decisions include:\n\n- exact timestamp boundaries rather than rounded seconds;\n- forward-only interpretation rather than inferred alternation;\n- file-based transparent outputs rather than opaque database ingestion;\n- source-line preservation rather than normalized-only records;\n- failing on ambiguous motion-log discovery rather than guessing;\n- cleanup of stale outputs before regeneration.\n\nThese decisions favor reproducibility over convenience.",
+      "source_line_start": 1450,
+      "source_line_end": 1463
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "27. Engineering judgment",
+      "normalized_title": "Engineering judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "27. Engineering judgment"
+      ],
+      "content": "The strongest judgment signal is knowing where preprocessing can silently invalidate results. Exact interval semantics and source ambiguity are treated as first-class engineering problems.\n\nThis is more mature than adding statistical sophistication on top of incorrectly segmented data.",
+      "source_line_start": 1463,
+      "source_line_end": 1469
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "28. Mistakes and lessons",
+      "normalized_title": "Mistakes and lessons",
+      "key": "mistakes_and_lessons",
+      "path": [
+        "28. Mistakes and lessons"
+      ],
+      "content": "The existence of stale backward outputs and a later all-forward workflow indicates methodology evolved. The correct lesson is positive: old assumptions were not hidden; processing was changed and stale derivatives were deliberately removed.\n\nThe remaining lesson is to externalize experiment constants such as the 57-second window into a run manifest or configuration with explicit rationale.",
+      "source_line_start": 1469,
+      "source_line_end": 1475
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "29. Testing maturity",
+      "normalized_title": "Testing maturity",
+      "key": "testing_maturity",
+      "path": [
+        "29. Testing maturity"
+      ],
+      "content": "The code is written defensively, but the inspected evidence does not establish a formal automated unit-test suite. This is a gap because preprocessing algorithms benefit enormously from fixture-based tests.\n\nA small library of synthetic logs could validate every important boundary and parsing condition.",
+      "source_line_start": 1475,
+      "source_line_end": 1481
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "30. CI/CD",
+      "normalized_title": "CI/CD",
+      "key": "ci_cd",
+      "path": [
+        "30. CI/CD"
+      ],
+      "content": "No major CI/CD system is proven. For private thesis processing, a lightweight test workflow on every change would still be valuable because it prevents late-stage figure regeneration from changing semantics unexpectedly.",
+      "source_line_start": 1481,
+      "source_line_end": 1485
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "31. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "31. Documentation"
+      ],
+      "content": "Code comments document key rules unusually clearly. The repository-level README is minimal, so the methodology is concentrated in source rather than an experiment-data dictionary.\n\nA top-level processing specification would make the logic easier for reviewers to audit without reading implementation details.",
+      "source_line_start": 1485,
+      "source_line_end": 1491
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "32. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "32. Repository hygiene"
+      ],
+      "content": "Positive hygiene includes explicit stale-output removal and source validation. Private visibility also reduces exposure of experiment details.\n\nThe repository should continue to keep generated figures/outputs distinguishable from raw logs and source code so provenance remains unambiguous.",
+      "source_line_start": 1491,
+      "source_line_end": 1497
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "33. Reliability and failure modes",
+      "normalized_title": "Reliability and failure modes",
+      "key": "reliability_and_failure_modes",
+      "path": [
+        "33. Reliability and failure modes"
+      ],
+      "content": "Highest-risk failures:\n\n- wrong motion log selected;\n- timezone mismatch;\n- fractional timestamps parsed incorrectly;\n- multiple logs overlap;\n- experiment duration constant changes without code update;\n- malformed MCS rows are dropped unexpectedly;\n- stale generated files are interpreted as current.\n\nThe current design directly addresses several of these.",
+      "source_line_start": 1497,
+      "source_line_end": 1511
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "34. Skill ratings",
+      "normalized_title": "Skill ratings",
+      "key": "skill_ratings",
+      "path": [
+        "34. Skill ratings"
+      ],
+      "content": "| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python research scripting | **4.6/5** | Substantial direct code |\n| Data preprocessing | **4.7/5** | Core repository purpose |\n| Time-series alignment | **4.8/5** | Exact interval semantics |\n| Experiment provenance | **4.9/5** | Raw rows/source files/cleanup/guards |\n| Wireless metric processing | **4.4/5** | DL/UL MCS extraction |\n| Statistical analysis | **3.0/5 from this repo** | Preprocessing focus, not full stats pipeline |\n| Research methodology | **4.8/5** | Defensive scientific workflow |",
+      "source_line_start": 1511,
+      "source_line_end": 1523
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "35. Longitudinal comparison",
+      "normalized_title": "Longitudinal comparison",
+      "key": "longitudinal_comparison",
+      "path": [
+        "35. Longitudinal comparison"
+      ],
+      "content": "Repo127 makes live samples observable and synchronized. Repo128 determines exactly which samples belong in each analytical window. Repo107/113 demonstrate field/lab collection; this repository demonstrates the increasingly formal downstream evidence discipline needed for thesis-quality analysis.",
+      "source_line_start": 1523,
+      "source_line_end": 1527
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "36. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "36. Portfolio Evidence Weight"
+      ],
+      "content": "**4.7/5 for research methodology and data engineering.**\n\nIt is one of the best corpus examples of correctness-oriented preprocessing. The score is held below the absolute maximum only because the repository does not independently contain the entire thesis methodology, statistics and final conclusions.",
+      "source_line_start": 1527,
+      "source_line_end": 1533
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "37. Current relevance",
+      "normalized_title": "Current relevance",
+      "key": "current_relevance",
+      "path": [
+        "37. Current relevance"
+      ],
+      "content": "Highly relevant to research software, data analysis, wireless validation, test engineering, performance analysis and any role where logs from physical experiments must be transformed into defensible datasets.",
+      "source_line_start": 1533,
+      "source_line_end": 1537
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "38. Product failure potential",
+      "normalized_title": "Product failure potential",
+      "key": "product_failure_potential",
+      "path": [
+        "38. Product failure potential"
+      ],
+      "content": "A preprocessing bug can be scientifically severe: it may produce clean plots and statistically significant results from the wrong sample population. This is a classic silent failure.\n\nTherefore correctness, provenance and reproducibility are more important than throughput for this system.",
+      "source_line_start": 1537,
+      "source_line_end": 1543
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "39. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "39. Human impact"
+      ],
+      "content": "The direct users are the researcher and reviewers. Correct processing protects research credibility and reduces the chance that decisions or publications are based on misaligned measurements.",
+      "source_line_start": 1543,
+      "source_line_end": 1547
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "40. RAG retrieval warnings",
+      "normalized_title": "RAG retrieval warnings",
+      "key": "rag_retrieval_warnings",
+      "path": [
+        "40. RAG retrieval warnings"
+      ],
+      "content": "- Do not expose private experiment paths or identifiers.\n- Do not infer thesis conclusions from preprocessing code.\n- Do not say the repository implements wireless MCS algorithms; it extracts reported MCS values.\n- Preserve the exact-timestamp and all-forward methodological distinctions.\n- Retrieve Repo127/107/113 when explaining the collection-to-analysis pipeline.",
+      "source_line_start": 1547,
+      "source_line_end": 1555
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "41. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "41. Bottom line"
+      ],
+      "content": "`Thesis` is a high-value **research correctness and provenance** repository. Its strongest signal is not the amount of Python code; it is the deliberate refusal to let ambiguous logs, rounded timestamps, stale outputs or hidden interval assumptions silently define the dataset. That is mature experimental software engineering and a strong capstone to the wireless-research trajectory.\n\n<!-- END REPOSITORY 128 -->\n\n---",
+      "source_line_start": 1555,
+      "source_line_end": 1562
+    }
+  ],
+  "raw_analysis": "# Repository 128 / 134 — `Thesis`\n\n**Descriptive classification:** thesis research post-processing and measurement-provenance repository focused on exact time alignment and extraction of wireless-link metrics.\n\nThe repository is private and modest in size, but the inspected source demonstrates a mature concern that is central to experimental research: preserving the exact relationship between motion events and wireless measurements. The strongest artifact is a substantial extraction script that reads motion logs and wireless-link logs, clips samples to exact forward-motion intervals, preserves raw evidence and explicitly handles stale outputs and ambiguous source files.\n\n## 1. Identity and metadata\n\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/Thesis` |\n| Chronology index | **128 / 134** |\n| Visibility | Private |\n| Active evidence window | June 2026 uploads/processing work |\n| Primary inspected artifact | `scripts/extract-mcs-allfwd.py` |\n| Domain | Wireless/mobile-robot thesis data processing |\n| Product class | Research preprocessing/evidence pipeline |\n| Portfolio Evidence Weight | **4.7/5 for research methodology and data engineering** |\n\n## 2. Repository role in the broader thesis system\n\nEarlier repositories contain collection scripts, mobile-robot experiments, Wi-Fi/5G procedures and visualization. Repo128 is different: it sits downstream of acquisition and decides exactly which wireless samples belong to which physical motion interval.\n\nThat makes it a **measurement-provenance repository**. Errors here can change the statistical population later used in figures or conclusions.\n\n## 3. Evidence basis\n\nThe strongest inspected commit adds a roughly 800-line Python extractor. The source is detailed enough to establish direct authorship of the processing workflow, including log discovery, parsing, interval definition, clipping, output management and diagnostic counts.\n\nThe private repository name `Thesis` does not by itself prove the contents or acceptance of the final thesis manuscript; this entry remains bounded to inspected research tooling.\n\n## 4. Exact timestamp policy\n\nThe script explicitly preserves millisecond precision and states that motion timestamps are used exactly rather than floored, ceiled or rounded.\n\nThis is an important methodological choice because apparently minor time quantization can systematically include or exclude samples around trajectory boundaries.\n\n## 5. Interval-membership rule\n\nWireless records are included when their timestamps satisfy the closed interval relationship:\n\n`start_timestamp <= sample_timestamp <= stop_timestamp`.\n\nMaking the boundary rule explicit is good scientific software practice. The alternative—implicit parser/loop behavior—would make edge cases difficult to reproduce.\n\n## 6. Motion-event interpretation\n\nThe workflow treats all extracted events as forward-motion intervals and does not alternate directions based on event order. That is valuable because it avoids injecting a directional assumption that the source log no longer supports.\n\nThe corpus should preserve this as a methodological correction rather than interpreting all trajectories through a generic odd/even rule.\n\n## 7. Motion-log parsing\n\nThe script parses event starts/stops, duration-related fields and timezone/timestamp content from the motion log. Events are globally sorted before wireless clipping.\n\nThis shows that event chronology is reconstructed deliberately rather than assumed from arbitrary file ordering.\n\n## 8. Wireless-link parsing\n\nThe extractor targets downlink and uplink MCS fields from wireless logs while retaining the original line content. This creates two useful representations:\n\n- normalized values suitable for later analysis;\n- original evidence suitable for debugging or audit.\n\n## 9. Raw-evidence preservation\n\nKeeping the raw absolute log row alongside extracted values is a strong provenance decision. If a result looks wrong later, the processed output can be traced back to the original measurement text without rerunning the entire experiment.\n\nThis is a recurring maturity signal across late research repositories: normalized data no longer replaces raw evidence.\n\n## 10. Encoding resilience\n\nThe implementation attempts multiple text encodings when reading logs. This is practical research software engineering because logs generated by vendor tools, terminals or copied environments are often not perfectly standardized.\n\nThe tradeoff is that silent fallback must not hide genuine data corruption; diagnostics should still identify undecodable files.\n\n## 11. Recursive log discovery\n\nWireless logs can be found recursively rather than from a single hard-coded filename. This supports experiments whose run folders or nested exports evolve over time.\n\nFlexible discovery is useful, but it also raises the risk of accidentally including stale or duplicate files.\n\n## 12. Single-motion-log safety guard\n\nThe script can require that exactly one motion log be present. This is an excellent defensive feature because accidental retention of an old motion log could silently generate a plausible but incorrect extraction.\n\nIt treats ambiguous input as an error condition rather than guessing.\n\n## 13. Stale-output handling\n\nThe workflow removes stale generated MCS outputs and explicitly eliminates backward-direction artifacts that no longer belong to the all-forward methodology.\n\nThis prevents old files from masquerading as current results—an important issue in iterative research directories.\n\n## 14. Global event ordering\n\nSorting all motion events before extraction ensures output chronology does not depend on source file enumeration or parser discovery order.\n\nThis is small implementation detail with large reproducibility value.\n\n## 15. Elapsed-time normalization\n\nWireless time is normalized relative to the first wireless sample and the workflow enforces a maximum experiment horizon of **57.00 seconds** for the relevant processing path.\n\nThe 57-second boundary is domain-specific and must be documented in the experiment design; hard-coded experimental constants without provenance can become fragile if trajectories change.\n\n## 16. Boundary correctness\n\nBecause exact timestamps and a fixed maximum horizon matter, high-value tests should explicitly include samples at:\n\n- exactly the motion start;\n- just before motion start;\n- exactly motion stop;\n- just after motion stop;\n- exactly 57.00 seconds;\n- just beyond the 57.00-second cutoff.\n\nThese edge cases are more important than generic “script runs” tests.\n\n## 17. Dropped-row accounting\n\nThe script counts rows that are dropped during extraction. This is a strong diagnostic feature because preprocessing should reveal how much source evidence was excluded rather than silently returning a smaller dataset.\n\nA mature analysis can then distinguish “no samples existed” from “samples existed but failed parsing/interval criteria.”\n\n## 18. Source-file recording\n\nOutputs preserve or report the source files used. That directly supports reproducibility and later audit.\n\nThis is especially important when the repository contains several repeated experimental runs with similar filenames.\n\n## 19. Research-correctness orientation\n\nThe code demonstrates a shift from convenience scripting toward **methodological defensive programming**. Safety guards, stale-file removal, exact boundaries and explicit diagnostics all exist to prevent incorrect scientific conclusions rather than merely runtime exceptions.\n\n## 20. Direct authored skill evidence\n\n- Python research-data processing.\n- timestamp parsing and interval matching.\n- recursive filesystem workflows.\n- MCS extraction from radio/network logs.\n- provenance-preserving data transformation.\n- defensive input discovery.\n- diagnostic accounting.\n- experiment-specific normalization.\n\n## 21. Capabilities not evidenced\n\nThis repository alone does not prove:\n\n- thesis defense outcome;\n- final statistical conclusions;\n- radio-driver implementation;\n- Wi-Fi/5G stack development;\n- novel MCS algorithms;\n- database/data-warehouse scale ETL;\n- publication acceptance.\n\nThose claims require other artifacts.\n\n## 22. Architecture\n\nThe preprocessing architecture is intentionally file-based:\n\n```text\nmotion event log\n        +\nwireless link logs\n        |\n        v\nsource discovery + validation\n        |\n        v\ntimestamp parsing\n        |\n        v\ninterval clipping / MCS extraction\n        |\n        v\nnormalized per-event outputs + diagnostics\n```\n\nFor a thesis-sized workflow this is reasonable and transparent.\n\n## 23. Responsibility\n\nThe inspected script contains enough project-specific rules to support strong direct ownership of the preprocessing method. The radio measurements themselves may come from external tools/hardware, but the mapping from logs to analytical windows is clearly repository-specific work.\n\n## 24. Complexity\n\nAlgorithmic complexity is not the dominant challenge. The hard part is semantic correctness across messy logs, timestamps, directories and experiment rules.\n\nThis is characteristic of real research data engineering: simple comparisons can carry high scientific consequence.\n\n## 25. Scale\n\nExpected scale is multiple experiment logs/runs rather than massive datasets. The code optimizes for inspectability and correctness over distributed processing.\n\nThat is appropriate to the domain.\n\n## 26. Decisions and tradeoffs\n\nMajor decisions include:\n\n- exact timestamp boundaries rather than rounded seconds;\n- forward-only interpretation rather than inferred alternation;\n- file-based transparent outputs rather than opaque database ingestion;\n- source-line preservation rather than normalized-only records;\n- failing on ambiguous motion-log discovery rather than guessing;\n- cleanup of stale outputs before regeneration.\n\nThese decisions favor reproducibility over convenience.\n\n## 27. Engineering judgment\n\nThe strongest judgment signal is knowing where preprocessing can silently invalidate results. Exact interval semantics and source ambiguity are treated as first-class engineering problems.\n\nThis is more mature than adding statistical sophistication on top of incorrectly segmented data.\n\n## 28. Mistakes and lessons\n\nThe existence of stale backward outputs and a later all-forward workflow indicates methodology evolved. The correct lesson is positive: old assumptions were not hidden; processing was changed and stale derivatives were deliberately removed.\n\nThe remaining lesson is to externalize experiment constants such as the 57-second window into a run manifest or configuration with explicit rationale.\n\n## 29. Testing maturity\n\nThe code is written defensively, but the inspected evidence does not establish a formal automated unit-test suite. This is a gap because preprocessing algorithms benefit enormously from fixture-based tests.\n\nA small library of synthetic logs could validate every important boundary and parsing condition.\n\n## 30. CI/CD\n\nNo major CI/CD system is proven. For private thesis processing, a lightweight test workflow on every change would still be valuable because it prevents late-stage figure regeneration from changing semantics unexpectedly.\n\n## 31. Documentation\n\nCode comments document key rules unusually clearly. The repository-level README is minimal, so the methodology is concentrated in source rather than an experiment-data dictionary.\n\nA top-level processing specification would make the logic easier for reviewers to audit without reading implementation details.\n\n## 32. Repository hygiene\n\nPositive hygiene includes explicit stale-output removal and source validation. Private visibility also reduces exposure of experiment details.\n\nThe repository should continue to keep generated figures/outputs distinguishable from raw logs and source code so provenance remains unambiguous.\n\n## 33. Reliability and failure modes\n\nHighest-risk failures:\n\n- wrong motion log selected;\n- timezone mismatch;\n- fractional timestamps parsed incorrectly;\n- multiple logs overlap;\n- experiment duration constant changes without code update;\n- malformed MCS rows are dropped unexpectedly;\n- stale generated files are interpreted as current.\n\nThe current design directly addresses several of these.\n\n## 34. Skill ratings\n\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python research scripting | **4.6/5** | Substantial direct code |\n| Data preprocessing | **4.7/5** | Core repository purpose |\n| Time-series alignment | **4.8/5** | Exact interval semantics |\n| Experiment provenance | **4.9/5** | Raw rows/source files/cleanup/guards |\n| Wireless metric processing | **4.4/5** | DL/UL MCS extraction |\n| Statistical analysis | **3.0/5 from this repo** | Preprocessing focus, not full stats pipeline |\n| Research methodology | **4.8/5** | Defensive scientific workflow |\n\n## 35. Longitudinal comparison\n\nRepo127 makes live samples observable and synchronized. Repo128 determines exactly which samples belong in each analytical window. Repo107/113 demonstrate field/lab collection; this repository demonstrates the increasingly formal downstream evidence discipline needed for thesis-quality analysis.\n\n## 36. Portfolio Evidence Weight\n\n**4.7/5 for research methodology and data engineering.**\n\nIt is one of the best corpus examples of correctness-oriented preprocessing. The score is held below the absolute maximum only because the repository does not independently contain the entire thesis methodology, statistics and final conclusions.\n\n## 37. Current relevance\n\nHighly relevant to research software, data analysis, wireless validation, test engineering, performance analysis and any role where logs from physical experiments must be transformed into defensible datasets.\n\n## 38. Product failure potential\n\nA preprocessing bug can be scientifically severe: it may produce clean plots and statistically significant results from the wrong sample population. This is a classic silent failure.\n\nTherefore correctness, provenance and reproducibility are more important than throughput for this system.\n\n## 39. Human impact\n\nThe direct users are the researcher and reviewers. Correct processing protects research credibility and reduces the chance that decisions or publications are based on misaligned measurements.\n\n## 40. RAG retrieval warnings\n\n- Do not expose private experiment paths or identifiers.\n- Do not infer thesis conclusions from preprocessing code.\n- Do not say the repository implements wireless MCS algorithms; it extracts reported MCS values.\n- Preserve the exact-timestamp and all-forward methodological distinctions.\n- Retrieve Repo127/107/113 when explaining the collection-to-analysis pipeline.\n\n## 41. Bottom line\n\n`Thesis` is a high-value **research correctness and provenance** repository. Its strongest signal is not the amount of Python code; it is the deliberate refusal to let ambiguous logs, rounded timestamps, stale outputs or hidden interval assumptions silently define the dataset. That is mature experimental software engineering and a strong capstone to the wireless-research trajectory.\n\n<!-- END REPOSITORY 128 -->\n\n---\n"
+}

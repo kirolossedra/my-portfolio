@@ -1,0 +1,1224 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 37,
+  "repository_total": 134,
+  "repository_name": "Fan-Controller",
+  "header_title": "`Fan-Controller`",
+  "repository_slug": "kirolossedra/Fan-Controller",
+  "repository_url": "https://github.com/kirolossedra/Fan-Controller",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-028-039.md",
+    "line_start": 6195,
+    "line_end": 6892,
+    "sha256": "8a5c94fa4f16fdaec5972b7e9b28f122ecfa884a55efa4fe8bf06c45ffdf04ff"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {
+    "repository": "kirolossedra/Fan-Controller",
+    "chronology_index": "037 / 134",
+    "primary_language": "C",
+    "application_author": "Kirolos SEDRA",
+    "owner_authored_driver_dates": "ADC 2021-10-11; DCM/PWM 2021-10-12",
+    "target": "AVR",
+    "sensor": "LM35 temperature",
+    "actuator": "DC motor",
+    "control": "Threshold bands + PWM",
+    "output": "LCD",
+    "shared_infrastructure": "GPIO/LCD/common macros",
+    "tests": "None",
+    "ci": "None"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Embedded C",
+      "rating_5": 3.75,
+      "rating_raw": "3.75/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "AVR",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "ADC",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "PWM",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "DC motor control",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Sensor/actuator integration",
+      "rating_5": 3.75,
+      "rating_raw": "3.75/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Layered driver design",
+      "rating_5": 3.5,
+      "rating_raw": "3.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Control robustness",
+      "rating_5": 2.0,
+      "rating_raw": "2.0/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    },
+    {
+      "skill": "Testing/reliability",
+      "rating_5": 1.5,
+      "rating_raw": "1.5/5",
+      "source_section_id": "s017",
+      "source_section_title": "15. Direct skill evidence ratings",
+      "evidence_interpretation": "Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity."
+    }
+  ],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Project identity"
+      ],
+      "text": "## Project identity\n**Descriptive name:** **AVR Temperature-Controlled Fan with ADC, PWM and DC-Motor Drivers**\n\nA more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\nCorrect classification:\n\n> **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\n---"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "1. RAG Metadata"
+      ],
+      "text": "## 1. RAG Metadata\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Fan-Controller` |\n| Chronology index | **037 / 134** |\n| Primary language | C |\n| Application author | Kirolos SEDRA |\n| Owner-authored driver dates | ADC 2021-10-11; DCM/PWM 2021-10-12 |\n| Target | AVR |\n| Sensor | LM35 temperature |\n| Actuator | DC motor |\n| Control | Threshold bands + PWM |\n| Output | LCD |\n| Shared infrastructure | GPIO/LCD/common macros |\n| Tests | None |\n| CI | None |\n\n---"
+    },
+    "summary": {
+      "section_ids": [
+        "s053",
+        "s063"
+      ],
+      "titles": [
+        "44. Expanded longitudinal summary vector",
+        "54. Repository 037 bottom line"
+      ],
+      "text": "## 44. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 54. Repository 037 bottom line\nA more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.25/5  \n**Engineering maturity:** 3.0/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity."
+    },
+    "chronology": {
+      "section_ids": [
+        "s060"
+      ],
+      "titles": [
+        "51. Current relevance / recency"
+      ],
+      "text": "## 51. Current relevance / recency\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---"
+    },
+    "technical_scope": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "28. Technical realm"
+      ],
+      "text": "## 28. Technical realm\nRepository `Fan-Controller` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C: 3.75/5**\n- **Sensor/actuator integration: 3.75/5**\n- **AVR: 3.5/5**\n- **ADC: 3.5/5**\n- **PWM: 3.5/5**\n\n---"
+    },
+    "architecture": {
+      "section_ids": [
+        "s004",
+        "s035"
+      ],
+      "titles": [
+        "3. Sensor-to-actuator architecture",
+        "30. Architecture / data-flow synthesis"
+      ],
+      "text": "## 3. Sensor-to-actuator architecture\nThe main loop forms a complete embedded chain:\n\n`LM35 -> ADC -> temperature conversion -> threshold policy -> motor direction/PWM -> LCD status`\n\nThis is materially stronger systems evidence than isolated peripheral-driver exercises because sensing and actuation are connected by application logic.\n\n---\n\n## 30. Architecture / data-flow synthesis\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---"
+    },
+    "skills": {
+      "section_ids": [
+        "s017",
+        "s018",
+        "s019",
+        "s040"
+      ],
+      "titles": [
+        "15. Direct skill evidence ratings",
+        "16. Skill lifecycle",
+        "17. Skill evidence dimensions",
+        "31. Artifact-to-skill evidence map"
+      ],
+      "text": "## 15. Direct skill evidence ratings\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| ADC | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| PWM | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| DC motor control | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Sensor/actuator integration | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Layered driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Control robustness | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Testing/reliability | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 16. Skill lifecycle\n- Historically strong 2021 sensor/actuator embedded evidence.\n- Builds on reusable driver infrastructure and adds owner-authored ADC/DCM/PWM components.\n- Establishes a direct mechatronic control thread before later robotics/sensor work.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 17. Skill evidence dimensions\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 31. Artifact-to-skill evidence map\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Fan-Controller` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **037 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author: Kirolos SEDRA | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored driver dates: ADC 2021-10-11; DCM/PWM 2021-10-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Sensor: LM35 temperature | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Actuator: DC motor | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Control: Threshold bands + PWM | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Output: LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---"
+    },
+    "business_domain": {
+      "section_ids": [
+        "s034"
+      ],
+      "titles": [
+        "29. Product / business / domain realm"
+      ],
+      "text": "## 29. Product / business / domain realm\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---"
+    },
+    "scale": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "20. Scale dimensions"
+      ],
+      "text": "## 20. Scale dimensions\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---"
+    },
+    "maturity": {
+      "section_ids": [
+        "s041",
+        "s054"
+      ],
+      "titles": [
+        "32. Reliability and defensive-engineering maturity",
+        "45. Product and engineering maturity"
+      ],
+      "text": "## 32. Reliability and defensive-engineering maturity\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 45. Product and engineering maturity\n| Measure | Rating |\n|---|---:|\n| Product maturity | **2.25/5** |\n| Engineering maturity | **3.0/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---"
+    },
+    "testing": {
+      "section_ids": [
+        "s028",
+        "s051"
+      ],
+      "titles": [
+        "24. Testing and verification maturity",
+        "42. Testing trajectory update"
+      ],
+      "text": "## 24. Testing and verification maturity\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 42. Testing trajectory update\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s042"
+      ],
+      "titles": [
+        "33. Security and privacy maturity"
+      ],
+      "text": "## 33. Security and privacy maturity\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "25. CI/CD and deployment"
+      ],
+      "text": "## 25. CI/CD and deployment\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---"
+    },
+    "documentation": {
+      "section_ids": [
+        "s030"
+      ],
+      "titles": [
+        "26. Documentation and reproducibility"
+      ],
+      "text": "## 26. Documentation and reproducibility\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---"
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "27. Repository hygiene"
+      ],
+      "text": "## 27. Repository hygiene\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---"
+    },
+    "strengths": {
+      "section_ids": [
+        "s045"
+      ],
+      "titles": [
+        "36. Strengths"
+      ],
+      "text": "## 36. Strengths\n- Direct evidence of **Embedded C** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **ADC** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **PWM** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **DC motor control** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Sensor/actuator integration** at approximately **3.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---"
+    },
+    "weaknesses_debt": {
+      "section_ids": [
+        "s027",
+        "s046"
+      ],
+      "titles": [
+        "23. Mistakes, anti-patterns, and likely lessons",
+        "37. Weaknesses / engineering debt"
+      ],
+      "text": "## 23. Mistakes, anti-patterns, and likely lessons\n- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 37. Weaknesses / engineering debt\n- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---"
+    },
+    "production_evolution": {
+      "section_ids": [
+        "s047"
+      ],
+      "titles": [
+        "38. What production evolution would require"
+      ],
+      "text": "## 38. What production evolution would require\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---"
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s056"
+      ],
+      "titles": [
+        "47. Product / engineering failure potential"
+      ],
+      "text": "## 47. Product / engineering failure potential\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---"
+    },
+    "human_impact": {
+      "section_ids": [
+        "s057"
+      ],
+      "titles": [
+        "48. Human impact / dignity boundary"
+      ],
+      "text": "## 48. Human impact / dignity boundary\nA fan controller can become safety-relevant when it protects equipment or people from overheating. A UI that says “OFF” while the actuator may continue running—or vice versa—shows why status presentation must reflect physical state, and why actuation commands need verification.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---"
+    },
+    "evidence_inference": {
+      "section_ids": [
+        "s049"
+      ],
+      "titles": [
+        "40. Evidence vs. inference register"
+      ],
+      "text": "## 40. Evidence vs. inference register\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s005",
+        "s015",
+        "s016"
+      ],
+      "titles": [
+        "4. Direct owner attribution",
+        "14. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "text": "## 4. Direct owner attribution\nThe main application file is explicitly marked **Author: Kirolos SEDRA**.\n\n`adc.c`, `dcm.c` and `pwm.c` also carry `kirol` author markers.\n\nThis gives unusually strong direct ownership evidence for the core sensor/actuator path.\n\n---\n\n## 14. Origin / contribution / attribution register\n- Main, ADC, DCM and PWM modules explicitly carry owner markers.\n- LM35 and shared infrastructure with external author/shared hashes are credited as reused/integrated.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## Attribution rule\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s020"
+      ],
+      "titles": [
+        "18. Responsibility scope"
+      ],
+      "text": "## 18. Responsibility scope\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---"
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "21. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 21. Engineering decisions and tradeoffs\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---"
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "22. Engineering judgment evidence"
+      ],
+      "text": "## 22. Engineering judgment evidence\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---"
+    },
+    "limitations": {
+      "section_ids": [
+        "s062"
+      ],
+      "titles": [
+        "53. RAG anti-inflation warnings"
+      ],
+      "text": "## 53. RAG anti-inflation warnings\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---"
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s050",
+        "s052",
+        "s053",
+        "s058",
+        "s059",
+        "s061"
+      ],
+      "titles": [
+        "41. Career-field historicity after Repository 037",
+        "43. Systems-engineering trajectory update",
+        "44. Expanded longitudinal summary vector",
+        "49. Longitudinal project comparisons",
+        "50. First / Previous / Current / Corpus-Max ledger update",
+        "52. Cumulative career state after Repository 037"
+      ],
+      "text": "## 41. Career-field historicity after Repository 037\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 43. Systems-engineering trajectory update\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 44. Expanded longitudinal summary vector\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 49. Longitudinal project comparisons\n- Repo036: input/LCD application; Repo037 is stronger in physical sensing and actuation.\n- Repo034: broader standardized driver architecture; Repo037 is smaller but more complete as an end-to-end physical control loop.\n- Repo013/027/030: later sensing becomes autonomous-perception rather than simple embedded control.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max ledger update\n| Ledger field | Update |\n|---|---|\n| Repository | `Fan-Controller` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 52. Cumulative career state after Repository 037\nOne of the strongest direct embedded integration artifacts in the historical set: sensing, conversion, control policy, PWM actuation and UI are connected, while the defects document the gap between functional prototype and dependable controller.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Project identity",
+      "normalized_title": "Project identity",
+      "key": "project_identity",
+      "path": [
+        "Project identity"
+      ],
+      "content": "**Descriptive name:** **AVR Temperature-Controlled Fan with ADC, PWM and DC-Motor Drivers**\n\nA more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\nCorrect classification:\n\n> **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\n---",
+      "source_line_start": 6197,
+      "source_line_end": 6209
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "1. RAG Metadata",
+      "normalized_title": "RAG Metadata",
+      "key": "rag_metadata",
+      "path": [
+        "1. RAG Metadata"
+      ],
+      "content": "| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Fan-Controller` |\n| Chronology index | **037 / 134** |\n| Primary language | C |\n| Application author | Kirolos SEDRA |\n| Owner-authored driver dates | ADC 2021-10-11; DCM/PWM 2021-10-12 |\n| Target | AVR |\n| Sensor | LM35 temperature |\n| Actuator | DC motor |\n| Control | Threshold bands + PWM |\n| Output | LCD |\n| Shared infrastructure | GPIO/LCD/common macros |\n| Tests | None |\n| CI | None |\n\n---",
+      "source_line_start": 6209,
+      "source_line_end": 6229
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "2. Evidence basis and inspection method",
+      "normalized_title": "Evidence basis and inspection method",
+      "key": "evidence_basis_and_inspection_method",
+      "path": [
+        "2. Evidence basis and inspection method"
+      ],
+      "content": "Evidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---",
+      "source_line_start": 6229,
+      "source_line_end": 6244
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "3. Sensor-to-actuator architecture",
+      "normalized_title": "Sensor-to-actuator architecture",
+      "key": "sensor_to_actuator_architecture",
+      "path": [
+        "3. Sensor-to-actuator architecture"
+      ],
+      "content": "The main loop forms a complete embedded chain:\n\n`LM35 -> ADC -> temperature conversion -> threshold policy -> motor direction/PWM -> LCD status`\n\nThis is materially stronger systems evidence than isolated peripheral-driver exercises because sensing and actuation are connected by application logic.\n\n---",
+      "source_line_start": 6244,
+      "source_line_end": 6254
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "4. Direct owner attribution",
+      "normalized_title": "Direct owner attribution",
+      "key": "direct_owner_attribution",
+      "path": [
+        "4. Direct owner attribution"
+      ],
+      "content": "The main application file is explicitly marked **Author: Kirolos SEDRA**.\n\n`adc.c`, `dcm.c` and `pwm.c` also carry `kirol` author markers.\n\nThis gives unusually strong direct ownership evidence for the core sensor/actuator path.\n\n---",
+      "source_line_start": 6254,
+      "source_line_end": 6264
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "5. ADC driver",
+      "normalized_title": "ADC driver",
+      "key": "adc_driver",
+      "path": [
+        "5. ADC driver"
+      ],
+      "content": "The ADC driver configures reference/prescaling through a configuration structure, selects the requested channel, starts conversion and exposes a separate output-read function that busy-waits until conversion completes.\n\nThis demonstrates:\n\n- AVR ADC registers;\n- channel masking;\n- configurable prescaling/reference;\n- conversion polling.\n\n---",
+      "source_line_start": 6264,
+      "source_line_end": 6277
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "6. ADC comment/code mismatch",
+      "normalized_title": "ADC comment/code mismatch",
+      "key": "adc_comment_code_mismatch",
+      "path": [
+        "6. ADC comment/code mismatch"
+      ],
+      "content": "The ADC comments describe enabling the ADC interrupt (`ADIE = 1`), but the implementation does not visibly set ADIE.\n\nThe actual design is polling-based.\n\nThis discrepancy is a documentation-correctness issue and should not be read as interrupt-driven ADC evidence.\n\n---",
+      "source_line_start": 6277,
+      "source_line_end": 6287
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "7. DC-motor abstraction",
+      "normalized_title": "DC-motor abstraction",
+      "key": "dc_motor_abstraction",
+      "path": [
+        "7. DC-motor abstraction"
+      ],
+      "content": "`DcMotor_Rotate(state, speed)` separates direction pin state from PWM duty cycle.\n\nThe function supports stop plus two directions and then delegates speed control to Timer0 PWM.\n\nThat is a reasonable small HAL-style decomposition.\n\n---",
+      "source_line_start": 6287,
+      "source_line_end": 6297
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "8. PWM generation",
+      "normalized_title": "PWM generation",
+      "key": "pwm_generation",
+      "path": [
+        "8. PWM generation"
+      ],
+      "content": "`PWM_Timer0_Start` computes `OCR0` from a requested duty-cycle percentage and configures Timer0 for fast PWM / non-inverting output with a prescaler.\n\nThis is direct low-level actuator-control evidence.\n\n---",
+      "source_line_start": 6297,
+      "source_line_end": 6305
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "9. Temperature-control policy",
+      "normalized_title": "Temperature-control policy",
+      "key": "temperature_control_policy",
+      "path": [
+        "9. Temperature-control policy"
+      ],
+      "content": "The application maps temperature bands to duty cycles:\n\n- below 30 C: fan state OFF;\n- 30–59 C: 25%;\n- 60–89 C: 50%;\n- 90–119 C: 75%;\n- 120 C and above: 100%.\n\nThis is discrete rule-based control, not closed-loop control theory.\n\n---",
+      "source_line_start": 6305,
+      "source_line_end": 6319
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "10. Critical stop-path defect",
+      "normalized_title": "Critical stop-path defect",
+      "key": "critical_stop_path_defect",
+      "path": [
+        "10. Critical stop-path defect"
+      ],
+      "content": "When `temp < 30`, the code sets `state = DCM_STOP` and updates the LCD—but none of the subsequent duty-cycle `if` statements call `DcMotor_Rotate` for that range.\n\nIf the fan was previously running, the hardware output may therefore retain the previous motor/PWM state instead of actually receiving the stop command.\n\nThis is the most important functional defect in the application.\n\n---",
+      "source_line_start": 6319,
+      "source_line_end": 6329
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "11. No hysteresis",
+      "normalized_title": "No hysteresis",
+      "key": "no_hysteresis",
+      "path": [
+        "11. No hysteresis"
+      ],
+      "content": "Thresholds have no hysteresis.\n\nNear 30/60/90/120 C, noisy measurements can repeatedly switch between speed bands.\n\nA more mature controller would use hysteresis, filtering, dwell time or a continuous mapping.\n\n---",
+      "source_line_start": 6329,
+      "source_line_end": 6339
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "12. Sensor fault handling",
+      "normalized_title": "Sensor fault handling",
+      "key": "sensor_fault_handling",
+      "path": [
+        "12. Sensor fault handling"
+      ],
+      "content": "There is no observed handling for:\n\n- disconnected sensor;\n- ADC saturation;\n- implausible temperature;\n- stuck reading;\n- fan tachometer feedback;\n- actuator failure.\n\nThat is acceptable for an educational project but prevents reliability claims.\n\n---",
+      "source_line_start": 6339,
+      "source_line_end": 6354
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "13. Shared-versus-owned drivers",
+      "normalized_title": "Shared-versus-owned drivers",
+      "key": "shared_versus_owned_drivers",
+      "path": [
+        "13. Shared-versus-owned drivers"
+      ],
+      "content": "The LM35 driver explicitly credits Mohamed Tarek and several GPIO/LCD blobs match reused course-library files.\n\nCorrect attribution:\n\n- direct owner work: application, ADC, DCM, PWM modules with owner markers;\n- integrated infrastructure: LM35 conversion helper, GPIO/LCD/shared headers.\n\nThis actually strengthens the engineering story: it shows composition of owned and reused modules rather than pretending every line was newly invented.\n\n---",
+      "source_line_start": 6354,
+      "source_line_end": 6367
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "14. Origin / contribution / attribution register",
+      "normalized_title": "Origin / contribution / attribution register",
+      "key": "origin_contribution_attribution_register",
+      "path": [
+        "14. Origin / contribution / attribution register"
+      ],
+      "content": "- Main, ADC, DCM and PWM modules explicitly carry owner markers.\n- LM35 and shared infrastructure with external author/shared hashes are credited as reused/integrated.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 6367,
+      "source_line_end": 6378
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Attribution rule",
+      "normalized_title": "Attribution rule",
+      "key": "attribution_rule",
+      "path": [
+        "14. Origin / contribution / attribution register",
+        "Attribution rule"
+      ],
+      "content": "Credit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---",
+      "source_line_start": 6372,
+      "source_line_end": 6378
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "15. Direct skill evidence ratings",
+      "normalized_title": "Direct skill evidence ratings",
+      "key": "direct_skill_evidence_ratings",
+      "path": [
+        "15. Direct skill evidence ratings"
+      ],
+      "content": "| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| ADC | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| PWM | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| DC motor control | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Sensor/actuator integration | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Layered driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Control robustness | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Testing/reliability | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---",
+      "source_line_start": 6378,
+      "source_line_end": 6396
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "16. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "16. Skill lifecycle"
+      ],
+      "content": "- Historically strong 2021 sensor/actuator embedded evidence.\n- Builds on reusable driver infrastructure and adds owner-authored ADC/DCM/PWM components.\n- Establishes a direct mechatronic control thread before later robotics/sensor work.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---",
+      "source_line_start": 6396,
+      "source_line_end": 6406
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "17. Skill evidence dimensions",
+      "normalized_title": "Skill evidence dimensions",
+      "key": "skill_evidence_dimensions",
+      "path": [
+        "17. Skill evidence dimensions"
+      ],
+      "content": "| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---",
+      "source_line_start": 6406,
+      "source_line_end": 6419
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "18. Responsibility scope",
+      "normalized_title": "Responsibility scope",
+      "key": "responsibility_scope",
+      "path": [
+        "18. Responsibility scope"
+      ],
+      "content": "### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 6419,
+      "source_line_end": 6435
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Demonstrated responsibility",
+      "normalized_title": "Demonstrated responsibility",
+      "key": "demonstrated_responsibility",
+      "path": [
+        "18. Responsibility scope",
+        "Demonstrated responsibility"
+      ],
+      "content": "- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.",
+      "source_line_start": 6421,
+      "source_line_end": 6427
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Not demonstrated",
+      "normalized_title": "Not demonstrated",
+      "key": "not_demonstrated",
+      "path": [
+        "18. Responsibility scope",
+        "Not demonstrated"
+      ],
+      "content": "- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---",
+      "source_line_start": 6427,
+      "source_line_end": 6435
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "19. Complexity dimensions",
+      "normalized_title": "Complexity dimensions",
+      "key": "complexity_dimensions",
+      "path": [
+        "19. Complexity dimensions"
+      ],
+      "content": "| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---",
+      "source_line_start": 6435,
+      "source_line_end": 6448
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "20. Scale dimensions",
+      "normalized_title": "Scale dimensions",
+      "key": "scale_dimensions",
+      "path": [
+        "20. Scale dimensions"
+      ],
+      "content": "Scale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---",
+      "source_line_start": 6448,
+      "source_line_end": 6460
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "21. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "21. Engineering decisions and tradeoffs"
+      ],
+      "content": "The repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---",
+      "source_line_start": 6460,
+      "source_line_end": 6473
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "22. Engineering judgment evidence",
+      "normalized_title": "Engineering judgment evidence",
+      "key": "engineering_judgment_evidence",
+      "path": [
+        "22. Engineering judgment evidence"
+      ],
+      "content": "Positive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---",
+      "source_line_start": 6473,
+      "source_line_end": 6483
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "23. Mistakes, anti-patterns, and likely lessons",
+      "normalized_title": "Mistakes, anti-patterns, and likely lessons",
+      "key": "mistakes_anti_patterns_and_likely_lessons",
+      "path": [
+        "23. Mistakes, anti-patterns, and likely lessons"
+      ],
+      "content": "- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---",
+      "source_line_start": 6483,
+      "source_line_end": 6496
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "24. Testing and verification maturity",
+      "normalized_title": "Testing and verification maturity",
+      "key": "testing_and_verification_maturity",
+      "path": [
+        "24. Testing and verification maturity"
+      ],
+      "content": "No stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---",
+      "source_line_start": 6496,
+      "source_line_end": 6507
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "25. CI/CD and deployment",
+      "normalized_title": "CI/CD and deployment",
+      "key": "ci_cd_and_deployment",
+      "path": [
+        "25. CI/CD and deployment"
+      ],
+      "content": "No mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---",
+      "source_line_start": 6507,
+      "source_line_end": 6515
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "26. Documentation and reproducibility",
+      "normalized_title": "Documentation and reproducibility",
+      "key": "documentation_and_reproducibility",
+      "path": [
+        "26. Documentation and reproducibility"
+      ],
+      "content": "Documentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---",
+      "source_line_start": 6515,
+      "source_line_end": 6523
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "27. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "27. Repository hygiene"
+      ],
+      "content": "Repository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---",
+      "source_line_start": 6523,
+      "source_line_end": 6531
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "28. Technical realm",
+      "normalized_title": "Technical realm",
+      "key": "technical_realm",
+      "path": [
+        "28. Technical realm"
+      ],
+      "content": "Repository `Fan-Controller` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C: 3.75/5**\n- **Sensor/actuator integration: 3.75/5**\n- **AVR: 3.5/5**\n- **ADC: 3.5/5**\n- **PWM: 3.5/5**\n\n---",
+      "source_line_start": 6531,
+      "source_line_end": 6551
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Strongest local skill signals",
+      "normalized_title": "Strongest local skill signals",
+      "key": "strongest_local_skill_signals",
+      "path": [
+        "28. Technical realm",
+        "Strongest local skill signals"
+      ],
+      "content": "- **Embedded C: 3.75/5**\n- **Sensor/actuator integration: 3.75/5**\n- **AVR: 3.5/5**\n- **ADC: 3.5/5**\n- **PWM: 3.5/5**\n\n---",
+      "source_line_start": 6541,
+      "source_line_end": 6551
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "29. Product / business / domain realm",
+      "normalized_title": "Product / business / domain realm",
+      "key": "product_business_domain_realm",
+      "path": [
+        "29. Product / business / domain realm"
+      ],
+      "content": "The repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---",
+      "source_line_start": 6551,
+      "source_line_end": 6563
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "30. Architecture / data-flow synthesis",
+      "normalized_title": "Architecture / data-flow synthesis",
+      "key": "architecture_data_flow_synthesis",
+      "path": [
+        "30. Architecture / data-flow synthesis"
+      ],
+      "content": "The architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 6563,
+      "source_line_end": 6588
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Inputs / triggers",
+      "normalized_title": "Inputs / triggers",
+      "key": "inputs_triggers",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Inputs / triggers"
+      ],
+      "content": "- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;",
+      "source_line_start": 6567,
+      "source_line_end": 6571
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Processing",
+      "normalized_title": "Processing",
+      "key": "processing",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Processing"
+      ],
+      "content": "- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;",
+      "source_line_start": 6571,
+      "source_line_end": 6575
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Outputs / effects",
+      "normalized_title": "Outputs / effects",
+      "key": "outputs_effects",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Outputs / effects"
+      ],
+      "content": "- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.",
+      "source_line_start": 6575,
+      "source_line_end": 6579
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Missing production layers",
+      "normalized_title": "Missing production layers",
+      "key": "missing_production_layers",
+      "path": [
+        "30. Architecture / data-flow synthesis",
+        "Missing production layers"
+      ],
+      "content": "- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---",
+      "source_line_start": 6579,
+      "source_line_end": 6588
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "31. Artifact-to-skill evidence map",
+      "normalized_title": "Artifact-to-skill evidence map",
+      "key": "artifact_to_skill_evidence_map",
+      "path": [
+        "31. Artifact-to-skill evidence map"
+      ],
+      "content": "| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Fan-Controller` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **037 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author: Kirolos SEDRA | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored driver dates: ADC 2021-10-11; DCM/PWM 2021-10-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Sensor: LM35 temperature | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Actuator: DC motor | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Control: Threshold bands + PWM | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Output: LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---",
+      "source_line_start": 6588,
+      "source_line_end": 6607
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "32. Reliability and defensive-engineering maturity",
+      "normalized_title": "Reliability and defensive-engineering maturity",
+      "key": "reliability_and_defensive_engineering_maturity",
+      "path": [
+        "32. Reliability and defensive-engineering maturity"
+      ],
+      "content": "Reliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---",
+      "source_line_start": 6607,
+      "source_line_end": 6625
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "33. Security and privacy maturity",
+      "normalized_title": "Security and privacy maturity",
+      "key": "security_and_privacy_maturity",
+      "path": [
+        "33. Security and privacy maturity"
+      ],
+      "content": "Security is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---",
+      "source_line_start": 6625,
+      "source_line_end": 6639
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "34. Performance and resource-efficiency evidence",
+      "normalized_title": "Performance and resource-efficiency evidence",
+      "key": "performance_and_resource_efficiency_evidence",
+      "path": [
+        "34. Performance and resource-efficiency evidence"
+      ],
+      "content": "Performance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---",
+      "source_line_start": 6639,
+      "source_line_end": 6656
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "35. Maintainability and modularity",
+      "normalized_title": "Maintainability and modularity",
+      "key": "maintainability_and_modularity",
+      "path": [
+        "35. Maintainability and modularity"
+      ],
+      "content": "Maintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---",
+      "source_line_start": 6656,
+      "source_line_end": 6668
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "36. Strengths",
+      "normalized_title": "Strengths",
+      "key": "strengths",
+      "path": [
+        "36. Strengths"
+      ],
+      "content": "- Direct evidence of **Embedded C** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **ADC** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **PWM** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **DC motor control** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Sensor/actuator integration** at approximately **3.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---",
+      "source_line_start": 6668,
+      "source_line_end": 6681
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "37. Weaknesses / engineering debt",
+      "normalized_title": "Weaknesses / engineering debt",
+      "key": "weaknesses_engineering_debt",
+      "path": [
+        "37. Weaknesses / engineering debt"
+      ],
+      "content": "- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---",
+      "source_line_start": 6681,
+      "source_line_end": 6694
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "38. What production evolution would require",
+      "normalized_title": "What production evolution would require",
+      "key": "what_production_evolution_would_require",
+      "path": [
+        "38. What production evolution would require"
+      ],
+      "content": "A production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---",
+      "source_line_start": 6694,
+      "source_line_end": 6711
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "39. Project potential",
+      "normalized_title": "Project potential",
+      "key": "project_potential",
+      "path": [
+        "39. Project potential"
+      ],
+      "content": "The repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---",
+      "source_line_start": 6711,
+      "source_line_end": 6721
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "40. Evidence vs. inference register",
+      "normalized_title": "Evidence vs. inference register",
+      "key": "evidence_vs_inference_register",
+      "path": [
+        "40. Evidence vs. inference register"
+      ],
+      "content": "| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---",
+      "source_line_start": 6721,
+      "source_line_end": 6737
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "41. Career-field historicity after Repository 037",
+      "normalized_title": "Career-field historicity after Repository 037",
+      "key": "career_field_historicity_after_repository_037",
+      "path": [
+        "41. Career-field historicity after Repository 037"
+      ],
+      "content": "This repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---",
+      "source_line_start": 6737,
+      "source_line_end": 6747
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "42. Testing trajectory update",
+      "normalized_title": "Testing trajectory update",
+      "key": "testing_trajectory_update",
+      "path": [
+        "42. Testing trajectory update"
+      ],
+      "content": "This artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---",
+      "source_line_start": 6747,
+      "source_line_end": 6757
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "43. Systems-engineering trajectory update",
+      "normalized_title": "Systems-engineering trajectory update",
+      "key": "systems_engineering_trajectory_update",
+      "path": [
+        "43. Systems-engineering trajectory update"
+      ],
+      "content": "Systems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---",
+      "source_line_start": 6757,
+      "source_line_end": 6767
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "44. Expanded longitudinal summary vector",
+      "normalized_title": "Expanded longitudinal summary vector",
+      "key": "expanded_longitudinal_summary_vector",
+      "path": [
+        "44. Expanded longitudinal summary vector"
+      ],
+      "content": "| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---",
+      "source_line_start": 6767,
+      "source_line_end": 6781
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "45. Product and engineering maturity",
+      "normalized_title": "Product and engineering maturity",
+      "key": "product_and_engineering_maturity",
+      "path": [
+        "45. Product and engineering maturity"
+      ],
+      "content": "| Measure | Rating |\n|---|---:|\n| Product maturity | **2.25/5** |\n| Engineering maturity | **3.0/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---",
+      "source_line_start": 6781,
+      "source_line_end": 6794
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "46. Standardized product / engineering evaluation matrix",
+      "normalized_title": "Standardized product / engineering evaluation matrix",
+      "key": "standardized_product_engineering_evaluation_matrix",
+      "path": [
+        "46. Standardized product / engineering evaluation matrix"
+      ],
+      "content": "| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---",
+      "source_line_start": 6794,
+      "source_line_end": 6815
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "47. Product / engineering failure potential",
+      "normalized_title": "Product / engineering failure potential",
+      "key": "product_engineering_failure_potential",
+      "path": [
+        "47. Product / engineering failure potential"
+      ],
+      "content": "Failure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---",
+      "source_line_start": 6815,
+      "source_line_end": 6823
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "48. Human impact / dignity boundary",
+      "normalized_title": "Human impact / dignity boundary",
+      "key": "human_impact_dignity_boundary",
+      "path": [
+        "48. Human impact / dignity boundary"
+      ],
+      "content": "A fan controller can become safety-relevant when it protects equipment or people from overheating. A UI that says “OFF” while the actuator may continue running—or vice versa—shows why status presentation must reflect physical state, and why actuation commands need verification.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---",
+      "source_line_start": 6823,
+      "source_line_end": 6831
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "49. Longitudinal project comparisons",
+      "normalized_title": "Longitudinal project comparisons",
+      "key": "longitudinal_project_comparisons",
+      "path": [
+        "49. Longitudinal project comparisons"
+      ],
+      "content": "- Repo036: input/LCD application; Repo037 is stronger in physical sensing and actuation.\n- Repo034: broader standardized driver architecture; Repo037 is smaller but more complete as an end-to-end physical control loop.\n- Repo013/027/030: later sensing becomes autonomous-perception rather than simple embedded control.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---",
+      "source_line_start": 6831,
+      "source_line_end": 6841
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "50. First / Previous / Current / Corpus-Max ledger update",
+      "normalized_title": "First / Previous / Current / Corpus-Max ledger update",
+      "key": "first_previous_current_corpus_max_ledger_update",
+      "path": [
+        "50. First / Previous / Current / Corpus-Max ledger update"
+      ],
+      "content": "| Ledger field | Update |\n|---|---|\n| Repository | `Fan-Controller` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---",
+      "source_line_start": 6841,
+      "source_line_end": 6854
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "51. Current relevance / recency",
+      "normalized_title": "Current relevance / recency",
+      "key": "current_relevance_recency",
+      "path": [
+        "51. Current relevance / recency"
+      ],
+      "content": "Recency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---",
+      "source_line_start": 6854,
+      "source_line_end": 6862
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "52. Cumulative career state after Repository 037",
+      "normalized_title": "Cumulative career state after Repository 037",
+      "key": "cumulative_career_state_after_repository_037",
+      "path": [
+        "52. Cumulative career state after Repository 037"
+      ],
+      "content": "One of the strongest direct embedded integration artifacts in the historical set: sensing, conversion, control policy, PWM actuation and UI are connected, while the defects document the gap between functional prototype and dependable controller.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---",
+      "source_line_start": 6862,
+      "source_line_end": 6870
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "53. RAG anti-inflation warnings",
+      "normalized_title": "RAG anti-inflation warnings",
+      "key": "rag_anti_inflation_warnings",
+      "path": [
+        "53. RAG anti-inflation warnings"
+      ],
+      "content": "- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---",
+      "source_line_start": 6870,
+      "source_line_end": 6883
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "54. Repository 037 bottom line",
+      "normalized_title": "Repository 037 bottom line",
+      "key": "repository_037_bottom_line",
+      "path": [
+        "54. Repository 037 bottom line"
+      ],
+      "content": "A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.25/5  \n**Engineering maturity:** 3.0/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.",
+      "source_line_start": 6883,
+      "source_line_end": 6893
+    }
+  ],
+  "raw_analysis": "# Repository 037 / 134 — `Fan-Controller`\n\n## Project identity\n\n**Descriptive name:** **AVR Temperature-Controlled Fan with ADC, PWM and DC-Motor Drivers**\n\nA more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\nCorrect classification:\n\n> **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\n---\n\n## 1. RAG Metadata\n\n| Field | Value |\n|---|---|\n| Repository | `kirolossedra/Fan-Controller` |\n| Chronology index | **037 / 134** |\n| Primary language | C |\n| Application author | Kirolos SEDRA |\n| Owner-authored driver dates | ADC 2021-10-11; DCM/PWM 2021-10-12 |\n| Target | AVR |\n| Sensor | LM35 temperature |\n| Actuator | DC motor |\n| Control | Threshold bands + PWM |\n| Output | LCD |\n| Shared infrastructure | GPIO/LCD/common macros |\n| Tests | None |\n| CI | None |\n\n---\n\n## 2. Evidence basis and inspection method\n\nEvidence inspected from final repository tree, implementation files, repository metadata and commit history where available.\n\nThe analysis uses a strict evidence hierarchy:\n\n1. implementation content and explicit author/provenance markers;\n2. commit/repository metadata;\n3. repository structure and repeated blob identity;\n4. inference only when clearly labeled.\n\nFile presence is **not** automatically treated as original authorship, and repository size is **not** used as a proxy for skill.\n\n---\n\n## 3. Sensor-to-actuator architecture\n\nThe main loop forms a complete embedded chain:\n\n`LM35 -> ADC -> temperature conversion -> threshold policy -> motor direction/PWM -> LCD status`\n\nThis is materially stronger systems evidence than isolated peripheral-driver exercises because sensing and actuation are connected by application logic.\n\n---\n\n## 4. Direct owner attribution\n\nThe main application file is explicitly marked **Author: Kirolos SEDRA**.\n\n`adc.c`, `dcm.c` and `pwm.c` also carry `kirol` author markers.\n\nThis gives unusually strong direct ownership evidence for the core sensor/actuator path.\n\n---\n\n## 5. ADC driver\n\nThe ADC driver configures reference/prescaling through a configuration structure, selects the requested channel, starts conversion and exposes a separate output-read function that busy-waits until conversion completes.\n\nThis demonstrates:\n\n- AVR ADC registers;\n- channel masking;\n- configurable prescaling/reference;\n- conversion polling.\n\n---\n\n## 6. ADC comment/code mismatch\n\nThe ADC comments describe enabling the ADC interrupt (`ADIE = 1`), but the implementation does not visibly set ADIE.\n\nThe actual design is polling-based.\n\nThis discrepancy is a documentation-correctness issue and should not be read as interrupt-driven ADC evidence.\n\n---\n\n## 7. DC-motor abstraction\n\n`DcMotor_Rotate(state, speed)` separates direction pin state from PWM duty cycle.\n\nThe function supports stop plus two directions and then delegates speed control to Timer0 PWM.\n\nThat is a reasonable small HAL-style decomposition.\n\n---\n\n## 8. PWM generation\n\n`PWM_Timer0_Start` computes `OCR0` from a requested duty-cycle percentage and configures Timer0 for fast PWM / non-inverting output with a prescaler.\n\nThis is direct low-level actuator-control evidence.\n\n---\n\n## 9. Temperature-control policy\n\nThe application maps temperature bands to duty cycles:\n\n- below 30 C: fan state OFF;\n- 30–59 C: 25%;\n- 60–89 C: 50%;\n- 90–119 C: 75%;\n- 120 C and above: 100%.\n\nThis is discrete rule-based control, not closed-loop control theory.\n\n---\n\n## 10. Critical stop-path defect\n\nWhen `temp < 30`, the code sets `state = DCM_STOP` and updates the LCD—but none of the subsequent duty-cycle `if` statements call `DcMotor_Rotate` for that range.\n\nIf the fan was previously running, the hardware output may therefore retain the previous motor/PWM state instead of actually receiving the stop command.\n\nThis is the most important functional defect in the application.\n\n---\n\n## 11. No hysteresis\n\nThresholds have no hysteresis.\n\nNear 30/60/90/120 C, noisy measurements can repeatedly switch between speed bands.\n\nA more mature controller would use hysteresis, filtering, dwell time or a continuous mapping.\n\n---\n\n## 12. Sensor fault handling\n\nThere is no observed handling for:\n\n- disconnected sensor;\n- ADC saturation;\n- implausible temperature;\n- stuck reading;\n- fan tachometer feedback;\n- actuator failure.\n\nThat is acceptable for an educational project but prevents reliability claims.\n\n---\n\n## 13. Shared-versus-owned drivers\n\nThe LM35 driver explicitly credits Mohamed Tarek and several GPIO/LCD blobs match reused course-library files.\n\nCorrect attribution:\n\n- direct owner work: application, ADC, DCM, PWM modules with owner markers;\n- integrated infrastructure: LM35 conversion helper, GPIO/LCD/shared headers.\n\nThis actually strengthens the engineering story: it shows composition of owned and reused modules rather than pretending every line was newly invented.\n\n---\n\n## 14. Origin / contribution / attribution register\n\n- Main, ADC, DCM and PWM modules explicitly carry owner markers.\n- LM35 and shared infrastructure with external author/shared hashes are credited as reused/integrated.\n\n### Attribution rule\n\nCredit only the portion supported by direct evidence. Reused libraries, tutorials, starter code, course material and external-author files remain valuable learning/integration evidence but are not converted into personal authorship.\n\n---\n\n## 15. Direct skill evidence ratings\n\n| Skill | Rating | Evidence interpretation |\n|---|---:|---|\n| Embedded C | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| AVR | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| ADC | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| PWM | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| DC motor control | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Sensor/actuator integration | **3.75/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Layered driver design | **3.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Control robustness | **2.0/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n| Testing/reliability | **1.5/5** | Direct/guided evidence in this repository; rating is local to the artifact and bounded by provenance/maturity. |\n\nRatings are evidence weights, not claims that a person is reducible to a score. They describe what this repository can support in a career RAG.\n\n---\n\n## 16. Skill lifecycle\n\n- Historically strong 2021 sensor/actuator embedded evidence.\n- Builds on reusable driver infrastructure and adds owner-authored ADC/DCM/PWM components.\n- Establishes a direct mechatronic control thread before later robotics/sensor work.\n\nLifecycle status categories used by the corpus: **first appearance / reinforcement / deepening / superseded / historical-only / absent**.\n\n---\n\n## 17. Skill evidence dimensions\n\n| Dimension | Assessment |\n|---|---|\n| Breadth | Determined from the distinct technical areas directly present; does not count duplicate files as new skills. |\n| Depth | Determined from implementation specificity, correctness and mathematical/system reasoning. |\n| Autonomy | Reduced where explicit course/template/external-author evidence exists. |\n| Recency | Kept separate from historical source dates when old work was archived later. |\n| Production transferability | Reduced when testing, deployment, security, observability or robustness are absent. |\n| Evidence confidence | High for inspected source facts; moderate for domain inferences; low/zero for unobserved claims. |\n\n---\n\n## 18. Responsibility scope\n\n### Demonstrated responsibility\n\n- understanding or integrating the repository’s directly inspected technical mechanisms;\n- managing the artifact in source control;\n- making at least the changes/experiments supported by provenance and commits.\n\n### Not demonstrated\n\n- production operations ownership unless explicitly observed;\n- organizational/team authority unless explicitly evidenced;\n- safety certification or regulated responsibility unless explicitly evidenced.\n\n---\n\n## 19. Complexity dimensions\n\n| Complexity axis | Assessment |\n|---|---|\n| Algorithmic | Varies by the project-specific implementation analyzed above. |\n| State / control flow | Credited where state, callbacks, interrupts, UI transitions or iterative algorithms are directly present. |\n| Integration | Credited only for actual boundaries between libraries, sensors, peripherals, files or subsystems. |\n| Data | Credited for actual parsing, numerical data, fixtures or serialized representations. |\n| Operational | Low where deployment/monitoring/runtime support is absent. |\n| Human/safety | Evaluated separately below rather than silently folded into technical complexity. |\n\n---\n\n## 20. Scale dimensions\n\nScale is assessed by independent moving parts and operational scope, not raw repository bytes.\n\n- **Code scale:** bounded to the directly relevant source, excluding generated/binary payload size.\n- **User scale:** no large production user base is inferred without evidence.\n- **Data scale:** only explicit rows/files/fixtures are counted.\n- **Deployment scale:** zero/low unless a live deployed system is directly observed.\n- **Team scale:** not inferred from course/reference code.\n\n---\n\n## 21. Engineering decisions and tradeoffs\n\nThe repository demonstrates several decisions visible in its implementation and structure:\n\n- selecting libraries/platform primitives appropriate to the learning problem;\n- trading generality for a smaller educational implementation;\n- using direct/simple mechanisms that make the concept observable;\n- accepting prototype shortcuts that later require validation, testing or refactoring.\n\nThe project-specific sections above identify where those tradeoffs become correctness or maturity limits.\n\n---\n\n## 22. Engineering judgment evidence\n\nPositive judgment evidence includes choosing workable abstractions and completing a coherent experiment/application where observed.\n\nNegative/learning evidence is retained with equal weight: unfinished assumptions, missing validation, attribution boundaries and concrete defects are part of the engineering record.\n\nA portfolio RAG should prefer this truthful mixed picture over converting every repository into a success narrative.\n\n---\n\n## 23. Mistakes, anti-patterns, and likely lessons\n\n- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n\nThese findings are not cosmetic criticism. They identify what later repositories should improve and prevent historical capability inflation.\n\n---\n\n## 24. Testing and verification maturity\n\nNo stronger verification claim is made than the repository supports.\n\n- Interactive/notebook output is treated as execution evidence, **not** equivalent to regression tests.\n- Simulation artifacts are treated as simulation evidence, **not** hardware validation.\n- Manual demonstration is treated as a smoke test only.\n- Absent automated tests, coverage, static analysis and CI are recorded as absent rather than assumed.\n\n---\n\n## 25. CI/CD and deployment\n\nNo mature CI/CD pipeline is credited unless it is directly present in the repository. For this artifact, the metadata table above is authoritative.\n\nThis distinction matters because the ability to make an algorithm run locally is different from the ability to repeatedly build, verify, release and operate it.\n\n---\n\n## 26. Documentation and reproducibility\n\nDocumentation quality is evaluated from what another engineer could reconstruct without oral context.\n\nExpected mature evidence would include: purpose, setup, dependencies, build/run commands, input/output examples, provenance, known limitations and verification procedure. Missing elements reduce reproducibility even when the underlying technical exercise is useful.\n\n---\n\n## 27. Repository hygiene\n\nRepository hygiene considers: generated artifacts, missing assets, dependency manifests, naming, dead/debug code, branch cleanliness and whether source is separated from environment-specific output.\n\nHygiene does not determine personal worth or engineering potential; it determines how reliably this repository can serve as evidence and be reused by another engineer.\n\n---\n\n## 28. Technical realm\n\nRepository `Fan-Controller` belongs to the following evidence-weighted technical realm:\n\n- the directly inspected languages, frameworks, hardware APIs or mathematical methods listed in RAG metadata;\n- the project-specific mechanisms described in the technical sections above;\n- adjacent skills only where an implementation boundary is actually crossed.\n\nThe realm classification intentionally excludes technologies that merely appear in generated files, external starter code or uninspected binary artifacts.\n\n### Strongest local skill signals\n\n- **Embedded C: 3.75/5**\n- **Sensor/actuator integration: 3.75/5**\n- **AVR: 3.5/5**\n- **ADC: 3.5/5**\n- **PWM: 3.5/5**\n\n---\n\n## 29. Product / business / domain realm\n\nThe repository is categorized by the real problem it addresses, not by marketing potential implied by its name.\n\nEvidence-supported domain statement: **A more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.**\n\nNo commercial adoption, revenue, customer deployment, regulated approval or production user base is inferred unless it appears explicitly in the evidence.\n\nThis keeps a technically useful learning artifact from being misrepresented as a shipped business product.\n\n---\n\n## 30. Architecture / data-flow synthesis\n\nThe architecture is reconstructed from source-level relationships rather than invented from repository naming.\n\n### Inputs / triggers\n\n- user input, dataset rows, serialized fixtures, sensor/peripheral state, timer/interrupt events or repository-provided sample data as applicable;\n\n### Processing\n\n- project-specific parsing, transformation, estimation, control, rendering or mapping mechanisms documented above;\n\n### Outputs / effects\n\n- console/notebook results, UI state, object state, actuator command, display output or computed estimates as applicable.\n\n### Missing production layers\n\n- durable observability;\n- formal release pipeline;\n- automated regression verification;\n- operational recovery unless explicitly observed.\n\n---\n\n## 31. Artifact-to-skill evidence map\n\n| Evidence item | What it can support | What it cannot support by itself |\n|---|---|---|\n| Repository: `kirolossedra/Fan-Controller` | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Chronology index: **037 / 134** | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Primary language: C | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Application author: Kirolos SEDRA | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Owner-authored driver dates: ADC 2021-10-11; DCM/PWM 2021-10-12 | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Target: AVR | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Sensor: LM35 temperature | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Actuator: DC motor | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Control: Threshold bands + PWM | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n| Output: LCD | Direct contextual/implementation evidence for this repository. | Independent production maturity or authorship beyond the inspected evidence. |\n\nThis table is deliberately conservative: a file or technology can prove exposure/use without proving architecture ownership, scale or production responsibility.\n\n---\n\n## 32. Reliability and defensive-engineering maturity\n\nReliability is evaluated separately from whether the happy path appears to work.\n\nEvidence checked includes:\n\n- invalid/edge input handling;\n- state initialization;\n- null/error paths;\n- numerical singularities or overflow where relevant;\n- timing/concurrency hazards where relevant;\n- hardware/sensor failure assumptions where relevant;\n- recovery behavior.\n\nThe concrete defect list shows that reliability maturity remains below production level for this artifact. No reliability claim is upgraded merely because a demo output exists.\n\n---\n\n## 33. Security and privacy maturity\n\nSecurity is scoped to the interfaces actually present.\n\n- local educational code with no sensitive boundary receives only limited security relevance;\n- parsers/data boundaries are checked for unsafe defaults and trust assumptions;\n- authentication/access systems are checked for credential handling and protocol integrity;\n- browser projects are checked for external dependencies and user-facing integrity;\n- embedded projects are checked for unsafe actuation/state assumptions rather than being mislabeled as cybersecurity work.\n\nAbsence of a security incident is not evidence of security engineering. Security maturity is credited only when controls are visible.\n\n---\n\n## 34. Performance and resource-efficiency evidence\n\nPerformance claims require measurement. None are inferred from code brevity or small datasets.\n\nThe analysis records algorithmic/resource implications where visible—such as nested loops, blocking delays, matrix inverses, polling loops, notebook-only execution or generated-artifact overhead—but does not invent benchmark numbers.\n\nMissing evidence typically includes:\n\n- runtime profiling;\n- memory profiling;\n- throughput/latency targets;\n- worst-case timing;\n- hardware utilization;\n- scalability tests.\n\n---\n\n## 35. Maintainability and modularity\n\nMaintainability is inferred from concrete code organization, not aesthetics alone.\n\nPositive signals can include module separation, configuration objects, reusable helpers and clear library boundaries.\n\nNegative signals can include mixed provenance without documentation, globals, duplicated/generated files, missing dependency manifests, invalid references, weak naming, debug code and absent tests.\n\nFor this repository, maintainability remains an educational/prototype concern rather than an operationally demonstrated strength.\n\n---\n\n## 36. Strengths\n\n- Direct evidence of **Embedded C** at approximately **3.75/5** within the bounded scope of this artifact.\n- Direct evidence of **AVR** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **ADC** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **PWM** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **DC motor control** at approximately **3.5/5** within the bounded scope of this artifact.\n- Direct evidence of **Sensor/actuator integration** at approximately **3.75/5** within the bounded scope of this artifact.\n- The repository contributes chronological evidence that would be lost if only polished modern projects were retained.\n- Its weaknesses are inspectable enough to support a real learning trajectory rather than a résumé-only claim.\n\n---\n\n## 37. Weaknesses / engineering debt\n\n- Fan stop is not actually commanded on the <30 C path.\n- No hysteresis around thresholds.\n- No sensor/actuator fault detection.\n- No unit or hardware-in-loop tests.\n- ADC documentation does not match polling implementation.\n- No timing/resource analysis.\n- Production-readiness evidence remains materially weaker than learning/implementation evidence.\n- Documentation and verification are not strong enough to transfer ownership safely to another engineer without additional work.\n\n---\n\n## 38. What production evolution would require\n\nA production evolution would need more than code cleanup. At minimum it would require:\n\n1. explicit requirements and supported/unsupported behavior;\n2. dependency/toolchain pinning and reproducible build/run instructions;\n3. automated tests around happy paths and the concrete defects identified above;\n4. static analysis/linting appropriate to the language/domain;\n5. structured error handling and recovery;\n6. security/privacy review where an external or human-facing boundary exists;\n7. performance/timing validation where real-time or large-scale behavior matters;\n8. deployment/operational monitoring if the system becomes a service/product;\n9. provenance/license cleanup for reused/course/template material;\n10. acceptance criteria tied to user/system outcomes rather than demo appearance.\n\n---\n\n## 39. Project potential\n\nThe repository has value primarily as a **career-history and skill-evidence artifact**.\n\nPotential future use depends on whether its core mechanism is still relevant: it may serve as a learning reference, prototype seed, comparison point or evidence of the path toward later systems.\n\nIt should not be revived merely to make the portfolio look larger. Revival is justified only if the mechanism still serves a real engineering or educational purpose.\n\n---\n\n## 40. Evidence vs. inference register\n\n| Claim class | Treatment |\n|---|---|\n| Direct source fact | May be stated confidently. |\n| Explicit author/provenance marker | Governs authorship credit even when repository ownership differs. |\n| Commit/repository metadata | Supports chronology/repository activity, not necessarily original implementation date. |\n| Repeated blob identity | Supports reuse/integration, not fresh implementation. |\n| Domain inference from filenames only | Kept conservative unless source confirms it. |\n| Production scale/team responsibility | Not inferred without direct evidence. |\n| Missing feature | Recorded as absent/unobserved, not assumed. |\n\nThis register is central to making the corpus useful for RAG: retrieval must know not only what was seen, but how strongly it was seen.\n\n---\n\n## 41. Career-field historicity after Repository 037\n\nThis repository updates the longitudinal field timeline rather than standing alone.\n\nThe relevant question is not “what field is the person?” but “which technical fields were evidenced at this point, with what depth, and how did they relate to earlier/later work?”\n\nFields can rise, pause, disappear and return. Historical evidence remains useful even after a later project becomes the stronger current proof.\n\n---\n\n## 42. Testing trajectory update\n\nThis artifact does **not** materially raise the corpus testing ceiling unless explicit automated verification is present.\n\nManual execution, notebook outputs, simulation and directed exercise mains are recorded as lower levels on the testing ladder.\n\nThe career RAG should distinguish implementation skill from verification discipline; one cannot be substituted for the other.\n\n---\n\n## 43. Systems-engineering trajectory update\n\nSystems evidence is credited when the repository crosses real interfaces—sensor to computation, parser to object model, browser observer to presentation state, MCU to peripheral, or estimator to measurement model.\n\nWhere the repository is a single notebook/file, its systems score remains lower even if the underlying mathematics is sophisticated.\n\nThis prevents “technical difficulty” and “system responsibility” from collapsing into the same rating.\n\n---\n\n## 44. Expanded longitudinal summary vector\n\n| Axis | Direction after this repo |\n|---|---|\n| Technical breadth | Updated by new/reinforced skills above. |\n| Implementation depth | Raised only by direct implementation evidence. |\n| Verification maturity | Mostly unchanged unless tests/validation are explicit. |\n| Production maturity | Mostly unchanged for educational/archive artifacts. |\n| Attribution discipline | Strengthened by explicit provenance boundaries. |\n| Safety/human-impact awareness | Raised where failure could affect access, actuation, autonomy or user representation. |\n| Repository engineering | Adjusted for build artifacts, missing assets, manifests and documentation. |\n\n---\n\n## 45. Product and engineering maturity\n\n| Measure | Rating |\n|---|---:|\n| Product maturity | **2.25/5** |\n| Engineering maturity | **3.0/5** |\n| Portfolio Evidence Weight | **4.0/5** |\n| Career-skill evidence value | **4.25/5** |\n\nProduct maturity is kept distinct from learning value: a course exercise can have high career-skill evidence while being correctly rated as a low-maturity product.\n\n---\n\n## 46. Standardized product / engineering evaluation matrix\n\n| Dimension | Score / 5 | Interpretation |\n|---|---:|---|\n| Problem clarity | 3.0 | The technical learning target is identifiable. |\n| Architecture clarity | 2.5 | Core flow is inspectable; broader production boundaries are limited. |\n| Implementation depth | 3.0 | Adjusted upward/downward by project-specific direct evidence. |\n| Correctness confidence | 2.0 | Concrete defects and lack of regression tests reduce confidence. |\n| Testing | 1.0 | Formal automated verification is generally absent in this batch artifact. |\n| Documentation | 1.5 | Most repositories are under-documented relative to their technical content. |\n| Reproducibility | 2.0 | Source exists, but environments/dependencies/data are not always pinned. |\n| Maintainability | 2.0 | Educational scope and mixed provenance limit maintainability. |\n| Security/privacy | 1.5 | Mostly unaddressed unless the project is explicitly about an access/data boundary. |\n| Observability | 1.0 | No production telemetry/monitoring. |\n| Deployment maturity | 1.0 | Mostly local/notebook/embedded educational execution. |\n| Portfolio signal | 3.0 | Useful when represented with strict provenance and scope. |\n\nThe matrix is a common comparison surface; project-specific ratings and narrative remain authoritative.\n\n---\n\n## 47. Product / engineering failure potential\n\nFailure analysis asks what would go wrong if this educational artifact were mistakenly promoted into a real system without additional engineering.\n\nPrimary risks come from the concrete defects, absent validation and unproven operational assumptions identified above. The corpus deliberately records these because ambition should not outrun evidence.\n\n---\n\n## 48. Human impact / dignity boundary\n\nA fan controller can become safety-relevant when it protects equipment or people from overheating. A UI that says “OFF” while the actuator may continue running—or vice versa—shows why status presentation must reflect physical state, and why actuation commands need verification.\n\nThe governing engineering principle is that a technically impressive system does not earn authority over people merely by functioning. Where a system can affect access, safety, representation or decisions, validation and user agency are part of correctness.\n\n---\n\n## 49. Longitudinal project comparisons\n\n- Repo036: input/LCD application; Repo037 is stronger in physical sensing and actuation.\n- Repo034: broader standardized driver architecture; Repo037 is smaller but more complete as an end-to-end physical control loop.\n- Repo013/027/030: later sensing becomes autonomous-perception rather than simple embedded control.\n\nThese comparisons are directional; they do not erase earlier evidence when a later repository is stronger.\n\n---\n\n## 50. First / Previous / Current / Corpus-Max ledger update\n\n| Ledger field | Update |\n|---|---|\n| Repository | `Fan-Controller` |\n| First appearance | Only skills genuinely new to the processed corpus are marked first; common languages/tools remain reinforcement. |\n| Previous evidence | Earlier repositories remain the source of first-use chronology. |\n| Current evidence | This repository contributes the direct ratings above. |\n| Corpus max | Raised only when this artifact supplies stronger direct evidence than all prior processed repos. |\n| Attribution confidence | Reduced where course/template/external-author evidence exists. |\n\n---\n\n## 51. Current relevance / recency\n\nRecency is not confused with competence. Old source can remain conceptually relevant while no longer being the strongest proof of current practice.\n\nFor career retrieval, this repository should surface primarily when the query asks about its specific historical skill/domain or the longitudinal path that led to later work.\n\n---\n\n## 52. Cumulative career state after Repository 037\n\nOne of the strongest direct embedded integration artifacts in the historical set: sensing, conversion, control policy, PWM actuation and UI are connected, while the defects document the gap between functional prototype and dependable controller.\n\nThe cumulative state records **capability evidence**, not a ranking of the person. It is designed to let later RAG queries reconstruct when domains appeared, deepened, stalled or were superseded.\n\n---\n\n## 53. RAG anti-inflation warnings\n\n- Do not turn repository title into system scope.\n- Do not turn tutorial/course code into independent authorship.\n- Do not turn notebook execution into production deployment.\n- Do not turn simulator presence into real-hardware validation.\n- Do not duplicate skill credit for byte-identical reused drivers.\n- Do not hide defects because the repository is historically important.\n- Do not backdate later GitHub uploads when source headers show older implementation dates.\n- Do not infer team leadership, business ownership or safety responsibility without direct evidence.\n\n---\n\n## 54. Repository 037 bottom line\n\nA more integrated owner-authored embedded project that reads an LM35 through ADC, displays temperature/status and drives a DC motor at stepped PWM duty cycles. Strong direct evidence of sensor-to-actuator embedded integration, with an important fan-stop state bug and no hysteresis/fault handling.\n\n**Portfolio Evidence Weight:** 4.0/5  \n**Career-skill evidence value:** 4.25/5  \n**Product maturity:** 2.25/5  \n**Engineering maturity:** 3.0/5\n\nThe repository should remain in the career corpus because it contributes a specific, chronologically grounded piece of evidence. Its limitations are preserved alongside its strengths so future retrieval can distinguish exposure, guided implementation, independent implementation and production maturity.\n"
+}

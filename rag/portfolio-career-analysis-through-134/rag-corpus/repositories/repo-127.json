@@ -1,0 +1,804 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 127,
+  "repository_total": 134,
+  "repository_name": "RobohubDemo",
+  "header_title": "`RobohubDemo`",
+  "repository_slug": "kirolossedra/RobohubDemo",
+  "repository_url": "https://github.com/kirolossedra/RobohubDemo",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-124-134.md",
+    "line_start": 935,
+    "line_end": 1248,
+    "sha256": "382b1fea94f9cc9c74f6691506ff46d5b61f815b7feb7bac728a8ba33d21f055"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": "4.5/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/RobohubDemo",
+    "chronology_index": "127 / 134",
+    "visibility": "Public",
+    "approximate_repository_scale": "Hundreds of KB; two major application artifacts plus README",
+    "primary_language": "Python with large browser dashboard artifact",
+    "domain": "Network measurement / robotics-lab telemetry",
+    "portfolio_evidence_weight": "4.5/5"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [
+    {
+      "skill": "Python",
+      "rating_5": 4.5,
+      "rating_raw": "4.5/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "Large direct application"
+    },
+    {
+      "skill": "Network measurement",
+      "rating_5": 4.7,
+      "rating_raw": "4.7/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "iperf3 orchestration and semantics"
+    },
+    {
+      "skill": "Linux/interface networking",
+      "rating_5": 4.5,
+      "rating_raw": "4.5/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "source binding and interface discovery"
+    },
+    {
+      "skill": "Research instrumentation",
+      "rating_5": 4.8,
+      "rating_raw": "4.8/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "collection + timestamp + evidence pipeline"
+    },
+    {
+      "skill": "Concurrency/threading",
+      "rating_5": 4.1,
+      "rating_raw": "4.1/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "queues/background workers"
+    },
+    {
+      "skill": "Data parsing",
+      "rating_5": 4.3,
+      "rating_raw": "4.3/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "robust interval parser/unit normalization"
+    },
+    {
+      "skill": "Time-series synchronization",
+      "rating_5": 4.4,
+      "rating_raw": "4.4/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "explicit core objective"
+    },
+    {
+      "skill": "Web dashboard integration",
+      "rating_5": 3.8,
+      "rating_raw": "3.8/5",
+      "source_section_id": "s033",
+      "source_section_title": "33. Skill ratings",
+      "evidence": "supporting visualization layer"
+    }
+  ],
+  "intro": "**Descriptive classification:** network-performance experiment agent and synchronized telemetry dashboard for interface-bound iperf3 measurements.\n\nThis repository is a focused research/instrumentation system rather than a generic networking demo. Its most important design decision is the explicit separation between the interface used to run the network-performance probe and the interface used to send measurement telemetry. That distinction matters in multi-homed robot/lab systems where routing, Wi-Fi, cellular and management connectivity can coexist.",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/RobohubDemo` |\n| Chronology index | **127 / 134** |\n| Visibility | Public |\n| Approximate repository scale | Hundreds of KB; two major application artifacts plus README |\n| Primary language | Python with large browser dashboard artifact |\n| Domain | Network measurement / robotics-lab telemetry |\n| Portfolio Evidence Weight | **4.5/5** |"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/RobohubDemo` |\n| Chronology index | **127 / 134** |\n| Visibility | Public |\n| Approximate repository scale | Hundreds of KB; two major application artifacts plus README |\n| Primary language | Python with large browser dashboard artifact |\n| Domain | Network measurement / robotics-lab telemetry |\n| Portfolio Evidence Weight | **4.5/5** |"
+    },
+    "summary": {
+      "section_ids": [
+        "s042"
+      ],
+      "titles": [
+        "42. Bottom line"
+      ],
+      "text": "## 42. Bottom line\n`RobohubDemo` is a strong late-career research-instrumentation node. Its key contribution is architectural: it treats **the network path being measured, the path carrying telemetry, and the time base used for correlation as separate engineering concerns**. That is exactly the kind of systems thinking required to turn a quick throughput script into a defensible mobile-robot networking experiment.\n\n<!-- END REPOSITORY 127 -->\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s040"
+      ],
+      "titles": [
+        "40. Current relevance"
+      ],
+      "text": "## 40. Current relevance\nHighly relevant to wireless/network systems, performance engineering, research software and systems-validation roles. It is also useful evidence for technical support/field engineering because it shows practical interface/routing diagnosis rather than only analysis notebooks."
+    },
+    "architecture": {
+      "section_ids": [
+        "s003"
+      ],
+      "titles": [
+        "3. Architecture"
+      ],
+      "text": "## 3. Architecture\nThe core architecture is:\n\n```text\nselected probing interface\n  -> iperf3 subprocess bound to its IP\n  -> parse interval output\n  -> normalize throughput/transfer values\n  -> assign event timestamps\n\nselected telemetry/sending interface\n  -> requests.Session bound to source IP\n  -> POST samples to Firebase\n\nlocal application\n  -> GUI control + status\n  -> CSV evidence/logging\n  -> running statistics\n\nbrowser/dashboard\n  -> read synchronized records\n  -> visualize streams by identity/interface/time\n```\n\nThis is a meaningful measurement architecture because test traffic and telemetry traffic are not assumed to use the same route."
+    },
+    "skills": {
+      "section_ids": [
+        "s019",
+        "s033",
+        "s034"
+      ],
+      "titles": [
+        "19. Direct skill evidence",
+        "33. Skill ratings",
+        "34. Skill lifecycle"
+      ],
+      "text": "## 19. Direct skill evidence\nStrong direct evidence:\n\n- Python network instrumentation;\n- subprocess control of iperf3;\n- socket/source-interface reasoning;\n- `psutil` network-interface inspection;\n- regular-expression telemetry parsing;\n- threaded/queued desktop applications;\n- CSV measurement logging;\n- HTTP telemetry publication;\n- time-series synchronization;\n- experiment UX design.\n\n## 33. Skill ratings\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python | **4.5/5** | Large direct application |\n| Network measurement | **4.7/5** | iperf3 orchestration and semantics |\n| Linux/interface networking | **4.5/5** | source binding and interface discovery |\n| Research instrumentation | **4.8/5** | collection + timestamp + evidence pipeline |\n| Concurrency/threading | **4.1/5** | queues/background workers |\n| Data parsing | **4.3/5** | robust interval parser/unit normalization |\n| Time-series synchronization | **4.4/5** | explicit core objective |\n| Web dashboard integration | **3.8/5** | supporting visualization layer |\n\n## 34. Skill lifecycle\nRepo127 strengthens a trajectory already visible in Repos106,107 and113: measurement scripts become increasingly explicit about interfaces, timestamps, raw evidence and reproducibility.\n\nIt is closer to a reusable experiment agent than the earlier one-off scripts."
+    },
+    "scale": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "32. Scale"
+      ],
+      "text": "## 32. Scale\nThe system is designed for lab/research streams, not internet-scale telemetry ingestion. The relevant scale metric is experiment duration/sample count and number of simultaneous streams rather than user count."
+    },
+    "testing": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "25. Testing strategy"
+      ],
+      "text": "## 25. Testing strategy\nHigh-value automated tests would target pure functions:\n\n- bandwidth unit conversion;\n- transfer unit conversion;\n- IPv4 validation;\n- interval regex parsing;\n- one-stream versus multi-stream filtering;\n- timestamp calculations;\n- malformed iperf output.\n\nIntegration tests could mock subprocess output and HTTP failures. The inspected evidence does not establish a comprehensive automated suite."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "24. Security and privacy"
+      ],
+      "text": "## 24. Security and privacy\nThe public repository historically contained lab/network environment details and remote data endpoints. Those values are intentionally excluded from this corpus.\n\nA productionized version should externalize environment addresses and use authenticated write rules/API endpoints rather than treating a public database path as configuration."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "26. CI/CD"
+      ],
+      "text": "## 26. CI/CD\nNo mature CI/CD pipeline is evidenced from the inspected core artifacts. Given the parser-heavy nature of the tool, CI with captured iperf3 fixtures would be especially valuable."
+    },
+    "documentation": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "27. Documentation"
+      ],
+      "text": "## 27. Documentation\nCode comments are unusually explicit about interface roles and downlink semantics. That is good operational documentation because the most dangerous errors in such an experiment are often configuration misunderstandings rather than syntax bugs.\n\nThe top-level README is too sparse relative to the complexity of the code and exposes environment-specific details rather than a generalized runbook."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "28. Repository hygiene"
+      ],
+      "text": "## 28. Repository hygiene\nThe repository is technically coherent, but configuration and environment details should be separated from source. A `.env.example` or configuration file plus redacted documentation would improve portability and public safety."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s038"
+      ],
+      "titles": [
+        "38. Product failure potential"
+      ],
+      "text": "## 38. Product failure potential\nA wrong interface selection or timestamp interpretation can produce scientifically invalid conclusions while the software appears to run successfully. This silent-validity failure is more important than a visible GUI crash.\n\nThe system should therefore be judged on experimental correctness, not just runtime availability."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s039"
+      ],
+      "titles": [
+        "39. Human impact"
+      ],
+      "text": "## 39. Human impact\nThe immediate users are researchers/engineers. Better tooling reduces setup mistakes and makes long experiments easier to supervise. Incorrect telemetry could waste scarce lab time or contaminate thesis conclusions."
+    },
+    "engineering_decisions": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "29. Engineering decisions and tradeoffs"
+      ],
+      "text": "## 29. Engineering decisions and tradeoffs\nKey decisions include:\n\n- use iperf3 rather than inventing a traffic generator;\n- bind the measurement path explicitly;\n- separate telemetry transport from the path under test;\n- preserve local CSV evidence in addition to cloud data;\n- parse human-readable iperf output rather than JSON mode;\n- support infinite runs for externally bounded experiments.\n\nThe main tradeoff is flexibility versus reproducibility: a configurable GUI helps experiments, but every configurable parameter must be captured in the run record to make comparisons defensible."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "37. Portfolio Evidence Weight"
+      ],
+      "text": "## 37. Portfolio Evidence Weight\n**4.5/5.**\n\nThis is high-value direct evidence because the networking logic is explicit and technically nontrivial. Its ceiling is below a production networking service because the system remains research instrumentation with environment-specific configuration and limited automated verification."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "1. Identity and metadata",
+      "normalized_title": "Identity and metadata",
+      "key": "identity_and_metadata",
+      "path": [
+        "1. Identity and metadata"
+      ],
+      "content": "| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/RobohubDemo` |\n| Chronology index | **127 / 134** |\n| Visibility | Public |\n| Approximate repository scale | Hundreds of KB; two major application artifacts plus README |\n| Primary language | Python with large browser dashboard artifact |\n| Domain | Network measurement / robotics-lab telemetry |\n| Portfolio Evidence Weight | **4.5/5** |",
+      "source_line_start": 941,
+      "source_line_end": 953
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "2. Purpose",
+      "normalized_title": "Purpose",
+      "key": "purpose",
+      "path": [
+        "2. Purpose"
+      ],
+      "content": "The repository exists to make network tests observable and synchronizable. The README states that timestamps from separate data sources are matched so plots can share a common timeline.\n\nThe code expands this into an iperf3 agent that can bind traffic to one interface, send measurement records through another interface and preserve enough timestamp information to reconstruct the run later.",
+      "source_line_start": 953,
+      "source_line_end": 959
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "3. Architecture",
+      "normalized_title": "Architecture",
+      "key": "architecture",
+      "path": [
+        "3. Architecture"
+      ],
+      "content": "The core architecture is:\n\n```text\nselected probing interface\n  -> iperf3 subprocess bound to its IP\n  -> parse interval output\n  -> normalize throughput/transfer values\n  -> assign event timestamps\n\nselected telemetry/sending interface\n  -> requests.Session bound to source IP\n  -> POST samples to Firebase\n\nlocal application\n  -> GUI control + status\n  -> CSV evidence/logging\n  -> running statistics\n\nbrowser/dashboard\n  -> read synchronized records\n  -> visualize streams by identity/interface/time\n```\n\nThis is a meaningful measurement architecture because test traffic and telemetry traffic are not assumed to use the same route.",
+      "source_line_start": 959,
+      "source_line_end": 986
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "4. Multi-homed system reasoning",
+      "normalized_title": "Multi-homed system reasoning",
+      "key": "multi_homed_system_reasoning",
+      "path": [
+        "4. Multi-homed system reasoning"
+      ],
+      "content": "The separation of “sending interface” and “probing interface” is one of the strongest signals in the project. On a robot or research workstation, a management link can remain stable while a second wireless interface is under test.\n\nWithout this separation, telemetry may disappear when the tested link degrades, or control traffic may contaminate the measured path.",
+      "source_line_start": 986,
+      "source_line_end": 992
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "5. Source-address binding",
+      "normalized_title": "Source-address binding",
+      "key": "source_address_binding",
+      "path": [
+        "5. Source-address binding"
+      ],
+      "content": "The repository defines a custom `HTTPAdapter` that passes a selected source address into urllib3's connection pool. This forces Firebase telemetry requests to originate from a chosen local interface/IP when routing permits.\n\nThat is stronger networking evidence than merely calling `requests.post`; it shows understanding that interface selection often requires control at the socket/source-address level.",
+      "source_line_start": 992,
+      "source_line_end": 998
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "6. iperf3 binding and direction",
+      "normalized_title": "iperf3 binding and direction",
+      "key": "iperf3_binding_and_direction",
+      "path": [
+        "6. iperf3 binding and direction"
+      ],
+      "content": "The test command uses iperf3 binding so traffic traverses the selected probing interface. Downlink is modeled using iperf3 reverse mode, where the server sends traffic toward the client.\n\nThis is correct tooling use for measuring the receive direction without writing a custom throughput protocol.",
+      "source_line_start": 998,
+      "source_line_end": 1004
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "7. Interface discovery",
+      "normalized_title": "Interface discovery",
+      "key": "interface_discovery",
+      "path": [
+        "7. Interface discovery"
+      ],
+      "content": "`psutil.net_if_addrs` and interface status information are used to enumerate active IPv4 interfaces. Loopback interfaces can be excluded.\n\nThis makes the tool portable across systems whose interface names are not hardcoded, although routing validity still has to be checked after selection.",
+      "source_line_start": 1004,
+      "source_line_end": 1010
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "8. Data model",
+      "normalized_title": "Data model",
+      "key": "data_model",
+      "path": [
+        "8. Data model"
+      ],
+      "content": "The Python source defines explicit dataclasses for interface metadata, interval samples and runtime configuration. The sample model records elapsed interval bounds, throughput, transferred bytes and raw source line plus several absolute timestamp fields.\n\nThis is good measurement engineering because raw and normalized representations coexist.",
+      "source_line_start": 1010,
+      "source_line_end": 1016
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "9. Timestamp engineering",
+      "normalized_title": "Timestamp engineering",
+      "key": "timestamp_engineering",
+      "path": [
+        "9. Timestamp engineering"
+      ],
+      "content": "The implementation distinguishes parsing time, run-relative interval position and estimated interval start/end timestamps. Millisecond-resolution UTC strings are generated in addition to numeric epoch values.\n\nThat makes downstream sorting and correlation more robust than relying only on when Firebase receives a record.",
+      "source_line_start": 1016,
+      "source_line_end": 1022
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "10. Synchronization objective",
+      "normalized_title": "Synchronization objective",
+      "key": "synchronization_objective",
+      "path": [
+        "10. Synchronization objective"
+      ],
+      "content": "The README's synchronization goal is technically significant: separate observables can only be compared meaningfully if their time bases are aligned or at least mapped consistently.\n\nThe repository therefore strengthens the longitudinal evidence for experiment synchronization that later appears in thesis preprocessing.",
+      "source_line_start": 1022,
+      "source_line_end": 1028
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "11. iperf3 parser",
+      "normalized_title": "iperf3 parser",
+      "key": "iperf3_parser",
+      "path": [
+        "11. iperf3 parser"
+      ],
+      "content": "A compiled regular expression parses interval lines, extracting stream identifier, elapsed interval, transfer amount/unit and bandwidth amount/unit. Unit-conversion helpers normalize values into MB and Mbps.\n\nThe parser ignores final sender/receiver summaries so the telemetry stream represents periodic intervals rather than duplicating final results.",
+      "source_line_start": 1028,
+      "source_line_end": 1034
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "12. Parallel-stream correctness",
+      "normalized_title": "Parallel-stream correctness",
+      "key": "parallel_stream_correctness",
+      "path": [
+        "12. Parallel-stream correctness"
+      ],
+      "content": "When iperf3 uses multiple parallel streams, the tool keeps the `[SUM]` interval row and ignores individual stream rows. With one stream, it ignores `[SUM]` if present.\n\nThis prevents a common measurement error: double-counting traffic by recording both component streams and their aggregate.",
+      "source_line_start": 1034,
+      "source_line_end": 1040
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "13. Finite and infinite test modes",
+      "normalized_title": "Finite and infinite test modes",
+      "key": "finite_and_infinite_test_modes",
+      "path": [
+        "13. Finite and infinite test modes"
+      ],
+      "content": "The runtime configuration supports finite-duration and open-ended operation. Infinite runs are useful for mobility experiments where duration is controlled by a physical trajectory or external event rather than a fixed CLI duration.\n\nThis increases operational flexibility but makes explicit stop handling and crash recovery more important.",
+      "source_line_start": 1040,
+      "source_line_end": 1046
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "14. Running statistics",
+      "normalized_title": "Running statistics",
+      "key": "running_statistics",
+      "path": [
+        "14. Running statistics"
+      ],
+      "content": "The application maintains current, average, minimum, maximum and population-standard-deviation throughput from observed samples.\n\nThese summaries are useful during a run, but they should not replace stored interval data or robust post-run statistics such as percentiles and confidence intervals.",
+      "source_line_start": 1046,
+      "source_line_end": 1052
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "15. Local evidence preservation",
+      "normalized_title": "Local evidence preservation",
+      "key": "local_evidence_preservation",
+      "path": [
+        "15. Local evidence preservation"
+      ],
+      "content": "CSV output provides a local record independent of cloud telemetry. This is an important reliability feature: the experiment can retain evidence even if the remote dashboard fails.\n\nRaw iperf3 lines are also retained within parsed sample objects, supporting later audit of parser behavior.",
+      "source_line_start": 1052,
+      "source_line_end": 1058
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "16. Telemetry queueing",
+      "normalized_title": "Telemetry queueing",
+      "key": "telemetry_queueing",
+      "path": [
+        "16. Telemetry queueing"
+      ],
+      "content": "The application separates GUI/update work from posting work through queues and threads. This prevents slow HTTP calls from directly blocking measurement parsing or UI responsiveness.\n\nThe pattern is consistent with earlier networking tools but more structured here.",
+      "source_line_start": 1058,
+      "source_line_end": 1064
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "17. GUI engineering",
+      "normalized_title": "GUI engineering",
+      "key": "gui_engineering",
+      "path": [
+        "17. GUI engineering"
+      ],
+      "content": "The Tkinter GUI exposes interface selection, target/test parameters, run status and output information. This reduces operator error compared with editing source constants for every experiment.\n\nThe GUI is an experiment-control surface, not merely decorative presentation.",
+      "source_line_start": 1064,
+      "source_line_end": 1070
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "18. Browser visualization role",
+      "normalized_title": "Browser visualization role",
+      "key": "browser_visualization_role",
+      "path": [
+        "18. Browser visualization role"
+      ],
+      "content": "The large HTML artifact serves as the visualization/monitoring half of the system. Its purpose is not to generate measurements but to make time-aligned streams inspectable.\n\nThis is a useful separation of concerns: collection remains Python/process-oriented while browser technology handles interactive visualization.",
+      "source_line_start": 1070,
+      "source_line_end": 1076
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "19. Direct skill evidence",
+      "normalized_title": "Direct skill evidence",
+      "key": "direct_skill_evidence",
+      "path": [
+        "19. Direct skill evidence"
+      ],
+      "content": "Strong direct evidence:\n\n- Python network instrumentation;\n- subprocess control of iperf3;\n- socket/source-interface reasoning;\n- `psutil` network-interface inspection;\n- regular-expression telemetry parsing;\n- threaded/queued desktop applications;\n- CSV measurement logging;\n- HTTP telemetry publication;\n- time-series synchronization;\n- experiment UX design.",
+      "source_line_start": 1076,
+      "source_line_end": 1091
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "20. Platform/tool provenance",
+      "normalized_title": "Platform/tool provenance",
+      "key": "platform_tool_provenance",
+      "path": [
+        "20. Platform/tool provenance"
+      ],
+      "content": "iperf3 provides the actual traffic generator and throughput calculation. Firebase provides persistence/realtime distribution. Python libraries provide HTTP and interface enumeration.\n\nThe direct engineering contribution is the orchestration, binding, parsing, timestamping, validation, UI and evidence pipeline built around those tools.",
+      "source_line_start": 1091,
+      "source_line_end": 1097
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "21. Reliability failure modes",
+      "normalized_title": "Reliability failure modes",
+      "key": "reliability_failure_modes",
+      "path": [
+        "21. Reliability failure modes"
+      ],
+      "content": "Important failure modes include:\n\n- the selected source IP cannot route to Firebase;\n- iperf3 is missing or an incompatible version is installed;\n- parser regex does not match platform/version output;\n- cloud posting lags behind acquisition;\n- experiment is terminated before buffers/logs flush;\n- system clock changes during a run;\n- interface address changes after selection;\n- server destination is unreachable from the probing interface.\n\nThe repository handles several operational errors but does not eliminate all of these risks.",
+      "source_line_start": 1097,
+      "source_line_end": 1112
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "22. Clock and timing limitations",
+      "normalized_title": "Clock and timing limitations",
+      "key": "clock_and_timing_limitations",
+      "path": [
+        "22. Clock and timing limitations"
+      ],
+      "content": "Mapping an iperf3 relative interval onto local wall-clock time assumes the local clock is sufficiently stable and that parse timing reflects the interval accurately. For high-precision cross-device experiments, clock synchronization through NTP/PTP or a common hardware timestamp source becomes important.\n\nThe repository demonstrates time awareness but not formal distributed-clock synchronization.",
+      "source_line_start": 1112,
+      "source_line_end": 1118
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "23. Throughput semantics",
+      "normalized_title": "Throughput semantics",
+      "key": "throughput_semantics",
+      "path": [
+        "23. Throughput semantics"
+      ],
+      "content": "The parser uses iperf3 interval values rather than computing an external throughput estimate. That is appropriate, but downstream analysis must still state whether values represent application throughput and how protocol overhead, TCP behavior or UDP loss are treated.\n\nA networking RAG answer should not silently upgrade these samples into PHY-layer throughput.",
+      "source_line_start": 1118,
+      "source_line_end": 1124
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "24. Security and privacy",
+      "normalized_title": "Security and privacy",
+      "key": "security_and_privacy",
+      "path": [
+        "24. Security and privacy"
+      ],
+      "content": "The public repository historically contained lab/network environment details and remote data endpoints. Those values are intentionally excluded from this corpus.\n\nA productionized version should externalize environment addresses and use authenticated write rules/API endpoints rather than treating a public database path as configuration.",
+      "source_line_start": 1124,
+      "source_line_end": 1130
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "25. Testing strategy",
+      "normalized_title": "Testing strategy",
+      "key": "testing_strategy",
+      "path": [
+        "25. Testing strategy"
+      ],
+      "content": "High-value automated tests would target pure functions:\n\n- bandwidth unit conversion;\n- transfer unit conversion;\n- IPv4 validation;\n- interval regex parsing;\n- one-stream versus multi-stream filtering;\n- timestamp calculations;\n- malformed iperf output.\n\nIntegration tests could mock subprocess output and HTTP failures. The inspected evidence does not establish a comprehensive automated suite.",
+      "source_line_start": 1130,
+      "source_line_end": 1144
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "26. CI/CD",
+      "normalized_title": "CI/CD",
+      "key": "ci_cd",
+      "path": [
+        "26. CI/CD"
+      ],
+      "content": "No mature CI/CD pipeline is evidenced from the inspected core artifacts. Given the parser-heavy nature of the tool, CI with captured iperf3 fixtures would be especially valuable.",
+      "source_line_start": 1144,
+      "source_line_end": 1148
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "27. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "27. Documentation"
+      ],
+      "content": "Code comments are unusually explicit about interface roles and downlink semantics. That is good operational documentation because the most dangerous errors in such an experiment are often configuration misunderstandings rather than syntax bugs.\n\nThe top-level README is too sparse relative to the complexity of the code and exposes environment-specific details rather than a generalized runbook.",
+      "source_line_start": 1148,
+      "source_line_end": 1154
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "28. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "28. Repository hygiene"
+      ],
+      "content": "The repository is technically coherent, but configuration and environment details should be separated from source. A `.env.example` or configuration file plus redacted documentation would improve portability and public safety.",
+      "source_line_start": 1154,
+      "source_line_end": 1158
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "29. Engineering decisions and tradeoffs",
+      "normalized_title": "Engineering decisions and tradeoffs",
+      "key": "engineering_decisions_and_tradeoffs",
+      "path": [
+        "29. Engineering decisions and tradeoffs"
+      ],
+      "content": "Key decisions include:\n\n- use iperf3 rather than inventing a traffic generator;\n- bind the measurement path explicitly;\n- separate telemetry transport from the path under test;\n- preserve local CSV evidence in addition to cloud data;\n- parse human-readable iperf output rather than JSON mode;\n- support infinite runs for externally bounded experiments.\n\nThe main tradeoff is flexibility versus reproducibility: a configurable GUI helps experiments, but every configurable parameter must be captured in the run record to make comparisons defensible.",
+      "source_line_start": 1158,
+      "source_line_end": 1171
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "30. Judgment signal",
+      "normalized_title": "Judgment signal",
+      "key": "judgment_signal",
+      "path": [
+        "30. Judgment signal"
+      ],
+      "content": "The best judgment signal is recognizing that measurement infrastructure must avoid interfering with the thing being measured. Separate interfaces and explicit binding are architectural responses to that problem.\n\nThe second strong signal is the effort to preserve timestamp semantics rather than treating cloud-arrival time as the measurement time.",
+      "source_line_start": 1171,
+      "source_line_end": 1177
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "31. Complexity",
+      "normalized_title": "Complexity",
+      "key": "complexity",
+      "path": [
+        "31. Complexity"
+      ],
+      "content": "Implementation complexity is moderate. Experiment complexity is high because correct results depend on routing, interfaces, subprocess behavior, time alignment, cloud telemetry and physical network conditions.",
+      "source_line_start": 1177,
+      "source_line_end": 1181
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "32. Scale",
+      "normalized_title": "Scale",
+      "key": "scale",
+      "path": [
+        "32. Scale"
+      ],
+      "content": "The system is designed for lab/research streams, not internet-scale telemetry ingestion. The relevant scale metric is experiment duration/sample count and number of simultaneous streams rather than user count.",
+      "source_line_start": 1181,
+      "source_line_end": 1185
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "33. Skill ratings",
+      "normalized_title": "Skill ratings",
+      "key": "skill_ratings",
+      "path": [
+        "33. Skill ratings"
+      ],
+      "content": "| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python | **4.5/5** | Large direct application |\n| Network measurement | **4.7/5** | iperf3 orchestration and semantics |\n| Linux/interface networking | **4.5/5** | source binding and interface discovery |\n| Research instrumentation | **4.8/5** | collection + timestamp + evidence pipeline |\n| Concurrency/threading | **4.1/5** | queues/background workers |\n| Data parsing | **4.3/5** | robust interval parser/unit normalization |\n| Time-series synchronization | **4.4/5** | explicit core objective |\n| Web dashboard integration | **3.8/5** | supporting visualization layer |",
+      "source_line_start": 1185,
+      "source_line_end": 1198
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "34. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "34. Skill lifecycle"
+      ],
+      "content": "Repo127 strengthens a trajectory already visible in Repos106,107 and113: measurement scripts become increasingly explicit about interfaces, timestamps, raw evidence and reproducibility.\n\nIt is closer to a reusable experiment agent than the earlier one-off scripts.",
+      "source_line_start": 1198,
+      "source_line_end": 1204
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "35. Comparison with Repo107 `Rogers-Experiment`",
+      "normalized_title": "Comparison with Repo107 Rogers-Experiment",
+      "key": "comparison_with_repo107_rogers_experiment",
+      "path": [
+        "35. Comparison with Repo107 `Rogers-Experiment`"
+      ],
+      "content": "Repo107 is broader as an experiment system, combining real robot operation, cellular/Wi-Fi procedures and analysis. Repo127 is narrower but more architecturally focused around **path binding and telemetry separation**.\n\nThe two should be linked rather than ranked as duplicates.",
+      "source_line_start": 1204,
+      "source_line_end": 1210
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "36. Comparison with Repo128 `Thesis`",
+      "normalized_title": "Comparison with Repo128 Thesis",
+      "key": "comparison_with_repo128_thesis",
+      "path": [
+        "36. Comparison with Repo128 `Thesis`"
+      ],
+      "content": "Repo127 focuses on **collecting and timestamping live performance samples**. Repo128 focuses on **precisely clipping and normalizing logs after collection**. Together they show both sides of research data engineering: acquisition and preprocessing.",
+      "source_line_start": 1210,
+      "source_line_end": 1214
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "37. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "37. Portfolio Evidence Weight"
+      ],
+      "content": "**4.5/5.**\n\nThis is high-value direct evidence because the networking logic is explicit and technically nontrivial. Its ceiling is below a production networking service because the system remains research instrumentation with environment-specific configuration and limited automated verification.",
+      "source_line_start": 1214,
+      "source_line_end": 1220
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "38. Product failure potential",
+      "normalized_title": "Product failure potential",
+      "key": "product_failure_potential",
+      "path": [
+        "38. Product failure potential"
+      ],
+      "content": "A wrong interface selection or timestamp interpretation can produce scientifically invalid conclusions while the software appears to run successfully. This silent-validity failure is more important than a visible GUI crash.\n\nThe system should therefore be judged on experimental correctness, not just runtime availability.",
+      "source_line_start": 1220,
+      "source_line_end": 1226
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "39. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "39. Human impact"
+      ],
+      "content": "The immediate users are researchers/engineers. Better tooling reduces setup mistakes and makes long experiments easier to supervise. Incorrect telemetry could waste scarce lab time or contaminate thesis conclusions.",
+      "source_line_start": 1226,
+      "source_line_end": 1230
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "40. Current relevance",
+      "normalized_title": "Current relevance",
+      "key": "current_relevance",
+      "path": [
+        "40. Current relevance"
+      ],
+      "content": "Highly relevant to wireless/network systems, performance engineering, research software and systems-validation roles. It is also useful evidence for technical support/field engineering because it shows practical interface/routing diagnosis rather than only analysis notebooks.",
+      "source_line_start": 1230,
+      "source_line_end": 1234
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "41. RAG warnings",
+      "normalized_title": "RAG warnings",
+      "key": "rag_warnings",
+      "path": [
+        "41. RAG warnings"
+      ],
+      "content": "- Do not expose lab IP addresses or environment endpoints.\n- Do not call iperf3 application throughput “radio throughput” without context.\n- Do not claim formal distributed clock synchronization.\n- Do not claim Firebase or iperf3 implementation authorship.\n- Retrieve this repository for multi-homed test architecture, source binding, synchronized measurement and experiment-agent questions.",
+      "source_line_start": 1234,
+      "source_line_end": 1242
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "42. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "42. Bottom line"
+      ],
+      "content": "`RobohubDemo` is a strong late-career research-instrumentation node. Its key contribution is architectural: it treats **the network path being measured, the path carrying telemetry, and the time base used for correlation as separate engineering concerns**. That is exactly the kind of systems thinking required to turn a quick throughput script into a defensible mobile-robot networking experiment.\n\n<!-- END REPOSITORY 127 -->\n\n---",
+      "source_line_start": 1242,
+      "source_line_end": 1249
+    }
+  ],
+  "raw_analysis": "# Repository 127 / 134 — `RobohubDemo`\n\n**Descriptive classification:** network-performance experiment agent and synchronized telemetry dashboard for interface-bound iperf3 measurements.\n\nThis repository is a focused research/instrumentation system rather than a generic networking demo. Its most important design decision is the explicit separation between the interface used to run the network-performance probe and the interface used to send measurement telemetry. That distinction matters in multi-homed robot/lab systems where routing, Wi-Fi, cellular and management connectivity can coexist.\n\n## 1. Identity and metadata\n\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/RobohubDemo` |\n| Chronology index | **127 / 134** |\n| Visibility | Public |\n| Approximate repository scale | Hundreds of KB; two major application artifacts plus README |\n| Primary language | Python with large browser dashboard artifact |\n| Domain | Network measurement / robotics-lab telemetry |\n| Portfolio Evidence Weight | **4.5/5** |\n\n## 2. Purpose\n\nThe repository exists to make network tests observable and synchronizable. The README states that timestamps from separate data sources are matched so plots can share a common timeline.\n\nThe code expands this into an iperf3 agent that can bind traffic to one interface, send measurement records through another interface and preserve enough timestamp information to reconstruct the run later.\n\n## 3. Architecture\n\nThe core architecture is:\n\n```text\nselected probing interface\n  -> iperf3 subprocess bound to its IP\n  -> parse interval output\n  -> normalize throughput/transfer values\n  -> assign event timestamps\n\nselected telemetry/sending interface\n  -> requests.Session bound to source IP\n  -> POST samples to Firebase\n\nlocal application\n  -> GUI control + status\n  -> CSV evidence/logging\n  -> running statistics\n\nbrowser/dashboard\n  -> read synchronized records\n  -> visualize streams by identity/interface/time\n```\n\nThis is a meaningful measurement architecture because test traffic and telemetry traffic are not assumed to use the same route.\n\n## 4. Multi-homed system reasoning\n\nThe separation of “sending interface” and “probing interface” is one of the strongest signals in the project. On a robot or research workstation, a management link can remain stable while a second wireless interface is under test.\n\nWithout this separation, telemetry may disappear when the tested link degrades, or control traffic may contaminate the measured path.\n\n## 5. Source-address binding\n\nThe repository defines a custom `HTTPAdapter` that passes a selected source address into urllib3's connection pool. This forces Firebase telemetry requests to originate from a chosen local interface/IP when routing permits.\n\nThat is stronger networking evidence than merely calling `requests.post`; it shows understanding that interface selection often requires control at the socket/source-address level.\n\n## 6. iperf3 binding and direction\n\nThe test command uses iperf3 binding so traffic traverses the selected probing interface. Downlink is modeled using iperf3 reverse mode, where the server sends traffic toward the client.\n\nThis is correct tooling use for measuring the receive direction without writing a custom throughput protocol.\n\n## 7. Interface discovery\n\n`psutil.net_if_addrs` and interface status information are used to enumerate active IPv4 interfaces. Loopback interfaces can be excluded.\n\nThis makes the tool portable across systems whose interface names are not hardcoded, although routing validity still has to be checked after selection.\n\n## 8. Data model\n\nThe Python source defines explicit dataclasses for interface metadata, interval samples and runtime configuration. The sample model records elapsed interval bounds, throughput, transferred bytes and raw source line plus several absolute timestamp fields.\n\nThis is good measurement engineering because raw and normalized representations coexist.\n\n## 9. Timestamp engineering\n\nThe implementation distinguishes parsing time, run-relative interval position and estimated interval start/end timestamps. Millisecond-resolution UTC strings are generated in addition to numeric epoch values.\n\nThat makes downstream sorting and correlation more robust than relying only on when Firebase receives a record.\n\n## 10. Synchronization objective\n\nThe README's synchronization goal is technically significant: separate observables can only be compared meaningfully if their time bases are aligned or at least mapped consistently.\n\nThe repository therefore strengthens the longitudinal evidence for experiment synchronization that later appears in thesis preprocessing.\n\n## 11. iperf3 parser\n\nA compiled regular expression parses interval lines, extracting stream identifier, elapsed interval, transfer amount/unit and bandwidth amount/unit. Unit-conversion helpers normalize values into MB and Mbps.\n\nThe parser ignores final sender/receiver summaries so the telemetry stream represents periodic intervals rather than duplicating final results.\n\n## 12. Parallel-stream correctness\n\nWhen iperf3 uses multiple parallel streams, the tool keeps the `[SUM]` interval row and ignores individual stream rows. With one stream, it ignores `[SUM]` if present.\n\nThis prevents a common measurement error: double-counting traffic by recording both component streams and their aggregate.\n\n## 13. Finite and infinite test modes\n\nThe runtime configuration supports finite-duration and open-ended operation. Infinite runs are useful for mobility experiments where duration is controlled by a physical trajectory or external event rather than a fixed CLI duration.\n\nThis increases operational flexibility but makes explicit stop handling and crash recovery more important.\n\n## 14. Running statistics\n\nThe application maintains current, average, minimum, maximum and population-standard-deviation throughput from observed samples.\n\nThese summaries are useful during a run, but they should not replace stored interval data or robust post-run statistics such as percentiles and confidence intervals.\n\n## 15. Local evidence preservation\n\nCSV output provides a local record independent of cloud telemetry. This is an important reliability feature: the experiment can retain evidence even if the remote dashboard fails.\n\nRaw iperf3 lines are also retained within parsed sample objects, supporting later audit of parser behavior.\n\n## 16. Telemetry queueing\n\nThe application separates GUI/update work from posting work through queues and threads. This prevents slow HTTP calls from directly blocking measurement parsing or UI responsiveness.\n\nThe pattern is consistent with earlier networking tools but more structured here.\n\n## 17. GUI engineering\n\nThe Tkinter GUI exposes interface selection, target/test parameters, run status and output information. This reduces operator error compared with editing source constants for every experiment.\n\nThe GUI is an experiment-control surface, not merely decorative presentation.\n\n## 18. Browser visualization role\n\nThe large HTML artifact serves as the visualization/monitoring half of the system. Its purpose is not to generate measurements but to make time-aligned streams inspectable.\n\nThis is a useful separation of concerns: collection remains Python/process-oriented while browser technology handles interactive visualization.\n\n## 19. Direct skill evidence\n\nStrong direct evidence:\n\n- Python network instrumentation;\n- subprocess control of iperf3;\n- socket/source-interface reasoning;\n- `psutil` network-interface inspection;\n- regular-expression telemetry parsing;\n- threaded/queued desktop applications;\n- CSV measurement logging;\n- HTTP telemetry publication;\n- time-series synchronization;\n- experiment UX design.\n\n## 20. Platform/tool provenance\n\niperf3 provides the actual traffic generator and throughput calculation. Firebase provides persistence/realtime distribution. Python libraries provide HTTP and interface enumeration.\n\nThe direct engineering contribution is the orchestration, binding, parsing, timestamping, validation, UI and evidence pipeline built around those tools.\n\n## 21. Reliability failure modes\n\nImportant failure modes include:\n\n- the selected source IP cannot route to Firebase;\n- iperf3 is missing or an incompatible version is installed;\n- parser regex does not match platform/version output;\n- cloud posting lags behind acquisition;\n- experiment is terminated before buffers/logs flush;\n- system clock changes during a run;\n- interface address changes after selection;\n- server destination is unreachable from the probing interface.\n\nThe repository handles several operational errors but does not eliminate all of these risks.\n\n## 22. Clock and timing limitations\n\nMapping an iperf3 relative interval onto local wall-clock time assumes the local clock is sufficiently stable and that parse timing reflects the interval accurately. For high-precision cross-device experiments, clock synchronization through NTP/PTP or a common hardware timestamp source becomes important.\n\nThe repository demonstrates time awareness but not formal distributed-clock synchronization.\n\n## 23. Throughput semantics\n\nThe parser uses iperf3 interval values rather than computing an external throughput estimate. That is appropriate, but downstream analysis must still state whether values represent application throughput and how protocol overhead, TCP behavior or UDP loss are treated.\n\nA networking RAG answer should not silently upgrade these samples into PHY-layer throughput.\n\n## 24. Security and privacy\n\nThe public repository historically contained lab/network environment details and remote data endpoints. Those values are intentionally excluded from this corpus.\n\nA productionized version should externalize environment addresses and use authenticated write rules/API endpoints rather than treating a public database path as configuration.\n\n## 25. Testing strategy\n\nHigh-value automated tests would target pure functions:\n\n- bandwidth unit conversion;\n- transfer unit conversion;\n- IPv4 validation;\n- interval regex parsing;\n- one-stream versus multi-stream filtering;\n- timestamp calculations;\n- malformed iperf output.\n\nIntegration tests could mock subprocess output and HTTP failures. The inspected evidence does not establish a comprehensive automated suite.\n\n## 26. CI/CD\n\nNo mature CI/CD pipeline is evidenced from the inspected core artifacts. Given the parser-heavy nature of the tool, CI with captured iperf3 fixtures would be especially valuable.\n\n## 27. Documentation\n\nCode comments are unusually explicit about interface roles and downlink semantics. That is good operational documentation because the most dangerous errors in such an experiment are often configuration misunderstandings rather than syntax bugs.\n\nThe top-level README is too sparse relative to the complexity of the code and exposes environment-specific details rather than a generalized runbook.\n\n## 28. Repository hygiene\n\nThe repository is technically coherent, but configuration and environment details should be separated from source. A `.env.example` or configuration file plus redacted documentation would improve portability and public safety.\n\n## 29. Engineering decisions and tradeoffs\n\nKey decisions include:\n\n- use iperf3 rather than inventing a traffic generator;\n- bind the measurement path explicitly;\n- separate telemetry transport from the path under test;\n- preserve local CSV evidence in addition to cloud data;\n- parse human-readable iperf output rather than JSON mode;\n- support infinite runs for externally bounded experiments.\n\nThe main tradeoff is flexibility versus reproducibility: a configurable GUI helps experiments, but every configurable parameter must be captured in the run record to make comparisons defensible.\n\n## 30. Judgment signal\n\nThe best judgment signal is recognizing that measurement infrastructure must avoid interfering with the thing being measured. Separate interfaces and explicit binding are architectural responses to that problem.\n\nThe second strong signal is the effort to preserve timestamp semantics rather than treating cloud-arrival time as the measurement time.\n\n## 31. Complexity\n\nImplementation complexity is moderate. Experiment complexity is high because correct results depend on routing, interfaces, subprocess behavior, time alignment, cloud telemetry and physical network conditions.\n\n## 32. Scale\n\nThe system is designed for lab/research streams, not internet-scale telemetry ingestion. The relevant scale metric is experiment duration/sample count and number of simultaneous streams rather than user count.\n\n## 33. Skill ratings\n\n| Skill | Rating | Evidence |\n| --- | ---: | --- |\n| Python | **4.5/5** | Large direct application |\n| Network measurement | **4.7/5** | iperf3 orchestration and semantics |\n| Linux/interface networking | **4.5/5** | source binding and interface discovery |\n| Research instrumentation | **4.8/5** | collection + timestamp + evidence pipeline |\n| Concurrency/threading | **4.1/5** | queues/background workers |\n| Data parsing | **4.3/5** | robust interval parser/unit normalization |\n| Time-series synchronization | **4.4/5** | explicit core objective |\n| Web dashboard integration | **3.8/5** | supporting visualization layer |\n\n## 34. Skill lifecycle\n\nRepo127 strengthens a trajectory already visible in Repos106,107 and113: measurement scripts become increasingly explicit about interfaces, timestamps, raw evidence and reproducibility.\n\nIt is closer to a reusable experiment agent than the earlier one-off scripts.\n\n## 35. Comparison with Repo107 `Rogers-Experiment`\n\nRepo107 is broader as an experiment system, combining real robot operation, cellular/Wi-Fi procedures and analysis. Repo127 is narrower but more architecturally focused around **path binding and telemetry separation**.\n\nThe two should be linked rather than ranked as duplicates.\n\n## 36. Comparison with Repo128 `Thesis`\n\nRepo127 focuses on **collecting and timestamping live performance samples**. Repo128 focuses on **precisely clipping and normalizing logs after collection**. Together they show both sides of research data engineering: acquisition and preprocessing.\n\n## 37. Portfolio Evidence Weight\n\n**4.5/5.**\n\nThis is high-value direct evidence because the networking logic is explicit and technically nontrivial. Its ceiling is below a production networking service because the system remains research instrumentation with environment-specific configuration and limited automated verification.\n\n## 38. Product failure potential\n\nA wrong interface selection or timestamp interpretation can produce scientifically invalid conclusions while the software appears to run successfully. This silent-validity failure is more important than a visible GUI crash.\n\nThe system should therefore be judged on experimental correctness, not just runtime availability.\n\n## 39. Human impact\n\nThe immediate users are researchers/engineers. Better tooling reduces setup mistakes and makes long experiments easier to supervise. Incorrect telemetry could waste scarce lab time or contaminate thesis conclusions.\n\n## 40. Current relevance\n\nHighly relevant to wireless/network systems, performance engineering, research software and systems-validation roles. It is also useful evidence for technical support/field engineering because it shows practical interface/routing diagnosis rather than only analysis notebooks.\n\n## 41. RAG warnings\n\n- Do not expose lab IP addresses or environment endpoints.\n- Do not call iperf3 application throughput “radio throughput” without context.\n- Do not claim formal distributed clock synchronization.\n- Do not claim Firebase or iperf3 implementation authorship.\n- Retrieve this repository for multi-homed test architecture, source binding, synchronized measurement and experiment-agent questions.\n\n## 42. Bottom line\n\n`RobohubDemo` is a strong late-career research-instrumentation node. Its key contribution is architectural: it treats **the network path being measured, the path carrying telemetry, and the time base used for correlation as separate engineering concerns**. That is exactly the kind of systems thinking required to turn a quick throughput script into a defensible mobile-robot networking experiment.\n\n<!-- END REPOSITORY 127 -->\n\n---\n"
+}

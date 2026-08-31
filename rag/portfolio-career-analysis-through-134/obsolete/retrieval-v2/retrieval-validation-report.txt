@@ -1,0 +1,29 @@
+Portfolio GitHub RAG pipeline — Step 4 v2 sophisticated hybrid retrieval validation
+
+STATUS: PASS
+
+INPUT
+  rag-corpus\embeddings\embeddings.npy
+  rag-corpus\embeddings\embedding-records.jsonl
+  rag-corpus\embeddings\embedding-manifest.json
+
+OUTPUT
+  rag-corpus/retrieval-v2/retrieval-config.json
+  rag-corpus/retrieval-v2/retrieval-validation-report.txt
+  rag-corpus/retrieval-v2/test-results/
+
+COST
+  Paid API: NONE
+  API key: NOT REQUIRED
+  Model training: NONE
+  Retrieval cost: $0
+
+PIPELINE
+  exact dense -> BM25 -> metadata lexical -> RRF -> evidence quality -> local CrossEncoder -> fusion -> diversity
+
+CORPUS: 11,642 chunks; 134/134 repositories
+BM25 unique terms: 18,099
+BM25 avg document length: 104.30
+CrossEncoder self-test: relevant=0.965672 > irrelevant=0.000011
+
+All initialization and integrity checks passed.

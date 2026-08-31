@@ -1,0 +1,810 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 131,
+  "repository_total": 134,
+  "repository_name": "WSDL-Inter-project-Item-Tracking",
+  "header_title": "`WSDL-Inter-project-Item-Tracking`",
+  "repository_slug": "kirolossedra/WSDL-Inter-project-Item-Tracking",
+  "repository_url": "https://github.com/kirolossedra/WSDL-Inter-project-Item-Tracking",
+  "repository_url_source": "derived_from_repository_slug",
+  "source": {
+    "file": "repositories-124-134.md",
+    "line_start": 2115,
+    "line_end": 2460,
+    "sha256": "f3a9a37ce66c5aa9003d548cb7d84f7e884049dcc36d1dc9dc4ee08d45bb729b"
+  },
+  "chronology_summary": {
+    "created": "2026-07-30",
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": "4.2/5"
+  },
+  "metadata": {
+    "repository": "kirolossedra/WSDL-Inter-project-Item-Tracking",
+    "chronology_index": "131 / 134",
+    "visibility": "Public",
+    "created": "2026-07-30",
+    "last_push_in_inspected_snapshot": "2026-07-31",
+    "primary_language": "HTML, with substantial JavaScript",
+    "main_files": "index.html, firebase-config.js, minimal README.md",
+    "product_class": "Internal laboratory inventory / accountability system",
+    "portfolio_evidence_weight": "4.2/5"
+  },
+  "retrieval_tags": [],
+  "skill_ratings": [],
+  "intro": "**Descriptive classification:** authenticated laboratory equipment, serial-level location, lending, health, experiment and historical activity tracking web application built directly on Firebase Authentication and Firebase Realtime Database.\n\nThe repository name is potentially misleading. There is no Web Services Description Language implementation, SOAP stack, WSDL parser or service-contract tooling in the inspected source. The actual product is a lab-operations tracker for equipment shared across Apple, AQS, Rogers and generic projects. That distinction matters for the RAG corpus: the repository should contribute evidence for inventory systems, Firebase, authenticated CRUD, audit history and experiment records—not WSDL/web-services expertise.",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/WSDL-Inter-project-Item-Tracking` |\n| Chronology index | **131 / 134** |\n| Visibility | Public |\n| Created | **2026-07-30** |\n| Last push in inspected snapshot | **2026-07-31** |\n| Primary language | HTML, with substantial JavaScript |\n| Main files | `index.html`, `firebase-config.js`, minimal `README.md` |\n| Product class | Internal laboratory inventory / accountability system |\n| Portfolio Evidence Weight | **4.2/5** |"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "1. Identity and metadata"
+      ],
+      "text": "## 1. Identity and metadata\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/WSDL-Inter-project-Item-Tracking` |\n| Chronology index | **131 / 134** |\n| Visibility | Public |\n| Created | **2026-07-30** |\n| Last push in inspected snapshot | **2026-07-31** |\n| Primary language | HTML, with substantial JavaScript |\n| Main files | `index.html`, `firebase-config.js`, minimal `README.md` |\n| Product class | Internal laboratory inventory / accountability system |\n| Portfolio Evidence Weight | **4.2/5** |"
+    },
+    "summary": {
+      "section_ids": [
+        "s047"
+      ],
+      "titles": [
+        "47. Bottom line"
+      ],
+      "text": "## 47. Bottom line\n`WSDL-Inter-project-Item-Tracking` is a misleadingly named but technically useful **laboratory asset-accountability system**. Its strongest evidence is domain modeling around serials, locations, lending, health and immutable activity history, combined with authenticated Firebase realtime persistence. It is a good example of product engineering emerging directly from physical laboratory needs.\n\n<!-- END REPOSITORY 131 -->\n\n---"
+    },
+    "chronology": {
+      "section_ids": [
+        "s045"
+      ],
+      "titles": [
+        "45. Current relevance"
+      ],
+      "text": "## 45. Current relevance\nHighly relevant to IoT, lab systems, technical operations, product engineering and internal-tool roles. Less relevant as evidence for large-scale backend architecture."
+    },
+    "architecture": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "14. Firebase architecture"
+      ],
+      "text": "## 14. Firebase architecture\nConceptually:\n\n```text\nAuthenticated browser\n  -> Firebase Authentication\n  -> Firebase Realtime Database\n       |- labEquipmentTracker/equipment\n       |- labEquipmentTracker/serials/{itemId}\n       |- labEquipmentTracker/notes/{itemId}\n       `- labEquipmentTracker/activityLogs\n```\n\nThe application is effectively a two-tier Firebase web application with the database SDK serving as the remote persistence boundary."
+    },
+    "skills": {
+      "section_ids": [
+        "s024",
+        "s043"
+      ],
+      "titles": [
+        "24. Direct authored skill evidence",
+        "43. Skill lifecycle"
+      ],
+      "text": "## 24. Direct authored skill evidence\n**Strong direct evidence:**\n\n- Firebase Authentication integration;\n- Firebase Realtime Database schema design;\n- authenticated CRUD;\n- realtime listeners;\n- multi-path database updates;\n- application-side data validation;\n- serial-level inventory modeling;\n- lending/location/health workflow design;\n- audit/history modeling;\n- Base64 image handling;\n- substantial browser UI development;\n- CSV/PDF-oriented reporting UX.\n\n## 43. Skill lifecycle\nThis repository strengthens previously observed Firebase and web-application skills by applying them to a more operationally accountable domain. The important career development is not simply \"Firebase again\"; it is the move toward **state integrity, audit history and physical-asset operations**."
+    },
+    "scale": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "29. Scale"
+      ],
+      "text": "## 29. Scale\nThe system is sized for a laboratory team rather than enterprise asset management. Firebase can support concurrent users, but the application has no evidence of large-tenant partitioning, pagination across all collections, warehouse integrations or thousands of organizational users."
+    },
+    "testing": {
+      "section_ids": [
+        "s033"
+      ],
+      "titles": [
+        "33. Testing"
+      ],
+      "text": "## 33. Testing\nNo dedicated automated test suite is visible in the three-file repository. Given the density of validation and state-transition logic, unit tests around normalization, serial limits, lending transitions and multi-path writes would materially improve confidence."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s012",
+        "s013",
+        "s037",
+        "s038"
+      ],
+      "titles": [
+        "12. Authentication",
+        "13. Authorization boundary",
+        "37. Security review",
+        "38. Privacy considerations"
+      ],
+      "text": "## 12. Authentication\nThe tracker reuses Firebase Authentication from an existing engineering Firebase project. Public self-registration is not the application's purpose; users sign in with established project accounts.\n\nThe source explicitly requires an authenticated user stamp before sensitive operations.\n\n## 13. Authorization boundary\nThe source comments show the intended Realtime Database rule boundary: `labEquipmentTracker` should be readable and writable only by authenticated users.\n\nThis is stronger than simply hiding the interface behind a login form because Firebase database rules are the actual server-side enforcement point.\n\n## 37. Security review\nThe Firebase web configuration is visible in browser code; that is normal for Firebase. Security depends on Authentication and Realtime Database rules, not secrecy of the client configuration.\n\nThe application correctly acknowledges this model. The critical control is ensuring production rules never leave `labEquipmentTracker` writable by unauthenticated users.\n\n## 38. Privacy considerations\nActor email addresses, borrower names, locations and equipment history may constitute internal operational information. Access controls therefore matter even if the application contains no consumer-sensitive data.\n\nThe RAG system should avoid surfacing private operational values if future versions of this repository become non-public or contain real personnel details."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s034"
+      ],
+      "titles": [
+        "34. CI/CD and deployment"
+      ],
+      "text": "## 34. CI/CD and deployment\nNo GitHub Actions workflow or explicit deployment configuration appears in the recursive tree. Deployment evidence is therefore limited.\n\nDo not infer Firebase Hosting or a production CI pipeline without additional evidence."
+    },
+    "documentation": {
+      "section_ids": [
+        "s035"
+      ],
+      "titles": [
+        "35. Documentation"
+      ],
+      "text": "## 35. Documentation\nThe `README.md` is only 34 bytes, so repository-level documentation is far weaker than the implementation. Most architectural information currently lives in source comments and the UI itself.\n\nThat hurts maintainability and makes RAG retrieval more dependent on code inspection."
+    },
+    "repository_hygiene": {
+      "section_ids": [
+        "s036"
+      ],
+      "titles": [
+        "36. Repository hygiene"
+      ],
+      "text": "## 36. Repository hygiene\nThe tree is extremely compact, but `index.html` is over 200 KB. A future refactor into modules/components would reduce edit risk and make individual capabilities easier to test and retrieve."
+    },
+    "failure_modes": {
+      "section_ids": [
+        "s039"
+      ],
+      "titles": [
+        "39. Product failure potential"
+      ],
+      "text": "## 39. Product failure potential\nIncorrect inventory state could cause equipment loss, double allocation, failed experiments or unnecessary purchasing. This gives the application moderate real-world operational impact despite its small code footprint."
+    },
+    "human_impact": {
+      "section_ids": [
+        "s040"
+      ],
+      "titles": [
+        "40. Human impact"
+      ],
+      "text": "## 40. Human impact\nThe product reduces the coordination burden of shared equipment: engineers can locate units, understand health, see custody and reconstruct changes rather than relying on memory or chat messages."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "32. Engineering judgment"
+      ],
+      "text": "## 32. Engineering judgment\nThe strongest judgment signal is the preservation of activity history and the separation of event time from log time. Those decisions show awareness that operational records are not merely current-state UI data.\n\nThe quantity-versus-serial invariant is another strong example of encoding physical-world correctness into software."
+    },
+    "portfolio_weight": {
+      "section_ids": [
+        "s042"
+      ],
+      "titles": [
+        "42. Portfolio Evidence Weight"
+      ],
+      "text": "## 42. Portfolio Evidence Weight\n**4.2/5.**\n\nThis is strong evidence for building a practical internal tool around real operational constraints. Its weight is reduced mainly by limited automated testing, weak repository documentation and the monolithic frontend source layout."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "1. Identity and metadata",
+      "normalized_title": "Identity and metadata",
+      "key": "identity_and_metadata",
+      "path": [
+        "1. Identity and metadata"
+      ],
+      "content": "| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/WSDL-Inter-project-Item-Tracking` |\n| Chronology index | **131 / 134** |\n| Visibility | Public |\n| Created | **2026-07-30** |\n| Last push in inspected snapshot | **2026-07-31** |\n| Primary language | HTML, with substantial JavaScript |\n| Main files | `index.html`, `firebase-config.js`, minimal `README.md` |\n| Product class | Internal laboratory inventory / accountability system |\n| Portfolio Evidence Weight | **4.2/5** |",
+      "source_line_start": 2121,
+      "source_line_end": 2135
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "2. Name-versus-implementation correction",
+      "normalized_title": "Name-versus-implementation correction",
+      "key": "name_versus_implementation_correction",
+      "path": [
+        "2. Name-versus-implementation correction"
+      ],
+      "content": "The string `WSDL` in the repository name must not be converted into WSDL skill evidence. The recursive tree contains only three files and the implementation is browser/Firebase based. The application itself describes its purpose as a **Lab Equipment Tracker** with authenticated inventory, serial-level accountability and change history.\n\nThis is an important anti-hallucination example for the portfolio RAG system: repository names are metadata clues, not ground truth. Code and runtime behavior outrank naming.",
+      "source_line_start": 2135,
+      "source_line_end": 2141
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "3. Product problem",
+      "normalized_title": "Product problem",
+      "key": "product_problem",
+      "path": [
+        "3. Product problem"
+      ],
+      "content": "The application addresses a real operational problem: equipment is shared across multiple laboratory projects and may exist in different buildings, rooms, offices, cages or temporary borrower custody. Tracking only aggregate quantity is insufficient; the tool therefore models individual serial numbers and their independent state.\n\nThe business/operations value is accountability: know what the lab owns, where each unit is, who has it, whether it is healthy and what changed over time.",
+      "source_line_start": 2141,
+      "source_line_end": 2147
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "4. Domain model",
+      "normalized_title": "Domain model",
+      "key": "domain_model",
+      "path": [
+        "4. Domain model"
+      ],
+      "content": "The Realtime Database root is isolated under `labEquipmentTracker`. The source models at least these conceptual entities:\n\n- equipment items;\n- serial-number instances under each item;\n- item notes;\n- historical activity logs;\n- project classification;\n- location state;\n- lending state;\n- health state;\n- experiment-oriented records visible in the UI.\n\nThis is more mature domain modeling than a flat inventory spreadsheet because item-level and serial-level concerns are separated.",
+      "source_line_start": 2147,
+      "source_line_end": 2163
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "5. Project segmentation",
+      "normalized_title": "Project segmentation",
+      "key": "project_segmentation",
+      "path": [
+        "5. Project segmentation"
+      ],
+      "content": "The source fixes four project categories:\n\n- Apple;\n- AQS;\n- Rogers;\n- Generic.\n\nThis indicates the tracker was designed as a cross-project laboratory operations tool rather than a single-project inventory page.",
+      "source_line_start": 2163,
+      "source_line_end": 2174
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "6. Item-versus-serial distinction",
+      "normalized_title": "Item-versus-serial distinction",
+      "key": "item_versus_serial_distinction",
+      "path": [
+        "6. Item-versus-serial distinction"
+      ],
+      "content": "An equipment record contains aggregate metadata and a declared quantity, while serial records represent concrete physical units. The implementation refuses to reduce quantity below the number of already registered serials and refuses to register serials beyond the declared quantity.\n\nThat is a meaningful invariant. It prevents the UI from representing physically impossible states such as five registered units under an item whose quantity is three.",
+      "source_line_start": 2174,
+      "source_line_end": 2180
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "7. Location modeling",
+      "normalized_title": "Location modeling",
+      "key": "location_modeling",
+      "path": [
+        "7. Location modeling"
+      ],
+      "content": "Location is structured rather than stored as one uncontrolled string. The inspected source defines EC5 and E5 sites with specific sub-locations and an additional office-owner requirement when a unit is assigned to someone else's office.\n\nThis demonstrates a practical balance between controlled vocabularies and the need for contextual detail.",
+      "source_line_start": 2180,
+      "source_line_end": 2186
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "8. Location validation",
+      "normalized_title": "Location validation",
+      "key": "location_validation",
+      "path": [
+        "8. Location validation"
+      ],
+      "content": "`normalizeLocation` validates both site and sub-location against allowed values. It also conditionally requires office ownership information.\n\nThe design prevents arbitrary invalid site/sub-location combinations from silently entering the database.",
+      "source_line_start": 2186,
+      "source_line_end": 2192
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "9. Lending lifecycle",
+      "normalized_title": "Lending lifecycle",
+      "key": "lending_lifecycle",
+      "path": [
+        "9. Lending lifecycle"
+      ],
+      "content": "Serials can be marked loaned and associated with a member name and loan timestamp. A loaned unit requires a borrower name; clearing the loan removes borrower-specific state.\n\nThis turns inventory from static storage into a small state-management system.",
+      "source_line_start": 2192,
+      "source_line_end": 2198
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "10. Historical activity model",
+      "normalized_title": "Historical activity model",
+      "key": "historical_activity_model",
+      "path": [
+        "10. Historical activity model"
+      ],
+      "content": "The application writes immutable-looking activity records containing:\n\n- item and serial identity;\n- action type;\n- event time;\n- actor UID/email;\n- relevant before/after details.\n\nHistorical activity is deliberately preserved even when active equipment records are deleted. That is a strong operational decision because deletion of current state should not erase accountability history.",
+      "source_line_start": 2198,
+      "source_line_end": 2210
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "11. Auditability",
+      "normalized_title": "Auditability",
+      "key": "auditability",
+      "path": [
+        "11. Auditability"
+      ],
+      "content": "Every log can include both the event's `occurredAt` timestamp and Firebase's `loggedAt` server timestamp. The actor identity is copied from the authenticated Firebase user.\n\nThis provides a useful distinction between **when the physical event happened** and **when the record was entered**.",
+      "source_line_start": 2210,
+      "source_line_end": 2216
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "12. Authentication",
+      "normalized_title": "Authentication",
+      "key": "authentication",
+      "path": [
+        "12. Authentication"
+      ],
+      "content": "The tracker reuses Firebase Authentication from an existing engineering Firebase project. Public self-registration is not the application's purpose; users sign in with established project accounts.\n\nThe source explicitly requires an authenticated user stamp before sensitive operations.",
+      "source_line_start": 2216,
+      "source_line_end": 2222
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "13. Authorization boundary",
+      "normalized_title": "Authorization boundary",
+      "key": "authorization_boundary",
+      "path": [
+        "13. Authorization boundary"
+      ],
+      "content": "The source comments show the intended Realtime Database rule boundary: `labEquipmentTracker` should be readable and writable only by authenticated users.\n\nThis is stronger than simply hiding the interface behind a login form because Firebase database rules are the actual server-side enforcement point.",
+      "source_line_start": 2222,
+      "source_line_end": 2228
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "14. Firebase architecture",
+      "normalized_title": "Firebase architecture",
+      "key": "firebase_architecture",
+      "path": [
+        "14. Firebase architecture"
+      ],
+      "content": "Conceptually:\n\n```text\nAuthenticated browser\n  -> Firebase Authentication\n  -> Firebase Realtime Database\n       |- labEquipmentTracker/equipment\n       |- labEquipmentTracker/serials/{itemId}\n       |- labEquipmentTracker/notes/{itemId}\n       `- labEquipmentTracker/activityLogs\n```\n\nThe application is effectively a two-tier Firebase web application with the database SDK serving as the remote persistence boundary.",
+      "source_line_start": 2228,
+      "source_line_end": 2244
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "15. Realtime subscriptions",
+      "normalized_title": "Realtime subscriptions",
+      "key": "realtime_subscriptions",
+      "path": [
+        "15. Realtime subscriptions"
+      ],
+      "content": "The service uses `onValue` subscriptions for inventory, serials, notes and activity logs. This makes the UI reactive to database changes rather than requiring manual reloads.\n\nRealtime behavior is appropriate for shared lab inventory because one user's changes can become visible to others quickly.",
+      "source_line_start": 2244,
+      "source_line_end": 2250
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "16. Query design",
+      "normalized_title": "Query design",
+      "key": "query_design",
+      "path": [
+        "16. Query design"
+      ],
+      "content": "Activity logs are queried by `occurredAt` and limited to the most recent 300 records. This shows awareness that history can grow and should not always be downloaded unbounded.\n\nThe corresponding `.indexOn` rule requirement is documented in the source comments.",
+      "source_line_start": 2250,
+      "source_line_end": 2256
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "17. Multi-path writes",
+      "normalized_title": "Multi-path writes",
+      "key": "multi_path_writes",
+      "path": [
+        "17. Multi-path writes"
+      ],
+      "content": "Serial registration constructs a map of writes that creates serial records, corresponding activity logs and updated item counters in one root-level Firebase `update` operation.\n\nThat is preferable to many unrelated writes because it reduces the chance of partially updated application state.",
+      "source_line_start": 2256,
+      "source_line_end": 2262
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "18. Data normalization",
+      "normalized_title": "Data normalization",
+      "key": "data_normalization",
+      "path": [
+        "18. Data normalization"
+      ],
+      "content": "The service centralizes normalization for:\n\n- text length;\n- Base64 images;\n- locations;\n- timestamps;\n- loan state.\n\nThis is direct evidence of treating validation as a data-boundary responsibility rather than scattering checks only in UI event handlers.",
+      "source_line_start": 2262,
+      "source_line_end": 2274
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "19. Image handling",
+      "normalized_title": "Image handling",
+      "key": "image_handling",
+      "path": [
+        "19. Image handling"
+      ],
+      "content": "Item photos are accepted as Base64 data URLs for JPEG, PNG or WebP and limited to a bounded string size. The approach avoids Firebase Storage but increases Realtime Database payload size.\n\nFor a small internal inventory this may be acceptable; at larger scale object storage would be more appropriate.",
+      "source_line_start": 2274,
+      "source_line_end": 2280
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "20. UI scope",
+      "normalized_title": "UI scope",
+      "key": "ui_scope",
+      "path": [
+        "20. UI scope"
+      ],
+      "content": "The large single `index.html` implements a complete authenticated application shell rather than a tiny demo page. The visible interface includes inventory views, project/type filters, item management, serial expansion, health information, comments/photos, reports and an **Experiments** tab.\n\nThe UI also supports PDF generation and CSV export controls.",
+      "source_line_start": 2280,
+      "source_line_end": 2286
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "21. Search behavior",
+      "normalized_title": "Search behavior",
+      "key": "search_behavior",
+      "path": [
+        "21. Search behavior"
+      ],
+      "content": "The interface advertises multi-term search and regular-expression support across inventory-related fields. This is useful for technical users searching model names, tags or serial metadata.\n\nRegex support increases power but requires defensive handling so invalid expressions cannot break the search path.",
+      "source_line_start": 2286,
+      "source_line_end": 2292
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "22. Health tracking",
+      "normalized_title": "Health tracking",
+      "key": "health_tracking",
+      "path": [
+        "22. Health tracking"
+      ],
+      "content": "The UI distinguishes healthy units and units whose health setup still requires attention. This moves the system beyond location tracking toward equipment-readiness management.\n\nHealth state is operationally valuable because a physically present device is not necessarily usable.",
+      "source_line_start": 2292,
+      "source_line_end": 2298
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "23. Experiment tracking",
+      "normalized_title": "Experiment tracking",
+      "key": "experiment_tracking",
+      "path": [
+        "23. Experiment tracking"
+      ],
+      "content": "The separate Experiments workspace indicates the application also associates equipment operations with laboratory experimentation rather than treating inventory as a warehouse-only concern.\n\nThe repository therefore sits at the intersection of inventory management and research-lab execution support.",
+      "source_line_start": 2298,
+      "source_line_end": 2304
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "24. Direct authored skill evidence",
+      "normalized_title": "Direct authored skill evidence",
+      "key": "direct_authored_skill_evidence",
+      "path": [
+        "24. Direct authored skill evidence"
+      ],
+      "content": "**Strong direct evidence:**\n\n- Firebase Authentication integration;\n- Firebase Realtime Database schema design;\n- authenticated CRUD;\n- realtime listeners;\n- multi-path database updates;\n- application-side data validation;\n- serial-level inventory modeling;\n- lending/location/health workflow design;\n- audit/history modeling;\n- Base64 image handling;\n- substantial browser UI development;\n- CSV/PDF-oriented reporting UX.",
+      "source_line_start": 2304,
+      "source_line_end": 2321
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "25. Team / platform / external exposure",
+      "normalized_title": "Team / platform / external exposure",
+      "key": "team_platform_external_exposure",
+      "path": [
+        "25. Team / platform / external exposure"
+      ],
+      "content": "Firebase SDK behavior, Authentication, Realtime Database and browser APIs are third-party platform capabilities. The existing project/account infrastructure is environmental context rather than authored technology.\n\nThe evidence attributable to the repository is the way those services are composed into the lab workflow.",
+      "source_line_start": 2321,
+      "source_line_end": 2327
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "26. Overall system capability",
+      "normalized_title": "Overall system capability",
+      "key": "overall_system_capability",
+      "path": [
+        "26. Overall system capability"
+      ],
+      "content": "The system can represent a meaningful portion of a real laboratory's equipment lifecycle: acquisition/registration, per-unit identification, location, borrowing, health, notes, experiments, reporting and immutable historical activity.\n\nThat is broader than a CRUD form even though the implementation remains a small two-file web application.",
+      "source_line_start": 2327,
+      "source_line_end": 2333
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "27. Responsibility",
+      "normalized_title": "Responsibility",
+      "key": "responsibility",
+      "path": [
+        "27. Responsibility"
+      ],
+      "content": "The repository indicates end-to-end responsibility across data schema, validation rules, Firebase integration and the complete browser interface. There is no separate backend repository or framework insulating the developer from persistence details.",
+      "source_line_start": 2333,
+      "source_line_end": 2337
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "28. Complexity",
+      "normalized_title": "Complexity",
+      "key": "complexity",
+      "path": [
+        "28. Complexity"
+      ],
+      "content": "**Moderate-to-high product complexity, moderate implementation architecture complexity.**\n\nComplexity comes from interacting state dimensions and historical correctness more than from code distribution. The single large HTML file is architecturally simple but functionally broad.",
+      "source_line_start": 2337,
+      "source_line_end": 2343
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "29. Scale",
+      "normalized_title": "Scale",
+      "key": "scale",
+      "path": [
+        "29. Scale"
+      ],
+      "content": "The system is sized for a laboratory team rather than enterprise asset management. Firebase can support concurrent users, but the application has no evidence of large-tenant partitioning, pagination across all collections, warehouse integrations or thousands of organizational users.",
+      "source_line_start": 2343,
+      "source_line_end": 2347
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "30. Key engineering decisions",
+      "normalized_title": "Key engineering decisions",
+      "key": "key_engineering_decisions",
+      "path": [
+        "30. Key engineering decisions"
+      ],
+      "content": "Notable choices include:\n\n- reuse existing Firebase Auth rather than invent a second identity system;\n- isolate tracker data under a dedicated root;\n- preserve history during active-record deletion;\n- model serials separately from aggregate items;\n- constrain location vocabulary;\n- perform related Firebase writes together;\n- keep photos in Base64 rather than add another storage product.\n\nThese are coherent choices for an internal tool.",
+      "source_line_start": 2347,
+      "source_line_end": 2361
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "31. Tradeoffs",
+      "normalized_title": "Tradeoffs",
+      "key": "tradeoffs",
+      "path": [
+        "31. Tradeoffs"
+      ],
+      "content": "The architecture optimizes speed of delivery and operational usefulness. Tradeoffs include a very large single HTML document, browser-trusted validation in addition to database rules, Base64 storage overhead and coupling to one Firebase project.\n\nA larger product would benefit from modular frontend source, formal schema/version migrations and stronger authorization roles.",
+      "source_line_start": 2361,
+      "source_line_end": 2367
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "32. Engineering judgment",
+      "normalized_title": "Engineering judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "32. Engineering judgment"
+      ],
+      "content": "The strongest judgment signal is the preservation of activity history and the separation of event time from log time. Those decisions show awareness that operational records are not merely current-state UI data.\n\nThe quantity-versus-serial invariant is another strong example of encoding physical-world correctness into software.",
+      "source_line_start": 2367,
+      "source_line_end": 2373
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "33. Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "33. Testing"
+      ],
+      "content": "No dedicated automated test suite is visible in the three-file repository. Given the density of validation and state-transition logic, unit tests around normalization, serial limits, lending transitions and multi-path writes would materially improve confidence.",
+      "source_line_start": 2373,
+      "source_line_end": 2377
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "34. CI/CD and deployment",
+      "normalized_title": "CI/CD and deployment",
+      "key": "ci_cd_and_deployment",
+      "path": [
+        "34. CI/CD and deployment"
+      ],
+      "content": "No GitHub Actions workflow or explicit deployment configuration appears in the recursive tree. Deployment evidence is therefore limited.\n\nDo not infer Firebase Hosting or a production CI pipeline without additional evidence.",
+      "source_line_start": 2377,
+      "source_line_end": 2383
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "35. Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "35. Documentation"
+      ],
+      "content": "The `README.md` is only 34 bytes, so repository-level documentation is far weaker than the implementation. Most architectural information currently lives in source comments and the UI itself.\n\nThat hurts maintainability and makes RAG retrieval more dependent on code inspection.",
+      "source_line_start": 2383,
+      "source_line_end": 2389
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "36. Repository hygiene",
+      "normalized_title": "Repository hygiene",
+      "key": "repository_hygiene",
+      "path": [
+        "36. Repository hygiene"
+      ],
+      "content": "The tree is extremely compact, but `index.html` is over 200 KB. A future refactor into modules/components would reduce edit risk and make individual capabilities easier to test and retrieve.",
+      "source_line_start": 2389,
+      "source_line_end": 2393
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "37. Security review",
+      "normalized_title": "Security review",
+      "key": "security_review",
+      "path": [
+        "37. Security review"
+      ],
+      "content": "The Firebase web configuration is visible in browser code; that is normal for Firebase. Security depends on Authentication and Realtime Database rules, not secrecy of the client configuration.\n\nThe application correctly acknowledges this model. The critical control is ensuring production rules never leave `labEquipmentTracker` writable by unauthenticated users.",
+      "source_line_start": 2393,
+      "source_line_end": 2399
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "38. Privacy considerations",
+      "normalized_title": "Privacy considerations",
+      "key": "privacy_considerations",
+      "path": [
+        "38. Privacy considerations"
+      ],
+      "content": "Actor email addresses, borrower names, locations and equipment history may constitute internal operational information. Access controls therefore matter even if the application contains no consumer-sensitive data.\n\nThe RAG system should avoid surfacing private operational values if future versions of this repository become non-public or contain real personnel details.",
+      "source_line_start": 2399,
+      "source_line_end": 2405
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "39. Product failure potential",
+      "normalized_title": "Product failure potential",
+      "key": "product_failure_potential",
+      "path": [
+        "39. Product failure potential"
+      ],
+      "content": "Incorrect inventory state could cause equipment loss, double allocation, failed experiments or unnecessary purchasing. This gives the application moderate real-world operational impact despite its small code footprint.",
+      "source_line_start": 2405,
+      "source_line_end": 2409
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "40. Human impact",
+      "normalized_title": "Human impact",
+      "key": "human_impact",
+      "path": [
+        "40. Human impact"
+      ],
+      "content": "The product reduces the coordination burden of shared equipment: engineers can locate units, understand health, see custody and reconstruct changes rather than relying on memory or chat messages.",
+      "source_line_start": 2409,
+      "source_line_end": 2413
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "41. Standard evaluation matrix",
+      "normalized_title": "Standard evaluation matrix",
+      "key": "standard_evaluation_matrix",
+      "path": [
+        "41. Standard evaluation matrix"
+      ],
+      "content": "| Dimension | Rating | Evidence |\n| --- | ---: | --- |\n| Product usefulness | 4.5/5 | Real lab accountability problem |\n| Domain modeling | 4.5/5 | item/serial/location/loan/history separation |\n| Frontend implementation | 4.0/5 | large functional authenticated UI |\n| Firebase usage | 4.5/5 | auth, realtime reads, structured writes, query/index awareness |\n| Testing maturity | 1.5/5 | no dedicated test suite visible |\n| CI/CD maturity | 1.0/5 | no workflow evidence |\n| Documentation | 1.5/5 | minimal README |\n| Security thinking | 3.8/5 | authenticated rules model, user stamps, server-side Firebase enforcement concept |\n| Operational maturity | 4.0/5 | activity history and reporting |",
+      "source_line_start": 2413,
+      "source_line_end": 2427
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "42. Portfolio Evidence Weight",
+      "normalized_title": "Portfolio Evidence Weight",
+      "key": "portfolio_evidence_weight",
+      "path": [
+        "42. Portfolio Evidence Weight"
+      ],
+      "content": "**4.2/5.**\n\nThis is strong evidence for building a practical internal tool around real operational constraints. Its weight is reduced mainly by limited automated testing, weak repository documentation and the monolithic frontend source layout.",
+      "source_line_start": 2427,
+      "source_line_end": 2433
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "43. Skill lifecycle",
+      "normalized_title": "Skill lifecycle",
+      "key": "skill_lifecycle",
+      "path": [
+        "43. Skill lifecycle"
+      ],
+      "content": "This repository strengthens previously observed Firebase and web-application skills by applying them to a more operationally accountable domain. The important career development is not simply \"Firebase again\"; it is the move toward **state integrity, audit history and physical-asset operations**.",
+      "source_line_start": 2433,
+      "source_line_end": 2437
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "44. Cumulative career effect",
+      "normalized_title": "Cumulative career effect",
+      "key": "cumulative_career_effect",
+      "path": [
+        "44. Cumulative career effect"
+      ],
+      "content": "By Repo131 the corpus shows a pattern of using software to structure engineering operations, not only to create user-facing products. That connects earlier IoT/lab work with product/software thinking: physical hardware state is turned into searchable, validated and auditable digital state.",
+      "source_line_start": 2437,
+      "source_line_end": 2441
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "45. Current relevance",
+      "normalized_title": "Current relevance",
+      "key": "current_relevance",
+      "path": [
+        "45. Current relevance"
+      ],
+      "content": "Highly relevant to IoT, lab systems, technical operations, product engineering and internal-tool roles. Less relevant as evidence for large-scale backend architecture.",
+      "source_line_start": 2441,
+      "source_line_end": 2445
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "46. RAG warnings",
+      "normalized_title": "RAG warnings",
+      "key": "rag_warnings",
+      "path": [
+        "46. RAG warnings"
+      ],
+      "content": "- **Do not infer WSDL, SOAP or XML service-contract expertise from the repository name.**\n- Do not call this an enterprise asset-management platform.\n- Do not infer role-based authorization beyond authenticated-user rules unless additional code proves it.\n- Do not infer automated testing or CI/CD.\n- Keep Firebase client configuration separate from secret credentials; the web config itself is not a password.\n- Preserve the distinction between aggregate item quantity and registered serial instances.",
+      "source_line_start": 2445,
+      "source_line_end": 2454
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "47. Bottom line",
+      "normalized_title": "Bottom line",
+      "key": "bottom_line",
+      "path": [
+        "47. Bottom line"
+      ],
+      "content": "`WSDL-Inter-project-Item-Tracking` is a misleadingly named but technically useful **laboratory asset-accountability system**. Its strongest evidence is domain modeling around serials, locations, lending, health and immutable activity history, combined with authenticated Firebase realtime persistence. It is a good example of product engineering emerging directly from physical laboratory needs.\n\n<!-- END REPOSITORY 131 -->\n\n---",
+      "source_line_start": 2454,
+      "source_line_end": 2461
+    }
+  ],
+  "raw_analysis": "# Repository 131 / 134 — `WSDL-Inter-project-Item-Tracking`\n\n**Descriptive classification:** authenticated laboratory equipment, serial-level location, lending, health, experiment and historical activity tracking web application built directly on Firebase Authentication and Firebase Realtime Database.\n\nThe repository name is potentially misleading. There is no Web Services Description Language implementation, SOAP stack, WSDL parser or service-contract tooling in the inspected source. The actual product is a lab-operations tracker for equipment shared across Apple, AQS, Rogers and generic projects. That distinction matters for the RAG corpus: the repository should contribute evidence for inventory systems, Firebase, authenticated CRUD, audit history and experiment records—not WSDL/web-services expertise.\n\n## 1. Identity and metadata\n\n| Field | Interpretation |\n| --- | --- |\n| Repository | `kirolossedra/WSDL-Inter-project-Item-Tracking` |\n| Chronology index | **131 / 134** |\n| Visibility | Public |\n| Created | **2026-07-30** |\n| Last push in inspected snapshot | **2026-07-31** |\n| Primary language | HTML, with substantial JavaScript |\n| Main files | `index.html`, `firebase-config.js`, minimal `README.md` |\n| Product class | Internal laboratory inventory / accountability system |\n| Portfolio Evidence Weight | **4.2/5** |\n\n## 2. Name-versus-implementation correction\n\nThe string `WSDL` in the repository name must not be converted into WSDL skill evidence. The recursive tree contains only three files and the implementation is browser/Firebase based. The application itself describes its purpose as a **Lab Equipment Tracker** with authenticated inventory, serial-level accountability and change history.\n\nThis is an important anti-hallucination example for the portfolio RAG system: repository names are metadata clues, not ground truth. Code and runtime behavior outrank naming.\n\n## 3. Product problem\n\nThe application addresses a real operational problem: equipment is shared across multiple laboratory projects and may exist in different buildings, rooms, offices, cages or temporary borrower custody. Tracking only aggregate quantity is insufficient; the tool therefore models individual serial numbers and their independent state.\n\nThe business/operations value is accountability: know what the lab owns, where each unit is, who has it, whether it is healthy and what changed over time.\n\n## 4. Domain model\n\nThe Realtime Database root is isolated under `labEquipmentTracker`. The source models at least these conceptual entities:\n\n- equipment items;\n- serial-number instances under each item;\n- item notes;\n- historical activity logs;\n- project classification;\n- location state;\n- lending state;\n- health state;\n- experiment-oriented records visible in the UI.\n\nThis is more mature domain modeling than a flat inventory spreadsheet because item-level and serial-level concerns are separated.\n\n## 5. Project segmentation\n\nThe source fixes four project categories:\n\n- Apple;\n- AQS;\n- Rogers;\n- Generic.\n\nThis indicates the tracker was designed as a cross-project laboratory operations tool rather than a single-project inventory page.\n\n## 6. Item-versus-serial distinction\n\nAn equipment record contains aggregate metadata and a declared quantity, while serial records represent concrete physical units. The implementation refuses to reduce quantity below the number of already registered serials and refuses to register serials beyond the declared quantity.\n\nThat is a meaningful invariant. It prevents the UI from representing physically impossible states such as five registered units under an item whose quantity is three.\n\n## 7. Location modeling\n\nLocation is structured rather than stored as one uncontrolled string. The inspected source defines EC5 and E5 sites with specific sub-locations and an additional office-owner requirement when a unit is assigned to someone else's office.\n\nThis demonstrates a practical balance between controlled vocabularies and the need for contextual detail.\n\n## 8. Location validation\n\n`normalizeLocation` validates both site and sub-location against allowed values. It also conditionally requires office ownership information.\n\nThe design prevents arbitrary invalid site/sub-location combinations from silently entering the database.\n\n## 9. Lending lifecycle\n\nSerials can be marked loaned and associated with a member name and loan timestamp. A loaned unit requires a borrower name; clearing the loan removes borrower-specific state.\n\nThis turns inventory from static storage into a small state-management system.\n\n## 10. Historical activity model\n\nThe application writes immutable-looking activity records containing:\n\n- item and serial identity;\n- action type;\n- event time;\n- actor UID/email;\n- relevant before/after details.\n\nHistorical activity is deliberately preserved even when active equipment records are deleted. That is a strong operational decision because deletion of current state should not erase accountability history.\n\n## 11. Auditability\n\nEvery log can include both the event's `occurredAt` timestamp and Firebase's `loggedAt` server timestamp. The actor identity is copied from the authenticated Firebase user.\n\nThis provides a useful distinction between **when the physical event happened** and **when the record was entered**.\n\n## 12. Authentication\n\nThe tracker reuses Firebase Authentication from an existing engineering Firebase project. Public self-registration is not the application's purpose; users sign in with established project accounts.\n\nThe source explicitly requires an authenticated user stamp before sensitive operations.\n\n## 13. Authorization boundary\n\nThe source comments show the intended Realtime Database rule boundary: `labEquipmentTracker` should be readable and writable only by authenticated users.\n\nThis is stronger than simply hiding the interface behind a login form because Firebase database rules are the actual server-side enforcement point.\n\n## 14. Firebase architecture\n\nConceptually:\n\n```text\nAuthenticated browser\n  -> Firebase Authentication\n  -> Firebase Realtime Database\n       |- labEquipmentTracker/equipment\n       |- labEquipmentTracker/serials/{itemId}\n       |- labEquipmentTracker/notes/{itemId}\n       `- labEquipmentTracker/activityLogs\n```\n\nThe application is effectively a two-tier Firebase web application with the database SDK serving as the remote persistence boundary.\n\n## 15. Realtime subscriptions\n\nThe service uses `onValue` subscriptions for inventory, serials, notes and activity logs. This makes the UI reactive to database changes rather than requiring manual reloads.\n\nRealtime behavior is appropriate for shared lab inventory because one user's changes can become visible to others quickly.\n\n## 16. Query design\n\nActivity logs are queried by `occurredAt` and limited to the most recent 300 records. This shows awareness that history can grow and should not always be downloaded unbounded.\n\nThe corresponding `.indexOn` rule requirement is documented in the source comments.\n\n## 17. Multi-path writes\n\nSerial registration constructs a map of writes that creates serial records, corresponding activity logs and updated item counters in one root-level Firebase `update` operation.\n\nThat is preferable to many unrelated writes because it reduces the chance of partially updated application state.\n\n## 18. Data normalization\n\nThe service centralizes normalization for:\n\n- text length;\n- Base64 images;\n- locations;\n- timestamps;\n- loan state.\n\nThis is direct evidence of treating validation as a data-boundary responsibility rather than scattering checks only in UI event handlers.\n\n## 19. Image handling\n\nItem photos are accepted as Base64 data URLs for JPEG, PNG or WebP and limited to a bounded string size. The approach avoids Firebase Storage but increases Realtime Database payload size.\n\nFor a small internal inventory this may be acceptable; at larger scale object storage would be more appropriate.\n\n## 20. UI scope\n\nThe large single `index.html` implements a complete authenticated application shell rather than a tiny demo page. The visible interface includes inventory views, project/type filters, item management, serial expansion, health information, comments/photos, reports and an **Experiments** tab.\n\nThe UI also supports PDF generation and CSV export controls.\n\n## 21. Search behavior\n\nThe interface advertises multi-term search and regular-expression support across inventory-related fields. This is useful for technical users searching model names, tags or serial metadata.\n\nRegex support increases power but requires defensive handling so invalid expressions cannot break the search path.\n\n## 22. Health tracking\n\nThe UI distinguishes healthy units and units whose health setup still requires attention. This moves the system beyond location tracking toward equipment-readiness management.\n\nHealth state is operationally valuable because a physically present device is not necessarily usable.\n\n## 23. Experiment tracking\n\nThe separate Experiments workspace indicates the application also associates equipment operations with laboratory experimentation rather than treating inventory as a warehouse-only concern.\n\nThe repository therefore sits at the intersection of inventory management and research-lab execution support.\n\n## 24. Direct authored skill evidence\n\n**Strong direct evidence:**\n\n- Firebase Authentication integration;\n- Firebase Realtime Database schema design;\n- authenticated CRUD;\n- realtime listeners;\n- multi-path database updates;\n- application-side data validation;\n- serial-level inventory modeling;\n- lending/location/health workflow design;\n- audit/history modeling;\n- Base64 image handling;\n- substantial browser UI development;\n- CSV/PDF-oriented reporting UX.\n\n## 25. Team / platform / external exposure\n\nFirebase SDK behavior, Authentication, Realtime Database and browser APIs are third-party platform capabilities. The existing project/account infrastructure is environmental context rather than authored technology.\n\nThe evidence attributable to the repository is the way those services are composed into the lab workflow.\n\n## 26. Overall system capability\n\nThe system can represent a meaningful portion of a real laboratory's equipment lifecycle: acquisition/registration, per-unit identification, location, borrowing, health, notes, experiments, reporting and immutable historical activity.\n\nThat is broader than a CRUD form even though the implementation remains a small two-file web application.\n\n## 27. Responsibility\n\nThe repository indicates end-to-end responsibility across data schema, validation rules, Firebase integration and the complete browser interface. There is no separate backend repository or framework insulating the developer from persistence details.\n\n## 28. Complexity\n\n**Moderate-to-high product complexity, moderate implementation architecture complexity.**\n\nComplexity comes from interacting state dimensions and historical correctness more than from code distribution. The single large HTML file is architecturally simple but functionally broad.\n\n## 29. Scale\n\nThe system is sized for a laboratory team rather than enterprise asset management. Firebase can support concurrent users, but the application has no evidence of large-tenant partitioning, pagination across all collections, warehouse integrations or thousands of organizational users.\n\n## 30. Key engineering decisions\n\nNotable choices include:\n\n- reuse existing Firebase Auth rather than invent a second identity system;\n- isolate tracker data under a dedicated root;\n- preserve history during active-record deletion;\n- model serials separately from aggregate items;\n- constrain location vocabulary;\n- perform related Firebase writes together;\n- keep photos in Base64 rather than add another storage product.\n\nThese are coherent choices for an internal tool.\n\n## 31. Tradeoffs\n\nThe architecture optimizes speed of delivery and operational usefulness. Tradeoffs include a very large single HTML document, browser-trusted validation in addition to database rules, Base64 storage overhead and coupling to one Firebase project.\n\nA larger product would benefit from modular frontend source, formal schema/version migrations and stronger authorization roles.\n\n## 32. Engineering judgment\n\nThe strongest judgment signal is the preservation of activity history and the separation of event time from log time. Those decisions show awareness that operational records are not merely current-state UI data.\n\nThe quantity-versus-serial invariant is another strong example of encoding physical-world correctness into software.\n\n## 33. Testing\n\nNo dedicated automated test suite is visible in the three-file repository. Given the density of validation and state-transition logic, unit tests around normalization, serial limits, lending transitions and multi-path writes would materially improve confidence.\n\n## 34. CI/CD and deployment\n\nNo GitHub Actions workflow or explicit deployment configuration appears in the recursive tree. Deployment evidence is therefore limited.\n\nDo not infer Firebase Hosting or a production CI pipeline without additional evidence.\n\n## 35. Documentation\n\nThe `README.md` is only 34 bytes, so repository-level documentation is far weaker than the implementation. Most architectural information currently lives in source comments and the UI itself.\n\nThat hurts maintainability and makes RAG retrieval more dependent on code inspection.\n\n## 36. Repository hygiene\n\nThe tree is extremely compact, but `index.html` is over 200 KB. A future refactor into modules/components would reduce edit risk and make individual capabilities easier to test and retrieve.\n\n## 37. Security review\n\nThe Firebase web configuration is visible in browser code; that is normal for Firebase. Security depends on Authentication and Realtime Database rules, not secrecy of the client configuration.\n\nThe application correctly acknowledges this model. The critical control is ensuring production rules never leave `labEquipmentTracker` writable by unauthenticated users.\n\n## 38. Privacy considerations\n\nActor email addresses, borrower names, locations and equipment history may constitute internal operational information. Access controls therefore matter even if the application contains no consumer-sensitive data.\n\nThe RAG system should avoid surfacing private operational values if future versions of this repository become non-public or contain real personnel details.\n\n## 39. Product failure potential\n\nIncorrect inventory state could cause equipment loss, double allocation, failed experiments or unnecessary purchasing. This gives the application moderate real-world operational impact despite its small code footprint.\n\n## 40. Human impact\n\nThe product reduces the coordination burden of shared equipment: engineers can locate units, understand health, see custody and reconstruct changes rather than relying on memory or chat messages.\n\n## 41. Standard evaluation matrix\n\n| Dimension | Rating | Evidence |\n| --- | ---: | --- |\n| Product usefulness | 4.5/5 | Real lab accountability problem |\n| Domain modeling | 4.5/5 | item/serial/location/loan/history separation |\n| Frontend implementation | 4.0/5 | large functional authenticated UI |\n| Firebase usage | 4.5/5 | auth, realtime reads, structured writes, query/index awareness |\n| Testing maturity | 1.5/5 | no dedicated test suite visible |\n| CI/CD maturity | 1.0/5 | no workflow evidence |\n| Documentation | 1.5/5 | minimal README |\n| Security thinking | 3.8/5 | authenticated rules model, user stamps, server-side Firebase enforcement concept |\n| Operational maturity | 4.0/5 | activity history and reporting |\n\n## 42. Portfolio Evidence Weight\n\n**4.2/5.**\n\nThis is strong evidence for building a practical internal tool around real operational constraints. Its weight is reduced mainly by limited automated testing, weak repository documentation and the monolithic frontend source layout.\n\n## 43. Skill lifecycle\n\nThis repository strengthens previously observed Firebase and web-application skills by applying them to a more operationally accountable domain. The important career development is not simply \"Firebase again\"; it is the move toward **state integrity, audit history and physical-asset operations**.\n\n## 44. Cumulative career effect\n\nBy Repo131 the corpus shows a pattern of using software to structure engineering operations, not only to create user-facing products. That connects earlier IoT/lab work with product/software thinking: physical hardware state is turned into searchable, validated and auditable digital state.\n\n## 45. Current relevance\n\nHighly relevant to IoT, lab systems, technical operations, product engineering and internal-tool roles. Less relevant as evidence for large-scale backend architecture.\n\n## 46. RAG warnings\n\n- **Do not infer WSDL, SOAP or XML service-contract expertise from the repository name.**\n- Do not call this an enterprise asset-management platform.\n- Do not infer role-based authorization beyond authenticated-user rules unless additional code proves it.\n- Do not infer automated testing or CI/CD.\n- Keep Firebase client configuration separate from secret credentials; the web config itself is not a password.\n- Preserve the distinction between aggregate item quantity and registered serial instances.\n\n## 47. Bottom line\n\n`WSDL-Inter-project-Item-Tracking` is a misleadingly named but technically useful **laboratory asset-accountability system**. Its strongest evidence is domain modeling around serials, locations, lending, health and immutable activity history, combined with authenticated Firebase realtime persistence. It is a good example of product engineering emerging directly from physical laboratory needs.\n\n<!-- END REPOSITORY 131 -->\n\n---\n"
+}
