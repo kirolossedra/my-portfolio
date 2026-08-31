@@ -1,18 +1,20 @@
-# Portfolio GitHub Career Analysis — Complete 134-Repository Corpus
+# Portfolio GitHub Career Analysis - Complete 134-Repository Source Corpus
 
-This package contains the cumulative chronological, evidence-bounded career analysis for **all 134 GitHub repositories**, ending with **Repository 134 (`my-portfolio`)**.
+## Table of Contents
 
-## Completion status
+- [Completion Status](#completion-status)
+- [Corpus Files](#corpus-files)
+- [Methodological Rules](#methodological-rules)
+- [Validation and Continuation Artifacts](#validation-and-continuation-artifacts)
+- [Role in RAG](#role-in-rag)
 
-- Repositories analyzed: **134 / 134**
-- Chronological continuity: **PASS — Repository 001 through 134**
-- Final batch: **124–134**
-- Missing repository indexes: **None**
-- Duplicate repository indexes: **None**
-- Physical lines across all split repository corpus files: **135,371**
-- Final methodology: **evidence-driven depth; no line-count or fixed-section target**
+<a id="completion-status"></a>
+## Completion Status
 
-## Corpus files
+This directory preserves the cumulative chronological, evidence-bounded analysis for all **134 / 134** GitHub repositories, ending with Repository 134 (`my-portfolio`). Chronological continuity from 001 through 134 passed; no repository indexes are missing or duplicated. Across the split corpus files there are **135,371 physical lines**.
+
+<a id="corpus-files"></a>
+## Corpus Files
 
 - `repositories-001-015.md`
 - `repositories-016-027-corrected.md`
@@ -26,24 +28,31 @@ This package contains the cumulative chronological, evidence-bounded career anal
 - `repositories-112-123.md`
 - `repositories-124-134.md`
 
-## Methodological rules
+<a id="methodological-rules"></a>
+## Methodological Rules
 
-1. Early-corpus analytical richness remains the reference standard; later entries may not become thinner merely because the corpus is larger.
-2. The 32-part evaluation schema is a **minimum coverage checklist**, not a fixed template or a ceiling.
-3. Analysis length and section count are determined by repository evidence and complexity; **there is no numerical line target**.
+1. Early-corpus analytical richness remains the reference standard; later entries may not become thinner simply because the corpus is larger.
+2. The 32-part evaluation schema is a **minimum coverage checklist**, not a fixed template or ceiling.
+3. Analysis length/section count follow evidence and complexity; there is **no numerical line target**.
 4. Source behavior outranks repository names, comments and GitHub language heuristics.
 5. Direct authored evidence, team/course/reference exposure and overall system capability remain distinct.
-6. “First observed in corpus” is used instead of “first learned.”
-7. Missing dimensions are marked N/A / insufficient evidence rather than silently invented.
-8. Failures, defects, abandoned/empty repositories and provenance boundaries are retained as career evidence.
-9. No production, scale, security, hardware or research-validity claim is inferred without supporting artifacts.
-10. Private/research operational identifiers are not intentionally reproduced into derivative career claims.
+6. Use “first observed in corpus” rather than “first learned.”
+7. Mark missing dimensions N/A / insufficient evidence instead of inventing content.
+8. Retain failures, defects, abandoned/empty repositories and provenance boundaries as career evidence.
+9. Do not infer production, scale, security, hardware or research-validity claims without supporting artifacts.
+10. Do not intentionally reproduce private/research operational identifiers into derivative career claims.
 
-## Final validation artifacts
+<a id="validation-and-continuation-artifacts"></a>
+## Validation and Continuation Artifacts
 
-- `batch-report-124-134.md`
-- `line-ledger-124-134.json`
-- `validation-124-134.txt`
-- `CONTINUATION-CONTEXT-THROUGH-134.md`
+The final package includes batch reports, line ledgers, validation reports and `CONTINUATION-CONTEXT-THROUGH-134.md`. These documents are source-analysis provenance/reference material rather than online runtime artifacts.
 
-The repository-processing phase is complete. The resulting split corpus can now be used for longitudinal career analysis, plotting, skills extraction, claim verification and portfolio RAG ingestion.
+<a id="role-in-rag"></a>
+## Role in RAG
+
+This directory is upstream of canonical normalization. The RAG compiler may suppress boilerplate in derived retrieval documents, but no suppression should rewrite these original analysis files.
+
+## Related Documentation
+
+- Parent: [../README.md](../README.md)
+- [Generated corpus](../rag-corpus/README.md)
