@@ -40,4 +40,5 @@ Pinecone is not the authoritative prose store. If the remote index is lost, it s
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG corpus](../../rag/rag-corpus/README.md)
+- [RAG documentation](../rag/README.md)
+- Implementation corpus: `rag/rag-corpus/`

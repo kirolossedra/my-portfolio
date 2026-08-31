@@ -52,4 +52,4 @@ The planned generator receives only the question, carefully selected evidence re
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG pipeline](../../rag/docs/pipeline.md)
+- [RAG pipeline and migration documentation](../rag/README.md)

@@ -19,7 +19,6 @@ This document describes the complete portfolio, including the deployed portfolio
 <a id="current-architecture"></a>
 ## Current Architecture
 
-
 ```mermaid
 flowchart LR
     U[Visitor / Owner browser] --> N[Netlify: React 19 + TypeScript + Vite]
@@ -32,7 +31,6 @@ flowchart LR
     R --> C[Local CrossEncoder reranker]
     R -. planned generation .-> G[Gemini 2.5 Flash-Lite]
 ```
-
 
 <a id="frontend-boundary"></a>
 ## Frontend Boundary
@@ -86,10 +84,11 @@ sequenceDiagram
     W-->>B: response mapped to Kiro states
 ```
 
-This is a **target**, not the current deployed state.
+This is a **target**, not the current deployed state. The later zero-cost Cloudflare-native candidate is documented separately and remains **PROPOSED / NOT APPLIED** until its retrieval benchmark passes.
 
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
 - [Interactions](component-interactions.md)
-- [RAG pipeline](../../rag/docs/pipeline.md)
+- [RAG documentation](../rag/README.md)
+- [Cloudflare-native candidate](../rag/cloudflare-native-zero-cost-migration.md)

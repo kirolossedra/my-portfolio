@@ -1,0 +1,107 @@
+RAG QC EVIDENCE — BACKEND / SYSTEM-DESIGN GENERALIZATION TEST
+Date: 2026-08-31
+Question: What evidence shows strong backend engineering and system design experience?
+Runtime: 1.0.0
+Retrieval schema: 3.1.0-pinecone
+Implementation baseline: 6710a697390858b8dfbcdf7ec3d2e737f34263da
+
+PURPOSE
+This is the concise evidence retained for the QC incident. It intentionally does
+NOT duplicate the entire ~358 KB API JSON response. The evidence needed for the
+finding is the returned repository identity plus the explanation/passage that
+shows why the result is valid or invalid positive evidence.
+
+================================================================================
+VALID RESULT — RANK 1
+================================================================================
+Repository: LInC-Church-Management
+Document ID: repo-123-rd010
+Semantic area: architecture_system_design
+Evidence polarity: positive
+QC classification: VALID POSITIVE EVIDENCE
+
+Returned explanation summary:
+The result describes backend domain decomposition and governed mutations,
+Hono/Cloudflare Workers backend engineering, engineering decisions/tradeoffs,
+and production-quality responses. It directly supports backend/system-design
+capability.
+
+================================================================================
+VALID RESULT — RANK 2
+================================================================================
+Repository: my-portfolio
+Document ID: repo-134-rd005
+Semantic area: architecture_system_design
+Evidence polarity: positive
+QC classification: VALID POSITIVE EVIDENCE
+
+Returned passage:
+[Section: 5. Worker backend]
+
+The Worker code is separated into authentication, HTTP handling, route dispatch,
+milestone persistence, opinion persistence, validation and environment contracts.
+
+That decomposition supports direct backend TypeScript evidence rather than
+treating the Worker as one monolithic request handler.
+
+================================================================================
+FALSE-POSITIVE PATTERN — RANK 4
+================================================================================
+Repository: vv11345
+Document ID: repo-001-rd022
+Semantic area: product_responsibility
+Evidence polarity: neutral
+QC classification: TOPICALLY RELEVANT, NOT POSITIVE BACKEND PROOF
+
+Returned passage:
+[Section: 16. Career / Engineering Signal]
+
+- backend design;
+- databases;
+- distributed systems;
+- automated quality engineering;
+- DevOps;
+- security engineering;
+- team-scale software development.
+
+Those absences should remain visible in the corpus because the purpose is to
+reconstruct engineering growth honestly. Later repositories can then show when
+those capabilities first appear and how they mature.
+
+Why this matters:
+The passage is correctly relevant to backend/system engineering, but its meaning
+is that those capabilities are absent in this repository. It must not compete as
+positive supporting proof for a query asking what evidence SHOWS strong backend
+engineering.
+
+================================================================================
+FALSE-POSITIVE PATTERN — RANK 5
+================================================================================
+Repository: George-Sedra-Website
+Document ID: repo-115-rd008
+Semantic area: other_repository_evidence
+Evidence polarity: positive
+QC classification: FRONTEND EVIDENCE WITH NEGATIVE BACKEND COMPARISON
+
+Returned explanation:
+The result describes semantic HTML/static-site composition, responsive CSS,
+JavaScript interaction, theme implementation, touch/mobile UI behavior and visual
+presentation. Its engineering-consequence text repeatedly states that the project
+reinforces front-end presentation skill and is a useful visual-product
+counterpoint, but "not a new backend maturity maximum."
+
+Why this matters:
+The literal backend term is present specifically to deny a backend-maturity
+claim. That mention should not qualify the frontend document as positive backend
+evidence.
+
+================================================================================
+INCIDENT CONCLUSION
+================================================================================
+Dense/BM25 retrieval was allowed to retrieve these passages because they are
+semantically relevant. The quality defect is later-stage evidence compatibility:
+
+    relevant to concept != supports requested claim
+
+The correction should be generic evidence semantics / claim compatibility, not
+another backend-specific keyword patch.

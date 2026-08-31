@@ -38,7 +38,6 @@ A production integration should expose a narrow server-to-server path from the p
 
 Pinecone is already populated and validated. Production deployment therefore has two release dimensions: code deployment and indexed-corpus state. The checked-in parity/upsert validation artifacts are the audit trail tying the local 2,808-record corpus to the remote namespace.
 
-
 <a id="rag-containerization-and-hosting-evaluation---2026-08-31"></a>
 ## RAG Containerization and Hosting Evaluation — 2026-08-31
 
@@ -277,12 +276,16 @@ Those are future architectural choices, not current implementation facts.
 
 ### Evidence
 
-The complete decision record and sanitized terminal evidence are maintained under:
+The complete operational decision record and sanitized terminal evidence are maintained separately according to documentation role:
 
-- [../qc/rag/2026-08-31-containerization-and-hosting-evaluation.md](../qc/rag/2026-08-31-containerization-and-hosting-evaluation.md)
-- [../qc/rag/evidence/2026-08-31-containerization-hosting-evidence.txt](../qc/rag/evidence/2026-08-31-containerization-hosting-evidence.txt)
+- [RAG containerization and hosting evaluation](../rag/deployment/2026-08-31-containerization-and-hosting-evaluation.md) — RAG deployment/hosting interpretation and decision history.
+- [Containerization/hosting deployment evidence](../rag/deployment/evidence/2026-08-31-containerization-hosting-evidence.txt) — captured validation evidence.
+
+The later zero-cost Cloudflare-native reassessment is documented under [`../rag/deployment/`](../rag/deployment/README.md), not under QC.
 
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [Cloudflare integration](../../rag/docs/cloudflare-integration.md)
+- [RAG documentation](../rag/README.md)
+- [RAG deployment history](../rag/deployment/README.md)
+- [RAG QC](../qc/rag/README.md)

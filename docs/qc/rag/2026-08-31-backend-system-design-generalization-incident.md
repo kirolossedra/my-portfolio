@@ -1,16 +1,13 @@
 # RAG QC Incident — Backend/System-Design Generalization and Evidence-Semantics Finding
 
-> **QC category:** Retrieval quality / architecture  
+> **QC category:** Retrieval quality / evidence semantics  
 > **Incident date:** 2026-08-31  
 > **Status:** Documented; implementation intentionally unchanged  
 > **Authoritative implementation commit:** `6710a697390858b8dfbcdf7ec3d2e737f34263da`  
 > **Commit message:** `feat(rag): reorganize pipeline and add Pinecone-backed runtime`  
-> **Tested runtime file:** `rag/runtime/rag-api-pinecone-v1.py`  
-> **Runtime File ID:** `RAG-PINECONE-API-de9841ed-372d-4111-aabf-3b470529bbc6`  
-> **Runtime Version ID:** `RAG-PINECONE-API-v1.0.0-50de3f8b-ca98-4730-be0e-575e7afa3bc8`  
+> **Tested runtime:** `rag/runtime/rag-api-pinecone-v1.py`  
 > **Runtime version:** `1.0.0`  
-> **Retrieval schema:** `3.1.0-pinecone`  
-> **Tested runtime blob SHA:** `76f7637a5afa734df746f8d864ed8c2477faf5d4`
+> **Retrieval schema:** `3.1.0-pinecone`
 
 ---
 
@@ -20,67 +17,63 @@
 2. [Executive Conclusion](#executive-conclusion)
 3. [Implementation Baseline](#implementation-baseline)
 4. [System State Before the Incident](#system-state-before-the-incident)
-5. [What We Were Testing](#what-we-were-testing)
-6. [Why We Deliberately Changed the Question](#why-we-deliberately-changed-the-question)
+5. [What Was Being Tested](#what-was-being-tested)
+6. [Why the Regression Question Was Changed](#why-the-regression-question-was-changed)
 7. [Test Question](#test-question)
 8. [Observed Runtime Path](#observed-runtime-path)
 9. [What Worked](#what-worked)
 10. [What the New Question Exposed](#what-the-new-question-exposed)
-11. [False-Positive Pattern 1 — Absence Language](#false-positive-pattern-1--absence-language)
-12. [False-Positive Pattern 2 — Negative Backend Mention in Frontend Evidence](#false-positive-pattern-2--negative-backend-mention-in-frontend-evidence)
-13. [Why Broad Retrieval Was Not Wrong](#why-broad-retrieval-was-not-wrong)
-14. [Why This Was Not a Pinecone Failure](#why-this-was-not-a-pinecone-failure)
-15. [Why This Was Not an Embedding Failure](#why-this-was-not-an-embedding-failure)
-16. [Why This Was Not a CrossEncoder Failure Alone](#why-this-was-not-a-crossencoder-failure-alone)
-17. [The Initially Proposed Tactical Fix](#the-initially-proposed-tactical-fix)
-18. [Why the Tactical Fix Was Rejected](#why-the-tactical-fix-was-rejected)
-19. [Root Architectural Finding](#root-architectural-finding)
-20. [Correct Separation of Responsibilities](#correct-separation-of-responsibilities)
-21. [Recommended Structured Evidence Contract](#recommended-structured-evidence-contract)
-22. [Examples of the Intended Contract](#examples-of-the-intended-contract)
-23. [Correct File Boundary for the Future Redesign](#correct-file-boundary-for-the-future-redesign)
-24. [Constraint: Do Not Re-run the Expensive Embedding Process](#constraint-do-not-re-run-the-expensive-embedding-process)
-25. [What Must Remain Byte-Stable](#what-must-remain-byte-stable)
-26. [What Can Change Without Re-embedding](#what-can-change-without-re-embedding)
+11. [Returned Evidence Snapshot](#returned-evidence-snapshot)
+12. [False-Positive Pattern 1 — Absence Language](#false-positive-pattern-1--absence-language)
+13. [False-Positive Pattern 2 — Negative Backend Mention in Frontend Evidence](#false-positive-pattern-2--negative-backend-mention-in-frontend-evidence)
+14. [Why Broad Retrieval Was Not Wrong](#why-broad-retrieval-was-not-wrong)
+15. [Why This Was Not a Pinecone Failure](#why-this-was-not-a-pinecone-failure)
+16. [Why This Was Not an Embedding Failure](#why-this-was-not-an-embedding-failure)
+17. [Why This Was Not a CrossEncoder Failure Alone](#why-this-was-not-a-crossencoder-failure-alone)
+18. [The Initially Proposed Tactical Fix](#the-initially-proposed-tactical-fix)
+19. [Why the Tactical Fix Was Rejected](#why-the-tactical-fix-was-rejected)
+20. [Root Architectural Finding](#root-architectural-finding)
+21. [Correct Separation of Responsibilities](#correct-separation-of-responsibilities)
+22. [Recommended Structured Evidence Contract](#recommended-structured-evidence-contract)
+23. [Examples of the Intended Contract](#examples-of-the-intended-contract)
+24. [Correct File Boundary for Future Redesign](#correct-file-boundary-for-future-redesign)
+25. [Embedding-Preservation Constraint at the Time of the Incident](#embedding-preservation-constraint-at-the-time-of-the-incident)
+26. [What Could Change Without Re-embedding](#what-could-change-without-re-embedding)
 27. [What Would Force Re-embedding](#what-would-force-re-embedding)
 28. [Current Baseline Decision](#current-baseline-decision)
 29. [Future Acceptance Criteria](#future-acceptance-criteria)
 30. [Lessons From the Incident](#lessons-from-the-incident)
-31. [Related Documentation](#related-documentation)
-32. [QC Record Summary](#qc-record-summary)
-33. [Appendix A — Exact Captured Runtime Output](#appendix-a--exact-captured-runtime-output)
-34. [Appendix B — Exact Output Interpretation](#appendix-b--exact-output-interpretation)
-35. [Appendix C — Output-to-Conclusion Traceability](#appendix-c--output-to-conclusion-traceability)
+31. [Evidence Retention Policy](#evidence-retention-policy)
+32. [Related Documentation](#related-documentation)
+33. [QC Record Summary](#qc-record-summary)
 
 ---
 
+<a id="purpose"></a>
 ## Purpose
 
 This document records a quality-control incident discovered while validating the first locally operational Pinecone-backed runtime of the portfolio RAG system.
 
-The incident is important because it did **not** reveal that the runtime was broken. The runtime successfully handled a completely different natural-language question, exercised the full Pinecone/BM25/metadata/CrossEncoder retrieval path, and returned results. Instead, the new question exposed a deeper design weakness in how positive evidence was inferred from relevant documents.
+The runtime itself was not broken. It accepted a substantially different natural-language question, executed the complete Pinecone/BM25/metadata/CrossEncoder retrieval path and returned plausible evidence. The new question instead exposed a deeper quality problem: a document could be highly relevant to a concept while being invalid **positive evidence** for the claim requested by the user.
 
-The immediate temptation was to add another query-specific keyword rule. That approach was explicitly rejected because it would create a patch-driven retrieval architecture. The final conclusion was that the system needs a cleaner distinction between:
+The key distinction is:
 
 ```text
 semantic relevance
-```
-
-and:
-
-```text
+        !=
 claim/evidence compatibility
 ```
 
-The preferred future solution is therefore architectural: enrich the **offline retrieval-document evidence contract** while preserving the already-validated embedding text and vectors.
+The immediate temptation was to patch the runtime with another topic-specific keyword rule. That was rejected because it would turn the retrieval system into a growing collection of special cases.
 
 No RAG implementation file was modified as a consequence of this incident.
 
 ---
 
+<a id="executive-conclusion"></a>
 ## Executive Conclusion
 
-The test established all of the following at once:
+The test established:
 
 ```text
 Arbitrary-question API handling             PASS
@@ -101,141 +94,77 @@ The central finding is:
 
 > **A document can be highly relevant to a concept without being valid positive evidence for a claim about that concept.**
 
-For example:
-
-```text
-"This repository does not demonstrate backend maturity."
-```
-
-is highly relevant to `backend maturity`, but it is not evidence that the repository demonstrates backend maturity.
-
-The runtime still relied too heavily on inferring this distinction from query-time textual heuristics. The future design should make claim direction and evidence semantics explicit in the offline retrieval documents.
+For example, a document whose meaning is "this repository does not demonstrate backend maturity" is correctly retrievable for a backend query, but it should not rank as proof that the portfolio demonstrates strong backend maturity.
 
 ---
 
+<a id="implementation-baseline"></a>
 ## Implementation Baseline
 
-The incident occurred against the exact repository implementation contained in commit:
+The incident occurred against commit:
 
 ```text
 6710a697390858b8dfbcdf7ec3d2e737f34263da
 ```
 
-Commit message:
-
-```text
-feat(rag): reorganize pipeline and add Pinecone-backed runtime
-```
-
-This commit is the **authoritative implementation baseline for this QC incident**.
-
-The tested runtime was:
+with runtime:
 
 ```text
 rag/runtime/rag-api-pinecone-v1.py
+runtime:          1.0.0
+retrieval schema: 3.1.0-pinecone
 ```
 
-with:
-
-```text
-Runtime File ID:
-RAG-PINECONE-API-de9841ed-372d-4111-aabf-3b470529bbc6
-
-Runtime Version ID:
-RAG-PINECONE-API-v1.0.0-50de3f8b-ca98-4730-be0e-575e7afa3bc8
-
-Runtime version:
-1.0.0
-
-Retrieval schema:
-3.1.0-pinecone
-
-Git blob SHA:
-76f7637a5afa734df746f8d864ed8c2477faf5d4
-```
-
-Future comparisons should refer back to this commit rather than relying on a moving `main` branch.
+This commit remains the reproducible incident baseline rather than a moving `main` branch.
 
 ---
 
+<a id="system-state-before-the-incident"></a>
 ## System State Before the Incident
 
-Before the generalization test, the RAG system had already completed the following stages:
+Before this test, the active pipeline had reached:
 
-```text
-134-repository analytical corpus
-        ↓
-canonical normalization
-        ↓
-evidence-aware retrieval documents
-        ↓
-2,808 local Nomic embeddings
-        ↓
-Retrieval v3
-        ↓
-Pinecone upsert
-        ↓
-Pinecone dense-backend validation
-        ↓
-Python HTTP retrieval runtime
-        ↓
-local startup validation
-        ↓
-HTTP /health validation
+```mermaid
+flowchart TD
+    A[134-repository analytical corpus] --> B[Canonical normalization]
+    B --> C[2,808 evidence-aware retrieval documents]
+    C --> D[Nomic document embeddings]
+    D --> E[512-D normalized vectors]
+    E --> F[Pinecone corpus-v1]
+    Q[Question] --> G[Nomic query embedding]
+    G --> F
+    Q --> H[BM25]
+    Q --> I[Metadata recall]
+    F --> J[Fusion + gates]
+    H --> J
+    I --> J
+    J --> K[CrossEncoder top-120 rerank]
+    K --> L[Polarity + dedupe + repo diversity]
+    L --> M[Top-10 evidence response]
 ```
 
-The active corpus contained:
+Active corpus/vector state:
 
 ```text
-Repositories: 134
-Retrieval documents: 2,808
-Stored vectors: 2,808
-Stored dimensions: 512
+Repositories:          134
+Retrieval documents:   2,808
+Stored vectors:        2,808
+Stored dimensions:     512
+Embedding model:       nomic-ai/nomic-embed-text-v1.5
+Document prefix:       search_document:
+Query prefix:          search_query:
+Similarity:            cosine
+Reranker:              cross-encoder/ms-marco-MiniLM-L6-v2
+Pinecone index:        portfolio-career-rag-v1
+Namespace:             corpus-v1
 ```
-
-The embedding configuration was:
-
-```text
-Model: nomic-ai/nomic-embed-text-v1.5
-Pinned revision: e9b6763023c676ca8431644204f50c2b100d9aab
-Native dimensions: 768
-Stored dimensions: 512
-Document prefix: search_document:
-Query prefix: search_query:
-Similarity: cosine
-```
-
-The reranker was:
-
-```text
-cross-encoder/ms-marco-MiniLM-L6-v2
-```
-
-with pinned revision:
-
-```text
-4bebbd56fc380a66525f95b03d4ec1a4b41a4f1e
-```
-
-Pinecone state:
-
-```text
-Index: portfolio-career-rag-v1
-Namespace: corpus-v1
-Metric: cosine
-Dimensions: 512
-Vector count: 2,808
-```
-
-The corrected Pinecone parity validation had already established that the stored vectors were faithful to the local vectors and that ANN candidate overlap was sufficiently strong for Pinecone to replace the exact local dense-candidate lookup.
 
 ---
 
-## What We Were Testing
+<a id="what-was-being-tested"></a>
+## What Was Being Tested
 
-The immediate goal was **not** to tune retrieval around a new prompt.
-
-The goal was to verify that the newly operational runtime could accept an arbitrary portfolio question through:
+The goal was not to tune the system around another prompt. The goal was to verify that the runtime could accept an arbitrary portfolio question through:
 
 ```text
 POST /api/rag/retrieve
@@ -243,67 +172,49 @@ POST /api/rag/retrieve
 
 and execute the complete production-shaped retrieval path.
 
-Until this point, one question had been used repeatedly as a regression case:
-
-```text
-What evidence shows experience with authorization architecture?
-```
-
-That question was intentionally retained as a regression query because it had previously exposed:
-
-- generic `architecture` matches;
-- authorization/access-control ambiguity;
-- limitations that could appear as positive security evidence;
-- hardware `control` terminology that was unrelated to authorization.
-
-However, a regression query is not supposed to become the system's effective design target.
+The previously repeated regression question concerned authorization architecture. That prompt was useful, but repeatedly using one question risks optimizing around its wording. A different concept was deliberately selected to test generalization.
 
 ---
 
-## Why We Deliberately Changed the Question
+<a id="why-the-regression-question-was-changed"></a>
+## Why the Regression Question Was Changed
 
-The question was changed specifically to test generalization.
-
-Repeatedly using one regression query can create a false sense of retrieval quality because successive improvements may accidentally optimize for that particular wording or facet.
-
-The new question therefore needed to satisfy three conditions:
+The new question had to:
 
 1. remain portfolio/career-evidence oriented;
-2. require meaningful cross-repository reasoning;
-3. test a different engineering concept from authorization.
+2. require cross-repository reasoning;
+3. exercise concepts different from authorization;
+4. explicitly ask for **positive/strong evidence** rather than mere topical matches.
 
 This produced the backend/system-design test.
 
 ---
 
+<a id="test-question"></a>
 ## Test Question
-
-The exact question used was:
 
 ```text
 What evidence shows strong backend engineering and system design experience?
 ```
 
-This question asked for **positive evidence** and introduced several semantic requirements simultaneously:
+Semantic requirements included:
 
 ```text
-facet: backend engineering
-facet: system design
-request mode: evidence
-polarity/claim direction: positive/supporting
-strength qualifier: strong
-scope: portfolio-wide
+facets:           backend engineering + system design
+request mode:     evidence
+claim direction:  positive/supporting
+strength:         strong
+scope:            portfolio-wide
 ```
-
-That made it a useful test of whether the retrieval system distinguished topical relevance from proof of a requested capability.
 
 ---
 
+<a id="observed-runtime-path"></a>
 ## Observed Runtime Path
 
 The request successfully exercised the runtime.
 
-Observed diagnostics were approximately:
+Observed diagnostics:
 
 ```text
 Pinecone dense candidates: 500
@@ -315,126 +226,130 @@ Final returned results:    10
 End-to-end latency:        ~8.17 seconds
 ```
 
-The runtime path was therefore:
-
-```text
-Question
-  ↓
-query intent / concept analysis
-  ↓
-Nomic search_query embedding
-  ↓
-Pinecone dense ANN recall (top 500)
-  +
-BM25 lexical recall (top 500)
-  +
-metadata/topic/skill recall (top 400)
-  ↓
-reciprocal-rank fusion
-  ↓
-concept/evidence gates
-  ↓
-CrossEncoder reranking (bounded pool)
-  ↓
-negative-evidence handling
-  ↓
-semantic deduplication using Pinecone-fetched vectors
-  ↓
-repository diversity
-  ↓
-top 10 evidence documents
-```
-
-This is important: the incident happened **after the runtime successfully generalized operationally** to a new question.
+The important point is that the failure was **not** inability to execute the pipeline. It was a semantic quality weakness visible in some returned evidence.
 
 ---
 
+<a id="what-worked"></a>
 ## What Worked
 
-### Arbitrary question handling
+- The API accepted a new question with no query-specific code change.
+- Nomic produced a valid query embedding in the same space as the indexed documents.
+- Pinecone returned broad semantic candidates.
+- BM25 supplied lexical candidates independently of dense recall.
+- Metadata/topic/skill recall contributed structured candidates.
+- Fusion unified the three recall channels.
+- The concept/evidence gates executed.
+- The CrossEncoder executed over the bounded rerank pool.
+- Semantic dedupe and repository diversity produced a bounded final result set.
+- Strong backend/system-design evidence correctly appeared at the top.
 
-The API accepted a new question without code changes or prompt-specific configuration.
-
-### Query embedding
-
-The query was embedded in the same Nomic vector space as the indexed documents using the required `search_query:` prefix and the same 512-dimensional Matryoshka transformation.
-
-### Pinecone dense recall
-
-Pinecone returned broad semantically relevant candidates.
-
-### BM25
-
-Lexical retrieval contributed exact-term candidates independently of dense recall.
-
-### Metadata recall
-
-Topics, skills, repository metadata, and evidence metadata participated in candidate generation.
-
-### Hybrid fusion
-
-Candidates from different recall paths were successfully unified and ranked.
-
-### CrossEncoder execution
-
-The bounded rerank stage executed successfully on the candidate set.
-
-### Finalization
-
-Semantic deduplication and repository diversity successfully produced a bounded final result set.
-
-### Most importantly: generalization worked
-
-The runtime was **not built around one authorization prompt**. It processed a different backend/system-design question end-to-end.
+The system therefore generalized operationally. The incident is about **evidence semantics**, not runtime availability.
 
 ---
 
+<a id="what-the-new-question-exposed"></a>
 ## What the New Question Exposed
 
-The new prompt exposed a design problem that the authorization regression query had not made sufficiently obvious.
+The query asked for positive evidence, but some documents remained competitive because they mentioned the requested concept while actually expressing an absence, limitation or negative comparison.
 
-The runtime still allowed a document to become strong positive evidence largely because it was highly relevant to the requested topic.
-
-But these are separate questions:
+The two questions the system must separate are:
 
 ```text
-Is this document about backend engineering?
+Is this passage about backend engineering?
 ```
 
 and:
 
 ```text
-Does this document support the claim that the portfolio demonstrates backend engineering?
+Does this passage support the claim that the portfolio demonstrates backend engineering?
 ```
 
-A robust evidence-oriented RAG system must answer both.
-
-The new question surfaced documents where the answer was:
-
-```text
-Topically relevant?       YES
-Positive supporting proof? NO
-```
-
-Two patterns were especially clear.
+A robust evidence-oriented RAG must answer both.
 
 ---
 
-## False-Positive Pattern 1 — Absence Language
+<a id="returned-evidence-snapshot"></a>
+## Returned Evidence Snapshot
 
-One early result discussed concepts such as:
+The incident preserves the **meaningful returned evidence**, not the entire transport-level JSON response. The retained evidence is the repository identity plus the explanation/passage that made the quality finding observable.
+
+### Rank 1 — Valid positive evidence
+
+| Field | Value |
+|---|---|
+| Repository | `LInC-Church-Management` |
+| Document ID | `repo-123-rd010` |
+| Semantic area | `architecture_system_design` |
+| Evidence polarity | `positive` |
+| QC interpretation | Correct positive evidence |
+
+Returned explanation included backend domain decomposition, governed mutations, Hono/Cloudflare Workers backend engineering, architectural tradeoffs and production responses. This is a legitimate positive match for the query.
+
+### Rank 2 — Valid positive evidence
+
+| Field | Value |
+|---|---|
+| Repository | `my-portfolio` |
+| Document ID | `repo-134-rd005` |
+| Semantic area | `architecture_system_design` |
+| Evidence polarity | `positive` |
+| QC interpretation | Correct positive evidence |
+
+Returned passage:
+
+> The Worker code is separated into authentication, HTTP handling, route dispatch, milestone persistence, opinion persistence, validation and environment contracts. That decomposition supports direct backend TypeScript evidence rather than treating the Worker as one monolithic request handler.
+
+This is direct supporting evidence for backend/system-design capability.
+
+### Rank 4 — False-positive pattern: absence ledger
+
+| Field | Value |
+|---|---|
+| Repository | `vv11345` |
+| Document ID | `repo-001-rd022` |
+| Semantic area | `product_responsibility` |
+| Evidence polarity | `neutral` |
+| QC interpretation | Relevant to backend, but not positive backend proof |
+
+Returned explanation/passage listed:
 
 ```text
-backend design
-databases
-distributed systems
+backend design;
+databases;
+distributed systems;
+automated quality engineering;
+DevOps;
+security engineering;
+team-scale software development.
 ```
 
-but discussed them as **capabilities that were absent, missing, or not demonstrated**.
+and then explicitly explained that **those absences should remain visible in the corpus** so later repositories can show when the capabilities appear and mature.
 
-That document was therefore legitimately relevant to the topic.
+The document is topically relevant but semantically describes missing capability.
 
-The problem occurred when it remained too competitive for a positive-evidence query.
+### Rank 5 — False-positive pattern: negative backend comparison inside frontend evidence
+
+| Field | Value |
+|---|---|
+| Repository | `George-Sedra-Website` |
+| Document ID | `repo-115-rd008` |
+| Semantic area | `other_repository_evidence` |
+| Evidence polarity | `positive` |
+| QC interpretation | Frontend evidence that mentions backend only to deny a backend-maturity claim |
+
+Returned explanation repeatedly described frontend/presentation evidence and included the conclusion:
+
+> Reinforces front-end presentation skill ... a useful visual-product counterpoint but **not a new backend maturity maximum**.
+
+The literal word `backend` increased topical compatibility even though the sentence was deliberately preventing a backend overclaim.
+
+A concise evidence copy of these relevant results is retained in [`evidence/2026-08-31-backend-system-design-relevant-results.txt`](evidence/2026-08-31-backend-system-design-relevant-results.txt).
+
+---
+
+<a id="false-positive-pattern-1--absence-language"></a>
+## False-Positive Pattern 1 — Absence Language
 
 Conceptually:
 
@@ -443,39 +358,22 @@ Query:
 "What evidence shows strong backend engineering?"
 
 Document meaning:
-"This repository does not demonstrate backend/database/distributed-system depth."
+"These backend/database/distributed-system capabilities are absent here."
 
-Dense relevance:           legitimate
-Lexical relevance:         legitimate
-Topic relevance:           legitimate
-Positive claim support:    false
+Dense relevance:        legitimate
+Lexical relevance:      legitimate
+Topic relevance:        legitimate
+Positive claim support: false
 ```
 
-The incident demonstrated that `relevant` must not be treated as synonymous with `supports`.
+The incident proves that `relevant` cannot be treated as synonymous with `supports`.
 
 ---
 
+<a id="false-positive-pattern-2--negative-backend-mention-in-frontend-evidence"></a>
 ## False-Positive Pattern 2 — Negative Backend Mention in Frontend Evidence
 
-A second result made the issue even clearer.
-
-The document was primarily about frontend/presentation evidence. Its prose included wording equivalent to:
-
-```text
-not a new backend maturity maximum
-```
-
-The document therefore contained the literal concept `backend`, but it contained that term specifically to prevent an overclaim.
-
-Observed behavior showed approximately:
-
-```text
-backend-related gate score:     ~0.54
-backend semantic-area support:   none
-backend metadata support:        none
-```
-
-The logic had effectively performed this transformation:
+The second failure can be summarized as:
 
 ```text
 "this is NOT backend maturity evidence"
@@ -487,147 +385,70 @@ backend concept overlap
 survives too far into positive-evidence ranking
 ```
 
-This is the most concise illustration of the incident.
+This is a claim-direction problem rather than a candidate-recall problem.
 
 ---
 
+<a id="why-broad-retrieval-was-not-wrong"></a>
 ## Why Broad Retrieval Was Not Wrong
 
-It is important not to misdiagnose the system.
+A dense retriever or BM25 engine **should** retrieve an explicit statement that backend maturity is absent when the query concerns backend maturity. That material is relevant and is useful for weakness/limitation questions.
 
-A dense retriever or BM25 engine **should** retrieve a sentence like:
-
-```text
-this repository does not demonstrate backend maturity
-```
-
-for a query about backend maturity.
-
-That sentence is semantically and lexically relevant.
-
-The error is not candidate generation.
-
-The error is failing to distinguish, later in the pipeline, between:
+The correct fix is therefore not to globally suppress negative passages. It is to distinguish:
 
 ```text
-mentions / discusses concept
+mentions/discusses concept
 ```
 
-and:
+from:
 
 ```text
 supports requested claim about concept
 ```
 
-This distinction directly affects where the architectural fix belongs.
+later in the pipeline.
 
 ---
 
+<a id="why-this-was-not-a-pinecone-failure"></a>
 ## Why This Was Not a Pinecone Failure
 
-Pinecone's responsibility is dense candidate recall.
+Pinecone owns dense candidate recall. Prior parity validation had already established:
 
-The Pinecone migration had already been validated separately for:
+- correct vector count;
+- 512-D schema compatibility;
+- exact fetched-vector fidelity;
+- same top-1 in validation;
+- strong overlap at top-10/top-25/top-50.
 
-- vector-count integrity;
-- 512-dimensional schema compatibility;
-- exact stored-vector fidelity;
-- top-1 candidate agreement;
-- high overlap at top-10, top-25, and top-50.
+Pinecone correctly returned semantically related material. It is not responsible for deciding whether a relevant passage supports or contradicts a requested claim.
 
-For this incident, Pinecone did what a dense retriever should do: it returned documents semantically related to the question.
-
-Pinecone has no responsibility for deciding whether:
-
-```text
-"backend is absent"
-```
-
-supports or contradicts:
-
-```text
-"show me backend strength"
-```
-
-That interpretation belongs to the evidence architecture.
-
-Therefore:
-
-> **This incident must not be recorded as a Pinecone quality failure.**
+> **This incident is not a Pinecone data-quality failure.**
 
 ---
 
+<a id="why-this-was-not-an-embedding-failure"></a>
 ## Why This Was Not an Embedding Failure
 
-The active Nomic embeddings also behaved as expected.
+The active Nomic embeddings encoded semantic relatedness as expected. Statements about presence and absence of the same capability can be close in embedding space.
 
-The embedding space is designed to encode semantic relatedness.
-
-It is reasonable for:
-
-```text
-backend capability
-```
-
-and:
-
-```text
-absence of backend capability
-```
-
-to occupy nearby semantic regions.
-
-Embeddings are not a formal claim-direction classifier.
-
-The stored vectors were already validated for:
-
-- dimensions;
-- finite values;
-- non-zero values;
-- L2 normalization;
-- referential integrity;
-- source-document alignment;
-- complete repository coverage.
-
-Therefore:
-
-> **The incident does not justify regenerating embeddings or replacing Nomic.**
+At the time of the incident, the finding therefore did not by itself justify regenerating embeddings. Subsequent deployment work may independently evaluate another embedding model, but that is a separate decision and must be benchmarked against this quality baseline.
 
 ---
 
+<a id="why-this-was-not-a-crossencoder-failure-alone"></a>
 ## Why This Was Not a CrossEncoder Failure Alone
 
-The CrossEncoder is responsible for higher-precision query-document relevance scoring.
+A generic relevance CrossEncoder can also score a contradiction highly when it is tightly related to the query topic. More reranking does not automatically provide claim-direction semantics.
 
-But the same conceptual problem applies:
-
-```text
-Query: backend engineering evidence
-Document: explicit statement that backend engineering is absent
-```
-
-is a highly related query-document pair.
-
-A generic relevance reranker can correctly score it as related without understanding that the user's requested claim direction is positive/supporting.
-
-Therefore, merely changing CrossEncoder weights or adding more reranking would not cleanly solve the architecture.
-
-The system needs explicit evidence semantics.
+The system needs an explicit representation of evidence meaning rather than expecting one generic relevance score to encode every distinction.
 
 ---
 
+<a id="the-initially-proposed-tactical-fix"></a>
 ## The Initially Proposed Tactical Fix
 
-Immediately after the incident, a tactical fix was designed.
-
-The proposed rule attempted to prevent off-area documents from passing a positive backend/system-design query based solely on generic terms such as:
-
-```text
-backend
-architecture
-```
-
-It proposed requiring stronger backend-specific support such as:
+A tactical fix was initially designed around stronger backend-specific terms such as:
 
 ```text
 API
@@ -641,181 +462,93 @@ Spring
 server
 ```
 
-and combining that with existing information such as:
+combined with semantic-area, evidence-class, metadata and concrete-signal checks.
 
-- semantic area;
-- direct-evidence class;
-- metadata hits;
-- concrete-signal count.
+Proposed regressions would have:
 
-Regression cases were also proposed for:
+- rejected frontend evidence with a negative backend mention;
+- rejected an explicit backend-absence ledger for positive queries;
+- retained genuine Worker/API/persistence evidence.
 
-```text
-reject frontend document with negative backend mention
-reject explicit backend absence list
-retain genuine backend architecture evidence
-```
+This would have implied a runtime/retrieval revision around `1.1.0` / `3.1.1-pinecone`.
 
-This would have produced a runtime/retrieval revision around:
-
-```text
-runtime 1.1.0
-retrieval schema 3.1.1-pinecone
-```
-
-However, this proposed change was **not applied**.
+The proposal was **not applied**.
 
 ---
 
+<a id="why-the-tactical-fix-was-rejected"></a>
 ## Why the Tactical Fix Was Rejected
 
-The tactical fix could suppress the two observed false positives, but it introduced a larger engineering concern.
-
-If every new query category requires a dedicated runtime term set, the architecture evolves into:
+If every new query family requires another vocabulary patch, the architecture becomes:
 
 ```text
-backend query
-  → backend-specific words
-
-testing query
-  → testing-specific words
-
-deployment query
-  → deployment-specific words
-
-security query
-  → security-specific words
-
-product query
-  → product-specific words
+backend query    -> backend-specific terms
+testing query    -> testing-specific terms
+deployment query -> deployment-specific terms
+security query   -> security-specific terms
+product query    -> product-specific terms
 ```
 
-This is patch-driven design.
-
-It creates several risks:
-
-1. hidden special cases accumulate in runtime code;
-2. correctness depends on hand-maintained vocabulary lists;
-3. query behavior becomes difficult to reason about globally;
-4. adding a new engineering concept requires changing code;
-5. false positives are treated as isolated wording problems instead of schema problems;
-6. regression complexity grows faster than the corpus;
-7. the runtime becomes responsible for rediscovering evidence meaning that could have been encoded offline.
-
-The tactical patch was therefore rejected as the primary design direction.
+That creates hidden special cases, growing regression burden and fragile query behavior. It forces runtime code to rediscover evidence meaning that can be represented durably in the retrieval-document contract.
 
 ---
 
+<a id="root-architectural-finding"></a>
 ## Root Architectural Finding
 
-The core architectural problem is:
+The deeper problem is insufficient separation between:
 
-> **Query understanding, topical relevance, and evidence semantics are not sufficiently separated.**
+1. query understanding;
+2. topical relevance;
+3. evidence semantics;
+4. claim direction.
 
-The current retrieval documents already contain valuable fields such as:
-
-```text
-retrieval_class
-semantic_area
-evidence_polarity
-concrete_signal_count
-topics
-skills
-source_fragments
-```
-
-But at runtime, too much claim interpretation is still reconstructed from natural-language text and query-specific lexical heuristics.
-
-The future architecture should instead allow a retrieval document to explicitly state:
-
-```text
-what concept/facet it concerns
-what claim direction it represents
-what kind of evidence it contains
-how strong/concrete the evidence is
-what limitations qualify it
-```
-
-Then query time can perform generic **evidence compatibility**, rather than topic-specific patching.
+The retrieval documents already carry useful metadata—retrieval class, semantic area, evidence polarity, specificity, topics, skills and source fragments—but claim compatibility still relied too heavily on prose and query-time lexical heuristics.
 
 ---
 
+<a id="correct-separation-of-responsibilities"></a>
 ## Correct Separation of Responsibilities
 
-The preferred architecture is:
+Preferred architecture:
 
-```text
-                    OFFLINE
-                    =======
+```mermaid
+flowchart TD
+    subgraph OFFLINE[Offline evidence construction]
+        A[Repository corpus] --> B[Canonical normalization]
+        B --> C[Evidence-document compiler]
+        C --> D[Structured evidence semantics]
+        D --> E[Embedding text + vectors]
+        E --> F[Vector serving copy]
+    end
 
-Repository corpus
-      ↓
-Canonical normalization
-      ↓
-Evidence-document compiler
-      ↓
-Structured evidence semantics
-      │
-      ├── facets
-      ├── claim mode
-      ├── evidence kind
-      ├── evidence strength
-      ├── technologies
-      ├── limitations
-      └── provenance
-      ↓
-existing embedding text
-      ↓
-existing Nomic vectors
-      ↓
-Pinecone
-
-
-                    ONLINE
-                    ======
-
-Question
-      ↓
-Query understanding
-      ↓
-requested facets + evidence mode
-      ↓
-Pinecone + BM25 + metadata
-      ↓
-broad candidate set
-      ↓
-GENERIC EVIDENCE COMPATIBILITY
-      ↓
-CrossEncoder
-      ↓
-dedupe + diversity
-      ↓
-evidence packet
-      ↓
-future Gemini generation
+    subgraph ONLINE[Online retrieval]
+        Q[Question] --> U[Query understanding]
+        U --> R[Dense + lexical + metadata recall]
+        F --> R
+        R --> G[Generic evidence compatibility]
+        G --> X[Relevance reranker]
+        X --> Y[Polarity + dedupe + diversity]
+        Y --> Z[Evidence packet]
+    end
 ```
 
-This architecture gives every component a clearer responsibility.
+The offline compiler should make evidence meaning durable; the online runtime should consume that contract generically.
 
 ---
 
+<a id="recommended-structured-evidence-contract"></a>
 ## Recommended Structured Evidence Contract
 
-The future retrieval-document schema should be able to represent fields conceptually similar to:
+Conceptually:
 
 ```json
 {
-  "facets": [
-    "backend_engineering",
-    "system_design"
-  ],
+  "facets": ["backend_engineering", "system_design"],
   "claim_mode": "supports",
   "evidence_kind": "direct_evidence",
   "evidence_strength": "concrete",
-  "technologies": [
-    "Cloudflare Workers",
-    "D1"
-  ],
+  "technologies": ["Cloudflare Workers", "D1"],
   "limitations": [],
   "provenance": {
     "repository_index": 134,
@@ -824,7 +557,7 @@ The future retrieval-document schema should be able to represent fields conceptu
 }
 ```
 
-The exact field names are not yet approved. This document records the architectural requirement, not a final schema specification.
+Exact field names are not approved by this incident record. The architectural requirement is that claim direction and evidence type become explicit.
 
 Likely generic claim modes include:
 
@@ -835,23 +568,16 @@ mixed
 neutral
 ```
 
-or an equivalent representation.
-
-The key property is that claim direction becomes explicit.
-
 ---
 
+<a id="examples-of-the-intended-contract"></a>
 ## Examples of the Intended Contract
 
-### Genuine positive backend evidence
+### Genuine backend evidence
 
 ```json
 {
-  "facets": [
-    "backend_engineering",
-    "api_design",
-    "system_design"
-  ],
+  "facets": ["backend_engineering", "api_design", "system_design"],
   "claim_mode": "supports",
   "evidence_kind": "direct_evidence",
   "evidence_strength": "concrete"
@@ -862,135 +588,71 @@ The key property is that claim direction becomes explicit.
 
 ```json
 {
-  "facets": [
-    "frontend_engineering",
-    "presentation"
-  ],
+  "facets": ["frontend_engineering", "presentation"],
   "claim_mode": "supports",
   "evidence_kind": "interpretation"
 }
 ```
 
-The document's prose may still contain the word `backend`, but the structured evidence contract does not misclassify the evidence itself as backend support.
-
 ### Explicit backend limitation
 
 ```json
 {
-  "facets": [
-    "backend_engineering"
-  ],
+  "facets": ["backend_engineering"],
   "claim_mode": "contradicts",
   "evidence_kind": "limitation",
   "evidence_strength": "explicit"
 }
 ```
 
-This document remains retrievable for backend questions, especially questions about weaknesses, but no longer competes as positive backend proof.
+The last document remains retrievable for weakness questions; it simply stops competing as positive proof.
 
 ---
 
-## Correct File Boundary for the Future Redesign
+<a id="correct-file-boundary-for-future-redesign"></a>
+## Correct File Boundary for Future Redesign
 
-The correct first implementation boundary is the retrieval-document compiler:
+The first architectural implementation boundary is the retrieval-document compiler, currently represented by:
 
 ```text
 rag/scripts/build-rag-retrieval-documents-v2.py
 ```
 
-or, preferably, a new versioned successor such as:
+or a future versioned successor.
 
-```text
-rag/scripts/build-rag-retrieval-documents-v3.py
-```
-
-The redesign should begin there because this is where evidence documents are created and classified.
-
-It should **not** begin by adding more special-case rules to:
+The redesign should not begin by accumulating query-specific rules inside:
 
 ```text
 rag/runtime/rag-api-pinecone-v1.py
 ```
 
-The runtime should consume a stronger contract rather than repeatedly rediscovering document meaning.
-
-Downstream consumers may eventually require compatibility updates:
-
-```text
-retrieval-document compiler
-        ↓
-retrieval document metadata
-        ↓
-Pinecone metadata/upsert
-        ↓
-local Retrieval v3 reference
-        ↓
-Pinecone runtime
-```
-
-But the architectural source of truth should begin at document construction.
+The runtime should consume a stronger evidence contract.
 
 ---
 
-## Constraint: Do Not Re-run the Expensive Embedding Process
+<a id="embedding-preservation-constraint-at-the-time-of-the-incident"></a>
+## Embedding-Preservation Constraint at the Time of the Incident
 
-A critical constraint established during this discussion is:
+At the time of this incident, the preferred correction was metadata-additive so the validated Nomic vectors did not need to be regenerated merely to fix claim semantics.
 
-> **The redesign should not require re-running the already completed Nomic embedding generation unless absolutely necessary.**
-
-The expensive/long process was:
-
-```text
-Step 3 — Local Nomic embedding generation
-```
-
-implemented by:
-
-```text
-rag/scripts/generate-rag-embeddings-v3-documents-local.py
-```
-
-That run produced:
-
-```text
-2,808 retrieval documents
-× 512 dimensions
-44 embedding batches
-```
-
-The vectors are already validated and uploaded to Pinecone.
-
-There is no architectural reason to recompute them merely to improve structured evidence semantics.
-
----
-
-## What Must Remain Byte-Stable
-
-To avoid re-embedding, the redesign should preserve, for every active retrieval document:
+To reuse an existing vector authoritatively, these remain stable:
 
 ```text
 document ID
 embedding_text
-vector-space configuration
+embedding model/revision
+prefix convention
+Matryoshka dimension/normalization recipe
 ```
 
-Most importantly:
-
-> **`embedding_text` must remain byte-for-byte identical if the existing vector is to remain authoritative for that document.**
-
-The relationship should remain:
-
-```text
-same document ID
-+ same embedding_text
-= same existing vector remains valid
-```
+This historical constraint does **not** forbid a later deliberate embedding-model bake-off. A later Qwen experiment is a separate architecture/deployment decision with its own regression gates.
 
 ---
 
-## What Can Change Without Re-embedding
+<a id="what-could-change-without-re-embedding"></a>
+## What Could Change Without Re-embedding
 
-The following kinds of additive structured metadata can be changed or introduced without recomputing the Nomic vector, provided they do not alter `embedding_text`:
+Additive structured metadata can change without invalidating an existing Nomic vector when `embedding_text` remains unchanged, including:
 
 ```text
 facets
@@ -1000,31 +662,16 @@ evidence_strength
 technologies
 limitations
 structured compatibility metadata
-filterable Pinecone metadata
+filterable serving metadata
 runtime evidence-selection metadata
 ```
 
-The workflow can therefore be:
-
-```text
-existing retrieval document text
-        ↓
-add/recompute structured evidence metadata
-        ↓
-preserve document ID + embedding_text
-        ↓
-reuse existing local vector
-        ↓
-refresh Pinecone metadata if necessary
-```
-
-This is dramatically cheaper and safer than rebuilding the embedding corpus.
-
 ---
 
+<a id="what-would-force-re-embedding"></a>
 ## What Would Force Re-embedding
 
-Re-embedding becomes necessary if any of the following change:
+A current vector no longer represents the same embedding contract if any of these change:
 
 ```text
 embedding_text
@@ -1034,50 +681,35 @@ query/document prefix convention
 Matryoshka truncation dimension
 normalization method
 vector dimension
-corpus membership in a way that creates new documents
+new document requiring a new vector
 ```
 
-This QC incident does not require any of those changes.
-
-Therefore, the preferred redesign must remain metadata-additive.
+A deliberate model migration—such as the later Qwen candidate—therefore creates a separate candidate embedding/index lineage rather than silently reusing Nomic vectors.
 
 ---
 
+<a id="current-baseline-decision"></a>
 ## Current Baseline Decision
 
-The implementation baseline from commit:
+For this incident:
 
 ```text
-6710a697390858b8dfbcdf7ec3d2e737f34263da
-```
-
-remains the working reference implementation for this incident.
-
-The proposed backend-specific gate patch was **not applied**.
-
-Current status:
-
-```text
-Pinecone runtime v1.0.0                 ACTIVE BASELINE
+Pinecone runtime v1.0.0                 ACTIVE INCIDENT BASELINE
 Generalization test                     COMPLETED
 Positive-evidence semantics issue       DOCUMENTED
 Backend-specific tactical patch         REJECTED / NOT APPLIED
 Structured evidence-contract redesign   FUTURE ARCHITECTURAL WORK
-Nomic embedding regeneration            NOT REQUIRED BY THIS FINDING
-Gemini integration                      NOT YET IMPLEMENTED AT INCIDENT TIME
+Embedding regeneration from incident    NOT REQUIRED
 ```
 
-This freeze is intentional. It gives future changes a clean before/after baseline instead of mixing the incident, the diagnosis, and the correction into one untraceable state.
+The failing baseline is intentionally frozen for reproducible comparison.
 
 ---
 
+<a id="future-acceptance-criteria"></a>
 ## Future Acceptance Criteria
 
-A future structured-evidence revision should not be considered successful merely because the two observed false positives disappear.
-
-It should demonstrate a generic improvement across different query modes.
-
-At minimum:
+A future fix must demonstrate generic quality improvement, not merely suppress the two observed examples.
 
 ### Positive backend query
 
@@ -1099,8 +731,8 @@ What backend engineering weaknesses or limitations appear in the portfolio?
 
 Expected:
 
-- the same negative/absence documents become valid and useful results;
-- they should not be globally suppressed from retrieval.
+- the same negative/absence documents become valid useful results;
+- negative evidence is not globally suppressed.
 
 ### Authorization regression
 
@@ -1110,13 +742,13 @@ What evidence shows experience with authorization architecture?
 
 Expected:
 
-- existing strong authorization results remain strong;
-- hardware `control` remains disambiguated;
-- limitations remain distinguishable from positive implementation evidence.
+- strong authorization evidence remains strong;
+- unrelated `control` terminology stays disambiguated;
+- limitations remain distinct from positive implementation evidence.
 
-### Unrelated engineering facets
+### Cross-facet regressions
 
-Tests should cover at least:
+Also test:
 
 ```text
 testing / quality
@@ -1127,64 +759,69 @@ product responsibility
 chronology / growth
 ```
 
-The objective is to prove the solution is schema-driven rather than a backend-only patch.
+The solution passes only if it is schema-driven rather than backend-query-specific.
 
 ---
 
+<a id="lessons-from-the-incident"></a>
 ## Lessons From the Incident
 
-### 1. Changing regression questions is essential
-
-A system that looks strong on one repeatedly used prompt may still contain generalization weaknesses.
-
-### 2. Retrieval relevance is not evidence validity
-
-A document can be perfectly relevant while contradicting the requested claim.
-
-### 3. Negative evidence must remain retrievable
-
-The solution is not to remove limitations from search. The solution is to classify their relationship to the requested claim.
-
-### 4. Pinecone should remain a recall subsystem
-
-Vector search should find relevant candidates. It should not become responsible for evidence interpretation.
-
-### 5. Embeddings should remain semantic
-
-It is not a defect that semantically opposed statements can be nearby in embedding space.
-
-### 6. Runtime keyword growth is an architectural smell
-
-Repeated facet-specific keyword patches indicate that structured semantics belong earlier in the pipeline.
-
-### 7. Offline classification is the cleaner boundary
-
-The retrieval-document compiler already sees the evidence in context and is the appropriate place to assign durable evidence semantics.
-
-### 8. Preserve expensive validated artifacts when possible
-
-A metadata-only redesign can improve reasoning without invalidating 2,808 validated vectors or repeating the 44-batch Nomic embedding run.
-
-### 9. Freeze the failing baseline before redesign
-
-Keeping commit `6710a697390858b8dfbcdf7ec3d2e737f34263da` as the exact incident baseline makes later quality comparisons reproducible.
+1. **Change regression questions.** One repeatedly used prompt can conceal generalization weaknesses.
+2. **Retrieval relevance is not evidence validity.** Relevant material may contradict the requested claim.
+3. **Negative evidence must remain retrievable.** Classify its relationship to the claim rather than deleting it.
+4. **Pinecone is a recall subsystem.** It should not be blamed for claim interpretation.
+5. **Embeddings are semantic, not logical-polarity proofs.** Nearby opposition is not inherently a model defect.
+6. **Runtime keyword growth is an architectural smell.** Repeated facet-specific patches indicate missing structured semantics.
+7. **Offline classification is a cleaner boundary.** Evidence meaning should be encoded when documents are constructed.
+8. **Preserve validated artifacts unless the experiment deliberately changes them.** Quality fixes and model migrations are separate decisions.
+9. **Freeze a failing baseline.** Reproducible before/after comparison matters more than silently patching the only known example.
 
 ---
 
+<a id="evidence-retention-policy"></a>
+## Evidence Retention Policy
+
+The original incident document embedded the entire HTTP/JSON response and also retained the same giant raw response as a sibling file. That duplicated transport noise and made the QC record hundreds of kilobytes larger without improving the finding.
+
+The corrected policy is:
+
+```text
+KEEP
+- test question
+- runtime/schema identity
+- aggregate diagnostics
+- returned rank
+- repository name
+- document ID when useful
+- returned explanation/passage that caused the finding
+- QC interpretation
+
+DO NOT DUPLICATE
+- the entire API response envelope
+- every source-fragment object
+- every score-component field
+- every unrelated returned result
+- hundreds of kilobytes of JSON transport detail
+```
+
+This preserves the evidence needed to reproduce and understand the incident while keeping the QC document reviewable.
+
+---
+
+<a id="related-documentation"></a>
 ## Related Documentation
 
-- [`../../README.md`](../../README.md) — project documentation hub.
-- [`../../architecture/system-overview.md`](../../architecture/system-overview.md) — whole-portfolio architecture.
-- [`../../../rag/README.md`](../../../rag/README.md) — RAG subsystem source of truth.
-- [`../../../rag/docs/pipeline.md`](../../../rag/docs/pipeline.md) — active RAG pipeline.
-- [`../../../rag/docs/component-interactions.md`](../../../rag/docs/component-interactions.md) — component responsibilities and interactions.
-- [`../../../rag/docs/retrieval-version-history.md`](../../../rag/docs/retrieval-version-history.md) — retrieval evolution.
-- [`../../../rag/docs/testing-and-regressions.md`](../../../rag/docs/testing-and-regressions.md) — RAG validation and regression strategy.
-- [`../../../rag/docs/known-issues.md`](../../../rag/docs/known-issues.md) — current and historical RAG quality findings.
-- [`../../../rag/docs/regeneration-matrix.md`](../../../rag/docs/regeneration-matrix.md) — what changes require artifact regeneration.
+- [RAG documentation home](../../rag/README.md)
+- [RAG pipeline](../../rag/pipeline.md)
+- [RAG testing and regressions](../../rag/testing-and-regressions.md)
+- [Known RAG issues](../../rag/known-issues.md)
+- [Pinecone backend](../../rag/pinecone.md)
+- [RAG deployment history](../../rag/deployment/README.md)
+- [Relevant returned-result evidence](evidence/2026-08-31-backend-system-design-relevant-results.txt)
 
 ---
 
+<a id="qc-record-summary"></a>
 ## QC Record Summary
 
 ```text
@@ -1194,5409 +831,33 @@ Incident baseline:
 Question:
 What evidence shows strong backend engineering and system design experience?
 
-Result:
-Runtime generalized successfully, but two false-positive patterns exposed
-insufficient separation between topical relevance and positive claim support.
+Operational result:
+PASS — arbitrary question traversed the complete retrieval runtime.
+
+Quality result:
+DESIGN WEAKNESS — two result patterns exposed insufficient separation between
+semantic relevance and positive claim support.
+
+Valid evidence examples:
+LInC-Church-Management
+my-portfolio
+
+False-positive examples:
+vv11345 — absence ledger
+George-Sedra-Website — frontend evidence containing a negative backend comparison
 
 Rejected response:
-Add backend-specific runtime keyword gates.
+Backend-query-specific runtime keyword patch.
 
 Architectural conclusion:
-Move generic claim/evidence semantics into the offline retrieval-document
-contract, preserve existing document IDs and embedding_text, reuse the existing
-2,808 Nomic vectors, and make runtime evidence compatibility schema-driven.
+Represent claim/evidence semantics explicitly in the evidence-document contract
+and evaluate compatibility generically at retrieval time.
 
 Implementation change from this incident:
 NONE.
 ```
 
+## Related Documentation
 
----
-
-## Appendix A — Exact Captured Runtime Output
-
-This appendix preserves the **raw PowerShell command and complete JSON response exactly as captured during the incident test**. It is included so that future QC work does not depend on a prose reconstruction of what happened.
-
-### Capture identity
-
-```text
-Capture source:
-Pasted text(20260831-142353).txt
-
-Captured command:
-POST http://127.0.0.1:8000/api/rag/retrieve
-
-Question:
-What evidence shows strong backend engineering and system design experience?
-
-Implementation commit under test:
-6710a697390858b8dfbcdf7ec3d2e737f34263da
-
-Runtime:
-rag/runtime/rag-api-pinecone-v1.py
-Runtime version: 1.0.0
-Retrieval schema: 3.1.0-pinecone
-
-Raw capture bytes: 363,133
-Raw capture SHA-256:
-4224ea6fe5c556f78cdfd498de93907c19e1b849eae4f47c056122866a9fa4ba
-```
-
-The exact capture is also retained as the sibling evidence file:
-
-[`evidence/2026-08-31-backend-system-design-runtime-output.txt`](evidence/2026-08-31-backend-system-design-runtime-output.txt)
-
-### Verbatim output
-
-```text
-PS C:\WINDOWS\system32> $body = @{ question = "What evidence shows strong backend engineering and system design experience?" } | ConvertTo-Json; Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8000/api/rag/retrieve -ContentType "application/json" -Body $body | ConvertTo-Json -Depth 12
-{
-    "status":  "ok",
-    "runtime_schema_version":  "1.0.0",
-    "retrieval_schema_version":  "3.1.0-pinecone",
-    "question":  "What evidence shows strong backend engineering and system design experience?",
-    "elapsed_seconds":  8.17166559999896,
-    "generation":  null,
-    "results":  [
-                    {
-                        "rank":  1,
-                        "final_score":  0.8826384997970576,
-                        "vector_index":  2575,
-                        "document_id":  "repo-123-rd010",
-                        "repository_index":  123,
-                        "repository_name":  "LInC-Church-Management",
-                        "repository_url":  "https://github.com/kirolossedra/LInC-Church-Management",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "architecture_system_design",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.4518,
-                        "concrete_signal_count":  4,
-                        "topics":  [
-                                       "full-stack product architecture",
-                                       "React/TypeScript application engineering",
-                                       "Hono/Cloudflare Workers backend engineering",
-                                       "authorization/canonical identity governance",
-                                       "backend",
-                                       "domain",
-                                       "decomposition",
-                                       "governed",
-                                       "mutations",
-                                       "engineering",
-                                       "consequence",
-                                       "decisions",
-                                       "tradeoffs",
-                                       "decision",
-                                       "emphasize",
-                                       "hono/cloudflare",
-                                       "workers"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Backend domain decomposition and governed mutations",
-                                               "Engineering decisions and tradeoffs"
-                                           ],
-                        "text":  "[Section: 7. Backend domain decomposition and governed mutations]\n\nThis project-specific dimension is a major reason Repository 123 is not reduced to a generic technology checklist.\nIt most directly supports **React/TypeScript application engineering** at **4.9/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 7. Backend domain decomposition and governed mutations \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Establishes a new corpus maximum for end-to-end product engineering maturity: sustained full-stack implementation, governance, testing, CI/E2E, security thinking, documentation and stakeholder-facing domain modeling converge in one system. It materially broadens the career story beyond research engineering into product/architecture leadership.\n---\n\n[Section: 23. Engineering decisions and tradeoffs \u003e Decision 3: emphasize Hono/Cloudflare Workers backend engineering]\n\n- **Benefit:** raises direct/system capability around Hono/Cloudflare Workers backend engineering in a form appropriate to church/community management, people development, ministry operations, scheduling, support, forms, identity and communication.\n\n- **Cost:** rapid feature growth can increase architecture coupling.\n\n- **Evidence class:** direct; rating 4.9/5.\n\n- **Production response:** add/retain provider-failure and idempotency coverage.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-123-s018-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s018",
-                                                     "section_path":  [
-                                                                          "7. Backend domain decomposition and governed mutations"
-                                                                      ],
-                                                     "section_title":  "7. Backend domain decomposition and governed mutations",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11596,
-                                                     "source_line_start":  11595,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 123 is not reduced to a generic technology checklist.\nIt most directly supports **React/TypeScript application engineering** at **4.9/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "ac081933e3bcc2b68dc506460dd6bf766da088168619c77a15da88087dbb7d35",
-                                                     "unit_id":  "s018",
-                                                     "word_count":  34
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s021-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s021",
-                                                     "section_path":  [
-                                                                          "7. Backend domain decomposition and governed mutations",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11608,
-                                                     "source_line_start":  11607,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Establishes a new corpus maximum for end-to-end product engineering maturity: sustained full-stack implementation, governance, testing, CI/E2E, security thinking, documentation and stakeholder-facing domain modeling converge in one system. It materially broadens the career story beyond research engineering into product/architecture leadership.\n---",
-                                                     "text_sha256":  "5bca7030a59bd44c5a9de94fe7f0494cc110b98300544aeead2401e2f65cb25b",
-                                                     "unit_id":  "s021",
-                                                     "word_count":  47
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s055-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s055",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 3: emphasize Hono/Cloudflare Workers backend engineering"
-                                                                      ],
-                                                     "section_title":  "Decision 3: emphasize Hono/Cloudflare Workers backend engineering",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11837,
-                                                     "source_line_start":  11837,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Benefit:** raises direct/system capability around Hono/Cloudflare Workers backend engineering in a form appropriate to church/community management, people development, ministry operations, scheduling, support, forms, identity and communication.",
-                                                     "text_sha256":  "53cb018f8278d102ffbc6838999029642d77c6dc755fdf5554ddc2fce8be60f4",
-                                                     "unit_id":  "s055",
-                                                     "word_count":  27
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s055-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s055",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 3: emphasize Hono/Cloudflare Workers backend engineering"
-                                                                      ],
-                                                     "section_title":  "Decision 3: emphasize Hono/Cloudflare Workers backend engineering",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11838,
-                                                     "source_line_start":  11838,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Cost:** rapid feature growth can increase architecture coupling.",
-                                                     "text_sha256":  "e343123e6574f8b5b88a15c3f5f1d57c0f52d4109c22a327f624137630c46eb0",
-                                                     "unit_id":  "s055",
-                                                     "word_count":  9
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s055-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s055",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 3: emphasize Hono/Cloudflare Workers backend engineering"
-                                                                      ],
-                                                     "section_title":  "Decision 3: emphasize Hono/Cloudflare Workers backend engineering",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11839,
-                                                     "source_line_start":  11839,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- **Evidence class:** direct; rating 4.9/5.",
-                                                     "text_sha256":  "5c67bed8bc1233625ac4b3bba1f41652d97e1526b831462be319c40ec64d1977",
-                                                     "unit_id":  "s055",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s055-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s055",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 3: emphasize Hono/Cloudflare Workers backend engineering"
-                                                                      ],
-                                                     "section_title":  "Decision 3: emphasize Hono/Cloudflare Workers backend engineering",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  11840,
-                                                     "source_line_start":  11840,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Production response:** add/retain provider-failure and idempotency coverage.",
-                                                     "text_sha256":  "1be9ed36d16d00d901190ec52a1fad7503367e2f462a718e5150c1896f52b7a1",
-                                                     "unit_id":  "s055",
-                                                     "word_count":  8
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-112-123.md",
-                                           "document_text_sha256":  "9371c6a4f4aa43c2618506662ceb3d148972c8884e9b8d735c34b3c5318a8926",
-                                           "earliest_source_line":  11595,
-                                           "embedding_text_sha256":  "d816e54f5a4559c82cafad9614c03c2cf46c580f283dc58d00fb8c9c25a469f0",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "b0900e1a71f5f11c4b8907250c16f17037072ba57ddce1e1f92c5e444c9d2713",
-                                           "repository_source_line_end":  12540,
-                                           "repository_source_line_start":  11496
-                                       },
-                        "provenance_label":  "repositories-112-123.md lines 11595-11840",
-                        "score_components":  {
-                                                 "cross_encoder":  0.8649206381690288,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.715024948,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.8471419972774065,
-                                                 "bm25_raw":  25.684435882524646,
-                                                 "bm25_normalized":  0.6882023081855958,
-                                                 "metadata_raw":  39.28463123328497,
-                                                 "metadata_normalized":  0.9777215011357789,
-                                                 "rrf_raw":  0.0452122777796662,
-                                                 "rrf_normalized":  1.0,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.98,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  true,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "hono"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-                                                                                                                       "architecture",
-                                                                                                                       "backend",
-                                                                                                                       "hono"
-                                                                                                                   ],
-                                                                                                 "score":  0.98
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.4518,
-                                                                          "concrete_signal_count":  4,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.8115293333333332
-                                                                      },
-                                                 "pre_rerank_score":  0.9145784358324401,
-                                                 "final_score_before_diversity":  0.8826384997970576
-                                             }
-                    },
-                    {
-                        "rank":  2,
-                        "final_score":  0.863360899089079,
-                        "vector_index":  2788,
-                        "document_id":  "repo-134-rd005",
-                        "repository_index":  134,
-                        "repository_name":  "my-portfolio",
-                        "repository_url":  "https://github.com/kirolossedra/my-portfolio",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "architecture_system_design",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "interpretive",
-                        "specificity_score":  0.38,
-                        "concrete_signal_count":  2,
-                        "topics":  [
-                                       "worker",
-                                       "backend"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Worker backend"
-                                           ],
-                        "text":  "[Section: 5. Worker backend]\n\nThe Worker code is separated into authentication, HTTP handling, route dispatch, milestone persistence, opinion persistence, validation and environment contracts.\n\nThat decomposition supports direct backend TypeScript evidence rather than treating the Worker as one monolithic request handler.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-134-s005-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s005",
-                                                     "section_path":  [
-                                                                          "5. Worker backend"
-                                                                      ],
-                                                     "section_title":  "5. Worker backend",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3304,
-                                                     "source_line_start":  3304,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "The Worker code is separated into authentication, HTTP handling, route dispatch, milestone persistence, opinion persistence, validation and environment contracts.",
-                                                     "text_sha256":  "4afd827c5de52454c6315d139c1864d1d8be6c2e1594e198a6bc635e46d15d88",
-                                                     "unit_id":  "s005",
-                                                     "word_count":  19
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s005-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s005",
-                                                     "section_path":  [
-                                                                          "5. Worker backend"
-                                                                      ],
-                                                     "section_title":  "5. Worker backend",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3306,
-                                                     "source_line_start":  3306,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "That decomposition supports direct backend TypeScript evidence rather than treating the Worker as one monolithic request handler.",
-                                                     "text_sha256":  "9923bff8a0c896b4f9f1adbbe83a2cb3520c156f0006132ce452d6a379fda260",
-                                                     "unit_id":  "s005",
-                                                     "word_count":  17
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-124-134.md",
-                                           "document_text_sha256":  "42b4acddae24f5265d8aa9f18acffc65ba98c573a331c58672169d748ddd5ba6",
-                                           "earliest_source_line":  3304,
-                                           "embedding_text_sha256":  "bd021b510b86e9a173e56b2383b5fc9994eceed000e38924400ff4dc16037985",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "4d152a9a54629b5e4874ffc88efee9e471bc2ed7a7a6c2775a46f01f0127eb2b",
-                                           "repository_source_line_end":  3770,
-                                           "repository_source_line_start":  3252
-                                       },
-                        "provenance_label":  "repositories-124-134.md lines 3304-3306",
-                        "score_components":  {
-                                                 "cross_encoder":  0.903792440807995,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.715679169,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.8565770036212409,
-                                                 "bm25_raw":  25.398981770008334,
-                                                 "bm25_normalized":  0.6784049067505845,
-                                                 "metadata_raw":  25.38618830839771,
-                                                 "metadata_normalized":  0.6318150727598589,
-                                                 "rrf_raw":  0.04367224367224367,
-                                                 "rrf_normalized":  0.9594697192926369,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.98,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  true,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "worker"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-                                                                                                                       "architecture",
-                                                                                                                       "backend",
-                                                                                                                       "worker"
-                                                                                                                   ],
-                                                                                                 "score":  0.98
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "interpretive",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.38,
-                                                                          "concrete_signal_count":  2,
-                                                                          "base_level_score":  0.58,
-                                                                          "adjustments":  {
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.5666666666666667
-                                                                      },
-                                                 "pre_rerank_score":  0.8275463534595789,
-                                                 "final_score_before_diversity":  0.863360899089079
-                                             }
-                    },
-                    {
-                        "rank":  3,
-                        "final_score":  0.7753857216868745,
-                        "vector_index":  2592,
-                        "document_id":  "repo-123-rd027",
-                        "repository_index":  123,
-                        "repository_name":  "LInC-Church-Management",
-                        "repository_url":  "https://github.com/kirolossedra/LInC-Church-Management",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "other_repository_evidence",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "interpretive",
-                        "specificity_score":  0.3524,
-                        "concrete_signal_count":  3,
-                        "topics":  [
-                                       "full-stack product architecture",
-                                       "React/TypeScript application engineering",
-                                       "Hono/Cloudflare Workers backend engineering",
-                                       "Firebase identity/data integration",
-                                       "authorization/canonical identity governance",
-                                       "testing/CI/E2E/release quality gates",
-                                       "bottom",
-                                       "line",
-                                       "strongest",
-                                       "defensible",
-                                       "claims",
-                                       "critical",
-                                       "caveats",
-                                       "career",
-                                       "effect"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Repository 123 bottom line"
-                                           ],
-                        "text":  "[Section: 56. Repository 123 bottom line \u003e Strongest defensible claims]\n\n- testing/CI/E2E/release quality gates â 4.9/5 (direct)\n\n[Section: 56. Repository 123 bottom line \u003e Critical caveats]\n\n- proof that every historical or generated line was manually authored without AI/tool assistance\n\n- claim of internet-scale user load\n\n- formal regulatory compliance certification\n\n- zero-defect security or privacy\n\n- large sensitive domain surface increases privacy/security obligations\n\n- Firebase plus Worker plus external providers create distributed consistency/failure modes\n\n- rapid feature growth can increase architecture coupling\n\n[Section: 56. Repository 123 bottom line \u003e Career effect]\n\nEstablishes a new corpus maximum for end-to-end product engineering maturity: sustained full-stack implementation, governance, testing, CI/E2E, security thinking, documentation and stakeholder-facing domain modeling converge in one system. It materially broadens the career story beyond research engineering into product/architecture leadership.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-123-s099-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s099",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Strongest defensible claims"
-                                                                      ],
-                                                     "section_title":  "Strongest defensible claims",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12296,
-                                                     "source_line_start":  12296,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- testing/CI/E2E/release quality gates â 4.9/5 (direct)",
-                                                     "text_sha256":  "19d6faa0af262aabc57587817b4e2f802cadffa219e14c77670ceaf185c7a6b1",
-                                                     "unit_id":  "s099",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12298,
-                                                     "source_line_start":  12298,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- proof that every historical or generated line was manually authored without AI/tool assistance",
-                                                     "text_sha256":  "a862d2d1c151bf0628e72fb953aefab1ead2f1a35b71f421db159a65df37fa7c",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  14
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12299,
-                                                     "source_line_start":  12299,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- claim of internet-scale user load",
-                                                     "text_sha256":  "f6067ea47b8bc59493050ac40022dc0dad9e4d9dcf6cbf4414e885218ecefff2",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12300,
-                                                     "source_line_start":  12300,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- formal regulatory compliance certification",
-                                                     "text_sha256":  "a4ae88ea3ae10d58797feb372485dfe685588056423b7ef60a6e2859689c0575",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12301,
-                                                     "source_line_start":  12301,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- zero-defect security or privacy",
-                                                     "text_sha256":  "a70d7631c69a3f615c580c429899027649dda9705d053cd6d331ae51dd63921d",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b005",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12302,
-                                                     "source_line_start":  12302,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- large sensitive domain surface increases privacy/security obligations",
-                                                     "text_sha256":  "0f0b3513c9b30565b80b032c5aaaffae7b07ad2257f2263895bd7b3d4a2a5f81",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  8
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12303,
-                                                     "source_line_start":  12303,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- Firebase plus Worker plus external providers create distributed consistency/failure modes",
-                                                     "text_sha256":  "c802f63c5274a2b353bc74ece43c69205a73977d8e4e0fa5674e9cb896272ebd",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  11
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s100-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s100",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Critical caveats"
-                                                                      ],
-                                                     "section_title":  "Critical caveats",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12304,
-                                                     "source_line_start":  12304,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- rapid feature growth can increase architecture coupling",
-                                                     "text_sha256":  "0bcb845be0919b9b0ea4d4a688d6b11dcf5a8e9b76efeacf3146777455156c15",
-                                                     "unit_id":  "s100",
-                                                     "word_count":  8
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-123-s101-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s101",
-                                                     "section_path":  [
-                                                                          "56. Repository 123 bottom line",
-                                                                          "Career effect"
-                                                                      ],
-                                                     "section_title":  "Career effect",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  12306,
-                                                     "source_line_start":  12306,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "Establishes a new corpus maximum for end-to-end product engineering maturity: sustained full-stack implementation, governance, testing, CI/E2E, security thinking, documentation and stakeholder-facing domain modeling converge in one system. It materially broadens the career story beyond research engineering into product/architecture leadership.",
-                                                     "text_sha256":  "9fa55ea29ff54d0682e74140197b433f02fba382189a8d745026e2fb38361ea0",
-                                                     "unit_id":  "s101",
-                                                     "word_count":  39
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-112-123.md",
-                                           "document_text_sha256":  "f32f4e32577620b6eb658db3d640d2cf0b8c307da0bc07faf7dacfb710da72fc",
-                                           "earliest_source_line":  12296,
-                                           "embedding_text_sha256":  "0f8855713bf37dab8a70d92663c63ee07e08a6732cad1868b458a54921ef4431",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "b0900e1a71f5f11c4b8907250c16f17037072ba57ddce1e1f92c5e444c9d2713",
-                                           "repository_source_line_end":  12540,
-                                           "repository_source_line_start":  11496
-                                       },
-                        "provenance_label":  "repositories-112-123.md lines 12296-12306",
-                        "score_components":  {
-                                                 "cross_encoder":  0.8844567537307739,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.688718855,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.4677623161963422,
-                                                 "bm25_raw":  23.12367689470427,
-                                                 "bm25_normalized":  0.6003115310626856,
-                                                 "metadata_raw":  14.965933694604889,
-                                                 "metadata_normalized":  0.3724742907956797,
-                                                 "rrf_raw":  0.02833526904227078,
-                                                 "rrf_normalized":  0.5558345764354047,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.9000000000000001,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "distributed",
-                                                                                                                      "hono",
-                                                                                                                      "worker"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-                                                                                                                       "architecture",
-                                                                                                                       "backend",
-                                                                                                                       "hono"
-                                                                                                                   ],
-                                                                                                 "score":  0.9
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "interpretive",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.3524,
-                                                                          "concrete_signal_count":  3,
-                                                                          "base_level_score":  0.58,
-                                                                          "adjustments":  {
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.5939279999999999
-                                                                      },
-                                                 "pre_rerank_score":  0.7023557756305314,
-                                                 "final_score_before_diversity":  0.7753857216868745
-                                             }
-                    },
-                    {
-                        "rank":  4,
-                        "final_score":  0.7535377341159412,
-                        "vector_index":  21,
-                        "document_id":  "repo-001-rd022",
-                        "repository_index":  1,
-                        "repository_name":  "vv11345",
-                        "repository_url":  "https://github.com/kirolossedra/vv11345",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "product_responsibility",
-                        "evidence_polarity":  "neutral",
-                        "evidence_level":  "interpretive",
-                        "specificity_score":  0.34,
-                        "concrete_signal_count":  0,
-                        "topics":  [
-                                       "career",
-                                       "engineering",
-                                       "signal"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Career / Engineering Signal"
-                                           ],
-                        "text":  "[Section: 16. Career / Engineering Signal]\n\n- backend design;\n\n- databases;\n\n- distributed systems;\n\n- automated quality engineering;\n\n- DevOps;\n\n- security engineering;\n\n- team-scale software development.\n\nThose absences should remain visible in the corpus because the purpose is to reconstruct engineering growth honestly. Later repositories can then show when those capabilities first appear and how they mature.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-001-s048-b014",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  920,
-                                                     "source_line_start":  920,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- backend design;",
-                                                     "text_sha256":  "5c840063fbec46d93cdf9d7220e26c60c4b95e9286c49acf26737492ef6d7378",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b015",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  921,
-                                                     "source_line_start":  921,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- databases;",
-                                                     "text_sha256":  "722efbd33b20046fa25d99841bde9b3c3ba9bc8179a148ab75fc9d1bb48bdc35",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b016",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  922,
-                                                     "source_line_start":  922,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- distributed systems;",
-                                                     "text_sha256":  "de1d056bd4fd1f076909da98c6ee412d977c372f5adbdac4503283e7bb899e29",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b017",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  923,
-                                                     "source_line_start":  923,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- automated quality engineering;",
-                                                     "text_sha256":  "98a4a3322a1baeaf04958a68073c4a860f1d8fd5639942d5334a70407707ad2a",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b018",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  924,
-                                                     "source_line_start":  924,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- DevOps;",
-                                                     "text_sha256":  "60111df3efd12b772b590c7d0bee3923f98d12a2804cb4d33d19344f0ee1ef7b",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b019",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  925,
-                                                     "source_line_start":  925,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- security engineering;",
-                                                     "text_sha256":  "02caaf97e27884bd08f121bf9ac8a53200376fd411121e99f0e5c3a1fe1d21a8",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b020",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  926,
-                                                     "source_line_start":  926,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- team-scale software development.",
-                                                     "text_sha256":  "c94d1c4f41263d7972cf9b64c0a0a67aea2a9621bb00d07ec75114f6c8428528",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s048-b021",
-                                                     "canonical_categories":  [
-                                                                                  "career_signal"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s048",
-                                                     "section_path":  [
-                                                                          "16. Career / Engineering Signal"
-                                                                      ],
-                                                     "section_title":  "16. Career / Engineering Signal",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  928,
-                                                     "source_line_start":  928,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "Those absences should remain visible in the corpus because the purpose is to reconstruct engineering growth honestly. Later repositories can then show when those capabilities first appear and how they mature.",
-                                                     "text_sha256":  "faad4f8564ba334942ee95d460329a9c9074abbbe9015ab5c995ba2898bd01c3",
-                                                     "unit_id":  "s048",
-                                                     "word_count":  31
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-001-015.md",
-                                           "document_text_sha256":  "f9585c9802b3e74e0968367953a47b0c3f1e70dfead83939a8682a7c0e32792b",
-                                           "earliest_source_line":  920,
-                                           "embedding_text_sha256":  "27e7d56a3134432081d648ae25c0dd28a9d6a8e3fa8a79740b533e8543a0088a",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "f7ef3329cd0c698fd68d1a573e5facb9ce74153eadf69cd3f3ca5e12f0ce7bc3",
-                                           "repository_source_line_end":  1612,
-                                           "repository_source_line_start":  273
-                                       },
-                        "provenance_label":  "repositories-001-015.md lines 920-928",
-                        "score_components":  {
-                                                 "cross_encoder":  0.8898653718934091,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.702421188,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.6653738248155252,
-                                                 "bm25_raw":  20.872875100541567,
-                                                 "bm25_normalized":  0.5230591540215408,
-                                                 "metadata_raw":  5.273573752657121,
-                                                 "metadata_normalized":  0.13124945516682182,
-                                                 "rrf_raw":  0.026203651726451938,
-                                                 "rrf_normalized":  0.49973513827724114,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.64,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "backend",
-                                                                                                                      "distributed"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-
-                                                                                                                   ],
-                                                                                                 "score":  0.64
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "interpretive",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "neutral",
-                                                                          "specificity_score":  0.34,
-                                                                          "concrete_signal_count":  0,
-                                                                          "base_level_score":  0.58,
-                                                                          "adjustments":  {
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.4112
-                                                                      },
-                                                 "pre_rerank_score":  0.616245258229011,
-                                                 "final_score_before_diversity":  0.7535377341159412
-                                             }
-                    },
-                    {
-                        "rank":  5,
-                        "final_score":  0.7526102067185872,
-                        "vector_index":  2381,
-                        "document_id":  "repo-115-rd008",
-                        "repository_index":  115,
-                        "repository_name":  "George-Sedra-Website",
-                        "repository_url":  "https://github.com/kirolossedra/George-Sedra-Website",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "other_repository_evidence",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.3778,
-                        "concrete_signal_count":  6,
-                        "topics":  [
-                                       "semantic HTML and static-site composition",
-                                       "responsive CSS and design systems",
-                                       "JavaScript interaction",
-                                       "dark/light theme implementation",
-                                       "touch/mobile UI behavior",
-                                       "visual polish and layout",
-                                       "design-token",
-                                       "theme",
-                                       "system",
-                                       "engineering",
-                                       "consequence",
-                                       "responsive/mobile",
-                                       "navigation",
-                                       "carousel",
-                                       "touch",
-                                       "interaction",
-                                       "animation",
-                                       "visual",
-                                       "hierarchy",
-                                       "static-site",
-                                       "scope",
-                                       "boundary"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Design-token and theme system",
-                                               "Responsive/mobile navigation",
-                                               "Carousel and touch interaction",
-                                               "Animation and visual hierarchy",
-                                               "Static-site scope boundary"
-                                           ],
-                        "text":  "[Section: 6. Design-token and theme system]\n\nThis project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **semantic HTML and static-site composition** at **4.0/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 6. Design-token and theme system \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---\n\n[Section: 7. Responsive/mobile navigation]\n\nThis project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **responsive CSS and design systems** at **4.2/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 7. Responsive/mobile navigation \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---\n\n[Section: 8. Carousel and touch interaction]\n\nThis project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **JavaScript interaction** at **3.7/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 8. Carousel and touch interaction \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---\n\n[Section: 9. Animation and visual hierarchy]\n\nThis project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **dark/light theme implementation** at **4.0/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 9. Animation and visual hierarchy \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---\n\n[Section: 10. Static-site scope boundary]\n\nThis project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **touch/mobile UI behavior** at **3.7/5** evidence strength, while preserving the attribution class **direct**.\n\n[Section: 10. Static-site scope boundary \u003e Engineering consequence]\n\nThis dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-115-s014-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s014",
-                                                     "section_path":  [
-                                                                          "6. Design-token and theme system"
-                                                                      ],
-                                                     "section_title":  "6. Design-token and theme system",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3214,
-                                                     "source_line_start":  3213,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **semantic HTML and static-site composition** at **4.0/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "98c567ea71653cae87c99f9dd11d8860239bdf0d29c064c90a7eb0c3b624178d",
-                                                     "unit_id":  "s014",
-                                                     "word_count":  36
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s017-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "6. Design-token and theme system",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3226,
-                                                     "source_line_start":  3225,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                                                     "text_sha256":  "06ae0f65d1fdf57d6baa83bd2042641ecd44a47bab22a81ad663572cd6a7e1ba",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  37
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s018-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s018",
-                                                     "section_path":  [
-                                                                          "7. Responsive/mobile navigation"
-                                                                      ],
-                                                     "section_title":  "7. Responsive/mobile navigation",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3229,
-                                                     "source_line_start":  3228,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **responsive CSS and design systems** at **4.2/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "e9e6e6f0d1e4d0c6197790b6e75b1d9e12ee9ac5c581729773196ead06741f0c",
-                                                     "unit_id":  "s018",
-                                                     "word_count":  36
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s021-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s021",
-                                                     "section_path":  [
-                                                                          "7. Responsive/mobile navigation",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3241,
-                                                     "source_line_start":  3240,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                                                     "text_sha256":  "06ae0f65d1fdf57d6baa83bd2042641ecd44a47bab22a81ad663572cd6a7e1ba",
-                                                     "unit_id":  "s021",
-                                                     "word_count":  37
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s022-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s022",
-                                                     "section_path":  [
-                                                                          "8. Carousel and touch interaction"
-                                                                      ],
-                                                     "section_title":  "8. Carousel and touch interaction",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3244,
-                                                     "source_line_start":  3243,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **JavaScript interaction** at **3.7/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "bb4838748f75d3c1255640d158473514280ca7ba67fc912f1311afc757428a32",
-                                                     "unit_id":  "s022",
-                                                     "word_count":  33
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s025-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s025",
-                                                     "section_path":  [
-                                                                          "8. Carousel and touch interaction",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3256,
-                                                     "source_line_start":  3255,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                                                     "text_sha256":  "06ae0f65d1fdf57d6baa83bd2042641ecd44a47bab22a81ad663572cd6a7e1ba",
-                                                     "unit_id":  "s025",
-                                                     "word_count":  37
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s026-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s026",
-                                                     "section_path":  [
-                                                                          "9. Animation and visual hierarchy"
-                                                                      ],
-                                                     "section_title":  "9. Animation and visual hierarchy",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3259,
-                                                     "source_line_start":  3258,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **dark/light theme implementation** at **4.0/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "cb2c62d326d3a19fe010447a28f3fc0d9d628498ca1fae8c37131e0e7dc4edee",
-                                                     "unit_id":  "s026",
-                                                     "word_count":  34
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s029-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s029",
-                                                     "section_path":  [
-                                                                          "9. Animation and visual hierarchy",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3271,
-                                                     "source_line_start":  3270,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                                                     "text_sha256":  "06ae0f65d1fdf57d6baa83bd2042641ecd44a47bab22a81ad663572cd6a7e1ba",
-                                                     "unit_id":  "s029",
-                                                     "word_count":  37
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s030-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s030",
-                                                     "section_path":  [
-                                                                          "10. Static-site scope boundary"
-                                                                      ],
-                                                     "section_title":  "10. Static-site scope boundary",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3274,
-                                                     "source_line_start":  3273,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This project-specific dimension is a major reason Repository 115 is not reduced to a generic technology checklist.\nIt most directly supports **touch/mobile UI behavior** at **3.7/5** evidence strength, while preserving the attribution class **direct**.",
-                                                     "text_sha256":  "eb8f00f82cc3372aafd4d5d4d1a1024106aa3ba7ad8631d9b22955434287c75f",
-                                                     "unit_id":  "s030",
-                                                     "word_count":  34
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s033-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s033",
-                                                     "section_path":  [
-                                                                          "10. Static-site scope boundary",
-                                                                          "Engineering consequence"
-                                                                      ],
-                                                     "section_title":  "Engineering consequence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3286,
-                                                     "source_line_start":  3285,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This dimension contributes to the longitudinal conclusion: Reinforces front-end presentation skill at a point where the corpus had been dominated by research networking; it is a useful visual-product counterpoint but not a new backend maturity maximum.\n---",
-                                                     "text_sha256":  "06ae0f65d1fdf57d6baa83bd2042641ecd44a47bab22a81ad663572cd6a7e1ba",
-                                                     "unit_id":  "s033",
-                                                     "word_count":  37
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-112-123.md",
-                                           "document_text_sha256":  "9f90f36a64f608f54ce3f50838e6263e6601b92f44931b02802adaca49562648",
-                                           "earliest_source_line":  3213,
-                                           "embedding_text_sha256":  "96f5648cf0e30b7956dcca63cd3f340978a158a714581facacf8cff1c3bbedc0",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "32a624ffbc826862abecbebf6efc0218ad1d1ee23ea65926889ec86b356ceb4c",
-                                           "repository_source_line_end":  4180,
-                                           "repository_source_line_start":  3136
-                                       },
-                        "provenance_label":  "repositories-112-123.md lines 3213-3286",
-                        "score_components":  {
-                                                 "cross_encoder":  0.8628602027893066,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.698167861,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.604033441019517,
-                                                 "bm25_raw":  12.194513117404663,
-                                                 "bm25_normalized":  0.22519903423688106,
-                                                 "metadata_raw":  12.612064384830585,
-                                                 "metadata_normalized":  0.3138908559312072,
-                                                 "rrf_raw":  0.020805308677510372,
-                                                 "rrf_normalized":  0.3576627269756305,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.54,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "backend"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-
-                                                                                                                   ],
-                                                                                                 "score":  0.54
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.3778,
-                                                                          "concrete_signal_count":  6,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.861916
-                                                                      },
-                                                 "pre_rerank_score":  0.6089205152391187,
-                                                 "final_score_before_diversity":  0.7526102067185872
-                                             }
-                    },
-                    {
-                        "rank":  6,
-                        "final_score":  0.739390570153304,
-                        "vector_index":  6,
-                        "document_id":  "repo-001-rd007",
-                        "repository_index":  1,
-                        "repository_name":  "vv11345",
-                        "repository_url":  "https://github.com/kirolossedra/vv11345",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "architecture_system_design",
-                        "evidence_polarity":  "neutral",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.3861,
-                        "concrete_signal_count":  11,
-                        "topics":  [
-                                       "javascript",
-                                       "html",
-                                       "frontend",
-                                       "dictionary",
-                                       "prototype",
-                                       "technical",
-                                       "architecture",
-                                       "architectural",
-                                       "style",
-                                       "engineering",
-                                       "decisions",
-                                       "tradeoffs",
-                                       "static",
-                                       "client",
-                                       "instead",
-                                       "backend/database"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Technical Architecture",
-                                               "Engineering Decisions and Tradeoffs"
-                                           ],
-                        "text":  "[Section: 4. Technical Architecture \u003e Architectural style]\n\nThe application is a **monolithic static frontend**:\n\n- presentation: HTML + CSS;\n\n- state: global JavaScript variables;\n\n- logic: JavaScript functions;\n\n- data: large JavaScript arrays;\n\n- persistence: none;\n\n- server: none.\n\nFor the size and probable learning purpose of the project, this minimizes setup complexity and makes deployment trivial. For further growth, however, it creates coupling between data, linguistic rules, UI behavior, and application logic.\n\n[Section: 26. Engineering Decisions and Tradeoffs \u003e 26.2 Static client instead of backend/database]\n\n**Benefit:**\n\n- zero server requirement;\n\n- instant local transformation;\n\n- easy static hosting;\n\n- no user-data/privacy surface;\n\n- strong traffic scalability at low cost.\n\n**Cost:**\n\n- dictionary updates require shipping source changes;\n\n- no central data governance;\n\n- no correction/review workflow;\n\n- data provenance/versioning is poor;\n\n- bundle size grows with vocabulary.\n\n**Judgment:** good simplification for a prototype, but weak for a trustworthy evolving language product.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-001-s017-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  456,
-                                                     "source_line_start":  456,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "The application is a **monolithic static frontend**:",
-                                                     "text_sha256":  "e7ead6b7829f6559bff582cb74704e968e805bf740a038865498e651695498e2",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  458,
-                                                     "source_line_start":  458,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- presentation: HTML + CSS;",
-                                                     "text_sha256":  "3b86863520ac0f77dc18d6ed4b0c1dfc93f82cc5cc2ccb0bd0f23a03713c4d77",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  459,
-                                                     "source_line_start":  459,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- state: global JavaScript variables;",
-                                                     "text_sha256":  "5a2d383d35002dd187ead7bc834f6deaa1f8f41f7eadf567e63e5b5460aa5ce3",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  460,
-                                                     "source_line_start":  460,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- logic: JavaScript functions;",
-                                                     "text_sha256":  "4251688b87b7dead0afd72052a51f01e4c92648aa3ec7305175152f552f8228c",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b005",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  461,
-                                                     "source_line_start":  461,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- data: large JavaScript arrays;",
-                                                     "text_sha256":  "ecb604ff1ae24b638deb6d49ec0d801b2d7d1b2f0de5d06fb27262a459b8ad94",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  462,
-                                                     "source_line_start":  462,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- persistence: none;",
-                                                     "text_sha256":  "de519ff47390d289528aba430e2f3d290afb3d930d9c1fea98e544a36ac2efa6",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  463,
-                                                     "source_line_start":  463,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- server: none.",
-                                                     "text_sha256":  "a8a7ba9d257383d44d87934c96efee73d9c78c67294a96b5fc178835cb23a5cc",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s017-b008",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s017",
-                                                     "section_path":  [
-                                                                          "4. Technical Architecture",
-                                                                          "Architectural style"
-                                                                      ],
-                                                     "section_title":  "Architectural style",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  465,
-                                                     "source_line_start":  465,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "For the size and probable learning purpose of the project, this minimizes setup complexity and makes deployment trivial. For further growth, however, it creates coupling between data, linguistic rules, UI behavior, and application logic.",
-                                                     "text_sha256":  "84b881ab31371d66ddc57a40ec08da56e54f9ae453e13d1678a9891280860e2a",
-                                                     "unit_id":  "s017",
-                                                     "word_count":  34
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1231,
-                                                     "source_line_start":  1231,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "**Benefit:**",
-                                                     "text_sha256":  "704157adf115cec7a8d50df384bf2fd4251eb67cac26e831ac88df35da3a871d",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  1
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1232,
-                                                     "source_line_start":  1232,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- zero server requirement;",
-                                                     "text_sha256":  "7753264e13132348bbbb286161ab447eed9e15a4bfdfd23afb80c560d9ced91c",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1233,
-                                                     "source_line_start":  1233,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- instant local transformation;",
-                                                     "text_sha256":  "56581bbd96fd2463fd3a667dae632ddd320c6dca3ff6e6dcf3a48490989a94ac",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1234,
-                                                     "source_line_start":  1234,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- easy static hosting;",
-                                                     "text_sha256":  "1b6d9cbedeb6f22f60116ae80b9ae42ead551c2c97baefadcfaab3cab1eb465f",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b005",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1235,
-                                                     "source_line_start":  1235,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- no user-data/privacy surface;",
-                                                     "text_sha256":  "392271b060724701380a1cfe4b5d2d4e4be825f102b4550b93e96de666f10e92",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1236,
-                                                     "source_line_start":  1236,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- strong traffic scalability at low cost.",
-                                                     "text_sha256":  "d612318d9c27e9ff6180568975f2683333b366fc0c37a1811c7f67b8a97b497f",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1238,
-                                                     "source_line_start":  1238,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "**Cost:**",
-                                                     "text_sha256":  "65fe3d8e73e06ae9037178c8b3bfe1ca695458d2326763a6b8d632388119252b",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  1
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b008",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1239,
-                                                     "source_line_start":  1239,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- dictionary updates require shipping source changes;",
-                                                     "text_sha256":  "b882ae482420dfb14af1ba416dc2a9b4671949e1e078f83a7464e3adef31552f",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b009",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1240,
-                                                     "source_line_start":  1240,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- no central data governance;",
-                                                     "text_sha256":  "9bf3e971a166ff6462b355f94088b45398e5ae43d69499c9bc17b8b253927de7",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b010",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1241,
-                                                     "source_line_start":  1241,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- no correction/review workflow;",
-                                                     "text_sha256":  "c059f360aba95e53b40d5d5540ffc783f120540c42e074c88b5b1f3d9ba6df65",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b011",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1242,
-                                                     "source_line_start":  1242,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- data provenance/versioning is poor;",
-                                                     "text_sha256":  "e63766d6e03406c9e750ea9b98d455b71bc28c34df40e5412794af48f8408660",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b012",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1243,
-                                                     "source_line_start":  1243,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- bundle size grows with vocabulary.",
-                                                     "text_sha256":  "5af35f5029d4183733253db4a3041f182192c8ad5418ab32a6b9a4e9a984973c",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-001-s070-b013",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s070",
-                                                     "section_path":  [
-                                                                          "26. Engineering Decisions and Tradeoffs",
-                                                                          "26.2 Static client instead of backend/database"
-                                                                      ],
-                                                     "section_title":  "26.2 Static client instead of backend/database",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  1245,
-                                                     "source_line_start":  1245,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "**Judgment:** good simplification for a prototype, but weak for a trustworthy evolving language product.",
-                                                     "text_sha256":  "a3ba212cce27148190acde491ed2808d94a7f264497c8927ddf720f6860a0141",
-                                                     "unit_id":  "s070",
-                                                     "word_count":  14
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-001-015.md",
-                                           "document_text_sha256":  "1452ebfdcd7ea50628ecd2277008d38f69b39060a3aa9f14870c7075a8421552",
-                                           "earliest_source_line":  456,
-                                           "embedding_text_sha256":  "cd97436e189246f8e178eb1d83be189cdba66f7e6425d04093f2a3f301cb7e53",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "f7ef3329cd0c698fd68d1a573e5facb9ce74153eadf69cd3f3ca5e12f0ce7bc3",
-                                           "repository_source_line_end":  1612,
-                                           "repository_source_line_start":  273
-                                       },
-                        "provenance_label":  "repositories-001-015.md lines 456-1245",
-                        "score_components":  {
-                                                 "cross_encoder":  0.8715698587727506,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.664354384,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.1163842062775188,
-                                                 "bm25_raw":  18.052411786721063,
-                                                 "bm25_normalized":  0.42625476373046567,
-                                                 "metadata_raw":  18.716029754574862,
-                                                 "metadata_normalized":  0.46580721601480785,
-                                                 "rrf_raw":  0.023007132219118903,
-                                                 "rrf_normalized":  0.41560983722426675,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  1.0,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  true,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "database",
-                                                                                                                      "server"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-                                                                                                                       "architecture",
-                                                                                                                       "backend",
-                                                                                                                       "database"
-                                                                                                                   ],
-                                                                                                 "score":  1.0
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "neutral",
-                                                                          "specificity_score":  0.3861,
-                                                                          "concrete_signal_count":  11,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.7837419999999999
-                                                                      },
-                                                 "pre_rerank_score":  0.6791421883233275,
-                                                 "final_score_before_diversity":  0.739390570153304
-                                             }
-                    },
-                    {
-                        "rank":  7,
-                        "final_score":  0.5460181243048282,
-                        "vector_index":  382,
-                        "document_id":  "repo-010-rd039",
-                        "repository_index":  10,
-                        "repository_name":  "Creational-Design-Patterns",
-                        "repository_url":  "https://github.com/kirolossedra/Creational-Design-Patterns",
-                        "retrieval_class":  "interpretation",
-                        "semantic_area":  "other_repository_evidence",
-                        "evidence_polarity":  "neutral",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.402,
-                        "concrete_signal_count":  18,
-                        "topics":  [
-                                       "java",
-                                       "maven",
-                                       "builder",
-                                       "singleton",
-                                       "mermaid",
-                                       "interfaces",
-                                       "inheritance",
-                                       "polymorphism",
-                                       "factory",
-                                       "historical-context",
-                                       "rule",
-                                       "guidance",
-                                       "strong",
-                                       "cases",
-                                       "weak",
-                                       "career",
-                                       "narrative",
-                                       "effect"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Historical-context rule",
-                                               "RAG retrieval guidance",
-                                               "Career narrative effect"
-                                           ],
-                        "text":  "[Section: 62. Historical-context rule]\n\n- non-thread-safe Singleton;\n\n- naming/spelling quality;\n\n- incomplete pattern documentation.\n\n[Section: 65. RAG retrieval guidance \u003e Strong retrieval use cases]\n\nPrioritize Repo 010 for:\n\n- Java chronology;\n\n- Maven first use;\n\n- design patterns;\n\n- creational patterns;\n\n- OOP;\n\n- interfaces;\n\n- abstract classes;\n\n- inheritance;\n\n- polymorphism;\n\n- Builder;\n\n- Factory Method;\n\n- Singleton;\n\n- UML;\n\n- Mermaid;\n\n- design-study history.\n\n[Section: 65. RAG retrieval guidance \u003e Weak retrieval use cases]\n\nDo not prioritize Repo 010 for:\n\n- production Java;\n\n- Spring Boot;\n\n- backend engineering;\n\n- databases;\n\n- thread-safe concurrency;\n\n- automated testing;\n\n- CI/CD;\n\n- cloud;\n\n- distributed systems;\n\n- API design;\n\n- product engineering;\n\n- original architecture.\n\n[Section: 67. Career narrative effect]\n\nRepo 010 changes the early-2023 story substantially.\n\nWithout it, Repository 009 could make the period look mostly like:\n\n\u003e C++ LeetCode / algorithm interview preparation.\n\nWith Repo 010, the same period shows a broader learning agenda:\n\nThis matters because it signals an early attempt to learn both:\n\n- **how to solve computational problems**\n\n- and\n\n- **how to structure object-oriented software**\n\nThe strongest interpretation is:\n\n\u003e **By February 2023, the developer was not only practicing algorithms but was also explicitly studying reusable object-oriented design structures in Java, using Maven projects and class diagrams.**",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-010-s220-b013",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s220",
-                                                     "section_path":  [
-                                                                          "62. Historical-context rule"
-                                                                      ],
-                                                     "section_title":  "62. Historical-context rule",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20861,
-                                                     "source_line_start":  20861,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- non-thread-safe Singleton;",
-                                                     "text_sha256":  "2de52fa6fcb46cafb66b2a23e864fb30a245c564beb325914b45ea37190cf05f",
-                                                     "unit_id":  "s220",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s220-b014",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s220",
-                                                     "section_path":  [
-                                                                          "62. Historical-context rule"
-                                                                      ],
-                                                     "section_title":  "62. Historical-context rule",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20862,
-                                                     "source_line_start":  20862,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- naming/spelling quality;",
-                                                     "text_sha256":  "46a0866cd31ac1855d6a7d295b3adc3e8554f4c36a92a8a5804b865a4ee91723",
-                                                     "unit_id":  "s220",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s220-b015",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s220",
-                                                     "section_path":  [
-                                                                          "62. Historical-context rule"
-                                                                      ],
-                                                     "section_title":  "62. Historical-context rule",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20863,
-                                                     "source_line_start":  20863,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- incomplete pattern documentation.",
-                                                     "text_sha256":  "742e14c9d3f2935916d65366ed61c53fac80bd77db2921fadb552c68912aa6cd",
-                                                     "unit_id":  "s220",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20910,
-                                                     "source_line_start":  20910,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "Prioritize Repo 010 for:",
-                                                     "text_sha256":  "b6b081791b28e02b7121959e60b8dfba38c54b2fe4fba14acc34c2e8cbccaab8",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20912,
-                                                     "source_line_start":  20912,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Java chronology;",
-                                                     "text_sha256":  "c1eb5b33f2a64e4329313d8ba616dffeee1454226c29fa802d3092c6d6bc744a",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20913,
-                                                     "source_line_start":  20913,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Maven first use;",
-                                                     "text_sha256":  "fabb00b265d13af6546cd470bdee3d0bc0349204459bdd63654eed14ee69ed11",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20914,
-                                                     "source_line_start":  20914,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- design patterns;",
-                                                     "text_sha256":  "6a0e43fb93ee50af0f0d89421ca17a8f74a4d1ff3d2d5bbe4de3666d94043f60",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b005",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20915,
-                                                     "source_line_start":  20915,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- creational patterns;",
-                                                     "text_sha256":  "d6e36c266dee2c03eae93887cf393f5a30243368e36db862d7d00ade4ee39b31",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20916,
-                                                     "source_line_start":  20916,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- OOP;",
-                                                     "text_sha256":  "ae4f8cb8efe37f8211b473c047170dd739dd689da37ba226567f9188926d6aaa",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20917,
-                                                     "source_line_start":  20917,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- interfaces;",
-                                                     "text_sha256":  "7ec07ed864a5e60e394786fe73a022e0cafefb4fcf8d0c12d87915f05b13e713",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b008",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20918,
-                                                     "source_line_start":  20918,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- abstract classes;",
-                                                     "text_sha256":  "900adafde53687b82938e9e86865f2de209c397a9180644e6e48cdbeddd57c07",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b009",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20919,
-                                                     "source_line_start":  20919,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- inheritance;",
-                                                     "text_sha256":  "059f6b78085d533b14ef6227707a6fd26c039d62e8fba4a3c9389dd377b3ba58",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b010",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20920,
-                                                     "source_line_start":  20920,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- polymorphism;",
-                                                     "text_sha256":  "f3185c4bba889f271441fc8a0f63ad8aa630bcb6959f2f6ec00f524dcfd6ceb3",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b011",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20921,
-                                                     "source_line_start":  20921,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Builder;",
-                                                     "text_sha256":  "9379e5edfb8225a35e0306fe1666ba903038e3581b512edd69e8b553c7fe4127",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b012",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20922,
-                                                     "source_line_start":  20922,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Factory Method;",
-                                                     "text_sha256":  "7f15bdd2a2345f7d3317bef73ebae4c91725fbfcb3d21191644fcf101e7ffa8c",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b013",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20923,
-                                                     "source_line_start":  20923,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Singleton;",
-                                                     "text_sha256":  "767c13eda35915798d2266f981d39a3b7c4734c6e4d535e82dda0131a818d6f8",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b014",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20924,
-                                                     "source_line_start":  20924,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- UML;",
-                                                     "text_sha256":  "a47d6445ee82d051d2ecba777561f25d75343dfc296474f40b42ecd8bd182410",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b015",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20925,
-                                                     "source_line_start":  20925,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Mermaid;",
-                                                     "text_sha256":  "8c6ba6460f74f9e6e1fca6e8ffb4000ca397f737a1ee4c32a6b62c008749bd35",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s225-b016",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s225",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Strong retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Strong retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20926,
-                                                     "source_line_start":  20926,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- design-study history.",
-                                                     "text_sha256":  "aacb22c6a15bfa433f4bd6b3bb40896a62b7e72fa124404b5bacbc048dc85371",
-                                                     "unit_id":  "s225",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20930,
-                                                     "source_line_start":  20930,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "Do not prioritize Repo 010 for:",
-                                                     "text_sha256":  "4d4efdad53c0064b16e0c44bf7fea9bc63812686890c28eaf0c63e2858dfcda2",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20932,
-                                                     "source_line_start":  20932,
-                                                     "specificity_score":  0.58,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- production Java;",
-                                                     "text_sha256":  "95b8c65394a1d86c18c9109d7a227ef7c07d5715baa2f1fc04529fc465009f3b",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20933,
-                                                     "source_line_start":  20933,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Spring Boot;",
-                                                     "text_sha256":  "1819da2ef1979980605fddfd132904cdf75aefa761c8d90b2066635ead6fcd27",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20934,
-                                                     "source_line_start":  20934,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- backend engineering;",
-                                                     "text_sha256":  "d2284c0d6a33b492e567778e73b80cacaec689b3cb7cee3f0dc31bbc20f40356",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b005",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20935,
-                                                     "source_line_start":  20935,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- databases;",
-                                                     "text_sha256":  "722efbd33b20046fa25d99841bde9b3c3ba9bc8179a148ab75fc9d1bb48bdc35",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20936,
-                                                     "source_line_start":  20936,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- thread-safe concurrency;",
-                                                     "text_sha256":  "d927e6746dfab78645011c5fd914095f19c52c78d3278ebfce338636b009b777",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20937,
-                                                     "source_line_start":  20937,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- automated testing;",
-                                                     "text_sha256":  "69d1eda8c5a41ae578a32b926d621a8c011d1fad887feaff61322ff12270cd87",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b008",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20938,
-                                                     "source_line_start":  20938,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- CI/CD;",
-                                                     "text_sha256":  "33eae38ccee77f6a380a6ffdbbafe472f60d4d669caa01e792f72168ccbf8141",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b009",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20939,
-                                                     "source_line_start":  20939,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- cloud;",
-                                                     "text_sha256":  "c4abbb120ec50ca4ee048d9a588edbcfa7ae9fba2b415ecd402a3e448cdb9f50",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b010",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20940,
-                                                     "source_line_start":  20940,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- distributed systems;",
-                                                     "text_sha256":  "de1d056bd4fd1f076909da98c6ee412d977c372f5adbdac4503283e7bb899e29",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b011",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20941,
-                                                     "source_line_start":  20941,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- API design;",
-                                                     "text_sha256":  "20322b61914099bed108f64d36737841bc0c16dd3af767fe666c4031c55f65d2",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b012",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20942,
-                                                     "source_line_start":  20942,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- product engineering;",
-                                                     "text_sha256":  "ba463aa8354489d5eb7274362d50985c79869608eecdeb5597ef5f31db5a564a",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s226-b013",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s226",
-                                                     "section_path":  [
-                                                                          "65. RAG retrieval guidance",
-                                                                          "Weak retrieval use cases"
-                                                                      ],
-                                                     "section_title":  "Weak retrieval use cases",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20943,
-                                                     "source_line_start":  20943,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- original architecture.",
-                                                     "text_sha256":  "a41122705ad9435526ffec53f24154c35e6bf554d96c4170eca48b5e1e0d22e1",
-                                                     "unit_id":  "s226",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20969,
-                                                     "source_line_start":  20969,
-                                                     "specificity_score":  0.38,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "Repo 010 changes the early-2023 story substantially.",
-                                                     "text_sha256":  "5a16ec3b53f4116e0236b4a4e947d45e65041494168f4677588603cf60f07927",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20971,
-                                                     "source_line_start":  20971,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "Without it, Repository 009 could make the period look mostly like:",
-                                                     "text_sha256":  "61bd80e4da067b45207ec76380423869590ace4e890a1dd9c78fa2213d1997b5",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  11
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b003",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20973,
-                                                     "source_line_start":  20973,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "\u003e C++ LeetCode / algorithm interview preparation.",
-                                                     "text_sha256":  "1e6621fc27c66fd116e834195613b5b396c06cd885ead87bc17770d24a7dde4e",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b004",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20975,
-                                                     "source_line_start":  20975,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "With Repo 010, the same period shows a broader learning agenda:",
-                                                     "text_sha256":  "51c3dbd18e5efdc8604133383eaa90faac4aa27ac7ba91201c4aa286749a5843",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  11
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b006",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20992,
-                                                     "source_line_start":  20992,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This matters because it signals an early attempt to learn both:",
-                                                     "text_sha256":  "befd0e8ef8b3aa17404fbcefcc902c93d84e7a7e38d62495f577814029ca77b7",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  11
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b007",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20994,
-                                                     "source_line_start":  20994,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- **how to solve computational problems**",
-                                                     "text_sha256":  "76ec41707689ef25b3e1127523b993ea0470ecb49c4f2bc9aa291b2f69de9fb9",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b008",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20995,
-                                                     "source_line_start":  20995,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- and",
-                                                     "text_sha256":  "5331a8cbaefe143dc9f887576429b14153f2a8a9561a77ffa02816f1f512acd0",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  2
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b009",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20996,
-                                                     "source_line_start":  20996,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- **how to structure object-oriented software**",
-                                                     "text_sha256":  "28fe7a2886a5cc117d66a2ae017d48d141bcb7e832e10e2ea6f1d04b2aa66b6d",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b010",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  20998,
-                                                     "source_line_start":  20998,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "The strongest interpretation is:",
-                                                     "text_sha256":  "8d3b3bbbee20743997a409d2a943969e6fb94f19edaddebbf69cbb2d4c50376a",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-010-s228-b011",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  3,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s228",
-                                                     "section_path":  [
-                                                                          "67. Career narrative effect"
-                                                                      ],
-                                                     "section_title":  "67. Career narrative effect",
-                                                     "source_file":  "repositories-001-015.md",
-                                                     "source_line_end":  21000,
-                                                     "source_line_start":  21000,
-                                                     "specificity_score":  0.65,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "\u003e **By February 2023, the developer was not only practicing algorithms but was also explicitly studying reusable object-oriented design structures in Java, using Maven projects and class diagrams.**",
-                                                     "text_sha256":  "b3e46bd32a6cfce7bb54209057b072837c8435a9b0b146de3d63caa621a48af2",
-                                                     "unit_id":  "s228",
-                                                     "word_count":  28
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-001-015.md",
-                                           "document_text_sha256":  "06cc2d3b122577eddf848c0cb4bce412b1cdae8956925a793d7eae48e49c8d52",
-                                           "earliest_source_line":  20861,
-                                           "embedding_text_sha256":  "b07a1f5b6952230445074c83dd898b1fbdfca8400e7d20eaff72987cb884d297",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "c9679a11cc5d658188a7e5939303dbc715ae6738f1a8e3d0929fd29c3e40b079",
-                                           "repository_source_line_end":  21084,
-                                           "repository_source_line_start":  18601
-                                       },
-                        "provenance_label":  "repositories-001-015.md lines 20861-21000",
-                        "score_components":  {
-                                                 "cross_encoder":  0.5660566687583923,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.672081,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.2278154672373218,
-                                                 "bm25_raw":  26.471781148728034,
-                                                 "bm25_normalized":  0.7152256975946714,
-                                                 "metadata_raw":  4.951592753462473,
-                                                 "metadata_normalized":  0.12323594616885367,
-                                                 "rrf_raw":  0.018280632411067192,
-                                                 "rrf_normalized":  0.2912188493491694,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.8400000000000001,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "api",
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "distributed",
-                                                                                                                      "spring"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-
-                                                                                                                   ],
-                                                                                                 "score":  0.84
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "interpretation",
-                                                                          "evidence_polarity":  "neutral",
-                                                                          "specificity_score":  0.402,
-                                                                          "concrete_signal_count":  18,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.7872399999999999
-                                                                      },
-                                                 "pre_rerank_score":  0.6558408528234099,
-                                                 "final_score_before_diversity":  0.5460181243048282
-                                             }
-                    },
-                    {
-                        "rank":  8,
-                        "final_score":  0.47447332076038673,
-                        "vector_index":  2378,
-                        "document_id":  "repo-115-rd005",
-                        "repository_index":  115,
-                        "repository_name":  "George-Sedra-Website",
-                        "repository_url":  "https://github.com/kirolossedra/George-Sedra-Website",
-                        "retrieval_class":  "direct_evidence",
-                        "semantic_area":  "implementation_skills",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "implemented_or_concrete",
-                        "specificity_score":  0.5279,
-                        "concrete_signal_count":  11,
-                        "topics":  [
-                                       "semantic HTML and static-site composition",
-                                       "responsive CSS and design systems",
-                                       "JavaScript interaction",
-                                       "dark/light theme implementation",
-                                       "touch/mobile UI behavior",
-                                       "visual polish and layout",
-                                       "core",
-                                       "technical",
-                                       "scope",
-                                       "implementation",
-                                       "skill",
-                                       "engineering",
-                                       "decisions",
-                                       "tradeoffs",
-                                       "decision",
-                                       "emphasize",
-                                       "dark/light",
-                                       "theme"
-                                   ],
-                        "related_skill_ratings":  [
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  4.0,
-                                                          "rating_raw":  "4.0",
-                                                          "skill":  "semantic HTML and static-site composition",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      },
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  4.2,
-                                                          "rating_raw":  "4.2",
-                                                          "skill":  "responsive CSS and design systems",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      },
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  3.7,
-                                                          "rating_raw":  "3.7",
-                                                          "skill":  "JavaScript interaction",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      },
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  4.0,
-                                                          "rating_raw":  "4.0",
-                                                          "skill":  "dark/light theme implementation",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      },
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  3.7,
-                                                          "rating_raw":  "3.7",
-                                                          "skill":  "touch/mobile UI behavior",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      },
-                                                      {
-                                                          "evidence_class":  "direct",
-                                                          "interpretation":  "Strongest rating is bounded by artifact provenance and maturity",
-                                                          "rating_5":  4.1,
-                                                          "rating_raw":  "4.1",
-                                                          "skill":  "visual polish and layout",
-                                                          "source_section_id":  "s045",
-                                                          "source_section_title":  "17. Direct skill evidence ratings"
-                                                      }
-                                                  ],
-                        "evidence_areas":  [
-                                               "Core technical scope",
-                                               "Primary implementation evidence",
-                                               "Direct skill evidence ratings",
-                                               "Engineering decisions and tradeoffs"
-                                           ],
-                        "text":  "[Section: 4. Core technical scope]\n\nA static multi-section website with a deliberate visual system: CSS custom properties, light/dark theming, responsive layouts, a sticky blurred header, mobile navigation, animation, a carousel and touch-aware behavior. It is good direct evidence of hand-built front-end styling and interaction polish, but it does not prove a backend, persistent data model, authentication or production application architecture.\n\n[Section: 5. Primary implementation evidence]\n\n- **index.html single-page application shell with substantial embedded CSS/JS** â supports one or more claims above; it is not treated as proof of unrelated capabilities.\n\n- **Engineering.html secondary page** â supports one or more claims above; it is not treated as proof of unrelated capabilities.\n\n- **responsive image assets** â supports one or more claims above; it is not treated as proof of unrelated capabilities.\n\n- **theme variables and data-theme styling** â supports one or more claims above; it is not treated as proof of unrelated capabilities.\n\n- **mobile navigation and carousel interaction code** â supports one or more claims above; it is not treated as proof of unrelated capabilities.\n\n[Section: 17. Direct skill evidence ratings]\n\n| semantic HTML and static-site composition | 4.0 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n| responsive CSS and design systems | 4.2 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n| JavaScript interaction | 3.7 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n| dark/light theme implementation | 4.0 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n| touch/mobile UI behavior | 3.7 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n| visual polish and layout | 4.1 | direct | Strongest rating is bounded by artifact provenance and maturity |\n\n[Section: 23. Engineering decisions and tradeoffs \u003e Decision 4: emphasize dark/light theme implementation]\n\n- **Benefit:** raises direct/system capability around dark/light theme implementation in a form appropriate to professional/personal web presence and frontend presentation.\n\n- **Cost:** accessibility needs systematic audit beyond semantic hints.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-115-s008-b001",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s008",
-                                                     "section_path":  [
-                                                                          "4. Core technical scope"
-                                                                      ],
-                                                     "section_title":  "4. Core technical scope",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3188,
-                                                     "source_line_start":  3188,
-                                                     "specificity_score":  0.47,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "A static multi-section website with a deliberate visual system: CSS custom properties, light/dark theming, responsive layouts, a sticky blurred header, mobile navigation, animation, a carousel and touch-aware behavior. It is good direct evidence of hand-built front-end styling and interaction polish, but it does not prove a backend, persistent data model, authentication or production application architecture.",
-                                                     "text_sha256":  "13efd54802cebdaf5f09e4296286447b98525d6ed96042cdde2993d91bf3239f",
-                                                     "unit_id":  "s008",
-                                                     "word_count":  55
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s011-b002",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s011",
-                                                     "section_path":  [
-                                                                          "5. Primary implementation evidence"
-                                                                      ],
-                                                     "section_title":  "5. Primary implementation evidence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3202,
-                                                     "source_line_start":  3202,
-                                                     "specificity_score":  0.47,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **index.html single-page application shell with substantial embedded CSS/JS** â supports one or more claims above; it is not treated as proof of unrelated capabilities.",
-                                                     "text_sha256":  "9fa3eb9a8e439a80f26f1d1e7d6fc935777ae01c8012fc284aab7deced9662bf",
-                                                     "unit_id":  "s011",
-                                                     "word_count":  25
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s011-b003",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s011",
-                                                     "section_path":  [
-                                                                          "5. Primary implementation evidence"
-                                                                      ],
-                                                     "section_title":  "5. Primary implementation evidence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3203,
-                                                     "source_line_start":  3203,
-                                                     "specificity_score":  0.47,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Engineering.html secondary page** â supports one or more claims above; it is not treated as proof of unrelated capabilities.",
-                                                     "text_sha256":  "5f70be3ad405a59d79161ac30c3db8b1a45c805d2d6179be5ab067ca8f0ee489",
-                                                     "unit_id":  "s011",
-                                                     "word_count":  20
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s011-b004",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "methodology_or_interpretive",
-                                                     "section_id":  "s011",
-                                                     "section_path":  [
-                                                                          "5. Primary implementation evidence"
-                                                                      ],
-                                                     "section_title":  "5. Primary implementation evidence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3204,
-                                                     "source_line_start":  3204,
-                                                     "specificity_score":  0.24,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **responsive image assets** â supports one or more claims above; it is not treated as proof of unrelated capabilities.",
-                                                     "text_sha256":  "393635491f32359dd2ade06fd73e790f7aedab471a5ece25905932e901aef61b",
-                                                     "unit_id":  "s011",
-                                                     "word_count":  20
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s011-b005",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "methodology_or_interpretive",
-                                                     "section_id":  "s011",
-                                                     "section_path":  [
-                                                                          "5. Primary implementation evidence"
-                                                                      ],
-                                                     "section_title":  "5. Primary implementation evidence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3205,
-                                                     "source_line_start":  3205,
-                                                     "specificity_score":  0.24,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **theme variables and data-theme styling** â supports one or more claims above; it is not treated as proof of unrelated capabilities.",
-                                                     "text_sha256":  "755b177db6493c09ce83cf4158ca8c5f9c9fb3cc9bdb9a652a33ba5191c90bc9",
-                                                     "unit_id":  "s011",
-                                                     "word_count":  22
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s011-b006",
-                                                     "canonical_categories":  [
-                                                                                  "technical_scope"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "methodology_or_interpretive",
-                                                     "section_id":  "s011",
-                                                     "section_path":  [
-                                                                          "5. Primary implementation evidence"
-                                                                      ],
-                                                     "section_title":  "5. Primary implementation evidence",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3206,
-                                                     "source_line_start":  3206,
-                                                     "specificity_score":  0.24,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **mobile navigation and carousel interaction code** â supports one or more claims above; it is not treated as proof of unrelated capabilities.",
-                                                     "text_sha256":  "a78b202cf6cf783e3235faa4cfb68ed05488542361c0251f81d1393486b0108b",
-                                                     "unit_id":  "s011",
-                                                     "word_count":  23
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b002",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3372,
-                                                     "source_line_start":  3372,
-                                                     "specificity_score":  0.719,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| semantic HTML and static-site composition | 4.0 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "c05442e1ab669e35ba0ed19e1d51586017d3cd3dca77c3199a6e98a950d850b9",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  21
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b003",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3373,
-                                                     "source_line_start":  3373,
-                                                     "specificity_score":  0.719,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| responsive CSS and design systems | 4.2 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "65ae88d2db3b0683ce64c9a8c073c4e052e031aff060884f11f8703e442dc9e7",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  21
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b004",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3374,
-                                                     "source_line_start":  3374,
-                                                     "specificity_score":  0.874,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| JavaScript interaction | 3.7 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "42590c6ab7957e7f7726dd4a7b2ba6442b659297fceedf380f472092a1b347f3",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  18
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b005",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3375,
-                                                     "source_line_start":  3375,
-                                                     "specificity_score":  0.719,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| dark/light theme implementation | 4.0 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "279c01562463575281811211a9f25e19f0989039da044e74421383152c8bba9e",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  19
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b006",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3376,
-                                                     "source_line_start":  3376,
-                                                     "specificity_score":  0.719,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| touch/mobile UI behavior | 3.7 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "c85666841f7ce46140c31da1b03615f80083116e9bde173a8496bd7f54794c0e",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  19
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s045-b007",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "implemented_or_concrete",
-                                                     "section_id":  "s045",
-                                                     "section_path":  [
-                                                                          "17. Direct skill evidence ratings"
-                                                                      ],
-                                                     "section_title":  "17. Direct skill evidence ratings",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3377,
-                                                     "source_line_start":  3377,
-                                                     "specificity_score":  0.719,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "| visual polish and layout | 4.1 | direct | Strongest rating is bounded by artifact provenance and maturity |",
-                                                     "text_sha256":  "7a4f06edab7d75e1e67ed378e6e4bd272c2d765f278d40967096c031e2303afa",
-                                                     "unit_id":  "s045",
-                                                     "word_count":  20
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s056-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s056",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 4: emphasize dark/light theme implementation"
-                                                                      ],
-                                                     "section_title":  "Decision 4: emphasize dark/light theme implementation",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3466,
-                                                     "source_line_start":  3466,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Benefit:** raises direct/system capability around dark/light theme implementation in a form appropriate to professional/personal web presence and frontend presentation.",
-                                                     "text_sha256":  "3a6bab6d7647951154876d3ebc199376a50ef0a7bb3030f70edafcc388ae3302",
-                                                     "unit_id":  "s056",
-                                                     "word_count":  20
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-115-s056-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s056",
-                                                     "section_path":  [
-                                                                          "23. Engineering decisions and tradeoffs",
-                                                                          "Decision 4: emphasize dark/light theme implementation"
-                                                                      ],
-                                                     "section_title":  "Decision 4: emphasize dark/light theme implementation",
-                                                     "source_file":  "repositories-112-123.md",
-                                                     "source_line_end":  3467,
-                                                     "source_line_start":  3467,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- **Cost:** accessibility needs systematic audit beyond semantic hints.",
-                                                     "text_sha256":  "4d88f93bd4d1928e460744b14a46432a10f58cda517e1803e5d982b9cfaa4a85",
-                                                     "unit_id":  "s056",
-                                                     "word_count":  9
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-112-123.md",
-                                           "document_text_sha256":  "fbd992a527b3c4669415272a44f9e731ef50e831d21f8f461a852772d772107d",
-                                           "earliest_source_line":  3188,
-                                           "embedding_text_sha256":  "4523b507528a1e658c948aed59079533a2396d18f2190f4eb01ab55d2a35198a",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "32a624ffbc826862abecbebf6efc0218ad1d1ee23ea65926889ec86b356ceb4c",
-                                           "repository_source_line_end":  4180,
-                                           "repository_source_line_start":  3136
-                                       },
-                        "provenance_label":  "repositories-112-123.md lines 3188-3467",
-                        "score_components":  {
-                                                 "cross_encoder":  0.3788715819893286,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.708286345,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.7499596047012106,
-                                                 "bm25_raw":  10.47905540051882,
-                                                 "bm25_normalized":  0.16632082173203225,
-                                                 "metadata_raw":  13.965572720159756,
-                                                 "metadata_normalized":  0.3475771642882671,
-                                                 "rrf_raw":  0.02479116079473435,
-                                                 "rrf_normalized":  0.4625615109639265,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.64,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-
-                                                                                                                   ],
-                                                                                                 "score":  0.64
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "implemented_or_concrete",
-                                                                          "retrieval_class":  "direct_evidence",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.5279,
-                                                                          "concrete_signal_count":  11,
-                                                                          "base_level_score":  1.0,
-                                                                          "adjustments":  {
-                                                                                              "direct_evidence_bonus":  0.12,
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  1.0
-                                                                      },
-                                                 "pre_rerank_score":  0.6412723702394696,
-                                                 "final_score_before_diversity":  0.47447332076038673
-                                             }
-                    },
-                    {
-                        "rank":  9,
-                        "final_score":  0.44565266577210116,
-                        "vector_index":  2787,
-                        "document_id":  "repo-134-rd004",
-                        "repository_index":  134,
-                        "repository_name":  "my-portfolio",
-                        "repository_url":  "https://github.com/kirolossedra/my-portfolio",
-                        "retrieval_class":  "direct_evidence",
-                        "semantic_area":  "architecture_system_design",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.5253,
-                        "concrete_signal_count":  5,
-                        "topics":  [
-                                       "high-level",
-                                       "architecture",
-                                       "frontend",
-                                       "design"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "High-level architecture",
-                                               "Frontend architecture",
-                                               "API design"
-                                           ],
-                        "text":  "[Section: 3. High-level architecture]\n\nThe README defines this production topology:\n\nD1 stores milestones, long-form sections, milestone images, moderated opinions and short-lived OAuth exchange codes.\n\n[Section: 4. Frontend architecture]\n\nThe frontend is organized into React application code, private admin functionality, components, data, features, libraries and dedicated pages for skills, opinions and KiroRag.\n\nThis is a materially more modular source layout than the single-file internal tools earlier in the corpus.\n\n[Section: 38. API design]\n\nThe Worker exposes separate public, authentication and admin route groups. Admin endpoints require a valid signed session and origin enforcement.\n\nThis route separation makes authorization expectations explicit.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-134-s003-b001",
-                                                     "canonical_categories":  [
-                                                                                  "architecture"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s003",
-                                                     "section_path":  [
-                                                                          "3. High-level architecture"
-                                                                      ],
-                                                     "section_title":  "3. High-level architecture",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3284,
-                                                     "source_line_start":  3284,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "The README defines this production topology:",
-                                                     "text_sha256":  "dd994e1a16d8b007606c15a5f573147cbac3a138a736bc6af9bc2be382231158",
-                                                     "unit_id":  "s003",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s003-b003",
-                                                     "canonical_categories":  [
-                                                                                  "architecture"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s003",
-                                                     "section_path":  [
-                                                                          "3. High-level architecture"
-                                                                      ],
-                                                     "section_title":  "3. High-level architecture",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3294,
-                                                     "source_line_start":  3294,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "D1 stores milestones, long-form sections, milestone images, moderated opinions and short-lived OAuth exchange codes.",
-                                                     "text_sha256":  "0192aa1944e38598fe486da5e1a7d2e639422b2f7d17c321a0e788483ef7858b",
-                                                     "unit_id":  "s003",
-                                                     "word_count":  14
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s004-b001",
-                                                     "canonical_categories":  [
-                                                                                  "architecture"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s004",
-                                                     "section_path":  [
-                                                                          "4. Frontend architecture"
-                                                                      ],
-                                                     "section_title":  "4. Frontend architecture",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3298,
-                                                     "source_line_start":  3298,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "The frontend is organized into React application code, private admin functionality, components, data, features, libraries and dedicated pages for skills, opinions and KiroRag.",
-                                                     "text_sha256":  "d9e27e5b20ea8e7e3d492046c8fc1f8101c3c9d062778ad9c3d6d920d54bd6da",
-                                                     "unit_id":  "s004",
-                                                     "word_count":  23
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s004-b002",
-                                                     "canonical_categories":  [
-                                                                                  "architecture"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s004",
-                                                     "section_path":  [
-                                                                          "4. Frontend architecture"
-                                                                      ],
-                                                     "section_title":  "4. Frontend architecture",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3300,
-                                                     "source_line_start":  3300,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This is a materially more modular source layout than the single-file internal tools earlier in the corpus.",
-                                                     "text_sha256":  "3464f1635d22305e2040b82f47a61efa0c2a20ec919e87443ed353c79e7d6c72",
-                                                     "unit_id":  "s004",
-                                                     "word_count":  17
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s038-b001",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  2,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s038",
-                                                     "section_path":  [
-                                                                          "38. API design"
-                                                                      ],
-                                                     "section_title":  "38. API design",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3507,
-                                                     "source_line_start":  3507,
-                                                     "specificity_score":  0.64,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "The Worker exposes separate public, authentication and admin route groups. Admin endpoints require a valid signed session and origin enforcement.",
-                                                     "text_sha256":  "b41841e627562b9b155e30cfecfecfeb0707c34dd9881b6a5a81ca0ef20c1d8d",
-                                                     "unit_id":  "s038",
-                                                     "word_count":  20
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-134-s038-b002",
-                                                     "canonical_categories":  [
-
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s038",
-                                                     "section_path":  [
-                                                                          "38. API design"
-                                                                      ],
-                                                     "section_title":  "38. API design",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  3509,
-                                                     "source_line_start":  3509,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "This route separation makes authorization expectations explicit.",
-                                                     "text_sha256":  "8b9dd80149fc5012bbb920645ec0e69cb1f8278aa9f7db631344a22a8c0f23c9",
-                                                     "unit_id":  "s038",
-                                                     "word_count":  7
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-124-134.md",
-                                           "document_text_sha256":  "a7110406e75be797e42dfb5b1ca4cda310ccac4984cad511594579b84c931538",
-                                           "earliest_source_line":  3284,
-                                           "embedding_text_sha256":  "7160b931797aa50acb7f460a250a8331a31eeff657f7e52929902fd77d147330",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "4d152a9a54629b5e4874ffc88efee9e471bc2ed7a7a6c2775a46f01f0127eb2b",
-                                           "repository_source_line_end":  3770,
-                                           "repository_source_line_start":  3252
-                                       },
-                        "provenance_label":  "repositories-124-134.md lines 3284-3509",
-                        "score_components":  {
-                                                 "cross_encoder":  0.2898006790933651,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.683555603,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.3932992289906076,
-                                                 "bm25_raw":  24.020998444129162,
-                                                 "bm25_normalized":  0.631109543949957,
-                                                 "metadata_raw":  24.280384078642435,
-                                                 "metadata_normalized":  0.6042936594860957,
-                                                 "rrf_raw":  0.03345414428632794,
-                                                 "rrf_normalized":  0.6905520151906003,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.98,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  true,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "api",
-                                                                                                                      "architecture",
-                                                                                                                      "worker"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-                                                                                                                       "api",
-                                                                                                                       "architecture"
-                                                                                                                   ],
-                                                                                                 "score":  0.98
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "direct_evidence",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.5253,
-                                                                          "concrete_signal_count":  5,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "direct_evidence_bonus":  0.12,
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.9810326666666667
-                                                                      },
-                                                 "pre_rerank_score":  0.8044891908311391,
-                                                 "final_score_before_diversity":  0.44565266577210116
-                                             }
-                    },
-                    {
-                        "rank":  10,
-                        "final_score":  0.4086360674281732,
-                        "vector_index":  2755,
-                        "document_id":  "repo-132-rd014",
-                        "repository_index":  132,
-                        "repository_name":  "Prompt-management",
-                        "repository_url":  "https://github.com/kirolossedra/Prompt-management",
-                        "retrieval_class":  "direct_evidence",
-                        "semantic_area":  "implementation_skills",
-                        "evidence_polarity":  "positive",
-                        "evidence_level":  "repository_specific",
-                        "specificity_score":  0.4365,
-                        "concrete_signal_count":  7,
-                        "topics":  [
-                                       "authored",
-                                       "skill"
-                                   ],
-                        "related_skill_ratings":  [
-
-                                                  ],
-                        "evidence_areas":  [
-                                               "Direct authored skill evidence"
-                                           ],
-                        "text":  "[Section: 39. Direct authored skill evidence]\n\n**Very strong direct evidence:**\n\n- React/TypeScript application architecture;\n\n- Firebase Authentication and Realtime Database product integration;\n\n- version-history systems;\n\n- graph relationship constraints and cycle prevention;\n\n- search/command UX;\n\n- Gemini product integration through server functions;\n\n- semantic retrieval and feedback mapping;\n\n- prompt workflow/DAG modeling;\n\n- AI feature product design;\n\n- issue-driven iterative development;\n\n- Java 21 / Spring Boot foundation;\n\n- Firebase Admin/security filters;\n\n- Maven/Docker/Render backend delivery;\n\n- Vitest/testing practices;\n\n- GitHub Actions CI/CD;\n\n- evidence-based roadmap/governance documentation.",
-                        "source_fragments":  [
-                                                 {
-                                                     "block_id":  "repo-132-s039-b001",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2710,
-                                                     "source_line_start":  2710,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "**Very strong direct evidence:**",
-                                                     "text_sha256":  "f5dba7b89045ece193a97b01156b86dbe8c02679edf51d9a4e3a21cf048b4e93",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b002",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2712,
-                                                     "source_line_start":  2712,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- React/TypeScript application architecture;",
-                                                     "text_sha256":  "da6285c377528debb469774a2dfe4219e50ddb255357fa47eead151b997b96c1",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b003",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2713,
-                                                     "source_line_start":  2713,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- Firebase Authentication and Realtime Database product integration;",
-                                                     "text_sha256":  "0fa955d608e1091cf9ef13f0e1c618b07dff563910e4e4801fac77d632dc0878",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  8
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b004",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2714,
-                                                     "source_line_start":  2714,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- version-history systems;",
-                                                     "text_sha256":  "5996e3e81682d7cef1246125da10c07513c9b64b0f0967db01569e873c382ae6",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b005",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2715,
-                                                     "source_line_start":  2715,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- graph relationship constraints and cycle prevention;",
-                                                     "text_sha256":  "57d6f8ce367c35977e0c949ce53ab132a914ce3f33653d63bd6e6e4cdbc567f0",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b006",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2716,
-                                                     "source_line_start":  2716,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- search/command UX;",
-                                                     "text_sha256":  "10ffca5836bc970c891df63fed6be3113c303b066823f891b141224ed48da5a3",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b007",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2717,
-                                                     "source_line_start":  2717,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- Gemini product integration through server functions;",
-                                                     "text_sha256":  "2bec67cccbc92e1e3903ffb3a6938502aefbaeee27d6a4b131f3338932f697f8",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b008",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2718,
-                                                     "source_line_start":  2718,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- semantic retrieval and feedback mapping;",
-                                                     "text_sha256":  "dd990fc5c71f0d0667bd06cf479fac7a8504cf66b429f4b0e4bca4bc404a6e89",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  6
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b009",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2719,
-                                                     "source_line_start":  2719,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- prompt workflow/DAG modeling;",
-                                                     "text_sha256":  "8a4af28a82698bcd5de103b2cf5543d1c425ea05d2f6d678e4db3d05a2d4c3b7",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b010",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2720,
-                                                     "source_line_start":  2720,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- AI feature product design;",
-                                                     "text_sha256":  "3072f832f14608d8685d65013eca8ae4105747b9f1d8c015bb0cd4284d61036b",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  5
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b011",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2721,
-                                                     "source_line_start":  2721,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- issue-driven iterative development;",
-                                                     "text_sha256":  "4e27e8a51a15598d803e49eddce1a004a2f3975da9d036090394806c194f8629",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b012",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2722,
-                                                     "source_line_start":  2722,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  1,
-                                                     "text":  "- Java 21 / Spring Boot foundation;",
-                                                     "text_sha256":  "1a912be9a1fea9607f180942bbbc25e02dc36c0c19c57c06954dfcf71f611031",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  7
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b013",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2723,
-                                                     "source_line_start":  2723,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Firebase Admin/security filters;",
-                                                     "text_sha256":  "9f0be55792be33936d6b2843c287a94ad12f9b006b840601bffe0c646a4946ba",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b014",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2724,
-                                                     "source_line_start":  2724,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Maven/Docker/Render backend delivery;",
-                                                     "text_sha256":  "e4071fef17096d2be27294a8288f5d6b6cd2a9a072a5f518b5d15f69868c35d8",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b015",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2725,
-                                                     "source_line_start":  2725,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- Vitest/testing practices;",
-                                                     "text_sha256":  "aecf5ef9fcdd93c02e5bd342150e9f45383825dabb7e83c1a54b4c71bb00db82",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  3
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b016",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  1,
-                                                     "evidence_level":  "repository_specific",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2726,
-                                                     "source_line_start":  2726,
-                                                     "specificity_score":  0.57,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- GitHub Actions CI/CD;",
-                                                     "text_sha256":  "5b9d3e0e9b58b3e7fcbabf9f9ef6634a3adb975451d0aacc79d9aba709ddcf14",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 },
-                                                 {
-                                                     "block_id":  "repo-132-s039-b017",
-                                                     "canonical_categories":  [
-                                                                                  "skills"
-                                                                              ],
-                                                     "concrete_hits":  0,
-                                                     "evidence_level":  "interpretive",
-                                                     "section_id":  "s039",
-                                                     "section_path":  [
-                                                                          "39. Direct authored skill evidence"
-                                                                      ],
-                                                     "section_title":  "39. Direct authored skill evidence",
-                                                     "source_file":  "repositories-124-134.md",
-                                                     "source_line_end":  2727,
-                                                     "source_line_start":  2727,
-                                                     "specificity_score":  0.34,
-                                                     "template_repository_frequency":  0,
-                                                     "text":  "- evidence-based roadmap/governance documentation.",
-                                                     "text_sha256":  "9279c780f97f1c014c689b7684c87bf03e580fa668f5596cfc0bbb5db34eb79c",
-                                                     "unit_id":  "s039",
-                                                     "word_count":  4
-                                                 }
-                                             ],
-                        "provenance":  {
-                                           "analysis_source_file":  "repositories-124-134.md",
-                                           "document_text_sha256":  "02d47e57692614ac56045e676c5ae0ff0bbd57439123cb628b490321809f1567",
-                                           "earliest_source_line":  2710,
-                                           "embedding_text_sha256":  "8b13a96f10dba0874b492f1550833d53472c57bb3a1aad15399448780f65f5a5",
-                                           "normalized_input":  "rag-corpus/repositories.jsonl",
-                                           "repository_raw_sha256":  "9d25e133254ed7dfac2b8935262c30abe2ff0ae83558a7d8d9ad981424e95f60",
-                                           "repository_source_line_end":  2868,
-                                           "repository_source_line_start":  2462
-                                       },
-                        "provenance_label":  "repositories-124-134.md lines 2710-2727",
-                        "score_components":  {
-                                                 "cross_encoder":  0.3270325645984003,
-                                                 "dense_backend":  "pinecone_ann_cosine",
-                                                 "dense_cosine_raw":  0.673313141,
-                                                 "dense_candidate":  true,
-                                                 "dense_normalized":  0.24558508660371223,
-                                                 "bm25_raw":  27.19817294833717,
-                                                 "bm25_normalized":  0.7401570324321199,
-                                                 "metadata_raw":  0.0,
-                                                 "metadata_normalized":  0.0,
-                                                 "rrf_raw":  0.019023733790066062,
-                                                 "rrf_normalized":  0.3107756288644359,
-                                                 "concept_gate":  {
-                                                                      "passed":  true,
-                                                                      "facet_score":  0.8400000000000001,
-                                                                      "reason":  "matched",
-                                                                      "matched_facets":  [
-                                                                                             {
-                                                                                                 "facet":  "backend_api",
-                                                                                                 "semantic_area_match":  false,
-                                                                                                 "concept_hits":  [
-                                                                                                                      "architecture",
-                                                                                                                      "backend",
-                                                                                                                      "database",
-                                                                                                                      "server",
-                                                                                                                      "spring"
-                                                                                                                  ],
-                                                                                                 "metadata_hits":  [
-
-                                                                                                                   ],
-                                                                                                 "score":  0.84
-                                                                                             }
-                                                                                         ]
-                                                                  },
-                                                 "evidence_quality":  {
-                                                                          "evidence_level":  "repository_specific",
-                                                                          "retrieval_class":  "direct_evidence",
-                                                                          "evidence_polarity":  "positive",
-                                                                          "specificity_score":  0.4365,
-                                                                          "concrete_signal_count":  7,
-                                                                          "base_level_score":  0.86,
-                                                                          "adjustments":  {
-                                                                                              "direct_evidence_bonus":  0.12,
-                                                                                              "positive_polarity_bonus":  0.08,
-                                                                                              "repeated_source_penalty":  0.0
-                                                                                          },
-                                                                          "final_evidence_quality":  0.9948299999999999
-                                                                      },
-                                                 "pre_rerank_score":  0.6647426057566082,
-                                                 "final_score_before_diversity":  0.4086360674281732
-                                             }
-                    }
-                ],
-    "diagnostics":  {
-                        "query":  "What evidence shows strong backend engineering and system design experience?",
-                        "query_tokens":  18,
-                        "dense_backend":  {
-                                              "provider":  "pinecone",
-                                              "index":  "portfolio-career-rag-v1",
-                                              "namespace":  "corpus-v1",
-                                              "metric":  "cosine",
-                                              "candidate_limit":  500,
-                                              "local_matrix_loaded":  false
-                                          },
-                        "intent":  {
-                                       "base_tokens":  [
-                                                           "strong",
-                                                           "backend",
-                                                           "engineer",
-                                                           "system",
-                                                           "design"
-                                                       ],
-                                       "expanded_tokens":  [
-                                                               "strong",
-                                                               "backend",
-                                                               "engineer",
-                                                               "system",
-                                                               "design",
-                                                               "api",
-                                                               "server",
-                                                               "service",
-                                                               "database",
-                                                               "distribut",
-                                                               "architecture",
-                                                               "endpoint",
-                                                               "rest",
-                                                               "worker",
-                                                               "hono",
-                                                               "spr"
-                                                           ],
-                                       "limitation_query":  false,
-                                       "chronology_query":  false,
-                                       "positive_evidence_query":  true,
-                                       "strongest_query":  false,
-                                       "facets":  [
-                                                      {
-                                                          "name":  "backend_api",
-                                                          "semantic_area":  "architecture_system_design",
-                                                          "concept_terms":  [
-                                                                                "backend",
-                                                                                "api",
-                                                                                "server",
-                                                                                "service",
-                                                                                "database",
-                                                                                "distributed",
-                                                                                "architecture",
-                                                                                "endpoint",
-                                                                                "rest",
-                                                                                "worker",
-                                                                                "hono",
-                                                                                "spring"
-                                                                            ]
-                                                      }
-                                                  ],
-                                       "requested_repository_indexes":  [
-
-                                                                        ],
-                                       "requested_repository_names":  [
-
-                                                                      ]
-                                   },
-                        "candidate_counts":  {
-                                                 "dense":  500,
-                                                 "bm25":  500,
-                                                 "metadata":  400,
-                                                 "union":  899,
-                                                 "passed_primary_concept_gate":  639,
-                                                 "gate_fallback_used":  false,
-                                                 "after_gate_for_prerank":  639,
-                                                 "cross_encoder":  120,
-                                                 "dedupe_vectors_fetched":  119,
-                                                 "final":  10
-                                             }
-                    }
-}
-PS C:\WINDOWS\system32>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-
----
-
-## Appendix B — Exact Output Interpretation
-
-The earlier sections explain the incident conceptually. This appendix ties those conclusions to **specific values actually emitted by the runtime**.
-
-### B.1 Request execution itself succeeded
-
-The response begins with:
-
-```json
-{
-    "status": "ok",
-    "runtime_schema_version": "1.0.0",
-    "retrieval_schema_version": "3.1.0-pinecone",
-    "question": "What evidence shows strong backend engineering and system design experience?",
-    "elapsed_seconds": 8.17166559999896,
-    "generation": null
-}
-```
-
-Interpretation:
-
-- `status = ok` proves the HTTP retrieval request completed successfully.
-- `runtime_schema_version = 1.0.0` ties the test to the runtime version recorded in the incident baseline.
-- `retrieval_schema_version = 3.1.0-pinecone` confirms this was the Pinecone-backed retrieval implementation, not the earlier local-only retriever.
-- `elapsed_seconds = 8.17166559999896` is the exact observed end-to-end retrieval latency for this request.
-- `generation = null` is important: **Gemini had not been integrated**, so every finding in this incident belongs to retrieval/evidence selection and cannot be attributed to an LLM answer-generation step.
-
-### B.2 The runtime genuinely interpreted the question as positive backend evidence
-
-The exact diagnostic intent was:
-
-```json
-"intent": {
-    "base_tokens": [
-        "strong",
-        "backend",
-        "engineer",
-        "system",
-        "design"
-    ],
-    "expanded_tokens": [
-        "strong",
-        "backend",
-        "engineer",
-        "system",
-        "design",
-        "api",
-        "server",
-        "service",
-        "database",
-        "distribut",
-        "architecture",
-        "endpoint",
-        "rest",
-        "worker",
-        "hono",
-        "spr"
-    ],
-    "limitation_query": false,
-    "chronology_query": false,
-    "positive_evidence_query": true,
-    "strongest_query": false,
-    "facets": [
-        {
-            "name": "backend_api",
-            "semantic_area": "architecture_system_design",
-            "concept_terms": [
-                "backend",
-                "api",
-                "server",
-                "service",
-                "database",
-                "distributed",
-                "architecture",
-                "endpoint",
-                "rest",
-                "worker",
-                "hono",
-                "spring"
-            ]
-        }
-    ]
-}
-```
-
-This matters because the bad results cannot be dismissed as the runtime misunderstanding the request as a weakness/limitation query.
-
-The runtime explicitly recorded:
-
-```text
-positive_evidence_query = true
-limitation_query        = false
-facet                    = backend_api
-semantic area            = architecture_system_design
-```
-
-The incident is therefore specifically about **positive claim compatibility after successful query-intent recognition**.
-
-### B.3 Exact candidate pipeline
-
-The runtime emitted:
-
-```json
-"candidate_counts": {
-    "dense": 500,
-    "bm25": 500,
-    "metadata": 400,
-    "union": 899,
-    "passed_primary_concept_gate": 639,
-    "gate_fallback_used": false,
-    "after_gate_for_prerank": 639,
-    "cross_encoder": 120,
-    "dedupe_vectors_fetched": 119,
-    "final": 10
-}
-```
-
-The exact path was therefore:
-
-```text
-500 Pinecone dense candidates
-+ 500 BM25 candidates
-+ 400 metadata candidates
-          ↓
-899 unique candidates
-          ↓
-639 passed the primary-concept gate
-          ↓
-120 entered CrossEncoder reranking
-          ↓
-119 vectors fetched for semantic dedupe
-          ↓
-10 final results
-```
-
-Two details are especially important.
-
-First:
-
-```text
-gate_fallback_used = false
-```
-
-The false positives were **not** admitted because a defensive fallback bypassed the concept gate. They passed the normal gate.
-
-Second:
-
-```text
-passed_primary_concept_gate = 639
-```
-
-This shows the gate was broad enough that hundreds of candidates remained, and therefore the final quality problem must be understood across the gate, evidence semantics, reranking, and final selection rather than as a Pinecone candidate-recall problem.
-
-### B.4 Rank 1 and rank 2 demonstrate that the runtime could retrieve valid backend/system-design evidence
-
-The first result was:
-
-```text
-rank:               1
-document_id:        repo-123-rd010
-repository:         LInC-Church-Management
-semantic_area:      architecture_system_design
-evidence_polarity:  positive
-final_score:        0.8826384997970576
-concept facet:      backend_api
-concept score:      0.98
-semantic-area match:true
-```
-
-The second result was:
-
-```text
-rank:               2
-document_id:        repo-134-rd005
-repository:         my-portfolio
-semantic_area:      architecture_system_design
-evidence_polarity:  positive
-final_score:        0.863360899089079
-concept facet:      backend_api
-concept score:      0.98
-semantic-area match:true
-```
-
-This is important to the diagnosis. The system was **not generally incapable of finding backend evidence**. It found strong candidates at the top.
-
-The incident is narrower and more architectural: invalid positive evidence was still allowed to compete too highly alongside correct evidence.
-
-### B.5 Exact false-positive pattern 1 — rank 4 absence document
-
-The fourth result was:
-
-```text
-rank:                  4
-document_id:           repo-001-rd022
-repository:            vv11345
-retrieval_class:       interpretation
-semantic_area:         product_responsibility
-evidence_polarity:     neutral
-evidence_level:        interpretive
-specificity_score:     0.34
-concrete_signal_count: 0
-final_score:           0.7535377341159412
-```
-
-Its actual evidence text was:
-
-```text
-[Section: 16. Career / Engineering Signal]
-
-- backend design;
-
-- databases;
-
-- distributed systems;
-
-- automated quality engineering;
-
-- DevOps;
-
-- security engineering;
-
-- team-scale software development.
-
-Those absences should remain visible in the corpus because the purpose is to
-reconstruct engineering growth honestly. Later repositories can then show when
-those capabilities first appear and how they mature.
-```
-
-The most important sentence is not an inference made by this QC document. The source itself says:
-
-```text
-Those absences should remain visible in the corpus...
-```
-
-Yet the normal concept gate emitted:
-
-```json
-"concept_gate": {
-    "passed": true,
-    "facet_score": 0.64,
-    "reason": "matched",
-    "matched_facets": [
-        {
-            "facet": "backend_api",
-            "semantic_area_match": false,
-            "concept_hits": [
-                "backend",
-                "distributed"
-            ],
-            "metadata_hits": [],
-            "score": 0.64
-        }
-    ]
-}
-```
-
-The evidence-quality layer simultaneously knew:
-
-```json
-"evidence_quality": {
-    "evidence_level": "interpretive",
-    "retrieval_class": "interpretation",
-    "evidence_polarity": "neutral",
-    "specificity_score": 0.34,
-    "concrete_signal_count": 0,
-    "base_level_score": 0.58,
-    "adjustments": {
-        "repeated_source_penalty": 0.0
-    },
-    "final_evidence_quality": 0.4112
-}
-```
-
-And the ranking signals were:
-
-```text
-CrossEncoder:              0.8898653718934091
-Pinecone cosine:           0.702421188
-BM25 raw:                  20.872875100541567
-metadata raw:              5.273573752657121
-RRF raw:                   0.026203651726451938
-pre-rerank score:          0.616245258229011
-final score:               0.7535377341159412
-```
-
-This one result is the strongest evidence for the architectural conclusion:
-
-- the document was genuinely **topically relevant**;
-- the CrossEncoder strongly agreed it was relevant;
-- the concept gate saw `backend` and `distributed`;
-- the system also possessed contrary contextual signals: `neutral` polarity, `0` concrete signals, no semantic-area match, no metadata hits, and the literal phrase `Those absences`;
-- those semantics were not represented strongly enough as **claim direction**, so topical relevance still won.
-
-That is why simply making Pinecone stricter would be the wrong fix.
-
-### B.6 Exact false-positive pattern 2 — rank 5 frontend evidence
-
-The fifth result was:
-
-```text
-rank:                  5
-document_id:           repo-115-rd008
-repository:            George-Sedra-Website
-retrieval_class:       interpretation
-semantic_area:         other_repository_evidence
-evidence_polarity:     positive
-evidence_level:        repository_specific
-specificity_score:     0.3778
-concrete_signal_count: 6
-final_score:           0.7526102067185872
-```
-
-Its topics were overwhelmingly frontend-oriented:
-
-```text
-semantic HTML and static-site composition
-responsive CSS and design systems
-JavaScript interaction
-dark/light theme implementation
-touch/mobile UI behavior
-visual polish and layout
-design-token
-theme
-responsive/mobile
-navigation
-carousel
-touch
-interaction
-animation
-visual hierarchy
-static-site scope boundary
-```
-
-The document repeatedly said:
-
-```text
-Reinforces front-end presentation skill ... it is a useful visual-product
-counterpoint but not a new backend maturity maximum.
-```
-
-Despite that, its normal concept gate emitted:
-
-```json
-"concept_gate": {
-    "passed": true,
-    "facet_score": 0.54,
-    "reason": "matched",
-    "matched_facets": [
-        {
-            "facet": "backend_api",
-            "semantic_area_match": false,
-            "concept_hits": [
-                "backend"
-            ],
-            "metadata_hits": [],
-            "score": 0.54
-        }
-    ]
-}
-```
-
-The exact score pattern was:
-
-```text
-CrossEncoder:              0.8628602027893066
-Pinecone cosine:           0.698167861
-BM25 raw:                  12.194513117404663
-metadata raw:              12.612064384830585
-RRF raw:                   0.020805308677510372
-pre-rerank score:          0.6089205152391187
-final score:               0.7526102067185872
-```
-
-The evidence-quality layer gave it a high value:
-
-```json
-"evidence_quality": {
-    "evidence_level": "repository_specific",
-    "retrieval_class": "interpretation",
-    "evidence_polarity": "positive",
-    "specificity_score": 0.3778,
-    "concrete_signal_count": 6,
-    "base_level_score": 0.86,
-    "adjustments": {
-        "positive_polarity_bonus": 0.08,
-        "repeated_source_penalty": 0.0
-    },
-    "final_evidence_quality": 0.861916
-}
-```
-
-This result reveals a second, distinct schema problem.
-
-The document's `positive` polarity is locally correct with respect to **frontend skill**. It is positive evidence of HTML/CSS/interaction quality.
-
-But query-time selection effectively treated:
-
-```text
-positive evidence about frontend engineering
-```
-
-as if it could become:
-
-```text
-positive evidence about backend engineering
-```
-
-because the prose happened to include `backend` in a negative comparative sentence.
-
-That is why a generic future contract needs both:
-
-```text
-facet
-```
-
-and:
-
-```text
-claim direction relative to that facet
-```
-
-A global `evidence_polarity = positive` field is not sufficient by itself.
-
-### B.7 Why this is not proof that CrossEncoder is bad
-
-Rank 4 had:
-
-```text
-CrossEncoder = 0.8898653718934091
-```
-
-Rank 5 had:
-
-```text
-CrossEncoder = 0.8628602027893066
-```
-
-Those are high relevance scores, but that does not contradict the diagnosis.
-
-Both documents are semantically related to the words in the query. A relevance reranker can correctly recognize that relationship.
-
-The missing question is:
-
-```text
-Does this document SUPPORT the requested positive claim?
-```
-
-That is a different classification problem from:
-
-```text
-How related is this document to the query?
-```
-
-The output therefore supports keeping CrossEncoder as a relevance component while adding a stronger structured evidence-compatibility contract.
-
-### B.8 Why this is not proof that embeddings/Pinecone are bad
-
-Rank 4's dense cosine was:
-
-```text
-0.702421188
-```
-
-Rank 5's dense cosine was:
-
-```text
-0.698167861
-```
-
-Those are plausible semantic-neighborhood scores for documents that genuinely discuss backend/system engineering.
-
-The vector layer is not expected to encode formal logical negation or claim support perfectly.
-
-The exact diagnostics also say:
-
-```json
-"dense_backend": {
-    "provider": "pinecone",
-    "index": "portfolio-career-rag-v1",
-    "namespace": "corpus-v1",
-    "metric": "cosine",
-    "candidate_limit": 500,
-    "local_matrix_loaded": false
-}
-```
-
-This confirms the tested backend path was Pinecone and that the local dense matrix was not secretly used.
-
-The incident therefore validates the deployment-shaped dense path while exposing a semantic-contract weakness after recall.
-
-### B.9 Why a backend-word patch was rejected
-
-The exact output already contains enough information to show why a dedicated backend keyword patch would be fragile.
-
-Rank 4 hit:
-
-```text
-backend
-distributed
-```
-
-Rank 5 hit:
-
-```text
-backend
-```
-
-A tactical rule could certainly demand more backend terms.
-
-But the next query could expose the same structural flaw for:
-
-```text
-testing
-security
-deployment
-frontend
-product ownership
-```
-
-The raw output shows that the real missing representation is not another vocabulary threshold. It is the relationship:
-
-```text
-requested facet
-↔ evidence facet
-↔ supports / contradicts / mixed / neutral
-```
-
-That is the reusable architectural solution.
-
----
-
-## Appendix C — Output-to-Conclusion Traceability
-
-| QC conclusion | Exact output evidence | Interpretation |
-|---|---|---|
-| Runtime generalized to a new prompt | `status = ok`, exact backend/system-design question echoed in response | API/runtime was not hard-coded around authorization |
-| Pinecone runtime path was active | `provider = pinecone`, `local_matrix_loaded = false` | Test exercised the intended managed dense backend |
-| Query was treated as positive evidence | `positive_evidence_query = true`, `limitation_query = false` | False positives cannot be excused as limitation-mode behavior |
-| Normal concept gate admitted the bad results | rank 4 `passed = true`, rank 5 `passed = true`, `gate_fallback_used = false` | This is normal-path behavior, not defensive fallback |
-| Rank 4 is an absence document | literal text: `Those absences should remain visible...` | Relevance was confused with positive claim support |
-| Rank 4 lacked concrete/backend structural support | `concrete_signal_count = 0`, `semantic_area_match = false`, `metadata_hits = []` | Existing signals were available but not encoded as sufficient claim-compatibility constraints |
-| Rank 5 is frontend evidence | topics and evidence areas are HTML/CSS/theme/touch/visual; text says `not a new backend maturity maximum` | Positive frontend evidence was allowed to behave like positive backend evidence |
-| Rank 5 passed solely on backend lexical presence at the concept layer | `concept_hits = ["backend"]`, `semantic_area_match = false`, `metadata_hits = []`, facet score `0.54` | Demonstrates why a global positive polarity is insufficient without facet-relative claim semantics |
-| CrossEncoder is a relevance signal, not a claim-direction judge | rank 4 `0.889865...`, rank 5 `0.862860...` | High semantic relevance can coexist with invalid positive proof |
-| No need to re-embed because of this finding | error is in claim/evidence compatibility, while dense retrieval behaves semantically as expected | Preserve existing `document_id` + `embedding_text` and 2,808 vectors |
-| Correct redesign boundary is offline evidence metadata | raw output exposes missing durable facet/claim relationship | Build stronger structured evidence semantics before adding query-specific runtime patches |
-
-### Final QC interpretation
-
-The raw output makes the final conclusion stronger than the original prose-only incident record:
-
-> The runtime was operational, generalized to a different question, used Pinecone correctly, and found valid backend evidence. The failure was that **topical relevance and globally positive evidence metadata could still overpower facet-relative claim meaning**. Rank 4 proves the system could rank an explicit absence statement as strong evidence for a positive capability query; rank 5 proves positive frontend evidence could survive as backend evidence because the word `backend` appeared inside a sentence explicitly denying backend maturity. The durable fix is therefore a structured evidence contract, not more backend-specific runtime keywords.
-
-No implementation change is included in this QC revision.
+- Parent: [README.md](README.md)
+- [RAG docs](../../rag/README.md)

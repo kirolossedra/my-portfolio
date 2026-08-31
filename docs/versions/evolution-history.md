@@ -14,7 +14,8 @@ The repository records several explicit architectural replacements rather than s
 - permanent application-admin tokens were replaced by GitHub OAuth, numeric-user-ID authorization, one-time exchange codes and signed short-lived sessions;
 - the timeline/portfolio matured into multiple public surfaces including opinions, skills and Kiro RAG;
 - Kiro visual behavior moved from an image-cutout concept to a real GLB contract with runtime inspection and bounded animation controls;
-- the RAG pipeline evolved from tiny chunks + cosine to evidence-aware retrieval documents + hybrid reranking + Pinecone-backed runtime.
+- the RAG pipeline evolved from tiny chunks + cosine to evidence-aware retrieval documents + hybrid reranking + Pinecone-backed runtime;
+- the deployment investigation later introduced a separately benchmarked Cloudflare-native Qwen candidate without retroactively rewriting the validated Nomic/Pinecone baseline.
 
 <a id="why-history-is-kept"></a>
 ## Why History Is Kept
@@ -24,4 +25,4 @@ Superseded implementations remain important engineering evidence because they ex
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG evolution](../../rag/docs/retrieval-version-history.md)
+- [RAG documentation and deployment history](../rag/README.md)

@@ -49,4 +49,4 @@ Gemini 2.5 Flash-Lite is selected but not integrated. Generation credentials bel
 
 - Parent: [../README.md](../README.md)
 - [Deployment](../operations/deployment.md)
-- [RAG security](../../rag/README.md)
+- [RAG documentation](../rag/README.md)

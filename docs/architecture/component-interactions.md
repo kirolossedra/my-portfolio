@@ -66,4 +66,4 @@ For semantic dedupe, the runtime fetches only required candidate vectors from Pi
 
 - Parent: [../README.md](../README.md)
 - [System overview](system-overview.md)
-- [RAG interactions](../../rag/docs/component-interactions.md)
+- [RAG documentation](../rag/README.md)

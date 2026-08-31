@@ -55,5 +55,6 @@ The RAG preprocessing scripts are not server startup steps. In particular, do no
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG runtime](../../rag/runtime/README.md)
-- [RAG scripts](../../rag/scripts/README.md)
+- [RAG documentation](../rag/README.md)
+- Implementation runtime: `rag/runtime/`
+- Implementation scripts: `rag/scripts/`

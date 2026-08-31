@@ -43,7 +43,9 @@
 
 Do not rerun the active 2,808-document embedding stage simply because a later retrieval rule changes. Embedding generation is expensive in time but not money, and the current matrix is already validated. Regenerate only when its upstream text or embedding contract changes.
 
+The Qwen candidate is an explicit exception only if deliberately testing a **new embedding model**; it must be generated beside, not over, the Nomic baseline.
+
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG regeneration matrix](../../rag/docs/regeneration-matrix.md)
+- [RAG migration/regeneration guidance](../rag/cloudflare-native-zero-cost-migration.md)

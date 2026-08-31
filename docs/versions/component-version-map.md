@@ -18,6 +18,7 @@
 | Answer generation | **SELECTED / NOT INTEGRATED** | Gemini 2.5 Flash-Lite |
 | Browser-to-RAG API wiring | **NOT YET INTEGRATED** | `/kiro-rag` currently drives a simulated state flow and 3D avatar |
 | Positive-backend hardening patch | **PROPOSED - NOT APPLIED TO `main`** | local proposal `rag-backend-positive-gate-v1`, runtime schema 1.1.0 |
+| Cloudflare Qwen embedding migration | **CANDIDATE / NOT APPLIED** | `docs/rag/cloudflare-native-zero-cost-migration.md` |
 
 <a id="portfolio-components"></a>
 ## Portfolio Components
@@ -39,7 +40,9 @@
 
 The active remote/runtime dense backend is Pinecone, but the active HTTP runtime in GitHub `main` remains **runtime schema 1.0.0 / retrieval schema 3.1.0-pinecone**. A local proposal exists with runtime schema 1.1.0 / retrieval schema 3.1.1-pinecone and a backend-positive support gate; it is **not** the current `main` implementation.
 
+The Qwen/Workers AI design is likewise a **candidate architecture**, not current production truth. It must first pass the controlled retrieval bake-off described under `docs/rag/`.
+
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG version history](../../rag/docs/retrieval-version-history.md)
+- [RAG documentation](../rag/README.md)

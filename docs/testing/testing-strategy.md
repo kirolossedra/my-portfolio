@@ -32,4 +32,5 @@ A local `POST http://127.0.0.1:8000/api/rag/retrieve` returned `status: ok`, run
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
-- [RAG testing](../../rag/docs/testing-and-regressions.md)
+- [RAG QC](../qc/rag/README.md)
+- [RAG migration acceptance criteria](../rag/cloudflare-native-zero-cost-migration.md)
