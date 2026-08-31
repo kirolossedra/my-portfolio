@@ -12,6 +12,7 @@
 - [Browser Not Wired](#browser-not-wired)
 - [Deployment Not Selected/Completed](#deployment-not-selectedcompleted)
 - [Deployment Evaluation Addendum](#deployment-evaluation-addendum)
+- [Cloudflare-Native Candidate Risks](#cloudflare-native-candidate-risks)
 
 <a id="active-known-issues"></a>
 ## Active Known Issues
@@ -57,7 +58,6 @@ The Kiro query input is a timer-driven behavior probe. It simulates state transi
 ## Deployment Not Selected/Completed
 
 The heavy Python runtime needs a persistent model-capable deployment target. Current Netlify + Cloudflare Worker deployment does not host it.
-
 
 <a id="deployment-evaluation-addendum"></a>
 ## Deployment Evaluation Addendum
@@ -151,8 +151,46 @@ Full deployment evidence:
 
 - [../../docs/qc/rag/2026-08-31-containerization-and-hosting-evaluation.md](../../docs/qc/rag/2026-08-31-containerization-and-hosting-evaluation.md)
 
+<a id="cloudflare-native-candidate-risks"></a>
+## Cloudflare-Native Candidate Risks
+
+A later review identified a promising no-Python candidate, but it remains **unimplemented**. The following are open engineering risks rather than solved facts.
+
+### Qwen retrieval equivalence — OPEN
+
+Cloudflare-hosted Qwen3-Embedding-0.6B removes the need to run Nomic query inference ourselves, but it creates a new embedding space. It must be benchmarked against the current Nomic baseline on the real employer-style query suite.
+
+### CrossEncoder replacement — OPEN
+
+The current Python runtime also loads a CrossEncoder. Production Python cannot be retired merely by replacing Nomic. Cloudflare's BGE reranker is a candidate, but its ranking quality and truncation behavior must be compared against the pinned current model.
+
+### D1 FTS5 vs current BM25 — OPEN
+
+D1 is already part of the portfolio backend and supports FTS5, but SQLite FTS5/BM25 ranking is not guaranteed to match the current Python BM25 implementation. This is a retrieval algorithm change that requires regression, not just a storage migration.
+
+### Worker Free CPU/bundle envelope — OPEN
+
+Workers Free is suitable for orchestration but has a 10 ms CPU/request, 128 MB memory and 3 MB compressed-bundle limit. The current ~34 MB `embedding-records.jsonl` cannot simply be bundled as a Worker data file. A slim D1-backed runtime representation is the candidate approach.
+
+### Vectorize topK mismatch — OPEN
+
+Vectorize is a real vector database and the current corpus fits its dimensional limits, but the current retrieval stage asks for top 500 dense candidates. Vectorize currently returns at most 100 without values/metadata and 50 with values/full metadata. Switching the DB before evaluating this recall change would be premature.
+
+### Full free-query capacity — OPEN until measured
+
+Workers AI query embedding alone has large free capacity, but the complete system is bounded by reranking neurons, Pinecone read units or Vectorize dimensions, D1 rows, Worker requests and Gemini quota. The next benchmark must emit actual per-query usage before a full-RAG queries/day number is considered authoritative.
+
+### Gemini Free-tier data handling — REVIEW REQUIRED
+
+Gemini 2.5 Flash-Lite currently has Free-tier token pricing, but public rate-limit capacity is project-specific. Google also documents that Free-tier content may be used to improve its products. Public visitor queries should not be silently sent under an unclear privacy expectation; generation integration should include explicit data-minimization and disclosure decisions.
+
+Full candidate architecture and caps:
+
+- [cloudflare-native-zero-cost-migration.md](cloudflare-native-zero-cost-migration.md)
+
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
 - [Testing](testing-and-regressions.md)
 - [Cloudflare integration](cloudflare-integration.md)
+- [Zero-cost Cloudflare migration](cloudflare-native-zero-cost-migration.md)

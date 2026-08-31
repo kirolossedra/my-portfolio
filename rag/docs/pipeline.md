@@ -12,10 +12,11 @@
 - [Stage 6 - Python HTTP Runtime](#stage-6-python-http-runtime)
 - [Stage 7 - Grounded Generation (Selected / Not Integrated)](#stage-7-grounded-generation-selected-not-integrated)
 - [Stage 8 - Kiro Browser Integration (Not Integrated)](#stage-8-kiro-browser-integration-not-integrated)
+- [Candidate Stage 9 - Cloudflare-Native Runtime Migration](#candidate-stage-9-cloudflare-native-runtime-migration)
+- [Migration Validation Order](#migration-validation-order)
 
 <a id="pipeline-contract"></a>
 ## Pipeline Contract
-
 
 ```mermaid
 flowchart TD
@@ -40,7 +41,6 @@ flowchart TD
     Top -. planned .-> Gen[Gemini 2.5 Flash-Lite]
     Gen -. planned .-> UI[Kiro RAG portfolio UI]
 ```
-
 
 <a id="stage-0-source-analysis"></a>
 ## Stage 0 - Source Analysis
@@ -87,8 +87,82 @@ Gemini 2.5 Flash-Lite will synthesize a controlled evidence packet. This stage m
 
 The existing Kiro GLB UI already has semantic RAG states. Network events should replace the demo timers while preserving the model contract.
 
+<a id="candidate-stage-9-cloudflare-native-runtime-migration"></a>
+## Candidate Stage 9 - Cloudflare-Native Runtime Migration
+
+**Status: candidate only; the active pipeline above remains authoritative until regression gates pass.**
+
+The target is to remove the public Python/Docker service, not to delete Python from offline tooling.
+
+```mermaid
+flowchart TD
+    C[Same 2,808 evidence-aware documents] --> QE[Workers AI Qwen3 document embeddings]
+    QE --> QP[New Pinecone 1024-D candidate index]
+
+    U[User question] --> W[Cloudflare Worker]
+    W --> QQ[Workers AI Qwen3 query embedding]
+    QQ --> QP
+    W --> FTS[D1 FTS5 lexical recall]
+    W --> META[D1 metadata/topic/skill recall]
+
+    QP --> F[TypeScript fusion + gates]
+    FTS --> F
+    META --> F
+    F --> RR[Workers AI BGE reranker]
+    RR --> DD[TypeScript polarity + semantic dedupe + repo diversity]
+    DD --> T[Top 10 evidence + provenance]
+    T -. separate quota .-> G[Gemini 2.5 Flash-Lite]
+    G --> UI[Kiro RAG UI]
+```
+
+### Why Pinecone is retained in the first candidate
+
+The current dense stage needs `top 500`. Cloudflare Vectorize currently returns at most `100` results without values/metadata and `50` with values/full metadata. A simultaneous model + vector-DB migration would therefore change both the embedding space and recall breadth.
+
+The first candidate should instead isolate the embedding-model change:
+
+```text
+Nomic 512 + current Pinecone       = baseline
+Qwen 1024 + new Pinecone index     = candidate
+```
+
+### Full Python responsibility decomposition
+
+Replacing Nomic alone is insufficient. Current Python also owns:
+
+- BM25;
+- metadata/topic/skill recall;
+- fusion and normalized channel scoring;
+- primary-concept/evidence/polarity gates;
+- CrossEncoder reranking;
+- semantic dedupe;
+- max-per-repository diversity;
+- response/provenance shaping.
+
+Each must be ported or replaced and then regression-tested before Stage 6 can be retired.
+
+<a id="migration-validation-order"></a>
+## Migration Validation Order
+
+1. [ ] Generate Qwen document embeddings into a **new** artifact directory.
+2. [ ] Create a **new** 1,024-D Pinecone candidate index; never overwrite the Nomic index.
+3. [ ] Compare dense and end-task retrieval against the existing validation queries.
+4. [ ] Capture Pinecone `usage.read_units` for top-500 query + dedupe fetch behavior.
+5. [ ] If Qwen passes, port lexical/metadata recall to D1 and deterministic scoring/gates to TypeScript.
+6. [ ] Compare D1 FTS5 behavior against current Python BM25; do not assume equivalence.
+7. [ ] Evaluate Workers AI `@cf/baai/bge-reranker-base` against the current CrossEncoder.
+8. [ ] Measure actual Workers AI neurons per complete query; reranking is expected to dominate query embedding.
+9. [ ] Only after full backend parity, wire `src/kiro-rag-page.tsx` to the live Worker endpoint.
+10. [ ] Only after production telemetry is satisfactory, retire the production Python/Docker path.
+11. [ ] Evaluate Pinecone vs Vectorize later as an independent database decision.
+
+Full caps, calculations, rejected deployment paths and future file map:
+
+- [cloudflare-native-zero-cost-migration.md](cloudflare-native-zero-cost-migration.md)
+
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
 - [Scripts](../scripts/README.md)
 - [Runtime](../runtime/README.md)
+- [Zero-cost Cloudflare migration](cloudflare-native-zero-cost-migration.md)

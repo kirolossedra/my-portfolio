@@ -10,6 +10,9 @@
 - [Parity v2](#parity-v2)
 - [Retrieval Ownership](#retrieval-ownership)
 - [Failure / Recovery](#failure-recovery)
+- [2026-08-31 Qwen Migration Decision](#2026-08-31-qwen-migration-decision)
+- [Pinecone vs Vectorize Under the Current Pipeline](#pinecone-vs-vectorize-under-the-current-pipeline)
+- [Capacity Measurement Required](#capacity-measurement-required)
 
 <a id="decision"></a>
 ## Decision
@@ -60,8 +63,94 @@ Pinecone owns dense candidate serving and remote vector storage. Local code cont
 
 Because Pinecone is derived state, recovery is upsert from validated local embeddings followed by the v2 parity validator. Do not reconstruct the canonical evidence corpus from Pinecone metadata.
 
+<a id="2026-08-31-qwen-migration-decision"></a>
+## 2026-08-31 Qwen Migration Decision
+
+The active Pinecone decision is **not revoked** by the Cloudflare-native runtime investigation.
+
+If `@cf/qwen/qwen3-embedding-0.6b` is evaluated, the first candidate should stay on Pinecone so the experiment changes the embedding model without simultaneously changing the vector-serving backend.
+
+Required shape:
+
+```text
+ACTIVE BASELINE
+portfolio-career-rag-v1
+512-D cosine
+Nomic
+corpus-v1
+
+PARALLEL CANDIDATE
+new index name / new namespace
+1024-D cosine
+Qwen3-Embedding-0.6B
+```
+
+The candidate index name must be explicit and versioned when implemented. Do not overload `portfolio-career-rag-v1` with a different vector shape or model lineage.
+
+<a id="pinecone-vs-vectorize-under-the-current-pipeline"></a>
+## Pinecone vs Vectorize Under the Current Pipeline
+
+Vectorize is a legitimate vector database, but it is not an automatic replacement for Pinecone in the current retrieval design.
+
+| Requirement | Pinecone current path | Vectorize current Free path |
+|---|---|---|
+| 2,808-vector corpus | ✅ | ✅ |
+| Qwen 1,024-D vectors | ✅ new compatible index | ✅ below 1,536-D max |
+| current dense `top 500` | ✅ query API supports much larger `topK` | ❌ max 100 without values/metadata; 50 with values/full metadata |
+| current Nomic 512-D baseline | ✅ already validated | would require separate migration |
+| per-query capacity accounting | read units | queried vector dimensions |
+| Cloudflare-native binding | ❌ | ✅ |
+| first model bake-off | **preferred** | deferred |
+
+### Vectorize free-dimension calculation for the Qwen candidate
+
+With 2,808 documents and 1,024 dimensions:
+
+```text
+stored dimensions = 2,808 * 1,024
+                  = 2,875,392
+```
+
+Free stored allowance is 5,000,000 dimensions, so the corpus would fit.
+
+Using Cloudflare's queried-dimension formula and 30,000,000 queried dimensions/month:
+
+```text
+max queries/month ≈ 30,000,000 / 1,024 - 2,808
+                  ≈ 26,488
+```
+
+That is roughly `883/day` averaged over 30 days. This is likely enough for portfolio traffic, but it is **not** equivalent to the much larger embedding-only Workers AI capacity and it does not solve the top-500 mismatch.
+
+Therefore:
+
+> **Do not couple the embedding-model migration to the vector-database migration.**
+
+<a id="capacity-measurement-required"></a>
+## Capacity Measurement Required
+
+Pinecone Starter currently includes up to 1,000,000 read units/month. Query/fetch responses expose `usage.read_units`.
+
+The next Qwen/Nomic benchmark should record:
+
+- read units for the current top-500 dense query;
+- read units for vector fetches used by semantic dedupe;
+- response egress size;
+- whether `include_values`/metadata can be reduced without changing behavior.
+
+Then compute:
+
+```text
+estimated monthly full-query capacity
+= 1,000,000 Starter read units
+  / measured read units per complete retrieval request
+```
+
+Do not substitute a generic Pinecone marketing example for this workload-specific measurement.
+
 ## Related Documentation
 
 - Parent: [../README.md](../README.md)
 - [Embedding history](embedding-version-history.md)
 - [Testing](testing-and-regressions.md)
+- [Zero-cost Cloudflare migration](cloudflare-native-zero-cost-migration.md)
