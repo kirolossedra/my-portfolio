@@ -1,79 +1,168 @@
-# RAG Scripts - Active Pipeline and Validation
+# RAG Scripts — Stage-Organized Pipeline
 
 ## Table of Contents
 
-- [Execution Order](#execution-order)
-- [`prepare-rag-corpus.py`](#prepare-rag-corpuspy)
-- [`build-rag-retrieval-documents-v2.py`](#build-rag-retrieval-documents-v2py)
-- [`generate-rag-embeddings-v3-documents-local.py`](#generate-rag-embeddings-v3-documents-localpy)
-- [`build-rag-retrieval-v3-evidence-aware-local.py`](#build-rag-retrieval-v3-evidence-aware-localpy)
-- [`upsert-pinecone-v1.py`](#upsert-pinecone-v1py)
-- [`validate-pinecone-dense-parity-v1.py`](#validate-pinecone-dense-parity-v1py)
-- [`validate-pinecone-dense-parity-v2.py`](#validate-pinecone-dense-parity-v2py)
-- [Secret Handling](#secret-handling)
-- [Shell Safety Lesson](#shell-safety-lesson)
+- [Purpose](#purpose)
+- [Versioning Rule](#versioning-rule)
+- [Directory Map](#directory-map)
+- [Current Execution Order](#current-execution-order)
+- [Stage 01 — Corpus](#stage-01--corpus)
+- [Stage 02 — Retrieval Documents](#stage-02--retrieval-documents)
+- [Stage 03 — Embeddings](#stage-03--embeddings)
+- [Stage 04 — Retrieval Reference](#stage-04--retrieval-reference)
+- [Stage 05 — Vector Index](#stage-05--vector-index)
+- [Stage 06 — Validation](#stage-06--validation)
+- [Path Resolution Contract](#path-resolution-contract)
+- [Cloudflare Migration Rule](#cloudflare-migration-rule)
 
-<a id="execution-order"></a>
-## Execution Order
+## Purpose
+
+The scripts directory is organized by **pipeline responsibility**, not by the date a script happened to be written. There are intentionally no executable Python scripts directly in this directory.
+
+## Versioning Rule
+
+Three concepts must stay separate:
+
+1. **Stage number** (`01`–`06`) = where the responsibility sits in the RAG pipeline.
+2. **Filename version** (`v1`, `v2`, `v3`, …) = a generation of that responsibility/implementation.
+3. **Backend/provider directory** (`nomic`, `pinecone`, `cloudflare`, `cloudflare-vectorize`) = an independent implementation family.
+
+Therefore, Pinecone v1 and Vectorize v1 can coexist; Vectorize is not "Pinecone v2". Likewise, Retrieval v3 and Embedding v3 are different version families even though they share the number 3.
+
+## Directory Map
 
 ```text
-prepare-rag-corpus.py
-  -> build-rag-retrieval-documents-v2.py
-  -> generate-rag-embeddings-v3-documents-local.py
-  -> build-rag-retrieval-v3-evidence-aware-local.py
-  -> upsert-pinecone-v1.py
-  -> validate-pinecone-dense-parity-v2.py
+scripts/
+├── README.md
+├── 01-corpus/
+│   ├── README.md
+│   └── prepare-rag-corpus.py
+├── 02-retrieval-documents/
+│   ├── README.md
+│   └── build-rag-retrieval-documents-v2.py
+├── 03-embeddings/
+│   ├── README.md
+│   ├── nomic/
+│   │   └── generate-rag-embeddings-v3-documents-local.py
+│   └── cloudflare/
+│       └── README.md
+├── 04-retrieval-reference/
+│   ├── README.md
+│   └── build-rag-retrieval-v3-evidence-aware-local.py
+├── 05-vector-index/
+│   ├── README.md
+│   ├── pinecone/
+│   │   └── upsert-pinecone-v1.py
+│   └── cloudflare-vectorize/
+│       └── README.md
+└── 06-validation/
+    ├── README.md
+    ├── pinecone/
+    │   ├── validate-pinecone-dense-parity-v1.py
+    │   └── validate-pinecone-dense-parity-v2.py
+    └── cloudflare-vectorize/
+        └── README.md
 ```
 
-`validate-pinecone-dense-parity-v1.py` is preserved as the first, flawed validator and should not be the acceptance gate.
+## Current Execution Order
 
-<a id="prepare-rag-corpuspy"></a>
-## `prepare-rag-corpus.py`
+The existing Nomic/Pinecone reference path is:
 
-**Status:** active implementation, valid existing output, unsafe to rerun after folder relocation until path discovery is refactored. Input is the eleven source Markdown files; output is canonical `rag-corpus/` repository JSON/JSONL/catalog/manifest/validation. It previously generated 134 repositories, 11,823 sections, 975 tags and 535 skill-rating rows.
+```text
+python rag/scripts/01-corpus/prepare-rag-corpus.py
+  -> python rag/scripts/02-retrieval-documents/build-rag-retrieval-documents-v2.py
+  -> python rag/scripts/03-embeddings/nomic/generate-rag-embeddings-v3-documents-local.py
+  -> python rag/scripts/04-retrieval-reference/build-rag-retrieval-v3-evidence-aware-local.py
+  -> python rag/scripts/05-vector-index/pinecone/upsert-pinecone-v1.py
+  -> python rag/scripts/06-validation/pinecone/validate-pinecone-dense-parity-v2.py
+```
 
-<a id="build-rag-retrieval-documents-v2py"></a>
-## `build-rag-retrieval-documents-v2.py`
+`validate-pinecone-dense-parity-v1.py` is retained as historical debugging evidence. It is **not** the Pinecone acceptance gate.
 
-**Status:** active. Input `rag-corpus/repositories.jsonl`; output `rag-corpus/retrieval-documents-v2/`. It classifies evidence, suppresses repeated/tiny generic blocks only in derived retrieval units, preserves original corpus, and emits 2,808 documents from 30,930 retained evidence blocks.
+## Stage 01 — Corpus
 
-<a id="generate-rag-embeddings-v3-documents-localpy"></a>
-## `generate-rag-embeddings-v3-documents-local.py`
+Converts the repository-analysis Markdown source batches into the canonical normalized corpus under `rag-corpus/`.
 
-**Status:** active artifact generator, already successfully completed; do not rerun without upstream/embedding-contract change. It uses pinned Nomic v1.5 revision, `search_document:` prefix, 768 -> normalized 512 Matryoshka representation, 8192 max sequence length, batch size 64 and 44 batches.
+Current generation: **Corpus preparation v1**.
 
-<a id="build-rag-retrieval-v3-evidence-aware-localpy"></a>
-## `build-rag-retrieval-v3-evidence-aware-local.py`
+## Stage 02 — Retrieval Documents
 
-**Status:** active offline reference retriever. It uses exact matrix dense scores for all records, BM25, metadata, RRF, concept/evidence gates, pinned CrossEncoder, polarity handling, dedupe and repository diversity. Its exact-matrix behavior remains a useful reference against the Pinecone runtime.
+Defines what a searchable evidence unit is.
 
-<a id="upsert-pinecone-v1py"></a>
-## `upsert-pinecone-v1.py`
+- Historical v1: tiny Markdown-derived chunks; structurally valid but retrieval-poor for this repetitive analytical corpus.
+- Active v2: evidence-aware documents with provenance, evidence class, polarity, specificity and semantic area.
 
-**Status:** active remote mutation tool. It writes the 2,808 vectors to Pinecone index `portfolio-career-rag-v1`, namespace `corpus-v1`, in batches of 100. Running it requires `PINECONE_API_KEY` and changes remote state. Initial validation passed 29/29 batches and 2808/2808 remote freshness.
+Current active output: `rag-corpus/retrieval-documents-v2/`.
 
-<a id="validate-pinecone-dense-parity-v1py"></a>
-## `validate-pinecone-dense-parity-v1.py`
+## Stage 03 — Embeddings
 
-**Status:** superseded validator. It demonstrated strong ANN agreement but used an inappropriate <=0.001 ANN reported-score-delta acceptance rule. Preserve its report as evidence of the debugging process; do not interpret its final FAIL as Pinecone corruption.
+Converts retrieval documents into vector representations.
 
-<a id="validate-pinecone-dense-parity-v2py"></a>
-## `validate-pinecone-dense-parity-v2.py`
+- Historical v1: hosted/paid embedding path.
+- Historical v2: local Nomic over the old tiny chunks.
+- Active v3/Nomic: pinned local Nomic over the 2,808 evidence-aware documents.
+- Next candidate: Cloudflare Workers AI/Qwen. It must be added under `03-embeddings/cloudflare/` as a **parallel embedding generation**, not by overwriting the validated Nomic artifacts.
 
-**Status:** active acceptance validator. It requires same top-1, >=90% overlap at 10/25/50, then fetches vectors and proves exact stored-vector fidelity through direct value comparison and recomputed cosine. It passed with 100/96/98% overlap and zero fetched-vector/cosine delta.
+## Stage 04 — Retrieval Reference
 
-<a id="secret-handling"></a>
-## Secret Handling
+The offline reference implementation used to evaluate retrieval quality independently of a hosted vector backend.
 
-No script should print the Pinecone API key. Local secret loading may use repository-root `.dev.vars`; production should use process/environment secret injection.
+- v1: exact cosine only over old chunks.
+- v2: hybrid BM25/metadata/RRF/CrossEncoder over old chunks.
+- active v3: evidence-aware documents plus dense, lexical, metadata, gates, pinned CrossEncoder, polarity handling, dedupe and repository diversity.
 
-<a id="shell-safety-lesson"></a>
-## Shell Safety Lesson
+This is a reference/validation implementation, not the final Cloudflare production runtime.
 
-Do not paste multi-line Python via fragile PowerShell backtick continuation. Complex file transforms belong in a checked/versioned script; immediate shell actions should be simple one-line commands.
+## Stage 05 — Vector Index
 
-## Related Documentation
+Publishes validated vectors to a hosted vector backend.
 
-- Parent: [../README.md](../README.md)
-- [Regeneration matrix](../docs/regeneration-matrix.md)
-- [Pinecone](../docs/pinecone.md)
+- `pinecone/`: current Pinecone publication family.
+- `cloudflare-vectorize/`: reserved for the Cloudflare-native replacement.
+
+Backend generations are independent. A future `cloudflare-vectorize-v1` should not be named as a Pinecone revision.
+
+## Stage 06 — Validation
+
+Validates that a hosted vector backend preserves the expected retrieval/storage behavior.
+
+Pinecone history:
+
+- v1: flawed acceptance criterion required ANN-reported scores to numerically match exhaustive local cosine within `0.001`.
+- v2: correct separation of ANN candidate parity from exact stored-vector fidelity; this is the active acceptance gate.
+
+Cloudflare Vectorize gets its own validator family under `06-validation/cloudflare-vectorize/`.
+
+## Path Resolution Contract
+
+All executable scripts in this tree resolve paths from the enclosing `rag/` directory rather than assuming that `rag-corpus/` is beside the script.
+
+The invariant is:
+
+```text
+<script anywhere below rag/scripts/...>
+             ↓
+walk upward to enclosing rag/
+             ↓
+RAG_ROOT = .../rag
+             ↓
+corpus I/O = RAG_ROOT / rag-corpus / ...
+```
+
+This means the scripts can be run from the portfolio repository root, from `rag/`, or from another working directory without changing their corpus paths.
+
+Stage 01 additionally searches the portfolio project tree for `repositories-*.md` source batches while excluding generated/build/archive trees. This fixes the previous assumption that the source Markdown must sit beside the script.
+
+Pinecone scripts continue to locate `.dev.vars` by walking upward, so repository-root secret placement remains valid.
+
+## Cloudflare Migration Rule
+
+Until the Cloudflare candidate passes embedding, Vectorize, retrieval and end-to-end validation, do not overwrite:
+
+```text
+rag/rag-corpus/embeddings-v2/
+portfolio-career-rag-v1
+corpus-v1
+```
+
+The next implementation belongs in the already-reserved Cloudflare stage directories.

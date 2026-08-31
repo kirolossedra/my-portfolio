@@ -2,10 +2,10 @@
 """
 Portfolio GitHub RAG pipeline — Step 3 v3: FREE LOCAL evidence-document embedding generation.
 
-This script is intentionally ZERO-ARGUMENT and runs from the project root.
-Place it beside the existing `rag-corpus/` directory and run:
+This script is intentionally ZERO-ARGUMENT and can be run from any working directory.
+It discovers the enclosing `rag/` root from its own location:
 
-    python generate-rag-embeddings-v3-documents-local.py
+    python rag/scripts/03-embeddings/nomic/generate-rag-embeddings-v3-documents-local.py
 
 NO PAID API IS USED.
 NO API KEY IS REQUIRED.
@@ -96,8 +96,19 @@ from typing import Any, Iterable, Sequence
 # ---------------------------------------------------------------------------
 
 SCRIPT_NAME = Path(__file__).name
-BASE_DIR = Path(__file__).resolve().parent
-RAG_DIR = BASE_DIR / "rag-corpus"
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+def find_rag_root(start: Path) -> Path:
+    for candidate in (start, *start.parents):
+        if candidate.name == "rag" and (candidate / "scripts").is_dir() and (candidate / "rag-corpus").is_dir():
+            return candidate
+    raise RuntimeError(
+        "Could not locate the enclosing rag/ root. Expected this script to live under rag/scripts/."
+    )
+
+RAG_ROOT = find_rag_root(SCRIPT_DIR)
+BASE_DIR = RAG_ROOT
+RAG_DIR = RAG_ROOT / "rag-corpus"
 INPUT_PATH = RAG_DIR / "retrieval-documents-v2" / "documents.jsonl"
 OUTPUT_DIR = RAG_DIR / "embeddings-v2"
 TEMP_OUTPUT_DIR = RAG_DIR / ".embeddings-v2.tmp"
@@ -1285,7 +1296,7 @@ def verify_published_output(expected_input_sha256: str, expected_document_count:
 
 def print_header() -> None:
     print("Portfolio GitHub RAG pipeline — Step 3 v3: FREE LOCAL evidence-document embedding generation")
-    print(f"Working directory: {BASE_DIR}")
+    print(f"RAG root: {RAG_ROOT}")
     print()
     print("COST / CREDENTIALS")
     print("  Paid API:        NONE")

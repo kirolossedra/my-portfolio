@@ -11,6 +11,9 @@ Purpose
 Bulk-upload the already validated active RAG embeddings and compact,
 filterable metadata into the Pinecone serverless index.
 
+This script is location-independent within rag/scripts/. It discovers the
+containing rag/ root by walking upward from its own file location.
+
 INPUT
 -----
 rag-corpus/embeddings-v2/embeddings.npy
@@ -72,7 +75,18 @@ FRESHNESS_TIMEOUT_SECONDS = 120
 FRESHNESS_POLL_SECONDS = 3
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parent
+
+
+def find_rag_root(start: Path) -> Path:
+    for candidate in (start, *start.parents):
+        if candidate.name == "rag" and (candidate / "scripts").is_dir() and (candidate / "rag-corpus").is_dir():
+            return candidate
+    raise RuntimeError(
+        "Could not locate the enclosing rag/ root. Expected this script to live under rag/scripts/."
+    )
+
+
+PROJECT_ROOT = find_rag_root(SCRIPT_DIR)
 
 EMBEDDINGS_PATH = PROJECT_ROOT / "rag-corpus" / "embeddings-v2" / "embeddings.npy"
 EMBEDDING_RECORDS_PATH = (
