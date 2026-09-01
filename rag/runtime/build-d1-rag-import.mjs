@@ -67,7 +67,7 @@ async function main() {
     try {
       return JSON.parse(line);
     } catch (error) {
-      throw new Error(`Invalid JSON at documents.jsonl line ${index + 1}: ${error.message}`);
+      throw new Error(`Invalid JSON at documents.jsonl line ${index + 1}: ${error instanceof Error ? error.message : String(error)}`, { cause: error });
     }
   });
 
