@@ -37,7 +37,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['scripts/**/*.mjs', '*.config.mjs', 'vite.config.ts'],
+    files: ['scripts/**/*.mjs', 'rag/runtime/**/*.mjs', '*.config.mjs', 'vite.config.ts'],
     languageOptions: {
       ecmaVersion: 'latest',
       globals: globals.nodeBuiltin,

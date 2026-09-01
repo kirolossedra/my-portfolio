@@ -56,14 +56,16 @@ scripts/
 │   ├── pinecone/
 │   │   └── upsert-pinecone-v1.py
 │   └── cloudflare-vectorize/
-│       └── README.md
+│       ├── README.md
+│       └── publish-vectorize-v1.mjs
 └── 06-validation/
     ├── README.md
     ├── pinecone/
     │   ├── validate-pinecone-dense-parity-v1.py
     │   └── validate-pinecone-dense-parity-v2.py
     └── cloudflare-vectorize/
-        └── README.md
+        ├── README.md
+        └── validate-vectorize-dense-parity-v1.mjs
 ```
 
 ## Current Execution Order
@@ -81,12 +83,14 @@ python rag/scripts/01-corpus/prepare-rag-corpus.py
 
 `validate-pinecone-dense-parity-v1.py` is retained as historical debugging evidence. It is **not** the Pinecone acceptance gate.
 
-The Cloudflare migration currently branches at Stage 03:
+The Cloudflare migration path through hosted dense-backend validation is now:
 
 ```text
 node rag/scripts/03-embeddings/cloudflare/generate-rag-embeddings-v4-cloudflare.mjs
   -> rag-corpus/embeddings-cloudflare-v1/
-  -> Stage 05 Vectorize publication (next)
+  -> node rag/scripts/05-vector-index/cloudflare-vectorize/publish-vectorize-v1.mjs
+  -> portfolio-career-rag-cloudflare-v1
+  -> node rag/scripts/06-validation/cloudflare-vectorize/validate-vectorize-dense-parity-v1.mjs
 ```
 
 ## Stage 01 — Corpus
@@ -127,10 +131,12 @@ This is a reference/validation implementation, not the final Cloudflare producti
 
 Publishes validated vectors to a hosted vector backend.
 
-- `pinecone/`: current Pinecone publication family.
-- `cloudflare-vectorize/`: reserved for the Cloudflare-native replacement.
+- `pinecone/`: Nomic/Pinecone reference publication family.
+- `cloudflare-vectorize/`: implemented Cloudflare-native Qwen/Vectorize publication family.
 
-Backend generations are independent. A future `cloudflare-vectorize-v1` should not be named as a Pinecone revision.
+Cloudflare Vectorize v1 publishes the 2,808 validated 1,024-D Qwen vectors to `portfolio-career-rag-cloudflare-v1` through a rerunnable upsert flow, then requires exact remote ID-set and sampled storage/metadata fidelity.
+
+Backend generations are independent. Cloudflare Vectorize v1 is not a Pinecone revision.
 
 ## Stage 06 — Validation
 
@@ -141,7 +147,7 @@ Pinecone history:
 - v1: flawed acceptance criterion required ANN-reported scores to numerically match exhaustive local cosine within `0.001`.
 - v2: correct separation of ANN candidate parity from exact stored-vector fidelity; this is the active acceptance gate.
 
-Cloudflare Vectorize gets its own validator family under `06-validation/cloudflare-vectorize/`.
+Cloudflare Vectorize v1 has its own acceptance validator under `06-validation/cloudflare-vectorize/`. It validates exact ID inventory, stored-vector fidelity and five-query exact-local-vs-Vectorize dense parity using the Qwen runtime query contract.
 
 ## Cloudflare Embedding Migration
 
@@ -179,5 +185,5 @@ portfolio-career-rag-v1
 corpus-v1
 ```
 
-The Stage 03 Cloudflare embedding implementation now exists; Stage 05 Vectorize publication and Stage 06 Vectorize validation remain next.
+The Stage 03 Cloudflare embedding generator, Stage 05 Vectorize publisher and Stage 06 Vectorize dense-parity validator are implemented. The next code boundary after Stage 06 passes is the production Cloudflare Worker retrieval/reranking/generation path.
 

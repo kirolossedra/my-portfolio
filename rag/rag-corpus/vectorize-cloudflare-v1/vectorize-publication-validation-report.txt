@@ -1,0 +1,37 @@
+Portfolio GitHub RAG pipeline — Stage 05 / Cloudflare Vectorize publication v1
+
+STATUS: PASS
+
+SOURCE
+  Embedding generation: cloudflare-v1
+  Model: @cf/qwen/qwen3-embedding-0.6b
+  Documents/vectors: 2808
+  Repositories: 134/134
+  Dimensions: 1024
+  Matrix SHA-256: c7f1debee58a9a5635c4dd3490b1862b206a6ee63723d6e06fa0b463bcde402e
+  Records SHA-256: 8d5106a0ca3b0163b4ebba8fb2767c1714adecc9c4c229975eb08d039d3ac0ff
+
+VECTORIZE TARGET
+  Index: portfolio-career-rag-cloudflare-v1
+  Created by this run: NO (existing compatible index reused)
+  Metric: cosine
+  Namespace: NONE (index generation itself versions the corpus)
+  Execution mode: verify-only
+  Upsert batches: 0
+  get_by_ids batch limit used: 20
+  Upsert batch size: 500
+  Final processed mutation: 1b1c2256-8fd3-485e-808d-611d9b78dfab
+
+VALIDATION
+  Remote vector count: 2808/2808 — PASS
+  Exact remote ID set: 2808/2808 — PASS
+  ID-set proof: vector-count-plus-exhaustive-get-by-ids
+  list-vectors observed: 1000/2808 (incomplete snapshot; exhaustive get_by_ids fallback used)
+  Round-trip stored-vector samples: 32 — PASS
+  Max stored-vector absolute delta: 3.8828659176814995e-9
+  Compact metadata round-trip: PASS
+  Existing Nomic/Pinecone path modified: NO
+  Cloudflare credential persisted: NO
+
+NEXT STAGE
+  node rag/scripts/06-validation/cloudflare-vectorize/validate-vectorize-dense-parity-v1.mjs

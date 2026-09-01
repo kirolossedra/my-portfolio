@@ -1,0 +1,105 @@
+Portfolio GitHub RAG pipeline — Stage 06 / Cloudflare Vectorize dense parity v1
+
+STATUS: PASS
+
+IDENTITY
+  Index: portfolio-career-rag-cloudflare-v1
+  Model: @cf/qwen/qwen3-embedding-0.6b
+  Documents/vectors: 2808
+  Dimensions: 1024
+  Metric: cosine
+  Exact remote ID set: PASS
+  ID-set proof: vector-count-plus-exhaustive-get-by-ids
+  get_by_ids batch limit used: 20
+  list-vectors observed: 1000/2808 (incomplete snapshot; exhaustive get_by_ids fallback used)
+
+STORED-VECTOR FIDELITY
+  Stratified samples: 64
+  Max vector absolute delta: 5.069351188824456e-9
+  Max self-cosine delta: 2.663513964940023e-8
+  Metadata failures: 0
+  Result: PASS
+
+ANN / HIGH-PRECISION QUERY PARITY
+  Regression queries: 5
+  Minimum overlap@10: 100.0%
+  Minimum overlap@25: 96.0%
+  Minimum overlap@50: 100.0%
+  Maximum Vectorize reported-score delta: 0.0001331016759006376 (diagnostic; not a hard gate)
+  Reported-score diagnostic tolerance: 0.00002
+  Hard acceptance uses returned-vector cosine recomputation plus rank/candidate parity.
+  All hard query checks: PASS
+
+QUERY 1: What evidence shows experience with authorization architecture?
+  Same top-1 ID: true
+  Top-1 equivalent (same ID or exact-score tie): true
+  Top-1 exact-score tie delta: 0
+  Overlap@10: 10/10 (100.0%)
+  Overlap@25: 25/25 (100.0%)
+  Overlap@50: 50/50 (100.0%)
+  Max reported-score vs local-cosine delta: 0.00009846170856081526 (diagnostic outside 0.00002)
+  Max reported-score vs returned-vector cosine delta: 0.00009845323214530133
+  Max returned-vector cosine vs local-cosine delta: 1.4593664943163276e-8
+  Metadata failures: 0
+  Hard checks: top1_same_or_exact_tie=true, overlap_at_10=true, overlap_at_25=true, overlap_at_50=true, remote_reported_scores_finite=true, returned_value_cosine_fidelity=true, metadata_mapping=true
+  Result: PASS
+
+QUERY 2: How has the candidate's testing discipline evolved over time?
+  Same top-1 ID: true
+  Top-1 equivalent (same ID or exact-score tie): true
+  Top-1 exact-score tie delta: 0
+  Overlap@10: 10/10 (100.0%)
+  Overlap@25: 25/25 (100.0%)
+  Overlap@50: 50/50 (100.0%)
+  Max reported-score vs local-cosine delta: 0.00011524792559047814 (diagnostic outside 0.00002)
+  Max reported-score vs returned-vector cosine delta: 0.00011525564198777705
+  Max returned-vector cosine vs local-cosine delta: 1.0444280107435588e-8
+  Metadata failures: 0
+  Hard checks: top1_same_or_exact_tie=true, overlap_at_10=true, overlap_at_25=true, overlap_at_50=true, remote_reported_scores_finite=true, returned_value_cosine_fidelity=true, metadata_mapping=true
+  Result: PASS
+
+QUERY 3: Which projects provide the strongest evidence of backend engineering?
+  Same top-1 ID: true
+  Top-1 equivalent (same ID or exact-score tie): true
+  Top-1 exact-score tie delta: 0
+  Overlap@10: 10/10 (100.0%)
+  Overlap@25: 25/25 (100.0%)
+  Overlap@50: 50/50 (100.0%)
+  Max reported-score vs local-cosine delta: 0.00008501864940413384 (diagnostic outside 0.00002)
+  Max reported-score vs returned-vector cosine delta: 0.00008503328123454779
+  Max returned-vector cosine vs local-cosine delta: 1.7635024995854565e-8
+  Metadata failures: 0
+  Hard checks: top1_same_or_exact_tie=true, overlap_at_10=true, overlap_at_25=true, overlap_at_50=true, remote_reported_scores_finite=true, returned_value_cosine_fidelity=true, metadata_mapping=true
+  Result: PASS
+
+QUERY 4: What are the candidate's weakest engineering areas?
+  Same top-1 ID: true
+  Top-1 equivalent (same ID or exact-score tie): true
+  Top-1 exact-score tie delta: 0
+  Overlap@10: 10/10 (100.0%)
+  Overlap@25: 24/25 (96.0%)
+  Overlap@50: 50/50 (100.0%)
+  Max reported-score vs local-cosine delta: 0.0001331016759006376 (diagnostic outside 0.00002)
+  Max reported-score vs returned-vector cosine delta: 0.00013308819483726086
+  Max returned-vector cosine vs local-cosine delta: 1.452512482513768e-8
+  Metadata failures: 0
+  Hard checks: top1_same_or_exact_tie=true, overlap_at_10=true, overlap_at_25=true, overlap_at_50=true, remote_reported_scores_finite=true, returned_value_cosine_fidelity=true, metadata_mapping=true
+  Result: PASS
+
+QUERY 5: Which repositories demonstrate product ownership rather than only coding?
+  Same top-1 ID: true
+  Top-1 equivalent (same ID or exact-score tie): true
+  Top-1 exact-score tie delta: 0
+  Overlap@10: 10/10 (100.0%)
+  Overlap@25: 25/25 (100.0%)
+  Overlap@50: 50/50 (100.0%)
+  Max reported-score vs local-cosine delta: 0.0001148913194159995 (diagnostic outside 0.00002)
+  Max reported-score vs returned-vector cosine delta: 0.00011487396283749174
+  Max returned-vector cosine vs local-cosine delta: 1.7450833666998733e-8
+  Metadata failures: 0
+  Hard checks: top1_same_or_exact_tie=true, overlap_at_10=true, overlap_at_25=true, overlap_at_50=true, remote_reported_scores_finite=true, returned_value_cosine_fidelity=true, metadata_mapping=true
+  Result: PASS
+
+SCOPE
+  This validates the Vectorize dense backend against exact local cosine in the Qwen vector space.
+  Full production RAG ranking/generation validation belongs to the later Worker runtime integration stage.

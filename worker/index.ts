@@ -42,6 +42,7 @@ import {
   moderateOpinion,
   submitOpinion,
 } from './opinions-repository.ts';
+import { handleRagRequest } from './rag-runtime.ts';
 import {
   validateImagesWriteInput,
   validateImageWriteInput,
@@ -98,6 +99,10 @@ async function handleAuth(request: Request, env: Env, url: URL): Promise<Respons
 }
 
 async function handlePublic(request: Request, env: Env, url: URL): Promise<Response> {
+  if (url.pathname.startsWith('/api/rag/')) {
+    return handleRagRequest(request, env, url);
+  }
+
   if (request.method === 'GET' && url.pathname === '/api/health') {
     await env.DB.prepare('SELECT 1').first();
     return jsonResponse(env, {
@@ -248,6 +253,7 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
 
 function isRestrictedBrowserRoute(pathname: string): boolean {
   return pathname.startsWith('/api/admin/')
+    || pathname.startsWith('/api/rag/')
     || pathname === '/api/auth/exchange'
     || pathname === '/api/auth/session';
 }

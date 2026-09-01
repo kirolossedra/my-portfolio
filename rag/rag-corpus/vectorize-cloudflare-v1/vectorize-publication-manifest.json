@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0.0",
+  "pipeline_stage": 5,
+  "backend_family": "cloudflare-vectorize",
+  "backend_generation": "v1",
+  "generated_at_utc": "2026-09-01T00:55:08.942Z",
+  "script": "publish-vectorize-v1.mjs",
+  "source": {
+    "embedding_directory": "rag-corpus\\embeddings-cloudflare-v1",
+    "embedding_manifest": "rag-corpus\\embeddings-cloudflare-v1\\embedding-manifest.json",
+    "embeddings_npy_sha256": "c7f1debee58a9a5635c4dd3490b1862b206a6ee63723d6e06fa0b463bcde402e",
+    "embedding_records_sha256": "8d5106a0ca3b0163b4ebba8fb2767c1714adecc9c4c229975eb08d039d3ac0ff",
+    "document_count": 2808,
+    "repository_count": 134,
+    "provider_artifact_generation": "cloudflare-v1",
+    "embedding_provider": "cloudflare-workers-ai",
+    "embedding_model": "@cf/qwen/qwen3-embedding-0.6b",
+    "dimensions": 1024,
+    "dtype": "float32",
+    "similarity": "cosine"
+  },
+  "vectorize": {
+    "index_name": "portfolio-career-rag-cloudflare-v1",
+    "description": "Portfolio career RAG — Qwen3 evidence-document vectors v1",
+    "index_created_by_this_run": false,
+    "dimensions": 1024,
+    "metric": "cosine",
+    "namespace": null,
+    "vector_id_contract": "document_id",
+    "execution_mode": "verify-only",
+    "upsert_batch_size": 500,
+    "get_by_ids_max_per_request": 20,
+    "mutation_ids": [],
+    "vector_count_before": 2808,
+    "vector_count_after": 2808,
+    "processed_up_to_mutation": "1b1c2256-8fd3-485e-808d-611d9b78dfab",
+    "exact_remote_id_count": 2808,
+    "id_set_validation_method": "vector-count-plus-exhaustive-get-by-ids",
+    "list_vectors_observed_count": 1000,
+    "list_vectors_pages_observed": 1,
+    "list_vectors_reported_total": 2808,
+    "list_vectors_fallback_used": true
+  },
+  "authentication": {
+    "account_resolution": "wrangler whoami",
+    "credential_resolution": "wrangler oauth",
+    "secret_persisted_to_artifacts": false
+  },
+  "validation": {
+    "index_identity": "PASS",
+    "exact_remote_id_set": "PASS",
+    "vector_count": "PASS",
+    "mutation_visibility": "NOT_APPLICABLE_VERIFY_ONLY",
+    "stored_vector_round_trip": "PASS",
+    "metadata_round_trip": "PASS",
+    "round_trip_sample_count": 32,
+    "maximum_vector_absolute_delta": 3.8828659176814995e-9
+  },
+  "runtime_binding_candidate": {
+    "binding": "RAG_VECTOR_INDEX",
+    "index_name": "portfolio-career-rag-cloudflare-v1",
+    "note": "Do not add the Worker binding until the production runtime integration stage."
+  },
+  "next_stage": "rag/scripts/06-validation/cloudflare-vectorize/validate-vectorize-dense-parity-v1.mjs"
+}

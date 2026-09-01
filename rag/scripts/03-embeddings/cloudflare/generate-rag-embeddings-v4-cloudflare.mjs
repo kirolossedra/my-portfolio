@@ -218,8 +218,15 @@ function parseJsonFromCommand(stdout) {
 }
 
 function runWranglerJson(args) {
-  const executable = process.platform === "win32" ? "npx.cmd" : "npx";
-  const result = spawnSync(executable, ["wrangler", ...args], {
+  // On Windows, spawning a .cmd shim directly can fail with EINVAL on newer
+  // Node releases. Route the local npx/Wrangler shim through cmd.exe instead.
+  // The arguments supplied here are fixed internal Wrangler subcommands only.
+  const isWindows = process.platform === "win32";
+  const executable = isWindows ? (process.env.ComSpec || "cmd.exe") : "npx";
+  const commandArgs = isWindows
+    ? ["/d", "/s", "/c", `npx wrangler ${args.join(" ")}`]
+    : ["wrangler", ...args];
+  const result = spawnSync(executable, commandArgs, {
     cwd: PORTFOLIO_ROOT,
     encoding: "utf8",
     windowsHide: true,

@@ -10,6 +10,25 @@
     "FRONTEND_ORIGIN": "https://kirolos.dev",
     "GITHUB_CALLBACK_URL": "https://kirolos-portfolio-api.linc-ministry.workers.dev/api/auth/github/callback"
   },
+  "ai": {
+    "binding": "AI"
+  },
+  "vectorize": [
+    {
+      "binding": "RAG_INDEX",
+      "index_name": "portfolio-career-rag-cloudflare-v1"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "RAG_RATE_LIMITER",
+      "namespace_id": "26083101",
+      "simple": {
+        "limit": 10,
+        "period": 60
+      }
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

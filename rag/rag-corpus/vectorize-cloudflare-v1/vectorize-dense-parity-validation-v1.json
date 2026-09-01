@@ -1,0 +1,2756 @@
+{
+  "schema_version": "1.1.0",
+  "pipeline_stage": 6,
+  "backend_family": "cloudflare-vectorize",
+  "validation_generation": "v1",
+  "generated_at_utc": "2026-09-01T01:02:33.794Z",
+  "script": "validate-vectorize-dense-parity-v1.mjs",
+  "source": {
+    "embedding_generation": "cloudflare-v1",
+    "embeddings_npy_sha256": "c7f1debee58a9a5635c4dd3490b1862b206a6ee63723d6e06fa0b463bcde402e",
+    "embedding_records_sha256": "8d5106a0ca3b0163b4ebba8fb2767c1714adecc9c4c229975eb08d039d3ac0ff",
+    "documents": 2808,
+    "repositories": 134,
+    "model": "@cf/qwen/qwen3-embedding-0.6b",
+    "dimensions": 1024,
+    "query_input_mode": "queries",
+    "query_instruction": "Given a web search query, retrieve relevant passages that answer the query"
+  },
+  "vectorize": {
+    "index_name": "portfolio-career-rag-cloudflare-v1",
+    "dimensions": 1024,
+    "metric": "cosine",
+    "vector_count": 2808,
+    "high_precision_query_mode": "returnValues=true"
+  },
+  "authentication": {
+    "account_resolution": "wrangler whoami",
+    "credential_resolution": "wrangler oauth",
+    "secret_persisted_to_artifacts": false
+  },
+  "criteria": {
+    "minimum_overlap_at_10": 0.9,
+    "minimum_overlap_at_25": 0.9,
+    "minimum_overlap_at_50": 0.9,
+    "maximum_stored_vector_absolute_delta": 0.000001,
+    "maximum_recomputed_cosine_delta": 0.000001,
+    "vectorize_reported_score_delta_diagnostic_tolerance": 0.00002,
+    "vectorize_reported_score_delta_is_hard_gate": false,
+    "top1_same_or_exact_tie_required_for_each_query": true,
+    "top1_exact_tie_tolerance": 1e-7
+  },
+  "exact_remote_id_set": "PASS",
+  "exact_remote_id_set_method": "vector-count-plus-exhaustive-get-by-ids",
+  "list_vectors_observed_count": 1000,
+  "list_vectors_fallback_used": true,
+  "stored_vector_fidelity": {
+    "sample_count": 64,
+    "maximum_vector_absolute_delta": 5.069351188824456e-9,
+    "maximum_self_cosine_delta": 2.663513964940023e-8,
+    "metadata_failures": 0,
+    "pass": true
+  },
+  "regression_queries": [
+    {
+      "query": "What evidence shows experience with authorization architecture?",
+      "checks": {
+        "top1_same_or_exact_tie": true,
+        "overlap_at_10": true,
+        "overlap_at_25": true,
+        "overlap_at_50": true,
+        "remote_reported_scores_finite": true,
+        "returned_value_cosine_fidelity": true,
+        "metadata_mapping": true
+      },
+      "pass": true,
+      "same_top1_id": true,
+      "top1_equivalent": true,
+      "top1_exact_tie_delta": 0,
+      "overlap_at_10": {
+        "k": 10,
+        "shared": 10,
+        "ratio": 1
+      },
+      "overlap_at_25": {
+        "k": 25,
+        "shared": 25,
+        "ratio": 1
+      },
+      "overlap_at_50": {
+        "k": 50,
+        "shared": 50,
+        "ratio": 1
+      },
+      "maximum_remote_reported_score_delta": 0.00009846170856081526,
+      "maximum_reported_vs_returned_cosine_delta": 0.00009845323214530133,
+      "reported_score_delta_within_diagnostic_tolerance": false,
+      "maximum_returned_value_cosine_delta": 1.4593664943163276e-8,
+      "metadata_failures": 0,
+      "local_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-123-rd009",
+          "score": 0.5507214075521439
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-132-rd014",
+          "score": 0.5323602431299004
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-123-rd008",
+          "score": 0.5133597407624898
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-107-rd025",
+          "score": 0.5123643801449485
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-034-rd010",
+          "score": 0.511616814819077
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-133-rd012",
+          "score": 0.5095738231108139
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-031-rd007",
+          "score": 0.5095452466320337
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-038-rd014",
+          "score": 0.5036313640323924
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-130-rd007",
+          "score": 0.49859568241306773
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-013-rd019",
+          "score": 0.49841726401766195
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-123-rd027",
+          "score": 0.4977562554258823
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-013-rd026",
+          "score": 0.49669675633845634
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-037-rd009",
+          "score": 0.49533078879052594
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-003-rd035",
+          "score": 0.4924551146800772
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-038-rd011",
+          "score": 0.4917245541770808
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-039-rd008",
+          "score": 0.49098521399068196
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-123-rd006",
+          "score": 0.4892717818519391
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-107-rd016",
+          "score": 0.48768815807935845
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-017-rd012",
+          "score": 0.48570512570690266
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-127-rd003",
+          "score": 0.4829585372878747
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-107-rd003",
+          "score": 0.4801346083582799
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-134-rd004",
+          "score": 0.4776888293933539
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-126-rd005",
+          "score": 0.4765277672751767
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-123-rd026",
+          "score": 0.4736887657247461
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-126-rd019",
+          "score": 0.4720743728421729
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-038-rd012",
+          "score": 0.47191658476411846
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-134-rd020",
+          "score": 0.4688138764657676
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-107-rd022",
+          "score": 0.4685697256602474
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-107-rd026",
+          "score": 0.467856854449074
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-114-rd020",
+          "score": 0.46744736758633887
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-080-rd014",
+          "score": 0.4662156106547651
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-123-rd022",
+          "score": 0.46604603726459715
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-123-rd024",
+          "score": 0.4655198300341517
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-107-rd023",
+          "score": 0.46501265468891323
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-123-rd018",
+          "score": 0.46496961635253914
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-038-rd009",
+          "score": 0.46366396801331405
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-057-rd009",
+          "score": 0.4634793617085608
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-105-rd013",
+          "score": 0.4617638479500642
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-008-rd040",
+          "score": 0.4604964239591322
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-036-rd009",
+          "score": 0.4604186775982814
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-098-rd003",
+          "score": 0.45789725596061664
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-132-rd015",
+          "score": 0.4565584779710131
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-132-rd019",
+          "score": 0.4564497101072309
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-124-rd006",
+          "score": 0.4564322493382754
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-126-rd014",
+          "score": 0.4560331375772786
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-008-rd037",
+          "score": 0.45559908126212223
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-123-rd003",
+          "score": 0.4554906230324409
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-123-rd015",
+          "score": 0.45446145706247454
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-102-rd024",
+          "score": 0.45421851773786015
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-116-rd015",
+          "score": 0.4539474430823414
+        }
+      ],
+      "vectorize_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-123-rd009",
+          "score": 0.5507557
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-132-rd014",
+          "score": 0.53243
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-123-rd008",
+          "score": 0.513343
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-107-rd025",
+          "score": 0.51236624
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-034-rd010",
+          "score": 0.51163775
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-031-rd007",
+          "score": 0.5095649
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-133-rd012",
+          "score": 0.5095156
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-038-rd014",
+          "score": 0.5036557
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-130-rd007",
+          "score": 0.49858314
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-013-rd019",
+          "score": 0.49833846
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-123-rd027",
+          "score": 0.49779925
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-013-rd026",
+          "score": 0.49674293
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-037-rd009",
+          "score": 0.49528068
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-003-rd035",
+          "score": 0.4925063
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-038-rd011",
+          "score": 0.49175903
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-039-rd008",
+          "score": 0.4909977
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-123-rd006",
+          "score": 0.48924398
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-107-rd016",
+          "score": 0.48768958
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-017-rd012",
+          "score": 0.4856792
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-127-rd003",
+          "score": 0.48286355
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-107-rd003",
+          "score": 0.4800664
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-134-rd004",
+          "score": 0.47768945
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-126-rd005",
+          "score": 0.47650546
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-123-rd026",
+          "score": 0.473669
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-126-rd019",
+          "score": 0.47200844
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-038-rd012",
+          "score": 0.4719521
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-134-rd020",
+          "score": 0.46881956
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-107-rd022",
+          "score": 0.46851948
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-107-rd026",
+          "score": 0.46785495
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-114-rd020",
+          "score": 0.46751994
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-080-rd014",
+          "score": 0.46622542
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-123-rd022",
+          "score": 0.46601057
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-123-rd024",
+          "score": 0.46555838
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-107-rd023",
+          "score": 0.46501014
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-123-rd018",
+          "score": 0.46498403
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-038-rd009",
+          "score": 0.46364683
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-057-rd009",
+          "score": 0.4633809
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-105-rd013",
+          "score": 0.46172804
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-008-rd040",
+          "score": 0.4605276
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-036-rd009",
+          "score": 0.46042934
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-098-rd003",
+          "score": 0.4578811
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-132-rd015",
+          "score": 0.45647836
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-124-rd006",
+          "score": 0.45646527
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-132-rd019",
+          "score": 0.45643777
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-126-rd014",
+          "score": 0.45611197
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-008-rd037",
+          "score": 0.45558232
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-123-rd003",
+          "score": 0.45543715
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-123-rd015",
+          "score": 0.4544974
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-102-rd024",
+          "score": 0.4542325
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-116-rd015",
+          "score": 0.45396
+        }
+      ]
+    },
+    {
+      "query": "How has the candidate's testing discipline evolved over time?",
+      "checks": {
+        "top1_same_or_exact_tie": true,
+        "overlap_at_10": true,
+        "overlap_at_25": true,
+        "overlap_at_50": true,
+        "remote_reported_scores_finite": true,
+        "returned_value_cosine_fidelity": true,
+        "metadata_mapping": true
+      },
+      "pass": true,
+      "same_top1_id": true,
+      "top1_equivalent": true,
+      "top1_exact_tie_delta": 0,
+      "overlap_at_10": {
+        "k": 10,
+        "shared": 10,
+        "ratio": 1
+      },
+      "overlap_at_25": {
+        "k": 25,
+        "shared": 25,
+        "ratio": 1
+      },
+      "overlap_at_50": {
+        "k": 50,
+        "shared": 50,
+        "ratio": 1
+      },
+      "maximum_remote_reported_score_delta": 0.00011524792559047814,
+      "maximum_reported_vs_returned_cosine_delta": 0.00011525564198777705,
+      "reported_score_delta_within_diagnostic_tolerance": false,
+      "maximum_returned_value_cosine_delta": 1.0444280107435588e-8,
+      "metadata_failures": 0,
+      "local_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-049-rd006",
+          "score": 0.45210689131302173
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-019-rd009",
+          "score": 0.41472337213681504
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-116-rd024",
+          "score": 0.40483882668548776
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-016-rd004",
+          "score": 0.4018742523783138
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-097-rd015",
+          "score": 0.3988291212463485
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-021-rd021",
+          "score": 0.39482966670264696
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-013-rd020",
+          "score": 0.39202133279417656
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-019-rd008",
+          "score": 0.3867451253609319
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-017-rd010",
+          "score": 0.3800570917460397
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-009-rd010",
+          "score": 0.37995286612855855
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-130-rd012",
+          "score": 0.3798164544192746
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-022-rd015",
+          "score": 0.37956420331986995
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-022-rd008",
+          "score": 0.3775990743461532
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-016-rd007",
+          "score": 0.37656208240407635
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-009-rd009",
+          "score": 0.37647152366814823
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-016-rd016",
+          "score": 0.37642344336448913
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-006-rd035",
+          "score": 0.37602810803175907
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-108-rd011",
+          "score": 0.37312224122448806
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-097-rd018",
+          "score": 0.37178376747335323
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-013-rd019",
+          "score": 0.3709986271476606
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-118-rd004",
+          "score": 0.3696862747853568
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-116-rd004",
+          "score": 0.36955506946758615
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-009-rd032",
+          "score": 0.3686677252851339
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-129-rd017",
+          "score": 0.36844492134636403
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-007-rd012",
+          "score": 0.36772644506207314
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-021-rd018",
+          "score": 0.36515107757873955
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-016-rd006",
+          "score": 0.36485801963416414
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-051-rd012",
+          "score": 0.3636907940546125
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-106-rd012",
+          "score": 0.36241618430965045
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-031-rd012",
+          "score": 0.36224461281403064
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-009-rd042",
+          "score": 0.3618441234287432
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-049-rd012",
+          "score": 0.36152382954121187
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-009-rd005",
+          "score": 0.35934326810384565
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-110-rd012",
+          "score": 0.35832175308564634
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-004-rd023",
+          "score": 0.35820827632669866
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-008-rd031",
+          "score": 0.3582006979255905
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-131-rd014",
+          "score": 0.35806167060073363
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-116-rd025",
+          "score": 0.3578537205538004
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-009-rd025",
+          "score": 0.35685235068169374
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-118-rd021",
+          "score": 0.3566834033267617
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-032-rd007",
+          "score": 0.3564036372830502
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-012-rd029",
+          "score": 0.3551656556749185
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-103-rd004",
+          "score": 0.3539566161912922
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-106-rd004",
+          "score": 0.3538599283636481
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-124-rd013",
+          "score": 0.3529656709762262
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-049-rd009",
+          "score": 0.3522773453636238
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-116-rd017",
+          "score": 0.3522408356221538
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-016-rd009",
+          "score": 0.3522275149688381
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-125-rd018",
+          "score": 0.3498488678512282
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-021-rd005",
+          "score": 0.3489898440077987
+        }
+      ],
+      "vectorize_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-049-rd006",
+          "score": 0.45218343
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-019-rd009",
+          "score": 0.41464686
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-116-rd024",
+          "score": 0.40479258
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-016-rd004",
+          "score": 0.40189877
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-097-rd015",
+          "score": 0.39888152
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-021-rd021",
+          "score": 0.39475232
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-013-rd020",
+          "score": 0.39198864
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-019-rd008",
+          "score": 0.38674977
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-017-rd010",
+          "score": 0.38015097
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-009-rd010",
+          "score": 0.37988764
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-130-rd012",
+          "score": 0.37982672
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-022-rd015",
+          "score": 0.3794572
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-022-rd008",
+          "score": 0.37763223
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-016-rd007",
+          "score": 0.37663212
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-016-rd016",
+          "score": 0.3764739
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-009-rd009",
+          "score": 0.37643942
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-006-rd035",
+          "score": 0.37606934
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-108-rd011",
+          "score": 0.37312132
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-097-rd018",
+          "score": 0.37177083
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-013-rd019",
+          "score": 0.37101486
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-118-rd004",
+          "score": 0.36976072
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-116-rd004",
+          "score": 0.36959195
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-009-rd032",
+          "score": 0.36861652
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-129-rd017",
+          "score": 0.36849332
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-007-rd012",
+          "score": 0.36777788
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-021-rd018",
+          "score": 0.3651404
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-016-rd006",
+          "score": 0.36485547
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-051-rd012",
+          "score": 0.3636519
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-106-rd012",
+          "score": 0.36238942
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-031-rd012",
+          "score": 0.36235392
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-009-rd042",
+          "score": 0.36180818
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-049-rd012",
+          "score": 0.36147085
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-009-rd005",
+          "score": 0.35926384
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-110-rd012",
+          "score": 0.35835177
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-004-rd023",
+          "score": 0.35823035
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-008-rd031",
+          "score": 0.35808545
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-131-rd014",
+          "score": 0.35805842
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-116-rd025",
+          "score": 0.3578237
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-009-rd025",
+          "score": 0.3568984
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-118-rd021",
+          "score": 0.35664573
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-032-rd007",
+          "score": 0.35633835
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-012-rd029",
+          "score": 0.35522237
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-103-rd004",
+          "score": 0.35395086
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-106-rd004",
+          "score": 0.3538355
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-124-rd013",
+          "score": 0.35290945
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-049-rd009",
+          "score": 0.35227427
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-016-rd009",
+          "score": 0.35222805
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-116-rd017",
+          "score": 0.35217237
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-125-rd018",
+          "score": 0.34982952
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-021-rd005",
+          "score": 0.34896457
+        }
+      ]
+    },
+    {
+      "query": "Which projects provide the strongest evidence of backend engineering?",
+      "checks": {
+        "top1_same_or_exact_tie": true,
+        "overlap_at_10": true,
+        "overlap_at_25": true,
+        "overlap_at_50": true,
+        "remote_reported_scores_finite": true,
+        "returned_value_cosine_fidelity": true,
+        "metadata_mapping": true
+      },
+      "pass": true,
+      "same_top1_id": true,
+      "top1_equivalent": true,
+      "top1_exact_tie_delta": 0,
+      "overlap_at_10": {
+        "k": 10,
+        "shared": 10,
+        "ratio": 1
+      },
+      "overlap_at_25": {
+        "k": 25,
+        "shared": 25,
+        "ratio": 1
+      },
+      "overlap_at_50": {
+        "k": 50,
+        "shared": 50,
+        "ratio": 1
+      },
+      "maximum_remote_reported_score_delta": 0.00008501864940413384,
+      "maximum_reported_vs_returned_cosine_delta": 0.00008503328123454779,
+      "reported_score_delta_within_diagnostic_tolerance": false,
+      "maximum_returned_value_cosine_delta": 1.7635024995854565e-8,
+      "metadata_failures": 0,
+      "local_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-123-rd010",
+          "score": 0.6370153913826113
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-001-rd022",
+          "score": 0.5838170218491477
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-132-rd012",
+          "score": 0.5706988661744982
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-123-rd013",
+          "score": 0.5681011403345978
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-003-rd035",
+          "score": 0.5636416757108744
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-123-rd027",
+          "score": 0.5552756644437092
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-003-rd038",
+          "score": 0.5510002935037759
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-006-rd042",
+          "score": 0.5507873980203117
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-123-rd024",
+          "score": 0.5447778707563029
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-001-rd029",
+          "score": 0.5440433247954032
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-123-rd023",
+          "score": 0.5422463627900806
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-123-rd018",
+          "score": 0.5407477566103821
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-123-rd026",
+          "score": 0.5378903955915599
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-123-rd006",
+          "score": 0.5347693220642852
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-123-rd022",
+          "score": 0.5333882113581646
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-013-rd043",
+          "score": 0.5332977072700138
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-123-rd009",
+          "score": 0.5303672313505958
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-076-rd014",
+          "score": 0.5295480626104783
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-003-rd039",
+          "score": 0.5285057002115054
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-123-rd004",
+          "score": 0.5255717017502135
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-123-rd012",
+          "score": 0.5239104583858969
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-105-rd025",
+          "score": 0.5178048160439916
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-076-rd008",
+          "score": 0.5167035532088607
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-009-rd010",
+          "score": 0.5148661453098116
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-003-rd027",
+          "score": 0.5126203374542627
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-094-rd016",
+          "score": 0.5120453933537513
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-017-rd010",
+          "score": 0.5118241232323113
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-006-rd031",
+          "score": 0.5113550443758992
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-007-rd023",
+          "score": 0.5041008098442815
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-123-rd021",
+          "score": 0.5026103729087679
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-076-rd016",
+          "score": 0.5018423442883577
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-007-rd020",
+          "score": 0.5016655824964118
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-049-rd008",
+          "score": 0.5013429627118006
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-106-rd025",
+          "score": 0.500579567336405
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-132-rd003",
+          "score": 0.49749860049788514
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-003-rd015",
+          "score": 0.49589726241720855
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-100-rd025",
+          "score": 0.4947071182903111
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-133-rd012",
+          "score": 0.4935478041503074
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-132-rd017",
+          "score": 0.49308265293229586
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-128-rd014",
+          "score": 0.49212273919455385
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-002-rd034",
+          "score": 0.4910110910737642
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-132-rd009",
+          "score": 0.4905670301200463
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-123-rd003",
+          "score": 0.4903591996872616
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-123-rd015",
+          "score": 0.49024530654154896
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-007-rd010",
+          "score": 0.49002710118115533
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-107-rd026",
+          "score": 0.4888372722895843
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-007-rd027",
+          "score": 0.4871258731402645
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-132-rd014",
+          "score": 0.48675843640363503
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-031-rd001",
+          "score": 0.4863590080971259
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-059-rd008",
+          "score": 0.48606307148035527
+        }
+      ],
+      "vectorize_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-123-rd010",
+          "score": 0.6369599
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-001-rd022",
+          "score": 0.58377635
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-132-rd012",
+          "score": 0.5707001
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-123-rd013",
+          "score": 0.5681274
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-003-rd035",
+          "score": 0.5636694
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-123-rd027",
+          "score": 0.55521667
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-003-rd038",
+          "score": 0.551021
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-006-rd042",
+          "score": 0.5507815
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-123-rd024",
+          "score": 0.54481125
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-001-rd029",
+          "score": 0.5440468
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-123-rd023",
+          "score": 0.5422287
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-123-rd018",
+          "score": 0.54069877
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-123-rd026",
+          "score": 0.5379104
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-123-rd006",
+          "score": 0.5347063
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-123-rd022",
+          "score": 0.5333664
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-013-rd043",
+          "score": 0.53334796
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-123-rd009",
+          "score": 0.53045225
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-076-rd014",
+          "score": 0.52950794
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-003-rd039",
+          "score": 0.5284664
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-123-rd004",
+          "score": 0.5255593
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-123-rd012",
+          "score": 0.5239416
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-105-rd025",
+          "score": 0.517834
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-076-rd008",
+          "score": 0.5167465
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-009-rd010",
+          "score": 0.51486903
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-003-rd027",
+          "score": 0.5126581
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-094-rd016",
+          "score": 0.51200604
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-017-rd010",
+          "score": 0.51184684
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-006-rd031",
+          "score": 0.51143247
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-007-rd023",
+          "score": 0.504087
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-123-rd021",
+          "score": 0.50252604
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-076-rd016",
+          "score": 0.5019121
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-007-rd020",
+          "score": 0.501667
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-049-rd008",
+          "score": 0.5012999
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-106-rd025",
+          "score": 0.50061375
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-132-rd003",
+          "score": 0.49749792
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-003-rd015",
+          "score": 0.49584693
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-100-rd025",
+          "score": 0.49471432
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-133-rd012",
+          "score": 0.49348754
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-132-rd017",
+          "score": 0.493028
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-128-rd014",
+          "score": 0.4921112
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-002-rd034",
+          "score": 0.49097106
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-132-rd009",
+          "score": 0.49059185
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-123-rd003",
+          "score": 0.49030465
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-123-rd015",
+          "score": 0.4902774
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-007-rd010",
+          "score": 0.48995125
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-107-rd026",
+          "score": 0.48877522
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-007-rd027",
+          "score": 0.48710385
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-132-rd014",
+          "score": 0.48682162
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-031-rd001",
+          "score": 0.48629096
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-059-rd008",
+          "score": 0.4860353
+        }
+      ]
+    },
+    {
+      "query": "What are the candidate's weakest engineering areas?",
+      "checks": {
+        "top1_same_or_exact_tie": true,
+        "overlap_at_10": true,
+        "overlap_at_25": true,
+        "overlap_at_50": true,
+        "remote_reported_scores_finite": true,
+        "returned_value_cosine_fidelity": true,
+        "metadata_mapping": true
+      },
+      "pass": true,
+      "same_top1_id": true,
+      "top1_equivalent": true,
+      "top1_exact_tie_delta": 0,
+      "overlap_at_10": {
+        "k": 10,
+        "shared": 10,
+        "ratio": 1
+      },
+      "overlap_at_25": {
+        "k": 25,
+        "shared": 24,
+        "ratio": 0.96
+      },
+      "overlap_at_50": {
+        "k": 50,
+        "shared": 50,
+        "ratio": 1
+      },
+      "maximum_remote_reported_score_delta": 0.0001331016759006376,
+      "maximum_reported_vs_returned_cosine_delta": 0.00013308819483726086,
+      "reported_score_delta_within_diagnostic_tolerance": false,
+      "maximum_returned_value_cosine_delta": 1.452512482513768e-8,
+      "metadata_failures": 0,
+      "local_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-013-rd043",
+          "score": 0.5023972983240994
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-001-rd022",
+          "score": 0.4919050887441197
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-018-rd017",
+          "score": 0.4801512067036451
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-027-rd017",
+          "score": 0.4771624572216342
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-128-rd014",
+          "score": 0.47620071208526493
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-070-rd007",
+          "score": 0.4738890806690231
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-016-rd006",
+          "score": 0.4707179579003187
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-076-rd014",
+          "score": 0.46394193305071163
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-076-rd007",
+          "score": 0.4619492887967663
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-007-rd010",
+          "score": 0.4607193487021046
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-009-rd032",
+          "score": 0.45487678591955394
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-076-rd011",
+          "score": 0.4479512258913914
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-037-rd010",
+          "score": 0.4450662369213541
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-076-rd015",
+          "score": 0.44401692376938023
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-076-rd008",
+          "score": 0.4436439996188383
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-019-rd017",
+          "score": 0.43658927578866846
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-041-rd013",
+          "score": 0.4360260889352398
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-124-rd012",
+          "score": 0.4354081892125691
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-132-rd017",
+          "score": 0.4299838789877298
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-006-rd042",
+          "score": 0.42689267402260034
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-016-rd008",
+          "score": 0.42661140059644875
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-047-rd014",
+          "score": 0.4265411366469946
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-086-rd015",
+          "score": 0.426255988295194
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-039-rd009",
+          "score": 0.4249598878960288
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-076-rd017",
+          "score": 0.42450889774206224
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-003-rd039",
+          "score": 0.42450509597561714
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-123-rd022",
+          "score": 0.42234689007948706
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-007-rd021",
+          "score": 0.42087506823117404
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-123-rd024",
+          "score": 0.4204008691461251
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-130-rd014",
+          "score": 0.4185771741076372
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-008-rd034",
+          "score": 0.4183396052144238
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-002-rd034",
+          "score": 0.41801504542639367
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-124-rd011",
+          "score": 0.4171258474521238
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-019-rd015",
+          "score": 0.4158950963769107
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-034-rd011",
+          "score": 0.4131151858029199
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-006-rd031",
+          "score": 0.41164897523057853
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-027-rd026",
+          "score": 0.41133971339732267
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-123-rd010",
+          "score": 0.4111727869403142
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-016-rd013",
+          "score": 0.41006519450281004
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-098-rd009",
+          "score": 0.4096213569148289
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-053-rd007",
+          "score": 0.4095909182818504
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-091-rd013",
+          "score": 0.4084039563204708
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-031-rd008",
+          "score": 0.4080569102010016
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-094-rd016",
+          "score": 0.4077581749871026
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-123-rd013",
+          "score": 0.4073140924758802
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-006-rd040",
+          "score": 0.4064777348001027
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-054-rd010",
+          "score": 0.4063158929269215
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-076-rd013",
+          "score": 0.40540339877768183
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-003-rd037",
+          "score": 0.40307682244154314
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-076-rd006",
+          "score": 0.40287435166513313
+        }
+      ],
+      "vectorize_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-013-rd043",
+          "score": 0.5025304
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-001-rd022",
+          "score": 0.49190977
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-018-rd017",
+          "score": 0.48017535
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-027-rd017",
+          "score": 0.4770992
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-128-rd014",
+          "score": 0.47627798
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-070-rd007",
+          "score": 0.4739038
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-016-rd006",
+          "score": 0.47074702
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-076-rd014",
+          "score": 0.4638681
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-076-rd007",
+          "score": 0.46195307
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-007-rd010",
+          "score": 0.46065792
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-009-rd032",
+          "score": 0.45487475
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-076-rd011",
+          "score": 0.4479713
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-037-rd010",
+          "score": 0.44510224
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-076-rd015",
+          "score": 0.44394696
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-076-rd008",
+          "score": 0.44364208
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-019-rd017",
+          "score": 0.4366337
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-041-rd013",
+          "score": 0.4359557
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-124-rd012",
+          "score": 0.43536198
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-132-rd017",
+          "score": 0.42987558
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-006-rd042",
+          "score": 0.4268511
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-016-rd008",
+          "score": 0.42661816
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-047-rd014",
+          "score": 0.42652732
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-086-rd015",
+          "score": 0.42625785
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-039-rd009",
+          "score": 0.42499346
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-003-rd039",
+          "score": 0.42453757
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-076-rd017",
+          "score": 0.4244533
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-123-rd022",
+          "score": 0.42226994
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-007-rd021",
+          "score": 0.42092362
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-123-rd024",
+          "score": 0.42035592
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-130-rd014",
+          "score": 0.41863763
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-008-rd034",
+          "score": 0.41840926
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-002-rd034",
+          "score": 0.41801715
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-124-rd011",
+          "score": 0.41716892
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-019-rd015",
+          "score": 0.41590974
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-034-rd011",
+          "score": 0.41323787
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-006-rd031",
+          "score": 0.41165262
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-027-rd026",
+          "score": 0.41133195
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-123-rd010",
+          "score": 0.41113815
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-016-rd013",
+          "score": 0.41011268
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-053-rd007",
+          "score": 0.4095732
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-098-rd009",
+          "score": 0.4095452
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-091-rd013",
+          "score": 0.40840253
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-031-rd008",
+          "score": 0.40804768
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-094-rd016",
+          "score": 0.40769026
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-123-rd013",
+          "score": 0.4073087
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-006-rd040",
+          "score": 0.40649286
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-054-rd010",
+          "score": 0.40636137
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-076-rd013",
+          "score": 0.40539768
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-003-rd037",
+          "score": 0.40310097
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-076-rd006",
+          "score": 0.40290457
+        }
+      ]
+    },
+    {
+      "query": "Which repositories demonstrate product ownership rather than only coding?",
+      "checks": {
+        "top1_same_or_exact_tie": true,
+        "overlap_at_10": true,
+        "overlap_at_25": true,
+        "overlap_at_50": true,
+        "remote_reported_scores_finite": true,
+        "returned_value_cosine_fidelity": true,
+        "metadata_mapping": true
+      },
+      "pass": true,
+      "same_top1_id": true,
+      "top1_equivalent": true,
+      "top1_exact_tie_delta": 0,
+      "overlap_at_10": {
+        "k": 10,
+        "shared": 10,
+        "ratio": 1
+      },
+      "overlap_at_25": {
+        "k": 25,
+        "shared": 25,
+        "ratio": 1
+      },
+      "overlap_at_50": {
+        "k": 50,
+        "shared": 50,
+        "ratio": 1
+      },
+      "maximum_remote_reported_score_delta": 0.0001148913194159995,
+      "maximum_reported_vs_returned_cosine_delta": 0.00011487396283749174,
+      "reported_score_delta_within_diagnostic_tolerance": false,
+      "maximum_returned_value_cosine_delta": 1.7450833666998733e-8,
+      "metadata_failures": 0,
+      "local_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-105-rd008",
+          "score": 0.6764711898525818
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-132-rd007",
+          "score": 0.6655962402519805
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-103-rd022",
+          "score": 0.6457843675692204
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-108-rd008",
+          "score": 0.6443025519581438
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-134-rd016",
+          "score": 0.643728283248392
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-126-rd019",
+          "score": 0.6423996529726547
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-133-rd013",
+          "score": 0.641531108680584
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-110-rd022",
+          "score": 0.6380457335642712
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-100-rd021",
+          "score": 0.6378206889885455
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-102-rd021",
+          "score": 0.6329102713578977
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-003-rd026",
+          "score": 0.6220679029903323
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-130-rd008",
+          "score": 0.6206699550946401
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-105-rd012",
+          "score": 0.6179895420025704
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-010-rd033",
+          "score": 0.6162013082758341
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-132-rd003",
+          "score": 0.6133664203498717
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-012-rd025",
+          "score": 0.6112189304772349
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-111-rd021",
+          "score": 0.6079361456692541
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-134-rd009",
+          "score": 0.6068283590861785
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-107-rd022",
+          "score": 0.604555085744445
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-011-rd032",
+          "score": 0.5975225772345704
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-133-rd001",
+          "score": 0.5962793230804201
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-002-rd034",
+          "score": 0.5935115967274791
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-095-rd003",
+          "score": 0.5925059861300391
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-133-rd012",
+          "score": 0.5920654646698578
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-123-rd004",
+          "score": 0.5895573889262162
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-133-rd007",
+          "score": 0.5892841859429252
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-130-rd004",
+          "score": 0.5882007464880092
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-123-rd022",
+          "score": 0.587917090401615
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-133-rd014",
+          "score": 0.5858216981282027
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-096-rd003",
+          "score": 0.585728182226577
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-077-rd008",
+          "score": 0.5853624425126444
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-134-rd011",
+          "score": 0.5840232776176576
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-012-rd010",
+          "score": 0.5831997530227145
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-088-rd003",
+          "score": 0.5820617629823588
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-125-rd012",
+          "score": 0.5818033765226973
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-098-rd003",
+          "score": 0.5809332457065357
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-106-rd021",
+          "score": 0.5808401364099881
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-105-rd022",
+          "score": 0.5806176617359028
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-123-rd018",
+          "score": 0.5797702288993
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-077-rd016",
+          "score": 0.5796373881483458
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-051-rd013",
+          "score": 0.5790658396300811
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-133-rd018",
+          "score": 0.5786876876368158
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-010-rd034",
+          "score": 0.5773155449654475
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-006-rd032",
+          "score": 0.5772742411183386
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-132-rd013",
+          "score": 0.5766801345790367
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-007-rd020",
+          "score": 0.5753653382225997
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-007-rd014",
+          "score": 0.5751975584477212
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-105-rd003",
+          "score": 0.5750203637196282
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-006-rd040",
+          "score": 0.5744201728057011
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-130-rd002",
+          "score": 0.5737633948052991
+        }
+      ],
+      "vectorize_top_50": [
+        {
+          "rank": 1,
+          "document_id": "repo-105-rd008",
+          "score": 0.67643625
+        },
+        {
+          "rank": 2,
+          "document_id": "repo-132-rd007",
+          "score": 0.6655981
+        },
+        {
+          "rank": 3,
+          "document_id": "repo-103-rd022",
+          "score": 0.6458176
+        },
+        {
+          "rank": 4,
+          "document_id": "repo-108-rd008",
+          "score": 0.6442396
+        },
+        {
+          "rank": 5,
+          "document_id": "repo-134-rd016",
+          "score": 0.6436884
+        },
+        {
+          "rank": 6,
+          "document_id": "repo-126-rd019",
+          "score": 0.6424157
+        },
+        {
+          "rank": 7,
+          "document_id": "repo-133-rd013",
+          "score": 0.641646
+        },
+        {
+          "rank": 8,
+          "document_id": "repo-110-rd022",
+          "score": 0.6380405
+        },
+        {
+          "rank": 9,
+          "document_id": "repo-100-rd021",
+          "score": 0.63778675
+        },
+        {
+          "rank": 10,
+          "document_id": "repo-102-rd021",
+          "score": 0.63287205
+        },
+        {
+          "rank": 11,
+          "document_id": "repo-003-rd026",
+          "score": 0.6221246
+        },
+        {
+          "rank": 12,
+          "document_id": "repo-130-rd008",
+          "score": 0.6206735
+        },
+        {
+          "rank": 13,
+          "document_id": "repo-105-rd012",
+          "score": 0.6179685
+        },
+        {
+          "rank": 14,
+          "document_id": "repo-010-rd033",
+          "score": 0.6162747
+        },
+        {
+          "rank": 15,
+          "document_id": "repo-132-rd003",
+          "score": 0.6134166
+        },
+        {
+          "rank": 16,
+          "document_id": "repo-012-rd025",
+          "score": 0.61127406
+        },
+        {
+          "rank": 17,
+          "document_id": "repo-111-rd021",
+          "score": 0.60787755
+        },
+        {
+          "rank": 18,
+          "document_id": "repo-134-rd009",
+          "score": 0.60684484
+        },
+        {
+          "rank": 19,
+          "document_id": "repo-107-rd022",
+          "score": 0.60452586
+        },
+        {
+          "rank": 20,
+          "document_id": "repo-011-rd032",
+          "score": 0.5975201
+        },
+        {
+          "rank": 21,
+          "document_id": "repo-133-rd001",
+          "score": 0.5962766
+        },
+        {
+          "rank": 22,
+          "document_id": "repo-002-rd034",
+          "score": 0.5935141
+        },
+        {
+          "rank": 23,
+          "document_id": "repo-095-rd003",
+          "score": 0.5925611
+        },
+        {
+          "rank": 24,
+          "document_id": "repo-133-rd012",
+          "score": 0.5921171
+        },
+        {
+          "rank": 25,
+          "document_id": "repo-123-rd004",
+          "score": 0.58951473
+        },
+        {
+          "rank": 26,
+          "document_id": "repo-133-rd007",
+          "score": 0.5893031
+        },
+        {
+          "rank": 27,
+          "document_id": "repo-130-rd004",
+          "score": 0.5882414
+        },
+        {
+          "rank": 28,
+          "document_id": "repo-123-rd022",
+          "score": 0.58789265
+        },
+        {
+          "rank": 29,
+          "document_id": "repo-133-rd014",
+          "score": 0.5858082
+        },
+        {
+          "rank": 30,
+          "document_id": "repo-096-rd003",
+          "score": 0.585728
+        },
+        {
+          "rank": 31,
+          "document_id": "repo-077-rd008",
+          "score": 0.58542633
+        },
+        {
+          "rank": 32,
+          "document_id": "repo-134-rd011",
+          "score": 0.58399427
+        },
+        {
+          "rank": 33,
+          "document_id": "repo-012-rd010",
+          "score": 0.58329064
+        },
+        {
+          "rank": 34,
+          "document_id": "repo-088-rd003",
+          "score": 0.5820932
+        },
+        {
+          "rank": 35,
+          "document_id": "repo-125-rd012",
+          "score": 0.5818142
+        },
+        {
+          "rank": 36,
+          "document_id": "repo-106-rd021",
+          "score": 0.58091307
+        },
+        {
+          "rank": 37,
+          "document_id": "repo-098-rd003",
+          "score": 0.58091277
+        },
+        {
+          "rank": 38,
+          "document_id": "repo-105-rd022",
+          "score": 0.5806273
+        },
+        {
+          "rank": 39,
+          "document_id": "repo-123-rd018",
+          "score": 0.57978606
+        },
+        {
+          "rank": 40,
+          "document_id": "repo-077-rd016",
+          "score": 0.5796437
+        },
+        {
+          "rank": 41,
+          "document_id": "repo-051-rd013",
+          "score": 0.5790725
+        },
+        {
+          "rank": 42,
+          "document_id": "repo-133-rd018",
+          "score": 0.57868296
+        },
+        {
+          "rank": 43,
+          "document_id": "repo-010-rd034",
+          "score": 0.57729876
+        },
+        {
+          "rank": 44,
+          "document_id": "repo-006-rd032",
+          "score": 0.5772915
+        },
+        {
+          "rank": 45,
+          "document_id": "repo-132-rd013",
+          "score": 0.5766823
+        },
+        {
+          "rank": 46,
+          "document_id": "repo-007-rd020",
+          "score": 0.5753541
+        },
+        {
+          "rank": 47,
+          "document_id": "repo-007-rd014",
+          "score": 0.57523066
+        },
+        {
+          "rank": 48,
+          "document_id": "repo-105-rd003",
+          "score": 0.5750174
+        },
+        {
+          "rank": 49,
+          "document_id": "repo-006-rd040",
+          "score": 0.574446
+        },
+        {
+          "rank": 50,
+          "document_id": "repo-130-rd002",
+          "score": 0.5737336
+        }
+      ]
+    }
+  ],
+  "overall_result": "PASS"
+}
