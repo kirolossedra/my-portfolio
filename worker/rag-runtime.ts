@@ -199,29 +199,96 @@ Grounding rules:
 - Prefer concise, evidence-dense answers. Explain uncertainty where it materially changes the claim.
 - Never claim that a repository proves something that its evidence explicitly bounds or denies.`;
 
-function extractGenerationText(raw: unknown): string {
+export const RAG_GENERATION_OPTIONS = {
+  temperature: 0.2,
+  top_p: 0.9,
+  max_completion_tokens: 700,
+  chat_template_kwargs: {
+    enable_thinking: false,
+  },
+} as const;
+
+function valueType(value: unknown): string {
+  if (value === null) return 'null';
+  if (Array.isArray(value)) return 'array';
+  return typeof value;
+}
+
+function extractVisibleContent(content: unknown): string {
+  if (typeof content === 'string') return content;
+  if (!Array.isArray(content)) return '';
+
+  return content.map((entry) => {
+    const block = asObject(entry);
+    if (!block || (block.type !== 'text' && block.type !== 'output_text')) return '';
+    return typeof block.text === 'string' ? block.text : '';
+  }).join('');
+}
+
+export function describeGenerationResponse(raw: unknown): Record<string, unknown> {
   const object = asObject(raw);
-  if (typeof object?.response === 'string' && object.response.trim()) return object.response.trim();
+  const choices = Array.isArray(object?.choices) ? object.choices : [];
+  const first = asObject(choices[0]);
+  const message = asObject(first?.message);
+  const content = message?.content;
+  const usage = asObject(object?.usage);
+
+  return {
+    responseType: valueType(raw),
+    topLevelKeys: object ? Object.keys(object).sort() : [],
+    choicesLength: choices.length,
+    firstChoiceKeys: first ? Object.keys(first).sort() : [],
+    messageKeys: message ? Object.keys(message).sort() : [],
+    contentType: valueType(content),
+    contentBlockTypes: Array.isArray(content)
+      ? content.map((entry) => {
+        const block = asObject(entry);
+        return typeof block?.type === 'string' ? block.type : valueType(entry);
+      })
+      : [],
+    hasReasoningContent: Boolean(message && 'reasoning_content' in message),
+    reasoningContentType: message && 'reasoning_content' in message
+      ? valueType(message.reasoning_content)
+      : 'absent',
+    finishReason: typeof first?.finish_reason === 'string' ? first.finish_reason : null,
+    usage: usage
+      ? Object.fromEntries(
+        Object.entries(usage).filter(([key, value]) => key.includes('token') && typeof value === 'number'),
+      )
+      : null,
+  };
+}
+
+export function extractGenerationText(raw: unknown): string {
+  const object = asObject(raw);
+  const response = extractVisibleContent(object?.response);
+  if (response.trim()) return response.trim();
 
   const choices = Array.isArray(object?.choices) ? object.choices : [];
   const first = asObject(choices[0]);
   const message = asObject(first?.message);
-  if (typeof message?.content === 'string' && message.content.trim()) return message.content.trim();
-  if (typeof first?.text === 'string' && first.text.trim()) return first.text.trim();
+  const content = extractVisibleContent(message?.content);
+  if (content.trim()) return content.trim();
+  const text = extractVisibleContent(first?.text);
+  if (text.trim()) return text.trim();
 
   throw new HttpError(502, 'generation_invalid', 'Workers AI returned an unrecognized generation response.');
 }
 
-function extractGenerationDelta(raw: unknown): string {
+export function extractGenerationDelta(raw: unknown): string {
   const object = asObject(raw);
-  if (typeof object?.response === 'string') return object.response;
+  const response = extractVisibleContent(object?.response);
+  if (response) return response;
   const choices = Array.isArray(object?.choices) ? object.choices : [];
   const first = asObject(choices[0]);
   const delta = asObject(first?.delta);
-  if (typeof delta?.content === 'string') return delta.content;
+  const deltaContent = extractVisibleContent(delta?.content);
+  if (deltaContent) return deltaContent;
   const message = asObject(first?.message);
-  if (typeof message?.content === 'string') return message.content;
-  if (typeof first?.text === 'string') return first.text;
+  const messageContent = extractVisibleContent(message?.content);
+  if (messageContent) return messageContent;
+  const text = extractVisibleContent(first?.text);
+  if (text) return text;
   return '';
 }
 
@@ -382,9 +449,7 @@ async function handleStreamQuery(request: Request, env: Env): Promise<Response> 
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: buildEvidencePrompt(question, retrieval.selected) },
     ],
-    temperature: 0.2,
-    top_p: 0.9,
-    max_completion_tokens: 700,
+    ...RAG_GENERATION_OPTIONS,
     stream: true,
   });
 
@@ -474,10 +539,9 @@ async function handleQuery(request: Request, env: Env): Promise<Response> {
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: buildEvidencePrompt(question, retrieval.selected) },
     ],
-    temperature: 0.2,
-    top_p: 0.9,
-    max_completion_tokens: 700,
+    ...RAG_GENERATION_OPTIONS,
   });
+  console.info('rag_generation_response_shape', describeGenerationResponse(generationRaw));
   const answer = extractGenerationText(generationRaw);
   const citations = retrieval.selected.map(citationFromEvidence);
   const citedEvidenceLabels = extractCitedEvidenceLabels(answer, citations.length);
