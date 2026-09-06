@@ -65,6 +65,9 @@ function mockDatabase(): D1Database {
 function env(overrides: Partial<Env> = {}): Env {
   return {
     DB: mockDatabase(),
+    AI: {} as Ai,
+    RAG_INDEX: {} as VectorizeIndex,
+    RAG_RATE_LIMITER: {} as RateLimit,
     FRONTEND_ORIGIN: 'https://kirolos.dev',
     GITHUB_CALLBACK_URL: 'https://api.example.test/api/auth/github/callback',
     GITHUB_CLIENT_ID: 'client-id',
