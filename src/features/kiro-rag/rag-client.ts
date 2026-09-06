@@ -76,7 +76,7 @@ function parsePayload<T>(data: string, event: string): T {
     return JSON.parse(data) as T;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    throw new Error(`Malformed RAG ${event} event: ${message}`);
+    throw new Error(`Malformed RAG ${event} event: ${message}`, { cause: error });
   }
 }
 
