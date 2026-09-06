@@ -1,166 +1,245 @@
-# Active RAG Pipeline - End to End
+# Active RAG Pipeline — Production End to End
 
-## Table of Contents
+**Status:** Cloudflare-native backend is deployed and validated. Frontend integration remains pending.
 
-- [Pipeline Contract](#pipeline-contract)
-- [Stage 0 - Source Analysis](#stage-0-source-analysis)
-- [Stage 1 - Normalize](#stage-1-normalize)
-- [Stage 2 - Compile Evidence Documents](#stage-2-compile-evidence-documents)
-- [Stage 3 - Embed](#stage-3-embed)
-- [Stage 4 - Offline Evidence-Aware Retrieval](#stage-4-offline-evidence-aware-retrieval)
-- [Stage 5 - Pinecone Serving Copy](#stage-5-pinecone-serving-copy)
-- [Stage 6 - Python HTTP Runtime](#stage-6-python-http-runtime)
-- [Stage 7 - Grounded Generation (Selected / Not Integrated)](#stage-7-grounded-generation-selected-not-integrated)
-- [Stage 8 - Kiro Browser Integration (Not Integrated)](#stage-8-kiro-browser-integration-not-integrated)
-- [Candidate Stage 9 - Cloudflare-Native Runtime Migration](#candidate-stage-9-cloudflare-native-runtime-migration)
-- [Migration Validation Order](#migration-validation-order)
-
-<a id="pipeline-contract"></a>
-## Pipeline Contract
+## Pipeline contract
 
 ```mermaid
 flowchart TD
-    A[134-repository analysis corpus] --> B[Step 1 canonical normalization]
+    A[134-repository analysis corpus] --> B[Canonical normalization]
     B --> C[2,808 evidence-aware retrieval documents]
-    C --> D[Nomic v1.5 768-D native embeddings]
-    D --> E[Layer norm + first 512 dims + L2 normalization]
-    E --> F[Pinecone namespace corpus-v1]
-    Q[Question] --> Q1[search_query: Nomic 512-D embedding]
-    Q1 --> F
-    Q --> BM[BM25]
-    Q --> MD[metadata / topic / skill recall]
-    F --> RRF[RRF + normalized channel scores]
-    BM --> RRF
-    MD --> RRF
-    RRF --> Gate[primary-concept gate]
-    Gate --> EQ[evidence class / polarity / specificity]
-    EQ --> CE[CrossEncoder rerank: top 120]
-    CE --> Neg[intent-aware positive/negative gate]
-    Neg --> DD[semantic dedupe + max 2/repository]
-    DD --> Top[Top evidence + full provenance]
-    Top -. planned .-> Gen[Gemini 2.5 Flash-Lite]
-    Gen -. planned .-> UI[Kiro RAG portfolio UI]
+    C --> D[Qwen3 document embeddings / 1,024-D]
+    D --> V[Cloudflare Vectorize]
+    C --> I[D1 import builder]
+    I --> DB[Cloudflare D1]
+
+    Q[Question] --> W[Cloudflare Worker]
+    W --> QE[Qwen3 query embedding]
+    QE --> V
+    V --> T40[Top 40 dense matches]
+    T40 --> DB
+    DB --> H[Hydrated evidence documents]
+    H --> R[BGE reranker / top 20]
+    R --> S[Evidence scoring + repository diversity]
+    S --> T8[Final 8 evidence candidates]
+    T8 --> G[GLM-4.7-Flash, thinking disabled]
+    G --> O[Grounded answer + E# citations]
 ```
 
-<a id="stage-0-source-analysis"></a>
-## Stage 0 - Source Analysis
+## Stage 0 — Repository source analysis
 
-The eleven `other/repositories-*.md` files are not ad-hoc scraped README text. They are longitudinal evidence reports with explicit provenance, limitations, chronology and skill evidence. Source completeness is 134/134.
+The repository-analysis corpus under `rag/other/` contains chronological, project-specific evidence reports for all 134 repositories. These reports preserve evidence, limitations, ratings and source provenance rather than acting as plain scraped README text.
 
-<a id="stage-1-normalize"></a>
-## Stage 1 - Normalize
+## Stage 1 — Normalize
 
-`prepare-rag-corpus.py` parses source reports into per-repository JSON and combined JSONL. Historical output is valid. Because the script moved away from its input files, do not rerun until its path discovery is repaired.
+The normalization layer converts the source analyses into structured per-repository/combined data. Existing normalized outputs are valid. The normalizer's path-discovery behavior after historical folder moves remains a rebuild caveat; see `known-issues.md` before rerunning a full Stage 1 rebuild.
 
-<a id="stage-2-compile-evidence-documents"></a>
-## Stage 2 - Compile Evidence Documents
+## Stage 2 — Compile evidence-aware retrieval documents
 
-The compiler examines 77,612 blocks, fingerprints repeated structure, suppresses 39,342 template blocks and 7,340 tiny generic blocks in the derived layer, retains 30,930 useful blocks and compiles 2,808 retrieval documents across five evidence classes and eight semantic areas.
-
-<a id="stage-3-embed"></a>
-## Stage 3 - Embed
-
-Pinned Nomic v1.5 produces 768 native dimensions, then `layer_norm -> first 512 -> L2`. All 2,808 vectors are finite/nonzero/normalized. Document and query prefixes must remain asymmetric (`search_document:` / `search_query:`).
-
-<a id="stage-4-offline-evidence-aware-retrieval"></a>
-## Stage 4 - Offline Evidence-Aware Retrieval
-
-Exact dense scores + BM25 + metadata -> RRF -> concept gate -> evidence score -> CrossEncoder -> intent-aware polarity -> dedupe/diversity. This exact-matrix implementation is the reference logic.
-
-<a id="stage-5-pinecone-serving-copy"></a>
-## Stage 5 - Pinecone Serving Copy
-
-All vectors are copied into a 512-D cosine serverless index. Dense parity v2 proves candidate overlap and exact fetched-vector fidelity. Pinecone is serving infrastructure, not canonical source.
-
-<a id="stage-6-python-http-runtime"></a>
-## Stage 6 - Python HTTP Runtime
-
-The runtime keeps text/provenance/BM25/metadata/gates/CrossEncoder local and replaces exact dense candidate selection with Pinecone ANN. It fetches candidate vectors for dedupe. Current endpoints provide evidence retrieval only.
-
-<a id="stage-7-grounded-generation-selected-not-integrated"></a>
-## Stage 7 - Grounded Generation (Selected / Not Integrated)
-
-Gemini 2.5 Flash-Lite will synthesize a controlled evidence packet. This stage must preserve uncertainty/limitations and cannot invent repository evidence.
-
-<a id="stage-8-kiro-browser-integration-not-integrated"></a>
-## Stage 8 - Kiro Browser Integration (Not Integrated)
-
-The existing Kiro GLB UI already has semantic RAG states. Network events should replace the demo timers while preserving the model contract.
-
-<a id="candidate-stage-9-cloudflare-native-runtime-migration"></a>
-## Candidate Stage 9 - Cloudflare-Native Runtime Migration
-
-**Status: candidate only; the active pipeline above remains authoritative until regression gates pass.**
-
-The target is to remove the public Python/Docker service, not to delete Python from offline tooling.
-
-```mermaid
-flowchart TD
-    C[Same 2,808 evidence-aware documents] --> QE[Workers AI Qwen3 document embeddings]
-    QE --> QP[New Pinecone 1024-D candidate index]
-    U[User question] --> W[Cloudflare Worker]
-    W --> QQ[Workers AI Qwen3 query embedding]
-    QQ --> QP
-    W --> FTS[D1 FTS5 lexical recall]
-    W --> META[D1 metadata/topic/skill recall]
-    QP --> F[TypeScript fusion + gates]
-    FTS --> F
-    META --> F
-    F --> RR[Workers AI BGE reranker]
-    RR --> DD[TypeScript polarity + semantic dedupe + repo diversity]
-    DD --> T[Top 10 evidence + provenance]
-    T -. separate quota .-> G[Gemini 2.5 Flash-Lite]
-    G --> UI[Kiro RAG UI]
-```
-
-### Why Pinecone is retained in the first candidate
-
-The current dense stage needs `top 500`. Cloudflare Vectorize currently returns at most `100` results without values/metadata and `50` with values/full metadata. A simultaneous model + vector-DB migration would therefore change both the embedding space and recall breadth.
-
-The first candidate should instead isolate the embedding-model change:
+Current authority:
 
 ```text
-Nomic 512 + current Pinecone       = baseline
-Qwen 1024 + new Pinecone index     = candidate
+rag/rag-corpus/retrieval-documents-v2/documents.jsonl
 ```
 
-### Full Python responsibility decomposition
+Output:
 
-Replacing Nomic alone is insufficient. Current Python also owns:
+```text
+2,808 documents
+134 repositories
+schema 2.0.0
+SHA-256 a10c2b2d9d4e79e8a6e6629cc15b18cb1123513b45df44dc73e668b44c1bee58
+```
 
-- BM25;
-- metadata/topic/skill recall;
-- fusion and normalized channel scoring;
-- primary-concept/evidence/polarity gates;
-- CrossEncoder reranking;
-- semantic dedupe;
-- max-per-repository diversity;
-- response/provenance shaping.
+Documents encode retrieval class, semantic area, evidence polarity/level, specificity, topics, skills, source fragments and authoritative evidence text.
 
-Each must be ported or replaced and then regression-tested before Stage 6 can be retired.
+## Stage 3 — Cloudflare Workers AI document embeddings
 
-<a id="migration-validation-order"></a>
-## Migration Validation Order
+Implementation:
 
-1. [ ] Generate Qwen document embeddings into a **new** artifact directory.
-2. [ ] Create a **new** 1,024-D Pinecone candidate index; never overwrite the Nomic index.
-3. [ ] Compare dense and end-task retrieval against the existing validation queries.
-4. [ ] Capture Pinecone `usage.read_units` for top-500 query + dedupe fetch behavior.
-5. [ ] If Qwen passes, port lexical/metadata recall to D1 and deterministic scoring/gates to TypeScript.
-6. [ ] Compare D1 FTS5 behavior against current Python BM25; do not assume equivalence.
-7. [ ] Evaluate Workers AI `@cf/baai/bge-reranker-base` against the current CrossEncoder.
-8. [ ] Measure actual Workers AI neurons per complete query; reranking is expected to dominate query embedding.
-9. [ ] Only after full backend parity, wire `src/kiro-rag-page.tsx` to the live Worker endpoint.
-10. [ ] Only after production telemetry is satisfactory, retire the production Python/Docker path.
-11. [ ] Evaluate Pinecone vs Vectorize later as an independent database decision.
+```text
+rag/scripts/03-embeddings/cloudflare/generate-rag-embeddings-v4-cloudflare.mjs
+```
 
-Full caps, calculations, rejected deployment paths and future file map:
+Artifacts:
 
-- [cloudflare-native-zero-cost-migration.md](cloudflare-native-zero-cost-migration.md)
+```text
+rag/rag-corpus/embeddings-cloudflare-v1/
+```
 
-## Related Documentation
+Contract:
 
-- Parent: [RAG documentation](README.md)
+```text
+model: @cf/qwen/qwen3-embedding-0.6b
+dimensions: 1024
+document mode: documents
+query mode: queries
+query instruction: Given a web search query, retrieve relevant passages that answer the query
+post-process: L2 normalize
+metric: cosine
+```
+
+Validation: 2,808/2,808 finite, nonzero, normalized vectors; 134/134 repository coverage.
+
+The previous Nomic embedding generation remains historical/reference only.
+
+## Stage 4 — Publish dense vectors to Cloudflare Vectorize
+
+Implementation:
+
+```text
+rag/scripts/05-vector-index/cloudflare-vectorize/publish-vectorize-v1.mjs
+```
+
+Index:
+
+```text
+portfolio-career-rag-cloudflare-v1
+```
+
+Remote inventory validation proved 2,808/2,808 vectors and exact document-ID coverage.
+
+## Stage 5 — Dense-backend parity validation
+
+Implementation:
+
+```text
+rag/scripts/06-validation/cloudflare-vectorize/validate-vectorize-dense-parity-v1.mjs
+```
+
+Artifacts:
+
+```text
+rag/rag-corpus/vectorize-cloudflare-v1/
+```
+
+Five canonical regression questions were compared against exact local cosine in the Qwen space. Acceptance passed with 100% overlap@10, minimum 96% overlap@25 and 100% overlap@50.
+
+This stage proves the dense serving backend, not the entire production ranking/generation chain.
+
+## Stage 6 — Build and publish D1 authoritative evidence
+
+Schema:
+
+```text
+migrations/0005-rag-runtime.sql
+```
+
+Builder:
+
+```text
+rag/runtime/build-d1-rag-import.mjs
+```
+
+Commands:
+
+```bash
+npm run rag:d1:build
+npm run db:migrate:local
+npm run rag:d1:import:local
+npm run db:migrate:remote
+npm run rag:d1:import:remote
+```
+
+Local and remote validation both passed with 2,808 unique documents across 134 repositories, valid JSON-backed fields and matching corpus metadata SHA-256.
+
+## Stage 7 — Production Worker retrieval
+
+Implementation:
+
+```text
+worker/rag-runtime.ts
+```
+
+Request sequence:
+
+1. per-client rate limit;
+2. D1 corpus readiness check;
+3. question validation;
+4. Qwen query embedding using the validated query mode/instruction;
+5. 1,024-D dimension and vector validity checks;
+6. Vectorize top-40 query;
+7. D1 evidence hydration by returned IDs;
+8. D1/Vectorize mismatch guard.
+
+## Stage 8 — Workers AI reranking and evidence selection
+
+The Worker sends the hydrated candidates to:
+
+```text
+@cf/baai/bge-reranker-base
+```
+
+It keeps up to 20 usable reranked documents, then performs evidence-aware rescoring and repository-diverse selection to produce the final eight-document evidence packet.
+
+Selection metadata favors concrete/direct evidence and adapts to limitation/weakness intent. Repository diversity prevents a single project from monopolizing the evidence packet unless necessary to fill it.
+
+## Stage 9 — Grounded generation
+
+Generator:
+
+```text
+@cf/zai-org/glm-4.7-flash
+```
+
+Generation options:
+
+```text
+temperature: 0.2
+top_p: 0.9
+max_completion_tokens: 700
+enable_thinking: false
+```
+
+The model must use only the evidence packet, preserve limitations and cite claims with request-local `[E#]` labels.
+
+The generator is intentionally permitted to ignore weak tail evidence. It is not required to summarize all eight documents. This is the chosen boundary between approximate retrieval and final answer synthesis.
+
+The parser accepts visible string/text/output-text content and refuses to use `reasoning_content` as an answer.
+
+## Stage 10 — API response shaping
+
+Synchronous route:
+
+```text
+POST /api/rag/query
+```
+
+returns answer, citations, retrieval diagnostics, cited labels, grounding warning and model identities.
+
+Streaming route:
+
+```text
+POST /api/rag/query/stream
+```
+
+returns normalized SSE events (`context`, `token`, `done`, `error`). It shares the same retrieval/reranking path but still needs its own live production validation.
+
+Health route:
+
+```text
+GET /api/rag/health
+```
+
+actively validates the D1 corpus and reports the configured Vectorize index.
+
+## Stage 11 — Kiro browser integration — pending
+
+The current Kiro GLB page already exposes semantic interaction states, but it is not connected to the RAG API.
+
+Frontend integration should replace demo/state timers with real network lifecycle events while preserving the existing model/animation contract.
+
+No corpus, embedding, Vectorize or D1 rebuild is required merely to wire the frontend.
+
+## Historical path
+
+The previous Nomic + Pinecone + Python + local CrossEncoder path was the validated reference architecture before the Cloudflare migration. It remains preserved for history/regression and should not be deleted, but it is no longer the production request path.
+
+## Related documentation
+
+- [Production architecture](production-architecture.md)
+- [Testing and regressions](testing-and-regressions.md)
+- [Known issues](known-issues.md)
+- [Deployment history](deployment/README.md)
 - [Implementation scripts](../../rag/scripts/README.md)
-- [Implementation runtime](../../rag/runtime/README.md)
-- [Zero-cost Cloudflare migration](cloudflare-native-zero-cost-migration.md)
+- [Worker runtime notes](../../worker/RAG-RUNTIME.md)

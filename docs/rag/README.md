@@ -1,156 +1,126 @@
 # RAG Documentation
 
-## Table of Contents
-
-- [Purpose](#purpose)
-- [Directory Responsibility](#directory-responsibility)
-- [Three-Way RAG Directory Distinction](#three-way-rag-directory-distinction)
-- [Current Runtime Truth](#current-runtime-truth)
-- [Current Documentation](#current-documentation)
-- [Deployment Documentation](#deployment-documentation)
-- [Quality-Control Boundary](#quality-control-boundary)
-- [Implementation Boundary](#implementation-boundary)
-- [Placement Rules](#placement-rules)
-
-<a id="purpose"></a>
 ## Purpose
 
-`docs/rag/` is the **canonical documentation domain for the portfolio RAG subsystem**. It contains RAG architecture, runtime/deployment reasoning, provider evaluations, migration designs, operational constraints and known design caveats.
+`docs/rag/` is the canonical documentation domain for the portfolio RAG subsystem. Architecture, production-runtime truth, migration decisions, operational boundaries and known caveats live here. Validation incidents and acceptance evidence live separately under `docs/qc/rag/`; executable code/data lives under top-level `rag/` and `worker/`.
 
-It exists so RAG engineering documentation is not mixed with either Quality Control evidence or the implementation/code tree.
+## Current production truth
 
-<a id="directory-responsibility"></a>
-## Directory Responsibility
-
-This folder answers questions such as:
-
-- how the RAG subsystem is architected;
-- what the currently validated runtime is;
-- how Cloudflare, Pinecone, Nomic, Qwen, Vectorize, D1 and reranking fit into the design;
-- what deployment paths were evaluated and why some were rejected;
-- what hard cost/runtime constraints apply;
-- what migration sequence is recommended;
-- which architecture is current versus candidate;
-- what implementation files would change if a candidate is approved.
-
-<a id="three-way-rag-directory-distinction"></a>
-## Three-Way RAG Directory Distinction
-
-These paths have deliberately different meanings:
+The Cloudflare-native backend is now the production RAG runtime.
 
 ```text
-docs/rag/
-  DOCUMENTATION DOMAIN
-  architecture, deployment decisions, migration analysis, provider/capacity design
+134 repository analyses
+  -> 2,808 evidence-aware retrieval documents
+  -> Cloudflare Workers AI Qwen3 embeddings (1,024-D)
+  -> Cloudflare Vectorize: portfolio-career-rag-cloudflare-v1
 
-docs/qc/rag/
-  QUALITY CONTROL DOMAIN
-  incidents, regressions, pass/fail validation, parity evidence, sanitized QC captures
-
-rag/
-  IMPLEMENTATION DOMAIN
-  Python runtime, scripts, generated corpus, embeddings, retrieval artifacts and code-adjacent implementation files
+visitor question
+  -> Worker validation + rate limit
+  -> Qwen3 query embedding
+  -> Vectorize top 40
+  -> D1 authoritative evidence hydration
+  -> BGE reranker top 20
+  -> evidence-aware / repository-diverse top 8
+  -> GLM-4.7-Flash grounded synthesis
+  -> answer + E# citations + provenance
 ```
 
-A file must not be placed under `docs/qc/rag/` merely because it contains measurements. If its primary purpose is deciding **how RAG should be deployed**, it belongs here under `docs/rag/` or `docs/rag/deployment/`.
+Current production invariants:
 
-Likewise, documentation must not be packaged as a replacement top-level `rag/` directory when the task is to correct the documentation hierarchy.
+- 2,808 D1 evidence documents;
+- 2,808 unique document IDs;
+- 134 repositories, indices 1–134;
+- retrieval-document schema `2.0.0`;
+- source SHA-256 `a10c2b2d9d4e79e8a6e6629cc15b18cb1123513b45df44dc73e668b44c1bee58`;
+- live health endpoint returns HTTP 200;
+- first successful production RAG query returned HTTP 200 with grounded answer, citations, retrieval diagnostics and model identities;
+- Worker verification currently passes 64/64 tests across 11 files.
 
-<a id="current-runtime-truth"></a>
-## Current Runtime Truth
+The frontend is **not connected yet**. That is the next product-integration boundary.
 
-The current validated baseline remains:
+## Canonical documents
 
-```text
-2,808 evidence-aware retrieval documents
-        ↓
-Nomic v1.5 document/query embedding contract
-        ↓
-512-D normalized vectors
-        ↓
-Pinecone Serverless
-        +
-Python-owned BM25 / metadata / fusion / gates
-        +
-local CrossEncoder reranking
-        +
-dedupe / diversity / response shaping
-```
+### Start here
 
-The Cloudflare-native Qwen design is **CANDIDATE / NOT APPLIED**. It does not become current merely because its deployment shape is simpler.
+- [Production RAG Architecture](production-architecture.md) — authoritative explanation of the current end-to-end system, component responsibilities, generator-filtering policy, deployment boundaries and failure modes.
+- [Active Pipeline](pipeline.md) — stage-by-stage current pipeline and implementation paths.
+- [Testing and Regressions](testing-and-regressions.md) — current acceptance evidence and remaining validation work.
+- [Known Issues](known-issues.md) — active caveats after production deployment.
 
-<a id="current-documentation"></a>
-## Current Documentation
+### Version/history documents
 
-- [Cloudflare / portfolio integration plan](cloudflare-integration.md)
-- [Zero-cost Cloudflare-native migration analysis](cloudflare-native-zero-cost-migration.md)
-- [Known issues, caveats and proposed hardening](known-issues.md)
-
-The top-level `rag/` implementation tree is not modified by this package. The canonical current RAG documentation is consolidated here under `docs/rag/`. Any older documentation copies that still physically exist under the implementation tree are treated as implementation-adjacent/historical copies, not the canonical documentation location.
-
-### Core RAG engineering documents
-
-- [Active pipeline](pipeline.md)
-- [Component interactions](component-interactions.md)
 - [Chunking / retrieval-document history](chunking-and-document-history.md)
 - [Embedding version history](embedding-version-history.md)
 - [Retrieval version history](retrieval-version-history.md)
-- [Pinecone dense backend](pinecone.md)
-- [Testing and regressions](testing-and-regressions.md)
 - [Regeneration matrix](regeneration-matrix.md)
 - [Documentation history](history/README.md)
 
-<a id="deployment-documentation"></a>
-## Deployment Documentation
+### Deployment/history documents
 
-Detailed provider/hosting/runtime decision history lives in [`deployment/`](deployment/README.md):
+- [Deployment decision history](deployment/README.md)
+- [2026-09-06 Cloudflare-native production rollout](deployment/2026-09-06-cloudflare-native-production-rollout.md)
+- [2026-08-31 Containerization and Hosting Evaluation](deployment/2026-08-31-containerization-and-hosting-evaluation.md)
+- [2026-08-31 Zero-Cost Cloudflare-Native Runtime Evaluation](deployment/2026-08-31-cloudflare-native-zero-cost-runtime-evaluation.md)
 
-- [2026-08-31 — Containerization and Hosting Evaluation](deployment/2026-08-31-containerization-and-hosting-evaluation.md)
-- [2026-08-31 — Zero-Cost Cloudflare-Native Runtime Evaluation](deployment/2026-08-31-cloudflare-native-zero-cost-runtime-evaluation.md)
+### Historical/reference architecture documents
 
-These records preserve both successful and rejected paths, including Docker, Cloudflare Containers, Render Free, Deno, hosted Nomic, Fireworks, Hugging Face provider availability, browser ONNX, personal-PC hosting, Workers AI, Pinecone, Vectorize and D1 considerations where applicable.
+The following remain valuable because they explain the path that led to the current design, but they should not be read as current production truth:
 
-<a id="quality-control-boundary"></a>
-## Quality-Control Boundary
+- [Historical Cloudflare integration plan](cloudflare-integration.md)
+- [Historical zero-cost migration analysis](cloudflare-native-zero-cost-migration.md)
+- [Historical Pinecone dense backend](pinecone.md)
+- [Component interactions](component-interactions.md)
 
-Quality-control material belongs in [`../qc/rag/`](../qc/rag/README.md), including:
-
-- retrieval false-positive/generalization incidents;
-- parity/regression findings;
-- pass/fail acceptance results;
-- raw/sanitized runtime evidence;
-- preservation-verification evidence.
-
-A deployment decision record may cite QC evidence without becoming a QC document.
-
-<a id="implementation-boundary"></a>
-## Implementation Boundary
-
-The top-level `rag/` directory remains the executable/data subsystem. Examples include:
+## Three-way directory distinction
 
 ```text
-rag/runtime/
-rag/scripts/
-rag/rag-corpus/
-rag/other/
-rag/obsolete/
+docs/rag/
+  architecture, production design, deployment reasoning, migration history
+
+docs/qc/rag/
+  incidents, regression findings, acceptance evidence, pass/fail records
+
+rag/ + worker/
+  implementation, scripts, runtime, corpus and generated artifacts
 ```
 
-This `docs/` package does **not** modify or replace those implementation directories.
+A document belongs in `docs/qc/rag/` when its primary purpose is proving whether behavior passed or failed. A document belongs in `docs/rag/deployment/` when its primary purpose is explaining hosting/provider/runtime choices or rollout sequencing.
 
-<a id="placement-rules"></a>
-## Placement Rules
+## Production vs historical paths
 
-| Primary question answered by a document | Correct home |
-|---|---|
-| How is RAG designed? | `docs/rag/` |
-| Which RAG hosting/provider/runtime path should be used? | `docs/rag/deployment/` |
-| Did RAG retrieval/parity/quality pass or fail? | `docs/qc/rag/` |
-| What concise evidence proves a RAG QC observation? | `docs/qc/rag/evidence/` |
-| How is the whole portfolio deployed/released? | `docs/operations/` |
-| Where is executable RAG code/data? | top-level `rag/` |
+The earlier Nomic/Pinecone/Python architecture remains preserved for regression/history. It is no longer the live request path.
 
-## Related Documentation
+Current request-time production has no Python/Docker/Pinecone dependency. The Worker uses Workers AI, Vectorize and D1 directly.
+
+## Quality boundary
+
+Retrieval is approximate by design. The system does not require every one of the final eight evidence documents to be equally strong. The generator is allowed to ignore weak tail evidence, but it is not allowed to invent evidence or recover facts that retrieval never supplied. This policy is documented in detail in [Production RAG Architecture](production-architecture.md#9-generator-responsibility-grounded-synthesis-not-blind-summarization).
+
+## Implementation boundary
+
+Primary current implementation paths:
+
+```text
+rag/rag-corpus/retrieval-documents-v2/
+rag/rag-corpus/embeddings-cloudflare-v1/
+rag/rag-corpus/vectorize-cloudflare-v1/
+rag/runtime/build-d1-rag-import.mjs
+migrations/0005-rag-runtime.sql
+worker/rag-runtime.ts
+worker/RAG-RUNTIME.md
+shared/rag.ts
+```
+
+The browser surface is:
+
+```text
+src/kiro-rag-page.tsx
+src/features/kiro-rag/
+```
+
+and remains intentionally unwired until the backend documentation/validation checkpoint is complete.
+
+## Related documentation
 
 - Parent: [../README.md](../README.md)
 - [Whole-project architecture](../architecture/README.md)
