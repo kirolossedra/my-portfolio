@@ -2,9 +2,9 @@
 
 ## Status
 
-**ACTIVE live portfolio-agent frontend.** `/kiro-rag` now uses the production `POST /api/rag/query/stream` endpoint rather than timer-driven demo transitions.
+**ACTIVE live portfolio-agent frontend with a Mixamo-ready character presence.**
 
-The page is intentionally chat-shaped while preserving the existing GLB avatar as the agent presence layer.
+`/kiro-rag` uses the production `POST /api/rag/query/stream` endpoint. The 3D character is driven by the real chat lifecycle rather than timer-driven demo transitions.
 
 ## Active files
 
@@ -14,13 +14,12 @@ src/features/kiro-rag/kiro-chat.tsx
 src/features/kiro-rag/kiro-chat.css
 src/features/kiro-rag/rag-client.ts
 src/features/kiro-rag/model3d/
+public/models/kiro/kiro.fbx
 ```
-
-Earlier rig/demo helpers remain in the feature tree for development history, but they are no longer the default `/kiro-rag` interaction surface.
 
 ## Chat interaction model
 
-The browser maintains visual chat history for the current session. The production backend remains deliberately single-question grounded RAG, so each turn is retrieved and generated independently rather than pretending the model has cross-turn memory.
+The browser maintains visual chat history for the current session. The backend remains deliberately single-question grounded RAG, so each turn is retrieved and generated independently rather than pretending the model has cross-turn memory.
 
 Modern agent-style interaction behaviors include:
 
@@ -36,70 +35,77 @@ Modern agent-style interaction behaviors include:
 - responsive desktop/mobile layouts;
 - reduced-motion handling.
 
-## Real lifecycle → avatar state
+## Real lifecycle -> avatar motion
 
 ```text
 question submitted
   -> retrieving
+  -> attentive posture + bounded head scan
 
 SSE context arrives after retrieval/reranking
   -> answering
 
 visible token stream
-  -> answering + talking
+  -> answering + conversational arm/head motion
 
 SSE done
   -> success
+  -> short completion nod/open gesture, then settles
 
 network/provider failure
   -> error
+  -> bounded head-shake reaction
 
 user stop
   -> idle
 ```
 
-No artificial lifecycle timers are used by the active chat.
+No artificial delay is added to make the animation visible. RAG responsiveness remains the priority.
 
-## Streaming contract
+## Mixamo asset contract
 
-`rag-client.ts` calls:
-
-```text
-POST /api/rag/query/stream
-```
-
-and consumes normalized events:
-
-- `context`: citations, retrieval counts, model identities;
-- `token`: visible answer text delta;
-- `done`: cited evidence labels and grounding warning;
-- `error`: stream failure.
-
-The parser handles SSE frame boundaries across arbitrary network chunks. It never receives Cloudflare credentials or direct Vectorize/D1 access.
-
-## Citation UX
-
-Inline `[E#]` references in generated text become source jump links. Each turn exposes the selected evidence metadata returned by the backend, including repository identity, evidence type/level and source-analysis line provenance.
-
-The UI distinguishes evidence the generator actually cited from additional evidence that was considered but filtered out during answer synthesis.
-
-## GLB contract
-
-The expected asset remains:
+The active production asset is:
 
 ```text
-/models/kiro/kiro.glb
+/models/kiro/kiro.fbx
 ```
 
-`KiroGlbAvatar` still owns runtime GLB loading, capability inspection and bounded semantic animation. The chat only supplies semantic lifecycle state; it does not manipulate arbitrary bones or morphs directly.
+Source location:
+
+```text
+public/models/kiro/kiro.fbx
+```
+
+Place the validated Mixamo-rigged skinned FBX at `public/models/kiro/kiro.fbx`. The runtime uses the named skeleton through the existing alias resolver and can drive head, spine, upper-arm and forearm motion without letting the LLM directly manipulate arbitrary joints.
+
+The historical component filename `kiro-glb-avatar.tsx` is retained for import compatibility, but its active loader is now Three.js `FBXLoader`.
+
+## Motion strategy
+
+The supplied base FBX is essentially a rigged master pose rather than a library of authored conversational clips. Therefore the active runtime now provides safe procedural movement:
+
+- converts the T-pose arms into a calm standing pose;
+- adds subtle breathing while idle;
+- makes retrieval visually attentive without fake waiting;
+- alternates bounded arm gestures during streamed answers;
+- adds head motion and pointer-follow gaze;
+- provides short success/error reactions;
+- honors `prefers-reduced-motion`.
+
+If authored Mixamo clips are added later, the animation controller still supports semantic clip lookup (`Idle`, `Talking`, `Thinking`, `Success`, and related names) and will prefer a meaningful authored clip over procedural body motion.
+
+## Important limitation
+
+The supplied model does not expose a verified facial blend-shape/viseme set. The current update therefore animates the **rigged body and head**, not phoneme-accurate lips. Lip sync should only be added after a model/export with suitable facial morph targets is available.
 
 ## Boundaries
 
+- Chat lifecycle state controls animation semantics; the LLM does not command bones.
 - Chat history is client-session presentation state, not server memory.
 - Every question is independently grounded to the portfolio corpus.
 - The browser calls only the portfolio Worker.
 - Embeddings, Vectorize, D1, reranking and generation remain server-side.
-- Frontend changes do not require corpus or embedding regeneration.
+- This avatar update does not require corpus or embedding regeneration.
 
 ## Related documentation
 
