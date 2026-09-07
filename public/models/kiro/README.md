@@ -1,32 +1,38 @@
-# Kiro GLB model slot
+# Kiro Mixamo model slot
 
-Place the production character model in this folder with this exact filename:
-
-```text
-public/models/kiro/kiro.glb
-```
-
-Vite serves that file at:
+The production character is served from:
 
 ```text
-/models/kiro/kiro.glb
+public/models/kiro/kiro.fbx
 ```
 
-## What the runtime can use
+Vite exposes it at:
 
-The React/Three.js runtime inspects the GLB automatically. The best model contains:
+```text
+/models/kiro/kiro.fbx
+```
 
-- one skinned character mesh with a skeleton/armature;
-- named head/neck/spine/arm/forearm/leg bones;
-- separate eye bones or eye meshes when available;
-- facial morph targets such as blink, smile and mouth-open;
-- a board bone/object and separate left/right thruster objects when available;
-- authored clips named with clear words such as `Idle`, `Thinking`, `Retrieving`, `Talking`, `Success`, `Error`.
+## Required master asset
 
-The loader tolerates different naming conventions and resolves common aliases automatically. If a model uses unusual names, add aliases in `src/features/kiro-rag/model3d/kiro-model-contract.ts`.
+Place the validated Mixamo-rigged FBX at `public/models/kiro/kiro.fbx`. Keep this runtime filename stable. Version source assets through Git history rather than changing the browser URL.
 
-## Important
+The file should contain the character mesh, skinning and Mixamo skeleton. It is suitable for bounded runtime bone motion.
 
-Do not rename this file to encode versions. Keep the runtime path stable as `kiro.glb`; version the source model in the modelling project or Git history instead.
+## Runtime behavior
 
-The web runtime does not alter the GLB. It only loads it, inspects its capabilities, plays authored clips, and adds bounded procedural controls on top.
+`src/features/kiro-rag/model3d/kiro-glb-avatar.tsx` retains its historical filename for import compatibility, but now loads the production asset through Three.js `FBXLoader`.
+
+`kiro-animation-controller.ts`:
+
+- resolves common Mixamo bone names;
+- lowers the base T-pose into a calm standing pose;
+- adds subtle idle breathing;
+- reacts to RAG retrieval state;
+- gestures while answer tokens stream;
+- provides short success/error reactions;
+- honors reduced-motion preferences;
+- can still prefer authored semantic clips when meaningful clips are added later.
+
+## Facial animation
+
+Do not assume lip sync from this asset. A proper facial blend-shape/viseme set must be verified before adding phoneme-driven mouth animation.
