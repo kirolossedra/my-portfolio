@@ -5,7 +5,7 @@ import type {
   KiroMorphRole,
 } from './kiro-model.types.ts';
 
-export const KIRO_MODEL_URL = '/models/kiro/kiro.glb';
+export const KIRO_MODEL_URL = '/models/kiro/kiro.fbx';
 
 export const KIRO_BONE_ALIASES: Record<KiroBoneRole, readonly string[]> = {
   head: ['head', 'mixamorighead', 'ccbasehead', 'jhead'],
