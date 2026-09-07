@@ -1,6 +1,6 @@
 # Active RAG Pipeline — Production End to End
 
-**Status:** Cloudflare-native backend is deployed and validated. Frontend integration remains pending.
+**Status:** Cloudflare-native backend and Kiro browser chat are deployed. The synchronous query path is production-validated; the streaming route is implemented, parser-tested, and consumed by the deployed frontend, with a dedicated live streaming QC capture still outstanding.
 
 ## Pipeline contract
 
@@ -13,7 +13,8 @@ flowchart TD
     C --> I[D1 import builder]
     I --> DB[Cloudflare D1]
 
-    Q[Question] --> W[Cloudflare Worker]
+    UI[Kiro browser chat] --> Q[Question]
+    Q --> W[Cloudflare Worker]
     W --> QE[Qwen3 query embedding]
     QE --> V
     V --> T40[Top 40 dense matches]
@@ -23,7 +24,8 @@ flowchart TD
     R --> S[Evidence scoring + repository diversity]
     S --> T8[Final 8 evidence candidates]
     T8 --> G[GLM-4.7-Flash, thinking disabled]
-    G --> O[Grounded answer + E# citations]
+    G --> SSE[Normalized SSE context/token/done events]
+    SSE --> UI
 ```
 
 ## Stage 0 — Repository source analysis
@@ -205,7 +207,7 @@ Synchronous route:
 POST /api/rag/query
 ```
 
-returns answer, citations, retrieval diagnostics, cited labels, grounding warning and model identities.
+returns answer, citations, retrieval diagnostics, cited labels, grounding warning and model identities. This path has a successful live production acceptance query.
 
 Streaming route:
 
@@ -213,7 +215,7 @@ Streaming route:
 POST /api/rag/query/stream
 ```
 
-returns normalized SSE events (`context`, `token`, `done`, `error`). It shares the same retrieval/reranking path but still needs its own live production validation.
+returns normalized SSE events (`context`, `token`, `done`, `error`) and shares the same retrieval/reranking path. The deployed browser client now consumes this route. Client-side SSE framing/parsing is covered by unit tests; a dedicated independent live streaming QC capture remains outstanding.
 
 Health route:
 
@@ -223,13 +225,60 @@ GET /api/rag/health
 
 actively validates the D1 corpus and reports the configured Vectorize index.
 
-## Stage 11 — Kiro browser integration — pending
+## Stage 11 — Kiro browser integration — deployed
 
-The current Kiro GLB page already exposes semantic interaction states, but it is not connected to the RAG API.
+Active frontend files:
 
-Frontend integration should replace demo/state timers with real network lifecycle events while preserving the existing model/animation contract.
+```text
+src/kiro-rag-page.tsx
+src/features/kiro-rag/kiro-chat.tsx
+src/features/kiro-rag/kiro-chat.css
+src/features/kiro-rag/rag-client.ts
+src/features/kiro-rag/model3d/
+```
 
-No corpus, embedding, Vectorize or D1 rebuild is required merely to wire the frontend.
+`/kiro-rag` is now a production chat surface rather than a timer-driven animation demo. It provides:
+
+- streaming token output;
+- persistent bottom composer;
+- Enter-to-send and Shift+Enter newline behavior;
+- request cancellation through `AbortController`;
+- retry/regenerate after error or cancellation;
+- suggested starter questions;
+- inline `[E#]` citation links;
+- cited-vs-considered source cards with repository/provenance metadata;
+- a collapsible retrieval activity trace;
+- auto-follow while the reader remains near the bottom;
+- responsive desktop/mobile layouts;
+- reduced-motion handling.
+
+The GLB avatar is preserved as the agent presence layer. Its semantic states are now driven by real request lifecycle events rather than artificial timers.
+
+Browser chat history is presentation state only. The backend remains deliberately single-question grounded RAG, so each turn is retrieved independently rather than pretending the generator has cross-turn memory.
+
+No corpus, embedding, Vectorize or D1 rebuild was required for frontend integration.
+
+## Frontend integration validation
+
+The frontend change passed the repository's full quality/deployment path on 2026-09-06:
+
+```text
+ESLint: PASS
+frontend TypeScript: PASS
+Worker TypeScript: PASS
+Vitest: 68/68 tests across 12 files
+local D1 migrations: PASS
+Vite production build: PASS
+Worker dry-run: PASS
+Cloudflare Worker deploy: PASS
+Netlify production deploy: PASS
+```
+
+The new SSE client parser contributes four tests covering named events, multi-line data, default events and frame boundaries across arbitrary network chunks.
+
+Netlify production deploy ID: `6a9dfd6efe1cf3d7b3f33455`.
+
+Cloudflare Worker version after this deployment: `28ac8122-62e8-4207-af59-be8e9421e4a3`.
 
 ## Historical path
 
@@ -241,5 +290,6 @@ The previous Nomic + Pinecone + Python + local CrossEncoder path was the validat
 - [Testing and regressions](testing-and-regressions.md)
 - [Known issues](known-issues.md)
 - [Deployment history](deployment/README.md)
+- [Kiro frontend runtime](../../src/features/kiro-rag/README.md)
 - [Implementation scripts](../../rag/scripts/README.md)
 - [Worker runtime notes](../../worker/RAG-RUNTIME.md)

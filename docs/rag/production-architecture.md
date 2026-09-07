@@ -1,12 +1,14 @@
 # Production RAG Architecture
 
-**Status:** production backend deployed and validated on 2026-09-06. Frontend integration is intentionally still pending.
+**Status:** production backend and Kiro browser chat deployed on 2026-09-06. The synchronous query path has a successful live production acceptance query. The streaming endpoint is implemented, parser-tested and consumed by the deployed frontend; a separate independent live streaming QC capture remains outstanding.
 
 ## 1. Purpose
 
 The portfolio RAG subsystem answers employer- and reviewer-style questions about the engineering history represented by 134 GitHub repositories. Its job is not to invent a career narrative from repository names. It retrieves evidence that was already extracted with provenance, ranks that evidence, and asks a generation model to synthesize only what the retrieved evidence supports.
 
 The production design is Cloudflare-native at request time: no Python service, Docker container, Pinecone dependency, locally loaded embedding model, or external generation API key is required by the live query path.
+
+The browser is intentionally chat-shaped, but each question is independently grounded against the portfolio corpus. The current UI preserves conversation history as local presentation state; it does not falsely imply that the backend generator has cross-turn memory.
 
 ## 2. Production snapshot
 
@@ -26,11 +28,13 @@ The production design is Cloudflare-native at request time: no Python service, D
 | Dense candidates | 40 |
 | Reranked candidates | 20 |
 | Final evidence packet | 8 |
-| Public query endpoints | `POST /api/rag/query`, `POST /api/rag/query/stream` |
+| Browser surface | `/kiro-rag` |
+| Browser transport | `POST /api/rag/query/stream` |
+| Synchronous API | `POST /api/rag/query` |
 | Health endpoint | `GET /api/rag/health` |
 | Rate limit | 10 requests / 60 seconds / client IP |
-
-Validated Worker deployment on 2026-09-06: `0c62658d-4de3-4b66-9a1e-85c0afafb951`.
+| Worker version after frontend rollout | `28ac8122-62e8-4207-af59-be8e9421e4a3` |
+| Netlify deploy | `6a9dfd6efe1cf3d7b3f33455` |
 
 ## 3. End-to-end architecture
 
@@ -44,7 +48,8 @@ flowchart TD
     C --> SQL[D1 import artifact]
     SQL --> DB[Cloudflare D1 authoritative evidence]
 
-    Q[Visitor question] --> RL[Rate limit + input validation]
+    UI[Kiro browser chat] --> Q[Visitor question]
+    Q --> RL[Rate limit + input validation]
     RL --> CQ[Corpus readiness check]
     CQ --> QE[Qwen3 query embedding]
     QE --> V
@@ -56,7 +61,8 @@ flowchart TD
     T20 --> ES[Evidence-aware scoring + repository diversity]
     ES --> T8[Final 8-document evidence packet]
     T8 --> G[GLM-4.7-Flash grounded synthesis]
-    G --> OUT[Answer + inline E# citations + citation metadata]
+    G --> SSE[Normalized context/token/done events]
+    SSE --> UI
 ```
 
 The offline and online halves are deliberately separable. Regenerating the corpus or embeddings is not required for an ordinary Worker deployment, and frontend work does not require rebuilding the RAG data plane.
@@ -153,8 +159,6 @@ portfolio-career-rag-cloudflare-v1
 At query time, Vectorize receives the normalized 1,024-D query vector and returns the top 40 nearest document IDs with cosine scores.
 
 Vectorize is not the authoritative text store. It is the fast similarity index. The Worker uses the returned IDs to fetch the canonical evidence rows from D1.
-
-This separation keeps vector serving and evidence integrity independent:
 
 ```text
 Vectorize -> which documents are likely relevant?
@@ -293,18 +297,18 @@ The eight selected documents are **candidate context**, not eight documents that
 
 Approximate retrieval will sometimes include a weak tail result. This is accepted by design. The generator should ignore evidence that does not materially support the answer and cite only the evidence it actually uses.
 
-This is not a claim that retrieval quality does not matter. The boundary is:
+The boundary is:
 
 - retrieval/reranking must have enough recall to place the important evidence into the final packet;
 - generation may filter weak or irrelevant members of that packet;
 - generation cannot recover evidence that never reached the packet;
 - generation may not replace missing evidence with unsupported claims.
 
-The first successful production query demonstrated this behavior: the final packet contained some low-value tail evidence, but the answer relied primarily on the strong LiNC and Prompt-management evidence and did not mechanically summarize every retrieved document.
+The first successful production query demonstrated this behavior: the final packet contained some low-value tail evidence, but the answer relied primarily on strong LiNC and Prompt-management evidence and did not mechanically summarize every retrieved document.
 
 ## 10. GLM reasoning-mode incident and final generation contract
 
-The first live end-to-end query reached generation but returned:
+The first live end-to-end synchronous query reached generation but returned:
 
 ```text
 HTTP 502
@@ -331,9 +335,9 @@ The runtime parser was also hardened to accept legitimate visible text/output-te
 
 The corrected live response had ordinary string content, `finish_reason: stop`, and completed successfully with 229 completion tokens.
 
-This design keeps GLM in the role intended here: evidence synthesis and citation, not a second unbounded reasoning system after retrieval/reranking has already constrained the problem.
+This keeps GLM in the role intended here: evidence synthesis and citation, not a second unbounded reasoning system after retrieval/reranking has already constrained the problem.
 
-## 11. Response contract
+## 11. API and streaming contracts
 
 ### `GET /api/rag/health`
 
@@ -354,6 +358,8 @@ Returns a synchronous JSON response containing:
 - grounding warning;
 - model identities.
 
+This path has a successful production acceptance query.
+
 ### `POST /api/rag/query/stream`
 
 Uses the same retrieval/reranking path and emits Server-Sent Events:
@@ -363,9 +369,64 @@ Uses the same retrieval/reranking path and emits Server-Sent Events:
 - `done` — cited labels and grounding warning;
 - `error` — generation-stream failure information.
 
-The streaming route is implemented but has not yet received the same production end-to-end validation as the synchronous route.
+The deployed Kiro browser chat consumes this route. The client parser is unit-tested for arbitrary network chunk/frame boundaries. A dedicated independent live production stream capture is still outstanding and should be recorded under `docs/qc/rag/` when performed.
 
-## 12. Citation and provenance model
+## 12. Browser chat and agent interaction model
+
+The active frontend lives in:
+
+```text
+src/kiro-rag-page.tsx
+src/features/kiro-rag/kiro-chat.tsx
+src/features/kiro-rag/kiro-chat.css
+src/features/kiro-rag/rag-client.ts
+src/features/kiro-rag/model3d/
+```
+
+The previous timer-driven interaction demo is no longer the default `/kiro-rag` product surface.
+
+The deployed chat provides:
+
+- streaming answer text;
+- a persistent composer;
+- Enter-to-send and Shift+Enter newline behavior;
+- stop/cancel using `AbortController`;
+- retry/regenerate after cancellation or failure;
+- suggested starter questions;
+- inline `[E#]` citations;
+- source cards that distinguish **Cited** from merely **Considered** evidence;
+- repository links and source-analysis line provenance;
+- a collapsible retrieval activity trace;
+- auto-follow behavior that stops fighting the reader when they scroll away from the bottom;
+- responsive desktop/mobile layout;
+- reduced-motion support.
+
+The GLB avatar is not a decorative replacement for the chat. It is the agent presence layer. Its semantic states are driven by real request lifecycle events:
+
+```text
+question submitted -> retrieving
+context event       -> answering
+visible token       -> answering/talking
+done event          -> success
+provider/network    -> error
+user stop           -> idle/stopped turn
+```
+
+The frontend does not manipulate arbitrary rig bones based on text. It continues to pass bounded semantic state into the existing GLB runtime contract.
+
+### 12.1 Conversation-memory boundary
+
+The UI retains earlier turns so the interaction feels like a modern chat. However, the current Worker receives only the current question for retrieval and generation.
+
+That distinction is explicit in the UI and documentation:
+
+```text
+visual chat history != server conversational memory
+```
+
+This avoids falsely representing one-turn grounded retrieval as a multi-turn conversational agent with remembered context.
+
+## 13. Citation and provenance model
 
 Every selected evidence item receives a stable request-local label such as `E1`.
 
@@ -382,11 +443,13 @@ The generator sees those labels in the evidence prompt. The API separately retur
 - source line range;
 - source text hash.
 
+Inline `[E#]` references in the browser open the relevant source drawer and scroll to the corresponding evidence card. The UI distinguishes evidence the generator actually cited from additional top-eight evidence it considered but did not use.
+
 This is intentionally stronger than returning only generated prose. A reviewer can distinguish the model's wording from the underlying evidence and trace claims back to repository-analysis source lines.
 
-## 13. Production validation summary
+## 14. Production validation summary
 
-As of 2026-09-06:
+Backend acceptance before frontend integration:
 
 - Cloudflare Qwen embedding generation: PASS;
 - 2,808/2,808 vectors: PASS;
@@ -395,19 +458,32 @@ As of 2026-09-06:
 - local D1 build/import: PASS;
 - remote D1 migration/import: PASS;
 - Worker verification: PASS;
-- tests: 64/64 across 11 files;
-- Worker dry-run: PASS;
 - live health: HTTP 200;
 - first generation attempt: HTTP 502, isolated and fixed;
-- repeated single production query after fix: HTTP 200;
+- repeated single production synchronous query after fix: HTTP 200;
 - grounded answer with inline citations: PASS;
 - grounding warning on successful query: `null`.
 
-The successful production query observed approximately 10.0 seconds client latency, 9.77 seconds Worker wall time and 22 ms Worker CPU time. This is a useful initial observation, not yet a latency benchmark.
+Frontend rollout validation on 2026-09-06:
 
-Detailed acceptance evidence belongs in `docs/qc/rag/`.
+- ESLint: PASS;
+- frontend TypeScript: PASS;
+- Worker TypeScript: PASS;
+- Vitest: **68/68 tests across 12 files**;
+- new SSE client parser tests: 4/4 PASS;
+- local D1 migration chain: PASS;
+- Vite production build: PASS;
+- Worker dry-run: PASS;
+- Cloudflare Worker deployment: PASS;
+- Netlify production deployment: PASS.
 
-## 14. Security, privacy and cost controls
+The synchronous successful production query observed approximately 10.0 seconds client latency, 9.77 seconds Worker wall time and 22 ms Worker CPU time. This is an initial observation, not yet a latency benchmark.
+
+The frontend production build currently emits a large-chunk warning: the main JavaScript chunk is approximately 904 kB minified / 246 kB gzip. This does not fail the build, but route-level/code-splitting is a future performance-hardening opportunity, especially because Three.js and the Kiro GLB runtime are not needed on every portfolio route.
+
+Detailed RAG acceptance evidence belongs in `docs/qc/rag/`.
+
+## 15. Security, privacy and cost controls
 
 The browser CORS origin is restricted to `https://kirolos.dev`.
 
@@ -415,9 +491,11 @@ The public route is still callable outside a browser, so the rate limiter is the
 
 Generation-response diagnostics log structure only: key names, content types, finish reason and token counts. They do not log prompts, retrieved evidence, answer text or model reasoning content.
 
+The browser receives citation metadata needed for transparency but never receives Cloudflare credentials or direct Vectorize/D1 access.
+
 The current architecture removes the need for a separately hosted Python inference service. It was designed around Cloudflare serverless primitives and free/low-cost operation, but actual sustainable capacity remains a function of current Cloudflare quotas and per-query model usage and should be measured rather than assumed permanently.
 
-## 15. Historical architecture and preservation rule
+## 16. Historical architecture and preservation rule
 
 Before the Cloudflare-native migration, the validated reference path used:
 
@@ -430,15 +508,13 @@ Nomic local embeddings
 
 Those artifacts and documents are intentionally preserved as historical/reference material. They are not part of the live Worker request path.
 
-Do not delete or overwrite them simply because production has migrated. They are useful for regression history, forensic comparison and explaining why the architecture changed.
+Do not delete or overwrite them simply because production has migrated. They remain useful for regression history, forensic comparison and explaining why the architecture changed.
 
-## 16. Regeneration and deployment boundaries
+## 17. Regeneration and deployment boundaries
 
 ### Corpus/embedding rebuild
 
 Only required when the authoritative retrieval corpus or embedding contract changes.
-
-Relevant areas:
 
 ```text
 rag/other/
@@ -450,8 +526,6 @@ rag/rag-corpus/embeddings-cloudflare-v1/
 ### Vectorize republish
 
 Only required when the vector generation/index generation changes.
-
-Relevant areas:
 
 ```text
 rag/scripts/05-vector-index/cloudflare-vectorize/
@@ -479,22 +553,11 @@ npm run verify
 npm run worker:deploy
 ```
 
-Then validate:
-
-```text
-GET /api/rag/health
-POST /api/rag/query
-```
-
 ### Frontend-only change
 
-The current backend can be integrated without changing the corpus, embeddings, Vectorize or D1 data.
+For chat layout, streaming presentation, avatar lifecycle wiring or citation UX changes, do not rebuild the corpus, embeddings, Vectorize or D1.
 
-## 17. Current boundary before frontend integration
-
-Backend RAG is production-operational. The Kiro RAG frontend remains a GLB/avatar interaction surface and is not yet connected to `/api/rag/query` or `/api/rag/query/stream`.
-
-That separation is intentional. Frontend integration should begin only from this documented, validated backend state.
+The main-branch CI/CD path rebuilds/verifies the application and redeploys Worker/Netlify after a successful quality gate.
 
 ## 18. Important failure modes
 
@@ -505,7 +568,11 @@ That separation is intentional. Frontend integration should begin only from this
 5. **Uncited generated claims.** The system prompt forbids them, but citation presence is not a formal proof that every clause is supported.
 6. **Reasoning-only generation response.** Rejected; reasoning content is never used as the visible answer.
 7. **Rate-limit/quota exhaustion.** Public RAG is intentionally bounded; capacity must be monitored.
-8. **Streaming behavior regression.** Stream parsing has tests but needs its own live production validation.
+8. **Streaming behavior regression.** Client SSE parsing is tested, but a dedicated live stream acceptance capture remains outstanding.
+9. **Client cancellation race.** The active controller is identity-checked before clearing request state so an older aborted stream cannot clear a newer request.
+10. **Hidden citation target.** Inline citation navigation explicitly opens the collapsed source drawer before scrolling to the evidence card.
+11. **Large frontend bundle.** Current Vite build warns about the ~904 kB main chunk; code splitting should be considered as a separate performance task rather than mixed into RAG correctness work.
+12. **False conversational-memory implication.** Visual chat history is kept separate from backend memory semantics; each turn is currently independently grounded.
 
 ## 19. Canonical implementation map
 
@@ -522,7 +589,12 @@ That separation is intentional. Frontend integration should begin only from this
 | Worker RAG orchestration | `worker/rag-runtime.ts` |
 | Worker implementation notes | `worker/RAG-RUNTIME.md` |
 | Shared API types | `shared/rag.ts` |
-| Kiro RAG frontend | `src/kiro-rag-page.tsx` |
+| Kiro page shell | `src/kiro-rag-page.tsx` |
+| Kiro chat state/UI | `src/features/kiro-rag/kiro-chat.tsx` |
+| Kiro chat styling | `src/features/kiro-rag/kiro-chat.css` |
+| Browser SSE client | `src/features/kiro-rag/rag-client.ts` |
+| GLB runtime | `src/features/kiro-rag/model3d/` |
+| SSE parser tests | `src/__tests__/rag-client.test.ts` |
 
 ## Related documentation
 
@@ -532,4 +604,5 @@ That separation is intentional. Frontend integration should begin only from this
 - [Known issues](known-issues.md)
 - [Deployment history](deployment/README.md)
 - [RAG Quality Control](../qc/rag/README.md)
+- [Kiro frontend runtime](../../src/features/kiro-rag/README.md)
 - [Historical zero-cost migration analysis](cloudflare-native-zero-cost-migration.md)

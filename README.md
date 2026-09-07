@@ -34,13 +34,12 @@
 <a id="project-scope"></a>
 ## Project Scope
 
-`kirolos.dev` is a full portfolio application, not a standalone RAG repository. The current application is a React + TypeScript frontend deployed to Netlify, backed by a TypeScript Cloudflare Worker and Cloudflare D1. It includes the public career timeline, long-form milestone stories, D1-backed photographs, moderated visitor opinions, an evidence-oriented skills page, a private GitHub-OAuth administration workspace, CI/CD, and an in-progress Kiro RAG experience with a rigged 3D avatar and a separately engineered evidence-aware RAG backend.
+`kirolos.dev` is a full portfolio application, not a standalone RAG repository. The current application is a React + TypeScript frontend deployed to Netlify, backed by a TypeScript Cloudflare Worker and Cloudflare D1. It includes the public career timeline, long-form milestone stories, D1-backed photographs, moderated visitor opinions, an evidence-oriented skills page, a private GitHub-OAuth administration workspace, CI/CD, and the deployed Kiro portfolio-agent chat backed by a Cloudflare-native evidence-aware RAG system.
 
-The RAG subsystem under [`rag/`](rag/README.md) is intentionally documented as one subsystem of this larger application. It is unusually deep because it contains a complete 134-repository evidence corpus, multiple retrieval generations, local embedding/reranking infrastructure, Pinecone validation, and an HTTP retrieval runtime.
+The RAG subsystem is documented as one subsystem of this larger application. It contains a complete 134-repository evidence corpus, 2,808 evidence-aware retrieval documents, preserved historical retrieval generations, Cloudflare Workers AI embeddings/reranking/generation, Vectorize serving, D1 authoritative evidence, production Worker orchestration, validation artifacts, and a streaming browser chat.
 
 <a id="current-system-architecture"></a>
 ## Current System Architecture
-
 
 ```mermaid
 flowchart LR
@@ -48,18 +47,22 @@ flowchart LR
     N --> W[Cloudflare Worker: TypeScript API]
     W --> D[(Cloudflare D1)]
     O[GitHub OAuth] <--> W
-    N -. planned Kiro RAG request .-> R[Python RAG runtime]
-    R --> P[(Pinecone Serverless)]
-    R --> M[Nomic query embedding]
-    R --> C[Local CrossEncoder reranker]
-    R -. planned generation .-> G[Gemini 2.5 Flash-Lite]
-```
 
+    N -->|/api/rag/query/stream| W
+    W --> Q[Workers AI Qwen3 embedding]
+    Q --> V[(Cloudflare Vectorize)]
+    V --> W
+    W --> D
+    W --> R[Workers AI BGE reranker]
+    R --> G[Workers AI GLM-4.7-Flash]
+    G --> W
+    W -->|SSE context / token / done| N
+```
 
 <a id="deployed-portfolio-path"></a>
 ### Deployed portfolio path
 
-The deployed non-RAG path is currently:
+The deployed application path is:
 
 ```text
 Browser
@@ -68,14 +71,29 @@ Browser
   -> D1: kirolos-portfolio-db
 ```
 
-D1 stores milestones, ordered long-form sections, milestone images as Base64 text, moderated opinions, and short-lived OAuth exchange-code state. The Worker decodes stored Base64 photographs and serves ordinary binary image responses.
+D1 stores milestones, ordered long-form sections, milestone images as Base64 text, moderated opinions, short-lived OAuth exchange-code state, and the authoritative 2,808-document RAG evidence corpus. The Worker decodes stored Base64 photographs and serves ordinary binary image responses.
 
 <a id="kiro-rag-path"></a>
 ### Kiro RAG path
 
-The current `/kiro-rag` page exists and is routed by `src/App.tsx`. Its browser-side interaction is presently an animation/state probe: `idle -> thinking -> retrieving -> answering -> success/error`. The query box does **not yet call the Python retrieval API**; timers exercise the same semantic states that the real RAG flow will later drive. The page renders a real GLB-oriented runtime boundary rather than manufacturing anatomy from a flat image.
+`/kiro-rag` is now a deployed agent-style chat surface. It calls the Worker streaming endpoint and drives the existing Kiro GLB avatar from real request lifecycle events rather than demo timers.
 
-The separately engineered Python runtime already exposes `GET /health` and `POST /api/rag/retrieve`, uses Nomic + Pinecone + BM25 + metadata + a CrossEncoder, and has been locally exercised. Gemini generation and browser wiring remain future integration steps. See [`rag/README.md`](rag/README.md) and [`src/features/kiro-rag/README.md`](src/features/kiro-rag/README.md).
+```text
+Question
+  -> Worker input validation + per-client rate limit
+  -> Qwen3 query embedding
+  -> Vectorize top 40
+  -> D1 evidence hydration
+  -> BGE reranker top 20
+  -> evidence-aware / repository-diverse top 8
+  -> GLM-4.7-Flash grounded synthesis
+  -> SSE context/token/done events
+  -> browser answer + E# citations + source cards
+```
+
+The chat keeps earlier turns as browser-session presentation state, but the backend currently grounds each question independently. The interface therefore does not claim cross-turn model memory that the Worker does not actually provide.
+
+The older Nomic + Pinecone + Python + local CrossEncoder runtime is preserved as historical/regression material only; it is not the production request path. See [`docs/rag/production-architecture.md`](docs/rag/production-architecture.md) and [`src/features/kiro-rag/README.md`](src/features/kiro-rag/README.md).
 
 <a id="repository-layout"></a>
 ## Repository Layout
@@ -83,17 +101,17 @@ The separately engineered Python runtime already exposes `GET /health` and `POST
 ```text
 src/                         React + TypeScript frontend
 src/admin/                   private GitHub-authenticated admin workspace
-src/features/kiro-rag/       Kiro UI, GLB model contract, rig/animation runtime
+src/features/kiro-rag/       live Kiro chat, SSE client, GLB/animation runtime
 shared/                      frontend/Worker API contracts
-worker/                      Cloudflare Worker API + OAuth + D1 repositories
-migrations/                  D1 schema migrations
+worker/                      Cloudflare Worker API + OAuth + production RAG orchestration
+migrations/                  D1 schema migrations, including RAG runtime tables
 scripts/                     portfolio authoring CLI + repository policy gates
-rag/                         RAG corpus, pipeline, validation, Pinecone and Python runtime
-docs/                        whole-project architecture / operations / version docs
+rag/                         RAG corpus, offline builders, embeddings, validation + history
+docs/                        whole-project + canonical RAG architecture / operations / QC
 examples/                    milestone payload templates
 .github/workflows/           CI/CD
 netlify.toml                 Netlify build + SPA routing
-wrangler.jsonc               Worker + D1 binding configuration
+wrangler.jsonc               Worker + D1 + AI + Vectorize + rate-limit bindings
 ```
 
 <a id="public-product-surfaces"></a>
@@ -126,7 +144,11 @@ public/media/projects/eureka-vault/
 <a id="kiro-rag"></a>
 ### Kiro RAG
 
-`/kiro-rag` is the portfolio-intelligence surface. Today its visible React side is primarily the 3D interaction backbone and behavior-state adapter. The final product path is intended to connect this interface to the evidence-aware RAG runtime and grounded generation layer, not to replace the rest of the portfolio.
+`/kiro-rag` is the live portfolio-intelligence chat. It uses the production SSE RAG endpoint and preserves the Kiro 3D model as the agent-presence layer.
+
+The interaction includes streaming responses, suggested starter questions, a persistent composer, stop/cancel, retry/regenerate, inline `[E#]` citations, cited-vs-considered source cards, repository/source-line provenance, a collapsible retrieval trace, responsive layouts, and reduced-motion behavior.
+
+Kiro's visible states are driven by real request events (`retrieving`, `answering`, `success`, `error`) instead of artificial timers. The browser never receives Cloudflare credentials or direct access to Vectorize/D1.
 
 <a id="frontend-runtime"></a>
 ## Frontend Runtime
@@ -135,14 +157,22 @@ The application uses React `19.1.1`, React DOM `19.1.1`, Three.js `0.185.1`, Typ
 
 The frontend reads `VITE_API_BASE_URL` when provided; production builds set it to the Cloudflare Worker URL. Netlify rewrites all browser paths to `/index.html` with a `200` response so client-side routes can be loaded directly.
 
+The current production build succeeds but emits a Vite large-chunk warning: the main JavaScript bundle is approximately 904 kB minified / 246 kB gzip. Route-level/code splitting, especially around Three.js/Kiro, is a future performance-hardening opportunity rather than a RAG correctness requirement.
+
 <a id="cloudflare-worker-and-d1"></a>
 ## Cloudflare Worker and D1
 
-The Worker entry point is `worker/index.ts`. It separates public, authentication, and administration request handling in code and relies on repository modules for milestones and opinions.
+The Worker entry point is `worker/index.ts`. It separates public, authentication, administration, and RAG request handling in code and relies on repository modules for persistent application data.
 
-Public routes include health, published milestones, milestone detail, published D1-backed images, approved opinions, and opinion submission. Authentication routes implement GitHub OAuth and one-time exchange. Administration routes require a signed admin session and support milestone CRUD, section replacement, image management, and opinion moderation.
+Public routes include health, published milestones, milestone detail, published D1-backed images, approved opinions, opinion submission, and the RAG health/query/streaming endpoints. Authentication routes implement GitHub OAuth and one-time exchange. Administration routes require a signed admin session and support milestone CRUD, section replacement, image management, and opinion moderation.
 
-`wrangler.jsonc` binds `DB` to `kirolos-portfolio-db`, sets `FRONTEND_ORIGIN=https://kirolos.dev`, versions the GitHub callback URL, and enables Worker observability.
+`wrangler.jsonc` binds:
+
+- `DB` -> `kirolos-portfolio-db`;
+- `AI` -> Cloudflare Workers AI;
+- `RAG_INDEX` -> `portfolio-career-rag-cloudflare-v1`;
+- `RAG_RATE_LIMITER` -> 10 requests / 60 seconds / client IP;
+- `FRONTEND_ORIGIN` -> `https://kirolos.dev`.
 
 <a id="github-oauth-administrator-model"></a>
 ## GitHub OAuth Administrator Model
@@ -168,7 +198,7 @@ The current owner-authentication flow is:
 
 Authorization is anchored to the immutable numeric GitHub user ID rather than the username. The OAuth handoff code is stored only as a SHA-256 hash and consumed transactionally. The GitHub access token is used during the callback and is not persisted.
 
-Production Worker secrets are `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ADMIN_GITHUB_USER_ID`, and `SESSION_SECRET`. They belong in Wrangler secrets, never source control. The local `.dev.vars` file is also secret and must never be committed; it additionally carries local-only RAG credentials such as `PINECONE_API_KEY` when running the Python RAG service locally.
+Production Worker secrets are `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ADMIN_GITHUB_USER_ID`, and `SESSION_SECRET`. They belong in Wrangler secrets, never source control. The local `.dev.vars` file is also secret and must never be committed. Historical/local-only RAG credentials may still be needed only when deliberately exercising the preserved Python/Pinecone reference runtime.
 
 `GITHUB_CALLBACK_URL` is non-secret and is versioned in `wrangler.jsonc` as:
 
@@ -262,13 +292,15 @@ All administration routes require `Authorization: Bearer <session>` and the expe
 <a id="rag-runtime-api"></a>
 ### RAG runtime API
 
-The Python service is separate from the deployed Worker and is not yet browser-wired:
+The production RAG API is served by the deployed Cloudflare Worker:
 
 | Method | Route | Current status |
 |---|---|---|
-| `GET` | `/health` | implemented in `rag/runtime/rag-api-pinecone-v1.py` |
-| `POST` | `/api/rag/retrieve` | implemented and locally exercised; retrieval evidence only |
-| `POST` | `/api/rag/ask` | **PROPOSED** future generation endpoint |
+| `GET` | `/api/rag/health` | deployed; validates 2,808-document / 134-repository D1 corpus |
+| `POST` | `/api/rag/query` | deployed; synchronous grounded answer + citations + diagnostics; live production acceptance PASS |
+| `POST` | `/api/rag/query/stream` | deployed; normalized SSE `context` / `token` / `done` / `error`; consumed by `/kiro-rag` |
+
+The historical Python `rag/runtime/rag-api-pinecone-v1.py` service remains preserved for regression/history but is not a production dependency.
 
 <a id="cli-milestone-authoring"></a>
 ## CLI Milestone Authoring
@@ -309,6 +341,7 @@ The session expires after 60 minutes; reauthenticate rather than maintaining a l
 0002-base64-milestone-images.sql
 0003-github-oauth.sql
 0004-opinions.sql
+0005-rag-runtime.sql
 ```
 
 Local validation uses `npm run db:migrate:local`; the main-branch deployment workflow applies the production migration command before Worker deployment:
@@ -316,6 +349,8 @@ Local validation uses `npm run db:migrate:local`; the main-branch deployment wor
 ```bash
 npm run db:migrate:remote
 ```
+
+The RAG evidence population is generated separately from the migration schema by `rag/runtime/build-d1-rag-import.mjs`. Do not regenerate/import it for ordinary frontend or Worker-only changes.
 
 <a id="install-verify-and-run"></a>
 ## Install, Verify and Run
@@ -332,7 +367,7 @@ The `verify` chain rejects legacy JavaScript migration files, active R2 integrat
 
 For local Worker development, authenticate Wrangler, apply local migrations, populate local secrets in `.dev.vars`, and run `npm run worker:dev`.
 
-The RAG runtime has a separate Python dependency set under `rag/runtime/requirements-rag-api-v1.txt`; see [`rag/runtime/README.md`](rag/runtime/README.md).
+The production RAG runtime requires no Python process. Python dependencies under `rag/runtime/requirements-rag-api-v1.txt` belong to the preserved historical/reference runtime only.
 
 <a id="local-worker"></a>
 ### Local Worker
@@ -349,7 +384,9 @@ Apply D1 migrations locally:
 npm run db:migrate:local
 ```
 
-Copy `.dev.vars.example` to `.dev.vars`, populate local-only OAuth values and any local RAG credentials needed by the Python service, then run:
+For a local RAG query to use real evidence, also build/import the local corpus as documented under `docs/rag/production-architecture.md`.
+
+Copy `.dev.vars.example` to `.dev.vars`, populate local-only OAuth values, then run:
 
 ```bash
 npm run worker:dev
@@ -390,26 +427,30 @@ GitHub Actions deployment secrets are `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUN
 
 Netlify also defines `npm run verify && npm run build` as its build command, publishes `dist`, pins Node 22, sets the production Worker API base URL, and performs the SPA rewrite.
 
+The Kiro chat rollout passed 68/68 tests across 12 test files, frontend/Worker typechecks, ESLint, local D1 migrations, Vite production build, Worker dry-run, Cloudflare deployment, and Netlify production deployment.
+
 <a id="rag-subsystem-snapshot"></a>
 ## RAG Subsystem Snapshot
-
 
 | Layer | Current status | Authoritative implementation / artifact |
 |---|---|---|
 | Source analysis | **ACTIVE / COMPLETE** | `rag/other/repositories-*.md`, 134/134 repositories |
 | Canonical normalization | **ACTIVE / OUTPUT VALID** | `rag/scripts/prepare-rag-corpus.py` -> `rag/rag-corpus/` |
-| Evidence document compiler | **ACTIVE / COMPLETE** | `build-rag-retrieval-documents-v2.py` -> 2,808 documents |
-| Document embeddings | **ACTIVE / COMPLETE; DO NOT REGENERATE WITHOUT CAUSE** | `generate-rag-embeddings-v3-documents-local.py`, 2,808 x 512 |
-| Offline evidence-aware retrieval | **ACTIVE / VALIDATED** | `build-rag-retrieval-v3-evidence-aware-local.py` |
-| Dense vector serving | **ACTIVE / VALIDATED** | Pinecone `portfolio-career-rag-v1`, namespace `corpus-v1` |
-| Pinecone parity | **ACTIVE / PASS** | `dense-parity-validation-v2.json` |
-| Python HTTP retrieval runtime | **ACTIVE CODE; LOCALLY EXERCISED** | `rag/runtime/rag-api-pinecone-v1.py`, schema 1.0.0 / retrieval 3.1.0-pinecone |
-| Answer generation | **SELECTED / NOT INTEGRATED** | Gemini 2.5 Flash-Lite |
-| Browser-to-RAG API wiring | **NOT YET INTEGRATED** | `/kiro-rag` currently drives a simulated state flow and 3D avatar |
-| Positive-backend hardening patch | **PROPOSED - NOT APPLIED TO `main`** | local proposal `rag-backend-positive-gate-v1`, runtime schema 1.1.0 |
+| Evidence document compiler | **ACTIVE / COMPLETE** | retrieval-documents v2 -> 2,808 documents, schema 2.0.0 |
+| Cloudflare document embeddings | **ACTIVE / VALIDATED** | `@cf/qwen/qwen3-embedding-0.6b`, 2,808 x 1,024, `rag/rag-corpus/embeddings-cloudflare-v1/` |
+| Dense vector serving | **ACTIVE / VALIDATED** | Vectorize `portfolio-career-rag-cloudflare-v1`, 2,808 exact IDs |
+| Dense parity | **PASS** | `rag/rag-corpus/vectorize-cloudflare-v1/` |
+| Authoritative RAG text/provenance | **ACTIVE / REMOTE VERIFIED** | D1 `rag_documents` + `rag_corpus_meta` |
+| Query embedding | **ACTIVE / PRODUCTION** | Workers AI Qwen3 query mode + validated instruction |
+| Reranking | **ACTIVE / PRODUCTION** | `@cf/baai/bge-reranker-base`, top 20 |
+| Evidence selection | **ACTIVE / PRODUCTION** | Worker evidence-aware scoring + repository diversity -> top 8 |
+| Answer generation | **ACTIVE / PRODUCTION** | `@cf/zai-org/glm-4.7-flash`, thinking disabled, citation-grounded |
+| Synchronous RAG API | **ACTIVE / LIVE VALIDATED** | `POST /api/rag/query` |
+| Streaming RAG API | **ACTIVE / DEPLOYED** | `POST /api/rag/query/stream`; frontend consumer + parser tests complete; independent live stream QC capture still outstanding |
+| Browser chat | **ACTIVE / DEPLOYED** | `/kiro-rag`, `kiro-chat.tsx`, `rag-client.ts`, Kiro GLB lifecycle integration |
+| Historical Nomic/Pinecone/Python path | **PRESERVED / NON-PRODUCTION** | legacy/reference artifacts and runtime |
 
-
-The complete design history, quantitative validation, failure analysis, artifact identifiers, Pinecone parity details, runtime behavior, known issues and regeneration rules are intentionally kept under [`rag/`](rag/README.md) rather than flattening the entire portfolio README into an RAG manual.
+The complete design history, quantitative validation, failure analysis, artifact identifiers, runtime behavior, known issues and regeneration rules are kept under [`docs/rag/`](docs/rag/README.md) and [`docs/qc/rag/`](docs/qc/rag/README.md) rather than flattening the entire portfolio README into an RAG manual.
 
 <a id="documentation-map"></a>
 ## Documentation Map
@@ -420,17 +461,23 @@ Start with [`docs/README.md`](docs/README.md). The most important system-level r
 - [`docs/architecture/component-interactions.md`](docs/architecture/component-interactions.md) - who calls whom;
 - [`docs/operations/change-impact-matrix.md`](docs/operations/change-impact-matrix.md) - what must change/regenerate when a component changes;
 - [`docs/versions/component-version-map.md`](docs/versions/component-version-map.md) - ACTIVE / SUPERSEDED / PROPOSED truth table;
-- [`rag/README.md`](rag/README.md) - canonical RAG source of truth;
-- [`src/features/kiro-rag/README.md`](src/features/kiro-rag/README.md) - browser-side Kiro RAG/3D implementation.
+- [`docs/rag/README.md`](docs/rag/README.md) - canonical RAG documentation index;
+- [`docs/rag/production-architecture.md`](docs/rag/production-architecture.md) - current production RAG architecture;
+- [`docs/qc/rag/README.md`](docs/qc/rag/README.md) - RAG validation and incidents;
+- [`src/features/kiro-rag/README.md`](src/features/kiro-rag/README.md) - browser-side Kiro agent/GLB implementation.
 
 <a id="deployment-ownership"></a>
 ## Deployment Ownership
 
-The repository remains the source of truth for application code, D1 migrations, Worker bindings, OAuth behavior, tests, deployment gates and RAG documentation. Service dashboards should be treated primarily as runtime/observability/bootstrap surfaces. RAG external state is the explicit exception that must be reconciled against checked-in validation artifacts: Pinecone stores the indexed dense vectors, while its expected index shape, namespace and parity evidence are documented and validated from repository scripts.
+The repository remains the source of truth for application code, D1 migrations, Worker bindings, OAuth behavior, tests, deployment gates and RAG documentation. Service dashboards should be treated primarily as runtime/observability/bootstrap surfaces.
+
+For the live RAG system, external runtime state is reconciled against checked-in contracts and validation artifacts: Vectorize stores the production dense vectors, D1 stores authoritative evidence/provenance, and Workers AI supplies query embedding, reranking and generation. Historical Pinecone state is no longer a production dependency.
 
 ## Related Documentation
 
 - [Documentation index](docs/README.md)
-- [RAG subsystem](rag/README.md)
+- [RAG documentation](docs/rag/README.md)
+- [Production RAG architecture](docs/rag/production-architecture.md)
+- [RAG QC](docs/qc/rag/README.md)
 - [Frontend docs](src/README.md)
 - [Worker docs](worker/README.md)
