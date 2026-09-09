@@ -1,4 +1,4 @@
-/* The identify step is intentionally one-screen on phones: no metadata, decorative step UI, or oversized spacing. */
+/* The identify step is intentionally one-screen on phones: compact hierarchy without removing useful poll context. */
 .poll-public-shell--identify {
   min-height: 100svh;
   box-sizing: border-box;
@@ -15,7 +15,6 @@
 }
 
 .poll-public-shell--identify .poll-intro .eyebrow,
-.poll-public-shell--identify .poll-intro > p,
 .poll-public-shell--identify .poll-meta-row {
   display: none;
 }
@@ -26,9 +25,17 @@
   line-height: 1.02;
 }
 
+.poll-public-shell--identify .poll-intro > p {
+  max-width: 600px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.38;
+}
+
 .poll-public-shell--identify .poll-identify {
   max-width: 620px;
-  margin-top: 8px;
+  margin-top: 10px;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -43,7 +50,7 @@
 }
 
 .poll-public-shell--identify .poll-identify h2 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-size: 1.15rem;
   line-height: 1.2;
 }
@@ -77,19 +84,25 @@
     padding-bottom: 8px;
   }
   .poll-public-shell--identify .poll-public-header { min-height: 46px; }
-  .poll-public-shell--identify .poll-intro { padding: 18px 0 8px; }
+  .poll-public-shell--identify .poll-intro { padding: 14px 0 6px; }
   .poll-public-shell--identify .poll-intro h1 {
-    font-size: clamp(1.6rem, 7.5vw, 2.15rem);
+    font-size: clamp(1.55rem, 7vw, 2.05rem);
     letter-spacing: -.035em;
   }
-  .poll-public-shell--identify .poll-identify { margin-top: 6px; }
-  .poll-public-shell--identify .poll-identify h2 { margin-bottom: 10px; font-size: 1.05rem; }
+  .poll-public-shell--identify .poll-intro > p {
+    margin-top: 7px;
+    font-size: .8rem;
+    line-height: 1.32;
+  }
+  .poll-public-shell--identify .poll-identify { margin-top: 8px; }
+  .poll-public-shell--identify .poll-identify h2 { margin-bottom: 9px; font-size: 1.02rem; }
 }
 
 @media (max-width: 420px) {
   .poll-public-shell--identify {
     width: calc(100% - 20px);
   }
-  .poll-public-shell--identify .poll-intro { padding-top: 14px; }
+  .poll-public-shell--identify .poll-intro { padding-top: 10px; }
+  .poll-public-shell--identify .poll-intro > p { font-size: .77rem; }
   .poll-public-shell--identify .poll-status-pill { padding: 4px 8px; font-size: .68rem; }
 }

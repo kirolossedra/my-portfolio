@@ -4,6 +4,7 @@ import { generateTimesForDefinition } from '../../shared/poll.ts';
 import { compactDateParts, formatDatePageRange, POLL_DATE_PAGE_SIZE, useDateWindow } from './date-window.ts';
 
 export type AvailabilityPaintMode = AvailabilityMode | 'unavailable';
+type PaintGestureAction = 'paint' | 'erase';
 
 const MODE_META: Record<AvailabilityPaintMode, { label: string; symbol: string }> = {
   unavailable: { label: 'Unavailable', symbol: '×' },
@@ -69,15 +70,17 @@ export default function AvailabilityGrid({
   const gridRef = useRef<HTMLDivElement>(null);
   const activePointerId = useRef<number | null>(null);
   const paintedCells = useRef(new Set<string>());
+  const gestureAction = useRef<PaintGestureAction | null>(null);
   const valueRef = useRef(value);
   valueRef.current = value;
 
-  const apply = (date: string, startTime: string) => {
+  const apply = (date: string, startTime: string, action: PaintGestureAction | null = null) => {
     if (disabled) return;
     const next = new Map(valueRef.current);
     const slotKey = key(date, startTime);
-    if (paintMode === 'unavailable') next.delete(slotKey);
-    else next.set(slotKey, paintMode);
+    const shouldErase = action === 'erase' || (action === null && paintMode === 'unavailable');
+    if (shouldErase) next.delete(slotKey);
+    else next.set(slotKey, paintMode === 'unavailable' ? 'either' : paintMode);
     valueRef.current = next;
     onChange(next);
   };
@@ -85,11 +88,11 @@ export default function AvailabilityGrid({
   const paintCell = (cell: HTMLElement) => {
     const date = cell.dataset.pollDate;
     const startTime = cell.dataset.pollStart;
-    if (!date || !startTime) return;
+    if (!date || !startTime || !gestureAction.current) return;
     const slotKey = key(date, startTime);
     if (paintedCells.current.has(slotKey)) return;
     paintedCells.current.add(slotKey);
-    apply(date, startTime);
+    apply(date, startTime, gestureAction.current);
   };
 
   const cellAtPoint = (clientX: number, clientY: number): HTMLElement | null => {
@@ -106,9 +109,15 @@ export default function AvailabilityGrid({
       : null;
     if (!target || !event.currentTarget.contains(target)) return;
 
+    const date = target.dataset.pollDate;
+    const startTime = target.dataset.pollStart;
+    if (!date || !startTime) return;
+
     event.preventDefault();
     activePointerId.current = event.pointerId;
     paintedCells.current.clear();
+    const slotKey = key(date, startTime);
+    gestureAction.current = paintMode === 'unavailable' || valueRef.current.has(slotKey) ? 'erase' : 'paint';
     event.currentTarget.setPointerCapture(event.pointerId);
     paintCell(target);
   };
@@ -126,11 +135,13 @@ export default function AvailabilityGrid({
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
     activePointerId.current = null;
+    gestureAction.current = null;
     paintedCells.current.clear();
   };
 
   const togglePaint = () => {
     activePointerId.current = null;
+    gestureAction.current = null;
     paintedCells.current.clear();
     setPaintEnabled((current) => !current);
   };
@@ -190,6 +201,7 @@ export default function AvailabilityGrid({
         onPointerCancel={stopPainting}
         onLostPointerCapture={() => {
           activePointerId.current = null;
+          gestureAction.current = null;
           paintedCells.current.clear();
         }}
       >
@@ -240,7 +252,7 @@ export default function AvailabilityGrid({
       </div>
       <p className="poll-grid-help">
         {paintEnabled
-          ? 'Paint is on. Choose a mode, then press and drag across slots. The calendar will not scroll while your finger or pen is on it.'
+          ? 'Paint is on. Start on an empty slot to add availability, or start on a selected slot to erase. The calendar will not scroll while your finger or pen is on it.'
           : `Choose a mode, then tap the grid. Seven dates stay visible as one week page; use the arrows for the next week. Only complete ${definition.slotWidthMinutes}-minute slots are shown.`}
       </p>
     </section>
