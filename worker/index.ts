@@ -42,6 +42,7 @@ import {
   moderateOpinion,
   submitOpinion,
 } from './opinions-repository.ts';
+import { handleAdminPollRequest, handlePublicPollRequest } from './poll-routes.ts';
 import { handleRagRequest } from './rag-runtime.ts';
 import {
   validateImagesWriteInput,
@@ -103,6 +104,10 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
     return handleRagRequest(request, env, url);
   }
 
+  if (url.pathname.startsWith('/api/polls/')) {
+    return handlePublicPollRequest(request, env, url);
+  }
+
   if (request.method === 'GET' && url.pathname === '/api/health') {
     await env.DB.prepare('SELECT 1').first();
     return jsonResponse(env, {
@@ -161,6 +166,10 @@ async function handlePublic(request: Request, env: Env, url: URL): Promise<Respo
 
 async function handleAdmin(request: Request, env: Env, url: URL): Promise<Response> {
   await requireAdminSession(request, env);
+
+  if (url.pathname === '/api/admin/polls' || url.pathname.startsWith('/api/admin/polls/')) {
+    return handleAdminPollRequest(request, env, url);
+  }
 
   if (request.method === 'GET' && url.pathname === '/api/admin/opinions') {
     const data = await listAdminOpinions(env.DB);
@@ -254,6 +263,7 @@ async function handleAdmin(request: Request, env: Env, url: URL): Promise<Respon
 function isRestrictedBrowserRoute(pathname: string): boolean {
   return pathname.startsWith('/api/admin/')
     || pathname.startsWith('/api/rag/')
+    || pathname.startsWith('/api/polls/')
     || pathname === '/api/auth/exchange'
     || pathname === '/api/auth/session';
 }

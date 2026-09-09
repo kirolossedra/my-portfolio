@@ -6,6 +6,8 @@ import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import OpinionsPage from './opinions-page.tsx';
 import SkillsPage from './skills-page.tsx';
 import KiroRagPage from './kiro-rag-page.tsx';
+import AdminPollsPage from './polls/admin-polls-page.tsx';
+import ParticipantPollPage from './polls/participant-poll-page.tsx';
 import { loadMilestone, loadMilestones } from './data/milestones.ts';
 import type { MilestoneDetail, TimelineMilestone } from '../shared/milestone.ts';
 
@@ -14,6 +16,15 @@ type LoadStatus = 'loading' | 'ready' | 'error';
 function getMilestoneSlugFromPath(): string | undefined {
   const match = window.location.pathname.match(/^\/milestones\/([^/]+)\/?$/);
   return match?.[1] ? decodeURIComponent(match[1]) : undefined;
+}
+
+function AdminPortfolioPage() {
+  return (
+    <>
+      <a className="poll-admin-entry" href="/admin/polls">Availability polls</a>
+      <AdminPage />
+    </>
+  );
 }
 
 function PublicPortfolio() {
@@ -123,8 +134,11 @@ function PublicPortfolio() {
 
 export default function App() {
   const path = window.location.pathname;
+  const publicPollMatch = path.match(/^\/poll\/([a-f0-9]{32})\/?$/);
+  if (publicPollMatch?.[1]) return <ParticipantPollPage token={publicPollMatch[1]} />;
   if (path === '/admin/auth/callback') return <AuthCallbackPage />;
-  if (/^\/admin\/?$/.test(path)) return <AdminPage />;
+  if (/^\/admin\/polls\/?$/.test(path)) return <AdminPollsPage />;
+  if (/^\/admin\/?$/.test(path)) return <AdminPortfolioPage />;
   if (/^\/opinions\/?$/.test(path)) return <OpinionsPage />;
   if (/^\/skills\/?$/.test(path)) return <SkillsPage />;
   if (/^\/kiro-rag\/?$/.test(path)) return <KiroRagPage />;
