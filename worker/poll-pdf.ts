@@ -102,7 +102,7 @@ function pageStream(lines: string[], pageNumber: number, totalPages: number): st
   return commands.join('\n');
 }
 
-export function renderPollPdf(poll: AdminPollDetail): Uint8Array {
+export function renderPollPdf(poll: AdminPollDetail): ArrayBuffer {
   const lines = pollLines(poll);
   const pages: string[][] = [];
   for (let index = 0; index < lines.length; index += MAX_LINES) pages.push(lines.slice(index, index + MAX_LINES));
@@ -143,5 +143,5 @@ export function renderPollPdf(poll: AdminPollDetail): Uint8Array {
     pdf += `${String(offset).padStart(10, '0')} 00000 n \n`;
   }
   pdf += `trailer\n<< /Size ${objects.length} /Root ${catalogId} 0 R >>\nstartxref\n${xrefOffset}\n%%EOF\n`;
-  return new TextEncoder().encode(pdf);
+  return new TextEncoder().encode(pdf).buffer;
 }
