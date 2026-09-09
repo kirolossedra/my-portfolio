@@ -152,9 +152,7 @@ export default function AvailabilityGrid({
           </span>
           <span className="poll-paint-state" aria-hidden="true">{paintEnabled ? 'ON' : 'OFF'}</span>
         </button>
-        {paintEnabled && (
-          <span className="poll-paint-lock" role="status">Calendar scrolling locked while painting</span>
-        )}
+        {paintEnabled && <span className="poll-paint-lock" role="status">Calendar scrolling locked while painting</span>}
       </div>
 
       <div className="poll-mode-toolbar" aria-label="Availability paint mode">
@@ -228,6 +226,9 @@ export default function AvailabilityGrid({
                 onClick={(event) => {
                   if (!paintEnabled || event.detail === 0) apply(date, time.startTime);
                 }}
+                onPointerEnter={(event) => {
+                  if (!paintEnabled && event.pointerType === 'mouse' && event.buttons === 1) apply(date, time.startTime);
+                }}
                 disabled={disabled}
               >
                 {mode !== 'unavailable' && <span className="poll-cell-symbol" aria-hidden="true">{meta.symbol}</span>}
@@ -239,8 +240,8 @@ export default function AvailabilityGrid({
       </div>
       <p className="poll-grid-help">
         {paintEnabled
-          ? `Paint is on. Choose a mode, then press and drag across slots. The calendar will not scroll while your finger or pen is on it.`
-          : `Tap individual slots, or turn on Paint availability to sweep across many slots. Seven dates stay visible as one week page. Only complete ${definition.slotWidthMinutes}-minute slots are shown.`}
+          ? 'Paint is on. Choose a mode, then press and drag across slots. The calendar will not scroll while your finger or pen is on it.'
+          : `Choose a mode, then tap the grid. Seven dates stay visible as one week page; use the arrows for the next week. Only complete ${definition.slotWidthMinutes}-minute slots are shown.`}
       </p>
     </section>
   );

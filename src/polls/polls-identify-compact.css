@@ -1,0 +1,95 @@
+/* The identify step is intentionally one-screen on phones: no metadata, decorative step UI, or oversized spacing. */
+.poll-public-shell--identify {
+  min-height: 100svh;
+  box-sizing: border-box;
+  padding-bottom: 12px;
+}
+
+.poll-public-shell--identify .poll-public-header {
+  min-height: 50px;
+}
+
+.poll-public-shell--identify .poll-intro {
+  max-width: 620px;
+  padding: 22px 0 10px;
+}
+
+.poll-public-shell--identify .poll-intro .eyebrow,
+.poll-public-shell--identify .poll-intro > p,
+.poll-public-shell--identify .poll-meta-row {
+  display: none;
+}
+
+.poll-public-shell--identify .poll-intro h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  line-height: 1.02;
+}
+
+.poll-public-shell--identify .poll-identify {
+  max-width: 620px;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  display: block;
+}
+
+.poll-public-shell--identify .poll-identify .poll-step-number,
+.poll-public-shell--identify .poll-identify .eyebrow,
+.poll-public-shell--identify .poll-identify > div > p {
+  display: none;
+}
+
+.poll-public-shell--identify .poll-identify h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.poll-public-shell--identify .poll-identify label {
+  gap: 6px;
+  font-size: .78rem;
+}
+
+.poll-public-shell--identify .poll-identify select {
+  min-height: 48px;
+  padding: 10px 12px;
+  font-size: .95rem;
+}
+
+.poll-public-shell--identify .poll-identify .poll-primary-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: 10px;
+}
+
+.poll-public-shell--identify .poll-message {
+  margin: 10px 0 0;
+  font-size: .78rem;
+}
+
+@media (max-width: 820px) {
+  .poll-public-shell--identify {
+    width: min(calc(100% - 24px), 620px);
+    padding-top: 6px;
+    padding-bottom: 8px;
+  }
+  .poll-public-shell--identify .poll-public-header { min-height: 46px; }
+  .poll-public-shell--identify .poll-intro { padding: 18px 0 8px; }
+  .poll-public-shell--identify .poll-intro h1 {
+    font-size: clamp(1.6rem, 7.5vw, 2.15rem);
+    letter-spacing: -.035em;
+  }
+  .poll-public-shell--identify .poll-identify { margin-top: 6px; }
+  .poll-public-shell--identify .poll-identify h2 { margin-bottom: 10px; font-size: 1.05rem; }
+}
+
+@media (max-width: 420px) {
+  .poll-public-shell--identify {
+    width: calc(100% - 20px);
+  }
+  .poll-public-shell--identify .poll-intro { padding-top: 14px; }
+  .poll-public-shell--identify .poll-status-pill { padding: 4px 8px; font-size: .68rem; }
+}

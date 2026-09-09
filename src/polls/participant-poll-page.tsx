@@ -109,7 +109,7 @@ export default function ParticipantPollPage({ token }: { token: string }) {
   }
 
   return (
-    <main className="poll-public-shell">
+    <main className={`poll-public-shell${phase === 'identify' ? ' poll-public-shell--identify' : ''}`}>
       <header className="poll-public-header">
         <a className="brand" href="/">kirolos<span>.dev</span></a>
         <span className={`poll-status-pill status-${poll.status}`}>{poll.status}</span>

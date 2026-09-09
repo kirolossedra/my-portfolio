@@ -1,9 +1,9 @@
-/* Deliberate touch-paint mode for fast committee availability entry. */
+/* Paint availability is strictly additive: it must not alter the approved week layout. */
 .poll-paint-control {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin: 8px 0 2px;
+  margin: 8px 0 6px;
 }
 
 .poll-paint-toggle {
@@ -22,10 +22,7 @@
   transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
 }
 
-.poll-paint-toggle:hover:not(:disabled) {
-  border-color: var(--accent);
-}
-
+.poll-paint-toggle:hover:not(:disabled) { border-color: var(--accent); }
 .poll-paint-toggle.is-active {
   border-color: var(--accent);
   background: var(--accent-soft);
@@ -54,12 +51,7 @@
   display: grid;
   gap: 1px;
 }
-
-.poll-paint-copy strong {
-  font-size: .82rem;
-  line-height: 1.15;
-}
-
+.poll-paint-copy strong { font-size: .82rem; line-height: 1.15; }
 .poll-paint-copy small {
   overflow: hidden;
   color: var(--muted);
@@ -79,7 +71,6 @@
   font-weight: 800;
   text-align: center;
 }
-
 .poll-paint-toggle.is-active .poll-paint-state {
   border-color: var(--accent);
   background: var(--accent);
@@ -92,6 +83,7 @@
   line-height: 1.25;
 }
 
+/* Only the explicit paint state changes pointer behavior. Grid sizing/visibility stays untouched. */
 .poll-week-grid.is-paint-enabled {
   touch-action: none;
   overscroll-behavior: none;
@@ -99,57 +91,25 @@
   -webkit-user-select: none;
   user-select: none;
 }
+.poll-week-grid.is-paint-enabled .poll-grid-cell { touch-action: none; }
+.poll-week-grid.is-paint-enabled .poll-grid-cell:not(:disabled) { cursor: crosshair; }
+.poll-week-grid.is-paint-enabled .poll-grid-cell:active:not(:disabled) { filter: brightness(1.08); }
 
-.poll-week-grid.is-paint-enabled .poll-grid-cell {
-  touch-action: none;
-}
-
-.poll-week-grid.is-paint-enabled .poll-grid-cell:not(:disabled) {
-  cursor: crosshair;
-}
-
-.poll-week-grid.is-paint-enabled .poll-grid-cell:active:not(:disabled) {
-  filter: brightness(1.08);
-}
-
-body:has(.poll-public-shell) .poll-paint-toggle {
-  background: #fff;
-}
-
-body:has(.poll-public-shell) .poll-paint-toggle.is-active {
-  background: #edf7f1;
-}
+body:has(.poll-public-shell) .poll-paint-toggle { background: #fff; }
+body:has(.poll-public-shell) .poll-paint-toggle.is-active { background: #edf7f1; }
 
 @media (max-width: 820px) {
   .poll-paint-control {
-    position: sticky;
-    top: 0;
-    z-index: 10;
     align-items: stretch;
-    margin-top: 4px;
-    padding: 5px 0;
-    background: linear-gradient(var(--bg) 78%, transparent);
+    margin: 5px 0 6px;
   }
-
   .poll-paint-toggle {
     width: 100%;
-    min-height: 46px;
+    min-height: 44px;
   }
-
   .poll-paint-lock {
-    position: absolute;
-    right: 8px;
-    bottom: -14px;
-    max-width: 54%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: .61rem;
-  }
-
-  .poll-paint-control + .poll-mode-toolbar {
-    top: 56px;
-    z-index: 9;
+    max-width: 42%;
+    align-self: center;
   }
 }
 
@@ -159,19 +119,10 @@ body:has(.poll-public-shell) .poll-paint-toggle.is-active {
     gap: 7px;
     padding: 7px 8px;
   }
-
-  .poll-paint-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  .poll-paint-copy strong {
-    font-size: .76rem;
-  }
-
-  .poll-paint-copy small {
-    font-size: .62rem;
-  }
+  .poll-paint-icon { width: 28px; height: 28px; }
+  .poll-paint-copy strong { font-size: .76rem; }
+  .poll-paint-copy small { font-size: .62rem; }
+  .poll-paint-lock { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
