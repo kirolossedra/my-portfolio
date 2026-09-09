@@ -1,22 +1,31 @@
 import type { CSSProperties } from 'react';
 import type { AdminPollDetail, PollDefinition } from '../../shared/poll.ts';
 import { computeIntersections, generateTimesForDefinition } from '../../shared/poll.ts';
-import { formatDate, formatTime, modeLabel, modeSymbol, participantColorClass, participantOrdinal } from './admin-poll-utils.ts';
-import { useDateWindow } from './date-window.ts';
+import { formatTime, modeLabel, modeSymbol, participantColorClass, participantOrdinal } from './admin-poll-utils.ts';
+import { compactDateParts, formatDatePageRange, POLL_DATE_PAGE_SIZE, useDateWindow } from './date-window.ts';
 
-function DateWindowPager({ dates, window }: { dates: string[]; window: ReturnType<typeof useDateWindow> }) {
-  const first = window.visibleDates[0] ?? dates[0] ?? '';
-  const last = window.visibleDates.at(-1) ?? first;
+function DateWindowPager({ window }: { window: ReturnType<typeof useDateWindow> }) {
   return (
-    <div className="poll-date-window-nav" aria-label="Visible calendar days">
-      <button type="button" onClick={window.previous} disabled={!window.canPrevious} aria-label="Previous days">←</button>
+    <div className="poll-date-window-nav poll-week-nav" aria-label="Calendar week">
+      <button type="button" onClick={window.previous} disabled={!window.canPrevious} aria-label="Previous week">‹</button>
       <div>
-        <strong>{formatDate(first)}{last !== first ? ` – ${formatDate(last)}` : ''}</strong>
-        <span>Showing {window.startIndex + 1}–{window.endIndex} of {dates.length} days</span>
+        <strong>{formatDatePageRange(window.visibleDates)}</strong>
+        <span>Week {window.pageIndex + 1} of {window.totalPages}</span>
       </div>
-      <button type="button" onClick={window.next} disabled={!window.canNext} aria-label="Next days">→</button>
+      <button type="button" onClick={window.next} disabled={!window.canNext} aria-label="Next week">›</button>
     </div>
   );
+}
+
+function DateHeader({ date }: { date: string }) {
+  const parts = compactDateParts(date);
+  return <><span className="poll-date-weekday">{parts.weekday}</span><strong className="poll-date-day">{parts.day}</strong></>;
+}
+
+function weekHeaderCells(window: ReturnType<typeof useDateWindow>) {
+  return window.pageDates.map((date, index) => date
+    ? <div className="poll-grid-date" key={date}><DateHeader date={date} /></div>
+    : <div className="poll-grid-date poll-grid-date--empty" key={`blank-head-${index}`} aria-hidden="true" />);
 }
 
 export function PollPreview({ definition }: { definition: PollDefinition }) {
@@ -24,13 +33,15 @@ export function PollPreview({ definition }: { definition: PollDefinition }) {
   const dateWindow = useDateWindow(definition.dates);
   return (
     <div className="poll-preview-wrap">
-      <DateWindowPager dates={definition.dates} window={dateWindow} />
-      <div className="poll-preview-grid" style={{ '--poll-date-count': dateWindow.visibleDates.length } as CSSProperties}>
-        <div className="poll-grid-corner">Toronto time</div>
-        {dateWindow.visibleDates.map((date) => <div className="poll-grid-date" key={date}><strong>{formatDate(date)}</strong></div>)}
+      <DateWindowPager window={dateWindow} />
+      <div className="poll-preview-grid poll-week-grid" style={{ '--poll-date-count': POLL_DATE_PAGE_SIZE } as CSSProperties}>
+        <div className="poll-grid-corner">Toronto</div>
+        {weekHeaderCells(dateWindow)}
         {times.flatMap((time) => [
           <div className="poll-grid-time" key={`time-${time.startTime}`}><strong>{formatTime(time.startTime)}</strong><span>{formatTime(time.endTime)}</span></div>,
-          ...dateWindow.visibleDates.map((date) => <div className="poll-preview-cell" key={`${date}-${time.startTime}`}>Available?</div>),
+          ...dateWindow.pageDates.map((date, index) => date
+            ? <div className="poll-preview-cell" key={`${date}-${time.startTime}`}>Available?</div>
+            : <div className="poll-preview-cell poll-grid-cell--empty" key={`blank-${index}-${time.startTime}`} aria-hidden="true" />),
         ])}
       </div>
       <p className="poll-grid-help">Only complete slots are generated. A trailing remainder shorter than {definition.slotWidthMinutes} minutes is intentionally discarded.</p>
@@ -59,16 +70,17 @@ export function AdminResponseGrid({ poll }: { poll: AdminPollDetail }) {
   return (
     <div className="poll-admin-grid-wrap">
       <ParticipantColorLegend poll={poll} />
-      <DateWindowPager dates={poll.definition.dates} window={dateWindow} />
-      <div className="poll-admin-grid" style={{ '--poll-date-count': dateWindow.visibleDates.length } as CSSProperties}>
-        <div className="poll-grid-corner">Toronto time</div>
-        {dateWindow.visibleDates.map((date) => <div className="poll-grid-date" key={date}><strong>{formatDate(date)}</strong></div>)}
+      <DateWindowPager window={dateWindow} />
+      <div className="poll-admin-grid poll-week-grid" style={{ '--poll-date-count': POLL_DATE_PAGE_SIZE } as CSSProperties}>
+        <div className="poll-grid-corner">Toronto</div>
+        {weekHeaderCells(dateWindow)}
         {times.flatMap((time) => [
           <div className="poll-grid-time" key={`time-${time.startTime}`}><strong>{formatTime(time.startTime)}</strong><span>{formatTime(time.endTime)}</span></div>,
-          ...dateWindow.visibleDates.map((date) => {
+          ...dateWindow.pageDates.map((date, index) => {
+            if (!date) return <div className="poll-admin-cell poll-grid-cell--empty" key={`blank-${index}-${time.startTime}`} aria-hidden="true" />;
             const slot = slotByKey.get(`${date}|${time.startTime}`);
             return (
-              <div className="poll-admin-cell" key={`${date}-${time.startTime}`} tabIndex={0} aria-label={`${formatDate(date)} ${formatTime(time.startTime)}, ${slot?.availableCount ?? 0} of ${poll.participants.length} available`}>
+              <div className="poll-admin-cell" key={`${date}-${time.startTime}`} tabIndex={0} aria-label={`${date} ${formatTime(time.startTime)}, ${slot?.availableCount ?? 0} of ${poll.participants.length} available`}>
                 <strong>{slot?.availableCount ?? 0}/{poll.participants.length}</strong>
                 <div className="poll-participant-chips">
                   {slot?.participantModes.map((entry) => (

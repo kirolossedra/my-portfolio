@@ -1,48 +1,73 @@
 import { useEffect, useMemo, useState } from 'react';
 
-function visibleDateCountForWidth(width: number): number {
-  if (width <= 420) return 2;
-  if (width <= 820) return 3;
-  if (width <= 1180) return 4;
-  return 5;
+export const POLL_DATE_PAGE_SIZE = 7;
+
+function dateAnchor(date: string): Date {
+  const [year, month, day] = date.split('-').map(Number);
+  return new Date(Date.UTC(year ?? 1970, (month ?? 1) - 1, day ?? 1, 16));
+}
+
+function monthDay(date: string): { month: string; day: string; year: string } {
+  const anchor = dateAnchor(date);
+  return {
+    month: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', month: 'short' }).format(anchor),
+    day: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', day: 'numeric' }).format(anchor),
+    year: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', year: 'numeric' }).format(anchor),
+  };
+}
+
+export function compactDateParts(date: string): { weekday: string; day: string } {
+  const anchor = dateAnchor(date);
+  return {
+    weekday: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', weekday: 'narrow' }).format(anchor),
+    day: new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', day: 'numeric' }).format(anchor),
+  };
+}
+
+export function formatDatePageRange(dates: string[]): string {
+  const firstDate = dates[0];
+  const lastDate = dates.at(-1);
+  if (!firstDate || !lastDate) return '';
+  const first = monthDay(firstDate);
+  const last = monthDay(lastDate);
+  if (firstDate === lastDate) return `${first.month} ${first.day}`;
+  if (first.month === last.month && first.year === last.year) return `${first.month} ${first.day} – ${last.day}`;
+  return `${first.month} ${first.day} – ${last.month} ${last.day}`;
 }
 
 export function useDateWindow(dates: string[]) {
-  const [requestedCount, setRequestedCount] = useState(() => (
-    typeof window === 'undefined' ? 5 : visibleDateCountForWidth(window.innerWidth)
-  ));
-  const [startIndex, setStartIndex] = useState(0);
+  const totalPages = Math.max(1, Math.ceil(dates.length / POLL_DATE_PAGE_SIZE));
+  const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
-    const update = () => setRequestedCount(visibleDateCountForWidth(window.innerWidth));
-    update();
-    window.addEventListener('resize', update, { passive: true });
-    return () => window.removeEventListener('resize', update);
-  }, []);
+    setPageIndex((current) => Math.min(current, totalPages - 1));
+  }, [totalPages]);
 
-  const visibleCount = Math.max(1, Math.min(requestedCount, Math.max(1, dates.length)));
-  const maxStart = Math.max(0, dates.length - visibleCount);
-
-  useEffect(() => {
-    setStartIndex((current) => Math.min(current, maxStart));
-  }, [maxStart]);
-
+  const startIndex = pageIndex * POLL_DATE_PAGE_SIZE;
   const visibleDates = useMemo(
-    () => dates.slice(startIndex, startIndex + visibleCount),
-    [dates, startIndex, visibleCount],
+    () => dates.slice(startIndex, startIndex + POLL_DATE_PAGE_SIZE),
+    [dates, startIndex],
   );
 
-  const previous = () => setStartIndex((current) => Math.max(0, current - visibleCount));
-  const next = () => setStartIndex((current) => Math.min(maxStart, current + visibleCount));
+  const pageDates = useMemo<Array<string | null>>(
+    () => [
+      ...visibleDates,
+      ...Array.from({ length: Math.max(0, POLL_DATE_PAGE_SIZE - visibleDates.length) }, () => null),
+    ],
+    [visibleDates],
+  );
 
   return {
     visibleDates,
-    visibleCount,
+    pageDates,
+    visibleCount: visibleDates.length,
     startIndex,
-    endIndex: Math.min(dates.length, startIndex + visibleCount),
-    canPrevious: startIndex > 0,
-    canNext: startIndex < maxStart,
-    previous,
-    next,
+    endIndex: Math.min(dates.length, startIndex + visibleDates.length),
+    pageIndex,
+    totalPages,
+    canPrevious: pageIndex > 0,
+    canNext: pageIndex < totalPages - 1,
+    previous: () => setPageIndex((current) => Math.max(0, current - 1)),
+    next: () => setPageIndex((current) => Math.min(totalPages - 1, current + 1)),
   };
 }
