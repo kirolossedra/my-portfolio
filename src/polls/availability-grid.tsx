@@ -1,6 +1,7 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 import type { AvailabilityMode, PollDefinition } from '../../shared/poll.ts';
 import { generateTimesForDefinition } from '../../shared/poll.ts';
+import { useDateWindow } from './date-window.ts';
 
 export type AvailabilityPaintMode = AvailabilityMode | 'unavailable';
 
@@ -10,7 +11,6 @@ const MODE_META: Record<AvailabilityPaintMode, { label: string; symbol: string }
   in_person: { label: 'In person', symbol: '●' },
   either: { label: 'Either', symbol: '◐' },
 };
-
 
 function dateAnchor(date: string): Date {
   const [year, month, day] = date.split('-').map(Number);
@@ -55,7 +55,7 @@ export default function AvailabilityGrid({
 }) {
   const times = useMemo(() => generateTimesForDefinition(definition), [definition]);
   const [paintMode, setPaintMode] = useState<AvailabilityPaintMode>('either');
-  const [mobileDateIndex, setMobileDateIndex] = useState(0);
+  const dateWindow = useDateWindow(definition.dates);
 
   const apply = (date: string, startTime: string) => {
     if (disabled) return;
@@ -65,6 +65,9 @@ export default function AvailabilityGrid({
     else next.set(slotKey, paintMode);
     onChange(next);
   };
+
+  const firstVisibleDate = dateWindow.visibleDates[0] ?? definition.dates[0] ?? '';
+  const lastVisibleDate = dateWindow.visibleDates.at(-1) ?? firstVisibleDate;
 
   return (
     <section className="poll-grid-section" aria-label="Availability grid">
@@ -84,16 +87,19 @@ export default function AvailabilityGrid({
         ))}
       </div>
 
-      <div className="poll-mobile-date-nav" aria-label="Choose date column">
-        <button type="button" onClick={() => setMobileDateIndex((index) => Math.max(0, index - 1))} disabled={mobileDateIndex === 0}>←</button>
-        <strong>{longDate(definition.dates[mobileDateIndex] ?? definition.dates[0] ?? '')}</strong>
-        <button type="button" onClick={() => setMobileDateIndex((index) => Math.min(definition.dates.length - 1, index + 1))} disabled={mobileDateIndex >= definition.dates.length - 1}>→</button>
+      <div className="poll-date-window-nav" aria-label="Visible calendar days">
+        <button type="button" onClick={dateWindow.previous} disabled={!dateWindow.canPrevious} aria-label="Previous days">←</button>
+        <div>
+          <strong>{longDate(firstVisibleDate)}{lastVisibleDate !== firstVisibleDate ? ` – ${longDate(lastVisibleDate)}` : ''}</strong>
+          <span>Showing {dateWindow.startIndex + 1}–{dateWindow.endIndex} of {definition.dates.length} days</span>
+        </div>
+        <button type="button" onClick={dateWindow.next} disabled={!dateWindow.canNext} aria-label="Next days">→</button>
       </div>
 
-      <div className="poll-grid" style={{ '--poll-date-count': definition.dates.length } as CSSProperties}>
+      <div className="poll-grid" style={{ '--poll-date-count': dateWindow.visibleDates.length } as CSSProperties}>
         <div className="poll-grid-corner">Toronto time</div>
-        {definition.dates.map((date, dateIndex) => (
-          <div key={date} className={`poll-grid-date${dateIndex === mobileDateIndex ? ' is-mobile-active' : ''}`}>
+        {dateWindow.visibleDates.map((date) => (
+          <div key={date} className="poll-grid-date">
             <strong>{longDate(date)}</strong>
           </div>
         ))}
@@ -102,14 +108,14 @@ export default function AvailabilityGrid({
             <strong>{displayTime(time.startTime)}</strong>
             <span>{displayTime(time.endTime)}</span>
           </div>,
-          ...definition.dates.map((date, dateIndex) => {
+          ...dateWindow.visibleDates.map((date) => {
             const mode = value.get(key(date, time.startTime)) ?? 'unavailable';
             const meta = MODE_META[mode];
             return (
               <button
                 type="button"
                 key={`${date}-${time.startTime}`}
-                className={`poll-grid-cell mode-${mode}${dateIndex === mobileDateIndex ? ' is-mobile-active' : ''}`}
+                className={`poll-grid-cell mode-${mode}`}
                 aria-label={`${spokenDate(date)}, ${displayTime(time.startTime)} to ${displayTime(time.endTime)}, currently ${meta.label}`}
                 title={`${longDate(date)} ${displayTime(time.startTime)}–${displayTime(time.endTime)}: ${meta.label}`}
                 onClick={() => apply(date, time.startTime)}
@@ -128,7 +134,7 @@ export default function AvailabilityGrid({
           }),
         ])}
       </div>
-      <p className="poll-grid-help">Choose a mode, then tap cells. Desktop mouse users can hold and paint across cells. Unselected cells mean unavailable.</p>
+      <p className="poll-grid-help">Choose a mode, then tap cells. Several days stay visible together; use the arrows to move through the date window. Desktop mouse users can hold and paint across cells. Unselected cells mean unavailable.</p>
     </section>
   );
 }

@@ -1,0 +1,370 @@
+/* Post-launch UX refinements: light participant surface, multi-day windows, and structured paste affordances. */
+
+/* Keep several dates visible without creating a nested horizontal scroll owner. */
+.poll-grid-section,
+.poll-preview-wrap,
+.poll-admin-grid-wrap {
+  overflow-x: visible;
+  scrollbar-gutter: auto;
+}
+
+.poll-grid,
+.poll-preview-grid,
+.poll-admin-grid {
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(96px, 112px) repeat(var(--poll-date-count), minmax(0, 1fr));
+}
+
+.poll-date-window-nav {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 10px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.poll-date-window-nav > div {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  text-align: center;
+}
+
+.poll-date-window-nav strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .84rem;
+}
+
+.poll-date-window-nav span {
+  color: var(--muted);
+  font-size: .7rem;
+}
+
+.poll-date-window-nav button {
+  width: 42px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel-strong);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.poll-date-window-nav button:disabled {
+  opacity: .32;
+}
+
+/* Explicit participant identity legend for aggregate response views. */
+.poll-participant-color-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0 10px;
+}
+
+.poll-participant-color-legend > span {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: .72rem;
+  line-height: 1.1;
+}
+
+.poll-participant-color-legend b {
+  width: 19px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: .64rem;
+}
+
+/* The committee-facing form is intentionally light, regardless of portfolio dark mode. */
+body:has(.poll-public-shell) {
+  --bg: #f6f8fa;
+  --panel: #ffffff;
+  --panel-strong: #eef2f5;
+  --text: #18212a;
+  --muted: #5b6672;
+  --faint: #7b8792;
+  --line: #d9e0e6;
+  --accent: #24734c;
+  --accent-soft: rgba(36, 115, 76, .09);
+  background: #f6f8fa;
+  color: var(--text);
+}
+
+body:has(.poll-public-shell) .poll-public-shell {
+  color: var(--text);
+}
+
+body:has(.poll-public-shell) .brand {
+  color: #15202a;
+}
+
+body:has(.poll-public-shell) .brand span {
+  color: var(--accent);
+}
+
+body:has(.poll-public-shell) .poll-public-header {
+  border-bottom-color: var(--line);
+}
+
+body:has(.poll-public-shell) .poll-grid-corner,
+body:has(.poll-public-shell) .poll-grid-date,
+body:has(.poll-public-shell) .poll-grid-time {
+  background: #edf2f5;
+  color: #53606c;
+}
+
+body:has(.poll-public-shell) .poll-grid-time strong {
+  color: #1f2a34;
+}
+
+body:has(.poll-public-shell) .poll-grid-cell.mode-unavailable {
+  background: #f8fafb;
+  color: #8a949d;
+}
+
+body:has(.poll-public-shell) .poll-grid-cell.mode-online {
+  background: #e9f4fc;
+  color: #1f6796;
+}
+
+body:has(.poll-public-shell) .poll-grid-cell.mode-in_person {
+  background: #eaf6ee;
+  color: #267447;
+}
+
+body:has(.poll-public-shell) .poll-grid-cell.mode-either {
+  background: #fff6df;
+  color: #8a6314;
+}
+
+body:has(.poll-public-shell) .poll-step-card select {
+  background: #ffffff;
+  color: var(--text);
+}
+
+body:has(.poll-public-shell) .poll-submit-bar {
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 10px 30px rgba(30, 45, 55, .09);
+}
+
+body:has(.poll-public-shell) .poll-message--error {
+  color: #a12727;
+}
+
+/* Structured definition import is a paste-first workflow, not a raw textarea. */
+.poll-structured-editor {
+  max-width: 980px;
+}
+
+.poll-structured-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.poll-structured-toolbar .poll-format-switch {
+  margin: 0;
+}
+
+.poll-structured-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.poll-structured-dropzone {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--panel);
+}
+
+.poll-structured-dropzone.is-valid {
+  border-color: rgba(143, 211, 151, .55);
+}
+
+.poll-structured-dropzone.is-invalid {
+  border-color: rgba(235, 102, 102, .55);
+}
+
+.poll-structured-hint {
+  display: grid;
+  gap: 3px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, .025);
+}
+
+.poll-structured-hint span {
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.poll-structured-editor .poll-structured-dropzone textarea {
+  width: 100%;
+  min-height: 360px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 14px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  line-height: 1.5;
+}
+
+.poll-structured-validation {
+  margin-top: 9px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px 12px;
+  color: var(--muted);
+  font-size: .78rem;
+}
+
+.poll-structured-validation strong {
+  color: var(--text);
+}
+
+.poll-structured-validation.is-valid {
+  border-color: rgba(143, 211, 151, .35);
+  background: rgba(143, 211, 151, .06);
+}
+
+.poll-structured-validation.is-invalid {
+  border-color: rgba(235, 102, 102, .35);
+  background: rgba(235, 102, 102, .05);
+}
+
+.poll-structured-validation.is-invalid strong {
+  color: #ffb1b1;
+}
+
+.poll-structured-title {
+  margin-left: auto;
+  color: var(--text) !important;
+  font-weight: 700;
+}
+
+.poll-structured-clipboard-message {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+@media (max-width: 820px) {
+  .poll-grid,
+  .poll-preview-grid,
+  .poll-admin-grid {
+    grid-template-columns: 88px repeat(var(--poll-date-count), minmax(0, 1fr));
+  }
+
+  .poll-grid-corner,
+  .poll-grid-date,
+  .poll-grid-time,
+  .poll-grid-cell,
+  .poll-preview-cell,
+  .poll-admin-cell {
+    min-height: 62px;
+  }
+
+  .poll-date-window-nav {
+    position: sticky;
+    top: 4px;
+    z-index: 7;
+    margin-top: 5px;
+  }
+
+  .poll-date-window-nav strong {
+    font-size: .78rem;
+  }
+
+  .poll-participant-color-legend {
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .poll-participant-color-legend > span {
+    flex: 1 1 0;
+    justify-content: center;
+  }
+
+  .poll-participant-color-legend > span > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .poll-structured-toolbar {
+    align-items: stretch;
+  }
+
+  .poll-structured-actions {
+    width: 100%;
+  }
+
+  .poll-structured-actions .poll-secondary-button {
+    flex: 1;
+  }
+
+  .poll-structured-title {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .poll-grid,
+  .poll-preview-grid,
+  .poll-admin-grid {
+    grid-template-columns: 78px repeat(var(--poll-date-count), minmax(0, 1fr));
+  }
+
+  .poll-grid-date,
+  .poll-grid-corner {
+    padding-inline: 4px;
+    font-size: .7rem;
+  }
+
+  .poll-grid-cell .poll-cell-label {
+    font-size: .61rem;
+  }
+
+  .poll-date-window-nav {
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .poll-date-window-nav button {
+    width: 38px;
+    height: 36px;
+  }
+
+  .poll-participant-color-legend > span > span {
+    display: none;
+  }
+}

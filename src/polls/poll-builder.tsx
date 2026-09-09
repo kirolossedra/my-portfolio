@@ -5,6 +5,7 @@ import { createPoll, updatePoll, updatePollStatus } from './api.ts';
 import { parsePollXml } from './xml.ts';
 import { builderToDefinition, definitionToBuilder, emptyBuilder, formatDate, type BuilderModel, type CreateMethod } from './admin-poll-utils.ts';
 import { PollPreview } from './admin-response-grid.tsx';
+import StructuredPollEditor from './structured-poll-editor.tsx';
 
 export default function PollBuilder({
   editing,
@@ -19,16 +20,7 @@ export default function PollBuilder({
   const [builder, setBuilder] = useState<BuilderModel>(() => editing ? definitionToBuilder(editing.definition) : emptyBuilder());
   const [dateInput, setDateInput] = useState('');
   const [structuredFormat, setStructuredFormat] = useState<'json' | 'xml'>('json');
-  const [structuredText, setStructuredText] = useState(() => editing ? pollDefinitionToJson(editing.definition) : pollDefinitionToJson({
-    schemaVersion: 1,
-    title: 'Committee availability',
-    description: '',
-    timezone: POLL_TIMEZONE,
-    participantNames: ['Participant One'],
-    dates: ['2026-09-22'],
-    timeRanges: [{ startTime: '09:00', endTime: '17:00' }],
-    slotWidthMinutes: 90,
-  }));
+  const [structuredText, setStructuredText] = useState(() => editing ? pollDefinitionToJson(editing.definition) : '');
   const [preview, setPreview] = useState<PollDefinition | null>(editing?.definition ?? null);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
@@ -66,12 +58,21 @@ export default function PollBuilder({
   };
 
   const switchStructuredFormat = (format: 'json' | 'xml') => {
-    setStructuredFormat(format);
+    if (format === structuredFormat) return;
+    if (!structuredText.trim()) {
+      setStructuredFormat(format);
+      return;
+    }
     try {
-      const definition = deriveDefinition();
+      const definition = structuredFormat === 'json'
+        ? validatePollDefinition(JSON.parse(structuredText) as unknown)
+        : parsePollXml(structuredText);
+      setStructuredFormat(format);
       setStructuredText(format === 'json' ? pollDefinitionToJson(definition) : pollDefinitionToXml(definition));
+      setMessage('Definition converted without changing the poll model.');
     } catch {
-      // Preserve the current text if it is invalid; changing formats must not destroy work.
+      setStructuredFormat(format);
+      setMessage('Format switched, but the current text is not valid enough to convert. Your text was preserved.');
     }
   };
 
@@ -83,7 +84,7 @@ export default function PollBuilder({
       </div>
       <div className="poll-method-switch" role="tablist" aria-label="Poll definition method">
         <button type="button" className={method === 'gui' ? 'is-active' : ''} onClick={() => setMethod('gui')}>Build with GUI</button>
-        <button type="button" className={method === 'structured' ? 'is-active' : ''} onClick={() => setMethod('structured')}>Define with JSON/XML</button>
+        <button type="button" className={method === 'structured' ? 'is-active' : ''} onClick={() => setMethod('structured')}>Paste JSON / XML</button>
       </div>
 
       {method === 'gui' ? (
@@ -108,7 +109,7 @@ export default function PollBuilder({
           </div>
 
           <div className="poll-builder-group poll-wide-field">
-            <div><strong>Time ranges</strong><span>Applied to every selected date in V1.</span></div>
+            <div><strong>Time ranges</strong><span>Applied to every selected date.</span></div>
             {[{ startTime: builder.startTime, endTime: builder.endTime }, ...builder.extraRanges].map((range, index) => (
               <div className="poll-time-range-row" key={`range-${index}`}>
                 <label>Start<input type="time" value={range.startTime} onChange={(event) => {
@@ -133,11 +134,13 @@ export default function PollBuilder({
           </label>
         </div>
       ) : (
-        <div className="poll-structured-editor">
-          <div className="poll-format-switch"><button type="button" className={structuredFormat === 'json' ? 'is-active' : ''} onClick={() => switchStructuredFormat('json')}>JSON</button><button type="button" className={structuredFormat === 'xml' ? 'is-active' : ''} onClick={() => switchStructuredFormat('xml')}>XML</button></div>
-          <textarea spellCheck={false} value={structuredText} onChange={(event) => setStructuredText(event.target.value)} aria-label={`${structuredFormat.toUpperCase()} poll definition`} />
-          <p>JSON is the canonical object representation. XML is a lossless boundary serialization into the same schema; it is not stored as XML and is not sent to a calendar service.</p>
-        </div>
+        <StructuredPollEditor
+          format={structuredFormat}
+          text={structuredText}
+          onFormatChange={setStructuredFormat}
+          onTextChange={setStructuredText}
+          onSwitchFormat={switchStructuredFormat}
+        />
       )}
 
       <div className="poll-builder-actions">
