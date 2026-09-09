@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { AdminPollDetail, PollDefinition } from '../../shared/poll.ts';
-import { POLL_TIMEZONE, pollDefinitionToJson, pollDefinitionToXml, validatePollDefinition } from '../../shared/poll.ts';
+import { pollDefinitionToJson, pollDefinitionToXml, validatePollDefinition } from '../../shared/poll.ts';
 import { createPoll, updatePoll, updatePollStatus } from './api.ts';
 import { parsePollXml } from './xml.ts';
 import { builderToDefinition, definitionToBuilder, emptyBuilder, formatDate, type BuilderModel, type CreateMethod } from './admin-poll-utils.ts';
