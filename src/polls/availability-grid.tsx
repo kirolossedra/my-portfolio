@@ -1,4 +1,4 @@
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react';
 import type { AvailabilityMode, PollDefinition } from '../../shared/poll.ts';
 import { generateTimesForDefinition } from '../../shared/poll.ts';
 import { compactDateParts, formatDatePageRange, POLL_DATE_PAGE_SIZE, useDateWindow } from './date-window.ts';
@@ -64,19 +64,99 @@ export default function AvailabilityGrid({
 }) {
   const times = useMemo(() => generateTimesForDefinition(definition), [definition]);
   const [paintMode, setPaintMode] = useState<AvailabilityPaintMode>('either');
+  const [paintEnabled, setPaintEnabled] = useState(false);
   const dateWindow = useDateWindow(definition.dates);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const activePointerId = useRef<number | null>(null);
+  const paintedCells = useRef(new Set<string>());
+  const valueRef = useRef(value);
+  valueRef.current = value;
 
   const apply = (date: string, startTime: string) => {
     if (disabled) return;
-    const next = new Map(value);
+    const next = new Map(valueRef.current);
     const slotKey = key(date, startTime);
     if (paintMode === 'unavailable') next.delete(slotKey);
     else next.set(slotKey, paintMode);
+    valueRef.current = next;
     onChange(next);
+  };
+
+  const paintCell = (cell: HTMLElement) => {
+    const date = cell.dataset.pollDate;
+    const startTime = cell.dataset.pollStart;
+    if (!date || !startTime) return;
+    const slotKey = key(date, startTime);
+    if (paintedCells.current.has(slotKey)) return;
+    paintedCells.current.add(slotKey);
+    apply(date, startTime);
+  };
+
+  const cellAtPoint = (clientX: number, clientY: number): HTMLElement | null => {
+    const hit = document.elementFromPoint(clientX, clientY);
+    const cell = hit?.closest<HTMLElement>('[data-poll-paint-cell="true"]') ?? null;
+    return cell && gridRef.current?.contains(cell) ? cell : null;
+  };
+
+  const startPainting = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!paintEnabled || disabled) return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    const target = event.target instanceof Element
+      ? event.target.closest<HTMLElement>('[data-poll-paint-cell="true"]')
+      : null;
+    if (!target || !event.currentTarget.contains(target)) return;
+
+    event.preventDefault();
+    activePointerId.current = event.pointerId;
+    paintedCells.current.clear();
+    event.currentTarget.setPointerCapture(event.pointerId);
+    paintCell(target);
+  };
+
+  const continuePainting = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!paintEnabled || activePointerId.current !== event.pointerId) return;
+    event.preventDefault();
+    const cell = cellAtPoint(event.clientX, event.clientY);
+    if (cell) paintCell(cell);
+  };
+
+  const stopPainting = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (activePointerId.current !== event.pointerId) return;
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    activePointerId.current = null;
+    paintedCells.current.clear();
+  };
+
+  const togglePaint = () => {
+    activePointerId.current = null;
+    paintedCells.current.clear();
+    setPaintEnabled((current) => !current);
   };
 
   return (
     <section className="poll-grid-section" aria-label="Availability grid">
+      <div className="poll-paint-control">
+        <button
+          type="button"
+          className={`poll-paint-toggle${paintEnabled ? ' is-active' : ''}`}
+          aria-pressed={paintEnabled}
+          onClick={togglePaint}
+          disabled={disabled}
+        >
+          <span className="poll-paint-icon" aria-hidden="true">✦</span>
+          <span className="poll-paint-copy">
+            <strong>Paint availability</strong>
+            <small>{paintEnabled ? 'ON · drag across slots' : 'Tap to paint multiple slots'}</small>
+          </span>
+          <span className="poll-paint-state" aria-hidden="true">{paintEnabled ? 'ON' : 'OFF'}</span>
+        </button>
+        {paintEnabled && (
+          <span className="poll-paint-lock" role="status">Calendar scrolling locked while painting</span>
+        )}
+      </div>
+
       <div className="poll-mode-toolbar" aria-label="Availability paint mode">
         <span>Mark as</span>
         {Object.entries(MODE_META).map(([mode, meta]) => (
@@ -102,7 +182,19 @@ export default function AvailabilityGrid({
         <button type="button" onClick={dateWindow.next} disabled={!dateWindow.canNext} aria-label="Next week">›</button>
       </div>
 
-      <div className="poll-grid poll-week-grid" style={{ '--poll-date-count': POLL_DATE_PAGE_SIZE } as CSSProperties}>
+      <div
+        ref={gridRef}
+        className={`poll-grid poll-week-grid${paintEnabled ? ' is-paint-enabled' : ''}`}
+        style={{ '--poll-date-count': POLL_DATE_PAGE_SIZE } as CSSProperties}
+        onPointerDown={startPainting}
+        onPointerMove={continuePainting}
+        onPointerUp={stopPainting}
+        onPointerCancel={stopPainting}
+        onLostPointerCapture={() => {
+          activePointerId.current = null;
+          paintedCells.current.clear();
+        }}
+      >
         <div className="poll-grid-corner">Toronto</div>
         {dateWindow.pageDates.map((date, index) => {
           if (!date) return <div key={`blank-head-${index}`} className="poll-grid-date poll-grid-date--empty" aria-hidden="true" />;
@@ -128,11 +220,13 @@ export default function AvailabilityGrid({
                 type="button"
                 key={`${date}-${time.startTime}`}
                 className={`poll-grid-cell mode-${mode}`}
+                data-poll-paint-cell="true"
+                data-poll-date={date}
+                data-poll-start={time.startTime}
                 aria-label={`${spokenDate(date)}, ${displayTime(time.startTime)} to ${displayTime(time.endTime)}, currently ${meta.label}`}
                 title={`${longDate(date)} ${displayTime(time.startTime)}–${displayTime(time.endTime)}: ${meta.label}`}
-                onClick={() => apply(date, time.startTime)}
-                onPointerEnter={(event) => {
-                  if (event.pointerType === 'mouse' && event.buttons === 1) apply(date, time.startTime);
+                onClick={(event) => {
+                  if (!paintEnabled || event.detail === 0) apply(date, time.startTime);
                 }}
                 disabled={disabled}
               >
@@ -143,7 +237,11 @@ export default function AvailabilityGrid({
           }),
         ])}
       </div>
-      <p className="poll-grid-help">Choose a mode, then tap the grid. Seven dates stay visible as one week page; use the arrows for the next week. Only complete {definition.slotWidthMinutes}-minute slots are shown.</p>
+      <p className="poll-grid-help">
+        {paintEnabled
+          ? `Paint is on. Choose a mode, then press and drag across slots. The calendar will not scroll while your finger or pen is on it.`
+          : `Tap individual slots, or turn on Paint availability to sweep across many slots. Seven dates stay visible as one week page. Only complete ${definition.slotWidthMinutes}-minute slots are shown.`}
+      </p>
     </section>
   );
 }
