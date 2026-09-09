@@ -45,6 +45,25 @@ export default function ParticipantPollPage({ token }: { token: string }) {
     return () => { cancelled = true; };
   }, [token]);
 
+  useEffect(() => {
+    if (!poll) return;
+
+    const previousTitle = document.title;
+    const descriptionMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const previousDescription = descriptionMeta?.content;
+
+    document.title = `${poll.title} | Availability Poll`;
+    if (descriptionMeta) {
+      descriptionMeta.content = poll.description?.trim()
+        || 'Select your name and mark the times that work for you in this availability poll.';
+    }
+
+    return () => {
+      document.title = previousTitle;
+      if (descriptionMeta && previousDescription !== undefined) descriptionMeta.content = previousDescription;
+    };
+  }, [poll]);
+
   const definition = useMemo(() => poll ? definitionFromPoll(poll) : null, [poll]);
   const participant = poll?.participants.find((item) => item.id === Number(participantId));
   const editable = poll?.status === 'open';
