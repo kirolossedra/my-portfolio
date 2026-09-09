@@ -3,7 +3,7 @@ type EdgeContext = {
 };
 
 const POLL_TITLE = 'Availability Poll | kirolos.dev';
-const POLL_DESCRIPTION = 'Open the poll, select your name, and mark each time slot as online, in-person, or either.';
+const POLL_DESCRIPTION = 'This link opens an availability poll for coordinating meeting times and collecting participants’ online and in-person availability.';
 
 function escapeAttribute(value: string): string {
   return value
