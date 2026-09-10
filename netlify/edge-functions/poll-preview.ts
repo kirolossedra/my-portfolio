@@ -28,7 +28,12 @@ function withPollMetadata(html: string, requestUrl: string): string {
     `<meta name="twitter:description" content="${POLL_DESCRIPTION}" />`,
   ].join('\n    ');
 
-  return html
+  const pollHtml = html.replace(
+    /<link\b[^>]*\brel=["'][^"']*(?:icon|apple-touch-icon|mask-icon)[^"']*["'][^>]*\/?>\s*/gi,
+    '',
+  );
+
+  return pollHtml
     .replace(/<title>[\s\S]*?<\/title>/i, title)
     .replace(/<meta\s+name=["']description["'][\s\S]*?\/>/i, description)
     .replace('</head>', `    ${socialMetadata}\n  </head>`);
