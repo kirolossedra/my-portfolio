@@ -23,12 +23,9 @@ function withPollMetadata(html: string, requestUrl: string): string {
     `<meta property="og:title" content="${POLL_TITLE}" />`,
     `<meta property="og:description" content="${POLL_DESCRIPTION}" />`,
     `<meta property="og:url" content="${escapeAttribute(requestUrl)}" />`,
-    '<meta property="og:image" content="https://kirolos.dev/media/branding/favicon.png" />',
-    '<meta property="og:image:alt" content="kirolos.dev availability poll" />',
     '<meta name="twitter:card" content="summary" />',
     `<meta name="twitter:title" content="${POLL_TITLE}" />`,
     `<meta name="twitter:description" content="${POLL_DESCRIPTION}" />`,
-    '<meta name="twitter:image" content="https://kirolos.dev/media/branding/favicon.png" />',
   ].join('\n    ');
 
   return html
