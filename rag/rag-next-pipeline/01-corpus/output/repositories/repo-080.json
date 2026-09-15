@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 80,
+  "repository_total": 134,
+  "repository_name": "ViT",
+  "header_title": "ViT",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-080-ViT/README.md",
+    "line_start": 1,
+    "line_end": 375,
+    "sha256": "8105ce224e7599eb7ff8fe5c911c88f51cdb5f391a567a85114b45632ddd363a"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "computer-vision",
+    "model-evaluation",
+    "python",
+    "jupyter-notebook",
+    "pytorch",
+    "torchvision",
+    "timm",
+    "vision-transformer",
+    "vit",
+    "resnet50",
+    "beit-v2",
+    "imagenet",
+    "image-classification",
+    "pretrained-models",
+    "cuda",
+    "gpu-inference",
+    "dataloader",
+    "dataset-subsampling",
+    "top-1-accuracy",
+    "top-5-accuracy",
+    "inference-time",
+    "comparative-evaluation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/ViT`\n- **Repository start date:** 2025-03-19\n- **Last meaningful update date:** 2025-03-19\n- **Latest meaningful commit:** `a7f19a875bdf95432007bd7558aebebcfe9c89b9`\n- **Primary technical field:** computer-vision model evaluation\n- **Application domain:** pretrained image-classification architecture comparison\n- **Primary technologies:** Python, Jupyter Notebook, PyTorch, torchvision, timm\n- **Project context:** personal ML experiment\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe notebook's verification evidence is the persisted execution output.\n\nIt demonstrates that:\n\n- the dataset loaded,\n- 1,000 classes were recognized,\n- the 5,000-sample subset was created,\n- CUDA execution was available,\n- the models loaded,\n- inference completed,\n- metrics were printed.\n\nNotebook outputs provide execution provenance but are not a substitute for a multi-run benchmark protocol."
+    },
+    "documentation": {
+      "section_ids": [
+        "s015"
+      ],
+      "titles": [
+        "Reproducibility"
+      ],
+      "text": "## Reproducibility\nThe notebook provides several reproducibility ingredients:\n\n- fixed subset fraction,\n- fixed random seed,\n- explicit preprocessing,\n- explicit model identifiers,\n- explicit batch size,\n- stored output.\n\nThe dataset itself is referenced by a local path and is not contained in the repository.\n\nReproduction therefore requires a matching ImageNet-style directory."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/ViT`\n- **Repository start date:** 2025-03-19\n- **Last meaningful update date:** 2025-03-19\n- **Latest meaningful commit:** `a7f19a875bdf95432007bd7558aebebcfe9c89b9`\n- **Primary technical field:** computer-vision model evaluation\n- **Application domain:** pretrained image-classification architecture comparison\n- **Primary technologies:** Python, Jupyter Notebook, PyTorch, torchvision, timm\n- **Project context:** personal ML experiment\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains:\n\n- a minimal root README,\n- one executed Jupyter notebook: `VisionTransformers.ipynb`.\n\nThe notebook is the substantive artifact.\n\nIts stored outputs show that it was executed.\n\nThe analysis below is limited to behavior and outputs present in that notebook.",
+      "source_line_start": 15,
+      "source_line_end": 28
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "The notebook evaluates several pretrained image-classification architectures on an ImageNet-style validation subset.\n\nThe compared model families are:\n\n- Vision Transformer,\n- ResNet-50,\n- BEiT-V2.\n\nThe experiment does not train these networks from scratch.\n\nIt loads pretrained models using `timm`, runs inference, and compares:\n\n- Top-1 accuracy,\n- Top-5 accuracy,\n- inference time.\n\nThis is a model-evaluation exercise.",
+      "source_line_start": 28,
+      "source_line_end": 48
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Dataset Loading",
+      "normalized_title": "Dataset Loading",
+      "key": "dataset_loading",
+      "path": [
+        "Dataset Loading"
+      ],
+      "content": "The notebook uses `torchvision.datasets.ImageFolder`.\n\nThe stored execution output reports:\n\n```text\nTotal samples: 50,000\nNumber of classes: 1,000\nSubset samples: 5,000\n```\n\nThe experiment selects a 10% subset.\n\nA fixed NumPy seed is used before choosing the subset indices.\n\nThat improves repeatability of the selected sample set.",
+      "source_line_start": 48,
+      "source_line_end": 66
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Preprocessing",
+      "normalized_title": "Preprocessing",
+      "key": "preprocessing",
+      "path": [
+        "Preprocessing"
+      ],
+      "content": "The preprocessing pipeline matches common ImageNet inference preprocessing.\n\nIt includes:\n\n- resize to 256,\n- center crop to 224,\n- tensor conversion,\n- ImageNet normalization.\n\nThe normalization means are:\n\n```text\n[0.485, 0.456, 0.406]\n```\n\nand the standard deviations are:\n\n```text\n[0.229, 0.224, 0.225]\n```\n\nThe subset is loaded through a PyTorch `DataLoader`.",
+      "source_line_start": 66,
+      "source_line_end": 91
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Hardware Selection",
+      "normalized_title": "Hardware Selection",
+      "key": "hardware_selection",
+      "path": [
+        "Hardware Selection"
+      ],
+      "content": "The notebook chooses:\n\n```python\ncuda if available else cpu\n```\n\nThe stored output reports that CUDA was used for the recorded run.\n\nThis is direct evidence of GPU-backed inference in that execution.",
+      "source_line_start": 91,
+      "source_line_end": 103
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Model Loading",
+      "normalized_title": "Model Loading",
+      "key": "model_loading",
+      "path": [
+        "Model Loading"
+      ],
+      "content": "The notebook uses `timm.create_model(..., pretrained=True)`.\n\nVisible model constructors include:\n\n- `vit_base_patch16_224`,\n- `resnet50`,\n- `beitv2_large_patch16_224`.\n\nEach model is:\n\n1. created with pretrained weights,\n2. moved to the selected device,\n3. placed in evaluation mode.\n\nThis is inference/evaluation, not fine-tuning.",
+      "source_line_start": 103,
+      "source_line_end": 121
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Evaluation Metrics",
+      "normalized_title": "Evaluation Metrics",
+      "key": "evaluation_metrics",
+      "path": [
+        "Evaluation Metrics"
+      ],
+      "content": "The notebook computes classification accuracy and timing.\n\nStored output reports the following values for that run:\n\n| Model label in notebook output | Top-1 | Top-5 | Inference time |\n|---|---:|---:|---:|\n| ViT-Base | 80.30% | 95.60% | 48.76 s |\n| ResNet-50 | 78.76% | 94.18% | 24.29 s |\n| BEiT label | 87.70% | 98.42% | 121.97 s |\n\nThese numbers are retained as results from the checked-in notebook execution.\n\nThey should not be generalized into universal model-performance claims.",
+      "source_line_start": 121,
+      "source_line_end": 137
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Model-Label Inconsistency",
+      "normalized_title": "Model-Label Inconsistency",
+      "key": "model_label_inconsistency",
+      "path": [
+        "Model-Label Inconsistency"
+      ],
+      "content": "There is a naming inconsistency inside the notebook evidence.\n\nThe model creation code uses:\n\n```text\nbeitv2_large_patch16_224\n```\n\nwhile the printed result labels refer to a BEiT base label in some output text.\n\nThe corpus therefore records the constructor exactly and avoids treating the printed label as a definitive architecture identifier.\n\nThis is an important evidence-quality boundary.",
+      "source_line_start": 137,
+      "source_line_end": 153
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Vision Transformer Evidence",
+      "normalized_title": "Vision Transformer Evidence",
+      "key": "vision_transformer_evidence",
+      "path": [
+        "Vision Transformer Evidence"
+      ],
+      "content": "The project directly uses a pretrained Vision Transformer.\n\nThe constructor:\n\n```text\nvit_base_patch16_224\n```\n\nindicates:\n\n- base-size ViT family,\n- patch size 16,\n- 224-pixel input.\n\nThe notebook does not implement the transformer architecture manually.\n\nThe demonstrated skill is loading, preprocessing for, and evaluating a pretrained ViT.",
+      "source_line_start": 153,
+      "source_line_end": 173
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "CNN Baseline",
+      "normalized_title": "CNN Baseline",
+      "key": "cnn_baseline",
+      "path": [
+        "CNN Baseline"
+      ],
+      "content": "ResNet-50 is included as a convolutional baseline.\n\nThis allows the experiment to compare a transformer-based architecture against a mature CNN architecture under a shared inference pipeline.\n\nThe design is more informative than evaluating ViT alone.",
+      "source_line_start": 173,
+      "source_line_end": 181
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "BEiT-V2 Comparison",
+      "normalized_title": "BEiT-V2 Comparison",
+      "key": "beit_v2_comparison",
+      "path": [
+        "BEiT-V2 Comparison"
+      ],
+      "content": "The third model adds another transformer-family architecture.\n\nUsing multiple model families enables comparison along at least two axes:\n\n- predictive accuracy,\n- execution cost.\n\nThe stored timings show that the models differ substantially in inference duration for this run.\n\nAgain, these are run-specific observations.",
+      "source_line_start": 181,
+      "source_line_end": 194
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Evaluation Pipeline",
+      "normalized_title": "Evaluation Pipeline",
+      "key": "evaluation_pipeline",
+      "path": [
+        "Evaluation Pipeline"
+      ],
+      "content": "The core workflow is:\n\n```text\nImageFolder dataset\n→ deterministic 10% subset\n→ standardized transform\n→ DataLoader\n→ pretrained model load\n→ GPU inference\n→ Top-1 / Top-5 calculation\n→ elapsed-time measurement\n```\n\nThis is a compact end-to-end evaluation pipeline.",
+      "source_line_start": 194,
+      "source_line_end": 211
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The notebook's verification evidence is the persisted execution output.\n\nIt demonstrates that:\n\n- the dataset loaded,\n- 1,000 classes were recognized,\n- the 5,000-sample subset was created,\n- CUDA execution was available,\n- the models loaded,\n- inference completed,\n- metrics were printed.\n\nNotebook outputs provide execution provenance but are not a substitute for a multi-run benchmark protocol.",
+      "source_line_start": 211,
+      "source_line_end": 227
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Reproducibility",
+      "normalized_title": "Reproducibility",
+      "key": "reproducibility",
+      "path": [
+        "Reproducibility"
+      ],
+      "content": "The notebook provides several reproducibility ingredients:\n\n- fixed subset fraction,\n- fixed random seed,\n- explicit preprocessing,\n- explicit model identifiers,\n- explicit batch size,\n- stored output.\n\nThe dataset itself is referenced by a local path and is not contained in the repository.\n\nReproduction therefore requires a matching ImageNet-style directory.",
+      "source_line_start": 227,
+      "source_line_end": 242
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The notebook isolates a clear question:\n\n> how do several pretrained image classifiers compare on the same validation subset?\n\nIt uses the same:\n\n- dataset,\n- preprocessing,\n- loader,\n- device selection,\n- evaluation logic\n\nfor each model.\n\nThat is an appropriate comparative-experiment structure.",
+      "source_line_start": 242,
+      "source_line_end": 260
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small in source size but computationally nontrivial.\n\nThe stored execution uses:\n\n- 5,000 validation images,\n- 1,000 classes,\n- three large pretrained models,\n- GPU inference.\n\nThis is model-evaluation scale rather than software-system scale.",
+      "source_line_start": 260,
+      "source_line_end": 273
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- PyTorch,\n- torchvision,\n- timm,\n- Jupyter Notebook,\n- image classification,\n- ImageNet preprocessing,\n- Vision Transformers,\n- ResNet,\n- BEiT-V2,\n- pretrained-model inference,\n- CUDA inference,\n- DataLoader construction,\n- dataset subsampling,\n- Top-1 accuracy,\n- Top-5 accuracy,\n- inference-time measurement,\n- comparative model evaluation.",
+      "source_line_start": 273,
+      "source_line_end": 295
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository demonstrates the ability to set up a controlled model-comparison workflow.\n\nThat includes:\n\n- preparing data consistently,\n- choosing an evaluation subset,\n- loading different architectures,\n- moving them to an accelerator,\n- switching to evaluation mode,\n- computing classification metrics,\n- measuring execution time,\n- interpreting accuracy/latency tradeoffs.",
+      "source_line_start": 295,
+      "source_line_end": 310
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier corpus projects establish:\n\n- neural-network fundamentals,\n- TensorFlow/Keras,\n- sequence models,\n- browser ML deployment.\n\nThis project broadens the ML portfolio into modern pretrained computer-vision architectures in PyTorch.\n\nIt also introduces a direct transformer-vs-CNN image-classification comparison.",
+      "source_line_start": 310,
+      "source_line_end": 323
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest direct evidence of:\n\n- Vision Transformer evaluation,\n- `timm`,\n- BEiT-V2,\n- PyTorch-based pretrained image-classification comparison,\n- Top-1/Top-5 multi-model evaluation.",
+      "source_line_start": 323,
+      "source_line_end": 333
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The notebook evaluates pretrained models.\n\nIt does not establish training or fine-tuning of ViT/BEiT from scratch.\n\nThe stored accuracy/timing values are observations from one saved notebook execution.\n\nThe BEiT printed label is internally inconsistent with the constructor, so the constructor is treated as the stronger architecture evidence.",
+      "source_line_start": 333,
+      "source_line_end": 343
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`ViT` is a focused computer-vision evaluation experiment.\n\nIt builds a consistent ImageNet-style inference pipeline and compares pretrained ViT, ResNet-50, and BEiT-V2 models on a 5,000-image subset using CUDA.\n\nIts portfolio value comes from model-evaluation methodology and architecture comparison rather than model implementation from first principles.\n\n# Project Tags\n\n- `individual-project`\n- `computer-vision`\n- `model-evaluation`\n- `python`\n- `jupyter-notebook`\n- `pytorch`\n- `torchvision`\n- `timm`\n- `vision-transformer`\n- `vit`\n- `resnet50`\n- `beit-v2`\n- `imagenet`\n- `image-classification`\n- `pretrained-models`\n- `cuda`\n- `gpu-inference`\n- `dataloader`\n- `dataset-subsampling`\n- `top-1-accuracy`\n- `top-5-accuracy`\n- `inference-time`\n- `comparative-evaluation`",
+      "source_line_start": 343,
+      "source_line_end": 376
+    }
+  ],
+  "raw_analysis": "# Repository 080 — ViT\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/ViT`\n- **Repository start date:** 2025-03-19\n- **Last meaningful update date:** 2025-03-19\n- **Latest meaningful commit:** `a7f19a875bdf95432007bd7558aebebcfe9c89b9`\n- **Primary technical field:** computer-vision model evaluation\n- **Application domain:** pretrained image-classification architecture comparison\n- **Primary technologies:** Python, Jupyter Notebook, PyTorch, torchvision, timm\n- **Project context:** personal ML experiment\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains:\n\n- a minimal root README,\n- one executed Jupyter notebook: `VisionTransformers.ipynb`.\n\nThe notebook is the substantive artifact.\n\nIts stored outputs show that it was executed.\n\nThe analysis below is limited to behavior and outputs present in that notebook.\n\n## What the Project Is\n\nThe notebook evaluates several pretrained image-classification architectures on an ImageNet-style validation subset.\n\nThe compared model families are:\n\n- Vision Transformer,\n- ResNet-50,\n- BEiT-V2.\n\nThe experiment does not train these networks from scratch.\n\nIt loads pretrained models using `timm`, runs inference, and compares:\n\n- Top-1 accuracy,\n- Top-5 accuracy,\n- inference time.\n\nThis is a model-evaluation exercise.\n\n## Dataset Loading\n\nThe notebook uses `torchvision.datasets.ImageFolder`.\n\nThe stored execution output reports:\n\n```text\nTotal samples: 50,000\nNumber of classes: 1,000\nSubset samples: 5,000\n```\n\nThe experiment selects a 10% subset.\n\nA fixed NumPy seed is used before choosing the subset indices.\n\nThat improves repeatability of the selected sample set.\n\n## Preprocessing\n\nThe preprocessing pipeline matches common ImageNet inference preprocessing.\n\nIt includes:\n\n- resize to 256,\n- center crop to 224,\n- tensor conversion,\n- ImageNet normalization.\n\nThe normalization means are:\n\n```text\n[0.485, 0.456, 0.406]\n```\n\nand the standard deviations are:\n\n```text\n[0.229, 0.224, 0.225]\n```\n\nThe subset is loaded through a PyTorch `DataLoader`.\n\n## Hardware Selection\n\nThe notebook chooses:\n\n```python\ncuda if available else cpu\n```\n\nThe stored output reports that CUDA was used for the recorded run.\n\nThis is direct evidence of GPU-backed inference in that execution.\n\n## Model Loading\n\nThe notebook uses `timm.create_model(..., pretrained=True)`.\n\nVisible model constructors include:\n\n- `vit_base_patch16_224`,\n- `resnet50`,\n- `beitv2_large_patch16_224`.\n\nEach model is:\n\n1. created with pretrained weights,\n2. moved to the selected device,\n3. placed in evaluation mode.\n\nThis is inference/evaluation, not fine-tuning.\n\n## Evaluation Metrics\n\nThe notebook computes classification accuracy and timing.\n\nStored output reports the following values for that run:\n\n| Model label in notebook output | Top-1 | Top-5 | Inference time |\n|---|---:|---:|---:|\n| ViT-Base | 80.30% | 95.60% | 48.76 s |\n| ResNet-50 | 78.76% | 94.18% | 24.29 s |\n| BEiT label | 87.70% | 98.42% | 121.97 s |\n\nThese numbers are retained as results from the checked-in notebook execution.\n\nThey should not be generalized into universal model-performance claims.\n\n## Model-Label Inconsistency\n\nThere is a naming inconsistency inside the notebook evidence.\n\nThe model creation code uses:\n\n```text\nbeitv2_large_patch16_224\n```\n\nwhile the printed result labels refer to a BEiT base label in some output text.\n\nThe corpus therefore records the constructor exactly and avoids treating the printed label as a definitive architecture identifier.\n\nThis is an important evidence-quality boundary.\n\n## Vision Transformer Evidence\n\nThe project directly uses a pretrained Vision Transformer.\n\nThe constructor:\n\n```text\nvit_base_patch16_224\n```\n\nindicates:\n\n- base-size ViT family,\n- patch size 16,\n- 224-pixel input.\n\nThe notebook does not implement the transformer architecture manually.\n\nThe demonstrated skill is loading, preprocessing for, and evaluating a pretrained ViT.\n\n## CNN Baseline\n\nResNet-50 is included as a convolutional baseline.\n\nThis allows the experiment to compare a transformer-based architecture against a mature CNN architecture under a shared inference pipeline.\n\nThe design is more informative than evaluating ViT alone.\n\n## BEiT-V2 Comparison\n\nThe third model adds another transformer-family architecture.\n\nUsing multiple model families enables comparison along at least two axes:\n\n- predictive accuracy,\n- execution cost.\n\nThe stored timings show that the models differ substantially in inference duration for this run.\n\nAgain, these are run-specific observations.\n\n## Evaluation Pipeline\n\nThe core workflow is:\n\n```text\nImageFolder dataset\n→ deterministic 10% subset\n→ standardized transform\n→ DataLoader\n→ pretrained model load\n→ GPU inference\n→ Top-1 / Top-5 calculation\n→ elapsed-time measurement\n```\n\nThis is a compact end-to-end evaluation pipeline.\n\n## Testing and Verification\n\nThe notebook's verification evidence is the persisted execution output.\n\nIt demonstrates that:\n\n- the dataset loaded,\n- 1,000 classes were recognized,\n- the 5,000-sample subset was created,\n- CUDA execution was available,\n- the models loaded,\n- inference completed,\n- metrics were printed.\n\nNotebook outputs provide execution provenance but are not a substitute for a multi-run benchmark protocol.\n\n## Reproducibility\n\nThe notebook provides several reproducibility ingredients:\n\n- fixed subset fraction,\n- fixed random seed,\n- explicit preprocessing,\n- explicit model identifiers,\n- explicit batch size,\n- stored output.\n\nThe dataset itself is referenced by a local path and is not contained in the repository.\n\nReproduction therefore requires a matching ImageNet-style directory.\n\n## Engineering Discipline\n\nThe notebook isolates a clear question:\n\n> how do several pretrained image classifiers compare on the same validation subset?\n\nIt uses the same:\n\n- dataset,\n- preprocessing,\n- loader,\n- device selection,\n- evaluation logic\n\nfor each model.\n\nThat is an appropriate comparative-experiment structure.\n\n## Scale and Complexity\n\nThe repository is small in source size but computationally nontrivial.\n\nThe stored execution uses:\n\n- 5,000 validation images,\n- 1,000 classes,\n- three large pretrained models,\n- GPU inference.\n\nThis is model-evaluation scale rather than software-system scale.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- PyTorch,\n- torchvision,\n- timm,\n- Jupyter Notebook,\n- image classification,\n- ImageNet preprocessing,\n- Vision Transformers,\n- ResNet,\n- BEiT-V2,\n- pretrained-model inference,\n- CUDA inference,\n- DataLoader construction,\n- dataset subsampling,\n- Top-1 accuracy,\n- Top-5 accuracy,\n- inference-time measurement,\n- comparative model evaluation.\n\n## Capability Developed\n\nThe repository demonstrates the ability to set up a controlled model-comparison workflow.\n\nThat includes:\n\n- preparing data consistently,\n- choosing an evaluation subset,\n- loading different architectures,\n- moving them to an accelerator,\n- switching to evaluation mode,\n- computing classification metrics,\n- measuring execution time,\n- interpreting accuracy/latency tradeoffs.\n\n## Portfolio Evolution Context\n\nEarlier corpus projects establish:\n\n- neural-network fundamentals,\n- TensorFlow/Keras,\n- sequence models,\n- browser ML deployment.\n\nThis project broadens the ML portfolio into modern pretrained computer-vision architectures in PyTorch.\n\nIt also introduces a direct transformer-vs-CNN image-classification comparison.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest direct evidence of:\n\n- Vision Transformer evaluation,\n- `timm`,\n- BEiT-V2,\n- PyTorch-based pretrained image-classification comparison,\n- Top-1/Top-5 multi-model evaluation.\n\n## Evidence Boundaries\n\nThe notebook evaluates pretrained models.\n\nIt does not establish training or fine-tuning of ViT/BEiT from scratch.\n\nThe stored accuracy/timing values are observations from one saved notebook execution.\n\nThe BEiT printed label is internally inconsistent with the constructor, so the constructor is treated as the stronger architecture evidence.\n\n## Overall Narrative\n\n`ViT` is a focused computer-vision evaluation experiment.\n\nIt builds a consistent ImageNet-style inference pipeline and compares pretrained ViT, ResNet-50, and BEiT-V2 models on a 5,000-image subset using CUDA.\n\nIts portfolio value comes from model-evaluation methodology and architecture comparison rather than model implementation from first principles.\n\n# Project Tags\n\n- `individual-project`\n- `computer-vision`\n- `model-evaluation`\n- `python`\n- `jupyter-notebook`\n- `pytorch`\n- `torchvision`\n- `timm`\n- `vision-transformer`\n- `vit`\n- `resnet50`\n- `beit-v2`\n- `imagenet`\n- `image-classification`\n- `pretrained-models`\n- `cuda`\n- `gpu-inference`\n- `dataloader`\n- `dataset-subsampling`\n- `top-1-accuracy`\n- `top-5-accuracy`\n- `inference-time`\n- `comparative-evaluation`\n"
+}

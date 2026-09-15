@@ -1,0 +1,1634 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 115,
+  "repository_total": 134,
+  "repository_name": "TransAct",
+  "header_title": "TransAct",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-115-TransAct/README.md",
+    "line_start": 1,
+    "line_end": 1271,
+    "sha256": "3f660ba4e002117fd27f7c7fb9a3802fffe96d0bbda0475df9ebdaed0424ecae"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "- java",
+    "java-21",
+    "spring-boot",
+    "spring-data-jpa",
+    "spring-security",
+    "spring-scheduling",
+    "transactional-services",
+    "postgresql",
+    "flyway",
+    "relational-database",
+    "uuid-identifiers",
+    "react",
+    "react-19",
+    "typescript",
+    "vite",
+    "tanstack-query",
+    "feature-oriented-frontend",
+    "financial-dashboard",
+    "rest-api",
+    "stateless-api",
+    "role-based-authorization",
+    "http-basic",
+    "cors",
+    "docker",
+    "docker-compose",
+    "github-actions",
+    "maven",
+    "continuous-integration",
+    "unit-testing",
+    "successful-ci-build",
+    "double-entry-ledger",
+    "derived-balance",
+    "ledger-postings",
+    "ledger-transactions",
+    "system-account",
+    "account-locking",
+    "deterministic-lock-order",
+    "transactional-money-movement",
+    "direct-transfer",
+    "brain-coins",
+    "project-deal-workflow",
+    "project-payment",
+    "deal-state-machine",
+    "dispute-workflow",
+    "t-score",
+    "transactional-reliability",
+    "explainable-scoring",
+    "bounded-score",
+    "loan-application-workflow",
+    "payment-history-evidence",
+    "qualification-review",
+    "review-provider-abstraction",
+    "deterministic-heuristic-review",
+    "human-in-the-loop-review",
+    "mandatory-review-window",
+    "administrator-loan-review",
+    "loan-disbursement",
+    "loan-repayment",
+    "loan-default-detection",
+    "recurring-payments",
+    "salary-agreement",
+    "scheduled-payments",
+    "audit-log",
+    "audit-events",
+    "configuration-driven-runtime",
+    "fintech-style-application",
+    "developer-economy",
+    "full-stack-application"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 115\n- Name: `TransAct`\n- Repository Start Date: 2026-09-07\n- Latest Meaningful Update Date: 2026-09-07\n- Latest Meaningful Commit: `223b4b030f2dc59803c07e537765f77bdcae635f`\n- Primary Type: Full-stack financial-workflow web application\n- Domain: Closed-loop developer economy, project transactions, recurring payments, lending, and transactional reliability\n- Context: Owner-authored product prototype\n- Collaboration Type: `individual-project`\n- Primary Backend: Java 21 and Spring Boot 4.1\n- Primary Frontend: React 19, TypeScript, Vite, and TanStack Query\n- Persistence: PostgreSQL through Spring Data JPA\n- Schema Evolution: Flyway SQL migrations\n- Local Runtime: Docker Compose\n- Continuous Integration: GitHub Actions"
+    },
+    "architecture": {
+      "section_ids": [
+        "s091"
+      ],
+      "titles": [
+        "Architecture Definition"
+      ],
+      "text": "## Architecture Definition\nThe early documentation commit defines TransAct's architecture and product boundaries.\n\nThis establishes the intended distinction between ledger authority, T-score, human loan authority, and review-provider integration."
+    },
+    "testing": {
+      "section_ids": [
+        "s067",
+        "s068",
+        "s105"
+      ],
+      "titles": [
+        "Testing and Verification",
+        "Unit Testing",
+        "DevOps and Verification"
+      ],
+      "text": "## Testing and Verification\n### Unit Testing\n\nThe backend contains `HeuristicReviewServiceTest`.\n\nThe test class exercises deterministic review behavior.\n\nIts evidenced cases include:\n\n- weak classification for default-containing payment history,\n- strong classification for a sufficiently substantial qualification statement.\n\nThese tests directly verify the current review-provider rules.\n\n### Continuous Integration\n\nThe GitHub Actions workflow has independent backend and frontend jobs.\n\nBackend CI:\n\n1. checks out the repository,\n2. installs Temurin Java 21,\n3. enables Maven dependency caching,\n4. executes `mvn --batch-mode verify`.\n\nFrontend CI:\n\n1. checks out the repository,\n2. installs Node.js 22,\n3. installs dependencies,\n4. runs the production build.\n\n### Verified Latest CI Run\n\nThe workflow run associated with latest commit `223b4b030f2dc59803c07e537765f77bdcae635f` completed successfully on 2026-09-07.\n\nThe successful run validates the current latest frontend state against both CI jobs defined by the repository workflow.\n\nThis is direct build-verification evidence for the checked-in state.\n\n## Unit Testing\nThe backend contains `HeuristicReviewServiceTest`.\n\nThe test class exercises deterministic review behavior.\n\nIts evidenced cases include:\n\n- weak classification for default-containing payment history,\n- strong classification for a sufficiently substantial qualification statement.\n\nThese tests directly verify the current review-provider rules.\n\n## DevOps and Verification\n- Docker\n- Docker Compose\n- PostgreSQL health checks\n- container dependency ordering\n- GitHub Actions\n- Java 21 CI\n- Maven verification\n- frontend TypeScript production builds\n- unit testing\n- successful latest-commit CI validation"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s055",
+        "s056",
+        "s058",
+        "s104"
+      ],
+      "titles": [
+        "Security Baseline",
+        "Stateless HTTP Security",
+        "Method Security",
+        "Security"
+      ],
+      "text": "## Security Baseline\nThe backend uses Spring Security.\n\n### Stateless HTTP Security\n\nSession creation policy is `STATELESS`.\n\nThe health endpoint is public.\n\nAdministrative API paths require the `ADMIN` role.\n\nOther API requests require authentication.\n\n### Development Identities\n\nThe current security configuration uses an in-memory `UserDetailsService`.\n\nIt defines a developer identity and administrator identity.\n\nPasswords come from application configuration.\n\nThe HTTP mechanism is Basic authentication.\n\nThis establishes a testable role boundary for the current prototype.\n\n### Method Security\n\n`@EnableMethodSecurity` is enabled.\n\nThis allows controller or service methods to apply role annotations in addition to path-level authorization.\n\n### CORS\n\nAllowed origins are configuration-driven.\n\nThe default local origin points at the Vite frontend.\n\nThe configuration permits the HTTP methods used by the API and the `Authorization` and `Content-Type` headers.\n\nCredentials are allowed.\n\nThis is an explicit frontend-backend integration boundary rather than a blanket browser-access assumption.\n\n## Stateless HTTP Security\nSession creation policy is `STATELESS`.\n\nThe health endpoint is public.\n\nAdministrative API paths require the `ADMIN` role.\n\nOther API requests require authentication.\n\n## Method Security\n`@EnableMethodSecurity` is enabled.\n\nThis allows controller or service methods to apply role annotations in addition to path-level authorization.\n\n## Security\n- Spring Security\n- stateless API configuration\n- HTTP Basic development authentication\n- administrator route authorization\n- method security\n- configurable CORS"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nRepository history, commit authorship, and project structure support treating TransAct as an individual owner-authored project.\n\nThe repository contains a complete application-specific domain model rather than a thin framework exercise.\n\nThe implementation includes the business rules, persistence schema, API surface, user-facing React features, local container topology, CI workflow, and project-specific documentation.\n\nThe repository also makes an explicit evidence boundary around its review abstraction.\n\nThe interface is named `AiReviewService`, but the checked-in concrete implementation identifies itself as `HEURISTIC_PLACEHOLDER`.\n\nThat concrete implementation is deterministic and explicitly states that no model or API key is configured.\n\nAccordingly, this repository demonstrates design for a replaceable review-provider boundary and human-in-the-loop decision support, while the currently evidenced runtime reviewer is a deterministic heuristic rather than an external AI model."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 115\n- Name: `TransAct`\n- Repository Start Date: 2026-09-07\n- Latest Meaningful Update Date: 2026-09-07\n- Latest Meaningful Commit: `223b4b030f2dc59803c07e537765f77bdcae635f`\n- Primary Type: Full-stack financial-workflow web application\n- Domain: Closed-loop developer economy, project transactions, recurring payments, lending, and transactional reliability\n- Context: Owner-authored product prototype\n- Collaboration Type: `individual-project`\n- Primary Backend: Java 21 and Spring Boot 4.1\n- Primary Frontend: React 19, TypeScript, Vite, and TanStack Query\n- Persistence: PostgreSQL through Spring Data JPA\n- Schema Evolution: Flyway SQL migrations\n- Local Runtime: Docker Compose\n- Continuous Integration: GitHub Actions",
+      "source_line_start": 3,
+      "source_line_end": 21
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "Repository history, commit authorship, and project structure support treating TransAct as an individual owner-authored project.\n\nThe repository contains a complete application-specific domain model rather than a thin framework exercise.\n\nThe implementation includes the business rules, persistence schema, API surface, user-facing React features, local container topology, CI workflow, and project-specific documentation.\n\nThe repository also makes an explicit evidence boundary around its review abstraction.\n\nThe interface is named `AiReviewService`, but the checked-in concrete implementation identifies itself as `HEURISTIC_PLACEHOLDER`.\n\nThat concrete implementation is deterministic and explicitly states that no model or API key is configured.\n\nAccordingly, this repository demonstrates design for a replaceable review-provider boundary and human-in-the-loop decision support, while the currently evidenced runtime reviewer is a deterministic heuristic rather than an external AI model.",
+      "source_line_start": 21,
+      "source_line_end": 37
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "TransAct models a closed internal economy for voluntary developers.\n\nParticipants use an internal accounting unit named Brain Coins to represent transactional exchanges associated with project work, direct transfers, recurring payments, and loans.\n\nThe system separates economic accounting from a second concept named T-score.\n\nT-score is designed as a bounded measure of observed transactional reliability inside TransAct.\n\nIts code-level inputs are completed project commitments, overdue accepted work, disputes, repaid loans, and defaulted loans.\n\nThe score therefore captures behavioral evidence produced by TransAct workflows instead of attempting to represent technical competence, intelligence, employability, or personal value.\n\nThis separation is important to the product model.\n\nA user can participate in financial-style workflows while the application independently explains how observed commitments affect a reliability score.\n\nThe project also explores a loan-approval workflow in which automated review is intentionally subordinate to deterministic domain services and a human administrator.\n\nPayment-history evidence and qualification text are evaluated before a loan enters an administrator review state.\n\nThe administrator must wait through a configured review period before approving or rejecting the application.\n\nApproval is the event that actually triggers Brain Coin disbursement.\n\nThe review provider itself cannot directly change balances, approve a loan, reject a loan, or alter T-score.\n\nThat boundary makes the application a useful example of separating advisory computation from authoritative state transition logic.",
+      "source_line_start": 37,
+      "source_line_end": 67
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Product Concept",
+      "normalized_title": "Product Concept",
+      "key": "product_concept",
+      "path": [
+        "Product Concept"
+      ],
+      "content": "The core product concept combines several connected workflows.\n\n1. Developers have accounts inside the platform.\n2. Brain Coin balances are derived from ledger postings.\n3. Users can transfer Brain Coins directly.\n4. Users can create project deals with other developers.\n5. A developer can accept a proposed project commitment.\n6. The requester can confirm completed work and release payment.\n7. Either party can move accepted work into dispute.\n8. Users can establish recurring salary-style payments.\n9. Users can apply for Brain Coin loans.\n10. Loan review evidence is assembled from recorded transactional history.\n11. Qualification/context information is reviewed separately.\n12. A mandatory administrator review period prevents immediate automated approval.\n13. A human administrator approves or rejects the loan.\n14. Approved loans are disbursed through the same ledger abstraction used by other money movement.\n15. Repayments flow back to the system treasury.\n16. Repaid or defaulted loans become future T-score evidence.\n\nThe workflows therefore feed one another.\n\nProject outcomes and loan outcomes become reliability evidence.\n\nReliability evidence becomes part of future loan review context.\n\nMoney movement remains ledger-driven throughout those cycles.",
+      "source_line_start": 67,
+      "source_line_end": 96
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architectural Shape",
+      "normalized_title": "Architectural Shape",
+      "key": "architectural_shape",
+      "path": [
+        "Architectural Shape"
+      ],
+      "content": "The repository is organized as a conventional full-stack application with explicit backend, frontend, database, and operational layers.\n\n```text\nReact 19 + TypeScript frontend\n            |\n            | HTTP API\n            v\nSpring Boot 4.1 application\n            |\n            +--> Spring Security authentication/authorization\n            |\n            +--> Controllers / API views\n            |\n            +--> Domain services\n            |      |\n            |      +--> Ledger rules\n            |      +--> Deal state transitions\n            |      +--> Loan workflow\n            |      +--> T-score calculation\n            |      +--> Salary scheduling\n            |      +--> Audit recording\n            |\n            +--> Spring Data JPA repositories\n            |\n            v\nPostgreSQL\n            |\n            +--> Flyway-managed schema\n```\n\nDocker Compose supplies a local three-service topology.\n\n```text\nPostgreSQL 17\n     |\n     v\nSpring Boot backend\n     |\n     v\nContainerized frontend\n```\n\nThe PostgreSQL container has a health check.\n\nThe backend waits for the database to become healthy before starting.\n\nThe frontend is configured with the backend API URL at image-build time.\n\nThis provides a reproducible local environment for exercising the complete application rather than requiring separately provisioned services.",
+      "source_line_start": 96,
+      "source_line_end": 148
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Backend Layering",
+      "normalized_title": "Backend Layering",
+      "key": "backend_layering",
+      "path": [
+        "Backend Layering"
+      ],
+      "content": "The Java source separates concerns into application-specific packages.\n\n- `domain` holds entities and state enumerations.\n- `repo` holds persistence access.\n- `service` contains transactional business rules.\n- `api` exposes HTTP controllers and response views.\n- `config` contains security and seeded development data.\n- `db/migration` contains Flyway schema history.\n\nThis structure keeps HTTP handling separate from transaction logic.\n\nFor example, project completion payment is not implemented as controller-side arithmetic.\n\nThe controller delegates into a service that validates actor identity, validates the deal state, performs a ledger transfer, changes the domain state, and records an audit event.\n\nThe same pattern appears in lending and recurring payment workflows.",
+      "source_line_start": 148,
+      "source_line_end": 167
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Brain Coin Ledger",
+      "normalized_title": "Brain Coin Ledger",
+      "key": "brain_coin_ledger",
+      "path": [
+        "Brain Coin Ledger"
+      ],
+      "content": "### Ledger as the Balance Authority\n\nThe application does not model a user balance as an independently mutable field.\n\nBalance is calculated from ledger postings associated with an account.\n\n`LedgerService.balanceForUser` obtains the user's account and asks the posting repository for the account balance.\n\nThe resulting amount is normalized to two decimal places.\n\nThis makes transaction history the accounting source of truth.\n\n### Double-Entry Transfer Shape\n\nEvery transfer creates one `LedgerTransaction`.\n\nThe transfer then writes two postings against that transaction.\n\nThe source posting is the negated amount.\n\nThe destination posting is the positive amount.\n\nThe two postings therefore have equal magnitude and opposite sign.\n\nThis gives each money movement an explicit accounting pair.\n\n### Monetary Normalization\n\nAmounts are normalized to two decimal places with `RoundingMode.HALF_EVEN`.\n\nA transfer amount must be present.\n\nIt must be greater than zero.\n\nThe source and destination accounts must differ.\n\nThese checks centralize basic monetary invariants in the ledger service.\n\n### System Accounts\n\nThe account model distinguishes user-owned accounts from system accounts.\n\nThe lending workflow uses a named system account, `Brain Coin Treasury`, as the source of loan disbursements and the destination of repayments.\n\nThe ledger service exempts a system source account from the normal insufficient-balance rule.\n\nThis lets the internal treasury represent system-originated issuance within the same transaction model used for user transfers.\n\n### Account Lock Ordering\n\nBefore a transfer is written, both participating accounts are loaded through a locking repository method.\n\nThe account UUIDs are sorted before locking.\n\nBoth locks are therefore acquired in deterministic identifier order.\n\nThe service then maps the locked records back to source and destination roles.\n\nThat design is concrete evidence of concurrency-aware transactional money movement.\n\nIt reduces the chance that two concurrent transfers lock the same pair of accounts in opposing orders.\n\n### Insufficient-Balance Protection\n\nFor a non-system source account, the service calculates the current posting-derived balance while the account pair is locked.\n\nThe transfer is rejected when that balance is lower than the requested amount.\n\nThe balance rule is therefore enforced inside the same transactional service that writes the postings.\n\n### Ledger References\n\nLedger transactions can carry:\n\n- transaction type,\n- reference type,\n- reference identifier,\n- memo,\n- creation time.\n\nThis allows a posting pair to be associated with a project deal, loan application, or other domain event.\n\nThe ledger is therefore not merely a numerical total.\n\nIt acts as a traceable record connecting accounting changes to business workflows.\n\n### Recent Activity Reconstruction\n\nRecent account activity is generated from the user's latest postings.\n\nFor each posting, the service loads the postings belonging to the same transaction.\n\nIt identifies the counterparty as the other account in the pair.\n\nWhen the counterparty is user-owned, the user's display name is returned.\n\nWhen it is a system account, the account name is used.\n\nThis gives the frontend transaction history a domain-readable counterparty rather than exposing raw posting IDs.\n\n### Memo Bounding\n\nTransaction memos are optional.\n\nBlank memos become null.\n\nLong memos are bounded to 280 characters.\n\nThis keeps application-level free text aligned with the migration's `VARCHAR(280)` storage contract.",
+      "source_line_start": 167,
+      "source_line_end": 279
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Ledger as the Balance Authority",
+      "normalized_title": "Ledger as the Balance Authority",
+      "key": "ledger_as_the_balance_authority",
+      "path": [
+        "Brain Coin Ledger",
+        "Ledger as the Balance Authority"
+      ],
+      "content": "The application does not model a user balance as an independently mutable field.\n\nBalance is calculated from ledger postings associated with an account.\n\n`LedgerService.balanceForUser` obtains the user's account and asks the posting repository for the account balance.\n\nThe resulting amount is normalized to two decimal places.\n\nThis makes transaction history the accounting source of truth.",
+      "source_line_start": 169,
+      "source_line_end": 181
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Double-Entry Transfer Shape",
+      "normalized_title": "Double-Entry Transfer Shape",
+      "key": "double_entry_transfer_shape",
+      "path": [
+        "Brain Coin Ledger",
+        "Double-Entry Transfer Shape"
+      ],
+      "content": "Every transfer creates one `LedgerTransaction`.\n\nThe transfer then writes two postings against that transaction.\n\nThe source posting is the negated amount.\n\nThe destination posting is the positive amount.\n\nThe two postings therefore have equal magnitude and opposite sign.\n\nThis gives each money movement an explicit accounting pair.",
+      "source_line_start": 181,
+      "source_line_end": 195
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Monetary Normalization",
+      "normalized_title": "Monetary Normalization",
+      "key": "monetary_normalization",
+      "path": [
+        "Brain Coin Ledger",
+        "Monetary Normalization"
+      ],
+      "content": "Amounts are normalized to two decimal places with `RoundingMode.HALF_EVEN`.\n\nA transfer amount must be present.\n\nIt must be greater than zero.\n\nThe source and destination accounts must differ.\n\nThese checks centralize basic monetary invariants in the ledger service.",
+      "source_line_start": 195,
+      "source_line_end": 207
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "System Accounts",
+      "normalized_title": "System Accounts",
+      "key": "system_accounts",
+      "path": [
+        "Brain Coin Ledger",
+        "System Accounts"
+      ],
+      "content": "The account model distinguishes user-owned accounts from system accounts.\n\nThe lending workflow uses a named system account, `Brain Coin Treasury`, as the source of loan disbursements and the destination of repayments.\n\nThe ledger service exempts a system source account from the normal insufficient-balance rule.\n\nThis lets the internal treasury represent system-originated issuance within the same transaction model used for user transfers.",
+      "source_line_start": 207,
+      "source_line_end": 217
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Account Lock Ordering",
+      "normalized_title": "Account Lock Ordering",
+      "key": "account_lock_ordering",
+      "path": [
+        "Brain Coin Ledger",
+        "Account Lock Ordering"
+      ],
+      "content": "Before a transfer is written, both participating accounts are loaded through a locking repository method.\n\nThe account UUIDs are sorted before locking.\n\nBoth locks are therefore acquired in deterministic identifier order.\n\nThe service then maps the locked records back to source and destination roles.\n\nThat design is concrete evidence of concurrency-aware transactional money movement.\n\nIt reduces the chance that two concurrent transfers lock the same pair of accounts in opposing orders.",
+      "source_line_start": 217,
+      "source_line_end": 231
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Insufficient-Balance Protection",
+      "normalized_title": "Insufficient-Balance Protection",
+      "key": "insufficient_balance_protection",
+      "path": [
+        "Brain Coin Ledger",
+        "Insufficient-Balance Protection"
+      ],
+      "content": "For a non-system source account, the service calculates the current posting-derived balance while the account pair is locked.\n\nThe transfer is rejected when that balance is lower than the requested amount.\n\nThe balance rule is therefore enforced inside the same transactional service that writes the postings.",
+      "source_line_start": 231,
+      "source_line_end": 239
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Ledger References",
+      "normalized_title": "Ledger References",
+      "key": "ledger_references",
+      "path": [
+        "Brain Coin Ledger",
+        "Ledger References"
+      ],
+      "content": "Ledger transactions can carry:\n\n- transaction type,\n- reference type,\n- reference identifier,\n- memo,\n- creation time.\n\nThis allows a posting pair to be associated with a project deal, loan application, or other domain event.\n\nThe ledger is therefore not merely a numerical total.\n\nIt acts as a traceable record connecting accounting changes to business workflows.",
+      "source_line_start": 239,
+      "source_line_end": 255
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Recent Activity Reconstruction",
+      "normalized_title": "Recent Activity Reconstruction",
+      "key": "recent_activity_reconstruction",
+      "path": [
+        "Brain Coin Ledger",
+        "Recent Activity Reconstruction"
+      ],
+      "content": "Recent account activity is generated from the user's latest postings.\n\nFor each posting, the service loads the postings belonging to the same transaction.\n\nIt identifies the counterparty as the other account in the pair.\n\nWhen the counterparty is user-owned, the user's display name is returned.\n\nWhen it is a system account, the account name is used.\n\nThis gives the frontend transaction history a domain-readable counterparty rather than exposing raw posting IDs.",
+      "source_line_start": 255,
+      "source_line_end": 269
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Memo Bounding",
+      "normalized_title": "Memo Bounding",
+      "key": "memo_bounding",
+      "path": [
+        "Brain Coin Ledger",
+        "Memo Bounding"
+      ],
+      "content": "Transaction memos are optional.\n\nBlank memos become null.\n\nLong memos are bounded to 280 characters.\n\nThis keeps application-level free text aligned with the migration's `VARCHAR(280)` storage contract.",
+      "source_line_start": 269,
+      "source_line_end": 279
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Project Deal Workflow",
+      "normalized_title": "Project Deal Workflow",
+      "key": "project_deal_workflow",
+      "path": [
+        "Project Deal Workflow"
+      ],
+      "content": "Project deals connect voluntary development work to payment and T-score evidence.\n\nA deal contains a requester, assigned developer, title, description, Brain Coin amount, optional due date, and status.\n\n### Deal Creation\n\nCreating a deal validates that the assigned developer exists.\n\nA requester cannot create a deal with the same user identity.\n\nThe recipient must be an active developer.\n\nTitle and description are required.\n\nThe amount must be positive.\n\nA supplied due date cannot be in the past.\n\nThe created proposal is recorded in the audit log.\n\n### Developer Acceptance\n\nOnly the assigned developer can accept a proposal.\n\nOnly a deal in the proposed state can be accepted.\n\nAcceptance therefore represents an explicit commitment by the work-performing party.\n\n### Requester-Controlled Completion\n\nOnly the requester can confirm that an accepted deal is complete.\n\nCompletion invokes `LedgerService.transfer`.\n\nThe requester is charged.\n\nThe developer is credited.\n\nThe transfer is recorded with transaction type `PROJECT_PAYMENT` and a reference back to the deal.\n\nOnly after the transfer call does the domain object enter its completed state.\n\nThe completion transition is then audit logged.\n\nThis links product workflow, payment, state transition, and traceability.\n\n### Dispute Entry\n\nEither party to an accepted deal can place it into dispute.\n\nThe code explicitly records that entering dispute does not perform an automatic judgment.\n\nThat makes dispute a state transition, not an automated adjudication mechanism.\n\n### Pre-Acceptance Cancellation\n\nThe requester can cancel a proposed deal.\n\nAccepted work cannot be unilaterally cancelled through the same operation.\n\nThat distinction protects the semantics of an accepted commitment.",
+      "source_line_start": 279,
+      "source_line_end": 343
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Deal Creation",
+      "normalized_title": "Deal Creation",
+      "key": "deal_creation",
+      "path": [
+        "Project Deal Workflow",
+        "Deal Creation"
+      ],
+      "content": "Creating a deal validates that the assigned developer exists.\n\nA requester cannot create a deal with the same user identity.\n\nThe recipient must be an active developer.\n\nTitle and description are required.\n\nThe amount must be positive.\n\nA supplied due date cannot be in the past.\n\nThe created proposal is recorded in the audit log.",
+      "source_line_start": 285,
+      "source_line_end": 301
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Developer Acceptance",
+      "normalized_title": "Developer Acceptance",
+      "key": "developer_acceptance",
+      "path": [
+        "Project Deal Workflow",
+        "Developer Acceptance"
+      ],
+      "content": "Only the assigned developer can accept a proposal.\n\nOnly a deal in the proposed state can be accepted.\n\nAcceptance therefore represents an explicit commitment by the work-performing party.",
+      "source_line_start": 301,
+      "source_line_end": 309
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Requester-Controlled Completion",
+      "normalized_title": "Requester-Controlled Completion",
+      "key": "requester_controlled_completion",
+      "path": [
+        "Project Deal Workflow",
+        "Requester-Controlled Completion"
+      ],
+      "content": "Only the requester can confirm that an accepted deal is complete.\n\nCompletion invokes `LedgerService.transfer`.\n\nThe requester is charged.\n\nThe developer is credited.\n\nThe transfer is recorded with transaction type `PROJECT_PAYMENT` and a reference back to the deal.\n\nOnly after the transfer call does the domain object enter its completed state.\n\nThe completion transition is then audit logged.\n\nThis links product workflow, payment, state transition, and traceability.",
+      "source_line_start": 309,
+      "source_line_end": 327
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Dispute Entry",
+      "normalized_title": "Dispute Entry",
+      "key": "dispute_entry",
+      "path": [
+        "Project Deal Workflow",
+        "Dispute Entry"
+      ],
+      "content": "Either party to an accepted deal can place it into dispute.\n\nThe code explicitly records that entering dispute does not perform an automatic judgment.\n\nThat makes dispute a state transition, not an automated adjudication mechanism.",
+      "source_line_start": 327,
+      "source_line_end": 335
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Pre-Acceptance Cancellation",
+      "normalized_title": "Pre-Acceptance Cancellation",
+      "key": "pre_acceptance_cancellation",
+      "path": [
+        "Project Deal Workflow",
+        "Pre-Acceptance Cancellation"
+      ],
+      "content": "The requester can cancel a proposed deal.\n\nAccepted work cannot be unilaterally cancelled through the same operation.\n\nThat distinction protects the semantics of an accepted commitment.",
+      "source_line_start": 335,
+      "source_line_end": 343
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "T-Score Reliability Model",
+      "normalized_title": "T-Score Reliability Model",
+      "key": "t_score_reliability_model",
+      "path": [
+        "T-Score Reliability Model"
+      ],
+      "content": "### Narrow Reliability Scope\n\n`TrustService` calculates T-score only from TransAct-observable transactional events.\n\nThe current implementation examines:\n\n- completed project deals,\n- disputed project deals,\n- overdue accepted project deals,\n- repaid loans,\n- defaulted loans.\n\nThe implementation starts with an unestablished baseline score of 50.\n\nIts baseline explanation explicitly states that no reliability is assumed without transaction history and that this is not a judgment of skill or personal worth.\n\n### Positive Evidence Components\n\nCompleted project commitments contribute positive points.\n\nThe contribution is bounded.\n\nRepaid Brain Coin loans also contribute positive points.\n\nThat contribution is independently bounded.\n\n### Concern Components\n\nDisputed project commitments apply a bounded negative impact.\n\nOverdue accepted commitments apply a bounded negative impact.\n\nDefaulted Brain Coin loans apply the largest bounded negative impact among the current components.\n\n### Bounded Final Score\n\nThe final score is clamped between 0 and 100.\n\nThe implementation maps the numerical score into named bands.\n\n- `HIGH`\n- `ESTABLISHED`\n- `UNESTABLISHED_OR_DEVELOPING`\n- `CONCERNS_PRESENT`\n\n### Explainability\n\nThe result contains both the numerical score and a list of component records.\n\nEach component includes:\n\n- name,\n- point impact,\n- explanation.\n\nThe score can therefore be presented as a decomposable result rather than as an unexplained number.\n\n### Reuse as Loan Evidence\n\n`paymentHistory` packages the same source evidence into a record for the loan-review adapter.\n\nThe record includes:\n\n- repaid loan count,\n- defaulted loan count,\n- completed deal count,\n- disputed deal count,\n- overdue commitment count,\n- current T-score.\n\nThis provides a clean boundary between authoritative historical evidence and whatever review provider evaluates it.",
+      "source_line_start": 343,
+      "source_line_end": 417
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Narrow Reliability Scope",
+      "normalized_title": "Narrow Reliability Scope",
+      "key": "narrow_reliability_scope",
+      "path": [
+        "T-Score Reliability Model",
+        "Narrow Reliability Scope"
+      ],
+      "content": "`TrustService` calculates T-score only from TransAct-observable transactional events.\n\nThe current implementation examines:\n\n- completed project deals,\n- disputed project deals,\n- overdue accepted project deals,\n- repaid loans,\n- defaulted loans.\n\nThe implementation starts with an unestablished baseline score of 50.\n\nIts baseline explanation explicitly states that no reliability is assumed without transaction history and that this is not a judgment of skill or personal worth.",
+      "source_line_start": 345,
+      "source_line_end": 361
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Positive Evidence Components",
+      "normalized_title": "Positive Evidence Components",
+      "key": "positive_evidence_components",
+      "path": [
+        "T-Score Reliability Model",
+        "Positive Evidence Components"
+      ],
+      "content": "Completed project commitments contribute positive points.\n\nThe contribution is bounded.\n\nRepaid Brain Coin loans also contribute positive points.\n\nThat contribution is independently bounded.",
+      "source_line_start": 361,
+      "source_line_end": 371
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Concern Components",
+      "normalized_title": "Concern Components",
+      "key": "concern_components",
+      "path": [
+        "T-Score Reliability Model",
+        "Concern Components"
+      ],
+      "content": "Disputed project commitments apply a bounded negative impact.\n\nOverdue accepted commitments apply a bounded negative impact.\n\nDefaulted Brain Coin loans apply the largest bounded negative impact among the current components.",
+      "source_line_start": 371,
+      "source_line_end": 379
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Bounded Final Score",
+      "normalized_title": "Bounded Final Score",
+      "key": "bounded_final_score",
+      "path": [
+        "T-Score Reliability Model",
+        "Bounded Final Score"
+      ],
+      "content": "The final score is clamped between 0 and 100.\n\nThe implementation maps the numerical score into named bands.\n\n- `HIGH`\n- `ESTABLISHED`\n- `UNESTABLISHED_OR_DEVELOPING`\n- `CONCERNS_PRESENT`",
+      "source_line_start": 379,
+      "source_line_end": 390
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Explainability",
+      "normalized_title": "Explainability",
+      "key": "explainability",
+      "path": [
+        "T-Score Reliability Model",
+        "Explainability"
+      ],
+      "content": "The result contains both the numerical score and a list of component records.\n\nEach component includes:\n\n- name,\n- point impact,\n- explanation.\n\nThe score can therefore be presented as a decomposable result rather than as an unexplained number.",
+      "source_line_start": 390,
+      "source_line_end": 402
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Reuse as Loan Evidence",
+      "normalized_title": "Reuse as Loan Evidence",
+      "key": "reuse_as_loan_evidence",
+      "path": [
+        "T-Score Reliability Model",
+        "Reuse as Loan Evidence"
+      ],
+      "content": "`paymentHistory` packages the same source evidence into a record for the loan-review adapter.\n\nThe record includes:\n\n- repaid loan count,\n- defaulted loan count,\n- completed deal count,\n- disputed deal count,\n- overdue commitment count,\n- current T-score.\n\nThis provides a clean boundary between authoritative historical evidence and whatever review provider evaluates it.",
+      "source_line_start": 402,
+      "source_line_end": 417
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Loan Application Workflow",
+      "normalized_title": "Loan Application Workflow",
+      "key": "loan_application_workflow",
+      "path": [
+        "Loan Application Workflow"
+      ],
+      "content": "The lending workflow is one of the repository's most developed business processes.\n\n### Application Validation\n\nA loan amount must be positive.\n\nThe current Brain Coin loan ceiling is 10,000 BC.\n\nPurpose is required.\n\nQualification/context text is required.\n\nThe service prevents an applicant from opening a second approved loan while an approved loan is still outstanding.\n\n### Payment-History Collection\n\nThe loan service asks `TrustService` to build payment-history evidence.\n\nThe evidence comes from already-recorded project and lending history.\n\nThis means the review stage consumes application-domain facts instead of asking a reviewer to infer historical behavior from unstructured prose.\n\n### Separate Review Channels\n\nThe application requests two assessments.\n\nOne assessment evaluates payment-history evidence.\n\nA second assessment evaluates the qualification/context statement and purpose.\n\nThose assessments are stored separately in the loan entity and database schema.\n\nThe separation preserves provenance between behavioral history and applicant-supplied context.\n\n### Configurable Review Provider\n\n`AiReviewService` defines the review abstraction.\n\nThe active repository implementation is `HeuristicReviewService`.\n\nIts provider name is `HEURISTIC_PLACEHOLDER`.\n\nThe class labels every explanation as a pre-AI heuristic placeholder.\n\nNo external model is needed to exercise the workflow.\n\nThe abstraction nevertheless allows a later provider to implement the same assessment contract.\n\n### Deterministic Payment-History Heuristic\n\nThe placeholder payment-history review maps evidence into `WEAK`, `MODERATE`, or `STRONG`.\n\nDefaults or multiple disputes lead to the weak band.\n\nA repaid loan or at least two completed commitments can lead to the strong band.\n\nOther current cases produce a moderate band.\n\nThe explanation records the T-score and the input counts used by the heuristic.\n\n### Deterministic Qualification Heuristic\n\nThe placeholder qualification review counts words in the applicant statement.\n\nLonger statements cross deterministic thresholds into moderate or strong bands.\n\nIts explanation explicitly states that the logic is only a stand-in for exercising the end-to-end process before a real reviewer is configured.\n\n### Mandatory Human Review Window\n\nSubmitting the application captures the current time.\n\nThe application computes `adminReviewDueAt` by adding the configured review-period duration.\n\nThe default is three days.\n\nThe resulting state enters administrator review.\n\nAn audit event records that review-window entry.\n\n### Human Approval Gate\n\nApproval loads the application and verifies that it is in `ADMIN_REVIEW`.\n\nThe operation then checks the current time against `adminReviewDueAt`.\n\nApproval before the review deadline is rejected.\n\nOnce the window has elapsed, an administrator can approve.\n\nThe service then transfers Brain Coins from the treasury system account to the applicant account.\n\nThe loan receives an approval state and repayment due date.\n\nAn audit event explicitly records that a human administrator approved and disbursed the loan.\n\n### Human Rejection Gate\n\nRejection uses the same status and review-deadline gate.\n\nThe human administrator supplies or receives default explanatory notes.\n\nThe decision is audit logged.\n\n### Repayment\n\nAn applicant can repay only their own approved outstanding loan.\n\nThe repayment amount must be positive.\n\nIt cannot exceed outstanding principal.\n\nThe money movement goes from the applicant account back to the treasury through the central ledger service.\n\nThe loan then updates outstanding amount.\n\nThe repayment is audit logged.\n\n### Scheduled Default Detection\n\nAn hourly scheduled operation finds approved loans whose repayment due date has passed.\n\nIf outstanding amount remains, the loan is marked defaulted.\n\nA system-authored audit event records the transition.\n\nDefaulted loans subsequently become T-score and payment-history evidence.\n\nThis creates a closed feedback loop between operational loan state and future reliability assessment.",
+      "source_line_start": 417,
+      "source_line_end": 549
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Application Validation",
+      "normalized_title": "Application Validation",
+      "key": "application_validation",
+      "path": [
+        "Loan Application Workflow",
+        "Application Validation"
+      ],
+      "content": "A loan amount must be positive.\n\nThe current Brain Coin loan ceiling is 10,000 BC.\n\nPurpose is required.\n\nQualification/context text is required.\n\nThe service prevents an applicant from opening a second approved loan while an approved loan is still outstanding.",
+      "source_line_start": 421,
+      "source_line_end": 433
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Payment-History Collection",
+      "normalized_title": "Payment-History Collection",
+      "key": "payment_history_collection",
+      "path": [
+        "Loan Application Workflow",
+        "Payment-History Collection"
+      ],
+      "content": "The loan service asks `TrustService` to build payment-history evidence.\n\nThe evidence comes from already-recorded project and lending history.\n\nThis means the review stage consumes application-domain facts instead of asking a reviewer to infer historical behavior from unstructured prose.",
+      "source_line_start": 433,
+      "source_line_end": 441
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Separate Review Channels",
+      "normalized_title": "Separate Review Channels",
+      "key": "separate_review_channels",
+      "path": [
+        "Loan Application Workflow",
+        "Separate Review Channels"
+      ],
+      "content": "The application requests two assessments.\n\nOne assessment evaluates payment-history evidence.\n\nA second assessment evaluates the qualification/context statement and purpose.\n\nThose assessments are stored separately in the loan entity and database schema.\n\nThe separation preserves provenance between behavioral history and applicant-supplied context.",
+      "source_line_start": 441,
+      "source_line_end": 453
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Configurable Review Provider",
+      "normalized_title": "Configurable Review Provider",
+      "key": "configurable_review_provider",
+      "path": [
+        "Loan Application Workflow",
+        "Configurable Review Provider"
+      ],
+      "content": "`AiReviewService` defines the review abstraction.\n\nThe active repository implementation is `HeuristicReviewService`.\n\nIts provider name is `HEURISTIC_PLACEHOLDER`.\n\nThe class labels every explanation as a pre-AI heuristic placeholder.\n\nNo external model is needed to exercise the workflow.\n\nThe abstraction nevertheless allows a later provider to implement the same assessment contract.",
+      "source_line_start": 453,
+      "source_line_end": 467
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Deterministic Payment-History Heuristic",
+      "normalized_title": "Deterministic Payment-History Heuristic",
+      "key": "deterministic_payment_history_heuristic",
+      "path": [
+        "Loan Application Workflow",
+        "Deterministic Payment-History Heuristic"
+      ],
+      "content": "The placeholder payment-history review maps evidence into `WEAK`, `MODERATE`, or `STRONG`.\n\nDefaults or multiple disputes lead to the weak band.\n\nA repaid loan or at least two completed commitments can lead to the strong band.\n\nOther current cases produce a moderate band.\n\nThe explanation records the T-score and the input counts used by the heuristic.",
+      "source_line_start": 467,
+      "source_line_end": 479
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Deterministic Qualification Heuristic",
+      "normalized_title": "Deterministic Qualification Heuristic",
+      "key": "deterministic_qualification_heuristic",
+      "path": [
+        "Loan Application Workflow",
+        "Deterministic Qualification Heuristic"
+      ],
+      "content": "The placeholder qualification review counts words in the applicant statement.\n\nLonger statements cross deterministic thresholds into moderate or strong bands.\n\nIts explanation explicitly states that the logic is only a stand-in for exercising the end-to-end process before a real reviewer is configured.",
+      "source_line_start": 479,
+      "source_line_end": 487
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Mandatory Human Review Window",
+      "normalized_title": "Mandatory Human Review Window",
+      "key": "mandatory_human_review_window",
+      "path": [
+        "Loan Application Workflow",
+        "Mandatory Human Review Window"
+      ],
+      "content": "Submitting the application captures the current time.\n\nThe application computes `adminReviewDueAt` by adding the configured review-period duration.\n\nThe default is three days.\n\nThe resulting state enters administrator review.\n\nAn audit event records that review-window entry.",
+      "source_line_start": 487,
+      "source_line_end": 499
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Human Approval Gate",
+      "normalized_title": "Human Approval Gate",
+      "key": "human_approval_gate",
+      "path": [
+        "Loan Application Workflow",
+        "Human Approval Gate"
+      ],
+      "content": "Approval loads the application and verifies that it is in `ADMIN_REVIEW`.\n\nThe operation then checks the current time against `adminReviewDueAt`.\n\nApproval before the review deadline is rejected.\n\nOnce the window has elapsed, an administrator can approve.\n\nThe service then transfers Brain Coins from the treasury system account to the applicant account.\n\nThe loan receives an approval state and repayment due date.\n\nAn audit event explicitly records that a human administrator approved and disbursed the loan.",
+      "source_line_start": 499,
+      "source_line_end": 515
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Human Rejection Gate",
+      "normalized_title": "Human Rejection Gate",
+      "key": "human_rejection_gate",
+      "path": [
+        "Loan Application Workflow",
+        "Human Rejection Gate"
+      ],
+      "content": "Rejection uses the same status and review-deadline gate.\n\nThe human administrator supplies or receives default explanatory notes.\n\nThe decision is audit logged.",
+      "source_line_start": 515,
+      "source_line_end": 523
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Repayment",
+      "normalized_title": "Repayment",
+      "key": "repayment",
+      "path": [
+        "Loan Application Workflow",
+        "Repayment"
+      ],
+      "content": "An applicant can repay only their own approved outstanding loan.\n\nThe repayment amount must be positive.\n\nIt cannot exceed outstanding principal.\n\nThe money movement goes from the applicant account back to the treasury through the central ledger service.\n\nThe loan then updates outstanding amount.\n\nThe repayment is audit logged.",
+      "source_line_start": 523,
+      "source_line_end": 537
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Scheduled Default Detection",
+      "normalized_title": "Scheduled Default Detection",
+      "key": "scheduled_default_detection",
+      "path": [
+        "Loan Application Workflow",
+        "Scheduled Default Detection"
+      ],
+      "content": "An hourly scheduled operation finds approved loans whose repayment due date has passed.\n\nIf outstanding amount remains, the loan is marked defaulted.\n\nA system-authored audit event records the transition.\n\nDefaulted loans subsequently become T-score and payment-history evidence.\n\nThis creates a closed feedback loop between operational loan state and future reliability assessment.",
+      "source_line_start": 537,
+      "source_line_end": 549
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Recurring Salary / Direct-Deposit Workflow",
+      "normalized_title": "Recurring Salary / Direct-Deposit Workflow",
+      "key": "recurring_salary_direct_deposit_workflow",
+      "path": [
+        "Recurring Salary / Direct-Deposit Workflow"
+      ],
+      "content": "The repository models recurring payments through `SalaryAgreement`.\n\nA payer creates an agreement for a recipient developer.\n\nThe recipient must have the developer role.\n\nThe payer and recipient must differ.\n\nThe label is required.\n\nAmount must be positive.\n\nThe interval must be between one and 365 days.\n\nA first-payment timestamp in the past is normalized to the current time.\n\nThe agreement stores the next payment time.\n\n### Scheduler\n\n`SalaryService.runDuePayments` is annotated with Spring scheduling.\n\nThe delay is configurable through `transact.salary.scheduler-ms`.\n\nEach scheduler pass queries active agreements whose next payment timestamp is due.\n\nEach due agreement is handed to `SalaryPaymentProcessor`.\n\nThis separates agreement management from payment execution.\n\n### Deactivation Authority\n\nOnly the payer can deactivate an agreement.\n\nDeactivation is audit logged.\n\nThe repository therefore models recurring payments as explicit agreements with ownership and lifecycle rules rather than as anonymous timers.",
+      "source_line_start": 549,
+      "source_line_end": 589
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Scheduler",
+      "normalized_title": "Scheduler",
+      "key": "scheduler",
+      "path": [
+        "Recurring Salary / Direct-Deposit Workflow",
+        "Scheduler"
+      ],
+      "content": "`SalaryService.runDuePayments` is annotated with Spring scheduling.\n\nThe delay is configurable through `transact.salary.scheduler-ms`.\n\nEach scheduler pass queries active agreements whose next payment timestamp is due.\n\nEach due agreement is handed to `SalaryPaymentProcessor`.\n\nThis separates agreement management from payment execution.",
+      "source_line_start": 569,
+      "source_line_end": 581
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Deactivation Authority",
+      "normalized_title": "Deactivation Authority",
+      "key": "deactivation_authority",
+      "path": [
+        "Recurring Salary / Direct-Deposit Workflow",
+        "Deactivation Authority"
+      ],
+      "content": "Only the payer can deactivate an agreement.\n\nDeactivation is audit logged.\n\nThe repository therefore models recurring payments as explicit agreements with ownership and lifecycle rules rather than as anonymous timers.",
+      "source_line_start": 581,
+      "source_line_end": 589
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Auditability",
+      "normalized_title": "Auditability",
+      "key": "auditability",
+      "path": [
+        "Auditability"
+      ],
+      "content": "`AuditEvent` is a persisted domain entity.\n\nThe initial Flyway migration creates an `audit_events` table and an index on entity type plus entity ID.\n\nBusiness services call `AuditService` for consequential transitions.\n\nEvidenced audit events include:\n\n- loan application,\n- loan approval,\n- loan rejection,\n- loan repayment,\n- automatic loan default,\n- project-deal creation,\n- project-deal acceptance,\n- project-deal completion,\n- deal dispute,\n- deal cancellation,\n- salary agreement creation,\n- salary agreement deactivation.\n\nAudit records include actor, action, entity type, entity ID, details, and creation time.\n\nThis gives major state changes a separate trace record from their mutable domain entities.",
+      "source_line_start": 589,
+      "source_line_end": 616
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Persistence Model",
+      "normalized_title": "Persistence Model",
+      "key": "persistence_model",
+      "path": [
+        "Persistence Model"
+      ],
+      "content": "The repository uses PostgreSQL and Spring Data JPA.\n\nThe initial Flyway migration creates a normalized relational schema.\n\n### `app_users`\n\nStores application identity fields including:\n\n- UUID primary key,\n- display name,\n- unique email,\n- role,\n- active flag,\n- creation timestamp.\n\n### `accounts`\n\nStores:\n\n- UUID primary key,\n- optional unique user owner,\n- unique name,\n- system-account flag,\n- active flag,\n- creation timestamp.\n\nThe nullable owner relationship allows system accounts such as the Brain Coin treasury.\n\n### `ledger_transactions`\n\nStores transaction-level context including type, domain reference, memo, and timestamp.\n\n### `ledger_postings`\n\nStores account-level signed amounts belonging to ledger transactions.\n\nIndexes support lookup by account and transaction.\n\n### `project_deals`\n\nStores both parties, textual work definition, amount, due date, lifecycle state, transition timestamps, and optimistic version field.\n\n### `loan_applications`\n\nStores application inputs, outstanding amount, review provider, separate review bands and explanations, administrator notes, review deadline, decision time, repayment deadline, and version field.\n\nThis schema preserves both decision inputs and decision-process metadata.\n\n### `salary_agreements`\n\nStores payer, recipient, label, amount, interval, next payment, active state, last execution metadata, creation time, and version.\n\n### `audit_events`\n\nStores the immutable-style event record associated with consequential operations.",
+      "source_line_start": 616,
+      "source_line_end": 674
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "`app_users`",
+      "normalized_title": "appusers",
+      "key": "appusers",
+      "path": [
+        "Persistence Model",
+        "`app_users`"
+      ],
+      "content": "Stores application identity fields including:\n\n- UUID primary key,\n- display name,\n- unique email,\n- role,\n- active flag,\n- creation timestamp.",
+      "source_line_start": 622,
+      "source_line_end": 633
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "`accounts`",
+      "normalized_title": "accounts",
+      "key": "accounts",
+      "path": [
+        "Persistence Model",
+        "`accounts`"
+      ],
+      "content": "Stores:\n\n- UUID primary key,\n- optional unique user owner,\n- unique name,\n- system-account flag,\n- active flag,\n- creation timestamp.\n\nThe nullable owner relationship allows system accounts such as the Brain Coin treasury.",
+      "source_line_start": 633,
+      "source_line_end": 646
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "`ledger_transactions`",
+      "normalized_title": "ledgertransactions",
+      "key": "ledgertransactions",
+      "path": [
+        "Persistence Model",
+        "`ledger_transactions`"
+      ],
+      "content": "Stores transaction-level context including type, domain reference, memo, and timestamp.",
+      "source_line_start": 646,
+      "source_line_end": 650
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "`ledger_postings`",
+      "normalized_title": "ledgerpostings",
+      "key": "ledgerpostings",
+      "path": [
+        "Persistence Model",
+        "`ledger_postings`"
+      ],
+      "content": "Stores account-level signed amounts belonging to ledger transactions.\n\nIndexes support lookup by account and transaction.",
+      "source_line_start": 650,
+      "source_line_end": 656
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "`project_deals`",
+      "normalized_title": "projectdeals",
+      "key": "projectdeals",
+      "path": [
+        "Persistence Model",
+        "`project_deals`"
+      ],
+      "content": "Stores both parties, textual work definition, amount, due date, lifecycle state, transition timestamps, and optimistic version field.",
+      "source_line_start": 656,
+      "source_line_end": 660
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "`loan_applications`",
+      "normalized_title": "loanapplications",
+      "key": "loanapplications",
+      "path": [
+        "Persistence Model",
+        "`loan_applications`"
+      ],
+      "content": "Stores application inputs, outstanding amount, review provider, separate review bands and explanations, administrator notes, review deadline, decision time, repayment deadline, and version field.\n\nThis schema preserves both decision inputs and decision-process metadata.",
+      "source_line_start": 660,
+      "source_line_end": 666
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "`salary_agreements`",
+      "normalized_title": "salaryagreements",
+      "key": "salaryagreements",
+      "path": [
+        "Persistence Model",
+        "`salary_agreements`"
+      ],
+      "content": "Stores payer, recipient, label, amount, interval, next payment, active state, last execution metadata, creation time, and version.",
+      "source_line_start": 666,
+      "source_line_end": 670
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "`audit_events`",
+      "normalized_title": "auditevents",
+      "key": "auditevents",
+      "path": [
+        "Persistence Model",
+        "`audit_events`"
+      ],
+      "content": "Stores the immutable-style event record associated with consequential operations.",
+      "source_line_start": 670,
+      "source_line_end": 674
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Security Baseline",
+      "normalized_title": "Security Baseline",
+      "key": "security_baseline",
+      "path": [
+        "Security Baseline"
+      ],
+      "content": "The backend uses Spring Security.\n\n### Stateless HTTP Security\n\nSession creation policy is `STATELESS`.\n\nThe health endpoint is public.\n\nAdministrative API paths require the `ADMIN` role.\n\nOther API requests require authentication.\n\n### Development Identities\n\nThe current security configuration uses an in-memory `UserDetailsService`.\n\nIt defines a developer identity and administrator identity.\n\nPasswords come from application configuration.\n\nThe HTTP mechanism is Basic authentication.\n\nThis establishes a testable role boundary for the current prototype.\n\n### Method Security\n\n`@EnableMethodSecurity` is enabled.\n\nThis allows controller or service methods to apply role annotations in addition to path-level authorization.\n\n### CORS\n\nAllowed origins are configuration-driven.\n\nThe default local origin points at the Vite frontend.\n\nThe configuration permits the HTTP methods used by the API and the `Authorization` and `Content-Type` headers.\n\nCredentials are allowed.\n\nThis is an explicit frontend-backend integration boundary rather than a blanket browser-access assumption.",
+      "source_line_start": 674,
+      "source_line_end": 718
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Stateless HTTP Security",
+      "normalized_title": "Stateless HTTP Security",
+      "key": "stateless_http_security",
+      "path": [
+        "Security Baseline",
+        "Stateless HTTP Security"
+      ],
+      "content": "Session creation policy is `STATELESS`.\n\nThe health endpoint is public.\n\nAdministrative API paths require the `ADMIN` role.\n\nOther API requests require authentication.",
+      "source_line_start": 678,
+      "source_line_end": 688
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Development Identities",
+      "normalized_title": "Development Identities",
+      "key": "development_identities",
+      "path": [
+        "Security Baseline",
+        "Development Identities"
+      ],
+      "content": "The current security configuration uses an in-memory `UserDetailsService`.\n\nIt defines a developer identity and administrator identity.\n\nPasswords come from application configuration.\n\nThe HTTP mechanism is Basic authentication.\n\nThis establishes a testable role boundary for the current prototype.",
+      "source_line_start": 688,
+      "source_line_end": 700
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Method Security",
+      "normalized_title": "Method Security",
+      "key": "method_security",
+      "path": [
+        "Security Baseline",
+        "Method Security"
+      ],
+      "content": "`@EnableMethodSecurity` is enabled.\n\nThis allows controller or service methods to apply role annotations in addition to path-level authorization.",
+      "source_line_start": 700,
+      "source_line_end": 706
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "CORS",
+      "normalized_title": "CORS",
+      "key": "cors",
+      "path": [
+        "Security Baseline",
+        "CORS"
+      ],
+      "content": "Allowed origins are configuration-driven.\n\nThe default local origin points at the Vite frontend.\n\nThe configuration permits the HTTP methods used by the API and the `Authorization` and `Content-Type` headers.\n\nCredentials are allowed.\n\nThis is an explicit frontend-backend integration boundary rather than a blanket browser-access assumption.",
+      "source_line_start": 706,
+      "source_line_end": 718
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "HTTP API Shape",
+      "normalized_title": "HTTP API Shape",
+      "key": "http_api_shape",
+      "path": [
+        "HTTP API Shape"
+      ],
+      "content": "The backend has controllers for:\n\n- health,\n- current user,\n- dashboard,\n- transfers,\n- project deals,\n- loans,\n- recurring salaries,\n- administrator loan review.\n\nThe controller split mirrors the main product workflows.\n\nAPI view records are kept separately from persistence entities through `ApiViews`.\n\nThis provides a presentation boundary for HTTP responses.",
+      "source_line_start": 718,
+      "source_line_end": 737
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "React Frontend",
+      "normalized_title": "React Frontend",
+      "key": "react_frontend",
+      "path": [
+        "React Frontend"
+      ],
+      "content": "The frontend uses React 19 and TypeScript.\n\nVite is the development and production build tool.\n\nTanStack Query provides server-state access.\n\nThe source tree is feature-oriented rather than placing all screens into one application file.\n\nFeature areas include:\n\n- authentication,\n- dashboard,\n- project deals,\n- loans,\n- salaries,\n- administration.\n\nShared components, domain definitions, API access, and application shell logic have their own directories.\n\n### Dashboard\n\nThe dashboard exposes financial-style navigation and summary interactions.\n\nEvidence in `OverviewPage.tsx` includes quick actions for:\n\n- applying for a loan,\n- creating a project deal,\n- configuring direct deposit.\n\nThe same screen presents recent transaction activity.\n\nThe UI therefore reflects the backend domain rather than being a generic starter interface.\n\n### Financial UI Evolution\n\nThe latest two repository commits focus on frontend architecture and presentation.\n\nOne commit rebuilds the financial UI architecture and light theme.\n\nThe latest commit adopts a Namaa-inspired fintech dashboard.\n\nThis shows a short but explicit evolution from domain implementation into product-facing financial interaction design.",
+      "source_line_start": 737,
+      "source_line_end": 782
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "Dashboard",
+      "normalized_title": "Dashboard",
+      "key": "dashboard",
+      "path": [
+        "React Frontend",
+        "Dashboard"
+      ],
+      "content": "The dashboard exposes financial-style navigation and summary interactions.\n\nEvidence in `OverviewPage.tsx` includes quick actions for:\n\n- applying for a loan,\n- creating a project deal,\n- configuring direct deposit.\n\nThe same screen presents recent transaction activity.\n\nThe UI therefore reflects the backend domain rather than being a generic starter interface.",
+      "source_line_start": 758,
+      "source_line_end": 772
+    },
+    {
+      "id": "s063",
+      "level": 3,
+      "title": "Financial UI Evolution",
+      "normalized_title": "Financial UI Evolution",
+      "key": "financial_ui_evolution",
+      "path": [
+        "React Frontend",
+        "Financial UI Evolution"
+      ],
+      "content": "The latest two repository commits focus on frontend architecture and presentation.\n\nOne commit rebuilds the financial UI architecture and light theme.\n\nThe latest commit adopts a Namaa-inspired fintech dashboard.\n\nThis shows a short but explicit evolution from domain implementation into product-facing financial interaction design.",
+      "source_line_start": 772,
+      "source_line_end": 782
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Build and Tooling",
+      "normalized_title": "Build and Tooling",
+      "key": "build_and_tooling",
+      "path": [
+        "Build and Tooling"
+      ],
+      "content": "### Frontend Build Contract\n\nThe frontend `build` script runs:\n\n```text\ntsc -b\nvite build\n```\n\nTypeScript compilation therefore precedes bundling.\n\nThe repository history includes a dedicated commit fixing the TypeScript configuration to make this build path work.\n\n### Backend Build Contract\n\nThe Maven project targets Java 21.\n\nGitHub Actions executes:\n\n```text\nmvn --batch-mode verify\n```\n\nThis invokes the Maven verification lifecycle instead of compilation alone.",
+      "source_line_start": 782,
+      "source_line_end": 809
+    },
+    {
+      "id": "s065",
+      "level": 3,
+      "title": "Frontend Build Contract",
+      "normalized_title": "Frontend Build Contract",
+      "key": "frontend_build_contract",
+      "path": [
+        "Build and Tooling",
+        "Frontend Build Contract"
+      ],
+      "content": "The frontend `build` script runs:\n\n```text\ntsc -b\nvite build\n```\n\nTypeScript compilation therefore precedes bundling.\n\nThe repository history includes a dedicated commit fixing the TypeScript configuration to make this build path work.",
+      "source_line_start": 784,
+      "source_line_end": 797
+    },
+    {
+      "id": "s066",
+      "level": 3,
+      "title": "Backend Build Contract",
+      "normalized_title": "Backend Build Contract",
+      "key": "backend_build_contract",
+      "path": [
+        "Build and Tooling",
+        "Backend Build Contract"
+      ],
+      "content": "The Maven project targets Java 21.\n\nGitHub Actions executes:\n\n```text\nmvn --batch-mode verify\n```\n\nThis invokes the Maven verification lifecycle instead of compilation alone.",
+      "source_line_start": 797,
+      "source_line_end": 809
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "### Unit Testing\n\nThe backend contains `HeuristicReviewServiceTest`.\n\nThe test class exercises deterministic review behavior.\n\nIts evidenced cases include:\n\n- weak classification for default-containing payment history,\n- strong classification for a sufficiently substantial qualification statement.\n\nThese tests directly verify the current review-provider rules.\n\n### Continuous Integration\n\nThe GitHub Actions workflow has independent backend and frontend jobs.\n\nBackend CI:\n\n1. checks out the repository,\n2. installs Temurin Java 21,\n3. enables Maven dependency caching,\n4. executes `mvn --batch-mode verify`.\n\nFrontend CI:\n\n1. checks out the repository,\n2. installs Node.js 22,\n3. installs dependencies,\n4. runs the production build.\n\n### Verified Latest CI Run\n\nThe workflow run associated with latest commit `223b4b030f2dc59803c07e537765f77bdcae635f` completed successfully on 2026-09-07.\n\nThe successful run validates the current latest frontend state against both CI jobs defined by the repository workflow.\n\nThis is direct build-verification evidence for the checked-in state.",
+      "source_line_start": 809,
+      "source_line_end": 850
+    },
+    {
+      "id": "s068",
+      "level": 3,
+      "title": "Unit Testing",
+      "normalized_title": "Unit Testing",
+      "key": "unit_testing",
+      "path": [
+        "Testing and Verification",
+        "Unit Testing"
+      ],
+      "content": "The backend contains `HeuristicReviewServiceTest`.\n\nThe test class exercises deterministic review behavior.\n\nIts evidenced cases include:\n\n- weak classification for default-containing payment history,\n- strong classification for a sufficiently substantial qualification statement.\n\nThese tests directly verify the current review-provider rules.",
+      "source_line_start": 811,
+      "source_line_end": 824
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Continuous Integration",
+      "normalized_title": "Continuous Integration",
+      "key": "continuous_integration",
+      "path": [
+        "Testing and Verification",
+        "Continuous Integration"
+      ],
+      "content": "The GitHub Actions workflow has independent backend and frontend jobs.\n\nBackend CI:\n\n1. checks out the repository,\n2. installs Temurin Java 21,\n3. enables Maven dependency caching,\n4. executes `mvn --batch-mode verify`.\n\nFrontend CI:\n\n1. checks out the repository,\n2. installs Node.js 22,\n3. installs dependencies,\n4. runs the production build.",
+      "source_line_start": 824,
+      "source_line_end": 842
+    },
+    {
+      "id": "s070",
+      "level": 3,
+      "title": "Verified Latest CI Run",
+      "normalized_title": "Verified Latest CI Run",
+      "key": "verified_latest_ci_run",
+      "path": [
+        "Testing and Verification",
+        "Verified Latest CI Run"
+      ],
+      "content": "The workflow run associated with latest commit `223b4b030f2dc59803c07e537765f77bdcae635f` completed successfully on 2026-09-07.\n\nThe successful run validates the current latest frontend state against both CI jobs defined by the repository workflow.\n\nThis is direct build-verification evidence for the checked-in state.",
+      "source_line_start": 842,
+      "source_line_end": 850
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Containerized Development Environment",
+      "normalized_title": "Containerized Development Environment",
+      "key": "containerized_development_environment",
+      "path": [
+        "Containerized Development Environment"
+      ],
+      "content": "Docker Compose defines three services.\n\n### PostgreSQL\n\nThe database uses `postgres:17-alpine`.\n\nA named Docker volume persists database state.\n\nA `pg_isready` health check gates backend startup.\n\n### Backend\n\nThe backend is built from `./backend`.\n\nIts environment receives JDBC connection information, CORS configuration, and the development user passwords.\n\nIt exposes port 8080.\n\n### Frontend\n\nThe frontend is built from `./frontend`.\n\nThe backend URL is passed as `VITE_API_URL` during the image build.\n\nThe resulting web service is exposed on local port 5173.\n\nThe frontend declares a dependency on the backend service.\n\nThe complete local topology can therefore be started as one composed environment.",
+      "source_line_start": 850,
+      "source_line_end": 882
+    },
+    {
+      "id": "s072",
+      "level": 3,
+      "title": "PostgreSQL",
+      "normalized_title": "PostgreSQL",
+      "key": "postgresql",
+      "path": [
+        "Containerized Development Environment",
+        "PostgreSQL"
+      ],
+      "content": "The database uses `postgres:17-alpine`.\n\nA named Docker volume persists database state.\n\nA `pg_isready` health check gates backend startup.",
+      "source_line_start": 854,
+      "source_line_end": 862
+    },
+    {
+      "id": "s073",
+      "level": 3,
+      "title": "Backend",
+      "normalized_title": "Backend",
+      "key": "backend",
+      "path": [
+        "Containerized Development Environment",
+        "Backend"
+      ],
+      "content": "The backend is built from `./backend`.\n\nIts environment receives JDBC connection information, CORS configuration, and the development user passwords.\n\nIt exposes port 8080.",
+      "source_line_start": 862,
+      "source_line_end": 870
+    },
+    {
+      "id": "s074",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Containerized Development Environment",
+        "Frontend"
+      ],
+      "content": "The frontend is built from `./frontend`.\n\nThe backend URL is passed as `VITE_API_URL` during the image build.\n\nThe resulting web service is exposed on local port 5173.\n\nThe frontend declares a dependency on the backend service.\n\nThe complete local topology can therefore be started as one composed environment.",
+      "source_line_start": 870,
+      "source_line_end": 882
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Engineering Practices Demonstrated",
+      "normalized_title": "Engineering Practices Demonstrated",
+      "key": "engineering_practices_demonstrated",
+      "path": [
+        "Engineering Practices Demonstrated"
+      ],
+      "content": "### Deterministic Authority Boundaries\n\nThe project deliberately keeps financial state transitions in deterministic domain services.\n\nReview output is advisory evidence.\n\nApproval remains a human-authorized operation.\n\nLedger mutation remains a transactional backend operation.\n\nThis is a strong example of assigning authority according to risk.\n\n### Transactional Consistency\n\nMoney movement is centralized in one transactional ledger abstraction.\n\nProject payments, loan disbursement, and loan repayment reuse that abstraction.\n\nAccount locking and balance validation happen before postings are written.\n\n### Separation of Evidence and Decision\n\nLoan payment history is assembled from persisted system facts.\n\nQualification context is a separate input.\n\nEach is reviewed independently.\n\nThe results are persisted separately.\n\nThe administrator then makes the actual decision after the review window.\n\n### Explicit State Machines\n\nDeals and loans have guarded state transitions.\n\nOperations validate both actor and current state.\n\nThis prevents callers from treating domain states as arbitrary labels.\n\n### Audit-First Consequential Operations\n\nMajor transitions emit audit records.\n\nThe pattern makes important state changes independently inspectable.\n\n### Configuration-Driven Runtime Behavior\n\nThe repository externalizes:\n\n- database connection details,\n- development passwords,\n- CORS origins,\n- loan review duration,\n- salary scheduler frequency,\n- frontend API URL.\n\nThis allows the same code paths to run under local and externally configured environments.\n\n### Schema Versioning\n\nFlyway places database structure under version control.\n\nThe initial schema is explicit SQL rather than implicit auto-generated production state.\n\n### Type-Safe Frontend Build\n\nTypeScript compilation is part of the production frontend build.\n\nThe repository history shows that buildability was treated as an implementation requirement, not merely an editor concern.\n\n### Feature-Oriented Frontend Organization\n\nThe React source mirrors user workflows.\n\nThis makes the codebase navigable by product capability: dashboard, deals, loans, salary, admin, and auth.",
+      "source_line_start": 882,
+      "source_line_end": 961
+    },
+    {
+      "id": "s076",
+      "level": 3,
+      "title": "Deterministic Authority Boundaries",
+      "normalized_title": "Deterministic Authority Boundaries",
+      "key": "deterministic_authority_boundaries",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Deterministic Authority Boundaries"
+      ],
+      "content": "The project deliberately keeps financial state transitions in deterministic domain services.\n\nReview output is advisory evidence.\n\nApproval remains a human-authorized operation.\n\nLedger mutation remains a transactional backend operation.\n\nThis is a strong example of assigning authority according to risk.",
+      "source_line_start": 884,
+      "source_line_end": 896
+    },
+    {
+      "id": "s077",
+      "level": 3,
+      "title": "Transactional Consistency",
+      "normalized_title": "Transactional Consistency",
+      "key": "transactional_consistency",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Transactional Consistency"
+      ],
+      "content": "Money movement is centralized in one transactional ledger abstraction.\n\nProject payments, loan disbursement, and loan repayment reuse that abstraction.\n\nAccount locking and balance validation happen before postings are written.",
+      "source_line_start": 896,
+      "source_line_end": 904
+    },
+    {
+      "id": "s078",
+      "level": 3,
+      "title": "Separation of Evidence and Decision",
+      "normalized_title": "Separation of Evidence and Decision",
+      "key": "separation_of_evidence_and_decision",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Separation of Evidence and Decision"
+      ],
+      "content": "Loan payment history is assembled from persisted system facts.\n\nQualification context is a separate input.\n\nEach is reviewed independently.\n\nThe results are persisted separately.\n\nThe administrator then makes the actual decision after the review window.",
+      "source_line_start": 904,
+      "source_line_end": 916
+    },
+    {
+      "id": "s079",
+      "level": 3,
+      "title": "Explicit State Machines",
+      "normalized_title": "Explicit State Machines",
+      "key": "explicit_state_machines",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Explicit State Machines"
+      ],
+      "content": "Deals and loans have guarded state transitions.\n\nOperations validate both actor and current state.\n\nThis prevents callers from treating domain states as arbitrary labels.",
+      "source_line_start": 916,
+      "source_line_end": 924
+    },
+    {
+      "id": "s080",
+      "level": 3,
+      "title": "Audit-First Consequential Operations",
+      "normalized_title": "Audit-First Consequential Operations",
+      "key": "audit_first_consequential_operations",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Audit-First Consequential Operations"
+      ],
+      "content": "Major transitions emit audit records.\n\nThe pattern makes important state changes independently inspectable.",
+      "source_line_start": 924,
+      "source_line_end": 930
+    },
+    {
+      "id": "s081",
+      "level": 3,
+      "title": "Configuration-Driven Runtime Behavior",
+      "normalized_title": "Configuration-Driven Runtime Behavior",
+      "key": "configuration_driven_runtime_behavior",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Configuration-Driven Runtime Behavior"
+      ],
+      "content": "The repository externalizes:\n\n- database connection details,\n- development passwords,\n- CORS origins,\n- loan review duration,\n- salary scheduler frequency,\n- frontend API URL.\n\nThis allows the same code paths to run under local and externally configured environments.",
+      "source_line_start": 930,
+      "source_line_end": 943
+    },
+    {
+      "id": "s082",
+      "level": 3,
+      "title": "Schema Versioning",
+      "normalized_title": "Schema Versioning",
+      "key": "schema_versioning",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Schema Versioning"
+      ],
+      "content": "Flyway places database structure under version control.\n\nThe initial schema is explicit SQL rather than implicit auto-generated production state.",
+      "source_line_start": 943,
+      "source_line_end": 949
+    },
+    {
+      "id": "s083",
+      "level": 3,
+      "title": "Type-Safe Frontend Build",
+      "normalized_title": "Type-Safe Frontend Build",
+      "key": "type_safe_frontend_build",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Type-Safe Frontend Build"
+      ],
+      "content": "TypeScript compilation is part of the production frontend build.\n\nThe repository history shows that buildability was treated as an implementation requirement, not merely an editor concern.",
+      "source_line_start": 949,
+      "source_line_end": 955
+    },
+    {
+      "id": "s084",
+      "level": 3,
+      "title": "Feature-Oriented Frontend Organization",
+      "normalized_title": "Feature-Oriented Frontend Organization",
+      "key": "feature_oriented_frontend_organization",
+      "path": [
+        "Engineering Practices Demonstrated",
+        "Feature-Oriented Frontend Organization"
+      ],
+      "content": "The React source mirrors user workflows.\n\nThis makes the codebase navigable by product capability: dashboard, deals, loans, salary, admin, and auth.",
+      "source_line_start": 955,
+      "source_line_end": 961
+    },
+    {
+      "id": "s085",
+      "level": 2,
+      "title": "Product Engineering Evidence",
+      "normalized_title": "Product Engineering Evidence",
+      "key": "product_engineering_evidence",
+      "path": [
+        "Product Engineering Evidence"
+      ],
+      "content": "TransAct is more than a numerical accounting demo.\n\nIt includes named actors, guarded workflows, user-facing pages, recurring processes, administrative review, and auditability.\n\nThe system distinguishes normal developer users from administrators.\n\nIt supports seeded counterparties so workflows can be exercised immediately.\n\nIt provides a dashboard and quick actions oriented around actual product journeys.\n\nThe product model is also careful about semantics.\n\nT-score is labeled as transactional reliability rather than technical skill.\n\nBrain Coins are treated as an internal accounting unit.\n\nHuman administrators retain authority over loan approval.\n\nThe current deterministic reviewer is explicitly labeled as a placeholder.\n\nThese choices demonstrate attention to how product terminology can imply authority or meaning beyond what the implementation actually establishes.",
+      "source_line_start": 961,
+      "source_line_end": 985
+    },
+    {
+      "id": "s086",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Domain Complexity\n\nThe domain spans:\n\n- accounts,\n- ledger transactions,\n- ledger postings,\n- users and roles,\n- project deals,\n- deal disputes,\n- reliability scoring,\n- loan applications,\n- review evidence,\n- administrator decisions,\n- repayments,\n- defaults,\n- recurring salary agreements,\n- scheduled payments,\n- audit events.\n\n### Cross-Workflow Coupling\n\nThe workflows interact through well-defined shared abstractions.\n\nDeals move Brain Coins through the ledger.\n\nLoan approval and repayment move Brain Coins through the ledger.\n\nDeal and loan outcomes feed T-score.\n\nT-score and historical outcomes feed loan review evidence.\n\nAudit events trace all of those consequential state transitions.\n\n### Operational Complexity\n\nThe repository contains independent frontend and backend builds, a relational database, schema migration, scheduled jobs, role-based security, Docker Compose, and CI.\n\nThis gives the project meaningful full-stack operational shape despite its short chronological development period.",
+      "source_line_start": 985,
+      "source_line_end": 1027
+    },
+    {
+      "id": "s087",
+      "level": 3,
+      "title": "Domain Complexity",
+      "normalized_title": "Domain Complexity",
+      "key": "domain_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Domain Complexity"
+      ],
+      "content": "The domain spans:\n\n- accounts,\n- ledger transactions,\n- ledger postings,\n- users and roles,\n- project deals,\n- deal disputes,\n- reliability scoring,\n- loan applications,\n- review evidence,\n- administrator decisions,\n- repayments,\n- defaults,\n- recurring salary agreements,\n- scheduled payments,\n- audit events.",
+      "source_line_start": 987,
+      "source_line_end": 1007
+    },
+    {
+      "id": "s088",
+      "level": 3,
+      "title": "Cross-Workflow Coupling",
+      "normalized_title": "Cross-Workflow Coupling",
+      "key": "cross_workflow_coupling",
+      "path": [
+        "Scale and Complexity",
+        "Cross-Workflow Coupling"
+      ],
+      "content": "The workflows interact through well-defined shared abstractions.\n\nDeals move Brain Coins through the ledger.\n\nLoan approval and repayment move Brain Coins through the ledger.\n\nDeal and loan outcomes feed T-score.\n\nT-score and historical outcomes feed loan review evidence.\n\nAudit events trace all of those consequential state transitions.",
+      "source_line_start": 1007,
+      "source_line_end": 1021
+    },
+    {
+      "id": "s089",
+      "level": 3,
+      "title": "Operational Complexity",
+      "normalized_title": "Operational Complexity",
+      "key": "operational_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Operational Complexity"
+      ],
+      "content": "The repository contains independent frontend and backend builds, a relational database, schema migration, scheduled jobs, role-based security, Docker Compose, and CI.\n\nThis gives the project meaningful full-stack operational shape despite its short chronological development period.",
+      "source_line_start": 1021,
+      "source_line_end": 1027
+    },
+    {
+      "id": "s090",
+      "level": 2,
+      "title": "Engineering Evolution",
+      "normalized_title": "Engineering Evolution",
+      "key": "engineering_evolution",
+      "path": [
+        "Engineering Evolution"
+      ],
+      "content": "Repository history shows an unusually compressed implementation sequence on 2026-09-07.\n\n### Architecture Definition\n\nThe early documentation commit defines TransAct's architecture and product boundaries.\n\nThis establishes the intended distinction between ledger authority, T-score, human loan authority, and review-provider integration.\n\n### Developer Economy Implementation\n\nThe next major commit implements the developer-economy backend and frontend baseline.\n\nThe repository gains the concrete ledger, deals, loans, salaries, trust scoring, persistence, API, and infrastructure represented in the current tree.\n\n### Build Repair\n\nA dedicated commit corrects frontend TypeScript configuration.\n\nThis converts the frontend from source presence into a buildable CI target.\n\n### Financial UI Refactor\n\nThe frontend is then reorganized into a more explicit financial UI architecture with a light visual system.\n\n### Dashboard Productization\n\nThe latest commit adopts a fintech dashboard design influenced by the Namaa reference.\n\nThe chronology therefore moves rapidly from domain definition to executable system to build hardening to product-facing interface refinement.",
+      "source_line_start": 1027,
+      "source_line_end": 1059
+    },
+    {
+      "id": "s091",
+      "level": 3,
+      "title": "Architecture Definition",
+      "normalized_title": "Architecture Definition",
+      "key": "architecture_definition",
+      "path": [
+        "Engineering Evolution",
+        "Architecture Definition"
+      ],
+      "content": "The early documentation commit defines TransAct's architecture and product boundaries.\n\nThis establishes the intended distinction between ledger authority, T-score, human loan authority, and review-provider integration.",
+      "source_line_start": 1031,
+      "source_line_end": 1037
+    },
+    {
+      "id": "s092",
+      "level": 3,
+      "title": "Developer Economy Implementation",
+      "normalized_title": "Developer Economy Implementation",
+      "key": "developer_economy_implementation",
+      "path": [
+        "Engineering Evolution",
+        "Developer Economy Implementation"
+      ],
+      "content": "The next major commit implements the developer-economy backend and frontend baseline.\n\nThe repository gains the concrete ledger, deals, loans, salaries, trust scoring, persistence, API, and infrastructure represented in the current tree.",
+      "source_line_start": 1037,
+      "source_line_end": 1043
+    },
+    {
+      "id": "s093",
+      "level": 3,
+      "title": "Build Repair",
+      "normalized_title": "Build Repair",
+      "key": "build_repair",
+      "path": [
+        "Engineering Evolution",
+        "Build Repair"
+      ],
+      "content": "A dedicated commit corrects frontend TypeScript configuration.\n\nThis converts the frontend from source presence into a buildable CI target.",
+      "source_line_start": 1043,
+      "source_line_end": 1049
+    },
+    {
+      "id": "s094",
+      "level": 3,
+      "title": "Financial UI Refactor",
+      "normalized_title": "Financial UI Refactor",
+      "key": "financial_ui_refactor",
+      "path": [
+        "Engineering Evolution",
+        "Financial UI Refactor"
+      ],
+      "content": "The frontend is then reorganized into a more explicit financial UI architecture with a light visual system.",
+      "source_line_start": 1049,
+      "source_line_end": 1053
+    },
+    {
+      "id": "s095",
+      "level": 3,
+      "title": "Dashboard Productization",
+      "normalized_title": "Dashboard Productization",
+      "key": "dashboard_productization",
+      "path": [
+        "Engineering Evolution",
+        "Dashboard Productization"
+      ],
+      "content": "The latest commit adopts a fintech dashboard design influenced by the Namaa reference.\n\nThe chronology therefore moves rapidly from domain definition to executable system to build hardening to product-facing interface refinement.",
+      "source_line_start": 1053,
+      "source_line_end": 1059
+    },
+    {
+      "id": "s096",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Java and Spring\n\n- Java 21 application development\n- Spring Boot\n- Spring services\n- Spring Data JPA\n- Spring Security\n- Spring scheduling\n- declarative transaction management\n- configuration injection\n- role-based authorization\n- exception-based business-rule enforcement\n\n### Financial-System Modeling\n\n- double-entry ledger modeling\n- derived balances\n- signed posting pairs\n- system accounts\n- transfer validation\n- account locking\n- transactional money movement\n- traceable transaction references\n- repayment accounting\n\n### Domain Modeling\n\n- explicit deal lifecycle\n- explicit loan lifecycle\n- recurring agreement lifecycle\n- user roles\n- guarded state transitions\n- actor authorization inside business rules\n- reliability-score composition\n- bounded scoring\n- explainable component scoring\n\n### Lending Workflow Design\n\n- payment-history evidence construction\n- separate qualification review\n- review-provider abstraction\n- mandatory review windows\n- human approval/rejection\n- treasury disbursement\n- repayment tracking\n- automatic overdue default transition\n\n### Scheduled Processing\n\n- Spring scheduled jobs\n- due-payment discovery\n- recurring agreement execution\n- overdue-loan detection\n\n### Persistence and Data Modeling\n\n- PostgreSQL\n- relational modeling\n- UUID identifiers\n- foreign-key relationships\n- unique constraints\n- indexes\n- monetary numeric types\n- optimistic version columns\n- Flyway migrations\n\n### Frontend Engineering\n\n- React 19\n- TypeScript\n- Vite\n- TanStack Query\n- feature-oriented frontend organization\n- financial dashboard interaction design\n- typed API integration\n- product workflow navigation\n\n### Security\n\n- Spring Security\n- stateless API configuration\n- HTTP Basic development authentication\n- administrator route authorization\n- method security\n- configurable CORS\n\n### DevOps and Verification\n\n- Docker\n- Docker Compose\n- PostgreSQL health checks\n- container dependency ordering\n- GitHub Actions\n- Java 21 CI\n- Maven verification\n- frontend TypeScript production builds\n- unit testing\n- successful latest-commit CI validation\n\n### Product Engineering\n\n- developer economy modeling\n- transaction history\n- direct transfers\n- project compensation\n- recurring payments\n- loan administration\n- auditability\n- explainable reliability metrics\n- human-in-the-loop review\n- terminology boundaries around internal credits and reliability scoring",
+      "source_line_start": 1059,
+      "source_line_end": 1174
+    },
+    {
+      "id": "s097",
+      "level": 3,
+      "title": "Java and Spring",
+      "normalized_title": "Java and Spring",
+      "key": "java_and_spring",
+      "path": [
+        "Skills Demonstrated",
+        "Java and Spring"
+      ],
+      "content": "- Java 21 application development\n- Spring Boot\n- Spring services\n- Spring Data JPA\n- Spring Security\n- Spring scheduling\n- declarative transaction management\n- configuration injection\n- role-based authorization\n- exception-based business-rule enforcement",
+      "source_line_start": 1061,
+      "source_line_end": 1074
+    },
+    {
+      "id": "s098",
+      "level": 3,
+      "title": "Financial-System Modeling",
+      "normalized_title": "Financial-System Modeling",
+      "key": "financial_system_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Financial-System Modeling"
+      ],
+      "content": "- double-entry ledger modeling\n- derived balances\n- signed posting pairs\n- system accounts\n- transfer validation\n- account locking\n- transactional money movement\n- traceable transaction references\n- repayment accounting",
+      "source_line_start": 1074,
+      "source_line_end": 1086
+    },
+    {
+      "id": "s099",
+      "level": 3,
+      "title": "Domain Modeling",
+      "normalized_title": "Domain Modeling",
+      "key": "domain_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Domain Modeling"
+      ],
+      "content": "- explicit deal lifecycle\n- explicit loan lifecycle\n- recurring agreement lifecycle\n- user roles\n- guarded state transitions\n- actor authorization inside business rules\n- reliability-score composition\n- bounded scoring\n- explainable component scoring",
+      "source_line_start": 1086,
+      "source_line_end": 1098
+    },
+    {
+      "id": "s100",
+      "level": 3,
+      "title": "Lending Workflow Design",
+      "normalized_title": "Lending Workflow Design",
+      "key": "lending_workflow_design",
+      "path": [
+        "Skills Demonstrated",
+        "Lending Workflow Design"
+      ],
+      "content": "- payment-history evidence construction\n- separate qualification review\n- review-provider abstraction\n- mandatory review windows\n- human approval/rejection\n- treasury disbursement\n- repayment tracking\n- automatic overdue default transition",
+      "source_line_start": 1098,
+      "source_line_end": 1109
+    },
+    {
+      "id": "s101",
+      "level": 3,
+      "title": "Scheduled Processing",
+      "normalized_title": "Scheduled Processing",
+      "key": "scheduled_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Scheduled Processing"
+      ],
+      "content": "- Spring scheduled jobs\n- due-payment discovery\n- recurring agreement execution\n- overdue-loan detection",
+      "source_line_start": 1109,
+      "source_line_end": 1116
+    },
+    {
+      "id": "s102",
+      "level": 3,
+      "title": "Persistence and Data Modeling",
+      "normalized_title": "Persistence and Data Modeling",
+      "key": "persistence_and_data_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Persistence and Data Modeling"
+      ],
+      "content": "- PostgreSQL\n- relational modeling\n- UUID identifiers\n- foreign-key relationships\n- unique constraints\n- indexes\n- monetary numeric types\n- optimistic version columns\n- Flyway migrations",
+      "source_line_start": 1116,
+      "source_line_end": 1128
+    },
+    {
+      "id": "s103",
+      "level": 3,
+      "title": "Frontend Engineering",
+      "normalized_title": "Frontend Engineering",
+      "key": "frontend_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend Engineering"
+      ],
+      "content": "- React 19\n- TypeScript\n- Vite\n- TanStack Query\n- feature-oriented frontend organization\n- financial dashboard interaction design\n- typed API integration\n- product workflow navigation",
+      "source_line_start": 1128,
+      "source_line_end": 1139
+    },
+    {
+      "id": "s104",
+      "level": 3,
+      "title": "Security",
+      "normalized_title": "Security",
+      "key": "security",
+      "path": [
+        "Skills Demonstrated",
+        "Security"
+      ],
+      "content": "- Spring Security\n- stateless API configuration\n- HTTP Basic development authentication\n- administrator route authorization\n- method security\n- configurable CORS",
+      "source_line_start": 1139,
+      "source_line_end": 1148
+    },
+    {
+      "id": "s105",
+      "level": 3,
+      "title": "DevOps and Verification",
+      "normalized_title": "DevOps and Verification",
+      "key": "devops_and_verification",
+      "path": [
+        "Skills Demonstrated",
+        "DevOps and Verification"
+      ],
+      "content": "- Docker\n- Docker Compose\n- PostgreSQL health checks\n- container dependency ordering\n- GitHub Actions\n- Java 21 CI\n- Maven verification\n- frontend TypeScript production builds\n- unit testing\n- successful latest-commit CI validation",
+      "source_line_start": 1148,
+      "source_line_end": 1161
+    },
+    {
+      "id": "s106",
+      "level": 3,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Product Engineering"
+      ],
+      "content": "- developer economy modeling\n- transaction history\n- direct transfers\n- project compensation\n- recurring payments\n- loan administration\n- auditability\n- explainable reliability metrics\n- human-in-the-loop review\n- terminology boundaries around internal credits and reliability scoring",
+      "source_line_start": 1161,
+      "source_line_end": 1174
+    },
+    {
+      "id": "s107",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "TransAct represents a shift from implementing isolated application features toward encoding product policy directly in domain services.\n\nThe important engineering signal is not simply that the repository uses Spring and React.\n\nIt is that the code expresses who is allowed to perform consequential operations, when those operations are legal, which evidence feeds later decisions, and which subsystem is authoritative for money movement.\n\nThe ledger is the accounting authority.\n\nThe domain services are the state-transition authority.\n\nThe review adapter supplies decision-support evidence.\n\nThe administrator is the approval authority for loans.\n\nT-score is a bounded explanation of platform-observed reliability.\n\nThose boundaries are encoded in executable code rather than existing only as product prose.\n\nThe project also demonstrates an attempt to keep a future AI integration constrained.\n\nThe current implementation does not pretend that a deterministic heuristic is an AI model.\n\nInstead, it gives the heuristic the same adapter shape that a later model-backed reviewer can implement, while preserving human approval and deterministic financial execution regardless of provider.\n\nThat architectural choice makes the repository useful evidence for backend domain modeling, financial-style accounting, safe decision-support boundaries, full-stack product organization, and CI-backed implementation discipline.\n\n# Project Tags\n\n- java\n- java-21\n- spring-boot\n- spring-data-jpa\n- spring-security\n- spring-scheduling\n- transactional-services\n- postgresql\n- flyway\n- relational-database\n- uuid-identifiers\n- react\n- react-19\n- typescript\n- vite\n- tanstack-query\n- feature-oriented-frontend\n- financial-dashboard\n- rest-api\n- stateless-api\n- role-based-authorization\n- http-basic\n- cors\n- docker\n- docker-compose\n- github-actions\n- maven\n- continuous-integration\n- unit-testing\n- successful-ci-build\n- double-entry-ledger\n- derived-balance\n- ledger-postings\n- ledger-transactions\n- system-account\n- account-locking\n- deterministic-lock-order\n- transactional-money-movement\n- direct-transfer\n- brain-coins\n- project-deal-workflow\n- project-payment\n- deal-state-machine\n- dispute-workflow\n- t-score\n- transactional-reliability\n- explainable-scoring\n- bounded-score\n- loan-application-workflow\n- payment-history-evidence\n- qualification-review\n- review-provider-abstraction\n- deterministic-heuristic-review\n- human-in-the-loop-review\n- mandatory-review-window\n- administrator-loan-review\n- loan-disbursement\n- loan-repayment\n- loan-default-detection\n- recurring-payments\n- salary-agreement\n- scheduled-payments\n- audit-log\n- audit-events\n- configuration-driven-runtime\n- fintech-style-application\n- developer-economy\n- full-stack-application",
+      "source_line_start": 1174,
+      "source_line_end": 1272
+    }
+  ],
+  "raw_analysis": "# TransAct\n\n## Repository Identity\n\n- Repository: 115\n- Name: `TransAct`\n- Repository Start Date: 2026-09-07\n- Latest Meaningful Update Date: 2026-09-07\n- Latest Meaningful Commit: `223b4b030f2dc59803c07e537765f77bdcae635f`\n- Primary Type: Full-stack financial-workflow web application\n- Domain: Closed-loop developer economy, project transactions, recurring payments, lending, and transactional reliability\n- Context: Owner-authored product prototype\n- Collaboration Type: `individual-project`\n- Primary Backend: Java 21 and Spring Boot 4.1\n- Primary Frontend: React 19, TypeScript, Vite, and TanStack Query\n- Persistence: PostgreSQL through Spring Data JPA\n- Schema Evolution: Flyway SQL migrations\n- Local Runtime: Docker Compose\n- Continuous Integration: GitHub Actions\n\n## Collaboration and Authorship Context\n\nRepository history, commit authorship, and project structure support treating TransAct as an individual owner-authored project.\n\nThe repository contains a complete application-specific domain model rather than a thin framework exercise.\n\nThe implementation includes the business rules, persistence schema, API surface, user-facing React features, local container topology, CI workflow, and project-specific documentation.\n\nThe repository also makes an explicit evidence boundary around its review abstraction.\n\nThe interface is named `AiReviewService`, but the checked-in concrete implementation identifies itself as `HEURISTIC_PLACEHOLDER`.\n\nThat concrete implementation is deterministic and explicitly states that no model or API key is configured.\n\nAccordingly, this repository demonstrates design for a replaceable review-provider boundary and human-in-the-loop decision support, while the currently evidenced runtime reviewer is a deterministic heuristic rather than an external AI model.\n\n## What This Project Is\n\nTransAct models a closed internal economy for voluntary developers.\n\nParticipants use an internal accounting unit named Brain Coins to represent transactional exchanges associated with project work, direct transfers, recurring payments, and loans.\n\nThe system separates economic accounting from a second concept named T-score.\n\nT-score is designed as a bounded measure of observed transactional reliability inside TransAct.\n\nIts code-level inputs are completed project commitments, overdue accepted work, disputes, repaid loans, and defaulted loans.\n\nThe score therefore captures behavioral evidence produced by TransAct workflows instead of attempting to represent technical competence, intelligence, employability, or personal value.\n\nThis separation is important to the product model.\n\nA user can participate in financial-style workflows while the application independently explains how observed commitments affect a reliability score.\n\nThe project also explores a loan-approval workflow in which automated review is intentionally subordinate to deterministic domain services and a human administrator.\n\nPayment-history evidence and qualification text are evaluated before a loan enters an administrator review state.\n\nThe administrator must wait through a configured review period before approving or rejecting the application.\n\nApproval is the event that actually triggers Brain Coin disbursement.\n\nThe review provider itself cannot directly change balances, approve a loan, reject a loan, or alter T-score.\n\nThat boundary makes the application a useful example of separating advisory computation from authoritative state transition logic.\n\n## Product Concept\n\nThe core product concept combines several connected workflows.\n\n1. Developers have accounts inside the platform.\n2. Brain Coin balances are derived from ledger postings.\n3. Users can transfer Brain Coins directly.\n4. Users can create project deals with other developers.\n5. A developer can accept a proposed project commitment.\n6. The requester can confirm completed work and release payment.\n7. Either party can move accepted work into dispute.\n8. Users can establish recurring salary-style payments.\n9. Users can apply for Brain Coin loans.\n10. Loan review evidence is assembled from recorded transactional history.\n11. Qualification/context information is reviewed separately.\n12. A mandatory administrator review period prevents immediate automated approval.\n13. A human administrator approves or rejects the loan.\n14. Approved loans are disbursed through the same ledger abstraction used by other money movement.\n15. Repayments flow back to the system treasury.\n16. Repaid or defaulted loans become future T-score evidence.\n\nThe workflows therefore feed one another.\n\nProject outcomes and loan outcomes become reliability evidence.\n\nReliability evidence becomes part of future loan review context.\n\nMoney movement remains ledger-driven throughout those cycles.\n\n## Architectural Shape\n\nThe repository is organized as a conventional full-stack application with explicit backend, frontend, database, and operational layers.\n\n```text\nReact 19 + TypeScript frontend\n            |\n            | HTTP API\n            v\nSpring Boot 4.1 application\n            |\n            +--> Spring Security authentication/authorization\n            |\n            +--> Controllers / API views\n            |\n            +--> Domain services\n            |      |\n            |      +--> Ledger rules\n            |      +--> Deal state transitions\n            |      +--> Loan workflow\n            |      +--> T-score calculation\n            |      +--> Salary scheduling\n            |      +--> Audit recording\n            |\n            +--> Spring Data JPA repositories\n            |\n            v\nPostgreSQL\n            |\n            +--> Flyway-managed schema\n```\n\nDocker Compose supplies a local three-service topology.\n\n```text\nPostgreSQL 17\n     |\n     v\nSpring Boot backend\n     |\n     v\nContainerized frontend\n```\n\nThe PostgreSQL container has a health check.\n\nThe backend waits for the database to become healthy before starting.\n\nThe frontend is configured with the backend API URL at image-build time.\n\nThis provides a reproducible local environment for exercising the complete application rather than requiring separately provisioned services.\n\n## Backend Layering\n\nThe Java source separates concerns into application-specific packages.\n\n- `domain` holds entities and state enumerations.\n- `repo` holds persistence access.\n- `service` contains transactional business rules.\n- `api` exposes HTTP controllers and response views.\n- `config` contains security and seeded development data.\n- `db/migration` contains Flyway schema history.\n\nThis structure keeps HTTP handling separate from transaction logic.\n\nFor example, project completion payment is not implemented as controller-side arithmetic.\n\nThe controller delegates into a service that validates actor identity, validates the deal state, performs a ledger transfer, changes the domain state, and records an audit event.\n\nThe same pattern appears in lending and recurring payment workflows.\n\n## Brain Coin Ledger\n\n### Ledger as the Balance Authority\n\nThe application does not model a user balance as an independently mutable field.\n\nBalance is calculated from ledger postings associated with an account.\n\n`LedgerService.balanceForUser` obtains the user's account and asks the posting repository for the account balance.\n\nThe resulting amount is normalized to two decimal places.\n\nThis makes transaction history the accounting source of truth.\n\n### Double-Entry Transfer Shape\n\nEvery transfer creates one `LedgerTransaction`.\n\nThe transfer then writes two postings against that transaction.\n\nThe source posting is the negated amount.\n\nThe destination posting is the positive amount.\n\nThe two postings therefore have equal magnitude and opposite sign.\n\nThis gives each money movement an explicit accounting pair.\n\n### Monetary Normalization\n\nAmounts are normalized to two decimal places with `RoundingMode.HALF_EVEN`.\n\nA transfer amount must be present.\n\nIt must be greater than zero.\n\nThe source and destination accounts must differ.\n\nThese checks centralize basic monetary invariants in the ledger service.\n\n### System Accounts\n\nThe account model distinguishes user-owned accounts from system accounts.\n\nThe lending workflow uses a named system account, `Brain Coin Treasury`, as the source of loan disbursements and the destination of repayments.\n\nThe ledger service exempts a system source account from the normal insufficient-balance rule.\n\nThis lets the internal treasury represent system-originated issuance within the same transaction model used for user transfers.\n\n### Account Lock Ordering\n\nBefore a transfer is written, both participating accounts are loaded through a locking repository method.\n\nThe account UUIDs are sorted before locking.\n\nBoth locks are therefore acquired in deterministic identifier order.\n\nThe service then maps the locked records back to source and destination roles.\n\nThat design is concrete evidence of concurrency-aware transactional money movement.\n\nIt reduces the chance that two concurrent transfers lock the same pair of accounts in opposing orders.\n\n### Insufficient-Balance Protection\n\nFor a non-system source account, the service calculates the current posting-derived balance while the account pair is locked.\n\nThe transfer is rejected when that balance is lower than the requested amount.\n\nThe balance rule is therefore enforced inside the same transactional service that writes the postings.\n\n### Ledger References\n\nLedger transactions can carry:\n\n- transaction type,\n- reference type,\n- reference identifier,\n- memo,\n- creation time.\n\nThis allows a posting pair to be associated with a project deal, loan application, or other domain event.\n\nThe ledger is therefore not merely a numerical total.\n\nIt acts as a traceable record connecting accounting changes to business workflows.\n\n### Recent Activity Reconstruction\n\nRecent account activity is generated from the user's latest postings.\n\nFor each posting, the service loads the postings belonging to the same transaction.\n\nIt identifies the counterparty as the other account in the pair.\n\nWhen the counterparty is user-owned, the user's display name is returned.\n\nWhen it is a system account, the account name is used.\n\nThis gives the frontend transaction history a domain-readable counterparty rather than exposing raw posting IDs.\n\n### Memo Bounding\n\nTransaction memos are optional.\n\nBlank memos become null.\n\nLong memos are bounded to 280 characters.\n\nThis keeps application-level free text aligned with the migration's `VARCHAR(280)` storage contract.\n\n## Project Deal Workflow\n\nProject deals connect voluntary development work to payment and T-score evidence.\n\nA deal contains a requester, assigned developer, title, description, Brain Coin amount, optional due date, and status.\n\n### Deal Creation\n\nCreating a deal validates that the assigned developer exists.\n\nA requester cannot create a deal with the same user identity.\n\nThe recipient must be an active developer.\n\nTitle and description are required.\n\nThe amount must be positive.\n\nA supplied due date cannot be in the past.\n\nThe created proposal is recorded in the audit log.\n\n### Developer Acceptance\n\nOnly the assigned developer can accept a proposal.\n\nOnly a deal in the proposed state can be accepted.\n\nAcceptance therefore represents an explicit commitment by the work-performing party.\n\n### Requester-Controlled Completion\n\nOnly the requester can confirm that an accepted deal is complete.\n\nCompletion invokes `LedgerService.transfer`.\n\nThe requester is charged.\n\nThe developer is credited.\n\nThe transfer is recorded with transaction type `PROJECT_PAYMENT` and a reference back to the deal.\n\nOnly after the transfer call does the domain object enter its completed state.\n\nThe completion transition is then audit logged.\n\nThis links product workflow, payment, state transition, and traceability.\n\n### Dispute Entry\n\nEither party to an accepted deal can place it into dispute.\n\nThe code explicitly records that entering dispute does not perform an automatic judgment.\n\nThat makes dispute a state transition, not an automated adjudication mechanism.\n\n### Pre-Acceptance Cancellation\n\nThe requester can cancel a proposed deal.\n\nAccepted work cannot be unilaterally cancelled through the same operation.\n\nThat distinction protects the semantics of an accepted commitment.\n\n## T-Score Reliability Model\n\n### Narrow Reliability Scope\n\n`TrustService` calculates T-score only from TransAct-observable transactional events.\n\nThe current implementation examines:\n\n- completed project deals,\n- disputed project deals,\n- overdue accepted project deals,\n- repaid loans,\n- defaulted loans.\n\nThe implementation starts with an unestablished baseline score of 50.\n\nIts baseline explanation explicitly states that no reliability is assumed without transaction history and that this is not a judgment of skill or personal worth.\n\n### Positive Evidence Components\n\nCompleted project commitments contribute positive points.\n\nThe contribution is bounded.\n\nRepaid Brain Coin loans also contribute positive points.\n\nThat contribution is independently bounded.\n\n### Concern Components\n\nDisputed project commitments apply a bounded negative impact.\n\nOverdue accepted commitments apply a bounded negative impact.\n\nDefaulted Brain Coin loans apply the largest bounded negative impact among the current components.\n\n### Bounded Final Score\n\nThe final score is clamped between 0 and 100.\n\nThe implementation maps the numerical score into named bands.\n\n- `HIGH`\n- `ESTABLISHED`\n- `UNESTABLISHED_OR_DEVELOPING`\n- `CONCERNS_PRESENT`\n\n### Explainability\n\nThe result contains both the numerical score and a list of component records.\n\nEach component includes:\n\n- name,\n- point impact,\n- explanation.\n\nThe score can therefore be presented as a decomposable result rather than as an unexplained number.\n\n### Reuse as Loan Evidence\n\n`paymentHistory` packages the same source evidence into a record for the loan-review adapter.\n\nThe record includes:\n\n- repaid loan count,\n- defaulted loan count,\n- completed deal count,\n- disputed deal count,\n- overdue commitment count,\n- current T-score.\n\nThis provides a clean boundary between authoritative historical evidence and whatever review provider evaluates it.\n\n## Loan Application Workflow\n\nThe lending workflow is one of the repository's most developed business processes.\n\n### Application Validation\n\nA loan amount must be positive.\n\nThe current Brain Coin loan ceiling is 10,000 BC.\n\nPurpose is required.\n\nQualification/context text is required.\n\nThe service prevents an applicant from opening a second approved loan while an approved loan is still outstanding.\n\n### Payment-History Collection\n\nThe loan service asks `TrustService` to build payment-history evidence.\n\nThe evidence comes from already-recorded project and lending history.\n\nThis means the review stage consumes application-domain facts instead of asking a reviewer to infer historical behavior from unstructured prose.\n\n### Separate Review Channels\n\nThe application requests two assessments.\n\nOne assessment evaluates payment-history evidence.\n\nA second assessment evaluates the qualification/context statement and purpose.\n\nThose assessments are stored separately in the loan entity and database schema.\n\nThe separation preserves provenance between behavioral history and applicant-supplied context.\n\n### Configurable Review Provider\n\n`AiReviewService` defines the review abstraction.\n\nThe active repository implementation is `HeuristicReviewService`.\n\nIts provider name is `HEURISTIC_PLACEHOLDER`.\n\nThe class labels every explanation as a pre-AI heuristic placeholder.\n\nNo external model is needed to exercise the workflow.\n\nThe abstraction nevertheless allows a later provider to implement the same assessment contract.\n\n### Deterministic Payment-History Heuristic\n\nThe placeholder payment-history review maps evidence into `WEAK`, `MODERATE`, or `STRONG`.\n\nDefaults or multiple disputes lead to the weak band.\n\nA repaid loan or at least two completed commitments can lead to the strong band.\n\nOther current cases produce a moderate band.\n\nThe explanation records the T-score and the input counts used by the heuristic.\n\n### Deterministic Qualification Heuristic\n\nThe placeholder qualification review counts words in the applicant statement.\n\nLonger statements cross deterministic thresholds into moderate or strong bands.\n\nIts explanation explicitly states that the logic is only a stand-in for exercising the end-to-end process before a real reviewer is configured.\n\n### Mandatory Human Review Window\n\nSubmitting the application captures the current time.\n\nThe application computes `adminReviewDueAt` by adding the configured review-period duration.\n\nThe default is three days.\n\nThe resulting state enters administrator review.\n\nAn audit event records that review-window entry.\n\n### Human Approval Gate\n\nApproval loads the application and verifies that it is in `ADMIN_REVIEW`.\n\nThe operation then checks the current time against `adminReviewDueAt`.\n\nApproval before the review deadline is rejected.\n\nOnce the window has elapsed, an administrator can approve.\n\nThe service then transfers Brain Coins from the treasury system account to the applicant account.\n\nThe loan receives an approval state and repayment due date.\n\nAn audit event explicitly records that a human administrator approved and disbursed the loan.\n\n### Human Rejection Gate\n\nRejection uses the same status and review-deadline gate.\n\nThe human administrator supplies or receives default explanatory notes.\n\nThe decision is audit logged.\n\n### Repayment\n\nAn applicant can repay only their own approved outstanding loan.\n\nThe repayment amount must be positive.\n\nIt cannot exceed outstanding principal.\n\nThe money movement goes from the applicant account back to the treasury through the central ledger service.\n\nThe loan then updates outstanding amount.\n\nThe repayment is audit logged.\n\n### Scheduled Default Detection\n\nAn hourly scheduled operation finds approved loans whose repayment due date has passed.\n\nIf outstanding amount remains, the loan is marked defaulted.\n\nA system-authored audit event records the transition.\n\nDefaulted loans subsequently become T-score and payment-history evidence.\n\nThis creates a closed feedback loop between operational loan state and future reliability assessment.\n\n## Recurring Salary / Direct-Deposit Workflow\n\nThe repository models recurring payments through `SalaryAgreement`.\n\nA payer creates an agreement for a recipient developer.\n\nThe recipient must have the developer role.\n\nThe payer and recipient must differ.\n\nThe label is required.\n\nAmount must be positive.\n\nThe interval must be between one and 365 days.\n\nA first-payment timestamp in the past is normalized to the current time.\n\nThe agreement stores the next payment time.\n\n### Scheduler\n\n`SalaryService.runDuePayments` is annotated with Spring scheduling.\n\nThe delay is configurable through `transact.salary.scheduler-ms`.\n\nEach scheduler pass queries active agreements whose next payment timestamp is due.\n\nEach due agreement is handed to `SalaryPaymentProcessor`.\n\nThis separates agreement management from payment execution.\n\n### Deactivation Authority\n\nOnly the payer can deactivate an agreement.\n\nDeactivation is audit logged.\n\nThe repository therefore models recurring payments as explicit agreements with ownership and lifecycle rules rather than as anonymous timers.\n\n## Auditability\n\n`AuditEvent` is a persisted domain entity.\n\nThe initial Flyway migration creates an `audit_events` table and an index on entity type plus entity ID.\n\nBusiness services call `AuditService` for consequential transitions.\n\nEvidenced audit events include:\n\n- loan application,\n- loan approval,\n- loan rejection,\n- loan repayment,\n- automatic loan default,\n- project-deal creation,\n- project-deal acceptance,\n- project-deal completion,\n- deal dispute,\n- deal cancellation,\n- salary agreement creation,\n- salary agreement deactivation.\n\nAudit records include actor, action, entity type, entity ID, details, and creation time.\n\nThis gives major state changes a separate trace record from their mutable domain entities.\n\n## Persistence Model\n\nThe repository uses PostgreSQL and Spring Data JPA.\n\nThe initial Flyway migration creates a normalized relational schema.\n\n### `app_users`\n\nStores application identity fields including:\n\n- UUID primary key,\n- display name,\n- unique email,\n- role,\n- active flag,\n- creation timestamp.\n\n### `accounts`\n\nStores:\n\n- UUID primary key,\n- optional unique user owner,\n- unique name,\n- system-account flag,\n- active flag,\n- creation timestamp.\n\nThe nullable owner relationship allows system accounts such as the Brain Coin treasury.\n\n### `ledger_transactions`\n\nStores transaction-level context including type, domain reference, memo, and timestamp.\n\n### `ledger_postings`\n\nStores account-level signed amounts belonging to ledger transactions.\n\nIndexes support lookup by account and transaction.\n\n### `project_deals`\n\nStores both parties, textual work definition, amount, due date, lifecycle state, transition timestamps, and optimistic version field.\n\n### `loan_applications`\n\nStores application inputs, outstanding amount, review provider, separate review bands and explanations, administrator notes, review deadline, decision time, repayment deadline, and version field.\n\nThis schema preserves both decision inputs and decision-process metadata.\n\n### `salary_agreements`\n\nStores payer, recipient, label, amount, interval, next payment, active state, last execution metadata, creation time, and version.\n\n### `audit_events`\n\nStores the immutable-style event record associated with consequential operations.\n\n## Security Baseline\n\nThe backend uses Spring Security.\n\n### Stateless HTTP Security\n\nSession creation policy is `STATELESS`.\n\nThe health endpoint is public.\n\nAdministrative API paths require the `ADMIN` role.\n\nOther API requests require authentication.\n\n### Development Identities\n\nThe current security configuration uses an in-memory `UserDetailsService`.\n\nIt defines a developer identity and administrator identity.\n\nPasswords come from application configuration.\n\nThe HTTP mechanism is Basic authentication.\n\nThis establishes a testable role boundary for the current prototype.\n\n### Method Security\n\n`@EnableMethodSecurity` is enabled.\n\nThis allows controller or service methods to apply role annotations in addition to path-level authorization.\n\n### CORS\n\nAllowed origins are configuration-driven.\n\nThe default local origin points at the Vite frontend.\n\nThe configuration permits the HTTP methods used by the API and the `Authorization` and `Content-Type` headers.\n\nCredentials are allowed.\n\nThis is an explicit frontend-backend integration boundary rather than a blanket browser-access assumption.\n\n## HTTP API Shape\n\nThe backend has controllers for:\n\n- health,\n- current user,\n- dashboard,\n- transfers,\n- project deals,\n- loans,\n- recurring salaries,\n- administrator loan review.\n\nThe controller split mirrors the main product workflows.\n\nAPI view records are kept separately from persistence entities through `ApiViews`.\n\nThis provides a presentation boundary for HTTP responses.\n\n## React Frontend\n\nThe frontend uses React 19 and TypeScript.\n\nVite is the development and production build tool.\n\nTanStack Query provides server-state access.\n\nThe source tree is feature-oriented rather than placing all screens into one application file.\n\nFeature areas include:\n\n- authentication,\n- dashboard,\n- project deals,\n- loans,\n- salaries,\n- administration.\n\nShared components, domain definitions, API access, and application shell logic have their own directories.\n\n### Dashboard\n\nThe dashboard exposes financial-style navigation and summary interactions.\n\nEvidence in `OverviewPage.tsx` includes quick actions for:\n\n- applying for a loan,\n- creating a project deal,\n- configuring direct deposit.\n\nThe same screen presents recent transaction activity.\n\nThe UI therefore reflects the backend domain rather than being a generic starter interface.\n\n### Financial UI Evolution\n\nThe latest two repository commits focus on frontend architecture and presentation.\n\nOne commit rebuilds the financial UI architecture and light theme.\n\nThe latest commit adopts a Namaa-inspired fintech dashboard.\n\nThis shows a short but explicit evolution from domain implementation into product-facing financial interaction design.\n\n## Build and Tooling\n\n### Frontend Build Contract\n\nThe frontend `build` script runs:\n\n```text\ntsc -b\nvite build\n```\n\nTypeScript compilation therefore precedes bundling.\n\nThe repository history includes a dedicated commit fixing the TypeScript configuration to make this build path work.\n\n### Backend Build Contract\n\nThe Maven project targets Java 21.\n\nGitHub Actions executes:\n\n```text\nmvn --batch-mode verify\n```\n\nThis invokes the Maven verification lifecycle instead of compilation alone.\n\n## Testing and Verification\n\n### Unit Testing\n\nThe backend contains `HeuristicReviewServiceTest`.\n\nThe test class exercises deterministic review behavior.\n\nIts evidenced cases include:\n\n- weak classification for default-containing payment history,\n- strong classification for a sufficiently substantial qualification statement.\n\nThese tests directly verify the current review-provider rules.\n\n### Continuous Integration\n\nThe GitHub Actions workflow has independent backend and frontend jobs.\n\nBackend CI:\n\n1. checks out the repository,\n2. installs Temurin Java 21,\n3. enables Maven dependency caching,\n4. executes `mvn --batch-mode verify`.\n\nFrontend CI:\n\n1. checks out the repository,\n2. installs Node.js 22,\n3. installs dependencies,\n4. runs the production build.\n\n### Verified Latest CI Run\n\nThe workflow run associated with latest commit `223b4b030f2dc59803c07e537765f77bdcae635f` completed successfully on 2026-09-07.\n\nThe successful run validates the current latest frontend state against both CI jobs defined by the repository workflow.\n\nThis is direct build-verification evidence for the checked-in state.\n\n## Containerized Development Environment\n\nDocker Compose defines three services.\n\n### PostgreSQL\n\nThe database uses `postgres:17-alpine`.\n\nA named Docker volume persists database state.\n\nA `pg_isready` health check gates backend startup.\n\n### Backend\n\nThe backend is built from `./backend`.\n\nIts environment receives JDBC connection information, CORS configuration, and the development user passwords.\n\nIt exposes port 8080.\n\n### Frontend\n\nThe frontend is built from `./frontend`.\n\nThe backend URL is passed as `VITE_API_URL` during the image build.\n\nThe resulting web service is exposed on local port 5173.\n\nThe frontend declares a dependency on the backend service.\n\nThe complete local topology can therefore be started as one composed environment.\n\n## Engineering Practices Demonstrated\n\n### Deterministic Authority Boundaries\n\nThe project deliberately keeps financial state transitions in deterministic domain services.\n\nReview output is advisory evidence.\n\nApproval remains a human-authorized operation.\n\nLedger mutation remains a transactional backend operation.\n\nThis is a strong example of assigning authority according to risk.\n\n### Transactional Consistency\n\nMoney movement is centralized in one transactional ledger abstraction.\n\nProject payments, loan disbursement, and loan repayment reuse that abstraction.\n\nAccount locking and balance validation happen before postings are written.\n\n### Separation of Evidence and Decision\n\nLoan payment history is assembled from persisted system facts.\n\nQualification context is a separate input.\n\nEach is reviewed independently.\n\nThe results are persisted separately.\n\nThe administrator then makes the actual decision after the review window.\n\n### Explicit State Machines\n\nDeals and loans have guarded state transitions.\n\nOperations validate both actor and current state.\n\nThis prevents callers from treating domain states as arbitrary labels.\n\n### Audit-First Consequential Operations\n\nMajor transitions emit audit records.\n\nThe pattern makes important state changes independently inspectable.\n\n### Configuration-Driven Runtime Behavior\n\nThe repository externalizes:\n\n- database connection details,\n- development passwords,\n- CORS origins,\n- loan review duration,\n- salary scheduler frequency,\n- frontend API URL.\n\nThis allows the same code paths to run under local and externally configured environments.\n\n### Schema Versioning\n\nFlyway places database structure under version control.\n\nThe initial schema is explicit SQL rather than implicit auto-generated production state.\n\n### Type-Safe Frontend Build\n\nTypeScript compilation is part of the production frontend build.\n\nThe repository history shows that buildability was treated as an implementation requirement, not merely an editor concern.\n\n### Feature-Oriented Frontend Organization\n\nThe React source mirrors user workflows.\n\nThis makes the codebase navigable by product capability: dashboard, deals, loans, salary, admin, and auth.\n\n## Product Engineering Evidence\n\nTransAct is more than a numerical accounting demo.\n\nIt includes named actors, guarded workflows, user-facing pages, recurring processes, administrative review, and auditability.\n\nThe system distinguishes normal developer users from administrators.\n\nIt supports seeded counterparties so workflows can be exercised immediately.\n\nIt provides a dashboard and quick actions oriented around actual product journeys.\n\nThe product model is also careful about semantics.\n\nT-score is labeled as transactional reliability rather than technical skill.\n\nBrain Coins are treated as an internal accounting unit.\n\nHuman administrators retain authority over loan approval.\n\nThe current deterministic reviewer is explicitly labeled as a placeholder.\n\nThese choices demonstrate attention to how product terminology can imply authority or meaning beyond what the implementation actually establishes.\n\n## Scale and Complexity\n\n### Domain Complexity\n\nThe domain spans:\n\n- accounts,\n- ledger transactions,\n- ledger postings,\n- users and roles,\n- project deals,\n- deal disputes,\n- reliability scoring,\n- loan applications,\n- review evidence,\n- administrator decisions,\n- repayments,\n- defaults,\n- recurring salary agreements,\n- scheduled payments,\n- audit events.\n\n### Cross-Workflow Coupling\n\nThe workflows interact through well-defined shared abstractions.\n\nDeals move Brain Coins through the ledger.\n\nLoan approval and repayment move Brain Coins through the ledger.\n\nDeal and loan outcomes feed T-score.\n\nT-score and historical outcomes feed loan review evidence.\n\nAudit events trace all of those consequential state transitions.\n\n### Operational Complexity\n\nThe repository contains independent frontend and backend builds, a relational database, schema migration, scheduled jobs, role-based security, Docker Compose, and CI.\n\nThis gives the project meaningful full-stack operational shape despite its short chronological development period.\n\n## Engineering Evolution\n\nRepository history shows an unusually compressed implementation sequence on 2026-09-07.\n\n### Architecture Definition\n\nThe early documentation commit defines TransAct's architecture and product boundaries.\n\nThis establishes the intended distinction between ledger authority, T-score, human loan authority, and review-provider integration.\n\n### Developer Economy Implementation\n\nThe next major commit implements the developer-economy backend and frontend baseline.\n\nThe repository gains the concrete ledger, deals, loans, salaries, trust scoring, persistence, API, and infrastructure represented in the current tree.\n\n### Build Repair\n\nA dedicated commit corrects frontend TypeScript configuration.\n\nThis converts the frontend from source presence into a buildable CI target.\n\n### Financial UI Refactor\n\nThe frontend is then reorganized into a more explicit financial UI architecture with a light visual system.\n\n### Dashboard Productization\n\nThe latest commit adopts a fintech dashboard design influenced by the Namaa reference.\n\nThe chronology therefore moves rapidly from domain definition to executable system to build hardening to product-facing interface refinement.\n\n## Skills Demonstrated\n\n### Java and Spring\n\n- Java 21 application development\n- Spring Boot\n- Spring services\n- Spring Data JPA\n- Spring Security\n- Spring scheduling\n- declarative transaction management\n- configuration injection\n- role-based authorization\n- exception-based business-rule enforcement\n\n### Financial-System Modeling\n\n- double-entry ledger modeling\n- derived balances\n- signed posting pairs\n- system accounts\n- transfer validation\n- account locking\n- transactional money movement\n- traceable transaction references\n- repayment accounting\n\n### Domain Modeling\n\n- explicit deal lifecycle\n- explicit loan lifecycle\n- recurring agreement lifecycle\n- user roles\n- guarded state transitions\n- actor authorization inside business rules\n- reliability-score composition\n- bounded scoring\n- explainable component scoring\n\n### Lending Workflow Design\n\n- payment-history evidence construction\n- separate qualification review\n- review-provider abstraction\n- mandatory review windows\n- human approval/rejection\n- treasury disbursement\n- repayment tracking\n- automatic overdue default transition\n\n### Scheduled Processing\n\n- Spring scheduled jobs\n- due-payment discovery\n- recurring agreement execution\n- overdue-loan detection\n\n### Persistence and Data Modeling\n\n- PostgreSQL\n- relational modeling\n- UUID identifiers\n- foreign-key relationships\n- unique constraints\n- indexes\n- monetary numeric types\n- optimistic version columns\n- Flyway migrations\n\n### Frontend Engineering\n\n- React 19\n- TypeScript\n- Vite\n- TanStack Query\n- feature-oriented frontend organization\n- financial dashboard interaction design\n- typed API integration\n- product workflow navigation\n\n### Security\n\n- Spring Security\n- stateless API configuration\n- HTTP Basic development authentication\n- administrator route authorization\n- method security\n- configurable CORS\n\n### DevOps and Verification\n\n- Docker\n- Docker Compose\n- PostgreSQL health checks\n- container dependency ordering\n- GitHub Actions\n- Java 21 CI\n- Maven verification\n- frontend TypeScript production builds\n- unit testing\n- successful latest-commit CI validation\n\n### Product Engineering\n\n- developer economy modeling\n- transaction history\n- direct transfers\n- project compensation\n- recurring payments\n- loan administration\n- auditability\n- explainable reliability metrics\n- human-in-the-loop review\n- terminology boundaries around internal credits and reliability scoring\n\n## Portfolio Significance\n\nTransAct represents a shift from implementing isolated application features toward encoding product policy directly in domain services.\n\nThe important engineering signal is not simply that the repository uses Spring and React.\n\nIt is that the code expresses who is allowed to perform consequential operations, when those operations are legal, which evidence feeds later decisions, and which subsystem is authoritative for money movement.\n\nThe ledger is the accounting authority.\n\nThe domain services are the state-transition authority.\n\nThe review adapter supplies decision-support evidence.\n\nThe administrator is the approval authority for loans.\n\nT-score is a bounded explanation of platform-observed reliability.\n\nThose boundaries are encoded in executable code rather than existing only as product prose.\n\nThe project also demonstrates an attempt to keep a future AI integration constrained.\n\nThe current implementation does not pretend that a deterministic heuristic is an AI model.\n\nInstead, it gives the heuristic the same adapter shape that a later model-backed reviewer can implement, while preserving human approval and deterministic financial execution regardless of provider.\n\nThat architectural choice makes the repository useful evidence for backend domain modeling, financial-style accounting, safe decision-support boundaries, full-stack product organization, and CI-backed implementation discipline.\n\n# Project Tags\n\n- java\n- java-21\n- spring-boot\n- spring-data-jpa\n- spring-security\n- spring-scheduling\n- transactional-services\n- postgresql\n- flyway\n- relational-database\n- uuid-identifiers\n- react\n- react-19\n- typescript\n- vite\n- tanstack-query\n- feature-oriented-frontend\n- financial-dashboard\n- rest-api\n- stateless-api\n- role-based-authorization\n- http-basic\n- cors\n- docker\n- docker-compose\n- github-actions\n- maven\n- continuous-integration\n- unit-testing\n- successful-ci-build\n- double-entry-ledger\n- derived-balance\n- ledger-postings\n- ledger-transactions\n- system-account\n- account-locking\n- deterministic-lock-order\n- transactional-money-movement\n- direct-transfer\n- brain-coins\n- project-deal-workflow\n- project-payment\n- deal-state-machine\n- dispute-workflow\n- t-score\n- transactional-reliability\n- explainable-scoring\n- bounded-score\n- loan-application-workflow\n- payment-history-evidence\n- qualification-review\n- review-provider-abstraction\n- deterministic-heuristic-review\n- human-in-the-loop-review\n- mandatory-review-window\n- administrator-loan-review\n- loan-disbursement\n- loan-repayment\n- loan-default-detection\n- recurring-payments\n- salary-agreement\n- scheduled-payments\n- audit-log\n- audit-events\n- configuration-driven-runtime\n- fintech-style-application\n- developer-economy\n- full-stack-application\n"
+}

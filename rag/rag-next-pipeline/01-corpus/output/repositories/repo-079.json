@@ -1,0 +1,558 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 79,
+  "repository_total": 134,
+  "repository_name": "SDR",
+  "header_title": "SDR",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-079-SDR/README.md",
+    "line_start": 1,
+    "line_end": 616,
+    "sha256": "0daf7955e38a688a6ab63ebf0b9b569ef4e8a393d7e7d4739ed69261650d8808"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "research-project",
+    "wireless-experimentation",
+    "network-experimentation",
+    "sdr-context",
+    "hybrid-experiment",
+    "python",
+    "matlab",
+    "udp",
+    "udp-broadcast",
+    "socket-programming",
+    "socket-buffer-tuning",
+    "traffic-generation",
+    "send-rate-control",
+    "throughput-measurement",
+    "burst-measurement",
+    "multithreading",
+    "thread-synchronization",
+    "threading-event",
+    "thread-safe-queue",
+    "tkinter",
+    "desktop-gui",
+    "network-configuration",
+    "experiment-logging",
+    "research-tooling",
+    "packaged-executable",
+    "research-methodology",
+    "conference-paper-preparation",
+    "experimental-troubleshooting"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/SDR`\n- **Repository start date:** 2025-03-15\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `7e46e945cef816751b49ee0776f451edac7be827`\n- **Primary technical field:** wireless/network experimentation\n- **Application domain:** software-defined-radio-adjacent and hybrid Wi-Fi transport research\n- **Primary technologies:** Python, MATLAB, UDP sockets, multithreading, Tkinter\n- **Project context:** individual research/experimental repository\n- **Collaboration classification:** `individual-project`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s008"
+      ],
+      "titles": [
+        "Receiver Architecture"
+      ],
+      "text": "## Receiver Architecture\nThe receiver tooling evolves through multiple files.\n\nThe GUI version contains a reusable receiver function that:\n\n- opens a UDP socket,\n- enables address reuse,\n- enables broadcast reception,\n- enlarges the receive buffer,\n- binds to a configurable port,\n- applies an idle timeout,\n- counts packets,\n- counts bytes,\n- groups traffic into bursts,\n- computes MiB received,\n- computes Mbps.\n\nEach receiver thread records burst statistics.\n\nThe receiver therefore performs both traffic ingestion and measurement."
+    },
+    "testing": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification is experiment-driven.\n\nEvidence includes:\n\n- sender-side packet and throughput counts,\n- receiver-side burst statistics,\n- thread-specific measurement capture,\n- repeated logs,\n- screenshots,\n- packaged executable use,\n- iterative commits fixing receiver behavior.\n\nThe repository does not need to be described as having conventional unit tests.\n\nIts principal verifier is real experiment execution and collected measurements."
+    },
+    "longitudinal": {
+      "section_ids": [
+        "s004"
+      ],
+      "titles": [
+        "Longitudinal Evolution"
+      ],
+      "text": "## Longitudinal Evolution\nThe repository starts on March 15, 2025.\n\nThe earliest visible implementation artifact is a MATLAB file.\n\nLater activity expands substantially during May, July, and August.\n\nThe commit history shows:\n\n- early MATLAB work,\n- creation of hybrid-approach folders,\n- sender/receiver experimentation,\n- throughput-specific receiver iteration,\n- GUI development,\n- repeated receiver debugging,\n- extensive run/log updates,\n- paper-oriented experiment artifacts,\n- final research-documentation edits.\n\nThis is a multi-month experiment repository."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/SDR`\n- **Repository start date:** 2025-03-15\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `7e46e945cef816751b49ee0776f451edac7be827`\n- **Primary technical field:** wireless/network experimentation\n- **Application domain:** software-defined-radio-adjacent and hybrid Wi-Fi transport research\n- **Primary technologies:** Python, MATLAB, UDP sockets, multithreading, Tkinter\n- **Project context:** individual research/experimental repository\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains several generations of research artifacts rather than one clean application tree.\n\nCurrent evidence includes:\n\n- root research/revision notes,\n- MATLAB data-processing code,\n- Python UDP sender scripts,\n- Python UDP receiver scripts,\n- multithreaded receiver variants,\n- throughput-oriented receiver variants,\n- a substantial Tkinter receiver GUI,\n- experimental logs,\n- screenshots,\n- archived experiment bundles,\n- a packaged GUI executable.\n\nThe directory structure includes a `Hybrid Approach` branch of experiments.\n\nThe current source therefore documents an iterative experimental program.\n\nGenerated binaries and archived ZIPs are treated as execution/distribution evidence, not authored source volume.",
+      "source_line_start": 15,
+      "source_line_end": 39
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "This repository develops tooling around a wireless networking experiment in which application-level UDP traffic is generated and received over real network interfaces.\n\nThe checked-in Python tools:\n\n- send broadcast UDP traffic,\n- receive traffic across one or more threads,\n- measure bytes/packets,\n- estimate throughput,\n- expose network configuration,\n- collect burst statistics,\n- present results through a desktop GUI.\n\nThe repository also preserves hardware/environment notes and experiment logs.\n\nThe root README later evolves into a conference-paper revision checklist.\n\nThat shows the code and experiments were being organized toward research communication rather than only as a utility.",
+      "source_line_start": 39,
+      "source_line_end": 59
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Longitudinal Evolution",
+      "normalized_title": "Longitudinal Evolution",
+      "key": "longitudinal_evolution",
+      "path": [
+        "Longitudinal Evolution"
+      ],
+      "content": "The repository starts on March 15, 2025.\n\nThe earliest visible implementation artifact is a MATLAB file.\n\nLater activity expands substantially during May, July, and August.\n\nThe commit history shows:\n\n- early MATLAB work,\n- creation of hybrid-approach folders,\n- sender/receiver experimentation,\n- throughput-specific receiver iteration,\n- GUI development,\n- repeated receiver debugging,\n- extensive run/log updates,\n- paper-oriented experiment artifacts,\n- final research-documentation edits.\n\nThis is a multi-month experiment repository.",
+      "source_line_start": 59,
+      "source_line_end": 81
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "The current tree includes a structure broadly like:\n\n```text\nSDR/\n├── README.md\n├── dataHESU.m\n└── Hybrid Approach/\n    ├── April28 Method/\n    │   └── MacDesktopInstance/\n    │       └── Multithreaded/\n    │           ├── sender.py\n    │           ├── recv.py\n    │           ├── recvkbps.py\n    │           └── screenshot\n    └── Paper/\n        ├── README.md\n        ├── receiverGUI.py\n        ├── recv.py\n        ├── recvNewAttempt\n        ├── newattemptwithmbps.py\n        ├── logs.md\n        ├── logstoday.txt\n        ├── sender experiment text\n        ├── experiment archives\n        └── packaged GUI executable\n```\n\nSeveral intermediate READMEs are empty placeholders.\n\nThe active evidence lives in source and experiment files.",
+      "source_line_start": 81,
+      "source_line_end": 114
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "UDP Sender",
+      "normalized_title": "UDP Sender",
+      "key": "udp_sender",
+      "path": [
+        "UDP Sender"
+      ],
+      "content": "The multithreaded experiment includes a Python UDP sender.\n\nIt:\n\n1. opens a datagram socket,\n2. enables socket broadcast,\n3. increases the socket send buffer,\n4. sends fixed-size payloads to a subnet broadcast address,\n5. runs for a fixed duration,\n6. throttles each iteration with a small send delay,\n7. catches socket send failures,\n8. computes total MiB and approximate Mbps.\n\nThis is direct real-network traffic generation.\n\nIt is separate from the earlier ns-3 simulation repository.",
+      "source_line_start": 114,
+      "source_line_end": 133
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Send-Rate Control",
+      "normalized_title": "Send-Rate Control",
+      "key": "send_rate_control",
+      "path": [
+        "Send-Rate Control"
+      ],
+      "content": "The sender includes an explicit sub-millisecond delay between sends.\n\nThe code comment explains this as protection against buffer overflow.\n\nOn send failure, it also pauses briefly before retrying.\n\nThis demonstrates awareness of practical sender-side resource constraints.\n\nRather than assuming infinite socket throughput, the script deliberately controls pacing.",
+      "source_line_start": 133,
+      "source_line_end": 145
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Receiver Architecture",
+      "normalized_title": "Receiver Architecture",
+      "key": "receiver_architecture",
+      "path": [
+        "Receiver Architecture"
+      ],
+      "content": "The receiver tooling evolves through multiple files.\n\nThe GUI version contains a reusable receiver function that:\n\n- opens a UDP socket,\n- enables address reuse,\n- enables broadcast reception,\n- enlarges the receive buffer,\n- binds to a configurable port,\n- applies an idle timeout,\n- counts packets,\n- counts bytes,\n- groups traffic into bursts,\n- computes MiB received,\n- computes Mbps.\n\nEach receiver thread records burst statistics.\n\nThe receiver therefore performs both traffic ingestion and measurement.",
+      "source_line_start": 145,
+      "source_line_end": 167
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Burst-Based Measurement",
+      "normalized_title": "Burst-Based Measurement",
+      "key": "burst_based_measurement",
+      "path": [
+        "Burst-Based Measurement"
+      ],
+      "content": "The receiver treats a period of incoming traffic as a burst.\n\nWhen the socket times out after receiving data, it closes the burst and calculates metrics from:\n\n- first packet time,\n- last packet time,\n- packet count,\n- total bytes.\n\nThat produces:\n\n- elapsed duration,\n- MiB,\n- Mbps.\n\nThis is a concrete measurement model encoded in the application.",
+      "source_line_start": 167,
+      "source_line_end": 186
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Multithreading",
+      "normalized_title": "Multithreading",
+      "key": "multithreading",
+      "path": [
+        "Multithreading"
+      ],
+      "content": "The GUI can launch a configurable number of receiver threads.\n\nEach thread runs the same receive function.\n\nShared statistics are protected by a lock.\n\nA `threading.Event` coordinates shutdown.\n\nThread-safe GUI logging uses a queue.\n\nThat architecture separates:\n\n- network worker threads,\n- shared measurement state,\n- GUI update flow.",
+      "source_line_start": 186,
+      "source_line_end": 204
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Thread-Safe Logging",
+      "normalized_title": "Thread-Safe Logging",
+      "key": "thread_safe_logging",
+      "path": [
+        "Thread-Safe Logging"
+      ],
+      "content": "Worker threads do not write directly into the Tkinter text widget.\n\nInstead they enqueue formatted log messages.\n\nThe main GUI periodically drains the queue using Tkinter's scheduled callback mechanism.\n\nThis is a correct and important desktop-concurrency pattern because Tkinter UI updates should remain on the UI thread.",
+      "source_line_start": 204,
+      "source_line_end": 214
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Desktop Experiment GUI",
+      "normalized_title": "Desktop Experiment GUI",
+      "key": "desktop_experiment_gui",
+      "path": [
+        "Desktop Experiment GUI"
+      ],
+      "content": "`receiverGUI.py` builds a substantial Tkinter control interface.\n\nThe UI includes:\n\n- network settings,\n- DHCP/static-IP mode selection,\n- IP/subnet/gateway entries,\n- UDP port selection,\n- thread-count selection,\n- start/stop controls,\n- status display,\n- scrolling activity log,\n- per-thread statistics selector,\n- a statistics table.\n\nThe statistics table exposes:\n\n- thread,\n- start time,\n- end time,\n- packet count,\n- MiB,\n- Mbps.\n\nThis makes the experimental receiver operationally inspectable.",
+      "source_line_start": 214,
+      "source_line_end": 242
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Network Configuration Controls",
+      "normalized_title": "Network Configuration Controls",
+      "key": "network_configuration_controls",
+      "path": [
+        "Network Configuration Controls"
+      ],
+      "content": "The GUI contains platform-aware network-setting logic.\n\nIt can toggle between:\n\n- DHCP,\n- static IP configuration.\n\nIt also contains Windows-oriented interface discovery/configuration behavior through system commands.\n\nThis is evidence of system-level integration around the experiment.\n\nThe corpus does not retain machine-specific identifiers from repository environment notes.",
+      "source_line_start": 242,
+      "source_line_end": 257
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Oversized Packet Handling",
+      "normalized_title": "Oversized Packet Handling",
+      "key": "oversized_packet_handling",
+      "path": [
+        "Oversized Packet Handling"
+      ],
+      "content": "The receiver explicitly handles an operating-system socket error corresponding to a packet larger than the configured receive size.\n\nFor that case it:\n\n- records the event,\n- counts a maximum-sized packet contribution,\n- continues the burst accounting.\n\nThis is a defensive behavior for real network measurement.",
+      "source_line_start": 257,
+      "source_line_end": 269
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Experiment Statistics",
+      "normalized_title": "Experiment Statistics",
+      "key": "experiment_statistics",
+      "path": [
+        "Experiment Statistics"
+      ],
+      "content": "The GUI retains statistics in memory and can display:\n\n- all threads,\n- a selected thread,\n- burst-level metrics.\n\nThis is more structured than printing one throughput number at program exit.\n\nThe design supports repeated observation during experiment runs.",
+      "source_line_start": 269,
+      "source_line_end": 281
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Research Logging",
+      "normalized_title": "Research Logging",
+      "key": "research_logging",
+      "path": [
+        "Research Logging"
+      ],
+      "content": "The repository contains multiple log artifacts.\n\nThe commit history shows repeated updates to run logs and sender text in August 2025.\n\nThis indicates an iterative troubleshooting/measurement workflow.\n\nThe logs are evidence that the experiment was actively exercised.\n\nThey should not be interpreted as a standardized benchmark suite.",
+      "source_line_start": 281,
+      "source_line_end": 293
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Packaged Executable",
+      "normalized_title": "Packaged Executable",
+      "key": "packaged_executable",
+      "path": [
+        "Packaged Executable"
+      ],
+      "content": "The `Hybrid Approach/Paper` directory contains a large packaged GUI executable.\n\nThis provides evidence that a desktop tool was bundled for execution outside the raw Python interpreter.\n\nBecause the binary itself is a build artifact, it is not counted as source-code complexity.\n\nThe current repository does not make the exact packaging invocation the center of the research workflow.",
+      "source_line_start": 293,
+      "source_line_end": 303
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "MATLAB Artifact",
+      "normalized_title": "MATLAB Artifact",
+      "key": "matlab_artifact",
+      "path": [
+        "MATLAB Artifact"
+      ],
+      "content": "The root includes `dataHESU.m`.\n\nThis establishes MATLAB use within the repository.\n\nIt also links this work to the broader data-analysis/research tooling already present elsewhere in the portfolio.\n\nThe SDR repository is therefore not exclusively Python.",
+      "source_line_start": 303,
+      "source_line_end": 313
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Research-Paper Context",
+      "normalized_title": "Research-Paper Context",
+      "key": "research_paper_context",
+      "path": [
+        "Research-Paper Context"
+      ],
+      "content": "The final root README is a conference-paper revision checklist.\n\nIt records work still needed around:\n\n- abstract/problem statement,\n- methodology,\n- throughput discrepancy,\n- theoretical comparison,\n- statistical analysis,\n- error bars,\n- literature review,\n- conclusion,\n- reproducibility.\n\nSome writing-quality items are marked complete.\n\nThe checklist is evidence of active self-review and paper preparation.\n\nIt is not evidence that every unchecked research task was completed.",
+      "source_line_start": 313,
+      "source_line_end": 335
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Experimental Maturity Boundary",
+      "normalized_title": "Experimental Maturity Boundary",
+      "key": "experimental_maturity_boundary",
+      "path": [
+        "Experimental Maturity Boundary"
+      ],
+      "content": "The paper checklist is especially useful because it prevents overstatement.\n\nIt explicitly indicates that, at the final repository snapshot, several research-quality tasks remained open.\n\nThe repository therefore demonstrates a substantial experimental prototype and measurement workflow.\n\nIt should not be represented as a completed peer-reviewed experimental study solely from the code.",
+      "source_line_start": 335,
+      "source_line_end": 345
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Relationship to NS3",
+      "normalized_title": "Relationship to NS3",
+      "key": "relationship_to_ns3",
+      "path": [
+        "Relationship to NS3"
+      ],
+      "content": "The immediately preceding `NS3` repository focuses on simulation.\n\n`SDR` shifts toward real-system traffic generation and reception.\n\nThat creates a meaningful methodological progression:\n\n```text\nns-3 simulated WLAN\n→ application-level traffic generation on real interfaces\n→ receiver instrumentation\n→ multithreaded measurements\n→ GUI-assisted experiments\n→ paper-oriented documentation\n```\n\nThe root checklist even references detailed ns-3 simulation parameters as part of the paper methodology context.\n\nThis indicates the research was considering both simulation and physical/host-based experimental evidence.",
+      "source_line_start": 345,
+      "source_line_end": 366
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Hybrid-Approach Interpretation",
+      "normalized_title": "Hybrid-Approach Interpretation",
+      "key": "hybrid_approach_interpretation",
+      "path": [
+        "Hybrid-Approach Interpretation"
+      ],
+      "content": "The repository labels a major branch `Hybrid Approach`.\n\nThe code supports the interpretation that the project combines:\n\n- simulation-oriented context,\n- real network traffic tools,\n- measured throughput,\n- experimental hardware/environment characterization.\n\nThe exact scientific claim of the hybrid method should be derived from the paper itself if available.\n\nThe code alone supports the experimental architecture, not every research conclusion.",
+      "source_line_start": 366,
+      "source_line_end": 381
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is experiment-driven.\n\nEvidence includes:\n\n- sender-side packet and throughput counts,\n- receiver-side burst statistics,\n- thread-specific measurement capture,\n- repeated logs,\n- screenshots,\n- packaged executable use,\n- iterative commits fixing receiver behavior.\n\nThe repository does not need to be described as having conventional unit tests.\n\nIts principal verifier is real experiment execution and collected measurements.",
+      "source_line_start": 381,
+      "source_line_end": 399
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Failure and Robustness Handling",
+      "normalized_title": "Failure and Robustness Handling",
+      "key": "failure_and_robustness_handling",
+      "path": [
+        "Failure and Robustness Handling"
+      ],
+      "content": "The source includes multiple defensive behaviors:\n\n- socket send exception handling,\n- socket timeout handling,\n- oversized-datagram handling,\n- controlled thread shutdown,\n- validation of port/thread input,\n- GUI error messages,\n- network-configuration fallbacks.\n\nThese are meaningful engineering details in an experiment tool because a failed network run must be diagnosable.",
+      "source_line_start": 399,
+      "source_line_end": 413
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Concurrency Engineering",
+      "normalized_title": "Concurrency Engineering",
+      "key": "concurrency_engineering",
+      "path": [
+        "Concurrency Engineering"
+      ],
+      "content": "The code demonstrates:\n\n- thread creation,\n- daemon worker threads,\n- locks,\n- stop events,\n- queues,\n- thread joins with timeouts,\n- UI-thread scheduling.\n\nThis is direct concurrency implementation.\n\nThe concurrency is tied to a practical network receiver rather than an isolated threading exercise.",
+      "source_line_start": 413,
+      "source_line_end": 429
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Measurement Engineering",
+      "normalized_title": "Measurement Engineering",
+      "key": "measurement_engineering",
+      "path": [
+        "Measurement Engineering"
+      ],
+      "content": "The repository develops its own measurement path rather than delegating everything to a third-party benchmark.\n\nThat includes:\n\n- byte counters,\n- packet counters,\n- timestamps,\n- burst segmentation,\n- MiB conversion,\n- Mbps conversion,\n- per-thread rows.\n\nThis gives the experiment explicit measurement semantics.",
+      "source_line_start": 429,
+      "source_line_end": 445
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "Although research-oriented, the GUI adds product-like operational features.\n\nA user can:\n\n- select network mode,\n- configure endpoints,\n- choose thread count,\n- start and stop listening,\n- inspect logs,\n- inspect statistics.\n\nThis reduces the need to modify source for each experiment.\n\nThe bundled executable further suggests an intention to make the tool convenient to run on an experiment machine.",
+      "source_line_start": 445,
+      "source_line_end": 462
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The current source tree is not huge, but the project has multiple layers:\n\n- MATLAB data work,\n- socket networking,\n- concurrency,\n- GUI,\n- system configuration,\n- experiment logging,\n- packaged distribution,\n- research documentation.\n\nThe commit history spans more than five months.\n\nThe complexity is therefore longitudinal and experimental rather than service-oriented.",
+      "source_line_start": 462,
+      "source_line_end": 479
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- Python,\n- MATLAB,\n- UDP sockets,\n- broadcast networking,\n- socket buffer tuning,\n- send-rate throttling,\n- multithreading,\n- thread synchronization,\n- thread-safe queues,\n- Tkinter,\n- desktop GUI engineering,\n- network-interface configuration,\n- throughput calculation,\n- experiment instrumentation,\n- logging,\n- packaged desktop tooling,\n- research iteration,\n- experimental troubleshooting.",
+      "source_line_start": 479,
+      "source_line_end": 502
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The project demonstrates the ability to turn a networking research question into an operational measurement tool.\n\nThat capability includes:\n\n- generating controlled traffic,\n- observing it at the receiver,\n- dealing with socket-level failure modes,\n- collecting quantitative metrics,\n- parallelizing receivers,\n- exposing controls to an experiment operator,\n- packaging tooling,\n- preserving logs,\n- reviewing the research methodology.\n\nThis is systems experimentation rather than only scripting.",
+      "source_line_start": 502,
+      "source_line_end": 520
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This repository sits at an important transition in the portfolio.\n\nEarlier projects establish:\n\n- networking protocols,\n- network simulation,\n- Python data tooling.\n\n`SDR` combines them into a research-oriented real-network measurement workflow.\n\nIt also anticipates later wireless research work where reliable experiment infrastructure becomes a major engineering concern.",
+      "source_line_start": 520,
+      "source_line_end": 534
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, `SDR` is the first repository to strongly combine:\n\n- real UDP traffic generation,\n- multithreaded receiver measurement,\n- desktop experiment controls,\n- burst throughput instrumentation,\n- packaged research tooling,\n- explicit conference-paper revision tracking.\n\nIt is a major step toward research systems engineering.",
+      "source_line_start": 534,
+      "source_line_end": 547
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Sensitive-Evidence Boundary",
+      "normalized_title": "Sensitive-Evidence Boundary",
+      "key": "sensitive_evidence_boundary",
+      "path": [
+        "Sensitive-Evidence Boundary"
+      ],
+      "content": "The repository includes machine environment output containing device-specific identifiers.\n\nThose identifiers are not reproduced in this corpus.\n\nOnly the technically relevant environment facts are used to understand the experiment context.",
+      "source_line_start": 547,
+      "source_line_end": 555
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The root paper checklist contains unresolved items.\n\nThose are not converted into implemented features.\n\nArchived experiment ZIPs and the GUI executable prove artifacts existed, but they are not counted as authored source logic.\n\nThe term `SDR` in the repository name should not be used to infer a specific RF front-end implementation beyond what the checked-in files show.\n\nThe direct source evidence is strongest for host-level wireless/UDP experiment tooling and measurement.",
+      "source_line_start": 555,
+      "source_line_end": 567
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`SDR` is a multi-month wireless experiment repository that evolves from data and network scripts into a multithreaded, GUI-operated measurement toolkit.\n\nIt demonstrates a progression from simulation-oriented networking toward real-system experimental engineering.\n\nThe strongest technical signal is the integration of:\n\n```text\ntraffic generation\n+ socket-level measurement\n+ concurrency\n+ GUI control\n+ experiment logging\n+ research-methodology review\n```\n\nThat combination makes it one of the more systems-oriented research repositories in the processed corpus.\n\n# Project Tags\n\n- `individual-project`\n- `research-project`\n- `wireless-experimentation`\n- `network-experimentation`\n- `sdr-context`\n- `hybrid-experiment`\n- `python`\n- `matlab`\n- `udp`\n- `udp-broadcast`\n- `socket-programming`\n- `socket-buffer-tuning`\n- `traffic-generation`\n- `send-rate-control`\n- `throughput-measurement`\n- `burst-measurement`\n- `multithreading`\n- `thread-synchronization`\n- `threading-event`\n- `thread-safe-queue`\n- `tkinter`\n- `desktop-gui`\n- `network-configuration`\n- `experiment-logging`\n- `research-tooling`\n- `packaged-executable`\n- `research-methodology`\n- `conference-paper-preparation`\n- `experimental-troubleshooting`",
+      "source_line_start": 567,
+      "source_line_end": 617
+    }
+  ],
+  "raw_analysis": "# Repository 079 — SDR\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/SDR`\n- **Repository start date:** 2025-03-15\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `7e46e945cef816751b49ee0776f451edac7be827`\n- **Primary technical field:** wireless/network experimentation\n- **Application domain:** software-defined-radio-adjacent and hybrid Wi-Fi transport research\n- **Primary technologies:** Python, MATLAB, UDP sockets, multithreading, Tkinter\n- **Project context:** individual research/experimental repository\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains several generations of research artifacts rather than one clean application tree.\n\nCurrent evidence includes:\n\n- root research/revision notes,\n- MATLAB data-processing code,\n- Python UDP sender scripts,\n- Python UDP receiver scripts,\n- multithreaded receiver variants,\n- throughput-oriented receiver variants,\n- a substantial Tkinter receiver GUI,\n- experimental logs,\n- screenshots,\n- archived experiment bundles,\n- a packaged GUI executable.\n\nThe directory structure includes a `Hybrid Approach` branch of experiments.\n\nThe current source therefore documents an iterative experimental program.\n\nGenerated binaries and archived ZIPs are treated as execution/distribution evidence, not authored source volume.\n\n## What the Project Is\n\nThis repository develops tooling around a wireless networking experiment in which application-level UDP traffic is generated and received over real network interfaces.\n\nThe checked-in Python tools:\n\n- send broadcast UDP traffic,\n- receive traffic across one or more threads,\n- measure bytes/packets,\n- estimate throughput,\n- expose network configuration,\n- collect burst statistics,\n- present results through a desktop GUI.\n\nThe repository also preserves hardware/environment notes and experiment logs.\n\nThe root README later evolves into a conference-paper revision checklist.\n\nThat shows the code and experiments were being organized toward research communication rather than only as a utility.\n\n## Longitudinal Evolution\n\nThe repository starts on March 15, 2025.\n\nThe earliest visible implementation artifact is a MATLAB file.\n\nLater activity expands substantially during May, July, and August.\n\nThe commit history shows:\n\n- early MATLAB work,\n- creation of hybrid-approach folders,\n- sender/receiver experimentation,\n- throughput-specific receiver iteration,\n- GUI development,\n- repeated receiver debugging,\n- extensive run/log updates,\n- paper-oriented experiment artifacts,\n- final research-documentation edits.\n\nThis is a multi-month experiment repository.\n\n## Repository Shape\n\nThe current tree includes a structure broadly like:\n\n```text\nSDR/\n├── README.md\n├── dataHESU.m\n└── Hybrid Approach/\n    ├── April28 Method/\n    │   └── MacDesktopInstance/\n    │       └── Multithreaded/\n    │           ├── sender.py\n    │           ├── recv.py\n    │           ├── recvkbps.py\n    │           └── screenshot\n    └── Paper/\n        ├── README.md\n        ├── receiverGUI.py\n        ├── recv.py\n        ├── recvNewAttempt\n        ├── newattemptwithmbps.py\n        ├── logs.md\n        ├── logstoday.txt\n        ├── sender experiment text\n        ├── experiment archives\n        └── packaged GUI executable\n```\n\nSeveral intermediate READMEs are empty placeholders.\n\nThe active evidence lives in source and experiment files.\n\n## UDP Sender\n\nThe multithreaded experiment includes a Python UDP sender.\n\nIt:\n\n1. opens a datagram socket,\n2. enables socket broadcast,\n3. increases the socket send buffer,\n4. sends fixed-size payloads to a subnet broadcast address,\n5. runs for a fixed duration,\n6. throttles each iteration with a small send delay,\n7. catches socket send failures,\n8. computes total MiB and approximate Mbps.\n\nThis is direct real-network traffic generation.\n\nIt is separate from the earlier ns-3 simulation repository.\n\n## Send-Rate Control\n\nThe sender includes an explicit sub-millisecond delay between sends.\n\nThe code comment explains this as protection against buffer overflow.\n\nOn send failure, it also pauses briefly before retrying.\n\nThis demonstrates awareness of practical sender-side resource constraints.\n\nRather than assuming infinite socket throughput, the script deliberately controls pacing.\n\n## Receiver Architecture\n\nThe receiver tooling evolves through multiple files.\n\nThe GUI version contains a reusable receiver function that:\n\n- opens a UDP socket,\n- enables address reuse,\n- enables broadcast reception,\n- enlarges the receive buffer,\n- binds to a configurable port,\n- applies an idle timeout,\n- counts packets,\n- counts bytes,\n- groups traffic into bursts,\n- computes MiB received,\n- computes Mbps.\n\nEach receiver thread records burst statistics.\n\nThe receiver therefore performs both traffic ingestion and measurement.\n\n## Burst-Based Measurement\n\nThe receiver treats a period of incoming traffic as a burst.\n\nWhen the socket times out after receiving data, it closes the burst and calculates metrics from:\n\n- first packet time,\n- last packet time,\n- packet count,\n- total bytes.\n\nThat produces:\n\n- elapsed duration,\n- MiB,\n- Mbps.\n\nThis is a concrete measurement model encoded in the application.\n\n## Multithreading\n\nThe GUI can launch a configurable number of receiver threads.\n\nEach thread runs the same receive function.\n\nShared statistics are protected by a lock.\n\nA `threading.Event` coordinates shutdown.\n\nThread-safe GUI logging uses a queue.\n\nThat architecture separates:\n\n- network worker threads,\n- shared measurement state,\n- GUI update flow.\n\n## Thread-Safe Logging\n\nWorker threads do not write directly into the Tkinter text widget.\n\nInstead they enqueue formatted log messages.\n\nThe main GUI periodically drains the queue using Tkinter's scheduled callback mechanism.\n\nThis is a correct and important desktop-concurrency pattern because Tkinter UI updates should remain on the UI thread.\n\n## Desktop Experiment GUI\n\n`receiverGUI.py` builds a substantial Tkinter control interface.\n\nThe UI includes:\n\n- network settings,\n- DHCP/static-IP mode selection,\n- IP/subnet/gateway entries,\n- UDP port selection,\n- thread-count selection,\n- start/stop controls,\n- status display,\n- scrolling activity log,\n- per-thread statistics selector,\n- a statistics table.\n\nThe statistics table exposes:\n\n- thread,\n- start time,\n- end time,\n- packet count,\n- MiB,\n- Mbps.\n\nThis makes the experimental receiver operationally inspectable.\n\n## Network Configuration Controls\n\nThe GUI contains platform-aware network-setting logic.\n\nIt can toggle between:\n\n- DHCP,\n- static IP configuration.\n\nIt also contains Windows-oriented interface discovery/configuration behavior through system commands.\n\nThis is evidence of system-level integration around the experiment.\n\nThe corpus does not retain machine-specific identifiers from repository environment notes.\n\n## Oversized Packet Handling\n\nThe receiver explicitly handles an operating-system socket error corresponding to a packet larger than the configured receive size.\n\nFor that case it:\n\n- records the event,\n- counts a maximum-sized packet contribution,\n- continues the burst accounting.\n\nThis is a defensive behavior for real network measurement.\n\n## Experiment Statistics\n\nThe GUI retains statistics in memory and can display:\n\n- all threads,\n- a selected thread,\n- burst-level metrics.\n\nThis is more structured than printing one throughput number at program exit.\n\nThe design supports repeated observation during experiment runs.\n\n## Research Logging\n\nThe repository contains multiple log artifacts.\n\nThe commit history shows repeated updates to run logs and sender text in August 2025.\n\nThis indicates an iterative troubleshooting/measurement workflow.\n\nThe logs are evidence that the experiment was actively exercised.\n\nThey should not be interpreted as a standardized benchmark suite.\n\n## Packaged Executable\n\nThe `Hybrid Approach/Paper` directory contains a large packaged GUI executable.\n\nThis provides evidence that a desktop tool was bundled for execution outside the raw Python interpreter.\n\nBecause the binary itself is a build artifact, it is not counted as source-code complexity.\n\nThe current repository does not make the exact packaging invocation the center of the research workflow.\n\n## MATLAB Artifact\n\nThe root includes `dataHESU.m`.\n\nThis establishes MATLAB use within the repository.\n\nIt also links this work to the broader data-analysis/research tooling already present elsewhere in the portfolio.\n\nThe SDR repository is therefore not exclusively Python.\n\n## Research-Paper Context\n\nThe final root README is a conference-paper revision checklist.\n\nIt records work still needed around:\n\n- abstract/problem statement,\n- methodology,\n- throughput discrepancy,\n- theoretical comparison,\n- statistical analysis,\n- error bars,\n- literature review,\n- conclusion,\n- reproducibility.\n\nSome writing-quality items are marked complete.\n\nThe checklist is evidence of active self-review and paper preparation.\n\nIt is not evidence that every unchecked research task was completed.\n\n## Experimental Maturity Boundary\n\nThe paper checklist is especially useful because it prevents overstatement.\n\nIt explicitly indicates that, at the final repository snapshot, several research-quality tasks remained open.\n\nThe repository therefore demonstrates a substantial experimental prototype and measurement workflow.\n\nIt should not be represented as a completed peer-reviewed experimental study solely from the code.\n\n## Relationship to NS3\n\nThe immediately preceding `NS3` repository focuses on simulation.\n\n`SDR` shifts toward real-system traffic generation and reception.\n\nThat creates a meaningful methodological progression:\n\n```text\nns-3 simulated WLAN\n→ application-level traffic generation on real interfaces\n→ receiver instrumentation\n→ multithreaded measurements\n→ GUI-assisted experiments\n→ paper-oriented documentation\n```\n\nThe root checklist even references detailed ns-3 simulation parameters as part of the paper methodology context.\n\nThis indicates the research was considering both simulation and physical/host-based experimental evidence.\n\n## Hybrid-Approach Interpretation\n\nThe repository labels a major branch `Hybrid Approach`.\n\nThe code supports the interpretation that the project combines:\n\n- simulation-oriented context,\n- real network traffic tools,\n- measured throughput,\n- experimental hardware/environment characterization.\n\nThe exact scientific claim of the hybrid method should be derived from the paper itself if available.\n\nThe code alone supports the experimental architecture, not every research conclusion.\n\n## Testing and Verification\n\nVerification is experiment-driven.\n\nEvidence includes:\n\n- sender-side packet and throughput counts,\n- receiver-side burst statistics,\n- thread-specific measurement capture,\n- repeated logs,\n- screenshots,\n- packaged executable use,\n- iterative commits fixing receiver behavior.\n\nThe repository does not need to be described as having conventional unit tests.\n\nIts principal verifier is real experiment execution and collected measurements.\n\n## Failure and Robustness Handling\n\nThe source includes multiple defensive behaviors:\n\n- socket send exception handling,\n- socket timeout handling,\n- oversized-datagram handling,\n- controlled thread shutdown,\n- validation of port/thread input,\n- GUI error messages,\n- network-configuration fallbacks.\n\nThese are meaningful engineering details in an experiment tool because a failed network run must be diagnosable.\n\n## Concurrency Engineering\n\nThe code demonstrates:\n\n- thread creation,\n- daemon worker threads,\n- locks,\n- stop events,\n- queues,\n- thread joins with timeouts,\n- UI-thread scheduling.\n\nThis is direct concurrency implementation.\n\nThe concurrency is tied to a practical network receiver rather than an isolated threading exercise.\n\n## Measurement Engineering\n\nThe repository develops its own measurement path rather than delegating everything to a third-party benchmark.\n\nThat includes:\n\n- byte counters,\n- packet counters,\n- timestamps,\n- burst segmentation,\n- MiB conversion,\n- Mbps conversion,\n- per-thread rows.\n\nThis gives the experiment explicit measurement semantics.\n\n## Product Engineering\n\nAlthough research-oriented, the GUI adds product-like operational features.\n\nA user can:\n\n- select network mode,\n- configure endpoints,\n- choose thread count,\n- start and stop listening,\n- inspect logs,\n- inspect statistics.\n\nThis reduces the need to modify source for each experiment.\n\nThe bundled executable further suggests an intention to make the tool convenient to run on an experiment machine.\n\n## Scale and Complexity\n\nThe current source tree is not huge, but the project has multiple layers:\n\n- MATLAB data work,\n- socket networking,\n- concurrency,\n- GUI,\n- system configuration,\n- experiment logging,\n- packaged distribution,\n- research documentation.\n\nThe commit history spans more than five months.\n\nThe complexity is therefore longitudinal and experimental rather than service-oriented.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- Python,\n- MATLAB,\n- UDP sockets,\n- broadcast networking,\n- socket buffer tuning,\n- send-rate throttling,\n- multithreading,\n- thread synchronization,\n- thread-safe queues,\n- Tkinter,\n- desktop GUI engineering,\n- network-interface configuration,\n- throughput calculation,\n- experiment instrumentation,\n- logging,\n- packaged desktop tooling,\n- research iteration,\n- experimental troubleshooting.\n\n## Capability Developed\n\nThe project demonstrates the ability to turn a networking research question into an operational measurement tool.\n\nThat capability includes:\n\n- generating controlled traffic,\n- observing it at the receiver,\n- dealing with socket-level failure modes,\n- collecting quantitative metrics,\n- parallelizing receivers,\n- exposing controls to an experiment operator,\n- packaging tooling,\n- preserving logs,\n- reviewing the research methodology.\n\nThis is systems experimentation rather than only scripting.\n\n## Portfolio Evolution Context\n\nThis repository sits at an important transition in the portfolio.\n\nEarlier projects establish:\n\n- networking protocols,\n- network simulation,\n- Python data tooling.\n\n`SDR` combines them into a research-oriented real-network measurement workflow.\n\nIt also anticipates later wireless research work where reliable experiment infrastructure becomes a major engineering concern.\n\n## Historical Significance\n\nWithin the processed corpus, `SDR` is the first repository to strongly combine:\n\n- real UDP traffic generation,\n- multithreaded receiver measurement,\n- desktop experiment controls,\n- burst throughput instrumentation,\n- packaged research tooling,\n- explicit conference-paper revision tracking.\n\nIt is a major step toward research systems engineering.\n\n## Sensitive-Evidence Boundary\n\nThe repository includes machine environment output containing device-specific identifiers.\n\nThose identifiers are not reproduced in this corpus.\n\nOnly the technically relevant environment facts are used to understand the experiment context.\n\n## Evidence Boundaries\n\nThe root paper checklist contains unresolved items.\n\nThose are not converted into implemented features.\n\nArchived experiment ZIPs and the GUI executable prove artifacts existed, but they are not counted as authored source logic.\n\nThe term `SDR` in the repository name should not be used to infer a specific RF front-end implementation beyond what the checked-in files show.\n\nThe direct source evidence is strongest for host-level wireless/UDP experiment tooling and measurement.\n\n## Overall Narrative\n\n`SDR` is a multi-month wireless experiment repository that evolves from data and network scripts into a multithreaded, GUI-operated measurement toolkit.\n\nIt demonstrates a progression from simulation-oriented networking toward real-system experimental engineering.\n\nThe strongest technical signal is the integration of:\n\n```text\ntraffic generation\n+ socket-level measurement\n+ concurrency\n+ GUI control\n+ experiment logging\n+ research-methodology review\n```\n\nThat combination makes it one of the more systems-oriented research repositories in the processed corpus.\n\n# Project Tags\n\n- `individual-project`\n- `research-project`\n- `wireless-experimentation`\n- `network-experimentation`\n- `sdr-context`\n- `hybrid-experiment`\n- `python`\n- `matlab`\n- `udp`\n- `udp-broadcast`\n- `socket-programming`\n- `socket-buffer-tuning`\n- `traffic-generation`\n- `send-rate-control`\n- `throughput-measurement`\n- `burst-measurement`\n- `multithreading`\n- `thread-synchronization`\n- `threading-event`\n- `thread-safe-queue`\n- `tkinter`\n- `desktop-gui`\n- `network-configuration`\n- `experiment-logging`\n- `research-tooling`\n- `packaged-executable`\n- `research-methodology`\n- `conference-paper-preparation`\n- `experimental-troubleshooting`\n"
+}

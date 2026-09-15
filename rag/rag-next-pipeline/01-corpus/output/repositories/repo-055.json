@@ -1,0 +1,578 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 55,
+  "repository_total": 134,
+  "repository_name": "Video-Tools",
+  "header_title": "Video-Tools",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-055-Video-Tools/README.md",
+    "line_start": 1,
+    "line_end": 246,
+    "sha256": "3262c676779e64b277e17e44cb1aaa846ed52a6e8c33c85c5113b20e171e5547"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "developer-tooling",
+    "video-processing-utility",
+    "data-preprocessing-tool",
+    "personal-project",
+    "individual-project",
+    "python",
+    "opencv",
+    "video-processing",
+    "video-frame-extraction",
+    "video-decoding",
+    "image-output",
+    "dataset-preparation",
+    "filesystem-output",
+    "deterministic-file-naming",
+    "input-validation",
+    "resource-lifecycle-management",
+    "functional-decomposition",
+    "manual-verification",
+    "earliest-observed-video-frame-extraction",
+    "earliest-observed-video-processing-utility"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Video-Tools`\n- **Repository start date:** 2024-10-16\n- **Last meaningful update date:** 2024-10-16\n- **Primary implementation language:** Python\n- **Primary technical field:** video processing / computer vision utility tooling\n- **Project context:** personal utility\n- **Collaboration classification:** `individual-project`"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s011"
+      ],
+      "titles": [
+        "Video Metadata Inspection"
+      ],
+      "text": "## Video Metadata Inspection\nThe implementation reads the video's original frames per second and total frame count.\n\nIt then computes video duration as:\n\n```text\ntotal_frames / original_fps\n```\n\nThe values are printed before extraction, giving the operator immediate visibility into the source asset."
+    },
+    "testing": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Verification and Runtime Feedback"
+      ],
+      "text": "## Verification and Runtime Feedback\nThe tool prints:\n\n- original FPS;\n- total source frames;\n- computed duration;\n- each saved frame path;\n- final number of frames written.\n\nThose messages provide a lightweight manual verification trail for an otherwise batch-style utility."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Video-Tools`\n- **Repository start date:** 2024-10-16\n- **Last meaningful update date:** 2024-10-16\n- **Primary implementation language:** Python\n- **Primary technical field:** video processing / computer vision utility tooling\n- **Project context:** personal utility\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains one executable source file, `video2frames.py`.\n\nThe latest and only meaningful implementation commit creates that file on 2024-10-16.\n\nThe analysis is therefore based directly on the complete implementation rather than on repository naming or dependency metadata.",
+      "source_line_start": 13,
+      "source_line_end": 21
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Video-Tools` is a focused Python utility for extracting every frame from an MP4 video into individually numbered JPEG files.\n\nThe script opens a video through OpenCV, reads source-video metadata, creates an output directory when required, iterates until the video stream is exhausted, writes every decoded frame to disk, and reports processing progress.\n\nThis is a small repository, but it implements a complete media-processing workflow from input file to generated frame dataset.",
+      "source_line_start": 21,
+      "source_line_end": 29
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Functional Workflow",
+      "normalized_title": "Functional Workflow",
+      "key": "functional_workflow",
+      "path": [
+        "Functional Workflow"
+      ],
+      "content": "```text\nMP4 path\n  ↓\nOpenCV VideoCapture\n  ↓\nValidate video opened\n  ↓\nRead FPS + frame count\n  ↓\nCompute duration\n  ↓\nCreate output directory\n  ↓\nSequentially decode frames\n  ↓\nWrite frame_0000.jpg, frame_0001.jpg, ...\n  ↓\nRelease video handle\n  ↓\nReport total saved frames\n```",
+      "source_line_start": 29,
+      "source_line_end": 53
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython provides the control flow, filesystem integration, formatted filenames, and execution wrapper.\n\n### OpenCV\n\n`cv2.VideoCapture` is used to open and decode the video stream.\n\nThe code also reads:\n\n- `cv2.CAP_PROP_FPS`;\n- `cv2.CAP_PROP_FRAME_COUNT`.\n\nFrames are written through `cv2.imwrite`.\n\n### Filesystem Operations\n\nPython's `os` module is used to:\n\n- check whether the target directory exists;\n- create it when required;\n- construct portable frame output paths.",
+      "source_line_start": 53,
+      "source_line_end": 78
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python provides the control flow, filesystem integration, formatted filenames, and execution wrapper.",
+      "source_line_start": 55,
+      "source_line_end": 59
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "OpenCV",
+      "normalized_title": "OpenCV",
+      "key": "opencv",
+      "path": [
+        "Technical Stack",
+        "OpenCV"
+      ],
+      "content": "`cv2.VideoCapture` is used to open and decode the video stream.\n\nThe code also reads:\n\n- `cv2.CAP_PROP_FPS`;\n- `cv2.CAP_PROP_FRAME_COUNT`.\n\nFrames are written through `cv2.imwrite`.",
+      "source_line_start": 59,
+      "source_line_end": 70
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Filesystem Operations",
+      "normalized_title": "Filesystem Operations",
+      "key": "filesystem_operations",
+      "path": [
+        "Technical Stack",
+        "Filesystem Operations"
+      ],
+      "content": "Python's `os` module is used to:\n\n- check whether the target directory exists;\n- create it when required;\n- construct portable frame output paths.",
+      "source_line_start": 70,
+      "source_line_end": 78
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Video Stream Opening and Validation\n\nThe utility checks `video.isOpened()` before attempting extraction.\n\nAn invalid or inaccessible video therefore produces an explicit error path rather than entering the frame-processing loop.\n\n### Video Metadata Inspection\n\nThe implementation reads the video's original frames per second and total frame count.\n\nIt then computes video duration as:\n\n```text\ntotal_frames / original_fps\n```\n\nThe values are printed before extraction, giving the operator immediate visibility into the source asset.\n\n### Sequential Frame Extraction\n\nA `while True` loop calls `video.read()` repeatedly.\n\nExtraction stops when `ret` becomes false, which naturally terminates at end-of-stream or a decoding failure.\n\n### Deterministic Output Naming\n\nEach frame is written as:\n\n```text\nframe_0000.jpg\nframe_0001.jpg\n...\n```\n\nThe four-digit zero padding preserves lexical ordering in common filesystems and downstream tooling.\n\n### Output Directory Management\n\nThe destination folder is created automatically when it does not already exist.\n\nThis removes a manual setup step from the workflow.\n\n### Resource Cleanup\n\nThe OpenCV capture object is explicitly released after extraction.",
+      "source_line_start": 78,
+      "source_line_end": 126
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Video Stream Opening and Validation",
+      "normalized_title": "Video Stream Opening and Validation",
+      "key": "video_stream_opening_and_validation",
+      "path": [
+        "Major Engineering Work",
+        "Video Stream Opening and Validation"
+      ],
+      "content": "The utility checks `video.isOpened()` before attempting extraction.\n\nAn invalid or inaccessible video therefore produces an explicit error path rather than entering the frame-processing loop.",
+      "source_line_start": 80,
+      "source_line_end": 86
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Video Metadata Inspection",
+      "normalized_title": "Video Metadata Inspection",
+      "key": "video_metadata_inspection",
+      "path": [
+        "Major Engineering Work",
+        "Video Metadata Inspection"
+      ],
+      "content": "The implementation reads the video's original frames per second and total frame count.\n\nIt then computes video duration as:\n\n```text\ntotal_frames / original_fps\n```\n\nThe values are printed before extraction, giving the operator immediate visibility into the source asset.",
+      "source_line_start": 86,
+      "source_line_end": 98
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Sequential Frame Extraction",
+      "normalized_title": "Sequential Frame Extraction",
+      "key": "sequential_frame_extraction",
+      "path": [
+        "Major Engineering Work",
+        "Sequential Frame Extraction"
+      ],
+      "content": "A `while True` loop calls `video.read()` repeatedly.\n\nExtraction stops when `ret` becomes false, which naturally terminates at end-of-stream or a decoding failure.",
+      "source_line_start": 98,
+      "source_line_end": 104
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Deterministic Output Naming",
+      "normalized_title": "Deterministic Output Naming",
+      "key": "deterministic_output_naming",
+      "path": [
+        "Major Engineering Work",
+        "Deterministic Output Naming"
+      ],
+      "content": "Each frame is written as:\n\n```text\nframe_0000.jpg\nframe_0001.jpg\n...\n```\n\nThe four-digit zero padding preserves lexical ordering in common filesystems and downstream tooling.",
+      "source_line_start": 104,
+      "source_line_end": 116
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Output Directory Management",
+      "normalized_title": "Output Directory Management",
+      "key": "output_directory_management",
+      "path": [
+        "Major Engineering Work",
+        "Output Directory Management"
+      ],
+      "content": "The destination folder is created automatically when it does not already exist.\n\nThis removes a manual setup step from the workflow.",
+      "source_line_start": 116,
+      "source_line_end": 122
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Resource Cleanup",
+      "normalized_title": "Resource Cleanup",
+      "key": "resource_cleanup",
+      "path": [
+        "Major Engineering Work",
+        "Resource Cleanup"
+      ],
+      "content": "The OpenCV capture object is explicitly released after extraction.",
+      "source_line_start": 122,
+      "source_line_end": 126
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Verification and Runtime Feedback",
+      "normalized_title": "Verification and Runtime Feedback",
+      "key": "verification_and_runtime_feedback",
+      "path": [
+        "Verification and Runtime Feedback"
+      ],
+      "content": "The tool prints:\n\n- original FPS;\n- total source frames;\n- computed duration;\n- each saved frame path;\n- final number of frames written.\n\nThose messages provide a lightweight manual verification trail for an otherwise batch-style utility.",
+      "source_line_start": 126,
+      "source_line_end": 138
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Input Validation\n\nThe script explicitly verifies that the video source can be opened.\n\n### Deterministic File Generation\n\nOutput filenames are generated from monotonically increasing frame indices.\n\n### Resource Lifecycle Management\n\nThe video capture object is released after use.\n\n### Small Functional Decomposition\n\nThe extraction operation is isolated inside `extract_frames(video_path, output_folder)` rather than being written entirely at top level.",
+      "source_line_start": 138,
+      "source_line_end": 156
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Engineering Practices",
+        "Input Validation"
+      ],
+      "content": "The script explicitly verifies that the video source can be opened.",
+      "source_line_start": 140,
+      "source_line_end": 144
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Deterministic File Generation",
+      "normalized_title": "Deterministic File Generation",
+      "key": "deterministic_file_generation",
+      "path": [
+        "Engineering Practices",
+        "Deterministic File Generation"
+      ],
+      "content": "Output filenames are generated from monotonically increasing frame indices.",
+      "source_line_start": 144,
+      "source_line_end": 148
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Resource Lifecycle Management",
+      "normalized_title": "Resource Lifecycle Management",
+      "key": "resource_lifecycle_management",
+      "path": [
+        "Engineering Practices",
+        "Resource Lifecycle Management"
+      ],
+      "content": "The video capture object is released after use.",
+      "source_line_start": 148,
+      "source_line_end": 152
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Small Functional Decomposition",
+      "normalized_title": "Small Functional Decomposition",
+      "key": "small_functional_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Small Functional Decomposition"
+      ],
+      "content": "The extraction operation is isolated inside `extract_frames(video_path, output_folder)` rather than being written entirely at top level.",
+      "source_line_start": 152,
+      "source_line_end": 156
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is intentionally small: one Python source file and one primary workflow.\n\nIts meaningful complexity comes from integrating media decoding, metadata inspection, filesystem preparation, sequential output generation, and resource management.",
+      "source_line_start": 156,
+      "source_line_end": 162
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Python\n\n- function definition;\n- loops;\n- formatted strings;\n- filesystem operations;\n- error-path handling.\n\n### Computer Vision and Media Processing\n\n- OpenCV `VideoCapture`;\n- video frame decoding;\n- frame metadata inspection;\n- image-frame serialization.\n\n### Data Preparation\n\nThe generated JPEG sequence can serve as a downstream image dataset for computer-vision or ML workflows.",
+      "source_line_start": 162,
+      "source_line_end": 183
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- function definition;\n- loops;\n- formatted strings;\n- filesystem operations;\n- error-path handling.",
+      "source_line_start": 164,
+      "source_line_end": 172
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Computer Vision and Media Processing",
+      "normalized_title": "Computer Vision and Media Processing",
+      "key": "computer_vision_and_media_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Computer Vision and Media Processing"
+      ],
+      "content": "- OpenCV `VideoCapture`;\n- video frame decoding;\n- frame metadata inspection;\n- image-frame serialization.",
+      "source_line_start": 172,
+      "source_line_end": 179
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Data Preparation",
+      "normalized_title": "Data Preparation",
+      "key": "data_preparation",
+      "path": [
+        "Skills Demonstrated",
+        "Data Preparation"
+      ],
+      "content": "The generated JPEG sequence can serve as a downstream image dataset for computer-vision or ML workflows.",
+      "source_line_start": 179,
+      "source_line_end": 183
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository introduces a reusable bridge between video data and frame-oriented computer-vision processing.\n\nInstead of requiring later experiments to operate directly on a video stream, the utility materializes deterministic per-frame image files that can be independently inspected, labeled, transformed, or modeled.",
+      "source_line_start": 183,
+      "source_line_end": 189
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository so far centered specifically on:\n\n- generic video-to-frame extraction;\n- OpenCV video decoding as a standalone utility;\n- media-to-image-dataset conversion.\n\nEarlier repositories use camera/image data, but this repository isolates video preprocessing as its own reusable technical tool.",
+      "source_line_start": 189,
+      "source_line_end": 199
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Video-Tools` is a compact Python/OpenCV preprocessing utility that converts an MP4 video into a numbered JPEG frame sequence.\n\nIt demonstrates practical media handling rather than algorithmic novelty: validate the source, inspect metadata, prepare the destination, decode every frame, save it deterministically, release resources, and expose enough runtime information to verify the extraction.\n\n# Project Tags",
+      "source_line_start": 199,
+      "source_line_end": 207
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `developer-tooling`\n- `video-processing-utility`\n- `data-preprocessing-tool`\n- `personal-project`",
+      "source_line_start": 207,
+      "source_line_end": 214
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 214,
+      "source_line_end": 218
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`",
+      "source_line_start": 218,
+      "source_line_end": 222
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Computer Vision and Media",
+      "normalized_title": "Computer Vision and Media",
+      "key": "computer_vision_and_media",
+      "path": [
+        "Computer Vision and Media"
+      ],
+      "content": "- `opencv`\n- `video-processing`\n- `video-frame-extraction`\n- `video-decoding`\n- `image-output`",
+      "source_line_start": 222,
+      "source_line_end": 230
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `dataset-preparation`\n- `filesystem-output`\n- `deterministic-file-naming`",
+      "source_line_start": 230,
+      "source_line_end": 236
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `input-validation`\n- `resource-lifecycle-management`\n- `functional-decomposition`\n- `manual-verification`",
+      "source_line_start": 236,
+      "source_line_end": 243
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-video-frame-extraction`\n- `earliest-observed-video-processing-utility`",
+      "source_line_start": 243,
+      "source_line_end": 247
+    }
+  ],
+  "raw_analysis": "# Repository 055 — Video-Tools\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Video-Tools`\n- **Repository start date:** 2024-10-16\n- **Last meaningful update date:** 2024-10-16\n- **Primary implementation language:** Python\n- **Primary technical field:** video processing / computer vision utility tooling\n- **Project context:** personal utility\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains one executable source file, `video2frames.py`.\n\nThe latest and only meaningful implementation commit creates that file on 2024-10-16.\n\nThe analysis is therefore based directly on the complete implementation rather than on repository naming or dependency metadata.\n\n## What This Project Is\n\n`Video-Tools` is a focused Python utility for extracting every frame from an MP4 video into individually numbered JPEG files.\n\nThe script opens a video through OpenCV, reads source-video metadata, creates an output directory when required, iterates until the video stream is exhausted, writes every decoded frame to disk, and reports processing progress.\n\nThis is a small repository, but it implements a complete media-processing workflow from input file to generated frame dataset.\n\n## Functional Workflow\n\n```text\nMP4 path\n  ↓\nOpenCV VideoCapture\n  ↓\nValidate video opened\n  ↓\nRead FPS + frame count\n  ↓\nCompute duration\n  ↓\nCreate output directory\n  ↓\nSequentially decode frames\n  ↓\nWrite frame_0000.jpg, frame_0001.jpg, ...\n  ↓\nRelease video handle\n  ↓\nReport total saved frames\n```\n\n## Technical Stack\n\n### Python\n\nPython provides the control flow, filesystem integration, formatted filenames, and execution wrapper.\n\n### OpenCV\n\n`cv2.VideoCapture` is used to open and decode the video stream.\n\nThe code also reads:\n\n- `cv2.CAP_PROP_FPS`;\n- `cv2.CAP_PROP_FRAME_COUNT`.\n\nFrames are written through `cv2.imwrite`.\n\n### Filesystem Operations\n\nPython's `os` module is used to:\n\n- check whether the target directory exists;\n- create it when required;\n- construct portable frame output paths.\n\n## Major Engineering Work\n\n### Video Stream Opening and Validation\n\nThe utility checks `video.isOpened()` before attempting extraction.\n\nAn invalid or inaccessible video therefore produces an explicit error path rather than entering the frame-processing loop.\n\n### Video Metadata Inspection\n\nThe implementation reads the video's original frames per second and total frame count.\n\nIt then computes video duration as:\n\n```text\ntotal_frames / original_fps\n```\n\nThe values are printed before extraction, giving the operator immediate visibility into the source asset.\n\n### Sequential Frame Extraction\n\nA `while True` loop calls `video.read()` repeatedly.\n\nExtraction stops when `ret` becomes false, which naturally terminates at end-of-stream or a decoding failure.\n\n### Deterministic Output Naming\n\nEach frame is written as:\n\n```text\nframe_0000.jpg\nframe_0001.jpg\n...\n```\n\nThe four-digit zero padding preserves lexical ordering in common filesystems and downstream tooling.\n\n### Output Directory Management\n\nThe destination folder is created automatically when it does not already exist.\n\nThis removes a manual setup step from the workflow.\n\n### Resource Cleanup\n\nThe OpenCV capture object is explicitly released after extraction.\n\n## Verification and Runtime Feedback\n\nThe tool prints:\n\n- original FPS;\n- total source frames;\n- computed duration;\n- each saved frame path;\n- final number of frames written.\n\nThose messages provide a lightweight manual verification trail for an otherwise batch-style utility.\n\n## Engineering Practices\n\n### Input Validation\n\nThe script explicitly verifies that the video source can be opened.\n\n### Deterministic File Generation\n\nOutput filenames are generated from monotonically increasing frame indices.\n\n### Resource Lifecycle Management\n\nThe video capture object is released after use.\n\n### Small Functional Decomposition\n\nThe extraction operation is isolated inside `extract_frames(video_path, output_folder)` rather than being written entirely at top level.\n\n## Scale and Complexity\n\nThe repository is intentionally small: one Python source file and one primary workflow.\n\nIts meaningful complexity comes from integrating media decoding, metadata inspection, filesystem preparation, sequential output generation, and resource management.\n\n## Skills Demonstrated\n\n### Python\n\n- function definition;\n- loops;\n- formatted strings;\n- filesystem operations;\n- error-path handling.\n\n### Computer Vision and Media Processing\n\n- OpenCV `VideoCapture`;\n- video frame decoding;\n- frame metadata inspection;\n- image-frame serialization.\n\n### Data Preparation\n\nThe generated JPEG sequence can serve as a downstream image dataset for computer-vision or ML workflows.\n\n## Capability Developed\n\nThis repository introduces a reusable bridge between video data and frame-oriented computer-vision processing.\n\nInstead of requiring later experiments to operate directly on a video stream, the utility materializes deterministic per-frame image files that can be independently inspected, labeled, transformed, or modeled.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository so far centered specifically on:\n\n- generic video-to-frame extraction;\n- OpenCV video decoding as a standalone utility;\n- media-to-image-dataset conversion.\n\nEarlier repositories use camera/image data, but this repository isolates video preprocessing as its own reusable technical tool.\n\n## Overall Repository Narrative\n\n`Video-Tools` is a compact Python/OpenCV preprocessing utility that converts an MP4 video into a numbered JPEG frame sequence.\n\nIt demonstrates practical media handling rather than algorithmic novelty: validate the source, inspect metadata, prepare the destination, decode every frame, save it deterministically, release resources, and expose enough runtime information to verify the extraction.\n\n# Project Tags\n\n## Project Type\n\n- `developer-tooling`\n- `video-processing-utility`\n- `data-preprocessing-tool`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `python`\n\n## Computer Vision and Media\n\n- `opencv`\n- `video-processing`\n- `video-frame-extraction`\n- `video-decoding`\n- `image-output`\n\n## Database and Data\n\n- `dataset-preparation`\n- `filesystem-output`\n- `deterministic-file-naming`\n\n## Software Engineering Practices\n\n- `input-validation`\n- `resource-lifecycle-management`\n- `functional-decomposition`\n- `manual-verification`\n\n## Portfolio Significance\n\n- `earliest-observed-video-frame-extraction`\n- `earliest-observed-video-processing-utility`\n"
+}

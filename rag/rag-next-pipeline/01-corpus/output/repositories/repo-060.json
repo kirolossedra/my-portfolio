@@ -1,0 +1,473 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 60,
+  "repository_total": 134,
+  "repository_name": "IBM-Cloud",
+  "header_title": "IBM-Cloud",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-060-IBM-Cloud/README.md",
+    "line_start": 1,
+    "line_end": 211,
+    "sha256": "a46e2607939289fe03d518b8eb67ce8443e1f61e4b174268156ea56dc6a3d56b"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "cloud-lab",
+    "data-engineering-coursework",
+    "technical-lab",
+    "ibm-cloud",
+    "managed-database",
+    "cloud-service-provisioning",
+    "cloud-console",
+    "ibm-db2",
+    "relational-database",
+    "sql",
+    "table-creation",
+    "csv-export",
+    "ibm-watson-ml",
+    "operational-fallback",
+    "rollback-awareness",
+    "lab-documentation",
+    "earliest-observed-ibm-cloud",
+    "earliest-observed-ibm-db2",
+    "earliest-observed-watson-ml"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/IBM-Cloud`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** cloud database / IBM Cloud lab work\n- **Primary platforms:** IBM Cloud, Db2, IBM Watson ML\n- **Project context:** cloud/data-engineering learning repository\n- **Collaboration classification:** individual learning repository"
+    },
+    "documentation": {
+      "section_ids": [
+        "s015"
+      ],
+      "titles": [
+        "Stepwise Cloud Documentation"
+      ],
+      "text": "## Stepwise Cloud Documentation\nThe repository acts as an operational notebook, documenting cloud-console actions with screenshots."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/IBM-Cloud`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** cloud database / IBM Cloud lab work\n- **Primary platforms:** IBM Cloud, Db2, IBM Watson ML\n- **Project context:** cloud/data-engineering learning repository\n- **Collaboration classification:** individual learning repository",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains documented lab artifacts for:\n\n- creating a Db2 service instance;\n- creating tables and loading data in Db2;\n- exporting Db2 data to CSV;\n- saving SQL in the cloud;\n- IBM Watson ML exposure.\n\nMost evidence is preserved as screenshots embedded in README files, with supporting text explaining the actions and one checked-in CSV export.\n\nThe corpus therefore treats this as cloud-lab execution evidence, not as a production cloud architecture.",
+      "source_line_start": 13,
+      "source_line_end": 27
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "```text\nIBM-Cloud/\n├── Create DB2 service instance/\n│   └── README.md\n├── Create Tables and Load Data in Db2/\n│   ├── README.md\n│   └── data.csv\n└── IBM Watson ML/\n    └── README.md\n```",
+      "source_line_start": 27,
+      "source_line_end": 40
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "IBM Db2 Service Provisioning",
+      "normalized_title": "IBM Db2 Service Provisioning",
+      "key": "ibm_db2_service_provisioning",
+      "path": [
+        "IBM Db2 Service Provisioning"
+      ],
+      "content": "A dedicated section records the creation of a Db2 service instance through IBM Cloud.\n\nThe README preserves a sequence of screenshots from the provisioning workflow.\n\nThis is direct evidence of navigating the IBM Cloud service lifecycle rather than merely listing Db2 as a technology.",
+      "source_line_start": 40,
+      "source_line_end": 48
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Table Creation and Data Loading",
+      "normalized_title": "Table Creation and Data Loading",
+      "key": "table_creation_and_data_loading",
+      "path": [
+        "Table Creation and Data Loading"
+      ],
+      "content": "The larger Db2 README documents a sequence of database operations through screenshots and notes.\n\nThe workflow includes creating database tables and working with uploaded or manually entered data.",
+      "source_line_start": 48,
+      "source_line_end": 54
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "SQL Fallback when UI Data Loading Failed",
+      "normalized_title": "SQL Fallback when UI Data Loading Failed",
+      "key": "sql_fallback_when_ui_data_loading_failed",
+      "path": [
+        "SQL Fallback when UI Data Loading Failed"
+      ],
+      "content": "The repository explicitly records that the graphical \"load data\" option did not work as intended.\n\nThe response was to enter the fields using SQL instead.\n\nThat is meaningful engineering evidence because the lab did not stop at a UI failure; the workflow fell back to a lower-level database mechanism.",
+      "source_line_start": 54,
+      "source_line_end": 62
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Creating Additional Tables",
+      "normalized_title": "Creating Additional Tables",
+      "key": "creating_additional_tables",
+      "path": [
+        "Creating Additional Tables"
+      ],
+      "content": "The README documents creation of another table as the exercise progressed.",
+      "source_line_start": 62,
+      "source_line_end": 66
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Saving SQL in the Cloud",
+      "normalized_title": "Saving SQL in the Cloud",
+      "key": "saving_sql_in_the_cloud",
+      "path": [
+        "Saving SQL in the Cloud"
+      ],
+      "content": "The repository notes:\n\n```text\nI SAVE THE SQL ON THE CLOUD FOR ROLLBACK\n```\n\nThis indicates awareness of preserving database work for recovery/reuse rather than treating SQL as disposable session input.",
+      "source_line_start": 66,
+      "source_line_end": 76
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "CSV Export",
+      "normalized_title": "CSV Export",
+      "key": "csv_export",
+      "path": [
+        "CSV Export"
+      ],
+      "content": "A CSV produced from Db2 is checked into the repository.\n\nThis gives a concrete data artifact alongside the screenshot-based lab record.",
+      "source_line_start": 76,
+      "source_line_end": 82
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "IBM Watson ML",
+      "normalized_title": "IBM Watson ML",
+      "key": "ibm_watson_ml",
+      "path": [
+        "IBM Watson ML"
+      ],
+      "content": "A separate directory records IBM Watson Machine Learning exposure through a preserved screenshot.\n\nThe evidence supports platform interaction, but not a larger model-deployment claim because executable deployment code is not present in this repository.",
+      "source_line_start": 82,
+      "source_line_end": 88
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Operational Fallback\n\nWhen the data-loading UI failed, SQL was used to continue the task.\n\n### Persistence of Work\n\nSQL was saved in the cloud for rollback/recovery.\n\n### Exported Data Artifact\n\nThe resulting CSV is preserved in version control.\n\n### Stepwise Cloud Documentation\n\nThe repository acts as an operational notebook, documenting cloud-console actions with screenshots.",
+      "source_line_start": 88,
+      "source_line_end": 106
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Operational Fallback",
+      "normalized_title": "Operational Fallback",
+      "key": "operational_fallback",
+      "path": [
+        "Engineering Practices",
+        "Operational Fallback"
+      ],
+      "content": "When the data-loading UI failed, SQL was used to continue the task.",
+      "source_line_start": 90,
+      "source_line_end": 94
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Persistence of Work",
+      "normalized_title": "Persistence of Work",
+      "key": "persistence_of_work",
+      "path": [
+        "Engineering Practices",
+        "Persistence of Work"
+      ],
+      "content": "SQL was saved in the cloud for rollback/recovery.",
+      "source_line_start": 94,
+      "source_line_end": 98
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Exported Data Artifact",
+      "normalized_title": "Exported Data Artifact",
+      "key": "exported_data_artifact",
+      "path": [
+        "Engineering Practices",
+        "Exported Data Artifact"
+      ],
+      "content": "The resulting CSV is preserved in version control.",
+      "source_line_start": 98,
+      "source_line_end": 102
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Stepwise Cloud Documentation",
+      "normalized_title": "Stepwise Cloud Documentation",
+      "key": "stepwise_cloud_documentation",
+      "path": [
+        "Engineering Practices",
+        "Stepwise Cloud Documentation"
+      ],
+      "content": "The repository acts as an operational notebook, documenting cloud-console actions with screenshots.",
+      "source_line_start": 102,
+      "source_line_end": 106
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small in code terms because the work occurs primarily through a managed cloud console.\n\nIts technical value lies in executing a cloud database workflow:\n\n```text\nprovision service\n  ↓\ncreate tables\n  ↓\nload/enter data\n  ↓\nuse SQL when UI path fails\n  ↓\npreserve SQL\n  ↓\nexport data\n```",
+      "source_line_start": 106,
+      "source_line_end": 126
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Cloud\n\n- IBM Cloud navigation;\n- managed database service provisioning;\n- cloud-console workflow.\n\n### Databases\n\n- IBM Db2;\n- table creation;\n- SQL-based data entry;\n- database-to-CSV export.\n\n### Operations\n\n- fallback from GUI tooling to SQL;\n- preservation of SQL for rollback;\n- evidence-oriented lab documentation.\n\n### ML Platform Exposure\n\n- IBM Watson Machine Learning console exposure.",
+      "source_line_start": 126,
+      "source_line_end": 151
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Cloud",
+      "normalized_title": "Cloud",
+      "key": "cloud",
+      "path": [
+        "Skills Demonstrated",
+        "Cloud"
+      ],
+      "content": "- IBM Cloud navigation;\n- managed database service provisioning;\n- cloud-console workflow.",
+      "source_line_start": 128,
+      "source_line_end": 134
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Databases",
+      "normalized_title": "Databases",
+      "key": "databases",
+      "path": [
+        "Skills Demonstrated",
+        "Databases"
+      ],
+      "content": "- IBM Db2;\n- table creation;\n- SQL-based data entry;\n- database-to-CSV export.",
+      "source_line_start": 134,
+      "source_line_end": 141
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Operations",
+      "normalized_title": "Operations",
+      "key": "operations",
+      "path": [
+        "Skills Demonstrated",
+        "Operations"
+      ],
+      "content": "- fallback from GUI tooling to SQL;\n- preservation of SQL for rollback;\n- evidence-oriented lab documentation.",
+      "source_line_start": 141,
+      "source_line_end": 147
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "ML Platform Exposure",
+      "normalized_title": "ML Platform Exposure",
+      "key": "ml_platform_exposure",
+      "path": [
+        "Skills Demonstrated",
+        "ML Platform Exposure"
+      ],
+      "content": "- IBM Watson Machine Learning console exposure.",
+      "source_line_start": 147,
+      "source_line_end": 151
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository adds managed-cloud database operations to the portfolio chronology.\n\nEarlier repositories interact with local SQL engines and SQLite; here the work moves into a hosted database service where provisioning, console tooling, persistence, and export are part of the workflow.",
+      "source_line_start": 151,
+      "source_line_end": 157
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository with direct evidence of:\n\n- IBM Cloud;\n- managed IBM Db2 provisioning;\n- cloud-hosted relational database lab work;\n- IBM Watson ML platform exposure.",
+      "source_line_start": 157,
+      "source_line_end": 166
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`IBM-Cloud` is a compact operational lab repository documenting hands-on IBM Cloud work.\n\nIt shows Db2 service creation, table/data workflows, SQL fallback after a UI import problem, preservation of cloud SQL for rollback, CSV export, and exposure to Watson ML.\n\nIts portfolio value is cloud operations and managed-database experience, not application-scale software engineering.\n\n# Project Tags",
+      "source_line_start": 166,
+      "source_line_end": 176
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `cloud-lab`\n- `data-engineering-coursework`\n- `technical-lab`",
+      "source_line_start": 176,
+      "source_line_end": 182
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Cloud and Infrastructure",
+      "normalized_title": "Cloud and Infrastructure",
+      "key": "cloud_and_infrastructure",
+      "path": [
+        "Cloud and Infrastructure"
+      ],
+      "content": "- `ibm-cloud`\n- `managed-database`\n- `cloud-service-provisioning`\n- `cloud-console`",
+      "source_line_start": 182,
+      "source_line_end": 189
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `ibm-db2`\n- `relational-database`\n- `sql`\n- `table-creation`\n- `csv-export`",
+      "source_line_start": 189,
+      "source_line_end": 197
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Machine Learning Platforms",
+      "normalized_title": "Machine Learning Platforms",
+      "key": "machine_learning_platforms",
+      "path": [
+        "Machine Learning Platforms"
+      ],
+      "content": "- `ibm-watson-ml`",
+      "source_line_start": 197,
+      "source_line_end": 201
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `operational-fallback`\n- `rollback-awareness`\n- `lab-documentation`",
+      "source_line_start": 201,
+      "source_line_end": 207
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-ibm-cloud`\n- `earliest-observed-ibm-db2`\n- `earliest-observed-watson-ml`",
+      "source_line_start": 207,
+      "source_line_end": 212
+    }
+  ],
+  "raw_analysis": "# Repository 060 — IBM-Cloud\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/IBM-Cloud`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** cloud database / IBM Cloud lab work\n- **Primary platforms:** IBM Cloud, Db2, IBM Watson ML\n- **Project context:** cloud/data-engineering learning repository\n- **Collaboration classification:** individual learning repository\n\n## Evidence Basis\n\nThe repository contains documented lab artifacts for:\n\n- creating a Db2 service instance;\n- creating tables and loading data in Db2;\n- exporting Db2 data to CSV;\n- saving SQL in the cloud;\n- IBM Watson ML exposure.\n\nMost evidence is preserved as screenshots embedded in README files, with supporting text explaining the actions and one checked-in CSV export.\n\nThe corpus therefore treats this as cloud-lab execution evidence, not as a production cloud architecture.\n\n## Repository Structure\n\n```text\nIBM-Cloud/\n├── Create DB2 service instance/\n│   └── README.md\n├── Create Tables and Load Data in Db2/\n│   ├── README.md\n│   └── data.csv\n└── IBM Watson ML/\n    └── README.md\n```\n\n## IBM Db2 Service Provisioning\n\nA dedicated section records the creation of a Db2 service instance through IBM Cloud.\n\nThe README preserves a sequence of screenshots from the provisioning workflow.\n\nThis is direct evidence of navigating the IBM Cloud service lifecycle rather than merely listing Db2 as a technology.\n\n## Table Creation and Data Loading\n\nThe larger Db2 README documents a sequence of database operations through screenshots and notes.\n\nThe workflow includes creating database tables and working with uploaded or manually entered data.\n\n## SQL Fallback when UI Data Loading Failed\n\nThe repository explicitly records that the graphical \"load data\" option did not work as intended.\n\nThe response was to enter the fields using SQL instead.\n\nThat is meaningful engineering evidence because the lab did not stop at a UI failure; the workflow fell back to a lower-level database mechanism.\n\n## Creating Additional Tables\n\nThe README documents creation of another table as the exercise progressed.\n\n## Saving SQL in the Cloud\n\nThe repository notes:\n\n```text\nI SAVE THE SQL ON THE CLOUD FOR ROLLBACK\n```\n\nThis indicates awareness of preserving database work for recovery/reuse rather than treating SQL as disposable session input.\n\n## CSV Export\n\nA CSV produced from Db2 is checked into the repository.\n\nThis gives a concrete data artifact alongside the screenshot-based lab record.\n\n## IBM Watson ML\n\nA separate directory records IBM Watson Machine Learning exposure through a preserved screenshot.\n\nThe evidence supports platform interaction, but not a larger model-deployment claim because executable deployment code is not present in this repository.\n\n## Engineering Practices\n\n### Operational Fallback\n\nWhen the data-loading UI failed, SQL was used to continue the task.\n\n### Persistence of Work\n\nSQL was saved in the cloud for rollback/recovery.\n\n### Exported Data Artifact\n\nThe resulting CSV is preserved in version control.\n\n### Stepwise Cloud Documentation\n\nThe repository acts as an operational notebook, documenting cloud-console actions with screenshots.\n\n## Scale and Complexity\n\nThe repository is small in code terms because the work occurs primarily through a managed cloud console.\n\nIts technical value lies in executing a cloud database workflow:\n\n```text\nprovision service\n  ↓\ncreate tables\n  ↓\nload/enter data\n  ↓\nuse SQL when UI path fails\n  ↓\npreserve SQL\n  ↓\nexport data\n```\n\n## Skills Demonstrated\n\n### Cloud\n\n- IBM Cloud navigation;\n- managed database service provisioning;\n- cloud-console workflow.\n\n### Databases\n\n- IBM Db2;\n- table creation;\n- SQL-based data entry;\n- database-to-CSV export.\n\n### Operations\n\n- fallback from GUI tooling to SQL;\n- preservation of SQL for rollback;\n- evidence-oriented lab documentation.\n\n### ML Platform Exposure\n\n- IBM Watson Machine Learning console exposure.\n\n## Capability Developed\n\nThis repository adds managed-cloud database operations to the portfolio chronology.\n\nEarlier repositories interact with local SQL engines and SQLite; here the work moves into a hosted database service where provisioning, console tooling, persistence, and export are part of the workflow.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository with direct evidence of:\n\n- IBM Cloud;\n- managed IBM Db2 provisioning;\n- cloud-hosted relational database lab work;\n- IBM Watson ML platform exposure.\n\n## Overall Repository Narrative\n\n`IBM-Cloud` is a compact operational lab repository documenting hands-on IBM Cloud work.\n\nIt shows Db2 service creation, table/data workflows, SQL fallback after a UI import problem, preservation of cloud SQL for rollback, CSV export, and exposure to Watson ML.\n\nIts portfolio value is cloud operations and managed-database experience, not application-scale software engineering.\n\n# Project Tags\n\n## Project Type\n\n- `cloud-lab`\n- `data-engineering-coursework`\n- `technical-lab`\n\n## Cloud and Infrastructure\n\n- `ibm-cloud`\n- `managed-database`\n- `cloud-service-provisioning`\n- `cloud-console`\n\n## Database and Data\n\n- `ibm-db2`\n- `relational-database`\n- `sql`\n- `table-creation`\n- `csv-export`\n\n## Machine Learning Platforms\n\n- `ibm-watson-ml`\n\n## Software Engineering Practices\n\n- `operational-fallback`\n- `rollback-awareness`\n- `lab-documentation`\n\n## Portfolio Significance\n\n- `earliest-observed-ibm-cloud`\n- `earliest-observed-ibm-db2`\n- `earliest-observed-watson-ml`\n"
+}

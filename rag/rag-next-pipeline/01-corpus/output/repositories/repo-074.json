@@ -1,0 +1,631 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 74,
+  "repository_total": 134,
+  "repository_name": "Habit-Tracker",
+  "header_title": "Habit-Tracker",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-074-Habit-Tracker/README.md",
+    "line_start": 1,
+    "line_end": 350,
+    "sha256": "26fc26ce3e743fa1c722bb884e8ca6864fb193d9ae796a4153eb3764803a681e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "habit-tracker",
+    "single-page-web-application",
+    "interactive-utility",
+    "frontend-prototype",
+    "individual-project",
+    "html",
+    "css",
+    "javascript",
+    "dynamic-dom",
+    "modal-dialog",
+    "mobile-first-ui",
+    "touch-interaction",
+    "touch-long-press",
+    "custom-context-menu",
+    "emoji-picker",
+    "event-driven-ui",
+    "activity-tracking",
+    "completion-state",
+    "create-edit-delete-ui",
+    "activity-categorization",
+    "earliest-observed-habit-tracker",
+    "earliest-observed-touch-long-press"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Habit-Tracker`\n- **Repository start date:** 2024-12-27\n- **Last meaningful update date:** 2024-12-27\n- **Latest meaningful commit:** `7b13277ba1e8e236fb3194b1b64cecfb45b02fd8`\n- **Primary technical field:** mobile-oriented frontend interaction\n- **Application domain:** daily activity / habit tracking\n- **Primary technologies:** HTML, CSS, JavaScript\n- **Project context:** personal frontend utility\n- **Collaboration classification:** `individual-project`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Event-Driven Architecture"
+      ],
+      "text": "## Event-Driven Architecture\nThe whole application is driven by DOM events rather than polling."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Habit-Tracker`\n- **Repository start date:** 2024-12-27\n- **Last meaningful update date:** 2024-12-27\n- **Latest meaningful commit:** `7b13277ba1e8e236fb3194b1b64cecfb45b02fd8`\n- **Primary technical field:** mobile-oriented frontend interaction\n- **Application domain:** daily activity / habit tracking\n- **Primary technologies:** HTML, CSS, JavaScript\n- **Project context:** personal frontend utility\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains:\n\n- a small README;\n- one substantial `index.html`.\n\nThe single HTML file contains the full interface, styling, state, and interaction logic.",
+      "source_line_start": 15,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Habit-Tracker` is a browser-based daily-activity tracker optimized for touch interaction.\n\nUsers can:\n\n- create activities;\n- classify them as core or non-core;\n- attach an emoji;\n- mark an activity completed;\n- edit an activity;\n- delete an activity.\n\nThe implementation is intentionally compact: the entire application lives in one static page.",
+      "source_line_start": 24,
+      "source_line_end": 39
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Application Shape",
+      "normalized_title": "Application Shape",
+      "key": "application_shape",
+      "path": [
+        "Application Shape"
+      ],
+      "content": "```text\nBrowser page\n    ↓\nActivity list\n    ↓\nAdd button\n    ↓\nModal form\n  ├─ name\n  ├─ core / non-core type\n  └─ emoji\n    ↓\nDynamic activity card\n    ↓\nInteractions\n  ├─ click → completed\n  └─ long press → context menu\n                  ├─ edit\n                  └─ delete\n```",
+      "source_line_start": 39,
+      "source_line_end": 62
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Mobile-Oriented Layout",
+      "normalized_title": "Mobile-Oriented Layout",
+      "key": "mobile_oriented_layout",
+      "path": [
+        "Mobile-Oriented Layout"
+      ],
+      "content": "The viewport disables user scaling and the page is designed around a full-height mobile-style interface.\n\nThe CSS includes:\n\n- flexbox layout;\n- scrollable activity list;\n- circular add button;\n- touch-action control;\n- disabled text selection;\n- modal overlay;\n- custom context menu.\n\nThese choices show deliberate consideration of phone interaction rather than desktop-only layout.",
+      "source_line_start": 62,
+      "source_line_end": 78
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Activity Creation",
+      "normalized_title": "Activity Creation",
+      "key": "activity_creation",
+      "path": [
+        "Activity Creation"
+      ],
+      "content": "The add button opens a modal.\n\nThe modal captures:\n\n- activity name;\n- activity type;\n- selected emoji.\n\nWhen the user confirms a valid name, JavaScript creates a new list item dynamically.",
+      "source_line_start": 78,
+      "source_line_end": 90
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Activity Type",
+      "normalized_title": "Activity Type",
+      "key": "activity_type",
+      "path": [
+        "Activity Type"
+      ],
+      "content": "The user can distinguish activities as:\n\n- `core`;\n- `non-core`.\n\nThat introduces lightweight categorization into the tracker.",
+      "source_line_start": 90,
+      "source_line_end": 99
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Emoji Selection",
+      "normalized_title": "Emoji Selection",
+      "key": "emoji_selection",
+      "path": [
+        "Emoji Selection"
+      ],
+      "content": "The modal presents a set of emoji choices.\n\nClicking an emoji:\n\n- clears previous selection state;\n- marks the new emoji as selected;\n- stores it for activity creation.\n\nThe emoji becomes part of the visible activity card.",
+      "source_line_start": 99,
+      "source_line_end": 111
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Dynamic Color Assignment",
+      "normalized_title": "Dynamic Color Assignment",
+      "key": "dynamic_color_assignment",
+      "path": [
+        "Dynamic Color Assignment"
+      ],
+      "content": "New activities receive a randomly selected pastel background from a predefined palette.\n\nThis adds visual differentiation without requiring a color picker.",
+      "source_line_start": 111,
+      "source_line_end": 117
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Completion Interaction",
+      "normalized_title": "Completion Interaction",
+      "key": "completion_interaction",
+      "path": [
+        "Completion Interaction"
+      ],
+      "content": "A normal click toggles the `completed` class.\n\nThe completed state changes presentation through:\n\n- muted background;\n- line-through text.\n\nThe browser DOM itself therefore acts as the active task-state model during the session.",
+      "source_line_start": 117,
+      "source_line_end": 128
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Long-Press Interaction",
+      "normalized_title": "Long-Press Interaction",
+      "key": "long_press_interaction",
+      "path": [
+        "Long-Press Interaction"
+      ],
+      "content": "The application implements its own long-press gesture.\n\n### Touch Start\n\nA timer begins on `touchstart`.\n\n### Trigger Threshold\n\nAfter 500 milliseconds, the custom context menu is shown.\n\n### Cancellation\n\nThe timer is cleared on:\n\n- `touchend`;\n- `touchmove`.\n\nThis prevents a movement gesture from unintentionally triggering the menu.",
+      "source_line_start": 128,
+      "source_line_end": 149
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Touch Start",
+      "normalized_title": "Touch Start",
+      "key": "touch_start",
+      "path": [
+        "Long-Press Interaction",
+        "Touch Start"
+      ],
+      "content": "A timer begins on `touchstart`.",
+      "source_line_start": 132,
+      "source_line_end": 136
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Trigger Threshold",
+      "normalized_title": "Trigger Threshold",
+      "key": "trigger_threshold",
+      "path": [
+        "Long-Press Interaction",
+        "Trigger Threshold"
+      ],
+      "content": "After 500 milliseconds, the custom context menu is shown.",
+      "source_line_start": 136,
+      "source_line_end": 140
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Cancellation",
+      "normalized_title": "Cancellation",
+      "key": "cancellation",
+      "path": [
+        "Long-Press Interaction",
+        "Cancellation"
+      ],
+      "content": "The timer is cleared on:\n\n- `touchend`;\n- `touchmove`.\n\nThis prevents a movement gesture from unintentionally triggering the menu.",
+      "source_line_start": 140,
+      "source_line_end": 149
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Custom Context Menu",
+      "normalized_title": "Custom Context Menu",
+      "key": "custom_context_menu",
+      "path": [
+        "Custom Context Menu"
+      ],
+      "content": "The context menu offers:\n\n- Edit;\n- Delete.\n\nIts position is calculated relative to the selected activity.\n\nThis is a nontrivial mobile interaction pattern implemented directly with DOM events and geometry.",
+      "source_line_start": 149,
+      "source_line_end": 160
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Edit Workflow",
+      "normalized_title": "Edit Workflow",
+      "key": "edit_workflow",
+      "path": [
+        "Edit Workflow"
+      ],
+      "content": "Selecting Edit:\n\n1. stores the current item as `editingActivity`;\n2. extracts its name and type;\n3. fills the modal fields;\n4. changes the modal title;\n5. opens the modal.\n\nConfirming the modal updates the existing card rather than creating a new one.",
+      "source_line_start": 160,
+      "source_line_end": 172
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Delete Workflow",
+      "normalized_title": "Delete Workflow",
+      "key": "delete_workflow",
+      "path": [
+        "Delete Workflow"
+      ],
+      "content": "Selecting Delete removes the active list item from the DOM.\n\nThe context menu is then dismissed.",
+      "source_line_start": 172,
+      "source_line_end": 178
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Overlay and Modal State",
+      "normalized_title": "Overlay and Modal State",
+      "key": "overlay_and_modal_state",
+      "path": [
+        "Overlay and Modal State"
+      ],
+      "content": "The modal and overlay are toggled together through CSS classes.\n\nClosing the modal resets:\n\n- input text;\n- activity type;\n- selected emoji;\n- editing state;\n- modal title.\n\nThis keeps add and edit workflows inside one reusable component.",
+      "source_line_start": 178,
+      "source_line_end": 192
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Touch Behavior Control",
+      "normalized_title": "Touch Behavior Control",
+      "key": "touch_behavior_control",
+      "path": [
+        "Touch Behavior Control"
+      ],
+      "content": "The page deliberately suppresses browser defaults on activity items.\n\nIt uses:\n\n- `touch-action: none`;\n- `preventDefault`;\n- non-passive touch listeners.\n\nThat gives the application control over long-press behavior.",
+      "source_line_start": 192,
+      "source_line_end": 204
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Reusable Add/Edit Workflow\n\nOne modal supports both creation and editing.\n\n### Explicit Interaction State\n\nJavaScript tracks:\n\n- selected emoji;\n- currently edited item;\n- long-press timer;\n- current context-menu item.\n\n### Event-Driven Architecture\n\nThe whole application is driven by DOM events rather than polling.\n\n### Interaction Cleanup\n\nTimers are cleared on touch cancellation paths.\n\n### Input Validation\n\nEmpty activity names are rejected before creation.",
+      "source_line_start": 204,
+      "source_line_end": 231
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Reusable Add/Edit Workflow",
+      "normalized_title": "Reusable Add/Edit Workflow",
+      "key": "reusable_add_edit_workflow",
+      "path": [
+        "Engineering Practices",
+        "Reusable Add/Edit Workflow"
+      ],
+      "content": "One modal supports both creation and editing.",
+      "source_line_start": 206,
+      "source_line_end": 210
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Explicit Interaction State",
+      "normalized_title": "Explicit Interaction State",
+      "key": "explicit_interaction_state",
+      "path": [
+        "Engineering Practices",
+        "Explicit Interaction State"
+      ],
+      "content": "JavaScript tracks:\n\n- selected emoji;\n- currently edited item;\n- long-press timer;\n- current context-menu item.",
+      "source_line_start": 210,
+      "source_line_end": 219
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Event-Driven Architecture",
+      "normalized_title": "Event-Driven Architecture",
+      "key": "event_driven_architecture",
+      "path": [
+        "Engineering Practices",
+        "Event-Driven Architecture"
+      ],
+      "content": "The whole application is driven by DOM events rather than polling.",
+      "source_line_start": 219,
+      "source_line_end": 223
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Interaction Cleanup",
+      "normalized_title": "Interaction Cleanup",
+      "key": "interaction_cleanup",
+      "path": [
+        "Engineering Practices",
+        "Interaction Cleanup"
+      ],
+      "content": "Timers are cleared on touch cancellation paths.",
+      "source_line_start": 223,
+      "source_line_end": 227
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Engineering Practices",
+        "Input Validation"
+      ],
+      "content": "Empty activity names are rejected before creation.",
+      "source_line_start": 227,
+      "source_line_end": 231
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "Even as a small static app, the project contains several product-facing details:\n\n- activity categorization;\n- completion state;\n- edit/delete flows;\n- emoji personalization;\n- touch-first long-press behavior;\n- modal entry;\n- custom context menu;\n- mobile-friendly layout.\n\nThis makes it a usable interaction prototype rather than a static mockup.",
+      "source_line_start": 231,
+      "source_line_end": 246
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository has one implementation file.\n\nWithin that file, it combines:\n\n- state management;\n- dynamic DOM creation;\n- modal UI;\n- touch gestures;\n- context-menu positioning;\n- editing;\n- deletion;\n- completion toggling.\n\nThe compact file therefore contains a meaningful amount of frontend interaction logic.",
+      "source_line_start": 246,
+      "source_line_end": 263
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Frontend\n\n- **HTML — strong evidence.**\n- **CSS — strong evidence.**\n- **JavaScript — strong evidence.**\n- **Dynamic DOM construction — strong evidence.**\n- **Modal UI — strong evidence.**\n\n### Mobile Interaction\n\n- **Touch events — strong evidence.**\n- **Long-press gesture — strong evidence.**\n- **Custom context menu — strong evidence.**\n- **Touch-default suppression — strong evidence.**\n\n### Product Behavior\n\n- **Create/edit/delete interaction — strong evidence.**\n- **Completion-state toggling — strong evidence.**\n- **Lightweight activity categorization — strong evidence.**",
+      "source_line_start": 263,
+      "source_line_end": 286
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **HTML — strong evidence.**\n- **CSS — strong evidence.**\n- **JavaScript — strong evidence.**\n- **Dynamic DOM construction — strong evidence.**\n- **Modal UI — strong evidence.**",
+      "source_line_start": 265,
+      "source_line_end": 273
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Mobile Interaction",
+      "normalized_title": "Mobile Interaction",
+      "key": "mobile_interaction",
+      "path": [
+        "Skills Demonstrated",
+        "Mobile Interaction"
+      ],
+      "content": "- **Touch events — strong evidence.**\n- **Long-press gesture — strong evidence.**\n- **Custom context menu — strong evidence.**\n- **Touch-default suppression — strong evidence.**",
+      "source_line_start": 273,
+      "source_line_end": 280
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Product Behavior",
+      "normalized_title": "Product Behavior",
+      "key": "product_behavior",
+      "path": [
+        "Skills Demonstrated",
+        "Product Behavior"
+      ],
+      "content": "- **Create/edit/delete interaction — strong evidence.**\n- **Completion-state toggling — strong evidence.**\n- **Lightweight activity categorization — strong evidence.**",
+      "source_line_start": 280,
+      "source_line_end": 286
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This project extends earlier web interaction experience into touch-first application behavior.\n\nThe distinctive addition is custom gesture handling: a long press becomes a secondary-action surface for editing or deleting an item.",
+      "source_line_start": 286,
+      "source_line_end": 292
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository centered on a habit/activity-tracking interface.\n\nIt also provides the earliest direct evidence in the processed corpus of an explicitly implemented touch long-press context-menu workflow.",
+      "source_line_start": 292,
+      "source_line_end": 298
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Habit-Tracker` is a small but revealing product prototype.\n\nThe focus is less on algorithms and more on interaction design: how a user creates, completes, edits, and deletes personal items on a phone-sized surface.",
+      "source_line_start": 298,
+      "source_line_end": 304
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Habit-Tracker` is a self-contained mobile-oriented web utility for managing daily activities.\n\nIts strongest engineering evidence is the interaction layer: modal reuse, dynamic DOM state, touch timers, long-press detection, context-menu positioning, edit/delete actions, completion state, and personalized visual cards.\n\n# Project Tags",
+      "source_line_start": 304,
+      "source_line_end": 312
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `habit-tracker`\n- `single-page-web-application`\n- `interactive-utility`\n- `frontend-prototype`",
+      "source_line_start": 312,
+      "source_line_end": 319
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 319,
+      "source_line_end": 323
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `html`\n- `css`\n- `javascript`",
+      "source_line_start": 323,
+      "source_line_end": 329
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `dynamic-dom`\n- `modal-dialog`\n- `mobile-first-ui`\n- `touch-interaction`\n- `touch-long-press`\n- `custom-context-menu`\n- `emoji-picker`\n- `event-driven-ui`",
+      "source_line_start": 329,
+      "source_line_end": 340
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Product Behavior",
+      "normalized_title": "Product Behavior",
+      "key": "product_behavior",
+      "path": [
+        "Product Behavior"
+      ],
+      "content": "- `activity-tracking`\n- `completion-state`\n- `create-edit-delete-ui`\n- `activity-categorization`",
+      "source_line_start": 340,
+      "source_line_end": 347
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-habit-tracker`\n- `earliest-observed-touch-long-press`",
+      "source_line_start": 347,
+      "source_line_end": 351
+    }
+  ],
+  "raw_analysis": "# Repository 074 — Habit-Tracker\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Habit-Tracker`\n- **Repository start date:** 2024-12-27\n- **Last meaningful update date:** 2024-12-27\n- **Latest meaningful commit:** `7b13277ba1e8e236fb3194b1b64cecfb45b02fd8`\n- **Primary technical field:** mobile-oriented frontend interaction\n- **Application domain:** daily activity / habit tracking\n- **Primary technologies:** HTML, CSS, JavaScript\n- **Project context:** personal frontend utility\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains:\n\n- a small README;\n- one substantial `index.html`.\n\nThe single HTML file contains the full interface, styling, state, and interaction logic.\n\n## What This Project Is\n\n`Habit-Tracker` is a browser-based daily-activity tracker optimized for touch interaction.\n\nUsers can:\n\n- create activities;\n- classify them as core or non-core;\n- attach an emoji;\n- mark an activity completed;\n- edit an activity;\n- delete an activity.\n\nThe implementation is intentionally compact: the entire application lives in one static page.\n\n## Application Shape\n\n```text\nBrowser page\n    ↓\nActivity list\n    ↓\nAdd button\n    ↓\nModal form\n  ├─ name\n  ├─ core / non-core type\n  └─ emoji\n    ↓\nDynamic activity card\n    ↓\nInteractions\n  ├─ click → completed\n  └─ long press → context menu\n                  ├─ edit\n                  └─ delete\n```\n\n## Mobile-Oriented Layout\n\nThe viewport disables user scaling and the page is designed around a full-height mobile-style interface.\n\nThe CSS includes:\n\n- flexbox layout;\n- scrollable activity list;\n- circular add button;\n- touch-action control;\n- disabled text selection;\n- modal overlay;\n- custom context menu.\n\nThese choices show deliberate consideration of phone interaction rather than desktop-only layout.\n\n## Activity Creation\n\nThe add button opens a modal.\n\nThe modal captures:\n\n- activity name;\n- activity type;\n- selected emoji.\n\nWhen the user confirms a valid name, JavaScript creates a new list item dynamically.\n\n## Activity Type\n\nThe user can distinguish activities as:\n\n- `core`;\n- `non-core`.\n\nThat introduces lightweight categorization into the tracker.\n\n## Emoji Selection\n\nThe modal presents a set of emoji choices.\n\nClicking an emoji:\n\n- clears previous selection state;\n- marks the new emoji as selected;\n- stores it for activity creation.\n\nThe emoji becomes part of the visible activity card.\n\n## Dynamic Color Assignment\n\nNew activities receive a randomly selected pastel background from a predefined palette.\n\nThis adds visual differentiation without requiring a color picker.\n\n## Completion Interaction\n\nA normal click toggles the `completed` class.\n\nThe completed state changes presentation through:\n\n- muted background;\n- line-through text.\n\nThe browser DOM itself therefore acts as the active task-state model during the session.\n\n## Long-Press Interaction\n\nThe application implements its own long-press gesture.\n\n### Touch Start\n\nA timer begins on `touchstart`.\n\n### Trigger Threshold\n\nAfter 500 milliseconds, the custom context menu is shown.\n\n### Cancellation\n\nThe timer is cleared on:\n\n- `touchend`;\n- `touchmove`.\n\nThis prevents a movement gesture from unintentionally triggering the menu.\n\n## Custom Context Menu\n\nThe context menu offers:\n\n- Edit;\n- Delete.\n\nIts position is calculated relative to the selected activity.\n\nThis is a nontrivial mobile interaction pattern implemented directly with DOM events and geometry.\n\n## Edit Workflow\n\nSelecting Edit:\n\n1. stores the current item as `editingActivity`;\n2. extracts its name and type;\n3. fills the modal fields;\n4. changes the modal title;\n5. opens the modal.\n\nConfirming the modal updates the existing card rather than creating a new one.\n\n## Delete Workflow\n\nSelecting Delete removes the active list item from the DOM.\n\nThe context menu is then dismissed.\n\n## Overlay and Modal State\n\nThe modal and overlay are toggled together through CSS classes.\n\nClosing the modal resets:\n\n- input text;\n- activity type;\n- selected emoji;\n- editing state;\n- modal title.\n\nThis keeps add and edit workflows inside one reusable component.\n\n## Touch Behavior Control\n\nThe page deliberately suppresses browser defaults on activity items.\n\nIt uses:\n\n- `touch-action: none`;\n- `preventDefault`;\n- non-passive touch listeners.\n\nThat gives the application control over long-press behavior.\n\n## Engineering Practices\n\n### Reusable Add/Edit Workflow\n\nOne modal supports both creation and editing.\n\n### Explicit Interaction State\n\nJavaScript tracks:\n\n- selected emoji;\n- currently edited item;\n- long-press timer;\n- current context-menu item.\n\n### Event-Driven Architecture\n\nThe whole application is driven by DOM events rather than polling.\n\n### Interaction Cleanup\n\nTimers are cleared on touch cancellation paths.\n\n### Input Validation\n\nEmpty activity names are rejected before creation.\n\n## Product Engineering\n\nEven as a small static app, the project contains several product-facing details:\n\n- activity categorization;\n- completion state;\n- edit/delete flows;\n- emoji personalization;\n- touch-first long-press behavior;\n- modal entry;\n- custom context menu;\n- mobile-friendly layout.\n\nThis makes it a usable interaction prototype rather than a static mockup.\n\n## Scale and Complexity\n\nThe repository has one implementation file.\n\nWithin that file, it combines:\n\n- state management;\n- dynamic DOM creation;\n- modal UI;\n- touch gestures;\n- context-menu positioning;\n- editing;\n- deletion;\n- completion toggling.\n\nThe compact file therefore contains a meaningful amount of frontend interaction logic.\n\n## Skills Demonstrated\n\n### Frontend\n\n- **HTML — strong evidence.**\n- **CSS — strong evidence.**\n- **JavaScript — strong evidence.**\n- **Dynamic DOM construction — strong evidence.**\n- **Modal UI — strong evidence.**\n\n### Mobile Interaction\n\n- **Touch events — strong evidence.**\n- **Long-press gesture — strong evidence.**\n- **Custom context menu — strong evidence.**\n- **Touch-default suppression — strong evidence.**\n\n### Product Behavior\n\n- **Create/edit/delete interaction — strong evidence.**\n- **Completion-state toggling — strong evidence.**\n- **Lightweight activity categorization — strong evidence.**\n\n## Capability Developed\n\nThis project extends earlier web interaction experience into touch-first application behavior.\n\nThe distinctive addition is custom gesture handling: a long press becomes a secondary-action surface for editing or deleting an item.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository centered on a habit/activity-tracking interface.\n\nIt also provides the earliest direct evidence in the processed corpus of an explicitly implemented touch long-press context-menu workflow.\n\n## Historical Significance\n\n`Habit-Tracker` is a small but revealing product prototype.\n\nThe focus is less on algorithms and more on interaction design: how a user creates, completes, edits, and deletes personal items on a phone-sized surface.\n\n## Overall Repository Narrative\n\n`Habit-Tracker` is a self-contained mobile-oriented web utility for managing daily activities.\n\nIts strongest engineering evidence is the interaction layer: modal reuse, dynamic DOM state, touch timers, long-press detection, context-menu positioning, edit/delete actions, completion state, and personalized visual cards.\n\n# Project Tags\n\n## Project Type\n\n- `habit-tracker`\n- `single-page-web-application`\n- `interactive-utility`\n- `frontend-prototype`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `html`\n- `css`\n- `javascript`\n\n## Frontend\n\n- `dynamic-dom`\n- `modal-dialog`\n- `mobile-first-ui`\n- `touch-interaction`\n- `touch-long-press`\n- `custom-context-menu`\n- `emoji-picker`\n- `event-driven-ui`\n\n## Product Behavior\n\n- `activity-tracking`\n- `completion-state`\n- `create-edit-delete-ui`\n- `activity-categorization`\n\n## Portfolio Significance\n\n- `earliest-observed-habit-tracker`\n- `earliest-observed-touch-long-press`\n"
+}

@@ -1,0 +1,420 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 31,
+  "repository_total": 134,
+  "repository_name": "TestAnimation",
+  "header_title": "TestAnimation",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-031-TestAnimation/README.md",
+    "line_start": 1,
+    "line_end": 253,
+    "sha256": "810b5ecf79b3568bcb7c8f4014ee98dd501ccdd1aae8281326328c5f2b70b113"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "frontend-prototype",
+    "ui-experiment",
+    "individual-project",
+    "html",
+    "css",
+    "javascript",
+    "browser-dom",
+    "intersection-observer",
+    "scroll-reveal-animation",
+    "event-driven-ui",
+    "css-transitions",
+    "css-grid",
+    "viewport-based-interaction",
+    "class-driven-ui-state",
+    "google-fonts",
+    "github-pages",
+    "static-site-deployment",
+    "isolated-ui-experiment",
+    "rapid-prototyping",
+    "earliest-observed-intersection-observer",
+    "earliest-observed-scroll-reveal-animation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 031 / 134\n- Name: `TestAnimation`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Type: Frontend animation experiment\n- Primary Stack: HTML, CSS, JavaScript\n- Delivery: GitHub Pages\n- Collaboration Type: Individual Project"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Interaction Architecture"
+      ],
+      "text": "## Interaction Architecture\nThe core behavior is:\n\n```text\nHTML section with .hidden\n          ↓\nIntersectionObserver watches element\n          ↓\nentry.isIntersecting\n      ↙           ↘\n   true            false\n    ↓                ↓\nadd .show        remove .show\n      \\            /\n       CSS transition\n```\n\nThis is a clean browser-native event/state pipeline."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible commit history is a short owner-attributed implementation sequence.\n\nThe project was created and iterated entirely on May 31, 2024.\n\nSeveral successive commits update `app.js`, showing focused experimentation with the interaction logic rather than a one-shot file upload."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 031 / 134\n- Name: `TestAnimation`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Type: Frontend animation experiment\n- Primary Stack: HTML, CSS, JavaScript\n- Delivery: GitHub Pages\n- Collaboration Type: Individual Project",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible commit history is a short owner-attributed implementation sequence.\n\nThe project was created and iterated entirely on May 31, 2024.\n\nSeveral successive commits update `app.js`, showing focused experimentation with the interaction logic rather than a one-shot file upload.",
+      "source_line_start": 14,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`TestAnimation` is a small browser experiment for scroll-triggered reveal animation.\n\nThe page contains multiple full-viewport sections.\n\nThose sections begin with the CSS class `.hidden`.\n\nJavaScript observes their visibility relative to the viewport.\n\nAs sections enter or leave the viewport, a `.show` class is dynamically added or removed.\n\nCSS then turns the state change into an opacity transition.",
+      "source_line_start": 22,
+      "source_line_end": 36
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Structure",
+      "normalized_title": "Project Structure",
+      "key": "project_structure",
+      "path": [
+        "Project Structure"
+      ],
+      "content": "```text\nTestAnimation/\n├── index.html\n├── styles.css\n└── app.js\n```\n\nEach file has a single clear responsibility:\n\n- HTML defines sections,\n- CSS defines presentation and reveal state,\n- JavaScript detects viewport intersection.",
+      "source_line_start": 36,
+      "source_line_end": 51
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Interaction Architecture",
+      "normalized_title": "Interaction Architecture",
+      "key": "interaction_architecture",
+      "path": [
+        "Interaction Architecture"
+      ],
+      "content": "The core behavior is:\n\n```text\nHTML section with .hidden\n          ↓\nIntersectionObserver watches element\n          ↓\nentry.isIntersecting\n      ↙           ↘\n   true            false\n    ↓                ↓\nadd .show        remove .show\n      \\            /\n       CSS transition\n```\n\nThis is a clean browser-native event/state pipeline.",
+      "source_line_start": 51,
+      "source_line_end": 71
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Intersection Observer API",
+      "normalized_title": "Intersection Observer API",
+      "key": "intersection_observer_api",
+      "path": [
+        "Intersection Observer API"
+      ],
+      "content": "`app.js` constructs an `IntersectionObserver`.\n\nFor each callback entry, the implementation checks:\n\n`entry.isIntersecting`\n\nWhen true:\n\n```text\nentry.target.classList.add('show')\n```\n\nWhen false:\n\n```text\nentry.target.classList.remove('show')\n```\n\nAll `.hidden` elements are selected and individually registered with the observer.\n\nThis is direct use of the browser’s visibility-observation API.",
+      "source_line_start": 71,
+      "source_line_end": 95
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Scroll-Reveal State",
+      "normalized_title": "Scroll-Reveal State",
+      "key": "scroll_reveal_state",
+      "path": [
+        "Scroll-Reveal State"
+      ],
+      "content": "The CSS defines two presentation states.\n\n### Hidden\n\n```text\nopacity: 0\ntransition: all 1s\n```\n\n### Show\n\n```text\nopacity: 1\n```\n\nJavaScript controls only the semantic visibility class.\n\nCSS owns the animation itself.\n\nThat creates a simple separation between:\n\n- visibility detection,\n- visual transition.",
+      "source_line_start": 95,
+      "source_line_end": 121
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Hidden",
+      "normalized_title": "Hidden",
+      "key": "hidden",
+      "path": [
+        "Scroll-Reveal State",
+        "Hidden"
+      ],
+      "content": "```text\nopacity: 0\ntransition: all 1s\n```",
+      "source_line_start": 99,
+      "source_line_end": 106
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Show",
+      "normalized_title": "Show",
+      "key": "show",
+      "path": [
+        "Scroll-Reveal State",
+        "Show"
+      ],
+      "content": "```text\nopacity: 1\n```\n\nJavaScript controls only the semantic visibility class.\n\nCSS owns the animation itself.\n\nThat creates a simple separation between:\n\n- visibility detection,\n- visual transition.",
+      "source_line_start": 106,
+      "source_line_end": 121
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Page Layout",
+      "normalized_title": "Page Layout",
+      "key": "page_layout",
+      "path": [
+        "Page Layout"
+      ],
+      "content": "Each `section` is configured as a grid.\n\nIt uses:\n\n- `display: grid`,\n- `place-items: center`,\n- `align-content: center`,\n- `min-height: 100vh`.\n\nAs a result, each reveal target occupies at least one viewport height and centers its content.\n\nThat layout makes the intersection behavior easy to observe while scrolling.",
+      "source_line_start": 121,
+      "source_line_end": 136
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Typography",
+      "normalized_title": "Typography",
+      "key": "typography",
+      "path": [
+        "Typography"
+      ],
+      "content": "The project imports Poppins from Google Fonts.\n\nSeveral font weights are requested.\n\nThe body applies Poppins as the primary font.",
+      "source_line_start": 136,
+      "source_line_end": 144
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "GitHub Pages",
+      "normalized_title": "GitHub Pages",
+      "key": "github_pages",
+      "path": [
+        "GitHub Pages"
+      ],
+      "content": "Repository metadata shows GitHub Pages enabled.\n\nThat turns the experiment into a deployable browser artifact rather than only local source.",
+      "source_line_start": 144,
+      "source_line_end": 150
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Separation of Concerns\n\nThe three-file structure cleanly separates:\n\n- markup,\n- styling,\n- runtime behavior.\n\n### Browser-Native API Use\n\nViewport detection uses `IntersectionObserver` instead of repeatedly polling scroll position.\n\n### State via CSS Classes\n\nJavaScript mutates class state while CSS determines presentation.\n\n### Focused Iteration\n\nThe commit sequence shows repeated refinement of `app.js` during the same short experiment.",
+      "source_line_start": 150,
+      "source_line_end": 172
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Separation of Concerns",
+      "normalized_title": "Separation of Concerns",
+      "key": "separation_of_concerns",
+      "path": [
+        "Engineering Practices",
+        "Separation of Concerns"
+      ],
+      "content": "The three-file structure cleanly separates:\n\n- markup,\n- styling,\n- runtime behavior.",
+      "source_line_start": 152,
+      "source_line_end": 160
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Browser-Native API Use",
+      "normalized_title": "Browser-Native API Use",
+      "key": "browser_native_api_use",
+      "path": [
+        "Engineering Practices",
+        "Browser-Native API Use"
+      ],
+      "content": "Viewport detection uses `IntersectionObserver` instead of repeatedly polling scroll position.",
+      "source_line_start": 160,
+      "source_line_end": 164
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "State via CSS Classes",
+      "normalized_title": "State via CSS Classes",
+      "key": "state_via_css_classes",
+      "path": [
+        "Engineering Practices",
+        "State via CSS Classes"
+      ],
+      "content": "JavaScript mutates class state while CSS determines presentation.",
+      "source_line_start": 164,
+      "source_line_end": 168
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Focused Iteration",
+      "normalized_title": "Focused Iteration",
+      "key": "focused_iteration",
+      "path": [
+        "Engineering Practices",
+        "Focused Iteration"
+      ],
+      "content": "The commit sequence shows repeated refinement of `app.js` during the same short experiment.",
+      "source_line_start": 168,
+      "source_line_end": 172
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Implementation Scale"
+      ],
+      "content": "The repository is intentionally tiny.\n\nIts significance is concentrated in one interaction mechanism.\n\nThere is no need to inflate its scope: it is a focused proof of concept for visibility-driven animation.",
+      "source_line_start": 172,
+      "source_line_end": 180
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### JavaScript\n\n- `IntersectionObserver`,\n- callback handling,\n- DOM querying,\n- class-list mutation,\n- iteration over selected elements.\n\n### CSS\n\n- opacity transitions,\n- full-viewport section layout,\n- CSS Grid centering,\n- external web-font import.\n\n### Frontend Interaction\n\n- scroll-triggered behavior,\n- visibility-driven UI state,\n- reveal/hide animation.",
+      "source_line_start": 180,
+      "source_line_end": 203
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "JavaScript",
+      "normalized_title": "JavaScript",
+      "key": "javascript",
+      "path": [
+        "Skills Demonstrated",
+        "JavaScript"
+      ],
+      "content": "- `IntersectionObserver`,\n- callback handling,\n- DOM querying,\n- class-list mutation,\n- iteration over selected elements.",
+      "source_line_start": 182,
+      "source_line_end": 190
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "CSS",
+      "normalized_title": "CSS",
+      "key": "css",
+      "path": [
+        "Skills Demonstrated",
+        "CSS"
+      ],
+      "content": "- opacity transitions,\n- full-viewport section layout,\n- CSS Grid centering,\n- external web-font import.",
+      "source_line_start": 190,
+      "source_line_end": 197
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Frontend Interaction",
+      "normalized_title": "Frontend Interaction",
+      "key": "frontend_interaction",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend Interaction"
+      ],
+      "content": "- scroll-triggered behavior,\n- visibility-driven UI state,\n- reveal/hide animation.",
+      "source_line_start": 197,
+      "source_line_end": 203
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository isolates a browser interaction pattern that can later be reused in richer sites:\n\n> animate content when it becomes visible to the user.\n\nThat pattern is common in portfolios, landing pages and narrative interfaces.\n\nThe repository therefore serves as a small reusable learning spike.",
+      "source_line_start": 203,
+      "source_line_end": 213
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "This is the earliest processed repository with direct `IntersectionObserver` use.\n\nIt is also the earliest processed repository specifically dedicated to scroll-triggered content reveal.\n\nIts creation immediately after the `sedra` portfolio site suggests a chronological period of focused frontend-animation experimentation.",
+      "source_line_start": 213,
+      "source_line_end": 221
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`TestAnimation` is an intentionally narrow frontend experiment.\n\nIt demonstrates a useful engineering habit: separating one behavior from a larger application so it can be understood independently.\n\nThe project takes a browser-native observation primitive, converts intersection state into CSS classes, and lets CSS handle the visual transition.\n\nThat simple architecture is both readable and reusable.\n\n# Project Tags\n\n- `frontend-prototype`\n- `ui-experiment`\n- `individual-project`\n- `html`\n- `css`\n- `javascript`\n- `browser-dom`\n- `intersection-observer`\n- `scroll-reveal-animation`\n- `event-driven-ui`\n- `css-transitions`\n- `css-grid`\n- `viewport-based-interaction`\n- `class-driven-ui-state`\n- `google-fonts`\n- `github-pages`\n- `static-site-deployment`\n- `isolated-ui-experiment`\n- `rapid-prototyping`\n- `earliest-observed-intersection-observer`\n- `earliest-observed-scroll-reveal-animation`",
+      "source_line_start": 221,
+      "source_line_end": 254
+    }
+  ],
+  "raw_analysis": "# TestAnimation\n\n## Repository Identity\n\n- Repository: 031 / 134\n- Name: `TestAnimation`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Type: Frontend animation experiment\n- Primary Stack: HTML, CSS, JavaScript\n- Delivery: GitHub Pages\n- Collaboration Type: Individual Project\n\n## Collaboration and Authorship Context\n\nThe visible commit history is a short owner-attributed implementation sequence.\n\nThe project was created and iterated entirely on May 31, 2024.\n\nSeveral successive commits update `app.js`, showing focused experimentation with the interaction logic rather than a one-shot file upload.\n\n## What This Project Is\n\n`TestAnimation` is a small browser experiment for scroll-triggered reveal animation.\n\nThe page contains multiple full-viewport sections.\n\nThose sections begin with the CSS class `.hidden`.\n\nJavaScript observes their visibility relative to the viewport.\n\nAs sections enter or leave the viewport, a `.show` class is dynamically added or removed.\n\nCSS then turns the state change into an opacity transition.\n\n## Project Structure\n\n```text\nTestAnimation/\n├── index.html\n├── styles.css\n└── app.js\n```\n\nEach file has a single clear responsibility:\n\n- HTML defines sections,\n- CSS defines presentation and reveal state,\n- JavaScript detects viewport intersection.\n\n## Interaction Architecture\n\nThe core behavior is:\n\n```text\nHTML section with .hidden\n          ↓\nIntersectionObserver watches element\n          ↓\nentry.isIntersecting\n      ↙           ↘\n   true            false\n    ↓                ↓\nadd .show        remove .show\n      \\            /\n       CSS transition\n```\n\nThis is a clean browser-native event/state pipeline.\n\n## Intersection Observer API\n\n`app.js` constructs an `IntersectionObserver`.\n\nFor each callback entry, the implementation checks:\n\n`entry.isIntersecting`\n\nWhen true:\n\n```text\nentry.target.classList.add('show')\n```\n\nWhen false:\n\n```text\nentry.target.classList.remove('show')\n```\n\nAll `.hidden` elements are selected and individually registered with the observer.\n\nThis is direct use of the browser’s visibility-observation API.\n\n## Scroll-Reveal State\n\nThe CSS defines two presentation states.\n\n### Hidden\n\n```text\nopacity: 0\ntransition: all 1s\n```\n\n### Show\n\n```text\nopacity: 1\n```\n\nJavaScript controls only the semantic visibility class.\n\nCSS owns the animation itself.\n\nThat creates a simple separation between:\n\n- visibility detection,\n- visual transition.\n\n## Page Layout\n\nEach `section` is configured as a grid.\n\nIt uses:\n\n- `display: grid`,\n- `place-items: center`,\n- `align-content: center`,\n- `min-height: 100vh`.\n\nAs a result, each reveal target occupies at least one viewport height and centers its content.\n\nThat layout makes the intersection behavior easy to observe while scrolling.\n\n## Typography\n\nThe project imports Poppins from Google Fonts.\n\nSeveral font weights are requested.\n\nThe body applies Poppins as the primary font.\n\n## GitHub Pages\n\nRepository metadata shows GitHub Pages enabled.\n\nThat turns the experiment into a deployable browser artifact rather than only local source.\n\n## Engineering Practices\n\n### Separation of Concerns\n\nThe three-file structure cleanly separates:\n\n- markup,\n- styling,\n- runtime behavior.\n\n### Browser-Native API Use\n\nViewport detection uses `IntersectionObserver` instead of repeatedly polling scroll position.\n\n### State via CSS Classes\n\nJavaScript mutates class state while CSS determines presentation.\n\n### Focused Iteration\n\nThe commit sequence shows repeated refinement of `app.js` during the same short experiment.\n\n## Implementation Scale\n\nThe repository is intentionally tiny.\n\nIts significance is concentrated in one interaction mechanism.\n\nThere is no need to inflate its scope: it is a focused proof of concept for visibility-driven animation.\n\n## Skills Demonstrated\n\n### JavaScript\n\n- `IntersectionObserver`,\n- callback handling,\n- DOM querying,\n- class-list mutation,\n- iteration over selected elements.\n\n### CSS\n\n- opacity transitions,\n- full-viewport section layout,\n- CSS Grid centering,\n- external web-font import.\n\n### Frontend Interaction\n\n- scroll-triggered behavior,\n- visibility-driven UI state,\n- reveal/hide animation.\n\n## Capability Developed\n\nThis repository isolates a browser interaction pattern that can later be reused in richer sites:\n\n> animate content when it becomes visible to the user.\n\nThat pattern is common in portfolios, landing pages and narrative interfaces.\n\nThe repository therefore serves as a small reusable learning spike.\n\n## Historical Portfolio Significance\n\nThis is the earliest processed repository with direct `IntersectionObserver` use.\n\nIt is also the earliest processed repository specifically dedicated to scroll-triggered content reveal.\n\nIts creation immediately after the `sedra` portfolio site suggests a chronological period of focused frontend-animation experimentation.\n\n## Overall Project Narrative\n\n`TestAnimation` is an intentionally narrow frontend experiment.\n\nIt demonstrates a useful engineering habit: separating one behavior from a larger application so it can be understood independently.\n\nThe project takes a browser-native observation primitive, converts intersection state into CSS classes, and lets CSS handle the visual transition.\n\nThat simple architecture is both readable and reusable.\n\n# Project Tags\n\n- `frontend-prototype`\n- `ui-experiment`\n- `individual-project`\n- `html`\n- `css`\n- `javascript`\n- `browser-dom`\n- `intersection-observer`\n- `scroll-reveal-animation`\n- `event-driven-ui`\n- `css-transitions`\n- `css-grid`\n- `viewport-based-interaction`\n- `class-driven-ui-state`\n- `google-fonts`\n- `github-pages`\n- `static-site-deployment`\n- `isolated-ui-experiment`\n- `rapid-prototyping`\n- `earliest-observed-intersection-observer`\n- `earliest-observed-scroll-reveal-animation`\n"
+}

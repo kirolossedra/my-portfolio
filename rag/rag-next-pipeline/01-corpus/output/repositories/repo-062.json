@@ -1,0 +1,900 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 62,
+  "repository_total": 134,
+  "repository_name": "Linux-Scripting",
+  "header_title": "Linux-Scripting",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-062-Linux-Scripting/README.md",
+    "line_start": 1,
+    "line_end": 636,
+    "sha256": "06700289ded931cd156a87f5e625bd480485c55e4a0e7071c3ba61a8311d01c0"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-coursework",
+    "technical-lab",
+    "linux-learning",
+    "data-engineering-foundations",
+    "bash",
+    "shell-scripting",
+    "linux",
+    "variables",
+    "user-input",
+    "conditional-statements",
+    "arithmetic",
+    "arrays",
+    "loops",
+    "cron",
+    "crontab",
+    "scheduled-tasks",
+    "output-redirection",
+    "grep",
+    "cut",
+    "paste",
+    "sort",
+    "uniq",
+    "wc",
+    "head",
+    "tail",
+    "csv-processing",
+    "hostname",
+    "ifconfig",
+    "ping",
+    "curl",
+    "wget",
+    "command-line-workflows",
+    "manual-verification",
+    "operational-automation",
+    "reproducible-command-sequences",
+    "earliest-observed-shell-scripting",
+    "earliest-observed-cron",
+    "earliest-observed-crontab"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s023"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Host Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Linux-Scripting`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `eb428e88a77b7b6719c256d7ed4db3a0d1b2cee8`\n- **Primary technical field:** Linux shell scripting and data-engineering command-line workflows\n- **Primary environment:** Bash / Unix-like shell\n- **Project context:** individual coursework and hands-on command-line exercises\n- **Collaboration classification:** `individual-coursework`\n\n## Host Identity\n```bash\nhostname\nhostname -i\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s033"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe repository's verification model is manual and exercise-driven.\n\nExamples instruct the learner to:\n\n- execute scripts;\n- inspect terminal output;\n- verify permissions with `ls -l`;\n- inspect generated CSVs with `cat`;\n- verify crontab state with `crontab -l`;\n- test network reachability with `ping`.\n\nThere is no evidence of an automated shell-test framework in the checked-in tree.\n\nThat does not reduce the value of the repository as shell practice, but it defines the verification boundary accurately."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s050"
+      ],
+      "titles": [
+        "Authorship and Evidence Boundary"
+      ],
+      "text": "## Authorship and Evidence Boundary\nThe documents have explicit IBM Skills Network instructional language.\n\nThe corpus therefore attributes:\n\n- practiced commands;\n- completed exercises;\n- demonstrated concepts;\n\nbut does not claim original authorship of the instructional prose or every supplied code example.\n\nThe final tree also stores most code examples inside Markdown rather than as executable `.sh` artifacts."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Linux-Scripting`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `eb428e88a77b7b6719c256d7ed4db3a0d1b2cee8`\n- **Primary technical field:** Linux shell scripting and data-engineering command-line workflows\n- **Primary environment:** Bash / Unix-like shell\n- **Project context:** individual coursework and hands-on command-line exercises\n- **Collaboration classification:** `individual-coursework`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a sequence of Markdown exercise records covering:\n\n- basic shell scripting;\n- executable permissions and shebangs;\n- variables and user input;\n- conditional control flow;\n- arithmetic;\n- arrays and loops;\n- CSV parsing;\n- command-line text processing;\n- cron scheduling;\n- network inspection and connectivity checks;\n- file transfer with `curl` and `wget`.\n\nThe final repository tree contains instructional Markdown rather than a packaged shell application.\n\nThe repository is therefore evidence of practiced shell workflows and completed course exercises, not evidence of a deployed automation service.",
+      "source_line_start": 14,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The inspected tree includes:\n\n- `scripting.md`;\n- `Advanced Scripting.md`;\n- `crono.md`;\n- `networking.md`;\n- `text wrangling.md`;\n- `Weather.md`;\n- `exercise1.md`;\n- `excercise2.md`;\n- `practice.md`;\n- root `README.md`.\n\nCommit history also shows that `exercise1` was first created as `exercise1.bash` and later renamed to Markdown.\n\nThat history is useful because it shows the repository was used as an evolving learning workspace rather than created only as a static notes dump.",
+      "source_line_start": 34,
+      "source_line_end": 53
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Shell Script Construction",
+      "normalized_title": "Shell Script Construction",
+      "key": "shell_script_construction",
+      "path": [
+        "Shell Script Construction"
+      ],
+      "content": "### User Input and Variables\n\nThe basic exercises create shell scripts that prompt for user input with:\n\n```bash\nread name\n```\n\nand interpolate variables into output:\n\n```bash\necho \"Welcome $name\"\n```\n\nA later exercise separately reads first and last names:\n\n```bash\nread firstname\nread lastname\necho \"Hello $firstname $lastname\"\n```\n\nThis establishes direct practice with shell variables and interactive command-line programs.\n\n### Shebangs\n\nThe repository explicitly introduces interpreter selection through:\n\n```bash\n#!/bin/bash\n```\n\nThe exercise explains why this allows the script to be executed directly rather than only through an explicit `bash file.sh` invocation.\n\n### File Permissions\n\nExecution permissions are practiced through:\n\n```bash\nchmod +x greet.sh\n```\n\nand the more narrowly scoped:\n\n```bash\nchmod u+x greet.sh\n```\n\nThis ties scripting to Unix permission semantics rather than treating shell code as isolated syntax.",
+      "source_line_start": 53,
+      "source_line_end": 105
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "User Input and Variables",
+      "normalized_title": "User Input and Variables",
+      "key": "user_input_and_variables",
+      "path": [
+        "Shell Script Construction",
+        "User Input and Variables"
+      ],
+      "content": "The basic exercises create shell scripts that prompt for user input with:\n\n```bash\nread name\n```\n\nand interpolate variables into output:\n\n```bash\necho \"Welcome $name\"\n```\n\nA later exercise separately reads first and last names:\n\n```bash\nread firstname\nread lastname\necho \"Hello $firstname $lastname\"\n```\n\nThis establishes direct practice with shell variables and interactive command-line programs.",
+      "source_line_start": 55,
+      "source_line_end": 79
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Shebangs",
+      "normalized_title": "Shebangs",
+      "key": "shebangs",
+      "path": [
+        "Shell Script Construction",
+        "Shebangs"
+      ],
+      "content": "The repository explicitly introduces interpreter selection through:\n\n```bash\n#!/bin/bash\n```\n\nThe exercise explains why this allows the script to be executed directly rather than only through an explicit `bash file.sh` invocation.",
+      "source_line_start": 79,
+      "source_line_end": 89
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "File Permissions",
+      "normalized_title": "File Permissions",
+      "key": "file_permissions",
+      "path": [
+        "Shell Script Construction",
+        "File Permissions"
+      ],
+      "content": "Execution permissions are practiced through:\n\n```bash\nchmod +x greet.sh\n```\n\nand the more narrowly scoped:\n\n```bash\nchmod u+x greet.sh\n```\n\nThis ties scripting to Unix permission semantics rather than treating shell code as isolated syntax.",
+      "source_line_start": 89,
+      "source_line_end": 105
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Conditional Logic",
+      "normalized_title": "Conditional Logic",
+      "key": "conditional_logic",
+      "path": [
+        "Conditional Logic"
+      ],
+      "content": "`Advanced Scripting.md` introduces a binary yes/no prompt and branches with:\n\n```bash\nif [[ \"$answer\" == \"yes\" ]]; then\n    ...\nelif [[ \"$answer\" == \"no\" ]]; then\n    ...\nelse\n    ...\nfi\n```\n\nThe exercise therefore covers:\n\n- string comparisons;\n- `if`;\n- `elif`;\n- `else`;\n- user-input validation.",
+      "source_line_start": 105,
+      "source_line_end": 127
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Arithmetic in Bash",
+      "normalized_title": "Arithmetic in Bash",
+      "key": "arithmetic_in_bash",
+      "path": [
+        "Arithmetic in Bash"
+      ],
+      "content": "A calculator exercise reads two integers and computes:\n\n```bash\nsum=$((first_num + second_num))\nproduct=$((first_num * second_num))\n```\n\nIt then compares the results with numeric shell operators:\n\n```bash\n-gt\n-lt\n```\n\nThe value here is not mathematical complexity; it is using Bash as a small programming language with typed-by-convention numeric expressions and control flow.",
+      "source_line_start": 127,
+      "source_line_end": 145
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Arrays and Looping",
+      "normalized_title": "Arrays and Looping",
+      "key": "arrays_and_looping",
+      "path": [
+        "Arrays and Looping"
+      ],
+      "content": "The repository includes a CSV-processing exercise that initializes Bash arrays:\n\n```bash\ndeclare -a column1\ndeclare -a column2\ndeclare -a column3\n```\n\nRows are parsed with:\n\n```bash\nwhile IFS=, read -r col1 col2 col3; do\n    ...\ndone\n```\n\nThe exercise then iterates array indices:\n\n```bash\nfor i in \"${!column2[@]}\"; do\n    ...\ndone\n```\n\nand derives a new column from two source columns.",
+      "source_line_start": 145,
+      "source_line_end": 173
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Shell-Based CSV Transformation",
+      "normalized_title": "Shell-Based CSV Transformation",
+      "key": "shell_based_csv_transformation",
+      "path": [
+        "Shell-Based CSV Transformation"
+      ],
+      "content": "The CSV exercise implements a small data transformation pipeline:\n\n```text\nsource CSV\n  ↓\nskip header\n  ↓\nparse columns\n  ↓\nstore columns in arrays\n  ↓\ncalculate derived difference\n  ↓\nwrite report.csv\n  ↓\ninspect output\n```\n\nThis is a useful bridge between shell scripting and the data-engineering repositories immediately surrounding it chronologically.",
+      "source_line_start": 173,
+      "source_line_end": 195
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Text Wrangling",
+      "normalized_title": "Text Wrangling",
+      "key": "text_wrangling",
+      "path": [
+        "Text Wrangling"
+      ],
+      "content": "`text wrangling.md` covers a broad Unix text-processing toolbox.\n\n### Inspection\n\n- `cat`\n- `more`\n- `less`\n- `head`\n- `tail`\n\n### Statistics\n\n- `wc`\n- `wc -l`\n- `wc -w`\n- `wc -c`\n\n### Ordering and Deduplication\n\n- `sort`\n- `sort -r`\n- `uniq`\n\n### Search and Filtering\n\n- `grep`\n\n### Column and Character Extraction\n\n- `cut`\n\nExamples include:\n\n```bash\ncut -d \",\" -f2 names_and_numbers.csv\n```\n\nand:\n\n```bash\ncut -c -2 zoo.txt\n```\n\n### Horizontal Combination\n\nThe repository practices line-wise combination with:\n\n```bash\npaste zoo.txt zoo_ages.txt\n```\n\nand CSV-style delimiters with:\n\n```bash\npaste -d \",\" zoo.txt zoo_ages.txt\n```",
+      "source_line_start": 195,
+      "source_line_end": 254
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Inspection",
+      "normalized_title": "Inspection",
+      "key": "inspection",
+      "path": [
+        "Text Wrangling",
+        "Inspection"
+      ],
+      "content": "- `cat`\n- `more`\n- `less`\n- `head`\n- `tail`",
+      "source_line_start": 199,
+      "source_line_end": 207
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Statistics",
+      "normalized_title": "Statistics",
+      "key": "statistics",
+      "path": [
+        "Text Wrangling",
+        "Statistics"
+      ],
+      "content": "- `wc`\n- `wc -l`\n- `wc -w`\n- `wc -c`",
+      "source_line_start": 207,
+      "source_line_end": 214
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Ordering and Deduplication",
+      "normalized_title": "Ordering and Deduplication",
+      "key": "ordering_and_deduplication",
+      "path": [
+        "Text Wrangling",
+        "Ordering and Deduplication"
+      ],
+      "content": "- `sort`\n- `sort -r`\n- `uniq`",
+      "source_line_start": 214,
+      "source_line_end": 220
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Search and Filtering",
+      "normalized_title": "Search and Filtering",
+      "key": "search_and_filtering",
+      "path": [
+        "Text Wrangling",
+        "Search and Filtering"
+      ],
+      "content": "- `grep`",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Column and Character Extraction",
+      "normalized_title": "Column and Character Extraction",
+      "key": "column_and_character_extraction",
+      "path": [
+        "Text Wrangling",
+        "Column and Character Extraction"
+      ],
+      "content": "- `cut`\n\nExamples include:\n\n```bash\ncut -d \",\" -f2 names_and_numbers.csv\n```\n\nand:\n\n```bash\ncut -c -2 zoo.txt\n```",
+      "source_line_start": 224,
+      "source_line_end": 240
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Horizontal Combination",
+      "normalized_title": "Horizontal Combination",
+      "key": "horizontal_combination",
+      "path": [
+        "Text Wrangling",
+        "Horizontal Combination"
+      ],
+      "content": "The repository practices line-wise combination with:\n\n```bash\npaste zoo.txt zoo_ages.txt\n```\n\nand CSV-style delimiters with:\n\n```bash\npaste -d \",\" zoo.txt zoo_ages.txt\n```",
+      "source_line_start": 240,
+      "source_line_end": 254
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Cron Scheduling",
+      "normalized_title": "Cron Scheduling",
+      "key": "cron_scheduling",
+      "path": [
+        "Cron Scheduling"
+      ],
+      "content": "`crono.md` introduces cron as scheduled command execution.\n\nIt explains the five-field crontab structure:\n\n```text\nminute hour day-of-month month day-of-week command\n```\n\nExamples include daily, hourly, weekly, and monthly jobs.\n\n### Crontab Lifecycle\n\nThe repository practices:\n\n```bash\ncrontab -l\ncrontab -e\ncrontab -r\n```\n\nThat covers inspection, modification, and removal.\n\n### Scheduled Disk-Usage Script\n\nA concrete exercise creates:\n\n```bash\n#!/bin/bash\ndate\ndf -h\n```\n\nand schedules it at midnight:\n\n```bash\n0 0 * * * /home/project/diskusage.sh >> /home/project/diskusage.log\n```\n\nThis adds:\n\n- periodic automation;\n- timestamping;\n- disk monitoring;\n- output redirection;\n- append-only logging.",
+      "source_line_start": 254,
+      "source_line_end": 302
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Crontab Lifecycle",
+      "normalized_title": "Crontab Lifecycle",
+      "key": "crontab_lifecycle",
+      "path": [
+        "Cron Scheduling",
+        "Crontab Lifecycle"
+      ],
+      "content": "The repository practices:\n\n```bash\ncrontab -l\ncrontab -e\ncrontab -r\n```\n\nThat covers inspection, modification, and removal.",
+      "source_line_start": 266,
+      "source_line_end": 278
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Scheduled Disk-Usage Script",
+      "normalized_title": "Scheduled Disk-Usage Script",
+      "key": "scheduled_disk_usage_script",
+      "path": [
+        "Cron Scheduling",
+        "Scheduled Disk-Usage Script"
+      ],
+      "content": "A concrete exercise creates:\n\n```bash\n#!/bin/bash\ndate\ndf -h\n```\n\nand schedules it at midnight:\n\n```bash\n0 0 * * * /home/project/diskusage.sh >> /home/project/diskusage.log\n```\n\nThis adds:\n\n- periodic automation;\n- timestamping;\n- disk monitoring;\n- output redirection;\n- append-only logging.",
+      "source_line_start": 278,
+      "source_line_end": 302
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Networking Commands",
+      "normalized_title": "Networking Commands",
+      "key": "networking_commands",
+      "path": [
+        "Networking Commands"
+      ],
+      "content": "`networking.md` exercises operational network inspection.\n\n### Host Identity\n\n```bash\nhostname\nhostname -i\n```\n\n### Interface Inspection\n\n```bash\nifconfig\nifconfig eth0\n```\n\n### Connectivity\n\n```bash\nping www.google.com\nping -c 5 www.google.com\n```\n\n### HTTP / Remote File Retrieval\n\n```bash\ncurl <url>\ncurl -O <url>\nwget <url>\n```\n\nThis demonstrates practical use of shell tools for remote data acquisition.",
+      "source_line_start": 302,
+      "source_line_end": 337
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Host Identity",
+      "normalized_title": "Host Identity",
+      "key": "host_identity",
+      "path": [
+        "Networking Commands",
+        "Host Identity"
+      ],
+      "content": "```bash\nhostname\nhostname -i\n```",
+      "source_line_start": 306,
+      "source_line_end": 313
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Interface Inspection",
+      "normalized_title": "Interface Inspection",
+      "key": "interface_inspection",
+      "path": [
+        "Networking Commands",
+        "Interface Inspection"
+      ],
+      "content": "```bash\nifconfig\nifconfig eth0\n```",
+      "source_line_start": 313,
+      "source_line_end": 320
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Connectivity",
+      "normalized_title": "Connectivity",
+      "key": "connectivity",
+      "path": [
+        "Networking Commands",
+        "Connectivity"
+      ],
+      "content": "```bash\nping www.google.com\nping -c 5 www.google.com\n```",
+      "source_line_start": 320,
+      "source_line_end": 327
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "HTTP / Remote File Retrieval",
+      "normalized_title": "HTTP / Remote File Retrieval",
+      "key": "http_remote_file_retrieval",
+      "path": [
+        "Networking Commands",
+        "HTTP / Remote File Retrieval"
+      ],
+      "content": "```bash\ncurl <url>\ncurl -O <url>\nwget <url>\n```\n\nThis demonstrates practical use of shell tools for remote data acquisition.",
+      "source_line_start": 327,
+      "source_line_end": 337
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "System Shape",
+      "normalized_title": "System Shape",
+      "key": "system_shape",
+      "path": [
+        "System Shape"
+      ],
+      "content": "The repository is best understood as a command-line operations learning workspace:\n\n```text\nLinux shell\n ├─ script authoring\n ├─ permissions\n ├─ variables and control flow\n ├─ arrays and loops\n ├─ text processing\n ├─ CSV transformation\n ├─ cron automation\n └─ networking / downloads\n```\n\nIt is not a single application architecture.\n\nIts architectural value is breadth across the shell environment that later data-engineering and cloud workflows depend on.",
+      "source_line_start": 337,
+      "source_line_end": 357
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Shell and Operating System\n\n- Bash\n- Linux / Unix-like command line\n- executable permission model\n- cron / crontab\n\n### Text Processing\n\n- `grep`\n- `cut`\n- `paste`\n- `sort`\n- `uniq`\n- `wc`\n- `head`\n- `tail`\n\n### Networking and Transfer\n\n- `hostname`\n- `ifconfig`\n- `ping`\n- `curl`\n- `wget`\n\n### Data Formats\n\n- CSV\n- line-oriented text",
+      "source_line_start": 357,
+      "source_line_end": 390
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Shell and Operating System",
+      "normalized_title": "Shell and Operating System",
+      "key": "shell_and_operating_system",
+      "path": [
+        "Technical Stack",
+        "Shell and Operating System"
+      ],
+      "content": "- Bash\n- Linux / Unix-like command line\n- executable permission model\n- cron / crontab",
+      "source_line_start": 359,
+      "source_line_end": 366
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Text Processing",
+      "normalized_title": "Text Processing",
+      "key": "text_processing",
+      "path": [
+        "Technical Stack",
+        "Text Processing"
+      ],
+      "content": "- `grep`\n- `cut`\n- `paste`\n- `sort`\n- `uniq`\n- `wc`\n- `head`\n- `tail`",
+      "source_line_start": 366,
+      "source_line_end": 377
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Networking and Transfer",
+      "normalized_title": "Networking and Transfer",
+      "key": "networking_and_transfer",
+      "path": [
+        "Technical Stack",
+        "Networking and Transfer"
+      ],
+      "content": "- `hostname`\n- `ifconfig`\n- `ping`\n- `curl`\n- `wget`",
+      "source_line_start": 377,
+      "source_line_end": 385
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Data Formats",
+      "normalized_title": "Data Formats",
+      "key": "data_formats",
+      "path": [
+        "Technical Stack",
+        "Data Formats"
+      ],
+      "content": "- CSV\n- line-oriented text",
+      "source_line_start": 385,
+      "source_line_end": 390
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The repository's verification model is manual and exercise-driven.\n\nExamples instruct the learner to:\n\n- execute scripts;\n- inspect terminal output;\n- verify permissions with `ls -l`;\n- inspect generated CSVs with `cat`;\n- verify crontab state with `crontab -l`;\n- test network reachability with `ping`.\n\nThere is no evidence of an automated shell-test framework in the checked-in tree.\n\nThat does not reduce the value of the repository as shell practice, but it defines the verification boundary accurately.",
+      "source_line_start": 390,
+      "source_line_end": 407
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "### Reproducible Command Sequences\n\nThe exercises preserve commands in an ordered form that can be replayed.\n\n### Small Feedback Loops\n\nMany workflows follow:\n\n```text\nwrite\n  ↓\nexecute\n  ↓\ninspect\n  ↓\nmodify\n  ↓\nexecute again\n```\n\n### Operational Awareness\n\nThe repository connects script code to:\n\n- filesystem permissions;\n- process scheduling;\n- networking;\n- remote resources;\n- output files.\n\n### Data Transformation Thinking\n\nEven basic shell exercises are framed as pipelines rather than isolated commands.",
+      "source_line_start": 407,
+      "source_line_end": 443
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Reproducible Command Sequences",
+      "normalized_title": "Reproducible Command Sequences",
+      "key": "reproducible_command_sequences",
+      "path": [
+        "Engineering Discipline",
+        "Reproducible Command Sequences"
+      ],
+      "content": "The exercises preserve commands in an ordered form that can be replayed.",
+      "source_line_start": 409,
+      "source_line_end": 413
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Small Feedback Loops",
+      "normalized_title": "Small Feedback Loops",
+      "key": "small_feedback_loops",
+      "path": [
+        "Engineering Discipline",
+        "Small Feedback Loops"
+      ],
+      "content": "Many workflows follow:\n\n```text\nwrite\n  ↓\nexecute\n  ↓\ninspect\n  ↓\nmodify\n  ↓\nexecute again\n```",
+      "source_line_start": 413,
+      "source_line_end": 429
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Operational Awareness",
+      "normalized_title": "Operational Awareness",
+      "key": "operational_awareness",
+      "path": [
+        "Engineering Discipline",
+        "Operational Awareness"
+      ],
+      "content": "The repository connects script code to:\n\n- filesystem permissions;\n- process scheduling;\n- networking;\n- remote resources;\n- output files.",
+      "source_line_start": 429,
+      "source_line_end": 439
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Data Transformation Thinking",
+      "normalized_title": "Data Transformation Thinking",
+      "key": "data_transformation_thinking",
+      "path": [
+        "Engineering Discipline",
+        "Data Transformation Thinking"
+      ],
+      "content": "Even basic shell exercises are framed as pipelines rather than isolated commands.",
+      "source_line_start": 439,
+      "source_line_end": 443
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Product Engineering Context",
+      "normalized_title": "Product Engineering Context",
+      "key": "product_engineering_context",
+      "path": [
+        "Product Engineering Context"
+      ],
+      "content": "This repository is not a product.\n\nIts value is infrastructural: it strengthens the command-line layer required to operate data pipelines, databases, cloud environments, and automation systems.\n\nThat becomes particularly relevant in the next repositories, which move directly into database administration, Airflow, Kafka, and warehousing.",
+      "source_line_start": 443,
+      "source_line_end": 451
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The source tree is small, but the conceptual breadth is significant.\n\nIt covers multiple classes of shell work within approximately one day of repository activity.\n\nThe most complex exercise is the CSV transformation script because it combines:\n\n- file reading;\n- header handling;\n- delimiters;\n- arrays;\n- iteration;\n- arithmetic;\n- report generation.",
+      "source_line_start": 451,
+      "source_line_end": 467
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Bash Programming\n\n- shebangs;\n- variables;\n- input;\n- conditional logic;\n- arithmetic;\n- loops;\n- arrays.\n\n### Linux Operations\n\n- executable permissions;\n- shell execution;\n- redirection;\n- filesystem inspection.\n\n### Automation\n\n- cron syntax;\n- scheduling;\n- periodic logging.\n\n### Text and Data Processing\n\n- filtering;\n- field extraction;\n- sorting;\n- deduplication;\n- merging;\n- CSV manipulation.\n\n### Networking\n\n- host and interface inspection;\n- connectivity testing;\n- HTTP retrieval.",
+      "source_line_start": 467,
+      "source_line_end": 507
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Bash Programming",
+      "normalized_title": "Bash Programming",
+      "key": "bash_programming",
+      "path": [
+        "Skills Demonstrated",
+        "Bash Programming"
+      ],
+      "content": "- shebangs;\n- variables;\n- input;\n- conditional logic;\n- arithmetic;\n- loops;\n- arrays.",
+      "source_line_start": 469,
+      "source_line_end": 479
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Linux Operations",
+      "normalized_title": "Linux Operations",
+      "key": "linux_operations",
+      "path": [
+        "Skills Demonstrated",
+        "Linux Operations"
+      ],
+      "content": "- executable permissions;\n- shell execution;\n- redirection;\n- filesystem inspection.",
+      "source_line_start": 479,
+      "source_line_end": 486
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Automation",
+      "normalized_title": "Automation",
+      "key": "automation",
+      "path": [
+        "Skills Demonstrated",
+        "Automation"
+      ],
+      "content": "- cron syntax;\n- scheduling;\n- periodic logging.",
+      "source_line_start": 486,
+      "source_line_end": 492
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Text and Data Processing",
+      "normalized_title": "Text and Data Processing",
+      "key": "text_and_data_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Text and Data Processing"
+      ],
+      "content": "- filtering;\n- field extraction;\n- sorting;\n- deduplication;\n- merging;\n- CSV manipulation.",
+      "source_line_start": 492,
+      "source_line_end": 501
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Skills Demonstrated",
+        "Networking"
+      ],
+      "content": "- host and interface inspection;\n- connectivity testing;\n- HTTP retrieval.",
+      "source_line_start": 501,
+      "source_line_end": 507
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops the ability to use Linux as a programmable engineering environment.\n\nThe important shift is from \"knowing Linux commands\" to composing them into repeatable workflows.\n\nThat is visible in:\n\n- generated reports;\n- scheduled scripts;\n- multi-step text processing;\n- remote data retrieval.",
+      "source_line_start": 507,
+      "source_line_end": 520
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier repository 039 `Linux` captured broad Linux command-reference knowledge.\n\n`Linux-Scripting` goes further by concentrating on scripting and automation behavior.\n\nWithin the processed chronology, this is the earliest repository dedicated specifically to:\n\n- Bash scripting as a programming workflow;\n- cron scheduling;\n- shell-based CSV transformation.\n\nThis makes it a useful precursor to repository 065, where shell commands become units inside orchestrated Airflow ETL pipelines.",
+      "source_line_start": 520,
+      "source_line_end": 534
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "The October 2024 sequence shows a clear data-engineering learning arc:\n\n```text\nPython / SQL foundations\n  ↓\nPostgreSQL and database operations\n  ↓\nLinux scripting and automation\n  ↓\nKafka + Airflow ETL\n  ↓\ndata warehousing\n```\n\nRepository 062 is the shell/automation bridge in that progression.",
+      "source_line_start": 534,
+      "source_line_end": 552
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Authorship and Evidence Boundary",
+      "normalized_title": "Authorship and Evidence Boundary",
+      "key": "authorship_and_evidence_boundary",
+      "path": [
+        "Authorship and Evidence Boundary"
+      ],
+      "content": "The documents have explicit IBM Skills Network instructional language.\n\nThe corpus therefore attributes:\n\n- practiced commands;\n- completed exercises;\n- demonstrated concepts;\n\nbut does not claim original authorship of the instructional prose or every supplied code example.\n\nThe final tree also stores most code examples inside Markdown rather than as executable `.sh` artifacts.",
+      "source_line_start": 552,
+      "source_line_end": 566
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Linux-Scripting` is a focused shell-automation learning repository.\n\nIt demonstrates moving beyond one-off Linux commands into scripts, conditions, arithmetic, arrays, loops, CSV processing, cron scheduling, text wrangling, and network operations.\n\nIts strongest portfolio value is chronological: it establishes the command-line automation foundation that immediately feeds into the following Kafka, Airflow, and data-warehouse work.\n\n# Project Tags",
+      "source_line_start": 566,
+      "source_line_end": 576
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `individual-coursework`\n- `technical-lab`\n- `linux-learning`\n- `data-engineering-foundations`",
+      "source_line_start": 576,
+      "source_line_end": 583
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Languages and Shell",
+      "normalized_title": "Languages and Shell",
+      "key": "languages_and_shell",
+      "path": [
+        "Languages and Shell"
+      ],
+      "content": "- `bash`\n- `shell-scripting`\n- `linux`",
+      "source_line_start": 583,
+      "source_line_end": 589
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Programming Concepts",
+      "normalized_title": "Programming Concepts",
+      "key": "programming_concepts",
+      "path": [
+        "Programming Concepts"
+      ],
+      "content": "- `variables`\n- `user-input`\n- `conditional-statements`\n- `arithmetic`\n- `arrays`\n- `loops`",
+      "source_line_start": 589,
+      "source_line_end": 598
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Automation",
+      "normalized_title": "Automation",
+      "key": "automation",
+      "path": [
+        "Automation"
+      ],
+      "content": "- `cron`\n- `crontab`\n- `scheduled-tasks`\n- `output-redirection`",
+      "source_line_start": 598,
+      "source_line_end": 605
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Text Processing",
+      "normalized_title": "Text Processing",
+      "key": "text_processing",
+      "path": [
+        "Text Processing"
+      ],
+      "content": "- `grep`\n- `cut`\n- `paste`\n- `sort`\n- `uniq`\n- `wc`\n- `head`\n- `tail`\n- `csv-processing`",
+      "source_line_start": 605,
+      "source_line_end": 617
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Networking"
+      ],
+      "content": "- `hostname`\n- `ifconfig`\n- `ping`\n- `curl`\n- `wget`",
+      "source_line_start": 617,
+      "source_line_end": 625
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "- `command-line-workflows`\n- `manual-verification`\n- `operational-automation`\n- `reproducible-command-sequences`",
+      "source_line_start": 625,
+      "source_line_end": 632
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-shell-scripting`\n- `earliest-observed-cron`\n- `earliest-observed-crontab`",
+      "source_line_start": 632,
+      "source_line_end": 636
+    }
+  ],
+  "raw_analysis": "# Repository 062 — Linux-Scripting\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Linux-Scripting`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `eb428e88a77b7b6719c256d7ed4db3a0d1b2cee8`\n- **Primary technical field:** Linux shell scripting and data-engineering command-line workflows\n- **Primary environment:** Bash / Unix-like shell\n- **Project context:** individual coursework and hands-on command-line exercises\n- **Collaboration classification:** `individual-coursework`\n\n## Evidence Basis\n\nThe repository contains a sequence of Markdown exercise records covering:\n\n- basic shell scripting;\n- executable permissions and shebangs;\n- variables and user input;\n- conditional control flow;\n- arithmetic;\n- arrays and loops;\n- CSV parsing;\n- command-line text processing;\n- cron scheduling;\n- network inspection and connectivity checks;\n- file transfer with `curl` and `wget`.\n\nThe final repository tree contains instructional Markdown rather than a packaged shell application.\n\nThe repository is therefore evidence of practiced shell workflows and completed course exercises, not evidence of a deployed automation service.\n\n## Repository Structure\n\nThe inspected tree includes:\n\n- `scripting.md`;\n- `Advanced Scripting.md`;\n- `crono.md`;\n- `networking.md`;\n- `text wrangling.md`;\n- `Weather.md`;\n- `exercise1.md`;\n- `excercise2.md`;\n- `practice.md`;\n- root `README.md`.\n\nCommit history also shows that `exercise1` was first created as `exercise1.bash` and later renamed to Markdown.\n\nThat history is useful because it shows the repository was used as an evolving learning workspace rather than created only as a static notes dump.\n\n## Shell Script Construction\n\n### User Input and Variables\n\nThe basic exercises create shell scripts that prompt for user input with:\n\n```bash\nread name\n```\n\nand interpolate variables into output:\n\n```bash\necho \"Welcome $name\"\n```\n\nA later exercise separately reads first and last names:\n\n```bash\nread firstname\nread lastname\necho \"Hello $firstname $lastname\"\n```\n\nThis establishes direct practice with shell variables and interactive command-line programs.\n\n### Shebangs\n\nThe repository explicitly introduces interpreter selection through:\n\n```bash\n#!/bin/bash\n```\n\nThe exercise explains why this allows the script to be executed directly rather than only through an explicit `bash file.sh` invocation.\n\n### File Permissions\n\nExecution permissions are practiced through:\n\n```bash\nchmod +x greet.sh\n```\n\nand the more narrowly scoped:\n\n```bash\nchmod u+x greet.sh\n```\n\nThis ties scripting to Unix permission semantics rather than treating shell code as isolated syntax.\n\n## Conditional Logic\n\n`Advanced Scripting.md` introduces a binary yes/no prompt and branches with:\n\n```bash\nif [[ \"$answer\" == \"yes\" ]]; then\n    ...\nelif [[ \"$answer\" == \"no\" ]]; then\n    ...\nelse\n    ...\nfi\n```\n\nThe exercise therefore covers:\n\n- string comparisons;\n- `if`;\n- `elif`;\n- `else`;\n- user-input validation.\n\n## Arithmetic in Bash\n\nA calculator exercise reads two integers and computes:\n\n```bash\nsum=$((first_num + second_num))\nproduct=$((first_num * second_num))\n```\n\nIt then compares the results with numeric shell operators:\n\n```bash\n-gt\n-lt\n```\n\nThe value here is not mathematical complexity; it is using Bash as a small programming language with typed-by-convention numeric expressions and control flow.\n\n## Arrays and Looping\n\nThe repository includes a CSV-processing exercise that initializes Bash arrays:\n\n```bash\ndeclare -a column1\ndeclare -a column2\ndeclare -a column3\n```\n\nRows are parsed with:\n\n```bash\nwhile IFS=, read -r col1 col2 col3; do\n    ...\ndone\n```\n\nThe exercise then iterates array indices:\n\n```bash\nfor i in \"${!column2[@]}\"; do\n    ...\ndone\n```\n\nand derives a new column from two source columns.\n\n## Shell-Based CSV Transformation\n\nThe CSV exercise implements a small data transformation pipeline:\n\n```text\nsource CSV\n  ↓\nskip header\n  ↓\nparse columns\n  ↓\nstore columns in arrays\n  ↓\ncalculate derived difference\n  ↓\nwrite report.csv\n  ↓\ninspect output\n```\n\nThis is a useful bridge between shell scripting and the data-engineering repositories immediately surrounding it chronologically.\n\n## Text Wrangling\n\n`text wrangling.md` covers a broad Unix text-processing toolbox.\n\n### Inspection\n\n- `cat`\n- `more`\n- `less`\n- `head`\n- `tail`\n\n### Statistics\n\n- `wc`\n- `wc -l`\n- `wc -w`\n- `wc -c`\n\n### Ordering and Deduplication\n\n- `sort`\n- `sort -r`\n- `uniq`\n\n### Search and Filtering\n\n- `grep`\n\n### Column and Character Extraction\n\n- `cut`\n\nExamples include:\n\n```bash\ncut -d \",\" -f2 names_and_numbers.csv\n```\n\nand:\n\n```bash\ncut -c -2 zoo.txt\n```\n\n### Horizontal Combination\n\nThe repository practices line-wise combination with:\n\n```bash\npaste zoo.txt zoo_ages.txt\n```\n\nand CSV-style delimiters with:\n\n```bash\npaste -d \",\" zoo.txt zoo_ages.txt\n```\n\n## Cron Scheduling\n\n`crono.md` introduces cron as scheduled command execution.\n\nIt explains the five-field crontab structure:\n\n```text\nminute hour day-of-month month day-of-week command\n```\n\nExamples include daily, hourly, weekly, and monthly jobs.\n\n### Crontab Lifecycle\n\nThe repository practices:\n\n```bash\ncrontab -l\ncrontab -e\ncrontab -r\n```\n\nThat covers inspection, modification, and removal.\n\n### Scheduled Disk-Usage Script\n\nA concrete exercise creates:\n\n```bash\n#!/bin/bash\ndate\ndf -h\n```\n\nand schedules it at midnight:\n\n```bash\n0 0 * * * /home/project/diskusage.sh >> /home/project/diskusage.log\n```\n\nThis adds:\n\n- periodic automation;\n- timestamping;\n- disk monitoring;\n- output redirection;\n- append-only logging.\n\n## Networking Commands\n\n`networking.md` exercises operational network inspection.\n\n### Host Identity\n\n```bash\nhostname\nhostname -i\n```\n\n### Interface Inspection\n\n```bash\nifconfig\nifconfig eth0\n```\n\n### Connectivity\n\n```bash\nping www.google.com\nping -c 5 www.google.com\n```\n\n### HTTP / Remote File Retrieval\n\n```bash\ncurl <url>\ncurl -O <url>\nwget <url>\n```\n\nThis demonstrates practical use of shell tools for remote data acquisition.\n\n## System Shape\n\nThe repository is best understood as a command-line operations learning workspace:\n\n```text\nLinux shell\n ├─ script authoring\n ├─ permissions\n ├─ variables and control flow\n ├─ arrays and loops\n ├─ text processing\n ├─ CSV transformation\n ├─ cron automation\n └─ networking / downloads\n```\n\nIt is not a single application architecture.\n\nIts architectural value is breadth across the shell environment that later data-engineering and cloud workflows depend on.\n\n## Technical Stack\n\n### Shell and Operating System\n\n- Bash\n- Linux / Unix-like command line\n- executable permission model\n- cron / crontab\n\n### Text Processing\n\n- `grep`\n- `cut`\n- `paste`\n- `sort`\n- `uniq`\n- `wc`\n- `head`\n- `tail`\n\n### Networking and Transfer\n\n- `hostname`\n- `ifconfig`\n- `ping`\n- `curl`\n- `wget`\n\n### Data Formats\n\n- CSV\n- line-oriented text\n\n## Testing and Verification\n\nThe repository's verification model is manual and exercise-driven.\n\nExamples instruct the learner to:\n\n- execute scripts;\n- inspect terminal output;\n- verify permissions with `ls -l`;\n- inspect generated CSVs with `cat`;\n- verify crontab state with `crontab -l`;\n- test network reachability with `ping`.\n\nThere is no evidence of an automated shell-test framework in the checked-in tree.\n\nThat does not reduce the value of the repository as shell practice, but it defines the verification boundary accurately.\n\n## Engineering Discipline\n\n### Reproducible Command Sequences\n\nThe exercises preserve commands in an ordered form that can be replayed.\n\n### Small Feedback Loops\n\nMany workflows follow:\n\n```text\nwrite\n  ↓\nexecute\n  ↓\ninspect\n  ↓\nmodify\n  ↓\nexecute again\n```\n\n### Operational Awareness\n\nThe repository connects script code to:\n\n- filesystem permissions;\n- process scheduling;\n- networking;\n- remote resources;\n- output files.\n\n### Data Transformation Thinking\n\nEven basic shell exercises are framed as pipelines rather than isolated commands.\n\n## Product Engineering Context\n\nThis repository is not a product.\n\nIts value is infrastructural: it strengthens the command-line layer required to operate data pipelines, databases, cloud environments, and automation systems.\n\nThat becomes particularly relevant in the next repositories, which move directly into database administration, Airflow, Kafka, and warehousing.\n\n## Scale and Complexity\n\nThe source tree is small, but the conceptual breadth is significant.\n\nIt covers multiple classes of shell work within approximately one day of repository activity.\n\nThe most complex exercise is the CSV transformation script because it combines:\n\n- file reading;\n- header handling;\n- delimiters;\n- arrays;\n- iteration;\n- arithmetic;\n- report generation.\n\n## Skills Demonstrated\n\n### Bash Programming\n\n- shebangs;\n- variables;\n- input;\n- conditional logic;\n- arithmetic;\n- loops;\n- arrays.\n\n### Linux Operations\n\n- executable permissions;\n- shell execution;\n- redirection;\n- filesystem inspection.\n\n### Automation\n\n- cron syntax;\n- scheduling;\n- periodic logging.\n\n### Text and Data Processing\n\n- filtering;\n- field extraction;\n- sorting;\n- deduplication;\n- merging;\n- CSV manipulation.\n\n### Networking\n\n- host and interface inspection;\n- connectivity testing;\n- HTTP retrieval.\n\n## Capability Developed\n\nThis repository develops the ability to use Linux as a programmable engineering environment.\n\nThe important shift is from \"knowing Linux commands\" to composing them into repeatable workflows.\n\nThat is visible in:\n\n- generated reports;\n- scheduled scripts;\n- multi-step text processing;\n- remote data retrieval.\n\n## Portfolio Evolution Context\n\nEarlier repository 039 `Linux` captured broad Linux command-reference knowledge.\n\n`Linux-Scripting` goes further by concentrating on scripting and automation behavior.\n\nWithin the processed chronology, this is the earliest repository dedicated specifically to:\n\n- Bash scripting as a programming workflow;\n- cron scheduling;\n- shell-based CSV transformation.\n\nThis makes it a useful precursor to repository 065, where shell commands become units inside orchestrated Airflow ETL pipelines.\n\n## Historical Significance\n\nThe October 2024 sequence shows a clear data-engineering learning arc:\n\n```text\nPython / SQL foundations\n  ↓\nPostgreSQL and database operations\n  ↓\nLinux scripting and automation\n  ↓\nKafka + Airflow ETL\n  ↓\ndata warehousing\n```\n\nRepository 062 is the shell/automation bridge in that progression.\n\n## Authorship and Evidence Boundary\n\nThe documents have explicit IBM Skills Network instructional language.\n\nThe corpus therefore attributes:\n\n- practiced commands;\n- completed exercises;\n- demonstrated concepts;\n\nbut does not claim original authorship of the instructional prose or every supplied code example.\n\nThe final tree also stores most code examples inside Markdown rather than as executable `.sh` artifacts.\n\n## Overall Repository Narrative\n\n`Linux-Scripting` is a focused shell-automation learning repository.\n\nIt demonstrates moving beyond one-off Linux commands into scripts, conditions, arithmetic, arrays, loops, CSV processing, cron scheduling, text wrangling, and network operations.\n\nIts strongest portfolio value is chronological: it establishes the command-line automation foundation that immediately feeds into the following Kafka, Airflow, and data-warehouse work.\n\n# Project Tags\n\n## Project Type\n\n- `individual-coursework`\n- `technical-lab`\n- `linux-learning`\n- `data-engineering-foundations`\n\n## Languages and Shell\n\n- `bash`\n- `shell-scripting`\n- `linux`\n\n## Programming Concepts\n\n- `variables`\n- `user-input`\n- `conditional-statements`\n- `arithmetic`\n- `arrays`\n- `loops`\n\n## Automation\n\n- `cron`\n- `crontab`\n- `scheduled-tasks`\n- `output-redirection`\n\n## Text Processing\n\n- `grep`\n- `cut`\n- `paste`\n- `sort`\n- `uniq`\n- `wc`\n- `head`\n- `tail`\n- `csv-processing`\n\n## Networking\n\n- `hostname`\n- `ifconfig`\n- `ping`\n- `curl`\n- `wget`\n\n## Engineering Practices\n\n- `command-line-workflows`\n- `manual-verification`\n- `operational-automation`\n- `reproducible-command-sequences`\n\n## Portfolio Significance\n\n- `earliest-observed-shell-scripting`\n- `earliest-observed-cron`\n- `earliest-observed-crontab`"
+}

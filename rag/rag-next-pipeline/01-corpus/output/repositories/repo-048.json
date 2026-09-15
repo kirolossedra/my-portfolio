@@ -1,0 +1,579 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 48,
+  "repository_total": 134,
+  "repository_name": "RNN-and-Sequence-Models--Training",
+  "header_title": "RNN-and-Sequence-Models--Training",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-048-RNN-and-Sequence-Models--Training/README.md",
+    "line_start": 1,
+    "line_end": 491,
+    "sha256": "627e9a4f3661cb6d364a2f051f493dcf02a19e1f3f506459a65d3a828605ef26"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-coursework",
+    "instructional-scaffold",
+    "python",
+    "numpy",
+    "jupyter-notebook",
+    "deep-learning",
+    "sequence-models",
+    "recurrent-neural-network",
+    "rnn-from-scratch",
+    "lstm",
+    "hidden-state",
+    "character-language-model",
+    "autoregressive-generation",
+    "gradient-clipping",
+    "word-embeddings",
+    "cosine-similarity",
+    "word-analogies",
+    "sentence-embeddings",
+    "natural-language-processing",
+    "neural-machine-translation",
+    "sequence-to-sequence",
+    "attention-mechanism",
+    "course-supplied-tests",
+    "executed-notebook-output",
+    "expected-output-verification"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/RNN-and-Sequence-Models--Training`\n- **Repository start date:** 2024-09-24\n- **Last meaningful update date:** 2024-10-01\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** recurrent neural networks, sequence models, embeddings, language modeling, attention\n- **Repository type:** structured deep-learning coursework / implementation practice\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** instructional notebooks and supplied test/utilities are present; learner-completed graded regions are distinguished from scaffold code"
+    },
+    "testing": {
+      "section_ids": [
+        "s024",
+        "s031"
+      ],
+      "titles": [
+        "Testing and Verification",
+        "Verification"
+      ],
+      "text": "## Testing and Verification\nVerification evidence includes supplied unit tests embedded into the notebooks.\n\nThe RNN notebook has saved successful output showing `All tests passed` for at least one tested recurrent function.\n\nAdditional test functions exist for:\n\n- RNN forward propagation,\n- LSTM forward propagation,\n- character-model exercises,\n- vector exercises.\n\nThis is assignment-level functional verification.\n\nThere is no repository-level CI workflow.\n\n## Verification\n- supplied unit-test execution\n- numerical expected-output checking\n- notebook output inspection"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Authorship and Provenance"
+      ],
+      "text": "## Authorship and Provenance\nThis repository clearly contains instructional structure.\n\nEvidence includes:\n\n- `UNQ_C...` identifiers,\n- `GRADED FUNCTION` markers,\n- `START CODE HERE`,\n- supplied `public_tests.py`,\n- supplied utility modules,\n- generated test-case infrastructure.\n\nThe portfolio claim is therefore:\n\nthe repository owner executed and completed implementation regions within structured sequence-model coursework.\n\nThe claim is not:\n\nthe owner authored the entire assignment framework, datasets, test harness, and instructional prose from scratch."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/RNN-and-Sequence-Models--Training`\n- **Repository start date:** 2024-09-24\n- **Last meaningful update date:** 2024-10-01\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** recurrent neural networks, sequence models, embeddings, language modeling, attention\n- **Repository type:** structured deep-learning coursework / implementation practice\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** instructional notebooks and supplied test/utilities are present; learner-completed graded regions are distinguished from scaffold code",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`RNN-and-Sequence-Models--Training` is a concentrated sequence-model learning repository containing several separate exercises rather than one application.\n\nThe checked-in work covers:\n\n- recurrent neural networks implemented at NumPy level,\n- LSTM forward propagation,\n- character-level language modeling,\n- gradient clipping,\n- sequence sampling,\n- word-vector operations,\n- sentence-to-vector classification,\n- neural machine translation with attention,\n- additional sequence-model exercises such as jazz generation.\n\nThe repository therefore documents a broad transition from feed-forward/convolutional learning into temporal and language-oriented modeling.",
+      "source_line_start": 14,
+      "source_line_end": 32
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The main visible workstreams include:\n\n- `RNN from scratch`,\n- `Character level language model Dinosaurus Island`,\n- `Word Vector Operations`,\n- `Emojifi`,\n- `Improvise jaz solo with LSTM`,\n- `Neural_Machine_Translation.ipynb`.\n\nSupporting files include:\n\n- `public_tests.py`,\n- `rnn_utils.py`,\n- `utils.py`,\n- `generateTestCases.py`,\n- vocabulary / corpus text files.\n\nSeveral per-exercise README files are effectively empty.\n\nThe substantive evidence is therefore in notebooks and helper/test files.",
+      "source_line_start": 32,
+      "source_line_end": 55
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "RNN From Scratch",
+      "normalized_title": "RNN From Scratch",
+      "key": "rnn_from_scratch",
+      "path": [
+        "RNN From Scratch"
+      ],
+      "content": "`RNN from scratch/RNN_101.ipynb` implements fundamental recurrent operations explicitly with NumPy.\n\nA learner-completed `rnn_cell_forward` function retrieves:\n\n- `Wax`,\n- `Waa`,\n- `Wya`,\n- `ba`,\n- `by`.\n\nIt computes the next hidden state using a `tanh` transformation over the previous hidden state and current input.\n\nIt computes output probabilities through a softmax transformation.\n\nThe notebook does not delegate the recurrent cell to a high-level RNN layer.\n\nThat makes the exercise useful evidence of understanding the equations behind recurrent state propagation.",
+      "source_line_start": 55,
+      "source_line_end": 75
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Time-Unrolled Forward Propagation",
+      "normalized_title": "Time-Unrolled Forward Propagation",
+      "key": "time_unrolled_forward_propagation",
+      "path": [
+        "Time-Unrolled Forward Propagation"
+      ],
+      "content": "The notebook implements `rnn_forward`.\n\nIt allocates tensors for:\n\n- hidden states across time,\n- predictions across time.\n\nIt iterates over the time dimension.\n\nAt each time step it:\n\n1. extracts the current input slice,\n2. invokes the recurrent cell,\n3. stores the next hidden state,\n4. stores the current prediction,\n5. appends the cache required for backward propagation.\n\nThis demonstrates explicit sequence-axis reasoning and state carryover.",
+      "source_line_start": 75,
+      "source_line_end": 96
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "LSTM Mechanics",
+      "normalized_title": "LSTM Mechanics",
+      "key": "lstm_mechanics",
+      "path": [
+        "LSTM Mechanics"
+      ],
+      "content": "The same notebook contains `lstm_forward`.\n\nThe exercise extends the recurrence model from a simple RNN to LSTM state propagation.\n\nThe repository therefore includes practical work with:\n\n- hidden state,\n- cell state,\n- gate-based recurrence,\n- multi-step sequence propagation.\n\nBecause the notebook is assignment/scaffold based, these are recorded as learner-completed sequence-model exercises rather than an independently originated LSTM framework.",
+      "source_line_start": 96,
+      "source_line_end": 111
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Supplied Unit Tests",
+      "normalized_title": "Supplied Unit Tests",
+      "key": "supplied_unit_tests",
+      "path": [
+        "Supplied Unit Tests"
+      ],
+      "content": "`public_tests.py` contains dedicated tests for recurrent functions, including:\n\n- RNN-cell forward behavior,\n- full RNN forward behavior,\n- LSTM forward behavior.\n\nThe notebook invokes tests after learner-completed functions.\n\nSaved output from the RNN exercise includes `All tests passed`.\n\nThis is stronger evidence than notebook code alone because the exercise validates numerical shape/value behavior against supplied expectations.\n\nThe test harness itself is course infrastructure.\n\nIt is not attributed as personally designed testing infrastructure.",
+      "source_line_start": 111,
+      "source_line_end": 129
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Character-Level Language Model",
+      "normalized_title": "Character-Level Language Model",
+      "key": "character_level_language_model",
+      "path": [
+        "Character-Level Language Model"
+      ],
+      "content": "The `Character level language model Dinosaurus Island` exercise implements a recurrent character generator.\n\nThe repository contains:\n\n- the notebook,\n- `dinos.txt`,\n- helper functions,\n- generated-test infrastructure,\n- Shakespeare text/utilities.\n\nThe notebook includes learner regions for the recurrent training loop.",
+      "source_line_start": 129,
+      "source_line_end": 143
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Character Vocabulary",
+      "normalized_title": "Character Vocabulary",
+      "key": "character_vocabulary",
+      "path": [
+        "Character Vocabulary"
+      ],
+      "content": "Character-level modeling maps symbols to integer vocabulary indices.\n\nThe model operates sequentially across character positions.\n\nThat gives practical exposure to:\n\n- token-to-index mapping,\n- sequential targets,\n- recurrent hidden-state reuse,\n- probabilistic next-character prediction.",
+      "source_line_start": 143,
+      "source_line_end": 156
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Gradient Clipping",
+      "normalized_title": "Gradient Clipping",
+      "key": "gradient_clipping",
+      "path": [
+        "Gradient Clipping"
+      ],
+      "content": "The character-model notebook contains a graded `clip` function.\n\nGradient clipping is used to constrain gradient magnitude during recurrent training.\n\nThis addresses exploding-gradient behavior directly.\n\nThe presence of dedicated generated test cases for `clip` provides explicit validation scaffolding.",
+      "source_line_start": 156,
+      "source_line_end": 166
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Sampling",
+      "normalized_title": "Sampling",
+      "key": "sampling",
+      "path": [
+        "Sampling"
+      ],
+      "content": "The character language-model exercise also includes a sampling stage.\n\nThe model repeatedly predicts a probability distribution over the next character and selects from that distribution to construct generated text.\n\nThis introduces autoregressive generation rather than classification only.",
+      "source_line_start": 166,
+      "source_line_end": 174
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Character-Model Optimization Loop",
+      "normalized_title": "Character-Model Optimization Loop",
+      "key": "character_model_optimization_loop",
+      "path": [
+        "Character-Model Optimization Loop"
+      ],
+      "content": "The exercise connects:\n\n- forward propagation,\n- sequence loss,\n- backward propagation,\n- gradient clipping,\n- parameter updates.\n\nThis makes it a full small recurrent training loop rather than just a forward-pass demonstration.",
+      "source_line_start": 174,
+      "source_line_end": 186
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Word Vector Operations",
+      "normalized_title": "Word Vector Operations",
+      "key": "word_vector_operations",
+      "path": [
+        "Word Vector Operations"
+      ],
+      "content": "The `Word Vector Operations` section introduces dense semantic vector representations.\n\nIts supporting test-generation file references exercises such as:\n\n- `cosine_similarity`,\n- `complete_analogy`.\n\nThese tasks exercise vector-space relationships rather than sequential recurrence.",
+      "source_line_start": 186,
+      "source_line_end": 197
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Cosine Similarity",
+      "normalized_title": "Cosine Similarity",
+      "key": "cosine_similarity",
+      "path": [
+        "Cosine Similarity"
+      ],
+      "content": "Cosine similarity compares vector direction independent of raw magnitude.\n\nWithin this repository it is used as a primitive for semantic comparison between embeddings.\n\nThis expands the portfolio from manually created feature vectors into pretrained semantic representation use.",
+      "source_line_start": 197,
+      "source_line_end": 205
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Word Analogies",
+      "normalized_title": "Word Analogies",
+      "key": "word_analogies",
+      "path": [
+        "Word Analogies"
+      ],
+      "content": "The analogy exercise applies vector arithmetic and similarity search to relationships of the form:\n\n`a : b :: c : ?`\n\nThat develops intuition for geometric structure in embedding spaces.",
+      "source_line_start": 205,
+      "source_line_end": 213
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Emojify",
+      "normalized_title": "Emojify",
+      "key": "emojify",
+      "path": [
+        "Emojify"
+      ],
+      "content": "`Emojifi/Emojifi.ipynb` contains sentence classification work using word vectors.\n\nA visible `sentence_to_avg` function converts words in a sentence into an averaged embedding representation.\n\nThat representation is then usable for downstream classification.\n\nThe notebook includes unit-test-style checks for the sentence averaging operation.",
+      "source_line_start": 213,
+      "source_line_end": 223
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Representation Aggregation",
+      "normalized_title": "Representation Aggregation",
+      "key": "representation_aggregation",
+      "path": [
+        "Representation Aggregation"
+      ],
+      "content": "The sentence-average approach demonstrates a simple but important NLP architecture:\n\nraw sentence\n→ tokens\n→ word vectors\n→ aggregate representation\n→ classifier.\n\nThis provides a baseline against which recurrent sequence encoders can be understood.",
+      "source_line_start": 223,
+      "source_line_end": 235
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Neural Machine Translation",
+      "normalized_title": "Neural Machine Translation",
+      "key": "neural_machine_translation",
+      "path": [
+        "Neural Machine Translation"
+      ],
+      "content": "`Neural_Machine_Translation.ipynb` includes an attention-based translation exercise.\n\nThe notebook contains a graded `one_step_attention` function.\n\nThis introduces explicit attention computation between encoder representations and decoder state.",
+      "source_line_start": 235,
+      "source_line_end": 243
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Attention Mechanism",
+      "normalized_title": "Attention Mechanism",
+      "key": "attention_mechanism",
+      "path": [
+        "Attention Mechanism"
+      ],
+      "content": "Attention changes the sequence architecture from a single fixed representation to dynamic context selection.\n\nFor each output step, the decoder can weight encoder-side information differently.\n\nThis is a major conceptual progression from the earlier plain recurrent exercises.",
+      "source_line_start": 243,
+      "source_line_end": 251
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Sequence-to-Sequence Modeling",
+      "normalized_title": "Sequence-to-Sequence Modeling",
+      "key": "sequence_to_sequence_modeling",
+      "path": [
+        "Sequence-to-Sequence Modeling"
+      ],
+      "content": "The machine-translation notebook therefore covers a sequence-to-sequence workflow involving:\n\n- encoded input sequence,\n- decoder state,\n- attention-derived context,\n- output generation.\n\nThe repository should not be described as a production translator.\n\nIt is an implementation-focused sequence-model exercise.",
+      "source_line_start": 251,
+      "source_line_end": 264
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Jazz LSTM Exercise",
+      "normalized_title": "Jazz LSTM Exercise",
+      "key": "jazz_lstm_exercise",
+      "path": [
+        "Jazz LSTM Exercise"
+      ],
+      "content": "The tree contains `Improvise_a_Jazz_Solo_with_an_LSTM_Network.ipynb`.\n\nThe checked-in notebook is extremely small compared with the other assignments.\n\nIts existence records exploration of sequence generation in a music context.\n\nThe corpus does not overstate its implementation depth from the filename alone.",
+      "source_line_start": 264,
+      "source_line_end": 274
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Data and Supporting Assets",
+      "normalized_title": "Data and Supporting Assets",
+      "key": "data_and_supporting_assets",
+      "path": [
+        "Data and Supporting Assets"
+      ],
+      "content": "The repository includes textual datasets and utility modules used by the exercises.\n\nExamples include:\n\n- `dinos.txt`,\n- `shakespeare.txt`,\n- recurrent utilities,\n- word-vector utility code.\n\nThose assets support reproducible notebook execution within the intended instructional environment.",
+      "source_line_start": 274,
+      "source_line_end": 287
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Authorship and Provenance",
+      "normalized_title": "Authorship and Provenance",
+      "key": "authorship_and_provenance",
+      "path": [
+        "Authorship and Provenance"
+      ],
+      "content": "This repository clearly contains instructional structure.\n\nEvidence includes:\n\n- `UNQ_C...` identifiers,\n- `GRADED FUNCTION` markers,\n- `START CODE HERE`,\n- supplied `public_tests.py`,\n- supplied utility modules,\n- generated test-case infrastructure.\n\nThe portfolio claim is therefore:\n\nthe repository owner executed and completed implementation regions within structured sequence-model coursework.\n\nThe claim is not:\n\nthe owner authored the entire assignment framework, datasets, test harness, and instructional prose from scratch.",
+      "source_line_start": 287,
+      "source_line_end": 308
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification evidence includes supplied unit tests embedded into the notebooks.\n\nThe RNN notebook has saved successful output showing `All tests passed` for at least one tested recurrent function.\n\nAdditional test functions exist for:\n\n- RNN forward propagation,\n- LSTM forward propagation,\n- character-model exercises,\n- vector exercises.\n\nThis is assignment-level functional verification.\n\nThere is no repository-level CI workflow.",
+      "source_line_start": 308,
+      "source_line_end": 325
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The exercises encourage decomposition into mathematical primitives.\n\nInstead of one opaque model call, the notebook separates:\n\n- recurrent cell,\n- sequence forward pass,\n- LSTM propagation,\n- clipping,\n- sampling,\n- attention.\n\nThis decomposition makes intermediate tensor behavior inspectable.",
+      "source_line_start": 325,
+      "source_line_end": 340
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Python and Numerical Computing\n\n- Python\n- NumPy\n- array shape reasoning\n- vectorized linear algebra\n- probability distributions\n\n### Sequence Models\n\n- recurrent neural networks\n- hidden-state propagation\n- LSTM\n- sequence iteration\n- recurrent caches\n\n### NLP\n\n- character language modeling\n- word embeddings\n- cosine similarity\n- vector analogies\n- sentence embeddings\n- sequence-to-sequence modeling\n- neural machine translation\n- attention\n\n### Training\n\n- sequence loss\n- backpropagation through recurrent computation\n- gradient clipping\n- iterative parameter updates\n\n### Verification\n\n- supplied unit-test execution\n- numerical expected-output checking\n- notebook output inspection",
+      "source_line_start": 340,
+      "source_line_end": 382
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Python and Numerical Computing",
+      "normalized_title": "Python and Numerical Computing",
+      "key": "python_and_numerical_computing",
+      "path": [
+        "Skills Demonstrated",
+        "Python and Numerical Computing"
+      ],
+      "content": "- Python\n- NumPy\n- array shape reasoning\n- vectorized linear algebra\n- probability distributions",
+      "source_line_start": 342,
+      "source_line_end": 350
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Sequence Models",
+      "normalized_title": "Sequence Models",
+      "key": "sequence_models",
+      "path": [
+        "Skills Demonstrated",
+        "Sequence Models"
+      ],
+      "content": "- recurrent neural networks\n- hidden-state propagation\n- LSTM\n- sequence iteration\n- recurrent caches",
+      "source_line_start": 350,
+      "source_line_end": 358
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "NLP",
+      "normalized_title": "NLP",
+      "key": "nlp",
+      "path": [
+        "Skills Demonstrated",
+        "NLP"
+      ],
+      "content": "- character language modeling\n- word embeddings\n- cosine similarity\n- vector analogies\n- sentence embeddings\n- sequence-to-sequence modeling\n- neural machine translation\n- attention",
+      "source_line_start": 358,
+      "source_line_end": 369
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Training",
+      "normalized_title": "Training",
+      "key": "training",
+      "path": [
+        "Skills Demonstrated",
+        "Training"
+      ],
+      "content": "- sequence loss\n- backpropagation through recurrent computation\n- gradient clipping\n- iterative parameter updates",
+      "source_line_start": 369,
+      "source_line_end": 376
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Skills Demonstrated",
+        "Verification"
+      ],
+      "content": "- supplied unit-test execution\n- numerical expected-output checking\n- notebook output inspection",
+      "source_line_start": 376,
+      "source_line_end": 382
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository develops understanding of why sequence models require state.\n\nEarlier feed-forward models map an input to an output without carrying temporal context.\n\nHere the implementation repeatedly makes previous state part of the next computation.\n\nThe learner also encounters multiple ways of representing linguistic context:\n\n- recurrent hidden states,\n- pretrained word vectors,\n- averaged sentence vectors,\n- attention-weighted encoder states.",
+      "source_line_start": 382,
+      "source_line_end": 397
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "This repository follows the earlier TensorFlow and MATLAB deep-learning work.\n\nThe earlier repositories focused strongly on:\n\n- image classification,\n- convolution,\n- network graph composition.\n\nThis repository shifts the technical center toward:\n\n- language,\n- temporal order,\n- sequential memory,\n- semantic vector spaces,\n- generation.\n\nThat marks a distinct broadening of the machine-learning track.",
+      "source_line_start": 397,
+      "source_line_end": 417
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository centered on recurrent sequence models as its primary subject.\n\nIt is also the earliest observed repository containing:\n\n- RNN-from-scratch exercises,\n- character-level language generation,\n- word-vector analogy work,\n- attention-based neural machine translation.",
+      "source_line_start": 417,
+      "source_line_end": 428
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository contains multiple independent notebook exercises plus helpers and datasets.\n\nIt is broader than a single experiment.\n\nIts complexity comes from conceptual coverage and mathematical implementation rather than deployment or product integration.",
+      "source_line_start": 428,
+      "source_line_end": 436
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "The repository is instructional.\n\nSeveral README files are empty.\n\nEnvironment/dependency versions are not locked.\n\nSome assets and test code are supplied by the coursework.\n\nThere is no continuous integration.\n\nThere is no serving layer.\n\nThere is no production dataset pipeline.\n\nThe jazz notebook has little checked-in content.\n\nModel performance is not summarized in a repository-level evaluation report.",
+      "source_line_start": 436,
+      "source_line_end": 456
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`RNN-and-Sequence-Models--Training` records a significant NLP/sequence-learning phase.\n\nIt starts with explicit recurrent equations and tested NumPy implementations, then expands into language generation, embeddings, sentence representations, LSTM work, and attention-based translation.\n\nIts portfolio value is strongest when interpreted correctly: it is evidence of hands-on completion and execution of structured deep-learning assignments, including mathematically explicit graded functions and unit tests, rather than evidence that the entire instructional framework was authored independently.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `numpy`\n- `jupyter-notebook`\n- `deep-learning`\n- `sequence-models`\n- `recurrent-neural-network`\n- `rnn-from-scratch`\n- `lstm`\n- `hidden-state`\n- `character-language-model`\n- `autoregressive-generation`\n- `gradient-clipping`\n- `word-embeddings`\n- `cosine-similarity`\n- `word-analogies`\n- `sentence-embeddings`\n- `natural-language-processing`\n- `neural-machine-translation`\n- `sequence-to-sequence`\n- `attention-mechanism`\n- `course-supplied-tests`\n- `executed-notebook-output`\n- `expected-output-verification`",
+      "source_line_start": 456,
+      "source_line_end": 492
+    }
+  ],
+  "raw_analysis": "# Repository 048 — RNN-and-Sequence-Models--Training\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/RNN-and-Sequence-Models--Training`\n- **Repository start date:** 2024-09-24\n- **Last meaningful update date:** 2024-10-01\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** recurrent neural networks, sequence models, embeddings, language modeling, attention\n- **Repository type:** structured deep-learning coursework / implementation practice\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** instructional notebooks and supplied test/utilities are present; learner-completed graded regions are distinguished from scaffold code\n\n## What This Project Is\n\n`RNN-and-Sequence-Models--Training` is a concentrated sequence-model learning repository containing several separate exercises rather than one application.\n\nThe checked-in work covers:\n\n- recurrent neural networks implemented at NumPy level,\n- LSTM forward propagation,\n- character-level language modeling,\n- gradient clipping,\n- sequence sampling,\n- word-vector operations,\n- sentence-to-vector classification,\n- neural machine translation with attention,\n- additional sequence-model exercises such as jazz generation.\n\nThe repository therefore documents a broad transition from feed-forward/convolutional learning into temporal and language-oriented modeling.\n\n## Repository Structure\n\nThe main visible workstreams include:\n\n- `RNN from scratch`,\n- `Character level language model Dinosaurus Island`,\n- `Word Vector Operations`,\n- `Emojifi`,\n- `Improvise jaz solo with LSTM`,\n- `Neural_Machine_Translation.ipynb`.\n\nSupporting files include:\n\n- `public_tests.py`,\n- `rnn_utils.py`,\n- `utils.py`,\n- `generateTestCases.py`,\n- vocabulary / corpus text files.\n\nSeveral per-exercise README files are effectively empty.\n\nThe substantive evidence is therefore in notebooks and helper/test files.\n\n## RNN From Scratch\n\n`RNN from scratch/RNN_101.ipynb` implements fundamental recurrent operations explicitly with NumPy.\n\nA learner-completed `rnn_cell_forward` function retrieves:\n\n- `Wax`,\n- `Waa`,\n- `Wya`,\n- `ba`,\n- `by`.\n\nIt computes the next hidden state using a `tanh` transformation over the previous hidden state and current input.\n\nIt computes output probabilities through a softmax transformation.\n\nThe notebook does not delegate the recurrent cell to a high-level RNN layer.\n\nThat makes the exercise useful evidence of understanding the equations behind recurrent state propagation.\n\n## Time-Unrolled Forward Propagation\n\nThe notebook implements `rnn_forward`.\n\nIt allocates tensors for:\n\n- hidden states across time,\n- predictions across time.\n\nIt iterates over the time dimension.\n\nAt each time step it:\n\n1. extracts the current input slice,\n2. invokes the recurrent cell,\n3. stores the next hidden state,\n4. stores the current prediction,\n5. appends the cache required for backward propagation.\n\nThis demonstrates explicit sequence-axis reasoning and state carryover.\n\n## LSTM Mechanics\n\nThe same notebook contains `lstm_forward`.\n\nThe exercise extends the recurrence model from a simple RNN to LSTM state propagation.\n\nThe repository therefore includes practical work with:\n\n- hidden state,\n- cell state,\n- gate-based recurrence,\n- multi-step sequence propagation.\n\nBecause the notebook is assignment/scaffold based, these are recorded as learner-completed sequence-model exercises rather than an independently originated LSTM framework.\n\n## Supplied Unit Tests\n\n`public_tests.py` contains dedicated tests for recurrent functions, including:\n\n- RNN-cell forward behavior,\n- full RNN forward behavior,\n- LSTM forward behavior.\n\nThe notebook invokes tests after learner-completed functions.\n\nSaved output from the RNN exercise includes `All tests passed`.\n\nThis is stronger evidence than notebook code alone because the exercise validates numerical shape/value behavior against supplied expectations.\n\nThe test harness itself is course infrastructure.\n\nIt is not attributed as personally designed testing infrastructure.\n\n## Character-Level Language Model\n\nThe `Character level language model Dinosaurus Island` exercise implements a recurrent character generator.\n\nThe repository contains:\n\n- the notebook,\n- `dinos.txt`,\n- helper functions,\n- generated-test infrastructure,\n- Shakespeare text/utilities.\n\nThe notebook includes learner regions for the recurrent training loop.\n\n## Character Vocabulary\n\nCharacter-level modeling maps symbols to integer vocabulary indices.\n\nThe model operates sequentially across character positions.\n\nThat gives practical exposure to:\n\n- token-to-index mapping,\n- sequential targets,\n- recurrent hidden-state reuse,\n- probabilistic next-character prediction.\n\n## Gradient Clipping\n\nThe character-model notebook contains a graded `clip` function.\n\nGradient clipping is used to constrain gradient magnitude during recurrent training.\n\nThis addresses exploding-gradient behavior directly.\n\nThe presence of dedicated generated test cases for `clip` provides explicit validation scaffolding.\n\n## Sampling\n\nThe character language-model exercise also includes a sampling stage.\n\nThe model repeatedly predicts a probability distribution over the next character and selects from that distribution to construct generated text.\n\nThis introduces autoregressive generation rather than classification only.\n\n## Character-Model Optimization Loop\n\nThe exercise connects:\n\n- forward propagation,\n- sequence loss,\n- backward propagation,\n- gradient clipping,\n- parameter updates.\n\nThis makes it a full small recurrent training loop rather than just a forward-pass demonstration.\n\n## Word Vector Operations\n\nThe `Word Vector Operations` section introduces dense semantic vector representations.\n\nIts supporting test-generation file references exercises such as:\n\n- `cosine_similarity`,\n- `complete_analogy`.\n\nThese tasks exercise vector-space relationships rather than sequential recurrence.\n\n## Cosine Similarity\n\nCosine similarity compares vector direction independent of raw magnitude.\n\nWithin this repository it is used as a primitive for semantic comparison between embeddings.\n\nThis expands the portfolio from manually created feature vectors into pretrained semantic representation use.\n\n## Word Analogies\n\nThe analogy exercise applies vector arithmetic and similarity search to relationships of the form:\n\n`a : b :: c : ?`\n\nThat develops intuition for geometric structure in embedding spaces.\n\n## Emojify\n\n`Emojifi/Emojifi.ipynb` contains sentence classification work using word vectors.\n\nA visible `sentence_to_avg` function converts words in a sentence into an averaged embedding representation.\n\nThat representation is then usable for downstream classification.\n\nThe notebook includes unit-test-style checks for the sentence averaging operation.\n\n## Representation Aggregation\n\nThe sentence-average approach demonstrates a simple but important NLP architecture:\n\nraw sentence\n→ tokens\n→ word vectors\n→ aggregate representation\n→ classifier.\n\nThis provides a baseline against which recurrent sequence encoders can be understood.\n\n## Neural Machine Translation\n\n`Neural_Machine_Translation.ipynb` includes an attention-based translation exercise.\n\nThe notebook contains a graded `one_step_attention` function.\n\nThis introduces explicit attention computation between encoder representations and decoder state.\n\n## Attention Mechanism\n\nAttention changes the sequence architecture from a single fixed representation to dynamic context selection.\n\nFor each output step, the decoder can weight encoder-side information differently.\n\nThis is a major conceptual progression from the earlier plain recurrent exercises.\n\n## Sequence-to-Sequence Modeling\n\nThe machine-translation notebook therefore covers a sequence-to-sequence workflow involving:\n\n- encoded input sequence,\n- decoder state,\n- attention-derived context,\n- output generation.\n\nThe repository should not be described as a production translator.\n\nIt is an implementation-focused sequence-model exercise.\n\n## Jazz LSTM Exercise\n\nThe tree contains `Improvise_a_Jazz_Solo_with_an_LSTM_Network.ipynb`.\n\nThe checked-in notebook is extremely small compared with the other assignments.\n\nIts existence records exploration of sequence generation in a music context.\n\nThe corpus does not overstate its implementation depth from the filename alone.\n\n## Data and Supporting Assets\n\nThe repository includes textual datasets and utility modules used by the exercises.\n\nExamples include:\n\n- `dinos.txt`,\n- `shakespeare.txt`,\n- recurrent utilities,\n- word-vector utility code.\n\nThose assets support reproducible notebook execution within the intended instructional environment.\n\n## Authorship and Provenance\n\nThis repository clearly contains instructional structure.\n\nEvidence includes:\n\n- `UNQ_C...` identifiers,\n- `GRADED FUNCTION` markers,\n- `START CODE HERE`,\n- supplied `public_tests.py`,\n- supplied utility modules,\n- generated test-case infrastructure.\n\nThe portfolio claim is therefore:\n\nthe repository owner executed and completed implementation regions within structured sequence-model coursework.\n\nThe claim is not:\n\nthe owner authored the entire assignment framework, datasets, test harness, and instructional prose from scratch.\n\n## Testing and Verification\n\nVerification evidence includes supplied unit tests embedded into the notebooks.\n\nThe RNN notebook has saved successful output showing `All tests passed` for at least one tested recurrent function.\n\nAdditional test functions exist for:\n\n- RNN forward propagation,\n- LSTM forward propagation,\n- character-model exercises,\n- vector exercises.\n\nThis is assignment-level functional verification.\n\nThere is no repository-level CI workflow.\n\n## Engineering Discipline\n\nThe exercises encourage decomposition into mathematical primitives.\n\nInstead of one opaque model call, the notebook separates:\n\n- recurrent cell,\n- sequence forward pass,\n- LSTM propagation,\n- clipping,\n- sampling,\n- attention.\n\nThis decomposition makes intermediate tensor behavior inspectable.\n\n## Skills Demonstrated\n\n### Python and Numerical Computing\n\n- Python\n- NumPy\n- array shape reasoning\n- vectorized linear algebra\n- probability distributions\n\n### Sequence Models\n\n- recurrent neural networks\n- hidden-state propagation\n- LSTM\n- sequence iteration\n- recurrent caches\n\n### NLP\n\n- character language modeling\n- word embeddings\n- cosine similarity\n- vector analogies\n- sentence embeddings\n- sequence-to-sequence modeling\n- neural machine translation\n- attention\n\n### Training\n\n- sequence loss\n- backpropagation through recurrent computation\n- gradient clipping\n- iterative parameter updates\n\n### Verification\n\n- supplied unit-test execution\n- numerical expected-output checking\n- notebook output inspection\n\n## Capability Developed\n\nThe repository develops understanding of why sequence models require state.\n\nEarlier feed-forward models map an input to an output without carrying temporal context.\n\nHere the implementation repeatedly makes previous state part of the next computation.\n\nThe learner also encounters multiple ways of representing linguistic context:\n\n- recurrent hidden states,\n- pretrained word vectors,\n- averaged sentence vectors,\n- attention-weighted encoder states.\n\n## Portfolio Evolution\n\nThis repository follows the earlier TensorFlow and MATLAB deep-learning work.\n\nThe earlier repositories focused strongly on:\n\n- image classification,\n- convolution,\n- network graph composition.\n\nThis repository shifts the technical center toward:\n\n- language,\n- temporal order,\n- sequential memory,\n- semantic vector spaces,\n- generation.\n\nThat marks a distinct broadening of the machine-learning track.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository centered on recurrent sequence models as its primary subject.\n\nIt is also the earliest observed repository containing:\n\n- RNN-from-scratch exercises,\n- character-level language generation,\n- word-vector analogy work,\n- attention-based neural machine translation.\n\n## Scale and Complexity\n\nThe repository contains multiple independent notebook exercises plus helpers and datasets.\n\nIt is broader than a single experiment.\n\nIts complexity comes from conceptual coverage and mathematical implementation rather than deployment or product integration.\n\n## Limitations\n\nThe repository is instructional.\n\nSeveral README files are empty.\n\nEnvironment/dependency versions are not locked.\n\nSome assets and test code are supplied by the coursework.\n\nThere is no continuous integration.\n\nThere is no serving layer.\n\nThere is no production dataset pipeline.\n\nThe jazz notebook has little checked-in content.\n\nModel performance is not summarized in a repository-level evaluation report.\n\n## Overall Narrative\n\n`RNN-and-Sequence-Models--Training` records a significant NLP/sequence-learning phase.\n\nIt starts with explicit recurrent equations and tested NumPy implementations, then expands into language generation, embeddings, sentence representations, LSTM work, and attention-based translation.\n\nIts portfolio value is strongest when interpreted correctly: it is evidence of hands-on completion and execution of structured deep-learning assignments, including mathematically explicit graded functions and unit tests, rather than evidence that the entire instructional framework was authored independently.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `numpy`\n- `jupyter-notebook`\n- `deep-learning`\n- `sequence-models`\n- `recurrent-neural-network`\n- `rnn-from-scratch`\n- `lstm`\n- `hidden-state`\n- `character-language-model`\n- `autoregressive-generation`\n- `gradient-clipping`\n- `word-embeddings`\n- `cosine-similarity`\n- `word-analogies`\n- `sentence-embeddings`\n- `natural-language-processing`\n- `neural-machine-translation`\n- `sequence-to-sequence`\n- `attention-mechanism`\n- `course-supplied-tests`\n- `executed-notebook-output`\n- `expected-output-verification`\n"
+}

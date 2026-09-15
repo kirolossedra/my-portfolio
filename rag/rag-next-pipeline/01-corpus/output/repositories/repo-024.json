@@ -1,0 +1,840 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 24,
+  "repository_total": 134,
+  "repository_name": "CollisionGame",
+  "header_title": "CollisionGame",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-024-CollisionGame/README.md",
+    "line_start": 1,
+    "line_end": 385,
+    "sha256": "e3b1820ec70a347b0764e56295e4b2d1d0ea255e692bff5dd8539d69e66fd7c7"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "browser-simulation",
+    "interactive-experiment",
+    "static-web-application",
+    "personal-project",
+    "individual-project",
+    "html",
+    "javascript",
+    "css",
+    "browser-dom",
+    "event-driven-ui",
+    "client-side-animation",
+    "mousemove-interaction",
+    "dynamic-element-creation",
+    "collision-detection",
+    "collision-response",
+    "euclidean-distance",
+    "trigonometry",
+    "boundary-collision",
+    "pairwise-iteration",
+    "simulation-loop",
+    "github-actions",
+    "github-pages",
+    "deployment-automation",
+    "pages-artifact",
+    "workflow-dispatch",
+    "deployment-concurrency",
+    "earliest-observed-github-actions",
+    "earliest-observed-deployment-automation",
+    "earliest-observed-browser-collision-simulation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 024 / 134\n- Name: `CollisionGame`\n- Repository start date: 2023-12-01\n- Last meaningful update date: 2023-12-01\n- Primary type: Browser-based particle/collision simulation\n- Technical field: Frontend animation, collision handling, and deployment automation\n- Project context: Personal interactive experiment\n- Collaboration type: `individual-project`\n- Primary implementation languages: HTML, JavaScript, CSS\n- Deployment: GitHub Pages through GitHub Actions"
+    },
+    "architecture": {
+      "section_ids": [
+        "s006"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nDOMContentLoaded\n      ↓\ncreate 150 balls\n      ↓\nstore per-element speedX / speedY\n      ↓\n16 ms interval\n      ↓\nmoveBalls()\n  ├─ update positions\n  ├─ bounce from viewport walls\n  └─ handleCollisions()\n        ├─ pairwise distance\n        ├─ overlap resolution\n        └─ velocity adjustment\n\nMouse movement\n      ↓\ndistance-to-cursor check\n      ↓\nnearby-ball displacement\n```\n\nThe DOM elements themselves act as both rendered entities and holders of movement state."
+    },
+    "testing": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "Verification"
+      ],
+      "text": "## Verification\n### Browser-Visible Simulation\n\nThe simulation is inherently observable through movement, collision response, wall bouncing, and mouse interaction.\n\n### Iterative Commit Refinement\n\nThe repository contains several same-day updates to `index.html`.\n\nThe final commit specifically replaces simpler rectangular/distance collision handling with center-distance overlap resolution and more detailed velocity calculations.\n\n### Deployment Pipeline\n\nThe GitHub Actions workflow provides automated publication of the current static implementation."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s021",
+        "s023",
+        "s024",
+        "s028",
+        "s033"
+      ],
+      "titles": [
+        "Deployment and Delivery",
+        "Deployment Permissions",
+        "Deployment Concurrency",
+        "Deployment Pipeline",
+        "Automated Static Deployment"
+      ],
+      "text": "## Deployment and Delivery\n### GitHub Actions Pages Workflow\n\n`.github/workflows/static.yml` runs on:\n\n- pushes to `main`;\n- manual `workflow_dispatch`.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures GitHub Pages;\n3. uploads the repository as a Pages artifact;\n4. deploys through `actions/deploy-pages`.\n\n### Deployment Permissions\n\nThe workflow explicitly grants:\n\n- `contents: read`;\n- `pages: write`;\n- `id-token: write`.\n\n### Deployment Concurrency\n\nThe workflow defines a `pages` concurrency group and preserves in-progress deployments.\n\nThis is concrete CI/CD-style deployment configuration.\n\n## Deployment Permissions\nThe workflow explicitly grants:\n\n- `contents: read`;\n- `pages: write`;\n- `id-token: write`.\n\n## Deployment Concurrency\nThe workflow defines a `pages` concurrency group and preserves in-progress deployments.\n\nThis is concrete CI/CD-style deployment configuration.\n\n## Deployment Pipeline\nThe GitHub Actions workflow provides automated publication of the current static implementation.\n\n## Automated Static Deployment\nThe project moves from code-only static hosting to an explicit GitHub Actions deployment workflow."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s048"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible implementation commits are attributed to `kirolossedra`, including the final collision-logic update. The browser simulation and repository deployment workflow are therefore personally attributable.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 024 / 134\n- Name: `CollisionGame`\n- Repository start date: 2023-12-01\n- Last meaningful update date: 2023-12-01\n- Primary type: Browser-based particle/collision simulation\n- Technical field: Frontend animation, collision handling, and deployment automation\n- Project context: Personal interactive experiment\n- Collaboration type: `individual-project`\n- Primary implementation languages: HTML, JavaScript, CSS\n- Deployment: GitHub Pages through GitHub Actions",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible implementation commits are attributed to `kirolossedra`, including the final collision-logic update. The browser simulation and repository deployment workflow are therefore personally attributable.",
+      "source_line_start": 16,
+      "source_line_end": 20
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains:\n\n- `index.html`;\n- `.github/workflows/static.yml`;\n- `README.md`.\n\n`index.html` contains the complete simulation, styling, and runtime logic.\n\nThe GitHub Actions workflow deploys the repository as static content to GitHub Pages.",
+      "source_line_start": 20,
+      "source_line_end": 32
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`CollisionGame` is a single-page browser simulation containing 150 independently moving colored balls.\n\nEach ball receives a random initial position, random color, and random X/Y velocity.\n\nThe runtime repeatedly:\n\n1. moves every ball;\n2. checks screen boundaries;\n3. reverses velocity at walls;\n4. checks ball-to-ball distances;\n5. resolves overlaps;\n6. adjusts velocities after collisions;\n7. reacts to mouse proximity.\n\nThe result is an interactive particle/collision experiment implemented entirely in client-side browser code.",
+      "source_line_start": 32,
+      "source_line_end": 50
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The simulation includes:\n\n- dynamic DOM element creation;\n- 150 moving entities;\n- random color generation;\n- random initial velocity;\n- absolute-position movement;\n- screen-boundary collision handling;\n- pairwise ball collision detection;\n- overlap separation;\n- angle-based velocity transformation;\n- cursor-proximity interaction;\n- fixed-timestep-style browser updates;\n- static deployment automation.",
+      "source_line_start": 50,
+      "source_line_end": 67
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nDOMContentLoaded\n      ↓\ncreate 150 balls\n      ↓\nstore per-element speedX / speedY\n      ↓\n16 ms interval\n      ↓\nmoveBalls()\n  ├─ update positions\n  ├─ bounce from viewport walls\n  └─ handleCollisions()\n        ├─ pairwise distance\n        ├─ overlap resolution\n        └─ velocity adjustment\n\nMouse movement\n      ↓\ndistance-to-cursor check\n      ↓\nnearby-ball displacement\n```\n\nThe DOM elements themselves act as both rendered entities and holders of movement state.",
+      "source_line_start": 67,
+      "source_line_end": 95
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### HTML\n\nThe page is a standalone HTML document with embedded style and script logic.\n\n### JavaScript\n\nJavaScript implements:\n\n- element creation;\n- random generation;\n- movement state;\n- trigonometry;\n- Euclidean distance;\n- collision response;\n- mouse interaction;\n- periodic updates.\n\n### CSS\n\nCSS defines circular ball geometry, absolute positioning, and visual transition behavior.\n\n### GitHub Actions\n\nA workflow automatically deploys the repository to GitHub Pages on pushes to `main`.\n\n### GitHub Pages\n\nThe repository has Pages enabled and the workflow publishes the static site.",
+      "source_line_start": 95,
+      "source_line_end": 126
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "HTML",
+      "normalized_title": "HTML",
+      "key": "html",
+      "path": [
+        "Technical Stack",
+        "HTML"
+      ],
+      "content": "The page is a standalone HTML document with embedded style and script logic.",
+      "source_line_start": 97,
+      "source_line_end": 101
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "JavaScript",
+      "normalized_title": "JavaScript",
+      "key": "javascript",
+      "path": [
+        "Technical Stack",
+        "JavaScript"
+      ],
+      "content": "JavaScript implements:\n\n- element creation;\n- random generation;\n- movement state;\n- trigonometry;\n- Euclidean distance;\n- collision response;\n- mouse interaction;\n- periodic updates.",
+      "source_line_start": 101,
+      "source_line_end": 114
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "CSS",
+      "normalized_title": "CSS",
+      "key": "css",
+      "path": [
+        "Technical Stack",
+        "CSS"
+      ],
+      "content": "CSS defines circular ball geometry, absolute positioning, and visual transition behavior.",
+      "source_line_start": 114,
+      "source_line_end": 118
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "GitHub Actions",
+      "normalized_title": "GitHub Actions",
+      "key": "github_actions",
+      "path": [
+        "Technical Stack",
+        "GitHub Actions"
+      ],
+      "content": "A workflow automatically deploys the repository to GitHub Pages on pushes to `main`.",
+      "source_line_start": 118,
+      "source_line_end": 122
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "GitHub Pages",
+      "normalized_title": "GitHub Pages",
+      "key": "github_pages",
+      "path": [
+        "Technical Stack",
+        "GitHub Pages"
+      ],
+      "content": "The repository has Pages enabled and the workflow publishes the static site.",
+      "source_line_start": 122,
+      "source_line_end": 126
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Dynamic Particle Creation\n\n`createBall()` creates a new `<div>` element, assigns the `ball` class, chooses a random hexadecimal color, places the ball randomly inside the viewport, assigns random X/Y velocities, and appends it to the page.\n\nA loop creates 150 such entities.\n\n### Continuous Motion Loop\n\n`setInterval(moveBalls, 16)` updates the simulation approximately every 16 milliseconds.\n\n`moveBalls()` applies each ball's current velocity to its DOM position before handling boundaries and inter-ball collisions.\n\n### Boundary Collisions\n\nWhen a ball reaches the left/right viewport boundary, its X velocity changes sign.\n\nWhen it reaches the top/bottom boundary, its Y velocity changes sign.\n\nThis keeps the simulation bounded to the browser viewport.\n\n### Pairwise Collision Detection\n\n`handleCollisions()` compares every ball with every other ball.\n\nFor each pair it computes:\n\n- center-to-center X difference;\n- center-to-center Y difference;\n- Euclidean distance through `Math.hypot`;\n- minimum non-overlapping distance from ball radii.\n\nA collision is recognized when actual distance becomes smaller than the required minimum distance.\n\n### Overlap Resolution\n\nThe final implementation computes overlap distance and separates the two balls along the collision angle.\n\nThis is an important refinement over simply changing velocity while leaving visual elements interpenetrating.\n\n### Collision Velocity Adjustment\n\nThe final commit replaces an earlier simpler collision rule with angle-based calculations.\n\nIt derives:\n\n- movement angles;\n- velocity magnitudes;\n- velocity components relative to the collision axis;\n- resulting speed components;\n- transformed X/Y velocities.\n\nThe commit history therefore shows iterative refinement of collision behavior rather than one static upload.\n\n### Mouse Interaction\n\nA `mousemove` handler computes cursor distance from each ball.\n\nBalls inside a 40-pixel radius are displaced according to the mouse-relative angle while their new coordinates are clamped to viewport bounds.\n\nThis adds direct user interaction to the simulation.",
+      "source_line_start": 126,
+      "source_line_end": 189
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Dynamic Particle Creation",
+      "normalized_title": "Dynamic Particle Creation",
+      "key": "dynamic_particle_creation",
+      "path": [
+        "Major Engineering Work",
+        "Dynamic Particle Creation"
+      ],
+      "content": "`createBall()` creates a new `<div>` element, assigns the `ball` class, chooses a random hexadecimal color, places the ball randomly inside the viewport, assigns random X/Y velocities, and appends it to the page.\n\nA loop creates 150 such entities.",
+      "source_line_start": 128,
+      "source_line_end": 134
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Continuous Motion Loop",
+      "normalized_title": "Continuous Motion Loop",
+      "key": "continuous_motion_loop",
+      "path": [
+        "Major Engineering Work",
+        "Continuous Motion Loop"
+      ],
+      "content": "`setInterval(moveBalls, 16)` updates the simulation approximately every 16 milliseconds.\n\n`moveBalls()` applies each ball's current velocity to its DOM position before handling boundaries and inter-ball collisions.",
+      "source_line_start": 134,
+      "source_line_end": 140
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Boundary Collisions",
+      "normalized_title": "Boundary Collisions",
+      "key": "boundary_collisions",
+      "path": [
+        "Major Engineering Work",
+        "Boundary Collisions"
+      ],
+      "content": "When a ball reaches the left/right viewport boundary, its X velocity changes sign.\n\nWhen it reaches the top/bottom boundary, its Y velocity changes sign.\n\nThis keeps the simulation bounded to the browser viewport.",
+      "source_line_start": 140,
+      "source_line_end": 148
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Pairwise Collision Detection",
+      "normalized_title": "Pairwise Collision Detection",
+      "key": "pairwise_collision_detection",
+      "path": [
+        "Major Engineering Work",
+        "Pairwise Collision Detection"
+      ],
+      "content": "`handleCollisions()` compares every ball with every other ball.\n\nFor each pair it computes:\n\n- center-to-center X difference;\n- center-to-center Y difference;\n- Euclidean distance through `Math.hypot`;\n- minimum non-overlapping distance from ball radii.\n\nA collision is recognized when actual distance becomes smaller than the required minimum distance.",
+      "source_line_start": 148,
+      "source_line_end": 161
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Overlap Resolution",
+      "normalized_title": "Overlap Resolution",
+      "key": "overlap_resolution",
+      "path": [
+        "Major Engineering Work",
+        "Overlap Resolution"
+      ],
+      "content": "The final implementation computes overlap distance and separates the two balls along the collision angle.\n\nThis is an important refinement over simply changing velocity while leaving visual elements interpenetrating.",
+      "source_line_start": 161,
+      "source_line_end": 167
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Collision Velocity Adjustment",
+      "normalized_title": "Collision Velocity Adjustment",
+      "key": "collision_velocity_adjustment",
+      "path": [
+        "Major Engineering Work",
+        "Collision Velocity Adjustment"
+      ],
+      "content": "The final commit replaces an earlier simpler collision rule with angle-based calculations.\n\nIt derives:\n\n- movement angles;\n- velocity magnitudes;\n- velocity components relative to the collision axis;\n- resulting speed components;\n- transformed X/Y velocities.\n\nThe commit history therefore shows iterative refinement of collision behavior rather than one static upload.",
+      "source_line_start": 167,
+      "source_line_end": 181
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Mouse Interaction",
+      "normalized_title": "Mouse Interaction",
+      "key": "mouse_interaction",
+      "path": [
+        "Major Engineering Work",
+        "Mouse Interaction"
+      ],
+      "content": "A `mousemove` handler computes cursor distance from each ball.\n\nBalls inside a 40-pixel radius are displaced according to the mouse-relative angle while their new coordinates are clamped to viewport bounds.\n\nThis adds direct user interaction to the simulation.",
+      "source_line_start": 181,
+      "source_line_end": 189
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Deployment and Delivery",
+      "normalized_title": "Deployment and Delivery",
+      "key": "deployment_and_delivery",
+      "path": [
+        "Deployment and Delivery"
+      ],
+      "content": "### GitHub Actions Pages Workflow\n\n`.github/workflows/static.yml` runs on:\n\n- pushes to `main`;\n- manual `workflow_dispatch`.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures GitHub Pages;\n3. uploads the repository as a Pages artifact;\n4. deploys through `actions/deploy-pages`.\n\n### Deployment Permissions\n\nThe workflow explicitly grants:\n\n- `contents: read`;\n- `pages: write`;\n- `id-token: write`.\n\n### Deployment Concurrency\n\nThe workflow defines a `pages` concurrency group and preserves in-progress deployments.\n\nThis is concrete CI/CD-style deployment configuration.",
+      "source_line_start": 189,
+      "source_line_end": 219
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "GitHub Actions Pages Workflow",
+      "normalized_title": "GitHub Actions Pages Workflow",
+      "key": "github_actions_pages_workflow",
+      "path": [
+        "Deployment and Delivery",
+        "GitHub Actions Pages Workflow"
+      ],
+      "content": "`.github/workflows/static.yml` runs on:\n\n- pushes to `main`;\n- manual `workflow_dispatch`.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures GitHub Pages;\n3. uploads the repository as a Pages artifact;\n4. deploys through `actions/deploy-pages`.",
+      "source_line_start": 191,
+      "source_line_end": 205
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Deployment Permissions",
+      "normalized_title": "Deployment Permissions",
+      "key": "deployment_permissions",
+      "path": [
+        "Deployment and Delivery",
+        "Deployment Permissions"
+      ],
+      "content": "The workflow explicitly grants:\n\n- `contents: read`;\n- `pages: write`;\n- `id-token: write`.",
+      "source_line_start": 205,
+      "source_line_end": 213
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Deployment Concurrency",
+      "normalized_title": "Deployment Concurrency",
+      "key": "deployment_concurrency",
+      "path": [
+        "Deployment and Delivery",
+        "Deployment Concurrency"
+      ],
+      "content": "The workflow defines a `pages` concurrency group and preserves in-progress deployments.\n\nThis is concrete CI/CD-style deployment configuration.",
+      "source_line_start": 213,
+      "source_line_end": 219
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Browser-Visible Simulation\n\nThe simulation is inherently observable through movement, collision response, wall bouncing, and mouse interaction.\n\n### Iterative Commit Refinement\n\nThe repository contains several same-day updates to `index.html`.\n\nThe final commit specifically replaces simpler rectangular/distance collision handling with center-distance overlap resolution and more detailed velocity calculations.\n\n### Deployment Pipeline\n\nThe GitHub Actions workflow provides automated publication of the current static implementation.",
+      "source_line_start": 219,
+      "source_line_end": 235
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Browser-Visible Simulation",
+      "normalized_title": "Browser-Visible Simulation",
+      "key": "browser_visible_simulation",
+      "path": [
+        "Verification",
+        "Browser-Visible Simulation"
+      ],
+      "content": "The simulation is inherently observable through movement, collision response, wall bouncing, and mouse interaction.",
+      "source_line_start": 221,
+      "source_line_end": 225
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Iterative Commit Refinement",
+      "normalized_title": "Iterative Commit Refinement",
+      "key": "iterative_commit_refinement",
+      "path": [
+        "Verification",
+        "Iterative Commit Refinement"
+      ],
+      "content": "The repository contains several same-day updates to `index.html`.\n\nThe final commit specifically replaces simpler rectangular/distance collision handling with center-distance overlap resolution and more detailed velocity calculations.",
+      "source_line_start": 225,
+      "source_line_end": 231
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Deployment Pipeline",
+      "normalized_title": "Deployment Pipeline",
+      "key": "deployment_pipeline",
+      "path": [
+        "Verification",
+        "Deployment Pipeline"
+      ],
+      "content": "The GitHub Actions workflow provides automated publication of the current static implementation.",
+      "source_line_start": 231,
+      "source_line_end": 235
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Incremental Refinement\n\nSeveral focused commits modify the same collision logic during one development session.\n\n### Explicit State Per Entity\n\nEach generated DOM node carries `speedX` and `speedY`, keeping motion state associated with the rendered object.\n\n### Boundary Clamping\n\nCursor-driven movement clamps new positions to valid viewport coordinates.\n\n### Automated Static Deployment\n\nThe project moves from code-only static hosting to an explicit GitHub Actions deployment workflow.",
+      "source_line_start": 235,
+      "source_line_end": 253
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Incremental Refinement",
+      "normalized_title": "Incremental Refinement",
+      "key": "incremental_refinement",
+      "path": [
+        "Engineering Practices",
+        "Incremental Refinement"
+      ],
+      "content": "Several focused commits modify the same collision logic during one development session.",
+      "source_line_start": 237,
+      "source_line_end": 241
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Explicit State Per Entity",
+      "normalized_title": "Explicit State Per Entity",
+      "key": "explicit_state_per_entity",
+      "path": [
+        "Engineering Practices",
+        "Explicit State Per Entity"
+      ],
+      "content": "Each generated DOM node carries `speedX` and `speedY`, keeping motion state associated with the rendered object.",
+      "source_line_start": 241,
+      "source_line_end": 245
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Boundary Clamping",
+      "normalized_title": "Boundary Clamping",
+      "key": "boundary_clamping",
+      "path": [
+        "Engineering Practices",
+        "Boundary Clamping"
+      ],
+      "content": "Cursor-driven movement clamps new positions to valid viewport coordinates.",
+      "source_line_start": 245,
+      "source_line_end": 249
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Automated Static Deployment",
+      "normalized_title": "Automated Static Deployment",
+      "key": "automated_static_deployment",
+      "path": [
+        "Engineering Practices",
+        "Automated Static Deployment"
+      ],
+      "content": "The project moves from code-only static hosting to an explicit GitHub Actions deployment workflow.",
+      "source_line_start": 249,
+      "source_line_end": 253
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Entity Scale\n\nThe simulation creates 150 moving balls.\n\n### Computational Shape\n\nThe collision routine uses nested pair iteration, producing quadratic pair-check behavior with respect to ball count.\n\n### Temporal Scale\n\nUpdates occur every 16 milliseconds, so movement and collision work runs continuously while the page is active.\n\n### Conceptual Complexity\n\nThe simulation combines:\n\n- DOM state;\n- timing;\n- geometry;\n- trigonometry;\n- collision detection;\n- collision response;\n- user interaction;\n- deployment automation.",
+      "source_line_start": 253,
+      "source_line_end": 280
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Entity Scale",
+      "normalized_title": "Entity Scale",
+      "key": "entity_scale",
+      "path": [
+        "Scale and Complexity",
+        "Entity Scale"
+      ],
+      "content": "The simulation creates 150 moving balls.",
+      "source_line_start": 255,
+      "source_line_end": 259
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Computational Shape",
+      "normalized_title": "Computational Shape",
+      "key": "computational_shape",
+      "path": [
+        "Scale and Complexity",
+        "Computational Shape"
+      ],
+      "content": "The collision routine uses nested pair iteration, producing quadratic pair-check behavior with respect to ball count.",
+      "source_line_start": 259,
+      "source_line_end": 263
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Temporal Scale",
+      "normalized_title": "Temporal Scale",
+      "key": "temporal_scale",
+      "path": [
+        "Scale and Complexity",
+        "Temporal Scale"
+      ],
+      "content": "Updates occur every 16 milliseconds, so movement and collision work runs continuously while the page is active.",
+      "source_line_start": 263,
+      "source_line_end": 267
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The simulation combines:\n\n- DOM state;\n- timing;\n- geometry;\n- trigonometry;\n- collision detection;\n- collision response;\n- user interaction;\n- deployment automation.",
+      "source_line_start": 267,
+      "source_line_end": 280
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Frontend\n\n- **Dynamic DOM creation — strong evidence.**\n- **Client-side animation loop — strong evidence.**\n- **Event-driven mouse interaction — strong evidence.**\n- **Absolute-position rendering — strong evidence.**\n\n### Algorithms and Mathematics\n\n- **Euclidean distance — strong evidence.**\n- **Collision detection — strong evidence.**\n- **Overlap resolution — strong evidence.**\n- **Trigonometric velocity transformation — strong evidence.**\n- **Viewport boundary handling — strong evidence.**\n\n### DevOps and Delivery\n\n- **GitHub Actions — strong evidence.**\n- **GitHub Pages deployment automation — strong evidence.**\n- **Workflow permissions — strong evidence.**\n- **Deployment concurrency configuration — moderate evidence.**",
+      "source_line_start": 280,
+      "source_line_end": 304
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **Dynamic DOM creation — strong evidence.**\n- **Client-side animation loop — strong evidence.**\n- **Event-driven mouse interaction — strong evidence.**\n- **Absolute-position rendering — strong evidence.**",
+      "source_line_start": 282,
+      "source_line_end": 289
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Algorithms and Mathematics",
+      "normalized_title": "Algorithms and Mathematics",
+      "key": "algorithms_and_mathematics",
+      "path": [
+        "Skills Demonstrated",
+        "Algorithms and Mathematics"
+      ],
+      "content": "- **Euclidean distance — strong evidence.**\n- **Collision detection — strong evidence.**\n- **Overlap resolution — strong evidence.**\n- **Trigonometric velocity transformation — strong evidence.**\n- **Viewport boundary handling — strong evidence.**",
+      "source_line_start": 289,
+      "source_line_end": 297
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "DevOps and Delivery",
+      "normalized_title": "DevOps and Delivery",
+      "key": "devops_and_delivery",
+      "path": [
+        "Skills Demonstrated",
+        "DevOps and Delivery"
+      ],
+      "content": "- **GitHub Actions — strong evidence.**\n- **GitHub Pages deployment automation — strong evidence.**\n- **Workflow permissions — strong evidence.**\n- **Deployment concurrency configuration — moderate evidence.**",
+      "source_line_start": 297,
+      "source_line_end": 304
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository combines a visually interactive algorithm with an automated deployment path.\n\nEarlier browser projects already demonstrated DOM-driven product behavior; `CollisionGame` adds continuous simulation, many concurrent visual entities, pairwise geometry, and an explicit Pages deployment workflow.",
+      "source_line_start": 304,
+      "source_line_end": 310
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- GitHub Actions;\n- automated GitHub Pages deployment;\n- continuous browser simulation;\n- pairwise collision detection;\n- explicit collision overlap resolution;\n- deployment concurrency configuration.",
+      "source_line_start": 310,
+      "source_line_end": 321
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`CollisionGame` is a concise transition point where a small browser experiment also receives repository-level deployment automation.\n\nIt therefore contributes to both frontend simulation history and the beginning of explicit CI/CD configuration in the processed portfolio.",
+      "source_line_start": 321,
+      "source_line_end": 327
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`CollisionGame` is an owner-authored browser particle simulation built in one HTML file and published through GitHub Actions.\n\nOne hundred and fifty balls move continuously, bounce off viewport walls, detect collisions through center distance, separate when overlapping, transform their velocities around collision angles, and react to nearby mouse movement.\n\nThe repository's final collision commit shows active algorithm refinement, while the Pages workflow adds the earliest observed explicit GitHub Actions deployment automation in the corpus.\n\n# Project Tags",
+      "source_line_start": 327,
+      "source_line_end": 337
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `browser-simulation`\n- `interactive-experiment`\n- `static-web-application`\n- `personal-project`",
+      "source_line_start": 337,
+      "source_line_end": 344
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 344,
+      "source_line_end": 348
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `html`\n- `javascript`\n- `css`",
+      "source_line_start": 348,
+      "source_line_end": 354
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Frontend and Presentation",
+      "normalized_title": "Frontend and Presentation",
+      "key": "frontend_and_presentation",
+      "path": [
+        "Frontend and Presentation"
+      ],
+      "content": "- `browser-dom`\n- `event-driven-ui`\n- `client-side-animation`\n- `mousemove-interaction`\n- `dynamic-element-creation`",
+      "source_line_start": 354,
+      "source_line_end": 362
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Systems Engineering and Algorithms",
+      "normalized_title": "Systems Engineering and Algorithms",
+      "key": "systems_engineering_and_algorithms",
+      "path": [
+        "Systems Engineering and Algorithms"
+      ],
+      "content": "- `collision-detection`\n- `collision-response`\n- `euclidean-distance`\n- `trigonometry`\n- `boundary-collision`\n- `pairwise-iteration`\n- `simulation-loop`",
+      "source_line_start": 362,
+      "source_line_end": 372
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "DevOps and Delivery",
+      "normalized_title": "DevOps and Delivery",
+      "key": "devops_and_delivery",
+      "path": [
+        "DevOps and Delivery"
+      ],
+      "content": "- `github-actions`\n- `github-pages`\n- `deployment-automation`\n- `pages-artifact`\n- `workflow-dispatch`\n- `deployment-concurrency`",
+      "source_line_start": 372,
+      "source_line_end": 381
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-github-actions`\n- `earliest-observed-deployment-automation`\n- `earliest-observed-browser-collision-simulation`",
+      "source_line_start": 381,
+      "source_line_end": 386
+    }
+  ],
+  "raw_analysis": "# CollisionGame\n\n## Repository Identity\n\n- Repository: 024 / 134\n- Name: `CollisionGame`\n- Repository start date: 2023-12-01\n- Last meaningful update date: 2023-12-01\n- Primary type: Browser-based particle/collision simulation\n- Technical field: Frontend animation, collision handling, and deployment automation\n- Project context: Personal interactive experiment\n- Collaboration type: `individual-project`\n- Primary implementation languages: HTML, JavaScript, CSS\n- Deployment: GitHub Pages through GitHub Actions\n\n## Collaboration and Authorship Context\n\nThe visible implementation commits are attributed to `kirolossedra`, including the final collision-logic update. The browser simulation and repository deployment workflow are therefore personally attributable.\n\n## Evidence Basis\n\nThe repository contains:\n\n- `index.html`;\n- `.github/workflows/static.yml`;\n- `README.md`.\n\n`index.html` contains the complete simulation, styling, and runtime logic.\n\nThe GitHub Actions workflow deploys the repository as static content to GitHub Pages.\n\n## What This Project Is\n\n`CollisionGame` is a single-page browser simulation containing 150 independently moving colored balls.\n\nEach ball receives a random initial position, random color, and random X/Y velocity.\n\nThe runtime repeatedly:\n\n1. moves every ball;\n2. checks screen boundaries;\n3. reverses velocity at walls;\n4. checks ball-to-ball distances;\n5. resolves overlaps;\n6. adjusts velocities after collisions;\n7. reacts to mouse proximity.\n\nThe result is an interactive particle/collision experiment implemented entirely in client-side browser code.\n\n## Project Scope\n\nThe simulation includes:\n\n- dynamic DOM element creation;\n- 150 moving entities;\n- random color generation;\n- random initial velocity;\n- absolute-position movement;\n- screen-boundary collision handling;\n- pairwise ball collision detection;\n- overlap separation;\n- angle-based velocity transformation;\n- cursor-proximity interaction;\n- fixed-timestep-style browser updates;\n- static deployment automation.\n\n## Architecture and System Shape\n\n```text\nDOMContentLoaded\n      ↓\ncreate 150 balls\n      ↓\nstore per-element speedX / speedY\n      ↓\n16 ms interval\n      ↓\nmoveBalls()\n  ├─ update positions\n  ├─ bounce from viewport walls\n  └─ handleCollisions()\n        ├─ pairwise distance\n        ├─ overlap resolution\n        └─ velocity adjustment\n\nMouse movement\n      ↓\ndistance-to-cursor check\n      ↓\nnearby-ball displacement\n```\n\nThe DOM elements themselves act as both rendered entities and holders of movement state.\n\n## Technical Stack\n\n### HTML\n\nThe page is a standalone HTML document with embedded style and script logic.\n\n### JavaScript\n\nJavaScript implements:\n\n- element creation;\n- random generation;\n- movement state;\n- trigonometry;\n- Euclidean distance;\n- collision response;\n- mouse interaction;\n- periodic updates.\n\n### CSS\n\nCSS defines circular ball geometry, absolute positioning, and visual transition behavior.\n\n### GitHub Actions\n\nA workflow automatically deploys the repository to GitHub Pages on pushes to `main`.\n\n### GitHub Pages\n\nThe repository has Pages enabled and the workflow publishes the static site.\n\n## Major Engineering Work\n\n### Dynamic Particle Creation\n\n`createBall()` creates a new `<div>` element, assigns the `ball` class, chooses a random hexadecimal color, places the ball randomly inside the viewport, assigns random X/Y velocities, and appends it to the page.\n\nA loop creates 150 such entities.\n\n### Continuous Motion Loop\n\n`setInterval(moveBalls, 16)` updates the simulation approximately every 16 milliseconds.\n\n`moveBalls()` applies each ball's current velocity to its DOM position before handling boundaries and inter-ball collisions.\n\n### Boundary Collisions\n\nWhen a ball reaches the left/right viewport boundary, its X velocity changes sign.\n\nWhen it reaches the top/bottom boundary, its Y velocity changes sign.\n\nThis keeps the simulation bounded to the browser viewport.\n\n### Pairwise Collision Detection\n\n`handleCollisions()` compares every ball with every other ball.\n\nFor each pair it computes:\n\n- center-to-center X difference;\n- center-to-center Y difference;\n- Euclidean distance through `Math.hypot`;\n- minimum non-overlapping distance from ball radii.\n\nA collision is recognized when actual distance becomes smaller than the required minimum distance.\n\n### Overlap Resolution\n\nThe final implementation computes overlap distance and separates the two balls along the collision angle.\n\nThis is an important refinement over simply changing velocity while leaving visual elements interpenetrating.\n\n### Collision Velocity Adjustment\n\nThe final commit replaces an earlier simpler collision rule with angle-based calculations.\n\nIt derives:\n\n- movement angles;\n- velocity magnitudes;\n- velocity components relative to the collision axis;\n- resulting speed components;\n- transformed X/Y velocities.\n\nThe commit history therefore shows iterative refinement of collision behavior rather than one static upload.\n\n### Mouse Interaction\n\nA `mousemove` handler computes cursor distance from each ball.\n\nBalls inside a 40-pixel radius are displaced according to the mouse-relative angle while their new coordinates are clamped to viewport bounds.\n\nThis adds direct user interaction to the simulation.\n\n## Deployment and Delivery\n\n### GitHub Actions Pages Workflow\n\n`.github/workflows/static.yml` runs on:\n\n- pushes to `main`;\n- manual `workflow_dispatch`.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures GitHub Pages;\n3. uploads the repository as a Pages artifact;\n4. deploys through `actions/deploy-pages`.\n\n### Deployment Permissions\n\nThe workflow explicitly grants:\n\n- `contents: read`;\n- `pages: write`;\n- `id-token: write`.\n\n### Deployment Concurrency\n\nThe workflow defines a `pages` concurrency group and preserves in-progress deployments.\n\nThis is concrete CI/CD-style deployment configuration.\n\n## Verification\n\n### Browser-Visible Simulation\n\nThe simulation is inherently observable through movement, collision response, wall bouncing, and mouse interaction.\n\n### Iterative Commit Refinement\n\nThe repository contains several same-day updates to `index.html`.\n\nThe final commit specifically replaces simpler rectangular/distance collision handling with center-distance overlap resolution and more detailed velocity calculations.\n\n### Deployment Pipeline\n\nThe GitHub Actions workflow provides automated publication of the current static implementation.\n\n## Engineering Practices\n\n### Incremental Refinement\n\nSeveral focused commits modify the same collision logic during one development session.\n\n### Explicit State Per Entity\n\nEach generated DOM node carries `speedX` and `speedY`, keeping motion state associated with the rendered object.\n\n### Boundary Clamping\n\nCursor-driven movement clamps new positions to valid viewport coordinates.\n\n### Automated Static Deployment\n\nThe project moves from code-only static hosting to an explicit GitHub Actions deployment workflow.\n\n## Scale and Complexity\n\n### Entity Scale\n\nThe simulation creates 150 moving balls.\n\n### Computational Shape\n\nThe collision routine uses nested pair iteration, producing quadratic pair-check behavior with respect to ball count.\n\n### Temporal Scale\n\nUpdates occur every 16 milliseconds, so movement and collision work runs continuously while the page is active.\n\n### Conceptual Complexity\n\nThe simulation combines:\n\n- DOM state;\n- timing;\n- geometry;\n- trigonometry;\n- collision detection;\n- collision response;\n- user interaction;\n- deployment automation.\n\n## Skills Demonstrated\n\n### Frontend\n\n- **Dynamic DOM creation — strong evidence.**\n- **Client-side animation loop — strong evidence.**\n- **Event-driven mouse interaction — strong evidence.**\n- **Absolute-position rendering — strong evidence.**\n\n### Algorithms and Mathematics\n\n- **Euclidean distance — strong evidence.**\n- **Collision detection — strong evidence.**\n- **Overlap resolution — strong evidence.**\n- **Trigonometric velocity transformation — strong evidence.**\n- **Viewport boundary handling — strong evidence.**\n\n### DevOps and Delivery\n\n- **GitHub Actions — strong evidence.**\n- **GitHub Pages deployment automation — strong evidence.**\n- **Workflow permissions — strong evidence.**\n- **Deployment concurrency configuration — moderate evidence.**\n\n## Capability Developed\n\nThis repository combines a visually interactive algorithm with an automated deployment path.\n\nEarlier browser projects already demonstrated DOM-driven product behavior; `CollisionGame` adds continuous simulation, many concurrent visual entities, pairwise geometry, and an explicit Pages deployment workflow.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- GitHub Actions;\n- automated GitHub Pages deployment;\n- continuous browser simulation;\n- pairwise collision detection;\n- explicit collision overlap resolution;\n- deployment concurrency configuration.\n\n## Historical Significance\n\n`CollisionGame` is a concise transition point where a small browser experiment also receives repository-level deployment automation.\n\nIt therefore contributes to both frontend simulation history and the beginning of explicit CI/CD configuration in the processed portfolio.\n\n## Overall Repository Narrative\n\n`CollisionGame` is an owner-authored browser particle simulation built in one HTML file and published through GitHub Actions.\n\nOne hundred and fifty balls move continuously, bounce off viewport walls, detect collisions through center distance, separate when overlapping, transform their velocities around collision angles, and react to nearby mouse movement.\n\nThe repository's final collision commit shows active algorithm refinement, while the Pages workflow adds the earliest observed explicit GitHub Actions deployment automation in the corpus.\n\n# Project Tags\n\n## Project Type\n\n- `browser-simulation`\n- `interactive-experiment`\n- `static-web-application`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `html`\n- `javascript`\n- `css`\n\n## Frontend and Presentation\n\n- `browser-dom`\n- `event-driven-ui`\n- `client-side-animation`\n- `mousemove-interaction`\n- `dynamic-element-creation`\n\n## Systems Engineering and Algorithms\n\n- `collision-detection`\n- `collision-response`\n- `euclidean-distance`\n- `trigonometry`\n- `boundary-collision`\n- `pairwise-iteration`\n- `simulation-loop`\n\n## DevOps and Delivery\n\n- `github-actions`\n- `github-pages`\n- `deployment-automation`\n- `pages-artifact`\n- `workflow-dispatch`\n- `deployment-concurrency`\n\n## Portfolio Significance\n\n- `earliest-observed-github-actions`\n- `earliest-observed-deployment-automation`\n- `earliest-observed-browser-collision-simulation`\n"
+}

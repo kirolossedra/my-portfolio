@@ -1,0 +1,607 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 18,
+  "repository_total": 134,
+  "repository_name": "Behavioral-Design-Patterns",
+  "header_title": "Behavioral-Design-Patterns",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-018-Behavioral-Design-Patterns/README.md",
+    "line_start": 1,
+    "line_end": 412,
+    "sha256": "ab31ac92adc2a2f162ed5f20ce9a5bc3f8610d8ecbef59c2a100a9cce7c7c311"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "design-pattern-learning",
+    "educational-project",
+    "behavioral-pattern-exercises",
+    "individual-project",
+    "java",
+    "object-oriented-programming",
+    "interfaces",
+    "abstract-classes",
+    "inheritance",
+    "composition",
+    "polymorphism",
+    "delegation",
+    "maven",
+    "build-artifact-evidence",
+    "behavioral-design-patterns",
+    "chain-of-responsibility",
+    "mediator-pattern",
+    "memento-pattern",
+    "observer-pattern",
+    "state-pattern",
+    "strategy-pattern",
+    "template-method-pattern",
+    "earliest-observed-behavioral-design-patterns",
+    "earliest-observed-chain-of-responsibility",
+    "earliest-observed-mediator-pattern",
+    "earliest-observed-memento-pattern",
+    "earliest-observed-observer-pattern",
+    "earliest-observed-state-pattern",
+    "earliest-observed-strategy-pattern",
+    "earliest-observed-template-method-pattern"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 018 / 134\n- Name: `Behavioral-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Application domain: Behavioral design-pattern exercises\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s035"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository history consists of owner-attributed uploads, and the Java source files carry `@author sedra` headers.\n\nThe repository is therefore treated as personally attributable educational implementation work.\n\nIts examples are compact demonstrations of named design patterns rather than one integrated application.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 018 / 134\n- Name: `Behavioral-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Application domain: Behavioral design-pattern exercises\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository history consists of owner-attributed uploads, and the Java source files carry `@author sedra` headers.\n\nThe repository is therefore treated as personally attributable educational implementation work.\n\nIts examples are compact demonstrations of named design patterns rather than one integrated application.",
+      "source_line_start": 16,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository is organized as multiple independent Maven projects.\n\nPositively implemented examples include:\n\n- `ChainOfResponsibility`;\n- `MediatorPattern`;\n- `MementoPattern`;\n- `ObserverPattern`;\n- `StatePattern`;\n- `StrategyPattern`;\n- `TemplatePatternDemo`.\n\nA `VisitorPatternDemo` Maven project also exists, but its committed Java source only prints `Hello World!` and does not implement Visitor mechanics. The corpus therefore does not use the repository as evidence of an implemented Visitor pattern.\n\nEach implemented example contains its own `pom.xml`, Java source tree, and generated `target` build outputs.",
+      "source_line_start": 24,
+      "source_line_end": 42
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Behavioral-Design-Patterns` is a Java learning repository that explores how object-oriented systems distribute responsibility and coordinate behavior between objects.\n\nRather than focusing on object construction or structural composition, these examples concentrate on runtime interaction:\n\n- passing requests through handlers;\n- coordinating peers through a mediator;\n- capturing and restoring state;\n- broadcasting state changes to observers;\n- changing behavior through explicit state objects;\n- selecting algorithms through strategy objects;\n- preserving a fixed algorithm skeleton while varying steps through subclasses.\n\nThe repository complements the earlier Creational and Structural design-pattern repositories and completes a broader period of explicit GoF-style pattern study.",
+      "source_line_start": 42,
+      "source_line_end": 58
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "```text\nBehavioral-Design-Patterns/\n├── ChainOfResponsibility/\n├── MediatorPattern/\n├── MementoPattern/\n├── ObserverPattern/\n├── StatePattern/\n├── StrategyPattern/\n├── TemplatePatternDemo/\n└── VisitorPatternDemo/\n```\n\nEach implemented pattern is isolated in its own small executable project.",
+      "source_line_start": 58,
+      "source_line_end": 74
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Java\n\nJava provides the object-oriented mechanisms used throughout the examples:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- encapsulated state;\n- polymorphic dispatch;\n- collections.\n\n### Maven\n\nEach pattern directory contains a `pom.xml`, giving the examples separate Maven project boundaries.\n\nGenerated `target/classes` and Maven compiler-status artifacts are committed for multiple examples, providing direct evidence that the projects were compiled through the Maven build path.",
+      "source_line_start": 74,
+      "source_line_end": 94
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Technical Stack",
+        "Java"
+      ],
+      "content": "Java provides the object-oriented mechanisms used throughout the examples:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- encapsulated state;\n- polymorphic dispatch;\n- collections.",
+      "source_line_start": 76,
+      "source_line_end": 88
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Maven",
+      "normalized_title": "Maven",
+      "key": "maven",
+      "path": [
+        "Technical Stack",
+        "Maven"
+      ],
+      "content": "Each pattern directory contains a `pom.xml`, giving the examples separate Maven project boundaries.\n\nGenerated `target/classes` and Maven compiler-status artifacts are committed for multiple examples, providing direct evidence that the projects were compiled through the Maven build path.",
+      "source_line_start": 88,
+      "source_line_end": 94
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Chain of Responsibility",
+      "normalized_title": "Chain of Responsibility",
+      "key": "chain_of_responsibility",
+      "path": [
+        "Chain of Responsibility"
+      ],
+      "content": "The Chain of Responsibility example builds an explicit linked processing chain.\n\nA `Chain` object wires together:\n\n```text\nNegativeProcessor\n      ↓\nZeroProcessor\n      ↓\nPositiveProcessor\n```\n\nEach processor receives a `Number` request.\n\nA processor handles the request when its condition matches; otherwise it delegates to the next processor through the abstract `Processor` base class.\n\nThe demonstration sends positive, negative, and zero values through the same entry point.\n\nThis is concrete evidence of:\n\n- handler chaining;\n- request delegation;\n- polymorphic processing;\n- responsibility transfer without the caller selecting the final handler directly.",
+      "source_line_start": 94,
+      "source_line_end": 121
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Mediator",
+      "normalized_title": "Mediator",
+      "key": "mediator",
+      "path": [
+        "Mediator"
+      ],
+      "content": "The Mediator example models a simplified air-traffic-control interaction.\n\nThe main participants are:\n\n- `ATCMediator`;\n- `Flight`;\n- `Runway`;\n- `IATCMediator`;\n- `Command`.\n\nThe flight and runway do not coordinate by directly owning each other's behavior.\n\nThey communicate landing state through the mediator abstraction.\n\nThe mediator registers the active flight and runway and stores whether landing is permitted.\n\nThis demonstrates centralized coordination between peer objects and reduces direct coupling between the collaborating domain classes.",
+      "source_line_start": 121,
+      "source_line_end": 141
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Memento",
+      "normalized_title": "Memento",
+      "key": "memento",
+      "path": [
+        "Memento"
+      ],
+      "content": "The Memento example separates current state from saved snapshots.\n\nThe main roles are:\n\n- `Originator` — owns mutable state;\n- `Memento` — stores a state snapshot;\n- `CareTaker` — stores multiple mementos.\n\nThe program moves through several state values, saves selected points, and restores earlier snapshots later.\n\nThe example therefore demonstrates:\n\n- state capture;\n- state history;\n- restoration without exposing restoration mechanics to the caretaker;\n- separation between the object being restored and storage of its snapshots.",
+      "source_line_start": 141,
+      "source_line_end": 160
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Observer",
+      "normalized_title": "Observer",
+      "key": "observer",
+      "path": [
+        "Observer"
+      ],
+      "content": "The Observer example uses one `Subject` and three observer implementations:\n\n- `BinaryObserver`;\n- `OctalObserver`;\n- `HexaObserver`.\n\nObservers attach themselves to the subject.\n\nWhen `Subject.setState()` changes the integer state, `notifyAllObservers()` invokes every registered observer's `update()` method.\n\nEach observer renders the same state in a different numeric representation.\n\nThis makes the one-to-many notification relationship directly visible.\n\nIt also introduces a small collection-backed subscription list through `ArrayList<Observer>`.",
+      "source_line_start": 160,
+      "source_line_end": 178
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "State",
+      "normalized_title": "State",
+      "key": "state",
+      "path": [
+        "State"
+      ],
+      "content": "The State example defines a `State` interface with `doAction(Context)`.\n\nConcrete states include:\n\n- `StartState`;\n- `StopState`.\n\nInvoking a state action installs that object into the `Context`.\n\nSubsequent behavior can inspect the current state polymorphically.\n\nThe example therefore represents system behavior as explicit state objects rather than only conditionals or primitive flags.",
+      "source_line_start": 178,
+      "source_line_end": 193
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Strategy",
+      "normalized_title": "Strategy",
+      "key": "strategy",
+      "path": [
+        "Strategy"
+      ],
+      "content": "The Strategy example defines a `Strategy` interface around an arithmetic operation.\n\nConcrete strategies include:\n\n- addition;\n- subtraction;\n- multiplication.\n\n`Context` receives a `Strategy` through construction and delegates execution to the selected implementation.\n\nThe caller can replace the algorithm by constructing the context with a different strategy while keeping the same execution interface.\n\nThis demonstrates runtime algorithm interchange through composition and polymorphism.",
+      "source_line_start": 193,
+      "source_line_end": 209
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Template Method",
+      "normalized_title": "Template Method",
+      "key": "template_method",
+      "path": [
+        "Template Method"
+      ],
+      "content": "The Template Method example defines an abstract `Game` class.\n\nIts final `play()` method fixes the execution order:\n\n```text\ninitialize()\n    ↓\nstartPlay()\n    ↓\nendPlay()\n```\n\n`Cricket` and `Football` implement the variable steps.\n\nThe overall algorithm remains fixed by the base class while subclasses customize the concrete stages.\n\nThis is direct evidence of template-method control inversion through inheritance.",
+      "source_line_start": 209,
+      "source_line_end": 229
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Build Artifacts",
+      "normalized_title": "Build Artifacts",
+      "key": "build_artifacts",
+      "path": [
+        "Build Artifacts"
+      ],
+      "content": "The repository contains compiled `.class` files and Maven compiler-status output under multiple `target` directories.\n\nThese artifacts show that the examples were compiled rather than existing only as unexecuted source sketches.\n\nThe build outputs also expose the resulting class decomposition for examples such as Chain of Responsibility and Mediator.",
+      "source_line_start": 229,
+      "source_line_end": 237
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Pattern Isolation\n\nEach behavioral pattern is placed in a separate project boundary.\n\nThis makes each concept independently inspectable and runnable.\n\n### Interface-Driven Design\n\nSeveral examples use interfaces to define behavioral contracts:\n\n- `IATCMediator`;\n- `Command`;\n- `State`;\n- `Strategy`.\n\n### Abstract Base Classes\n\nChain of Responsibility and Template Method use abstract base classes to provide shared control behavior while leaving part of execution to concrete subclasses.\n\n### Composition and Delegation\n\nMediator, Observer, State, Strategy, and Chain of Responsibility all rely on object references and delegation rather than large monolithic procedures.\n\n### Explicit Runtime State\n\nMemento and State make mutable state a first-class design concern, but solve different problems:\n\n- Memento preserves and restores snapshots;\n- State changes behavior by changing the active state object.",
+      "source_line_start": 237,
+      "source_line_end": 269
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Pattern Isolation",
+      "normalized_title": "Pattern Isolation",
+      "key": "pattern_isolation",
+      "path": [
+        "Engineering Practices",
+        "Pattern Isolation"
+      ],
+      "content": "Each behavioral pattern is placed in a separate project boundary.\n\nThis makes each concept independently inspectable and runnable.",
+      "source_line_start": 239,
+      "source_line_end": 245
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Interface-Driven Design",
+      "normalized_title": "Interface-Driven Design",
+      "key": "interface_driven_design",
+      "path": [
+        "Engineering Practices",
+        "Interface-Driven Design"
+      ],
+      "content": "Several examples use interfaces to define behavioral contracts:\n\n- `IATCMediator`;\n- `Command`;\n- `State`;\n- `Strategy`.",
+      "source_line_start": 245,
+      "source_line_end": 254
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Abstract Base Classes",
+      "normalized_title": "Abstract Base Classes",
+      "key": "abstract_base_classes",
+      "path": [
+        "Engineering Practices",
+        "Abstract Base Classes"
+      ],
+      "content": "Chain of Responsibility and Template Method use abstract base classes to provide shared control behavior while leaving part of execution to concrete subclasses.",
+      "source_line_start": 254,
+      "source_line_end": 258
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Composition and Delegation",
+      "normalized_title": "Composition and Delegation",
+      "key": "composition_and_delegation",
+      "path": [
+        "Engineering Practices",
+        "Composition and Delegation"
+      ],
+      "content": "Mediator, Observer, State, Strategy, and Chain of Responsibility all rely on object references and delegation rather than large monolithic procedures.",
+      "source_line_start": 258,
+      "source_line_end": 262
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Explicit Runtime State",
+      "normalized_title": "Explicit Runtime State",
+      "key": "explicit_runtime_state",
+      "path": [
+        "Engineering Practices",
+        "Explicit Runtime State"
+      ],
+      "content": "Memento and State make mutable state a first-class design concern, but solve different problems:\n\n- Memento preserves and restores snapshots;\n- State changes behavior by changing the active state object.",
+      "source_line_start": 262,
+      "source_line_end": 269
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Repository Scale\n\nThe repository contains eight small Maven project directories.\n\nSeven contain positively evidenced behavioral-pattern implementations.\n\n### Conceptual Scale\n\nThe important scale is conceptual breadth rather than application size.\n\nThe repository exercises several distinct ways objects can collaborate at runtime:\n\n- chains;\n- centralized coordination;\n- snapshots;\n- subscriptions;\n- state objects;\n- interchangeable algorithms;\n- inherited algorithm skeletons.",
+      "source_line_start": 269,
+      "source_line_end": 291
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Repository Scale",
+      "normalized_title": "Repository Scale",
+      "key": "repository_scale",
+      "path": [
+        "Scale and Complexity",
+        "Repository Scale"
+      ],
+      "content": "The repository contains eight small Maven project directories.\n\nSeven contain positively evidenced behavioral-pattern implementations.",
+      "source_line_start": 271,
+      "source_line_end": 277
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Conceptual Scale",
+      "normalized_title": "Conceptual Scale",
+      "key": "conceptual_scale",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Scale"
+      ],
+      "content": "The important scale is conceptual breadth rather than application size.\n\nThe repository exercises several distinct ways objects can collaborate at runtime:\n\n- chains;\n- centralized coordination;\n- snapshots;\n- subscriptions;\n- state objects;\n- interchangeable algorithms;\n- inherited algorithm skeletons.",
+      "source_line_start": 277,
+      "source_line_end": 291
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Java\n\n- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Composition — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Collections — strong evidence through observer and memento storage.**\n\n### Behavioral Design Patterns\n\n- **Chain of Responsibility — strong implementation evidence.**\n- **Mediator — strong implementation evidence.**\n- **Memento — strong implementation evidence.**\n- **Observer — strong implementation evidence.**\n- **State — strong implementation evidence.**\n- **Strategy — strong implementation evidence.**\n- **Template Method — strong implementation evidence.**\n\n### Build Workflow\n\n- **Maven project structure — strong evidence.**\n- **Compiled Java artifacts — strong evidence.**",
+      "source_line_start": 291,
+      "source_line_end": 318
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Skills Demonstrated",
+        "Java"
+      ],
+      "content": "- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Composition — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Collections — strong evidence through observer and memento storage.**",
+      "source_line_start": 293,
+      "source_line_end": 303
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Behavioral Design Patterns",
+      "normalized_title": "Behavioral Design Patterns",
+      "key": "behavioral_design_patterns",
+      "path": [
+        "Skills Demonstrated",
+        "Behavioral Design Patterns"
+      ],
+      "content": "- **Chain of Responsibility — strong implementation evidence.**\n- **Mediator — strong implementation evidence.**\n- **Memento — strong implementation evidence.**\n- **Observer — strong implementation evidence.**\n- **State — strong implementation evidence.**\n- **Strategy — strong implementation evidence.**\n- **Template Method — strong implementation evidence.**",
+      "source_line_start": 303,
+      "source_line_end": 313
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Build Workflow",
+      "normalized_title": "Build Workflow",
+      "key": "build_workflow",
+      "path": [
+        "Skills Demonstrated",
+        "Build Workflow"
+      ],
+      "content": "- **Maven project structure — strong evidence.**\n- **Compiled Java artifacts — strong evidence.**",
+      "source_line_start": 313,
+      "source_line_end": 318
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops the ability to recognize recurring collaboration problems and represent them with explicit object relationships.\n\nThe examples make several forms of behavioral decoupling concrete:\n\n- a sender can hand a request to a chain instead of selecting a handler;\n- peer objects can communicate through a mediator;\n- state can be snapshotted and restored;\n- subscribers can react to state changes;\n- behavior can move into state objects;\n- algorithms can be injected as strategies;\n- a superclass can define an algorithm skeleton while subclasses fill in steps.\n\nThe practical learning value is therefore not only memorizing pattern names, but seeing how interfaces, inheritance, composition, and delegation produce different runtime collaboration structures.",
+      "source_line_start": 318,
+      "source_line_end": 334
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This repository continues the explicit design-pattern study already visible in the Creational and Structural repositories.\n\nWithin the processed corpus, it is the earliest observed repository centered specifically on behavioral GoF-style patterns.\n\nIt adds first observed implementations of:\n\n- Chain of Responsibility;\n- Mediator;\n- Memento;\n- Observer;\n- State pattern;\n- Strategy;\n- Template Method.",
+      "source_line_start": 334,
+      "source_line_end": 350
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Together with the adjacent Creational and Structural pattern repositories, this project records a concentrated object-oriented design-learning phase in early 2023.\n\nThe sequence broadens Java usage from application/problem implementations into explicit study of reusable software-design vocabulary.",
+      "source_line_start": 350,
+      "source_line_end": 356
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Behavioral-Design-Patterns` is a personally attributable Java learning repository made of independent Maven examples for seven implemented behavioral patterns.\n\nThe examples explore request delegation, mediated coordination, state snapshots, one-to-many notifications, explicit state objects, interchangeable algorithms, and template-controlled execution. Compiled Maven outputs provide direct evidence that the examples were built. A Visitor-named project exists only as a placeholder and is deliberately excluded from the implemented-pattern evidence.\n\nThe repository's strongest corpus value is its explicit, code-backed study of runtime object collaboration and behavioral decoupling.\n\n# Project Tags",
+      "source_line_start": 356,
+      "source_line_end": 366
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `design-pattern-learning`\n- `educational-project`\n- `behavioral-pattern-exercises`",
+      "source_line_start": 366,
+      "source_line_end": 372
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 372,
+      "source_line_end": 376
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `java`",
+      "source_line_start": 376,
+      "source_line_end": 380
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `inheritance`\n- `composition`\n- `polymorphism`\n- `delegation`\n- `maven`\n- `build-artifact-evidence`",
+      "source_line_start": 380,
+      "source_line_end": 392
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Design Patterns",
+      "normalized_title": "Design Patterns",
+      "key": "design_patterns",
+      "path": [
+        "Design Patterns"
+      ],
+      "content": "- `behavioral-design-patterns`\n- `chain-of-responsibility`\n- `mediator-pattern`\n- `memento-pattern`\n- `observer-pattern`\n- `state-pattern`\n- `strategy-pattern`\n- `template-method-pattern`",
+      "source_line_start": 392,
+      "source_line_end": 403
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-behavioral-design-patterns`\n- `earliest-observed-chain-of-responsibility`\n- `earliest-observed-mediator-pattern`\n- `earliest-observed-memento-pattern`\n- `earliest-observed-observer-pattern`\n- `earliest-observed-state-pattern`\n- `earliest-observed-strategy-pattern`\n- `earliest-observed-template-method-pattern`",
+      "source_line_start": 403,
+      "source_line_end": 413
+    }
+  ],
+  "raw_analysis": "# Behavioral-Design-Patterns\n\n## Repository Identity\n\n- Repository: 018 / 134\n- Name: `Behavioral-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Application domain: Behavioral design-pattern exercises\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n\n## Collaboration and Authorship Context\n\nThe visible repository history consists of owner-attributed uploads, and the Java source files carry `@author sedra` headers.\n\nThe repository is therefore treated as personally attributable educational implementation work.\n\nIts examples are compact demonstrations of named design patterns rather than one integrated application.\n\n## Evidence Basis\n\nThe repository is organized as multiple independent Maven projects.\n\nPositively implemented examples include:\n\n- `ChainOfResponsibility`;\n- `MediatorPattern`;\n- `MementoPattern`;\n- `ObserverPattern`;\n- `StatePattern`;\n- `StrategyPattern`;\n- `TemplatePatternDemo`.\n\nA `VisitorPatternDemo` Maven project also exists, but its committed Java source only prints `Hello World!` and does not implement Visitor mechanics. The corpus therefore does not use the repository as evidence of an implemented Visitor pattern.\n\nEach implemented example contains its own `pom.xml`, Java source tree, and generated `target` build outputs.\n\n## What This Project Is\n\n`Behavioral-Design-Patterns` is a Java learning repository that explores how object-oriented systems distribute responsibility and coordinate behavior between objects.\n\nRather than focusing on object construction or structural composition, these examples concentrate on runtime interaction:\n\n- passing requests through handlers;\n- coordinating peers through a mediator;\n- capturing and restoring state;\n- broadcasting state changes to observers;\n- changing behavior through explicit state objects;\n- selecting algorithms through strategy objects;\n- preserving a fixed algorithm skeleton while varying steps through subclasses.\n\nThe repository complements the earlier Creational and Structural design-pattern repositories and completes a broader period of explicit GoF-style pattern study.\n\n## Repository Shape\n\n```text\nBehavioral-Design-Patterns/\n├── ChainOfResponsibility/\n├── MediatorPattern/\n├── MementoPattern/\n├── ObserverPattern/\n├── StatePattern/\n├── StrategyPattern/\n├── TemplatePatternDemo/\n└── VisitorPatternDemo/\n```\n\nEach implemented pattern is isolated in its own small executable project.\n\n## Technical Stack\n\n### Java\n\nJava provides the object-oriented mechanisms used throughout the examples:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- encapsulated state;\n- polymorphic dispatch;\n- collections.\n\n### Maven\n\nEach pattern directory contains a `pom.xml`, giving the examples separate Maven project boundaries.\n\nGenerated `target/classes` and Maven compiler-status artifacts are committed for multiple examples, providing direct evidence that the projects were compiled through the Maven build path.\n\n## Chain of Responsibility\n\nThe Chain of Responsibility example builds an explicit linked processing chain.\n\nA `Chain` object wires together:\n\n```text\nNegativeProcessor\n      ↓\nZeroProcessor\n      ↓\nPositiveProcessor\n```\n\nEach processor receives a `Number` request.\n\nA processor handles the request when its condition matches; otherwise it delegates to the next processor through the abstract `Processor` base class.\n\nThe demonstration sends positive, negative, and zero values through the same entry point.\n\nThis is concrete evidence of:\n\n- handler chaining;\n- request delegation;\n- polymorphic processing;\n- responsibility transfer without the caller selecting the final handler directly.\n\n## Mediator\n\nThe Mediator example models a simplified air-traffic-control interaction.\n\nThe main participants are:\n\n- `ATCMediator`;\n- `Flight`;\n- `Runway`;\n- `IATCMediator`;\n- `Command`.\n\nThe flight and runway do not coordinate by directly owning each other's behavior.\n\nThey communicate landing state through the mediator abstraction.\n\nThe mediator registers the active flight and runway and stores whether landing is permitted.\n\nThis demonstrates centralized coordination between peer objects and reduces direct coupling between the collaborating domain classes.\n\n## Memento\n\nThe Memento example separates current state from saved snapshots.\n\nThe main roles are:\n\n- `Originator` — owns mutable state;\n- `Memento` — stores a state snapshot;\n- `CareTaker` — stores multiple mementos.\n\nThe program moves through several state values, saves selected points, and restores earlier snapshots later.\n\nThe example therefore demonstrates:\n\n- state capture;\n- state history;\n- restoration without exposing restoration mechanics to the caretaker;\n- separation between the object being restored and storage of its snapshots.\n\n## Observer\n\nThe Observer example uses one `Subject` and three observer implementations:\n\n- `BinaryObserver`;\n- `OctalObserver`;\n- `HexaObserver`.\n\nObservers attach themselves to the subject.\n\nWhen `Subject.setState()` changes the integer state, `notifyAllObservers()` invokes every registered observer's `update()` method.\n\nEach observer renders the same state in a different numeric representation.\n\nThis makes the one-to-many notification relationship directly visible.\n\nIt also introduces a small collection-backed subscription list through `ArrayList<Observer>`.\n\n## State\n\nThe State example defines a `State` interface with `doAction(Context)`.\n\nConcrete states include:\n\n- `StartState`;\n- `StopState`.\n\nInvoking a state action installs that object into the `Context`.\n\nSubsequent behavior can inspect the current state polymorphically.\n\nThe example therefore represents system behavior as explicit state objects rather than only conditionals or primitive flags.\n\n## Strategy\n\nThe Strategy example defines a `Strategy` interface around an arithmetic operation.\n\nConcrete strategies include:\n\n- addition;\n- subtraction;\n- multiplication.\n\n`Context` receives a `Strategy` through construction and delegates execution to the selected implementation.\n\nThe caller can replace the algorithm by constructing the context with a different strategy while keeping the same execution interface.\n\nThis demonstrates runtime algorithm interchange through composition and polymorphism.\n\n## Template Method\n\nThe Template Method example defines an abstract `Game` class.\n\nIts final `play()` method fixes the execution order:\n\n```text\ninitialize()\n    ↓\nstartPlay()\n    ↓\nendPlay()\n```\n\n`Cricket` and `Football` implement the variable steps.\n\nThe overall algorithm remains fixed by the base class while subclasses customize the concrete stages.\n\nThis is direct evidence of template-method control inversion through inheritance.\n\n## Build Artifacts\n\nThe repository contains compiled `.class` files and Maven compiler-status output under multiple `target` directories.\n\nThese artifacts show that the examples were compiled rather than existing only as unexecuted source sketches.\n\nThe build outputs also expose the resulting class decomposition for examples such as Chain of Responsibility and Mediator.\n\n## Engineering Practices\n\n### Pattern Isolation\n\nEach behavioral pattern is placed in a separate project boundary.\n\nThis makes each concept independently inspectable and runnable.\n\n### Interface-Driven Design\n\nSeveral examples use interfaces to define behavioral contracts:\n\n- `IATCMediator`;\n- `Command`;\n- `State`;\n- `Strategy`.\n\n### Abstract Base Classes\n\nChain of Responsibility and Template Method use abstract base classes to provide shared control behavior while leaving part of execution to concrete subclasses.\n\n### Composition and Delegation\n\nMediator, Observer, State, Strategy, and Chain of Responsibility all rely on object references and delegation rather than large monolithic procedures.\n\n### Explicit Runtime State\n\nMemento and State make mutable state a first-class design concern, but solve different problems:\n\n- Memento preserves and restores snapshots;\n- State changes behavior by changing the active state object.\n\n## Scale and Complexity\n\n### Repository Scale\n\nThe repository contains eight small Maven project directories.\n\nSeven contain positively evidenced behavioral-pattern implementations.\n\n### Conceptual Scale\n\nThe important scale is conceptual breadth rather than application size.\n\nThe repository exercises several distinct ways objects can collaborate at runtime:\n\n- chains;\n- centralized coordination;\n- snapshots;\n- subscriptions;\n- state objects;\n- interchangeable algorithms;\n- inherited algorithm skeletons.\n\n## Skills Demonstrated\n\n### Java\n\n- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Composition — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Collections — strong evidence through observer and memento storage.**\n\n### Behavioral Design Patterns\n\n- **Chain of Responsibility — strong implementation evidence.**\n- **Mediator — strong implementation evidence.**\n- **Memento — strong implementation evidence.**\n- **Observer — strong implementation evidence.**\n- **State — strong implementation evidence.**\n- **Strategy — strong implementation evidence.**\n- **Template Method — strong implementation evidence.**\n\n### Build Workflow\n\n- **Maven project structure — strong evidence.**\n- **Compiled Java artifacts — strong evidence.**\n\n## Capability Developed\n\nThis repository develops the ability to recognize recurring collaboration problems and represent them with explicit object relationships.\n\nThe examples make several forms of behavioral decoupling concrete:\n\n- a sender can hand a request to a chain instead of selecting a handler;\n- peer objects can communicate through a mediator;\n- state can be snapshotted and restored;\n- subscribers can react to state changes;\n- behavior can move into state objects;\n- algorithms can be injected as strategies;\n- a superclass can define an algorithm skeleton while subclasses fill in steps.\n\nThe practical learning value is therefore not only memorizing pattern names, but seeing how interfaces, inheritance, composition, and delegation produce different runtime collaboration structures.\n\n## Portfolio Evolution Context\n\nThis repository continues the explicit design-pattern study already visible in the Creational and Structural repositories.\n\nWithin the processed corpus, it is the earliest observed repository centered specifically on behavioral GoF-style patterns.\n\nIt adds first observed implementations of:\n\n- Chain of Responsibility;\n- Mediator;\n- Memento;\n- Observer;\n- State pattern;\n- Strategy;\n- Template Method.\n\n## Historical Significance\n\nTogether with the adjacent Creational and Structural pattern repositories, this project records a concentrated object-oriented design-learning phase in early 2023.\n\nThe sequence broadens Java usage from application/problem implementations into explicit study of reusable software-design vocabulary.\n\n## Overall Repository Narrative\n\n`Behavioral-Design-Patterns` is a personally attributable Java learning repository made of independent Maven examples for seven implemented behavioral patterns.\n\nThe examples explore request delegation, mediated coordination, state snapshots, one-to-many notifications, explicit state objects, interchangeable algorithms, and template-controlled execution. Compiled Maven outputs provide direct evidence that the examples were built. A Visitor-named project exists only as a placeholder and is deliberately excluded from the implemented-pattern evidence.\n\nThe repository's strongest corpus value is its explicit, code-backed study of runtime object collaboration and behavioral decoupling.\n\n# Project Tags\n\n## Project Type\n\n- `design-pattern-learning`\n- `educational-project`\n- `behavioral-pattern-exercises`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `java`\n\n## Software Engineering Practices\n\n- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `inheritance`\n- `composition`\n- `polymorphism`\n- `delegation`\n- `maven`\n- `build-artifact-evidence`\n\n## Design Patterns\n\n- `behavioral-design-patterns`\n- `chain-of-responsibility`\n- `mediator-pattern`\n- `memento-pattern`\n- `observer-pattern`\n- `state-pattern`\n- `strategy-pattern`\n- `template-method-pattern`\n\n## Portfolio Significance\n\n- `earliest-observed-behavioral-design-patterns`\n- `earliest-observed-chain-of-responsibility`\n- `earliest-observed-mediator-pattern`\n- `earliest-observed-memento-pattern`\n- `earliest-observed-observer-pattern`\n- `earliest-observed-state-pattern`\n- `earliest-observed-strategy-pattern`\n- `earliest-observed-template-method-pattern`\n"
+}

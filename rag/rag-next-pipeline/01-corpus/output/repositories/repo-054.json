@@ -1,0 +1,535 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 54,
+  "repository_total": 134,
+  "repository_name": "NLP-with-probabilistic-models",
+  "header_title": "NLP-with-probabilistic-models",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-054-NLP-with-probabilistic-models/README.md",
+    "line_start": 1,
+    "line_end": 427,
+    "sha256": "5b9a7d71b09f174efc9facf3c5741e235fe5700eee9b5af8331b5e98e36bc34c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-coursework",
+    "instructional-scaffold",
+    "python",
+    "jupyter-notebook",
+    "natural-language-processing",
+    "probabilistic-models",
+    "hidden-markov-model",
+    "part-of-speech-tagging",
+    "transition-probabilities",
+    "emission-probabilities",
+    "smoothing",
+    "unknown-word-handling",
+    "viterbi-algorithm",
+    "dynamic-programming",
+    "backpointer-reconstruction",
+    "ngram-language-model",
+    "bigram",
+    "trigram",
+    "start-tokens",
+    "add-k-smoothing",
+    "documented-test-failure",
+    "executed-notebook-output"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NLP-with-probabilistic-models`\n- **Repository start date:** 2024-10-12\n- **Last meaningful update date:** 2024-10-14\n- **Primary implementation environment:** Jupyter Notebook / Python plus Markdown study documents\n- **Primary domain:** probabilistic NLP\n- **Implemented exercise:** hidden-Markov-model part-of-speech tagging\n- **Documented study area:** n-gram language modeling / autocomplete\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** HMM notebook contains graded assignment markers and supplied helper/test references"
+    },
+    "testing": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification evidence is mixed.\n\nPositive evidence:\n\n- large corpus-processing outputs,\n- Viterbi execution call,\n- generated intermediate structures.\n\nNegative evidence:\n\n- the stored `w2_unittest` invocation fails with a `NameError`.\n\nThere is no repository-level CI."
+    },
+    "documentation": {
+      "section_ids": [
+        "s015"
+      ],
+      "titles": [
+        "POS Documentation"
+      ],
+      "text": "## POS Documentation\nThe repository contains substantial personally maintained explanatory Markdown around:\n\n- transition counts,\n- conditional probability,\n- smoothing,\n- emissions,\n- initialization,\n- backpointers.\n\nThis creates retrieval value beyond the notebook implementation itself."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NLP-with-probabilistic-models`\n- **Repository start date:** 2024-10-12\n- **Last meaningful update date:** 2024-10-14\n- **Primary implementation environment:** Jupyter Notebook / Python plus Markdown study documents\n- **Primary domain:** probabilistic NLP\n- **Implemented exercise:** hidden-Markov-model part-of-speech tagging\n- **Documented study area:** n-gram language modeling / autocomplete\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** HMM notebook contains graded assignment markers and supplied helper/test references",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`NLP-with-probabilistic-models` combines two related NLP study tracks:\n\n1. part-of-speech tagging with a Hidden Markov Model,\n2. language-model/autocomplete theory using n-gram probabilities.\n\nThe HMM track contains executable notebook code.\n\nThe autocomplete track in the current repository is documentation/quiz material rather than an implemented autocomplete engine.\n\nThat distinction is preserved throughout this corpus entry.",
+      "source_line_start": 15,
+      "source_line_end": 28
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "Visible sections include:\n\n- `Part of speech tagging and hidden Markov`,\n- `Autocomplete`.\n\nThe POS section contains:\n\n- `POS_Tagging.ipynb`,\n- `README.md`,\n- `Algoirhtm.md`,\n- `Quiz.md`.\n\nThe Autocomplete section contains:\n\n- `README.md`,\n- `Quiz.md`.",
+      "source_line_start": 28,
+      "source_line_end": 47
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "POS Dataset",
+      "normalized_title": "POS Dataset",
+      "key": "pos_dataset",
+      "path": [
+        "POS Dataset"
+      ],
+      "content": "The POS notebook loads a tagged training corpus:\n\n`WSJ_02-21.pos`.\n\nIt also loads:\n\n- a vocabulary,\n- a held-out tagged test corpus,\n- a preprocessed word-only test corpus.\n\nVisible notebook output reports preprocessing of tens of thousands of test tokens.\n\nThe training loop reports processing counts up to hundreds of thousands of corpus entries.\n\nThis is a nontrivial corpus-scale instructional exercise.",
+      "source_line_start": 47,
+      "source_line_end": 65
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Vocabulary Handling",
+      "normalized_title": "Vocabulary Handling",
+      "key": "vocabulary_handling",
+      "path": [
+        "Vocabulary Handling"
+      ],
+      "content": "The notebook constructs a word-to-index vocabulary dictionary.\n\nIt contains explicit unknown-token classes such as:\n\n- generic unknown,\n- adjective-like unknown,\n- adverb-like unknown,\n- digit unknown,\n- noun unknown,\n- punctuation unknown,\n- uppercase unknown,\n- verb unknown.\n\nThis demonstrates practical NLP unknown-word handling.",
+      "source_line_start": 65,
+      "source_line_end": 82
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "HMM Count Construction",
+      "normalized_title": "HMM Count Construction",
+      "key": "hmm_count_construction",
+      "path": [
+        "HMM Count Construction"
+      ],
+      "content": "The notebook contains a graded function:\n\n`create_dictionaries`.\n\nIt constructs:\n\n- `emission_counts`,\n- `transition_counts`,\n- `tag_counts`.\n\nFor every tagged training item it:\n\n1. extracts the word/tag pair,\n2. increments the previous-tag→current-tag transition,\n3. increments the tag→word emission count,\n4. increments tag frequency,\n5. updates the previous tag.\n\nThis is direct implementation of HMM sufficient statistics.",
+      "source_line_start": 82,
+      "source_line_end": 104
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Transition Model",
+      "normalized_title": "Transition Model",
+      "key": "transition_model",
+      "path": [
+        "Transition Model"
+      ],
+      "content": "The repository's explanatory README demonstrates transition probabilities between POS tags.\n\nIt builds a conceptual transition matrix `A`.\n\nThe probability of a tag depends on the previous tag.\n\nThat is the Markov-state component of the model.",
+      "source_line_start": 104,
+      "source_line_end": 114
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Smoothing",
+      "normalized_title": "Smoothing",
+      "key": "smoothing",
+      "path": [
+        "Smoothing"
+      ],
+      "content": "The README explicitly explains adding a small smoothing term to avoid zero-probability transitions.\n\nThe transition formula adds epsilon to observed counts and normalizes across possible tags.\n\nThis shows understanding of sparse-count probability estimation.",
+      "source_line_start": 114,
+      "source_line_end": 122
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Emission Model",
+      "normalized_title": "Emission Model",
+      "key": "emission_model",
+      "path": [
+        "Emission Model"
+      ],
+      "content": "The POS README also explains an emission matrix `B`.\n\nEmission probability represents the likelihood of a word conditioned on a POS tag.\n\nThe examples include ambiguous words whose grammatical role changes across contexts.\n\nThis connects observed tokens to latent grammatical states.",
+      "source_line_start": 122,
+      "source_line_end": 132
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Viterbi Dynamic Programming",
+      "normalized_title": "Viterbi Dynamic Programming",
+      "key": "viterbi_dynamic_programming",
+      "path": [
+        "Viterbi Dynamic Programming"
+      ],
+      "content": "The notebook contains a graded:\n\n`viterbi_forward`.\n\nIt uses transition and emission matrices to propagate the best state probabilities through the token sequence.\n\nThe notebook then runs the function over roughly 30,000 preprocessed words.",
+      "source_line_start": 132,
+      "source_line_end": 142
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Backpointer Reconstruction",
+      "normalized_title": "Backpointer Reconstruction",
+      "key": "backpointer_reconstruction",
+      "path": [
+        "Backpointer Reconstruction"
+      ],
+      "content": "The notebook also contains:\n\n`viterbi_backward`.\n\nThis reconstructs the best POS-tag sequence from the backpointer matrix.\n\nTogether:\n\n- forward dynamic programming,\n- backpointer reconstruction\n\nform the complete Viterbi decoding pattern.",
+      "source_line_start": 142,
+      "source_line_end": 157
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Dynamic-Programming Significance",
+      "normalized_title": "Dynamic-Programming Significance",
+      "key": "dynamic_programming_significance",
+      "path": [
+        "Dynamic-Programming Significance"
+      ],
+      "content": "This is not only an NLP topic.\n\nViterbi is a dynamic-programming algorithm over latent state sequences.\n\nThe exercise reinforces:\n\n- optimal substructure,\n- state transition scoring,\n- path memoization,\n- backward reconstruction.",
+      "source_line_start": 157,
+      "source_line_end": 170
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Saved Test Failure",
+      "normalized_title": "Saved Test Failure",
+      "key": "saved_test_failure",
+      "path": [
+        "Saved Test Failure"
+      ],
+      "content": "A notebook cell attempts to run:\n\n`w2_unittest.test_viterbi_forward(...)`.\n\nThe saved output contains:\n\n`NameError: name 'w2_unittest' is not defined`.\n\nThis is important evidence.\n\nThe corpus does not claim that every supplied unit test passed.\n\nThe failure appears to be missing test-module setup in the notebook state rather than direct proof that the Viterbi algorithm is numerically wrong.\n\nBut the checked-in state remains a failed test invocation.",
+      "source_line_start": 170,
+      "source_line_end": 188
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Notebook Execution State",
+      "normalized_title": "Notebook Execution State",
+      "key": "notebook_execution_state",
+      "path": [
+        "Notebook Execution State"
+      ],
+      "content": "Many POS notebook cells have stored outputs.\n\nSome execution counts are null while outputs remain embedded, consistent with notebook editing/export history.\n\nThe corpus therefore treats the notebook as exercised but does not infer a clean-from-scratch execution run.",
+      "source_line_start": 188,
+      "source_line_end": 196
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "POS Documentation",
+      "normalized_title": "POS Documentation",
+      "key": "pos_documentation",
+      "path": [
+        "POS Documentation"
+      ],
+      "content": "The repository contains substantial personally maintained explanatory Markdown around:\n\n- transition counts,\n- conditional probability,\n- smoothing,\n- emissions,\n- initialization,\n- backpointers.\n\nThis creates retrieval value beyond the notebook implementation itself.",
+      "source_line_start": 196,
+      "source_line_end": 209
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Autocomplete Study Track",
+      "normalized_title": "Autocomplete Study Track",
+      "key": "autocomplete_study_track",
+      "path": [
+        "Autocomplete Study Track"
+      ],
+      "content": "The `Autocomplete/README.md` is a long probabilistic-language-model note.\n\nIt explains:\n\n- sentence probability,\n- Naive Bayes independence contrast,\n- conditional word probability,\n- bigrams,\n- trigrams,\n- Markov assumptions,\n- start tokens,\n- smoothing.",
+      "source_line_start": 209,
+      "source_line_end": 224
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "N-Gram Probability",
+      "normalized_title": "N-Gram Probability",
+      "key": "n_gram_probability",
+      "path": [
+        "N-Gram Probability"
+      ],
+      "content": "The document generalizes sentence probability from independent words to conditional n-gram history.\n\nFor a bigram model, each word probability is conditioned on its immediate predecessor.\n\nFor a trigram model, it is conditioned on the previous two tokens.",
+      "source_line_start": 224,
+      "source_line_end": 232
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Start Tokens",
+      "normalized_title": "Start Tokens",
+      "key": "start_tokens",
+      "path": [
+        "Start Tokens"
+      ],
+      "content": "The notes explain why an n-gram model needs synthetic start tokens.\n\nFor a trigram model, two start tokens provide a full context window for the first actual word.\n\nThis preserves a consistent model order at sentence boundaries.",
+      "source_line_start": 232,
+      "source_line_end": 240
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Add-k Smoothing",
+      "normalized_title": "Add-k Smoothing",
+      "key": "add_k_smoothing",
+      "path": [
+        "Add-k Smoothing"
+      ],
+      "content": "The autocomplete notes discuss:\n\n- add-one smoothing,\n- add-k smoothing.\n\nThey explain why add-one can overallocate probability mass to unseen n-grams and how a smaller `k` offers finer control.\n\nThis is useful probabilistic-language-model theory.",
+      "source_line_start": 240,
+      "source_line_end": 251
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Autocomplete Implementation Boundary",
+      "normalized_title": "Autocomplete Implementation Boundary",
+      "key": "autocomplete_implementation_boundary",
+      "path": [
+        "Autocomplete Implementation Boundary"
+      ],
+      "content": "No executable autocomplete notebook or Python implementation is present in the current tree.\n\nTherefore the repository demonstrates:\n\n- autocomplete/n-gram theory documentation,\n- quiz/study material,\n\nbut not a checked-in autocomplete service or inference implementation.",
+      "source_line_start": 251,
+      "source_line_end": 262
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Instructional Provenance",
+      "normalized_title": "Instructional Provenance",
+      "key": "instructional_provenance",
+      "path": [
+        "Instructional Provenance"
+      ],
+      "content": "The POS notebook contains markers such as:\n\n- `UNQ_C...`,\n- `GRADED FUNCTION`.\n\nIt imports helper functionality such as:\n\n- `get_word_tag`,\n- `preprocess`.\n\nIt also references a supplied `w2_unittest` module.\n\nThis is structured coursework.\n\nLearner-completed functions are separated from supplied framework code in the corpus claims.",
+      "source_line_start": 262,
+      "source_line_end": 280
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification evidence is mixed.\n\nPositive evidence:\n\n- large corpus-processing outputs,\n- Viterbi execution call,\n- generated intermediate structures.\n\nNegative evidence:\n\n- the stored `w2_unittest` invocation fails with a `NameError`.\n\nThere is no repository-level CI.",
+      "source_line_start": 280,
+      "source_line_end": 296
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Probabilistic NLP\n\n- conditional probability\n- count-based estimation\n- transition probabilities\n- emission probabilities\n- smoothing\n- n-gram language models\n\n### Hidden Markov Models\n\n- HMM state modeling\n- POS tagging\n- transition matrix\n- emission matrix\n- unknown-word preprocessing\n\n### Algorithms\n\n- Viterbi forward pass\n- backpointer matrix\n- dynamic programming\n- optimal-path reconstruction\n\n### Language Modeling\n\n- bigrams\n- trigrams\n- start tokens\n- add-one smoothing\n- add-k smoothing\n\n### Python\n\n- dictionaries/defaultdict\n- NumPy\n- Pandas\n- Jupyter",
+      "source_line_start": 296,
+      "source_line_end": 337
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Probabilistic NLP",
+      "normalized_title": "Probabilistic NLP",
+      "key": "probabilistic_nlp",
+      "path": [
+        "Skills Demonstrated",
+        "Probabilistic NLP"
+      ],
+      "content": "- conditional probability\n- count-based estimation\n- transition probabilities\n- emission probabilities\n- smoothing\n- n-gram language models",
+      "source_line_start": 298,
+      "source_line_end": 307
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Hidden Markov Models",
+      "normalized_title": "Hidden Markov Models",
+      "key": "hidden_markov_models",
+      "path": [
+        "Skills Demonstrated",
+        "Hidden Markov Models"
+      ],
+      "content": "- HMM state modeling\n- POS tagging\n- transition matrix\n- emission matrix\n- unknown-word preprocessing",
+      "source_line_start": 307,
+      "source_line_end": 315
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Algorithms",
+      "normalized_title": "Algorithms",
+      "key": "algorithms",
+      "path": [
+        "Skills Demonstrated",
+        "Algorithms"
+      ],
+      "content": "- Viterbi forward pass\n- backpointer matrix\n- dynamic programming\n- optimal-path reconstruction",
+      "source_line_start": 315,
+      "source_line_end": 322
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Language Modeling",
+      "normalized_title": "Language Modeling",
+      "key": "language_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Language Modeling"
+      ],
+      "content": "- bigrams\n- trigrams\n- start tokens\n- add-one smoothing\n- add-k smoothing",
+      "source_line_start": 322,
+      "source_line_end": 330
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- dictionaries/defaultdict\n- NumPy\n- Pandas\n- Jupyter",
+      "source_line_start": 330,
+      "source_line_end": 337
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository deepens the statistical side of NLP.\n\nInstead of neural hidden states, language structure is represented through explicit probability tables and state transitions.\n\nThat creates a useful contrast between:\n\n- neural sequence models,\n- classical probabilistic sequence models.\n\nThe learner sees how both approaches solve sequence dependence with very different machinery.",
+      "source_line_start": 337,
+      "source_line_end": 350
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "The preceding NLP classification repository focuses on logistic regression and Naive Bayes sentiment models.\n\nThis repository advances into structured sequences:\n\n- tags depend on previous tags,\n- words are emitted from hidden grammatical states,\n- sentence probabilities depend on n-gram history.\n\nThat broadens classical NLP from independent classification into sequence inference.",
+      "source_line_start": 350,
+      "source_line_end": 362
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository containing:\n\n- Hidden Markov Model NLP,\n- POS tagging,\n- Viterbi decoding,\n- explicit n-gram language-model study.",
+      "source_line_start": 362,
+      "source_line_end": 371
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The HMM notebook processes a large tagged corpus and a test sequence of tens of thousands of words.\n\nThe implementation is still instructional, but the data volume and dynamic-programming path make it algorithmically richer than a toy three-sentence example.",
+      "source_line_start": 371,
+      "source_line_end": 377
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "The repository is coursework-oriented.\n\nThe POS notebook depends on helper/data files that are referenced but not all visible in the repository tree.\n\nThe stored unit-test invocation has a missing-module `NameError`.\n\nThe autocomplete section contains theory/quiz documents without executable autocomplete code.\n\nNo dependency lockfile is present.\n\nNo deployment exists.\n\nNo CI pipeline exists.",
+      "source_line_start": 377,
+      "source_line_end": 393
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`NLP-with-probabilistic-models` captures a strong classical sequence-modeling phase.\n\nIts concrete implementation is an HMM POS tagger built from transition/emission counts and decoded with Viterbi dynamic programming.\n\nAlongside that implementation, the repository builds detailed notes on n-gram sentence probability and smoothing.\n\nThe corpus deliberately keeps implementation and study material distinct, and it also preserves the saved failed unit-test invocation instead of presenting the notebook as universally passing.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `jupyter-notebook`\n- `natural-language-processing`\n- `probabilistic-models`\n- `hidden-markov-model`\n- `part-of-speech-tagging`\n- `transition-probabilities`\n- `emission-probabilities`\n- `smoothing`\n- `unknown-word-handling`\n- `viterbi-algorithm`\n- `dynamic-programming`\n- `backpointer-reconstruction`\n- `ngram-language-model`\n- `bigram`\n- `trigram`\n- `start-tokens`\n- `add-k-smoothing`\n- `documented-test-failure`\n- `executed-notebook-output`",
+      "source_line_start": 393,
+      "source_line_end": 428
+    }
+  ],
+  "raw_analysis": "# Repository 054 — NLP-with-probabilistic-models\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NLP-with-probabilistic-models`\n- **Repository start date:** 2024-10-12\n- **Last meaningful update date:** 2024-10-14\n- **Primary implementation environment:** Jupyter Notebook / Python plus Markdown study documents\n- **Primary domain:** probabilistic NLP\n- **Implemented exercise:** hidden-Markov-model part-of-speech tagging\n- **Documented study area:** n-gram language modeling / autocomplete\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** HMM notebook contains graded assignment markers and supplied helper/test references\n\n## What This Project Is\n\n`NLP-with-probabilistic-models` combines two related NLP study tracks:\n\n1. part-of-speech tagging with a Hidden Markov Model,\n2. language-model/autocomplete theory using n-gram probabilities.\n\nThe HMM track contains executable notebook code.\n\nThe autocomplete track in the current repository is documentation/quiz material rather than an implemented autocomplete engine.\n\nThat distinction is preserved throughout this corpus entry.\n\n## Repository Structure\n\nVisible sections include:\n\n- `Part of speech tagging and hidden Markov`,\n- `Autocomplete`.\n\nThe POS section contains:\n\n- `POS_Tagging.ipynb`,\n- `README.md`,\n- `Algoirhtm.md`,\n- `Quiz.md`.\n\nThe Autocomplete section contains:\n\n- `README.md`,\n- `Quiz.md`.\n\n## POS Dataset\n\nThe POS notebook loads a tagged training corpus:\n\n`WSJ_02-21.pos`.\n\nIt also loads:\n\n- a vocabulary,\n- a held-out tagged test corpus,\n- a preprocessed word-only test corpus.\n\nVisible notebook output reports preprocessing of tens of thousands of test tokens.\n\nThe training loop reports processing counts up to hundreds of thousands of corpus entries.\n\nThis is a nontrivial corpus-scale instructional exercise.\n\n## Vocabulary Handling\n\nThe notebook constructs a word-to-index vocabulary dictionary.\n\nIt contains explicit unknown-token classes such as:\n\n- generic unknown,\n- adjective-like unknown,\n- adverb-like unknown,\n- digit unknown,\n- noun unknown,\n- punctuation unknown,\n- uppercase unknown,\n- verb unknown.\n\nThis demonstrates practical NLP unknown-word handling.\n\n## HMM Count Construction\n\nThe notebook contains a graded function:\n\n`create_dictionaries`.\n\nIt constructs:\n\n- `emission_counts`,\n- `transition_counts`,\n- `tag_counts`.\n\nFor every tagged training item it:\n\n1. extracts the word/tag pair,\n2. increments the previous-tag→current-tag transition,\n3. increments the tag→word emission count,\n4. increments tag frequency,\n5. updates the previous tag.\n\nThis is direct implementation of HMM sufficient statistics.\n\n## Transition Model\n\nThe repository's explanatory README demonstrates transition probabilities between POS tags.\n\nIt builds a conceptual transition matrix `A`.\n\nThe probability of a tag depends on the previous tag.\n\nThat is the Markov-state component of the model.\n\n## Smoothing\n\nThe README explicitly explains adding a small smoothing term to avoid zero-probability transitions.\n\nThe transition formula adds epsilon to observed counts and normalizes across possible tags.\n\nThis shows understanding of sparse-count probability estimation.\n\n## Emission Model\n\nThe POS README also explains an emission matrix `B`.\n\nEmission probability represents the likelihood of a word conditioned on a POS tag.\n\nThe examples include ambiguous words whose grammatical role changes across contexts.\n\nThis connects observed tokens to latent grammatical states.\n\n## Viterbi Dynamic Programming\n\nThe notebook contains a graded:\n\n`viterbi_forward`.\n\nIt uses transition and emission matrices to propagate the best state probabilities through the token sequence.\n\nThe notebook then runs the function over roughly 30,000 preprocessed words.\n\n## Backpointer Reconstruction\n\nThe notebook also contains:\n\n`viterbi_backward`.\n\nThis reconstructs the best POS-tag sequence from the backpointer matrix.\n\nTogether:\n\n- forward dynamic programming,\n- backpointer reconstruction\n\nform the complete Viterbi decoding pattern.\n\n## Dynamic-Programming Significance\n\nThis is not only an NLP topic.\n\nViterbi is a dynamic-programming algorithm over latent state sequences.\n\nThe exercise reinforces:\n\n- optimal substructure,\n- state transition scoring,\n- path memoization,\n- backward reconstruction.\n\n## Saved Test Failure\n\nA notebook cell attempts to run:\n\n`w2_unittest.test_viterbi_forward(...)`.\n\nThe saved output contains:\n\n`NameError: name 'w2_unittest' is not defined`.\n\nThis is important evidence.\n\nThe corpus does not claim that every supplied unit test passed.\n\nThe failure appears to be missing test-module setup in the notebook state rather than direct proof that the Viterbi algorithm is numerically wrong.\n\nBut the checked-in state remains a failed test invocation.\n\n## Notebook Execution State\n\nMany POS notebook cells have stored outputs.\n\nSome execution counts are null while outputs remain embedded, consistent with notebook editing/export history.\n\nThe corpus therefore treats the notebook as exercised but does not infer a clean-from-scratch execution run.\n\n## POS Documentation\n\nThe repository contains substantial personally maintained explanatory Markdown around:\n\n- transition counts,\n- conditional probability,\n- smoothing,\n- emissions,\n- initialization,\n- backpointers.\n\nThis creates retrieval value beyond the notebook implementation itself.\n\n## Autocomplete Study Track\n\nThe `Autocomplete/README.md` is a long probabilistic-language-model note.\n\nIt explains:\n\n- sentence probability,\n- Naive Bayes independence contrast,\n- conditional word probability,\n- bigrams,\n- trigrams,\n- Markov assumptions,\n- start tokens,\n- smoothing.\n\n## N-Gram Probability\n\nThe document generalizes sentence probability from independent words to conditional n-gram history.\n\nFor a bigram model, each word probability is conditioned on its immediate predecessor.\n\nFor a trigram model, it is conditioned on the previous two tokens.\n\n## Start Tokens\n\nThe notes explain why an n-gram model needs synthetic start tokens.\n\nFor a trigram model, two start tokens provide a full context window for the first actual word.\n\nThis preserves a consistent model order at sentence boundaries.\n\n## Add-k Smoothing\n\nThe autocomplete notes discuss:\n\n- add-one smoothing,\n- add-k smoothing.\n\nThey explain why add-one can overallocate probability mass to unseen n-grams and how a smaller `k` offers finer control.\n\nThis is useful probabilistic-language-model theory.\n\n## Autocomplete Implementation Boundary\n\nNo executable autocomplete notebook or Python implementation is present in the current tree.\n\nTherefore the repository demonstrates:\n\n- autocomplete/n-gram theory documentation,\n- quiz/study material,\n\nbut not a checked-in autocomplete service or inference implementation.\n\n## Instructional Provenance\n\nThe POS notebook contains markers such as:\n\n- `UNQ_C...`,\n- `GRADED FUNCTION`.\n\nIt imports helper functionality such as:\n\n- `get_word_tag`,\n- `preprocess`.\n\nIt also references a supplied `w2_unittest` module.\n\nThis is structured coursework.\n\nLearner-completed functions are separated from supplied framework code in the corpus claims.\n\n## Testing and Verification\n\nVerification evidence is mixed.\n\nPositive evidence:\n\n- large corpus-processing outputs,\n- Viterbi execution call,\n- generated intermediate structures.\n\nNegative evidence:\n\n- the stored `w2_unittest` invocation fails with a `NameError`.\n\nThere is no repository-level CI.\n\n## Skills Demonstrated\n\n### Probabilistic NLP\n\n- conditional probability\n- count-based estimation\n- transition probabilities\n- emission probabilities\n- smoothing\n- n-gram language models\n\n### Hidden Markov Models\n\n- HMM state modeling\n- POS tagging\n- transition matrix\n- emission matrix\n- unknown-word preprocessing\n\n### Algorithms\n\n- Viterbi forward pass\n- backpointer matrix\n- dynamic programming\n- optimal-path reconstruction\n\n### Language Modeling\n\n- bigrams\n- trigrams\n- start tokens\n- add-one smoothing\n- add-k smoothing\n\n### Python\n\n- dictionaries/defaultdict\n- NumPy\n- Pandas\n- Jupyter\n\n## Capability Developed\n\nThis repository deepens the statistical side of NLP.\n\nInstead of neural hidden states, language structure is represented through explicit probability tables and state transitions.\n\nThat creates a useful contrast between:\n\n- neural sequence models,\n- classical probabilistic sequence models.\n\nThe learner sees how both approaches solve sequence dependence with very different machinery.\n\n## Portfolio Evolution\n\nThe preceding NLP classification repository focuses on logistic regression and Naive Bayes sentiment models.\n\nThis repository advances into structured sequences:\n\n- tags depend on previous tags,\n- words are emitted from hidden grammatical states,\n- sentence probabilities depend on n-gram history.\n\nThat broadens classical NLP from independent classification into sequence inference.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository containing:\n\n- Hidden Markov Model NLP,\n- POS tagging,\n- Viterbi decoding,\n- explicit n-gram language-model study.\n\n## Scale and Complexity\n\nThe HMM notebook processes a large tagged corpus and a test sequence of tens of thousands of words.\n\nThe implementation is still instructional, but the data volume and dynamic-programming path make it algorithmically richer than a toy three-sentence example.\n\n## Limitations\n\nThe repository is coursework-oriented.\n\nThe POS notebook depends on helper/data files that are referenced but not all visible in the repository tree.\n\nThe stored unit-test invocation has a missing-module `NameError`.\n\nThe autocomplete section contains theory/quiz documents without executable autocomplete code.\n\nNo dependency lockfile is present.\n\nNo deployment exists.\n\nNo CI pipeline exists.\n\n## Overall Narrative\n\n`NLP-with-probabilistic-models` captures a strong classical sequence-modeling phase.\n\nIts concrete implementation is an HMM POS tagger built from transition/emission counts and decoded with Viterbi dynamic programming.\n\nAlongside that implementation, the repository builds detailed notes on n-gram sentence probability and smoothing.\n\nThe corpus deliberately keeps implementation and study material distinct, and it also preserves the saved failed unit-test invocation instead of presenting the notebook as universally passing.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `jupyter-notebook`\n- `natural-language-processing`\n- `probabilistic-models`\n- `hidden-markov-model`\n- `part-of-speech-tagging`\n- `transition-probabilities`\n- `emission-probabilities`\n- `smoothing`\n- `unknown-word-handling`\n- `viterbi-algorithm`\n- `dynamic-programming`\n- `backpointer-reconstruction`\n- `ngram-language-model`\n- `bigram`\n- `trigram`\n- `start-tokens`\n- `add-k-smoothing`\n- `documented-test-failure`\n- `executed-notebook-output`\n"
+}

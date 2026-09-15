@@ -1,0 +1,405 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 46,
+  "repository_total": 134,
+  "repository_name": "Matlab-Datascience",
+  "header_title": "Matlab-Datascience",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-046-Matlab-Datascience/README.md",
+    "line_start": 1,
+    "line_end": 334,
+    "sha256": "e6217b78c3341b1c6a9bc78b0ea81160cdc81801b8e16bafb10d38915b9194ed"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "matlab",
+    "machine-learning",
+    "deep-learning",
+    "convolutional-neural-network",
+    "lstm",
+    "cnn-lstm",
+    "residual-network",
+    "skip-connections",
+    "multi-input-network",
+    "dlnetwork",
+    "trainnet",
+    "batch-normalization",
+    "max-pooling",
+    "adam",
+    "cross-entropy",
+    "train-validation-test-split",
+    "validation-data",
+    "network-visualization",
+    "model-training",
+    "experimental-result-documentation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Matlab-Datascience`\n- **Repository start date:** 2024-09-20\n- **Last meaningful update date:** 2024-09-21\n- **Primary implementation language:** MATLAB\n- **Primary domain:** deep-learning architecture experiments\n- **Core APIs:** MATLAB Deep Learning Toolbox-style layers, `dlnetwork`, `trainnet`\n- **Collaboration classification:** individual repository\n- **Repository shape:** two compact architecture/training scripts"
+    },
+    "testing": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Verification Evidence"
+      ],
+      "text": "## Verification Evidence\nVerification is experiment-oriented.\n\nThe repository includes:\n\n- network plotting,\n- network analysis,\n- validation configuration,\n- accuracy metric configuration,\n- a recorded accuracy comment.\n\nThere is no automated software test suite.\n\nNo saved model artifact is checked in."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Matlab-Datascience`\n- **Repository start date:** 2024-09-20\n- **Last meaningful update date:** 2024-09-21\n- **Primary implementation language:** MATLAB\n- **Primary domain:** deep-learning architecture experiments\n- **Core APIs:** MATLAB Deep Learning Toolbox-style layers, `dlnetwork`, `trainnet`\n- **Collaboration classification:** individual repository\n- **Repository shape:** two compact architecture/training scripts",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Matlab-Datascience` is a very small MATLAB repository containing two neural-network architecture experiments:\n\n- `ResNet.m`,\n- `CNN-LSTM`.\n\nDespite the repository's tiny file count, the scripts contain substantive model-graph construction and training logic.\n\nThe work explores:\n\n- residual-style convolutional branches,\n- multi-input network composition,\n- CNN feature extraction,\n- LSTM sequence modeling,\n- training/validation splitting,\n- Adam optimization.",
+      "source_line_start": 14,
+      "source_line_end": 32
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "`ResNet.m`",
+      "normalized_title": "ResNet.m",
+      "key": "resnet_m",
+      "path": [
+        "`ResNet.m`"
+      ],
+      "content": "`ResNet.m` constructs a custom network graph using MATLAB deep-learning layers.\n\nA repeated branch includes:\n\n- image input,\n- convolution,\n- batch normalization,\n- ReLU,\n- addition layers,\n- max pooling.\n\nChannel depth increases through:\n\n- 8 filters,\n- 16 filters,\n- 32 filters,\n- 64 filters.\n\nThis is a staged convolutional feature extractor.",
+      "source_line_start": 32,
+      "source_line_end": 54
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Residual Connections",
+      "normalized_title": "Residual Connections",
+      "key": "residual_connections",
+      "path": [
+        "Residual Connections"
+      ],
+      "content": "The script uses `additionLayer` nodes and explicit `connectLayers` calls.\n\nEarlier convolution outputs are routed into later addition layers.\n\nThat is residual/skip-connection structure rather than a plain sequential CNN.\n\nThe implementation manually controls graph connectivity through a `dlnetwork`.",
+      "source_line_start": 54,
+      "source_line_end": 64
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Multiple Input Branches",
+      "normalized_title": "Multiple Input Branches",
+      "key": "multiple_input_branches",
+      "path": [
+        "Multiple Input Branches"
+      ],
+      "content": "The script adds the repeated branch three times.\n\nIt then connects the three branch outputs into a three-input `additionLayer`.\n\nThe merged graph feeds:\n\n- a fully connected layer with 12 outputs,\n- softmax.\n\nThis is a multi-input CNN graph.",
+      "source_line_start": 64,
+      "source_line_end": 77
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Physics of Network Shape",
+      "normalized_title": "Physics of Network Shape",
+      "key": "physics_of_network_shape",
+      "path": [
+        "Physics of Network Shape"
+      ],
+      "content": "The script uses explicit input dimensions:\n\n`[90 189 1]`.\n\nRepeated pooling progressively reduces spatial dimensions before branch combination.\n\nThe implementation therefore depends on compatible tensor geometry across the repeated branches.",
+      "source_line_start": 77,
+      "source_line_end": 87
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "`CNN-LSTM`",
+      "normalized_title": "CNN-LSTM",
+      "key": "cnn_lstm",
+      "path": [
+        "`CNN-LSTM`"
+      ],
+      "content": "The second file explores sequence-aware classification.\n\nIt contains both commented experimental code and an active CNN-LSTM architecture.\n\nThe active path loads:\n\n`allData.mat`.\n\nIt then performs randomized label-based splitting into:\n\n- training,\n- validation,\n- test partitions.",
+      "source_line_start": 87,
+      "source_line_end": 103
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Data Preparation",
+      "normalized_title": "Data Preparation",
+      "key": "data_preparation",
+      "path": [
+        "Data Preparation"
+      ],
+      "content": "The script uses `splitlabels`.\n\nIt randomizes index order with `randperm`.\n\nTraining and validation rows are converted to `arrayDatastore`.\n\nThis is a concrete supervised-learning data pipeline.",
+      "source_line_start": 103,
+      "source_line_end": 113
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "CNN Feature Branches",
+      "normalized_title": "CNN Feature Branches",
+      "key": "cnn_feature_branches",
+      "path": [
+        "CNN Feature Branches"
+      ],
+      "content": "The active architecture defines a repeated CNN branch with:\n\n- image input,\n- convolution,\n- batch normalization,\n- ReLU,\n- max pooling.\n\nFilter counts increase from 8 through 64.\n\nThe branch is instantiated three times.\n\nTheir outputs feed one multi-input addition layer.",
+      "source_line_start": 113,
+      "source_line_end": 129
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "CNN-to-LSTM Bridge",
+      "normalized_title": "CNN-to-LSTM Bridge",
+      "key": "cnn_to_lstm_bridge",
+      "path": [
+        "CNN-to-LSTM Bridge"
+      ],
+      "content": "After branch merging, the network uses:\n\n- `flattenLayer`,\n- `lstmLayer(100, 'OutputMode','last')`,\n- `fullyConnectedLayer(12)`,\n- `softmaxLayer`.\n\nThis combines spatial feature extraction with recurrent sequence modeling.",
+      "source_line_start": 129,
+      "source_line_end": 140
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Training Configuration",
+      "normalized_title": "Training Configuration",
+      "key": "training_configuration",
+      "path": [
+        "Training Configuration"
+      ],
+      "content": "The script configures Adam training with:\n\n- initial learning rate `5e-4`,\n- 3 epochs,\n- mini-batch size 32,\n- validation data,\n- validation frequency 40,\n- accuracy metric,\n- training-progress plots.\n\nThe network is trained with:\n\n`trainnet(..., \"crossentropy\", options)`.\n\nThis is full framework-level training code.",
+      "source_line_start": 140,
+      "source_line_end": 158
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Network Inspection",
+      "normalized_title": "Network Inspection",
+      "key": "network_inspection",
+      "path": [
+        "Network Inspection"
+      ],
+      "content": "The script calls:\n\n- `plot(misoCNN)`,\n- `analyzeNetwork(misoCNN)`.\n\nThese provide visual/structural inspection of the composed network graph.",
+      "source_line_start": 158,
+      "source_line_end": 167
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Source-Recorded Accuracy",
+      "normalized_title": "Source-Recorded Accuracy",
+      "key": "source_recorded_accuracy",
+      "path": [
+        "Source-Recorded Accuracy"
+      ],
+      "content": "A source comment states:\n\n`this one works and has accuracy 97.22`.\n\nThe corpus records that as a repository-authored result note.\n\nIt is not treated as an independently reproduced benchmark.\n\nThe file does not provide enough contextual metadata in the visible source to fully characterize:\n\n- exact dataset version,\n- class balance,\n- test protocol,\n- whether 97.22 refers to validation or test accuracy.",
+      "source_line_start": 167,
+      "source_line_end": 184
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Earlier LSTM Experiment",
+      "normalized_title": "Earlier LSTM Experiment",
+      "key": "earlier_lstm_experiment",
+      "path": [
+        "Earlier LSTM Experiment"
+      ],
+      "content": "A commented section contains an alternative direct sequence-input LSTM experiment.\n\nIt uses:\n\n- `sequenceInputLayer`,\n- batch normalization,\n- ReLU,\n- LSTM,\n- fully connected output,\n- softmax.\n\nThis preserves experimentation history.\n\nBecause it is commented out in the current file, the corpus distinguishes it from the active CNN-LSTM path.",
+      "source_line_start": 184,
+      "source_line_end": 201
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Work Evidenced",
+      "normalized_title": "Engineering Work Evidenced",
+      "key": "engineering_work_evidenced",
+      "path": [
+        "Engineering Work Evidenced"
+      ],
+      "content": "The repository positively demonstrates:\n\n- MATLAB deep-learning graph construction,\n- `dlnetwork`,\n- convolutional models,\n- residual/skip connections,\n- multi-input networks,\n- CNN-LSTM composition,\n- LSTM layers,\n- randomized data splitting,\n- datastore construction,\n- Adam optimization,\n- cross-entropy training,\n- validation monitoring,\n- network visualization/analysis.",
+      "source_line_start": 201,
+      "source_line_end": 219
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Verification Evidence",
+      "normalized_title": "Verification Evidence",
+      "key": "verification_evidence",
+      "path": [
+        "Verification Evidence"
+      ],
+      "content": "Verification is experiment-oriented.\n\nThe repository includes:\n\n- network plotting,\n- network analysis,\n- validation configuration,\n- accuracy metric configuration,\n- a recorded accuracy comment.\n\nThere is no automated software test suite.\n\nNo saved model artifact is checked in.",
+      "source_line_start": 219,
+      "source_line_end": 235
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### MATLAB\n\n- matrix/data manipulation\n- Deep Learning Toolbox-style APIs\n- datastores\n- network graph APIs\n\n### Deep Learning\n\n- CNNs\n- residual connections\n- LSTMs\n- multi-input networks\n- classification\n- train/validation/test splitting\n\n### Experimentation\n\n- architecture iteration\n- network visualization\n- validation metrics\n- hyperparameter configuration",
+      "source_line_start": 235,
+      "source_line_end": 260
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "MATLAB",
+      "normalized_title": "MATLAB",
+      "key": "matlab",
+      "path": [
+        "Skills Demonstrated",
+        "MATLAB"
+      ],
+      "content": "- matrix/data manipulation\n- Deep Learning Toolbox-style APIs\n- datastores\n- network graph APIs",
+      "source_line_start": 237,
+      "source_line_end": 244
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Deep Learning",
+      "normalized_title": "Deep Learning",
+      "key": "deep_learning",
+      "path": [
+        "Skills Demonstrated",
+        "Deep Learning"
+      ],
+      "content": "- CNNs\n- residual connections\n- LSTMs\n- multi-input networks\n- classification\n- train/validation/test splitting",
+      "source_line_start": 244,
+      "source_line_end": 253
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Experimentation",
+      "normalized_title": "Experimentation",
+      "key": "experimentation",
+      "path": [
+        "Skills Demonstrated",
+        "Experimentation"
+      ],
+      "content": "- architecture iteration\n- network visualization\n- validation metrics\n- hyperparameter configuration",
+      "source_line_start": 253,
+      "source_line_end": 260
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops the ability to design non-trivial neural architectures as explicit graphs rather than only sequential stacks.\n\nThe key capabilities are:\n\n- branch reuse,\n- skip connections,\n- branch fusion,\n- spatial-to-sequence transition,\n- supervised training configuration.",
+      "source_line_start": 260,
+      "source_line_end": 272
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Historically, this repository follows `Tensor-Flow-Basics` by roughly three weeks.\n\nThe framework changes from TensorFlow/Keras notebooks to MATLAB network-graph construction.\n\nThe model concepts also become more compositional:\n\n- residual paths,\n- repeated input branches,\n- CNN-LSTM fusion.",
+      "source_line_start": 272,
+      "source_line_end": 284
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository using MATLAB `dlnetwork` graph composition.\n\nIt is also the earliest observed checked-in CNN-LSTM architecture.",
+      "source_line_start": 284,
+      "source_line_end": 290
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "Only two files are present.\n\nNo README documents dataset provenance or experimental context.\n\nThe recorded 97.22 accuracy is not accompanied by a reproducible evaluation report.\n\nNo dependency/environment specification is present.\n\nNo model checkpoint is committed.\n\nNo automated software tests are present.",
+      "source_line_start": 290,
+      "source_line_end": 304
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`Matlab-Datascience` is a compact but technically dense neural-network experimentation repository.\n\nIt moves beyond introductory sequential classifiers into manually connected network graphs with repeated CNN branches, residual additions, multi-input fusion, LSTM sequence modeling, and explicit training configuration.\n\nIts strongest portfolio value is architectural experimentation, not product integration.\n\n# Project Tags\n\n- `individual-project`\n- `matlab`\n- `machine-learning`\n- `deep-learning`\n- `convolutional-neural-network`\n- `lstm`\n- `cnn-lstm`\n- `residual-network`\n- `skip-connections`\n- `multi-input-network`\n- `dlnetwork`\n- `trainnet`\n- `batch-normalization`\n- `max-pooling`\n- `adam`\n- `cross-entropy`\n- `train-validation-test-split`\n- `validation-data`\n- `network-visualization`\n- `model-training`\n- `experimental-result-documentation`",
+      "source_line_start": 304,
+      "source_line_end": 335
+    }
+  ],
+  "raw_analysis": "# Repository 046 — Matlab-Datascience\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Matlab-Datascience`\n- **Repository start date:** 2024-09-20\n- **Last meaningful update date:** 2024-09-21\n- **Primary implementation language:** MATLAB\n- **Primary domain:** deep-learning architecture experiments\n- **Core APIs:** MATLAB Deep Learning Toolbox-style layers, `dlnetwork`, `trainnet`\n- **Collaboration classification:** individual repository\n- **Repository shape:** two compact architecture/training scripts\n\n## What This Project Is\n\n`Matlab-Datascience` is a very small MATLAB repository containing two neural-network architecture experiments:\n\n- `ResNet.m`,\n- `CNN-LSTM`.\n\nDespite the repository's tiny file count, the scripts contain substantive model-graph construction and training logic.\n\nThe work explores:\n\n- residual-style convolutional branches,\n- multi-input network composition,\n- CNN feature extraction,\n- LSTM sequence modeling,\n- training/validation splitting,\n- Adam optimization.\n\n## `ResNet.m`\n\n`ResNet.m` constructs a custom network graph using MATLAB deep-learning layers.\n\nA repeated branch includes:\n\n- image input,\n- convolution,\n- batch normalization,\n- ReLU,\n- addition layers,\n- max pooling.\n\nChannel depth increases through:\n\n- 8 filters,\n- 16 filters,\n- 32 filters,\n- 64 filters.\n\nThis is a staged convolutional feature extractor.\n\n## Residual Connections\n\nThe script uses `additionLayer` nodes and explicit `connectLayers` calls.\n\nEarlier convolution outputs are routed into later addition layers.\n\nThat is residual/skip-connection structure rather than a plain sequential CNN.\n\nThe implementation manually controls graph connectivity through a `dlnetwork`.\n\n## Multiple Input Branches\n\nThe script adds the repeated branch three times.\n\nIt then connects the three branch outputs into a three-input `additionLayer`.\n\nThe merged graph feeds:\n\n- a fully connected layer with 12 outputs,\n- softmax.\n\nThis is a multi-input CNN graph.\n\n## Physics of Network Shape\n\nThe script uses explicit input dimensions:\n\n`[90 189 1]`.\n\nRepeated pooling progressively reduces spatial dimensions before branch combination.\n\nThe implementation therefore depends on compatible tensor geometry across the repeated branches.\n\n## `CNN-LSTM`\n\nThe second file explores sequence-aware classification.\n\nIt contains both commented experimental code and an active CNN-LSTM architecture.\n\nThe active path loads:\n\n`allData.mat`.\n\nIt then performs randomized label-based splitting into:\n\n- training,\n- validation,\n- test partitions.\n\n## Data Preparation\n\nThe script uses `splitlabels`.\n\nIt randomizes index order with `randperm`.\n\nTraining and validation rows are converted to `arrayDatastore`.\n\nThis is a concrete supervised-learning data pipeline.\n\n## CNN Feature Branches\n\nThe active architecture defines a repeated CNN branch with:\n\n- image input,\n- convolution,\n- batch normalization,\n- ReLU,\n- max pooling.\n\nFilter counts increase from 8 through 64.\n\nThe branch is instantiated three times.\n\nTheir outputs feed one multi-input addition layer.\n\n## CNN-to-LSTM Bridge\n\nAfter branch merging, the network uses:\n\n- `flattenLayer`,\n- `lstmLayer(100, 'OutputMode','last')`,\n- `fullyConnectedLayer(12)`,\n- `softmaxLayer`.\n\nThis combines spatial feature extraction with recurrent sequence modeling.\n\n## Training Configuration\n\nThe script configures Adam training with:\n\n- initial learning rate `5e-4`,\n- 3 epochs,\n- mini-batch size 32,\n- validation data,\n- validation frequency 40,\n- accuracy metric,\n- training-progress plots.\n\nThe network is trained with:\n\n`trainnet(..., \"crossentropy\", options)`.\n\nThis is full framework-level training code.\n\n## Network Inspection\n\nThe script calls:\n\n- `plot(misoCNN)`,\n- `analyzeNetwork(misoCNN)`.\n\nThese provide visual/structural inspection of the composed network graph.\n\n## Source-Recorded Accuracy\n\nA source comment states:\n\n`this one works and has accuracy 97.22`.\n\nThe corpus records that as a repository-authored result note.\n\nIt is not treated as an independently reproduced benchmark.\n\nThe file does not provide enough contextual metadata in the visible source to fully characterize:\n\n- exact dataset version,\n- class balance,\n- test protocol,\n- whether 97.22 refers to validation or test accuracy.\n\n## Earlier LSTM Experiment\n\nA commented section contains an alternative direct sequence-input LSTM experiment.\n\nIt uses:\n\n- `sequenceInputLayer`,\n- batch normalization,\n- ReLU,\n- LSTM,\n- fully connected output,\n- softmax.\n\nThis preserves experimentation history.\n\nBecause it is commented out in the current file, the corpus distinguishes it from the active CNN-LSTM path.\n\n## Engineering Work Evidenced\n\nThe repository positively demonstrates:\n\n- MATLAB deep-learning graph construction,\n- `dlnetwork`,\n- convolutional models,\n- residual/skip connections,\n- multi-input networks,\n- CNN-LSTM composition,\n- LSTM layers,\n- randomized data splitting,\n- datastore construction,\n- Adam optimization,\n- cross-entropy training,\n- validation monitoring,\n- network visualization/analysis.\n\n## Verification Evidence\n\nVerification is experiment-oriented.\n\nThe repository includes:\n\n- network plotting,\n- network analysis,\n- validation configuration,\n- accuracy metric configuration,\n- a recorded accuracy comment.\n\nThere is no automated software test suite.\n\nNo saved model artifact is checked in.\n\n## Skills Demonstrated\n\n### MATLAB\n\n- matrix/data manipulation\n- Deep Learning Toolbox-style APIs\n- datastores\n- network graph APIs\n\n### Deep Learning\n\n- CNNs\n- residual connections\n- LSTMs\n- multi-input networks\n- classification\n- train/validation/test splitting\n\n### Experimentation\n\n- architecture iteration\n- network visualization\n- validation metrics\n- hyperparameter configuration\n\n## Capability Developed\n\nThis repository develops the ability to design non-trivial neural architectures as explicit graphs rather than only sequential stacks.\n\nThe key capabilities are:\n\n- branch reuse,\n- skip connections,\n- branch fusion,\n- spatial-to-sequence transition,\n- supervised training configuration.\n\n## Portfolio Evolution\n\nHistorically, this repository follows `Tensor-Flow-Basics` by roughly three weeks.\n\nThe framework changes from TensorFlow/Keras notebooks to MATLAB network-graph construction.\n\nThe model concepts also become more compositional:\n\n- residual paths,\n- repeated input branches,\n- CNN-LSTM fusion.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository using MATLAB `dlnetwork` graph composition.\n\nIt is also the earliest observed checked-in CNN-LSTM architecture.\n\n## Limitations\n\nOnly two files are present.\n\nNo README documents dataset provenance or experimental context.\n\nThe recorded 97.22 accuracy is not accompanied by a reproducible evaluation report.\n\nNo dependency/environment specification is present.\n\nNo model checkpoint is committed.\n\nNo automated software tests are present.\n\n## Overall Narrative\n\n`Matlab-Datascience` is a compact but technically dense neural-network experimentation repository.\n\nIt moves beyond introductory sequential classifiers into manually connected network graphs with repeated CNN branches, residual additions, multi-input fusion, LSTM sequence modeling, and explicit training configuration.\n\nIts strongest portfolio value is architectural experimentation, not product integration.\n\n# Project Tags\n\n- `individual-project`\n- `matlab`\n- `machine-learning`\n- `deep-learning`\n- `convolutional-neural-network`\n- `lstm`\n- `cnn-lstm`\n- `residual-network`\n- `skip-connections`\n- `multi-input-network`\n- `dlnetwork`\n- `trainnet`\n- `batch-normalization`\n- `max-pooling`\n- `adam`\n- `cross-entropy`\n- `train-validation-test-split`\n- `validation-data`\n- `network-visualization`\n- `model-training`\n- `experimental-result-documentation`\n"
+}

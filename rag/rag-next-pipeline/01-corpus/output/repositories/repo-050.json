@@ -1,0 +1,461 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 50,
+  "repository_total": 134,
+  "repository_name": "SQL-Problems",
+  "header_title": "SQL-Problems",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-050-SQL-Problems/README.md",
+    "line_start": 1,
+    "line_end": 300,
+    "sha256": "0f2f218ebff8bac17cace9d3ca2b82494dbeeda77192cd0909b9360cdd3e7c9a"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "coding-interview-practice",
+    "sql",
+    "mysql",
+    "leethub",
+    "relational-databases",
+    "sql-joins",
+    "sql-aggregation",
+    "group-by",
+    "nested-subqueries",
+    "derived-tables",
+    "union-all",
+    "null-handling",
+    "self-referential-data",
+    "relational-query-reasoning",
+    "online-judge"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/SQL-Problems`\n- **Repository start date:** 2024-09-27\n- **Last meaningful update date:** 2024-09-28\n- **Primary implementation language:** SQL / MySQL-style query syntax\n- **Repository type:** database query problem-solving corpus\n- **Synchronization tooling:** LeetHub-generated repository structure / commits\n- **Collaboration classification:** individual coding-practice repository"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s018"
+      ],
+      "titles": [
+        "Runtime Metadata"
+      ],
+      "text": "## Runtime Metadata\nLeetHub commit messages include runtime and space measurements returned by the coding platform.\n\nThose values are platform feedback.\n\nThey are not treated as controlled database benchmarks.\n\nThey do, however, show that solutions were submitted/executed through the problem platform."
+    },
+    "testing": {
+      "section_ids": [
+        "s019"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification is external-platform based.\n\nThe repository's latest commits include accepted-solution timing metadata.\n\nThere is no standalone local SQL test harness.\n\nThere is no database fixture suite in the repository."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/SQL-Problems`\n- **Repository start date:** 2024-09-27\n- **Last meaningful update date:** 2024-09-28\n- **Primary implementation language:** SQL / MySQL-style query syntax\n- **Repository type:** database query problem-solving corpus\n- **Synchronization tooling:** LeetHub-generated repository structure / commits\n- **Collaboration classification:** individual coding-practice repository",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`SQL-Problems` is a collection of solved relational query problems synchronized from LeetCode-style exercises.\n\nEach problem directory typically contains:\n\n- a `.sql` solution,\n- a generated `README.md` with the problem statement,\n- sometimes `NOTES.md`.\n\nThe repository is therefore both a SQL practice history and a query-pattern corpus.",
+      "source_line_start": 13,
+      "source_line_end": 25
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Automation",
+      "normalized_title": "Repository Automation",
+      "key": "repository_automation",
+      "path": [
+        "Repository Automation"
+      ],
+      "content": "Commit messages repeatedly contain `LeetHub`.\n\nExamples include:\n\n- generated README commits,\n- attached notes,\n- runtime/space result commits.\n\nThis shows that repository structure and synchronization were tool-assisted.\n\nThe SQL solution content is the meaningful learner artifact.\n\nGenerated problem statements are not attributed as original repository-authored documentation.",
+      "source_line_start": 25,
+      "source_line_end": 41
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Relational Query Themes",
+      "normalized_title": "Relational Query Themes",
+      "key": "relational_query_themes",
+      "path": [
+        "Relational Query Themes"
+      ],
+      "content": "The visible problem set spans patterns such as:\n\n- filtering,\n- joins,\n- anti-joins / missing relationships,\n- grouping,\n- aggregation,\n- maxima,\n- nested queries,\n- `UNION ALL`,\n- self-referential organizational relationships.",
+      "source_line_start": 41,
+      "source_line_end": 55
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Department Highest Salary",
+      "normalized_title": "Department Highest Salary",
+      "key": "department_highest_salary",
+      "path": [
+        "Department Highest Salary"
+      ],
+      "content": "`0184-department-highest-salary.sql` demonstrates a multi-stage relational query.\n\nIt:\n\n1. groups employees by department,\n2. computes `MAX(salary)` per department,\n3. joins that result back to `Employee`,\n4. retains employees matching each departmental maximum,\n5. joins `Department` for the human-readable department name.\n\nThis exercises derived tables and aggregate-to-detail joins.",
+      "source_line_start": 55,
+      "source_line_end": 69
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Aggregate-to-Row Recovery",
+      "normalized_title": "Aggregate-to-Row Recovery",
+      "key": "aggregate_to_row_recovery",
+      "path": [
+        "Aggregate-to-Row Recovery"
+      ],
+      "content": "The department-highest-salary pattern is important because an aggregate alone loses the employee row.\n\nThe solution reconstructs the full row by joining aggregate output to the source table.\n\nThis is a common SQL reasoning pattern.",
+      "source_line_start": 69,
+      "source_line_end": 77
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Friend Requests: Most Friends",
+      "normalized_title": "Friend Requests: Most Friends",
+      "key": "friend_requests_most_friends",
+      "path": [
+        "Friend Requests: Most Friends"
+      ],
+      "content": "`0602-friend-requests-ii-who-has-the-most-friends.sql` handles a relationship whose participant can appear in either of two columns.\n\nThe solution:\n\n- groups accepted relationships by `accepter_id`,\n- groups them again by `requester_id`,\n- normalizes both roles to a shared `id`,\n- combines them with `UNION ALL`,\n- aggregates the combined counts,\n- selects the maximum.",
+      "source_line_start": 77,
+      "source_line_end": 90
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Symmetric Relationship Normalization",
+      "normalized_title": "Symmetric Relationship Normalization",
+      "key": "symmetric_relationship_normalization",
+      "path": [
+        "Symmetric Relationship Normalization"
+      ],
+      "content": "This is a useful relational-design insight.\n\nA friendship count cannot be computed correctly by considering only one endpoint column.\n\nThe solution first converts both endpoint roles into one logical participant dimension.\n\nThat demonstrates reasoning about schema semantics, not just SQL syntax.",
+      "source_line_start": 90,
+      "source_line_end": 100
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Customers Who Never Order",
+      "normalized_title": "Customers Who Never Order",
+      "key": "customers_who_never_order",
+      "path": [
+        "Customers Who Never Order"
+      ],
+      "content": "The repository contains a dedicated problem for finding customers without orders.\n\nThat problem class exercises missing-relationship logic.\n\nDepending on the checked-in query, this family is typically solved through:\n\n- anti-join,\n- `NOT IN`,\n- `NOT EXISTS`,\n- or null filtering after outer join.\n\nThe repository therefore records practice with negative relational conditions.",
+      "source_line_start": 100,
+      "source_line_end": 115
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Managers With Direct Reports",
+      "normalized_title": "Managers With Direct Reports",
+      "key": "managers_with_direct_reports",
+      "path": [
+        "Managers With Direct Reports"
+      ],
+      "content": "The `managers-with-at-least-5-direct-reports` problem exercises employee-to-manager self-relationships.\n\nThis requires grouping or joining a table against its own managerial references.\n\nIt adds hierarchical relational reasoning to the corpus.",
+      "source_line_start": 115,
+      "source_line_end": 123
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Employee Bonus",
+      "normalized_title": "Employee Bonus",
+      "key": "employee_bonus",
+      "path": [
+        "Employee Bonus"
+      ],
+      "content": "The employee-bonus problem requires joining employee records with optional bonus records and filtering based on nullable/threshold conditions.\n\nThis reinforces outer-join/null semantics.",
+      "source_line_start": 123,
+      "source_line_end": 129
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Customer Referee",
+      "normalized_title": "Customer Referee",
+      "key": "customer_referee",
+      "path": [
+        "Customer Referee"
+      ],
+      "content": "The customer-referee problem exercises SQL three-valued logic around nullable foreign-key-like values.\n\nThis is useful evidence of practical null-handling awareness.",
+      "source_line_start": 129,
+      "source_line_end": 135
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Largest Number of Orders",
+      "normalized_title": "Largest Number of Orders",
+      "key": "largest_number_of_orders",
+      "path": [
+        "Largest Number of Orders"
+      ],
+      "content": "The repository contains an aggregation problem for identifying the customer with the largest order count.\n\nThat class combines:\n\n- `COUNT`,\n- grouping,\n- ordering or maximum selection.",
+      "source_line_start": 135,
+      "source_line_end": 145
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Big Countries",
+      "normalized_title": "Big Countries",
+      "key": "big_countries",
+      "path": [
+        "Big Countries"
+      ],
+      "content": "The `big-countries` problem is a simpler predicate/filter exercise.\n\nIt provides baseline SQL selection logic alongside the more nested queries.",
+      "source_line_start": 145,
+      "source_line_end": 151
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Classes With More Than Five Students",
+      "normalized_title": "Classes With More Than Five Students",
+      "key": "classes_with_more_than_five_students",
+      "path": [
+        "Classes With More Than Five Students"
+      ],
+      "content": "This is a grouped cardinality problem.\n\nIt reinforces:\n\n- `GROUP BY`,\n- count aggregation,\n- post-aggregation filtering through `HAVING`.",
+      "source_line_start": 151,
+      "source_line_end": 161
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Query Composition",
+      "normalized_title": "Query Composition",
+      "key": "query_composition",
+      "path": [
+        "Query Composition"
+      ],
+      "content": "Across the repository, solutions combine relational operators rather than relying on one pattern.\n\nThe corpus contains evidence of:\n\n- nested derived tables,\n- aggregate subqueries,\n- joins,\n- unions,\n- grouped filtering.",
+      "source_line_start": 161,
+      "source_line_end": 173
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "MySQL Context",
+      "normalized_title": "MySQL Context",
+      "key": "mysql_context",
+      "path": [
+        "MySQL Context"
+      ],
+      "content": "The checked-in solution comments use:\n\n`Write your MySQL query statement below`.\n\nThe corpus therefore records MySQL-style problem solving.\n\nIt does not infer production MySQL administration from that comment.",
+      "source_line_start": 173,
+      "source_line_end": 183
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Runtime Metadata",
+      "normalized_title": "Runtime Metadata",
+      "key": "runtime_metadata",
+      "path": [
+        "Runtime Metadata"
+      ],
+      "content": "LeetHub commit messages include runtime and space measurements returned by the coding platform.\n\nThose values are platform feedback.\n\nThey are not treated as controlled database benchmarks.\n\nThey do, however, show that solutions were submitted/executed through the problem platform.",
+      "source_line_start": 183,
+      "source_line_end": 193
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is external-platform based.\n\nThe repository's latest commits include accepted-solution timing metadata.\n\nThere is no standalone local SQL test harness.\n\nThere is no database fixture suite in the repository.",
+      "source_line_start": 193,
+      "source_line_end": 203
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### SQL\n\n- `SELECT`\n- `WHERE`\n- `JOIN`\n- aggregate functions\n- `GROUP BY`\n- derived tables\n- nested subqueries\n- `UNION ALL`\n- null-aware filtering\n\n### Relational Reasoning\n\n- one-to-many relationships\n- self-references\n- symmetric relationship normalization\n- missing relationships\n- aggregate-to-row reconstruction\n\n### Problem Solving\n\n- decomposing relational requirements\n- composing nested queries\n- platform-based validation",
+      "source_line_start": 203,
+      "source_line_end": 231
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "SQL",
+      "normalized_title": "SQL",
+      "key": "sql",
+      "path": [
+        "Skills Demonstrated",
+        "SQL"
+      ],
+      "content": "- `SELECT`\n- `WHERE`\n- `JOIN`\n- aggregate functions\n- `GROUP BY`\n- derived tables\n- nested subqueries\n- `UNION ALL`\n- null-aware filtering",
+      "source_line_start": 205,
+      "source_line_end": 217
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Relational Reasoning",
+      "normalized_title": "Relational Reasoning",
+      "key": "relational_reasoning",
+      "path": [
+        "Skills Demonstrated",
+        "Relational Reasoning"
+      ],
+      "content": "- one-to-many relationships\n- self-references\n- symmetric relationship normalization\n- missing relationships\n- aggregate-to-row reconstruction",
+      "source_line_start": 217,
+      "source_line_end": 225
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Problem Solving",
+      "normalized_title": "Problem Solving",
+      "key": "problem_solving",
+      "path": [
+        "Skills Demonstrated",
+        "Problem Solving"
+      ],
+      "content": "- decomposing relational requirements\n- composing nested queries\n- platform-based validation",
+      "source_line_start": 225,
+      "source_line_end": 231
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository develops the ability to translate natural-language relational questions into executable queries.\n\nThe stronger exercises require intermediate relational representations rather than single-clause answers.\n\nThat is directly relevant to backend and data-engineering work where query correctness depends on understanding schema relationships.",
+      "source_line_start": 231,
+      "source_line_end": 239
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Earlier corpus repositories already contain SQL/database work.\n\n`SQL-Problems` differs by making relational query reasoning itself the central repeated practice activity.\n\nIt complements application-oriented database use with deliberately isolated SQL problem solving.",
+      "source_line_start": 239,
+      "source_line_end": 247
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the first observed repository dedicated specifically to a synchronized corpus of SQL coding problems.",
+      "source_line_start": 247,
+      "source_line_end": 251
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scope Boundaries",
+      "normalized_title": "Scope Boundaries",
+      "key": "scope_boundaries",
+      "path": [
+        "Scope Boundaries"
+      ],
+      "content": "The repository does not establish:\n\n- database administration,\n- schema migration ownership,\n- transaction design,\n- production query monitoring,\n- database deployment.\n\nIts evidence is query-level problem solving.",
+      "source_line_start": 251,
+      "source_line_end": 263
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "Problem READMEs are generated from the coding platform.\n\nRepository synchronization is automated by LeetHub.\n\nNo local database test fixtures are present.\n\nRuntime numbers are platform-specific.\n\nThere is no repository-level explanatory README.",
+      "source_line_start": 263,
+      "source_line_end": 275
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`SQL-Problems` is a focused relational reasoning corpus.\n\nIts value comes from repeated solutions across joins, aggregation, hierarchy, null handling, nested queries, and relationship normalization.\n\nThe repository should be read as evidence of SQL problem-solving practice with external platform verification, not as a standalone database product.\n\n# Project Tags\n\n- `individual-project`\n- `coding-interview-practice`\n- `sql`\n- `mysql`\n- `leethub`\n- `relational-databases`\n- `sql-joins`\n- `sql-aggregation`\n- `group-by`\n- `nested-subqueries`\n- `derived-tables`\n- `union-all`\n- `null-handling`\n- `self-referential-data`\n- `relational-query-reasoning`\n- `online-judge`",
+      "source_line_start": 275,
+      "source_line_end": 301
+    }
+  ],
+  "raw_analysis": "# Repository 050 — SQL-Problems\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/SQL-Problems`\n- **Repository start date:** 2024-09-27\n- **Last meaningful update date:** 2024-09-28\n- **Primary implementation language:** SQL / MySQL-style query syntax\n- **Repository type:** database query problem-solving corpus\n- **Synchronization tooling:** LeetHub-generated repository structure / commits\n- **Collaboration classification:** individual coding-practice repository\n\n## What This Project Is\n\n`SQL-Problems` is a collection of solved relational query problems synchronized from LeetCode-style exercises.\n\nEach problem directory typically contains:\n\n- a `.sql` solution,\n- a generated `README.md` with the problem statement,\n- sometimes `NOTES.md`.\n\nThe repository is therefore both a SQL practice history and a query-pattern corpus.\n\n## Repository Automation\n\nCommit messages repeatedly contain `LeetHub`.\n\nExamples include:\n\n- generated README commits,\n- attached notes,\n- runtime/space result commits.\n\nThis shows that repository structure and synchronization were tool-assisted.\n\nThe SQL solution content is the meaningful learner artifact.\n\nGenerated problem statements are not attributed as original repository-authored documentation.\n\n## Relational Query Themes\n\nThe visible problem set spans patterns such as:\n\n- filtering,\n- joins,\n- anti-joins / missing relationships,\n- grouping,\n- aggregation,\n- maxima,\n- nested queries,\n- `UNION ALL`,\n- self-referential organizational relationships.\n\n## Department Highest Salary\n\n`0184-department-highest-salary.sql` demonstrates a multi-stage relational query.\n\nIt:\n\n1. groups employees by department,\n2. computes `MAX(salary)` per department,\n3. joins that result back to `Employee`,\n4. retains employees matching each departmental maximum,\n5. joins `Department` for the human-readable department name.\n\nThis exercises derived tables and aggregate-to-detail joins.\n\n## Aggregate-to-Row Recovery\n\nThe department-highest-salary pattern is important because an aggregate alone loses the employee row.\n\nThe solution reconstructs the full row by joining aggregate output to the source table.\n\nThis is a common SQL reasoning pattern.\n\n## Friend Requests: Most Friends\n\n`0602-friend-requests-ii-who-has-the-most-friends.sql` handles a relationship whose participant can appear in either of two columns.\n\nThe solution:\n\n- groups accepted relationships by `accepter_id`,\n- groups them again by `requester_id`,\n- normalizes both roles to a shared `id`,\n- combines them with `UNION ALL`,\n- aggregates the combined counts,\n- selects the maximum.\n\n## Symmetric Relationship Normalization\n\nThis is a useful relational-design insight.\n\nA friendship count cannot be computed correctly by considering only one endpoint column.\n\nThe solution first converts both endpoint roles into one logical participant dimension.\n\nThat demonstrates reasoning about schema semantics, not just SQL syntax.\n\n## Customers Who Never Order\n\nThe repository contains a dedicated problem for finding customers without orders.\n\nThat problem class exercises missing-relationship logic.\n\nDepending on the checked-in query, this family is typically solved through:\n\n- anti-join,\n- `NOT IN`,\n- `NOT EXISTS`,\n- or null filtering after outer join.\n\nThe repository therefore records practice with negative relational conditions.\n\n## Managers With Direct Reports\n\nThe `managers-with-at-least-5-direct-reports` problem exercises employee-to-manager self-relationships.\n\nThis requires grouping or joining a table against its own managerial references.\n\nIt adds hierarchical relational reasoning to the corpus.\n\n## Employee Bonus\n\nThe employee-bonus problem requires joining employee records with optional bonus records and filtering based on nullable/threshold conditions.\n\nThis reinforces outer-join/null semantics.\n\n## Customer Referee\n\nThe customer-referee problem exercises SQL three-valued logic around nullable foreign-key-like values.\n\nThis is useful evidence of practical null-handling awareness.\n\n## Largest Number of Orders\n\nThe repository contains an aggregation problem for identifying the customer with the largest order count.\n\nThat class combines:\n\n- `COUNT`,\n- grouping,\n- ordering or maximum selection.\n\n## Big Countries\n\nThe `big-countries` problem is a simpler predicate/filter exercise.\n\nIt provides baseline SQL selection logic alongside the more nested queries.\n\n## Classes With More Than Five Students\n\nThis is a grouped cardinality problem.\n\nIt reinforces:\n\n- `GROUP BY`,\n- count aggregation,\n- post-aggregation filtering through `HAVING`.\n\n## Query Composition\n\nAcross the repository, solutions combine relational operators rather than relying on one pattern.\n\nThe corpus contains evidence of:\n\n- nested derived tables,\n- aggregate subqueries,\n- joins,\n- unions,\n- grouped filtering.\n\n## MySQL Context\n\nThe checked-in solution comments use:\n\n`Write your MySQL query statement below`.\n\nThe corpus therefore records MySQL-style problem solving.\n\nIt does not infer production MySQL administration from that comment.\n\n## Runtime Metadata\n\nLeetHub commit messages include runtime and space measurements returned by the coding platform.\n\nThose values are platform feedback.\n\nThey are not treated as controlled database benchmarks.\n\nThey do, however, show that solutions were submitted/executed through the problem platform.\n\n## Testing and Verification\n\nVerification is external-platform based.\n\nThe repository's latest commits include accepted-solution timing metadata.\n\nThere is no standalone local SQL test harness.\n\nThere is no database fixture suite in the repository.\n\n## Skills Demonstrated\n\n### SQL\n\n- `SELECT`\n- `WHERE`\n- `JOIN`\n- aggregate functions\n- `GROUP BY`\n- derived tables\n- nested subqueries\n- `UNION ALL`\n- null-aware filtering\n\n### Relational Reasoning\n\n- one-to-many relationships\n- self-references\n- symmetric relationship normalization\n- missing relationships\n- aggregate-to-row reconstruction\n\n### Problem Solving\n\n- decomposing relational requirements\n- composing nested queries\n- platform-based validation\n\n## Capability Developed\n\nThe repository develops the ability to translate natural-language relational questions into executable queries.\n\nThe stronger exercises require intermediate relational representations rather than single-clause answers.\n\nThat is directly relevant to backend and data-engineering work where query correctness depends on understanding schema relationships.\n\n## Portfolio Evolution\n\nEarlier corpus repositories already contain SQL/database work.\n\n`SQL-Problems` differs by making relational query reasoning itself the central repeated practice activity.\n\nIt complements application-oriented database use with deliberately isolated SQL problem solving.\n\n## Historical Significance\n\nWithin the processed corpus, this is the first observed repository dedicated specifically to a synchronized corpus of SQL coding problems.\n\n## Scope Boundaries\n\nThe repository does not establish:\n\n- database administration,\n- schema migration ownership,\n- transaction design,\n- production query monitoring,\n- database deployment.\n\nIts evidence is query-level problem solving.\n\n## Limitations\n\nProblem READMEs are generated from the coding platform.\n\nRepository synchronization is automated by LeetHub.\n\nNo local database test fixtures are present.\n\nRuntime numbers are platform-specific.\n\nThere is no repository-level explanatory README.\n\n## Overall Narrative\n\n`SQL-Problems` is a focused relational reasoning corpus.\n\nIts value comes from repeated solutions across joins, aggregation, hierarchy, null handling, nested queries, and relationship normalization.\n\nThe repository should be read as evidence of SQL problem-solving practice with external platform verification, not as a standalone database product.\n\n# Project Tags\n\n- `individual-project`\n- `coding-interview-practice`\n- `sql`\n- `mysql`\n- `leethub`\n- `relational-databases`\n- `sql-joins`\n- `sql-aggregation`\n- `group-by`\n- `nested-subqueries`\n- `derived-tables`\n- `union-all`\n- `null-handling`\n- `self-referential-data`\n- `relational-query-reasoning`\n- `online-judge`\n"
+}

@@ -1,0 +1,975 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 8,
+  "repository_total": 134,
+  "repository_name": "SedraAssembler",
+  "header_title": "SedraAssembler",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-008-SedraAssembler/README.md",
+    "line_start": 1,
+    "line_end": 422,
+    "sha256": "4e2ef425411771da3ec6726c7ad1da500501fbf6871e88911e4d6e0a0abe45a4"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "mobile-application",
+    "cross-platform-application",
+    "developer-tooling",
+    "interactive-utility",
+    "personal-project",
+    "individual-project",
+    "dart",
+    "flutter",
+    "mobile-ui",
+    "stateful-ui",
+    "navigation",
+    "syntax-highlighting",
+    "clipboard-interaction",
+    "android-apk",
+    "build-artifact-evidence",
+    "custom-assembler",
+    "custom-isa",
+    "instruction-parser",
+    "instruction-encoding",
+    "opcode-mapping",
+    "register-encoding",
+    "memory-mapping",
+    "binary-encoding",
+    "input-validation",
+    "error-categorization",
+    "static-linting",
+    "validation-first-processing",
+    "earliest-observed-dart",
+    "earliest-observed-flutter",
+    "earliest-observed-mobile-application",
+    "earliest-observed-custom-assembler",
+    "earliest-observed-android-apk"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 008 / 134\n- Name: `SedraAssembler`\n- Repository start date: 2022-08-21\n- Last meaningful update date: 2023-02-27\n- Primary type: Flutter assembler and memory-mapping application\n- Technical field: Mobile/cross-platform application development and computer architecture tooling\n- Application domain: Custom Sedra processor assembly language\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Dart\n- Framework: Flutter\n- Build artifact evidence: Android release APK"
+    },
+    "architecture": {
+      "section_ids": [
+        "s009",
+        "s050"
+      ],
+      "titles": [
+        "Architecture and System Shape",
+        "Computer Architecture"
+      ],
+      "text": "## Architecture and System Shape\n```text\nFlutter MaterialApp\n      ↓\nFirstPage\n  ├───────────────┐\n  ↓               ↓\nCpuPage         RamPage\n  ↓               ↓\nSource editor     8 numeric inputs\n  ↓               ↓\nNormalization     Decimal parsing\n  ↓               ↓\nGrammar checks    16-bit conversion\n  ↓               ↓\nRegister checks   Joined mapping string\n  ↓               ↓\nOpcode encoding   Clipboard export\n  ↓\nMachine-code string\n  ↓\nClipboard export\n```\n\n## Computer Architecture\n- **Custom instruction format — strong evidence.**\n- **Opcode mapping — strong evidence.**\n- **Register encoding — strong evidence.**\n- **Binary instruction encoding — strong evidence.**\n- **Memory/register mapping — strong evidence.**"
+    },
+    "testing": {
+      "section_ids": [
+        "s031",
+        "s033",
+        "s034"
+      ],
+      "titles": [
+        "Verification",
+        "Build Artifact Verification",
+        "Manual Application Verification"
+      ],
+      "text": "## Verification\n### Static Analysis\n\n`analysis_options.yaml` together with `flutter_lints` provides lint/static-analysis support.\n\n### Build Artifact Verification\n\nThe checked-in Android APK provides direct evidence that the Flutter application was successfully packaged for Android.\n\n### Manual Application Verification\n\nThe user-facing navigation, validation messages, clipboard confirmation, and packaged artifact support an interactive run-and-inspect development workflow.\n\n## Build Artifact Verification\nThe checked-in Android APK provides direct evidence that the Flutter application was successfully packaged for Android.\n\n## Manual Application Verification\nThe user-facing navigation, validation messages, clipboard confirmation, and packaged artifact support an interactive run-and-inspect development workflow."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s057"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository history is owner-attributed, supporting personal attribution of the Dart/Flutter application and assembler logic.\n\nGenerated Flutter platform files and compiled artifacts are treated as framework/build output rather than equivalent authored application logic.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 008 / 134\n- Name: `SedraAssembler`\n- Repository start date: 2022-08-21\n- Last meaningful update date: 2023-02-27\n- Primary type: Flutter assembler and memory-mapping application\n- Technical field: Mobile/cross-platform application development and computer architecture tooling\n- Application domain: Custom Sedra processor assembly language\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Dart\n- Framework: Flutter\n- Build artifact evidence: Android release APK",
+      "source_line_start": 3,
+      "source_line_end": 18
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository history is owner-attributed, supporting personal attribution of the Dart/Flutter application and assembler logic.\n\nGenerated Flutter platform files and compiled artifacts are treated as framework/build output rather than equivalent authored application logic.",
+      "source_line_start": 18,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `README.md`;\n- `pubspec.yaml`;\n- `lib/main.dart`;\n- Android/iOS Flutter scaffolding;\n- application assets;\n- checked-in `app-release.apk`;\n- repository commit history.",
+      "source_line_start": 24,
+      "source_line_end": 36
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`SedraAssembler` is a Flutter application that assembles a small custom instruction language for a custom processor described by the repository as using **Sedra Quattro Architecture**.\n\nThe application parses source text, validates session structure, checks fixed-width instruction grouping, validates register constraints, emits machine-code-like binary instruction strings, and supports clipboard export.\n\nA second workflow creates a processor memory/register mapping by converting user-entered values into fixed-width binary strings.\n\nThis project is a notable convergence of user-facing software and low-level architecture concepts.",
+      "source_line_start": 36,
+      "source_line_end": 46
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Custom Instruction Set",
+      "normalized_title": "Custom Instruction Set",
+      "key": "custom_instruction_set",
+      "path": [
+        "Custom Instruction Set"
+      ],
+      "content": "The README documents four operations:\n\n- `addar`;\n- `subar`;\n- `mullog`;\n- `addlog`.\n\nEach instruction has four words:\n\n```text\nopcode destination-register first-operand-register second-operand-register\n```\n\nAssembly sessions begin with:\n\n```text\nstart SEDRA16 asm session\n```\n\nand end with:\n\n```text\nend SEDRA16 asm session\n```\n\nThe application treats the four-token instruction width as an explicit architectural invariant.",
+      "source_line_start": 46,
+      "source_line_end": 75
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "App Navigation",
+      "normalized_title": "App Navigation",
+      "key": "app_navigation",
+      "path": [
+        "App Navigation"
+      ],
+      "content": "### Instructions\n\nNavigates to `CpuPage`, the assembler/editor workflow.\n\n### Memory Mapping\n\nNavigates to `RamPage`, where eight values can be entered and exported as binary strings.",
+      "source_line_start": 75,
+      "source_line_end": 85
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Instructions",
+      "normalized_title": "Instructions",
+      "key": "instructions",
+      "path": [
+        "App Navigation",
+        "Instructions"
+      ],
+      "content": "Navigates to `CpuPage`, the assembler/editor workflow.",
+      "source_line_start": 77,
+      "source_line_end": 81
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Memory Mapping",
+      "normalized_title": "Memory Mapping",
+      "key": "memory_mapping",
+      "path": [
+        "App Navigation",
+        "Memory Mapping"
+      ],
+      "content": "Navigates to `RamPage`, where eight values can be entered and exported as binary strings.",
+      "source_line_start": 81,
+      "source_line_end": 85
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nFlutter MaterialApp\n      ↓\nFirstPage\n  ├───────────────┐\n  ↓               ↓\nCpuPage         RamPage\n  ↓               ↓\nSource editor     8 numeric inputs\n  ↓               ↓\nNormalization     Decimal parsing\n  ↓               ↓\nGrammar checks    16-bit conversion\n  ↓               ↓\nRegister checks   Joined mapping string\n  ↓               ↓\nOpcode encoding   Clipboard export\n  ↓\nMachine-code string\n  ↓\nClipboard export\n```",
+      "source_line_start": 85,
+      "source_line_end": 110
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Dart\n\nDart implements application state, parser-like validation, binary conversion, string processing, and UI behavior.\n\n### Flutter\n\nFlutter provides widgets, navigation, text fields, stateful screens, Material controls, assets, Snackbars, and clipboard integration.\n\n### `easy_rich_text`\n\nUsed to highlight assembly tokens such as session markers, processor identifiers, and instruction mnemonics.\n\n### `google_fonts`\n\nUsed for display styling on the navigation surface.\n\n### Flutter Lints\n\n`analysis_options.yaml` and `flutter_lints` provide static linting infrastructure.",
+      "source_line_start": 110,
+      "source_line_end": 132
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Dart",
+      "normalized_title": "Dart",
+      "key": "dart",
+      "path": [
+        "Technical Stack",
+        "Dart"
+      ],
+      "content": "Dart implements application state, parser-like validation, binary conversion, string processing, and UI behavior.",
+      "source_line_start": 112,
+      "source_line_end": 116
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Flutter",
+      "normalized_title": "Flutter",
+      "key": "flutter",
+      "path": [
+        "Technical Stack",
+        "Flutter"
+      ],
+      "content": "Flutter provides widgets, navigation, text fields, stateful screens, Material controls, assets, Snackbars, and clipboard integration.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "`easy_rich_text`",
+      "normalized_title": "easyrichtext",
+      "key": "easyrichtext",
+      "path": [
+        "Technical Stack",
+        "`easy_rich_text`"
+      ],
+      "content": "Used to highlight assembly tokens such as session markers, processor identifiers, and instruction mnemonics.",
+      "source_line_start": 120,
+      "source_line_end": 124
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "`google_fonts`",
+      "normalized_title": "googlefonts",
+      "key": "googlefonts",
+      "path": [
+        "Technical Stack",
+        "`google_fonts`"
+      ],
+      "content": "Used for display styling on the navigation surface.",
+      "source_line_start": 124,
+      "source_line_end": 128
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Flutter Lints",
+      "normalized_title": "Flutter Lints",
+      "key": "flutter_lints",
+      "path": [
+        "Technical Stack",
+        "Flutter Lints"
+      ],
+      "content": "`analysis_options.yaml` and `flutter_lints` provide static linting infrastructure.",
+      "source_line_start": 128,
+      "source_line_end": 132
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Source Normalization\n\n`_getString` collapses repeated spaces and reformats the displayed program so each group of four tokens appears on its own line.\n\n### Validation Pipeline\n\n`_asm()` performs a sequence of checks before encoding.\n\n#### Entry-Point Validation\n\nThe source is checked for the expected `start` marker and its correct location.\n\n#### Instruction-Width Validation\n\nThe total token count is checked against the four-word instruction invariant.\n\n#### Session Consistency\n\nThe processor/device identifier near session end is checked against the one established at session start.\n\n#### End-Point Validation\n\nThe final group is checked for the expected `end` marker.\n\n#### Duplicate Boundary Detection\n\nOccurrences of `start` and `end` are counted so multiple session boundaries can be surfaced explicitly.\n\n#### Register Compatibility\n\nFor a `SEDRA16` session, register operands are constrained to the supported register range.\n\n### Error Categorization\n\nThe application distinguishes several error classes, including:\n\n- missing start;\n- wrong entry point;\n- wrong end point;\n- unclosed session;\n- session-model inconsistency;\n- instruction-width violation;\n- duplicate start;\n- duplicate end;\n- register incompatibility.\n\nThis is strong positive evidence of defensive validation rather than a single generic failure path.\n\n### Machine-Code Encoding\n\nValidated instructions are mapped to visible six-bit opcode prefixes:\n\n- `addar` → `000000`;\n- `subar` → `000001`;\n- `addlog` → `000010`;\n- `mullog` → `000011`.\n\nRegister operands are converted to three-bit binary values and concatenated with the opcode into instruction bitstrings.\n\n### Syntax Highlighting\n\n`EasyRichText` patterns provide lightweight source highlighting for session keywords, processor identifiers, and supported mnemonics.\n\n### Clipboard Export\n\nBoth assembler output and memory-map output can be copied through Flutter's clipboard API, with Snackbars confirming the action.\n\n### Memory Mapping\n\n`RamPage` maintains eight integer values.\n\nOn input changes, values are parsed, stored, converted to 16-bit binary strings, and combined into an exportable mapping.",
+      "source_line_start": 132,
+      "source_line_end": 207
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Source Normalization",
+      "normalized_title": "Source Normalization",
+      "key": "source_normalization",
+      "path": [
+        "Major Engineering Work",
+        "Source Normalization"
+      ],
+      "content": "`_getString` collapses repeated spaces and reformats the displayed program so each group of four tokens appears on its own line.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Validation Pipeline",
+      "normalized_title": "Validation Pipeline",
+      "key": "validation_pipeline",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline"
+      ],
+      "content": "`_asm()` performs a sequence of checks before encoding.\n\n#### Entry-Point Validation\n\nThe source is checked for the expected `start` marker and its correct location.\n\n#### Instruction-Width Validation\n\nThe total token count is checked against the four-word instruction invariant.\n\n#### Session Consistency\n\nThe processor/device identifier near session end is checked against the one established at session start.\n\n#### End-Point Validation\n\nThe final group is checked for the expected `end` marker.\n\n#### Duplicate Boundary Detection\n\nOccurrences of `start` and `end` are counted so multiple session boundaries can be surfaced explicitly.\n\n#### Register Compatibility\n\nFor a `SEDRA16` session, register operands are constrained to the supported register range.",
+      "source_line_start": 138,
+      "source_line_end": 166
+    },
+    {
+      "id": "s019",
+      "level": 4,
+      "title": "Entry-Point Validation",
+      "normalized_title": "Entry-Point Validation",
+      "key": "entry_point_validation",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "Entry-Point Validation"
+      ],
+      "content": "The source is checked for the expected `start` marker and its correct location.",
+      "source_line_start": 142,
+      "source_line_end": 146
+    },
+    {
+      "id": "s020",
+      "level": 4,
+      "title": "Instruction-Width Validation",
+      "normalized_title": "Instruction-Width Validation",
+      "key": "instruction_width_validation",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "Instruction-Width Validation"
+      ],
+      "content": "The total token count is checked against the four-word instruction invariant.",
+      "source_line_start": 146,
+      "source_line_end": 150
+    },
+    {
+      "id": "s021",
+      "level": 4,
+      "title": "Session Consistency",
+      "normalized_title": "Session Consistency",
+      "key": "session_consistency",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "Session Consistency"
+      ],
+      "content": "The processor/device identifier near session end is checked against the one established at session start.",
+      "source_line_start": 150,
+      "source_line_end": 154
+    },
+    {
+      "id": "s022",
+      "level": 4,
+      "title": "End-Point Validation",
+      "normalized_title": "End-Point Validation",
+      "key": "end_point_validation",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "End-Point Validation"
+      ],
+      "content": "The final group is checked for the expected `end` marker.",
+      "source_line_start": 154,
+      "source_line_end": 158
+    },
+    {
+      "id": "s023",
+      "level": 4,
+      "title": "Duplicate Boundary Detection",
+      "normalized_title": "Duplicate Boundary Detection",
+      "key": "duplicate_boundary_detection",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "Duplicate Boundary Detection"
+      ],
+      "content": "Occurrences of `start` and `end` are counted so multiple session boundaries can be surfaced explicitly.",
+      "source_line_start": 158,
+      "source_line_end": 162
+    },
+    {
+      "id": "s024",
+      "level": 4,
+      "title": "Register Compatibility",
+      "normalized_title": "Register Compatibility",
+      "key": "register_compatibility",
+      "path": [
+        "Major Engineering Work",
+        "Validation Pipeline",
+        "Register Compatibility"
+      ],
+      "content": "For a `SEDRA16` session, register operands are constrained to the supported register range.",
+      "source_line_start": 162,
+      "source_line_end": 166
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Error Categorization",
+      "normalized_title": "Error Categorization",
+      "key": "error_categorization",
+      "path": [
+        "Major Engineering Work",
+        "Error Categorization"
+      ],
+      "content": "The application distinguishes several error classes, including:\n\n- missing start;\n- wrong entry point;\n- wrong end point;\n- unclosed session;\n- session-model inconsistency;\n- instruction-width violation;\n- duplicate start;\n- duplicate end;\n- register incompatibility.\n\nThis is strong positive evidence of defensive validation rather than a single generic failure path.",
+      "source_line_start": 166,
+      "source_line_end": 182
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Machine-Code Encoding",
+      "normalized_title": "Machine-Code Encoding",
+      "key": "machine_code_encoding",
+      "path": [
+        "Major Engineering Work",
+        "Machine-Code Encoding"
+      ],
+      "content": "Validated instructions are mapped to visible six-bit opcode prefixes:\n\n- `addar` → `000000`;\n- `subar` → `000001`;\n- `addlog` → `000010`;\n- `mullog` → `000011`.\n\nRegister operands are converted to three-bit binary values and concatenated with the opcode into instruction bitstrings.",
+      "source_line_start": 182,
+      "source_line_end": 193
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Syntax Highlighting",
+      "normalized_title": "Syntax Highlighting",
+      "key": "syntax_highlighting",
+      "path": [
+        "Major Engineering Work",
+        "Syntax Highlighting"
+      ],
+      "content": "`EasyRichText` patterns provide lightweight source highlighting for session keywords, processor identifiers, and supported mnemonics.",
+      "source_line_start": 193,
+      "source_line_end": 197
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Clipboard Export",
+      "normalized_title": "Clipboard Export",
+      "key": "clipboard_export",
+      "path": [
+        "Major Engineering Work",
+        "Clipboard Export"
+      ],
+      "content": "Both assembler output and memory-map output can be copied through Flutter's clipboard API, with Snackbars confirming the action.",
+      "source_line_start": 197,
+      "source_line_end": 201
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Memory Mapping",
+      "normalized_title": "Memory Mapping",
+      "key": "memory_mapping",
+      "path": [
+        "Major Engineering Work",
+        "Memory Mapping"
+      ],
+      "content": "`RamPage` maintains eight integer values.\n\nOn input changes, values are parsed, stored, converted to 16-bit binary strings, and combined into an exportable mapping.",
+      "source_line_start": 201,
+      "source_line_end": 207
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Cross-Platform Project Structure",
+      "normalized_title": "Cross-Platform Project Structure",
+      "key": "cross_platform_project_structure",
+      "path": [
+        "Cross-Platform Project Structure"
+      ],
+      "content": "The repository contains Flutter's Android and iOS project structures.\n\nThe checked-in `app-release.apk` is concrete evidence that the Android target reached a packaged release artifact.",
+      "source_line_start": 207,
+      "source_line_end": 213
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Static Analysis\n\n`analysis_options.yaml` together with `flutter_lints` provides lint/static-analysis support.\n\n### Build Artifact Verification\n\nThe checked-in Android APK provides direct evidence that the Flutter application was successfully packaged for Android.\n\n### Manual Application Verification\n\nThe user-facing navigation, validation messages, clipboard confirmation, and packaged artifact support an interactive run-and-inspect development workflow.",
+      "source_line_start": 213,
+      "source_line_end": 227
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Static Analysis",
+      "normalized_title": "Static Analysis",
+      "key": "static_analysis",
+      "path": [
+        "Verification",
+        "Static Analysis"
+      ],
+      "content": "`analysis_options.yaml` together with `flutter_lints` provides lint/static-analysis support.",
+      "source_line_start": 215,
+      "source_line_end": 219
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Build Artifact Verification",
+      "normalized_title": "Build Artifact Verification",
+      "key": "build_artifact_verification",
+      "path": [
+        "Verification",
+        "Build Artifact Verification"
+      ],
+      "content": "The checked-in Android APK provides direct evidence that the Flutter application was successfully packaged for Android.",
+      "source_line_start": 219,
+      "source_line_end": 223
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Manual Application Verification",
+      "normalized_title": "Manual Application Verification",
+      "key": "manual_application_verification",
+      "path": [
+        "Verification",
+        "Manual Application Verification"
+      ],
+      "content": "The user-facing navigation, validation messages, clipboard confirmation, and packaged artifact support an interactive run-and-inspect development workflow.",
+      "source_line_start": 223,
+      "source_line_end": 227
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Explicit Grammar Rules\n\nThe assembly language has clearly encoded structural invariants.\n\n### Validation Before Encoding\n\nMachine output is produced only after the parser-like checks succeed.\n\n### Error Categorization\n\nDifferent syntax and consistency problems receive specific diagnostic messages.\n\n### Workflow Separation\n\nAssembler editing and memory mapping are exposed as distinct application screens.\n\n### Static Linting\n\nThe repository includes Flutter's lint configuration.",
+      "source_line_start": 227,
+      "source_line_end": 249
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Explicit Grammar Rules",
+      "normalized_title": "Explicit Grammar Rules",
+      "key": "explicit_grammar_rules",
+      "path": [
+        "Engineering Practices",
+        "Explicit Grammar Rules"
+      ],
+      "content": "The assembly language has clearly encoded structural invariants.",
+      "source_line_start": 229,
+      "source_line_end": 233
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Validation Before Encoding",
+      "normalized_title": "Validation Before Encoding",
+      "key": "validation_before_encoding",
+      "path": [
+        "Engineering Practices",
+        "Validation Before Encoding"
+      ],
+      "content": "Machine output is produced only after the parser-like checks succeed.",
+      "source_line_start": 233,
+      "source_line_end": 237
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Error Categorization",
+      "normalized_title": "Error Categorization",
+      "key": "error_categorization",
+      "path": [
+        "Engineering Practices",
+        "Error Categorization"
+      ],
+      "content": "Different syntax and consistency problems receive specific diagnostic messages.",
+      "source_line_start": 237,
+      "source_line_end": 241
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Workflow Separation",
+      "normalized_title": "Workflow Separation",
+      "key": "workflow_separation",
+      "path": [
+        "Engineering Practices",
+        "Workflow Separation"
+      ],
+      "content": "Assembler editing and memory mapping are exposed as distinct application screens.",
+      "source_line_start": 241,
+      "source_line_end": 245
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Static Linting",
+      "normalized_title": "Static Linting",
+      "key": "static_linting",
+      "path": [
+        "Engineering Practices",
+        "Static Linting"
+      ],
+      "content": "The repository includes Flutter's lint configuration.",
+      "source_line_start": 245,
+      "source_line_end": 249
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This is a clear end-user developer utility.\n\nThe user can:\n\n- author custom assembly;\n- see syntax-highlighted source;\n- assemble the program;\n- receive structured diagnostics;\n- copy encoded machine output;\n- clear the editor;\n- generate a memory/register mapping;\n- copy the generated mapping.\n\nMaterial widgets, image-based navigation, feedback Snackbars, and an installable Android artifact give the project a concrete product surface.",
+      "source_line_start": 249,
+      "source_line_end": 266
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe authored application core is concentrated in `lib/main.dart`, while the full repository also includes Flutter scaffolding, assets, and a compiled APK.\n\n### Functional Scale\n\nTwo related processor-development workflows are combined in one application.\n\n### Conceptual Scale\n\nThe project integrates:\n\n- cross-platform UI;\n- parser-like validation;\n- custom ISA rules;\n- binary encoding;\n- syntax highlighting;\n- clipboard integration;\n- memory-map generation.",
+      "source_line_start": 266,
+      "source_line_end": 288
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The authored application core is concentrated in `lib/main.dart`, while the full repository also includes Flutter scaffolding, assets, and a compiled APK.",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Functional Scale",
+      "normalized_title": "Functional Scale",
+      "key": "functional_scale",
+      "path": [
+        "Scale and Complexity",
+        "Functional Scale"
+      ],
+      "content": "Two related processor-development workflows are combined in one application.",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Conceptual Scale",
+      "normalized_title": "Conceptual Scale",
+      "key": "conceptual_scale",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Scale"
+      ],
+      "content": "The project integrates:\n\n- cross-platform UI;\n- parser-like validation;\n- custom ISA rules;\n- binary encoding;\n- syntax highlighting;\n- clipboard integration;\n- memory-map generation.",
+      "source_line_start": 276,
+      "source_line_end": 288
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Languages and Frameworks\n\n- **Dart — strong evidence.**\n- **Flutter — strong evidence.**\n\n### Mobile Application Development\n\n- **Widget composition — strong evidence.**\n- **Navigation — strong evidence.**\n- **Stateful screens — strong evidence.**\n- **Text-field interaction — strong evidence.**\n- **Material UI — strong evidence.**\n- **Asset use — strong evidence.**\n- **Clipboard integration — strong evidence.**\n- **Snackbar feedback — strong evidence.**\n\n### Parsing and Validation\n\n- **Token normalization — strong evidence.**\n- **Grammar validation — strong evidence.**\n- **Error categorization — strong evidence.**\n- **Register-range validation — strong evidence.**\n\n### Computer Architecture\n\n- **Custom instruction format — strong evidence.**\n- **Opcode mapping — strong evidence.**\n- **Register encoding — strong evidence.**\n- **Binary instruction encoding — strong evidence.**\n- **Memory/register mapping — strong evidence.**\n\n### Software Engineering Practices\n\n- **Static linting — moderate evidence.**\n- **Validation-first processing — strong evidence.**\n- **Workflow separation by screen — moderate evidence.**",
+      "source_line_start": 288,
+      "source_line_end": 327
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Languages and Frameworks",
+      "normalized_title": "Languages and Frameworks",
+      "key": "languages_and_frameworks",
+      "path": [
+        "Skills Demonstrated",
+        "Languages and Frameworks"
+      ],
+      "content": "- **Dart — strong evidence.**\n- **Flutter — strong evidence.**",
+      "source_line_start": 290,
+      "source_line_end": 295
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Mobile Application Development",
+      "normalized_title": "Mobile Application Development",
+      "key": "mobile_application_development",
+      "path": [
+        "Skills Demonstrated",
+        "Mobile Application Development"
+      ],
+      "content": "- **Widget composition — strong evidence.**\n- **Navigation — strong evidence.**\n- **Stateful screens — strong evidence.**\n- **Text-field interaction — strong evidence.**\n- **Material UI — strong evidence.**\n- **Asset use — strong evidence.**\n- **Clipboard integration — strong evidence.**\n- **Snackbar feedback — strong evidence.**",
+      "source_line_start": 295,
+      "source_line_end": 306
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Parsing and Validation",
+      "normalized_title": "Parsing and Validation",
+      "key": "parsing_and_validation",
+      "path": [
+        "Skills Demonstrated",
+        "Parsing and Validation"
+      ],
+      "content": "- **Token normalization — strong evidence.**\n- **Grammar validation — strong evidence.**\n- **Error categorization — strong evidence.**\n- **Register-range validation — strong evidence.**",
+      "source_line_start": 306,
+      "source_line_end": 313
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Computer Architecture",
+      "normalized_title": "Computer Architecture",
+      "key": "computer_architecture",
+      "path": [
+        "Skills Demonstrated",
+        "Computer Architecture"
+      ],
+      "content": "- **Custom instruction format — strong evidence.**\n- **Opcode mapping — strong evidence.**\n- **Register encoding — strong evidence.**\n- **Binary instruction encoding — strong evidence.**\n- **Memory/register mapping — strong evidence.**",
+      "source_line_start": 313,
+      "source_line_end": 321
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Skills Demonstrated",
+        "Software Engineering Practices"
+      ],
+      "content": "- **Static linting — moderate evidence.**\n- **Validation-first processing — strong evidence.**\n- **Workflow separation by screen — moderate evidence.**",
+      "source_line_start": 321,
+      "source_line_end": 327
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository bridges two earlier portfolio directions:\n\n- processor/digital architecture work;\n- user-facing application development.\n\nThe architecture concept becomes the domain of a software tool rather than remaining only an HDL model.",
+      "source_line_start": 327,
+      "source_line_end": 336
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- Dart;\n- Flutter;\n- cross-platform mobile application structure;\n- Android release APK;\n- custom assembler;\n- custom instruction-set encoding;\n- app-level syntax highlighting;\n- processor memory-map generation;\n- repository-level Flutter lint configuration.\n\nInput validation also becomes substantially more explicit than in earlier personal application repositories.",
+      "source_line_start": 336,
+      "source_line_end": 352
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`SedraAssembler` is an early convergence project in the portfolio.\n\nIt marks the transition from studying processors to building an installable software tool around a processor architecture, and it establishes the first observed Flutter/Dart mobile-development evidence.",
+      "source_line_start": 352,
+      "source_line_end": 358
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`SedraAssembler` is a Flutter developer utility for writing and assembling a small custom instruction language and generating processor memory mappings.\n\nIts most important engineering characteristic is a validation-first pipeline: source text is normalized, checked for session boundaries and fixed-width instruction structure, validated for processor/register consistency, and then converted into bit-level output.\n\nThe project combines mobile UI engineering with low-level computer-architecture reasoning and reaches a packaged Android artifact.\n\n# Project Tags",
+      "source_line_start": 358,
+      "source_line_end": 368
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `mobile-application`\n- `cross-platform-application`\n- `developer-tooling`\n- `interactive-utility`\n- `personal-project`",
+      "source_line_start": 368,
+      "source_line_end": 376
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 376,
+      "source_line_end": 380
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `dart`",
+      "source_line_start": 380,
+      "source_line_end": 384
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `flutter`\n- `mobile-ui`\n- `stateful-ui`\n- `navigation`\n- `syntax-highlighting`\n- `clipboard-interaction`",
+      "source_line_start": 384,
+      "source_line_end": 393
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "DevOps and Delivery",
+      "normalized_title": "DevOps and Delivery",
+      "key": "devops_and_delivery",
+      "path": [
+        "DevOps and Delivery"
+      ],
+      "content": "- `android-apk`\n- `build-artifact-evidence`",
+      "source_line_start": 393,
+      "source_line_end": 398
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `custom-assembler`\n- `custom-isa`\n- `instruction-parser`\n- `instruction-encoding`\n- `opcode-mapping`\n- `register-encoding`\n- `memory-mapping`\n- `binary-encoding`",
+      "source_line_start": 398,
+      "source_line_end": 409
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `input-validation`\n- `error-categorization`\n- `static-linting`\n- `validation-first-processing`",
+      "source_line_start": 409,
+      "source_line_end": 416
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-dart`\n- `earliest-observed-flutter`\n- `earliest-observed-mobile-application`\n- `earliest-observed-custom-assembler`\n- `earliest-observed-android-apk`",
+      "source_line_start": 416,
+      "source_line_end": 423
+    }
+  ],
+  "raw_analysis": "# SedraAssembler\n\n## Repository Identity\n\n- Repository: 008 / 134\n- Name: `SedraAssembler`\n- Repository start date: 2022-08-21\n- Last meaningful update date: 2023-02-27\n- Primary type: Flutter assembler and memory-mapping application\n- Technical field: Mobile/cross-platform application development and computer architecture tooling\n- Application domain: Custom Sedra processor assembly language\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Dart\n- Framework: Flutter\n- Build artifact evidence: Android release APK\n\n## Collaboration and Authorship Context\n\nThe visible repository history is owner-attributed, supporting personal attribution of the Dart/Flutter application and assembler logic.\n\nGenerated Flutter platform files and compiled artifacts are treated as framework/build output rather than equivalent authored application logic.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `README.md`;\n- `pubspec.yaml`;\n- `lib/main.dart`;\n- Android/iOS Flutter scaffolding;\n- application assets;\n- checked-in `app-release.apk`;\n- repository commit history.\n\n## What This Project Is\n\n`SedraAssembler` is a Flutter application that assembles a small custom instruction language for a custom processor described by the repository as using **Sedra Quattro Architecture**.\n\nThe application parses source text, validates session structure, checks fixed-width instruction grouping, validates register constraints, emits machine-code-like binary instruction strings, and supports clipboard export.\n\nA second workflow creates a processor memory/register mapping by converting user-entered values into fixed-width binary strings.\n\nThis project is a notable convergence of user-facing software and low-level architecture concepts.\n\n## Custom Instruction Set\n\nThe README documents four operations:\n\n- `addar`;\n- `subar`;\n- `mullog`;\n- `addlog`.\n\nEach instruction has four words:\n\n```text\nopcode destination-register first-operand-register second-operand-register\n```\n\nAssembly sessions begin with:\n\n```text\nstart SEDRA16 asm session\n```\n\nand end with:\n\n```text\nend SEDRA16 asm session\n```\n\nThe application treats the four-token instruction width as an explicit architectural invariant.\n\n## App Navigation\n\n### Instructions\n\nNavigates to `CpuPage`, the assembler/editor workflow.\n\n### Memory Mapping\n\nNavigates to `RamPage`, where eight values can be entered and exported as binary strings.\n\n## Architecture and System Shape\n\n```text\nFlutter MaterialApp\n      ↓\nFirstPage\n  ├───────────────┐\n  ↓               ↓\nCpuPage         RamPage\n  ↓               ↓\nSource editor     8 numeric inputs\n  ↓               ↓\nNormalization     Decimal parsing\n  ↓               ↓\nGrammar checks    16-bit conversion\n  ↓               ↓\nRegister checks   Joined mapping string\n  ↓               ↓\nOpcode encoding   Clipboard export\n  ↓\nMachine-code string\n  ↓\nClipboard export\n```\n\n## Technical Stack\n\n### Dart\n\nDart implements application state, parser-like validation, binary conversion, string processing, and UI behavior.\n\n### Flutter\n\nFlutter provides widgets, navigation, text fields, stateful screens, Material controls, assets, Snackbars, and clipboard integration.\n\n### `easy_rich_text`\n\nUsed to highlight assembly tokens such as session markers, processor identifiers, and instruction mnemonics.\n\n### `google_fonts`\n\nUsed for display styling on the navigation surface.\n\n### Flutter Lints\n\n`analysis_options.yaml` and `flutter_lints` provide static linting infrastructure.\n\n## Major Engineering Work\n\n### Source Normalization\n\n`_getString` collapses repeated spaces and reformats the displayed program so each group of four tokens appears on its own line.\n\n### Validation Pipeline\n\n`_asm()` performs a sequence of checks before encoding.\n\n#### Entry-Point Validation\n\nThe source is checked for the expected `start` marker and its correct location.\n\n#### Instruction-Width Validation\n\nThe total token count is checked against the four-word instruction invariant.\n\n#### Session Consistency\n\nThe processor/device identifier near session end is checked against the one established at session start.\n\n#### End-Point Validation\n\nThe final group is checked for the expected `end` marker.\n\n#### Duplicate Boundary Detection\n\nOccurrences of `start` and `end` are counted so multiple session boundaries can be surfaced explicitly.\n\n#### Register Compatibility\n\nFor a `SEDRA16` session, register operands are constrained to the supported register range.\n\n### Error Categorization\n\nThe application distinguishes several error classes, including:\n\n- missing start;\n- wrong entry point;\n- wrong end point;\n- unclosed session;\n- session-model inconsistency;\n- instruction-width violation;\n- duplicate start;\n- duplicate end;\n- register incompatibility.\n\nThis is strong positive evidence of defensive validation rather than a single generic failure path.\n\n### Machine-Code Encoding\n\nValidated instructions are mapped to visible six-bit opcode prefixes:\n\n- `addar` → `000000`;\n- `subar` → `000001`;\n- `addlog` → `000010`;\n- `mullog` → `000011`.\n\nRegister operands are converted to three-bit binary values and concatenated with the opcode into instruction bitstrings.\n\n### Syntax Highlighting\n\n`EasyRichText` patterns provide lightweight source highlighting for session keywords, processor identifiers, and supported mnemonics.\n\n### Clipboard Export\n\nBoth assembler output and memory-map output can be copied through Flutter's clipboard API, with Snackbars confirming the action.\n\n### Memory Mapping\n\n`RamPage` maintains eight integer values.\n\nOn input changes, values are parsed, stored, converted to 16-bit binary strings, and combined into an exportable mapping.\n\n## Cross-Platform Project Structure\n\nThe repository contains Flutter's Android and iOS project structures.\n\nThe checked-in `app-release.apk` is concrete evidence that the Android target reached a packaged release artifact.\n\n## Verification\n\n### Static Analysis\n\n`analysis_options.yaml` together with `flutter_lints` provides lint/static-analysis support.\n\n### Build Artifact Verification\n\nThe checked-in Android APK provides direct evidence that the Flutter application was successfully packaged for Android.\n\n### Manual Application Verification\n\nThe user-facing navigation, validation messages, clipboard confirmation, and packaged artifact support an interactive run-and-inspect development workflow.\n\n## Engineering Practices\n\n### Explicit Grammar Rules\n\nThe assembly language has clearly encoded structural invariants.\n\n### Validation Before Encoding\n\nMachine output is produced only after the parser-like checks succeed.\n\n### Error Categorization\n\nDifferent syntax and consistency problems receive specific diagnostic messages.\n\n### Workflow Separation\n\nAssembler editing and memory mapping are exposed as distinct application screens.\n\n### Static Linting\n\nThe repository includes Flutter's lint configuration.\n\n## Product Engineering\n\nThis is a clear end-user developer utility.\n\nThe user can:\n\n- author custom assembly;\n- see syntax-highlighted source;\n- assemble the program;\n- receive structured diagnostics;\n- copy encoded machine output;\n- clear the editor;\n- generate a memory/register mapping;\n- copy the generated mapping.\n\nMaterial widgets, image-based navigation, feedback Snackbars, and an installable Android artifact give the project a concrete product surface.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe authored application core is concentrated in `lib/main.dart`, while the full repository also includes Flutter scaffolding, assets, and a compiled APK.\n\n### Functional Scale\n\nTwo related processor-development workflows are combined in one application.\n\n### Conceptual Scale\n\nThe project integrates:\n\n- cross-platform UI;\n- parser-like validation;\n- custom ISA rules;\n- binary encoding;\n- syntax highlighting;\n- clipboard integration;\n- memory-map generation.\n\n## Skills Demonstrated\n\n### Languages and Frameworks\n\n- **Dart — strong evidence.**\n- **Flutter — strong evidence.**\n\n### Mobile Application Development\n\n- **Widget composition — strong evidence.**\n- **Navigation — strong evidence.**\n- **Stateful screens — strong evidence.**\n- **Text-field interaction — strong evidence.**\n- **Material UI — strong evidence.**\n- **Asset use — strong evidence.**\n- **Clipboard integration — strong evidence.**\n- **Snackbar feedback — strong evidence.**\n\n### Parsing and Validation\n\n- **Token normalization — strong evidence.**\n- **Grammar validation — strong evidence.**\n- **Error categorization — strong evidence.**\n- **Register-range validation — strong evidence.**\n\n### Computer Architecture\n\n- **Custom instruction format — strong evidence.**\n- **Opcode mapping — strong evidence.**\n- **Register encoding — strong evidence.**\n- **Binary instruction encoding — strong evidence.**\n- **Memory/register mapping — strong evidence.**\n\n### Software Engineering Practices\n\n- **Static linting — moderate evidence.**\n- **Validation-first processing — strong evidence.**\n- **Workflow separation by screen — moderate evidence.**\n\n## Capability Developed\n\nThis repository bridges two earlier portfolio directions:\n\n- processor/digital architecture work;\n- user-facing application development.\n\nThe architecture concept becomes the domain of a software tool rather than remaining only an HDL model.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- Dart;\n- Flutter;\n- cross-platform mobile application structure;\n- Android release APK;\n- custom assembler;\n- custom instruction-set encoding;\n- app-level syntax highlighting;\n- processor memory-map generation;\n- repository-level Flutter lint configuration.\n\nInput validation also becomes substantially more explicit than in earlier personal application repositories.\n\n## Historical Significance\n\n`SedraAssembler` is an early convergence project in the portfolio.\n\nIt marks the transition from studying processors to building an installable software tool around a processor architecture, and it establishes the first observed Flutter/Dart mobile-development evidence.\n\n## Overall Repository Narrative\n\n`SedraAssembler` is a Flutter developer utility for writing and assembling a small custom instruction language and generating processor memory mappings.\n\nIts most important engineering characteristic is a validation-first pipeline: source text is normalized, checked for session boundaries and fixed-width instruction structure, validated for processor/register consistency, and then converted into bit-level output.\n\nThe project combines mobile UI engineering with low-level computer-architecture reasoning and reaches a packaged Android artifact.\n\n# Project Tags\n\n## Project Type\n\n- `mobile-application`\n- `cross-platform-application`\n- `developer-tooling`\n- `interactive-utility`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `dart`\n\n## Frontend\n\n- `flutter`\n- `mobile-ui`\n- `stateful-ui`\n- `navigation`\n- `syntax-highlighting`\n- `clipboard-interaction`\n\n## DevOps and Delivery\n\n- `android-apk`\n- `build-artifact-evidence`\n\n## Systems Engineering\n\n- `custom-assembler`\n- `custom-isa`\n- `instruction-parser`\n- `instruction-encoding`\n- `opcode-mapping`\n- `register-encoding`\n- `memory-mapping`\n- `binary-encoding`\n\n## Software Engineering Practices\n\n- `input-validation`\n- `error-categorization`\n- `static-linting`\n- `validation-first-processing`\n\n## Portfolio Significance\n\n- `earliest-observed-dart`\n- `earliest-observed-flutter`\n- `earliest-observed-mobile-application`\n- `earliest-observed-custom-assembler`\n- `earliest-observed-android-apk`\n"
+}

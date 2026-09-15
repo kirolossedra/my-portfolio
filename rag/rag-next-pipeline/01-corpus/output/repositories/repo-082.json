@@ -1,0 +1,543 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 82,
+  "repository_total": 134,
+  "repository_name": "FlashWare",
+  "header_title": "FlashWare",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-082-FlashWare/README.md",
+    "line_start": 1,
+    "line_end": 564,
+    "sha256": "c5ad9322a3cc097a90caa244c3a252e651dd65aabb31e986aab6a805875e97bb"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "desktop-application",
+    "lan-file-transfer",
+    "python",
+    "tkinter",
+    "tkinterdnd2",
+    "socket-programming",
+    "tcp",
+    "client-server",
+    "network-interface-discovery",
+    "ipv4",
+    "subnet-calculation",
+    "subnet-scanning",
+    "ping-scan",
+    "multithreading",
+    "worker-queue",
+    "thread-synchronization",
+    "custom-application-protocol",
+    "transfer-negotiation",
+    "file-streaming",
+    "filesystem-io",
+    "transfer-progress",
+    "drag-and-drop",
+    "desktop-gui",
+    "cross-platform-command-handling",
+    "pyinstaller",
+    "packaged-executable"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/FlashWare`\n- **Repository start date:** 2025-05-09\n- **Last meaningful update date:** 2025-05-13\n- **Latest meaningful commit:** `5b91aff6900a61d135a243fb911b3b4b944a92e5`\n- **Primary technical field:** desktop networking and local file transfer\n- **Application domain:** peer discovery and LAN file sharing\n- **Primary technologies:** Python, Tkinter, sockets, threading, PyInstaller\n- **Project context:** personal desktop application\n- **Collaboration classification:** `individual-project`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s019"
+      ],
+      "titles": [
+        "Threading Architecture"
+      ],
+      "text": "## Threading Architecture\nThreading is used in several independent paths:\n\n- scan worker pool,\n- network scan orchestration,\n- notification listener,\n- per-request server handlers,\n- receive data handling,\n- outgoing transfers.\n\nDaemon threads keep background networking from blocking the GUI.\n\nTkinter `after()` calls marshal UI updates back to the event loop in several transfer paths.\n\nThis is meaningful concurrent desktop application engineering."
+    },
+    "testing": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe repository includes a packaged executable, which is evidence that the source reached a runnable distribution artifact.\n\nCommit history records iterative GUI/progress improvements.\n\nThe program itself has observable end-to-end workflows:\n\n- scan,\n- discover,\n- select,\n- request,\n- accept,\n- transfer,\n- progress,\n- completion feedback.\n\nThe corpus treats these as implementation and manual-operational verification evidence."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Security Claim Boundary"
+      ],
+      "text": "## Security Claim Boundary\nThe splash text says:\n\n```text\nFast and secure file transfers\n```\n\nThe checked-in source demonstrates direct TCP socket transfer.\n\nIt does not show:\n\n- TLS,\n- application-layer encryption,\n- peer authentication,\n- cryptographic integrity verification.\n\nTherefore the corpus does not tag encrypted transfer or secure transport as implemented.\n\nThe UI phrase is product copy, not sufficient technical evidence."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/FlashWare`\n- **Repository start date:** 2025-05-09\n- **Last meaningful update date:** 2025-05-13\n- **Latest meaningful commit:** `5b91aff6900a61d135a243fb911b3b4b944a92e5`\n- **Primary technical field:** desktop networking and local file transfer\n- **Application domain:** peer discovery and LAN file sharing\n- **Primary technologies:** Python, Tkinter, sockets, threading, PyInstaller\n- **Project context:** personal desktop application\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The current repository contains:\n\n- `main.py` — approximately 20 KB of Python application source,\n- `FlashNet.exe` — an approximately 11 MB packaged executable,\n- `README.md` — environment/setup notes for packaging with Python/Tkinter/PyInstaller.\n\nThe executable is treated as build/distribution evidence.\n\nThe Python source is the implementation evidence.\n\nThe application window identifies itself as `CyberSend v2.0` even though the repository is named `FlashWare` and the executable is named `FlashNet.exe`.\n\nThe corpus retains these naming differences rather than forcing them into one product name.",
+      "source_line_start": 15,
+      "source_line_end": 31
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "FlashWare implements a desktop peer-to-peer-style LAN file-transfer utility.\n\nThe application can:\n\n- enumerate local IPv4 interfaces,\n- calculate local networks from IP/netmask,\n- scan subnet addresses,\n- identify responding hosts,\n- let a user select a target,\n- negotiate a transfer request,\n- ask the receiver to accept or decline,\n- transfer the selected file over TCP,\n- show scan progress,\n- show transfer progress,\n- support drag-and-drop file selection.\n\nIt runs both client and server behaviors inside the same desktop application.",
+      "source_line_start": 31,
+      "source_line_end": 51
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Major Components",
+      "normalized_title": "Major Components",
+      "key": "major_components",
+      "path": [
+        "Major Components"
+      ],
+      "content": "The source has two clear primary classes:\n\n- `NetworkScanner`,\n- `FileTransferServer`.\n\nA third major component, `ModernGUI`, coordinates:\n\n- user interface,\n- scanner,\n- server,\n- outgoing transfers,\n- incoming transfer prompts,\n- progress state.\n\nThis is a more structured architecture than a flat script.",
+      "source_line_start": 51,
+      "source_line_end": 69
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Network Interface Discovery",
+      "normalized_title": "Network Interface Discovery",
+      "key": "network_interface_discovery",
+      "path": [
+        "Network Interface Discovery"
+      ],
+      "content": "`NetworkScanner.get_interfaces()` uses `netifaces`.\n\nIt enumerates network interfaces and extracts IPv4 entries containing:\n\n- address,\n- netmask.\n\nThose interfaces populate the GUI selector.\n\nThis allows the user to choose which local network to scan.",
+      "source_line_start": 69,
+      "source_line_end": 82
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Network Calculation",
+      "normalized_title": "Network Calculation",
+      "key": "network_calculation",
+      "path": [
+        "Network Calculation"
+      ],
+      "content": "The scanner converts IPv4 addresses and masks between packed binary and integer forms.\n\nIt computes:\n\n```text\nnetwork = ip AND netmask\n```\n\nIt derives host-bit count from the mask and generates host addresses for the subnet.\n\nThis is direct subnet arithmetic rather than relying entirely on an external scanning library.",
+      "source_line_start": 82,
+      "source_line_end": 96
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Subnet Host Generation",
+      "normalized_title": "Subnet Host Generation",
+      "key": "subnet_host_generation",
+      "path": [
+        "Subnet Host Generation"
+      ],
+      "content": "The scanner calculates the number of usable host addresses from the mask.\n\nIt then yields candidate IPs across the host range.\n\nThis allows the same scanner to adapt to the selected interface's subnet size.\n\nThe design assumes a conventional host range and is most naturally suited to ordinary LAN subnets.",
+      "source_line_start": 96,
+      "source_line_end": 106
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Concurrent Host Scanning",
+      "normalized_title": "Concurrent Host Scanning",
+      "key": "concurrent_host_scanning",
+      "path": [
+        "Concurrent Host Scanning"
+      ],
+      "content": "The scanner uses a queue plus a fixed worker pool.\n\nThe configured worker count is:\n\n```text\n100\n```\n\nEach worker:\n\n1. receives an IP from the queue,\n2. invokes the platform ping command,\n3. records a responding host,\n4. increments shared progress.\n\nA lock protects shared counters and active-device state.\n\nThis is a practical concurrency design for reducing sequential scan latency.",
+      "source_line_start": 106,
+      "source_line_end": 127
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Cross-Platform Ping Handling",
+      "normalized_title": "Cross-Platform Ping Handling",
+      "key": "cross_platform_ping_handling",
+      "path": [
+        "Cross-Platform Ping Handling"
+      ],
+      "content": "The worker distinguishes Windows from other platforms.\n\nIt selects different command-line flags for:\n\n- packet count,\n- timeout.\n\nThat is evidence of cross-platform intent at the host-discovery layer.\n\nThe packaged `.exe` provides direct Windows distribution evidence.\n\nThe README also contains macOS-oriented Miniforge/Tkinter packaging preparation.",
+      "source_line_start": 127,
+      "source_line_end": 142
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Scan Progress",
+      "normalized_title": "Scan Progress",
+      "key": "scan_progress",
+      "path": [
+        "Scan Progress"
+      ],
+      "content": "The `NetworkScanner` accepts a progress callback.\n\nAfter each processed IP, it reports:\n\n- processed count,\n- total count.\n\nThe GUI converts that state into:\n\n- a determinate progress bar,\n- a textual percentage,\n- a loader animation.\n\nA commit specifically records adding download/transfer progress and GUI improvements.\n\nThat is product-level feedback rather than background-only scanning.",
+      "source_line_start": 142,
+      "source_line_end": 161
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "File-Transfer Server",
+      "normalized_title": "File-Transfer Server",
+      "key": "file_transfer_server",
+      "path": [
+        "File-Transfer Server"
+      ],
+      "content": "`FileTransferServer` starts a notification listener in a daemon thread.\n\nIt listens on a dedicated TCP notification port.\n\nFor each incoming connection it launches a request-handler thread.\n\nThe request protocol begins with a `TRANSFER_REQUEST` message containing file metadata.\n\nThe receiver can respond:\n\n- `ACCEPT`,\n- decline behavior.\n\nAccepted requests trigger the data-receive phase.",
+      "source_line_start": 161,
+      "source_line_end": 178
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Two-Port Protocol",
+      "normalized_title": "Two-Port Protocol",
+      "key": "two_port_protocol",
+      "path": [
+        "Two-Port Protocol"
+      ],
+      "content": "The application uses two fixed TCP ports:\n\n- one for notification/negotiation,\n- one for file data.\n\nThis separates control-plane-like transfer negotiation from the actual data stream.\n\nConceptually:\n\n```text\nnotification connection\n→ user approval\n→ data connection\n→ file bytes\n```\n\nThis is a simple custom application protocol.",
+      "source_line_start": 178,
+      "source_line_end": 198
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Incoming Transfer Flow",
+      "normalized_title": "Incoming Transfer Flow",
+      "key": "incoming_transfer_flow",
+      "path": [
+        "Incoming Transfer Flow"
+      ],
+      "content": "On an accepted incoming transfer:\n\n1. the receiver marks a transfer as active,\n2. opens a listening TCP socket for data,\n3. accepts the sender connection,\n4. writes received byte chunks to a file,\n5. updates transfer progress on the GUI thread,\n6. checks received size against expected size,\n7. displays success or incomplete-transfer feedback.\n\nThe implementation therefore includes explicit completeness checking based on byte count.",
+      "source_line_start": 198,
+      "source_line_end": 212
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Outgoing Transfer Flow",
+      "normalized_title": "Outgoing Transfer Flow",
+      "key": "outgoing_transfer_flow",
+      "path": [
+        "Outgoing Transfer Flow"
+      ],
+      "content": "The sender path:\n\n1. connects to the target notification port,\n2. sends filename and size metadata,\n3. waits for receiver response,\n4. if accepted, starts transfer UI state,\n5. connects to the data port,\n6. streams the file,\n7. updates progress.\n\nThis is a complete request/accept/send workflow.",
+      "source_line_start": 212,
+      "source_line_end": 226
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "User-Controlled Acceptance",
+      "normalized_title": "User-Controlled Acceptance",
+      "key": "user_controlled_acceptance",
+      "path": [
+        "User-Controlled Acceptance"
+      ],
+      "content": "Incoming files are not written automatically merely because a peer connects.\n\nThe server calls back into the GUI to display a transfer prompt.\n\nThis is a meaningful product/safety control for a LAN utility.\n\nThe user participates in the decision to receive a file.",
+      "source_line_start": 226,
+      "source_line_end": 236
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Drag-and-Drop",
+      "normalized_title": "Drag-and-Drop",
+      "key": "drag_and_drop",
+      "path": [
+        "Drag-and-Drop"
+      ],
+      "content": "The GUI inherits from `TkinterDnD.Tk`.\n\nIt registers a file-drop target and binds a drop event.\n\nA dropped file can be sent to the currently selected device.\n\nThis is a product feature beyond a basic file-picker dialog.",
+      "source_line_start": 236,
+      "source_line_end": 246
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "File Picker",
+      "normalized_title": "File Picker",
+      "key": "file_picker",
+      "path": [
+        "File Picker"
+      ],
+      "content": "The application also supports conventional file selection through Tkinter's file dialog.\n\nThis gives two input paths:\n\n- file chooser,\n- drag and drop.",
+      "source_line_start": 246,
+      "source_line_end": 255
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Desktop UI",
+      "normalized_title": "Desktop UI",
+      "key": "desktop_ui",
+      "path": [
+        "Desktop UI"
+      ],
+      "content": "The source creates a custom dark Tkinter interface.\n\nIt includes:\n\n- interface selector,\n- scan controls,\n- stop control,\n- animated loader,\n- scan progress bar,\n- discovered-device table,\n- send button,\n- transfer progress bar,\n- transfer status label.\n\nA splash screen introduces the application before the main window opens.\n\nThis is a fully interactive desktop workflow.",
+      "source_line_start": 255,
+      "source_line_end": 275
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Threading Architecture",
+      "normalized_title": "Threading Architecture",
+      "key": "threading_architecture",
+      "path": [
+        "Threading Architecture"
+      ],
+      "content": "Threading is used in several independent paths:\n\n- scan worker pool,\n- network scan orchestration,\n- notification listener,\n- per-request server handlers,\n- receive data handling,\n- outgoing transfers.\n\nDaemon threads keep background networking from blocking the GUI.\n\nTkinter `after()` calls marshal UI updates back to the event loop in several transfer paths.\n\nThis is meaningful concurrent desktop application engineering.",
+      "source_line_start": 275,
+      "source_line_end": 292
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Queues and Synchronization",
+      "normalized_title": "Queues and Synchronization",
+      "key": "queues_and_synchronization",
+      "path": [
+        "Queues and Synchronization"
+      ],
+      "content": "The network scanner uses `Queue` for work distribution.\n\nShared scan state uses a lock.\n\nThis is a classic producer/worker arrangement.\n\nThe architecture prevents 100 worker threads from independently generating overlapping address work.",
+      "source_line_start": 292,
+      "source_line_end": 302
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Error Handling",
+      "normalized_title": "Error Handling",
+      "key": "error_handling",
+      "path": [
+        "Error Handling"
+      ],
+      "content": "The source contains explicit error handling around:\n\n- failed ping commands,\n- socket connection failures,\n- scan errors,\n- invalid interface selection,\n- incomplete receives,\n- receive failures,\n- transfer errors.\n\nErrors are surfaced through GUI dialogs.\n\nThis is important for a network utility, where connectivity failures are expected operating conditions.",
+      "source_line_start": 302,
+      "source_line_end": 318
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Packaging",
+      "normalized_title": "Packaging",
+      "key": "packaging",
+      "path": [
+        "Packaging"
+      ],
+      "content": "The repository includes `FlashNet.exe`.\n\nThe README documents preparing a Python 3.11/Tkinter environment and installing PyInstaller.\n\nThis establishes executable packaging intent.\n\nThe exact command used to build the checked-in executable is not documented in the current README, so the corpus does not invent one.",
+      "source_line_start": 318,
+      "source_line_end": 328
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Security Claim Boundary",
+      "normalized_title": "Security Claim Boundary",
+      "key": "security_claim_boundary",
+      "path": [
+        "Security Claim Boundary"
+      ],
+      "content": "The splash text says:\n\n```text\nFast and secure file transfers\n```\n\nThe checked-in source demonstrates direct TCP socket transfer.\n\nIt does not show:\n\n- TLS,\n- application-layer encryption,\n- peer authentication,\n- cryptographic integrity verification.\n\nTherefore the corpus does not tag encrypted transfer or secure transport as implemented.\n\nThe UI phrase is product copy, not sufficient technical evidence.",
+      "source_line_start": 328,
+      "source_line_end": 349
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Protocol Robustness",
+      "normalized_title": "Protocol Robustness",
+      "key": "protocol_robustness",
+      "path": [
+        "Protocol Robustness"
+      ],
+      "content": "The transfer protocol is intentionally simple.\n\nThe notification payload encodes:\n\n- filename,\n- filesize.\n\nThe receive side checks total bytes against expected size.\n\nThis gives basic framing/completeness semantics.\n\nIt is not a general-purpose resumable or authenticated transfer protocol.",
+      "source_line_start": 349,
+      "source_line_end": 364
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The repository includes a packaged executable, which is evidence that the source reached a runnable distribution artifact.\n\nCommit history records iterative GUI/progress improvements.\n\nThe program itself has observable end-to-end workflows:\n\n- scan,\n- discover,\n- select,\n- request,\n- accept,\n- transfer,\n- progress,\n- completion feedback.\n\nThe corpus treats these as implementation and manual-operational verification evidence.",
+      "source_line_start": 364,
+      "source_line_end": 383
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "FlashWare has clear attention to usability.\n\nExamples include:\n\n- automatic interface discovery,\n- progress percentage,\n- stop-scan control,\n- peer table,\n- incoming-transfer prompt,\n- file picker,\n- drag and drop,\n- transfer progress,\n- splash screen,\n- explicit errors.\n\nThese features reduce the amount of networking knowledge required from the end user.",
+      "source_line_start": 383,
+      "source_line_end": 402
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "The application combines several system boundaries:\n\n- OS network interfaces,\n- subnet arithmetic,\n- system ping,\n- TCP sockets,\n- filesystem I/O,\n- worker threads,\n- GUI event loop,\n- packaged distribution.\n\nThis makes the project more systems-oriented than a typical Tkinter CRUD application.",
+      "source_line_start": 402,
+      "source_line_end": 417
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The source is contained in a single Python module, but it contains multiple architectural responsibilities.\n\nComplexity comes from coordinating:\n\n- 100 scan workers,\n- local server behavior,\n- outgoing client behavior,\n- UI responsiveness,\n- transfer progress,\n- filesystem writes.\n\nThe single-file structure is a prototype architecture.\n\nThe application behavior itself is substantive.",
+      "source_line_start": 417,
+      "source_line_end": 434
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- Python,\n- socket programming,\n- TCP,\n- local-network discovery,\n- IPv4 subnet arithmetic,\n- network-interface enumeration,\n- concurrent scanning,\n- worker queues,\n- thread synchronization,\n- client/server design,\n- custom application protocol,\n- file streaming,\n- filesystem I/O,\n- transfer progress,\n- Tkinter,\n- drag-and-drop desktop UI,\n- cross-platform command handling,\n- executable packaging,\n- PyInstaller environment setup.",
+      "source_line_start": 434,
+      "source_line_end": 458
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository demonstrates the ability to turn low-level networking primitives into an end-user desktop product.\n\nThat requires solving both sides of the system:\n\n```text\ndiscover peers\n→ choose peer\n→ negotiate intent\n→ transfer bytes\n→ receive bytes\n→ validate size\n→ update UI safely\n```\n\nIt also requires preventing background network work from freezing the desktop interface.\n\nThat is the core engineering achievement of the project.",
+      "source_line_start": 458,
+      "source_line_end": 478
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier corpus repositories show:\n\n- socket/network concepts,\n- desktop GUIs,\n- concurrency,\n- experiment networking.\n\nFlashWare recombines those skills into a general user-facing LAN utility.\n\nUnlike `SDR`, whose networking is research-oriented, FlashWare is product-oriented.\n\nThis is a useful divergence:\n\n- research networking toolkit,\n- end-user file-transfer application.",
+      "source_line_start": 478,
+      "source_line_end": 496
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, FlashWare is the earliest clear implementation of:\n\n- LAN peer discovery,\n- subnet scanning,\n- a desktop file-transfer client/server,\n- a transfer request/accept protocol,\n- drag-and-drop network file sending,\n- a packaged Python networking application.\n\nIt is also a strong example of combining OS-level operations with GUI product design.",
+      "source_line_start": 496,
+      "source_line_end": 509
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The repository's security-themed product text is not used as evidence of encryption.\n\nThe checked-in executable is treated as distribution evidence, not as additional source complexity.\n\nThe program has a simple custom LAN protocol and should not be represented as an Internet-scale file-sharing service.",
+      "source_line_start": 509,
+      "source_line_end": 517
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "FlashWare is a desktop LAN file-transfer product built directly on Python networking primitives.\n\nIt discovers local peers, negotiates incoming transfers, streams files over TCP, tracks progress, and exposes the workflow through a responsive Tkinter interface with drag-and-drop support.\n\nIts strongest portfolio signal is the integration of:\n\n```text\nnetwork discovery\n+ concurrency\n+ client/server sockets\n+ file I/O\n+ GUI state\n+ executable packaging\n```\n\ninto one usable desktop workflow.\n\n# Project Tags\n\n- `individual-project`\n- `desktop-application`\n- `lan-file-transfer`\n- `python`\n- `tkinter`\n- `tkinterdnd2`\n- `socket-programming`\n- `tcp`\n- `client-server`\n- `network-interface-discovery`\n- `ipv4`\n- `subnet-calculation`\n- `subnet-scanning`\n- `ping-scan`\n- `multithreading`\n- `worker-queue`\n- `thread-synchronization`\n- `custom-application-protocol`\n- `transfer-negotiation`\n- `file-streaming`\n- `filesystem-io`\n- `transfer-progress`\n- `drag-and-drop`\n- `desktop-gui`\n- `cross-platform-command-handling`\n- `pyinstaller`\n- `packaged-executable`",
+      "source_line_start": 517,
+      "source_line_end": 565
+    }
+  ],
+  "raw_analysis": "# Repository 082 — FlashWare\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/FlashWare`\n- **Repository start date:** 2025-05-09\n- **Last meaningful update date:** 2025-05-13\n- **Latest meaningful commit:** `5b91aff6900a61d135a243fb911b3b4b944a92e5`\n- **Primary technical field:** desktop networking and local file transfer\n- **Application domain:** peer discovery and LAN file sharing\n- **Primary technologies:** Python, Tkinter, sockets, threading, PyInstaller\n- **Project context:** personal desktop application\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe current repository contains:\n\n- `main.py` — approximately 20 KB of Python application source,\n- `FlashNet.exe` — an approximately 11 MB packaged executable,\n- `README.md` — environment/setup notes for packaging with Python/Tkinter/PyInstaller.\n\nThe executable is treated as build/distribution evidence.\n\nThe Python source is the implementation evidence.\n\nThe application window identifies itself as `CyberSend v2.0` even though the repository is named `FlashWare` and the executable is named `FlashNet.exe`.\n\nThe corpus retains these naming differences rather than forcing them into one product name.\n\n## What the Project Is\n\nFlashWare implements a desktop peer-to-peer-style LAN file-transfer utility.\n\nThe application can:\n\n- enumerate local IPv4 interfaces,\n- calculate local networks from IP/netmask,\n- scan subnet addresses,\n- identify responding hosts,\n- let a user select a target,\n- negotiate a transfer request,\n- ask the receiver to accept or decline,\n- transfer the selected file over TCP,\n- show scan progress,\n- show transfer progress,\n- support drag-and-drop file selection.\n\nIt runs both client and server behaviors inside the same desktop application.\n\n## Major Components\n\nThe source has two clear primary classes:\n\n- `NetworkScanner`,\n- `FileTransferServer`.\n\nA third major component, `ModernGUI`, coordinates:\n\n- user interface,\n- scanner,\n- server,\n- outgoing transfers,\n- incoming transfer prompts,\n- progress state.\n\nThis is a more structured architecture than a flat script.\n\n## Network Interface Discovery\n\n`NetworkScanner.get_interfaces()` uses `netifaces`.\n\nIt enumerates network interfaces and extracts IPv4 entries containing:\n\n- address,\n- netmask.\n\nThose interfaces populate the GUI selector.\n\nThis allows the user to choose which local network to scan.\n\n## Network Calculation\n\nThe scanner converts IPv4 addresses and masks between packed binary and integer forms.\n\nIt computes:\n\n```text\nnetwork = ip AND netmask\n```\n\nIt derives host-bit count from the mask and generates host addresses for the subnet.\n\nThis is direct subnet arithmetic rather than relying entirely on an external scanning library.\n\n## Subnet Host Generation\n\nThe scanner calculates the number of usable host addresses from the mask.\n\nIt then yields candidate IPs across the host range.\n\nThis allows the same scanner to adapt to the selected interface's subnet size.\n\nThe design assumes a conventional host range and is most naturally suited to ordinary LAN subnets.\n\n## Concurrent Host Scanning\n\nThe scanner uses a queue plus a fixed worker pool.\n\nThe configured worker count is:\n\n```text\n100\n```\n\nEach worker:\n\n1. receives an IP from the queue,\n2. invokes the platform ping command,\n3. records a responding host,\n4. increments shared progress.\n\nA lock protects shared counters and active-device state.\n\nThis is a practical concurrency design for reducing sequential scan latency.\n\n## Cross-Platform Ping Handling\n\nThe worker distinguishes Windows from other platforms.\n\nIt selects different command-line flags for:\n\n- packet count,\n- timeout.\n\nThat is evidence of cross-platform intent at the host-discovery layer.\n\nThe packaged `.exe` provides direct Windows distribution evidence.\n\nThe README also contains macOS-oriented Miniforge/Tkinter packaging preparation.\n\n## Scan Progress\n\nThe `NetworkScanner` accepts a progress callback.\n\nAfter each processed IP, it reports:\n\n- processed count,\n- total count.\n\nThe GUI converts that state into:\n\n- a determinate progress bar,\n- a textual percentage,\n- a loader animation.\n\nA commit specifically records adding download/transfer progress and GUI improvements.\n\nThat is product-level feedback rather than background-only scanning.\n\n## File-Transfer Server\n\n`FileTransferServer` starts a notification listener in a daemon thread.\n\nIt listens on a dedicated TCP notification port.\n\nFor each incoming connection it launches a request-handler thread.\n\nThe request protocol begins with a `TRANSFER_REQUEST` message containing file metadata.\n\nThe receiver can respond:\n\n- `ACCEPT`,\n- decline behavior.\n\nAccepted requests trigger the data-receive phase.\n\n## Two-Port Protocol\n\nThe application uses two fixed TCP ports:\n\n- one for notification/negotiation,\n- one for file data.\n\nThis separates control-plane-like transfer negotiation from the actual data stream.\n\nConceptually:\n\n```text\nnotification connection\n→ user approval\n→ data connection\n→ file bytes\n```\n\nThis is a simple custom application protocol.\n\n## Incoming Transfer Flow\n\nOn an accepted incoming transfer:\n\n1. the receiver marks a transfer as active,\n2. opens a listening TCP socket for data,\n3. accepts the sender connection,\n4. writes received byte chunks to a file,\n5. updates transfer progress on the GUI thread,\n6. checks received size against expected size,\n7. displays success or incomplete-transfer feedback.\n\nThe implementation therefore includes explicit completeness checking based on byte count.\n\n## Outgoing Transfer Flow\n\nThe sender path:\n\n1. connects to the target notification port,\n2. sends filename and size metadata,\n3. waits for receiver response,\n4. if accepted, starts transfer UI state,\n5. connects to the data port,\n6. streams the file,\n7. updates progress.\n\nThis is a complete request/accept/send workflow.\n\n## User-Controlled Acceptance\n\nIncoming files are not written automatically merely because a peer connects.\n\nThe server calls back into the GUI to display a transfer prompt.\n\nThis is a meaningful product/safety control for a LAN utility.\n\nThe user participates in the decision to receive a file.\n\n## Drag-and-Drop\n\nThe GUI inherits from `TkinterDnD.Tk`.\n\nIt registers a file-drop target and binds a drop event.\n\nA dropped file can be sent to the currently selected device.\n\nThis is a product feature beyond a basic file-picker dialog.\n\n## File Picker\n\nThe application also supports conventional file selection through Tkinter's file dialog.\n\nThis gives two input paths:\n\n- file chooser,\n- drag and drop.\n\n## Desktop UI\n\nThe source creates a custom dark Tkinter interface.\n\nIt includes:\n\n- interface selector,\n- scan controls,\n- stop control,\n- animated loader,\n- scan progress bar,\n- discovered-device table,\n- send button,\n- transfer progress bar,\n- transfer status label.\n\nA splash screen introduces the application before the main window opens.\n\nThis is a fully interactive desktop workflow.\n\n## Threading Architecture\n\nThreading is used in several independent paths:\n\n- scan worker pool,\n- network scan orchestration,\n- notification listener,\n- per-request server handlers,\n- receive data handling,\n- outgoing transfers.\n\nDaemon threads keep background networking from blocking the GUI.\n\nTkinter `after()` calls marshal UI updates back to the event loop in several transfer paths.\n\nThis is meaningful concurrent desktop application engineering.\n\n## Queues and Synchronization\n\nThe network scanner uses `Queue` for work distribution.\n\nShared scan state uses a lock.\n\nThis is a classic producer/worker arrangement.\n\nThe architecture prevents 100 worker threads from independently generating overlapping address work.\n\n## Error Handling\n\nThe source contains explicit error handling around:\n\n- failed ping commands,\n- socket connection failures,\n- scan errors,\n- invalid interface selection,\n- incomplete receives,\n- receive failures,\n- transfer errors.\n\nErrors are surfaced through GUI dialogs.\n\nThis is important for a network utility, where connectivity failures are expected operating conditions.\n\n## Packaging\n\nThe repository includes `FlashNet.exe`.\n\nThe README documents preparing a Python 3.11/Tkinter environment and installing PyInstaller.\n\nThis establishes executable packaging intent.\n\nThe exact command used to build the checked-in executable is not documented in the current README, so the corpus does not invent one.\n\n## Security Claim Boundary\n\nThe splash text says:\n\n```text\nFast and secure file transfers\n```\n\nThe checked-in source demonstrates direct TCP socket transfer.\n\nIt does not show:\n\n- TLS,\n- application-layer encryption,\n- peer authentication,\n- cryptographic integrity verification.\n\nTherefore the corpus does not tag encrypted transfer or secure transport as implemented.\n\nThe UI phrase is product copy, not sufficient technical evidence.\n\n## Protocol Robustness\n\nThe transfer protocol is intentionally simple.\n\nThe notification payload encodes:\n\n- filename,\n- filesize.\n\nThe receive side checks total bytes against expected size.\n\nThis gives basic framing/completeness semantics.\n\nIt is not a general-purpose resumable or authenticated transfer protocol.\n\n## Testing and Verification\n\nThe repository includes a packaged executable, which is evidence that the source reached a runnable distribution artifact.\n\nCommit history records iterative GUI/progress improvements.\n\nThe program itself has observable end-to-end workflows:\n\n- scan,\n- discover,\n- select,\n- request,\n- accept,\n- transfer,\n- progress,\n- completion feedback.\n\nThe corpus treats these as implementation and manual-operational verification evidence.\n\n## Product Engineering\n\nFlashWare has clear attention to usability.\n\nExamples include:\n\n- automatic interface discovery,\n- progress percentage,\n- stop-scan control,\n- peer table,\n- incoming-transfer prompt,\n- file picker,\n- drag and drop,\n- transfer progress,\n- splash screen,\n- explicit errors.\n\nThese features reduce the amount of networking knowledge required from the end user.\n\n## Systems Engineering\n\nThe application combines several system boundaries:\n\n- OS network interfaces,\n- subnet arithmetic,\n- system ping,\n- TCP sockets,\n- filesystem I/O,\n- worker threads,\n- GUI event loop,\n- packaged distribution.\n\nThis makes the project more systems-oriented than a typical Tkinter CRUD application.\n\n## Scale and Complexity\n\nThe source is contained in a single Python module, but it contains multiple architectural responsibilities.\n\nComplexity comes from coordinating:\n\n- 100 scan workers,\n- local server behavior,\n- outgoing client behavior,\n- UI responsiveness,\n- transfer progress,\n- filesystem writes.\n\nThe single-file structure is a prototype architecture.\n\nThe application behavior itself is substantive.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- Python,\n- socket programming,\n- TCP,\n- local-network discovery,\n- IPv4 subnet arithmetic,\n- network-interface enumeration,\n- concurrent scanning,\n- worker queues,\n- thread synchronization,\n- client/server design,\n- custom application protocol,\n- file streaming,\n- filesystem I/O,\n- transfer progress,\n- Tkinter,\n- drag-and-drop desktop UI,\n- cross-platform command handling,\n- executable packaging,\n- PyInstaller environment setup.\n\n## Capability Developed\n\nThe repository demonstrates the ability to turn low-level networking primitives into an end-user desktop product.\n\nThat requires solving both sides of the system:\n\n```text\ndiscover peers\n→ choose peer\n→ negotiate intent\n→ transfer bytes\n→ receive bytes\n→ validate size\n→ update UI safely\n```\n\nIt also requires preventing background network work from freezing the desktop interface.\n\nThat is the core engineering achievement of the project.\n\n## Portfolio Evolution Context\n\nEarlier corpus repositories show:\n\n- socket/network concepts,\n- desktop GUIs,\n- concurrency,\n- experiment networking.\n\nFlashWare recombines those skills into a general user-facing LAN utility.\n\nUnlike `SDR`, whose networking is research-oriented, FlashWare is product-oriented.\n\nThis is a useful divergence:\n\n- research networking toolkit,\n- end-user file-transfer application.\n\n## Historical Significance\n\nWithin the processed corpus, FlashWare is the earliest clear implementation of:\n\n- LAN peer discovery,\n- subnet scanning,\n- a desktop file-transfer client/server,\n- a transfer request/accept protocol,\n- drag-and-drop network file sending,\n- a packaged Python networking application.\n\nIt is also a strong example of combining OS-level operations with GUI product design.\n\n## Evidence Boundaries\n\nThe repository's security-themed product text is not used as evidence of encryption.\n\nThe checked-in executable is treated as distribution evidence, not as additional source complexity.\n\nThe program has a simple custom LAN protocol and should not be represented as an Internet-scale file-sharing service.\n\n## Overall Narrative\n\nFlashWare is a desktop LAN file-transfer product built directly on Python networking primitives.\n\nIt discovers local peers, negotiates incoming transfers, streams files over TCP, tracks progress, and exposes the workflow through a responsive Tkinter interface with drag-and-drop support.\n\nIts strongest portfolio signal is the integration of:\n\n```text\nnetwork discovery\n+ concurrency\n+ client/server sockets\n+ file I/O\n+ GUI state\n+ executable packaging\n```\n\ninto one usable desktop workflow.\n\n# Project Tags\n\n- `individual-project`\n- `desktop-application`\n- `lan-file-transfer`\n- `python`\n- `tkinter`\n- `tkinterdnd2`\n- `socket-programming`\n- `tcp`\n- `client-server`\n- `network-interface-discovery`\n- `ipv4`\n- `subnet-calculation`\n- `subnet-scanning`\n- `ping-scan`\n- `multithreading`\n- `worker-queue`\n- `thread-synchronization`\n- `custom-application-protocol`\n- `transfer-negotiation`\n- `file-streaming`\n- `filesystem-io`\n- `transfer-progress`\n- `drag-and-drop`\n- `desktop-gui`\n- `cross-platform-command-handling`\n- `pyinstaller`\n- `packaged-executable`\n"
+}

@@ -1,0 +1,568 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 78,
+  "repository_total": 134,
+  "repository_name": "Reinforcement-Learning",
+  "header_title": "Reinforcement-Learning",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-078-Reinforcement-Learning/README.md",
+    "line_start": 1,
+    "line_end": 599,
+    "sha256": "166773576240fa017092f7459e3b7146f86700e3754daa511e67a013689021ef"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "reinforcement-learning",
+    "q-learning",
+    "tabular-q-learning",
+    "epsilon-greedy",
+    "epsilon-decay",
+    "state-discretization",
+    "action-space-design",
+    "reward-shaping",
+    "experience-replay",
+    "online-learning",
+    "simulation-based-learning",
+    "physics-informed-learning",
+    "projectile-motion",
+    "pygame",
+    "python",
+    "game-simulation",
+    "game-physics",
+    "real-time-loop",
+    "agent-environment-loop"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Reinforcement-Learning`\n- **Repository start date:** 2025-03-13\n- **Last meaningful update date:** 2025-03-14\n- **Latest meaningful commit:** `1031e192c58a429e8a732053b80fa63ec1583abb`\n- **Primary technical field:** reinforcement-learning experimentation\n- **Application domain:** learning projectile-control policy inside a basketball game simulation\n- **Primary technologies:** Python, Pygame, tabular Q-learning\n- **Project context:** personal experimental learning project\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification is interactive and simulation-driven.\n\nThe game itself provides immediate observable feedback:\n\n- projectile trajectory,\n- basket collision,\n- score,\n- miss penalties,\n- agent-generated shots.\n\nThe successive files act as experimental variants.\n\nThere is no separate experiment-report artifact showing convergence curves or controlled multi-seed evaluation.\n\nTherefore the strongest claim is implementation and experimentation with RL mechanisms, not demonstrated convergence superiority."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Reinforcement-Learning`\n- **Repository start date:** 2025-03-13\n- **Last meaningful update date:** 2025-03-14\n- **Latest meaningful commit:** `1031e192c58a429e8a732053b80fa63ec1583abb`\n- **Primary technical field:** reinforcement-learning experimentation\n- **Application domain:** learning projectile-control policy inside a basketball game simulation\n- **Primary technologies:** Python, Pygame, tabular Q-learning\n- **Project context:** personal experimental learning project\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a compact progression of five substantial Python files:\n\n- `basicgame.py`,\n- `q1.py`,\n- `q2.py`,\n- `q3.py`,\n- `q4.py`.\n\nThe commit history mirrors that progression.\n\nAll five implementation commits were created within a short experimental session spanning March 13–14, 2025.\n\nThis matters because the repository is best understood as a sequence of controlled implementation variants rather than a long-lived deployed product.\n\nThe root README contains only a short title.\n\nThe implementation files are therefore the authoritative evidence.",
+      "source_line_start": 15,
+      "source_line_end": 35
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "The repository begins with a hand-built Pygame basketball simulation.\n\nIt then repeatedly augments that environment with tabular Q-learning.\n\nThe learning task is to select a projectile arc that can cause the ball to enter the basket.\n\nAcross the variants, the state representation and learning strategy become progressively richer.\n\nThe project therefore combines:\n\n- game-loop programming,\n- projectile physics,\n- reward-driven control,\n- discrete state construction,\n- epsilon-greedy exploration,\n- Q-value updates,\n- experience replay in the final version.\n\nIt is not a neural-network reinforcement-learning project.\n\nNo DQN is implemented.\n\nThe learning mechanism remains tabular Q-learning.",
+      "source_line_start": 35,
+      "source_line_end": 61
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Experimental Progression",
+      "normalized_title": "Experimental Progression",
+      "key": "experimental_progression",
+      "path": [
+        "Experimental Progression"
+      ],
+      "content": "The repository structure itself communicates the experiment:\n\n```text\nbasicgame.py\n    ↓\nq1.py\n    ↓\nq2.py\n    ↓\nq3.py\n    ↓\nq4.py\n```\n\nEach later file carries forward the game while modifying the agent.\n\nThat gives unusually clear evidence of iterative model design.",
+      "source_line_start": 61,
+      "source_line_end": 81
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Baseline Environment — `basicgame.py`",
+      "normalized_title": "Baseline Environment — basicgame.py",
+      "key": "baseline_environment_basicgame_py",
+      "path": [
+        "Baseline Environment — `basicgame.py`"
+      ],
+      "content": "The baseline file implements a Pygame application called `BasketBallfellow`.\n\nIt creates:\n\n- a player,\n- a basketball,\n- a basket,\n- a scoreboard,\n- a court,\n- celebration effects.\n\nThe player can:\n\n- move horizontally,\n- jump,\n- shoot.\n\nThe projectile arc is adjustable.\n\nThe ball follows simple discrete-time projectile motion with:\n\n- horizontal velocity,\n- vertical velocity,\n- gravity.\n\nThe game detects whether the ball enters the basket-rim region.\n\nIt also handles missed/out-of-bounds shots.",
+      "source_line_start": 81,
+      "source_line_end": 112
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Game Physics",
+      "normalized_title": "Game Physics",
+      "key": "game_physics",
+      "path": [
+        "Game Physics"
+      ],
+      "content": "The ball state is updated with:\n\n```text\nx += velocity_x\ny += velocity_y\nvelocity_y += gravity\n```\n\nThe basket test calculates Euclidean distance between the ball center and rim center.\n\nA score is recorded when the distance is inside the configured rim radius.\n\nThis creates a deterministic-enough environment for an agent to learn action choices while still retaining changing player position.",
+      "source_line_start": 112,
+      "source_line_end": 128
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Game Loop and Interaction",
+      "normalized_title": "Game Loop and Interaction",
+      "key": "game_loop_and_interaction",
+      "path": [
+        "Game Loop and Interaction"
+      ],
+      "content": "The Pygame loop runs at a configured 60 FPS.\n\nThe baseline includes:\n\n- keyboard input,\n- jumping state,\n- projectile state,\n- score updates,\n- object drawing,\n- particle celebration,\n- day/evening/night court themes.\n\nThe code also creates placeholder images when expected sprite files are absent.\n\nThat is a practical fallback mechanism that allows the program to remain runnable without its original art assets.",
+      "source_line_start": 128,
+      "source_line_end": 146
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Q1 — First Tabular Q-Learning Agent",
+      "normalized_title": "Q1 — First Tabular Q-Learning Agent",
+      "key": "q1_first_tabular_q_learning_agent",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent"
+      ],
+      "content": "`q1.py` introduces a `QLearningAgent`.\n\n### State\n\nThe player's horizontal position is discretized into bins.\n\nDefault:\n\n```text\nstate_bins = 10\n```\n\nThe continuous player coordinate is normalized and mapped to one of those discrete states.\n\n### Action Space\n\nActions are integer projectile-arc values:\n\n```text\n5..30\n```\n\nThe agent therefore learns a discrete shooting-arc policy.\n\n### Q Table\n\nThe table is represented as a Python dictionary.\n\nEach state maps to an array of Q-values, one per action.\n\nUnseen states are lazily initialized.\n\n### Exploration\n\nThe first agent uses epsilon-greedy action selection.\n\nWith probability epsilon it chooses a random action.\n\nOtherwise it chooses one of the actions with maximum Q-value.\n\nTies are randomly resolved.\n\n### Update Rule\n\nThe implementation uses the standard tabular Q-learning update:\n\n```text\nQ(s,a) ← Q(s,a)\n         + α [r + γ max Q(s',·) - Q(s,a)]\n```\n\nThe defaults are:\n\n- alpha = 0.1,\n- gamma = 0.9,\n- epsilon = 0.1.",
+      "source_line_start": 146,
+      "source_line_end": 205
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "State",
+      "normalized_title": "State",
+      "key": "state",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent",
+        "State"
+      ],
+      "content": "The player's horizontal position is discretized into bins.\n\nDefault:\n\n```text\nstate_bins = 10\n```\n\nThe continuous player coordinate is normalized and mapped to one of those discrete states.",
+      "source_line_start": 150,
+      "source_line_end": 162
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Action Space",
+      "normalized_title": "Action Space",
+      "key": "action_space",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent",
+        "Action Space"
+      ],
+      "content": "Actions are integer projectile-arc values:\n\n```text\n5..30\n```\n\nThe agent therefore learns a discrete shooting-arc policy.",
+      "source_line_start": 162,
+      "source_line_end": 172
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Q Table",
+      "normalized_title": "Q Table",
+      "key": "q_table",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent",
+        "Q Table"
+      ],
+      "content": "The table is represented as a Python dictionary.\n\nEach state maps to an array of Q-values, one per action.\n\nUnseen states are lazily initialized.",
+      "source_line_start": 172,
+      "source_line_end": 180
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Exploration",
+      "normalized_title": "Exploration",
+      "key": "exploration",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent",
+        "Exploration"
+      ],
+      "content": "The first agent uses epsilon-greedy action selection.\n\nWith probability epsilon it chooses a random action.\n\nOtherwise it chooses one of the actions with maximum Q-value.\n\nTies are randomly resolved.",
+      "source_line_start": 180,
+      "source_line_end": 190
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Update Rule",
+      "normalized_title": "Update Rule",
+      "key": "update_rule",
+      "path": [
+        "Q1 — First Tabular Q-Learning Agent",
+        "Update Rule"
+      ],
+      "content": "The implementation uses the standard tabular Q-learning update:\n\n```text\nQ(s,a) ← Q(s,a)\n         + α [r + γ max Q(s',·) - Q(s,a)]\n```\n\nThe defaults are:\n\n- alpha = 0.1,\n- gamma = 0.9,\n- epsilon = 0.1.",
+      "source_line_start": 190,
+      "source_line_end": 205
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Agent-Environment Integration",
+      "normalized_title": "Agent-Environment Integration",
+      "key": "agent_environment_integration",
+      "path": [
+        "Agent-Environment Integration"
+      ],
+      "content": "The learning agent is integrated into the live game loop.\n\nEvery two seconds, when the player holds the ball:\n\n1. the agent derives the current state,\n2. selects a projectile arc,\n3. shoots,\n4. stores the originating state and action on that ball.\n\nWhen the shot ends:\n\n- a successful score receives positive reward,\n- a miss receives negative reward,\n- the Q-table is updated.\n\nThis is an important systems element.\n\nThe RL logic is not isolated in a toy matrix.\n\nIt controls an action inside the Pygame environment.",
+      "source_line_start": 205,
+      "source_line_end": 228
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Q2 — Landing-Position State Augmentation",
+      "normalized_title": "Q2 — Landing-Position State Augmentation",
+      "key": "q2_landing_position_state_augmentation",
+      "path": [
+        "Q2 — Landing-Position State Augmentation"
+      ],
+      "content": "`q2.py` expands the state representation.\n\nInstead of using only player position, the state becomes:\n\n```text\n(player_position_bin, ball_final_position_bin)\n```\n\nThe ball records its final horizontal position.\n\nThis adds outcome context to the agent state.\n\nThe change demonstrates a core RL design concept:\n\n> what information is included in the state can materially affect learnability.\n\nThe project experiments with this explicitly rather than leaving state definition fixed.",
+      "source_line_start": 228,
+      "source_line_end": 248
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Q3 — Physics-Informed Predicted Drop",
+      "normalized_title": "Q3 — Physics-Informed Predicted Drop",
+      "key": "q3_physics_informed_predicted_drop",
+      "path": [
+        "Q3 — Physics-Informed Predicted Drop"
+      ],
+      "content": "`q3.py` changes the state representation again.\n\nIt adds a helper that estimates where the projectile will reach ground level.\n\nThe estimate uses projectile motion and solves a quadratic equation for the time when the vertical coordinate reaches the ground.\n\nThe resulting time is used to predict horizontal landing position.\n\nThe agent state becomes based on:\n\n- player horizontal position,\n- predicted ball drop position.\n\nThis combines a learned policy with an engineered physics feature.",
+      "source_line_start": 248,
+      "source_line_end": 265
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Epsilon Decay",
+      "normalized_title": "Epsilon Decay",
+      "key": "epsilon_decay",
+      "path": [
+        "Epsilon Decay"
+      ],
+      "content": "Q3 also introduces exploration decay.\n\nIts agent starts with a higher exploration probability and multiplies epsilon by a decay factor after updates.\n\nA minimum epsilon prevents exploration from reaching zero.\n\nThis changes the policy from fixed exploration to a gradual exploration/exploitation schedule.",
+      "source_line_start": 265,
+      "source_line_end": 275
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Q4 — Richer Tabular Agent",
+      "normalized_title": "Q4 — Richer Tabular Agent",
+      "key": "q4_richer_tabular_agent",
+      "path": [
+        "Q4 — Richer Tabular Agent"
+      ],
+      "content": "`q4.py` is the most developed experiment.\n\nIt increases state resolution to 20 bins and adjusts core learning parameters.\n\nIt keeps the tabular Q-table but adds several additional mechanisms.\n\n### Informed Initialization\n\nThe Q-table is preinitialized with a slight preference for middle-range arc values.\n\nNew states can also borrow values from nearby existing states.\n\nThis is a heuristic initialization strategy.\n\nIt is not function approximation.\n\n### Experience Replay\n\nThe agent stores transitions in a replay buffer.\n\nThe configured buffer size is:\n\n```text\n1000 experiences\n```\n\nThe target batch size is:\n\n```text\n32\n```\n\nAfter a direct update, the agent can sample past experiences and replay Q-learning updates.\n\nExperience replay is more commonly associated with deep RL, but here it is applied to a tabular Q-table.\n\nThe corpus therefore tags experience replay without implying a DQN.\n\n### Shot History\n\nThe final agent records recent:\n\n```text\n(action, reward)\n```\n\npairs per state.\n\nIt can use historical average reward to prefer an action that has performed well in that state.\n\nThis adds a second evidence source to normal Q-value selection.\n\n### Learned Basket-Position Estimate\n\nThe agent maintains an estimated basket x-coordinate.\n\nSuccessful shots contribute predicted-drop samples.\n\nRecent successful samples are averaged to update the estimate.\n\nThe state then uses drop position relative to the estimated basket.\n\nThis is a small form of online environment parameter estimation.\n\n### Local Exploration\n\nDuring exploration, the final agent can select an action near the current best arc instead of always sampling the full action range.\n\nThis biases exploration toward local action-space neighborhoods.\n\n### Physics Heuristic\n\n`adjust_arc_for_distance` compares predicted drop against estimated basket position.\n\nIf shots undershoot, it can suggest a larger arc.\n\nIf shots overshoot, it can suggest a smaller arc.\n\nThis creates a hybrid policy design containing:\n\n- tabular learned values,\n- recorded empirical shot outcomes,\n- a physics-informed heuristic.",
+      "source_line_start": 275,
+      "source_line_end": 361
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Informed Initialization",
+      "normalized_title": "Informed Initialization",
+      "key": "informed_initialization",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Informed Initialization"
+      ],
+      "content": "The Q-table is preinitialized with a slight preference for middle-range arc values.\n\nNew states can also borrow values from nearby existing states.\n\nThis is a heuristic initialization strategy.\n\nIt is not function approximation.",
+      "source_line_start": 283,
+      "source_line_end": 293
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Experience Replay",
+      "normalized_title": "Experience Replay",
+      "key": "experience_replay",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Experience Replay"
+      ],
+      "content": "The agent stores transitions in a replay buffer.\n\nThe configured buffer size is:\n\n```text\n1000 experiences\n```\n\nThe target batch size is:\n\n```text\n32\n```\n\nAfter a direct update, the agent can sample past experiences and replay Q-learning updates.\n\nExperience replay is more commonly associated with deep RL, but here it is applied to a tabular Q-table.\n\nThe corpus therefore tags experience replay without implying a DQN.",
+      "source_line_start": 293,
+      "source_line_end": 315
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Shot History",
+      "normalized_title": "Shot History",
+      "key": "shot_history",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Shot History"
+      ],
+      "content": "The final agent records recent:\n\n```text\n(action, reward)\n```\n\npairs per state.\n\nIt can use historical average reward to prefer an action that has performed well in that state.\n\nThis adds a second evidence source to normal Q-value selection.",
+      "source_line_start": 315,
+      "source_line_end": 329
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Learned Basket-Position Estimate",
+      "normalized_title": "Learned Basket-Position Estimate",
+      "key": "learned_basket_position_estimate",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Learned Basket-Position Estimate"
+      ],
+      "content": "The agent maintains an estimated basket x-coordinate.\n\nSuccessful shots contribute predicted-drop samples.\n\nRecent successful samples are averaged to update the estimate.\n\nThe state then uses drop position relative to the estimated basket.\n\nThis is a small form of online environment parameter estimation.",
+      "source_line_start": 329,
+      "source_line_end": 341
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Local Exploration",
+      "normalized_title": "Local Exploration",
+      "key": "local_exploration",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Local Exploration"
+      ],
+      "content": "During exploration, the final agent can select an action near the current best arc instead of always sampling the full action range.\n\nThis biases exploration toward local action-space neighborhoods.",
+      "source_line_start": 341,
+      "source_line_end": 347
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Physics Heuristic",
+      "normalized_title": "Physics Heuristic",
+      "key": "physics_heuristic",
+      "path": [
+        "Q4 — Richer Tabular Agent",
+        "Physics Heuristic"
+      ],
+      "content": "`adjust_arc_for_distance` compares predicted drop against estimated basket position.\n\nIf shots undershoot, it can suggest a larger arc.\n\nIf shots overshoot, it can suggest a smaller arc.\n\nThis creates a hybrid policy design containing:\n\n- tabular learned values,\n- recorded empirical shot outcomes,\n- a physics-informed heuristic.",
+      "source_line_start": 347,
+      "source_line_end": 361
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Reward Design",
+      "normalized_title": "Reward Design",
+      "key": "reward_design",
+      "path": [
+        "Reward Design"
+      ],
+      "content": "The early Q-learning implementation uses:\n\n- positive reward for a basket,\n- negative reward for a miss.\n\nThis is simple reward shaping.\n\nThe reward is directly tied to task completion.\n\nThe project does not create a complex multi-objective reward function.\n\nThat simplicity makes the learning behavior easier to interpret.",
+      "source_line_start": 361,
+      "source_line_end": 376
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "State Representation as an Engineering Variable",
+      "normalized_title": "State Representation as an Engineering Variable",
+      "key": "state_representation_as_an_engineering_variable",
+      "path": [
+        "State Representation as an Engineering Variable"
+      ],
+      "content": "One of the strongest aspects of this repository is that state design evolves explicitly.\n\nThe progression is:\n\n```text\nplayer position\n→ player position + final landing position\n→ player position + predicted drop position\n→ player position + drop relative to learned basket estimate\n```\n\nThis is valuable evidence of thinking about observability and state sufficiency.\n\nIt demonstrates that RL design is not only about changing alpha or gamma.\n\nIt is also about deciding what the agent can observe.",
+      "source_line_start": 376,
+      "source_line_end": 395
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Exploration Strategy Evolution",
+      "normalized_title": "Exploration Strategy Evolution",
+      "key": "exploration_strategy_evolution",
+      "path": [
+        "Exploration Strategy Evolution"
+      ],
+      "content": "The progression also changes exploration:\n\n```text\nfixed epsilon\n→ epsilon decay\n→ decayed epsilon with local exploration and shot-history preference\n```\n\nAgain, this is a concrete experimental axis.",
+      "source_line_start": 395,
+      "source_line_end": 407
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Experience Replay Boundary",
+      "normalized_title": "Experience Replay Boundary",
+      "key": "experience_replay_boundary",
+      "path": [
+        "Experience Replay Boundary"
+      ],
+      "content": "The presence of a replay buffer should not be confused with deep reinforcement learning.\n\nThere is no neural network approximator in the checked-in source.\n\nThe agent still stores explicit Q-values keyed by discrete state.\n\nThe correct description is:\n\n- tabular Q-learning,\n- with experience replay.",
+      "source_line_start": 407,
+      "source_line_end": 420
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is interactive and simulation-driven.\n\nThe game itself provides immediate observable feedback:\n\n- projectile trajectory,\n- basket collision,\n- score,\n- miss penalties,\n- agent-generated shots.\n\nThe successive files act as experimental variants.\n\nThere is no separate experiment-report artifact showing convergence curves or controlled multi-seed evaluation.\n\nTherefore the strongest claim is implementation and experimentation with RL mechanisms, not demonstrated convergence superiority.",
+      "source_line_start": 420,
+      "source_line_end": 438
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The repository demonstrates disciplined comparative iteration.\n\nRather than overwriting one file repeatedly, it preserves:\n\n- baseline,\n- Q1,\n- Q2,\n- Q3,\n- Q4.\n\nThat makes design evolution inspectable.\n\nEach version changes a meaningful variable:\n\n- state,\n- prediction,\n- exploration,\n- replay,\n- heuristics.\n\nThis is useful engineering provenance.",
+      "source_line_start": 438,
+      "source_line_end": 462
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The codebase is small in file count but substantial in behavior.\n\n`q4.py` is roughly 25 KB and combines:\n\n- a real-time game,\n- physics,\n- agent state,\n- a Q-table,\n- replay memory,\n- exploration logic,\n- online estimates,\n- user interaction,\n- rendering.\n\nIts complexity comes from the coupling between learning and an interactive environment.",
+      "source_line_start": 462,
+      "source_line_end": 480
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- reinforcement learning,\n- tabular Q-learning,\n- Q-value updates,\n- epsilon-greedy exploration,\n- epsilon decay,\n- state discretization,\n- action-space design,\n- reward shaping,\n- experience replay,\n- online learning,\n- simulation-based learning,\n- physics-informed features,\n- projectile-motion modeling,\n- Python,\n- Pygame,\n- event-driven game loops,\n- object-oriented game structure.",
+      "source_line_start": 480,
+      "source_line_end": 502
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository demonstrates the ability to build an environment and then progressively design an agent around it.\n\nThat includes:\n\n- defining state,\n- defining action space,\n- defining reward,\n- integrating agent actions into simulation,\n- collecting outcomes,\n- updating policy values online,\n- changing state representation based on observed limitations,\n- adding exploration scheduling,\n- adding replay and heuristic knowledge.\n\nThis is more meaningful than calling a prebuilt RL environment.\n\nThe environment and control loop are both visible in the source.",
+      "source_line_start": 502,
+      "source_line_end": 522
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier portfolio work already contains game programming and machine-learning exercises.\n\nThis repository combines those threads.\n\nIt takes:\n\n- Pygame-style interactive simulation,\n- explicit physics,\n- ML experimentation,\n\nand turns them into a reinforcement-learning control task.\n\nThat makes it a clear convergence project.",
+      "source_line_start": 522,
+      "source_line_end": 538
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest direct implementation evidence of:\n\n- reinforcement learning,\n- Q-learning,\n- epsilon-greedy control,\n- experience replay,\n- Pygame.\n\nIt is also an early example of using physics knowledge to engineer an RL state and heuristic.",
+      "source_line_start": 538,
+      "source_line_end": 550
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The repository does not implement deep Q-learning.\n\nNo neural policy/value network is present.\n\nExperience replay is used with a tabular learner.\n\nThe code demonstrates RL mechanism design, but the repository does not contain a controlled convergence study that would justify comparative performance claims between Q1–Q4.",
+      "source_line_start": 550,
+      "source_line_end": 560
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`Reinforcement-Learning` is a short but technically rich experiment series.\n\nIt starts with a custom basketball physics game and progressively teaches a tabular Q-learning agent to choose shot arcs.\n\nThe sequence preserves how the state and learning strategy evolve:\n\n```text\nbaseline game\n→ tabular Q-learning\n→ outcome-aware state\n→ physics-predicted state\n→ adaptive replay/history/heuristic agent\n```\n\nIts strongest portfolio signal is iterative agent design grounded in a personally implemented interactive environment.\n\n# Project Tags\n\n- `individual-project`\n- `reinforcement-learning`\n- `q-learning`\n- `tabular-q-learning`\n- `epsilon-greedy`\n- `epsilon-decay`\n- `state-discretization`\n- `action-space-design`\n- `reward-shaping`\n- `experience-replay`\n- `online-learning`\n- `simulation-based-learning`\n- `physics-informed-learning`\n- `projectile-motion`\n- `pygame`\n- `python`\n- `game-simulation`\n- `game-physics`\n- `real-time-loop`\n- `agent-environment-loop`",
+      "source_line_start": 560,
+      "source_line_end": 600
+    }
+  ],
+  "raw_analysis": "# Repository 078 — Reinforcement-Learning\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Reinforcement-Learning`\n- **Repository start date:** 2025-03-13\n- **Last meaningful update date:** 2025-03-14\n- **Latest meaningful commit:** `1031e192c58a429e8a732053b80fa63ec1583abb`\n- **Primary technical field:** reinforcement-learning experimentation\n- **Application domain:** learning projectile-control policy inside a basketball game simulation\n- **Primary technologies:** Python, Pygame, tabular Q-learning\n- **Project context:** personal experimental learning project\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains a compact progression of five substantial Python files:\n\n- `basicgame.py`,\n- `q1.py`,\n- `q2.py`,\n- `q3.py`,\n- `q4.py`.\n\nThe commit history mirrors that progression.\n\nAll five implementation commits were created within a short experimental session spanning March 13–14, 2025.\n\nThis matters because the repository is best understood as a sequence of controlled implementation variants rather than a long-lived deployed product.\n\nThe root README contains only a short title.\n\nThe implementation files are therefore the authoritative evidence.\n\n## What the Project Is\n\nThe repository begins with a hand-built Pygame basketball simulation.\n\nIt then repeatedly augments that environment with tabular Q-learning.\n\nThe learning task is to select a projectile arc that can cause the ball to enter the basket.\n\nAcross the variants, the state representation and learning strategy become progressively richer.\n\nThe project therefore combines:\n\n- game-loop programming,\n- projectile physics,\n- reward-driven control,\n- discrete state construction,\n- epsilon-greedy exploration,\n- Q-value updates,\n- experience replay in the final version.\n\nIt is not a neural-network reinforcement-learning project.\n\nNo DQN is implemented.\n\nThe learning mechanism remains tabular Q-learning.\n\n## Experimental Progression\n\nThe repository structure itself communicates the experiment:\n\n```text\nbasicgame.py\n    ↓\nq1.py\n    ↓\nq2.py\n    ↓\nq3.py\n    ↓\nq4.py\n```\n\nEach later file carries forward the game while modifying the agent.\n\nThat gives unusually clear evidence of iterative model design.\n\n## Baseline Environment — `basicgame.py`\n\nThe baseline file implements a Pygame application called `BasketBallfellow`.\n\nIt creates:\n\n- a player,\n- a basketball,\n- a basket,\n- a scoreboard,\n- a court,\n- celebration effects.\n\nThe player can:\n\n- move horizontally,\n- jump,\n- shoot.\n\nThe projectile arc is adjustable.\n\nThe ball follows simple discrete-time projectile motion with:\n\n- horizontal velocity,\n- vertical velocity,\n- gravity.\n\nThe game detects whether the ball enters the basket-rim region.\n\nIt also handles missed/out-of-bounds shots.\n\n## Game Physics\n\nThe ball state is updated with:\n\n```text\nx += velocity_x\ny += velocity_y\nvelocity_y += gravity\n```\n\nThe basket test calculates Euclidean distance between the ball center and rim center.\n\nA score is recorded when the distance is inside the configured rim radius.\n\nThis creates a deterministic-enough environment for an agent to learn action choices while still retaining changing player position.\n\n## Game Loop and Interaction\n\nThe Pygame loop runs at a configured 60 FPS.\n\nThe baseline includes:\n\n- keyboard input,\n- jumping state,\n- projectile state,\n- score updates,\n- object drawing,\n- particle celebration,\n- day/evening/night court themes.\n\nThe code also creates placeholder images when expected sprite files are absent.\n\nThat is a practical fallback mechanism that allows the program to remain runnable without its original art assets.\n\n## Q1 — First Tabular Q-Learning Agent\n\n`q1.py` introduces a `QLearningAgent`.\n\n### State\n\nThe player's horizontal position is discretized into bins.\n\nDefault:\n\n```text\nstate_bins = 10\n```\n\nThe continuous player coordinate is normalized and mapped to one of those discrete states.\n\n### Action Space\n\nActions are integer projectile-arc values:\n\n```text\n5..30\n```\n\nThe agent therefore learns a discrete shooting-arc policy.\n\n### Q Table\n\nThe table is represented as a Python dictionary.\n\nEach state maps to an array of Q-values, one per action.\n\nUnseen states are lazily initialized.\n\n### Exploration\n\nThe first agent uses epsilon-greedy action selection.\n\nWith probability epsilon it chooses a random action.\n\nOtherwise it chooses one of the actions with maximum Q-value.\n\nTies are randomly resolved.\n\n### Update Rule\n\nThe implementation uses the standard tabular Q-learning update:\n\n```text\nQ(s,a) ← Q(s,a)\n         + α [r + γ max Q(s',·) - Q(s,a)]\n```\n\nThe defaults are:\n\n- alpha = 0.1,\n- gamma = 0.9,\n- epsilon = 0.1.\n\n## Agent-Environment Integration\n\nThe learning agent is integrated into the live game loop.\n\nEvery two seconds, when the player holds the ball:\n\n1. the agent derives the current state,\n2. selects a projectile arc,\n3. shoots,\n4. stores the originating state and action on that ball.\n\nWhen the shot ends:\n\n- a successful score receives positive reward,\n- a miss receives negative reward,\n- the Q-table is updated.\n\nThis is an important systems element.\n\nThe RL logic is not isolated in a toy matrix.\n\nIt controls an action inside the Pygame environment.\n\n## Q2 — Landing-Position State Augmentation\n\n`q2.py` expands the state representation.\n\nInstead of using only player position, the state becomes:\n\n```text\n(player_position_bin, ball_final_position_bin)\n```\n\nThe ball records its final horizontal position.\n\nThis adds outcome context to the agent state.\n\nThe change demonstrates a core RL design concept:\n\n> what information is included in the state can materially affect learnability.\n\nThe project experiments with this explicitly rather than leaving state definition fixed.\n\n## Q3 — Physics-Informed Predicted Drop\n\n`q3.py` changes the state representation again.\n\nIt adds a helper that estimates where the projectile will reach ground level.\n\nThe estimate uses projectile motion and solves a quadratic equation for the time when the vertical coordinate reaches the ground.\n\nThe resulting time is used to predict horizontal landing position.\n\nThe agent state becomes based on:\n\n- player horizontal position,\n- predicted ball drop position.\n\nThis combines a learned policy with an engineered physics feature.\n\n## Epsilon Decay\n\nQ3 also introduces exploration decay.\n\nIts agent starts with a higher exploration probability and multiplies epsilon by a decay factor after updates.\n\nA minimum epsilon prevents exploration from reaching zero.\n\nThis changes the policy from fixed exploration to a gradual exploration/exploitation schedule.\n\n## Q4 — Richer Tabular Agent\n\n`q4.py` is the most developed experiment.\n\nIt increases state resolution to 20 bins and adjusts core learning parameters.\n\nIt keeps the tabular Q-table but adds several additional mechanisms.\n\n### Informed Initialization\n\nThe Q-table is preinitialized with a slight preference for middle-range arc values.\n\nNew states can also borrow values from nearby existing states.\n\nThis is a heuristic initialization strategy.\n\nIt is not function approximation.\n\n### Experience Replay\n\nThe agent stores transitions in a replay buffer.\n\nThe configured buffer size is:\n\n```text\n1000 experiences\n```\n\nThe target batch size is:\n\n```text\n32\n```\n\nAfter a direct update, the agent can sample past experiences and replay Q-learning updates.\n\nExperience replay is more commonly associated with deep RL, but here it is applied to a tabular Q-table.\n\nThe corpus therefore tags experience replay without implying a DQN.\n\n### Shot History\n\nThe final agent records recent:\n\n```text\n(action, reward)\n```\n\npairs per state.\n\nIt can use historical average reward to prefer an action that has performed well in that state.\n\nThis adds a second evidence source to normal Q-value selection.\n\n### Learned Basket-Position Estimate\n\nThe agent maintains an estimated basket x-coordinate.\n\nSuccessful shots contribute predicted-drop samples.\n\nRecent successful samples are averaged to update the estimate.\n\nThe state then uses drop position relative to the estimated basket.\n\nThis is a small form of online environment parameter estimation.\n\n### Local Exploration\n\nDuring exploration, the final agent can select an action near the current best arc instead of always sampling the full action range.\n\nThis biases exploration toward local action-space neighborhoods.\n\n### Physics Heuristic\n\n`adjust_arc_for_distance` compares predicted drop against estimated basket position.\n\nIf shots undershoot, it can suggest a larger arc.\n\nIf shots overshoot, it can suggest a smaller arc.\n\nThis creates a hybrid policy design containing:\n\n- tabular learned values,\n- recorded empirical shot outcomes,\n- a physics-informed heuristic.\n\n## Reward Design\n\nThe early Q-learning implementation uses:\n\n- positive reward for a basket,\n- negative reward for a miss.\n\nThis is simple reward shaping.\n\nThe reward is directly tied to task completion.\n\nThe project does not create a complex multi-objective reward function.\n\nThat simplicity makes the learning behavior easier to interpret.\n\n## State Representation as an Engineering Variable\n\nOne of the strongest aspects of this repository is that state design evolves explicitly.\n\nThe progression is:\n\n```text\nplayer position\n→ player position + final landing position\n→ player position + predicted drop position\n→ player position + drop relative to learned basket estimate\n```\n\nThis is valuable evidence of thinking about observability and state sufficiency.\n\nIt demonstrates that RL design is not only about changing alpha or gamma.\n\nIt is also about deciding what the agent can observe.\n\n## Exploration Strategy Evolution\n\nThe progression also changes exploration:\n\n```text\nfixed epsilon\n→ epsilon decay\n→ decayed epsilon with local exploration and shot-history preference\n```\n\nAgain, this is a concrete experimental axis.\n\n## Experience Replay Boundary\n\nThe presence of a replay buffer should not be confused with deep reinforcement learning.\n\nThere is no neural network approximator in the checked-in source.\n\nThe agent still stores explicit Q-values keyed by discrete state.\n\nThe correct description is:\n\n- tabular Q-learning,\n- with experience replay.\n\n## Testing and Verification\n\nVerification is interactive and simulation-driven.\n\nThe game itself provides immediate observable feedback:\n\n- projectile trajectory,\n- basket collision,\n- score,\n- miss penalties,\n- agent-generated shots.\n\nThe successive files act as experimental variants.\n\nThere is no separate experiment-report artifact showing convergence curves or controlled multi-seed evaluation.\n\nTherefore the strongest claim is implementation and experimentation with RL mechanisms, not demonstrated convergence superiority.\n\n## Engineering Discipline\n\nThe repository demonstrates disciplined comparative iteration.\n\nRather than overwriting one file repeatedly, it preserves:\n\n- baseline,\n- Q1,\n- Q2,\n- Q3,\n- Q4.\n\nThat makes design evolution inspectable.\n\nEach version changes a meaningful variable:\n\n- state,\n- prediction,\n- exploration,\n- replay,\n- heuristics.\n\nThis is useful engineering provenance.\n\n## Scale and Complexity\n\nThe codebase is small in file count but substantial in behavior.\n\n`q4.py` is roughly 25 KB and combines:\n\n- a real-time game,\n- physics,\n- agent state,\n- a Q-table,\n- replay memory,\n- exploration logic,\n- online estimates,\n- user interaction,\n- rendering.\n\nIts complexity comes from the coupling between learning and an interactive environment.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- reinforcement learning,\n- tabular Q-learning,\n- Q-value updates,\n- epsilon-greedy exploration,\n- epsilon decay,\n- state discretization,\n- action-space design,\n- reward shaping,\n- experience replay,\n- online learning,\n- simulation-based learning,\n- physics-informed features,\n- projectile-motion modeling,\n- Python,\n- Pygame,\n- event-driven game loops,\n- object-oriented game structure.\n\n## Capability Developed\n\nThe repository demonstrates the ability to build an environment and then progressively design an agent around it.\n\nThat includes:\n\n- defining state,\n- defining action space,\n- defining reward,\n- integrating agent actions into simulation,\n- collecting outcomes,\n- updating policy values online,\n- changing state representation based on observed limitations,\n- adding exploration scheduling,\n- adding replay and heuristic knowledge.\n\nThis is more meaningful than calling a prebuilt RL environment.\n\nThe environment and control loop are both visible in the source.\n\n## Portfolio Evolution Context\n\nEarlier portfolio work already contains game programming and machine-learning exercises.\n\nThis repository combines those threads.\n\nIt takes:\n\n- Pygame-style interactive simulation,\n- explicit physics,\n- ML experimentation,\n\nand turns them into a reinforcement-learning control task.\n\nThat makes it a clear convergence project.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest direct implementation evidence of:\n\n- reinforcement learning,\n- Q-learning,\n- epsilon-greedy control,\n- experience replay,\n- Pygame.\n\nIt is also an early example of using physics knowledge to engineer an RL state and heuristic.\n\n## Evidence Boundaries\n\nThe repository does not implement deep Q-learning.\n\nNo neural policy/value network is present.\n\nExperience replay is used with a tabular learner.\n\nThe code demonstrates RL mechanism design, but the repository does not contain a controlled convergence study that would justify comparative performance claims between Q1–Q4.\n\n## Overall Narrative\n\n`Reinforcement-Learning` is a short but technically rich experiment series.\n\nIt starts with a custom basketball physics game and progressively teaches a tabular Q-learning agent to choose shot arcs.\n\nThe sequence preserves how the state and learning strategy evolve:\n\n```text\nbaseline game\n→ tabular Q-learning\n→ outcome-aware state\n→ physics-predicted state\n→ adaptive replay/history/heuristic agent\n```\n\nIts strongest portfolio signal is iterative agent design grounded in a personally implemented interactive environment.\n\n# Project Tags\n\n- `individual-project`\n- `reinforcement-learning`\n- `q-learning`\n- `tabular-q-learning`\n- `epsilon-greedy`\n- `epsilon-decay`\n- `state-discretization`\n- `action-space-design`\n- `reward-shaping`\n- `experience-replay`\n- `online-learning`\n- `simulation-based-learning`\n- `physics-informed-learning`\n- `projectile-motion`\n- `pygame`\n- `python`\n- `game-simulation`\n- `game-physics`\n- `real-time-loop`\n- `agent-environment-loop`\n"
+}

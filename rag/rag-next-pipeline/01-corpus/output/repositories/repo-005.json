@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 5,
+  "repository_total": 134,
+  "repository_name": "VerilogTools",
+  "header_title": "VerilogTools",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-005-VerilogTools/README.md",
+    "line_start": 1,
+    "line_end": 254,
+    "sha256": "f59ad7437ede361792f3298e541dbdf5b47b9b0b196c45a550ecd1dbe32d58fd"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "hdl-utility-collection",
+    "digital-design-exercises",
+    "educational-project",
+    "individual-project",
+    "verilog",
+    "digital-design",
+    "parameterized-hdl",
+    "binary-decoder",
+    "clock-generator",
+    "sequential-logic",
+    "combinational-logic",
+    "one-hot-decoding",
+    "tri-state-bus",
+    "peripheral-interface",
+    "request-acknowledge-signals",
+    "hdl-simulation",
+    "hdl-testbench",
+    "truth-table-enumeration",
+    "manual-hdl-verification",
+    "earliest-observed-parameterized-hdl",
+    "earliest-observed-tri-state-bus",
+    "earliest-observed-peripheral-interface"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 005 / 134\n- Name: `VerilogTools`\n- Repository start date: 2022-02-09\n- Last meaningful update date: 2022-02-09\n- Primary type: Small HDL utility / digital-design exercise collection\n- Technical field: Verilog simulation and digital logic\n- Application domain: Generic digital components and bus/peripheral modeling\n- Project context: Personal educational utility repository\n- Collaboration type: `individual-project`\n- Primary implementation language: Verilog"
+    },
+    "architecture": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nVerilogTools\n├─ Clock generator\n├─ Parameterized decoder\n│   └─ embedded testbench stimulus\n├─ Truth-table enumerator\n└─ Keypad / shared-bus interface\n```\n\nThe files form a toolbox of focused HDL concepts rather than one integrated top-level system."
+    },
+    "testing": {
+      "section_ids": [
+        "s021",
+        "s036",
+        "s046"
+      ],
+      "titles": [
+        "Verification",
+        "Testing and Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Decoder Testbench\n\nThe decoder file contains timed input stimulus for a parameterized four-bit instance.\n\n### Truth-Table Enumeration\n\nAll 16 input combinations are exercised for the Boolean expression in `TruthTable.v`.\n\n### Manual HDL Inspection\n\nThe verification style is display- and stimulus-oriented, with generated values intended to be inspected during simulation.\n\n## Testing and Verification\n- **HDL testbench stimulus — moderate evidence.**\n- **Exhaustive truth-table enumeration — strong evidence for the four-bit Boolean state space.**\n- **Manual simulation inspection — strong evidence.**\n\n## Testing and Verification\n- `hdl-simulation`\n- `hdl-testbench`\n- `truth-table-enumeration`\n- `manual-hdl-verification`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s043"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository commits are owner-authored and occur on the repository creation date, supporting personal attribution of the HDL exercises.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 005 / 134\n- Name: `VerilogTools`\n- Repository start date: 2022-02-09\n- Last meaningful update date: 2022-02-09\n- Primary type: Small HDL utility / digital-design exercise collection\n- Technical field: Verilog simulation and digital logic\n- Application domain: Generic digital components and bus/peripheral modeling\n- Project context: Personal educational utility repository\n- Collaboration type: `individual-project`\n- Primary implementation language: Verilog",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository commits are owner-authored and occur on the repository creation date, supporting personal attribution of the HDL exercises.",
+      "source_line_start": 16,
+      "source_line_end": 20
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in all four Verilog files and the repository commit history.\n\nBecause the repository's purpose is expressed through its implementation rather than a README, the analysis stays close to the behavior of those modules.",
+      "source_line_start": 20,
+      "source_line_end": 26
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`VerilogTools` is a small collection of independent Verilog exercises or reusable simulation snippets.\n\nThe repository contains:\n\n- a reusable clock generator;\n- a parameterized binary decoder with stimulus;\n- a truth-table enumeration module;\n- a keypad/peripheral-style bus interface.\n\nThe project broadens the Verilog concepts visible after the preceding MIPS model by isolating smaller digital-design ideas that can be exercised independently.",
+      "source_line_start": 26,
+      "source_line_end": 39
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Clock Generator\n\n`CLK_ON_WIRE.v` initializes a clock to zero and toggles it every five simulation time units, producing a 50% duty-cycle simulation signal.\n\n### Parameterized Decoder\n\n`Generic_Decoder.v` defines a decoder parameterized by input width `n`. The output width is derived as `2**n`, and the active bit is selected through a left shift.\n\nThe same file contains a testbench that instantiates a four-bit decoder and applies timed input changes.\n\n### Truth-Table Enumeration\n\n`TruthTable.v` loops through all 16 combinations of four input bits and prints each combination with the result of a Boolean expression.\n\n### Keypad / Peripheral Interface\n\n`keypad.v` captures one-hot key inputs on a clock edge, maps them to buffered numeric values, and conditionally drives a shared data bus using request/acknowledge and enable signals.\n\nThe design also models high-impedance `z` behavior.",
+      "source_line_start": 39,
+      "source_line_end": 61
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Clock Generator",
+      "normalized_title": "Clock Generator",
+      "key": "clock_generator",
+      "path": [
+        "Project Scope",
+        "Clock Generator"
+      ],
+      "content": "`CLK_ON_WIRE.v` initializes a clock to zero and toggles it every five simulation time units, producing a 50% duty-cycle simulation signal.",
+      "source_line_start": 41,
+      "source_line_end": 45
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Parameterized Decoder",
+      "normalized_title": "Parameterized Decoder",
+      "key": "parameterized_decoder",
+      "path": [
+        "Project Scope",
+        "Parameterized Decoder"
+      ],
+      "content": "`Generic_Decoder.v` defines a decoder parameterized by input width `n`. The output width is derived as `2**n`, and the active bit is selected through a left shift.\n\nThe same file contains a testbench that instantiates a four-bit decoder and applies timed input changes.",
+      "source_line_start": 45,
+      "source_line_end": 51
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Truth-Table Enumeration",
+      "normalized_title": "Truth-Table Enumeration",
+      "key": "truth_table_enumeration",
+      "path": [
+        "Project Scope",
+        "Truth-Table Enumeration"
+      ],
+      "content": "`TruthTable.v` loops through all 16 combinations of four input bits and prints each combination with the result of a Boolean expression.",
+      "source_line_start": 51,
+      "source_line_end": 55
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Keypad / Peripheral Interface",
+      "normalized_title": "Keypad / Peripheral Interface",
+      "key": "keypad_peripheral_interface",
+      "path": [
+        "Project Scope",
+        "Keypad / Peripheral Interface"
+      ],
+      "content": "`keypad.v` captures one-hot key inputs on a clock edge, maps them to buffered numeric values, and conditionally drives a shared data bus using request/acknowledge and enable signals.\n\nThe design also models high-impedance `z` behavior.",
+      "source_line_start": 55,
+      "source_line_end": 61
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nVerilogTools\n├─ Clock generator\n├─ Parameterized decoder\n│   └─ embedded testbench stimulus\n├─ Truth-table enumerator\n└─ Keypad / shared-bus interface\n```\n\nThe files form a toolbox of focused HDL concepts rather than one integrated top-level system.",
+      "source_line_start": 61,
+      "source_line_end": 74
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Verilog\n\nThe repository uses module definitions, parameters, bit vectors, procedural blocks, timing delays, `case` statements, continuous assignments, high-impedance values, and `$display`.\n\n### HDL Simulation Constructs\n\n`initial` blocks, `#5` delays, `$display`, and the decoder testbench establish explicit simulation-oriented use.",
+      "source_line_start": 74,
+      "source_line_end": 84
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Verilog",
+      "normalized_title": "Verilog",
+      "key": "verilog",
+      "path": [
+        "Technical Stack",
+        "Verilog"
+      ],
+      "content": "The repository uses module definitions, parameters, bit vectors, procedural blocks, timing delays, `case` statements, continuous assignments, high-impedance values, and `$display`.",
+      "source_line_start": 76,
+      "source_line_end": 80
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "HDL Simulation Constructs",
+      "normalized_title": "HDL Simulation Constructs",
+      "key": "hdl_simulation_constructs",
+      "path": [
+        "Technical Stack",
+        "HDL Simulation Constructs"
+      ],
+      "content": "`initial` blocks, `#5` delays, `$display`, and the decoder testbench establish explicit simulation-oriented use.",
+      "source_line_start": 80,
+      "source_line_end": 84
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Reusable Simulation Clock\n\nThe clock module provides a small reusable timing source for HDL experiments.\n\n### Parameterized Decoder Design\n\nThe decoder's input and output widths are derived from a parameter, making it a generic design rather than a fixed 2-to-4 or 3-to-8 implementation.\n\n### Exhaustive Small-State Enumeration\n\nThe truth-table module systematically enumerates every input combination in a four-bit state space.\n\n### One-Hot Key Capture\n\nThe keypad module maps one-hot key patterns into numeric buffer values on the rising clock edge.\n\n### Tri-State Bus Modeling\n\nThe keypad conditionally drives the data bus and otherwise assigns high impedance, introducing shared-bus behavior and basic peripheral control concepts.\n\n### Request/Acknowledge Control\n\nSignals such as `DREQ`, `DACK`, and `IO_EN` model a simple control handshake around access to the shared bus.",
+      "source_line_start": 84,
+      "source_line_end": 110
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Reusable Simulation Clock",
+      "normalized_title": "Reusable Simulation Clock",
+      "key": "reusable_simulation_clock",
+      "path": [
+        "Major Engineering Work",
+        "Reusable Simulation Clock"
+      ],
+      "content": "The clock module provides a small reusable timing source for HDL experiments.",
+      "source_line_start": 86,
+      "source_line_end": 90
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Parameterized Decoder Design",
+      "normalized_title": "Parameterized Decoder Design",
+      "key": "parameterized_decoder_design",
+      "path": [
+        "Major Engineering Work",
+        "Parameterized Decoder Design"
+      ],
+      "content": "The decoder's input and output widths are derived from a parameter, making it a generic design rather than a fixed 2-to-4 or 3-to-8 implementation.",
+      "source_line_start": 90,
+      "source_line_end": 94
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Exhaustive Small-State Enumeration",
+      "normalized_title": "Exhaustive Small-State Enumeration",
+      "key": "exhaustive_small_state_enumeration",
+      "path": [
+        "Major Engineering Work",
+        "Exhaustive Small-State Enumeration"
+      ],
+      "content": "The truth-table module systematically enumerates every input combination in a four-bit state space.",
+      "source_line_start": 94,
+      "source_line_end": 98
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "One-Hot Key Capture",
+      "normalized_title": "One-Hot Key Capture",
+      "key": "one_hot_key_capture",
+      "path": [
+        "Major Engineering Work",
+        "One-Hot Key Capture"
+      ],
+      "content": "The keypad module maps one-hot key patterns into numeric buffer values on the rising clock edge.",
+      "source_line_start": 98,
+      "source_line_end": 102
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Tri-State Bus Modeling",
+      "normalized_title": "Tri-State Bus Modeling",
+      "key": "tri_state_bus_modeling",
+      "path": [
+        "Major Engineering Work",
+        "Tri-State Bus Modeling"
+      ],
+      "content": "The keypad conditionally drives the data bus and otherwise assigns high impedance, introducing shared-bus behavior and basic peripheral control concepts.",
+      "source_line_start": 102,
+      "source_line_end": 106
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Request/Acknowledge Control",
+      "normalized_title": "Request/Acknowledge Control",
+      "key": "request_acknowledge_control",
+      "path": [
+        "Major Engineering Work",
+        "Request/Acknowledge Control"
+      ],
+      "content": "Signals such as `DREQ`, `DACK`, and `IO_EN` model a simple control handshake around access to the shared bus.",
+      "source_line_start": 106,
+      "source_line_end": 110
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Decoder Testbench\n\nThe decoder file contains timed input stimulus for a parameterized four-bit instance.\n\n### Truth-Table Enumeration\n\nAll 16 input combinations are exercised for the Boolean expression in `TruthTable.v`.\n\n### Manual HDL Inspection\n\nThe verification style is display- and stimulus-oriented, with generated values intended to be inspected during simulation.",
+      "source_line_start": 110,
+      "source_line_end": 124
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Decoder Testbench",
+      "normalized_title": "Decoder Testbench",
+      "key": "decoder_testbench",
+      "path": [
+        "Verification",
+        "Decoder Testbench"
+      ],
+      "content": "The decoder file contains timed input stimulus for a parameterized four-bit instance.",
+      "source_line_start": 112,
+      "source_line_end": 116
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Truth-Table Enumeration",
+      "normalized_title": "Truth-Table Enumeration",
+      "key": "truth_table_enumeration",
+      "path": [
+        "Verification",
+        "Truth-Table Enumeration"
+      ],
+      "content": "All 16 input combinations are exercised for the Boolean expression in `TruthTable.v`.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Manual HDL Inspection",
+      "normalized_title": "Manual HDL Inspection",
+      "key": "manual_hdl_inspection",
+      "path": [
+        "Verification",
+        "Manual HDL Inspection"
+      ],
+      "content": "The verification style is display- and stimulus-oriented, with generated values intended to be inspected during simulation.",
+      "source_line_start": 120,
+      "source_line_end": 124
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Parameterization\n\nThe decoder uses a width parameter to derive both interface sizes and behavior.\n\n### Focused Module Separation\n\nEach HDL concept is kept in its own source file.\n\n### Exhaustive Small-State Exploration\n\nThe truth-table utility covers an entire small input space through a loop rather than hand-entering sample combinations.\n\n### Shared-Bus Modeling\n\nThe keypad explicitly represents conditional bus ownership through high-impedance assignments.",
+      "source_line_start": 124,
+      "source_line_end": 142
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Parameterization",
+      "normalized_title": "Parameterization",
+      "key": "parameterization",
+      "path": [
+        "Engineering Practices",
+        "Parameterization"
+      ],
+      "content": "The decoder uses a width parameter to derive both interface sizes and behavior.",
+      "source_line_start": 126,
+      "source_line_end": 130
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Focused Module Separation",
+      "normalized_title": "Focused Module Separation",
+      "key": "focused_module_separation",
+      "path": [
+        "Engineering Practices",
+        "Focused Module Separation"
+      ],
+      "content": "Each HDL concept is kept in its own source file.",
+      "source_line_start": 130,
+      "source_line_end": 134
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Exhaustive Small-State Exploration",
+      "normalized_title": "Exhaustive Small-State Exploration",
+      "key": "exhaustive_small_state_exploration",
+      "path": [
+        "Engineering Practices",
+        "Exhaustive Small-State Exploration"
+      ],
+      "content": "The truth-table utility covers an entire small input space through a loop rather than hand-entering sample combinations.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Shared-Bus Modeling",
+      "normalized_title": "Shared-Bus Modeling",
+      "key": "shared_bus_modeling",
+      "path": [
+        "Engineering Practices",
+        "Shared-Bus Modeling"
+      ],
+      "content": "The keypad explicitly represents conditional bus ownership through high-impedance assignments.",
+      "source_line_start": 138,
+      "source_line_end": 142
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThe repository contains four very small Verilog files.\n\n### Functional Breadth\n\nAcross those files, the repository covers:\n\n- clock generation;\n- parameterized decoding;\n- Boolean enumeration;\n- sequential keypad capture;\n- one-hot decoding;\n- shared-bus control;\n- simulation stimulus.\n\n### Conceptual Complexity\n\nThe keypad module combines the widest set of ideas: clocked state, one-hot decoding, request/acknowledge control, I/O enable logic, and tri-state bus behavior.",
+      "source_line_start": 142,
+      "source_line_end": 164
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "The repository contains four very small Verilog files.",
+      "source_line_start": 144,
+      "source_line_end": 148
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Functional Breadth",
+      "normalized_title": "Functional Breadth",
+      "key": "functional_breadth",
+      "path": [
+        "Scale and Complexity",
+        "Functional Breadth"
+      ],
+      "content": "Across those files, the repository covers:\n\n- clock generation;\n- parameterized decoding;\n- Boolean enumeration;\n- sequential keypad capture;\n- one-hot decoding;\n- shared-bus control;\n- simulation stimulus.",
+      "source_line_start": 148,
+      "source_line_end": 160
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The keypad module combines the widest set of ideas: clocked state, one-hot decoding, request/acknowledge control, I/O enable logic, and tri-state bus behavior.",
+      "source_line_start": 160,
+      "source_line_end": 164
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Hardware Description\n\n- **Verilog — strong evidence.**\n- **Parameterized HDL — strong evidence.**\n- **Combinational logic — strong evidence.**\n- **Sequential logic — moderate evidence.**\n- **Tri-state bus modeling — strong evidence.**\n\n### Testing and Verification\n\n- **HDL testbench stimulus — moderate evidence.**\n- **Exhaustive truth-table enumeration — strong evidence for the four-bit Boolean state space.**\n- **Manual simulation inspection — strong evidence.**\n\n### Digital Systems\n\n- **One-hot input decoding — moderate evidence.**\n- **Request/acknowledge interface concepts — moderate evidence.**\n- **Shared-bus enable concepts — moderate evidence.**",
+      "source_line_start": 164,
+      "source_line_end": 186
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Hardware Description",
+      "normalized_title": "Hardware Description",
+      "key": "hardware_description",
+      "path": [
+        "Skills Demonstrated",
+        "Hardware Description"
+      ],
+      "content": "- **Verilog — strong evidence.**\n- **Parameterized HDL — strong evidence.**\n- **Combinational logic — strong evidence.**\n- **Sequential logic — moderate evidence.**\n- **Tri-state bus modeling — strong evidence.**",
+      "source_line_start": 166,
+      "source_line_end": 174
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Skills Demonstrated",
+        "Testing and Verification"
+      ],
+      "content": "- **HDL testbench stimulus — moderate evidence.**\n- **Exhaustive truth-table enumeration — strong evidence for the four-bit Boolean state space.**\n- **Manual simulation inspection — strong evidence.**",
+      "source_line_start": 174,
+      "source_line_end": 180
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Digital Systems",
+      "normalized_title": "Digital Systems",
+      "key": "digital_systems",
+      "path": [
+        "Skills Demonstrated",
+        "Digital Systems"
+      ],
+      "content": "- **One-hot input decoding — moderate evidence.**\n- **Request/acknowledge interface concepts — moderate evidence.**\n- **Shared-bus enable concepts — moderate evidence.**",
+      "source_line_start": 180,
+      "source_line_end": 186
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository continues the Verilog direction introduced by repository 004 while broadening the set of HDL idioms exercised.\n\nThe shift is from one compact processor model toward reusable primitives, parameterization, exhaustive small-state exploration, and peripheral/bus behavior.",
+      "source_line_start": 186,
+      "source_line_end": 192
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- parameterized Verilog design;\n- an explicitly generic decoder;\n- exhaustive truth-table enumeration in HDL;\n- tri-state bus modeling;\n- keypad/peripheral-style request/acknowledge signals.",
+      "source_line_start": 192,
+      "source_line_end": 202
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`VerilogTools` is the second observed Verilog repository and the first processed repository focused on a small collection of reusable/exploratory HDL building blocks.\n\nIts value is the diversity of digital-design constructs represented in a tiny codebase.",
+      "source_line_start": 202,
+      "source_line_end": 208
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`VerilogTools` is a concise HDL practice/toolbox repository containing a simulation clock, a parameterized decoder, a complete four-input truth-table enumerator, and a keypad-style tri-state bus interface.\n\nIts strongest evidence is breadth of basic Verilog idioms: parameterization, timed stimulus, Boolean enumeration, sequential state, one-hot decoding, and shared-bus control.\n\n# Project Tags",
+      "source_line_start": 208,
+      "source_line_end": 216
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `hdl-utility-collection`\n- `digital-design-exercises`\n- `educational-project`",
+      "source_line_start": 216,
+      "source_line_end": 222
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 222,
+      "source_line_end": 226
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `verilog`",
+      "source_line_start": 226,
+      "source_line_end": 230
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `digital-design`\n- `parameterized-hdl`\n- `binary-decoder`\n- `clock-generator`\n- `sequential-logic`\n- `combinational-logic`\n- `one-hot-decoding`\n- `tri-state-bus`\n- `peripheral-interface`\n- `request-acknowledge-signals`",
+      "source_line_start": 230,
+      "source_line_end": 243
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `hdl-simulation`\n- `hdl-testbench`\n- `truth-table-enumeration`\n- `manual-hdl-verification`",
+      "source_line_start": 243,
+      "source_line_end": 250
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-parameterized-hdl`\n- `earliest-observed-tri-state-bus`\n- `earliest-observed-peripheral-interface`",
+      "source_line_start": 250,
+      "source_line_end": 255
+    }
+  ],
+  "raw_analysis": "# VerilogTools\n\n## Repository Identity\n\n- Repository: 005 / 134\n- Name: `VerilogTools`\n- Repository start date: 2022-02-09\n- Last meaningful update date: 2022-02-09\n- Primary type: Small HDL utility / digital-design exercise collection\n- Technical field: Verilog simulation and digital logic\n- Application domain: Generic digital components and bus/peripheral modeling\n- Project context: Personal educational utility repository\n- Collaboration type: `individual-project`\n- Primary implementation language: Verilog\n\n## Collaboration and Authorship Context\n\nThe visible repository commits are owner-authored and occur on the repository creation date, supporting personal attribution of the HDL exercises.\n\n## Evidence Basis\n\nThe analysis is grounded in all four Verilog files and the repository commit history.\n\nBecause the repository's purpose is expressed through its implementation rather than a README, the analysis stays close to the behavior of those modules.\n\n## What This Project Is\n\n`VerilogTools` is a small collection of independent Verilog exercises or reusable simulation snippets.\n\nThe repository contains:\n\n- a reusable clock generator;\n- a parameterized binary decoder with stimulus;\n- a truth-table enumeration module;\n- a keypad/peripheral-style bus interface.\n\nThe project broadens the Verilog concepts visible after the preceding MIPS model by isolating smaller digital-design ideas that can be exercised independently.\n\n## Project Scope\n\n### Clock Generator\n\n`CLK_ON_WIRE.v` initializes a clock to zero and toggles it every five simulation time units, producing a 50% duty-cycle simulation signal.\n\n### Parameterized Decoder\n\n`Generic_Decoder.v` defines a decoder parameterized by input width `n`. The output width is derived as `2**n`, and the active bit is selected through a left shift.\n\nThe same file contains a testbench that instantiates a four-bit decoder and applies timed input changes.\n\n### Truth-Table Enumeration\n\n`TruthTable.v` loops through all 16 combinations of four input bits and prints each combination with the result of a Boolean expression.\n\n### Keypad / Peripheral Interface\n\n`keypad.v` captures one-hot key inputs on a clock edge, maps them to buffered numeric values, and conditionally drives a shared data bus using request/acknowledge and enable signals.\n\nThe design also models high-impedance `z` behavior.\n\n## Architecture and System Shape\n\n```text\nVerilogTools\n├─ Clock generator\n├─ Parameterized decoder\n│   └─ embedded testbench stimulus\n├─ Truth-table enumerator\n└─ Keypad / shared-bus interface\n```\n\nThe files form a toolbox of focused HDL concepts rather than one integrated top-level system.\n\n## Technical Stack\n\n### Verilog\n\nThe repository uses module definitions, parameters, bit vectors, procedural blocks, timing delays, `case` statements, continuous assignments, high-impedance values, and `$display`.\n\n### HDL Simulation Constructs\n\n`initial` blocks, `#5` delays, `$display`, and the decoder testbench establish explicit simulation-oriented use.\n\n## Major Engineering Work\n\n### Reusable Simulation Clock\n\nThe clock module provides a small reusable timing source for HDL experiments.\n\n### Parameterized Decoder Design\n\nThe decoder's input and output widths are derived from a parameter, making it a generic design rather than a fixed 2-to-4 or 3-to-8 implementation.\n\n### Exhaustive Small-State Enumeration\n\nThe truth-table module systematically enumerates every input combination in a four-bit state space.\n\n### One-Hot Key Capture\n\nThe keypad module maps one-hot key patterns into numeric buffer values on the rising clock edge.\n\n### Tri-State Bus Modeling\n\nThe keypad conditionally drives the data bus and otherwise assigns high impedance, introducing shared-bus behavior and basic peripheral control concepts.\n\n### Request/Acknowledge Control\n\nSignals such as `DREQ`, `DACK`, and `IO_EN` model a simple control handshake around access to the shared bus.\n\n## Verification\n\n### Decoder Testbench\n\nThe decoder file contains timed input stimulus for a parameterized four-bit instance.\n\n### Truth-Table Enumeration\n\nAll 16 input combinations are exercised for the Boolean expression in `TruthTable.v`.\n\n### Manual HDL Inspection\n\nThe verification style is display- and stimulus-oriented, with generated values intended to be inspected during simulation.\n\n## Engineering Practices\n\n### Parameterization\n\nThe decoder uses a width parameter to derive both interface sizes and behavior.\n\n### Focused Module Separation\n\nEach HDL concept is kept in its own source file.\n\n### Exhaustive Small-State Exploration\n\nThe truth-table utility covers an entire small input space through a loop rather than hand-entering sample combinations.\n\n### Shared-Bus Modeling\n\nThe keypad explicitly represents conditional bus ownership through high-impedance assignments.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThe repository contains four very small Verilog files.\n\n### Functional Breadth\n\nAcross those files, the repository covers:\n\n- clock generation;\n- parameterized decoding;\n- Boolean enumeration;\n- sequential keypad capture;\n- one-hot decoding;\n- shared-bus control;\n- simulation stimulus.\n\n### Conceptual Complexity\n\nThe keypad module combines the widest set of ideas: clocked state, one-hot decoding, request/acknowledge control, I/O enable logic, and tri-state bus behavior.\n\n## Skills Demonstrated\n\n### Hardware Description\n\n- **Verilog — strong evidence.**\n- **Parameterized HDL — strong evidence.**\n- **Combinational logic — strong evidence.**\n- **Sequential logic — moderate evidence.**\n- **Tri-state bus modeling — strong evidence.**\n\n### Testing and Verification\n\n- **HDL testbench stimulus — moderate evidence.**\n- **Exhaustive truth-table enumeration — strong evidence for the four-bit Boolean state space.**\n- **Manual simulation inspection — strong evidence.**\n\n### Digital Systems\n\n- **One-hot input decoding — moderate evidence.**\n- **Request/acknowledge interface concepts — moderate evidence.**\n- **Shared-bus enable concepts — moderate evidence.**\n\n## Capability Developed\n\nThis repository continues the Verilog direction introduced by repository 004 while broadening the set of HDL idioms exercised.\n\nThe shift is from one compact processor model toward reusable primitives, parameterization, exhaustive small-state exploration, and peripheral/bus behavior.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- parameterized Verilog design;\n- an explicitly generic decoder;\n- exhaustive truth-table enumeration in HDL;\n- tri-state bus modeling;\n- keypad/peripheral-style request/acknowledge signals.\n\n## Historical Significance\n\n`VerilogTools` is the second observed Verilog repository and the first processed repository focused on a small collection of reusable/exploratory HDL building blocks.\n\nIts value is the diversity of digital-design constructs represented in a tiny codebase.\n\n## Overall Repository Narrative\n\n`VerilogTools` is a concise HDL practice/toolbox repository containing a simulation clock, a parameterized decoder, a complete four-input truth-table enumerator, and a keypad-style tri-state bus interface.\n\nIts strongest evidence is breadth of basic Verilog idioms: parameterization, timed stimulus, Boolean enumeration, sequential state, one-hot decoding, and shared-bus control.\n\n# Project Tags\n\n## Project Type\n\n- `hdl-utility-collection`\n- `digital-design-exercises`\n- `educational-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `verilog`\n\n## Embedded and Hardware\n\n- `digital-design`\n- `parameterized-hdl`\n- `binary-decoder`\n- `clock-generator`\n- `sequential-logic`\n- `combinational-logic`\n- `one-hot-decoding`\n- `tri-state-bus`\n- `peripheral-interface`\n- `request-acknowledge-signals`\n\n## Testing and Verification\n\n- `hdl-simulation`\n- `hdl-testbench`\n- `truth-table-enumeration`\n- `manual-hdl-verification`\n\n## Portfolio Significance\n\n- `earliest-observed-parameterized-hdl`\n- `earliest-observed-tri-state-bus`\n- `earliest-observed-peripheral-interface`\n"
+}

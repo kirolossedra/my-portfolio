@@ -1,0 +1,516 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 94,
+  "repository_total": 134,
+  "repository_name": "Fast-FTP",
+  "header_title": "Fast-FTP",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-094-Fast-FTP/README.md",
+    "line_start": 1,
+    "line_end": 357,
+    "sha256": "35b255516e0500e8ca3702e0b87c9b971eb80556302dd064188464d85ad675d5"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "swift",
+    "apple-platform",
+    "foundation",
+    "inputstream",
+    "outputstream",
+    "streamdelegate",
+    "ftp",
+    "ftp-client",
+    "ftp-upload",
+    "passive-ftp",
+    "pasv",
+    "stor",
+    "user-pass-authentication",
+    "binary-transfer",
+    "type-i",
+    "tcp",
+    "dual-channel-protocol",
+    "control-channel",
+    "data-channel",
+    "ftp-reply-codes",
+    "protocol-state-machine",
+    "file-transfer",
+    "throughput-measurement",
+    "transfer-timing",
+    "main-run-loop",
+    "plaintext-ftp",
+    "not-sftp",
+    "not-ftps",
+    "misleading-file-extension",
+    "duplicate-source-blob",
+    "earliest-observed-swift-passive-ftp-client"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Fast-FTP`\n- **Corpus index:** 094\n- **Repository start date:** 2025-10-07\n- **Last meaningful update date:** 2025-10-07\n- **Latest meaningful commit:** `ef1df3f29b7f4abc6b41b220ffe456594cdcf9d7`\n- **Actual substantive implementation language:** Swift\n- **Project form:** native FTP upload/client experiment\n- **Collaboration classification:** `individual-project`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nClassic FTP uses separate control and data channels.\n\nThe implementation mirrors that explicitly:\n\n```text\nlocal file\n   ↓\nSwift controller\n   ├──────── control stream ────────→ FTP server :21\n   │         USER/PASS/TYPE/PASV/STOR\n   │\n   └──────── passive data stream ───→ negotiated server port\n                                      ↓\n                                  file payload\n```\n\nThis dual-channel model is the central architecture of the repository.\n\nThe controller coordinates protocol progression according to server response codes."
+    },
+    "testing": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nThe strongest verification evidence is operational protocol code and explicit server-response handling.\n\nTransfer success is associated with standard FTP completion responses.\n\nTiming is captured around the transfer path.\n\nThe repository does not retain a broad automated test suite or controlled benchmark harness.\n\nThe important verification boundary is that the code is a concrete FTP implementation experiment rather than a security-validated or production-hardened client."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s008",
+        "s015"
+      ],
+      "titles": [
+        "Authentication Flow",
+        "Security Boundary"
+      ],
+      "text": "## Authentication Flow\nThe implementation sends `USER` and `PASS` commands.\n\nCredentials in the retained example are simple/test-oriented.\n\nThis establishes protocol authentication mechanics, not secure credential handling.\n\nBecause FTP control traffic is plaintext unless protected by another mechanism, username/password use should not be described as encryption.\n\n## Security Boundary\nThe protocol implemented is FTP.\n\nThere is no TLS negotiation in the retained controller.\n\nThere is no SSH transport.\n\nThere is no SFTP subsystem.\n\nTherefore tags such as `encrypted-file-transfer`, `ftps`, or `sftp` would be unsupported.\n\nThe project demonstrates FTP mechanics and transfer performance, not secure file-transfer protocol design."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Fast-FTP`\n- **Corpus index:** 094\n- **Repository start date:** 2025-10-07\n- **Last meaningful update date:** 2025-10-07\n- **Latest meaningful commit:** `ef1df3f29b7f4abc6b41b220ffe456594cdcf9d7`\n- **Actual substantive implementation language:** Swift\n- **Project form:** native FTP upload/client experiment\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a minimal README and two substantive source filenames: `MainController.m` and `My.swift`.\n\nThe two files resolve to the same retained blob content.\n\nDespite the `.m` filename and GitHub language signal, the source syntax is Swift.\n\nIt uses Swift declarations such as `@objc class`, optionals, `Data`, and `InputStream`/`OutputStream` APIs.\n\nThis is an important language-classification correction for the corpus.\n\nThe implementation manually coordinates FTP control and passive data connections.\n\nIt sends protocol commands and parses numeric FTP reply codes.\n\nThe transport is plain FTP.\n\nThe source does not establish SFTP or FTPS encryption.",
+      "source_line_start": 14,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "Fast-FTP is a native Apple-platform FTP upload experiment written in Swift.\n\nRather than delegating the entire transfer to a high-level FTP SDK, the controller manages protocol state around Foundation streams.\n\nThe implementation connects to an FTP server, authenticates, switches to binary transfer mode, enters passive mode, opens the negotiated data channel, sends a `STOR` command, transmits file bytes, and computes transfer performance.\n\nThe repository is small, but the retained code directly exposes FTP control/data-channel mechanics.",
+      "source_line_start": 34,
+      "source_line_end": 44
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented workflow includes:\n\n- TCP stream creation through Foundation;\n- FTP control-channel connection;\n- greeting handling;\n- `USER`/`PASS` authentication flow;\n- binary transfer mode using `TYPE I`;\n- passive mode using `PASV`;\n- parsing the server-provided passive address/port;\n- opening a separate data connection;\n- sending `STOR`;\n- uploading file bytes;\n- handling transfer-completion replies;\n- elapsed-time measurement;\n- throughput calculation in Mbps;\n- basic transfer state management.\n\nThe source is focused on upload rather than a broad FTP client feature set.",
+      "source_line_start": 44,
+      "source_line_end": 65
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "Classic FTP uses separate control and data channels.\n\nThe implementation mirrors that explicitly:\n\n```text\nlocal file\n   ↓\nSwift controller\n   ├──────── control stream ────────→ FTP server :21\n   │         USER/PASS/TYPE/PASV/STOR\n   │\n   └──────── passive data stream ───→ negotiated server port\n                                      ↓\n                                  file payload\n```\n\nThis dual-channel model is the central architecture of the repository.\n\nThe controller coordinates protocol progression according to server response codes.",
+      "source_line_start": 65,
+      "source_line_end": 87
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- Swift\n- Foundation\n- `InputStream`\n- `OutputStream`\n- `StreamDelegate`\n- FTP\n- TCP streams\n- passive FTP\n- binary file transfer\n- timing/throughput calculation\n- Apple run loop integration",
+      "source_line_start": 87,
+      "source_line_end": 101
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "FTP Control State",
+      "normalized_title": "FTP Control State",
+      "key": "ftp_control_state",
+      "path": [
+        "FTP Control State"
+      ],
+      "content": "The source sends protocol commands in sequence rather than writing all commands blindly.\n\nIt reacts to standard response codes including:\n\n- `220` service ready;\n- `331` password required;\n- `230` authentication successful;\n- `227` entering passive mode;\n- `150` / `125` data-transfer startup;\n- `226` / `250` completion-oriented responses.\n\nThis is evidence of protocol-state reasoning.\n\nThe controller is not merely opening a socket and streaming bytes under an FTP label.",
+      "source_line_start": 101,
+      "source_line_end": 118
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Authentication Flow",
+      "normalized_title": "Authentication Flow",
+      "key": "authentication_flow",
+      "path": [
+        "Authentication Flow"
+      ],
+      "content": "The implementation sends `USER` and `PASS` commands.\n\nCredentials in the retained example are simple/test-oriented.\n\nThis establishes protocol authentication mechanics, not secure credential handling.\n\nBecause FTP control traffic is plaintext unless protected by another mechanism, username/password use should not be described as encryption.",
+      "source_line_start": 118,
+      "source_line_end": 128
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Binary Transfer Mode",
+      "normalized_title": "Binary Transfer Mode",
+      "key": "binary_transfer_mode",
+      "path": [
+        "Binary Transfer Mode"
+      ],
+      "content": "The source sends:\n\n```text\nTYPE I\n```\n\nThis selects image/binary mode.\n\nThat matters for arbitrary file payloads because ASCII-mode transformations could corrupt binary content.\n\nIt is a small but protocol-correct implementation detail.",
+      "source_line_start": 128,
+      "source_line_end": 142
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Passive Mode",
+      "normalized_title": "Passive Mode",
+      "key": "passive_mode",
+      "path": [
+        "Passive Mode"
+      ],
+      "content": "The source issues `PASV` and parses the server's `227` response.\n\nThe response encodes an IPv4 address and port components.\n\nThe implementation extracts those components and computes the passive data port from `p1` and `p2`.\n\nIt then opens a separate stream pair to the passive endpoint.\n\nThis is one of the strongest technical features in the repository because it demonstrates understanding of FTP's separate data connection.",
+      "source_line_start": 142,
+      "source_line_end": 154
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Upload Flow",
+      "normalized_title": "Upload Flow",
+      "key": "upload_flow",
+      "path": [
+        "Upload Flow"
+      ],
+      "content": "After the data channel is prepared, the controller sends `STOR` with a remote filename.\n\nThe local file is loaded into `Data`.\n\nThe payload is then written over the data output stream.\n\nThe source tracks transfer state so control-channel replies can be interpreted in context.\n\nThe implementation therefore coordinates application protocol and data transfer rather than treating the connection as generic TCP.",
+      "source_line_start": 154,
+      "source_line_end": 166
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Throughput Measurement",
+      "normalized_title": "Throughput Measurement",
+      "key": "throughput_measurement",
+      "path": [
+        "Throughput Measurement"
+      ],
+      "content": "The controller records transfer timing.\n\nIt converts payload size and elapsed time into Mbps.\n\nThis ties the file-transfer experiment to a performance-measurement concern that becomes much larger in repository 095.\n\nThe metric is an application-observed transfer rate.\n\nIt is not a physical-layer throughput measurement.",
+      "source_line_start": 166,
+      "source_line_end": 178
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Stream / Run Loop Integration",
+      "normalized_title": "Stream / Run Loop Integration",
+      "key": "stream_run_loop_integration",
+      "path": [
+        "Stream / Run Loop Integration"
+      ],
+      "content": "Foundation streams are scheduled on the main run loop.\n\nThe controller conforms to `StreamDelegate`.\n\nThat means protocol progress is event-driven by stream activity rather than implemented as one blocking procedural socket loop.\n\nThis is relevant Apple-platform networking experience.\n\nIt also means long operations and UI integration would need care if this controller were expanded into a complete application.",
+      "source_line_start": 178,
+      "source_line_end": 190
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Language Classification Boundary",
+      "normalized_title": "Language Classification Boundary",
+      "key": "language_classification_boundary",
+      "path": [
+        "Language Classification Boundary"
+      ],
+      "content": "`MainController.m` has an Objective-C-style filename extension.\n\nIts contents are Swift.\n\n`My.swift` contains the same implementation blob.\n\nThe repository therefore has inconsistent file naming/history.\n\nFor retrieval, the implementation should be tagged `swift` rather than inferred as Objective-C from the filename or GitHub primary-language metadata.\n\nThis is exactly the kind of corpus-cleaning correction that raw repository metadata cannot provide reliably.",
+      "source_line_start": 190,
+      "source_line_end": 204
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Security Boundary",
+      "normalized_title": "Security Boundary",
+      "key": "security_boundary",
+      "path": [
+        "Security Boundary"
+      ],
+      "content": "The protocol implemented is FTP.\n\nThere is no TLS negotiation in the retained controller.\n\nThere is no SSH transport.\n\nThere is no SFTP subsystem.\n\nTherefore tags such as `encrypted-file-transfer`, `ftps`, or `sftp` would be unsupported.\n\nThe project demonstrates FTP mechanics and transfer performance, not secure file-transfer protocol design.",
+      "source_line_start": 204,
+      "source_line_end": 218
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Manual Protocol Sequencing\n\nThe controller maps numeric FTP replies into the next protocol action.\n\n### Passive Data-Channel Negotiation\n\nThe implementation parses a PASV response and creates a second connection.\n\n### File Upload\n\nIt sends a binary file through the data stream after issuing `STOR`.\n\n### Performance Observation\n\nTransfer duration and Mbps are calculated directly in the client.\n\n### Native Stream Integration\n\nFoundation stream callbacks and run-loop scheduling are used instead of a browser/networking abstraction.",
+      "source_line_start": 218,
+      "source_line_end": 240
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Manual Protocol Sequencing",
+      "normalized_title": "Manual Protocol Sequencing",
+      "key": "manual_protocol_sequencing",
+      "path": [
+        "Major Engineering Work",
+        "Manual Protocol Sequencing"
+      ],
+      "content": "The controller maps numeric FTP replies into the next protocol action.",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Passive Data-Channel Negotiation",
+      "normalized_title": "Passive Data-Channel Negotiation",
+      "key": "passive_data_channel_negotiation",
+      "path": [
+        "Major Engineering Work",
+        "Passive Data-Channel Negotiation"
+      ],
+      "content": "The implementation parses a PASV response and creates a second connection.",
+      "source_line_start": 224,
+      "source_line_end": 228
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "File Upload",
+      "normalized_title": "File Upload",
+      "key": "file_upload",
+      "path": [
+        "Major Engineering Work",
+        "File Upload"
+      ],
+      "content": "It sends a binary file through the data stream after issuing `STOR`.",
+      "source_line_start": 228,
+      "source_line_end": 232
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Performance Observation",
+      "normalized_title": "Performance Observation",
+      "key": "performance_observation",
+      "path": [
+        "Major Engineering Work",
+        "Performance Observation"
+      ],
+      "content": "Transfer duration and Mbps are calculated directly in the client.",
+      "source_line_start": 232,
+      "source_line_end": 236
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Native Stream Integration",
+      "normalized_title": "Native Stream Integration",
+      "key": "native_stream_integration",
+      "path": [
+        "Major Engineering Work",
+        "Native Stream Integration"
+      ],
+      "content": "Foundation stream callbacks and run-loop scheduling are used instead of a browser/networking abstraction.",
+      "source_line_start": 236,
+      "source_line_end": 240
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "The strongest verification evidence is operational protocol code and explicit server-response handling.\n\nTransfer success is associated with standard FTP completion responses.\n\nTiming is captured around the transfer path.\n\nThe repository does not retain a broad automated test suite or controlled benchmark harness.\n\nThe important verification boundary is that the code is a concrete FTP implementation experiment rather than a security-validated or production-hardened client.",
+      "source_line_start": 240,
+      "source_line_end": 252
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Useful discipline choices include:\n\n- explicit protocol reply-code handling;\n- binary transfer mode;\n- passive-address parsing;\n- separate control/data streams;\n- cleanup/state transitions;\n- performance timing.\n\nRepository hygiene is weaker around duplicated content and mismatched `.m`/Swift naming.\n\nThat is captured as a corpus fact because it affects automated language classification.",
+      "source_line_start": 252,
+      "source_line_end": 267
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "Fast-FTP is closer to a networking component/prototype than a finished product.\n\nThe retained controller could sit behind an application UI, but the repository primarily demonstrates transport behavior.\n\nIts user value would be fast file upload to a known FTP endpoint.\n\nThe repository does not retain enough application shell to evaluate a complete end-user workflow.",
+      "source_line_start": 267,
+      "source_line_end": 277
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "The source footprint is modest.\n\nProtocol complexity is meaningful because FTP requires coordination of two TCP connections and stateful responses.\n\nThe implementation covers more than a trivial socket send:\n\n- control greeting;\n- authentication;\n- transfer mode;\n- passive negotiation;\n- data stream;\n- completion responses;\n- timing.",
+      "source_line_start": 277,
+      "source_line_end": 293
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "- Swift networking\n- Foundation streams\n- event-driven stream handling\n- FTP protocol understanding\n- FTP reply-code parsing\n- passive FTP\n- binary transfers\n- dual-channel protocol coordination\n- file I/O\n- transfer timing\n- throughput calculation\n- protocol-state management\n- corpus metadata correction",
+      "source_line_start": 293,
+      "source_line_end": 309
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository develops understanding of how an application protocol sits on top of TCP.\n\nFTP makes that especially visible because control and data are separate connections.\n\nThe project also exposes why protocol correctness and security are different concerns: a working USER/PASS/PASV/STOR flow can still be plaintext.\n\nThat distinction becomes important in later networking/product work.",
+      "source_line_start": 309,
+      "source_line_end": 319
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier repositories contained network protocols, sockets, ns-3, and file-transfer ideas.\n\nFast-FTP brings those interests into a native Apple-platform implementation with explicit FTP semantics.\n\nThe next repository, `Private-FTP`, expands the theme dramatically into transfer experiments, measurement tooling, and instrumentation.\n\nFast-FTP therefore acts as a compact protocol-focused precursor.",
+      "source_line_start": 319,
+      "source_line_end": 329
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the clearest early owner-attributed Swift implementation of passive FTP control/data-channel sequencing.\n\nIt also provides a strong example of why RAG corpus generation must inspect content instead of trusting file extensions or GitHub language classification.",
+      "source_line_start": 329,
+      "source_line_end": 335
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The retained protocol is plaintext FTP, not SFTP or FTPS.\n\nCredentials are example-oriented rather than evidence of secure secret management.\n\nThe source loads a local file into memory before upload, which is suitable for experimentation but may not scale well to very large files.\n\nDuplicated/misnamed source files reduce repository clarity.\n\nThese are implementation-specific boundaries rather than generic missing-feature inventory.",
+      "source_line_start": 335,
+      "source_line_end": 347
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "Fast-FTP is a compact Swift networking experiment that manually implements the important stages of an FTP upload: control connection, USER/PASS login, binary mode, passive-mode negotiation, a separate data stream, STOR upload, completion-code handling, and transfer-rate measurement.\n\nIts technical significance comes from protocol-level integration rather than codebase size.\n\nThe corpus also corrects a misleading metadata signal: the substantive code is Swift despite an `.m` file and Objective-C classification cues.\n\n# Project Tags\n\n`individual-project`, `swift`, `apple-platform`, `foundation`, `inputstream`, `outputstream`, `streamdelegate`, `ftp`, `ftp-client`, `ftp-upload`, `passive-ftp`, `pasv`, `stor`, `user-pass-authentication`, `binary-transfer`, `type-i`, `tcp`, `dual-channel-protocol`, `control-channel`, `data-channel`, `ftp-reply-codes`, `protocol-state-machine`, `file-transfer`, `throughput-measurement`, `transfer-timing`, `main-run-loop`, `plaintext-ftp`, `not-sftp`, `not-ftps`, `misleading-file-extension`, `duplicate-source-blob`, `earliest-observed-swift-passive-ftp-client`",
+      "source_line_start": 347,
+      "source_line_end": 358
+    }
+  ],
+  "raw_analysis": "# Repository 094 — Fast-FTP\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Fast-FTP`\n- **Corpus index:** 094\n- **Repository start date:** 2025-10-07\n- **Last meaningful update date:** 2025-10-07\n- **Latest meaningful commit:** `ef1df3f29b7f4abc6b41b220ffe456594cdcf9d7`\n- **Actual substantive implementation language:** Swift\n- **Project form:** native FTP upload/client experiment\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains a minimal README and two substantive source filenames: `MainController.m` and `My.swift`.\n\nThe two files resolve to the same retained blob content.\n\nDespite the `.m` filename and GitHub language signal, the source syntax is Swift.\n\nIt uses Swift declarations such as `@objc class`, optionals, `Data`, and `InputStream`/`OutputStream` APIs.\n\nThis is an important language-classification correction for the corpus.\n\nThe implementation manually coordinates FTP control and passive data connections.\n\nIt sends protocol commands and parses numeric FTP reply codes.\n\nThe transport is plain FTP.\n\nThe source does not establish SFTP or FTPS encryption.\n\n## What the Project Is\n\nFast-FTP is a native Apple-platform FTP upload experiment written in Swift.\n\nRather than delegating the entire transfer to a high-level FTP SDK, the controller manages protocol state around Foundation streams.\n\nThe implementation connects to an FTP server, authenticates, switches to binary transfer mode, enters passive mode, opens the negotiated data channel, sends a `STOR` command, transmits file bytes, and computes transfer performance.\n\nThe repository is small, but the retained code directly exposes FTP control/data-channel mechanics.\n\n## Project Scope\n\nThe implemented workflow includes:\n\n- TCP stream creation through Foundation;\n- FTP control-channel connection;\n- greeting handling;\n- `USER`/`PASS` authentication flow;\n- binary transfer mode using `TYPE I`;\n- passive mode using `PASV`;\n- parsing the server-provided passive address/port;\n- opening a separate data connection;\n- sending `STOR`;\n- uploading file bytes;\n- handling transfer-completion replies;\n- elapsed-time measurement;\n- throughput calculation in Mbps;\n- basic transfer state management.\n\nThe source is focused on upload rather than a broad FTP client feature set.\n\n## Architecture / System Shape\n\nClassic FTP uses separate control and data channels.\n\nThe implementation mirrors that explicitly:\n\n```text\nlocal file\n   ↓\nSwift controller\n   ├──────── control stream ────────→ FTP server :21\n   │         USER/PASS/TYPE/PASV/STOR\n   │\n   └──────── passive data stream ───→ negotiated server port\n                                      ↓\n                                  file payload\n```\n\nThis dual-channel model is the central architecture of the repository.\n\nThe controller coordinates protocol progression according to server response codes.\n\n## Technical Stack\n\n- Swift\n- Foundation\n- `InputStream`\n- `OutputStream`\n- `StreamDelegate`\n- FTP\n- TCP streams\n- passive FTP\n- binary file transfer\n- timing/throughput calculation\n- Apple run loop integration\n\n## FTP Control State\n\nThe source sends protocol commands in sequence rather than writing all commands blindly.\n\nIt reacts to standard response codes including:\n\n- `220` service ready;\n- `331` password required;\n- `230` authentication successful;\n- `227` entering passive mode;\n- `150` / `125` data-transfer startup;\n- `226` / `250` completion-oriented responses.\n\nThis is evidence of protocol-state reasoning.\n\nThe controller is not merely opening a socket and streaming bytes under an FTP label.\n\n## Authentication Flow\n\nThe implementation sends `USER` and `PASS` commands.\n\nCredentials in the retained example are simple/test-oriented.\n\nThis establishes protocol authentication mechanics, not secure credential handling.\n\nBecause FTP control traffic is plaintext unless protected by another mechanism, username/password use should not be described as encryption.\n\n## Binary Transfer Mode\n\nThe source sends:\n\n```text\nTYPE I\n```\n\nThis selects image/binary mode.\n\nThat matters for arbitrary file payloads because ASCII-mode transformations could corrupt binary content.\n\nIt is a small but protocol-correct implementation detail.\n\n## Passive Mode\n\nThe source issues `PASV` and parses the server's `227` response.\n\nThe response encodes an IPv4 address and port components.\n\nThe implementation extracts those components and computes the passive data port from `p1` and `p2`.\n\nIt then opens a separate stream pair to the passive endpoint.\n\nThis is one of the strongest technical features in the repository because it demonstrates understanding of FTP's separate data connection.\n\n## Upload Flow\n\nAfter the data channel is prepared, the controller sends `STOR` with a remote filename.\n\nThe local file is loaded into `Data`.\n\nThe payload is then written over the data output stream.\n\nThe source tracks transfer state so control-channel replies can be interpreted in context.\n\nThe implementation therefore coordinates application protocol and data transfer rather than treating the connection as generic TCP.\n\n## Throughput Measurement\n\nThe controller records transfer timing.\n\nIt converts payload size and elapsed time into Mbps.\n\nThis ties the file-transfer experiment to a performance-measurement concern that becomes much larger in repository 095.\n\nThe metric is an application-observed transfer rate.\n\nIt is not a physical-layer throughput measurement.\n\n## Stream / Run Loop Integration\n\nFoundation streams are scheduled on the main run loop.\n\nThe controller conforms to `StreamDelegate`.\n\nThat means protocol progress is event-driven by stream activity rather than implemented as one blocking procedural socket loop.\n\nThis is relevant Apple-platform networking experience.\n\nIt also means long operations and UI integration would need care if this controller were expanded into a complete application.\n\n## Language Classification Boundary\n\n`MainController.m` has an Objective-C-style filename extension.\n\nIts contents are Swift.\n\n`My.swift` contains the same implementation blob.\n\nThe repository therefore has inconsistent file naming/history.\n\nFor retrieval, the implementation should be tagged `swift` rather than inferred as Objective-C from the filename or GitHub primary-language metadata.\n\nThis is exactly the kind of corpus-cleaning correction that raw repository metadata cannot provide reliably.\n\n## Security Boundary\n\nThe protocol implemented is FTP.\n\nThere is no TLS negotiation in the retained controller.\n\nThere is no SSH transport.\n\nThere is no SFTP subsystem.\n\nTherefore tags such as `encrypted-file-transfer`, `ftps`, or `sftp` would be unsupported.\n\nThe project demonstrates FTP mechanics and transfer performance, not secure file-transfer protocol design.\n\n## Major Engineering Work\n\n### Manual Protocol Sequencing\n\nThe controller maps numeric FTP replies into the next protocol action.\n\n### Passive Data-Channel Negotiation\n\nThe implementation parses a PASV response and creates a second connection.\n\n### File Upload\n\nIt sends a binary file through the data stream after issuing `STOR`.\n\n### Performance Observation\n\nTransfer duration and Mbps are calculated directly in the client.\n\n### Native Stream Integration\n\nFoundation stream callbacks and run-loop scheduling are used instead of a browser/networking abstraction.\n\n## Testing & Verification\n\nThe strongest verification evidence is operational protocol code and explicit server-response handling.\n\nTransfer success is associated with standard FTP completion responses.\n\nTiming is captured around the transfer path.\n\nThe repository does not retain a broad automated test suite or controlled benchmark harness.\n\nThe important verification boundary is that the code is a concrete FTP implementation experiment rather than a security-validated or production-hardened client.\n\n## Engineering Discipline\n\nUseful discipline choices include:\n\n- explicit protocol reply-code handling;\n- binary transfer mode;\n- passive-address parsing;\n- separate control/data streams;\n- cleanup/state transitions;\n- performance timing.\n\nRepository hygiene is weaker around duplicated content and mismatched `.m`/Swift naming.\n\nThat is captured as a corpus fact because it affects automated language classification.\n\n## Product Engineering\n\nFast-FTP is closer to a networking component/prototype than a finished product.\n\nThe retained controller could sit behind an application UI, but the repository primarily demonstrates transport behavior.\n\nIts user value would be fast file upload to a known FTP endpoint.\n\nThe repository does not retain enough application shell to evaluate a complete end-user workflow.\n\n## Scale / Complexity\n\nThe source footprint is modest.\n\nProtocol complexity is meaningful because FTP requires coordination of two TCP connections and stateful responses.\n\nThe implementation covers more than a trivial socket send:\n\n- control greeting;\n- authentication;\n- transfer mode;\n- passive negotiation;\n- data stream;\n- completion responses;\n- timing.\n\n## Skills Demonstrated\n\n- Swift networking\n- Foundation streams\n- event-driven stream handling\n- FTP protocol understanding\n- FTP reply-code parsing\n- passive FTP\n- binary transfers\n- dual-channel protocol coordination\n- file I/O\n- transfer timing\n- throughput calculation\n- protocol-state management\n- corpus metadata correction\n\n## What Was Learned / Capability Developed\n\nThe repository develops understanding of how an application protocol sits on top of TCP.\n\nFTP makes that especially visible because control and data are separate connections.\n\nThe project also exposes why protocol correctness and security are different concerns: a working USER/PASS/PASV/STOR flow can still be plaintext.\n\nThat distinction becomes important in later networking/product work.\n\n## Portfolio Evolution Context\n\nEarlier repositories contained network protocols, sockets, ns-3, and file-transfer ideas.\n\nFast-FTP brings those interests into a native Apple-platform implementation with explicit FTP semantics.\n\nThe next repository, `Private-FTP`, expands the theme dramatically into transfer experiments, measurement tooling, and instrumentation.\n\nFast-FTP therefore acts as a compact protocol-focused precursor.\n\n## Historical Significance\n\nWithin the processed corpus, this is the clearest early owner-attributed Swift implementation of passive FTP control/data-channel sequencing.\n\nIt also provides a strong example of why RAG corpus generation must inspect content instead of trusting file extensions or GitHub language classification.\n\n## Limitations & Missing Evidence\n\nThe retained protocol is plaintext FTP, not SFTP or FTPS.\n\nCredentials are example-oriented rather than evidence of secure secret management.\n\nThe source loads a local file into memory before upload, which is suitable for experimentation but may not scale well to very large files.\n\nDuplicated/misnamed source files reduce repository clarity.\n\nThese are implementation-specific boundaries rather than generic missing-feature inventory.\n\n## Overall Narrative\n\nFast-FTP is a compact Swift networking experiment that manually implements the important stages of an FTP upload: control connection, USER/PASS login, binary mode, passive-mode negotiation, a separate data stream, STOR upload, completion-code handling, and transfer-rate measurement.\n\nIts technical significance comes from protocol-level integration rather than codebase size.\n\nThe corpus also corrects a misleading metadata signal: the substantive code is Swift despite an `.m` file and Objective-C classification cues.\n\n# Project Tags\n\n`individual-project`, `swift`, `apple-platform`, `foundation`, `inputstream`, `outputstream`, `streamdelegate`, `ftp`, `ftp-client`, `ftp-upload`, `passive-ftp`, `pasv`, `stor`, `user-pass-authentication`, `binary-transfer`, `type-i`, `tcp`, `dual-channel-protocol`, `control-channel`, `data-channel`, `ftp-reply-codes`, `protocol-state-machine`, `file-transfer`, `throughput-measurement`, `transfer-timing`, `main-run-loop`, `plaintext-ftp`, `not-sftp`, `not-ftps`, `misleading-file-extension`, `duplicate-source-blob`, `earliest-observed-swift-passive-ftp-client`\n"
+}

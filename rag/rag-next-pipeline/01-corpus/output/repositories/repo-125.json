@@ -1,0 +1,446 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 125,
+  "repository_total": 134,
+  "repository_name": "SwiftFTP",
+  "header_title": "SwiftFTP",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-125-SwiftFTP/README.md",
+    "line_start": 1,
+    "line_end": 338,
+    "sha256": "7a9062311b16bcb8c8d8c266f27fb2ebd37199c9747397d078b622bc459d3d76"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "objective-c",
+    "ios",
+    "uikit",
+    "foundation",
+    "cfnetwork",
+    "ftp",
+    "ftp-client",
+    "white-raccoon",
+    "nsstream",
+    "delegate-pattern",
+    "asynchronous-networking",
+    "legacy-library-integration",
+    "external-library-integration",
+    "uwaterloo-research-context",
+    "research-networking"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 125 / 138\n- Name: `SwiftFTP`\n- Start date: 2025-11-08\n- Latest meaningful update: 2025-11-08\n- Latest meaningful commit: `cde6612f938d8ebd8b5e4a6a3c005a81ddc9a882`\n- Primary language represented by repository metadata: Objective-C\n- Technical field: iOS networking and FTP client infrastructure\n- Context: research-oriented iOS networking source snapshot\n- Collaboration type: `research-collaboration-with-external-components`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s004"
+      ],
+      "titles": [
+        "WhiteRaccoon FTP Architecture"
+      ],
+      "text": "## WhiteRaccoon FTP Architecture\nWhiteRaccoon imports:\n\n- `Foundation`,\n- `CFNetwork`.\n\nThe library defines a set of request abstractions around FTP operations.\n\n### Request Types\n\nThe header defines request types for:\n\n- upload,\n- download,\n- delete,\n- directory creation,\n- directory listing.\n\nThis provides a request-oriented model rather than placing every FTP operation inside one procedural function.\n\n### `WRBase`\n\n`WRBase` carries shared FTP state such as:\n\n- path,\n- hostname,\n- username,\n- password,\n- URL scheme,\n- passive-mode configuration,\n- generated credentials,\n- full URL,\n- error state.\n\nIt also exposes lifecycle methods such as `start` and `destroy`.\n\n### `WRRequest`\n\n`WRRequest` extends the base abstraction with request-specific state.\n\nIt includes:\n\n- previous and next request references,\n- request type,\n- delegate,\n- stream information,\n- stream-open state.\n\nThe linked request references support the queue abstraction used elsewhere in the library.\n\n### Download Requests\n\n`WRRequestDownload` conforms to `NSStreamDelegate`.\n\nIt stores received data and participates in the asynchronous stream-driven transfer model.\n\n### Upload Requests\n\n`WRRequestUpload` also uses stream callbacks.\n\nIt contains outgoing data and can interact with a directory-list request before an upload.\n\n### Filesystem Operations\n\nSpecialized request classes exist for:\n\n- delete,\n- create directory,\n- list directory.\n\nThis means the embedded library covers more than a single download path.\n\n### Request Queue\n\n`WRRequestQueue` provides ordered request execution.\n\nThe API can:\n\n- add one request,\n- add a request at the front,\n- add an array of requests,\n- remove a request.\n\nA queue delegate is notified when queued work completes.\n\n### Stream State\n\n`WRStreamInfo` stores network-stream transfer state including:\n\n- read stream,\n- write stream,\n- bytes consumed in the current iteration,\n- total bytes consumed,\n- expected size,\n- transfer buffer.\n\nThis is evidence of an asynchronous buffered transfer architecture within the external library."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Evidence and Authorship Boundary"
+      ],
+      "text": "## Evidence and Authorship Boundary\nThis repository is important primarily as an integration and provenance artifact rather than as evidence that every checked-in Objective-C line was authored by the repository owner.\n\nThe dominant FTP implementation is the `WhiteRaccoon` library.\n\nIts source header explicitly states that WhiteRaccoon was created by **Valentin Radu on August 23, 2011** and includes the original permissive license notice.\n\nAccordingly, the WhiteRaccoon implementation is treated here as externally authored library code incorporated into the working source snapshot.\n\nThe repository also contains `SceneDelegate.m`.\n\nThat file identifies the project as `SedraFTP` and carries a `Created by UWaterloo on 10/9/25` source header.\n\nThe body is the standard iOS scene-lifecycle delegate shape generated for UIKit applications.\n\nThe strongest owner-relevant evidence therefore concerns assembling and working with an iOS FTP networking codebase in a University of Waterloo research context, not original authorship of the WhiteRaccoon network stack.\n\nThis distinction is essential for later RAG queries about Objective-C depth or FTP implementation ownership."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 125 / 138\n- Name: `SwiftFTP`\n- Start date: 2025-11-08\n- Latest meaningful update: 2025-11-08\n- Latest meaningful commit: `cde6612f938d8ebd8b5e4a6a3c005a81ddc9a882`\n- Primary language represented by repository metadata: Objective-C\n- Technical field: iOS networking and FTP client infrastructure\n- Context: research-oriented iOS networking source snapshot\n- Collaboration type: `research-collaboration-with-external-components`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence and Authorship Boundary",
+      "normalized_title": "Evidence and Authorship Boundary",
+      "key": "evidence_and_authorship_boundary",
+      "path": [
+        "Evidence and Authorship Boundary"
+      ],
+      "content": "This repository is important primarily as an integration and provenance artifact rather than as evidence that every checked-in Objective-C line was authored by the repository owner.\n\nThe dominant FTP implementation is the `WhiteRaccoon` library.\n\nIts source header explicitly states that WhiteRaccoon was created by **Valentin Radu on August 23, 2011** and includes the original permissive license notice.\n\nAccordingly, the WhiteRaccoon implementation is treated here as externally authored library code incorporated into the working source snapshot.\n\nThe repository also contains `SceneDelegate.m`.\n\nThat file identifies the project as `SedraFTP` and carries a `Created by UWaterloo on 10/9/25` source header.\n\nThe body is the standard iOS scene-lifecycle delegate shape generated for UIKit applications.\n\nThe strongest owner-relevant evidence therefore concerns assembling and working with an iOS FTP networking codebase in a University of Waterloo research context, not original authorship of the WhiteRaccoon network stack.\n\nThis distinction is essential for later RAG queries about Objective-C depth or FTP implementation ownership.",
+      "source_line_start": 15,
+      "source_line_end": 35
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Repository Represents",
+      "normalized_title": "What This Repository Represents",
+      "key": "what_this_repository_represents",
+      "path": [
+        "What This Repository Represents"
+      ],
+      "content": "`SwiftFTP` is a compact iOS networking source snapshot centered on an FTP client library and an iOS application lifecycle shell.\n\nThe checked-in source exposes the low-level architecture of an Objective-C FTP client that is built on Apple networking primitives.\n\nThe repository is historically useful because it appears before later repositories that build much richer FTP experiment automation around the same research problem.\n\nIn that sense, it records an early stage of the portfolio's FTP-over-iOS experimentation lineage.\n\nThe repository contains two distinct source categories:\n\n1. an externally authored FTP library implementation,\n2. an iOS application shell associated with the SedraFTP research application.\n\nThe codebase is small, but the network library itself exposes a broad range of FTP operations and asynchronous stream behavior.",
+      "source_line_start": 35,
+      "source_line_end": 52
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "WhiteRaccoon FTP Architecture",
+      "normalized_title": "WhiteRaccoon FTP Architecture",
+      "key": "whiteraccoon_ftp_architecture",
+      "path": [
+        "WhiteRaccoon FTP Architecture"
+      ],
+      "content": "WhiteRaccoon imports:\n\n- `Foundation`,\n- `CFNetwork`.\n\nThe library defines a set of request abstractions around FTP operations.\n\n### Request Types\n\nThe header defines request types for:\n\n- upload,\n- download,\n- delete,\n- directory creation,\n- directory listing.\n\nThis provides a request-oriented model rather than placing every FTP operation inside one procedural function.\n\n### `WRBase`\n\n`WRBase` carries shared FTP state such as:\n\n- path,\n- hostname,\n- username,\n- password,\n- URL scheme,\n- passive-mode configuration,\n- generated credentials,\n- full URL,\n- error state.\n\nIt also exposes lifecycle methods such as `start` and `destroy`.\n\n### `WRRequest`\n\n`WRRequest` extends the base abstraction with request-specific state.\n\nIt includes:\n\n- previous and next request references,\n- request type,\n- delegate,\n- stream information,\n- stream-open state.\n\nThe linked request references support the queue abstraction used elsewhere in the library.\n\n### Download Requests\n\n`WRRequestDownload` conforms to `NSStreamDelegate`.\n\nIt stores received data and participates in the asynchronous stream-driven transfer model.\n\n### Upload Requests\n\n`WRRequestUpload` also uses stream callbacks.\n\nIt contains outgoing data and can interact with a directory-list request before an upload.\n\n### Filesystem Operations\n\nSpecialized request classes exist for:\n\n- delete,\n- create directory,\n- list directory.\n\nThis means the embedded library covers more than a single download path.\n\n### Request Queue\n\n`WRRequestQueue` provides ordered request execution.\n\nThe API can:\n\n- add one request,\n- add a request at the front,\n- add an array of requests,\n- remove a request.\n\nA queue delegate is notified when queued work completes.\n\n### Stream State\n\n`WRStreamInfo` stores network-stream transfer state including:\n\n- read stream,\n- write stream,\n- bytes consumed in the current iteration,\n- total bytes consumed,\n- expected size,\n- transfer buffer.\n\nThis is evidence of an asynchronous buffered transfer architecture within the external library.",
+      "source_line_start": 52,
+      "source_line_end": 151
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Request Types",
+      "normalized_title": "Request Types",
+      "key": "request_types",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Request Types"
+      ],
+      "content": "The header defines request types for:\n\n- upload,\n- download,\n- delete,\n- directory creation,\n- directory listing.\n\nThis provides a request-oriented model rather than placing every FTP operation inside one procedural function.",
+      "source_line_start": 61,
+      "source_line_end": 73
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "`WRBase`",
+      "normalized_title": "WRBase",
+      "key": "wrbase",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "`WRBase`"
+      ],
+      "content": "`WRBase` carries shared FTP state such as:\n\n- path,\n- hostname,\n- username,\n- password,\n- URL scheme,\n- passive-mode configuration,\n- generated credentials,\n- full URL,\n- error state.\n\nIt also exposes lifecycle methods such as `start` and `destroy`.",
+      "source_line_start": 73,
+      "source_line_end": 89
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "`WRRequest`",
+      "normalized_title": "WRRequest",
+      "key": "wrrequest",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "`WRRequest`"
+      ],
+      "content": "`WRRequest` extends the base abstraction with request-specific state.\n\nIt includes:\n\n- previous and next request references,\n- request type,\n- delegate,\n- stream information,\n- stream-open state.\n\nThe linked request references support the queue abstraction used elsewhere in the library.",
+      "source_line_start": 89,
+      "source_line_end": 103
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Download Requests",
+      "normalized_title": "Download Requests",
+      "key": "download_requests",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Download Requests"
+      ],
+      "content": "`WRRequestDownload` conforms to `NSStreamDelegate`.\n\nIt stores received data and participates in the asynchronous stream-driven transfer model.",
+      "source_line_start": 103,
+      "source_line_end": 109
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Upload Requests",
+      "normalized_title": "Upload Requests",
+      "key": "upload_requests",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Upload Requests"
+      ],
+      "content": "`WRRequestUpload` also uses stream callbacks.\n\nIt contains outgoing data and can interact with a directory-list request before an upload.",
+      "source_line_start": 109,
+      "source_line_end": 115
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Filesystem Operations",
+      "normalized_title": "Filesystem Operations",
+      "key": "filesystem_operations",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Filesystem Operations"
+      ],
+      "content": "Specialized request classes exist for:\n\n- delete,\n- create directory,\n- list directory.\n\nThis means the embedded library covers more than a single download path.",
+      "source_line_start": 115,
+      "source_line_end": 125
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Request Queue",
+      "normalized_title": "Request Queue",
+      "key": "request_queue",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Request Queue"
+      ],
+      "content": "`WRRequestQueue` provides ordered request execution.\n\nThe API can:\n\n- add one request,\n- add a request at the front,\n- add an array of requests,\n- remove a request.\n\nA queue delegate is notified when queued work completes.",
+      "source_line_start": 125,
+      "source_line_end": 138
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Stream State",
+      "normalized_title": "Stream State",
+      "key": "stream_state",
+      "path": [
+        "WhiteRaccoon FTP Architecture",
+        "Stream State"
+      ],
+      "content": "`WRStreamInfo` stores network-stream transfer state including:\n\n- read stream,\n- write stream,\n- bytes consumed in the current iteration,\n- total bytes consumed,\n- expected size,\n- transfer buffer.\n\nThis is evidence of an asynchronous buffered transfer architecture within the external library.",
+      "source_line_start": 138,
+      "source_line_end": 151
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Error Model",
+      "normalized_title": "Error Model",
+      "key": "error_model",
+      "path": [
+        "Error Model"
+      ],
+      "content": "The library enumerates both client-side and FTP-server error conditions.\n\nClient-side conditions include:\n\n- missing hostname,\n- inability to open a stream,\n- inability to write a stream,\n- inability to read a stream,\n- missing outgoing data,\n- existing-file conflict,\n- directory overwrite conflict,\n- stream timeout.\n\nFTP-server-side mappings include common status conditions corresponding to codes such as:\n\n- 425,\n- 426,\n- 450,\n- 530,\n- 550,\n- 552,\n- 553.\n\n`WRRequestError` maps underlying errors into the library's FTP-oriented error model.\n\nAgain, this is capability of the incorporated WhiteRaccoon library, not evidence that these abstractions were originally designed by the repository owner.",
+      "source_line_start": 151,
+      "source_line_end": 180
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Delegate-Based Asynchronous Design",
+      "normalized_title": "Delegate-Based Asynchronous Design",
+      "key": "delegate_based_asynchronous_design",
+      "path": [
+        "Delegate-Based Asynchronous Design"
+      ],
+      "content": "The library uses Objective-C protocols to report asynchronous completion.\n\n`WRRequestDelegate` requires callbacks for:\n\n- request completed,\n- request failed.\n\nIt optionally asks whether an existing file should be overwritten.\n\n`WRQueueDelegate` extends the request delegate and adds a queue-completed callback.\n\nThis architecture is consistent with the stream-driven Objective-C networking style used by the library.",
+      "source_line_start": 180,
+      "source_line_end": 195
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "iOS Application Lifecycle Shell",
+      "normalized_title": "iOS Application Lifecycle Shell",
+      "key": "ios_application_lifecycle_shell",
+      "path": [
+        "iOS Application Lifecycle Shell"
+      ],
+      "content": "`SceneDelegate.m` includes the familiar UIKit scene lifecycle callbacks:\n\n- scene connection,\n- scene disconnection,\n- activation,\n- resignation,\n- foreground entry,\n- background entry.\n\nThe file does not itself contain the FTP experiment logic.\n\nIts value in this repository is contextual: the FTP source is being held beside an iOS lifecycle shell associated with the `SedraFTP` application.",
+      "source_line_start": 195,
+      "source_line_end": 210
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Technical Stack Represented",
+      "normalized_title": "Technical Stack Represented",
+      "key": "technical_stack_represented",
+      "path": [
+        "Technical Stack Represented"
+      ],
+      "content": "### Objective-C\n\nObjective-C is the primary source language represented by the repository.\n\nThe repository exposes:\n\n- Objective-C classes,\n- protocols,\n- properties,\n- inheritance,\n- delegates,\n- enums,\n- UIKit lifecycle source,\n- Foundation and CFNetwork integration.\n\nBecause the central networking library is externally attributed, this demonstrates exposure and integration context more strongly than original library authorship.\n\n### CFNetwork\n\nWhiteRaccoon imports CFNetwork and builds FTP behavior around Apple's networking stack.\n\nThis is evidence that the iOS experiment lineage operated close to native Apple networking APIs.\n\n### Foundation Streams\n\nThe FTP implementation models input and output streams and uses `NSStreamDelegate`.\n\nThis gives the repository direct exposure to asynchronous stream-based networking concepts.\n\n### UIKit\n\nThe repository carries a UIKit `SceneDelegate`, linking the networking source to an iOS application environment.",
+      "source_line_start": 210,
+      "source_line_end": 245
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Objective-C",
+      "normalized_title": "Objective-C",
+      "key": "objective_c",
+      "path": [
+        "Technical Stack Represented",
+        "Objective-C"
+      ],
+      "content": "Objective-C is the primary source language represented by the repository.\n\nThe repository exposes:\n\n- Objective-C classes,\n- protocols,\n- properties,\n- inheritance,\n- delegates,\n- enums,\n- UIKit lifecycle source,\n- Foundation and CFNetwork integration.\n\nBecause the central networking library is externally attributed, this demonstrates exposure and integration context more strongly than original library authorship.",
+      "source_line_start": 212,
+      "source_line_end": 229
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "CFNetwork",
+      "normalized_title": "CFNetwork",
+      "key": "cfnetwork",
+      "path": [
+        "Technical Stack Represented",
+        "CFNetwork"
+      ],
+      "content": "WhiteRaccoon imports CFNetwork and builds FTP behavior around Apple's networking stack.\n\nThis is evidence that the iOS experiment lineage operated close to native Apple networking APIs.",
+      "source_line_start": 229,
+      "source_line_end": 235
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Foundation Streams",
+      "normalized_title": "Foundation Streams",
+      "key": "foundation_streams",
+      "path": [
+        "Technical Stack Represented",
+        "Foundation Streams"
+      ],
+      "content": "The FTP implementation models input and output streams and uses `NSStreamDelegate`.\n\nThis gives the repository direct exposure to asynchronous stream-based networking concepts.",
+      "source_line_start": 235,
+      "source_line_end": 241
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "UIKit",
+      "normalized_title": "UIKit",
+      "key": "uikit",
+      "path": [
+        "Technical Stack Represented",
+        "UIKit"
+      ],
+      "content": "The repository carries a UIKit `SceneDelegate`, linking the networking source to an iOS application environment.",
+      "source_line_start": 241,
+      "source_line_end": 245
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Repository Scale",
+      "normalized_title": "Repository Scale",
+      "key": "repository_scale",
+      "path": [
+        "Repository Scale"
+      ],
+      "content": "The repository is intentionally compact.\n\nIts main files are:\n\n- `README.md`,\n- `SceneDelegate.h`,\n- `SceneDelegate.m`,\n- `WhiteRaccoon.h`,\n- `WhiteRaccoon.m`.\n\nThe WhiteRaccoon `.m` implementation is much larger than the application-shell files.\n\nThat imbalance is another reason to preserve authorship provenance carefully: raw line count would otherwise imply that the repository owner authored a much larger Objective-C FTP stack than the source headers support.",
+      "source_line_start": 245,
+      "source_line_end": 261
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "`SwiftFTP` sits at an important transition point in the networking portfolio.\n\nEarlier projects already contain FTP and network experimentation.\n\nLater repositories, especially `SedraFTPVariant` and `Apple-Publication`, turn FTP transfer into a controlled experiment workload with:\n\n- automated repetitions,\n- UDP orchestration,\n- timing,\n- generated server-side data,\n- desktop control interfaces,\n- and publication-oriented processing.\n\n`SwiftFTP` is therefore best understood as an early iOS FTP source/integration checkpoint in that progression.\n\nIt preserves the native iOS networking substrate that later experiments build around.",
+      "source_line_start": 261,
+      "source_line_end": 280
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Skills and Concepts Evidenced",
+      "normalized_title": "Skills and Concepts Evidenced",
+      "key": "skills_and_concepts_evidenced",
+      "path": [
+        "Skills and Concepts Evidenced"
+      ],
+      "content": "### Integration and Source Evaluation\n\nThe repository demonstrates the need to identify the difference between:\n\n- application-owned code,\n- platform boilerplate,\n- third-party library source.\n\nThat provenance distinction is especially relevant when integrating legacy Objective-C libraries into research tooling.\n\n### Native iOS Networking Exposure\n\nThe repository provides concrete exposure to:\n\n- Objective-C,\n- UIKit application lifecycle,\n- Foundation,\n- CFNetwork,\n- stream-oriented networking,\n- delegate callbacks,\n- FTP request abstractions.\n\n### Legacy Library Integration\n\nWhiteRaccoon is an older externally authored Objective-C FTP library.\n\nIts presence in a 2025 research snapshot shows work with legacy/native networking code rather than a greenfield modern HTTP-only application stack.",
+      "source_line_start": 280,
+      "source_line_end": 310
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Integration and Source Evaluation",
+      "normalized_title": "Integration and Source Evaluation",
+      "key": "integration_and_source_evaluation",
+      "path": [
+        "Skills and Concepts Evidenced",
+        "Integration and Source Evaluation"
+      ],
+      "content": "The repository demonstrates the need to identify the difference between:\n\n- application-owned code,\n- platform boilerplate,\n- third-party library source.\n\nThat provenance distinction is especially relevant when integrating legacy Objective-C libraries into research tooling.",
+      "source_line_start": 282,
+      "source_line_end": 292
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Native iOS Networking Exposure",
+      "normalized_title": "Native iOS Networking Exposure",
+      "key": "native_ios_networking_exposure",
+      "path": [
+        "Skills and Concepts Evidenced",
+        "Native iOS Networking Exposure"
+      ],
+      "content": "The repository provides concrete exposure to:\n\n- Objective-C,\n- UIKit application lifecycle,\n- Foundation,\n- CFNetwork,\n- stream-oriented networking,\n- delegate callbacks,\n- FTP request abstractions.",
+      "source_line_start": 292,
+      "source_line_end": 304
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Legacy Library Integration",
+      "normalized_title": "Legacy Library Integration",
+      "key": "legacy_library_integration",
+      "path": [
+        "Skills and Concepts Evidenced",
+        "Legacy Library Integration"
+      ],
+      "content": "WhiteRaccoon is an older externally authored Objective-C FTP library.\n\nIts presence in a 2025 research snapshot shows work with legacy/native networking code rather than a greenfield modern HTTP-only application stack.",
+      "source_line_start": 304,
+      "source_line_end": 310
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`SwiftFTP` is not a large standalone product.\n\nIt is a historically useful iOS networking source snapshot in the portfolio's FTP experimentation lineage.\n\nIts central networking implementation is WhiteRaccoon, which is explicitly attributed to Valentin Radu and therefore must remain classified as external library code.\n\nThe surrounding repository places that library within a `SedraFTP` / University of Waterloo application context.\n\nFor portfolio reasoning, the strongest conclusions are therefore about native iOS networking integration, Objective-C/CFNetwork exposure, and the early source substrate for later FTP experiment automation.\n\n# Project Tags\n\n- `objective-c`\n- `ios`\n- `uikit`\n- `foundation`\n- `cfnetwork`\n- `ftp`\n- `ftp-client`\n- `white-raccoon`\n- `nsstream`\n- `delegate-pattern`\n- `asynchronous-networking`\n- `legacy-library-integration`\n- `external-library-integration`\n- `uwaterloo-research-context`\n- `research-networking`",
+      "source_line_start": 310,
+      "source_line_end": 339
+    }
+  ],
+  "raw_analysis": "# SwiftFTP\n\n## Repository Identity\n\n- Repository: 125 / 138\n- Name: `SwiftFTP`\n- Start date: 2025-11-08\n- Latest meaningful update: 2025-11-08\n- Latest meaningful commit: `cde6612f938d8ebd8b5e4a6a3c005a81ddc9a882`\n- Primary language represented by repository metadata: Objective-C\n- Technical field: iOS networking and FTP client infrastructure\n- Context: research-oriented iOS networking source snapshot\n- Collaboration type: `research-collaboration-with-external-components`\n\n## Evidence and Authorship Boundary\n\nThis repository is important primarily as an integration and provenance artifact rather than as evidence that every checked-in Objective-C line was authored by the repository owner.\n\nThe dominant FTP implementation is the `WhiteRaccoon` library.\n\nIts source header explicitly states that WhiteRaccoon was created by **Valentin Radu on August 23, 2011** and includes the original permissive license notice.\n\nAccordingly, the WhiteRaccoon implementation is treated here as externally authored library code incorporated into the working source snapshot.\n\nThe repository also contains `SceneDelegate.m`.\n\nThat file identifies the project as `SedraFTP` and carries a `Created by UWaterloo on 10/9/25` source header.\n\nThe body is the standard iOS scene-lifecycle delegate shape generated for UIKit applications.\n\nThe strongest owner-relevant evidence therefore concerns assembling and working with an iOS FTP networking codebase in a University of Waterloo research context, not original authorship of the WhiteRaccoon network stack.\n\nThis distinction is essential for later RAG queries about Objective-C depth or FTP implementation ownership.\n\n## What This Repository Represents\n\n`SwiftFTP` is a compact iOS networking source snapshot centered on an FTP client library and an iOS application lifecycle shell.\n\nThe checked-in source exposes the low-level architecture of an Objective-C FTP client that is built on Apple networking primitives.\n\nThe repository is historically useful because it appears before later repositories that build much richer FTP experiment automation around the same research problem.\n\nIn that sense, it records an early stage of the portfolio's FTP-over-iOS experimentation lineage.\n\nThe repository contains two distinct source categories:\n\n1. an externally authored FTP library implementation,\n2. an iOS application shell associated with the SedraFTP research application.\n\nThe codebase is small, but the network library itself exposes a broad range of FTP operations and asynchronous stream behavior.\n\n## WhiteRaccoon FTP Architecture\n\nWhiteRaccoon imports:\n\n- `Foundation`,\n- `CFNetwork`.\n\nThe library defines a set of request abstractions around FTP operations.\n\n### Request Types\n\nThe header defines request types for:\n\n- upload,\n- download,\n- delete,\n- directory creation,\n- directory listing.\n\nThis provides a request-oriented model rather than placing every FTP operation inside one procedural function.\n\n### `WRBase`\n\n`WRBase` carries shared FTP state such as:\n\n- path,\n- hostname,\n- username,\n- password,\n- URL scheme,\n- passive-mode configuration,\n- generated credentials,\n- full URL,\n- error state.\n\nIt also exposes lifecycle methods such as `start` and `destroy`.\n\n### `WRRequest`\n\n`WRRequest` extends the base abstraction with request-specific state.\n\nIt includes:\n\n- previous and next request references,\n- request type,\n- delegate,\n- stream information,\n- stream-open state.\n\nThe linked request references support the queue abstraction used elsewhere in the library.\n\n### Download Requests\n\n`WRRequestDownload` conforms to `NSStreamDelegate`.\n\nIt stores received data and participates in the asynchronous stream-driven transfer model.\n\n### Upload Requests\n\n`WRRequestUpload` also uses stream callbacks.\n\nIt contains outgoing data and can interact with a directory-list request before an upload.\n\n### Filesystem Operations\n\nSpecialized request classes exist for:\n\n- delete,\n- create directory,\n- list directory.\n\nThis means the embedded library covers more than a single download path.\n\n### Request Queue\n\n`WRRequestQueue` provides ordered request execution.\n\nThe API can:\n\n- add one request,\n- add a request at the front,\n- add an array of requests,\n- remove a request.\n\nA queue delegate is notified when queued work completes.\n\n### Stream State\n\n`WRStreamInfo` stores network-stream transfer state including:\n\n- read stream,\n- write stream,\n- bytes consumed in the current iteration,\n- total bytes consumed,\n- expected size,\n- transfer buffer.\n\nThis is evidence of an asynchronous buffered transfer architecture within the external library.\n\n## Error Model\n\nThe library enumerates both client-side and FTP-server error conditions.\n\nClient-side conditions include:\n\n- missing hostname,\n- inability to open a stream,\n- inability to write a stream,\n- inability to read a stream,\n- missing outgoing data,\n- existing-file conflict,\n- directory overwrite conflict,\n- stream timeout.\n\nFTP-server-side mappings include common status conditions corresponding to codes such as:\n\n- 425,\n- 426,\n- 450,\n- 530,\n- 550,\n- 552,\n- 553.\n\n`WRRequestError` maps underlying errors into the library's FTP-oriented error model.\n\nAgain, this is capability of the incorporated WhiteRaccoon library, not evidence that these abstractions were originally designed by the repository owner.\n\n## Delegate-Based Asynchronous Design\n\nThe library uses Objective-C protocols to report asynchronous completion.\n\n`WRRequestDelegate` requires callbacks for:\n\n- request completed,\n- request failed.\n\nIt optionally asks whether an existing file should be overwritten.\n\n`WRQueueDelegate` extends the request delegate and adds a queue-completed callback.\n\nThis architecture is consistent with the stream-driven Objective-C networking style used by the library.\n\n## iOS Application Lifecycle Shell\n\n`SceneDelegate.m` includes the familiar UIKit scene lifecycle callbacks:\n\n- scene connection,\n- scene disconnection,\n- activation,\n- resignation,\n- foreground entry,\n- background entry.\n\nThe file does not itself contain the FTP experiment logic.\n\nIts value in this repository is contextual: the FTP source is being held beside an iOS lifecycle shell associated with the `SedraFTP` application.\n\n## Technical Stack Represented\n\n### Objective-C\n\nObjective-C is the primary source language represented by the repository.\n\nThe repository exposes:\n\n- Objective-C classes,\n- protocols,\n- properties,\n- inheritance,\n- delegates,\n- enums,\n- UIKit lifecycle source,\n- Foundation and CFNetwork integration.\n\nBecause the central networking library is externally attributed, this demonstrates exposure and integration context more strongly than original library authorship.\n\n### CFNetwork\n\nWhiteRaccoon imports CFNetwork and builds FTP behavior around Apple's networking stack.\n\nThis is evidence that the iOS experiment lineage operated close to native Apple networking APIs.\n\n### Foundation Streams\n\nThe FTP implementation models input and output streams and uses `NSStreamDelegate`.\n\nThis gives the repository direct exposure to asynchronous stream-based networking concepts.\n\n### UIKit\n\nThe repository carries a UIKit `SceneDelegate`, linking the networking source to an iOS application environment.\n\n## Repository Scale\n\nThe repository is intentionally compact.\n\nIts main files are:\n\n- `README.md`,\n- `SceneDelegate.h`,\n- `SceneDelegate.m`,\n- `WhiteRaccoon.h`,\n- `WhiteRaccoon.m`.\n\nThe WhiteRaccoon `.m` implementation is much larger than the application-shell files.\n\nThat imbalance is another reason to preserve authorship provenance carefully: raw line count would otherwise imply that the repository owner authored a much larger Objective-C FTP stack than the source headers support.\n\n## Historical Portfolio Significance\n\n`SwiftFTP` sits at an important transition point in the networking portfolio.\n\nEarlier projects already contain FTP and network experimentation.\n\nLater repositories, especially `SedraFTPVariant` and `Apple-Publication`, turn FTP transfer into a controlled experiment workload with:\n\n- automated repetitions,\n- UDP orchestration,\n- timing,\n- generated server-side data,\n- desktop control interfaces,\n- and publication-oriented processing.\n\n`SwiftFTP` is therefore best understood as an early iOS FTP source/integration checkpoint in that progression.\n\nIt preserves the native iOS networking substrate that later experiments build around.\n\n## Skills and Concepts Evidenced\n\n### Integration and Source Evaluation\n\nThe repository demonstrates the need to identify the difference between:\n\n- application-owned code,\n- platform boilerplate,\n- third-party library source.\n\nThat provenance distinction is especially relevant when integrating legacy Objective-C libraries into research tooling.\n\n### Native iOS Networking Exposure\n\nThe repository provides concrete exposure to:\n\n- Objective-C,\n- UIKit application lifecycle,\n- Foundation,\n- CFNetwork,\n- stream-oriented networking,\n- delegate callbacks,\n- FTP request abstractions.\n\n### Legacy Library Integration\n\nWhiteRaccoon is an older externally authored Objective-C FTP library.\n\nIts presence in a 2025 research snapshot shows work with legacy/native networking code rather than a greenfield modern HTTP-only application stack.\n\n## Overall Project Narrative\n\n`SwiftFTP` is not a large standalone product.\n\nIt is a historically useful iOS networking source snapshot in the portfolio's FTP experimentation lineage.\n\nIts central networking implementation is WhiteRaccoon, which is explicitly attributed to Valentin Radu and therefore must remain classified as external library code.\n\nThe surrounding repository places that library within a `SedraFTP` / University of Waterloo application context.\n\nFor portfolio reasoning, the strongest conclusions are therefore about native iOS networking integration, Objective-C/CFNetwork exposure, and the early source substrate for later FTP experiment automation.\n\n# Project Tags\n\n- `objective-c`\n- `ios`\n- `uikit`\n- `foundation`\n- `cfnetwork`\n- `ftp`\n- `ftp-client`\n- `white-raccoon`\n- `nsstream`\n- `delegate-pattern`\n- `asynchronous-networking`\n- `legacy-library-integration`\n- `external-library-integration`\n- `uwaterloo-research-context`\n- `research-networking`\n"
+}

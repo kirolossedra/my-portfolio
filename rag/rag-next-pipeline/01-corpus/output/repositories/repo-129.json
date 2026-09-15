@@ -1,0 +1,812 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 129,
+  "repository_total": 134,
+  "repository_name": "Apple-Publication",
+  "header_title": "Apple-Publication",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-129-Apple-Publication/README.md",
+    "line_start": 1,
+    "line_end": 626,
+    "sha256": "0c5e80fdc98868146de88669341a80599082f33e880fa569866e04ff919eaf3c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "research-collaboration",
+    "research-publication-tooling",
+    "python",
+    "tkinter",
+    "pyqt6",
+    "pyside6",
+    "ftp",
+    "ftplib",
+    "udp-control-plane",
+    "iperf3",
+    "network-test-automation",
+    "repeated-trials",
+    "experiment-scripting",
+    "domain-specific-language",
+    "parser",
+    "syntax-validation",
+    "semantic-validation",
+    "comment-parsing",
+    "interface-binding",
+    "process-automation",
+    "tshark",
+    "tcp",
+    "tcp-ramp-analysis",
+    "tcp-slow-start-analysis",
+    "cumulative-bytes",
+    "doubling-point-analysis",
+    "packet-capture-analysis",
+    "throughput-analysis",
+    "transfer-time-analysis",
+    "chartjs",
+    "browser-analysis-tools",
+    "csv-export",
+    "png-export",
+    "cross-repository-code-reuse"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 129 / 138\n- Name: `Apple-Publication`\n- Start date: 2026-02-07\n- Latest meaningful update: 2026-03-05\n- Latest meaningful commit: `81764cf2b20c5d4bc41f97d69d0ca1744bb00888`\n- Primary repository language metadata: Python\n- Technical field: wireless-network experiment automation and publication analysis\n- Context: research / publication tooling\n- Collaboration type: `research-collaboration`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration, Reuse, and Authorship Context"
+      ],
+      "text": "## Collaboration, Reuse, and Authorship Context\nThis repository contains both new repository-specific analysis work and direct reuse from earlier portfolio repositories.\n\nThat lineage should be preserved rather than hidden.\n\n`Server/AutomationStarter.py` has the same Git blob identity as `Server/starter.py` in `SedraFTPVariant`.\n\nIt is therefore a reused experiment-automation artifact, not a separate independent implementation created for this repository.\n\n`Processing/FinishTime.html` has the same Git blob identity as NetSeer's FTP-analysis page.\n\nIt is also a reused analysis artifact.\n\n`Client/LaptopFTPClient.py` is an evolved copy of the same general Tkinter FTP automation architecture seen in `SedraFTPVariant`.\n\nBy contrast, the repository adds distinct capabilities such as:\n\n- `LaptopIperf3Suite.py`,\n- a Net++ mini command language,\n- a PyQt6 build/run interface,\n- `Throughput.html` iteration,\n- `tcp_dump_gui` TCP ramp analysis.\n\nThis makes the repository strong evidence of **reuse plus extension**."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 129 / 138\n- Name: `Apple-Publication`\n- Start date: 2026-02-07\n- Latest meaningful update: 2026-03-05\n- Latest meaningful commit: `81764cf2b20c5d4bc41f97d69d0ca1744bb00888`\n- Primary repository language metadata: Python\n- Technical field: wireless-network experiment automation and publication analysis\n- Context: research / publication tooling\n- Collaboration type: `research-collaboration`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration, Reuse, and Authorship Context",
+      "normalized_title": "Collaboration, Reuse, and Authorship Context",
+      "key": "collaboration_reuse_and_authorship_context",
+      "path": [
+        "Collaboration, Reuse, and Authorship Context"
+      ],
+      "content": "This repository contains both new repository-specific analysis work and direct reuse from earlier portfolio repositories.\n\nThat lineage should be preserved rather than hidden.\n\n`Server/AutomationStarter.py` has the same Git blob identity as `Server/starter.py` in `SedraFTPVariant`.\n\nIt is therefore a reused experiment-automation artifact, not a separate independent implementation created for this repository.\n\n`Processing/FinishTime.html` has the same Git blob identity as NetSeer's FTP-analysis page.\n\nIt is also a reused analysis artifact.\n\n`Client/LaptopFTPClient.py` is an evolved copy of the same general Tkinter FTP automation architecture seen in `SedraFTPVariant`.\n\nBy contrast, the repository adds distinct capabilities such as:\n\n- `LaptopIperf3Suite.py`,\n- a Net++ mini command language,\n- a PyQt6 build/run interface,\n- `Throughput.html` iteration,\n- `tcp_dump_gui` TCP ramp analysis.\n\nThis makes the repository strong evidence of **reuse plus extension**.",
+      "source_line_start": 15,
+      "source_line_end": 41
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Apple-Publication` is a collection of client, server, and processing tools assembled for controlled network-performance experiments and publication-oriented analysis.\n\nThe repository spans three broad responsibilities:\n\n```text\nClient/\n    workload execution and automation\n\nServer/\n    experiment coordination / capture analysis\n\nProcessing/\n    transfer statistics and visualization\n```\n\nThe tooling covers two major workload families:\n\n- FTP transfer experiments,\n- iperf3 TCP throughput experiments.\n\nIt also contains post-processing for:\n\n- transfer-time statistics,\n- throughput plots,\n- TCP ramp/slow-start behavior.",
+      "source_line_start": 41,
+      "source_line_end": 69
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "FTP Automation Continuity",
+      "normalized_title": "FTP Automation Continuity",
+      "key": "ftp_automation_continuity",
+      "path": [
+        "FTP Automation Continuity"
+      ],
+      "content": "`LaptopFTPClient.py` continues the earlier Tkinter FTP automation design.\n\nIts module description identifies:\n\n- FTP client behavior,\n- automated tests,\n- UDP control.\n\nThe configurable dimensions include:\n\n- FTP host,\n- FTP port,\n- user,\n- password,\n- remote file,\n- save location,\n- automated test count,\n- separation time,\n- UDP listener/sender addresses.\n\n### Transfer Engine\n\nThe client uses Python's `ftplib`.\n\nIts transfer architecture preserves the earlier safety pattern of:\n\n- writing to a partial file,\n- reporting progress,\n- tracking bytes,\n- timing the transfer,\n- replacing the final file on completion,\n- cleaning partial state after failure.\n\n### Remote Experiment Commands\n\nThe client recognizes UDP control commands including:\n\n- `START_DOWNLOAD`,\n- `STOP_DOWNLOAD`,\n- `START_AUTOTESTS`,\n- `STOP_AUTOTESTS`.\n\nThis keeps experiment control separate from the bulk data transfer.\n\n### Reuse Significance\n\nThe repeated architecture across `SedraFTPVariant` and `Apple-Publication` is itself useful evidence.\n\nIt shows a test harness being carried forward into a publication workflow rather than rewritten from scratch for each experiment.",
+      "source_line_start": 69,
+      "source_line_end": 121
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Transfer Engine",
+      "normalized_title": "Transfer Engine",
+      "key": "transfer_engine",
+      "path": [
+        "FTP Automation Continuity",
+        "Transfer Engine"
+      ],
+      "content": "The client uses Python's `ftplib`.\n\nIts transfer architecture preserves the earlier safety pattern of:\n\n- writing to a partial file,\n- reporting progress,\n- tracking bytes,\n- timing the transfer,\n- replacing the final file on completion,\n- cleaning partial state after failure.",
+      "source_line_start": 91,
+      "source_line_end": 104
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Remote Experiment Commands",
+      "normalized_title": "Remote Experiment Commands",
+      "key": "remote_experiment_commands",
+      "path": [
+        "FTP Automation Continuity",
+        "Remote Experiment Commands"
+      ],
+      "content": "The client recognizes UDP control commands including:\n\n- `START_DOWNLOAD`,\n- `STOP_DOWNLOAD`,\n- `START_AUTOTESTS`,\n- `STOP_AUTOTESTS`.\n\nThis keeps experiment control separate from the bulk data transfer.",
+      "source_line_start": 104,
+      "source_line_end": 115
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Reuse Significance",
+      "normalized_title": "Reuse Significance",
+      "key": "reuse_significance",
+      "path": [
+        "FTP Automation Continuity",
+        "Reuse Significance"
+      ],
+      "content": "The repeated architecture across `SedraFTPVariant` and `Apple-Publication` is itself useful evidence.\n\nIt shows a test harness being carried forward into a publication workflow rather than rewritten from scratch for each experiment.",
+      "source_line_start": 115,
+      "source_line_end": 121
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Net++ iperf3 Suite Runner",
+      "normalized_title": "Net++ iperf3 Suite Runner",
+      "key": "net_iperf3_suite_runner",
+      "path": [
+        "Net++ iperf3 Suite Runner"
+      ],
+      "content": "`Client/LaptopIperf3Suite.py` adds a distinctly different automation mechanism.\n\nThe file calls itself:\n\n`Net++ Suite Runner (iperf3 client automation) — PyQt6`.\n\nThe application introduces a tiny domain-specific language for describing experiment sequences.\n\nExample source form:\n\n```text\nautomate(duration=30,cooldown=30,n=50);\nsleep(10);\n```\n\nThis shifts experiment automation from hard-coded GUI choices toward a declarative script.",
+      "source_line_start": 121,
+      "source_line_end": 140
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Net++ Command Model",
+      "normalized_title": "Net++ Command Model",
+      "key": "net_command_model",
+      "path": [
+        "Net++ Command Model"
+      ],
+      "content": "The parser currently recognizes two command families:\n\n- `automate`,\n- `sleep`.\n\nThe language uses semicolons to delimit top-level commands.\n\nArguments can appear inside parentheses.\n\n### `automate`\n\nThe command requires:\n\n- `duration`,\n- `cooldown`,\n- `n`.\n\nThese parameters describe:\n\n- duration of each iperf test,\n- cooldown between tests,\n- repetition count.\n\n### `sleep`\n\nThe suite can explicitly insert idle time between experiment phases.",
+      "source_line_start": 140,
+      "source_line_end": 169
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "`automate`",
+      "normalized_title": "automate",
+      "key": "automate",
+      "path": [
+        "Net++ Command Model",
+        "`automate`"
+      ],
+      "content": "The command requires:\n\n- `duration`,\n- `cooldown`,\n- `n`.\n\nThese parameters describe:\n\n- duration of each iperf test,\n- cooldown between tests,\n- repetition count.",
+      "source_line_start": 151,
+      "source_line_end": 165
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "`sleep`",
+      "normalized_title": "sleep",
+      "key": "sleep",
+      "path": [
+        "Net++ Command Model",
+        "`sleep`"
+      ],
+      "content": "The suite can explicitly insert idle time between experiment phases.",
+      "source_line_start": 165,
+      "source_line_end": 169
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Parser Engineering",
+      "normalized_title": "Parser Engineering",
+      "key": "parser_engineering",
+      "path": [
+        "Parser Engineering"
+      ],
+      "content": "`NetPPParser` is a real parser for the intentionally small command language.\n\n### Top-Level Command Splitting\n\nThe parser scans source character by character.\n\nIt tracks:\n\n- parenthesis depth,\n- single-quoted strings,\n- double-quoted strings,\n- escape state.\n\nA semicolon only terminates a command when the parser is outside nested parentheses and quoted strings.\n\nThis is more robust than blindly splitting the source on every semicolon.\n\n### Comment Handling\n\nThe current parser removes `#` comments before command parsing.\n\nThe repository commit history explicitly records work to fix comment parsing.\n\nThat gives a direct example of language-tooling iteration based on a parser edge case.\n\n### Argument Parsing\n\nThe parser supports:\n\n- named arguments,\n- positional values,\n- signed integers,\n- quoted strings.\n\nIdentifier names are validated.\n\n### Build Diagnostics\n\nThe parser returns `BuildIssue` objects with:\n\n- severity,\n- message,\n- source position.\n\nThe application can therefore perform a build/syntax-check phase before execution.\n\n### Semantic Validation\n\nFor `automate`, validation includes:\n\n- required arguments,\n- integer type checks,\n- positive duration,\n- nonnegative cooldown,\n- valid repetition count.\n\nThis is not just string parsing.\n\nThe application performs basic semantic validation of the experiment program.",
+      "source_line_start": 169,
+      "source_line_end": 231
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Top-Level Command Splitting",
+      "normalized_title": "Top-Level Command Splitting",
+      "key": "top_level_command_splitting",
+      "path": [
+        "Parser Engineering",
+        "Top-Level Command Splitting"
+      ],
+      "content": "The parser scans source character by character.\n\nIt tracks:\n\n- parenthesis depth,\n- single-quoted strings,\n- double-quoted strings,\n- escape state.\n\nA semicolon only terminates a command when the parser is outside nested parentheses and quoted strings.\n\nThis is more robust than blindly splitting the source on every semicolon.",
+      "source_line_start": 173,
+      "source_line_end": 188
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Comment Handling",
+      "normalized_title": "Comment Handling",
+      "key": "comment_handling",
+      "path": [
+        "Parser Engineering",
+        "Comment Handling"
+      ],
+      "content": "The current parser removes `#` comments before command parsing.\n\nThe repository commit history explicitly records work to fix comment parsing.\n\nThat gives a direct example of language-tooling iteration based on a parser edge case.",
+      "source_line_start": 188,
+      "source_line_end": 196
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Argument Parsing",
+      "normalized_title": "Argument Parsing",
+      "key": "argument_parsing",
+      "path": [
+        "Parser Engineering",
+        "Argument Parsing"
+      ],
+      "content": "The parser supports:\n\n- named arguments,\n- positional values,\n- signed integers,\n- quoted strings.\n\nIdentifier names are validated.",
+      "source_line_start": 196,
+      "source_line_end": 207
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Build Diagnostics",
+      "normalized_title": "Build Diagnostics",
+      "key": "build_diagnostics",
+      "path": [
+        "Parser Engineering",
+        "Build Diagnostics"
+      ],
+      "content": "The parser returns `BuildIssue` objects with:\n\n- severity,\n- message,\n- source position.\n\nThe application can therefore perform a build/syntax-check phase before execution.",
+      "source_line_start": 207,
+      "source_line_end": 217
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Semantic Validation",
+      "normalized_title": "Semantic Validation",
+      "key": "semantic_validation",
+      "path": [
+        "Parser Engineering",
+        "Semantic Validation"
+      ],
+      "content": "For `automate`, validation includes:\n\n- required arguments,\n- integer type checks,\n- positive duration,\n- nonnegative cooldown,\n- valid repetition count.\n\nThis is not just string parsing.\n\nThe application performs basic semantic validation of the experiment program.",
+      "source_line_start": 217,
+      "source_line_end": 231
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Build / Run / Stop Workflow",
+      "normalized_title": "Build / Run / Stop Workflow",
+      "key": "build_run_stop_workflow",
+      "path": [
+        "Build / Run / Stop Workflow"
+      ],
+      "content": "The PyQt6 application exposes distinct concepts of:\n\n- Build,\n- Run,\n- Stop.\n\nThat resembles a miniature development environment for experiment scripts.\n\nEach command can have a visible execution state.\n\nThe documented color convention is:\n\n- yellow: running,\n- green: passed,\n- red: failed.\n\nThis makes a long experiment suite inspectable at command granularity.",
+      "source_line_start": 231,
+      "source_line_end": 251
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "iperf3 Integration",
+      "normalized_title": "iperf3 Integration",
+      "key": "iperf3_integration",
+      "path": [
+        "iperf3 Integration"
+      ],
+      "content": "The Net++ runner executes TCP iperf3 client tests.\n\nThe design allows binding to a selected local IPv4/interface.\n\nThis is important when the research machine has multiple network paths and the experiment must force traffic onto a specific adapter.\n\n### Success Criteria\n\nThe source documents success as:\n\n- process exit code zero,\n- and, when JSON output is requested, successful JSON parsing without an iperf-reported error.\n\nThat is stronger than assuming process launch equals a valid experiment.",
+      "source_line_start": 251,
+      "source_line_end": 268
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Success Criteria",
+      "normalized_title": "Success Criteria",
+      "key": "success_criteria",
+      "path": [
+        "iperf3 Integration",
+        "Success Criteria"
+      ],
+      "content": "The source documents success as:\n\n- process exit code zero,\n- and, when JSON output is requested, successful JSON parsing without an iperf-reported error.\n\nThat is stronger than assuming process launch equals a valid experiment.",
+      "source_line_start": 259,
+      "source_line_end": 268
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "PyQt6 Desktop Engineering",
+      "normalized_title": "PyQt6 Desktop Engineering",
+      "key": "pyqt6_desktop_engineering",
+      "path": [
+        "PyQt6 Desktop Engineering"
+      ],
+      "content": "The suite imports a broad PyQt6 interface layer including:\n\n- main window,\n- plain-text editor,\n- status areas,\n- toolbar actions,\n- forms,\n- combo boxes,\n- spin boxes,\n- checkboxes,\n- syntax highlighting.\n\nThe interface therefore treats the Net++ source as an editable experiment artifact.",
+      "source_line_start": 268,
+      "source_line_end": 284
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Network Interface Awareness",
+      "normalized_title": "Network Interface Awareness",
+      "key": "network_interface_awareness",
+      "path": [
+        "Network Interface Awareness"
+      ],
+      "content": "The runner uses `psutil`, `socket`, and platform/process APIs.\n\nThis supports identifying local network interfaces and binding the iperf workload to a selected address.\n\nThe capability aligns with the broader portfolio pattern of ensuring a measurement traverses the intended Wi-Fi/cellular path.",
+      "source_line_start": 284,
+      "source_line_end": 292
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Throughput Processing Page",
+      "normalized_title": "Throughput Processing Page",
+      "key": "throughput_processing_page",
+      "path": [
+        "Throughput Processing Page"
+      ],
+      "content": "`Processing/Throughput.html` is a browser-based network-log processor.\n\nIt uses:\n\n- Chart.js,\n- Moment.js,\n- FileSaver.js.\n\nThe page includes a substantial interactive UI for:\n\n- log input,\n- processing,\n- plotting,\n- configurable display,\n- chart export.\n\n### Plot Controls\n\nThe page contains:\n\n- upload/download views,\n- moving-window controls,\n- chart colors,\n- editable chart titles,\n- marker controls.\n\nThe marker UI indicates later extension beyond the earlier NetSeer throughput processor.\n\n### Browser-Based Workflow\n\nKeeping this processor as standalone HTML makes it easy to use on experiment outputs without starting an application server.\n\nThis pattern appears repeatedly across the research portfolio.",
+      "source_line_start": 292,
+      "source_line_end": 328
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Plot Controls",
+      "normalized_title": "Plot Controls",
+      "key": "plot_controls",
+      "path": [
+        "Throughput Processing Page",
+        "Plot Controls"
+      ],
+      "content": "The page contains:\n\n- upload/download views,\n- moving-window controls,\n- chart colors,\n- editable chart titles,\n- marker controls.\n\nThe marker UI indicates later extension beyond the earlier NetSeer throughput processor.",
+      "source_line_start": 310,
+      "source_line_end": 322
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Browser-Based Workflow",
+      "normalized_title": "Browser-Based Workflow",
+      "key": "browser_based_workflow",
+      "path": [
+        "Throughput Processing Page",
+        "Browser-Based Workflow"
+      ],
+      "content": "Keeping this processor as standalone HTML makes it easy to use on experiment outputs without starting an application server.\n\nThis pattern appears repeatedly across the research portfolio.",
+      "source_line_start": 322,
+      "source_line_end": 328
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Reused Transfer-Time Analyzer",
+      "normalized_title": "Reused Transfer-Time Analyzer",
+      "key": "reused_transfer_time_analyzer",
+      "path": [
+        "Reused Transfer-Time Analyzer"
+      ],
+      "content": "`Processing/FinishTime.html` is byte-identical to the FTP analyzer used in NetSeer.\n\nThat tool parses FTP log records containing:\n\n- completion state,\n- elapsed seconds,\n- transferred bytes.\n\nIt computes:\n\n- unique entries,\n- completed entries,\n- average time,\n- standard deviation of time,\n- average speed,\n- standard deviation of speed.\n\nIt also produces chronological plots.\n\nIn this repository the important fact is **reuse in the publication workflow**, not independent implementation.",
+      "source_line_start": 328,
+      "source_line_end": 351
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "TCP Ramp / Slow-Start Analysis",
+      "normalized_title": "TCP Ramp / Slow-Start Analysis",
+      "key": "tcp_ramp_slow_start_analysis",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis"
+      ],
+      "content": "The latest repository addition, `Server/tcp_dump_gui`, adds a distinct transport-layer analysis tool.\n\nIts module description says it analyzes TCP ramp-up / doubling behavior from a tshark `io,stat` dump.\n\n### Input Generation\n\nThe expected source is a command shaped like:\n\n```text\ntshark -r loopback.pcap -n -q -z io,stat,...\n```\n\nThis converts packet-capture evidence into fine-grained per-time-bin byte totals.\n\n### Parser\n\nThe GUI parses:\n\n- interval start,\n- interval end,\n- bytes delivered in the bin.\n\nThese are represented as an `IOStatSeries` dataclass.\n\n### Cumulative Delivered Bytes\n\nThe tool computes cumulative bytes:\n\n```text\nB(t)\n```\n\nby summing delivered bytes across time bins.\n\n### Doubling Points\n\nA reference cumulative byte count `B0` is selected.\n\nThe tool finds the first timestamp at which cumulative data crosses:\n\n```text\nB0 × 2^k\n```\n\nfor successive values of `k`.\n\nThis converts raw packet-delivery output into explicit ramp/doubling timing evidence.\n\n### Delivery Rate\n\nThe program also computes a per-bin rate:\n\n```text\nR(t) = bytes_in_bin / bin_width\n```\n\n### Visualization\n\nThe GUI can plot:\n\n- cumulative delivered bytes,\n- per-bin delivery rate,\n- vertical markers for doubling points.\n\n### Focus Window\n\nThe user can restrict the visualization to the first few milliseconds.\n\nThat is useful for studying the early connection phase where TCP ramp-up behavior is most visible.\n\n### Export\n\nThe tool supports:\n\n- PNG plot export,\n- CSV export of nonzero bins,\n- copyable doubling table.\n\nThis is a publication-friendly transformation from packet-capture data to structured transport-layer figures/tables.",
+      "source_line_start": 351,
+      "source_line_end": 433
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Input Generation",
+      "normalized_title": "Input Generation",
+      "key": "input_generation",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Input Generation"
+      ],
+      "content": "The expected source is a command shaped like:\n\n```text\ntshark -r loopback.pcap -n -q -z io,stat,...\n```\n\nThis converts packet-capture evidence into fine-grained per-time-bin byte totals.",
+      "source_line_start": 357,
+      "source_line_end": 367
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Parser",
+      "normalized_title": "Parser",
+      "key": "parser",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Parser"
+      ],
+      "content": "The GUI parses:\n\n- interval start,\n- interval end,\n- bytes delivered in the bin.\n\nThese are represented as an `IOStatSeries` dataclass.",
+      "source_line_start": 367,
+      "source_line_end": 377
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Cumulative Delivered Bytes",
+      "normalized_title": "Cumulative Delivered Bytes",
+      "key": "cumulative_delivered_bytes",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Cumulative Delivered Bytes"
+      ],
+      "content": "The tool computes cumulative bytes:\n\n```text\nB(t)\n```\n\nby summing delivered bytes across time bins.",
+      "source_line_start": 377,
+      "source_line_end": 387
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Doubling Points",
+      "normalized_title": "Doubling Points",
+      "key": "doubling_points",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Doubling Points"
+      ],
+      "content": "A reference cumulative byte count `B0` is selected.\n\nThe tool finds the first timestamp at which cumulative data crosses:\n\n```text\nB0 × 2^k\n```\n\nfor successive values of `k`.\n\nThis converts raw packet-delivery output into explicit ramp/doubling timing evidence.",
+      "source_line_start": 387,
+      "source_line_end": 401
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Delivery Rate",
+      "normalized_title": "Delivery Rate",
+      "key": "delivery_rate",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Delivery Rate"
+      ],
+      "content": "The program also computes a per-bin rate:\n\n```text\nR(t) = bytes_in_bin / bin_width\n```",
+      "source_line_start": 401,
+      "source_line_end": 409
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Visualization",
+      "normalized_title": "Visualization",
+      "key": "visualization",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Visualization"
+      ],
+      "content": "The GUI can plot:\n\n- cumulative delivered bytes,\n- per-bin delivery rate,\n- vertical markers for doubling points.",
+      "source_line_start": 409,
+      "source_line_end": 417
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Focus Window",
+      "normalized_title": "Focus Window",
+      "key": "focus_window",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Focus Window"
+      ],
+      "content": "The user can restrict the visualization to the first few milliseconds.\n\nThat is useful for studying the early connection phase where TCP ramp-up behavior is most visible.",
+      "source_line_start": 417,
+      "source_line_end": 423
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Export",
+      "normalized_title": "Export",
+      "key": "export",
+      "path": [
+        "TCP Ramp / Slow-Start Analysis",
+        "Export"
+      ],
+      "content": "The tool supports:\n\n- PNG plot export,\n- CSV export of nonzero bins,\n- copyable doubling table.\n\nThis is a publication-friendly transformation from packet-capture data to structured transport-layer figures/tables.",
+      "source_line_start": 423,
+      "source_line_end": 433
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Research Pipeline Shape",
+      "normalized_title": "Research Pipeline Shape",
+      "key": "research_pipeline_shape",
+      "path": [
+        "Research Pipeline Shape"
+      ],
+      "content": "A useful overall interpretation is:\n\n```text\nexperiment program / operator controls\n             ↓\nFTP or iperf3 workload\n             ↓\nnetwork interface / server path\n             ↓\nraw logs and packet captures\n             ↓\nbrowser/Python processing\n             ↓\nstatistics, plots, TCP ramp evidence\n             ↓\npublication material\n```\n\nThe repository therefore links execution and analysis rather than treating them as separate projects.",
+      "source_line_start": 433,
+      "source_line_end": 455
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Engineering Practices Evidenced",
+      "normalized_title": "Engineering Practices Evidenced",
+      "key": "engineering_practices_evidenced",
+      "path": [
+        "Engineering Practices Evidenced"
+      ],
+      "content": "### Reuse Instead of Reinvention\n\nIdentical artifacts are carried from earlier repositories where their behavior already fit the new experiment.\n\nThis reduces duplicate implementation effort.\n\n### Extension at the Correct Layer\n\nNew work is concentrated where the publication experiment needs more capability:\n\n- iperf3 suite orchestration,\n- a command language,\n- parser diagnostics,\n- transport-layer ramp analysis.\n\n### Build Before Execute\n\nThe Net++ tool separates syntax/semantic checking from suite execution.\n\n### Explicit Execution Status\n\nEach suite command has a visible run result.\n\n### Interface Binding\n\nThe workload can be directed through a selected local network interface.\n\n### Structured Export\n\nSeveral analysis tools export data or figures into forms suitable for further research use.",
+      "source_line_start": 455,
+      "source_line_end": 488
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Reuse Instead of Reinvention",
+      "normalized_title": "Reuse Instead of Reinvention",
+      "key": "reuse_instead_of_reinvention",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Reuse Instead of Reinvention"
+      ],
+      "content": "Identical artifacts are carried from earlier repositories where their behavior already fit the new experiment.\n\nThis reduces duplicate implementation effort.",
+      "source_line_start": 457,
+      "source_line_end": 463
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Extension at the Correct Layer",
+      "normalized_title": "Extension at the Correct Layer",
+      "key": "extension_at_the_correct_layer",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Extension at the Correct Layer"
+      ],
+      "content": "New work is concentrated where the publication experiment needs more capability:\n\n- iperf3 suite orchestration,\n- a command language,\n- parser diagnostics,\n- transport-layer ramp analysis.",
+      "source_line_start": 463,
+      "source_line_end": 472
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Build Before Execute",
+      "normalized_title": "Build Before Execute",
+      "key": "build_before_execute",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Build Before Execute"
+      ],
+      "content": "The Net++ tool separates syntax/semantic checking from suite execution.",
+      "source_line_start": 472,
+      "source_line_end": 476
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Explicit Execution Status",
+      "normalized_title": "Explicit Execution Status",
+      "key": "explicit_execution_status",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Explicit Execution Status"
+      ],
+      "content": "Each suite command has a visible run result.",
+      "source_line_start": 476,
+      "source_line_end": 480
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Interface Binding",
+      "normalized_title": "Interface Binding",
+      "key": "interface_binding",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Interface Binding"
+      ],
+      "content": "The workload can be directed through a selected local network interface.",
+      "source_line_start": 480,
+      "source_line_end": 484
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Structured Export",
+      "normalized_title": "Structured Export",
+      "key": "structured_export",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Structured Export"
+      ],
+      "content": "Several analysis tools export data or figures into forms suitable for further research use.",
+      "source_line_start": 484,
+      "source_line_end": 488
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The project is not large in file count, but individual tools are substantial.\n\nThe repository contains:\n\n- a ~51 KB FTP automation client,\n- a ~40 KB iperf3 suite runner,\n- a large reusable server automation script,\n- browser processing pages,\n- a PySide6 TCP ramp analyzer,\n- a captured screenshot artifact.\n\nIts complexity comes from combining experiment orchestration and post-processing in one publication workspace.",
+      "source_line_start": 488,
+      "source_line_end": 503
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Experiment Automation\n\n- repeated test execution,\n- configurable duration,\n- cooldown control,\n- sequence scripting,\n- stop/cancel behavior,\n- status tracking.\n\n### Language Tooling\n\n- mini DSL design,\n- command tokenization,\n- quote/parenthesis-aware parsing,\n- comment handling,\n- argument validation,\n- diagnostic reporting.\n\n### Networking\n\n- FTP,\n- UDP control,\n- iperf3,\n- interface binding,\n- TCP packet-delivery analysis,\n- tshark `io,stat`.\n\n### Desktop GUI Development\n\n- Tkinter,\n- PyQt6,\n- PySide6,\n- interactive editor/status views.\n\n### Data Analysis\n\n- transfer-time statistics,\n- throughput plots,\n- cumulative byte curves,\n- doubling-point extraction,\n- rate calculations.\n\n### Research Reporting\n\n- PNG export,\n- CSV export,\n- copyable tables,\n- browser figures.",
+      "source_line_start": 503,
+      "source_line_end": 554
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Experiment Automation",
+      "normalized_title": "Experiment Automation",
+      "key": "experiment_automation",
+      "path": [
+        "Skills Demonstrated",
+        "Experiment Automation"
+      ],
+      "content": "- repeated test execution,\n- configurable duration,\n- cooldown control,\n- sequence scripting,\n- stop/cancel behavior,\n- status tracking.",
+      "source_line_start": 505,
+      "source_line_end": 514
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Language Tooling",
+      "normalized_title": "Language Tooling",
+      "key": "language_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Language Tooling"
+      ],
+      "content": "- mini DSL design,\n- command tokenization,\n- quote/parenthesis-aware parsing,\n- comment handling,\n- argument validation,\n- diagnostic reporting.",
+      "source_line_start": 514,
+      "source_line_end": 523
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Skills Demonstrated",
+        "Networking"
+      ],
+      "content": "- FTP,\n- UDP control,\n- iperf3,\n- interface binding,\n- TCP packet-delivery analysis,\n- tshark `io,stat`.",
+      "source_line_start": 523,
+      "source_line_end": 532
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Desktop GUI Development",
+      "normalized_title": "Desktop GUI Development",
+      "key": "desktop_gui_development",
+      "path": [
+        "Skills Demonstrated",
+        "Desktop GUI Development"
+      ],
+      "content": "- Tkinter,\n- PyQt6,\n- PySide6,\n- interactive editor/status views.",
+      "source_line_start": 532,
+      "source_line_end": 539
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Data Analysis",
+      "normalized_title": "Data Analysis",
+      "key": "data_analysis",
+      "path": [
+        "Skills Demonstrated",
+        "Data Analysis"
+      ],
+      "content": "- transfer-time statistics,\n- throughput plots,\n- cumulative byte curves,\n- doubling-point extraction,\n- rate calculations.",
+      "source_line_start": 539,
+      "source_line_end": 547
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Research Reporting",
+      "normalized_title": "Research Reporting",
+      "key": "research_reporting",
+      "path": [
+        "Skills Demonstrated",
+        "Research Reporting"
+      ],
+      "content": "- PNG export,\n- CSV export,\n- copyable tables,\n- browser figures.",
+      "source_line_start": 547,
+      "source_line_end": 554
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "`Apple-Publication` shows a notable progression in the networking-tool portfolio.\n\nEarlier repositories establish:\n\n- FTP clients,\n- repeated-transfer automation,\n- UDP control,\n- browser log processing.\n\nThis repository carries those pieces forward and adds a higher-level experiment language plus transport-layer analysis.\n\nThe evolution is therefore:\n\n```text\nmanual / GUI-controlled workload\n          ↓\nautomated repeated workload\n          ↓\ndeclarative experiment suite\n          ↓\npublication-oriented transport analysis\n```\n\nThat is stronger evidence of engineering progression than treating the repository as an isolated set of scripts.",
+      "source_line_start": 554,
+      "source_line_end": 581
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Apple-Publication` is a research publication toolkit that composes earlier network-testing infrastructure with new automation and analysis layers.\n\nIts distinctive additions are the Net++ iperf3 suite language and the TCP ramp/doubling visualizer.\n\nTogether they show a move toward experiments that are both declaratively reproducible and transport-layer interpretable.\n\nThe repository also provides unusually clear evidence of code reuse across the portfolio, which is preserved here so later RAG answers can distinguish extension from repeated attribution.\n\n# Project Tags\n\n- `research-collaboration`\n- `research-publication-tooling`\n- `python`\n- `tkinter`\n- `pyqt6`\n- `pyside6`\n- `ftp`\n- `ftplib`\n- `udp-control-plane`\n- `iperf3`\n- `network-test-automation`\n- `repeated-trials`\n- `experiment-scripting`\n- `domain-specific-language`\n- `parser`\n- `syntax-validation`\n- `semantic-validation`\n- `comment-parsing`\n- `interface-binding`\n- `process-automation`\n- `tshark`\n- `tcp`\n- `tcp-ramp-analysis`\n- `tcp-slow-start-analysis`\n- `cumulative-bytes`\n- `doubling-point-analysis`\n- `packet-capture-analysis`\n- `throughput-analysis`\n- `transfer-time-analysis`\n- `chartjs`\n- `browser-analysis-tools`\n- `csv-export`\n- `png-export`\n- `cross-repository-code-reuse`",
+      "source_line_start": 581,
+      "source_line_end": 627
+    }
+  ],
+  "raw_analysis": "# Apple-Publication\n\n## Repository Identity\n\n- Repository: 129 / 138\n- Name: `Apple-Publication`\n- Start date: 2026-02-07\n- Latest meaningful update: 2026-03-05\n- Latest meaningful commit: `81764cf2b20c5d4bc41f97d69d0ca1744bb00888`\n- Primary repository language metadata: Python\n- Technical field: wireless-network experiment automation and publication analysis\n- Context: research / publication tooling\n- Collaboration type: `research-collaboration`\n\n## Collaboration, Reuse, and Authorship Context\n\nThis repository contains both new repository-specific analysis work and direct reuse from earlier portfolio repositories.\n\nThat lineage should be preserved rather than hidden.\n\n`Server/AutomationStarter.py` has the same Git blob identity as `Server/starter.py` in `SedraFTPVariant`.\n\nIt is therefore a reused experiment-automation artifact, not a separate independent implementation created for this repository.\n\n`Processing/FinishTime.html` has the same Git blob identity as NetSeer's FTP-analysis page.\n\nIt is also a reused analysis artifact.\n\n`Client/LaptopFTPClient.py` is an evolved copy of the same general Tkinter FTP automation architecture seen in `SedraFTPVariant`.\n\nBy contrast, the repository adds distinct capabilities such as:\n\n- `LaptopIperf3Suite.py`,\n- a Net++ mini command language,\n- a PyQt6 build/run interface,\n- `Throughput.html` iteration,\n- `tcp_dump_gui` TCP ramp analysis.\n\nThis makes the repository strong evidence of **reuse plus extension**.\n\n## What This Project Is\n\n`Apple-Publication` is a collection of client, server, and processing tools assembled for controlled network-performance experiments and publication-oriented analysis.\n\nThe repository spans three broad responsibilities:\n\n```text\nClient/\n    workload execution and automation\n\nServer/\n    experiment coordination / capture analysis\n\nProcessing/\n    transfer statistics and visualization\n```\n\nThe tooling covers two major workload families:\n\n- FTP transfer experiments,\n- iperf3 TCP throughput experiments.\n\nIt also contains post-processing for:\n\n- transfer-time statistics,\n- throughput plots,\n- TCP ramp/slow-start behavior.\n\n## FTP Automation Continuity\n\n`LaptopFTPClient.py` continues the earlier Tkinter FTP automation design.\n\nIts module description identifies:\n\n- FTP client behavior,\n- automated tests,\n- UDP control.\n\nThe configurable dimensions include:\n\n- FTP host,\n- FTP port,\n- user,\n- password,\n- remote file,\n- save location,\n- automated test count,\n- separation time,\n- UDP listener/sender addresses.\n\n### Transfer Engine\n\nThe client uses Python's `ftplib`.\n\nIts transfer architecture preserves the earlier safety pattern of:\n\n- writing to a partial file,\n- reporting progress,\n- tracking bytes,\n- timing the transfer,\n- replacing the final file on completion,\n- cleaning partial state after failure.\n\n### Remote Experiment Commands\n\nThe client recognizes UDP control commands including:\n\n- `START_DOWNLOAD`,\n- `STOP_DOWNLOAD`,\n- `START_AUTOTESTS`,\n- `STOP_AUTOTESTS`.\n\nThis keeps experiment control separate from the bulk data transfer.\n\n### Reuse Significance\n\nThe repeated architecture across `SedraFTPVariant` and `Apple-Publication` is itself useful evidence.\n\nIt shows a test harness being carried forward into a publication workflow rather than rewritten from scratch for each experiment.\n\n## Net++ iperf3 Suite Runner\n\n`Client/LaptopIperf3Suite.py` adds a distinctly different automation mechanism.\n\nThe file calls itself:\n\n`Net++ Suite Runner (iperf3 client automation) — PyQt6`.\n\nThe application introduces a tiny domain-specific language for describing experiment sequences.\n\nExample source form:\n\n```text\nautomate(duration=30,cooldown=30,n=50);\nsleep(10);\n```\n\nThis shifts experiment automation from hard-coded GUI choices toward a declarative script.\n\n## Net++ Command Model\n\nThe parser currently recognizes two command families:\n\n- `automate`,\n- `sleep`.\n\nThe language uses semicolons to delimit top-level commands.\n\nArguments can appear inside parentheses.\n\n### `automate`\n\nThe command requires:\n\n- `duration`,\n- `cooldown`,\n- `n`.\n\nThese parameters describe:\n\n- duration of each iperf test,\n- cooldown between tests,\n- repetition count.\n\n### `sleep`\n\nThe suite can explicitly insert idle time between experiment phases.\n\n## Parser Engineering\n\n`NetPPParser` is a real parser for the intentionally small command language.\n\n### Top-Level Command Splitting\n\nThe parser scans source character by character.\n\nIt tracks:\n\n- parenthesis depth,\n- single-quoted strings,\n- double-quoted strings,\n- escape state.\n\nA semicolon only terminates a command when the parser is outside nested parentheses and quoted strings.\n\nThis is more robust than blindly splitting the source on every semicolon.\n\n### Comment Handling\n\nThe current parser removes `#` comments before command parsing.\n\nThe repository commit history explicitly records work to fix comment parsing.\n\nThat gives a direct example of language-tooling iteration based on a parser edge case.\n\n### Argument Parsing\n\nThe parser supports:\n\n- named arguments,\n- positional values,\n- signed integers,\n- quoted strings.\n\nIdentifier names are validated.\n\n### Build Diagnostics\n\nThe parser returns `BuildIssue` objects with:\n\n- severity,\n- message,\n- source position.\n\nThe application can therefore perform a build/syntax-check phase before execution.\n\n### Semantic Validation\n\nFor `automate`, validation includes:\n\n- required arguments,\n- integer type checks,\n- positive duration,\n- nonnegative cooldown,\n- valid repetition count.\n\nThis is not just string parsing.\n\nThe application performs basic semantic validation of the experiment program.\n\n## Build / Run / Stop Workflow\n\nThe PyQt6 application exposes distinct concepts of:\n\n- Build,\n- Run,\n- Stop.\n\nThat resembles a miniature development environment for experiment scripts.\n\nEach command can have a visible execution state.\n\nThe documented color convention is:\n\n- yellow: running,\n- green: passed,\n- red: failed.\n\nThis makes a long experiment suite inspectable at command granularity.\n\n## iperf3 Integration\n\nThe Net++ runner executes TCP iperf3 client tests.\n\nThe design allows binding to a selected local IPv4/interface.\n\nThis is important when the research machine has multiple network paths and the experiment must force traffic onto a specific adapter.\n\n### Success Criteria\n\nThe source documents success as:\n\n- process exit code zero,\n- and, when JSON output is requested, successful JSON parsing without an iperf-reported error.\n\nThat is stronger than assuming process launch equals a valid experiment.\n\n## PyQt6 Desktop Engineering\n\nThe suite imports a broad PyQt6 interface layer including:\n\n- main window,\n- plain-text editor,\n- status areas,\n- toolbar actions,\n- forms,\n- combo boxes,\n- spin boxes,\n- checkboxes,\n- syntax highlighting.\n\nThe interface therefore treats the Net++ source as an editable experiment artifact.\n\n## Network Interface Awareness\n\nThe runner uses `psutil`, `socket`, and platform/process APIs.\n\nThis supports identifying local network interfaces and binding the iperf workload to a selected address.\n\nThe capability aligns with the broader portfolio pattern of ensuring a measurement traverses the intended Wi-Fi/cellular path.\n\n## Throughput Processing Page\n\n`Processing/Throughput.html` is a browser-based network-log processor.\n\nIt uses:\n\n- Chart.js,\n- Moment.js,\n- FileSaver.js.\n\nThe page includes a substantial interactive UI for:\n\n- log input,\n- processing,\n- plotting,\n- configurable display,\n- chart export.\n\n### Plot Controls\n\nThe page contains:\n\n- upload/download views,\n- moving-window controls,\n- chart colors,\n- editable chart titles,\n- marker controls.\n\nThe marker UI indicates later extension beyond the earlier NetSeer throughput processor.\n\n### Browser-Based Workflow\n\nKeeping this processor as standalone HTML makes it easy to use on experiment outputs without starting an application server.\n\nThis pattern appears repeatedly across the research portfolio.\n\n## Reused Transfer-Time Analyzer\n\n`Processing/FinishTime.html` is byte-identical to the FTP analyzer used in NetSeer.\n\nThat tool parses FTP log records containing:\n\n- completion state,\n- elapsed seconds,\n- transferred bytes.\n\nIt computes:\n\n- unique entries,\n- completed entries,\n- average time,\n- standard deviation of time,\n- average speed,\n- standard deviation of speed.\n\nIt also produces chronological plots.\n\nIn this repository the important fact is **reuse in the publication workflow**, not independent implementation.\n\n## TCP Ramp / Slow-Start Analysis\n\nThe latest repository addition, `Server/tcp_dump_gui`, adds a distinct transport-layer analysis tool.\n\nIts module description says it analyzes TCP ramp-up / doubling behavior from a tshark `io,stat` dump.\n\n### Input Generation\n\nThe expected source is a command shaped like:\n\n```text\ntshark -r loopback.pcap -n -q -z io,stat,...\n```\n\nThis converts packet-capture evidence into fine-grained per-time-bin byte totals.\n\n### Parser\n\nThe GUI parses:\n\n- interval start,\n- interval end,\n- bytes delivered in the bin.\n\nThese are represented as an `IOStatSeries` dataclass.\n\n### Cumulative Delivered Bytes\n\nThe tool computes cumulative bytes:\n\n```text\nB(t)\n```\n\nby summing delivered bytes across time bins.\n\n### Doubling Points\n\nA reference cumulative byte count `B0` is selected.\n\nThe tool finds the first timestamp at which cumulative data crosses:\n\n```text\nB0 × 2^k\n```\n\nfor successive values of `k`.\n\nThis converts raw packet-delivery output into explicit ramp/doubling timing evidence.\n\n### Delivery Rate\n\nThe program also computes a per-bin rate:\n\n```text\nR(t) = bytes_in_bin / bin_width\n```\n\n### Visualization\n\nThe GUI can plot:\n\n- cumulative delivered bytes,\n- per-bin delivery rate,\n- vertical markers for doubling points.\n\n### Focus Window\n\nThe user can restrict the visualization to the first few milliseconds.\n\nThat is useful for studying the early connection phase where TCP ramp-up behavior is most visible.\n\n### Export\n\nThe tool supports:\n\n- PNG plot export,\n- CSV export of nonzero bins,\n- copyable doubling table.\n\nThis is a publication-friendly transformation from packet-capture data to structured transport-layer figures/tables.\n\n## Research Pipeline Shape\n\nA useful overall interpretation is:\n\n```text\nexperiment program / operator controls\n             ↓\nFTP or iperf3 workload\n             ↓\nnetwork interface / server path\n             ↓\nraw logs and packet captures\n             ↓\nbrowser/Python processing\n             ↓\nstatistics, plots, TCP ramp evidence\n             ↓\npublication material\n```\n\nThe repository therefore links execution and analysis rather than treating them as separate projects.\n\n## Engineering Practices Evidenced\n\n### Reuse Instead of Reinvention\n\nIdentical artifacts are carried from earlier repositories where their behavior already fit the new experiment.\n\nThis reduces duplicate implementation effort.\n\n### Extension at the Correct Layer\n\nNew work is concentrated where the publication experiment needs more capability:\n\n- iperf3 suite orchestration,\n- a command language,\n- parser diagnostics,\n- transport-layer ramp analysis.\n\n### Build Before Execute\n\nThe Net++ tool separates syntax/semantic checking from suite execution.\n\n### Explicit Execution Status\n\nEach suite command has a visible run result.\n\n### Interface Binding\n\nThe workload can be directed through a selected local network interface.\n\n### Structured Export\n\nSeveral analysis tools export data or figures into forms suitable for further research use.\n\n## Scale and Complexity\n\nThe project is not large in file count, but individual tools are substantial.\n\nThe repository contains:\n\n- a ~51 KB FTP automation client,\n- a ~40 KB iperf3 suite runner,\n- a large reusable server automation script,\n- browser processing pages,\n- a PySide6 TCP ramp analyzer,\n- a captured screenshot artifact.\n\nIts complexity comes from combining experiment orchestration and post-processing in one publication workspace.\n\n## Skills Demonstrated\n\n### Experiment Automation\n\n- repeated test execution,\n- configurable duration,\n- cooldown control,\n- sequence scripting,\n- stop/cancel behavior,\n- status tracking.\n\n### Language Tooling\n\n- mini DSL design,\n- command tokenization,\n- quote/parenthesis-aware parsing,\n- comment handling,\n- argument validation,\n- diagnostic reporting.\n\n### Networking\n\n- FTP,\n- UDP control,\n- iperf3,\n- interface binding,\n- TCP packet-delivery analysis,\n- tshark `io,stat`.\n\n### Desktop GUI Development\n\n- Tkinter,\n- PyQt6,\n- PySide6,\n- interactive editor/status views.\n\n### Data Analysis\n\n- transfer-time statistics,\n- throughput plots,\n- cumulative byte curves,\n- doubling-point extraction,\n- rate calculations.\n\n### Research Reporting\n\n- PNG export,\n- CSV export,\n- copyable tables,\n- browser figures.\n\n## Historical Portfolio Significance\n\n`Apple-Publication` shows a notable progression in the networking-tool portfolio.\n\nEarlier repositories establish:\n\n- FTP clients,\n- repeated-transfer automation,\n- UDP control,\n- browser log processing.\n\nThis repository carries those pieces forward and adds a higher-level experiment language plus transport-layer analysis.\n\nThe evolution is therefore:\n\n```text\nmanual / GUI-controlled workload\n          ↓\nautomated repeated workload\n          ↓\ndeclarative experiment suite\n          ↓\npublication-oriented transport analysis\n```\n\nThat is stronger evidence of engineering progression than treating the repository as an isolated set of scripts.\n\n## Overall Project Narrative\n\n`Apple-Publication` is a research publication toolkit that composes earlier network-testing infrastructure with new automation and analysis layers.\n\nIts distinctive additions are the Net++ iperf3 suite language and the TCP ramp/doubling visualizer.\n\nTogether they show a move toward experiments that are both declaratively reproducible and transport-layer interpretable.\n\nThe repository also provides unusually clear evidence of code reuse across the portfolio, which is preserved here so later RAG answers can distinguish extension from repeated attribution.\n\n# Project Tags\n\n- `research-collaboration`\n- `research-publication-tooling`\n- `python`\n- `tkinter`\n- `pyqt6`\n- `pyside6`\n- `ftp`\n- `ftplib`\n- `udp-control-plane`\n- `iperf3`\n- `network-test-automation`\n- `repeated-trials`\n- `experiment-scripting`\n- `domain-specific-language`\n- `parser`\n- `syntax-validation`\n- `semantic-validation`\n- `comment-parsing`\n- `interface-binding`\n- `process-automation`\n- `tshark`\n- `tcp`\n- `tcp-ramp-analysis`\n- `tcp-slow-start-analysis`\n- `cumulative-bytes`\n- `doubling-point-analysis`\n- `packet-capture-analysis`\n- `throughput-analysis`\n- `transfer-time-analysis`\n- `chartjs`\n- `browser-analysis-tools`\n- `csv-export`\n- `png-export`\n- `cross-repository-code-reuse`\n"
+}

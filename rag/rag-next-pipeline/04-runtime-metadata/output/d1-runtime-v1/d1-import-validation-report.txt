@@ -1,0 +1,18 @@
+Portfolio GitHub RAG — D1 runtime evidence import v1
+====================================================
+
+STATUS: PASS
+
+Input: P:\Github\AI-accelerated\my-portfolio\rag\rag-next-pipeline\02-retrieval-documents\output\documents.jsonl
+Input SHA-256: 15ce24d918d35adf426588b6104b0c34965d3214a13d1c0b5359ed5ae5545d20
+Documents: 1429/1429
+Unique document IDs: 1429/1429
+Repositories: 134/134
+Document schema version: 2.0.0
+
+OUTPUT
+  P:\Github\AI-accelerated\my-portfolio\rag\rag-next-pipeline\04-runtime-metadata\output\d1-runtime-v1\rag-documents.sql
+
+NEXT
+  npm run db:migrate:remote
+  npm run rag:d1:import:remote

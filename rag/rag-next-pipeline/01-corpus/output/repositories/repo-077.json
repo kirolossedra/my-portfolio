@@ -1,0 +1,392 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 77,
+  "repository_total": 134,
+  "repository_name": "NS3",
+  "header_title": "NS3",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-077-NS3/README.md",
+    "line_start": 1,
+    "line_end": 466,
+    "sha256": "084aeeb939698767824434e245ca71753eaa1bdc6256ef724728e355d61db000"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "network-simulation",
+    "ns-3",
+    "cpp",
+    "python",
+    "wifi",
+    "wifi-802-11g",
+    "wireless-networking",
+    "udp",
+    "ipv4",
+    "broadcast",
+    "unicast",
+    "access-point",
+    "station-nodes",
+    "mac-layer",
+    "phy-tracing",
+    "wifi-mac-header",
+    "rts-cts",
+    "pcap",
+    "packet-capture",
+    "throughput-analysis",
+    "per-user-throughput",
+    "parameterized-simulation",
+    "experiment-automation",
+    "subprocess-automation",
+    "regex-parsing",
+    "matplotlib",
+    "performance-visualization"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NS3`\n- **Repository start date:** 2025-03-05\n- **Last meaningful update date:** 2025-03-06\n- **Latest meaningful commit:** `3bf8565ab2ab8b79d92c5bd11e2c2ca20cffbd59`\n- **Primary technical field:** wireless network simulation and performance experimentation\n- **Application domain:** Wi-Fi broadcast/unicast behavior and throughput scaling\n- **Primary technologies:** ns-3, C++, Python, Matplotlib\n- **Project context:** personal networking experiment\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe repository's verification style is simulation-driven.\n\nEvidence includes:\n\n- explicit simulator output,\n- MAC/PHY trace callbacks,\n- PCAP generation,\n- repeated parameterized runs,\n- regex-based metric extraction.\n\nThe Python driver handles a failed metric parse by emitting a warning and recording `0.0`.\n\nThat is a simple defensive path for experiment automation.\n\nThe checked-in evidence does not establish a dedicated unit-test suite, and this project does not need to be represented as one.\n\nIts validation mechanism is experimental execution."
+    },
+    "documentation": {
+      "section_ids": [
+        "s015"
+      ],
+      "titles": [
+        "Experimental Reproducibility"
+      ],
+      "text": "## Experimental Reproducibility\nSeveral simulation parameters are directly encoded:\n\n- station count,\n- simulation time,\n- transmission start time,\n- UDP port,\n- packet count,\n- packet interval,\n- packet size,\n- Wi-Fi standard,\n- station placement,\n- RTS/CTS threshold.\n\nThat gives the experiment reasonable source-level reproducibility.\n\nThe Python sweep also codifies the range of station populations.\n\nThe repository would still require an appropriate ns-3 environment to reproduce outputs, but the experiment logic itself is explicit."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NS3`\n- **Repository start date:** 2025-03-05\n- **Last meaningful update date:** 2025-03-06\n- **Latest meaningful commit:** `3bf8565ab2ab8b79d92c5bd11e2c2ca20cffbd59`\n- **Primary technical field:** wireless network simulation and performance experimentation\n- **Application domain:** Wi-Fi broadcast/unicast behavior and throughput scaling\n- **Primary technologies:** ns-3, C++, Python, Matplotlib\n- **Project context:** personal networking experiment\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains executable-looking ns-3 simulation source and a Python experiment driver.\n\nThe important files include:\n\n- `broadcast.pp`,\n- `Broadcast/broadcast.pp`,\n- `multicast/multicast.pp`,\n- `multicast/runscript.py`,\n- a mostly empty `multicast/multicastbiggerwindow.pp`,\n- small README material.\n\nThe `.pp` extension causes GitHub to classify the repository as Pascal.\n\nThe actual simulation source is C++ using ns-3 headers and APIs.\n\nTherefore this corpus classifies the implementation as C++/ns-3 rather than Pascal.",
+      "source_line_start": 15,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "This repository explores Wi-Fi traffic behavior in ns-3.\n\nThe checked-in simulations create an infrastructure WLAN with:\n\n- one access point,\n- multiple station nodes,\n- IPv4 networking,\n- UDP traffic,\n- static station placement,\n- PHY/MAC tracing.\n\nTwo important traffic configurations are represented:\n\n1. UDP broadcast from the AP,\n2. per-station UDP unicast from the AP.\n\nThe repository then adds a Python automation layer to sweep station counts and plot average per-user throughput.\n\nThat moves the project beyond a single simulation run into a small experiment pipeline.",
+      "source_line_start": 34,
+      "source_line_end": 56
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The current tree is compact:\n\n```text\nNS3/\n├── README.md\n├── broadcast.pp\n├── Broadcast/\n│   └── broadcast.pp\n└── multicast/\n    ├── README.md\n    ├── multicast.pp\n    ├── multicastbiggerwindow.pp\n    └── runscript.py\n```\n\nThe `multicast` naming should be interpreted carefully.\n\nThe current `multicast.pp` source identifies itself as a Wi-Fi UDP **unicast** per-user example.\n\nIts behavior sends a separate UDP stream from the AP to each station.\n\nThe corpus therefore describes what the code does rather than relying on the folder name.",
+      "source_line_start": 56,
+      "source_line_end": 81
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Broadcast Simulation",
+      "normalized_title": "Broadcast Simulation",
+      "key": "broadcast_simulation",
+      "path": [
+        "Broadcast Simulation"
+      ],
+      "content": "The root `broadcast.pp` configures:\n\n- ns-3 core module,\n- network module,\n- internet module,\n- Wi-Fi module,\n- mobility module,\n- applications module,\n- Wi-Fi MAC-header inspection.\n\nThe default topology uses:\n\n- 10 station nodes,\n- one AP,\n- 802.11g,\n- infrastructure mode,\n- a shared SSID,\n- constant-position mobility.\n\nStations are placed with a grid position allocator.\n\nThe simulation installs the Internet stack and assigns addresses from:\n\n```text\n10.1.4.0/24\n```\n\nThe AP sends UDP traffic to the IPv4 broadcast address.\n\nA UDP server is installed on every station.\n\nThe default source configuration sends:\n\n- 100 packets,\n- 1024 bytes per packet,\n- one packet every 0.1 seconds.",
+      "source_line_start": 81,
+      "source_line_end": 120
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "MAC/PHY Trace Instrumentation",
+      "normalized_title": "MAC/PHY Trace Instrumentation",
+      "key": "mac_phy_trace_instrumentation",
+      "path": [
+        "MAC/PHY Trace Instrumentation"
+      ],
+      "content": "The broadcast experiment attaches a callback to the AP PHY transmission-end trace.\n\nThe callback:\n\n1. copies the transmitted packet,\n2. peeks at the `WifiMacHeader`,\n3. checks that the frame is a data frame,\n4. checks that the destination is the broadcast MAC address,\n5. accumulates transmitted bytes.\n\nThis is useful because the throughput calculation is tied to observed transmitted frames rather than only to application-layer intent.\n\nThe experiment then computes average transmitted broadcast throughput over the active transmission interval.",
+      "source_line_start": 120,
+      "source_line_end": 136
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Per-User Unicast Experiment",
+      "normalized_title": "Per-User Unicast Experiment",
+      "key": "per_user_unicast_experiment",
+      "path": [
+        "Per-User Unicast Experiment"
+      ],
+      "content": "`multicast/multicast.pp` implements a different workload.\n\nThe default topology uses:\n\n- 20 stations,\n- one access point,\n- 802.11g,\n- static grid placement,\n- one UDP server per station.\n\nThe AP installs a separate UDP client for every station.\n\nEach client targets that station's assigned IPv4 address.\n\nThis produces a per-user unicast traffic pattern.\n\nThe AP-side trace callback counts transmitted data frames and the simulation derives:\n\n- aggregate AP throughput,\n- average throughput per user.\n\nAverage per-user throughput is computed by dividing aggregate throughput by the configured station count.",
+      "source_line_start": 136,
+      "source_line_end": 161
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "RTS/CTS Configuration",
+      "normalized_title": "RTS/CTS Configuration",
+      "key": "rts_cts_configuration",
+      "path": [
+        "RTS/CTS Configuration"
+      ],
+      "content": "The unicast experiment explicitly configures:\n\n```text\nArfWifiManager\nRtsCtsThreshold = 500 bytes\n```\n\nWith the simulation's 1024-byte UDP payloads, this setting is designed to force RTS/CTS behavior for sufficiently large frames.\n\nThis introduces a MAC-access/control-overhead dimension into the experiment.\n\nThe project therefore demonstrates awareness that throughput behavior depends on more than application packet rate.",
+      "source_line_start": 161,
+      "source_line_end": 176
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Packet Capture",
+      "normalized_title": "Packet Capture",
+      "key": "packet_capture",
+      "path": [
+        "Packet Capture"
+      ],
+      "content": "The unicast experiment enables ns-3 PCAP tracing on the AP device.\n\nThis creates packet-level capture evidence suitable for external inspection with tools such as Wireshark.\n\nThe code comments explicitly describe capturing traffic including RTS/CTS.\n\nPCAP generation is a stronger verification mechanism than relying only on printed aggregate numbers because it permits packet-level inspection.",
+      "source_line_start": 176,
+      "source_line_end": 186
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Parametric Experiment Design",
+      "normalized_title": "Parametric Experiment Design",
+      "key": "parametric_experiment_design",
+      "path": [
+        "Parametric Experiment Design"
+      ],
+      "content": "The station count is exposed through ns-3 `CommandLine`.\n\nThe simulation accepts:\n\n```text\n--numStations=<value>\n```\n\nThis makes station population an experiment parameter rather than a hard-coded one-off condition.\n\nThe Python driver then exploits this parameterization.",
+      "source_line_start": 186,
+      "source_line_end": 200
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Python Experiment Driver",
+      "normalized_title": "Python Experiment Driver",
+      "key": "python_experiment_driver",
+      "path": [
+        "Python Experiment Driver"
+      ],
+      "content": "`multicast/runscript.py` automates repeated simulation execution.\n\nIt generates station counts with:\n\n```text\nrange(1, 65, 5)\n```\n\nFor each value it:\n\n1. constructs an ns-3 CLI command,\n2. launches the simulation through `subprocess`,\n3. captures standard output,\n4. parses average per-user throughput with a regular expression,\n5. stores the numeric result.\n\nThe script then plots:\n\n```text\nnumber of stations\nvs.\naverage throughput per user\n```\n\nusing Matplotlib.\n\nThis creates a complete small experiment loop:\n\n```text\nparameter sweep\n→ simulator execution\n→ stdout capture\n→ metric extraction\n→ aggregation\n→ visualization\n```",
+      "source_line_start": 200,
+      "source_line_end": 239
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Measurement Logic",
+      "normalized_title": "Measurement Logic",
+      "key": "measurement_logic",
+      "path": [
+        "Measurement Logic"
+      ],
+      "content": "The simulation reports throughput in Mbps.\n\nThe underlying calculation converts accumulated bytes to bits and divides by active transmission duration.\n\nThe unicast configuration additionally divides aggregate throughput by the number of stations.\n\nThis allows the project to examine scaling pressure as station count increases.\n\nThe Python driver is especially important because it turns a static simulation into a repeatable multi-point experiment.",
+      "source_line_start": 239,
+      "source_line_end": 251
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Network Concepts Demonstrated",
+      "normalized_title": "Network Concepts Demonstrated",
+      "key": "network_concepts_demonstrated",
+      "path": [
+        "Network Concepts Demonstrated"
+      ],
+      "content": "The source directly exercises:\n\n- wireless infrastructure mode,\n- access point/station topology,\n- SSIDs,\n- IPv4 address assignment,\n- UDP server/client applications,\n- broadcast addressing,\n- per-destination unicast,\n- MAC frame inspection,\n- RTS/CTS thresholding,\n- PHY tracing,\n- packet capture,\n- throughput calculation.\n\nThe repository therefore connects networking theory to programmable simulation.",
+      "source_line_start": 251,
+      "source_line_end": 270
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The repository's verification style is simulation-driven.\n\nEvidence includes:\n\n- explicit simulator output,\n- MAC/PHY trace callbacks,\n- PCAP generation,\n- repeated parameterized runs,\n- regex-based metric extraction.\n\nThe Python driver handles a failed metric parse by emitting a warning and recording `0.0`.\n\nThat is a simple defensive path for experiment automation.\n\nThe checked-in evidence does not establish a dedicated unit-test suite, and this project does not need to be represented as one.\n\nIts validation mechanism is experimental execution.",
+      "source_line_start": 270,
+      "source_line_end": 290
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Experimental Reproducibility",
+      "normalized_title": "Experimental Reproducibility",
+      "key": "experimental_reproducibility",
+      "path": [
+        "Experimental Reproducibility"
+      ],
+      "content": "Several simulation parameters are directly encoded:\n\n- station count,\n- simulation time,\n- transmission start time,\n- UDP port,\n- packet count,\n- packet interval,\n- packet size,\n- Wi-Fi standard,\n- station placement,\n- RTS/CTS threshold.\n\nThat gives the experiment reasonable source-level reproducibility.\n\nThe Python sweep also codifies the range of station populations.\n\nThe repository would still require an appropriate ns-3 environment to reproduce outputs, but the experiment logic itself is explicit.",
+      "source_line_start": 290,
+      "source_line_end": 311
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The repository demonstrates a useful progression:\n\n1. build a base broadcast simulation,\n2. create a unicast/per-user variant,\n3. add tracing,\n4. parameterize station count,\n5. automate multi-run execution,\n6. extract metrics,\n7. visualize scaling.\n\nThis is a stronger engineering pattern than manually changing constants for every run.\n\nIt separates:\n\n- simulator logic,\n- experiment orchestration,\n- result visualization.",
+      "source_line_start": 311,
+      "source_line_end": 331
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The codebase is small, but the simulated system contains many interacting components.\n\nComplexity comes from:\n\n- multiple nodes,\n- protocol-stack installation,\n- PHY/MAC configuration,\n- traffic generation,\n- tracing,\n- parameterized population scaling,\n- external experiment orchestration.\n\nThe simulation is not evidence of a production network.\n\nIt is evidence of controlled wireless-system modeling.",
+      "source_line_start": 331,
+      "source_line_end": 349
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- ns-3,\n- C++ simulation programming,\n- Wi-Fi simulation,\n- 802.11g configuration,\n- UDP traffic modeling,\n- IPv4 networking,\n- broadcast networking,\n- unicast networking,\n- MAC-header inspection,\n- PHY trace callbacks,\n- RTS/CTS configuration,\n- PCAP generation,\n- throughput measurement,\n- experiment parameterization,\n- Python automation,\n- subprocess control,\n- regular expressions,\n- Matplotlib visualization,\n- repeatable experiment sweeps.",
+      "source_line_start": 349,
+      "source_line_end": 373
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The project demonstrates the ability to move from a network question to an executable experiment.\n\nThat means defining:\n\n- topology,\n- protocol stack,\n- traffic model,\n- measurement points,\n- scaling parameter,\n- metric extraction,\n- visualization.\n\nIt also shows the beginning of a research workflow in which simulation behavior is instrumented rather than simply observed through a GUI.",
+      "source_line_start": 373,
+      "source_line_end": 389
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier networking work in the corpus includes protocol implementation such as Go-Back-N.\n\nThis repository shifts toward simulation-based systems analysis.\n\nIt also connects naturally to the broader wireless/research trajectory visible later in the portfolio.\n\nThe use of ns-3 establishes a reusable network-simulation capability before later real-system wireless experiments.",
+      "source_line_start": 389,
+      "source_line_end": 399
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest direct evidence of:\n\n- ns-3,\n- programmable Wi-Fi network simulation,\n- PCAP generation from a simulator,\n- automated throughput sweeps over station population.\n\nThe repository marks a move from learning networking algorithms toward designing controlled network experiments.",
+      "source_line_start": 399,
+      "source_line_end": 410
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The folder named `multicast` currently contains code that implements per-user unicast.\n\nThe corpus follows implementation behavior rather than the folder label.\n\nThe empty `multicastbiggerwindow.pp` does not establish an additional implemented experiment.\n\nThe `.pp` extension is not treated as evidence of Pascal because the source imports and uses the C++ ns-3 API.",
+      "source_line_start": 410,
+      "source_line_end": 420
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`NS3` is a compact but complete wireless-network experimentation repository.\n\nIt models an 802.11g infrastructure network, compares traffic configurations, instruments MAC/PHY transmission behavior, emits PCAPs, computes throughput, and automates a station-count sweep with Python.\n\nIts strongest portfolio value is the end-to-end experimental pattern:\n\n```text\nnetwork hypothesis\n→ parameterized simulation\n→ trace instrumentation\n→ repeated execution\n→ metric extraction\n→ visualization\n```\n\n# Project Tags\n\n- `individual-project`\n- `network-simulation`\n- `ns-3`\n- `cpp`\n- `python`\n- `wifi`\n- `wifi-802-11g`\n- `wireless-networking`\n- `udp`\n- `ipv4`\n- `broadcast`\n- `unicast`\n- `access-point`\n- `station-nodes`\n- `mac-layer`\n- `phy-tracing`\n- `wifi-mac-header`\n- `rts-cts`\n- `pcap`\n- `packet-capture`\n- `throughput-analysis`\n- `per-user-throughput`\n- `parameterized-simulation`\n- `experiment-automation`\n- `subprocess-automation`\n- `regex-parsing`\n- `matplotlib`\n- `performance-visualization`",
+      "source_line_start": 420,
+      "source_line_end": 467
+    }
+  ],
+  "raw_analysis": "# Repository 077 — NS3\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NS3`\n- **Repository start date:** 2025-03-05\n- **Last meaningful update date:** 2025-03-06\n- **Latest meaningful commit:** `3bf8565ab2ab8b79d92c5bd11e2c2ca20cffbd59`\n- **Primary technical field:** wireless network simulation and performance experimentation\n- **Application domain:** Wi-Fi broadcast/unicast behavior and throughput scaling\n- **Primary technologies:** ns-3, C++, Python, Matplotlib\n- **Project context:** personal networking experiment\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains executable-looking ns-3 simulation source and a Python experiment driver.\n\nThe important files include:\n\n- `broadcast.pp`,\n- `Broadcast/broadcast.pp`,\n- `multicast/multicast.pp`,\n- `multicast/runscript.py`,\n- a mostly empty `multicast/multicastbiggerwindow.pp`,\n- small README material.\n\nThe `.pp` extension causes GitHub to classify the repository as Pascal.\n\nThe actual simulation source is C++ using ns-3 headers and APIs.\n\nTherefore this corpus classifies the implementation as C++/ns-3 rather than Pascal.\n\n## What the Project Is\n\nThis repository explores Wi-Fi traffic behavior in ns-3.\n\nThe checked-in simulations create an infrastructure WLAN with:\n\n- one access point,\n- multiple station nodes,\n- IPv4 networking,\n- UDP traffic,\n- static station placement,\n- PHY/MAC tracing.\n\nTwo important traffic configurations are represented:\n\n1. UDP broadcast from the AP,\n2. per-station UDP unicast from the AP.\n\nThe repository then adds a Python automation layer to sweep station counts and plot average per-user throughput.\n\nThat moves the project beyond a single simulation run into a small experiment pipeline.\n\n## Repository Structure\n\nThe current tree is compact:\n\n```text\nNS3/\n├── README.md\n├── broadcast.pp\n├── Broadcast/\n│   └── broadcast.pp\n└── multicast/\n    ├── README.md\n    ├── multicast.pp\n    ├── multicastbiggerwindow.pp\n    └── runscript.py\n```\n\nThe `multicast` naming should be interpreted carefully.\n\nThe current `multicast.pp` source identifies itself as a Wi-Fi UDP **unicast** per-user example.\n\nIts behavior sends a separate UDP stream from the AP to each station.\n\nThe corpus therefore describes what the code does rather than relying on the folder name.\n\n## Broadcast Simulation\n\nThe root `broadcast.pp` configures:\n\n- ns-3 core module,\n- network module,\n- internet module,\n- Wi-Fi module,\n- mobility module,\n- applications module,\n- Wi-Fi MAC-header inspection.\n\nThe default topology uses:\n\n- 10 station nodes,\n- one AP,\n- 802.11g,\n- infrastructure mode,\n- a shared SSID,\n- constant-position mobility.\n\nStations are placed with a grid position allocator.\n\nThe simulation installs the Internet stack and assigns addresses from:\n\n```text\n10.1.4.0/24\n```\n\nThe AP sends UDP traffic to the IPv4 broadcast address.\n\nA UDP server is installed on every station.\n\nThe default source configuration sends:\n\n- 100 packets,\n- 1024 bytes per packet,\n- one packet every 0.1 seconds.\n\n## MAC/PHY Trace Instrumentation\n\nThe broadcast experiment attaches a callback to the AP PHY transmission-end trace.\n\nThe callback:\n\n1. copies the transmitted packet,\n2. peeks at the `WifiMacHeader`,\n3. checks that the frame is a data frame,\n4. checks that the destination is the broadcast MAC address,\n5. accumulates transmitted bytes.\n\nThis is useful because the throughput calculation is tied to observed transmitted frames rather than only to application-layer intent.\n\nThe experiment then computes average transmitted broadcast throughput over the active transmission interval.\n\n## Per-User Unicast Experiment\n\n`multicast/multicast.pp` implements a different workload.\n\nThe default topology uses:\n\n- 20 stations,\n- one access point,\n- 802.11g,\n- static grid placement,\n- one UDP server per station.\n\nThe AP installs a separate UDP client for every station.\n\nEach client targets that station's assigned IPv4 address.\n\nThis produces a per-user unicast traffic pattern.\n\nThe AP-side trace callback counts transmitted data frames and the simulation derives:\n\n- aggregate AP throughput,\n- average throughput per user.\n\nAverage per-user throughput is computed by dividing aggregate throughput by the configured station count.\n\n## RTS/CTS Configuration\n\nThe unicast experiment explicitly configures:\n\n```text\nArfWifiManager\nRtsCtsThreshold = 500 bytes\n```\n\nWith the simulation's 1024-byte UDP payloads, this setting is designed to force RTS/CTS behavior for sufficiently large frames.\n\nThis introduces a MAC-access/control-overhead dimension into the experiment.\n\nThe project therefore demonstrates awareness that throughput behavior depends on more than application packet rate.\n\n## Packet Capture\n\nThe unicast experiment enables ns-3 PCAP tracing on the AP device.\n\nThis creates packet-level capture evidence suitable for external inspection with tools such as Wireshark.\n\nThe code comments explicitly describe capturing traffic including RTS/CTS.\n\nPCAP generation is a stronger verification mechanism than relying only on printed aggregate numbers because it permits packet-level inspection.\n\n## Parametric Experiment Design\n\nThe station count is exposed through ns-3 `CommandLine`.\n\nThe simulation accepts:\n\n```text\n--numStations=<value>\n```\n\nThis makes station population an experiment parameter rather than a hard-coded one-off condition.\n\nThe Python driver then exploits this parameterization.\n\n## Python Experiment Driver\n\n`multicast/runscript.py` automates repeated simulation execution.\n\nIt generates station counts with:\n\n```text\nrange(1, 65, 5)\n```\n\nFor each value it:\n\n1. constructs an ns-3 CLI command,\n2. launches the simulation through `subprocess`,\n3. captures standard output,\n4. parses average per-user throughput with a regular expression,\n5. stores the numeric result.\n\nThe script then plots:\n\n```text\nnumber of stations\nvs.\naverage throughput per user\n```\n\nusing Matplotlib.\n\nThis creates a complete small experiment loop:\n\n```text\nparameter sweep\n→ simulator execution\n→ stdout capture\n→ metric extraction\n→ aggregation\n→ visualization\n```\n\n## Measurement Logic\n\nThe simulation reports throughput in Mbps.\n\nThe underlying calculation converts accumulated bytes to bits and divides by active transmission duration.\n\nThe unicast configuration additionally divides aggregate throughput by the number of stations.\n\nThis allows the project to examine scaling pressure as station count increases.\n\nThe Python driver is especially important because it turns a static simulation into a repeatable multi-point experiment.\n\n## Network Concepts Demonstrated\n\nThe source directly exercises:\n\n- wireless infrastructure mode,\n- access point/station topology,\n- SSIDs,\n- IPv4 address assignment,\n- UDP server/client applications,\n- broadcast addressing,\n- per-destination unicast,\n- MAC frame inspection,\n- RTS/CTS thresholding,\n- PHY tracing,\n- packet capture,\n- throughput calculation.\n\nThe repository therefore connects networking theory to programmable simulation.\n\n## Testing and Verification\n\nThe repository's verification style is simulation-driven.\n\nEvidence includes:\n\n- explicit simulator output,\n- MAC/PHY trace callbacks,\n- PCAP generation,\n- repeated parameterized runs,\n- regex-based metric extraction.\n\nThe Python driver handles a failed metric parse by emitting a warning and recording `0.0`.\n\nThat is a simple defensive path for experiment automation.\n\nThe checked-in evidence does not establish a dedicated unit-test suite, and this project does not need to be represented as one.\n\nIts validation mechanism is experimental execution.\n\n## Experimental Reproducibility\n\nSeveral simulation parameters are directly encoded:\n\n- station count,\n- simulation time,\n- transmission start time,\n- UDP port,\n- packet count,\n- packet interval,\n- packet size,\n- Wi-Fi standard,\n- station placement,\n- RTS/CTS threshold.\n\nThat gives the experiment reasonable source-level reproducibility.\n\nThe Python sweep also codifies the range of station populations.\n\nThe repository would still require an appropriate ns-3 environment to reproduce outputs, but the experiment logic itself is explicit.\n\n## Engineering Discipline\n\nThe repository demonstrates a useful progression:\n\n1. build a base broadcast simulation,\n2. create a unicast/per-user variant,\n3. add tracing,\n4. parameterize station count,\n5. automate multi-run execution,\n6. extract metrics,\n7. visualize scaling.\n\nThis is a stronger engineering pattern than manually changing constants for every run.\n\nIt separates:\n\n- simulator logic,\n- experiment orchestration,\n- result visualization.\n\n## Scale and Complexity\n\nThe codebase is small, but the simulated system contains many interacting components.\n\nComplexity comes from:\n\n- multiple nodes,\n- protocol-stack installation,\n- PHY/MAC configuration,\n- traffic generation,\n- tracing,\n- parameterized population scaling,\n- external experiment orchestration.\n\nThe simulation is not evidence of a production network.\n\nIt is evidence of controlled wireless-system modeling.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- ns-3,\n- C++ simulation programming,\n- Wi-Fi simulation,\n- 802.11g configuration,\n- UDP traffic modeling,\n- IPv4 networking,\n- broadcast networking,\n- unicast networking,\n- MAC-header inspection,\n- PHY trace callbacks,\n- RTS/CTS configuration,\n- PCAP generation,\n- throughput measurement,\n- experiment parameterization,\n- Python automation,\n- subprocess control,\n- regular expressions,\n- Matplotlib visualization,\n- repeatable experiment sweeps.\n\n## Capability Developed\n\nThe project demonstrates the ability to move from a network question to an executable experiment.\n\nThat means defining:\n\n- topology,\n- protocol stack,\n- traffic model,\n- measurement points,\n- scaling parameter,\n- metric extraction,\n- visualization.\n\nIt also shows the beginning of a research workflow in which simulation behavior is instrumented rather than simply observed through a GUI.\n\n## Portfolio Evolution Context\n\nEarlier networking work in the corpus includes protocol implementation such as Go-Back-N.\n\nThis repository shifts toward simulation-based systems analysis.\n\nIt also connects naturally to the broader wireless/research trajectory visible later in the portfolio.\n\nThe use of ns-3 establishes a reusable network-simulation capability before later real-system wireless experiments.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest direct evidence of:\n\n- ns-3,\n- programmable Wi-Fi network simulation,\n- PCAP generation from a simulator,\n- automated throughput sweeps over station population.\n\nThe repository marks a move from learning networking algorithms toward designing controlled network experiments.\n\n## Evidence Boundaries\n\nThe folder named `multicast` currently contains code that implements per-user unicast.\n\nThe corpus follows implementation behavior rather than the folder label.\n\nThe empty `multicastbiggerwindow.pp` does not establish an additional implemented experiment.\n\nThe `.pp` extension is not treated as evidence of Pascal because the source imports and uses the C++ ns-3 API.\n\n## Overall Narrative\n\n`NS3` is a compact but complete wireless-network experimentation repository.\n\nIt models an 802.11g infrastructure network, compares traffic configurations, instruments MAC/PHY transmission behavior, emits PCAPs, computes throughput, and automates a station-count sweep with Python.\n\nIts strongest portfolio value is the end-to-end experimental pattern:\n\n```text\nnetwork hypothesis\n→ parameterized simulation\n→ trace instrumentation\n→ repeated execution\n→ metric extraction\n→ visualization\n```\n\n# Project Tags\n\n- `individual-project`\n- `network-simulation`\n- `ns-3`\n- `cpp`\n- `python`\n- `wifi`\n- `wifi-802-11g`\n- `wireless-networking`\n- `udp`\n- `ipv4`\n- `broadcast`\n- `unicast`\n- `access-point`\n- `station-nodes`\n- `mac-layer`\n- `phy-tracing`\n- `wifi-mac-header`\n- `rts-cts`\n- `pcap`\n- `packet-capture`\n- `throughput-analysis`\n- `per-user-throughput`\n- `parameterized-simulation`\n- `experiment-automation`\n- `subprocess-automation`\n- `regex-parsing`\n- `matplotlib`\n- `performance-visualization`\n"
+}

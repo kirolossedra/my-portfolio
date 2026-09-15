@@ -1,0 +1,682 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 2,
+  "repository_total": 134,
+  "repository_name": "mytools",
+  "header_title": "mytools",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-002-mytools/README.md",
+    "line_start": 1,
+    "line_end": 256,
+    "sha256": "22574a6e2f8b226874ff79c0cdd95668efdf9a979ea5f434f12c6a5a6c7b6910"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "developer-tooling",
+    "data-preprocessing-tool",
+    "prototype",
+    "individual-project",
+    "python",
+    "text-parsing",
+    "data-cleaning",
+    "data-transformation",
+    "regular-expressions",
+    "dictionary-lookup",
+    "symbol-code-conversion",
+    "unicode-text",
+    "embedded-dataset",
+    "data-quality-checking",
+    "offline-processing",
+    "manual-verification",
+    "ancient-egyptian",
+    "hieroglyphs",
+    "gardiner-sign-codes",
+    "language-tooling",
+    "earliest-observed-python",
+    "earliest-observed-data-preprocessing",
+    "earliest-observed-regex"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 002 / 134\n- Name: `mytools`\n- Repository start date: 2021-06-03\n- Last meaningful update date: 2021-06-03\n- Primary type: Data-preparation / developer tooling repository\n- Technical field: Python text processing and dataset transformation\n- Application domain: Ancient Egyptian / hieroglyphic language data\n- Project context: Personal support tooling for a larger project\n- Collaboration type: `individual-project`\n- Primary implementation language: Python"
+    },
+    "architecture": {
+      "section_ids": [
+        "s006"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nManually supplied text\n      ↓\n`main.py`\n      ↓\nCleaning / field extraction / token reshaping\n      ↓\nNormalized downstream text\n\nEncoded sign sequences\n      ↓\n`sss.py`\n      ↓\nRegex tokenization\n      ↓\nKnown-sign lookup + unsupported-token detection\n      ↓\nUnicode hieroglyphic text\n```\n\nThe repository is a compact offline-processing layer supporting the same broader Ancient-Egyptian software theme as repository 001."
+    },
+    "testing": {
+      "section_ids": [
+        "s016",
+        "s017",
+        "s019"
+      ],
+      "titles": [
+        "Exploratory Verification",
+        "Verification",
+        "Manual Console Verification"
+      ],
+      "text": "## Exploratory Verification\nPrinted outputs, sample expressions, and collection-length checks provide direct evidence of interactive/manual inspection during preprocessing.\n\n## Verification\n### Data Validation\n\n`getOdd` verifies encoded sign components against the known sign dictionary and extracts unsupported tokens.\n\n### Manual Console Verification\n\nThe scripts print transformed values and collection sizes, supporting an exploratory inspect-and-adjust preprocessing workflow.\n\n## Manual Console Verification\nThe scripts print transformed values and collection sizes, supporting an exploratory inspect-and-adjust preprocessing workflow."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s038"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nBoth visible commits are attributed to the repository owner, supporting personal attribution of the Python transformation logic.\n\nThe large sign-code and lexical datasets embedded in `sss.py` are separate from code authorship: the repository demonstrates working with that domain data, while its original external provenance is not established by the repository itself.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 002 / 134\n- Name: `mytools`\n- Repository start date: 2021-06-03\n- Last meaningful update date: 2021-06-03\n- Primary type: Data-preparation / developer tooling repository\n- Technical field: Python text processing and dataset transformation\n- Application domain: Ancient Egyptian / hieroglyphic language data\n- Project context: Personal support tooling for a larger project\n- Collaboration type: `individual-project`\n- Primary implementation language: Python",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "Both visible commits are attributed to the repository owner, supporting personal attribution of the Python transformation logic.\n\nThe large sign-code and lexical datasets embedded in `sss.py` are separate from code authorship: the repository demonstrates working with that domain data, while its original external provenance is not established by the repository itself.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in `main.py`, `sss.py`, both README copies, and the complete two-commit history.\n\nThe repository describes the scripts as tools for a larger project, and the implementation supports that characterization.",
+      "source_line_start": 22,
+      "source_line_end": 28
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`mytools` is a small Python tooling repository used to prepare and transform data for a larger Ancient-Egyptian software project.\n\nIt contains offline utilities rather than an end-user application. One script cleans and reshapes line-oriented input. The larger script contains a Gardiner-style sign-code mapping, large lexical arrays, and helpers that convert symbolic sign sequences into Unicode hieroglyphic characters.\n\nThe engineering focus is therefore data preparation: taking specialized source representations and converting them into forms that can be consumed by another application.",
+      "source_line_start": 28,
+      "source_line_end": 36
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The repository contains:\n\n- `main.py`, a short interactive transformation utility;\n- `sss.py`, a larger sign-code and lexical-data processing script;\n- two README copies describing the scripts as supporting tools.\n\nPositively evidenced capabilities include:\n\n- sentinel-driven console input;\n- quotation removal;\n- comma-separated field extraction;\n- whitespace tokenization;\n- delimiter-based output reshaping;\n- regular-expression splitting over sign notation;\n- sign-code-to-Unicode conversion;\n- unsupported-token detection;\n- list and collection inspection;\n- direct handling of large embedded lexical arrays.",
+      "source_line_start": 36,
+      "source_line_end": 57
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nManually supplied text\n      ↓\n`main.py`\n      ↓\nCleaning / field extraction / token reshaping\n      ↓\nNormalized downstream text\n\nEncoded sign sequences\n      ↓\n`sss.py`\n      ↓\nRegex tokenization\n      ↓\nKnown-sign lookup + unsupported-token detection\n      ↓\nUnicode hieroglyphic text\n```\n\nThe repository is a compact offline-processing layer supporting the same broader Ancient-Egyptian software theme as repository 001.",
+      "source_line_start": 57,
+      "source_line_end": 81
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython is used for string manipulation, list processing, loops, dictionaries, interactive console I/O, and transformation logic.\n\n### Python `re`\n\nRegular expressions split compound sign strings on delimiters such as `:` and `-`.\n\n### Unicode Hieroglyph Data\n\nThe scripts map alphanumeric sign identifiers to Unicode Egyptian hieroglyphs, making symbolic source data directly renderable as text.",
+      "source_line_start": 81,
+      "source_line_end": 95
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python is used for string manipulation, list processing, loops, dictionaries, interactive console I/O, and transformation logic.",
+      "source_line_start": 83,
+      "source_line_end": 87
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Python `re`",
+      "normalized_title": "Python re",
+      "key": "python_re",
+      "path": [
+        "Technical Stack",
+        "Python `re`"
+      ],
+      "content": "Regular expressions split compound sign strings on delimiters such as `:` and `-`.",
+      "source_line_start": 87,
+      "source_line_end": 91
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Unicode Hieroglyph Data",
+      "normalized_title": "Unicode Hieroglyph Data",
+      "key": "unicode_hieroglyph_data",
+      "path": [
+        "Technical Stack",
+        "Unicode Hieroglyph Data"
+      ],
+      "content": "The scripts map alphanumeric sign identifiers to Unicode Egyptian hieroglyphs, making symbolic source data directly renderable as text.",
+      "source_line_start": 91,
+      "source_line_end": 95
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Raw Text Cleanup and Reshaping\n\n`main.py` accepts lines until a sentinel value is entered, removes quotation marks, extracts the first comma-separated field, tokenizes it, and rebuilds that field using a target delimiter.\n\nThis is a concrete example of writing one-off tooling around the exact input format required by a downstream project.\n\n### Sign-Code Conversion\n\n`sss.py` stores a large sign dictionary and provides conversion logic that tokenizes encoded sign names and maps recognized sign identifiers into Unicode glyphs.\n\n### Unsupported-Code Detection\n\nThe `getOdd` helper traverses encoded sequences and collects tokens that are not present in the known sign mapping. This is a positive data-quality capability because invalid or unsupported codes can be surfaced for inspection.\n\n### Dataset Preparation\n\nLarge lexical arrays in the source show the scripts operating over substantial domain data relative to the small amount of executable code.\n\n### Exploratory Verification\n\nPrinted outputs, sample expressions, and collection-length checks provide direct evidence of interactive/manual inspection during preprocessing.",
+      "source_line_start": 95,
+      "source_line_end": 119
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Raw Text Cleanup and Reshaping",
+      "normalized_title": "Raw Text Cleanup and Reshaping",
+      "key": "raw_text_cleanup_and_reshaping",
+      "path": [
+        "Major Engineering Work",
+        "Raw Text Cleanup and Reshaping"
+      ],
+      "content": "`main.py` accepts lines until a sentinel value is entered, removes quotation marks, extracts the first comma-separated field, tokenizes it, and rebuilds that field using a target delimiter.\n\nThis is a concrete example of writing one-off tooling around the exact input format required by a downstream project.",
+      "source_line_start": 97,
+      "source_line_end": 103
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Sign-Code Conversion",
+      "normalized_title": "Sign-Code Conversion",
+      "key": "sign_code_conversion",
+      "path": [
+        "Major Engineering Work",
+        "Sign-Code Conversion"
+      ],
+      "content": "`sss.py` stores a large sign dictionary and provides conversion logic that tokenizes encoded sign names and maps recognized sign identifiers into Unicode glyphs.",
+      "source_line_start": 103,
+      "source_line_end": 107
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Unsupported-Code Detection",
+      "normalized_title": "Unsupported-Code Detection",
+      "key": "unsupported_code_detection",
+      "path": [
+        "Major Engineering Work",
+        "Unsupported-Code Detection"
+      ],
+      "content": "The `getOdd` helper traverses encoded sequences and collects tokens that are not present in the known sign mapping. This is a positive data-quality capability because invalid or unsupported codes can be surfaced for inspection.",
+      "source_line_start": 107,
+      "source_line_end": 111
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Dataset Preparation",
+      "normalized_title": "Dataset Preparation",
+      "key": "dataset_preparation",
+      "path": [
+        "Major Engineering Work",
+        "Dataset Preparation"
+      ],
+      "content": "Large lexical arrays in the source show the scripts operating over substantial domain data relative to the small amount of executable code.",
+      "source_line_start": 111,
+      "source_line_end": 115
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Exploratory Verification",
+      "normalized_title": "Exploratory Verification",
+      "key": "exploratory_verification",
+      "path": [
+        "Major Engineering Work",
+        "Exploratory Verification"
+      ],
+      "content": "Printed outputs, sample expressions, and collection-length checks provide direct evidence of interactive/manual inspection during preprocessing.",
+      "source_line_start": 115,
+      "source_line_end": 119
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Data Validation\n\n`getOdd` verifies encoded sign components against the known sign dictionary and extracts unsupported tokens.\n\n### Manual Console Verification\n\nThe scripts print transformed values and collection sizes, supporting an exploratory inspect-and-adjust preprocessing workflow.",
+      "source_line_start": 119,
+      "source_line_end": 129
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Data Validation",
+      "normalized_title": "Data Validation",
+      "key": "data_validation",
+      "path": [
+        "Verification",
+        "Data Validation"
+      ],
+      "content": "`getOdd` verifies encoded sign components against the known sign dictionary and extracts unsupported tokens.",
+      "source_line_start": 121,
+      "source_line_end": 125
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Manual Console Verification",
+      "normalized_title": "Manual Console Verification",
+      "key": "manual_console_verification",
+      "path": [
+        "Verification",
+        "Manual Console Verification"
+      ],
+      "content": "The scripts print transformed values and collection sizes, supporting an exploratory inspect-and-adjust preprocessing workflow.",
+      "source_line_start": 125,
+      "source_line_end": 129
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Transformation-Oriented Tooling\n\nThe code is organized around converting source representations into the forms needed by another project.\n\n### Explicit Unsupported-Token Detection\n\nUnknown symbolic codes are identified rather than silently accepted.\n\n### Lightweight Functional Decomposition\n\nConversion and unsupported-token inspection are expressed as dedicated helpers within the larger script.",
+      "source_line_start": 129,
+      "source_line_end": 143
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Transformation-Oriented Tooling",
+      "normalized_title": "Transformation-Oriented Tooling",
+      "key": "transformation_oriented_tooling",
+      "path": [
+        "Engineering Practices",
+        "Transformation-Oriented Tooling"
+      ],
+      "content": "The code is organized around converting source representations into the forms needed by another project.",
+      "source_line_start": 131,
+      "source_line_end": 135
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Explicit Unsupported-Token Detection",
+      "normalized_title": "Explicit Unsupported-Token Detection",
+      "key": "explicit_unsupported_token_detection",
+      "path": [
+        "Engineering Practices",
+        "Explicit Unsupported-Token Detection"
+      ],
+      "content": "Unknown symbolic codes are identified rather than silently accepted.",
+      "source_line_start": 135,
+      "source_line_end": 139
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Lightweight Functional Decomposition",
+      "normalized_title": "Lightweight Functional Decomposition",
+      "key": "lightweight_functional_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Lightweight Functional Decomposition"
+      ],
+      "content": "Conversion and unsupported-token inspection are expressed as dedicated helpers within the larger script.",
+      "source_line_start": 139,
+      "source_line_end": 143
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThere are only two executable Python files, with most repository size concentrated in embedded mappings and lexical data.\n\n### Data Scale\n\nData volume is the dominant scale dimension: hundreds of sign identifiers and a large set of encoded lexical entries live directly in source.\n\n### Conceptual Complexity\n\nThe project combines text cleanup, delimiter transformation, regular-expression parsing, symbolic code mapping, Unicode output, and specialized domain data.",
+      "source_line_start": 143,
+      "source_line_end": 157
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "There are only two executable Python files, with most repository size concentrated in embedded mappings and lexical data.",
+      "source_line_start": 145,
+      "source_line_end": 149
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Data Scale",
+      "normalized_title": "Data Scale",
+      "key": "data_scale",
+      "path": [
+        "Scale and Complexity",
+        "Data Scale"
+      ],
+      "content": "Data volume is the dominant scale dimension: hundreds of sign identifiers and a large set of encoded lexical entries live directly in source.",
+      "source_line_start": 149,
+      "source_line_end": 153
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The project combines text cleanup, delimiter transformation, regular-expression parsing, symbolic code mapping, Unicode output, and specialized domain data.",
+      "source_line_start": 153,
+      "source_line_end": 157
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Languages\n\n- **Python — strong evidence.**\n\n### Data Processing\n\n- **Text parsing — strong evidence.**\n- **Data cleaning — strong evidence.**\n- **Data transformation — strong evidence.**\n- **Regular expressions — moderate evidence.**\n- **Dictionary-based mapping — strong evidence.**\n- **Data-quality checking — moderate evidence.**\n- **Unicode handling — strong evidence.**\n\n### Tooling\n\n- **Console scripting — moderate evidence.**\n- **Ad-hoc preprocessing utilities — strong evidence.**\n\n### Domain Knowledge\n\n- **Ancient-Egyptian sign encoding — moderate repository evidence.**",
+      "source_line_start": 157,
+      "source_line_end": 182
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Skills Demonstrated",
+        "Languages"
+      ],
+      "content": "- **Python — strong evidence.**",
+      "source_line_start": 159,
+      "source_line_end": 163
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Data Processing",
+      "normalized_title": "Data Processing",
+      "key": "data_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Data Processing"
+      ],
+      "content": "- **Text parsing — strong evidence.**\n- **Data cleaning — strong evidence.**\n- **Data transformation — strong evidence.**\n- **Regular expressions — moderate evidence.**\n- **Dictionary-based mapping — strong evidence.**\n- **Data-quality checking — moderate evidence.**\n- **Unicode handling — strong evidence.**",
+      "source_line_start": 163,
+      "source_line_end": 173
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Tooling",
+      "normalized_title": "Tooling",
+      "key": "tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Tooling"
+      ],
+      "content": "- **Console scripting — moderate evidence.**\n- **Ad-hoc preprocessing utilities — strong evidence.**",
+      "source_line_start": 173,
+      "source_line_end": 178
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Domain Knowledge",
+      "normalized_title": "Domain Knowledge",
+      "key": "domain_knowledge",
+      "path": [
+        "Skills Demonstrated",
+        "Domain Knowledge"
+      ],
+      "content": "- **Ancient-Egyptian sign encoding — moderate repository evidence.**",
+      "source_line_start": 178,
+      "source_line_end": 182
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "Relative to repository 001, the engineering object shifts from the end-user browser surface toward the data-preparation work that supports it.\n\nThe repository introduces a useful separation of concerns at the project level: domain data can require its own conversion and validation utilities before being embedded or consumed by the final application.",
+      "source_line_start": 182,
+      "source_line_end": 188
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- Python;\n- offline data preprocessing;\n- regular-expression parsing;\n- explicit unsupported-symbol detection;\n- developer tooling separated from the end-user browser application.\n\nThe Ancient-Egyptian computing theme also becomes a multi-repository effort rather than a single application artifact.",
+      "source_line_start": 188,
+      "source_line_end": 200
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`mytools` is historically useful because it shows the portfolio expanding from user-facing software into supporting engineering around source data itself.\n\nIt is the earliest observed Python repository in the processed corpus and the earliest evidence of dedicated preprocessing around specialized domain inputs.",
+      "source_line_start": 200,
+      "source_line_end": 206
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`mytools` is a compact set of Python preprocessing utilities supporting a larger Ancient-Egyptian language project. `main.py` performs line-oriented cleanup and reshaping, while `sss.py` handles more specialized sign-code tokenization, Unicode conversion, lexical arrays, and unsupported-token detection.\n\nIts strongest evidence is practical data transformation: accepting imperfect or encoded source material, normalizing it, converting symbolic codes, and inspecting data quality before downstream use.\n\n# Project Tags",
+      "source_line_start": 206,
+      "source_line_end": 214
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `developer-tooling`\n- `data-preprocessing-tool`\n- `prototype`",
+      "source_line_start": 214,
+      "source_line_end": 220
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`",
+      "source_line_start": 224,
+      "source_line_end": 228
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `text-parsing`\n- `data-cleaning`\n- `data-transformation`\n- `regular-expressions`\n- `dictionary-lookup`\n- `symbol-code-conversion`\n- `unicode-text`\n- `embedded-dataset`\n- `data-quality-checking`",
+      "source_line_start": 228,
+      "source_line_end": 240
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `offline-processing`\n- `manual-verification`",
+      "source_line_start": 240,
+      "source_line_end": 245
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Domain",
+      "normalized_title": "Domain",
+      "key": "domain",
+      "path": [
+        "Domain"
+      ],
+      "content": "- `ancient-egyptian`\n- `hieroglyphs`\n- `gardiner-sign-codes`\n- `language-tooling`",
+      "source_line_start": 245,
+      "source_line_end": 252
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-python`\n- `earliest-observed-data-preprocessing`\n- `earliest-observed-regex`",
+      "source_line_start": 252,
+      "source_line_end": 257
+    }
+  ],
+  "raw_analysis": "# mytools\n\n## Repository Identity\n\n- Repository: 002 / 134\n- Name: `mytools`\n- Repository start date: 2021-06-03\n- Last meaningful update date: 2021-06-03\n- Primary type: Data-preparation / developer tooling repository\n- Technical field: Python text processing and dataset transformation\n- Application domain: Ancient Egyptian / hieroglyphic language data\n- Project context: Personal support tooling for a larger project\n- Collaboration type: `individual-project`\n- Primary implementation language: Python\n\n## Collaboration and Authorship Context\n\nBoth visible commits are attributed to the repository owner, supporting personal attribution of the Python transformation logic.\n\nThe large sign-code and lexical datasets embedded in `sss.py` are separate from code authorship: the repository demonstrates working with that domain data, while its original external provenance is not established by the repository itself.\n\n## Evidence Basis\n\nThe analysis is grounded in `main.py`, `sss.py`, both README copies, and the complete two-commit history.\n\nThe repository describes the scripts as tools for a larger project, and the implementation supports that characterization.\n\n## What This Project Is\n\n`mytools` is a small Python tooling repository used to prepare and transform data for a larger Ancient-Egyptian software project.\n\nIt contains offline utilities rather than an end-user application. One script cleans and reshapes line-oriented input. The larger script contains a Gardiner-style sign-code mapping, large lexical arrays, and helpers that convert symbolic sign sequences into Unicode hieroglyphic characters.\n\nThe engineering focus is therefore data preparation: taking specialized source representations and converting them into forms that can be consumed by another application.\n\n## Project Scope\n\nThe repository contains:\n\n- `main.py`, a short interactive transformation utility;\n- `sss.py`, a larger sign-code and lexical-data processing script;\n- two README copies describing the scripts as supporting tools.\n\nPositively evidenced capabilities include:\n\n- sentinel-driven console input;\n- quotation removal;\n- comma-separated field extraction;\n- whitespace tokenization;\n- delimiter-based output reshaping;\n- regular-expression splitting over sign notation;\n- sign-code-to-Unicode conversion;\n- unsupported-token detection;\n- list and collection inspection;\n- direct handling of large embedded lexical arrays.\n\n## Architecture and System Shape\n\n```text\nManually supplied text\n      ↓\n`main.py`\n      ↓\nCleaning / field extraction / token reshaping\n      ↓\nNormalized downstream text\n\nEncoded sign sequences\n      ↓\n`sss.py`\n      ↓\nRegex tokenization\n      ↓\nKnown-sign lookup + unsupported-token detection\n      ↓\nUnicode hieroglyphic text\n```\n\nThe repository is a compact offline-processing layer supporting the same broader Ancient-Egyptian software theme as repository 001.\n\n## Technical Stack\n\n### Python\n\nPython is used for string manipulation, list processing, loops, dictionaries, interactive console I/O, and transformation logic.\n\n### Python `re`\n\nRegular expressions split compound sign strings on delimiters such as `:` and `-`.\n\n### Unicode Hieroglyph Data\n\nThe scripts map alphanumeric sign identifiers to Unicode Egyptian hieroglyphs, making symbolic source data directly renderable as text.\n\n## Major Engineering Work\n\n### Raw Text Cleanup and Reshaping\n\n`main.py` accepts lines until a sentinel value is entered, removes quotation marks, extracts the first comma-separated field, tokenizes it, and rebuilds that field using a target delimiter.\n\nThis is a concrete example of writing one-off tooling around the exact input format required by a downstream project.\n\n### Sign-Code Conversion\n\n`sss.py` stores a large sign dictionary and provides conversion logic that tokenizes encoded sign names and maps recognized sign identifiers into Unicode glyphs.\n\n### Unsupported-Code Detection\n\nThe `getOdd` helper traverses encoded sequences and collects tokens that are not present in the known sign mapping. This is a positive data-quality capability because invalid or unsupported codes can be surfaced for inspection.\n\n### Dataset Preparation\n\nLarge lexical arrays in the source show the scripts operating over substantial domain data relative to the small amount of executable code.\n\n### Exploratory Verification\n\nPrinted outputs, sample expressions, and collection-length checks provide direct evidence of interactive/manual inspection during preprocessing.\n\n## Verification\n\n### Data Validation\n\n`getOdd` verifies encoded sign components against the known sign dictionary and extracts unsupported tokens.\n\n### Manual Console Verification\n\nThe scripts print transformed values and collection sizes, supporting an exploratory inspect-and-adjust preprocessing workflow.\n\n## Engineering Practices\n\n### Transformation-Oriented Tooling\n\nThe code is organized around converting source representations into the forms needed by another project.\n\n### Explicit Unsupported-Token Detection\n\nUnknown symbolic codes are identified rather than silently accepted.\n\n### Lightweight Functional Decomposition\n\nConversion and unsupported-token inspection are expressed as dedicated helpers within the larger script.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThere are only two executable Python files, with most repository size concentrated in embedded mappings and lexical data.\n\n### Data Scale\n\nData volume is the dominant scale dimension: hundreds of sign identifiers and a large set of encoded lexical entries live directly in source.\n\n### Conceptual Complexity\n\nThe project combines text cleanup, delimiter transformation, regular-expression parsing, symbolic code mapping, Unicode output, and specialized domain data.\n\n## Skills Demonstrated\n\n### Languages\n\n- **Python — strong evidence.**\n\n### Data Processing\n\n- **Text parsing — strong evidence.**\n- **Data cleaning — strong evidence.**\n- **Data transformation — strong evidence.**\n- **Regular expressions — moderate evidence.**\n- **Dictionary-based mapping — strong evidence.**\n- **Data-quality checking — moderate evidence.**\n- **Unicode handling — strong evidence.**\n\n### Tooling\n\n- **Console scripting — moderate evidence.**\n- **Ad-hoc preprocessing utilities — strong evidence.**\n\n### Domain Knowledge\n\n- **Ancient-Egyptian sign encoding — moderate repository evidence.**\n\n## Capability Developed\n\nRelative to repository 001, the engineering object shifts from the end-user browser surface toward the data-preparation work that supports it.\n\nThe repository introduces a useful separation of concerns at the project level: domain data can require its own conversion and validation utilities before being embedded or consumed by the final application.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- Python;\n- offline data preprocessing;\n- regular-expression parsing;\n- explicit unsupported-symbol detection;\n- developer tooling separated from the end-user browser application.\n\nThe Ancient-Egyptian computing theme also becomes a multi-repository effort rather than a single application artifact.\n\n## Historical Significance\n\n`mytools` is historically useful because it shows the portfolio expanding from user-facing software into supporting engineering around source data itself.\n\nIt is the earliest observed Python repository in the processed corpus and the earliest evidence of dedicated preprocessing around specialized domain inputs.\n\n## Overall Repository Narrative\n\n`mytools` is a compact set of Python preprocessing utilities supporting a larger Ancient-Egyptian language project. `main.py` performs line-oriented cleanup and reshaping, while `sss.py` handles more specialized sign-code tokenization, Unicode conversion, lexical arrays, and unsupported-token detection.\n\nIts strongest evidence is practical data transformation: accepting imperfect or encoded source material, normalizing it, converting symbolic codes, and inspecting data quality before downstream use.\n\n# Project Tags\n\n## Project Type\n\n- `developer-tooling`\n- `data-preprocessing-tool`\n- `prototype`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `python`\n\n## Database and Data\n\n- `text-parsing`\n- `data-cleaning`\n- `data-transformation`\n- `regular-expressions`\n- `dictionary-lookup`\n- `symbol-code-conversion`\n- `unicode-text`\n- `embedded-dataset`\n- `data-quality-checking`\n\n## Software Engineering Practices\n\n- `offline-processing`\n- `manual-verification`\n\n## Domain\n\n- `ancient-egyptian`\n- `hieroglyphs`\n- `gardiner-sign-codes`\n- `language-tooling`\n\n## Portfolio Significance\n\n- `earliest-observed-python`\n- `earliest-observed-data-preprocessing`\n- `earliest-observed-regex`\n"
+}

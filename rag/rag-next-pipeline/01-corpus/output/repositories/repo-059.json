@@ -1,0 +1,467 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 59,
+  "repository_total": 134,
+  "repository_name": "RDBMS-For-Data-Engineering",
+  "header_title": "RDBMS-For-Data-Engineering",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-059-RDBMS-For-Data-Engineering/README.md",
+    "line_start": 1,
+    "line_end": 243,
+    "sha256": "212e37fa0556a072da0b7ab5d7d4f0d48b522a6dde65946bef4bea661ec0e73b"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "database-learning-repository",
+    "data-engineering-coursework",
+    "technical-lab",
+    "sql",
+    "relational-database",
+    "database-normalization",
+    "second-normal-form",
+    "primary-key",
+    "foreign-key",
+    "entity-integrity",
+    "referential-integrity",
+    "domain-integrity",
+    "sql-constraints",
+    "ddl",
+    "dml",
+    "schema-evolution",
+    "datasette",
+    "data-integrity",
+    "constraint-driven-design",
+    "incremental-schema-design",
+    "earliest-observed-database-normalization",
+    "earliest-observed-referential-integrity",
+    "earliest-observed-domain-integrity"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/RDBMS-For-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** relational database design and data engineering\n- **Primary implementation language:** SQL\n- **Project context:** structured database-learning repository\n- **Collaboration classification:** individual learning repository"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/RDBMS-For-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** relational database design and data engineering\n- **Primary implementation language:** SQL\n- **Project context:** structured database-learning repository\n- **Collaboration classification:** individual learning repository",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The current repository contains practical artifacts around:\n\n- relational schema normalization;\n- primary keys;\n- foreign keys;\n- domain/entity/referential integrity;\n- `ALTER TABLE`;\n- duplicate/key experiments;\n- a small Datasette setup note.\n\nThe strongest evidence is the SQL itself and the commit sequence, which explicitly records steps such as `2NF`, adding primary keys, trying duplicates, and foreign-key work.",
+      "source_line_start": 13,
+      "source_line_end": 27
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "```text\nRDBMS-For-Data-Engineering/\n├── Getting Started with datasette/\n│   └── README.md\n├── Normalization/\n│   ├── BookShop-CREATE-INSERT.sql\n│   ├── Alter.sql\n│   ├── Key.sql\n│   ├── key2.sql\n│   ├── TestPK.sql\n│   ├── FK.sql\n│   └── constraints.md\n└── Stored Procedures/\n    └── README.md\n```",
+      "source_line_start": 27,
+      "source_line_end": 45
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Relational Schema Construction",
+      "normalized_title": "Relational Schema Construction",
+      "key": "relational_schema_construction",
+      "path": [
+        "Relational Schema Construction"
+      ],
+      "content": "`BookShop-CREATE-INSERT.sql` creates a `BookShop` relation containing:\n\n- book ID;\n- title;\n- author name;\n- author biography;\n- author ID;\n- publication date;\n- price.\n\nThe script uses explicit relational data types and constraints such as:\n\n```sql\nVARCHAR(...)\nINTEGER\nDATE\nDECIMAL(6,2)\nCHECK(PRICE_USD > 0)\nNOT NULL\n```\n\nIt then inserts several sample books and executes `SELECT *`.",
+      "source_line_start": 45,
+      "source_line_end": 70
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Normalization Work",
+      "normalized_title": "Normalization Work",
+      "key": "normalization_work",
+      "path": [
+        "Normalization Work"
+      ],
+      "content": "The repository commit history explicitly includes a `2NF` step.\n\nThe BookShop exercise separates author-related data from book-related data through author identifiers and related tables.\n\nThe corpus therefore treats normalization as implemented learning work rather than a title-only topic.",
+      "source_line_start": 70,
+      "source_line_end": 78
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Primary Keys",
+      "normalized_title": "Primary Keys",
+      "key": "primary_keys",
+      "path": [
+        "Primary Keys"
+      ],
+      "content": "The SQL evolves the schema to add a primary key on `BOOK_ID`.\n\nThe repository also contains key-specific exercises and a duplicate-insertion experiment, showing that key semantics were tested rather than only described.",
+      "source_line_start": 78,
+      "source_line_end": 84
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Referential Integrity",
+      "normalized_title": "Referential Integrity",
+      "key": "referential_integrity",
+      "path": [
+        "Referential Integrity"
+      ],
+      "content": "`constraints.md` explains how `AUTHOR_ID` links the book relation to author details.\n\nThe document explicitly connects the foreign-key relationship with referential integrity.",
+      "source_line_start": 84,
+      "source_line_end": 90
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Entity Integrity",
+      "normalized_title": "Entity Integrity",
+      "key": "entity_integrity",
+      "path": [
+        "Entity Integrity"
+      ],
+      "content": "The same document explains how primary keys enforce unique, non-null row identity.",
+      "source_line_start": 90,
+      "source_line_end": 94
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Domain Integrity",
+      "normalized_title": "Domain Integrity",
+      "key": "domain_integrity",
+      "path": [
+        "Domain Integrity"
+      ],
+      "content": "The repository connects domain integrity with:\n\n- SQL types;\n- length limits;\n- date formats;\n- `CHECK` constraints;\n- `NOT NULL` constraints.\n\nThis mapping is grounded in the concrete `CREATE TABLE` definitions.",
+      "source_line_start": 94,
+      "source_line_end": 106
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "DDL and Schema Evolution",
+      "normalized_title": "DDL and Schema Evolution",
+      "key": "ddl_and_schema_evolution",
+      "path": [
+        "DDL and Schema Evolution"
+      ],
+      "content": "Separate SQL artifacts demonstrate schema creation and alteration.\n\nThe repository therefore covers both initial DDL and changes applied to an existing relational design.",
+      "source_line_start": 106,
+      "source_line_end": 112
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Data Population",
+      "normalized_title": "Data Population",
+      "key": "data_population",
+      "path": [
+        "Data Population"
+      ],
+      "content": "Sample `INSERT` statements create a realistic small dataset around computer-science books and authors.\n\nThis allows the constraints and normalization changes to operate against concrete rows instead of an abstract schema only.",
+      "source_line_start": 112,
+      "source_line_end": 118
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Datasette Exposure",
+      "normalized_title": "Datasette Exposure",
+      "key": "datasette_exposure",
+      "path": [
+        "Datasette Exposure"
+      ],
+      "content": "A dedicated `Getting Started with datasette` section records experimentation with Datasette as a lightweight way to expose/query relational data.\n\nThe repository evidence here is narrower than the normalization SQL, so it is treated as tooling exposure rather than a large application.",
+      "source_line_start": 118,
+      "source_line_end": 124
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Incremental Schema Evolution\n\nCommit messages record stepwise movement from an unnormalized schema toward stronger key and normalization rules.\n\n### Constraint-Oriented Reasoning\n\nThe work links schema design to entity, referential, and domain integrity.\n\n### Concrete Validation through Data\n\nSample data and duplicate/key exercises allow integrity behavior to be observed against actual rows.\n\n### Separation of Concerns\n\nThe normalization exercise separates author information from repeated book-level records through identifiers and relational structure.",
+      "source_line_start": 124,
+      "source_line_end": 142
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Incremental Schema Evolution",
+      "normalized_title": "Incremental Schema Evolution",
+      "key": "incremental_schema_evolution",
+      "path": [
+        "Engineering Practices",
+        "Incremental Schema Evolution"
+      ],
+      "content": "Commit messages record stepwise movement from an unnormalized schema toward stronger key and normalization rules.",
+      "source_line_start": 126,
+      "source_line_end": 130
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Constraint-Oriented Reasoning",
+      "normalized_title": "Constraint-Oriented Reasoning",
+      "key": "constraint_oriented_reasoning",
+      "path": [
+        "Engineering Practices",
+        "Constraint-Oriented Reasoning"
+      ],
+      "content": "The work links schema design to entity, referential, and domain integrity.",
+      "source_line_start": 130,
+      "source_line_end": 134
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Concrete Validation through Data",
+      "normalized_title": "Concrete Validation through Data",
+      "key": "concrete_validation_through_data",
+      "path": [
+        "Engineering Practices",
+        "Concrete Validation through Data"
+      ],
+      "content": "Sample data and duplicate/key exercises allow integrity behavior to be observed against actual rows.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Separation of Concerns",
+      "normalized_title": "Separation of Concerns",
+      "key": "separation_of_concerns",
+      "path": [
+        "Engineering Practices",
+        "Separation of Concerns"
+      ],
+      "content": "The normalization exercise separates author information from repeated book-level records through identifiers and relational structure.",
+      "source_line_start": 138,
+      "source_line_end": 142
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is compact, but it covers several core relational concepts through executable SQL:\n\n- DDL;\n- DML;\n- keys;\n- constraints;\n- normalization;\n- integrity rules;\n- schema alteration.\n\nThe complexity is conceptual and relational rather than application-scale.",
+      "source_line_start": 142,
+      "source_line_end": 156
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### SQL\n\n- `CREATE TABLE`;\n- `DROP TABLE IF EXISTS`;\n- `INSERT`;\n- `SELECT`;\n- constraints;\n- keys;\n- schema alteration.\n\n### Relational Modeling\n\n- primary keys;\n- foreign keys;\n- normalization;\n- entity integrity;\n- referential integrity;\n- domain integrity.\n\n### Data Engineering Foundations\n\n- schema design;\n- data-quality enforcement at database level;\n- relational structure refinement.",
+      "source_line_start": 156,
+      "source_line_end": 183
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "SQL",
+      "normalized_title": "SQL",
+      "key": "sql",
+      "path": [
+        "Skills Demonstrated",
+        "SQL"
+      ],
+      "content": "- `CREATE TABLE`;\n- `DROP TABLE IF EXISTS`;\n- `INSERT`;\n- `SELECT`;\n- constraints;\n- keys;\n- schema alteration.",
+      "source_line_start": 158,
+      "source_line_end": 168
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Relational Modeling",
+      "normalized_title": "Relational Modeling",
+      "key": "relational_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Relational Modeling"
+      ],
+      "content": "- primary keys;\n- foreign keys;\n- normalization;\n- entity integrity;\n- referential integrity;\n- domain integrity.",
+      "source_line_start": 168,
+      "source_line_end": 177
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Data Engineering Foundations",
+      "normalized_title": "Data Engineering Foundations",
+      "key": "data_engineering_foundations",
+      "path": [
+        "Skills Demonstrated",
+        "Data Engineering Foundations"
+      ],
+      "content": "- schema design;\n- data-quality enforcement at database level;\n- relational structure refinement.",
+      "source_line_start": 177,
+      "source_line_end": 183
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository makes database correctness part of the data model itself.\n\nCompared with earlier SQL challenge repositories, the emphasis shifts from answering relational queries toward designing relational structures that prevent invalid states.",
+      "source_line_start": 183,
+      "source_line_end": 189
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository centered specifically on:\n\n- relational normalization;\n- explicit entity/referential/domain integrity reasoning;\n- schema design through primary and foreign keys as the central learning objective.",
+      "source_line_start": 189,
+      "source_line_end": 197
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`RDBMS-For-Data-Engineering` is a hands-on relational-modeling repository.\n\nIt starts from a BookShop schema, populates it with sample data, then exercises normalization, key constraints, duplicate behavior, schema changes, and written integrity reasoning.\n\nThe repository's strongest evidence is not query complexity but disciplined data modeling: making identity, relationships, and valid domains explicit in the database schema.\n\n# Project Tags",
+      "source_line_start": 197,
+      "source_line_end": 207
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `database-learning-repository`\n- `data-engineering-coursework`\n- `technical-lab`",
+      "source_line_start": 207,
+      "source_line_end": 213
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `sql`",
+      "source_line_start": 213,
+      "source_line_end": 217
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `relational-database`\n- `database-normalization`\n- `second-normal-form`\n- `primary-key`\n- `foreign-key`\n- `entity-integrity`\n- `referential-integrity`\n- `domain-integrity`\n- `sql-constraints`\n- `ddl`\n- `dml`\n- `schema-evolution`\n- `datasette`",
+      "source_line_start": 217,
+      "source_line_end": 233
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `data-integrity`\n- `constraint-driven-design`\n- `incremental-schema-design`",
+      "source_line_start": 233,
+      "source_line_end": 239
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-database-normalization`\n- `earliest-observed-referential-integrity`\n- `earliest-observed-domain-integrity`",
+      "source_line_start": 239,
+      "source_line_end": 244
+    }
+  ],
+  "raw_analysis": "# Repository 059 — RDBMS-For-Data-Engineering\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/RDBMS-For-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-19\n- **Primary technical field:** relational database design and data engineering\n- **Primary implementation language:** SQL\n- **Project context:** structured database-learning repository\n- **Collaboration classification:** individual learning repository\n\n## Evidence Basis\n\nThe current repository contains practical artifacts around:\n\n- relational schema normalization;\n- primary keys;\n- foreign keys;\n- domain/entity/referential integrity;\n- `ALTER TABLE`;\n- duplicate/key experiments;\n- a small Datasette setup note.\n\nThe strongest evidence is the SQL itself and the commit sequence, which explicitly records steps such as `2NF`, adding primary keys, trying duplicates, and foreign-key work.\n\n## Repository Structure\n\n```text\nRDBMS-For-Data-Engineering/\n├── Getting Started with datasette/\n│   └── README.md\n├── Normalization/\n│   ├── BookShop-CREATE-INSERT.sql\n│   ├── Alter.sql\n│   ├── Key.sql\n│   ├── key2.sql\n│   ├── TestPK.sql\n│   ├── FK.sql\n│   └── constraints.md\n└── Stored Procedures/\n    └── README.md\n```\n\n## Relational Schema Construction\n\n`BookShop-CREATE-INSERT.sql` creates a `BookShop` relation containing:\n\n- book ID;\n- title;\n- author name;\n- author biography;\n- author ID;\n- publication date;\n- price.\n\nThe script uses explicit relational data types and constraints such as:\n\n```sql\nVARCHAR(...)\nINTEGER\nDATE\nDECIMAL(6,2)\nCHECK(PRICE_USD > 0)\nNOT NULL\n```\n\nIt then inserts several sample books and executes `SELECT *`.\n\n## Normalization Work\n\nThe repository commit history explicitly includes a `2NF` step.\n\nThe BookShop exercise separates author-related data from book-related data through author identifiers and related tables.\n\nThe corpus therefore treats normalization as implemented learning work rather than a title-only topic.\n\n## Primary Keys\n\nThe SQL evolves the schema to add a primary key on `BOOK_ID`.\n\nThe repository also contains key-specific exercises and a duplicate-insertion experiment, showing that key semantics were tested rather than only described.\n\n## Referential Integrity\n\n`constraints.md` explains how `AUTHOR_ID` links the book relation to author details.\n\nThe document explicitly connects the foreign-key relationship with referential integrity.\n\n## Entity Integrity\n\nThe same document explains how primary keys enforce unique, non-null row identity.\n\n## Domain Integrity\n\nThe repository connects domain integrity with:\n\n- SQL types;\n- length limits;\n- date formats;\n- `CHECK` constraints;\n- `NOT NULL` constraints.\n\nThis mapping is grounded in the concrete `CREATE TABLE` definitions.\n\n## DDL and Schema Evolution\n\nSeparate SQL artifacts demonstrate schema creation and alteration.\n\nThe repository therefore covers both initial DDL and changes applied to an existing relational design.\n\n## Data Population\n\nSample `INSERT` statements create a realistic small dataset around computer-science books and authors.\n\nThis allows the constraints and normalization changes to operate against concrete rows instead of an abstract schema only.\n\n## Datasette Exposure\n\nA dedicated `Getting Started with datasette` section records experimentation with Datasette as a lightweight way to expose/query relational data.\n\nThe repository evidence here is narrower than the normalization SQL, so it is treated as tooling exposure rather than a large application.\n\n## Engineering Practices\n\n### Incremental Schema Evolution\n\nCommit messages record stepwise movement from an unnormalized schema toward stronger key and normalization rules.\n\n### Constraint-Oriented Reasoning\n\nThe work links schema design to entity, referential, and domain integrity.\n\n### Concrete Validation through Data\n\nSample data and duplicate/key exercises allow integrity behavior to be observed against actual rows.\n\n### Separation of Concerns\n\nThe normalization exercise separates author information from repeated book-level records through identifiers and relational structure.\n\n## Scale and Complexity\n\nThe repository is compact, but it covers several core relational concepts through executable SQL:\n\n- DDL;\n- DML;\n- keys;\n- constraints;\n- normalization;\n- integrity rules;\n- schema alteration.\n\nThe complexity is conceptual and relational rather than application-scale.\n\n## Skills Demonstrated\n\n### SQL\n\n- `CREATE TABLE`;\n- `DROP TABLE IF EXISTS`;\n- `INSERT`;\n- `SELECT`;\n- constraints;\n- keys;\n- schema alteration.\n\n### Relational Modeling\n\n- primary keys;\n- foreign keys;\n- normalization;\n- entity integrity;\n- referential integrity;\n- domain integrity.\n\n### Data Engineering Foundations\n\n- schema design;\n- data-quality enforcement at database level;\n- relational structure refinement.\n\n## Capability Developed\n\nThis repository makes database correctness part of the data model itself.\n\nCompared with earlier SQL challenge repositories, the emphasis shifts from answering relational queries toward designing relational structures that prevent invalid states.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository centered specifically on:\n\n- relational normalization;\n- explicit entity/referential/domain integrity reasoning;\n- schema design through primary and foreign keys as the central learning objective.\n\n## Overall Repository Narrative\n\n`RDBMS-For-Data-Engineering` is a hands-on relational-modeling repository.\n\nIt starts from a BookShop schema, populates it with sample data, then exercises normalization, key constraints, duplicate behavior, schema changes, and written integrity reasoning.\n\nThe repository's strongest evidence is not query complexity but disciplined data modeling: making identity, relationships, and valid domains explicit in the database schema.\n\n# Project Tags\n\n## Project Type\n\n- `database-learning-repository`\n- `data-engineering-coursework`\n- `technical-lab`\n\n## Languages\n\n- `sql`\n\n## Database and Data\n\n- `relational-database`\n- `database-normalization`\n- `second-normal-form`\n- `primary-key`\n- `foreign-key`\n- `entity-integrity`\n- `referential-integrity`\n- `domain-integrity`\n- `sql-constraints`\n- `ddl`\n- `dml`\n- `schema-evolution`\n- `datasette`\n\n## Software Engineering Practices\n\n- `data-integrity`\n- `constraint-driven-design`\n- `incremental-schema-design`\n\n## Portfolio Significance\n\n- `earliest-observed-database-normalization`\n- `earliest-observed-referential-integrity`\n- `earliest-observed-domain-integrity`\n"
+}

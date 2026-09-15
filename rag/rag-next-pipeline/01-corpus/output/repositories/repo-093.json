@@ -1,0 +1,482 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 93,
+  "repository_total": 134,
+  "repository_name": "NRF-Zephyr",
+  "header_title": "NRF-Zephyr",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-093-NRF-Zephyr/README.md",
+    "line_start": 1,
+    "line_end": 340,
+    "sha256": "e76f93ecbd4957e1496e9bb27f096f8bd89158942122c5b02a3320b9ee1ccc0c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "externally-attributed-source",
+    "c",
+    "zephyr",
+    "zephyr-rtos",
+    "rtos",
+    "embedded-systems",
+    "kernel-threads",
+    "thread-scheduling",
+    "priority-scheduling",
+    "cooperative-scheduling",
+    "preemptive-scheduling",
+    "thread-suspend",
+    "thread-resume",
+    "thread-lifecycle",
+    "k-thread-create",
+    "k-sleep",
+    "k-yield",
+    "k-busy-wait",
+    "interrupt-lock",
+    "timing-measurement",
+    "latency-study",
+    "scheduler-study",
+    "external-intel-source",
+    "external-anas-nashif-attribution",
+    "source-study",
+    "nrf-name-without-nrf-specific-source",
+    "earliest-observed-zephyr-rtos-scheduler-study"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NRF-Zephyr`\n- **Corpus index:** 093\n- **Repository start date:** 2025-09-25\n- **Last meaningful update date:** 2025-09-25\n- **Latest meaningful commit:** `27bade3f9d64481733adcc3464c125e04aa2a282`\n- **Primary repository language:** C\n- **Project form:** Zephyr RTOS scheduler/timing study using externally attributed sample code\n- **Collaboration classification:** `externally-attributed-source`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThere is no application architecture in the conventional web/mobile sense.\n\nThe repository is organized as small scheduler experiments.\n\nThe first source has a multi-thread relationship:\n\n```text\nthread A / thread B / thread C\n            ↓\npriority + scheduling interactions\n            ↓\nthread C creates D suspended\n            ↓\nresume D\n            ↓\nobserve rescheduling behavior\n```\n\nThe second source is closer to a timing microbenchmark:\n\n```text\nkernel timing primitive\n        ↓\nmeasure/print elapsed timing behavior\n        ↓\ncompare sleep/yield/busy-wait/interrupt effects\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s020"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nThe source itself is test/sample-oriented code designed to make kernel behavior observable.\n\nPrinted execution/timing output is the primary verification mechanism.\n\nThe corpus does not claim owner-authored unit tests around these examples.\n\nThe important verification boundary is provenance rather than absence of a testing framework."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s013"
+      ],
+      "titles": [
+        "External Provenance and Attribution"
+      ],
+      "text": "## External Provenance and Attribution\nThe source headers are the strongest authorship evidence in this repository.\n\nThey explicitly attribute the base material externally.\n\nThe corpus therefore distinguishes:\n\n```text\nrepository ownership / study use\n≠\noriginal authorship of the retained sample source\n```\n\nThis is consistent with the corpus's collaboration/authorship rules.\n\nA portfolio can legitimately include study artifacts, but they must not be represented as owner-written systems code when the source says otherwise."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NRF-Zephyr`\n- **Corpus index:** 093\n- **Repository start date:** 2025-09-25\n- **Last meaningful update date:** 2025-09-25\n- **Latest meaningful commit:** `27bade3f9d64481733adcc3464c125e04aa2a282`\n- **Primary repository language:** C\n- **Project form:** Zephyr RTOS scheduler/timing study using externally attributed sample code\n- **Collaboration classification:** `externally-attributed-source`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a minimal root README, an empty RTOS README, and two C source files.\n\nThe C files retain explicit Intel Corporation copyright headers.\n\n`rescheduling-based-starv.c` identifies Anas Nashif as an original author.\n\nThis attribution is materially important.\n\nThe repository cannot be treated as evidence that the owner authored the base scheduler examples from scratch.\n\nThe safe portfolio interpretation is that the repository records Zephyr RTOS study, experimentation, or adaptation around externally sourced sample/test code.\n\nThe repository name includes `NRF`.\n\nHowever, the retained C files do not contain nRF-specific peripheral APIs, Nordic SDK calls, BLE configuration, board overlays, or nRF devicetree material.\n\nThe current snapshot therefore supports Zephyr/RTOS learning evidence, not an nRF-specific implementation claim.",
+      "source_line_start": 14,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "NRF-Zephyr is a compact RTOS learning repository focused on thread scheduling, preemption/cooperation, thread lifecycle operations, sleeping, yielding, busy waits, and timing overhead.\n\nThe two retained programs explore different scheduler behaviors.\n\nOne demonstrates thread creation and rescheduling interactions among threads with different priorities.\n\nThe other exercises timing/scheduling primitives and records timing-oriented output.\n\nThe repo is best understood as a systems-learning artifact rather than a product application.",
+      "source_line_start": 34,
+      "source_line_end": 46
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The retained source covers:\n\n- Zephyr kernel threads;\n- thread stacks;\n- thread priorities;\n- cooperative vs. preemptive behavior;\n- suspended-thread creation;\n- thread resume;\n- current-thread introspection;\n- sleeping;\n- yielding;\n- busy waiting;\n- interrupt locking/unlocking;\n- timing/latency-oriented measurement.\n\nIt does not establish an application-specific Nordic peripheral subsystem in the retained snapshot.",
+      "source_line_start": 46,
+      "source_line_end": 65
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "There is no application architecture in the conventional web/mobile sense.\n\nThe repository is organized as small scheduler experiments.\n\nThe first source has a multi-thread relationship:\n\n```text\nthread A / thread B / thread C\n            ↓\npriority + scheduling interactions\n            ↓\nthread C creates D suspended\n            ↓\nresume D\n            ↓\nobserve rescheduling behavior\n```\n\nThe second source is closer to a timing microbenchmark:\n\n```text\nkernel timing primitive\n        ↓\nmeasure/print elapsed timing behavior\n        ↓\ncompare sleep/yield/busy-wait/interrupt effects\n```",
+      "source_line_start": 65,
+      "source_line_end": 95
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- C\n- Zephyr RTOS\n- Zephyr kernel API\n- kernel threads\n- thread stacks\n- priority scheduling\n- sleep/yield APIs\n- interrupt locks\n- busy wait\n- timing measurement",
+      "source_line_start": 95,
+      "source_line_end": 108
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Thread Scheduling Experiment",
+      "normalized_title": "Thread Scheduling Experiment",
+      "key": "thread_scheduling_experiment",
+      "path": [
+        "Thread Scheduling Experiment"
+      ],
+      "content": "`rescheduling-based-starv.c` declares multiple thread stacks and thread control structures.\n\nThe program creates threads with different priority/scheduling characteristics.\n\nIt uses Zephyr thread APIs including:\n\n- `k_thread_create`;\n- `k_thread_suspend`/suspended creation semantics;\n- `k_thread_resume`;\n- `k_current_get`.\n\nThe experiment is designed to make rescheduling observable through controlled thread interactions.\n\nThe code is valuable for studying what happens when runnable state and priority change during execution.",
+      "source_line_start": 108,
+      "source_line_end": 125
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Cooperative vs. Preemptive Context",
+      "normalized_title": "Cooperative vs. Preemptive Context",
+      "key": "cooperative_vs_preemptive_context",
+      "path": [
+        "Cooperative vs. Preemptive Context"
+      ],
+      "content": "Zephyr distinguishes cooperative and preemptive priorities.\n\nThe sample's thread-priority choices expose that scheduler model directly.\n\nThis is a lower-level concurrency concept than ordinary application threads managed without explicit RTOS priority semantics.\n\nUnderstanding it is relevant to embedded systems where latency and task responsiveness matter.\n\nThe repository provides study evidence for those concepts even though the base example is externally attributed.",
+      "source_line_start": 125,
+      "source_line_end": 137
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Suspended Thread Lifecycle",
+      "normalized_title": "Suspended Thread Lifecycle",
+      "key": "suspended_thread_lifecycle",
+      "path": [
+        "Suspended Thread Lifecycle"
+      ],
+      "content": "One notable pattern is creating a thread in a suspended state and resuming it later.\n\nThis separates allocation/creation from runnable eligibility.\n\nThat helps illustrate thread lifecycle control beyond simply “start a thread.”\n\nIt also makes scheduler transitions easier to observe.",
+      "source_line_start": 137,
+      "source_line_end": 147
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Timing Experiment",
+      "normalized_title": "Timing Experiment",
+      "key": "timing_experiment",
+      "path": [
+        "Timing Experiment"
+      ],
+      "content": "`sleep.c` explores multiple timing and scheduling operations.\n\nIt includes calls around:\n\n- `k_sleep`;\n- `k_busy_wait`;\n- `k_yield`;\n- interrupt lock/unlock;\n- thread creation and scheduling.\n\nThe code prints timing-oriented observations.\n\nThis is useful for understanding the semantic difference between blocking sleep, active waiting, yielding, and critical-section effects.",
+      "source_line_start": 147,
+      "source_line_end": 163
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Busy Wait vs. Sleep",
+      "normalized_title": "Busy Wait vs. Sleep",
+      "key": "busy_wait_vs_sleep",
+      "path": [
+        "Busy Wait vs. Sleep"
+      ],
+      "content": "A busy wait consumes execution capacity while waiting.\n\nA sleep allows the scheduler to run other work.\n\nThe source puts both kinds of primitives into one study artifact.\n\nThat provides a concrete systems-level comparison rather than treating delay APIs as interchangeable.",
+      "source_line_start": 163,
+      "source_line_end": 173
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Interrupt Lock Boundary",
+      "normalized_title": "Interrupt Lock Boundary",
+      "key": "interrupt_lock_boundary",
+      "path": [
+        "Interrupt Lock Boundary"
+      ],
+      "content": "The timing source uses interrupt locking/unlocking.\n\nThis exposes the cost and behavioral implications of preventing interrupt handling over a critical interval.\n\nThe repository should not be described as implementing a complete interrupt-driven device driver.\n\nThe supported claim is narrower: kernel interrupt-lock behavior is part of the scheduler/timing experiment.",
+      "source_line_start": 173,
+      "source_line_end": 183
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "External Provenance and Attribution",
+      "normalized_title": "External Provenance and Attribution",
+      "key": "external_provenance_and_attribution",
+      "path": [
+        "External Provenance and Attribution"
+      ],
+      "content": "The source headers are the strongest authorship evidence in this repository.\n\nThey explicitly attribute the base material externally.\n\nThe corpus therefore distinguishes:\n\n```text\nrepository ownership / study use\n≠\noriginal authorship of the retained sample source\n```\n\nThis is consistent with the corpus's collaboration/authorship rules.\n\nA portfolio can legitimately include study artifacts, but they must not be represented as owner-written systems code when the source says otherwise.",
+      "source_line_start": 183,
+      "source_line_end": 201
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "NRF Naming Boundary",
+      "normalized_title": "NRF Naming Boundary",
+      "key": "nrf_naming_boundary",
+      "path": [
+        "NRF Naming Boundary"
+      ],
+      "content": "The repository name suggests an intended Nordic/Zephyr learning context.\n\nNames are weak evidence compared with source.\n\nThe retained programs do not show:\n\n- nRF52/nRF53 register work;\n- BLE host/controller setup;\n- Nordic radio APIs;\n- GPIO peripheral control;\n- board-specific devicetree overlays.\n\nTherefore the final tags emphasize Zephyr RTOS and scheduler study.\n\nThey do not tag a specific nRF peripheral implementation.",
+      "source_line_start": 201,
+      "source_line_end": 219
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Major Engineering / Learning Work",
+      "normalized_title": "Major Engineering / Learning Work",
+      "key": "major_engineering_learning_work",
+      "path": [
+        "Major Engineering / Learning Work"
+      ],
+      "content": "### Scheduler Semantics\n\nThe repository captures concrete examples of runnable state, priorities, and rescheduling.\n\n### Timing Primitive Comparison\n\nSleep, busy-wait, yield, and interrupt-lock behavior are exposed as distinct mechanisms.\n\n### Thread Lifecycle\n\nSuspended creation and later resume demonstrate explicit lifecycle control.\n\n### Source Reading / Systems Study\n\nBecause the base samples are external, an important demonstrated activity is reading and working through production RTOS test/example code.\n\nThat is different from original implementation but still relevant systems-learning evidence.",
+      "source_line_start": 219,
+      "source_line_end": 239
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Scheduler Semantics",
+      "normalized_title": "Scheduler Semantics",
+      "key": "scheduler_semantics",
+      "path": [
+        "Major Engineering / Learning Work",
+        "Scheduler Semantics"
+      ],
+      "content": "The repository captures concrete examples of runnable state, priorities, and rescheduling.",
+      "source_line_start": 221,
+      "source_line_end": 225
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Timing Primitive Comparison",
+      "normalized_title": "Timing Primitive Comparison",
+      "key": "timing_primitive_comparison",
+      "path": [
+        "Major Engineering / Learning Work",
+        "Timing Primitive Comparison"
+      ],
+      "content": "Sleep, busy-wait, yield, and interrupt-lock behavior are exposed as distinct mechanisms.",
+      "source_line_start": 225,
+      "source_line_end": 229
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Thread Lifecycle",
+      "normalized_title": "Thread Lifecycle",
+      "key": "thread_lifecycle",
+      "path": [
+        "Major Engineering / Learning Work",
+        "Thread Lifecycle"
+      ],
+      "content": "Suspended creation and later resume demonstrate explicit lifecycle control.",
+      "source_line_start": 229,
+      "source_line_end": 233
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Source Reading / Systems Study",
+      "normalized_title": "Source Reading / Systems Study",
+      "key": "source_reading_systems_study",
+      "path": [
+        "Major Engineering / Learning Work",
+        "Source Reading / Systems Study"
+      ],
+      "content": "Because the base samples are external, an important demonstrated activity is reading and working through production RTOS test/example code.\n\nThat is different from original implementation but still relevant systems-learning evidence.",
+      "source_line_start": 233,
+      "source_line_end": 239
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "The source itself is test/sample-oriented code designed to make kernel behavior observable.\n\nPrinted execution/timing output is the primary verification mechanism.\n\nThe corpus does not claim owner-authored unit tests around these examples.\n\nThe important verification boundary is provenance rather than absence of a testing framework.",
+      "source_line_start": 239,
+      "source_line_end": 249
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The strongest discipline visible here is attribution preservation.\n\nThe original copyright and author headers remain intact.\n\nThat allows downstream analysis to correctly separate source ownership from study activity.\n\nTechnically, the examples also use explicit stack allocation, priorities, and kernel APIs rather than abstracting scheduler behavior away.",
+      "source_line_start": 249,
+      "source_line_end": 259
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository is not an end-user product.\n\nIts output is learning/experimental understanding of RTOS scheduling semantics.\n\nThe value is in systems behavior and embedded-concurrency concepts rather than UI or business workflow.",
+      "source_line_start": 259,
+      "source_line_end": 267
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "The codebase is small.\n\nThe conceptual complexity is higher than its line count because RTOS scheduling depends on priority, runnable state, preemption semantics, timing, and interrupt behavior.\n\nThe repository should still be represented as a compact study artifact rather than an embedded product codebase.",
+      "source_line_start": 267,
+      "source_line_end": 275
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports familiarity/study with:\n\n- Zephyr RTOS kernel APIs\n- C systems code\n- RTOS threads\n- thread priorities\n- cooperative scheduling\n- preemptive scheduling\n- suspend/resume lifecycle\n- sleeping\n- yielding\n- busy waiting\n- interrupt locking\n- timing/latency observation\n- reading externally authored embedded-system sample code\n- preserving source attribution",
+      "source_line_start": 275,
+      "source_line_end": 294
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository develops intuition about why RTOS timing primitives are not interchangeable.\n\nIt also exposes how priority and runnable state determine which embedded task executes.\n\nThose concepts are foundational for later real-time firmware work, especially when radio, sensor, or control tasks compete for bounded response time.\n\nThe repository's educational value is systems semantics rather than original algorithm creation.",
+      "source_line_start": 294,
+      "source_line_end": 304
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier repositories already contained bare-metal/embedded C, AUTOSAR-oriented work, Verilog, and operating-system/Linux study.\n\nNRF-Zephyr adds explicit RTOS kernel scheduling semantics to that trajectory.\n\nLater portfolio work with Nordic boards and Zephyr can build on this foundation, but this snapshot itself should remain narrowly described.",
+      "source_line_start": 304,
+      "source_line_end": 312
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the clearest early repository centered specifically on Zephyr RTOS scheduler/timing primitives.\n\nIt marks a shift from general embedded/system exercises toward a named modern RTOS environment.\n\nThe source provenance simultaneously demonstrates why the corpus needs explicit authorship boundaries for learning repositories.",
+      "source_line_start": 312,
+      "source_line_end": 320
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The current retained source is externally attributed sample/test material.\n\nThere is insufficient evidence to claim original owner authorship of the scheduler examples.\n\nThe repository name alone does not establish nRF hardware integration.\n\nThese are the two central evidence boundaries and should remain attached to any retrieval from this repository.",
+      "source_line_start": 320,
+      "source_line_end": 330
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "NRF-Zephyr is a compact Zephyr RTOS study repository built around externally attributed kernel scheduling/timing examples.\n\nIt provides evidence of work with Zephyr threads, priorities, preemption/cooperation, suspend/resume lifecycle, sleep/yield/busy-wait behavior, interrupt locking, and timing observation.\n\nIts portfolio value is RTOS learning and source-level systems study—not proof of an owner-authored nRF firmware application.\n\n# Project Tags\n\n`externally-attributed-source`, `c`, `zephyr`, `zephyr-rtos`, `rtos`, `embedded-systems`, `kernel-threads`, `thread-scheduling`, `priority-scheduling`, `cooperative-scheduling`, `preemptive-scheduling`, `thread-suspend`, `thread-resume`, `thread-lifecycle`, `k-thread-create`, `k-sleep`, `k-yield`, `k-busy-wait`, `interrupt-lock`, `timing-measurement`, `latency-study`, `scheduler-study`, `external-intel-source`, `external-anas-nashif-attribution`, `source-study`, `nrf-name-without-nrf-specific-source`, `earliest-observed-zephyr-rtos-scheduler-study`",
+      "source_line_start": 330,
+      "source_line_end": 341
+    }
+  ],
+  "raw_analysis": "# Repository 093 — NRF-Zephyr\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NRF-Zephyr`\n- **Corpus index:** 093\n- **Repository start date:** 2025-09-25\n- **Last meaningful update date:** 2025-09-25\n- **Latest meaningful commit:** `27bade3f9d64481733adcc3464c125e04aa2a282`\n- **Primary repository language:** C\n- **Project form:** Zephyr RTOS scheduler/timing study using externally attributed sample code\n- **Collaboration classification:** `externally-attributed-source`\n\n## Evidence Basis\n\nThe repository contains a minimal root README, an empty RTOS README, and two C source files.\n\nThe C files retain explicit Intel Corporation copyright headers.\n\n`rescheduling-based-starv.c` identifies Anas Nashif as an original author.\n\nThis attribution is materially important.\n\nThe repository cannot be treated as evidence that the owner authored the base scheduler examples from scratch.\n\nThe safe portfolio interpretation is that the repository records Zephyr RTOS study, experimentation, or adaptation around externally sourced sample/test code.\n\nThe repository name includes `NRF`.\n\nHowever, the retained C files do not contain nRF-specific peripheral APIs, Nordic SDK calls, BLE configuration, board overlays, or nRF devicetree material.\n\nThe current snapshot therefore supports Zephyr/RTOS learning evidence, not an nRF-specific implementation claim.\n\n## What the Project Is\n\nNRF-Zephyr is a compact RTOS learning repository focused on thread scheduling, preemption/cooperation, thread lifecycle operations, sleeping, yielding, busy waits, and timing overhead.\n\nThe two retained programs explore different scheduler behaviors.\n\nOne demonstrates thread creation and rescheduling interactions among threads with different priorities.\n\nThe other exercises timing/scheduling primitives and records timing-oriented output.\n\nThe repo is best understood as a systems-learning artifact rather than a product application.\n\n## Project Scope\n\nThe retained source covers:\n\n- Zephyr kernel threads;\n- thread stacks;\n- thread priorities;\n- cooperative vs. preemptive behavior;\n- suspended-thread creation;\n- thread resume;\n- current-thread introspection;\n- sleeping;\n- yielding;\n- busy waiting;\n- interrupt locking/unlocking;\n- timing/latency-oriented measurement.\n\nIt does not establish an application-specific Nordic peripheral subsystem in the retained snapshot.\n\n## Architecture / System Shape\n\nThere is no application architecture in the conventional web/mobile sense.\n\nThe repository is organized as small scheduler experiments.\n\nThe first source has a multi-thread relationship:\n\n```text\nthread A / thread B / thread C\n            ↓\npriority + scheduling interactions\n            ↓\nthread C creates D suspended\n            ↓\nresume D\n            ↓\nobserve rescheduling behavior\n```\n\nThe second source is closer to a timing microbenchmark:\n\n```text\nkernel timing primitive\n        ↓\nmeasure/print elapsed timing behavior\n        ↓\ncompare sleep/yield/busy-wait/interrupt effects\n```\n\n## Technical Stack\n\n- C\n- Zephyr RTOS\n- Zephyr kernel API\n- kernel threads\n- thread stacks\n- priority scheduling\n- sleep/yield APIs\n- interrupt locks\n- busy wait\n- timing measurement\n\n## Thread Scheduling Experiment\n\n`rescheduling-based-starv.c` declares multiple thread stacks and thread control structures.\n\nThe program creates threads with different priority/scheduling characteristics.\n\nIt uses Zephyr thread APIs including:\n\n- `k_thread_create`;\n- `k_thread_suspend`/suspended creation semantics;\n- `k_thread_resume`;\n- `k_current_get`.\n\nThe experiment is designed to make rescheduling observable through controlled thread interactions.\n\nThe code is valuable for studying what happens when runnable state and priority change during execution.\n\n## Cooperative vs. Preemptive Context\n\nZephyr distinguishes cooperative and preemptive priorities.\n\nThe sample's thread-priority choices expose that scheduler model directly.\n\nThis is a lower-level concurrency concept than ordinary application threads managed without explicit RTOS priority semantics.\n\nUnderstanding it is relevant to embedded systems where latency and task responsiveness matter.\n\nThe repository provides study evidence for those concepts even though the base example is externally attributed.\n\n## Suspended Thread Lifecycle\n\nOne notable pattern is creating a thread in a suspended state and resuming it later.\n\nThis separates allocation/creation from runnable eligibility.\n\nThat helps illustrate thread lifecycle control beyond simply “start a thread.”\n\nIt also makes scheduler transitions easier to observe.\n\n## Timing Experiment\n\n`sleep.c` explores multiple timing and scheduling operations.\n\nIt includes calls around:\n\n- `k_sleep`;\n- `k_busy_wait`;\n- `k_yield`;\n- interrupt lock/unlock;\n- thread creation and scheduling.\n\nThe code prints timing-oriented observations.\n\nThis is useful for understanding the semantic difference between blocking sleep, active waiting, yielding, and critical-section effects.\n\n## Busy Wait vs. Sleep\n\nA busy wait consumes execution capacity while waiting.\n\nA sleep allows the scheduler to run other work.\n\nThe source puts both kinds of primitives into one study artifact.\n\nThat provides a concrete systems-level comparison rather than treating delay APIs as interchangeable.\n\n## Interrupt Lock Boundary\n\nThe timing source uses interrupt locking/unlocking.\n\nThis exposes the cost and behavioral implications of preventing interrupt handling over a critical interval.\n\nThe repository should not be described as implementing a complete interrupt-driven device driver.\n\nThe supported claim is narrower: kernel interrupt-lock behavior is part of the scheduler/timing experiment.\n\n## External Provenance and Attribution\n\nThe source headers are the strongest authorship evidence in this repository.\n\nThey explicitly attribute the base material externally.\n\nThe corpus therefore distinguishes:\n\n```text\nrepository ownership / study use\n≠\noriginal authorship of the retained sample source\n```\n\nThis is consistent with the corpus's collaboration/authorship rules.\n\nA portfolio can legitimately include study artifacts, but they must not be represented as owner-written systems code when the source says otherwise.\n\n## NRF Naming Boundary\n\nThe repository name suggests an intended Nordic/Zephyr learning context.\n\nNames are weak evidence compared with source.\n\nThe retained programs do not show:\n\n- nRF52/nRF53 register work;\n- BLE host/controller setup;\n- Nordic radio APIs;\n- GPIO peripheral control;\n- board-specific devicetree overlays.\n\nTherefore the final tags emphasize Zephyr RTOS and scheduler study.\n\nThey do not tag a specific nRF peripheral implementation.\n\n## Major Engineering / Learning Work\n\n### Scheduler Semantics\n\nThe repository captures concrete examples of runnable state, priorities, and rescheduling.\n\n### Timing Primitive Comparison\n\nSleep, busy-wait, yield, and interrupt-lock behavior are exposed as distinct mechanisms.\n\n### Thread Lifecycle\n\nSuspended creation and later resume demonstrate explicit lifecycle control.\n\n### Source Reading / Systems Study\n\nBecause the base samples are external, an important demonstrated activity is reading and working through production RTOS test/example code.\n\nThat is different from original implementation but still relevant systems-learning evidence.\n\n## Testing & Verification\n\nThe source itself is test/sample-oriented code designed to make kernel behavior observable.\n\nPrinted execution/timing output is the primary verification mechanism.\n\nThe corpus does not claim owner-authored unit tests around these examples.\n\nThe important verification boundary is provenance rather than absence of a testing framework.\n\n## Engineering Discipline\n\nThe strongest discipline visible here is attribution preservation.\n\nThe original copyright and author headers remain intact.\n\nThat allows downstream analysis to correctly separate source ownership from study activity.\n\nTechnically, the examples also use explicit stack allocation, priorities, and kernel APIs rather than abstracting scheduler behavior away.\n\n## Product Engineering\n\nThis repository is not an end-user product.\n\nIts output is learning/experimental understanding of RTOS scheduling semantics.\n\nThe value is in systems behavior and embedded-concurrency concepts rather than UI or business workflow.\n\n## Scale / Complexity\n\nThe codebase is small.\n\nThe conceptual complexity is higher than its line count because RTOS scheduling depends on priority, runnable state, preemption semantics, timing, and interrupt behavior.\n\nThe repository should still be represented as a compact study artifact rather than an embedded product codebase.\n\n## Skills Demonstrated\n\nEvidence supports familiarity/study with:\n\n- Zephyr RTOS kernel APIs\n- C systems code\n- RTOS threads\n- thread priorities\n- cooperative scheduling\n- preemptive scheduling\n- suspend/resume lifecycle\n- sleeping\n- yielding\n- busy waiting\n- interrupt locking\n- timing/latency observation\n- reading externally authored embedded-system sample code\n- preserving source attribution\n\n## What Was Learned / Capability Developed\n\nThe repository develops intuition about why RTOS timing primitives are not interchangeable.\n\nIt also exposes how priority and runnable state determine which embedded task executes.\n\nThose concepts are foundational for later real-time firmware work, especially when radio, sensor, or control tasks compete for bounded response time.\n\nThe repository's educational value is systems semantics rather than original algorithm creation.\n\n## Portfolio Evolution Context\n\nEarlier repositories already contained bare-metal/embedded C, AUTOSAR-oriented work, Verilog, and operating-system/Linux study.\n\nNRF-Zephyr adds explicit RTOS kernel scheduling semantics to that trajectory.\n\nLater portfolio work with Nordic boards and Zephyr can build on this foundation, but this snapshot itself should remain narrowly described.\n\n## Historical Significance\n\nWithin the processed corpus, this is the clearest early repository centered specifically on Zephyr RTOS scheduler/timing primitives.\n\nIt marks a shift from general embedded/system exercises toward a named modern RTOS environment.\n\nThe source provenance simultaneously demonstrates why the corpus needs explicit authorship boundaries for learning repositories.\n\n## Limitations & Missing Evidence\n\nThe current retained source is externally attributed sample/test material.\n\nThere is insufficient evidence to claim original owner authorship of the scheduler examples.\n\nThe repository name alone does not establish nRF hardware integration.\n\nThese are the two central evidence boundaries and should remain attached to any retrieval from this repository.\n\n## Overall Narrative\n\nNRF-Zephyr is a compact Zephyr RTOS study repository built around externally attributed kernel scheduling/timing examples.\n\nIt provides evidence of work with Zephyr threads, priorities, preemption/cooperation, suspend/resume lifecycle, sleep/yield/busy-wait behavior, interrupt locking, and timing observation.\n\nIts portfolio value is RTOS learning and source-level systems study—not proof of an owner-authored nRF firmware application.\n\n# Project Tags\n\n`externally-attributed-source`, `c`, `zephyr`, `zephyr-rtos`, `rtos`, `embedded-systems`, `kernel-threads`, `thread-scheduling`, `priority-scheduling`, `cooperative-scheduling`, `preemptive-scheduling`, `thread-suspend`, `thread-resume`, `thread-lifecycle`, `k-thread-create`, `k-sleep`, `k-yield`, `k-busy-wait`, `interrupt-lock`, `timing-measurement`, `latency-study`, `scheduler-study`, `external-intel-source`, `external-anas-nashif-attribution`, `source-study`, `nrf-name-without-nrf-specific-source`, `earliest-observed-zephyr-rtos-scheduler-study`\n"
+}

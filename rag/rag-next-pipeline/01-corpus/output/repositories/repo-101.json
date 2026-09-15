@@ -1,0 +1,963 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 101,
+  "repository_total": 134,
+  "repository_name": "Service-Tools",
+  "header_title": "Service-Tools",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-101-Service-Tools/README.md",
+    "line_start": 1,
+    "line_end": 661,
+    "sha256": "55fdb154f7a43658cd68490d1a0943c0787a7ffc2c41bc2762900491326597be"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "desktop-utility",
+    "workflow-automation",
+    "content-automation",
+    "web-retrieval",
+    "web-scraping",
+    "requests",
+    "beautifulsoup",
+    "html-parsing",
+    "json-api-consumption",
+    "genius-integration",
+    "lyrics-processing",
+    "regex-parsing",
+    "section-parsing",
+    "text-normalization",
+    "ascii-normalization",
+    "filename-sanitization",
+    "python-pptx",
+    "powerpoint-generation",
+    "document-automation",
+    "pptx-export",
+    "dynamic-font-sizing",
+    "programmatic-layout",
+    "tkinter",
+    "desktop-gui",
+    "batch-processing",
+    "background-threading",
+    "threading",
+    "progress-logging",
+    "error-handling",
+    "failure-isolation",
+    "filesystem-output",
+    "output-directory-management",
+    "external-content-boundary",
+    "incremental-productization",
+    "earliest-observed-python-pptx-workflow",
+    "earliest-observed-automated-powerpoint-generation",
+    "earliest-observed-lyrics-to-pptx-desktop-tool"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Service-Tools`\n- **Corpus index:** 101\n- **Repository start date:** 2025-12-18\n- **Last meaningful update date:** 2025-12-18\n- **Latest meaningful commit:** `f629eaa56d606da394a4fe9b2fb832bce750af08`\n- **Primary repository language:** Python\n- **Project form:** desktop content-retrieval and PowerPoint-generation utility\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s044"
+      ],
+      "titles": [
+        "Verification and Runtime Feedback"
+      ],
+      "text": "## Verification and Runtime Feedback\nThe scripts print or log concrete pipeline milestones.\n\nThe final GUI reports:\n\n- retrieval result;\n- parsed section count;\n- saved filename;\n- per-song failure;\n- aggregate success count;\n- aggregate failure count.\n\nThe user can therefore identify where a batch succeeded or failed."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Service-Tools`\n- **Corpus index:** 101\n- **Repository start date:** 2025-12-18\n- **Last meaningful update date:** 2025-12-18\n- **Latest meaningful commit:** `f629eaa56d606da394a4fe9b2fb832bce750af08`\n- **Primary repository language:** Python\n- **Project form:** desktop content-retrieval and PowerPoint-generation utility\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains three substantive Python implementations:\n\n- `scrapTheSong.py`;\n- `scrappingPpptx.py`;\n- `GUI_BASED.py`.\n\nThe commit sequence shows a clear same-day evolution:\n\n```text\nlyrics retrieval\n      ↓\nlyrics retrieval + PowerPoint generation\n      ↓\nfetching/title fixes\n      ↓\nbatch desktop GUI\n```\n\nThe latest commit is attributed to the repository owner and adds the 383-line GUI implementation.\n\nThe external song lyrics retrieved from Genius are input content.\n\nThe portfolio engineering evidence is the software that:\n\n- searches;\n- retrieves;\n- parses;\n- cleans;\n- structures;\n- lays out;\n- exports;\n- batches;\n- presents progress to the user.",
+      "source_line_start": 14,
+      "source_line_end": 50
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Service-Tools` automates a practical content-production workflow.\n\nA user supplies a song search query.\n\nThe program finds the corresponding result through Genius, retrieves the lyrics page, extracts structured lyric content, separates bracketed sections, and generates a PowerPoint presentation.\n\nThe final version wraps that pipeline in a Tkinter desktop interface capable of processing multiple songs in one run.\n\nThe tool therefore converts a repetitive manual workflow into an automated local application.",
+      "source_line_start": 50,
+      "source_line_end": 62
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Product Workflow",
+      "normalized_title": "Product Workflow",
+      "key": "product_workflow",
+      "path": [
+        "Product Workflow"
+      ],
+      "content": "The final GUI exposes this flow:\n\n```text\nuser enters multiple song queries\n            ↓\nbackground worker thread\n            ↓\nGenius search endpoint\n            ↓\nselected song result\n            ↓\nlyrics-page HTTP request\n            ↓\nBeautifulSoup extraction\n            ↓\nsection parser\n            ↓\nfont-size / layout logic\n            ↓\npython-pptx presentation generation\n            ↓\none .pptx file per song\n            ↓\nsuccess/failure progress log\n```",
+      "source_line_start": 62,
+      "source_line_end": 90
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython is the implementation language for all three source files.\n\nIt coordinates:\n\n- HTTP requests;\n- HTML parsing;\n- regular expressions;\n- presentation generation;\n- filesystem output;\n- desktop GUI state;\n- background threading.\n\n### Requests\n\nThe program uses `requests` to retrieve:\n\n- Genius search results;\n- song lyric pages.\n\nHTTP errors are caught through `requests.RequestException`.\n\n### Beautiful Soup\n\n`BeautifulSoup` parses HTML and locates lyric containers.\n\nThe code supports:\n\n- the `data-lyrics-container=\"true\"` attribute;\n- a fallback class pattern matching `Lyrics__Container`.\n\n### Regular Expressions\n\nRegular expressions are used for:\n\n- fallback lyric-container class matching;\n- splitting lyrics by bracketed section labels.\n\n### python-pptx\n\nThe presentation generator uses:\n\n- `Presentation`;\n- `Inches`;\n- `Pt`;\n- paragraph alignment;\n- RGB colors.\n\nThis is true programmatic PowerPoint construction rather than static template copying.\n\n### Tkinter\n\nThe final interface is implemented with Tkinter.\n\nIt includes:\n\n- multi-line song input;\n- output-folder configuration;\n- generate button;\n- scrollable progress log;\n- warning dialog;\n- completion dialog;\n- error dialog.\n\n### Threading\n\nThe GUI starts processing in a daemon background thread.\n\nThis keeps the long-running retrieval/generation workflow separate from the button event that starts it.",
+      "source_line_start": 90,
+      "source_line_end": 163
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python is the implementation language for all three source files.\n\nIt coordinates:\n\n- HTTP requests;\n- HTML parsing;\n- regular expressions;\n- presentation generation;\n- filesystem output;\n- desktop GUI state;\n- background threading.",
+      "source_line_start": 92,
+      "source_line_end": 106
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Requests",
+      "normalized_title": "Requests",
+      "key": "requests",
+      "path": [
+        "Technical Stack",
+        "Requests"
+      ],
+      "content": "The program uses `requests` to retrieve:\n\n- Genius search results;\n- song lyric pages.\n\nHTTP errors are caught through `requests.RequestException`.",
+      "source_line_start": 106,
+      "source_line_end": 115
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Beautiful Soup",
+      "normalized_title": "Beautiful Soup",
+      "key": "beautiful_soup",
+      "path": [
+        "Technical Stack",
+        "Beautiful Soup"
+      ],
+      "content": "`BeautifulSoup` parses HTML and locates lyric containers.\n\nThe code supports:\n\n- the `data-lyrics-container=\"true\"` attribute;\n- a fallback class pattern matching `Lyrics__Container`.",
+      "source_line_start": 115,
+      "source_line_end": 124
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Regular Expressions",
+      "normalized_title": "Regular Expressions",
+      "key": "regular_expressions",
+      "path": [
+        "Technical Stack",
+        "Regular Expressions"
+      ],
+      "content": "Regular expressions are used for:\n\n- fallback lyric-container class matching;\n- splitting lyrics by bracketed section labels.",
+      "source_line_start": 124,
+      "source_line_end": 131
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "python-pptx",
+      "normalized_title": "python-pptx",
+      "key": "python_pptx",
+      "path": [
+        "Technical Stack",
+        "python-pptx"
+      ],
+      "content": "The presentation generator uses:\n\n- `Presentation`;\n- `Inches`;\n- `Pt`;\n- paragraph alignment;\n- RGB colors.\n\nThis is true programmatic PowerPoint construction rather than static template copying.",
+      "source_line_start": 131,
+      "source_line_end": 143
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Tkinter",
+      "normalized_title": "Tkinter",
+      "key": "tkinter",
+      "path": [
+        "Technical Stack",
+        "Tkinter"
+      ],
+      "content": "The final interface is implemented with Tkinter.\n\nIt includes:\n\n- multi-line song input;\n- output-folder configuration;\n- generate button;\n- scrollable progress log;\n- warning dialog;\n- completion dialog;\n- error dialog.",
+      "source_line_start": 143,
+      "source_line_end": 157
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Threading",
+      "normalized_title": "Threading",
+      "key": "threading",
+      "path": [
+        "Technical Stack",
+        "Threading"
+      ],
+      "content": "The GUI starts processing in a daemon background thread.\n\nThis keeps the long-running retrieval/generation workflow separate from the button event that starts it.",
+      "source_line_start": 157,
+      "source_line_end": 163
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Search and Retrieval Evolution",
+      "normalized_title": "Search and Retrieval Evolution",
+      "key": "search_and_retrieval_evolution",
+      "path": [
+        "Search and Retrieval Evolution"
+      ],
+      "content": "### Initial Search-Page Scraping\n\n`scrapTheSong.py` begins with a browser-style search URL.\n\nIt URL-encodes the song query, downloads the search page, and scans links until it finds a Genius URL ending in `-lyrics`.\n\nThis is direct HTML search-result scraping.\n\n### Structured Genius Search Endpoint\n\n`scrappingPpptx.py` and `GUI_BASED.py` move to:\n\n```text\nhttps://genius.com/api/search/multi\n```\n\nThe response is parsed as JSON.\n\nThe code walks response sections until it finds a song result.\n\nFrom that result it extracts:\n\n- URL;\n- title;\n- primary artist in the GUI version.\n\nThis is a cleaner structured discovery stage than the initial link scan.\n\n### Lyrics Page Retrieval\n\nAfter locating the selected song, the program fetches the lyric page separately.\n\nThis creates a two-stage retrieval architecture:\n\n```text\nstructured search\n      ↓\nsong URL\n      ↓\nHTML lyrics page\n```",
+      "source_line_start": 163,
+      "source_line_end": 207
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Initial Search-Page Scraping",
+      "normalized_title": "Initial Search-Page Scraping",
+      "key": "initial_search_page_scraping",
+      "path": [
+        "Search and Retrieval Evolution",
+        "Initial Search-Page Scraping"
+      ],
+      "content": "`scrapTheSong.py` begins with a browser-style search URL.\n\nIt URL-encodes the song query, downloads the search page, and scans links until it finds a Genius URL ending in `-lyrics`.\n\nThis is direct HTML search-result scraping.",
+      "source_line_start": 165,
+      "source_line_end": 173
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Structured Genius Search Endpoint",
+      "normalized_title": "Structured Genius Search Endpoint",
+      "key": "structured_genius_search_endpoint",
+      "path": [
+        "Search and Retrieval Evolution",
+        "Structured Genius Search Endpoint"
+      ],
+      "content": "`scrappingPpptx.py` and `GUI_BASED.py` move to:\n\n```text\nhttps://genius.com/api/search/multi\n```\n\nThe response is parsed as JSON.\n\nThe code walks response sections until it finds a song result.\n\nFrom that result it extracts:\n\n- URL;\n- title;\n- primary artist in the GUI version.\n\nThis is a cleaner structured discovery stage than the initial link scan.",
+      "source_line_start": 173,
+      "source_line_end": 193
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Lyrics Page Retrieval",
+      "normalized_title": "Lyrics Page Retrieval",
+      "key": "lyrics_page_retrieval",
+      "path": [
+        "Search and Retrieval Evolution",
+        "Lyrics Page Retrieval"
+      ],
+      "content": "After locating the selected song, the program fetches the lyric page separately.\n\nThis creates a two-stage retrieval architecture:\n\n```text\nstructured search\n      ↓\nsong URL\n      ↓\nHTML lyrics page\n```",
+      "source_line_start": 193,
+      "source_line_end": 207
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "HTML Lyrics Extraction",
+      "normalized_title": "HTML Lyrics Extraction",
+      "key": "html_lyrics_extraction",
+      "path": [
+        "HTML Lyrics Extraction"
+      ],
+      "content": "The parser looks for Genius lyric containers.\n\nPrimary selector:\n\n```text\ndiv[data-lyrics-container=\"true\"]\n```\n\nFallback selector:\n\n```text\ndiv class matching Lyrics__Container\n```\n\nBefore extracting text, `<br>` elements are replaced with newline characters.\n\nMultiple containers are joined into one lyrics string.\n\nThis preserves line boundaries more effectively than flattening the entire page into plain text.",
+      "source_line_start": 207,
+      "source_line_end": 229
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Section Parsing",
+      "normalized_title": "Section Parsing",
+      "key": "section_parsing",
+      "path": [
+        "Section Parsing"
+      ],
+      "content": "`parse_lyrics_sections()` splits the lyrics using bracketed section markers.\n\nExamples of the structural pattern are:\n\n```text\n[Verse]\n[Chorus]\n[Bridge]\n```\n\nThe regular expression captures the section name and associates it with the following text.\n\nOnly sections with actual content are retained.\n\nThe result is a list of:\n\n```text\n(section_name, section_text)\n```\n\nThis intermediate structure is what drives slide generation.",
+      "source_line_start": 229,
+      "source_line_end": 253
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Text Normalization",
+      "normalized_title": "Text Normalization",
+      "key": "text_normalization",
+      "path": [
+        "Text Normalization"
+      ],
+      "content": "The GUI version introduces `clean_text()` for song-title metadata.\n\nIt converts text to plain ASCII while dropping characters that cannot be encoded.\n\nThe cleaned title and artist are combined into a presentation title.\n\nThis is an explicit formatting-normalization decision for downstream PowerPoint output.",
+      "source_line_start": 253,
+      "source_line_end": 263
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Dynamic Font Sizing",
+      "normalized_title": "Dynamic Font Sizing",
+      "key": "dynamic_font_sizing",
+      "path": [
+        "Dynamic Font Sizing"
+      ],
+      "content": "The presentation generator chooses lyric font size according to content length.\n\nThe final GUI version uses a more granular range than the earlier script.\n\nShort sections receive larger fonts.\n\nLonger sections progressively receive smaller fonts.\n\nThis is a simple layout heuristic intended to make automatically generated slides more usable without manual resizing.",
+      "source_line_start": 263,
+      "source_line_end": 275
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "PowerPoint Generation",
+      "normalized_title": "PowerPoint Generation",
+      "key": "powerpoint_generation",
+      "path": [
+        "PowerPoint Generation"
+      ],
+      "content": "### Presentation Geometry\n\nThe program creates a new `Presentation` and explicitly configures slide dimensions.\n\nIt uses the blank layout for generated slides.\n\n### Title Slide\n\nThe first slide contains the song title.\n\nThe code configures:\n\n- textbox dimensions;\n- centered alignment;\n- large bold type;\n- text color;\n- background fill.\n\n### Lyric Slides\n\nEach parsed section becomes a slide.\n\nThe final GUI version uses the parsed section body as the main slide content.\n\nInstead, it uses the section text as the main centered content.\n\nThe text frame enables word wrapping.\n\n### Programmatic Styling\n\nThe program controls:\n\n- position;\n- size;\n- alignment;\n- font size;\n- font color;\n- background color.\n\nThe generated deck is therefore assembled and styled entirely from code.\n\n### PPTX Persistence\n\n`python-pptx` saves the presentation to disk as `.pptx`.\n\nThe standalone script accepts a specified output filename.\n\nThe GUI creates one output file per query.",
+      "source_line_start": 275,
+      "source_line_end": 326
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Presentation Geometry",
+      "normalized_title": "Presentation Geometry",
+      "key": "presentation_geometry",
+      "path": [
+        "PowerPoint Generation",
+        "Presentation Geometry"
+      ],
+      "content": "The program creates a new `Presentation` and explicitly configures slide dimensions.\n\nIt uses the blank layout for generated slides.",
+      "source_line_start": 277,
+      "source_line_end": 283
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Title Slide",
+      "normalized_title": "Title Slide",
+      "key": "title_slide",
+      "path": [
+        "PowerPoint Generation",
+        "Title Slide"
+      ],
+      "content": "The first slide contains the song title.\n\nThe code configures:\n\n- textbox dimensions;\n- centered alignment;\n- large bold type;\n- text color;\n- background fill.",
+      "source_line_start": 283,
+      "source_line_end": 295
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Lyric Slides",
+      "normalized_title": "Lyric Slides",
+      "key": "lyric_slides",
+      "path": [
+        "PowerPoint Generation",
+        "Lyric Slides"
+      ],
+      "content": "Each parsed section becomes a slide.\n\nThe final GUI version uses the parsed section body as the main slide content.\n\nInstead, it uses the section text as the main centered content.\n\nThe text frame enables word wrapping.",
+      "source_line_start": 295,
+      "source_line_end": 305
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Programmatic Styling",
+      "normalized_title": "Programmatic Styling",
+      "key": "programmatic_styling",
+      "path": [
+        "PowerPoint Generation",
+        "Programmatic Styling"
+      ],
+      "content": "The program controls:\n\n- position;\n- size;\n- alignment;\n- font size;\n- font color;\n- background color.\n\nThe generated deck is therefore assembled and styled entirely from code.",
+      "source_line_start": 305,
+      "source_line_end": 318
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "PPTX Persistence",
+      "normalized_title": "PPTX Persistence",
+      "key": "pptx_persistence",
+      "path": [
+        "PowerPoint Generation",
+        "PPTX Persistence"
+      ],
+      "content": "`python-pptx` saves the presentation to disk as `.pptx`.\n\nThe standalone script accepts a specified output filename.\n\nThe GUI creates one output file per query.",
+      "source_line_start": 318,
+      "source_line_end": 326
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Safe Output Filenames",
+      "normalized_title": "Safe Output Filenames",
+      "key": "safe_output_filenames",
+      "path": [
+        "Safe Output Filenames"
+      ],
+      "content": "For batch generation, the GUI derives filenames from the user's song query.\n\nIt keeps:\n\n- alphanumeric characters;\n- spaces;\n- hyphens;\n- underscores.\n\nSpaces are then converted to underscores.\n\nThis reduces the chance that arbitrary query punctuation becomes problematic in local filenames.",
+      "source_line_start": 326,
+      "source_line_end": 341
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Batch Processing",
+      "normalized_title": "Batch Processing",
+      "key": "batch_processing",
+      "path": [
+        "Batch Processing"
+      ],
+      "content": "The GUI accepts one song query per line.\n\nIt converts the input into a list and processes each song sequentially.\n\nFor each query it records either:\n\n- success;\n- failure.\n\nAt the end it reports aggregate success/failure counts.\n\nThis turns the earlier one-song script into a multi-item production utility.",
+      "source_line_start": 341,
+      "source_line_end": 356
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Output Directory Management",
+      "normalized_title": "Output Directory Management",
+      "key": "output_directory_management",
+      "path": [
+        "Output Directory Management"
+      ],
+      "content": "The user can provide an output folder.\n\nIf the field is empty, the program falls back to a default directory name.\n\nThe application creates the directory when it does not exist.\n\nEach generated presentation is placed inside that folder.",
+      "source_line_start": 356,
+      "source_line_end": 366
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Desktop User Interface",
+      "normalized_title": "Desktop User Interface",
+      "key": "desktop_user_interface",
+      "path": [
+        "Desktop User Interface"
+      ],
+      "content": "### Input Surface\n\nThe main window contains a scrollable text area pre-populated with example song queries.\n\nThe expected interaction is simple: one search phrase per line.\n\n### Processing State\n\nWhen generation begins:\n\n- the button is disabled;\n- its label changes to `Processing...`;\n- the existing log area is cleared.\n\nWhen processing finishes, the button is restored.\n\n### Progress Log\n\nThe GUI writes detailed progress messages into a scrollable log.\n\nMessages include:\n\n- which song is being processed;\n- whether lyrics were found;\n- section count;\n- generated output path;\n- errors;\n- final success/failure totals.\n\n### Dialog Feedback\n\nTkinter message boxes provide:\n\n- no-input warning;\n- completion summary;\n- error notification.\n\nThis makes the final version meaningfully more productized than the earlier command-line scripts.",
+      "source_line_start": 366,
+      "source_line_end": 407
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Input Surface",
+      "normalized_title": "Input Surface",
+      "key": "input_surface",
+      "path": [
+        "Desktop User Interface",
+        "Input Surface"
+      ],
+      "content": "The main window contains a scrollable text area pre-populated with example song queries.\n\nThe expected interaction is simple: one search phrase per line.",
+      "source_line_start": 368,
+      "source_line_end": 374
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Processing State",
+      "normalized_title": "Processing State",
+      "key": "processing_state",
+      "path": [
+        "Desktop User Interface",
+        "Processing State"
+      ],
+      "content": "When generation begins:\n\n- the button is disabled;\n- its label changes to `Processing...`;\n- the existing log area is cleared.\n\nWhen processing finishes, the button is restored.",
+      "source_line_start": 374,
+      "source_line_end": 384
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Progress Log",
+      "normalized_title": "Progress Log",
+      "key": "progress_log",
+      "path": [
+        "Desktop User Interface",
+        "Progress Log"
+      ],
+      "content": "The GUI writes detailed progress messages into a scrollable log.\n\nMessages include:\n\n- which song is being processed;\n- whether lyrics were found;\n- section count;\n- generated output path;\n- errors;\n- final success/failure totals.",
+      "source_line_start": 384,
+      "source_line_end": 397
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Dialog Feedback",
+      "normalized_title": "Dialog Feedback",
+      "key": "dialog_feedback",
+      "path": [
+        "Desktop User Interface",
+        "Dialog Feedback"
+      ],
+      "content": "Tkinter message boxes provide:\n\n- no-input warning;\n- completion summary;\n- error notification.\n\nThis makes the final version meaningfully more productized than the earlier command-line scripts.",
+      "source_line_start": 397,
+      "source_line_end": 407
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Background Processing",
+      "normalized_title": "Background Processing",
+      "key": "background_processing",
+      "path": [
+        "Background Processing"
+      ],
+      "content": "The GUI creates a daemon thread for the batch operation.\n\nThe thread runs `process_songs()`.\n\nThe reason is visible in the workflow: network requests and PPTX generation can take enough time that doing them directly in the button callback would block the interaction path.\n\nThe code therefore separates user-triggered startup from the long-running workload.",
+      "source_line_start": 407,
+      "source_line_end": 417
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Error Handling",
+      "normalized_title": "Error Handling",
+      "key": "error_handling",
+      "path": [
+        "Error Handling"
+      ],
+      "content": "The retrieval functions catch HTTP request errors and return `None`.\n\n`process_single_song()` wraps one song's pipeline in its own exception handling.\n\nThis permits the batch to continue after a per-song failure.\n\nThe outer batch function also has a top-level exception handler for application-level failures.\n\nThis is useful in a multi-item automation tool because one failed retrieval does not need to erase all prior successful work.",
+      "source_line_start": 417,
+      "source_line_end": 429
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "External Content Boundary",
+      "normalized_title": "External Content Boundary",
+      "key": "external_content_boundary",
+      "path": [
+        "External Content Boundary"
+      ],
+      "content": "The retrieved lyric text comes from Genius pages and is external content.\n\nThe repository's software contribution is the retrieval and transformation pipeline around that external content.\n\nThe engineered behavior is:\n\n- finding the content;\n- extracting it;\n- structuring it;\n- transforming it;\n- generating presentation files from it.\n\nThis distinction is important for accurate portfolio attribution.",
+      "source_line_start": 429,
+      "source_line_end": 445
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Web Retrieval Pipeline\n\nThe project implements a two-stage retrieval flow combining structured search data with HTML-page parsing.\n\n### Resilient Lyrics Extraction\n\nPrimary and fallback selectors support more than one observed Genius page structure.\n\n### Structured Text Transformation\n\nBracketed lyric metadata is converted into a section list suitable for slide generation.\n\n### Automated Presentation Layout\n\nThe program converts section length into typography choices and writes styled PowerPoint slides.\n\n### Batch Desktop Workflow\n\nThe final version exposes multi-song processing through a desktop UI with background execution and progress reporting.",
+      "source_line_start": 445,
+      "source_line_end": 467
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Web Retrieval Pipeline",
+      "normalized_title": "Web Retrieval Pipeline",
+      "key": "web_retrieval_pipeline",
+      "path": [
+        "Major Engineering Work",
+        "Web Retrieval Pipeline"
+      ],
+      "content": "The project implements a two-stage retrieval flow combining structured search data with HTML-page parsing.",
+      "source_line_start": 447,
+      "source_line_end": 451
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Resilient Lyrics Extraction",
+      "normalized_title": "Resilient Lyrics Extraction",
+      "key": "resilient_lyrics_extraction",
+      "path": [
+        "Major Engineering Work",
+        "Resilient Lyrics Extraction"
+      ],
+      "content": "Primary and fallback selectors support more than one observed Genius page structure.",
+      "source_line_start": 451,
+      "source_line_end": 455
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Structured Text Transformation",
+      "normalized_title": "Structured Text Transformation",
+      "key": "structured_text_transformation",
+      "path": [
+        "Major Engineering Work",
+        "Structured Text Transformation"
+      ],
+      "content": "Bracketed lyric metadata is converted into a section list suitable for slide generation.",
+      "source_line_start": 455,
+      "source_line_end": 459
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Automated Presentation Layout",
+      "normalized_title": "Automated Presentation Layout",
+      "key": "automated_presentation_layout",
+      "path": [
+        "Major Engineering Work",
+        "Automated Presentation Layout"
+      ],
+      "content": "The program converts section length into typography choices and writes styled PowerPoint slides.",
+      "source_line_start": 459,
+      "source_line_end": 463
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Batch Desktop Workflow",
+      "normalized_title": "Batch Desktop Workflow",
+      "key": "batch_desktop_workflow",
+      "path": [
+        "Major Engineering Work",
+        "Batch Desktop Workflow"
+      ],
+      "content": "The final version exposes multi-song processing through a desktop UI with background execution and progress reporting.",
+      "source_line_start": 463,
+      "source_line_end": 467
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Verification and Runtime Feedback",
+      "normalized_title": "Verification and Runtime Feedback",
+      "key": "verification_and_runtime_feedback",
+      "path": [
+        "Verification and Runtime Feedback"
+      ],
+      "content": "The scripts print or log concrete pipeline milestones.\n\nThe final GUI reports:\n\n- retrieval result;\n- parsed section count;\n- saved filename;\n- per-song failure;\n- aggregate success count;\n- aggregate failure count.\n\nThe user can therefore identify where a batch succeeded or failed.",
+      "source_line_start": 467,
+      "source_line_end": 482
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Incremental Productization\n\nThe commit sequence shows a progression from a one-off scraper to a batch desktop tool.\n\n### Functional Decomposition\n\nThe final source separates:\n\n- text cleaning;\n- song search;\n- lyric parsing;\n- font sizing;\n- presentation generation;\n- single-song processing;\n- GUI orchestration.\n\n### Failure Isolation\n\nEach song is processed through a function that returns success/failure.\n\nThis supports continued batch execution.\n\n### Output Hygiene\n\nThe program creates output folders and sanitizes filenames before persistence.\n\n### Responsive Workflow Intent\n\nLong-running batch processing is moved onto a background thread rather than being launched inline from the button handler.",
+      "source_line_start": 482,
+      "source_line_end": 514
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Incremental Productization",
+      "normalized_title": "Incremental Productization",
+      "key": "incremental_productization",
+      "path": [
+        "Engineering Practices",
+        "Incremental Productization"
+      ],
+      "content": "The commit sequence shows a progression from a one-off scraper to a batch desktop tool.",
+      "source_line_start": 484,
+      "source_line_end": 488
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Functional Decomposition",
+      "normalized_title": "Functional Decomposition",
+      "key": "functional_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Functional Decomposition"
+      ],
+      "content": "The final source separates:\n\n- text cleaning;\n- song search;\n- lyric parsing;\n- font sizing;\n- presentation generation;\n- single-song processing;\n- GUI orchestration.",
+      "source_line_start": 488,
+      "source_line_end": 500
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Failure Isolation",
+      "normalized_title": "Failure Isolation",
+      "key": "failure_isolation",
+      "path": [
+        "Engineering Practices",
+        "Failure Isolation"
+      ],
+      "content": "Each song is processed through a function that returns success/failure.\n\nThis supports continued batch execution.",
+      "source_line_start": 500,
+      "source_line_end": 506
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Output Hygiene",
+      "normalized_title": "Output Hygiene",
+      "key": "output_hygiene",
+      "path": [
+        "Engineering Practices",
+        "Output Hygiene"
+      ],
+      "content": "The program creates output folders and sanitizes filenames before persistence.",
+      "source_line_start": 506,
+      "source_line_end": 510
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Responsive Workflow Intent",
+      "normalized_title": "Responsive Workflow Intent",
+      "key": "responsive_workflow_intent",
+      "path": [
+        "Engineering Practices",
+        "Responsive Workflow Intent"
+      ],
+      "content": "Long-running batch processing is moved onto a background thread rather than being launched inline from the button handler.",
+      "source_line_start": 510,
+      "source_line_end": 514
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The final GUI converts the automation into a direct user workflow.\n\nThe GUI replaces per-song source editing with direct multi-query input.\n\nInstead they can:\n\n1. paste multiple queries;\n2. choose an output directory;\n3. start generation;\n4. watch progress;\n5. receive a final completion summary.\n\nThat is a clear movement from script utility toward a small desktop productivity application.",
+      "source_line_start": 514,
+      "source_line_end": 530
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small in file count but integrates several domains:\n\n- HTTP;\n- JSON;\n- HTML;\n- web scraping;\n- text parsing;\n- presentation generation;\n- filesystem management;\n- GUI state;\n- threading;\n- error handling;\n- batch processing.\n\nThe final GUI source is substantially larger than the initial retrieval script because it owns the complete user workflow.",
+      "source_line_start": 530,
+      "source_line_end": 548
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Python\n\n- functions and decomposition\n- exception handling\n- filesystem operations\n- string normalization\n- list processing\n\n### Web Integration\n\n- HTTP GET requests\n- query encoding\n- JSON search responses\n- HTML page parsing\n- Beautiful Soup\n- DOM selectors\n\n### Text Processing\n\n- regular expressions\n- bracketed-section parsing\n- newline preservation\n- ASCII normalization\n- filename sanitization\n\n### Document Automation\n\n- python-pptx\n- presentation construction\n- slide creation\n- text boxes\n- font sizing\n- alignment\n- colors\n- background fills\n- PPTX export\n\n### Desktop Application Development\n\n- Tkinter\n- scrolled text widgets\n- buttons\n- entry fields\n- dialogs\n- progress logging\n- processing-state UI changes\n\n### Concurrency\n\n- background threads\n- daemon worker thread\n- long-running GUI task separation\n\n### Workflow Automation\n\n- multi-song batch processing\n- output-directory creation\n- per-item success/failure handling\n- aggregate completion reporting",
+      "source_line_start": 548,
+      "source_line_end": 610
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- functions and decomposition\n- exception handling\n- filesystem operations\n- string normalization\n- list processing",
+      "source_line_start": 550,
+      "source_line_end": 558
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Web Integration",
+      "normalized_title": "Web Integration",
+      "key": "web_integration",
+      "path": [
+        "Skills Demonstrated",
+        "Web Integration"
+      ],
+      "content": "- HTTP GET requests\n- query encoding\n- JSON search responses\n- HTML page parsing\n- Beautiful Soup\n- DOM selectors",
+      "source_line_start": 558,
+      "source_line_end": 567
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Text Processing",
+      "normalized_title": "Text Processing",
+      "key": "text_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Text Processing"
+      ],
+      "content": "- regular expressions\n- bracketed-section parsing\n- newline preservation\n- ASCII normalization\n- filename sanitization",
+      "source_line_start": 567,
+      "source_line_end": 575
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Document Automation",
+      "normalized_title": "Document Automation",
+      "key": "document_automation",
+      "path": [
+        "Skills Demonstrated",
+        "Document Automation"
+      ],
+      "content": "- python-pptx\n- presentation construction\n- slide creation\n- text boxes\n- font sizing\n- alignment\n- colors\n- background fills\n- PPTX export",
+      "source_line_start": 575,
+      "source_line_end": 587
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Desktop Application Development",
+      "normalized_title": "Desktop Application Development",
+      "key": "desktop_application_development",
+      "path": [
+        "Skills Demonstrated",
+        "Desktop Application Development"
+      ],
+      "content": "- Tkinter\n- scrolled text widgets\n- buttons\n- entry fields\n- dialogs\n- progress logging\n- processing-state UI changes",
+      "source_line_start": 587,
+      "source_line_end": 597
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Concurrency",
+      "normalized_title": "Concurrency",
+      "key": "concurrency",
+      "path": [
+        "Skills Demonstrated",
+        "Concurrency"
+      ],
+      "content": "- background threads\n- daemon worker thread\n- long-running GUI task separation",
+      "source_line_start": 597,
+      "source_line_end": 603
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Workflow Automation",
+      "normalized_title": "Workflow Automation",
+      "key": "workflow_automation",
+      "path": [
+        "Skills Demonstrated",
+        "Workflow Automation"
+      ],
+      "content": "- multi-song batch processing\n- output-directory creation\n- per-item success/failure handling\n- aggregate completion reporting",
+      "source_line_start": 603,
+      "source_line_end": 610
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository shows a compact productization arc within a single day.\n\nThe starting point is a focused scraper.\n\nThe middle version connects retrieval to generated PowerPoint output.\n\nThe final version wraps the pipeline in a multi-item desktop application.\n\nThis demonstrates the ability to recognize a repetitive content-preparation task and successively move it through:\n\n```text\nmanual coding utility\n      ↓\nautomated output generator\n      ↓\nuser-facing batch tool\n```",
+      "source_line_start": 610,
+      "source_line_end": 630
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier processed repositories include data scraping, document tooling, and desktop interfaces in different contexts.\n\n`Service-Tools` combines those ideas into a concrete productivity workflow: external web content becomes a structured local presentation artifact.\n\nIt is also the earliest processed repository so far centered specifically on programmatic PowerPoint generation through `python-pptx`.",
+      "source_line_start": 630,
+      "source_line_end": 638
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository centered on:\n\n- `python-pptx`;\n- automated PowerPoint generation;\n- web-retrieved lyric section parsing;\n- batch generation through a Tkinter GUI.\n\nThe historical significance is the conversion of web content into a reusable presentation-generation product workflow.",
+      "source_line_start": 638,
+      "source_line_end": 649
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Service-Tools` automates song-lyrics presentation preparation from end to end.\n\nIt searches Genius, retrieves the selected lyrics page, extracts lyric containers, parses bracketed sections, chooses typography based on section length, and creates styled PowerPoint slides.\n\nThe final version adds a Tkinter desktop UI that accepts multiple song queries, processes them in a background thread, creates one `.pptx` per song, sanitizes output filenames, and reports success or failure through a progress log and dialogs.\n\nThe repository's strongest portfolio signal is the workflow engineering around external content: retrieval, parsing, structured transformation, document automation, batching, concurrency, and a usable desktop interaction surface.\n\n# Project Tags\n\n`individual-project`, `python`, `desktop-utility`, `workflow-automation`, `content-automation`, `web-retrieval`, `web-scraping`, `requests`, `beautifulsoup`, `html-parsing`, `json-api-consumption`, `genius-integration`, `lyrics-processing`, `regex-parsing`, `section-parsing`, `text-normalization`, `ascii-normalization`, `filename-sanitization`, `python-pptx`, `powerpoint-generation`, `document-automation`, `pptx-export`, `dynamic-font-sizing`, `programmatic-layout`, `tkinter`, `desktop-gui`, `batch-processing`, `background-threading`, `threading`, `progress-logging`, `error-handling`, `failure-isolation`, `filesystem-output`, `output-directory-management`, `external-content-boundary`, `incremental-productization`, `earliest-observed-python-pptx-workflow`, `earliest-observed-automated-powerpoint-generation`, `earliest-observed-lyrics-to-pptx-desktop-tool`",
+      "source_line_start": 649,
+      "source_line_end": 662
+    }
+  ],
+  "raw_analysis": "# Service-Tools\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Service-Tools`\n- **Corpus index:** 101\n- **Repository start date:** 2025-12-18\n- **Last meaningful update date:** 2025-12-18\n- **Latest meaningful commit:** `f629eaa56d606da394a4fe9b2fb832bce750af08`\n- **Primary repository language:** Python\n- **Project form:** desktop content-retrieval and PowerPoint-generation utility\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains three substantive Python implementations:\n\n- `scrapTheSong.py`;\n- `scrappingPpptx.py`;\n- `GUI_BASED.py`.\n\nThe commit sequence shows a clear same-day evolution:\n\n```text\nlyrics retrieval\n      ↓\nlyrics retrieval + PowerPoint generation\n      ↓\nfetching/title fixes\n      ↓\nbatch desktop GUI\n```\n\nThe latest commit is attributed to the repository owner and adds the 383-line GUI implementation.\n\nThe external song lyrics retrieved from Genius are input content.\n\nThe portfolio engineering evidence is the software that:\n\n- searches;\n- retrieves;\n- parses;\n- cleans;\n- structures;\n- lays out;\n- exports;\n- batches;\n- presents progress to the user.\n\n## What This Project Is\n\n`Service-Tools` automates a practical content-production workflow.\n\nA user supplies a song search query.\n\nThe program finds the corresponding result through Genius, retrieves the lyrics page, extracts structured lyric content, separates bracketed sections, and generates a PowerPoint presentation.\n\nThe final version wraps that pipeline in a Tkinter desktop interface capable of processing multiple songs in one run.\n\nThe tool therefore converts a repetitive manual workflow into an automated local application.\n\n## Product Workflow\n\nThe final GUI exposes this flow:\n\n```text\nuser enters multiple song queries\n            ↓\nbackground worker thread\n            ↓\nGenius search endpoint\n            ↓\nselected song result\n            ↓\nlyrics-page HTTP request\n            ↓\nBeautifulSoup extraction\n            ↓\nsection parser\n            ↓\nfont-size / layout logic\n            ↓\npython-pptx presentation generation\n            ↓\none .pptx file per song\n            ↓\nsuccess/failure progress log\n```\n\n## Technical Stack\n\n### Python\n\nPython is the implementation language for all three source files.\n\nIt coordinates:\n\n- HTTP requests;\n- HTML parsing;\n- regular expressions;\n- presentation generation;\n- filesystem output;\n- desktop GUI state;\n- background threading.\n\n### Requests\n\nThe program uses `requests` to retrieve:\n\n- Genius search results;\n- song lyric pages.\n\nHTTP errors are caught through `requests.RequestException`.\n\n### Beautiful Soup\n\n`BeautifulSoup` parses HTML and locates lyric containers.\n\nThe code supports:\n\n- the `data-lyrics-container=\"true\"` attribute;\n- a fallback class pattern matching `Lyrics__Container`.\n\n### Regular Expressions\n\nRegular expressions are used for:\n\n- fallback lyric-container class matching;\n- splitting lyrics by bracketed section labels.\n\n### python-pptx\n\nThe presentation generator uses:\n\n- `Presentation`;\n- `Inches`;\n- `Pt`;\n- paragraph alignment;\n- RGB colors.\n\nThis is true programmatic PowerPoint construction rather than static template copying.\n\n### Tkinter\n\nThe final interface is implemented with Tkinter.\n\nIt includes:\n\n- multi-line song input;\n- output-folder configuration;\n- generate button;\n- scrollable progress log;\n- warning dialog;\n- completion dialog;\n- error dialog.\n\n### Threading\n\nThe GUI starts processing in a daemon background thread.\n\nThis keeps the long-running retrieval/generation workflow separate from the button event that starts it.\n\n## Search and Retrieval Evolution\n\n### Initial Search-Page Scraping\n\n`scrapTheSong.py` begins with a browser-style search URL.\n\nIt URL-encodes the song query, downloads the search page, and scans links until it finds a Genius URL ending in `-lyrics`.\n\nThis is direct HTML search-result scraping.\n\n### Structured Genius Search Endpoint\n\n`scrappingPpptx.py` and `GUI_BASED.py` move to:\n\n```text\nhttps://genius.com/api/search/multi\n```\n\nThe response is parsed as JSON.\n\nThe code walks response sections until it finds a song result.\n\nFrom that result it extracts:\n\n- URL;\n- title;\n- primary artist in the GUI version.\n\nThis is a cleaner structured discovery stage than the initial link scan.\n\n### Lyrics Page Retrieval\n\nAfter locating the selected song, the program fetches the lyric page separately.\n\nThis creates a two-stage retrieval architecture:\n\n```text\nstructured search\n      ↓\nsong URL\n      ↓\nHTML lyrics page\n```\n\n## HTML Lyrics Extraction\n\nThe parser looks for Genius lyric containers.\n\nPrimary selector:\n\n```text\ndiv[data-lyrics-container=\"true\"]\n```\n\nFallback selector:\n\n```text\ndiv class matching Lyrics__Container\n```\n\nBefore extracting text, `<br>` elements are replaced with newline characters.\n\nMultiple containers are joined into one lyrics string.\n\nThis preserves line boundaries more effectively than flattening the entire page into plain text.\n\n## Section Parsing\n\n`parse_lyrics_sections()` splits the lyrics using bracketed section markers.\n\nExamples of the structural pattern are:\n\n```text\n[Verse]\n[Chorus]\n[Bridge]\n```\n\nThe regular expression captures the section name and associates it with the following text.\n\nOnly sections with actual content are retained.\n\nThe result is a list of:\n\n```text\n(section_name, section_text)\n```\n\nThis intermediate structure is what drives slide generation.\n\n## Text Normalization\n\nThe GUI version introduces `clean_text()` for song-title metadata.\n\nIt converts text to plain ASCII while dropping characters that cannot be encoded.\n\nThe cleaned title and artist are combined into a presentation title.\n\nThis is an explicit formatting-normalization decision for downstream PowerPoint output.\n\n## Dynamic Font Sizing\n\nThe presentation generator chooses lyric font size according to content length.\n\nThe final GUI version uses a more granular range than the earlier script.\n\nShort sections receive larger fonts.\n\nLonger sections progressively receive smaller fonts.\n\nThis is a simple layout heuristic intended to make automatically generated slides more usable without manual resizing.\n\n## PowerPoint Generation\n\n### Presentation Geometry\n\nThe program creates a new `Presentation` and explicitly configures slide dimensions.\n\nIt uses the blank layout for generated slides.\n\n### Title Slide\n\nThe first slide contains the song title.\n\nThe code configures:\n\n- textbox dimensions;\n- centered alignment;\n- large bold type;\n- text color;\n- background fill.\n\n### Lyric Slides\n\nEach parsed section becomes a slide.\n\nThe final GUI version uses the parsed section body as the main slide content.\n\nInstead, it uses the section text as the main centered content.\n\nThe text frame enables word wrapping.\n\n### Programmatic Styling\n\nThe program controls:\n\n- position;\n- size;\n- alignment;\n- font size;\n- font color;\n- background color.\n\nThe generated deck is therefore assembled and styled entirely from code.\n\n### PPTX Persistence\n\n`python-pptx` saves the presentation to disk as `.pptx`.\n\nThe standalone script accepts a specified output filename.\n\nThe GUI creates one output file per query.\n\n## Safe Output Filenames\n\nFor batch generation, the GUI derives filenames from the user's song query.\n\nIt keeps:\n\n- alphanumeric characters;\n- spaces;\n- hyphens;\n- underscores.\n\nSpaces are then converted to underscores.\n\nThis reduces the chance that arbitrary query punctuation becomes problematic in local filenames.\n\n## Batch Processing\n\nThe GUI accepts one song query per line.\n\nIt converts the input into a list and processes each song sequentially.\n\nFor each query it records either:\n\n- success;\n- failure.\n\nAt the end it reports aggregate success/failure counts.\n\nThis turns the earlier one-song script into a multi-item production utility.\n\n## Output Directory Management\n\nThe user can provide an output folder.\n\nIf the field is empty, the program falls back to a default directory name.\n\nThe application creates the directory when it does not exist.\n\nEach generated presentation is placed inside that folder.\n\n## Desktop User Interface\n\n### Input Surface\n\nThe main window contains a scrollable text area pre-populated with example song queries.\n\nThe expected interaction is simple: one search phrase per line.\n\n### Processing State\n\nWhen generation begins:\n\n- the button is disabled;\n- its label changes to `Processing...`;\n- the existing log area is cleared.\n\nWhen processing finishes, the button is restored.\n\n### Progress Log\n\nThe GUI writes detailed progress messages into a scrollable log.\n\nMessages include:\n\n- which song is being processed;\n- whether lyrics were found;\n- section count;\n- generated output path;\n- errors;\n- final success/failure totals.\n\n### Dialog Feedback\n\nTkinter message boxes provide:\n\n- no-input warning;\n- completion summary;\n- error notification.\n\nThis makes the final version meaningfully more productized than the earlier command-line scripts.\n\n## Background Processing\n\nThe GUI creates a daemon thread for the batch operation.\n\nThe thread runs `process_songs()`.\n\nThe reason is visible in the workflow: network requests and PPTX generation can take enough time that doing them directly in the button callback would block the interaction path.\n\nThe code therefore separates user-triggered startup from the long-running workload.\n\n## Error Handling\n\nThe retrieval functions catch HTTP request errors and return `None`.\n\n`process_single_song()` wraps one song's pipeline in its own exception handling.\n\nThis permits the batch to continue after a per-song failure.\n\nThe outer batch function also has a top-level exception handler for application-level failures.\n\nThis is useful in a multi-item automation tool because one failed retrieval does not need to erase all prior successful work.\n\n## External Content Boundary\n\nThe retrieved lyric text comes from Genius pages and is external content.\n\nThe repository's software contribution is the retrieval and transformation pipeline around that external content.\n\nThe engineered behavior is:\n\n- finding the content;\n- extracting it;\n- structuring it;\n- transforming it;\n- generating presentation files from it.\n\nThis distinction is important for accurate portfolio attribution.\n\n## Major Engineering Work\n\n### Web Retrieval Pipeline\n\nThe project implements a two-stage retrieval flow combining structured search data with HTML-page parsing.\n\n### Resilient Lyrics Extraction\n\nPrimary and fallback selectors support more than one observed Genius page structure.\n\n### Structured Text Transformation\n\nBracketed lyric metadata is converted into a section list suitable for slide generation.\n\n### Automated Presentation Layout\n\nThe program converts section length into typography choices and writes styled PowerPoint slides.\n\n### Batch Desktop Workflow\n\nThe final version exposes multi-song processing through a desktop UI with background execution and progress reporting.\n\n## Verification and Runtime Feedback\n\nThe scripts print or log concrete pipeline milestones.\n\nThe final GUI reports:\n\n- retrieval result;\n- parsed section count;\n- saved filename;\n- per-song failure;\n- aggregate success count;\n- aggregate failure count.\n\nThe user can therefore identify where a batch succeeded or failed.\n\n## Engineering Practices\n\n### Incremental Productization\n\nThe commit sequence shows a progression from a one-off scraper to a batch desktop tool.\n\n### Functional Decomposition\n\nThe final source separates:\n\n- text cleaning;\n- song search;\n- lyric parsing;\n- font sizing;\n- presentation generation;\n- single-song processing;\n- GUI orchestration.\n\n### Failure Isolation\n\nEach song is processed through a function that returns success/failure.\n\nThis supports continued batch execution.\n\n### Output Hygiene\n\nThe program creates output folders and sanitizes filenames before persistence.\n\n### Responsive Workflow Intent\n\nLong-running batch processing is moved onto a background thread rather than being launched inline from the button handler.\n\n## Product Engineering\n\nThe final GUI converts the automation into a direct user workflow.\n\nThe GUI replaces per-song source editing with direct multi-query input.\n\nInstead they can:\n\n1. paste multiple queries;\n2. choose an output directory;\n3. start generation;\n4. watch progress;\n5. receive a final completion summary.\n\nThat is a clear movement from script utility toward a small desktop productivity application.\n\n## Scale and Complexity\n\nThe repository is small in file count but integrates several domains:\n\n- HTTP;\n- JSON;\n- HTML;\n- web scraping;\n- text parsing;\n- presentation generation;\n- filesystem management;\n- GUI state;\n- threading;\n- error handling;\n- batch processing.\n\nThe final GUI source is substantially larger than the initial retrieval script because it owns the complete user workflow.\n\n## Skills Demonstrated\n\n### Python\n\n- functions and decomposition\n- exception handling\n- filesystem operations\n- string normalization\n- list processing\n\n### Web Integration\n\n- HTTP GET requests\n- query encoding\n- JSON search responses\n- HTML page parsing\n- Beautiful Soup\n- DOM selectors\n\n### Text Processing\n\n- regular expressions\n- bracketed-section parsing\n- newline preservation\n- ASCII normalization\n- filename sanitization\n\n### Document Automation\n\n- python-pptx\n- presentation construction\n- slide creation\n- text boxes\n- font sizing\n- alignment\n- colors\n- background fills\n- PPTX export\n\n### Desktop Application Development\n\n- Tkinter\n- scrolled text widgets\n- buttons\n- entry fields\n- dialogs\n- progress logging\n- processing-state UI changes\n\n### Concurrency\n\n- background threads\n- daemon worker thread\n- long-running GUI task separation\n\n### Workflow Automation\n\n- multi-song batch processing\n- output-directory creation\n- per-item success/failure handling\n- aggregate completion reporting\n\n## Capability Developed\n\nThe repository shows a compact productization arc within a single day.\n\nThe starting point is a focused scraper.\n\nThe middle version connects retrieval to generated PowerPoint output.\n\nThe final version wraps the pipeline in a multi-item desktop application.\n\nThis demonstrates the ability to recognize a repetitive content-preparation task and successively move it through:\n\n```text\nmanual coding utility\n      ↓\nautomated output generator\n      ↓\nuser-facing batch tool\n```\n\n## Portfolio Evolution Context\n\nEarlier processed repositories include data scraping, document tooling, and desktop interfaces in different contexts.\n\n`Service-Tools` combines those ideas into a concrete productivity workflow: external web content becomes a structured local presentation artifact.\n\nIt is also the earliest processed repository so far centered specifically on programmatic PowerPoint generation through `python-pptx`.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository centered on:\n\n- `python-pptx`;\n- automated PowerPoint generation;\n- web-retrieved lyric section parsing;\n- batch generation through a Tkinter GUI.\n\nThe historical significance is the conversion of web content into a reusable presentation-generation product workflow.\n\n## Overall Repository Narrative\n\n`Service-Tools` automates song-lyrics presentation preparation from end to end.\n\nIt searches Genius, retrieves the selected lyrics page, extracts lyric containers, parses bracketed sections, chooses typography based on section length, and creates styled PowerPoint slides.\n\nThe final version adds a Tkinter desktop UI that accepts multiple song queries, processes them in a background thread, creates one `.pptx` per song, sanitizes output filenames, and reports success or failure through a progress log and dialogs.\n\nThe repository's strongest portfolio signal is the workflow engineering around external content: retrieval, parsing, structured transformation, document automation, batching, concurrency, and a usable desktop interaction surface.\n\n# Project Tags\n\n`individual-project`, `python`, `desktop-utility`, `workflow-automation`, `content-automation`, `web-retrieval`, `web-scraping`, `requests`, `beautifulsoup`, `html-parsing`, `json-api-consumption`, `genius-integration`, `lyrics-processing`, `regex-parsing`, `section-parsing`, `text-normalization`, `ascii-normalization`, `filename-sanitization`, `python-pptx`, `powerpoint-generation`, `document-automation`, `pptx-export`, `dynamic-font-sizing`, `programmatic-layout`, `tkinter`, `desktop-gui`, `batch-processing`, `background-threading`, `threading`, `progress-logging`, `error-handling`, `failure-isolation`, `filesystem-output`, `output-directory-management`, `external-content-boundary`, `incremental-productization`, `earliest-observed-python-pptx-workflow`, `earliest-observed-automated-powerpoint-generation`, `earliest-observed-lyrics-to-pptx-desktop-tool`\n"
+}

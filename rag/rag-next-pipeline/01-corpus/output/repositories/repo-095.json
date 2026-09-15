@@ -1,0 +1,950 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 95,
+  "repository_total": 134,
+  "repository_name": "Private-FTP",
+  "header_title": "Private-FTP",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-095-Private-FTP/README.md",
+    "line_start": 1,
+    "line_end": 695,
+    "sha256": "04b1d6163e53226dc7db1f6b5259f65df42780013bc755dd657ac5204278baa4"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project-with-external-components",
+    "python",
+    "networking",
+    "tcp",
+    "socket-programming",
+    "custom-application-protocol",
+    "custom-tcp-file-transfer",
+    "not-ftp-protocol-for-python-transfer",
+    "tcp-client",
+    "tcp-server",
+    "threaded-server",
+    "thread-per-client",
+    "file-transfer",
+    "file-framing",
+    "transfer-timing",
+    "throughput-analysis",
+    "flow-completion-time",
+    "fct",
+    "experiment-results",
+    "json",
+    "tkinter",
+    "matplotlib",
+    "desktop-analysis-tool",
+    "interactive-plotting",
+    "scpi",
+    "serial-communication",
+    "spectrum-analyzer",
+    "mini-circuits-rsa",
+    "rf-instrumentation",
+    "spectrum-sweep",
+    "resolution-bandwidth",
+    "rbw",
+    "multi-sweep",
+    "max-hold",
+    "peak-marker",
+    "realtime-plotting",
+    "csv-export",
+    "dat-export",
+    "xml-configuration",
+    "configuration-persistence",
+    "background-threading",
+    "lab-tooling",
+    "objective-c-artifacts",
+    "white-raccoon",
+    "external-whiteraccoon-library",
+    "third-party-source",
+    "web-product-surface",
+    "security-claim-boundary",
+    "no-verified-transfer-encryption",
+    "multi-phase-experimental-workspace",
+    "earliest-observed-scpi-spectrum-analyzer-gui",
+    "earliest-observed-file-transfer-fct-analysis"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Private-FTP`\n- **Corpus index:** 095\n- **Repository start date:** 2025-10-09\n- **Last meaningful update date:** 2026-03-20\n- **Latest meaningful commit:** `b4d9e87584dbe1901bcd28c35d682ae3b37868f7`\n- **Primary repository language by current implementation volume:** Python\n- **Project form:** multi-phase file-transfer, measurement, and spectrum-instrumentation workspace\n- **Collaboration classification:** `individual-project-with-external-components`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s009"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nBecause the repo is multi-phase, one diagram would be misleading.\n\n### Python Transfer Pair\n\n```text\nfile.txt\n   ↓\nPython client\n   ↓\ncustom framing over TCP :5001\n   ↓\nPython threaded server\n   ↓\nreceived_<filename>\n```\n\n### Measurement Pipeline\n\n```text\ntransfer observations/results\n        ↓\nprocessing / derived throughput\n        ↓\nFCT Plotter\n        ↓\nembedded Matplotlib views\n```\n\n### Spectrum Analyzer Tool\n\n```text\nTkinter GUI\n   ↓\nserial port / SCPI commands\n   ↓\nMini-Circuits RSA-series analyzer\n   ↓\nsweep data\n   ↓\nrealtime plot + max hold + export\n```\n\n### Retained Apple/Web Layer\n\n```text\nbrowser/iOS product surface\n        ↓\nFTP-oriented integration / download workflow\n        ↓\nthird-party WhiteRaccoon source retained in tree\n```\n\nThese are related by project history and experimental goals, but they should remain separately retrievable."
+    },
+    "testing": {
+      "section_ids": [
+        "s048"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nVerification is strongly experiment-driven.\n\nFor transfer scripts, successful file receipt and server acknowledgment validate the basic data path.\n\nTiming/result files support performance analysis.\n\nFor the instrumentation GUI, serial communication, sweep capture, plotted traces, max-hold behavior, and export paths are the operational verification surfaces.\n\nThere is no basis to convert web marketing security copy into a verified cryptographic property.\n\nThe corpus explicitly treats this mismatch as a verification boundary."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "File-Transfer Security Boundary"
+      ],
+      "text": "## File-Transfer Security Boundary\nThe Python transfer pair uses ordinary TCP.\n\nThere is no retained TLS wrapper around the socket.\n\nThere is no authenticated key exchange.\n\nThere is no per-transfer encryption primitive.\n\nThere is no cryptographic integrity tag.\n\nThe server also accepts the filename sent by the client as part of its output path construction.\n\nThe code should therefore not be described as a secure transfer protocol merely because the website uses security-oriented branding.\n\nThis is one of the strongest evidence-cleaning requirements in the repository."
+    },
+    "engineering_judgment": {
+      "section_ids": [
+        "s056"
+      ],
+      "titles": [
+        "Engineering Judgment"
+      ],
+      "text": "## Engineering Judgment\n- separating third-party source attribution\n- distinguishing custom TCP transfer from FTP\n- distinguishing security marketing from implemented transport properties\n- evolving a prototype into measurement tooling"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Private-FTP`\n- **Corpus index:** 095\n- **Repository start date:** 2025-10-09\n- **Last meaningful update date:** 2026-03-20\n- **Latest meaningful commit:** `b4d9e87584dbe1901bcd28c35d682ae3b37868f7`\n- **Primary repository language by current implementation volume:** Python\n- **Project form:** multi-phase file-transfer, measurement, and spectrum-instrumentation workspace\n- **Collaboration classification:** `individual-project-with-external-components`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "Private-FTP is public despite its repository name.\n\nIt has a much longer development history and broader current tree than Fast-FTP.\n\nThe retained repository includes several distinct subsystems rather than one single cohesive protocol implementation.\n\nCurrent source includes:\n\n- Python raw-TCP file-transfer client/server scripts;\n- transfer-processing scripts;\n- flow-completion-time plotting;\n- JSON result data;\n- a large Tkinter spectrum-analyzer/SCPI GUI;\n- a web landing/login/download surface;\n- Objective-C Apple application scaffolding;\n- the externally authored WhiteRaccoon FTP library.\n\nThe corpus must therefore separate retained owner work from third-party source.\n\n`WhiteRaccoon.h/.m` carries Tatsuya Tobioka copyright/attribution from 2012–2013.\n\nIt is not treated as owner-authored FTP library implementation.\n\nThe Objective-C application scaffolding likewise includes historical external lineage in retained headers.\n\nBy contrast, the Python transfer and instrumentation scripts are analyzed as the repository's substantive owner-managed experimentation layer.\n\nThe web page contains security-oriented product copy.\n\nMarketing text such as “military-grade encryption” is not implementation evidence.\n\nThe current Python transfer scripts use ordinary TCP sockets without TLS or cryptographic framing.\n\nThat boundary is mandatory for retrieval accuracy.",
+      "source_line_start": 14,
+      "source_line_end": 51
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "Private-FTP is best understood as an evolving networking and measurement workspace that started around file-transfer experimentation and expanded into performance analysis and RF instrumentation tooling.\n\nIt contains at least four distinct technical concerns:\n\n1. file-transfer application/protocol work;\n2. custom TCP transfer experiments;\n3. flow-completion-time/performance analysis;\n4. spectrum-analyzer control and sweep visualization.\n\nA web-facing “Sedra FTP” surface provides product framing around the file-transfer theme.\n\nThe repository is not accurately summarized as merely “an FTP app.”\n\nIts current retained scope is substantially broader.",
+      "source_line_start": 51,
+      "source_line_end": 68
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### File Transfer\n\n- custom Python TCP client;\n- custom Python TCP server;\n- filename/length framing;\n- raw file-byte transfer;\n- server-side file persistence;\n- response/acknowledgment handling;\n- transfer timing.\n\n### Measurement / Analysis\n\n- throughput calculations;\n- flow-completion-time style data;\n- structured result data;\n- protocol/file-size comparison;\n- Tkinter + Matplotlib plotting.\n\n### RF Instrumentation\n\n- serial instrument discovery/connection;\n- SCPI terminal commands;\n- spectrum sweep configuration;\n- frequency/span/RBW controls;\n- sweep-point/count controls;\n- multi-sweep recording;\n- realtime plotting;\n- max-hold behavior;\n- peak markers;\n- CSV/DAT export;\n- XML configuration persistence.\n\n### Apple / Web Layer\n\n- retained Objective-C/iOS scaffolding;\n- external WhiteRaccoon FTP library;\n- browser landing/login/download UX.",
+      "source_line_start": 68,
+      "source_line_end": 108
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "File Transfer",
+      "normalized_title": "File Transfer",
+      "key": "file_transfer",
+      "path": [
+        "Project Scope",
+        "File Transfer"
+      ],
+      "content": "- custom Python TCP client;\n- custom Python TCP server;\n- filename/length framing;\n- raw file-byte transfer;\n- server-side file persistence;\n- response/acknowledgment handling;\n- transfer timing.",
+      "source_line_start": 70,
+      "source_line_end": 80
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Measurement / Analysis",
+      "normalized_title": "Measurement / Analysis",
+      "key": "measurement_analysis",
+      "path": [
+        "Project Scope",
+        "Measurement / Analysis"
+      ],
+      "content": "- throughput calculations;\n- flow-completion-time style data;\n- structured result data;\n- protocol/file-size comparison;\n- Tkinter + Matplotlib plotting.",
+      "source_line_start": 80,
+      "source_line_end": 88
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "RF Instrumentation",
+      "normalized_title": "RF Instrumentation",
+      "key": "rf_instrumentation",
+      "path": [
+        "Project Scope",
+        "RF Instrumentation"
+      ],
+      "content": "- serial instrument discovery/connection;\n- SCPI terminal commands;\n- spectrum sweep configuration;\n- frequency/span/RBW controls;\n- sweep-point/count controls;\n- multi-sweep recording;\n- realtime plotting;\n- max-hold behavior;\n- peak markers;\n- CSV/DAT export;\n- XML configuration persistence.",
+      "source_line_start": 88,
+      "source_line_end": 102
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Apple / Web Layer",
+      "normalized_title": "Apple / Web Layer",
+      "key": "apple_web_layer",
+      "path": [
+        "Project Scope",
+        "Apple / Web Layer"
+      ],
+      "content": "- retained Objective-C/iOS scaffolding;\n- external WhiteRaccoon FTP library;\n- browser landing/login/download UX.",
+      "source_line_start": 102,
+      "source_line_end": 108
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "Because the repo is multi-phase, one diagram would be misleading.\n\n### Python Transfer Pair\n\n```text\nfile.txt\n   ↓\nPython client\n   ↓\ncustom framing over TCP :5001\n   ↓\nPython threaded server\n   ↓\nreceived_<filename>\n```\n\n### Measurement Pipeline\n\n```text\ntransfer observations/results\n        ↓\nprocessing / derived throughput\n        ↓\nFCT Plotter\n        ↓\nembedded Matplotlib views\n```\n\n### Spectrum Analyzer Tool\n\n```text\nTkinter GUI\n   ↓\nserial port / SCPI commands\n   ↓\nMini-Circuits RSA-series analyzer\n   ↓\nsweep data\n   ↓\nrealtime plot + max hold + export\n```\n\n### Retained Apple/Web Layer\n\n```text\nbrowser/iOS product surface\n        ↓\nFTP-oriented integration / download workflow\n        ↓\nthird-party WhiteRaccoon source retained in tree\n```\n\nThese are related by project history and experimental goals, but they should remain separately retrievable.",
+      "source_line_start": 108,
+      "source_line_end": 164
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Python Transfer Pair",
+      "normalized_title": "Python Transfer Pair",
+      "key": "python_transfer_pair",
+      "path": [
+        "Architecture / System Shape",
+        "Python Transfer Pair"
+      ],
+      "content": "```text\nfile.txt\n   ↓\nPython client\n   ↓\ncustom framing over TCP :5001\n   ↓\nPython threaded server\n   ↓\nreceived_<filename>\n```",
+      "source_line_start": 112,
+      "source_line_end": 126
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Measurement Pipeline",
+      "normalized_title": "Measurement Pipeline",
+      "key": "measurement_pipeline",
+      "path": [
+        "Architecture / System Shape",
+        "Measurement Pipeline"
+      ],
+      "content": "```text\ntransfer observations/results\n        ↓\nprocessing / derived throughput\n        ↓\nFCT Plotter\n        ↓\nembedded Matplotlib views\n```",
+      "source_line_start": 126,
+      "source_line_end": 138
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Spectrum Analyzer Tool",
+      "normalized_title": "Spectrum Analyzer Tool",
+      "key": "spectrum_analyzer_tool",
+      "path": [
+        "Architecture / System Shape",
+        "Spectrum Analyzer Tool"
+      ],
+      "content": "```text\nTkinter GUI\n   ↓\nserial port / SCPI commands\n   ↓\nMini-Circuits RSA-series analyzer\n   ↓\nsweep data\n   ↓\nrealtime plot + max hold + export\n```",
+      "source_line_start": 138,
+      "source_line_end": 152
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Retained Apple/Web Layer",
+      "normalized_title": "Retained Apple/Web Layer",
+      "key": "retained_apple_web_layer",
+      "path": [
+        "Architecture / System Shape",
+        "Retained Apple/Web Layer"
+      ],
+      "content": "```text\nbrowser/iOS product surface\n        ↓\nFTP-oriented integration / download workflow\n        ↓\nthird-party WhiteRaccoon source retained in tree\n```\n\nThese are related by project history and experimental goals, but they should remain separately retrievable.",
+      "source_line_start": 152,
+      "source_line_end": 164
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python / Networking\n\n- Python\n- `socket`\n- TCP\n- threaded server handling\n- file I/O\n- custom application framing\n\n### Data / Visualization\n\n- Tkinter\n- Matplotlib\n- NumPy\n- JSON\n- CSV\n- DAT\n- XML configuration\n\n### Instrumentation\n\n- pyserial-style serial communication\n- SCPI commands\n- spectrum analyzer control\n- frequency-domain sweeps\n- RBW configuration\n- max-hold analysis\n\n### Apple / Web\n\n- Objective-C artifacts\n- Xcode-era application structure\n- HTML/CSS/JavaScript\n- external WhiteRaccoon FTP library",
+      "source_line_start": 164,
+      "source_line_end": 201
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Python / Networking",
+      "normalized_title": "Python / Networking",
+      "key": "python_networking",
+      "path": [
+        "Technical Stack",
+        "Python / Networking"
+      ],
+      "content": "- Python\n- `socket`\n- TCP\n- threaded server handling\n- file I/O\n- custom application framing",
+      "source_line_start": 166,
+      "source_line_end": 175
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Data / Visualization",
+      "normalized_title": "Data / Visualization",
+      "key": "data_visualization",
+      "path": [
+        "Technical Stack",
+        "Data / Visualization"
+      ],
+      "content": "- Tkinter\n- Matplotlib\n- NumPy\n- JSON\n- CSV\n- DAT\n- XML configuration",
+      "source_line_start": 175,
+      "source_line_end": 185
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Instrumentation",
+      "normalized_title": "Instrumentation",
+      "key": "instrumentation",
+      "path": [
+        "Technical Stack",
+        "Instrumentation"
+      ],
+      "content": "- pyserial-style serial communication\n- SCPI commands\n- spectrum analyzer control\n- frequency-domain sweeps\n- RBW configuration\n- max-hold analysis",
+      "source_line_start": 185,
+      "source_line_end": 194
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Apple / Web",
+      "normalized_title": "Apple / Web",
+      "key": "apple_web",
+      "path": [
+        "Technical Stack",
+        "Apple / Web"
+      ],
+      "content": "- Objective-C artifacts\n- Xcode-era application structure\n- HTML/CSS/JavaScript\n- external WhiteRaccoon FTP library",
+      "source_line_start": 194,
+      "source_line_end": 201
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Custom TCP File Transfer",
+      "normalized_title": "Custom TCP File Transfer",
+      "key": "custom_tcp_file_transfer",
+      "path": [
+        "Custom TCP File Transfer"
+      ],
+      "content": "`FTP Scripts/main.py` is not an FTP protocol client despite the directory name.\n\nIt opens a normal TCP socket to `127.0.0.1:5001`.\n\nThe client reads `file.txt` and sends a small custom application framing format.\n\nThe framing contains:\n\n1. filename terminated by newline;\n2. file length represented in a fixed 16-byte padded field;\n3. raw payload bytes;\n4. server response after completion.\n\nThis demonstrates application-protocol design over TCP.\n\nIt should be tagged `custom-tcp-file-transfer`, not `ftp-protocol`, for this subsystem.",
+      "source_line_start": 201,
+      "source_line_end": 220
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Python Server",
+      "normalized_title": "Python Server",
+      "key": "python_server",
+      "path": [
+        "Python Server"
+      ],
+      "content": "`server.py` listens on `0.0.0.0:5001`.\n\nIt enables `SO_REUSEADDR`.\n\nThe server accepts client connections and handles them concurrently using a thread-per-client model.\n\nFor each connection, it:\n\n- reads a filename until newline;\n- reads a 16-byte size field;\n- receives the announced number of bytes in chunks;\n- writes a `received_...` file;\n- returns a completion response.\n\nThe chunk size is 4096 bytes in the retained code.\n\nThis is a useful compact client/server transport experiment.\n\nIt is not a standards-compliant FTP server.",
+      "source_line_start": 220,
+      "source_line_end": 242
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Protocol-Framing Reasoning",
+      "normalized_title": "Protocol-Framing Reasoning",
+      "key": "protocol_framing_reasoning",
+      "path": [
+        "Protocol-Framing Reasoning"
+      ],
+      "content": "Raw TCP is a byte stream with no inherent message boundaries.\n\nThe client/server pair therefore has to invent boundaries for metadata and payload.\n\nThe newline-terminated filename and fixed-width size field provide that framing.\n\nThis is important systems reasoning.\n\nIt shows why an application protocol needs structure even when the underlying TCP connection is reliable and ordered.",
+      "source_line_start": 242,
+      "source_line_end": 254
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "File-Transfer Security Boundary",
+      "normalized_title": "File-Transfer Security Boundary",
+      "key": "file_transfer_security_boundary",
+      "path": [
+        "File-Transfer Security Boundary"
+      ],
+      "content": "The Python transfer pair uses ordinary TCP.\n\nThere is no retained TLS wrapper around the socket.\n\nThere is no authenticated key exchange.\n\nThere is no per-transfer encryption primitive.\n\nThere is no cryptographic integrity tag.\n\nThe server also accepts the filename sent by the client as part of its output path construction.\n\nThe code should therefore not be described as a secure transfer protocol merely because the website uses security-oriented branding.\n\nThis is one of the strongest evidence-cleaning requirements in the repository.",
+      "source_line_start": 254,
+      "source_line_end": 272
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Transfer Performance Work",
+      "normalized_title": "Transfer Performance Work",
+      "key": "transfer_performance_work",
+      "path": [
+        "Transfer Performance Work"
+      ],
+      "content": "`process.py` contains file-size/time observations and throughput-oriented calculations.\n\nThe script converts observed completion time into rate values.\n\nThis reflects an increasingly measurement-driven use of the transfer project.\n\nThe focus is not only “did the file arrive?” but also “how long did the transfer take, and what throughput did that imply?”\n\nThat aligns with the user's broader wireless/network performance research trajectory.",
+      "source_line_start": 272,
+      "source_line_end": 284
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Flow Completion Time Plotter",
+      "normalized_title": "Flow Completion Time Plotter",
+      "key": "flow_completion_time_plotter",
+      "path": [
+        "Flow Completion Time Plotter"
+      ],
+      "content": "`FCT Plotter.py` provides a small desktop analysis UI.\n\nIt uses Tkinter and Matplotlib.\n\nThe tool parses measurement data separated into experiment blocks.\n\nIt builds a measurement representation around fields such as protocol, file size, and completion time.\n\nIt provides multiple views including:\n\n- time versus file size;\n- throughput-oriented plots;\n- comparative plots;\n- raw-data inspection.\n\nThis is a practical instrumentation-analysis tool rather than a general BI dashboard.",
+      "source_line_start": 284,
+      "source_line_end": 303
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Throughput Derivation",
+      "normalized_title": "Throughput Derivation",
+      "key": "throughput_derivation",
+      "path": [
+        "Throughput Derivation"
+      ],
+      "content": "The plotter computes throughput from file size and elapsed time.\n\nConceptually:\n\n```text\nthroughput = file_size / completion_time\n```\n\nwith conversion to bit-rate units as appropriate.\n\nThat makes the distinction between latency-like completion time and rate-like throughput explicit.\n\nFor file transfers, both views are valuable because two protocols may have similar bulk rate but different setup/short-flow behavior.",
+      "source_line_start": 303,
+      "source_line_end": 319
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Result Data",
+      "normalized_title": "Result Data",
+      "key": "result_data",
+      "path": [
+        "Result Data"
+      ],
+      "content": "The current tree includes `results.json`.\n\nThat provides retained experimental data in addition to plotting code.\n\nThe presence of structured result data strengthens the interpretation of this repo as an experiment workspace rather than only a UI prototype.\n\nIt should not be assumed that every value in the file came from a rigorously controlled benchmark unless the surrounding experiment metadata establishes that.",
+      "source_line_start": 319,
+      "source_line_end": 329
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Spectrum Analyzer GUI",
+      "normalized_title": "Spectrum Analyzer GUI",
+      "key": "spectrum_analyzer_gui",
+      "path": [
+        "Spectrum Analyzer GUI"
+      ],
+      "content": "`sweepGUI.py` is by far the largest current source file.\n\nIt is a substantial desktop instrumentation interface titled around spectrum-analyzer SCPI terminal and capture functionality.\n\nThe tool targets Mini-Circuits RSA-series spectrum-analyzer workflows.\n\nIts inclusion shows that the repository's later life expanded beyond FTP transport into RF measurement tooling.\n\nThe corpus therefore treats this as a distinct subsystem.",
+      "source_line_start": 329,
+      "source_line_end": 341
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Serial Instrument Discovery",
+      "normalized_title": "Serial Instrument Discovery",
+      "key": "serial_instrument_discovery",
+      "path": [
+        "Serial Instrument Discovery"
+      ],
+      "content": "The GUI can work with serial ports.\n\nIt includes connection/disconnection behavior and terminal-oriented command exchange.\n\nThis bridges desktop application code with physical test equipment.\n\nThe tool is not merely plotting synthetic arrays.\n\nIts design is centered around controlling and collecting from an external instrument.",
+      "source_line_start": 341,
+      "source_line_end": 353
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "SCPI Command Workflow",
+      "normalized_title": "SCPI Command Workflow",
+      "key": "scpi_command_workflow",
+      "path": [
+        "SCPI Command Workflow"
+      ],
+      "content": "SCPI is a command language commonly used by measurement instruments.\n\nThe GUI exposes custom command entry and structured sweep controls.\n\nThis gives the user both:\n\n- low-level terminal access;\n- higher-level form controls for common measurement tasks.\n\nThat is a useful instrumentation UX pattern because advanced users can escape the fixed UI when needed.",
+      "source_line_start": 353,
+      "source_line_end": 366
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Sweep Configuration",
+      "normalized_title": "Sweep Configuration",
+      "key": "sweep_configuration",
+      "path": [
+        "Sweep Configuration"
+      ],
+      "content": "The GUI contains controls around parameters including:\n\n- center frequency;\n- frequency span;\n- resolution bandwidth (RBW);\n- dwell behavior;\n- reference level;\n- attenuation;\n- units;\n- sweep-point count;\n- sweep count.\n\nThese are domain-specific RF measurement settings.\n\nTheir presence is stronger evidence of spectrum-analyzer understanding than a generic serial terminal would provide.",
+      "source_line_start": 366,
+      "source_line_end": 384
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Multi-Sweep Recording",
+      "normalized_title": "Multi-Sweep Recording",
+      "key": "multi_sweep_recording",
+      "path": [
+        "Multi-Sweep Recording"
+      ],
+      "content": "The tool supports repeated sweeps rather than only one instantaneous trace.\n\nMultiple sweeps allow temporal comparison and max-hold accumulation.\n\nThis is especially useful when intermittent emissions need to be captured across time.\n\nThe commit history explicitly includes iterative changes around sweep behavior, RBW handling, and GUI quality.\n\nThat history supports meaningful owner iteration on this subsystem.",
+      "source_line_start": 384,
+      "source_line_end": 396
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Max Hold",
+      "normalized_title": "Max Hold",
+      "key": "max_hold",
+      "path": [
+        "Max Hold"
+      ],
+      "content": "Max hold retains the maximum observed amplitude at each frequency bin across multiple sweeps.\n\nThe GUI implements max-hold-oriented behavior.\n\nThis is a domain-specific signal-analysis feature.\n\nIt should not be confused with simply finding the single maximum point of one trace.\n\nThe feature implies state accumulation across sweeps.",
+      "source_line_start": 396,
+      "source_line_end": 408
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Peak Marker",
+      "normalized_title": "Peak Marker",
+      "key": "peak_marker",
+      "path": [
+        "Peak Marker"
+      ],
+      "content": "The spectrum view includes peak-oriented marker behavior.\n\nThis allows the user to identify a dominant frequency/amplitude location in the measured trace.\n\nCombined with max hold, it makes the GUI useful for identifying transient or strongest emissions.",
+      "source_line_start": 408,
+      "source_line_end": 416
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Realtime Plotting",
+      "normalized_title": "Realtime Plotting",
+      "key": "realtime_plotting",
+      "path": [
+        "Realtime Plotting"
+      ],
+      "content": "Matplotlib is embedded into the Tkinter application.\n\nIncoming sweep data is rendered in the GUI rather than requiring a separate offline plotting step.\n\nThis creates a closed measurement loop:\n\n```text\nconfigure → acquire → visualize → adjust → reacquire\n```\n\nThat loop is characteristic of practical lab tooling.",
+      "source_line_start": 416,
+      "source_line_end": 430
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Export",
+      "normalized_title": "Export",
+      "key": "export",
+      "path": [
+        "Export"
+      ],
+      "content": "The instrumentation tool supports exporting measurement data.\n\nCurrent retained formats include CSV and DAT-oriented output.\n\nMachine-readable export allows external analysis and archival.\n\nThis is a useful separation between interactive lab use and later data processing.",
+      "source_line_start": 430,
+      "source_line_end": 440
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "XML Configuration Persistence",
+      "normalized_title": "XML Configuration Persistence",
+      "key": "xml_configuration_persistence",
+      "path": [
+        "XML Configuration Persistence"
+      ],
+      "content": "The GUI includes XML-based configuration save/load behavior.\n\nThat lets a measurement setup be recreated instead of manually re-entering every parameter.\n\nFor experimental reproducibility, configuration persistence is more valuable than cosmetic GUI state.\n\nIt also demonstrates serialization of domain-specific settings.",
+      "source_line_start": 440,
+      "source_line_end": 450
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Threading / Responsiveness",
+      "normalized_title": "Threading / Responsiveness",
+      "key": "threading_responsiveness",
+      "path": [
+        "Threading / Responsiveness"
+      ],
+      "content": "Long instrument operations are handled with threaded behavior in the GUI.\n\nThis is important because blocking serial/sweep work on the Tkinter event loop would freeze the interface.\n\nThe repository therefore shows practical desktop concurrency applied to hardware I/O.",
+      "source_line_start": 450,
+      "source_line_end": 458
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Web Surface",
+      "normalized_title": "Web Surface",
+      "key": "web_surface",
+      "path": [
+        "Web Surface"
+      ],
+      "content": "The root `index.html` presents a branded `Sedra FTP` experience.\n\nIt contains login/download-oriented product language.\n\nThe page's existence demonstrates product framing around the transfer software.\n\nSecurity claims in presentation copy are not treated as implementation facts unless the source beneath them demonstrates the mechanism.\n\nIn the current retained Python transfer path, those strong encryption claims are not supported.",
+      "source_line_start": 458,
+      "source_line_end": 470
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "External WhiteRaccoon Component",
+      "normalized_title": "External WhiteRaccoon Component",
+      "key": "external_whiteraccoon_component",
+      "path": [
+        "External WhiteRaccoon Component"
+      ],
+      "content": "`WhiteRaccoon.h` and `WhiteRaccoon.m` are retained in the repository.\n\nTheir headers attribute the library to Tatsuya Tobioka.\n\nWhiteRaccoon is therefore third-party source evidence.\n\nThe owner can be credited with selecting/integrating/retaining it within the project context where supported.\n\nThe underlying FTP library implementation must not be claimed as personally authored.\n\nThis distinction is essential because the external source is substantial in line count.",
+      "source_line_start": 470,
+      "source_line_end": 484
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Objective-C / Apple Scaffolding Boundary",
+      "normalized_title": "Objective-C / Apple Scaffolding Boundary",
+      "key": "objective_c_apple_scaffolding_boundary",
+      "path": [
+        "Objective-C / Apple Scaffolding Boundary"
+      ],
+      "content": "The tree retains Apple application files such as `SceneDelegate` and `main.m` alongside the FTP library.\n\nSome headers/content have external historical lineage.\n\nThe corpus does not use those files to inflate owner-authored Objective-C implementation volume.\n\nThe strongest owner-attributed engineering evidence in the current tree is the later Python experiment/tooling work and iterative spectrum GUI commits.",
+      "source_line_start": 484,
+      "source_line_end": 494
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Custom Transport Experiment\n\nThe Python pair designs a small framing protocol over raw TCP and implements both client and threaded server.\n\n### Measurement Pipeline\n\nTransfer observations are converted into FCT/throughput analysis artifacts.\n\n### Desktop Analysis Tool\n\nTkinter/Matplotlib turns raw measurements into interactive comparisons.\n\n### RF Instrument Control\n\nThe repository expands into SCPI/serial control of a spectrum analyzer.\n\n### Domain-Specific Measurement UX\n\nSweep configuration, max hold, peak markers, exports, and persisted settings create a practical lab workflow.\n\n### Multi-Phase Iteration\n\nThe commit history shows the repository changing technical focus over months rather than remaining a one-shot upload.",
+      "source_line_start": 494,
+      "source_line_end": 520
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Custom Transport Experiment",
+      "normalized_title": "Custom Transport Experiment",
+      "key": "custom_transport_experiment",
+      "path": [
+        "Major Engineering Work",
+        "Custom Transport Experiment"
+      ],
+      "content": "The Python pair designs a small framing protocol over raw TCP and implements both client and threaded server.",
+      "source_line_start": 496,
+      "source_line_end": 500
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Measurement Pipeline",
+      "normalized_title": "Measurement Pipeline",
+      "key": "measurement_pipeline",
+      "path": [
+        "Major Engineering Work",
+        "Measurement Pipeline"
+      ],
+      "content": "Transfer observations are converted into FCT/throughput analysis artifacts.",
+      "source_line_start": 500,
+      "source_line_end": 504
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Desktop Analysis Tool",
+      "normalized_title": "Desktop Analysis Tool",
+      "key": "desktop_analysis_tool",
+      "path": [
+        "Major Engineering Work",
+        "Desktop Analysis Tool"
+      ],
+      "content": "Tkinter/Matplotlib turns raw measurements into interactive comparisons.",
+      "source_line_start": 504,
+      "source_line_end": 508
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "RF Instrument Control",
+      "normalized_title": "RF Instrument Control",
+      "key": "rf_instrument_control",
+      "path": [
+        "Major Engineering Work",
+        "RF Instrument Control"
+      ],
+      "content": "The repository expands into SCPI/serial control of a spectrum analyzer.",
+      "source_line_start": 508,
+      "source_line_end": 512
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Domain-Specific Measurement UX",
+      "normalized_title": "Domain-Specific Measurement UX",
+      "key": "domain_specific_measurement_ux",
+      "path": [
+        "Major Engineering Work",
+        "Domain-Specific Measurement UX"
+      ],
+      "content": "Sweep configuration, max hold, peak markers, exports, and persisted settings create a practical lab workflow.",
+      "source_line_start": 512,
+      "source_line_end": 516
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Multi-Phase Iteration",
+      "normalized_title": "Multi-Phase Iteration",
+      "key": "multi_phase_iteration",
+      "path": [
+        "Major Engineering Work",
+        "Multi-Phase Iteration"
+      ],
+      "content": "The commit history shows the repository changing technical focus over months rather than remaining a one-shot upload.",
+      "source_line_start": 516,
+      "source_line_end": 520
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "Verification is strongly experiment-driven.\n\nFor transfer scripts, successful file receipt and server acknowledgment validate the basic data path.\n\nTiming/result files support performance analysis.\n\nFor the instrumentation GUI, serial communication, sweep capture, plotted traces, max-hold behavior, and export paths are the operational verification surfaces.\n\nThere is no basis to convert web marketing security copy into a verified cryptographic property.\n\nThe corpus explicitly treats this mismatch as a verification boundary.",
+      "source_line_start": 520,
+      "source_line_end": 534
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Several discipline improvements are visible across the repository:\n\n- moving from success/failure transfer behavior into measurement;\n- retaining structured experimental results;\n- separating plotting/processing utilities;\n- exposing instrument configuration explicitly;\n- persisting sweep configuration;\n- exporting raw/derived data;\n- using background work to preserve GUI responsiveness;\n- iterating on RBW/max-hold/GUI behavior through commits.\n\nThe repository also has organization debt because historically unrelated phases coexist under one name.\n\nFor RAG, that is solved by describing subsystems explicitly rather than pretending the repository has one homogeneous architecture.",
+      "source_line_start": 534,
+      "source_line_end": 551
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The project shows both internal-tool and external-product instincts.\n\nThe web surface frames file transfer for a user.\n\nThe FCT plotter frames performance data for an analyst.\n\nThe sweep GUI frames RF instrumentation for an experimenter.\n\nThese are three different user roles.\n\nThe current repository is therefore more accurately a development workspace containing several product/tool surfaces than one finished product.",
+      "source_line_start": 551,
+      "source_line_end": 565
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "This is one of the more internally heterogeneous repositories in the corpus so far.\n\nComplexity comes from combining:\n\n- network protocol experiments;\n- concurrency;\n- file I/O;\n- performance metrics;\n- desktop GUI development;\n- scientific plotting;\n- serial hardware I/O;\n- SCPI command semantics;\n- RF measurement configuration;\n- persistence/export;\n- web/iOS historical layers.\n\nThe 72 KB spectrum GUI dominates current authored code volume among the retained Python files.\n\nThird-party Objective-C source is excluded from owner-complexity inference.",
+      "source_line_start": 565,
+      "source_line_end": 587
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Networking\n\n- Python sockets\n- TCP client/server design\n- application framing over TCP\n- thread-per-client concurrency\n- file-transfer timing\n- flow-completion-time reasoning\n- throughput calculation\n\n### Desktop / Data Tooling\n\n- Tkinter\n- Matplotlib embedding\n- interactive plots\n- experiment-data parsing\n- JSON result handling\n- CSV/DAT export\n- XML configuration persistence\n\n### Instrumentation\n\n- serial communication\n- SCPI\n- spectrum analyzer control\n- frequency/span configuration\n- resolution bandwidth\n- sweep acquisition\n- multi-sweep recording\n- max hold\n- peak marking\n- realtime spectrum plotting\n\n### Engineering Judgment\n\n- separating third-party source attribution\n- distinguishing custom TCP transfer from FTP\n- distinguishing security marketing from implemented transport properties\n- evolving a prototype into measurement tooling",
+      "source_line_start": 587,
+      "source_line_end": 629
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Skills Demonstrated",
+        "Networking"
+      ],
+      "content": "- Python sockets\n- TCP client/server design\n- application framing over TCP\n- thread-per-client concurrency\n- file-transfer timing\n- flow-completion-time reasoning\n- throughput calculation",
+      "source_line_start": 589,
+      "source_line_end": 599
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Desktop / Data Tooling",
+      "normalized_title": "Desktop / Data Tooling",
+      "key": "desktop_data_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Desktop / Data Tooling"
+      ],
+      "content": "- Tkinter\n- Matplotlib embedding\n- interactive plots\n- experiment-data parsing\n- JSON result handling\n- CSV/DAT export\n- XML configuration persistence",
+      "source_line_start": 599,
+      "source_line_end": 609
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Instrumentation",
+      "normalized_title": "Instrumentation",
+      "key": "instrumentation",
+      "path": [
+        "Skills Demonstrated",
+        "Instrumentation"
+      ],
+      "content": "- serial communication\n- SCPI\n- spectrum analyzer control\n- frequency/span configuration\n- resolution bandwidth\n- sweep acquisition\n- multi-sweep recording\n- max hold\n- peak marking\n- realtime spectrum plotting",
+      "source_line_start": 609,
+      "source_line_end": 622
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Engineering Judgment",
+      "normalized_title": "Engineering Judgment",
+      "key": "engineering_judgment",
+      "path": [
+        "Skills Demonstrated",
+        "Engineering Judgment"
+      ],
+      "content": "- separating third-party source attribution\n- distinguishing custom TCP transfer from FTP\n- distinguishing security marketing from implemented transport properties\n- evolving a prototype into measurement tooling",
+      "source_line_start": 622,
+      "source_line_end": 629
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "Private-FTP demonstrates that networking work becomes more useful when it is measurable.\n\nA file-transfer path alone answers whether bytes move.\n\nFCT and throughput analysis answer how the transfer behaves.\n\nInstrument-control tooling then extends that measurement mindset into the physical RF domain.\n\nThe repository therefore records a broad transition from application networking toward experimental instrumentation.\n\nIt also reinforces provenance discipline: retaining an external FTP library does not make that library owner-authored.",
+      "source_line_start": 629,
+      "source_line_end": 643
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Fast-FTP immediately precedes this repository and focuses narrowly on a native FTP upload path.\n\nPrivate-FTP expands the scope dramatically.\n\nThe trajectory is roughly:\n\n```text\nFTP protocol/client experiment\n        ↓\ncustom TCP transfer experiment\n        ↓\ntransfer performance measurement\n        ↓\nmeasurement visualization\n        ↓\nRF instrument control / spectrum analysis\n```\n\nThis progression aligns strongly with the later wireless-research/tooling direction in the portfolio.",
+      "source_line_start": 643,
+      "source_line_end": 665
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository combining file-transfer performance analysis with a substantial SCPI-driven spectrum-analyzer GUI.\n\nIt is also an important example of a repository whose historical name no longer captures its full current technical scope.\n\nFor RAG retrieval, subsystem-level description is essential here.",
+      "source_line_start": 665,
+      "source_line_end": 673
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The current custom Python transfer path is not FTP protocol despite folder naming.\n\nIt does not implement transport encryption/authenticated cryptography, so “military-grade encryption” presentation copy is not supported as an implementation claim.\n\nWhiteRaccoon is externally attributed third-party source and is excluded from owner-authorship claims.\n\nThe repository aggregates several historical phases without a clean module-level architecture tying them into one deployable product.\n\nThose boundaries make the corpus more accurate rather than less useful.",
+      "source_line_start": 673,
+      "source_line_end": 685
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "Private-FTP is an evolving networking/measurement workspace whose technical scope grew far beyond its name.\n\nIt retains an external FTP library and Apple-era artifacts, but its strongest owner-managed evidence is in Python: custom TCP file transfer, threaded server behavior, flow-completion-time and throughput analysis, a Tkinter plotting tool, and a large SCPI spectrum-analyzer GUI with realtime sweeps, max hold, peak markers, configuration persistence, and data export.\n\nThe repository is historically significant because it shows networking turning into instrumentation-driven engineering.\n\n# Project Tags\n\n`individual-project-with-external-components`, `python`, `networking`, `tcp`, `socket-programming`, `custom-application-protocol`, `custom-tcp-file-transfer`, `not-ftp-protocol-for-python-transfer`, `tcp-client`, `tcp-server`, `threaded-server`, `thread-per-client`, `file-transfer`, `file-framing`, `transfer-timing`, `throughput-analysis`, `flow-completion-time`, `fct`, `experiment-results`, `json`, `tkinter`, `matplotlib`, `desktop-analysis-tool`, `interactive-plotting`, `scpi`, `serial-communication`, `spectrum-analyzer`, `mini-circuits-rsa`, `rf-instrumentation`, `spectrum-sweep`, `resolution-bandwidth`, `rbw`, `multi-sweep`, `max-hold`, `peak-marker`, `realtime-plotting`, `csv-export`, `dat-export`, `xml-configuration`, `configuration-persistence`, `background-threading`, `lab-tooling`, `objective-c-artifacts`, `white-raccoon`, `external-whiteraccoon-library`, `third-party-source`, `web-product-surface`, `security-claim-boundary`, `no-verified-transfer-encryption`, `multi-phase-experimental-workspace`, `earliest-observed-scpi-spectrum-analyzer-gui`, `earliest-observed-file-transfer-fct-analysis`",
+      "source_line_start": 685,
+      "source_line_end": 696
+    }
+  ],
+  "raw_analysis": "# Repository 095 — Private-FTP\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Private-FTP`\n- **Corpus index:** 095\n- **Repository start date:** 2025-10-09\n- **Last meaningful update date:** 2026-03-20\n- **Latest meaningful commit:** `b4d9e87584dbe1901bcd28c35d682ae3b37868f7`\n- **Primary repository language by current implementation volume:** Python\n- **Project form:** multi-phase file-transfer, measurement, and spectrum-instrumentation workspace\n- **Collaboration classification:** `individual-project-with-external-components`\n\n## Evidence Basis\n\nPrivate-FTP is public despite its repository name.\n\nIt has a much longer development history and broader current tree than Fast-FTP.\n\nThe retained repository includes several distinct subsystems rather than one single cohesive protocol implementation.\n\nCurrent source includes:\n\n- Python raw-TCP file-transfer client/server scripts;\n- transfer-processing scripts;\n- flow-completion-time plotting;\n- JSON result data;\n- a large Tkinter spectrum-analyzer/SCPI GUI;\n- a web landing/login/download surface;\n- Objective-C Apple application scaffolding;\n- the externally authored WhiteRaccoon FTP library.\n\nThe corpus must therefore separate retained owner work from third-party source.\n\n`WhiteRaccoon.h/.m` carries Tatsuya Tobioka copyright/attribution from 2012–2013.\n\nIt is not treated as owner-authored FTP library implementation.\n\nThe Objective-C application scaffolding likewise includes historical external lineage in retained headers.\n\nBy contrast, the Python transfer and instrumentation scripts are analyzed as the repository's substantive owner-managed experimentation layer.\n\nThe web page contains security-oriented product copy.\n\nMarketing text such as “military-grade encryption” is not implementation evidence.\n\nThe current Python transfer scripts use ordinary TCP sockets without TLS or cryptographic framing.\n\nThat boundary is mandatory for retrieval accuracy.\n\n## What the Project Is\n\nPrivate-FTP is best understood as an evolving networking and measurement workspace that started around file-transfer experimentation and expanded into performance analysis and RF instrumentation tooling.\n\nIt contains at least four distinct technical concerns:\n\n1. file-transfer application/protocol work;\n2. custom TCP transfer experiments;\n3. flow-completion-time/performance analysis;\n4. spectrum-analyzer control and sweep visualization.\n\nA web-facing “Sedra FTP” surface provides product framing around the file-transfer theme.\n\nThe repository is not accurately summarized as merely “an FTP app.”\n\nIts current retained scope is substantially broader.\n\n## Project Scope\n\n### File Transfer\n\n- custom Python TCP client;\n- custom Python TCP server;\n- filename/length framing;\n- raw file-byte transfer;\n- server-side file persistence;\n- response/acknowledgment handling;\n- transfer timing.\n\n### Measurement / Analysis\n\n- throughput calculations;\n- flow-completion-time style data;\n- structured result data;\n- protocol/file-size comparison;\n- Tkinter + Matplotlib plotting.\n\n### RF Instrumentation\n\n- serial instrument discovery/connection;\n- SCPI terminal commands;\n- spectrum sweep configuration;\n- frequency/span/RBW controls;\n- sweep-point/count controls;\n- multi-sweep recording;\n- realtime plotting;\n- max-hold behavior;\n- peak markers;\n- CSV/DAT export;\n- XML configuration persistence.\n\n### Apple / Web Layer\n\n- retained Objective-C/iOS scaffolding;\n- external WhiteRaccoon FTP library;\n- browser landing/login/download UX.\n\n## Architecture / System Shape\n\nBecause the repo is multi-phase, one diagram would be misleading.\n\n### Python Transfer Pair\n\n```text\nfile.txt\n   ↓\nPython client\n   ↓\ncustom framing over TCP :5001\n   ↓\nPython threaded server\n   ↓\nreceived_<filename>\n```\n\n### Measurement Pipeline\n\n```text\ntransfer observations/results\n        ↓\nprocessing / derived throughput\n        ↓\nFCT Plotter\n        ↓\nembedded Matplotlib views\n```\n\n### Spectrum Analyzer Tool\n\n```text\nTkinter GUI\n   ↓\nserial port / SCPI commands\n   ↓\nMini-Circuits RSA-series analyzer\n   ↓\nsweep data\n   ↓\nrealtime plot + max hold + export\n```\n\n### Retained Apple/Web Layer\n\n```text\nbrowser/iOS product surface\n        ↓\nFTP-oriented integration / download workflow\n        ↓\nthird-party WhiteRaccoon source retained in tree\n```\n\nThese are related by project history and experimental goals, but they should remain separately retrievable.\n\n## Technical Stack\n\n### Python / Networking\n\n- Python\n- `socket`\n- TCP\n- threaded server handling\n- file I/O\n- custom application framing\n\n### Data / Visualization\n\n- Tkinter\n- Matplotlib\n- NumPy\n- JSON\n- CSV\n- DAT\n- XML configuration\n\n### Instrumentation\n\n- pyserial-style serial communication\n- SCPI commands\n- spectrum analyzer control\n- frequency-domain sweeps\n- RBW configuration\n- max-hold analysis\n\n### Apple / Web\n\n- Objective-C artifacts\n- Xcode-era application structure\n- HTML/CSS/JavaScript\n- external WhiteRaccoon FTP library\n\n## Custom TCP File Transfer\n\n`FTP Scripts/main.py` is not an FTP protocol client despite the directory name.\n\nIt opens a normal TCP socket to `127.0.0.1:5001`.\n\nThe client reads `file.txt` and sends a small custom application framing format.\n\nThe framing contains:\n\n1. filename terminated by newline;\n2. file length represented in a fixed 16-byte padded field;\n3. raw payload bytes;\n4. server response after completion.\n\nThis demonstrates application-protocol design over TCP.\n\nIt should be tagged `custom-tcp-file-transfer`, not `ftp-protocol`, for this subsystem.\n\n## Python Server\n\n`server.py` listens on `0.0.0.0:5001`.\n\nIt enables `SO_REUSEADDR`.\n\nThe server accepts client connections and handles them concurrently using a thread-per-client model.\n\nFor each connection, it:\n\n- reads a filename until newline;\n- reads a 16-byte size field;\n- receives the announced number of bytes in chunks;\n- writes a `received_...` file;\n- returns a completion response.\n\nThe chunk size is 4096 bytes in the retained code.\n\nThis is a useful compact client/server transport experiment.\n\nIt is not a standards-compliant FTP server.\n\n## Protocol-Framing Reasoning\n\nRaw TCP is a byte stream with no inherent message boundaries.\n\nThe client/server pair therefore has to invent boundaries for metadata and payload.\n\nThe newline-terminated filename and fixed-width size field provide that framing.\n\nThis is important systems reasoning.\n\nIt shows why an application protocol needs structure even when the underlying TCP connection is reliable and ordered.\n\n## File-Transfer Security Boundary\n\nThe Python transfer pair uses ordinary TCP.\n\nThere is no retained TLS wrapper around the socket.\n\nThere is no authenticated key exchange.\n\nThere is no per-transfer encryption primitive.\n\nThere is no cryptographic integrity tag.\n\nThe server also accepts the filename sent by the client as part of its output path construction.\n\nThe code should therefore not be described as a secure transfer protocol merely because the website uses security-oriented branding.\n\nThis is one of the strongest evidence-cleaning requirements in the repository.\n\n## Transfer Performance Work\n\n`process.py` contains file-size/time observations and throughput-oriented calculations.\n\nThe script converts observed completion time into rate values.\n\nThis reflects an increasingly measurement-driven use of the transfer project.\n\nThe focus is not only “did the file arrive?” but also “how long did the transfer take, and what throughput did that imply?”\n\nThat aligns with the user's broader wireless/network performance research trajectory.\n\n## Flow Completion Time Plotter\n\n`FCT Plotter.py` provides a small desktop analysis UI.\n\nIt uses Tkinter and Matplotlib.\n\nThe tool parses measurement data separated into experiment blocks.\n\nIt builds a measurement representation around fields such as protocol, file size, and completion time.\n\nIt provides multiple views including:\n\n- time versus file size;\n- throughput-oriented plots;\n- comparative plots;\n- raw-data inspection.\n\nThis is a practical instrumentation-analysis tool rather than a general BI dashboard.\n\n## Throughput Derivation\n\nThe plotter computes throughput from file size and elapsed time.\n\nConceptually:\n\n```text\nthroughput = file_size / completion_time\n```\n\nwith conversion to bit-rate units as appropriate.\n\nThat makes the distinction between latency-like completion time and rate-like throughput explicit.\n\nFor file transfers, both views are valuable because two protocols may have similar bulk rate but different setup/short-flow behavior.\n\n## Result Data\n\nThe current tree includes `results.json`.\n\nThat provides retained experimental data in addition to plotting code.\n\nThe presence of structured result data strengthens the interpretation of this repo as an experiment workspace rather than only a UI prototype.\n\nIt should not be assumed that every value in the file came from a rigorously controlled benchmark unless the surrounding experiment metadata establishes that.\n\n## Spectrum Analyzer GUI\n\n`sweepGUI.py` is by far the largest current source file.\n\nIt is a substantial desktop instrumentation interface titled around spectrum-analyzer SCPI terminal and capture functionality.\n\nThe tool targets Mini-Circuits RSA-series spectrum-analyzer workflows.\n\nIts inclusion shows that the repository's later life expanded beyond FTP transport into RF measurement tooling.\n\nThe corpus therefore treats this as a distinct subsystem.\n\n## Serial Instrument Discovery\n\nThe GUI can work with serial ports.\n\nIt includes connection/disconnection behavior and terminal-oriented command exchange.\n\nThis bridges desktop application code with physical test equipment.\n\nThe tool is not merely plotting synthetic arrays.\n\nIts design is centered around controlling and collecting from an external instrument.\n\n## SCPI Command Workflow\n\nSCPI is a command language commonly used by measurement instruments.\n\nThe GUI exposes custom command entry and structured sweep controls.\n\nThis gives the user both:\n\n- low-level terminal access;\n- higher-level form controls for common measurement tasks.\n\nThat is a useful instrumentation UX pattern because advanced users can escape the fixed UI when needed.\n\n## Sweep Configuration\n\nThe GUI contains controls around parameters including:\n\n- center frequency;\n- frequency span;\n- resolution bandwidth (RBW);\n- dwell behavior;\n- reference level;\n- attenuation;\n- units;\n- sweep-point count;\n- sweep count.\n\nThese are domain-specific RF measurement settings.\n\nTheir presence is stronger evidence of spectrum-analyzer understanding than a generic serial terminal would provide.\n\n## Multi-Sweep Recording\n\nThe tool supports repeated sweeps rather than only one instantaneous trace.\n\nMultiple sweeps allow temporal comparison and max-hold accumulation.\n\nThis is especially useful when intermittent emissions need to be captured across time.\n\nThe commit history explicitly includes iterative changes around sweep behavior, RBW handling, and GUI quality.\n\nThat history supports meaningful owner iteration on this subsystem.\n\n## Max Hold\n\nMax hold retains the maximum observed amplitude at each frequency bin across multiple sweeps.\n\nThe GUI implements max-hold-oriented behavior.\n\nThis is a domain-specific signal-analysis feature.\n\nIt should not be confused with simply finding the single maximum point of one trace.\n\nThe feature implies state accumulation across sweeps.\n\n## Peak Marker\n\nThe spectrum view includes peak-oriented marker behavior.\n\nThis allows the user to identify a dominant frequency/amplitude location in the measured trace.\n\nCombined with max hold, it makes the GUI useful for identifying transient or strongest emissions.\n\n## Realtime Plotting\n\nMatplotlib is embedded into the Tkinter application.\n\nIncoming sweep data is rendered in the GUI rather than requiring a separate offline plotting step.\n\nThis creates a closed measurement loop:\n\n```text\nconfigure → acquire → visualize → adjust → reacquire\n```\n\nThat loop is characteristic of practical lab tooling.\n\n## Export\n\nThe instrumentation tool supports exporting measurement data.\n\nCurrent retained formats include CSV and DAT-oriented output.\n\nMachine-readable export allows external analysis and archival.\n\nThis is a useful separation between interactive lab use and later data processing.\n\n## XML Configuration Persistence\n\nThe GUI includes XML-based configuration save/load behavior.\n\nThat lets a measurement setup be recreated instead of manually re-entering every parameter.\n\nFor experimental reproducibility, configuration persistence is more valuable than cosmetic GUI state.\n\nIt also demonstrates serialization of domain-specific settings.\n\n## Threading / Responsiveness\n\nLong instrument operations are handled with threaded behavior in the GUI.\n\nThis is important because blocking serial/sweep work on the Tkinter event loop would freeze the interface.\n\nThe repository therefore shows practical desktop concurrency applied to hardware I/O.\n\n## Web Surface\n\nThe root `index.html` presents a branded `Sedra FTP` experience.\n\nIt contains login/download-oriented product language.\n\nThe page's existence demonstrates product framing around the transfer software.\n\nSecurity claims in presentation copy are not treated as implementation facts unless the source beneath them demonstrates the mechanism.\n\nIn the current retained Python transfer path, those strong encryption claims are not supported.\n\n## External WhiteRaccoon Component\n\n`WhiteRaccoon.h` and `WhiteRaccoon.m` are retained in the repository.\n\nTheir headers attribute the library to Tatsuya Tobioka.\n\nWhiteRaccoon is therefore third-party source evidence.\n\nThe owner can be credited with selecting/integrating/retaining it within the project context where supported.\n\nThe underlying FTP library implementation must not be claimed as personally authored.\n\nThis distinction is essential because the external source is substantial in line count.\n\n## Objective-C / Apple Scaffolding Boundary\n\nThe tree retains Apple application files such as `SceneDelegate` and `main.m` alongside the FTP library.\n\nSome headers/content have external historical lineage.\n\nThe corpus does not use those files to inflate owner-authored Objective-C implementation volume.\n\nThe strongest owner-attributed engineering evidence in the current tree is the later Python experiment/tooling work and iterative spectrum GUI commits.\n\n## Major Engineering Work\n\n### Custom Transport Experiment\n\nThe Python pair designs a small framing protocol over raw TCP and implements both client and threaded server.\n\n### Measurement Pipeline\n\nTransfer observations are converted into FCT/throughput analysis artifacts.\n\n### Desktop Analysis Tool\n\nTkinter/Matplotlib turns raw measurements into interactive comparisons.\n\n### RF Instrument Control\n\nThe repository expands into SCPI/serial control of a spectrum analyzer.\n\n### Domain-Specific Measurement UX\n\nSweep configuration, max hold, peak markers, exports, and persisted settings create a practical lab workflow.\n\n### Multi-Phase Iteration\n\nThe commit history shows the repository changing technical focus over months rather than remaining a one-shot upload.\n\n## Testing & Verification\n\nVerification is strongly experiment-driven.\n\nFor transfer scripts, successful file receipt and server acknowledgment validate the basic data path.\n\nTiming/result files support performance analysis.\n\nFor the instrumentation GUI, serial communication, sweep capture, plotted traces, max-hold behavior, and export paths are the operational verification surfaces.\n\nThere is no basis to convert web marketing security copy into a verified cryptographic property.\n\nThe corpus explicitly treats this mismatch as a verification boundary.\n\n## Engineering Discipline\n\nSeveral discipline improvements are visible across the repository:\n\n- moving from success/failure transfer behavior into measurement;\n- retaining structured experimental results;\n- separating plotting/processing utilities;\n- exposing instrument configuration explicitly;\n- persisting sweep configuration;\n- exporting raw/derived data;\n- using background work to preserve GUI responsiveness;\n- iterating on RBW/max-hold/GUI behavior through commits.\n\nThe repository also has organization debt because historically unrelated phases coexist under one name.\n\nFor RAG, that is solved by describing subsystems explicitly rather than pretending the repository has one homogeneous architecture.\n\n## Product Engineering\n\nThe project shows both internal-tool and external-product instincts.\n\nThe web surface frames file transfer for a user.\n\nThe FCT plotter frames performance data for an analyst.\n\nThe sweep GUI frames RF instrumentation for an experimenter.\n\nThese are three different user roles.\n\nThe current repository is therefore more accurately a development workspace containing several product/tool surfaces than one finished product.\n\n## Scale / Complexity\n\nThis is one of the more internally heterogeneous repositories in the corpus so far.\n\nComplexity comes from combining:\n\n- network protocol experiments;\n- concurrency;\n- file I/O;\n- performance metrics;\n- desktop GUI development;\n- scientific plotting;\n- serial hardware I/O;\n- SCPI command semantics;\n- RF measurement configuration;\n- persistence/export;\n- web/iOS historical layers.\n\nThe 72 KB spectrum GUI dominates current authored code volume among the retained Python files.\n\nThird-party Objective-C source is excluded from owner-complexity inference.\n\n## Skills Demonstrated\n\n### Networking\n\n- Python sockets\n- TCP client/server design\n- application framing over TCP\n- thread-per-client concurrency\n- file-transfer timing\n- flow-completion-time reasoning\n- throughput calculation\n\n### Desktop / Data Tooling\n\n- Tkinter\n- Matplotlib embedding\n- interactive plots\n- experiment-data parsing\n- JSON result handling\n- CSV/DAT export\n- XML configuration persistence\n\n### Instrumentation\n\n- serial communication\n- SCPI\n- spectrum analyzer control\n- frequency/span configuration\n- resolution bandwidth\n- sweep acquisition\n- multi-sweep recording\n- max hold\n- peak marking\n- realtime spectrum plotting\n\n### Engineering Judgment\n\n- separating third-party source attribution\n- distinguishing custom TCP transfer from FTP\n- distinguishing security marketing from implemented transport properties\n- evolving a prototype into measurement tooling\n\n## What Was Learned / Capability Developed\n\nPrivate-FTP demonstrates that networking work becomes more useful when it is measurable.\n\nA file-transfer path alone answers whether bytes move.\n\nFCT and throughput analysis answer how the transfer behaves.\n\nInstrument-control tooling then extends that measurement mindset into the physical RF domain.\n\nThe repository therefore records a broad transition from application networking toward experimental instrumentation.\n\nIt also reinforces provenance discipline: retaining an external FTP library does not make that library owner-authored.\n\n## Portfolio Evolution Context\n\nFast-FTP immediately precedes this repository and focuses narrowly on a native FTP upload path.\n\nPrivate-FTP expands the scope dramatically.\n\nThe trajectory is roughly:\n\n```text\nFTP protocol/client experiment\n        ↓\ncustom TCP transfer experiment\n        ↓\ntransfer performance measurement\n        ↓\nmeasurement visualization\n        ↓\nRF instrument control / spectrum analysis\n```\n\nThis progression aligns strongly with the later wireless-research/tooling direction in the portfolio.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository combining file-transfer performance analysis with a substantial SCPI-driven spectrum-analyzer GUI.\n\nIt is also an important example of a repository whose historical name no longer captures its full current technical scope.\n\nFor RAG retrieval, subsystem-level description is essential here.\n\n## Limitations & Missing Evidence\n\nThe current custom Python transfer path is not FTP protocol despite folder naming.\n\nIt does not implement transport encryption/authenticated cryptography, so “military-grade encryption” presentation copy is not supported as an implementation claim.\n\nWhiteRaccoon is externally attributed third-party source and is excluded from owner-authorship claims.\n\nThe repository aggregates several historical phases without a clean module-level architecture tying them into one deployable product.\n\nThose boundaries make the corpus more accurate rather than less useful.\n\n## Overall Narrative\n\nPrivate-FTP is an evolving networking/measurement workspace whose technical scope grew far beyond its name.\n\nIt retains an external FTP library and Apple-era artifacts, but its strongest owner-managed evidence is in Python: custom TCP file transfer, threaded server behavior, flow-completion-time and throughput analysis, a Tkinter plotting tool, and a large SCPI spectrum-analyzer GUI with realtime sweeps, max hold, peak markers, configuration persistence, and data export.\n\nThe repository is historically significant because it shows networking turning into instrumentation-driven engineering.\n\n# Project Tags\n\n`individual-project-with-external-components`, `python`, `networking`, `tcp`, `socket-programming`, `custom-application-protocol`, `custom-tcp-file-transfer`, `not-ftp-protocol-for-python-transfer`, `tcp-client`, `tcp-server`, `threaded-server`, `thread-per-client`, `file-transfer`, `file-framing`, `transfer-timing`, `throughput-analysis`, `flow-completion-time`, `fct`, `experiment-results`, `json`, `tkinter`, `matplotlib`, `desktop-analysis-tool`, `interactive-plotting`, `scpi`, `serial-communication`, `spectrum-analyzer`, `mini-circuits-rsa`, `rf-instrumentation`, `spectrum-sweep`, `resolution-bandwidth`, `rbw`, `multi-sweep`, `max-hold`, `peak-marker`, `realtime-plotting`, `csv-export`, `dat-export`, `xml-configuration`, `configuration-persistence`, `background-threading`, `lab-tooling`, `objective-c-artifacts`, `white-raccoon`, `external-whiteraccoon-library`, `third-party-source`, `web-product-surface`, `security-claim-boundary`, `no-verified-transfer-encryption`, `multi-phase-experimental-workspace`, `earliest-observed-scpi-spectrum-analyzer-gui`, `earliest-observed-file-transfer-fct-analysis`\n"
+}

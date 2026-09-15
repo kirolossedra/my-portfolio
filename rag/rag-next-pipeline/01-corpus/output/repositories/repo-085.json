@@ -1,0 +1,568 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 85,
+  "repository_total": 134,
+  "repository_name": "BroadcastInAndroid",
+  "header_title": "BroadcastInAndroid",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-085-BroadcastInAndroid/README.md",
+    "line_start": 1,
+    "line_end": 554,
+    "sha256": "df389c17ce0e3c6e2d589e96e2d5593994a3589bcb14aec0969a266ad8ee36d4"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "kotlin",
+    "android",
+    "android-sdk",
+    "mobile-application",
+    "udp",
+    "udp-unicast",
+    "udp-broadcast",
+    "datagram-socket",
+    "socket-programming",
+    "network-interface-discovery",
+    "ipv4",
+    "kotlin-coroutines",
+    "dispatchers-io",
+    "android-handler",
+    "android-lifecycle",
+    "programmatic-android-ui",
+    "port-validation",
+    "throughput-measurement",
+    "network-diagnostics",
+    "runtime-logging",
+    "earliest-observed-kotlin",
+    "earliest-observed-android-udp-receiver"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/BroadcastInAndroid`\n- **Corpus index:** 085\n- **Repository start date:** 2025-05-31\n- **Last meaningful update date:** 2025-06-20\n- **Latest meaningful commit:** `dd86e38cca89ae1820b296e1fff1076516d21b0e`\n- **Primary repository language:** Kotlin\n- **Project form:** Android UDP networking experiment\n- **Collaboration classification:** `individual-project`\n- **Repository variants:** root prototype, `Unicast`, and `Broadcast`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s009",
+        "s016"
+      ],
+      "titles": [
+        "Android Architecture",
+        "Architecture / System Shape"
+      ],
+      "text": "## Android Architecture\nThe repository uses a single `Activity`.\n\nThe UI is constructed programmatically in Kotlin.\n\nThere is no XML layout file in the inspected tree.\n\nThe activity creates:\n\n- title;\n- mode selector;\n- port input;\n- start button;\n- stop button;\n- clear button;\n- status bar;\n- scrollable message log.\n\nThis makes the code self-contained but concentrates UI and networking concerns in one class.\n\n## Architecture / System Shape\n```text\nAndroid Activity\n   |\n   +-- Programmatic UI\n   |\n   +-- Mode / port validation\n   |\n   +-- Coroutine on Dispatchers.IO\n   |      |\n   |      +-- DatagramSocket\n   |      +-- DatagramPacket receive loop\n   |\n   +-- throughput counters\n   |\n   +-- Handler(Looper.getMainLooper())\n          |\n          +-- status\n          +-- message log\n          +-- throughput display\n```\n\nThere is no backend.\n\nThere is no persisted database.\n\nThere is no remote API integration.\n\nThe phone itself acts as the UDP receiving endpoint."
+    },
+    "testing": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nNo Android instrumented tests are checked in.\n\nNo JVM unit tests are visible.\n\nNo CI workflow is visible.\n\nNo Gradle project structure is present in the inspected tree.\n\nNo automated network test harness is present.\n\nVerification appears manual and device/network oriented.\n\nRuntime diagnostic evidence includes:\n\n- visible device IPs;\n- bind success/failure reporting;\n- source address display;\n- receive-loop logging;\n- throughput output.\n\nThese help the operator validate behavior.\n\nThey are not formal regression tests."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/BroadcastInAndroid`\n- **Corpus index:** 085\n- **Repository start date:** 2025-05-31\n- **Last meaningful update date:** 2025-06-20\n- **Latest meaningful commit:** `dd86e38cca89ae1820b296e1fff1076516d21b0e`\n- **Primary repository language:** Kotlin\n- **Project form:** Android UDP networking experiment\n- **Collaboration classification:** `individual-project`\n- **Repository variants:** root prototype, `Unicast`, and `Broadcast`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository history and recursive tree show an initial root implementation followed by explicit unicast and broadcast variants.\n\nSubstantive files include:\n\n- root `MainActivity.kt`;\n- root `Manifest.xml`;\n- `Unicast/MainActivity.kt`;\n- `Unicast/AndroidManifest.xml`;\n- `Broadcast/MainActivity.kt`;\n- `Broadcast/AndroidManifest.xml`.\n\nThe subdirectory READMEs are effectively empty.\n\nThe implementation therefore provides the primary evidence.\n\nThe newest `Broadcast/MainActivity.kt` is the largest variant and contains a mode selector that can switch between unicast and broadcast behavior.",
+      "source_line_start": 15,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "BroadcastInAndroid is an Android-native UDP receiver experiment.\n\nIt explores receiving local-network datagrams directly from a phone/tablet application.\n\nThe repository evolves across versions.\n\nA simpler unicast receiver binds to all local interfaces.\n\nA later variant introduces a UI mode selector and a broadcast-specific bind path.\n\nThe application also measures burst throughput.\n\nIt displays network-interface addresses and received messages in a scrolling log.\n\nThis is not an Android `BroadcastReceiver` system-event project.\n\nThe word “broadcast” refers to UDP/IP broadcast traffic.\n\nThat distinction is important for retrieval.",
+      "source_line_start": 34,
+      "source_line_end": 56
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope is local UDP reception on Android, with explicit unicast/broadcast modes, runtime network diagnostics, and lightweight throughput observation.\n\nThe repository does not implement a messaging backend, Android framework broadcast-intent system, reliable transport, or a production network-monitoring suite.",
+      "source_line_start": 56,
+      "source_line_end": 62
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Evolution Across Repository Variants",
+      "normalized_title": "Evolution Across Repository Variants",
+      "key": "evolution_across_repository_variants",
+      "path": [
+        "Evolution Across Repository Variants"
+      ],
+      "content": "### Root Prototype\n\nThe repository began with a root-level Kotlin activity and manifest.\n\nThis establishes the initial Android networking experiment.\n\n### Unicast Variant\n\n`Unicast/MainActivity.kt` implements a dedicated UDP unicast receiver.\n\nIt binds a `DatagramSocket` to:\n\n```text\n0.0.0.0:<port>\n```\n\nThe socket is configured with broadcast disabled.\n\nThe receiver:\n\n- validates the port;\n- starts work on `Dispatchers.IO`;\n- blocks on datagram receives;\n- decodes packet bytes to text;\n- displays sender address/port;\n- updates UI on the main thread.\n\n### Broadcast / Unified Variant\n\n`Broadcast/MainActivity.kt` adds an explicit `ListenMode`.\n\nModes are:\n\n- `UNICAST`\n- `BROADCAST`\n\nThe UI presents buttons for selecting the mode.\n\nThe broadcast path uses a configured broadcast address.\n\nThe socket `broadcast` flag is toggled according to mode.\n\nThe same application now exposes both behaviors from one activity.",
+      "source_line_start": 62,
+      "source_line_end": 108
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Root Prototype",
+      "normalized_title": "Root Prototype",
+      "key": "root_prototype",
+      "path": [
+        "Evolution Across Repository Variants",
+        "Root Prototype"
+      ],
+      "content": "The repository began with a root-level Kotlin activity and manifest.\n\nThis establishes the initial Android networking experiment.",
+      "source_line_start": 64,
+      "source_line_end": 70
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Unicast Variant",
+      "normalized_title": "Unicast Variant",
+      "key": "unicast_variant",
+      "path": [
+        "Evolution Across Repository Variants",
+        "Unicast Variant"
+      ],
+      "content": "`Unicast/MainActivity.kt` implements a dedicated UDP unicast receiver.\n\nIt binds a `DatagramSocket` to:\n\n```text\n0.0.0.0:<port>\n```\n\nThe socket is configured with broadcast disabled.\n\nThe receiver:\n\n- validates the port;\n- starts work on `Dispatchers.IO`;\n- blocks on datagram receives;\n- decodes packet bytes to text;\n- displays sender address/port;\n- updates UI on the main thread.",
+      "source_line_start": 70,
+      "source_line_end": 91
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Broadcast / Unified Variant",
+      "normalized_title": "Broadcast / Unified Variant",
+      "key": "broadcast_unified_variant",
+      "path": [
+        "Evolution Across Repository Variants",
+        "Broadcast / Unified Variant"
+      ],
+      "content": "`Broadcast/MainActivity.kt` adds an explicit `ListenMode`.\n\nModes are:\n\n- `UNICAST`\n- `BROADCAST`\n\nThe UI presents buttons for selecting the mode.\n\nThe broadcast path uses a configured broadcast address.\n\nThe socket `broadcast` flag is toggled according to mode.\n\nThe same application now exposes both behaviors from one activity.",
+      "source_line_start": 91,
+      "source_line_end": 108
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Android Architecture",
+      "normalized_title": "Android Architecture",
+      "key": "android_architecture",
+      "path": [
+        "Android Architecture"
+      ],
+      "content": "The repository uses a single `Activity`.\n\nThe UI is constructed programmatically in Kotlin.\n\nThere is no XML layout file in the inspected tree.\n\nThe activity creates:\n\n- title;\n- mode selector;\n- port input;\n- start button;\n- stop button;\n- clear button;\n- status bar;\n- scrollable message log.\n\nThis makes the code self-contained but concentrates UI and networking concerns in one class.",
+      "source_line_start": 108,
+      "source_line_end": 129
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Concurrency Model",
+      "normalized_title": "Concurrency Model",
+      "key": "concurrency_model",
+      "path": [
+        "Concurrency Model"
+      ],
+      "content": "Network receiving is not performed on the Android main thread.\n\nThe code launches a coroutine scope on `Dispatchers.IO`.\n\nA `Job` reference is retained.\n\nThe activity uses a main-thread `Handler` to update views safely.\n\nThe receive loop checks coroutine activity and a `listening` flag.\n\nStopping the receiver:\n\n- clears the flag;\n- cancels the job;\n- updates visible state.\n\n`onDestroy` also stops the receiver.\n\nThis is meaningful Android concurrency and lifecycle awareness.",
+      "source_line_start": 129,
+      "source_line_end": 151
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "UDP Socket Behavior",
+      "normalized_title": "UDP Socket Behavior",
+      "key": "udp_socket_behavior",
+      "path": [
+        "UDP Socket Behavior"
+      ],
+      "content": "The implementation uses:\n\n- `DatagramSocket`;\n- `DatagramPacket`;\n- `InetAddress`;\n- `NetworkInterface`.\n\nThe unicast mode binds to all local IPv4 interfaces.\n\nThe broadcast mode binds using the configured broadcast address.\n\nThe source sets the socket broadcast property for the broadcast mode.\n\nThe receive buffer is finite and packet-oriented.\n\nEach datagram is processed independently.\n\nThere is no TCP connection establishment.\n\nThere is no reliable transport layer implemented.",
+      "source_line_start": 151,
+      "source_line_end": 174
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Network Interface Discovery",
+      "normalized_title": "Network Interface Discovery",
+      "key": "network_interface_discovery",
+      "path": [
+        "Network Interface Discovery"
+      ],
+      "content": "On startup, the application enumerates host network interfaces.\n\nIt iterates IPv4 addresses.\n\nLoopback addresses are excluded.\n\nIPv6 addresses are skipped by filtering addresses containing a colon.\n\nThe UI displays addresses and interface names.\n\nThis is useful for local-network testing because the operator can see which device IP is active.",
+      "source_line_start": 174,
+      "source_line_end": 188
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Port Validation",
+      "normalized_title": "Port Validation",
+      "key": "port_validation",
+      "path": [
+        "Port Validation"
+      ],
+      "content": "The input is parsed as an integer.\n\nThe application enforces the valid UDP/TCP port range:\n\n```text\n1..65535\n```\n\nInvalid input triggers:\n\n- status feedback;\n- a shake animation.\n\nThe port control is disabled while actively listening.",
+      "source_line_start": 188,
+      "source_line_end": 205
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Throughput Measurement",
+      "normalized_title": "Throughput Measurement",
+      "key": "throughput_measurement",
+      "path": [
+        "Throughput Measurement"
+      ],
+      "content": "The larger broadcast-capable variant adds throughput state.\n\nIt tracks:\n\n- received bytes;\n- packet count;\n- burst start time;\n- pending throughput state.\n\nThe UI includes formatted throughput output in Mbps.\n\nThe throughput message also exposes:\n\n- packet count;\n- approximate kilobytes;\n- burst duration.\n\nThis turns the app from only a text receiver into a lightweight traffic-observation tool.\n\nThe code measures application-observed receive volume.\n\nIt should not be treated as a full wireless PHY benchmark.",
+      "source_line_start": 205,
+      "source_line_end": 230
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "UI Engineering",
+      "normalized_title": "UI Engineering",
+      "key": "ui_engineering",
+      "path": [
+        "UI Engineering"
+      ],
+      "content": "The application is more styled than a bare Android networking proof.\n\nIt implements:\n\n- status-color transitions;\n- button-state transitions;\n- mode-specific color treatment;\n- scroll-to-latest behavior;\n- message-entry animation;\n- shake feedback;\n- readable monospaced log text.\n\nThe unified variant uses `GradientDrawable` to build button visuals programmatically.\n\nThe screen state communicates whether the receiver is:\n\n- ready;\n- listening;\n- stopped;\n- failed to bind.",
+      "source_line_start": 230,
+      "source_line_end": 253
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "```text\nAndroid Activity\n   |\n   +-- Programmatic UI\n   |\n   +-- Mode / port validation\n   |\n   +-- Coroutine on Dispatchers.IO\n   |      |\n   |      +-- DatagramSocket\n   |      +-- DatagramPacket receive loop\n   |\n   +-- throughput counters\n   |\n   +-- Handler(Looper.getMainLooper())\n          |\n          +-- status\n          +-- message log\n          +-- throughput display\n```\n\nThere is no backend.\n\nThere is no persisted database.\n\nThere is no remote API integration.\n\nThe phone itself acts as the UDP receiving endpoint.",
+      "source_line_start": 253,
+      "source_line_end": 284
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- Kotlin\n- Android SDK\n- Android `Activity`\n- Kotlin coroutines\n- Java networking APIs\n- UDP\n- DatagramSocket\n- DatagramPacket\n- NetworkInterface\n- Handler / Looper\n- programmatic Android UI",
+      "source_line_start": 284,
+      "source_line_end": 298
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Android Manifest Concerns",
+      "normalized_title": "Android Manifest Concerns",
+      "key": "android_manifest_concerns",
+      "path": [
+        "Android Manifest Concerns"
+      ],
+      "content": "The repository includes manifest files for the variants.\n\nThe presence of separate manifests supports standalone Android experiments.\n\nThe inspected application behavior requires network access.\n\nThe corpus should treat manifest configuration as application integration evidence.\n\nIt should not infer Play Store packaging or signed-release distribution.",
+      "source_line_start": 298,
+      "source_line_end": 310
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### 1. Native UDP Receiver\n\nThe source implements direct socket receiving on Android rather than relying on a web view or external library.\n\n### 2. Off-Main-Thread Networking\n\nBlocking receive behavior is moved to an IO coroutine.\n\nThis avoids performing network work directly on the UI thread.\n\n### 3. Thread-Safe UI Updates\n\nMain-thread UI updates are routed through a `Handler`.\n\nThis addresses Android's UI-thread constraints.\n\n### 4. Mode Evolution\n\nThe project evolves from a single unicast mode into a selectable unicast/broadcast receiver.\n\nThat is architectural iteration based on network semantics.\n\n### 5. Local Network Diagnostics\n\nInterface and IPv4 address enumeration provides immediate environment information.\n\n### 6. Throughput Instrumentation\n\nThe later version collects burst-level receive metrics.\n\nThis connects application-level network traffic with a simple performance observation.\n\n### 7. Lifecycle Cleanup\n\nThe receiver is stopped on activity destruction.\n\nThe job is explicitly canceled.\n\nThis reduces the risk of a receive task living beyond the activity.",
+      "source_line_start": 310,
+      "source_line_end": 352
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "1. Native UDP Receiver",
+      "normalized_title": "Native UDP Receiver",
+      "key": "native_udp_receiver",
+      "path": [
+        "Major Engineering Work",
+        "1. Native UDP Receiver"
+      ],
+      "content": "The source implements direct socket receiving on Android rather than relying on a web view or external library.",
+      "source_line_start": 312,
+      "source_line_end": 316
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "2. Off-Main-Thread Networking",
+      "normalized_title": "Off-Main-Thread Networking",
+      "key": "off_main_thread_networking",
+      "path": [
+        "Major Engineering Work",
+        "2. Off-Main-Thread Networking"
+      ],
+      "content": "Blocking receive behavior is moved to an IO coroutine.\n\nThis avoids performing network work directly on the UI thread.",
+      "source_line_start": 316,
+      "source_line_end": 322
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "3. Thread-Safe UI Updates",
+      "normalized_title": "Thread-Safe UI Updates",
+      "key": "thread_safe_ui_updates",
+      "path": [
+        "Major Engineering Work",
+        "3. Thread-Safe UI Updates"
+      ],
+      "content": "Main-thread UI updates are routed through a `Handler`.\n\nThis addresses Android's UI-thread constraints.",
+      "source_line_start": 322,
+      "source_line_end": 328
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "4. Mode Evolution",
+      "normalized_title": "Mode Evolution",
+      "key": "mode_evolution",
+      "path": [
+        "Major Engineering Work",
+        "4. Mode Evolution"
+      ],
+      "content": "The project evolves from a single unicast mode into a selectable unicast/broadcast receiver.\n\nThat is architectural iteration based on network semantics.",
+      "source_line_start": 328,
+      "source_line_end": 334
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "5. Local Network Diagnostics",
+      "normalized_title": "Local Network Diagnostics",
+      "key": "local_network_diagnostics",
+      "path": [
+        "Major Engineering Work",
+        "5. Local Network Diagnostics"
+      ],
+      "content": "Interface and IPv4 address enumeration provides immediate environment information.",
+      "source_line_start": 334,
+      "source_line_end": 338
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "6. Throughput Instrumentation",
+      "normalized_title": "Throughput Instrumentation",
+      "key": "throughput_instrumentation",
+      "path": [
+        "Major Engineering Work",
+        "6. Throughput Instrumentation"
+      ],
+      "content": "The later version collects burst-level receive metrics.\n\nThis connects application-level network traffic with a simple performance observation.",
+      "source_line_start": 338,
+      "source_line_end": 344
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "7. Lifecycle Cleanup",
+      "normalized_title": "Lifecycle Cleanup",
+      "key": "lifecycle_cleanup",
+      "path": [
+        "Major Engineering Work",
+        "7. Lifecycle Cleanup"
+      ],
+      "content": "The receiver is stopped on activity destruction.\n\nThe job is explicitly canceled.\n\nThis reduces the risk of a receive task living beyond the activity.",
+      "source_line_start": 344,
+      "source_line_end": 352
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "No Android instrumented tests are checked in.\n\nNo JVM unit tests are visible.\n\nNo CI workflow is visible.\n\nNo Gradle project structure is present in the inspected tree.\n\nNo automated network test harness is present.\n\nVerification appears manual and device/network oriented.\n\nRuntime diagnostic evidence includes:\n\n- visible device IPs;\n- bind success/failure reporting;\n- source address display;\n- receive-loop logging;\n- throughput output.\n\nThese help the operator validate behavior.\n\nThey are not formal regression tests.",
+      "source_line_start": 352,
+      "source_line_end": 378
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Positive evidence:\n\n- port validation;\n- explicit listening state;\n- lifecycle cleanup;\n- coroutine cancellation;\n- UI-thread boundary handling;\n- error reporting;\n- network-interface introspection;\n- separation of unicast and broadcast experiments;\n- later consolidation with a mode abstraction.\n\nConstraints:\n\n- single large activity;\n- hard-coded broadcast address in the inspected version;\n- no configuration abstraction;\n- no dependency/build files in repository tree;\n- no automated tests;\n- no packet-sequence validation;\n- no loss/reordering metrics;\n- no persisted experiment output;\n- no IPv6 support in visible interface display;\n- no runtime subnet-derived broadcast calculation.",
+      "source_line_start": 378,
+      "source_line_end": 405
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The project has user-facing controls, but its primary character is experimental tooling.\n\nIt provides an operator with:\n\n- mode selection;\n- port selection;\n- start/stop;\n- clear;\n- network-address visibility;\n- real-time received-message display;\n- throughput feedback.\n\nThat makes it usable as a small network diagnostic application.\n\nIt is not evidence of a consumer messaging product.",
+      "source_line_start": 405,
+      "source_line_end": 423
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "File count is small.\n\nThe `Broadcast/MainActivity.kt` file is substantial.\n\nComplexity comes from combining:\n\n- Android lifecycle;\n- coroutines;\n- blocking network I/O;\n- UDP semantics;\n- multiple listening modes;\n- throughput tracking;\n- dynamic UI state.\n\nThis is integration complexity rather than distributed-system scale.",
+      "source_line_start": 423,
+      "source_line_end": 441
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports:\n\n- Kotlin;\n- Android development;\n- Android lifecycle;\n- programmatic UI construction;\n- Kotlin coroutines;\n- threading boundaries;\n- UDP socket programming;\n- unicast;\n- IP broadcast;\n- network-interface enumeration;\n- IPv4 handling;\n- port validation;\n- throughput measurement;\n- runtime diagnostics;\n- UI animation/state feedback.",
+      "source_line_start": 441,
+      "source_line_end": 461
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository demonstrates moving low-level socket experimentation onto Android.\n\nIt forces coordination between two very different execution models:\n\n- blocking network I/O;\n- single-threaded UI interaction.\n\nThe later mode selector also demonstrates that “unicast vs broadcast” is not only a conceptual networking distinction.\n\nIt changes address binding and socket behavior.",
+      "source_line_start": 461,
+      "source_line_end": 474
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier corpus networking work included protocol simulation, ns-3 experimentation, desktop sockets, and LAN file transfer.\n\nThis repository brings network experimentation to a mobile platform.\n\nIt is particularly relevant as a bridge between:\n\n- networking fundamentals;\n- Android application development;\n- performance observation.",
+      "source_line_start": 474,
+      "source_line_end": 486
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus this is the earliest observed project clearly centered on:\n\n- Kotlin;\n- native Android socket programming;\n- UDP receive behavior on Android;\n- Android coroutine-based network reception.\n\nIt broadens the platform dimension of the networking portfolio.",
+      "source_line_start": 486,
+      "source_line_end": 497
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "No evidence supports:\n\n- packet encryption;\n- authentication;\n- reliable transport;\n- multicast;\n- TCP;\n- IPv6 reception;\n- packet-loss measurement;\n- jitter measurement;\n- latency measurement;\n- production deployment;\n- Play Store release;\n- formal throughput methodology.\n\nThe project calls a directory `Broadcast`, and the source explicitly manipulates UDP broadcast behavior.\n\nThat is sufficient for the broadcast tag.\n\nIt should not be confused with Android framework broadcast intents.",
+      "source_line_start": 497,
+      "source_line_end": 520
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "BroadcastInAndroid is a focused native mobile networking experiment.\n\nThe engineering challenge is not only receiving UDP.\n\nIt is receiving UDP correctly within Android lifecycle and threading constraints while keeping the UI responsive and observable.\n\nThe repository's progression from a simple receiver to a mode-aware, throughput-reporting tool demonstrates iterative experimentation rather than a single code dump.\n\n# Project Tags\n\n- `individual-project`\n- `kotlin`\n- `android`\n- `android-sdk`\n- `mobile-application`\n- `udp`\n- `udp-unicast`\n- `udp-broadcast`\n- `datagram-socket`\n- `socket-programming`\n- `network-interface-discovery`\n- `ipv4`\n- `kotlin-coroutines`\n- `dispatchers-io`\n- `android-handler`\n- `android-lifecycle`\n- `programmatic-android-ui`\n- `port-validation`\n- `throughput-measurement`\n- `network-diagnostics`\n- `runtime-logging`\n- `earliest-observed-kotlin`\n- `earliest-observed-android-udp-receiver`",
+      "source_line_start": 520,
+      "source_line_end": 555
+    }
+  ],
+  "raw_analysis": "# Repository 085 — BroadcastInAndroid\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/BroadcastInAndroid`\n- **Corpus index:** 085\n- **Repository start date:** 2025-05-31\n- **Last meaningful update date:** 2025-06-20\n- **Latest meaningful commit:** `dd86e38cca89ae1820b296e1fff1076516d21b0e`\n- **Primary repository language:** Kotlin\n- **Project form:** Android UDP networking experiment\n- **Collaboration classification:** `individual-project`\n- **Repository variants:** root prototype, `Unicast`, and `Broadcast`\n\n## Evidence Basis\n\nThe repository history and recursive tree show an initial root implementation followed by explicit unicast and broadcast variants.\n\nSubstantive files include:\n\n- root `MainActivity.kt`;\n- root `Manifest.xml`;\n- `Unicast/MainActivity.kt`;\n- `Unicast/AndroidManifest.xml`;\n- `Broadcast/MainActivity.kt`;\n- `Broadcast/AndroidManifest.xml`.\n\nThe subdirectory READMEs are effectively empty.\n\nThe implementation therefore provides the primary evidence.\n\nThe newest `Broadcast/MainActivity.kt` is the largest variant and contains a mode selector that can switch between unicast and broadcast behavior.\n\n## What the Project Is\n\nBroadcastInAndroid is an Android-native UDP receiver experiment.\n\nIt explores receiving local-network datagrams directly from a phone/tablet application.\n\nThe repository evolves across versions.\n\nA simpler unicast receiver binds to all local interfaces.\n\nA later variant introduces a UI mode selector and a broadcast-specific bind path.\n\nThe application also measures burst throughput.\n\nIt displays network-interface addresses and received messages in a scrolling log.\n\nThis is not an Android `BroadcastReceiver` system-event project.\n\nThe word “broadcast” refers to UDP/IP broadcast traffic.\n\nThat distinction is important for retrieval.\n\n## Project Scope\n\nThe implemented scope is local UDP reception on Android, with explicit unicast/broadcast modes, runtime network diagnostics, and lightweight throughput observation.\n\nThe repository does not implement a messaging backend, Android framework broadcast-intent system, reliable transport, or a production network-monitoring suite.\n\n## Evolution Across Repository Variants\n\n### Root Prototype\n\nThe repository began with a root-level Kotlin activity and manifest.\n\nThis establishes the initial Android networking experiment.\n\n### Unicast Variant\n\n`Unicast/MainActivity.kt` implements a dedicated UDP unicast receiver.\n\nIt binds a `DatagramSocket` to:\n\n```text\n0.0.0.0:<port>\n```\n\nThe socket is configured with broadcast disabled.\n\nThe receiver:\n\n- validates the port;\n- starts work on `Dispatchers.IO`;\n- blocks on datagram receives;\n- decodes packet bytes to text;\n- displays sender address/port;\n- updates UI on the main thread.\n\n### Broadcast / Unified Variant\n\n`Broadcast/MainActivity.kt` adds an explicit `ListenMode`.\n\nModes are:\n\n- `UNICAST`\n- `BROADCAST`\n\nThe UI presents buttons for selecting the mode.\n\nThe broadcast path uses a configured broadcast address.\n\nThe socket `broadcast` flag is toggled according to mode.\n\nThe same application now exposes both behaviors from one activity.\n\n## Android Architecture\n\nThe repository uses a single `Activity`.\n\nThe UI is constructed programmatically in Kotlin.\n\nThere is no XML layout file in the inspected tree.\n\nThe activity creates:\n\n- title;\n- mode selector;\n- port input;\n- start button;\n- stop button;\n- clear button;\n- status bar;\n- scrollable message log.\n\nThis makes the code self-contained but concentrates UI and networking concerns in one class.\n\n## Concurrency Model\n\nNetwork receiving is not performed on the Android main thread.\n\nThe code launches a coroutine scope on `Dispatchers.IO`.\n\nA `Job` reference is retained.\n\nThe activity uses a main-thread `Handler` to update views safely.\n\nThe receive loop checks coroutine activity and a `listening` flag.\n\nStopping the receiver:\n\n- clears the flag;\n- cancels the job;\n- updates visible state.\n\n`onDestroy` also stops the receiver.\n\nThis is meaningful Android concurrency and lifecycle awareness.\n\n## UDP Socket Behavior\n\nThe implementation uses:\n\n- `DatagramSocket`;\n- `DatagramPacket`;\n- `InetAddress`;\n- `NetworkInterface`.\n\nThe unicast mode binds to all local IPv4 interfaces.\n\nThe broadcast mode binds using the configured broadcast address.\n\nThe source sets the socket broadcast property for the broadcast mode.\n\nThe receive buffer is finite and packet-oriented.\n\nEach datagram is processed independently.\n\nThere is no TCP connection establishment.\n\nThere is no reliable transport layer implemented.\n\n## Network Interface Discovery\n\nOn startup, the application enumerates host network interfaces.\n\nIt iterates IPv4 addresses.\n\nLoopback addresses are excluded.\n\nIPv6 addresses are skipped by filtering addresses containing a colon.\n\nThe UI displays addresses and interface names.\n\nThis is useful for local-network testing because the operator can see which device IP is active.\n\n## Port Validation\n\nThe input is parsed as an integer.\n\nThe application enforces the valid UDP/TCP port range:\n\n```text\n1..65535\n```\n\nInvalid input triggers:\n\n- status feedback;\n- a shake animation.\n\nThe port control is disabled while actively listening.\n\n## Throughput Measurement\n\nThe larger broadcast-capable variant adds throughput state.\n\nIt tracks:\n\n- received bytes;\n- packet count;\n- burst start time;\n- pending throughput state.\n\nThe UI includes formatted throughput output in Mbps.\n\nThe throughput message also exposes:\n\n- packet count;\n- approximate kilobytes;\n- burst duration.\n\nThis turns the app from only a text receiver into a lightweight traffic-observation tool.\n\nThe code measures application-observed receive volume.\n\nIt should not be treated as a full wireless PHY benchmark.\n\n## UI Engineering\n\nThe application is more styled than a bare Android networking proof.\n\nIt implements:\n\n- status-color transitions;\n- button-state transitions;\n- mode-specific color treatment;\n- scroll-to-latest behavior;\n- message-entry animation;\n- shake feedback;\n- readable monospaced log text.\n\nThe unified variant uses `GradientDrawable` to build button visuals programmatically.\n\nThe screen state communicates whether the receiver is:\n\n- ready;\n- listening;\n- stopped;\n- failed to bind.\n\n## Architecture / System Shape\n\n```text\nAndroid Activity\n   |\n   +-- Programmatic UI\n   |\n   +-- Mode / port validation\n   |\n   +-- Coroutine on Dispatchers.IO\n   |      |\n   |      +-- DatagramSocket\n   |      +-- DatagramPacket receive loop\n   |\n   +-- throughput counters\n   |\n   +-- Handler(Looper.getMainLooper())\n          |\n          +-- status\n          +-- message log\n          +-- throughput display\n```\n\nThere is no backend.\n\nThere is no persisted database.\n\nThere is no remote API integration.\n\nThe phone itself acts as the UDP receiving endpoint.\n\n## Technical Stack\n\n- Kotlin\n- Android SDK\n- Android `Activity`\n- Kotlin coroutines\n- Java networking APIs\n- UDP\n- DatagramSocket\n- DatagramPacket\n- NetworkInterface\n- Handler / Looper\n- programmatic Android UI\n\n## Android Manifest Concerns\n\nThe repository includes manifest files for the variants.\n\nThe presence of separate manifests supports standalone Android experiments.\n\nThe inspected application behavior requires network access.\n\nThe corpus should treat manifest configuration as application integration evidence.\n\nIt should not infer Play Store packaging or signed-release distribution.\n\n## Major Engineering Work\n\n### 1. Native UDP Receiver\n\nThe source implements direct socket receiving on Android rather than relying on a web view or external library.\n\n### 2. Off-Main-Thread Networking\n\nBlocking receive behavior is moved to an IO coroutine.\n\nThis avoids performing network work directly on the UI thread.\n\n### 3. Thread-Safe UI Updates\n\nMain-thread UI updates are routed through a `Handler`.\n\nThis addresses Android's UI-thread constraints.\n\n### 4. Mode Evolution\n\nThe project evolves from a single unicast mode into a selectable unicast/broadcast receiver.\n\nThat is architectural iteration based on network semantics.\n\n### 5. Local Network Diagnostics\n\nInterface and IPv4 address enumeration provides immediate environment information.\n\n### 6. Throughput Instrumentation\n\nThe later version collects burst-level receive metrics.\n\nThis connects application-level network traffic with a simple performance observation.\n\n### 7. Lifecycle Cleanup\n\nThe receiver is stopped on activity destruction.\n\nThe job is explicitly canceled.\n\nThis reduces the risk of a receive task living beyond the activity.\n\n## Testing & Verification Evidence\n\nNo Android instrumented tests are checked in.\n\nNo JVM unit tests are visible.\n\nNo CI workflow is visible.\n\nNo Gradle project structure is present in the inspected tree.\n\nNo automated network test harness is present.\n\nVerification appears manual and device/network oriented.\n\nRuntime diagnostic evidence includes:\n\n- visible device IPs;\n- bind success/failure reporting;\n- source address display;\n- receive-loop logging;\n- throughput output.\n\nThese help the operator validate behavior.\n\nThey are not formal regression tests.\n\n## Engineering Discipline\n\nPositive evidence:\n\n- port validation;\n- explicit listening state;\n- lifecycle cleanup;\n- coroutine cancellation;\n- UI-thread boundary handling;\n- error reporting;\n- network-interface introspection;\n- separation of unicast and broadcast experiments;\n- later consolidation with a mode abstraction.\n\nConstraints:\n\n- single large activity;\n- hard-coded broadcast address in the inspected version;\n- no configuration abstraction;\n- no dependency/build files in repository tree;\n- no automated tests;\n- no packet-sequence validation;\n- no loss/reordering metrics;\n- no persisted experiment output;\n- no IPv6 support in visible interface display;\n- no runtime subnet-derived broadcast calculation.\n\n## Product Engineering\n\nThe project has user-facing controls, but its primary character is experimental tooling.\n\nIt provides an operator with:\n\n- mode selection;\n- port selection;\n- start/stop;\n- clear;\n- network-address visibility;\n- real-time received-message display;\n- throughput feedback.\n\nThat makes it usable as a small network diagnostic application.\n\nIt is not evidence of a consumer messaging product.\n\n## Scale and Complexity\n\nFile count is small.\n\nThe `Broadcast/MainActivity.kt` file is substantial.\n\nComplexity comes from combining:\n\n- Android lifecycle;\n- coroutines;\n- blocking network I/O;\n- UDP semantics;\n- multiple listening modes;\n- throughput tracking;\n- dynamic UI state.\n\nThis is integration complexity rather than distributed-system scale.\n\n## Skills Demonstrated\n\nEvidence supports:\n\n- Kotlin;\n- Android development;\n- Android lifecycle;\n- programmatic UI construction;\n- Kotlin coroutines;\n- threading boundaries;\n- UDP socket programming;\n- unicast;\n- IP broadcast;\n- network-interface enumeration;\n- IPv4 handling;\n- port validation;\n- throughput measurement;\n- runtime diagnostics;\n- UI animation/state feedback.\n\n## What Was Learned / Capability Developed\n\nThe repository demonstrates moving low-level socket experimentation onto Android.\n\nIt forces coordination between two very different execution models:\n\n- blocking network I/O;\n- single-threaded UI interaction.\n\nThe later mode selector also demonstrates that “unicast vs broadcast” is not only a conceptual networking distinction.\n\nIt changes address binding and socket behavior.\n\n## Portfolio Evolution Context\n\nEarlier corpus networking work included protocol simulation, ns-3 experimentation, desktop sockets, and LAN file transfer.\n\nThis repository brings network experimentation to a mobile platform.\n\nIt is particularly relevant as a bridge between:\n\n- networking fundamentals;\n- Android application development;\n- performance observation.\n\n## Historical Significance\n\nWithin the processed corpus this is the earliest observed project clearly centered on:\n\n- Kotlin;\n- native Android socket programming;\n- UDP receive behavior on Android;\n- Android coroutine-based network reception.\n\nIt broadens the platform dimension of the networking portfolio.\n\n## Limitations and Missing Evidence\n\nNo evidence supports:\n\n- packet encryption;\n- authentication;\n- reliable transport;\n- multicast;\n- TCP;\n- IPv6 reception;\n- packet-loss measurement;\n- jitter measurement;\n- latency measurement;\n- production deployment;\n- Play Store release;\n- formal throughput methodology.\n\nThe project calls a directory `Broadcast`, and the source explicitly manipulates UDP broadcast behavior.\n\nThat is sufficient for the broadcast tag.\n\nIt should not be confused with Android framework broadcast intents.\n\n## Overall Narrative\n\nBroadcastInAndroid is a focused native mobile networking experiment.\n\nThe engineering challenge is not only receiving UDP.\n\nIt is receiving UDP correctly within Android lifecycle and threading constraints while keeping the UI responsive and observable.\n\nThe repository's progression from a simple receiver to a mode-aware, throughput-reporting tool demonstrates iterative experimentation rather than a single code dump.\n\n# Project Tags\n\n- `individual-project`\n- `kotlin`\n- `android`\n- `android-sdk`\n- `mobile-application`\n- `udp`\n- `udp-unicast`\n- `udp-broadcast`\n- `datagram-socket`\n- `socket-programming`\n- `network-interface-discovery`\n- `ipv4`\n- `kotlin-coroutines`\n- `dispatchers-io`\n- `android-handler`\n- `android-lifecycle`\n- `programmatic-android-ui`\n- `port-validation`\n- `throughput-measurement`\n- `network-diagnostics`\n- `runtime-logging`\n- `earliest-observed-kotlin`\n- `earliest-observed-android-udp-receiver`\n"
+}

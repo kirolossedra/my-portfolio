@@ -1,0 +1,833 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 97,
+  "repository_total": 134,
+  "repository_name": "Thesis-Scripts",
+  "header_title": "Thesis-Scripts",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-097-Thesis-Scripts/README.md",
+    "line_start": 1,
+    "line_end": 675,
+    "sha256": "3e762e77c036bc8fd2253d98e9d8998129f2637354b313f80f52f2d5392fd924"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "research-tooling",
+    "experiment-automation",
+    "wireless-networking",
+    "wifi",
+    "wlan-analysis",
+    "aruba-log-analysis",
+    "semi-structured-log-parsing",
+    "regex-parsing",
+    "target-mac-filtering",
+    "bssid",
+    "bssid-transition-analysis",
+    "roaming-analysis",
+    "wifi-channel-analysis",
+    "channel-transition-analysis",
+    "rssi",
+    "snr",
+    "matplotlib",
+    "data-visualization",
+    "time-series-analysis",
+    "step-plot",
+    "png-export",
+    "summary-statistics",
+    "timestamped-logging",
+    "network-measurement",
+    "ping",
+    "iperf3",
+    "subprocess",
+    "cross-platform-command-handling",
+    "live-log-tailing",
+    "udp-server",
+    "dhcp",
+    "bootp",
+    "dhcp-server",
+    "binary-protocol",
+    "binary-packet-parsing",
+    "struct-pack",
+    "struct-unpack",
+    "dhcp-options",
+    "dhcp-magic-cookie",
+    "discover-offer",
+    "request-ack",
+    "address-pool",
+    "lease-management",
+    "lease-expiration",
+    "static-dhcp-reservation",
+    "dhcp-release-handling",
+    "broadcast",
+    "network-infrastructure",
+    "protocol-implementation",
+    "earliest-observed-aruba-station-log-analysis",
+    "earliest-observed-bssid-channel-transition-tooling"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Thesis-Scripts`\n- **Corpus index:** 097\n- **Repository start date:** 2025-10-25\n- **Last meaningful update date:** 2025-10-25\n- **Latest meaningful commit:** `0be11a8cc27b53f1eaf8e9c8b7b5f9d76c5b9031`\n- **Primary repository language:** Python\n- **Project form:** wireless-experiment support toolkit and low-level network-service experiment\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "Verification and Experiment Observability"
+      ],
+      "text": "## Verification and Experiment Observability\nThe tooling emits concrete run-time diagnostics.\n\nThe Aruba scripts print:\n\n- files discovered;\n- files checked;\n- matching entries;\n- data-point counts;\n- transition summaries;\n- output-file locations.\n\nThe DHCP server logs parsed request fields and assignment decisions.\n\nThe ping and iperf3 wrappers expose external-tool output while writing durable logs.\n\nThese mechanisms make experiment behavior observable during use."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Thesis-Scripts`\n- **Corpus index:** 097\n- **Repository start date:** 2025-10-25\n- **Last meaningful update date:** 2025-10-25\n- **Latest meaningful commit:** `0be11a8cc27b53f1eaf8e9c8b7b5f9d76c5b9031`\n- **Primary repository language:** Python\n- **Project form:** wireless-experiment support toolkit and low-level network-service experiment\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository is organized into three substantive areas:\n\n- `Aruba/Sniffer Mode/`\n- `Client Side/`\n- `Sockets/`\n\nThe root and subdirectory README files contain little descriptive material, so the strongest evidence comes directly from the Python source.\n\nThe latest commit is attributed to the repository owner and adds the DHCP implementation.\n\nThe Aruba scripts are concrete log-processing and visualization utilities.\n\nThe client-side scripts automate timestamped ping and iperf3 measurement collection.\n\nThe sockets directory contains a manually implemented DHCP server.\n\nThis makes the repository a compact collection of experiment-support utilities spanning wireless telemetry, network measurement, and infrastructure protocol handling.",
+      "source_line_start": 14,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Thesis-Scripts` is a research-support repository for collecting and interpreting network measurements around wireless experiments.\n\nThe Aruba tools transform controller or station telemetry logs into focused views of one client device.\n\nThe client-side tools automate repeatable latency and throughput logging.\n\nThe DHCP component provides local address-allocation behavior through a directly implemented BOOTP/DHCP server.\n\nThe repository therefore connects three parts of experimental networking:\n\n```text\nwireless infrastructure telemetry\n            +\nendpoint performance measurements\n            +\nlocal network configuration service\n```\n\nThe scripts are operational utilities rather than a single monolithic application.",
+      "source_line_start": 34,
+      "source_line_end": 56
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The retained code covers:\n\n- Aruba station-log filtering;\n- target-MAC extraction;\n- BSSID history;\n- BSSID transition detection;\n- Wi-Fi channel history;\n- channel transition detection;\n- RSSI extraction;\n- SNR extraction;\n- simple signal statistics;\n- timeline plotting;\n- filtered text-report generation;\n- timestamped continuous ping logging;\n- long-running iperf3 acquisition;\n- real-time iperf3 log tailing;\n- Windows/Linux ping-command selection;\n- DHCP request parsing;\n- DHCP response construction;\n- address-pool management;\n- static MAC-to-IP reservations;\n- lease tracking;\n- DHCP RELEASE handling;\n- broadcast UDP replies.",
+      "source_line_start": 56,
+      "source_line_end": 83
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "System Shape",
+      "normalized_title": "System Shape",
+      "key": "system_shape",
+      "path": [
+        "System Shape"
+      ],
+      "content": "The repository can be understood as three independent but complementary tool paths.\n\n```text\nAruba text/log files\n        ↓\nMAC-focused parsers\n        ↓\nBSSID / channel / RSSI / SNR views\n        ↓\nplots + summaries + filtered reports\n```\n\n```text\nnetwork endpoint\n    ↓\nping / iperf3 subprocesses\n    ↓\ntimestamped local logs\n```\n\n```text\nDHCP client broadcast\n        ↓ UDP :67\nmanual Python DHCP server\n        ↓\nBOOTP header + option parsing\n        ↓\nDISCOVER / REQUEST / RELEASE\n        ↓\nOFFER / ACK + lease state\n```",
+      "source_line_start": 83,
+      "source_line_end": 117
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nAll substantive source in the repository is Python.\n\nThe language is used for:\n\n- regular-expression log parsing;\n- file scanning;\n- plotting;\n- subprocess control;\n- timestamping;\n- socket programming;\n- binary protocol parsing;\n- stateful lease management.\n\n### Regular Expressions\n\nThe Aruba utilities use regular expressions to recover timestamps and station fields from semi-structured controller output.\n\nPatterns locate:\n\n- `LocalBeginTime`;\n- a target MAC address;\n- BSSID values;\n- 5 GHz channel identifiers;\n- RSSI and SNR columns.\n\nThis is practical text-to-structured-data processing rather than fixed CSV ingestion.\n\n### Matplotlib\n\n`bssid.py`, `rssi.py`, and `switch.py` produce local visualizations.\n\nMatplotlib is used for:\n\n- BSSID step timelines;\n- Wi-Fi channel step timelines;\n- RSSI time series;\n- SNR time series;\n- markers;\n- legends;\n- time-axis formatting;\n- PNG export.",
+      "source_line_start": 117,
+      "source_line_end": 163
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "All substantive source in the repository is Python.\n\nThe language is used for:\n\n- regular-expression log parsing;\n- file scanning;\n- plotting;\n- subprocess control;\n- timestamping;\n- socket programming;\n- binary protocol parsing;\n- stateful lease management.",
+      "source_line_start": 119,
+      "source_line_end": 134
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Regular Expressions",
+      "normalized_title": "Regular Expressions",
+      "key": "regular_expressions",
+      "path": [
+        "Technical Stack",
+        "Regular Expressions"
+      ],
+      "content": "The Aruba utilities use regular expressions to recover timestamps and station fields from semi-structured controller output.\n\nPatterns locate:\n\n- `LocalBeginTime`;\n- a target MAC address;\n- BSSID values;\n- 5 GHz channel identifiers;\n- RSSI and SNR columns.\n\nThis is practical text-to-structured-data processing rather than fixed CSV ingestion.",
+      "source_line_start": 134,
+      "source_line_end": 148
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Matplotlib",
+      "normalized_title": "Matplotlib",
+      "key": "matplotlib",
+      "path": [
+        "Technical Stack",
+        "Matplotlib"
+      ],
+      "content": "`bssid.py`, `rssi.py`, and `switch.py` produce local visualizations.\n\nMatplotlib is used for:\n\n- BSSID step timelines;\n- Wi-Fi channel step timelines;\n- RSSI time series;\n- SNR time series;\n- markers;\n- legends;\n- time-axis formatting;\n- PNG export.",
+      "source_line_start": 148,
+      "source_line_end": 163
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Aruba Station-Log Analysis",
+      "normalized_title": "Aruba Station-Log Analysis",
+      "key": "aruba_station_log_analysis",
+      "path": [
+        "Aruba Station-Log Analysis"
+      ],
+      "content": "### Target-MAC Focus\n\nThe Aruba scripts center analysis on one configured client MAC.\n\nThis turns large access-point/controller output into a per-device history.\n\nThe same target identity is used across multiple analyses, allowing separate scripts to answer different questions about one station.\n\n### Timestamp Parsing\n\nThe scripts detect Aruba log entries containing `LocalBeginTime`.\n\nThey parse timestamps in a form such as:\n\n```text\n2025-10-24T11:32:14.662-0400\n```\n\nThe code removes the fractional component before converting the timestamp into a Python `datetime`.\n\nThis produces time-indexed station observations suitable for transition detection and plotting.\n\n### BSSID Timeline\n\n`bssid.py` extracts the BSSID associated with the target station.\n\nIt:\n\n- scans `.txt` and `.log` files;\n- identifies the first file containing target data;\n- sorts observations by timestamp;\n- maps unique BSSIDs to plot positions;\n- renders a step plot;\n- reports BSSID occurrence counts;\n- reports percentage distribution;\n- detects changes between consecutive BSSIDs.\n\nThe transition report preserves both the old and new BSSID with their corresponding timestamps.\n\nThis is directly relevant to access-point association and roaming analysis.\n\n### Channel Timeline\n\n`switch.py` applies the same general structure to Wi-Fi channels.\n\nIt recognizes the 5 GHz channel field and extracts values such as `36E`.\n\nThe script:\n\n- sorts observations chronologically;\n- assigns each observed channel a categorical plotting position;\n- produces a step timeline;\n- reports channel occurrence percentages;\n- identifies channel transitions.\n\nThis separates RF-channel changes from BSSID changes while retaining a common time basis.\n\n### RSSI and SNR Analysis\n\n`rssi.py` parses RSSI and SNR values for the target station.\n\nIt produces a two-panel time-series visualization and computes:\n\n- minimum;\n- maximum;\n- average;\n- median.\n\nIt also groups RSSI observations into coded quality ranges defined by the script.\n\nThe key engineering evidence is the automated extraction, aggregation, and visualization of signal measurements from raw infrastructure logs.\n\n### Filtered Station Report\n\n`skim.py` creates a human-readable filtered report for the target MAC.\n\nFor matching station rows it retains fields including:\n\n- timestamp;\n- MAC;\n- BSSID;\n- band/channel;\n- ESSID;\n- station type;\n- authentication field;\n- SNR;\n- RSSI;\n- client delay;\n- SNR/RSSI age;\n- report age.\n\nIt writes both a compact table and a detailed entry-by-entry section.\n\nThe output also summarizes:\n\n- unique BSSIDs;\n- unique channels;\n- unique ESSIDs;\n- occurrence counts;\n- RSSI averages;\n- SNR averages.\n\nThis is a useful data-reduction stage before more specialized analysis.",
+      "source_line_start": 163,
+      "source_line_end": 269
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Target-MAC Focus",
+      "normalized_title": "Target-MAC Focus",
+      "key": "target_mac_focus",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "Target-MAC Focus"
+      ],
+      "content": "The Aruba scripts center analysis on one configured client MAC.\n\nThis turns large access-point/controller output into a per-device history.\n\nThe same target identity is used across multiple analyses, allowing separate scripts to answer different questions about one station.",
+      "source_line_start": 165,
+      "source_line_end": 173
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Timestamp Parsing",
+      "normalized_title": "Timestamp Parsing",
+      "key": "timestamp_parsing",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "Timestamp Parsing"
+      ],
+      "content": "The scripts detect Aruba log entries containing `LocalBeginTime`.\n\nThey parse timestamps in a form such as:\n\n```text\n2025-10-24T11:32:14.662-0400\n```\n\nThe code removes the fractional component before converting the timestamp into a Python `datetime`.\n\nThis produces time-indexed station observations suitable for transition detection and plotting.",
+      "source_line_start": 173,
+      "source_line_end": 187
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "BSSID Timeline",
+      "normalized_title": "BSSID Timeline",
+      "key": "bssid_timeline",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "BSSID Timeline"
+      ],
+      "content": "`bssid.py` extracts the BSSID associated with the target station.\n\nIt:\n\n- scans `.txt` and `.log` files;\n- identifies the first file containing target data;\n- sorts observations by timestamp;\n- maps unique BSSIDs to plot positions;\n- renders a step plot;\n- reports BSSID occurrence counts;\n- reports percentage distribution;\n- detects changes between consecutive BSSIDs.\n\nThe transition report preserves both the old and new BSSID with their corresponding timestamps.\n\nThis is directly relevant to access-point association and roaming analysis.",
+      "source_line_start": 187,
+      "source_line_end": 206
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Channel Timeline",
+      "normalized_title": "Channel Timeline",
+      "key": "channel_timeline",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "Channel Timeline"
+      ],
+      "content": "`switch.py` applies the same general structure to Wi-Fi channels.\n\nIt recognizes the 5 GHz channel field and extracts values such as `36E`.\n\nThe script:\n\n- sorts observations chronologically;\n- assigns each observed channel a categorical plotting position;\n- produces a step timeline;\n- reports channel occurrence percentages;\n- identifies channel transitions.\n\nThis separates RF-channel changes from BSSID changes while retaining a common time basis.",
+      "source_line_start": 206,
+      "source_line_end": 222
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "RSSI and SNR Analysis",
+      "normalized_title": "RSSI and SNR Analysis",
+      "key": "rssi_and_snr_analysis",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "RSSI and SNR Analysis"
+      ],
+      "content": "`rssi.py` parses RSSI and SNR values for the target station.\n\nIt produces a two-panel time-series visualization and computes:\n\n- minimum;\n- maximum;\n- average;\n- median.\n\nIt also groups RSSI observations into coded quality ranges defined by the script.\n\nThe key engineering evidence is the automated extraction, aggregation, and visualization of signal measurements from raw infrastructure logs.",
+      "source_line_start": 222,
+      "source_line_end": 237
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Filtered Station Report",
+      "normalized_title": "Filtered Station Report",
+      "key": "filtered_station_report",
+      "path": [
+        "Aruba Station-Log Analysis",
+        "Filtered Station Report"
+      ],
+      "content": "`skim.py` creates a human-readable filtered report for the target MAC.\n\nFor matching station rows it retains fields including:\n\n- timestamp;\n- MAC;\n- BSSID;\n- band/channel;\n- ESSID;\n- station type;\n- authentication field;\n- SNR;\n- RSSI;\n- client delay;\n- SNR/RSSI age;\n- report age.\n\nIt writes both a compact table and a detailed entry-by-entry section.\n\nThe output also summarizes:\n\n- unique BSSIDs;\n- unique channels;\n- unique ESSIDs;\n- occurrence counts;\n- RSSI averages;\n- SNR averages.\n\nThis is a useful data-reduction stage before more specialized analysis.",
+      "source_line_start": 237,
+      "source_line_end": 269
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Endpoint Measurement Acquisition",
+      "normalized_title": "Endpoint Measurement Acquisition",
+      "key": "endpoint_measurement_acquisition",
+      "path": [
+        "Endpoint Measurement Acquisition"
+      ],
+      "content": "### Timestamped Ping Logging\n\n`Client Side/ping.py` wraps the platform `ping` command in Python.\n\nThe script:\n\n- creates a log directory;\n- generates a timestamped filename;\n- starts ping as a subprocess;\n- reads output continuously;\n- prepends a wall-clock timestamp to each line;\n- writes the same line to disk;\n- terminates cleanly on `Ctrl+C`.\n\nThe command differs by platform:\n\n- Windows uses continuous `ping -t` with a millisecond timeout;\n- non-Windows execution uses the Linux-style `-W` timeout.\n\nThis gives the experiment a consistent timestamped latency record even though the underlying ping utilities differ.\n\n### iperf3 Acquisition\n\n`Client Side/iperf.py` launches an iperf3 client for a long-duration test.\n\nThe command uses:\n\n- a configured target;\n- a one-second reporting interval;\n- iperf timestamps;\n- server-output retrieval;\n- iperf's logfile option.\n\nThe Python wrapper then tails the logfile while iperf3 is still running.\n\nThis simultaneously provides:\n\n- durable experiment output;\n- live terminal visibility;\n- explicit process lifecycle control.\n\n### Subprocess-Oriented Experiment Automation\n\nBoth acquisition tools use `subprocess.Popen`.\n\nThat allows external network measurement utilities to remain the measurement engines while Python handles:\n\n- repeatable invocation;\n- parameters;\n- logging;\n- timestamp organization;\n- termination behavior.\n\nThis is a pragmatic research-tooling pattern.",
+      "source_line_start": 269,
+      "source_line_end": 326
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Timestamped Ping Logging",
+      "normalized_title": "Timestamped Ping Logging",
+      "key": "timestamped_ping_logging",
+      "path": [
+        "Endpoint Measurement Acquisition",
+        "Timestamped Ping Logging"
+      ],
+      "content": "`Client Side/ping.py` wraps the platform `ping` command in Python.\n\nThe script:\n\n- creates a log directory;\n- generates a timestamped filename;\n- starts ping as a subprocess;\n- reads output continuously;\n- prepends a wall-clock timestamp to each line;\n- writes the same line to disk;\n- terminates cleanly on `Ctrl+C`.\n\nThe command differs by platform:\n\n- Windows uses continuous `ping -t` with a millisecond timeout;\n- non-Windows execution uses the Linux-style `-W` timeout.\n\nThis gives the experiment a consistent timestamped latency record even though the underlying ping utilities differ.",
+      "source_line_start": 271,
+      "source_line_end": 292
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "iperf3 Acquisition",
+      "normalized_title": "iperf3 Acquisition",
+      "key": "iperf3_acquisition",
+      "path": [
+        "Endpoint Measurement Acquisition",
+        "iperf3 Acquisition"
+      ],
+      "content": "`Client Side/iperf.py` launches an iperf3 client for a long-duration test.\n\nThe command uses:\n\n- a configured target;\n- a one-second reporting interval;\n- iperf timestamps;\n- server-output retrieval;\n- iperf's logfile option.\n\nThe Python wrapper then tails the logfile while iperf3 is still running.\n\nThis simultaneously provides:\n\n- durable experiment output;\n- live terminal visibility;\n- explicit process lifecycle control.",
+      "source_line_start": 292,
+      "source_line_end": 312
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Subprocess-Oriented Experiment Automation",
+      "normalized_title": "Subprocess-Oriented Experiment Automation",
+      "key": "subprocess_oriented_experiment_automation",
+      "path": [
+        "Endpoint Measurement Acquisition",
+        "Subprocess-Oriented Experiment Automation"
+      ],
+      "content": "Both acquisition tools use `subprocess.Popen`.\n\nThat allows external network measurement utilities to remain the measurement engines while Python handles:\n\n- repeatable invocation;\n- parameters;\n- logging;\n- timestamp organization;\n- termination behavior.\n\nThis is a pragmatic research-tooling pattern.",
+      "source_line_start": 312,
+      "source_line_end": 326
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Manual DHCP Server",
+      "normalized_title": "Manual DHCP Server",
+      "key": "manual_dhcp_server",
+      "path": [
+        "Manual DHCP Server"
+      ],
+      "content": "The `Sockets/dhcp.py` implementation extends the low-level DHCP work seen immediately before this repository in `SocketLib`.\n\nIt is manually implemented with Python sockets and byte parsing rather than a high-level DHCP server package.\n\n### UDP Broadcast Service\n\nThe server:\n\n- creates an IPv4 UDP socket;\n- enables broadcast;\n- enables address reuse;\n- binds to UDP port 67;\n- receives client datagrams;\n- sends DHCP replies toward client port 68.\n\n### BOOTP Header Parsing\n\nThe parser reads fixed BOOTP fields directly from bytes.\n\nIt extracts:\n\n- operation code;\n- hardware type;\n- hardware length;\n- hops;\n- transaction ID;\n- elapsed seconds;\n- flags;\n- client address;\n- offered/client address;\n- server address;\n- gateway address;\n- client hardware address;\n- server-name field;\n- boot-file field.\n\nNumeric fields use network-byte-order unpacking.\n\n### DHCP Option Parsing\n\nAfter validating the DHCP magic cookie, the implementation walks the variable-length options section.\n\nIt recognizes at least:\n\n- DHCP message type;\n- requested IP address;\n- host name.\n\nThe loop handles end and pad options and checks boundaries before reading option payloads.\n\n### Response Packet Construction\n\nReplies are assembled into a byte buffer.\n\nThe code explicitly writes:\n\n- BOOTP reply fields;\n- transaction ID;\n- flags;\n- offered IP;\n- server IP;\n- client hardware address;\n- DHCP magic cookie.\n\nIt then appends DHCP options for:\n\n- message type;\n- server identifier;\n- lease time;\n- subnet mask;\n- router;\n- DNS server;\n- end marker.\n\nThis is direct protocol serialization.\n\n### Static Reservations\n\nThe server has a static MAC-to-IP mapping table.\n\nDuring DISCOVER handling, a reserved client is offered its configured address before dynamic allocation logic runs.\n\nDuring REQUEST handling, the static mapping is also enforced.\n\nThis adds deterministic per-device addressing to the earlier dynamic-pool concept.\n\n### Dynamic Address Pool\n\nDynamic allocation is based on an address pool covering a configured host range.\n\nThe implementation:\n\n- searches for existing unexpired leases for a MAC;\n- otherwise chooses from currently available or expired addresses;\n- records a granted address with a lease-expiry time.\n\n### DISCOVER and REQUEST Flow\n\nFor DHCP DISCOVER:\n\n```text\nDISCOVER\n   ↓\nstatic mapping?\n   ├─ yes → reserved IP\n   └─ no  → existing lease or available dynamic IP\n   ↓\nOFFER\n```\n\nFor DHCP REQUEST:\n\n```text\nREQUEST\n   ↓\nrequested IP / current client IP\n   ↓\nstatic-mapping enforcement\n   ↓\npool / reservation validation\n   ↓\nlease-conflict check\n   ↓\nACK + lease record\n```\n\n### RELEASE Handling\n\nThe server also recognizes DHCP RELEASE.\n\nWhen the released client address exists in the lease dictionary, its lease record is removed.\n\nThis is a concrete extension beyond only initial DORA allocation behavior.\n\n### Protocol Logging\n\nThe DHCP service prints detailed request information including:\n\n- source socket address;\n- operation type;\n- transaction ID;\n- client MAC;\n- DHCP message type;\n- client/server/gateway fields;\n- flags;\n- requested IP;\n- hostname when present.\n\nThis makes packet-level behavior inspectable while testing the service.",
+      "source_line_start": 326,
+      "source_line_end": 478
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "UDP Broadcast Service",
+      "normalized_title": "UDP Broadcast Service",
+      "key": "udp_broadcast_service",
+      "path": [
+        "Manual DHCP Server",
+        "UDP Broadcast Service"
+      ],
+      "content": "The server:\n\n- creates an IPv4 UDP socket;\n- enables broadcast;\n- enables address reuse;\n- binds to UDP port 67;\n- receives client datagrams;\n- sends DHCP replies toward client port 68.",
+      "source_line_start": 332,
+      "source_line_end": 343
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "BOOTP Header Parsing",
+      "normalized_title": "BOOTP Header Parsing",
+      "key": "bootp_header_parsing",
+      "path": [
+        "Manual DHCP Server",
+        "BOOTP Header Parsing"
+      ],
+      "content": "The parser reads fixed BOOTP fields directly from bytes.\n\nIt extracts:\n\n- operation code;\n- hardware type;\n- hardware length;\n- hops;\n- transaction ID;\n- elapsed seconds;\n- flags;\n- client address;\n- offered/client address;\n- server address;\n- gateway address;\n- client hardware address;\n- server-name field;\n- boot-file field.\n\nNumeric fields use network-byte-order unpacking.",
+      "source_line_start": 343,
+      "source_line_end": 366
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "DHCP Option Parsing",
+      "normalized_title": "DHCP Option Parsing",
+      "key": "dhcp_option_parsing",
+      "path": [
+        "Manual DHCP Server",
+        "DHCP Option Parsing"
+      ],
+      "content": "After validating the DHCP magic cookie, the implementation walks the variable-length options section.\n\nIt recognizes at least:\n\n- DHCP message type;\n- requested IP address;\n- host name.\n\nThe loop handles end and pad options and checks boundaries before reading option payloads.",
+      "source_line_start": 366,
+      "source_line_end": 378
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Response Packet Construction",
+      "normalized_title": "Response Packet Construction",
+      "key": "response_packet_construction",
+      "path": [
+        "Manual DHCP Server",
+        "Response Packet Construction"
+      ],
+      "content": "Replies are assembled into a byte buffer.\n\nThe code explicitly writes:\n\n- BOOTP reply fields;\n- transaction ID;\n- flags;\n- offered IP;\n- server IP;\n- client hardware address;\n- DHCP magic cookie.\n\nIt then appends DHCP options for:\n\n- message type;\n- server identifier;\n- lease time;\n- subnet mask;\n- router;\n- DNS server;\n- end marker.\n\nThis is direct protocol serialization.",
+      "source_line_start": 378,
+      "source_line_end": 404
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Static Reservations",
+      "normalized_title": "Static Reservations",
+      "key": "static_reservations",
+      "path": [
+        "Manual DHCP Server",
+        "Static Reservations"
+      ],
+      "content": "The server has a static MAC-to-IP mapping table.\n\nDuring DISCOVER handling, a reserved client is offered its configured address before dynamic allocation logic runs.\n\nDuring REQUEST handling, the static mapping is also enforced.\n\nThis adds deterministic per-device addressing to the earlier dynamic-pool concept.",
+      "source_line_start": 404,
+      "source_line_end": 414
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Dynamic Address Pool",
+      "normalized_title": "Dynamic Address Pool",
+      "key": "dynamic_address_pool",
+      "path": [
+        "Manual DHCP Server",
+        "Dynamic Address Pool"
+      ],
+      "content": "Dynamic allocation is based on an address pool covering a configured host range.\n\nThe implementation:\n\n- searches for existing unexpired leases for a MAC;\n- otherwise chooses from currently available or expired addresses;\n- records a granted address with a lease-expiry time.",
+      "source_line_start": 414,
+      "source_line_end": 424
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "DISCOVER and REQUEST Flow",
+      "normalized_title": "DISCOVER and REQUEST Flow",
+      "key": "discover_and_request_flow",
+      "path": [
+        "Manual DHCP Server",
+        "DISCOVER and REQUEST Flow"
+      ],
+      "content": "For DHCP DISCOVER:\n\n```text\nDISCOVER\n   ↓\nstatic mapping?\n   ├─ yes → reserved IP\n   └─ no  → existing lease or available dynamic IP\n   ↓\nOFFER\n```\n\nFor DHCP REQUEST:\n\n```text\nREQUEST\n   ↓\nrequested IP / current client IP\n   ↓\nstatic-mapping enforcement\n   ↓\npool / reservation validation\n   ↓\nlease-conflict check\n   ↓\nACK + lease record\n```",
+      "source_line_start": 424,
+      "source_line_end": 454
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "RELEASE Handling",
+      "normalized_title": "RELEASE Handling",
+      "key": "release_handling",
+      "path": [
+        "Manual DHCP Server",
+        "RELEASE Handling"
+      ],
+      "content": "The server also recognizes DHCP RELEASE.\n\nWhen the released client address exists in the lease dictionary, its lease record is removed.\n\nThis is a concrete extension beyond only initial DORA allocation behavior.",
+      "source_line_start": 454,
+      "source_line_end": 462
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Protocol Logging",
+      "normalized_title": "Protocol Logging",
+      "key": "protocol_logging",
+      "path": [
+        "Manual DHCP Server",
+        "Protocol Logging"
+      ],
+      "content": "The DHCP service prints detailed request information including:\n\n- source socket address;\n- operation type;\n- transaction ID;\n- client MAC;\n- DHCP message type;\n- client/server/gateway fields;\n- flags;\n- requested IP;\n- hostname when present.\n\nThis makes packet-level behavior inspectable while testing the service.",
+      "source_line_start": 462,
+      "source_line_end": 478
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Semi-Structured Wireless Log Parsing\n\nThe Aruba utilities transform controller-specific text into timestamped station observations.\n\nThe engineering work includes field extraction, matching, chronological ordering, aggregation, and rendering.\n\n### Transition Detection\n\nBSSID and channel changes are derived from successive observations rather than merely plotting raw points.\n\nThis makes the tools useful for identifying association transitions in mobile or roaming experiments.\n\n### Measurement Process Automation\n\nThe ping and iperf3 wrappers standardize experiment launch and logging around external network tools.\n\n### Binary Network Protocol Implementation\n\nThe DHCP component works directly at byte offsets and option records.\n\nIt combines packet parsing, packet construction, UDP broadcast behavior, and lease state.\n\n### Stateful Network Configuration\n\nStatic reservations, dynamic leases, expiration timestamps, conflict checks, and release handling make the DHCP logic stateful.",
+      "source_line_start": 478,
+      "source_line_end": 506
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Semi-Structured Wireless Log Parsing",
+      "normalized_title": "Semi-Structured Wireless Log Parsing",
+      "key": "semi_structured_wireless_log_parsing",
+      "path": [
+        "Major Engineering Work",
+        "Semi-Structured Wireless Log Parsing"
+      ],
+      "content": "The Aruba utilities transform controller-specific text into timestamped station observations.\n\nThe engineering work includes field extraction, matching, chronological ordering, aggregation, and rendering.",
+      "source_line_start": 480,
+      "source_line_end": 486
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Transition Detection",
+      "normalized_title": "Transition Detection",
+      "key": "transition_detection",
+      "path": [
+        "Major Engineering Work",
+        "Transition Detection"
+      ],
+      "content": "BSSID and channel changes are derived from successive observations rather than merely plotting raw points.\n\nThis makes the tools useful for identifying association transitions in mobile or roaming experiments.",
+      "source_line_start": 486,
+      "source_line_end": 492
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Measurement Process Automation",
+      "normalized_title": "Measurement Process Automation",
+      "key": "measurement_process_automation",
+      "path": [
+        "Major Engineering Work",
+        "Measurement Process Automation"
+      ],
+      "content": "The ping and iperf3 wrappers standardize experiment launch and logging around external network tools.",
+      "source_line_start": 492,
+      "source_line_end": 496
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Binary Network Protocol Implementation",
+      "normalized_title": "Binary Network Protocol Implementation",
+      "key": "binary_network_protocol_implementation",
+      "path": [
+        "Major Engineering Work",
+        "Binary Network Protocol Implementation"
+      ],
+      "content": "The DHCP component works directly at byte offsets and option records.\n\nIt combines packet parsing, packet construction, UDP broadcast behavior, and lease state.",
+      "source_line_start": 496,
+      "source_line_end": 502
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Stateful Network Configuration",
+      "normalized_title": "Stateful Network Configuration",
+      "key": "stateful_network_configuration",
+      "path": [
+        "Major Engineering Work",
+        "Stateful Network Configuration"
+      ],
+      "content": "Static reservations, dynamic leases, expiration timestamps, conflict checks, and release handling make the DHCP logic stateful.",
+      "source_line_start": 502,
+      "source_line_end": 506
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Verification and Experiment Observability",
+      "normalized_title": "Verification and Experiment Observability",
+      "key": "verification_and_experiment_observability",
+      "path": [
+        "Verification and Experiment Observability"
+      ],
+      "content": "The tooling emits concrete run-time diagnostics.\n\nThe Aruba scripts print:\n\n- files discovered;\n- files checked;\n- matching entries;\n- data-point counts;\n- transition summaries;\n- output-file locations.\n\nThe DHCP server logs parsed request fields and assignment decisions.\n\nThe ping and iperf3 wrappers expose external-tool output while writing durable logs.\n\nThese mechanisms make experiment behavior observable during use.",
+      "source_line_start": 506,
+      "source_line_end": 525
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Separation by Experimental Concern\n\nThe repository separates:\n\n- wireless infrastructure analysis;\n- endpoint measurement acquisition;\n- network-service behavior.\n\nWithin the Aruba directory, individual scripts isolate BSSID, signal, filtering, and channel-switch analysis.\n\n### Timestamp-Centered Data Handling\n\nTime is treated as a first-class experiment dimension.\n\nWireless station observations and endpoint measurements are both preserved with timestamps, enabling later synchronization and correlation.\n\n### Reusable Local Reports\n\nPlots and filtered text outputs convert raw logs into artifacts that can be inspected outside the parser itself.\n\n### Explicit State in DHCP\n\nAddress state is represented in explicit dictionaries and expiration timestamps.\n\nStatic reservations and dynamic leases are distinct concepts in the code.",
+      "source_line_start": 525,
+      "source_line_end": 553
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Separation by Experimental Concern",
+      "normalized_title": "Separation by Experimental Concern",
+      "key": "separation_by_experimental_concern",
+      "path": [
+        "Engineering Practices",
+        "Separation by Experimental Concern"
+      ],
+      "content": "The repository separates:\n\n- wireless infrastructure analysis;\n- endpoint measurement acquisition;\n- network-service behavior.\n\nWithin the Aruba directory, individual scripts isolate BSSID, signal, filtering, and channel-switch analysis.",
+      "source_line_start": 527,
+      "source_line_end": 537
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Timestamp-Centered Data Handling",
+      "normalized_title": "Timestamp-Centered Data Handling",
+      "key": "timestamp_centered_data_handling",
+      "path": [
+        "Engineering Practices",
+        "Timestamp-Centered Data Handling"
+      ],
+      "content": "Time is treated as a first-class experiment dimension.\n\nWireless station observations and endpoint measurements are both preserved with timestamps, enabling later synchronization and correlation.",
+      "source_line_start": 537,
+      "source_line_end": 543
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Reusable Local Reports",
+      "normalized_title": "Reusable Local Reports",
+      "key": "reusable_local_reports",
+      "path": [
+        "Engineering Practices",
+        "Reusable Local Reports"
+      ],
+      "content": "Plots and filtered text outputs convert raw logs into artifacts that can be inspected outside the parser itself.",
+      "source_line_start": 543,
+      "source_line_end": 547
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Explicit State in DHCP",
+      "normalized_title": "Explicit State in DHCP",
+      "key": "explicit_state_in_dhcp",
+      "path": [
+        "Engineering Practices",
+        "Explicit State in DHCP"
+      ],
+      "content": "Address state is represented in explicit dictionaries and expiration timestamps.\n\nStatic reservations and dynamic leases are distinct concepts in the code.",
+      "source_line_start": 547,
+      "source_line_end": 553
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is modest in file count but crosses several engineering layers:\n\n- Wi-Fi telemetry interpretation;\n- regex-based parsing;\n- data summarization;\n- visualization;\n- subprocess automation;\n- cross-platform command handling;\n- performance measurement;\n- UDP socket programming;\n- binary packet formats;\n- stateful protocol behavior.\n\nThe complexity comes from breadth across experiment tooling and network layers rather than from a large application framework.",
+      "source_line_start": 553,
+      "source_line_end": 570
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Research and Data Tooling\n\n- experiment-support scripting\n- wireless log processing\n- semi-structured text parsing\n- timestamp extraction\n- per-device filtering\n- experiment reporting\n- data reduction\n\n### Wireless Networking\n\n- BSSID analysis\n- access-point association tracking\n- roaming-oriented transition analysis\n- Wi-Fi channel analysis\n- RSSI\n- SNR\n- station telemetry interpretation\n\n### Data Visualization\n\n- Matplotlib\n- time-series plots\n- categorical step plots\n- PNG export\n- summary statistics\n\n### Network Measurement\n\n- ping\n- iperf3\n- latency logging\n- throughput logging\n- subprocess orchestration\n- live logfile tailing\n\n### Network Protocol Engineering\n\n- UDP sockets\n- DHCP\n- BOOTP\n- binary packet parsing\n- binary packet construction\n- network byte order\n- DHCP options\n- address pools\n- leases\n- static reservations\n- broadcast replies\n- DHCP RELEASE handling",
+      "source_line_start": 570,
+      "source_line_end": 624
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Research and Data Tooling",
+      "normalized_title": "Research and Data Tooling",
+      "key": "research_and_data_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Research and Data Tooling"
+      ],
+      "content": "- experiment-support scripting\n- wireless log processing\n- semi-structured text parsing\n- timestamp extraction\n- per-device filtering\n- experiment reporting\n- data reduction",
+      "source_line_start": 572,
+      "source_line_end": 582
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Wireless Networking",
+      "normalized_title": "Wireless Networking",
+      "key": "wireless_networking",
+      "path": [
+        "Skills Demonstrated",
+        "Wireless Networking"
+      ],
+      "content": "- BSSID analysis\n- access-point association tracking\n- roaming-oriented transition analysis\n- Wi-Fi channel analysis\n- RSSI\n- SNR\n- station telemetry interpretation",
+      "source_line_start": 582,
+      "source_line_end": 592
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Data Visualization",
+      "normalized_title": "Data Visualization",
+      "key": "data_visualization",
+      "path": [
+        "Skills Demonstrated",
+        "Data Visualization"
+      ],
+      "content": "- Matplotlib\n- time-series plots\n- categorical step plots\n- PNG export\n- summary statistics",
+      "source_line_start": 592,
+      "source_line_end": 600
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Network Measurement",
+      "normalized_title": "Network Measurement",
+      "key": "network_measurement",
+      "path": [
+        "Skills Demonstrated",
+        "Network Measurement"
+      ],
+      "content": "- ping\n- iperf3\n- latency logging\n- throughput logging\n- subprocess orchestration\n- live logfile tailing",
+      "source_line_start": 600,
+      "source_line_end": 609
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Network Protocol Engineering",
+      "normalized_title": "Network Protocol Engineering",
+      "key": "network_protocol_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Network Protocol Engineering"
+      ],
+      "content": "- UDP sockets\n- DHCP\n- BOOTP\n- binary packet parsing\n- binary packet construction\n- network byte order\n- DHCP options\n- address pools\n- leases\n- static reservations\n- broadcast replies\n- DHCP RELEASE handling",
+      "source_line_start": 609,
+      "source_line_end": 624
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository strengthens the transition from isolated networking programs toward an experiment toolchain.\n\nEarlier repositories demonstrated individual networking mechanisms and measurement utilities.\n\nHere, the portfolio shows multiple supporting utilities organized around the practical needs of wireless experimentation:\n\n- acquiring endpoint measurements;\n- extracting radio-side observations;\n- detecting association changes;\n- producing plots and summaries;\n- controlling local address-allocation behavior.\n\nThe repository also deepens the immediately preceding DHCP work with explicit reservations and RELEASE processing.",
+      "source_line_start": 624,
+      "source_line_end": 640
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 096 established the processed corpus's earliest manually implemented DHCP/BOOTP server.\n\nRepository 097 continues that low-level protocol work while adding a distinct research-tooling layer for Aruba Wi-Fi telemetry and repeatable ping/iperf3 capture.\n\nThe strongest evolution is the integration of protocol-level networking with wireless measurement support, building on the DHCP capability already established in repository 096.\n\nIt also provides the first processed-repository evidence in this immediate sequence of dedicated BSSID-transition and channel-transition analysis sourced from Aruba station logs.",
+      "source_line_start": 640,
+      "source_line_end": 650
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this repository is the earliest observed dedicated Aruba station-log analysis toolkit centered on:\n\n- BSSID transition history;\n- channel transition history;\n- target-station RSSI/SNR;\n- filtered station reports.\n\nIt is also the first processed repository after the initial DHCP server to extend that implementation pattern with explicit static reservations and DHCP RELEASE handling.",
+      "source_line_start": 650,
+      "source_line_end": 661
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Thesis-Scripts` is a compact but broad networking-research support repository.\n\nIts Aruba tools parse semi-structured wireless infrastructure logs into per-client BSSID, channel, RSSI, SNR, and transition views.\n\nIts endpoint scripts automate timestamped ping and iperf3 acquisition.\n\nIts socket code manually implements core DHCP/BOOTP behavior with binary packet construction, address pools, static reservations, expiring leases, and RELEASE processing.\n\nTogether these utilities show practical movement from individual network-programming exercises toward the support machinery required to run, inspect, and organize wireless experiments.\n\n# Project Tags\n\n`individual-project`, `python`, `research-tooling`, `experiment-automation`, `wireless-networking`, `wifi`, `wlan-analysis`, `aruba-log-analysis`, `semi-structured-log-parsing`, `regex-parsing`, `target-mac-filtering`, `bssid`, `bssid-transition-analysis`, `roaming-analysis`, `wifi-channel-analysis`, `channel-transition-analysis`, `rssi`, `snr`, `matplotlib`, `data-visualization`, `time-series-analysis`, `step-plot`, `png-export`, `summary-statistics`, `timestamped-logging`, `network-measurement`, `ping`, `iperf3`, `subprocess`, `cross-platform-command-handling`, `live-log-tailing`, `udp-server`, `dhcp`, `bootp`, `dhcp-server`, `binary-protocol`, `binary-packet-parsing`, `struct-pack`, `struct-unpack`, `dhcp-options`, `dhcp-magic-cookie`, `discover-offer`, `request-ack`, `address-pool`, `lease-management`, `lease-expiration`, `static-dhcp-reservation`, `dhcp-release-handling`, `broadcast`, `network-infrastructure`, `protocol-implementation`, `earliest-observed-aruba-station-log-analysis`, `earliest-observed-bssid-channel-transition-tooling`",
+      "source_line_start": 661,
+      "source_line_end": 676
+    }
+  ],
+  "raw_analysis": "# Thesis-Scripts\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Thesis-Scripts`\n- **Corpus index:** 097\n- **Repository start date:** 2025-10-25\n- **Last meaningful update date:** 2025-10-25\n- **Latest meaningful commit:** `0be11a8cc27b53f1eaf8e9c8b7b5f9d76c5b9031`\n- **Primary repository language:** Python\n- **Project form:** wireless-experiment support toolkit and low-level network-service experiment\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository is organized into three substantive areas:\n\n- `Aruba/Sniffer Mode/`\n- `Client Side/`\n- `Sockets/`\n\nThe root and subdirectory README files contain little descriptive material, so the strongest evidence comes directly from the Python source.\n\nThe latest commit is attributed to the repository owner and adds the DHCP implementation.\n\nThe Aruba scripts are concrete log-processing and visualization utilities.\n\nThe client-side scripts automate timestamped ping and iperf3 measurement collection.\n\nThe sockets directory contains a manually implemented DHCP server.\n\nThis makes the repository a compact collection of experiment-support utilities spanning wireless telemetry, network measurement, and infrastructure protocol handling.\n\n## What This Project Is\n\n`Thesis-Scripts` is a research-support repository for collecting and interpreting network measurements around wireless experiments.\n\nThe Aruba tools transform controller or station telemetry logs into focused views of one client device.\n\nThe client-side tools automate repeatable latency and throughput logging.\n\nThe DHCP component provides local address-allocation behavior through a directly implemented BOOTP/DHCP server.\n\nThe repository therefore connects three parts of experimental networking:\n\n```text\nwireless infrastructure telemetry\n            +\nendpoint performance measurements\n            +\nlocal network configuration service\n```\n\nThe scripts are operational utilities rather than a single monolithic application.\n\n## Project Scope\n\nThe retained code covers:\n\n- Aruba station-log filtering;\n- target-MAC extraction;\n- BSSID history;\n- BSSID transition detection;\n- Wi-Fi channel history;\n- channel transition detection;\n- RSSI extraction;\n- SNR extraction;\n- simple signal statistics;\n- timeline plotting;\n- filtered text-report generation;\n- timestamped continuous ping logging;\n- long-running iperf3 acquisition;\n- real-time iperf3 log tailing;\n- Windows/Linux ping-command selection;\n- DHCP request parsing;\n- DHCP response construction;\n- address-pool management;\n- static MAC-to-IP reservations;\n- lease tracking;\n- DHCP RELEASE handling;\n- broadcast UDP replies.\n\n## System Shape\n\nThe repository can be understood as three independent but complementary tool paths.\n\n```text\nAruba text/log files\n        ↓\nMAC-focused parsers\n        ↓\nBSSID / channel / RSSI / SNR views\n        ↓\nplots + summaries + filtered reports\n```\n\n```text\nnetwork endpoint\n    ↓\nping / iperf3 subprocesses\n    ↓\ntimestamped local logs\n```\n\n```text\nDHCP client broadcast\n        ↓ UDP :67\nmanual Python DHCP server\n        ↓\nBOOTP header + option parsing\n        ↓\nDISCOVER / REQUEST / RELEASE\n        ↓\nOFFER / ACK + lease state\n```\n\n## Technical Stack\n\n### Python\n\nAll substantive source in the repository is Python.\n\nThe language is used for:\n\n- regular-expression log parsing;\n- file scanning;\n- plotting;\n- subprocess control;\n- timestamping;\n- socket programming;\n- binary protocol parsing;\n- stateful lease management.\n\n### Regular Expressions\n\nThe Aruba utilities use regular expressions to recover timestamps and station fields from semi-structured controller output.\n\nPatterns locate:\n\n- `LocalBeginTime`;\n- a target MAC address;\n- BSSID values;\n- 5 GHz channel identifiers;\n- RSSI and SNR columns.\n\nThis is practical text-to-structured-data processing rather than fixed CSV ingestion.\n\n### Matplotlib\n\n`bssid.py`, `rssi.py`, and `switch.py` produce local visualizations.\n\nMatplotlib is used for:\n\n- BSSID step timelines;\n- Wi-Fi channel step timelines;\n- RSSI time series;\n- SNR time series;\n- markers;\n- legends;\n- time-axis formatting;\n- PNG export.\n\n## Aruba Station-Log Analysis\n\n### Target-MAC Focus\n\nThe Aruba scripts center analysis on one configured client MAC.\n\nThis turns large access-point/controller output into a per-device history.\n\nThe same target identity is used across multiple analyses, allowing separate scripts to answer different questions about one station.\n\n### Timestamp Parsing\n\nThe scripts detect Aruba log entries containing `LocalBeginTime`.\n\nThey parse timestamps in a form such as:\n\n```text\n2025-10-24T11:32:14.662-0400\n```\n\nThe code removes the fractional component before converting the timestamp into a Python `datetime`.\n\nThis produces time-indexed station observations suitable for transition detection and plotting.\n\n### BSSID Timeline\n\n`bssid.py` extracts the BSSID associated with the target station.\n\nIt:\n\n- scans `.txt` and `.log` files;\n- identifies the first file containing target data;\n- sorts observations by timestamp;\n- maps unique BSSIDs to plot positions;\n- renders a step plot;\n- reports BSSID occurrence counts;\n- reports percentage distribution;\n- detects changes between consecutive BSSIDs.\n\nThe transition report preserves both the old and new BSSID with their corresponding timestamps.\n\nThis is directly relevant to access-point association and roaming analysis.\n\n### Channel Timeline\n\n`switch.py` applies the same general structure to Wi-Fi channels.\n\nIt recognizes the 5 GHz channel field and extracts values such as `36E`.\n\nThe script:\n\n- sorts observations chronologically;\n- assigns each observed channel a categorical plotting position;\n- produces a step timeline;\n- reports channel occurrence percentages;\n- identifies channel transitions.\n\nThis separates RF-channel changes from BSSID changes while retaining a common time basis.\n\n### RSSI and SNR Analysis\n\n`rssi.py` parses RSSI and SNR values for the target station.\n\nIt produces a two-panel time-series visualization and computes:\n\n- minimum;\n- maximum;\n- average;\n- median.\n\nIt also groups RSSI observations into coded quality ranges defined by the script.\n\nThe key engineering evidence is the automated extraction, aggregation, and visualization of signal measurements from raw infrastructure logs.\n\n### Filtered Station Report\n\n`skim.py` creates a human-readable filtered report for the target MAC.\n\nFor matching station rows it retains fields including:\n\n- timestamp;\n- MAC;\n- BSSID;\n- band/channel;\n- ESSID;\n- station type;\n- authentication field;\n- SNR;\n- RSSI;\n- client delay;\n- SNR/RSSI age;\n- report age.\n\nIt writes both a compact table and a detailed entry-by-entry section.\n\nThe output also summarizes:\n\n- unique BSSIDs;\n- unique channels;\n- unique ESSIDs;\n- occurrence counts;\n- RSSI averages;\n- SNR averages.\n\nThis is a useful data-reduction stage before more specialized analysis.\n\n## Endpoint Measurement Acquisition\n\n### Timestamped Ping Logging\n\n`Client Side/ping.py` wraps the platform `ping` command in Python.\n\nThe script:\n\n- creates a log directory;\n- generates a timestamped filename;\n- starts ping as a subprocess;\n- reads output continuously;\n- prepends a wall-clock timestamp to each line;\n- writes the same line to disk;\n- terminates cleanly on `Ctrl+C`.\n\nThe command differs by platform:\n\n- Windows uses continuous `ping -t` with a millisecond timeout;\n- non-Windows execution uses the Linux-style `-W` timeout.\n\nThis gives the experiment a consistent timestamped latency record even though the underlying ping utilities differ.\n\n### iperf3 Acquisition\n\n`Client Side/iperf.py` launches an iperf3 client for a long-duration test.\n\nThe command uses:\n\n- a configured target;\n- a one-second reporting interval;\n- iperf timestamps;\n- server-output retrieval;\n- iperf's logfile option.\n\nThe Python wrapper then tails the logfile while iperf3 is still running.\n\nThis simultaneously provides:\n\n- durable experiment output;\n- live terminal visibility;\n- explicit process lifecycle control.\n\n### Subprocess-Oriented Experiment Automation\n\nBoth acquisition tools use `subprocess.Popen`.\n\nThat allows external network measurement utilities to remain the measurement engines while Python handles:\n\n- repeatable invocation;\n- parameters;\n- logging;\n- timestamp organization;\n- termination behavior.\n\nThis is a pragmatic research-tooling pattern.\n\n## Manual DHCP Server\n\nThe `Sockets/dhcp.py` implementation extends the low-level DHCP work seen immediately before this repository in `SocketLib`.\n\nIt is manually implemented with Python sockets and byte parsing rather than a high-level DHCP server package.\n\n### UDP Broadcast Service\n\nThe server:\n\n- creates an IPv4 UDP socket;\n- enables broadcast;\n- enables address reuse;\n- binds to UDP port 67;\n- receives client datagrams;\n- sends DHCP replies toward client port 68.\n\n### BOOTP Header Parsing\n\nThe parser reads fixed BOOTP fields directly from bytes.\n\nIt extracts:\n\n- operation code;\n- hardware type;\n- hardware length;\n- hops;\n- transaction ID;\n- elapsed seconds;\n- flags;\n- client address;\n- offered/client address;\n- server address;\n- gateway address;\n- client hardware address;\n- server-name field;\n- boot-file field.\n\nNumeric fields use network-byte-order unpacking.\n\n### DHCP Option Parsing\n\nAfter validating the DHCP magic cookie, the implementation walks the variable-length options section.\n\nIt recognizes at least:\n\n- DHCP message type;\n- requested IP address;\n- host name.\n\nThe loop handles end and pad options and checks boundaries before reading option payloads.\n\n### Response Packet Construction\n\nReplies are assembled into a byte buffer.\n\nThe code explicitly writes:\n\n- BOOTP reply fields;\n- transaction ID;\n- flags;\n- offered IP;\n- server IP;\n- client hardware address;\n- DHCP magic cookie.\n\nIt then appends DHCP options for:\n\n- message type;\n- server identifier;\n- lease time;\n- subnet mask;\n- router;\n- DNS server;\n- end marker.\n\nThis is direct protocol serialization.\n\n### Static Reservations\n\nThe server has a static MAC-to-IP mapping table.\n\nDuring DISCOVER handling, a reserved client is offered its configured address before dynamic allocation logic runs.\n\nDuring REQUEST handling, the static mapping is also enforced.\n\nThis adds deterministic per-device addressing to the earlier dynamic-pool concept.\n\n### Dynamic Address Pool\n\nDynamic allocation is based on an address pool covering a configured host range.\n\nThe implementation:\n\n- searches for existing unexpired leases for a MAC;\n- otherwise chooses from currently available or expired addresses;\n- records a granted address with a lease-expiry time.\n\n### DISCOVER and REQUEST Flow\n\nFor DHCP DISCOVER:\n\n```text\nDISCOVER\n   ↓\nstatic mapping?\n   ├─ yes → reserved IP\n   └─ no  → existing lease or available dynamic IP\n   ↓\nOFFER\n```\n\nFor DHCP REQUEST:\n\n```text\nREQUEST\n   ↓\nrequested IP / current client IP\n   ↓\nstatic-mapping enforcement\n   ↓\npool / reservation validation\n   ↓\nlease-conflict check\n   ↓\nACK + lease record\n```\n\n### RELEASE Handling\n\nThe server also recognizes DHCP RELEASE.\n\nWhen the released client address exists in the lease dictionary, its lease record is removed.\n\nThis is a concrete extension beyond only initial DORA allocation behavior.\n\n### Protocol Logging\n\nThe DHCP service prints detailed request information including:\n\n- source socket address;\n- operation type;\n- transaction ID;\n- client MAC;\n- DHCP message type;\n- client/server/gateway fields;\n- flags;\n- requested IP;\n- hostname when present.\n\nThis makes packet-level behavior inspectable while testing the service.\n\n## Major Engineering Work\n\n### Semi-Structured Wireless Log Parsing\n\nThe Aruba utilities transform controller-specific text into timestamped station observations.\n\nThe engineering work includes field extraction, matching, chronological ordering, aggregation, and rendering.\n\n### Transition Detection\n\nBSSID and channel changes are derived from successive observations rather than merely plotting raw points.\n\nThis makes the tools useful for identifying association transitions in mobile or roaming experiments.\n\n### Measurement Process Automation\n\nThe ping and iperf3 wrappers standardize experiment launch and logging around external network tools.\n\n### Binary Network Protocol Implementation\n\nThe DHCP component works directly at byte offsets and option records.\n\nIt combines packet parsing, packet construction, UDP broadcast behavior, and lease state.\n\n### Stateful Network Configuration\n\nStatic reservations, dynamic leases, expiration timestamps, conflict checks, and release handling make the DHCP logic stateful.\n\n## Verification and Experiment Observability\n\nThe tooling emits concrete run-time diagnostics.\n\nThe Aruba scripts print:\n\n- files discovered;\n- files checked;\n- matching entries;\n- data-point counts;\n- transition summaries;\n- output-file locations.\n\nThe DHCP server logs parsed request fields and assignment decisions.\n\nThe ping and iperf3 wrappers expose external-tool output while writing durable logs.\n\nThese mechanisms make experiment behavior observable during use.\n\n## Engineering Practices\n\n### Separation by Experimental Concern\n\nThe repository separates:\n\n- wireless infrastructure analysis;\n- endpoint measurement acquisition;\n- network-service behavior.\n\nWithin the Aruba directory, individual scripts isolate BSSID, signal, filtering, and channel-switch analysis.\n\n### Timestamp-Centered Data Handling\n\nTime is treated as a first-class experiment dimension.\n\nWireless station observations and endpoint measurements are both preserved with timestamps, enabling later synchronization and correlation.\n\n### Reusable Local Reports\n\nPlots and filtered text outputs convert raw logs into artifacts that can be inspected outside the parser itself.\n\n### Explicit State in DHCP\n\nAddress state is represented in explicit dictionaries and expiration timestamps.\n\nStatic reservations and dynamic leases are distinct concepts in the code.\n\n## Scale and Complexity\n\nThe repository is modest in file count but crosses several engineering layers:\n\n- Wi-Fi telemetry interpretation;\n- regex-based parsing;\n- data summarization;\n- visualization;\n- subprocess automation;\n- cross-platform command handling;\n- performance measurement;\n- UDP socket programming;\n- binary packet formats;\n- stateful protocol behavior.\n\nThe complexity comes from breadth across experiment tooling and network layers rather than from a large application framework.\n\n## Skills Demonstrated\n\n### Research and Data Tooling\n\n- experiment-support scripting\n- wireless log processing\n- semi-structured text parsing\n- timestamp extraction\n- per-device filtering\n- experiment reporting\n- data reduction\n\n### Wireless Networking\n\n- BSSID analysis\n- access-point association tracking\n- roaming-oriented transition analysis\n- Wi-Fi channel analysis\n- RSSI\n- SNR\n- station telemetry interpretation\n\n### Data Visualization\n\n- Matplotlib\n- time-series plots\n- categorical step plots\n- PNG export\n- summary statistics\n\n### Network Measurement\n\n- ping\n- iperf3\n- latency logging\n- throughput logging\n- subprocess orchestration\n- live logfile tailing\n\n### Network Protocol Engineering\n\n- UDP sockets\n- DHCP\n- BOOTP\n- binary packet parsing\n- binary packet construction\n- network byte order\n- DHCP options\n- address pools\n- leases\n- static reservations\n- broadcast replies\n- DHCP RELEASE handling\n\n## Capability Developed\n\nThis repository strengthens the transition from isolated networking programs toward an experiment toolchain.\n\nEarlier repositories demonstrated individual networking mechanisms and measurement utilities.\n\nHere, the portfolio shows multiple supporting utilities organized around the practical needs of wireless experimentation:\n\n- acquiring endpoint measurements;\n- extracting radio-side observations;\n- detecting association changes;\n- producing plots and summaries;\n- controlling local address-allocation behavior.\n\nThe repository also deepens the immediately preceding DHCP work with explicit reservations and RELEASE processing.\n\n## Portfolio Evolution Context\n\nRepository 096 established the processed corpus's earliest manually implemented DHCP/BOOTP server.\n\nRepository 097 continues that low-level protocol work while adding a distinct research-tooling layer for Aruba Wi-Fi telemetry and repeatable ping/iperf3 capture.\n\nThe strongest evolution is the integration of protocol-level networking with wireless measurement support, building on the DHCP capability already established in repository 096.\n\nIt also provides the first processed-repository evidence in this immediate sequence of dedicated BSSID-transition and channel-transition analysis sourced from Aruba station logs.\n\n## Historical Significance\n\nWithin the processed corpus so far, this repository is the earliest observed dedicated Aruba station-log analysis toolkit centered on:\n\n- BSSID transition history;\n- channel transition history;\n- target-station RSSI/SNR;\n- filtered station reports.\n\nIt is also the first processed repository after the initial DHCP server to extend that implementation pattern with explicit static reservations and DHCP RELEASE handling.\n\n## Overall Repository Narrative\n\n`Thesis-Scripts` is a compact but broad networking-research support repository.\n\nIts Aruba tools parse semi-structured wireless infrastructure logs into per-client BSSID, channel, RSSI, SNR, and transition views.\n\nIts endpoint scripts automate timestamped ping and iperf3 acquisition.\n\nIts socket code manually implements core DHCP/BOOTP behavior with binary packet construction, address pools, static reservations, expiring leases, and RELEASE processing.\n\nTogether these utilities show practical movement from individual network-programming exercises toward the support machinery required to run, inspect, and organize wireless experiments.\n\n# Project Tags\n\n`individual-project`, `python`, `research-tooling`, `experiment-automation`, `wireless-networking`, `wifi`, `wlan-analysis`, `aruba-log-analysis`, `semi-structured-log-parsing`, `regex-parsing`, `target-mac-filtering`, `bssid`, `bssid-transition-analysis`, `roaming-analysis`, `wifi-channel-analysis`, `channel-transition-analysis`, `rssi`, `snr`, `matplotlib`, `data-visualization`, `time-series-analysis`, `step-plot`, `png-export`, `summary-statistics`, `timestamped-logging`, `network-measurement`, `ping`, `iperf3`, `subprocess`, `cross-platform-command-handling`, `live-log-tailing`, `udp-server`, `dhcp`, `bootp`, `dhcp-server`, `binary-protocol`, `binary-packet-parsing`, `struct-pack`, `struct-unpack`, `dhcp-options`, `dhcp-magic-cookie`, `discover-offer`, `request-ack`, `address-pool`, `lease-management`, `lease-expiration`, `static-dhcp-reservation`, `dhcp-release-handling`, `broadcast`, `network-infrastructure`, `protocol-implementation`, `earliest-observed-aruba-station-log-analysis`, `earliest-observed-bssid-channel-transition-tooling`\n"
+}

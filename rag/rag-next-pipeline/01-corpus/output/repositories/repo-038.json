@@ -1,0 +1,530 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 38,
+  "repository_total": 134,
+  "repository_name": "Kalman-Filters",
+  "header_title": "Kalman-Filters",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-038-Kalman-Filters/README.md",
+    "line_start": 1,
+    "line_end": 245,
+    "sha256": "a3c69af899694f61ec61c7bc3a0cce2f7f14a1db74709976885ad2c4bf7229c4"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "state-estimation-coursework",
+    "educational-project",
+    "course-assignment-repository",
+    "cpp",
+    "python",
+    "kalman-filter",
+    "extended-kalman-filter",
+    "unscented-kalman-filter",
+    "sigma-points",
+    "augmented-sigma-points",
+    "covariance-propagation",
+    "cholesky-decomposition",
+    "matrix-inversion",
+    "jacobians",
+    "rmse",
+    "angle-normalization",
+    "nonlinear-state-estimation",
+    "eigen",
+    "lidar",
+    "radar",
+    "radar-measurement-model",
+    "sensor-fusion",
+    "vehicle-motion-model",
+    "cmake",
+    "build-artifact-evidence",
+    "expected-output-verification",
+    "executed-notebook-output",
+    "course-supplied-infrastructure",
+    "instructional-scaffold",
+    "student-completed-exercises",
+    "earliest-observed-kalman-filter",
+    "earliest-observed-extended-kalman-filter",
+    "earliest-observed-unscented-kalman-filter"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Kalman-Filters`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-17\n- **Primary implementation languages:** C++, Python\n- **Build system:** CMake\n- **Numerical library:** Eigen\n- **Learning scope:** Kalman filter, EKF, UKF\n- **Authorship context:** student-completed regions inside instructional scaffolding"
+    },
+    "testing": {
+      "section_ids": [
+        "s014",
+        "s030"
+      ],
+      "titles": [
+        "Numerical Verification",
+        "Build and Verification"
+      ],
+      "text": "## Numerical Verification\nExpected vectors and matrices are embedded beside major UKF stages.\n\nThey cover generated sigma points, augmented points, predicted points, predicted state/covariance, radar measurement mean, and radar measurement covariance.\n\nThese expected values serve as concrete numerical correctness targets for the learner-completed sections.\n\nThe repository also commits CMake build artifacts, showing that the native exercises were configured and compiled.\n\n## Build and Verification\n- `cmake`\n- `build-artifact-evidence`\n- `expected-output-verification`\n- `executed-notebook-output`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s022",
+        "s031"
+      ],
+      "titles": [
+        "Authorship Boundary",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Authorship Boundary\nThe UKF source explicitly separates student-completed regions from fixed exercise structure.\n\nThe corpus therefore attributes the filled student logic while treating fixed example data, function skeletons, expected answers, and framework structure as instructional scaffolding.\n\nThat prevents completed coursework from being misrepresented as a fully original UKF library.\n\n## Collaboration and Authorship\n- `course-supplied-infrastructure`\n- `instructional-scaffold`\n- `student-completed-exercises`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Kalman-Filters`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-17\n- **Primary implementation languages:** C++, Python\n- **Build system:** CMake\n- **Numerical library:** Eigen\n- **Learning scope:** Kalman filter, EKF, UKF\n- **Authorship context:** student-completed regions inside instructional scaffolding",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Kalman-Filters` is a structured state-estimation learning repository.\n\nIt contains a Python/Jupyter Kalman-filter preface, Extended Kalman Filter exercises, Jacobian work, lidar exercises, RMSE exercises, and a staged Unscented Kalman Filter implementation in C++/Eigen.\n\nThe UKF code explicitly surrounds learner work with `Student part begin` and `Student part end`, while expected numeric results are embedded beside the exercises.\n\nThat provides unusually strong provenance boundaries between student-completed logic and supplied scaffolding.",
+      "source_line_start": 14,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Learning Progression",
+      "normalized_title": "Learning Progression",
+      "key": "learning_progression",
+      "path": [
+        "Learning Progression"
+      ],
+      "content": "The repository progresses through:\n\n1. scalar Gaussian update and prediction,\n2. matrix Kalman filtering,\n3. estimation-error metrics,\n4. nonlinear-model preparation,\n5. Jacobians,\n6. lidar-oriented EKF exercises,\n7. sigma-point generation,\n8. augmented sigma points,\n9. nonlinear sigma-point prediction,\n10. weighted mean/covariance reconstruction,\n11. radar measurement prediction,\n12. state update.",
+      "source_line_start": 24,
+      "source_line_end": 41
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Kalman Preface Notebook",
+      "normalized_title": "Kalman Preface Notebook",
+      "key": "kalman_preface_notebook",
+      "path": [
+        "Kalman Preface Notebook"
+      ],
+      "content": "`Kalman_Preface.ipynb` begins with one-dimensional Gaussian fusion.\n\n`update()` combines two means and variances.\n\n`predict()` adds motion mean and uncertainty.\n\nExecuted notebook output demonstrates the equations. Updating `(10, 8)` with `(13, 2)` yields `[12.4, 1.6]`; predicting `(10, 4)` with motion `(12, 4)` yields `[22.0, 8.0]`.\n\nThe notebook then iterates update/predict cycles over a sequence of measurements and motions.",
+      "source_line_start": 41,
+      "source_line_end": 53
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Matrix Kalman Foundations",
+      "normalized_title": "Matrix Kalman Foundations",
+      "key": "matrix_kalman_foundations",
+      "path": [
+        "Matrix Kalman Foundations"
+      ],
+      "content": "The notebook also includes a matrix abstraction with addition, subtraction, multiplication, transpose, identity, Cholesky decomposition, Cholesky-based inversion, and matrix inversion.\n\nA later exercise defines state `x`, covariance `P`, transition `F`, measurement `H`, measurement uncertainty `R`, control `u`, and identity `I`.\n\nThis moves the work from scalar intuition to explicit matrix state estimation.\n\nThe notebook itself includes an external credit for the Cholesky helper material, so that infrastructure is not treated as original learner-authored numerical-library design.",
+      "source_line_start": 53,
+      "source_line_end": 63
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Extended Kalman Filter Scope",
+      "normalized_title": "Extended Kalman Filter Scope",
+      "key": "extended_kalman_filter_scope",
+      "path": [
+        "Extended Kalman Filter Scope"
+      ],
+      "content": "The EKF tree is organized into:\n\n- `Initial Quiz`,\n- `Jacobians`,\n- `Lidar Quiz`,\n- `RMSE`.\n\nThe structure demonstrates explicit study of nonlinear estimation subproblems rather than only a final opaque implementation.\n\nJacobians and sensor-specific exercises support the transition from linear filtering to nonlinear measurement reasoning.",
+      "source_line_start": 63,
+      "source_line_end": 76
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Unscented Kalman Filter",
+      "normalized_title": "Unscented Kalman Filter",
+      "key": "unscented_kalman_filter",
+      "path": [
+        "Unscented Kalman Filter"
+      ],
+      "content": "The C++ UKF source uses Eigen `MatrixXd` and `VectorXd`.\n\n### Sigma-Point Generation\n\n`GenerateSigmaPoints()` uses a five-dimensional state and covariance matrix.\n\nThe student region computes the covariance Cholesky factor and constructs the central, positive, and negative sigma points using the UKF spreading term.\n\nAn expected sigma-point matrix is preserved for comparison.\n\n### Augmented Sigma Points\n\n`AugmentedSigmaPoints()` expands the state from five to seven dimensions.\n\nThe two additional components model longitudinal-acceleration noise and yaw-acceleration noise.\n\nThe student region builds the augmented state, process-noise covariance, block covariance matrix, Cholesky factor, and positive/negative augmented points.\n\n### Sigma-Point Prediction\n\n`SigmaPointPrediction()` propagates each augmented sigma point through a nonlinear planar vehicle-motion model over `delta_t = 0.1`.\n\nState components correspond to position, speed, yaw, and yaw rate.\n\nProcess-noise terms are added during propagation.\n\nThis is a nonlinear prediction step rather than linear `F*x` state transition.\n\n### Mean and Covariance Reconstruction\n\n`PredictMeanAndCovariance()` assigns UKF weights, computes the weighted predicted state, and accumulates covariance from sigma-point residuals.\n\nYaw residuals are normalized into the `[-π, π]` range before covariance accumulation.\n\nThat is concrete handling of periodic angular state.\n\n### Radar Measurement Prediction\n\n`PredictRadarMeasurement()` maps state-space sigma points into radar measurement space.\n\nThe resulting measurement dimensions are range, bearing, and radial velocity.\n\nThe source computes range with Euclidean norm, angle with `atan2`, and projected velocity for range rate.\n\nIt then calculates measurement mean/covariance and injects explicit radar measurement noise.\n\n### State Update\n\nThe source proceeds to `UpdateState()` after radar-measurement prediction.\n\nThis completes the conceptual UKF cycle from uncertain state, through nonlinear propagation, into sensor-space correction.",
+      "source_line_start": 76,
+      "source_line_end": 130
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Sigma-Point Generation",
+      "normalized_title": "Sigma-Point Generation",
+      "key": "sigma_point_generation",
+      "path": [
+        "Unscented Kalman Filter",
+        "Sigma-Point Generation"
+      ],
+      "content": "`GenerateSigmaPoints()` uses a five-dimensional state and covariance matrix.\n\nThe student region computes the covariance Cholesky factor and constructs the central, positive, and negative sigma points using the UKF spreading term.\n\nAn expected sigma-point matrix is preserved for comparison.",
+      "source_line_start": 80,
+      "source_line_end": 88
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Augmented Sigma Points",
+      "normalized_title": "Augmented Sigma Points",
+      "key": "augmented_sigma_points",
+      "path": [
+        "Unscented Kalman Filter",
+        "Augmented Sigma Points"
+      ],
+      "content": "`AugmentedSigmaPoints()` expands the state from five to seven dimensions.\n\nThe two additional components model longitudinal-acceleration noise and yaw-acceleration noise.\n\nThe student region builds the augmented state, process-noise covariance, block covariance matrix, Cholesky factor, and positive/negative augmented points.",
+      "source_line_start": 88,
+      "source_line_end": 96
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Sigma-Point Prediction",
+      "normalized_title": "Sigma-Point Prediction",
+      "key": "sigma_point_prediction",
+      "path": [
+        "Unscented Kalman Filter",
+        "Sigma-Point Prediction"
+      ],
+      "content": "`SigmaPointPrediction()` propagates each augmented sigma point through a nonlinear planar vehicle-motion model over `delta_t = 0.1`.\n\nState components correspond to position, speed, yaw, and yaw rate.\n\nProcess-noise terms are added during propagation.\n\nThis is a nonlinear prediction step rather than linear `F*x` state transition.",
+      "source_line_start": 96,
+      "source_line_end": 106
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Mean and Covariance Reconstruction",
+      "normalized_title": "Mean and Covariance Reconstruction",
+      "key": "mean_and_covariance_reconstruction",
+      "path": [
+        "Unscented Kalman Filter",
+        "Mean and Covariance Reconstruction"
+      ],
+      "content": "`PredictMeanAndCovariance()` assigns UKF weights, computes the weighted predicted state, and accumulates covariance from sigma-point residuals.\n\nYaw residuals are normalized into the `[-π, π]` range before covariance accumulation.\n\nThat is concrete handling of periodic angular state.",
+      "source_line_start": 106,
+      "source_line_end": 114
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Radar Measurement Prediction",
+      "normalized_title": "Radar Measurement Prediction",
+      "key": "radar_measurement_prediction",
+      "path": [
+        "Unscented Kalman Filter",
+        "Radar Measurement Prediction"
+      ],
+      "content": "`PredictRadarMeasurement()` maps state-space sigma points into radar measurement space.\n\nThe resulting measurement dimensions are range, bearing, and radial velocity.\n\nThe source computes range with Euclidean norm, angle with `atan2`, and projected velocity for range rate.\n\nIt then calculates measurement mean/covariance and injects explicit radar measurement noise.",
+      "source_line_start": 114,
+      "source_line_end": 124
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "State Update",
+      "normalized_title": "State Update",
+      "key": "state_update",
+      "path": [
+        "Unscented Kalman Filter",
+        "State Update"
+      ],
+      "content": "The source proceeds to `UpdateState()` after radar-measurement prediction.\n\nThis completes the conceptual UKF cycle from uncertain state, through nonlinear propagation, into sensor-space correction.",
+      "source_line_start": 124,
+      "source_line_end": 130
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Numerical Verification",
+      "normalized_title": "Numerical Verification",
+      "key": "numerical_verification",
+      "path": [
+        "Numerical Verification"
+      ],
+      "content": "Expected vectors and matrices are embedded beside major UKF stages.\n\nThey cover generated sigma points, augmented points, predicted points, predicted state/covariance, radar measurement mean, and radar measurement covariance.\n\nThese expected values serve as concrete numerical correctness targets for the learner-completed sections.\n\nThe repository also commits CMake build artifacts, showing that the native exercises were configured and compiled.",
+      "source_line_start": 130,
+      "source_line_end": 140
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### Probabilistic State Estimation\n\nThe repository progresses from scalar fusion to nonlinear multi-dimensional state estimation.\n\n### Linear Algebra\n\nIt uses covariance matrices, matrix multiplication, Cholesky decomposition, weighted outer products, and inversion.\n\n### Nonlinear Motion Modeling\n\nSigma points are propagated through a vehicle-style nonlinear dynamic model.\n\n### Sensor Modeling\n\nPredicted state is transformed into radar range, bearing, and range-rate observations.\n\n### Numerical Detail\n\nAngle normalization prevents invalid covariance behavior around angular wrap-around.\n\n### Native Build Workflow\n\nCMake and Eigen establish a conventional C++ numerical-development environment.",
+      "source_line_start": 140,
+      "source_line_end": 166
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Probabilistic State Estimation",
+      "normalized_title": "Probabilistic State Estimation",
+      "key": "probabilistic_state_estimation",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Probabilistic State Estimation"
+      ],
+      "content": "The repository progresses from scalar fusion to nonlinear multi-dimensional state estimation.",
+      "source_line_start": 142,
+      "source_line_end": 146
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Linear Algebra",
+      "normalized_title": "Linear Algebra",
+      "key": "linear_algebra",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Linear Algebra"
+      ],
+      "content": "It uses covariance matrices, matrix multiplication, Cholesky decomposition, weighted outer products, and inversion.",
+      "source_line_start": 146,
+      "source_line_end": 150
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Nonlinear Motion Modeling",
+      "normalized_title": "Nonlinear Motion Modeling",
+      "key": "nonlinear_motion_modeling",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Nonlinear Motion Modeling"
+      ],
+      "content": "Sigma points are propagated through a vehicle-style nonlinear dynamic model.",
+      "source_line_start": 150,
+      "source_line_end": 154
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Sensor Modeling",
+      "normalized_title": "Sensor Modeling",
+      "key": "sensor_modeling",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Sensor Modeling"
+      ],
+      "content": "Predicted state is transformed into radar range, bearing, and range-rate observations.",
+      "source_line_start": 154,
+      "source_line_end": 158
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Numerical Detail",
+      "normalized_title": "Numerical Detail",
+      "key": "numerical_detail",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Numerical Detail"
+      ],
+      "content": "Angle normalization prevents invalid covariance behavior around angular wrap-around.",
+      "source_line_start": 158,
+      "source_line_end": 162
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Native Build Workflow",
+      "normalized_title": "Native Build Workflow",
+      "key": "native_build_workflow",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Native Build Workflow"
+      ],
+      "content": "CMake and Eigen establish a conventional C++ numerical-development environment.",
+      "source_line_start": 162,
+      "source_line_end": 166
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Authorship Boundary",
+      "normalized_title": "Authorship Boundary",
+      "key": "authorship_boundary",
+      "path": [
+        "Authorship Boundary"
+      ],
+      "content": "The UKF source explicitly separates student-completed regions from fixed exercise structure.\n\nThe corpus therefore attributes the filled student logic while treating fixed example data, function skeletons, expected answers, and framework structure as instructional scaffolding.\n\nThat prevents completed coursework from being misrepresented as a fully original UKF library.",
+      "source_line_start": 166,
+      "source_line_end": 174
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The major capability is reasoning about uncertain hidden state rather than only direct sensor measurements.\n\nThe repository develops covariance reasoning, prediction/correction cycles, nonlinear motion, sensor-space transforms, and validation against expected numerical outputs.",
+      "source_line_start": 174,
+      "source_line_end": 180
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "This is the first processed repository dedicated to Kalman filtering.\n\nIt builds naturally on the earlier radar, lidar, camera, and sensor repositories.\n\nThe portfolio trajectory moves from generating and processing measurements toward estimating latent system state under uncertainty.",
+      "source_line_start": 180,
+      "source_line_end": 188
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Kalman-Filters` is an executable estimation curriculum.\n\nIt begins with scalar Gaussian fusion, moves into matrix Kalman filtering and EKF preparation, then implements the major UKF stages in C++/Eigen.\n\nThe student work constructs and augments sigma points, predicts them through nonlinear vehicle motion, reconstructs weighted state/covariance, maps state into radar measurements, and advances into update logic.\n\nBecause scaffolding and expected outputs are explicit, the repository provides strong evidence of learned estimation skills without overstating ownership of the instructional framework.\n\n# Project Tags",
+      "source_line_start": 188,
+      "source_line_end": 200
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `state-estimation-coursework`\n- `educational-project`\n- `course-assignment-repository`",
+      "source_line_start": 200,
+      "source_line_end": 205
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `cpp`\n- `python`",
+      "source_line_start": 205,
+      "source_line_end": 209
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Numerical Computing",
+      "normalized_title": "Numerical Computing",
+      "key": "numerical_computing",
+      "path": [
+        "Numerical Computing"
+      ],
+      "content": "- `kalman-filter`\n- `extended-kalman-filter`\n- `unscented-kalman-filter`\n- `sigma-points`\n- `augmented-sigma-points`\n- `covariance-propagation`\n- `cholesky-decomposition`\n- `matrix-inversion`\n- `jacobians`\n- `rmse`\n- `angle-normalization`\n- `nonlinear-state-estimation`\n- `eigen`",
+      "source_line_start": 209,
+      "source_line_end": 224
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Sensors and Autonomous Systems",
+      "normalized_title": "Sensors and Autonomous Systems",
+      "key": "sensors_and_autonomous_systems",
+      "path": [
+        "Sensors and Autonomous Systems"
+      ],
+      "content": "- `lidar`\n- `radar`\n- `radar-measurement-model`\n- `sensor-fusion`\n- `vehicle-motion-model`",
+      "source_line_start": 224,
+      "source_line_end": 231
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Build and Verification",
+      "normalized_title": "Build and Verification",
+      "key": "build_and_verification",
+      "path": [
+        "Build and Verification"
+      ],
+      "content": "- `cmake`\n- `build-artifact-evidence`\n- `expected-output-verification`\n- `executed-notebook-output`",
+      "source_line_start": 231,
+      "source_line_end": 237
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `course-supplied-infrastructure`\n- `instructional-scaffold`\n- `student-completed-exercises`",
+      "source_line_start": 237,
+      "source_line_end": 242
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-kalman-filter`\n- `earliest-observed-extended-kalman-filter`\n- `earliest-observed-unscented-kalman-filter`",
+      "source_line_start": 242,
+      "source_line_end": 246
+    }
+  ],
+  "raw_analysis": "# Repository 038 — Kalman-Filters\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Kalman-Filters`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-17\n- **Primary implementation languages:** C++, Python\n- **Build system:** CMake\n- **Numerical library:** Eigen\n- **Learning scope:** Kalman filter, EKF, UKF\n- **Authorship context:** student-completed regions inside instructional scaffolding\n\n## What This Project Is\n\n`Kalman-Filters` is a structured state-estimation learning repository.\n\nIt contains a Python/Jupyter Kalman-filter preface, Extended Kalman Filter exercises, Jacobian work, lidar exercises, RMSE exercises, and a staged Unscented Kalman Filter implementation in C++/Eigen.\n\nThe UKF code explicitly surrounds learner work with `Student part begin` and `Student part end`, while expected numeric results are embedded beside the exercises.\n\nThat provides unusually strong provenance boundaries between student-completed logic and supplied scaffolding.\n\n## Learning Progression\n\nThe repository progresses through:\n\n1. scalar Gaussian update and prediction,\n2. matrix Kalman filtering,\n3. estimation-error metrics,\n4. nonlinear-model preparation,\n5. Jacobians,\n6. lidar-oriented EKF exercises,\n7. sigma-point generation,\n8. augmented sigma points,\n9. nonlinear sigma-point prediction,\n10. weighted mean/covariance reconstruction,\n11. radar measurement prediction,\n12. state update.\n\n## Kalman Preface Notebook\n\n`Kalman_Preface.ipynb` begins with one-dimensional Gaussian fusion.\n\n`update()` combines two means and variances.\n\n`predict()` adds motion mean and uncertainty.\n\nExecuted notebook output demonstrates the equations. Updating `(10, 8)` with `(13, 2)` yields `[12.4, 1.6]`; predicting `(10, 4)` with motion `(12, 4)` yields `[22.0, 8.0]`.\n\nThe notebook then iterates update/predict cycles over a sequence of measurements and motions.\n\n## Matrix Kalman Foundations\n\nThe notebook also includes a matrix abstraction with addition, subtraction, multiplication, transpose, identity, Cholesky decomposition, Cholesky-based inversion, and matrix inversion.\n\nA later exercise defines state `x`, covariance `P`, transition `F`, measurement `H`, measurement uncertainty `R`, control `u`, and identity `I`.\n\nThis moves the work from scalar intuition to explicit matrix state estimation.\n\nThe notebook itself includes an external credit for the Cholesky helper material, so that infrastructure is not treated as original learner-authored numerical-library design.\n\n## Extended Kalman Filter Scope\n\nThe EKF tree is organized into:\n\n- `Initial Quiz`,\n- `Jacobians`,\n- `Lidar Quiz`,\n- `RMSE`.\n\nThe structure demonstrates explicit study of nonlinear estimation subproblems rather than only a final opaque implementation.\n\nJacobians and sensor-specific exercises support the transition from linear filtering to nonlinear measurement reasoning.\n\n## Unscented Kalman Filter\n\nThe C++ UKF source uses Eigen `MatrixXd` and `VectorXd`.\n\n### Sigma-Point Generation\n\n`GenerateSigmaPoints()` uses a five-dimensional state and covariance matrix.\n\nThe student region computes the covariance Cholesky factor and constructs the central, positive, and negative sigma points using the UKF spreading term.\n\nAn expected sigma-point matrix is preserved for comparison.\n\n### Augmented Sigma Points\n\n`AugmentedSigmaPoints()` expands the state from five to seven dimensions.\n\nThe two additional components model longitudinal-acceleration noise and yaw-acceleration noise.\n\nThe student region builds the augmented state, process-noise covariance, block covariance matrix, Cholesky factor, and positive/negative augmented points.\n\n### Sigma-Point Prediction\n\n`SigmaPointPrediction()` propagates each augmented sigma point through a nonlinear planar vehicle-motion model over `delta_t = 0.1`.\n\nState components correspond to position, speed, yaw, and yaw rate.\n\nProcess-noise terms are added during propagation.\n\nThis is a nonlinear prediction step rather than linear `F*x` state transition.\n\n### Mean and Covariance Reconstruction\n\n`PredictMeanAndCovariance()` assigns UKF weights, computes the weighted predicted state, and accumulates covariance from sigma-point residuals.\n\nYaw residuals are normalized into the `[-π, π]` range before covariance accumulation.\n\nThat is concrete handling of periodic angular state.\n\n### Radar Measurement Prediction\n\n`PredictRadarMeasurement()` maps state-space sigma points into radar measurement space.\n\nThe resulting measurement dimensions are range, bearing, and radial velocity.\n\nThe source computes range with Euclidean norm, angle with `atan2`, and projected velocity for range rate.\n\nIt then calculates measurement mean/covariance and injects explicit radar measurement noise.\n\n### State Update\n\nThe source proceeds to `UpdateState()` after radar-measurement prediction.\n\nThis completes the conceptual UKF cycle from uncertain state, through nonlinear propagation, into sensor-space correction.\n\n## Numerical Verification\n\nExpected vectors and matrices are embedded beside major UKF stages.\n\nThey cover generated sigma points, augmented points, predicted points, predicted state/covariance, radar measurement mean, and radar measurement covariance.\n\nThese expected values serve as concrete numerical correctness targets for the learner-completed sections.\n\nThe repository also commits CMake build artifacts, showing that the native exercises were configured and compiled.\n\n## Engineering Skills Demonstrated\n\n### Probabilistic State Estimation\n\nThe repository progresses from scalar fusion to nonlinear multi-dimensional state estimation.\n\n### Linear Algebra\n\nIt uses covariance matrices, matrix multiplication, Cholesky decomposition, weighted outer products, and inversion.\n\n### Nonlinear Motion Modeling\n\nSigma points are propagated through a vehicle-style nonlinear dynamic model.\n\n### Sensor Modeling\n\nPredicted state is transformed into radar range, bearing, and range-rate observations.\n\n### Numerical Detail\n\nAngle normalization prevents invalid covariance behavior around angular wrap-around.\n\n### Native Build Workflow\n\nCMake and Eigen establish a conventional C++ numerical-development environment.\n\n## Authorship Boundary\n\nThe UKF source explicitly separates student-completed regions from fixed exercise structure.\n\nThe corpus therefore attributes the filled student logic while treating fixed example data, function skeletons, expected answers, and framework structure as instructional scaffolding.\n\nThat prevents completed coursework from being misrepresented as a fully original UKF library.\n\n## Capability Developed\n\nThe major capability is reasoning about uncertain hidden state rather than only direct sensor measurements.\n\nThe repository develops covariance reasoning, prediction/correction cycles, nonlinear motion, sensor-space transforms, and validation against expected numerical outputs.\n\n## Portfolio Evolution\n\nThis is the first processed repository dedicated to Kalman filtering.\n\nIt builds naturally on the earlier radar, lidar, camera, and sensor repositories.\n\nThe portfolio trajectory moves from generating and processing measurements toward estimating latent system state under uncertainty.\n\n## Overall Project Narrative\n\n`Kalman-Filters` is an executable estimation curriculum.\n\nIt begins with scalar Gaussian fusion, moves into matrix Kalman filtering and EKF preparation, then implements the major UKF stages in C++/Eigen.\n\nThe student work constructs and augments sigma points, predicts them through nonlinear vehicle motion, reconstructs weighted state/covariance, maps state into radar measurements, and advances into update logic.\n\nBecause scaffolding and expected outputs are explicit, the repository provides strong evidence of learned estimation skills without overstating ownership of the instructional framework.\n\n# Project Tags\n\n## Project Type\n- `state-estimation-coursework`\n- `educational-project`\n- `course-assignment-repository`\n\n## Languages\n- `cpp`\n- `python`\n\n## Numerical Computing\n- `kalman-filter`\n- `extended-kalman-filter`\n- `unscented-kalman-filter`\n- `sigma-points`\n- `augmented-sigma-points`\n- `covariance-propagation`\n- `cholesky-decomposition`\n- `matrix-inversion`\n- `jacobians`\n- `rmse`\n- `angle-normalization`\n- `nonlinear-state-estimation`\n- `eigen`\n\n## Sensors and Autonomous Systems\n- `lidar`\n- `radar`\n- `radar-measurement-model`\n- `sensor-fusion`\n- `vehicle-motion-model`\n\n## Build and Verification\n- `cmake`\n- `build-artifact-evidence`\n- `expected-output-verification`\n- `executed-notebook-output`\n\n## Collaboration and Authorship\n- `course-supplied-infrastructure`\n- `instructional-scaffold`\n- `student-completed-exercises`\n\n## Portfolio Significance\n- `earliest-observed-kalman-filter`\n- `earliest-observed-extended-kalman-filter`\n- `earliest-observed-unscented-kalman-filter`\n"
+}

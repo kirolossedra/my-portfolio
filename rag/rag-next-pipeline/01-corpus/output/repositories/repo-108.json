@@ -1,0 +1,1104 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 108,
+  "repository_total": 134,
+  "repository_name": "Aquaseninsg-Auto-Test-Kit",
+  "header_title": "Aquaseninsg-Auto-Test-Kit",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-108-Aquaseninsg-Auto-Test-Kit/README.md",
+    "line_start": 1,
+    "line_end": 534,
+    "sha256": "78e32346420eb3bb1da35d8611fd9bc8a8920bf8f1d3d9dbdc6a6c3c9e4b6050"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "iot-test-toolkit",
+    "gateway-provisioning-tool",
+    "hardware-simulation",
+    "individual-project",
+    "python",
+    "c-plus-plus",
+    "html",
+    "css",
+    "javascript",
+    "tkinter",
+    "customtkinter",
+    "desktop-operations-tool",
+    "azure-sql",
+    "pyodbc",
+    "sql-server",
+    "relational-schema",
+    "database-check-constraints",
+    "parameterized-sql",
+    "firebase-realtime-database",
+    "firebase-rest-api",
+    "azure-iot-hub",
+    "mqtt",
+    "paho-mqtt",
+    "mqtt-qos-1",
+    "tls",
+    "json-telemetry",
+    "hardware-stub",
+    "esp32",
+    "gpio-control",
+    "wifi",
+    "periodic-device-cycle",
+    "https-post",
+    "input-validation",
+    "connection-validation",
+    "cloud-path-simulation",
+    "hardware-behavior-simulation",
+    "provisioning-audit-log",
+    "operational-dashboard",
+    "responsive-web-ui",
+    "alert-monitoring",
+    "earliest-observed-azure-iot-mqtt-hardware-stub",
+    "earliest-observed-azure-sql-gateway-provisioning-tool",
+    "earliest-observed-integrated-iot-provisioning-simulation-dashboard-toolkit"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 108 / 134\n- Name: `Aquaseninsg-Auto-Test-Kit`\n- Repository start date: 2026-05-25\n- Last meaningful update date: 2026-06-15\n- Latest meaningful commit: `e7208d6541e94a050cc5cf101d29fac042c5487c`\n- Primary type: IoT gateway provisioning and hardware-validation toolkit\n- Technical field: IoT systems, desktop tooling, cloud databases, MQTT, embedded firmware, test simulation\n- Application domain: AquaSensing/AquaHub gateway and sensor validation workflows\n- Collaboration type: `individual-project`\n- Primary languages: Python, C/C++, HTML, CSS, JavaScript"
+    },
+    "architecture": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\nThe repository contains two related cloud/test paths.\n\n### Gateway Provisioning Path\n\n```text\nCustomTkinter desktop UI\n          ↓\nPython DatabaseManager\n          ↓\nODBC Driver 18\n          ↓\nAzure SQL\n          ↓\ndbo.GatewayAdditionLogs\n```\n\n### Hardware Simulation Path\n\n```text\nTester GUI\n   ↓\nPaho MQTT publisher\n   ↓ TLS / QoS 1\nAzure IoT Hub\n```\n\nand:\n\n```text\nESP32 GPIO cycle\n      ↓\nFirebase REST POST\n      ↓\nRealtime alert data\n      ↓\nBrowser dashboard\n```\n\nThe repo therefore spans provisioning records, cloud telemetry simulation, embedded event generation, and browser observation."
+    },
+    "testing": {
+      "section_ids": [
+        "s037",
+        "s039",
+        "s070"
+      ],
+      "titles": [
+        "Testing and Verification",
+        "Connection Outcome Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\n### Hardware Stub Validation\n\nThe MQTT utility validates user inputs before attempting cloud communication.\n\n### Connection Outcome Verification\n\nMQTT callbacks and return codes are used to determine connection and publish success.\n\n### Azure SQL Connection Validation\n\nThe gateway manager contains an explicit database-login/connection path before entering the record-management workflow.\n\n### Database Constraints\n\nSQL `CHECK` constraints provide persistence-level validation for several enumerated gateway fields.\n\n### Observable Embedded Test Cycle\n\nThe ESP32 reports connection status, power transitions, HTTP status codes, and Firebase responses over serial output.\n\n## Connection Outcome Verification\nMQTT callbacks and return codes are used to determine connection and publish success.\n\n## Testing and Verification\n- `input-validation`\n- `connection-validation`\n- `cloud-path-simulation`\n- `hardware-behavior-simulation`\n- `provisioning-audit-log`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository history is owner-driven and combines several utilities built around a common gateway/sensor testing context. The corpus treats the Azure SQL manager, MQTT publisher, ESP32 simulator, and alert-dashboard implementation as personally attributable repository work.\n\nExternal services such as Azure SQL, Azure IoT Hub, and Firebase are infrastructure used by the tooling. The engineering claim is the client-side integration, validation workflow, data modeling, and test-support logic implemented in this repository."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 108 / 134\n- Name: `Aquaseninsg-Auto-Test-Kit`\n- Repository start date: 2026-05-25\n- Last meaningful update date: 2026-06-15\n- Latest meaningful commit: `e7208d6541e94a050cc5cf101d29fac042c5487c`\n- Primary type: IoT gateway provisioning and hardware-validation toolkit\n- Technical field: IoT systems, desktop tooling, cloud databases, MQTT, embedded firmware, test simulation\n- Application domain: AquaSensing/AquaHub gateway and sensor validation workflows\n- Collaboration type: `individual-project`\n- Primary languages: Python, C/C++, HTML, CSS, JavaScript",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository history is owner-driven and combines several utilities built around a common gateway/sensor testing context. The corpus treats the Azure SQL manager, MQTT publisher, ESP32 simulator, and alert-dashboard implementation as personally attributable repository work.\n\nExternal services such as Azure SQL, Azure IoT Hub, and Firebase are infrastructure used by the tooling. The engineering claim is the client-side integration, validation workflow, data modeling, and test-support logic implemented in this repository.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `Gateway-Registerar.py`;\n- `hardware-stub.py`;\n- `main.c`;\n- `index.html`;\n- repository history through the June 15 debugging update.\n\nThe files represent complementary parts of one operational test-kit environment rather than unrelated toy snippets.",
+      "source_line_start": 22,
+      "source_line_end": 34
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Aquaseninsg-Auto-Test-Kit` is a collection of engineering utilities for provisioning, simulating, and observing AquaSensing gateway/sensor behavior.\n\nThe repository addresses several stages of a hardware validation workflow:\n\n- registering and auditing gateway-build metadata in Azure SQL;\n- simulating hardware telemetry into Azure IoT Hub over MQTT;\n- simulating periodic sensor power events from an ESP32 into Firebase;\n- observing resulting alerts through a browser dashboard.\n\nThis creates a practical test ecosystem around devices that have firmware, cellular/SIM attributes, BLE build modes, cloud telemetry, and quality-control state.",
+      "source_line_start": 34,
+      "source_line_end": 47
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Gateway Registration Manager\n\n`Gateway-Registerar.py` implements a CustomTkinter desktop application backed by Azure SQL.\n\nIts declared workflow includes:\n\n- password-based database login;\n- Azure SQL connection testing;\n- automatic table creation;\n- gateway-record insertion;\n- record updates;\n- searching and viewing records;\n- loading an existing record back into the form;\n- deleting records.\n\nThe application therefore acts as an operational CRUD tool around gateway provisioning history.\n\n### Gateway Addition Data Model\n\nThe Azure SQL table stores concrete gateway-build and validation fields including:\n\n- gateway ID;\n- programmer/operator name;\n- ICCID;\n- BLE build mode;\n- LTE firmware status;\n- quality-check result;\n- LTE modem firmware version;\n- SIM provider;\n- data-limit enforcement;\n- in-force date;\n- deployment/testing purpose;\n- internal/external usage scope;\n- intended user;\n- creation/update timestamps.\n\nSeveral columns contain SQL `CHECK` constraints so allowed workflow states are enforced by the database schema.\n\n### Azure SQL Bootstrap\n\nThe desktop tool checks `INFORMATION_SCHEMA.TABLES` and creates `dbo.GatewayAdditionLogs` when it does not already exist.\n\nThis means schema bootstrapping is embedded in the application rather than requiring a separate manual database initialization step.\n\n### Search and Maintenance\n\nThe database manager supports parameterized inserts, updates, deletes, and searches.\n\nSearch spans multiple operational fields and limits the result set to recent records.\n\nParameterized queries are used for user-provided values rather than string-concatenating form input directly into SQL values.\n\n### Azure IoT Hub Hardware Stub\n\n`hardware-stub.py` implements a desktop MQTT publisher targeting an Azure IoT Hub endpoint.\n\nThe GUI allows a tester to supply:\n\n- MQTT username;\n- password / SAS token;\n- beacon MAC address.\n\nThe remaining connection settings are fixed for the test environment.\n\nThe generated JSON payload contains:\n\n- RSSI;\n- MAC address;\n- beacon data;\n- gateway ID.\n\n### MQTT Transport\n\nThe hardware stub uses Paho MQTT with:\n\n- MQTT v3.1.1;\n- TLS;\n- certificate verification;\n- port 8883;\n- QoS 1;\n- explicit keepalive;\n- Azure IoT device telemetry topic structure.\n\nConnection and publish operations are performed in a background thread so the Tkinter UI is not blocked during network operations.\n\n### Test Input Validation\n\nBefore publishing, the hardware-stub GUI validates:\n\n- username presence;\n- password/token presence;\n- MAC-address structure.\n\nThe MAC is normalized to uppercase and the payload preview is refreshed from the validated value.\n\n### ESP32 Sensor-Power Simulator\n\n`main.c` implements an ESP32-based test loop.\n\nThe firmware:\n\n- connects to Wi-Fi;\n- configures GPIO 18 as a sensor-power output;\n- turns the GPIO on;\n- posts an alert to Firebase when power is enabled;\n- keeps the output on for a fixed interval;\n- turns it off;\n- waits until the next fixed cycle.\n\nThe implemented timing is a 30-second powered period within a three-minute cycle.\n\n### Firebase Alert Posting\n\nThe ESP32 firmware uses `HTTPClient` and `WiFiClientSecure` to send JSON to a Firebase Realtime Database REST endpoint.\n\nThe alert payload includes:\n\n- kit owner;\n- sensor identifier;\n- Firebase server timestamp.\n\nThe firmware also reconnects to Wi-Fi if connectivity is lost before posting.\n\n### Browser Alert Dashboard\n\n`index.html` implements a responsive dashboard for displaying kit alerts.\n\nThe interface includes:\n\n- summary statistics;\n- searchable alert records;\n- timestamp presentation;\n- owner and sensor presentation;\n- live/new-alert visual treatment;\n- endpoint information;\n- login UI;\n- responsive table and card behavior.\n\nThe dashboard is designed as the observation surface for events generated by the simulated hardware path.",
+      "source_line_start": 47,
+      "source_line_end": 189
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Gateway Registration Manager",
+      "normalized_title": "Gateway Registration Manager",
+      "key": "gateway_registration_manager",
+      "path": [
+        "Project Scope",
+        "Gateway Registration Manager"
+      ],
+      "content": "`Gateway-Registerar.py` implements a CustomTkinter desktop application backed by Azure SQL.\n\nIts declared workflow includes:\n\n- password-based database login;\n- Azure SQL connection testing;\n- automatic table creation;\n- gateway-record insertion;\n- record updates;\n- searching and viewing records;\n- loading an existing record back into the form;\n- deleting records.\n\nThe application therefore acts as an operational CRUD tool around gateway provisioning history.",
+      "source_line_start": 49,
+      "source_line_end": 66
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Gateway Addition Data Model",
+      "normalized_title": "Gateway Addition Data Model",
+      "key": "gateway_addition_data_model",
+      "path": [
+        "Project Scope",
+        "Gateway Addition Data Model"
+      ],
+      "content": "The Azure SQL table stores concrete gateway-build and validation fields including:\n\n- gateway ID;\n- programmer/operator name;\n- ICCID;\n- BLE build mode;\n- LTE firmware status;\n- quality-check result;\n- LTE modem firmware version;\n- SIM provider;\n- data-limit enforcement;\n- in-force date;\n- deployment/testing purpose;\n- internal/external usage scope;\n- intended user;\n- creation/update timestamps.\n\nSeveral columns contain SQL `CHECK` constraints so allowed workflow states are enforced by the database schema.",
+      "source_line_start": 66,
+      "source_line_end": 87
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Azure SQL Bootstrap",
+      "normalized_title": "Azure SQL Bootstrap",
+      "key": "azure_sql_bootstrap",
+      "path": [
+        "Project Scope",
+        "Azure SQL Bootstrap"
+      ],
+      "content": "The desktop tool checks `INFORMATION_SCHEMA.TABLES` and creates `dbo.GatewayAdditionLogs` when it does not already exist.\n\nThis means schema bootstrapping is embedded in the application rather than requiring a separate manual database initialization step.",
+      "source_line_start": 87,
+      "source_line_end": 93
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Search and Maintenance",
+      "normalized_title": "Search and Maintenance",
+      "key": "search_and_maintenance",
+      "path": [
+        "Project Scope",
+        "Search and Maintenance"
+      ],
+      "content": "The database manager supports parameterized inserts, updates, deletes, and searches.\n\nSearch spans multiple operational fields and limits the result set to recent records.\n\nParameterized queries are used for user-provided values rather than string-concatenating form input directly into SQL values.",
+      "source_line_start": 93,
+      "source_line_end": 101
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Azure IoT Hub Hardware Stub",
+      "normalized_title": "Azure IoT Hub Hardware Stub",
+      "key": "azure_iot_hub_hardware_stub",
+      "path": [
+        "Project Scope",
+        "Azure IoT Hub Hardware Stub"
+      ],
+      "content": "`hardware-stub.py` implements a desktop MQTT publisher targeting an Azure IoT Hub endpoint.\n\nThe GUI allows a tester to supply:\n\n- MQTT username;\n- password / SAS token;\n- beacon MAC address.\n\nThe remaining connection settings are fixed for the test environment.\n\nThe generated JSON payload contains:\n\n- RSSI;\n- MAC address;\n- beacon data;\n- gateway ID.",
+      "source_line_start": 101,
+      "source_line_end": 120
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "MQTT Transport",
+      "normalized_title": "MQTT Transport",
+      "key": "mqtt_transport",
+      "path": [
+        "Project Scope",
+        "MQTT Transport"
+      ],
+      "content": "The hardware stub uses Paho MQTT with:\n\n- MQTT v3.1.1;\n- TLS;\n- certificate verification;\n- port 8883;\n- QoS 1;\n- explicit keepalive;\n- Azure IoT device telemetry topic structure.\n\nConnection and publish operations are performed in a background thread so the Tkinter UI is not blocked during network operations.",
+      "source_line_start": 120,
+      "source_line_end": 134
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Test Input Validation",
+      "normalized_title": "Test Input Validation",
+      "key": "test_input_validation",
+      "path": [
+        "Project Scope",
+        "Test Input Validation"
+      ],
+      "content": "Before publishing, the hardware-stub GUI validates:\n\n- username presence;\n- password/token presence;\n- MAC-address structure.\n\nThe MAC is normalized to uppercase and the payload preview is refreshed from the validated value.",
+      "source_line_start": 134,
+      "source_line_end": 144
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "ESP32 Sensor-Power Simulator",
+      "normalized_title": "ESP32 Sensor-Power Simulator",
+      "key": "esp32_sensor_power_simulator",
+      "path": [
+        "Project Scope",
+        "ESP32 Sensor-Power Simulator"
+      ],
+      "content": "`main.c` implements an ESP32-based test loop.\n\nThe firmware:\n\n- connects to Wi-Fi;\n- configures GPIO 18 as a sensor-power output;\n- turns the GPIO on;\n- posts an alert to Firebase when power is enabled;\n- keeps the output on for a fixed interval;\n- turns it off;\n- waits until the next fixed cycle.\n\nThe implemented timing is a 30-second powered period within a three-minute cycle.",
+      "source_line_start": 144,
+      "source_line_end": 160
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Firebase Alert Posting",
+      "normalized_title": "Firebase Alert Posting",
+      "key": "firebase_alert_posting",
+      "path": [
+        "Project Scope",
+        "Firebase Alert Posting"
+      ],
+      "content": "The ESP32 firmware uses `HTTPClient` and `WiFiClientSecure` to send JSON to a Firebase Realtime Database REST endpoint.\n\nThe alert payload includes:\n\n- kit owner;\n- sensor identifier;\n- Firebase server timestamp.\n\nThe firmware also reconnects to Wi-Fi if connectivity is lost before posting.",
+      "source_line_start": 160,
+      "source_line_end": 172
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Browser Alert Dashboard",
+      "normalized_title": "Browser Alert Dashboard",
+      "key": "browser_alert_dashboard",
+      "path": [
+        "Project Scope",
+        "Browser Alert Dashboard"
+      ],
+      "content": "`index.html` implements a responsive dashboard for displaying kit alerts.\n\nThe interface includes:\n\n- summary statistics;\n- searchable alert records;\n- timestamp presentation;\n- owner and sensor presentation;\n- live/new-alert visual treatment;\n- endpoint information;\n- login UI;\n- responsive table and card behavior.\n\nThe dashboard is designed as the observation surface for events generated by the simulated hardware path.",
+      "source_line_start": 172,
+      "source_line_end": 189
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "The repository contains two related cloud/test paths.\n\n### Gateway Provisioning Path\n\n```text\nCustomTkinter desktop UI\n          ↓\nPython DatabaseManager\n          ↓\nODBC Driver 18\n          ↓\nAzure SQL\n          ↓\ndbo.GatewayAdditionLogs\n```\n\n### Hardware Simulation Path\n\n```text\nTester GUI\n   ↓\nPaho MQTT publisher\n   ↓ TLS / QoS 1\nAzure IoT Hub\n```\n\nand:\n\n```text\nESP32 GPIO cycle\n      ↓\nFirebase REST POST\n      ↓\nRealtime alert data\n      ↓\nBrowser dashboard\n```\n\nThe repo therefore spans provisioning records, cloud telemetry simulation, embedded event generation, and browser observation.",
+      "source_line_start": 189,
+      "source_line_end": 231
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Gateway Provisioning Path",
+      "normalized_title": "Gateway Provisioning Path",
+      "key": "gateway_provisioning_path",
+      "path": [
+        "Architecture and System Shape",
+        "Gateway Provisioning Path"
+      ],
+      "content": "```text\nCustomTkinter desktop UI\n          ↓\nPython DatabaseManager\n          ↓\nODBC Driver 18\n          ↓\nAzure SQL\n          ↓\ndbo.GatewayAdditionLogs\n```",
+      "source_line_start": 193,
+      "source_line_end": 207
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Hardware Simulation Path",
+      "normalized_title": "Hardware Simulation Path",
+      "key": "hardware_simulation_path",
+      "path": [
+        "Architecture and System Shape",
+        "Hardware Simulation Path"
+      ],
+      "content": "```text\nTester GUI\n   ↓\nPaho MQTT publisher\n   ↓ TLS / QoS 1\nAzure IoT Hub\n```\n\nand:\n\n```text\nESP32 GPIO cycle\n      ↓\nFirebase REST POST\n      ↓\nRealtime alert data\n      ↓\nBrowser dashboard\n```\n\nThe repo therefore spans provisioning records, cloud telemetry simulation, embedded event generation, and browser observation.",
+      "source_line_start": 207,
+      "source_line_end": 231
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython implements the two desktop utilities:\n\n- Azure SQL gateway management;\n- MQTT hardware simulation.\n\n### CustomTkinter / Tkinter\n\nDesktop interfaces provide login, CRUD forms, search, telemetry input, payload preview, status reporting, and logs.\n\n### Azure SQL and PyODBC\n\n`pyodbc` connects to Azure SQL using ODBC Driver 18 with encrypted transport and certificate validation.\n\nSQL handles schema creation, constrained operational fields, and CRUD persistence.\n\n### Paho MQTT\n\nPaho MQTT simulates a device telemetry publisher against Azure IoT Hub.\n\n### TLS\n\nThe MQTT client uses TLS with certificate verification enabled and explicitly rejects insecure TLS mode.\n\n### ESP32 / Arduino Libraries\n\nThe embedded simulator uses:\n\n- `WiFi.h`;\n- `HTTPClient.h`;\n- `WiFiClientSecure.h`.\n\nThese support connectivity, HTTPS requests, and GPIO-driven test behavior.\n\n### Firebase Realtime Database\n\nFirebase REST endpoints receive simulated alert events and provide a data source for the browser-side monitoring workflow.\n\n### HTML / CSS / JavaScript\n\nThe dashboard provides a responsive web interface around alert records and test-state presentation.",
+      "source_line_start": 231,
+      "source_line_end": 276
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python implements the two desktop utilities:\n\n- Azure SQL gateway management;\n- MQTT hardware simulation.",
+      "source_line_start": 233,
+      "source_line_end": 240
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "CustomTkinter / Tkinter",
+      "normalized_title": "CustomTkinter / Tkinter",
+      "key": "customtkinter_tkinter",
+      "path": [
+        "Technical Stack",
+        "CustomTkinter / Tkinter"
+      ],
+      "content": "Desktop interfaces provide login, CRUD forms, search, telemetry input, payload preview, status reporting, and logs.",
+      "source_line_start": 240,
+      "source_line_end": 244
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Azure SQL and PyODBC",
+      "normalized_title": "Azure SQL and PyODBC",
+      "key": "azure_sql_and_pyodbc",
+      "path": [
+        "Technical Stack",
+        "Azure SQL and PyODBC"
+      ],
+      "content": "`pyodbc` connects to Azure SQL using ODBC Driver 18 with encrypted transport and certificate validation.\n\nSQL handles schema creation, constrained operational fields, and CRUD persistence.",
+      "source_line_start": 244,
+      "source_line_end": 250
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Paho MQTT",
+      "normalized_title": "Paho MQTT",
+      "key": "paho_mqtt",
+      "path": [
+        "Technical Stack",
+        "Paho MQTT"
+      ],
+      "content": "Paho MQTT simulates a device telemetry publisher against Azure IoT Hub.",
+      "source_line_start": 250,
+      "source_line_end": 254
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "TLS",
+      "normalized_title": "TLS",
+      "key": "tls",
+      "path": [
+        "Technical Stack",
+        "TLS"
+      ],
+      "content": "The MQTT client uses TLS with certificate verification enabled and explicitly rejects insecure TLS mode.",
+      "source_line_start": 254,
+      "source_line_end": 258
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "ESP32 / Arduino Libraries",
+      "normalized_title": "ESP32 / Arduino Libraries",
+      "key": "esp32_arduino_libraries",
+      "path": [
+        "Technical Stack",
+        "ESP32 / Arduino Libraries"
+      ],
+      "content": "The embedded simulator uses:\n\n- `WiFi.h`;\n- `HTTPClient.h`;\n- `WiFiClientSecure.h`.\n\nThese support connectivity, HTTPS requests, and GPIO-driven test behavior.",
+      "source_line_start": 258,
+      "source_line_end": 268
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Firebase Realtime Database",
+      "normalized_title": "Firebase Realtime Database",
+      "key": "firebase_realtime_database",
+      "path": [
+        "Technical Stack",
+        "Firebase Realtime Database"
+      ],
+      "content": "Firebase REST endpoints receive simulated alert events and provide a data source for the browser-side monitoring workflow.",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "HTML / CSS / JavaScript",
+      "normalized_title": "HTML / CSS / JavaScript",
+      "key": "html_css_javascript",
+      "path": [
+        "Technical Stack",
+        "HTML / CSS / JavaScript"
+      ],
+      "content": "The dashboard provides a responsive web interface around alert records and test-state presentation.",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Operational Gateway Data Modeling\n\nThe Azure SQL schema captures both identity and lifecycle/quality metadata for gateways.\n\nIt is not a generic key/value table: typed columns and `CHECK` constraints encode allowed build and deployment states.\n\n### Self-Bootstrapping Database Tool\n\nThe application can establish its own required table if it is absent.\n\nThat reduces setup friction for technicians using the registration utility.\n\n### Parameterized CRUD Layer\n\nDatabase operations are centralized in `DatabaseManager` and use parameters for user data.\n\nThe GUI is therefore separated from direct cursor-management details.\n\n### Simulated IoT Telemetry\n\nThe MQTT publisher creates a controllable stand-in for hardware telemetry.\n\nThis allows a tester to vary beacon identity and credentials while holding the rest of the test payload stable.\n\n### Background Network Work\n\nMQTT connection/publish operations run on a daemon thread and use Tkinter's event loop to apply UI updates safely afterward.\n\nThis avoids freezing the desktop interface during connection waits.\n\n### Publish Completion Signaling\n\nThreading events are used to wait for MQTT connection and publish callbacks with bounded timeouts.\n\nThe application distinguishes broker rejection, timeout, publish-call failure, and successful publish completion.\n\n### Embedded Timing Simulation\n\nThe ESP32 code models a hardware behavior over time rather than issuing a one-shot request.\n\nThe cycle tracks elapsed execution time and waits only the remaining duration needed to preserve the intended period.\n\n### End-to-End Alert Visibility\n\nThe repository pairs event generation with a browser monitoring surface, making simulated hardware activity inspectable outside the device serial console.",
+      "source_line_start": 276,
+      "source_line_end": 324
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Operational Gateway Data Modeling",
+      "normalized_title": "Operational Gateway Data Modeling",
+      "key": "operational_gateway_data_modeling",
+      "path": [
+        "Major Engineering Work",
+        "Operational Gateway Data Modeling"
+      ],
+      "content": "The Azure SQL schema captures both identity and lifecycle/quality metadata for gateways.\n\nIt is not a generic key/value table: typed columns and `CHECK` constraints encode allowed build and deployment states.",
+      "source_line_start": 278,
+      "source_line_end": 284
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Self-Bootstrapping Database Tool",
+      "normalized_title": "Self-Bootstrapping Database Tool",
+      "key": "self_bootstrapping_database_tool",
+      "path": [
+        "Major Engineering Work",
+        "Self-Bootstrapping Database Tool"
+      ],
+      "content": "The application can establish its own required table if it is absent.\n\nThat reduces setup friction for technicians using the registration utility.",
+      "source_line_start": 284,
+      "source_line_end": 290
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Parameterized CRUD Layer",
+      "normalized_title": "Parameterized CRUD Layer",
+      "key": "parameterized_crud_layer",
+      "path": [
+        "Major Engineering Work",
+        "Parameterized CRUD Layer"
+      ],
+      "content": "Database operations are centralized in `DatabaseManager` and use parameters for user data.\n\nThe GUI is therefore separated from direct cursor-management details.",
+      "source_line_start": 290,
+      "source_line_end": 296
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Simulated IoT Telemetry",
+      "normalized_title": "Simulated IoT Telemetry",
+      "key": "simulated_iot_telemetry",
+      "path": [
+        "Major Engineering Work",
+        "Simulated IoT Telemetry"
+      ],
+      "content": "The MQTT publisher creates a controllable stand-in for hardware telemetry.\n\nThis allows a tester to vary beacon identity and credentials while holding the rest of the test payload stable.",
+      "source_line_start": 296,
+      "source_line_end": 302
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Background Network Work",
+      "normalized_title": "Background Network Work",
+      "key": "background_network_work",
+      "path": [
+        "Major Engineering Work",
+        "Background Network Work"
+      ],
+      "content": "MQTT connection/publish operations run on a daemon thread and use Tkinter's event loop to apply UI updates safely afterward.\n\nThis avoids freezing the desktop interface during connection waits.",
+      "source_line_start": 302,
+      "source_line_end": 308
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Publish Completion Signaling",
+      "normalized_title": "Publish Completion Signaling",
+      "key": "publish_completion_signaling",
+      "path": [
+        "Major Engineering Work",
+        "Publish Completion Signaling"
+      ],
+      "content": "Threading events are used to wait for MQTT connection and publish callbacks with bounded timeouts.\n\nThe application distinguishes broker rejection, timeout, publish-call failure, and successful publish completion.",
+      "source_line_start": 308,
+      "source_line_end": 314
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Embedded Timing Simulation",
+      "normalized_title": "Embedded Timing Simulation",
+      "key": "embedded_timing_simulation",
+      "path": [
+        "Major Engineering Work",
+        "Embedded Timing Simulation"
+      ],
+      "content": "The ESP32 code models a hardware behavior over time rather than issuing a one-shot request.\n\nThe cycle tracks elapsed execution time and waits only the remaining duration needed to preserve the intended period.",
+      "source_line_start": 314,
+      "source_line_end": 320
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "End-to-End Alert Visibility",
+      "normalized_title": "End-to-End Alert Visibility",
+      "key": "end_to_end_alert_visibility",
+      "path": [
+        "Major Engineering Work",
+        "End-to-End Alert Visibility"
+      ],
+      "content": "The repository pairs event generation with a browser monitoring surface, making simulated hardware activity inspectable outside the device serial console.",
+      "source_line_start": 320,
+      "source_line_end": 324
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "### Hardware Stub Validation\n\nThe MQTT utility validates user inputs before attempting cloud communication.\n\n### Connection Outcome Verification\n\nMQTT callbacks and return codes are used to determine connection and publish success.\n\n### Azure SQL Connection Validation\n\nThe gateway manager contains an explicit database-login/connection path before entering the record-management workflow.\n\n### Database Constraints\n\nSQL `CHECK` constraints provide persistence-level validation for several enumerated gateway fields.\n\n### Observable Embedded Test Cycle\n\nThe ESP32 reports connection status, power transitions, HTTP status codes, and Firebase responses over serial output.",
+      "source_line_start": 324,
+      "source_line_end": 346
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Hardware Stub Validation",
+      "normalized_title": "Hardware Stub Validation",
+      "key": "hardware_stub_validation",
+      "path": [
+        "Testing and Verification",
+        "Hardware Stub Validation"
+      ],
+      "content": "The MQTT utility validates user inputs before attempting cloud communication.",
+      "source_line_start": 326,
+      "source_line_end": 330
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Connection Outcome Verification",
+      "normalized_title": "Connection Outcome Verification",
+      "key": "connection_outcome_verification",
+      "path": [
+        "Testing and Verification",
+        "Connection Outcome Verification"
+      ],
+      "content": "MQTT callbacks and return codes are used to determine connection and publish success.",
+      "source_line_start": 330,
+      "source_line_end": 334
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Azure SQL Connection Validation",
+      "normalized_title": "Azure SQL Connection Validation",
+      "key": "azure_sql_connection_validation",
+      "path": [
+        "Testing and Verification",
+        "Azure SQL Connection Validation"
+      ],
+      "content": "The gateway manager contains an explicit database-login/connection path before entering the record-management workflow.",
+      "source_line_start": 334,
+      "source_line_end": 338
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Database Constraints",
+      "normalized_title": "Database Constraints",
+      "key": "database_constraints",
+      "path": [
+        "Testing and Verification",
+        "Database Constraints"
+      ],
+      "content": "SQL `CHECK` constraints provide persistence-level validation for several enumerated gateway fields.",
+      "source_line_start": 338,
+      "source_line_end": 342
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Observable Embedded Test Cycle",
+      "normalized_title": "Observable Embedded Test Cycle",
+      "key": "observable_embedded_test_cycle",
+      "path": [
+        "Testing and Verification",
+        "Observable Embedded Test Cycle"
+      ],
+      "content": "The ESP32 reports connection status, power transitions, HTTP status codes, and Firebase responses over serial output.",
+      "source_line_start": 342,
+      "source_line_end": 346
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Separation of Concerns\n\nThe repository separates:\n\n- provisioning data management;\n- cloud telemetry simulation;\n- embedded hardware simulation;\n- browser observation.\n\n### Defensive Validation\n\nUser-entered MQTT identity data and gateway database fields are validated before operational use.\n\n### Secure Transport Configuration\n\nAzure SQL enables encryption and certificate validation, while MQTT uses TLS with insecure mode disabled.\n\n### Structured Operational Data\n\nGateway build metadata is persisted in explicit relational columns rather than free-form notes alone.\n\n### Test Substitution\n\nThe hardware stub provides a software substitute for physical telemetry generation, allowing cloud paths to be exercised independently of the full production device.",
+      "source_line_start": 346,
+      "source_line_end": 373
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Separation of Concerns",
+      "normalized_title": "Separation of Concerns",
+      "key": "separation_of_concerns",
+      "path": [
+        "Engineering Practices",
+        "Separation of Concerns"
+      ],
+      "content": "The repository separates:\n\n- provisioning data management;\n- cloud telemetry simulation;\n- embedded hardware simulation;\n- browser observation.",
+      "source_line_start": 348,
+      "source_line_end": 357
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Defensive Validation",
+      "normalized_title": "Defensive Validation",
+      "key": "defensive_validation",
+      "path": [
+        "Engineering Practices",
+        "Defensive Validation"
+      ],
+      "content": "User-entered MQTT identity data and gateway database fields are validated before operational use.",
+      "source_line_start": 357,
+      "source_line_end": 361
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Secure Transport Configuration",
+      "normalized_title": "Secure Transport Configuration",
+      "key": "secure_transport_configuration",
+      "path": [
+        "Engineering Practices",
+        "Secure Transport Configuration"
+      ],
+      "content": "Azure SQL enables encryption and certificate validation, while MQTT uses TLS with insecure mode disabled.",
+      "source_line_start": 361,
+      "source_line_end": 365
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Structured Operational Data",
+      "normalized_title": "Structured Operational Data",
+      "key": "structured_operational_data",
+      "path": [
+        "Engineering Practices",
+        "Structured Operational Data"
+      ],
+      "content": "Gateway build metadata is persisted in explicit relational columns rather than free-form notes alone.",
+      "source_line_start": 365,
+      "source_line_end": 369
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Test Substitution",
+      "normalized_title": "Test Substitution",
+      "key": "test_substitution",
+      "path": [
+        "Engineering Practices",
+        "Test Substitution"
+      ],
+      "content": "The hardware stub provides a software substitute for physical telemetry generation, allowing cloud paths to be exercised independently of the full production device.",
+      "source_line_start": 369,
+      "source_line_end": 373
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Integration Complexity\n\nThe toolkit touches Azure SQL, Azure IoT Hub, MQTT/TLS, Firebase REST, ESP32 firmware, desktop GUIs, and a browser dashboard.\n\n### Workflow Complexity\n\nThe provisioning manager represents multiple hardware/firmware state fields and supports their full CRUD lifecycle.\n\n### Hardware/Cloud Boundary\n\nThe ESP32 and MQTT stub both generate cloud-visible events, creating multiple ways to test upstream/downstream integration paths.",
+      "source_line_start": 373,
+      "source_line_end": 387
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Integration Complexity",
+      "normalized_title": "Integration Complexity",
+      "key": "integration_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Integration Complexity"
+      ],
+      "content": "The toolkit touches Azure SQL, Azure IoT Hub, MQTT/TLS, Firebase REST, ESP32 firmware, desktop GUIs, and a browser dashboard.",
+      "source_line_start": 375,
+      "source_line_end": 379
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Workflow Complexity",
+      "normalized_title": "Workflow Complexity",
+      "key": "workflow_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Workflow Complexity"
+      ],
+      "content": "The provisioning manager represents multiple hardware/firmware state fields and supports their full CRUD lifecycle.",
+      "source_line_start": 379,
+      "source_line_end": 383
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Hardware/Cloud Boundary",
+      "normalized_title": "Hardware/Cloud Boundary",
+      "key": "hardware_cloud_boundary",
+      "path": [
+        "Scale and Complexity",
+        "Hardware/Cloud Boundary"
+      ],
+      "content": "The ESP32 and MQTT stub both generate cloud-visible events, creating multiple ways to test upstream/downstream integration paths.",
+      "source_line_start": 383,
+      "source_line_end": 387
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Python and Desktop Tooling\n\n- **Python application development — strong evidence.**\n- **Tkinter / CustomTkinter UI development — strong evidence.**\n- **Background-threaded network operations — strong evidence.**\n\n### Databases\n\n- **Azure SQL integration — strong evidence.**\n- **PyODBC — strong evidence.**\n- **Relational schema design — strong evidence.**\n- **Parameterized CRUD — strong evidence.**\n- **SQL constraints — strong evidence.**\n\n### IoT and Networking\n\n- **MQTT device telemetry — strong evidence.**\n- **Azure IoT Hub integration — strong evidence.**\n- **TLS configuration — strong evidence.**\n- **QoS-aware publishing — strong evidence.**\n- **JSON telemetry design — strong evidence.**\n\n### Embedded Systems\n\n- **ESP32 firmware — strong evidence.**\n- **GPIO control — strong evidence.**\n- **Wi-Fi reconnection logic — strong evidence.**\n- **Periodic hardware simulation — strong evidence.**\n- **HTTPS REST posting — strong evidence.**\n\n### Frontend\n\n- **HTML/CSS dashboard engineering — strong evidence.**\n- **Responsive operational UI — strong evidence.**\n- **Alert visualization — strong evidence.**\n\n### Test Engineering\n\n- **Hardware stubbing — strong evidence.**\n- **Cloud-path simulation — strong evidence.**\n- **Provisioning audit tooling — strong evidence.**\n- **Input and connection validation — strong evidence.**",
+      "source_line_start": 387,
+      "source_line_end": 432
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Python and Desktop Tooling",
+      "normalized_title": "Python and Desktop Tooling",
+      "key": "python_and_desktop_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Python and Desktop Tooling"
+      ],
+      "content": "- **Python application development — strong evidence.**\n- **Tkinter / CustomTkinter UI development — strong evidence.**\n- **Background-threaded network operations — strong evidence.**",
+      "source_line_start": 389,
+      "source_line_end": 395
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Databases",
+      "normalized_title": "Databases",
+      "key": "databases",
+      "path": [
+        "Skills Demonstrated",
+        "Databases"
+      ],
+      "content": "- **Azure SQL integration — strong evidence.**\n- **PyODBC — strong evidence.**\n- **Relational schema design — strong evidence.**\n- **Parameterized CRUD — strong evidence.**\n- **SQL constraints — strong evidence.**",
+      "source_line_start": 395,
+      "source_line_end": 403
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "IoT and Networking",
+      "normalized_title": "IoT and Networking",
+      "key": "iot_and_networking",
+      "path": [
+        "Skills Demonstrated",
+        "IoT and Networking"
+      ],
+      "content": "- **MQTT device telemetry — strong evidence.**\n- **Azure IoT Hub integration — strong evidence.**\n- **TLS configuration — strong evidence.**\n- **QoS-aware publishing — strong evidence.**\n- **JSON telemetry design — strong evidence.**",
+      "source_line_start": 403,
+      "source_line_end": 411
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Embedded Systems",
+      "normalized_title": "Embedded Systems",
+      "key": "embedded_systems",
+      "path": [
+        "Skills Demonstrated",
+        "Embedded Systems"
+      ],
+      "content": "- **ESP32 firmware — strong evidence.**\n- **GPIO control — strong evidence.**\n- **Wi-Fi reconnection logic — strong evidence.**\n- **Periodic hardware simulation — strong evidence.**\n- **HTTPS REST posting — strong evidence.**",
+      "source_line_start": 411,
+      "source_line_end": 419
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **HTML/CSS dashboard engineering — strong evidence.**\n- **Responsive operational UI — strong evidence.**\n- **Alert visualization — strong evidence.**",
+      "source_line_start": 419,
+      "source_line_end": 425
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Test Engineering",
+      "normalized_title": "Test Engineering",
+      "key": "test_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Test Engineering"
+      ],
+      "content": "- **Hardware stubbing — strong evidence.**\n- **Cloud-path simulation — strong evidence.**\n- **Provisioning audit tooling — strong evidence.**\n- **Input and connection validation — strong evidence.**",
+      "source_line_start": 425,
+      "source_line_end": 432
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository demonstrates the ability to build support tooling around a real IoT system rather than only writing device firmware or cloud code in isolation.\n\nIt treats provisioning, simulated telemetry, periodic hardware behavior, cloud persistence, and operator visibility as connected validation concerns.",
+      "source_line_start": 432,
+      "source_line_end": 438
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier processed repositories contain embedded systems, Firebase applications, networking research, and hardware-control scripts.\n\n`Aquaseninsg-Auto-Test-Kit` combines those strands in an operational IoT validation context with Azure SQL and Azure IoT Hub.\n\nThe notable transition is from experimenting with individual technologies toward building technician-facing tools and controllable substitutes around a device lifecycle.",
+      "source_line_start": 438,
+      "source_line_end": 446
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository combining:\n\n- an Azure SQL gateway provisioning log;\n- an Azure IoT Hub MQTT hardware stub;\n- ESP32-based periodic event simulation;\n- Firebase alert persistence;\n- a browser monitoring surface.",
+      "source_line_start": 446,
+      "source_line_end": 456
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Aquaseninsg-Auto-Test-Kit` is an IoT engineering support suite built around gateway provisioning and hardware/cloud validation.\n\nA CustomTkinter application manages structured gateway addition logs in Azure SQL, including SIM, BLE, LTE firmware, quality-control, deployment-purpose, and usage metadata. A separate Tkinter application simulates device telemetry into Azure IoT Hub using MQTT over TLS. An ESP32 program simulates periodic sensor-power activity and posts server-timestamped alerts into Firebase, while the browser dashboard provides an operator-facing view of those alerts.\n\nThe strongest evidence is systems integration across the device lifecycle: relational provisioning records, cloud messaging, embedded simulation, validation logic, and observation tooling are all represented as practical test infrastructure.\n\n# Project Tags",
+      "source_line_start": 456,
+      "source_line_end": 466
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `iot-test-toolkit`\n- `gateway-provisioning-tool`\n- `hardware-simulation`\n- `individual-project`",
+      "source_line_start": 466,
+      "source_line_end": 473
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`\n- `c-plus-plus`\n- `html`\n- `css`\n- `javascript`",
+      "source_line_start": 473,
+      "source_line_end": 481
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Desktop Tooling",
+      "normalized_title": "Desktop Tooling",
+      "key": "desktop_tooling",
+      "path": [
+        "Desktop Tooling"
+      ],
+      "content": "- `tkinter`\n- `customtkinter`\n- `desktop-operations-tool`",
+      "source_line_start": 481,
+      "source_line_end": 487
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Database and Cloud",
+      "normalized_title": "Database and Cloud",
+      "key": "database_and_cloud",
+      "path": [
+        "Database and Cloud"
+      ],
+      "content": "- `azure-sql`\n- `pyodbc`\n- `sql-server`\n- `relational-schema`\n- `database-check-constraints`\n- `parameterized-sql`\n- `firebase-realtime-database`\n- `firebase-rest-api`",
+      "source_line_start": 487,
+      "source_line_end": 498
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "IoT and Networking",
+      "normalized_title": "IoT and Networking",
+      "key": "iot_and_networking",
+      "path": [
+        "IoT and Networking"
+      ],
+      "content": "- `azure-iot-hub`\n- `mqtt`\n- `paho-mqtt`\n- `mqtt-qos-1`\n- `tls`\n- `json-telemetry`\n- `hardware-stub`",
+      "source_line_start": 498,
+      "source_line_end": 508
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `esp32`\n- `gpio-control`\n- `wifi`\n- `periodic-device-cycle`\n- `https-post`",
+      "source_line_start": 508,
+      "source_line_end": 516
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `input-validation`\n- `connection-validation`\n- `cloud-path-simulation`\n- `hardware-behavior-simulation`\n- `provisioning-audit-log`",
+      "source_line_start": 516,
+      "source_line_end": 524
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `operational-dashboard`\n- `responsive-web-ui`\n- `alert-monitoring`",
+      "source_line_start": 524,
+      "source_line_end": 530
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-azure-iot-mqtt-hardware-stub`\n- `earliest-observed-azure-sql-gateway-provisioning-tool`\n- `earliest-observed-integrated-iot-provisioning-simulation-dashboard-toolkit`",
+      "source_line_start": 530,
+      "source_line_end": 535
+    }
+  ],
+  "raw_analysis": "# Aquaseninsg-Auto-Test-Kit\n\n## Repository Identity\n\n- Repository: 108 / 134\n- Name: `Aquaseninsg-Auto-Test-Kit`\n- Repository start date: 2026-05-25\n- Last meaningful update date: 2026-06-15\n- Latest meaningful commit: `e7208d6541e94a050cc5cf101d29fac042c5487c`\n- Primary type: IoT gateway provisioning and hardware-validation toolkit\n- Technical field: IoT systems, desktop tooling, cloud databases, MQTT, embedded firmware, test simulation\n- Application domain: AquaSensing/AquaHub gateway and sensor validation workflows\n- Collaboration type: `individual-project`\n- Primary languages: Python, C/C++, HTML, CSS, JavaScript\n\n## Collaboration and Authorship Context\n\nThe repository history is owner-driven and combines several utilities built around a common gateway/sensor testing context. The corpus treats the Azure SQL manager, MQTT publisher, ESP32 simulator, and alert-dashboard implementation as personally attributable repository work.\n\nExternal services such as Azure SQL, Azure IoT Hub, and Firebase are infrastructure used by the tooling. The engineering claim is the client-side integration, validation workflow, data modeling, and test-support logic implemented in this repository.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `Gateway-Registerar.py`;\n- `hardware-stub.py`;\n- `main.c`;\n- `index.html`;\n- repository history through the June 15 debugging update.\n\nThe files represent complementary parts of one operational test-kit environment rather than unrelated toy snippets.\n\n## What This Project Is\n\n`Aquaseninsg-Auto-Test-Kit` is a collection of engineering utilities for provisioning, simulating, and observing AquaSensing gateway/sensor behavior.\n\nThe repository addresses several stages of a hardware validation workflow:\n\n- registering and auditing gateway-build metadata in Azure SQL;\n- simulating hardware telemetry into Azure IoT Hub over MQTT;\n- simulating periodic sensor power events from an ESP32 into Firebase;\n- observing resulting alerts through a browser dashboard.\n\nThis creates a practical test ecosystem around devices that have firmware, cellular/SIM attributes, BLE build modes, cloud telemetry, and quality-control state.\n\n## Project Scope\n\n### Gateway Registration Manager\n\n`Gateway-Registerar.py` implements a CustomTkinter desktop application backed by Azure SQL.\n\nIts declared workflow includes:\n\n- password-based database login;\n- Azure SQL connection testing;\n- automatic table creation;\n- gateway-record insertion;\n- record updates;\n- searching and viewing records;\n- loading an existing record back into the form;\n- deleting records.\n\nThe application therefore acts as an operational CRUD tool around gateway provisioning history.\n\n### Gateway Addition Data Model\n\nThe Azure SQL table stores concrete gateway-build and validation fields including:\n\n- gateway ID;\n- programmer/operator name;\n- ICCID;\n- BLE build mode;\n- LTE firmware status;\n- quality-check result;\n- LTE modem firmware version;\n- SIM provider;\n- data-limit enforcement;\n- in-force date;\n- deployment/testing purpose;\n- internal/external usage scope;\n- intended user;\n- creation/update timestamps.\n\nSeveral columns contain SQL `CHECK` constraints so allowed workflow states are enforced by the database schema.\n\n### Azure SQL Bootstrap\n\nThe desktop tool checks `INFORMATION_SCHEMA.TABLES` and creates `dbo.GatewayAdditionLogs` when it does not already exist.\n\nThis means schema bootstrapping is embedded in the application rather than requiring a separate manual database initialization step.\n\n### Search and Maintenance\n\nThe database manager supports parameterized inserts, updates, deletes, and searches.\n\nSearch spans multiple operational fields and limits the result set to recent records.\n\nParameterized queries are used for user-provided values rather than string-concatenating form input directly into SQL values.\n\n### Azure IoT Hub Hardware Stub\n\n`hardware-stub.py` implements a desktop MQTT publisher targeting an Azure IoT Hub endpoint.\n\nThe GUI allows a tester to supply:\n\n- MQTT username;\n- password / SAS token;\n- beacon MAC address.\n\nThe remaining connection settings are fixed for the test environment.\n\nThe generated JSON payload contains:\n\n- RSSI;\n- MAC address;\n- beacon data;\n- gateway ID.\n\n### MQTT Transport\n\nThe hardware stub uses Paho MQTT with:\n\n- MQTT v3.1.1;\n- TLS;\n- certificate verification;\n- port 8883;\n- QoS 1;\n- explicit keepalive;\n- Azure IoT device telemetry topic structure.\n\nConnection and publish operations are performed in a background thread so the Tkinter UI is not blocked during network operations.\n\n### Test Input Validation\n\nBefore publishing, the hardware-stub GUI validates:\n\n- username presence;\n- password/token presence;\n- MAC-address structure.\n\nThe MAC is normalized to uppercase and the payload preview is refreshed from the validated value.\n\n### ESP32 Sensor-Power Simulator\n\n`main.c` implements an ESP32-based test loop.\n\nThe firmware:\n\n- connects to Wi-Fi;\n- configures GPIO 18 as a sensor-power output;\n- turns the GPIO on;\n- posts an alert to Firebase when power is enabled;\n- keeps the output on for a fixed interval;\n- turns it off;\n- waits until the next fixed cycle.\n\nThe implemented timing is a 30-second powered period within a three-minute cycle.\n\n### Firebase Alert Posting\n\nThe ESP32 firmware uses `HTTPClient` and `WiFiClientSecure` to send JSON to a Firebase Realtime Database REST endpoint.\n\nThe alert payload includes:\n\n- kit owner;\n- sensor identifier;\n- Firebase server timestamp.\n\nThe firmware also reconnects to Wi-Fi if connectivity is lost before posting.\n\n### Browser Alert Dashboard\n\n`index.html` implements a responsive dashboard for displaying kit alerts.\n\nThe interface includes:\n\n- summary statistics;\n- searchable alert records;\n- timestamp presentation;\n- owner and sensor presentation;\n- live/new-alert visual treatment;\n- endpoint information;\n- login UI;\n- responsive table and card behavior.\n\nThe dashboard is designed as the observation surface for events generated by the simulated hardware path.\n\n## Architecture and System Shape\n\nThe repository contains two related cloud/test paths.\n\n### Gateway Provisioning Path\n\n```text\nCustomTkinter desktop UI\n          ↓\nPython DatabaseManager\n          ↓\nODBC Driver 18\n          ↓\nAzure SQL\n          ↓\ndbo.GatewayAdditionLogs\n```\n\n### Hardware Simulation Path\n\n```text\nTester GUI\n   ↓\nPaho MQTT publisher\n   ↓ TLS / QoS 1\nAzure IoT Hub\n```\n\nand:\n\n```text\nESP32 GPIO cycle\n      ↓\nFirebase REST POST\n      ↓\nRealtime alert data\n      ↓\nBrowser dashboard\n```\n\nThe repo therefore spans provisioning records, cloud telemetry simulation, embedded event generation, and browser observation.\n\n## Technical Stack\n\n### Python\n\nPython implements the two desktop utilities:\n\n- Azure SQL gateway management;\n- MQTT hardware simulation.\n\n### CustomTkinter / Tkinter\n\nDesktop interfaces provide login, CRUD forms, search, telemetry input, payload preview, status reporting, and logs.\n\n### Azure SQL and PyODBC\n\n`pyodbc` connects to Azure SQL using ODBC Driver 18 with encrypted transport and certificate validation.\n\nSQL handles schema creation, constrained operational fields, and CRUD persistence.\n\n### Paho MQTT\n\nPaho MQTT simulates a device telemetry publisher against Azure IoT Hub.\n\n### TLS\n\nThe MQTT client uses TLS with certificate verification enabled and explicitly rejects insecure TLS mode.\n\n### ESP32 / Arduino Libraries\n\nThe embedded simulator uses:\n\n- `WiFi.h`;\n- `HTTPClient.h`;\n- `WiFiClientSecure.h`.\n\nThese support connectivity, HTTPS requests, and GPIO-driven test behavior.\n\n### Firebase Realtime Database\n\nFirebase REST endpoints receive simulated alert events and provide a data source for the browser-side monitoring workflow.\n\n### HTML / CSS / JavaScript\n\nThe dashboard provides a responsive web interface around alert records and test-state presentation.\n\n## Major Engineering Work\n\n### Operational Gateway Data Modeling\n\nThe Azure SQL schema captures both identity and lifecycle/quality metadata for gateways.\n\nIt is not a generic key/value table: typed columns and `CHECK` constraints encode allowed build and deployment states.\n\n### Self-Bootstrapping Database Tool\n\nThe application can establish its own required table if it is absent.\n\nThat reduces setup friction for technicians using the registration utility.\n\n### Parameterized CRUD Layer\n\nDatabase operations are centralized in `DatabaseManager` and use parameters for user data.\n\nThe GUI is therefore separated from direct cursor-management details.\n\n### Simulated IoT Telemetry\n\nThe MQTT publisher creates a controllable stand-in for hardware telemetry.\n\nThis allows a tester to vary beacon identity and credentials while holding the rest of the test payload stable.\n\n### Background Network Work\n\nMQTT connection/publish operations run on a daemon thread and use Tkinter's event loop to apply UI updates safely afterward.\n\nThis avoids freezing the desktop interface during connection waits.\n\n### Publish Completion Signaling\n\nThreading events are used to wait for MQTT connection and publish callbacks with bounded timeouts.\n\nThe application distinguishes broker rejection, timeout, publish-call failure, and successful publish completion.\n\n### Embedded Timing Simulation\n\nThe ESP32 code models a hardware behavior over time rather than issuing a one-shot request.\n\nThe cycle tracks elapsed execution time and waits only the remaining duration needed to preserve the intended period.\n\n### End-to-End Alert Visibility\n\nThe repository pairs event generation with a browser monitoring surface, making simulated hardware activity inspectable outside the device serial console.\n\n## Testing and Verification\n\n### Hardware Stub Validation\n\nThe MQTT utility validates user inputs before attempting cloud communication.\n\n### Connection Outcome Verification\n\nMQTT callbacks and return codes are used to determine connection and publish success.\n\n### Azure SQL Connection Validation\n\nThe gateway manager contains an explicit database-login/connection path before entering the record-management workflow.\n\n### Database Constraints\n\nSQL `CHECK` constraints provide persistence-level validation for several enumerated gateway fields.\n\n### Observable Embedded Test Cycle\n\nThe ESP32 reports connection status, power transitions, HTTP status codes, and Firebase responses over serial output.\n\n## Engineering Practices\n\n### Separation of Concerns\n\nThe repository separates:\n\n- provisioning data management;\n- cloud telemetry simulation;\n- embedded hardware simulation;\n- browser observation.\n\n### Defensive Validation\n\nUser-entered MQTT identity data and gateway database fields are validated before operational use.\n\n### Secure Transport Configuration\n\nAzure SQL enables encryption and certificate validation, while MQTT uses TLS with insecure mode disabled.\n\n### Structured Operational Data\n\nGateway build metadata is persisted in explicit relational columns rather than free-form notes alone.\n\n### Test Substitution\n\nThe hardware stub provides a software substitute for physical telemetry generation, allowing cloud paths to be exercised independently of the full production device.\n\n## Scale and Complexity\n\n### Integration Complexity\n\nThe toolkit touches Azure SQL, Azure IoT Hub, MQTT/TLS, Firebase REST, ESP32 firmware, desktop GUIs, and a browser dashboard.\n\n### Workflow Complexity\n\nThe provisioning manager represents multiple hardware/firmware state fields and supports their full CRUD lifecycle.\n\n### Hardware/Cloud Boundary\n\nThe ESP32 and MQTT stub both generate cloud-visible events, creating multiple ways to test upstream/downstream integration paths.\n\n## Skills Demonstrated\n\n### Python and Desktop Tooling\n\n- **Python application development — strong evidence.**\n- **Tkinter / CustomTkinter UI development — strong evidence.**\n- **Background-threaded network operations — strong evidence.**\n\n### Databases\n\n- **Azure SQL integration — strong evidence.**\n- **PyODBC — strong evidence.**\n- **Relational schema design — strong evidence.**\n- **Parameterized CRUD — strong evidence.**\n- **SQL constraints — strong evidence.**\n\n### IoT and Networking\n\n- **MQTT device telemetry — strong evidence.**\n- **Azure IoT Hub integration — strong evidence.**\n- **TLS configuration — strong evidence.**\n- **QoS-aware publishing — strong evidence.**\n- **JSON telemetry design — strong evidence.**\n\n### Embedded Systems\n\n- **ESP32 firmware — strong evidence.**\n- **GPIO control — strong evidence.**\n- **Wi-Fi reconnection logic — strong evidence.**\n- **Periodic hardware simulation — strong evidence.**\n- **HTTPS REST posting — strong evidence.**\n\n### Frontend\n\n- **HTML/CSS dashboard engineering — strong evidence.**\n- **Responsive operational UI — strong evidence.**\n- **Alert visualization — strong evidence.**\n\n### Test Engineering\n\n- **Hardware stubbing — strong evidence.**\n- **Cloud-path simulation — strong evidence.**\n- **Provisioning audit tooling — strong evidence.**\n- **Input and connection validation — strong evidence.**\n\n## Capability Developed\n\nThis repository demonstrates the ability to build support tooling around a real IoT system rather than only writing device firmware or cloud code in isolation.\n\nIt treats provisioning, simulated telemetry, periodic hardware behavior, cloud persistence, and operator visibility as connected validation concerns.\n\n## Portfolio Evolution Context\n\nEarlier processed repositories contain embedded systems, Firebase applications, networking research, and hardware-control scripts.\n\n`Aquaseninsg-Auto-Test-Kit` combines those strands in an operational IoT validation context with Azure SQL and Azure IoT Hub.\n\nThe notable transition is from experimenting with individual technologies toward building technician-facing tools and controllable substitutes around a device lifecycle.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository combining:\n\n- an Azure SQL gateway provisioning log;\n- an Azure IoT Hub MQTT hardware stub;\n- ESP32-based periodic event simulation;\n- Firebase alert persistence;\n- a browser monitoring surface.\n\n## Overall Repository Narrative\n\n`Aquaseninsg-Auto-Test-Kit` is an IoT engineering support suite built around gateway provisioning and hardware/cloud validation.\n\nA CustomTkinter application manages structured gateway addition logs in Azure SQL, including SIM, BLE, LTE firmware, quality-control, deployment-purpose, and usage metadata. A separate Tkinter application simulates device telemetry into Azure IoT Hub using MQTT over TLS. An ESP32 program simulates periodic sensor-power activity and posts server-timestamped alerts into Firebase, while the browser dashboard provides an operator-facing view of those alerts.\n\nThe strongest evidence is systems integration across the device lifecycle: relational provisioning records, cloud messaging, embedded simulation, validation logic, and observation tooling are all represented as practical test infrastructure.\n\n# Project Tags\n\n## Project Type\n\n- `iot-test-toolkit`\n- `gateway-provisioning-tool`\n- `hardware-simulation`\n- `individual-project`\n\n## Languages\n\n- `python`\n- `c-plus-plus`\n- `html`\n- `css`\n- `javascript`\n\n## Desktop Tooling\n\n- `tkinter`\n- `customtkinter`\n- `desktop-operations-tool`\n\n## Database and Cloud\n\n- `azure-sql`\n- `pyodbc`\n- `sql-server`\n- `relational-schema`\n- `database-check-constraints`\n- `parameterized-sql`\n- `firebase-realtime-database`\n- `firebase-rest-api`\n\n## IoT and Networking\n\n- `azure-iot-hub`\n- `mqtt`\n- `paho-mqtt`\n- `mqtt-qos-1`\n- `tls`\n- `json-telemetry`\n- `hardware-stub`\n\n## Embedded and Hardware\n\n- `esp32`\n- `gpio-control`\n- `wifi`\n- `periodic-device-cycle`\n- `https-post`\n\n## Testing and Verification\n\n- `input-validation`\n- `connection-validation`\n- `cloud-path-simulation`\n- `hardware-behavior-simulation`\n- `provisioning-audit-log`\n\n## Frontend\n\n- `operational-dashboard`\n- `responsive-web-ui`\n- `alert-monitoring`\n\n## Portfolio Significance\n\n- `earliest-observed-azure-iot-mqtt-hardware-stub`\n- `earliest-observed-azure-sql-gateway-provisioning-tool`\n- `earliest-observed-integrated-iot-provisioning-simulation-dashboard-toolkit`\n"
+}

@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 36,
+  "repository_total": 134,
+  "repository_name": "Fan-Controller",
+  "header_title": "Fan-Controller",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-036-Fan-Controller/README.md",
+    "line_start": 1,
+    "line_end": 191,
+    "sha256": "bfd178ae9cc2fb03168baaf76d577be049e0cb84588267baa27a6dfa17a6fa03"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "embedded-application",
+    "sensor-control-project",
+    "educational-project",
+    "individual-project",
+    "c",
+    "avr",
+    "adc",
+    "lm35-temperature-sensor",
+    "dc-motor-control",
+    "pwm",
+    "pwm-duty-cycle",
+    "timer0",
+    "lcd-interface",
+    "gpio",
+    "sensor-control-logic",
+    "temperature-control",
+    "rule-based-control",
+    "sensor-to-actuator-pipeline",
+    "state-driven-control",
+    "module-decomposition",
+    "hardware-abstraction",
+    "configuration-struct",
+    "earliest-observed-adc",
+    "earliest-observed-lm35-temperature-sensor",
+    "earliest-observed-pwm-motor-control"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Fan-Controller`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Project type:** temperature-driven fan controller\n- **Collaboration classification:** individual application and several owner-attributed device modules with reused support infrastructure"
+    },
+    "architecture": {
+      "section_ids": [
+        "s004"
+      ],
+      "titles": [
+        "Layered Embedded Architecture"
+      ],
+      "text": "## Layered Embedded Architecture\n### Application Layer\n\n`MINI_PROJECT_3.c` owns the temperature-to-actuator policy and coordinates the sensor, motor, ADC, and display.\n\n### Sensor Layer\n\nThe LM35 module supplies temperature to the application instead of exposing arbitrary raw ADC values directly to `main()`.\n\n### ADC Layer\n\n`adc.c` configures the AVR ADC.\n\nThe owner-attributed implementation selects reference behavior through configuration, sets the prescaler, enables the ADC, selects a channel, starts conversion, polls conversion completion, and returns the ADC register value.\n\n### Motor Layer\n\n`dcm.c` abstracts DC motor state.\n\n`DcMotor_Rotate(state, speed)` controls two direction pins and delegates speed generation to the PWM module.\n\nThe module supports stop, clockwise, and counter-clockwise states.\n\n### PWM Layer\n\n`pwm.c` configures AVR Timer0 for PWM output.\n\nA percentage duty cycle is converted into an `OCR0` compare value, and the timer drives the OC0 output pin.\n\nMotor speed is therefore hardware-timer driven rather than produced by software delay loops."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Fan-Controller`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Project type:** temperature-driven fan controller\n- **Collaboration classification:** individual application and several owner-attributed device modules with reused support infrastructure",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Fan-Controller` is an embedded control application that reads temperature from an LM35 sensor and maps temperature ranges to fan operating state and speed.\n\nThe implementation combines ADC conversion, LM35 temperature acquisition, DC motor control, PWM duty-cycle generation, LCD status display, and GPIO support.\n\nThe main application explicitly identifies Kirolos Sedra as author.\n\nThe ADC, DC motor, and PWM modules inspected in the repository also carry `kirol` authorship headers.",
+      "source_line_start": 13,
+      "source_line_end": 23
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "System Behavior",
+      "normalized_title": "System Behavior",
+      "key": "system_behavior",
+      "path": [
+        "System Behavior"
+      ],
+      "content": "The application continuously samples temperature.\n\nIts implemented policy is:\n\n| Temperature | Fan state | Commanded speed |\n|---|---|---:|\n| `< 30 °C` | OFF | stopped |\n| `30–59 °C` | ON / clockwise | 25% |\n| `60–89 °C` | ON / clockwise | 50% |\n| `90–119 °C` | ON / clockwise | 75% |\n| `>= 120 °C` | ON / clockwise | 100% |\n\nThe LCD simultaneously displays whether the fan is ON or OFF and the current measured temperature.",
+      "source_line_start": 23,
+      "source_line_end": 39
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Layered Embedded Architecture",
+      "normalized_title": "Layered Embedded Architecture",
+      "key": "layered_embedded_architecture",
+      "path": [
+        "Layered Embedded Architecture"
+      ],
+      "content": "### Application Layer\n\n`MINI_PROJECT_3.c` owns the temperature-to-actuator policy and coordinates the sensor, motor, ADC, and display.\n\n### Sensor Layer\n\nThe LM35 module supplies temperature to the application instead of exposing arbitrary raw ADC values directly to `main()`.\n\n### ADC Layer\n\n`adc.c` configures the AVR ADC.\n\nThe owner-attributed implementation selects reference behavior through configuration, sets the prescaler, enables the ADC, selects a channel, starts conversion, polls conversion completion, and returns the ADC register value.\n\n### Motor Layer\n\n`dcm.c` abstracts DC motor state.\n\n`DcMotor_Rotate(state, speed)` controls two direction pins and delegates speed generation to the PWM module.\n\nThe module supports stop, clockwise, and counter-clockwise states.\n\n### PWM Layer\n\n`pwm.c` configures AVR Timer0 for PWM output.\n\nA percentage duty cycle is converted into an `OCR0` compare value, and the timer drives the OC0 output pin.\n\nMotor speed is therefore hardware-timer driven rather than produced by software delay loops.",
+      "source_line_start": 39,
+      "source_line_end": 71
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Application Layer",
+      "normalized_title": "Application Layer",
+      "key": "application_layer",
+      "path": [
+        "Layered Embedded Architecture",
+        "Application Layer"
+      ],
+      "content": "`MINI_PROJECT_3.c` owns the temperature-to-actuator policy and coordinates the sensor, motor, ADC, and display.",
+      "source_line_start": 41,
+      "source_line_end": 45
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Sensor Layer",
+      "normalized_title": "Sensor Layer",
+      "key": "sensor_layer",
+      "path": [
+        "Layered Embedded Architecture",
+        "Sensor Layer"
+      ],
+      "content": "The LM35 module supplies temperature to the application instead of exposing arbitrary raw ADC values directly to `main()`.",
+      "source_line_start": 45,
+      "source_line_end": 49
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "ADC Layer",
+      "normalized_title": "ADC Layer",
+      "key": "adc_layer",
+      "path": [
+        "Layered Embedded Architecture",
+        "ADC Layer"
+      ],
+      "content": "`adc.c` configures the AVR ADC.\n\nThe owner-attributed implementation selects reference behavior through configuration, sets the prescaler, enables the ADC, selects a channel, starts conversion, polls conversion completion, and returns the ADC register value.",
+      "source_line_start": 49,
+      "source_line_end": 55
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Motor Layer",
+      "normalized_title": "Motor Layer",
+      "key": "motor_layer",
+      "path": [
+        "Layered Embedded Architecture",
+        "Motor Layer"
+      ],
+      "content": "`dcm.c` abstracts DC motor state.\n\n`DcMotor_Rotate(state, speed)` controls two direction pins and delegates speed generation to the PWM module.\n\nThe module supports stop, clockwise, and counter-clockwise states.",
+      "source_line_start": 55,
+      "source_line_end": 63
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "PWM Layer",
+      "normalized_title": "PWM Layer",
+      "key": "pwm_layer",
+      "path": [
+        "Layered Embedded Architecture",
+        "PWM Layer"
+      ],
+      "content": "`pwm.c` configures AVR Timer0 for PWM output.\n\nA percentage duty cycle is converted into an `OCR0` compare value, and the timer drives the OC0 output pin.\n\nMotor speed is therefore hardware-timer driven rather than produced by software delay loops.",
+      "source_line_start": 63,
+      "source_line_end": 71
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "End-to-End Data Flow",
+      "normalized_title": "End-to-End Data Flow",
+      "key": "end_to_end_data_flow",
+      "path": [
+        "End-to-End Data Flow"
+      ],
+      "content": "The control loop is:\n\n1. LM35 senses temperature.\n2. ADC produces a digital measurement.\n3. LM35 abstraction yields temperature.\n4. Application selects state and speed band.\n5. DC motor abstraction sets direction pins.\n6. PWM establishes duty cycle.\n7. LCD reports state and temperature.\n8. Loop repeats.\n\nThis is a clean sensor-to-decision-to-actuator pipeline.",
+      "source_line_start": 71,
+      "source_line_end": 86
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Control Strategy",
+      "normalized_title": "Control Strategy",
+      "key": "control_strategy",
+      "path": [
+        "Control Strategy"
+      ],
+      "content": "The controller is threshold based rather than continuously proportional.\n\nTemperature is quantized into four active speed regions plus an off region.\n\nThis makes every output condition explicit and inspectable.",
+      "source_line_start": 86,
+      "source_line_end": 94
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "User Feedback",
+      "normalized_title": "User Feedback",
+      "key": "user_feedback",
+      "path": [
+        "User Feedback"
+      ],
+      "content": "The LCD functions as operational telemetry.\n\nAt startup the application establishes fixed labels for fan state and temperature.\n\nDuring the loop it updates those positions and writes a trailing space after shorter temperature values so stale digits are not left visible.",
+      "source_line_start": 94,
+      "source_line_end": 102
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### ADC Peripheral Programming\n\nADC configuration and conversion are represented directly in source.\n\n### Sensor Integration\n\nAn LM35 sensor is translated into application-level temperature.\n\n### PWM Motor Control\n\nTimer0 PWM drives explicit motor-speed percentages.\n\n### Layered Drivers\n\nApplication policy, sensor logic, ADC, motor logic, PWM, LCD, and GPIO are separated.\n\n### Rule-Based Control\n\nTemperature bands map deterministically to actuator commands.\n\n### Runtime Telemetry\n\nLCD output exposes current system state during execution.",
+      "source_line_start": 102,
+      "source_line_end": 128
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "ADC Peripheral Programming",
+      "normalized_title": "ADC Peripheral Programming",
+      "key": "adc_peripheral_programming",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "ADC Peripheral Programming"
+      ],
+      "content": "ADC configuration and conversion are represented directly in source.",
+      "source_line_start": 104,
+      "source_line_end": 108
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Sensor Integration",
+      "normalized_title": "Sensor Integration",
+      "key": "sensor_integration",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Sensor Integration"
+      ],
+      "content": "An LM35 sensor is translated into application-level temperature.",
+      "source_line_start": 108,
+      "source_line_end": 112
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "PWM Motor Control",
+      "normalized_title": "PWM Motor Control",
+      "key": "pwm_motor_control",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "PWM Motor Control"
+      ],
+      "content": "Timer0 PWM drives explicit motor-speed percentages.",
+      "source_line_start": 112,
+      "source_line_end": 116
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Layered Drivers",
+      "normalized_title": "Layered Drivers",
+      "key": "layered_drivers",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Layered Drivers"
+      ],
+      "content": "Application policy, sensor logic, ADC, motor logic, PWM, LCD, and GPIO are separated.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Rule-Based Control",
+      "normalized_title": "Rule-Based Control",
+      "key": "rule_based_control",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Rule-Based Control"
+      ],
+      "content": "Temperature bands map deterministically to actuator commands.",
+      "source_line_start": 120,
+      "source_line_end": 124
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Runtime Telemetry",
+      "normalized_title": "Runtime Telemetry",
+      "key": "runtime_telemetry",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Runtime Telemetry"
+      ],
+      "content": "LCD output exposes current system state during execution.",
+      "source_line_start": 124,
+      "source_line_end": 128
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository demonstrates a complete embedded sensing/control chain:\n\n**analog sensor → ADC → physical quantity → policy → PWM actuator → display feedback**\n\nThat is materially closer to embedded product behavior than an isolated driver exercise.",
+      "source_line_start": 128,
+      "source_line_end": 136
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Chronologically, this project immediately follows `Simple-Calculator`.\n\nThe calculator was user-input driven.\n\n`Fan-Controller` introduces continuous environmental sensing and autonomous actuator control.\n\nIt is the earliest processed repository to combine ADC acquisition, temperature sensing, threshold control, and PWM motor speed in one embedded application.",
+      "source_line_start": 136,
+      "source_line_end": 146
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Fan-Controller` is a compact environmental-control device implemented in AVR C.\n\nIt continuously samples an LM35, converts the measurement through an ADC abstraction, chooses a fan-speed band, drives a DC motor through PWM, and reports state and temperature on an LCD.\n\nSeveral key modules—main application, ADC, DC motor, and PWM—carry owner-attributed source headers, providing clear evidence for the personally implemented control chain.\n\n# Project Tags",
+      "source_line_start": 146,
+      "source_line_end": 156
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `embedded-application`\n- `sensor-control-project`\n- `educational-project`\n- `individual-project`",
+      "source_line_start": 156,
+      "source_line_end": 162
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `c`",
+      "source_line_start": 162,
+      "source_line_end": 165
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `avr`\n- `adc`\n- `lm35-temperature-sensor`\n- `dc-motor-control`\n- `pwm`\n- `pwm-duty-cycle`\n- `timer0`\n- `lcd-interface`\n- `gpio`",
+      "source_line_start": 165,
+      "source_line_end": 176
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `sensor-control-logic`\n- `temperature-control`\n- `rule-based-control`\n- `sensor-to-actuator-pipeline`\n- `state-driven-control`",
+      "source_line_start": 176,
+      "source_line_end": 183
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `module-decomposition`\n- `hardware-abstraction`\n- `configuration-struct`",
+      "source_line_start": 183,
+      "source_line_end": 188
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-adc`\n- `earliest-observed-lm35-temperature-sensor`\n- `earliest-observed-pwm-motor-control`",
+      "source_line_start": 188,
+      "source_line_end": 192
+    }
+  ],
+  "raw_analysis": "# Repository 036 — Fan-Controller\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Fan-Controller`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Project type:** temperature-driven fan controller\n- **Collaboration classification:** individual application and several owner-attributed device modules with reused support infrastructure\n\n## What This Project Is\n\n`Fan-Controller` is an embedded control application that reads temperature from an LM35 sensor and maps temperature ranges to fan operating state and speed.\n\nThe implementation combines ADC conversion, LM35 temperature acquisition, DC motor control, PWM duty-cycle generation, LCD status display, and GPIO support.\n\nThe main application explicitly identifies Kirolos Sedra as author.\n\nThe ADC, DC motor, and PWM modules inspected in the repository also carry `kirol` authorship headers.\n\n## System Behavior\n\nThe application continuously samples temperature.\n\nIts implemented policy is:\n\n| Temperature | Fan state | Commanded speed |\n|---|---|---:|\n| `< 30 °C` | OFF | stopped |\n| `30–59 °C` | ON / clockwise | 25% |\n| `60–89 °C` | ON / clockwise | 50% |\n| `90–119 °C` | ON / clockwise | 75% |\n| `>= 120 °C` | ON / clockwise | 100% |\n\nThe LCD simultaneously displays whether the fan is ON or OFF and the current measured temperature.\n\n## Layered Embedded Architecture\n\n### Application Layer\n\n`MINI_PROJECT_3.c` owns the temperature-to-actuator policy and coordinates the sensor, motor, ADC, and display.\n\n### Sensor Layer\n\nThe LM35 module supplies temperature to the application instead of exposing arbitrary raw ADC values directly to `main()`.\n\n### ADC Layer\n\n`adc.c` configures the AVR ADC.\n\nThe owner-attributed implementation selects reference behavior through configuration, sets the prescaler, enables the ADC, selects a channel, starts conversion, polls conversion completion, and returns the ADC register value.\n\n### Motor Layer\n\n`dcm.c` abstracts DC motor state.\n\n`DcMotor_Rotate(state, speed)` controls two direction pins and delegates speed generation to the PWM module.\n\nThe module supports stop, clockwise, and counter-clockwise states.\n\n### PWM Layer\n\n`pwm.c` configures AVR Timer0 for PWM output.\n\nA percentage duty cycle is converted into an `OCR0` compare value, and the timer drives the OC0 output pin.\n\nMotor speed is therefore hardware-timer driven rather than produced by software delay loops.\n\n## End-to-End Data Flow\n\nThe control loop is:\n\n1. LM35 senses temperature.\n2. ADC produces a digital measurement.\n3. LM35 abstraction yields temperature.\n4. Application selects state and speed band.\n5. DC motor abstraction sets direction pins.\n6. PWM establishes duty cycle.\n7. LCD reports state and temperature.\n8. Loop repeats.\n\nThis is a clean sensor-to-decision-to-actuator pipeline.\n\n## Control Strategy\n\nThe controller is threshold based rather than continuously proportional.\n\nTemperature is quantized into four active speed regions plus an off region.\n\nThis makes every output condition explicit and inspectable.\n\n## User Feedback\n\nThe LCD functions as operational telemetry.\n\nAt startup the application establishes fixed labels for fan state and temperature.\n\nDuring the loop it updates those positions and writes a trailing space after shorter temperature values so stale digits are not left visible.\n\n## Engineering Skills Demonstrated\n\n### ADC Peripheral Programming\n\nADC configuration and conversion are represented directly in source.\n\n### Sensor Integration\n\nAn LM35 sensor is translated into application-level temperature.\n\n### PWM Motor Control\n\nTimer0 PWM drives explicit motor-speed percentages.\n\n### Layered Drivers\n\nApplication policy, sensor logic, ADC, motor logic, PWM, LCD, and GPIO are separated.\n\n### Rule-Based Control\n\nTemperature bands map deterministically to actuator commands.\n\n### Runtime Telemetry\n\nLCD output exposes current system state during execution.\n\n## Capability Developed\n\nThe repository demonstrates a complete embedded sensing/control chain:\n\n**analog sensor → ADC → physical quantity → policy → PWM actuator → display feedback**\n\nThat is materially closer to embedded product behavior than an isolated driver exercise.\n\n## Portfolio Evolution\n\nChronologically, this project immediately follows `Simple-Calculator`.\n\nThe calculator was user-input driven.\n\n`Fan-Controller` introduces continuous environmental sensing and autonomous actuator control.\n\nIt is the earliest processed repository to combine ADC acquisition, temperature sensing, threshold control, and PWM motor speed in one embedded application.\n\n## Overall Project Narrative\n\n`Fan-Controller` is a compact environmental-control device implemented in AVR C.\n\nIt continuously samples an LM35, converts the measurement through an ADC abstraction, chooses a fan-speed band, drives a DC motor through PWM, and reports state and temperature on an LCD.\n\nSeveral key modules—main application, ADC, DC motor, and PWM—carry owner-attributed source headers, providing clear evidence for the personally implemented control chain.\n\n# Project Tags\n\n## Project Type\n- `embedded-application`\n- `sensor-control-project`\n- `educational-project`\n- `individual-project`\n\n## Languages\n- `c`\n\n## Embedded and Hardware\n- `avr`\n- `adc`\n- `lm35-temperature-sensor`\n- `dc-motor-control`\n- `pwm`\n- `pwm-duty-cycle`\n- `timer0`\n- `lcd-interface`\n- `gpio`\n\n## Systems Engineering\n- `sensor-control-logic`\n- `temperature-control`\n- `rule-based-control`\n- `sensor-to-actuator-pipeline`\n- `state-driven-control`\n\n## Software Engineering Practices\n- `module-decomposition`\n- `hardware-abstraction`\n- `configuration-struct`\n\n## Portfolio Significance\n- `earliest-observed-adc`\n- `earliest-observed-lm35-temperature-sensor`\n- `earliest-observed-pwm-motor-control`\n"
+}

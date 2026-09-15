@@ -1,0 +1,818 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 15,
+  "repository_total": 134,
+  "repository_name": "Go-Back-N-Protocol",
+  "header_title": "Go-Back-N-Protocol",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-015-Go-Back-N-Protocol/README.md",
+    "line_start": 1,
+    "line_end": 399,
+    "sha256": "353d25af3aa764ad09edaa7b1e84feb44fef3efd3281ae8ed75ffebc18d4b0a9"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "networking-protocol-simulation",
+    "educational-project",
+    "individual-project",
+    "instructional-scaffold",
+    "cpp",
+    "computer-networking",
+    "go-back-n",
+    "automatic-repeat-request",
+    "sliding-window-protocol",
+    "sequence-numbers",
+    "cumulative-acknowledgements",
+    "piggyback-acknowledgements",
+    "timeout-retransmission",
+    "network-flow-control",
+    "frame-protocol",
+    "simulated-packet-loss",
+    "event-driven-state-machine",
+    "circular-sequence-arithmetic",
+    "console-simulation",
+    "manual-simulation",
+    "fault-injection-simulation",
+    "earliest-observed-computer-networking",
+    "earliest-observed-go-back-n",
+    "earliest-observed-sliding-window-protocol",
+    "earliest-observed-retransmission-protocol"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 015 / 134\n- Name: `Go-Back-N-Protocol`\n- Repository start date: 2023-02-27\n- Latest meaningful update date: 2023-02-27\n- Primary type: Networking protocol simulation / educational implementation\n- Technical field: Computer networking and reliable data transfer\n- Application domain: Go-Back-N automatic repeat request\n- Project context: Personal repository containing instructional protocol work\n- Collaboration type: `individual-project`\n- Primary implementation language: C++"
+    },
+    "architecture": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nNetwork-layer packet\n      ↓\nSender window / sequence state\n      ↓\nFrame construction\n      ↓\nPhysical-layer abstraction\n      ↓\nReceiver sequence state\n      ↓\nAcknowledgement processing\n      ↓\nSender-window contraction\n\ntimeout\n   ↓\noldest unacknowledged frame\n   ↓\nretransmit outstanding window\n```\n\nThe console version turns these ideas into a visible sequential demonstration."
+    },
+    "testing": {
+      "section_ids": [
+        "s028",
+        "s052"
+      ],
+      "titles": [
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Interactive Simulation\n\nThe console program makes protocol state visible through:\n\n- frame-send messages;\n- frame data;\n- acknowledgement output;\n- loss indication;\n- retransmission output.\n\nThis provides a direct manual way to observe window behavior.\n\n### Deterministic Protocol Structure\n\nThe event-driven `Protocol5.cpp` preserves canonical Go-Back-N invariants such as:\n\n- bounded sender buffering;\n- circular sequence numbers;\n- cumulative acknowledgement handling;\n- timeout-based retransmission from the oldest unacknowledged frame.\n\n## Testing and Verification\n- `manual-simulation`\n- `fault-injection-simulation`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s048"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository was uploaded in a single owner-attributed commit.\n\nThe source has two distinct evidence layers.\n\n`GoBackN.cpp` contains a custom interactive console simulation with user-entered frame values, simulated random errors, acknowledgement output, and window retransmission behavior.\n\n`Protocol5.cpp` contains a textbook-style event-driven Go-Back-N protocol skeleton with generic network/physical-layer and timer hooks. That file is strong evidence of hands-on exposure to the canonical protocol mechanics, while the generic scaffold is treated as instructional infrastructure rather than wholly original protocol design.\n\n## Collaboration and Authorship\n- `individual-project`\n- `instructional-scaffold`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 015 / 134\n- Name: `Go-Back-N-Protocol`\n- Repository start date: 2023-02-27\n- Latest meaningful update date: 2023-02-27\n- Primary type: Networking protocol simulation / educational implementation\n- Technical field: Computer networking and reliable data transfer\n- Application domain: Go-Back-N automatic repeat request\n- Project context: Personal repository containing instructional protocol work\n- Collaboration type: `individual-project`\n- Primary implementation language: C++",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository was uploaded in a single owner-attributed commit.\n\nThe source has two distinct evidence layers.\n\n`GoBackN.cpp` contains a custom interactive console simulation with user-entered frame values, simulated random errors, acknowledgement output, and window retransmission behavior.\n\n`Protocol5.cpp` contains a textbook-style event-driven Go-Back-N protocol skeleton with generic network/physical-layer and timer hooks. That file is strong evidence of hands-on exposure to the canonical protocol mechanics, while the generic scaffold is treated as instructional infrastructure rather than wholly original protocol design.",
+      "source_line_start": 16,
+      "source_line_end": 26
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `GoBackN.cpp`;\n- `GoBackN.h`;\n- `Protocol5.cpp`;\n- `Protocol5.h`;\n- the owner-attributed repository commit.",
+      "source_line_start": 26,
+      "source_line_end": 36
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Go-Back-N-Protocol` explores reliable frame transmission using a sliding-window protocol.\n\nThe repository contains:\n\n1. an event-oriented Go-Back-N protocol implementation based around sequence numbers, sender/receiver window state, acknowledgements, and timeout retransmission;\n2. a standalone console simulation that lets the user enter frames and then models successful transmissions, acknowledgement progression, a 10% error event, and retransmission of the affected window.\n\nThe project introduces the networking domain into the processed portfolio.",
+      "source_line_start": 36,
+      "source_line_end": 47
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Networking Model",
+      "normalized_title": "Networking Model",
+      "key": "networking_model",
+      "path": [
+        "Networking Model"
+      ],
+      "content": "The header defines:\n\n- sequence numbers;\n- packet structure;\n- frame kinds;\n- frame sequence number;\n- acknowledgement number;\n- payload;\n- protocol event types.\n\nVisible event types include:\n\n- `frame_arrival`;\n- `cksum_err`;\n- `timeout`;\n- `network_layer_ready`.\n\nThe code therefore models networking as an event-driven state process rather than a simple data-copy loop.",
+      "source_line_start": 47,
+      "source_line_end": 68
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Static Protocol Configuration",
+      "normalized_title": "Static Protocol Configuration",
+      "key": "static_protocol_configuration",
+      "path": [
+        "Static Protocol Configuration"
+      ],
+      "content": "`GoBackN.h` defines values including:\n\n- sender window size: 4;\n- maximum sequence number: 7;\n- packet size: 1024 bytes;\n- buffer size: 5;\n- simulated error denominator: 10;\n- output delay.\n\nThese constants make the simulated protocol behavior explicit.",
+      "source_line_start": 68,
+      "source_line_end": 81
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Go-Back-N Window Logic",
+      "normalized_title": "Go-Back-N Window Logic",
+      "key": "go_back_n_window_logic",
+      "path": [
+        "Go-Back-N Window Logic"
+      ],
+      "content": "### Sender state\n\n`Protocol5.cpp` maintains:\n\n- `next_frame_to_send`;\n- `ack_expected`;\n- outbound packet buffer;\n- `nbuffered`.\n\n### Receiver state\n\nThe receiver tracks:\n\n- `frame_expected`;\n- incoming frame `r`.\n\n### Circular sequence-number reasoning\n\nThe `between(a, b, c)` helper checks whether an acknowledgement lies inside a circular sequence-number interval.\n\nThis is important because sequence numbers wrap around at `MAX_SEQ`.\n\n### Sending\n\n`send_data()` constructs a frame with:\n\n- sequence number;\n- payload;\n- piggybacked acknowledgement.\n\nIt then invokes the physical-layer hook and starts a timer.",
+      "source_line_start": 81,
+      "source_line_end": 115
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Sender state",
+      "normalized_title": "Sender state",
+      "key": "sender_state",
+      "path": [
+        "Go-Back-N Window Logic",
+        "Sender state"
+      ],
+      "content": "`Protocol5.cpp` maintains:\n\n- `next_frame_to_send`;\n- `ack_expected`;\n- outbound packet buffer;\n- `nbuffered`.",
+      "source_line_start": 83,
+      "source_line_end": 92
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Receiver state",
+      "normalized_title": "Receiver state",
+      "key": "receiver_state",
+      "path": [
+        "Go-Back-N Window Logic",
+        "Receiver state"
+      ],
+      "content": "The receiver tracks:\n\n- `frame_expected`;\n- incoming frame `r`.",
+      "source_line_start": 92,
+      "source_line_end": 99
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Circular sequence-number reasoning",
+      "normalized_title": "Circular sequence-number reasoning",
+      "key": "circular_sequence_number_reasoning",
+      "path": [
+        "Go-Back-N Window Logic",
+        "Circular sequence-number reasoning"
+      ],
+      "content": "The `between(a, b, c)` helper checks whether an acknowledgement lies inside a circular sequence-number interval.\n\nThis is important because sequence numbers wrap around at `MAX_SEQ`.",
+      "source_line_start": 99,
+      "source_line_end": 105
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Sending",
+      "normalized_title": "Sending",
+      "key": "sending",
+      "path": [
+        "Go-Back-N Window Logic",
+        "Sending"
+      ],
+      "content": "`send_data()` constructs a frame with:\n\n- sequence number;\n- payload;\n- piggybacked acknowledgement.\n\nIt then invokes the physical-layer hook and starts a timer.",
+      "source_line_start": 105,
+      "source_line_end": 115
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Event-Driven Protocol Loop",
+      "normalized_title": "Event-Driven Protocol Loop",
+      "key": "event_driven_protocol_loop",
+      "path": [
+        "Event-Driven Protocol Loop"
+      ],
+      "content": "`protocol5()` switches on protocol events.\n\n### Network layer ready\n\nA packet is accepted into the sender buffer, sent, and the sender's upper window edge advances.\n\n### Frame arrival\n\nAn in-order frame is delivered upward and the expected receive sequence advances.\n\nPiggybacked acknowledgement state then contracts the sender window.\n\n### Checksum error event\n\nThe event is represented explicitly in the protocol event system.\n\n### Timeout\n\nThe sender resets `next_frame_to_send` to the oldest unacknowledged sequence and retransmits all currently buffered outstanding frames.\n\nThat is the defining Go-Back-N retransmission behavior.",
+      "source_line_start": 115,
+      "source_line_end": 139
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Network layer ready",
+      "normalized_title": "Network layer ready",
+      "key": "network_layer_ready",
+      "path": [
+        "Event-Driven Protocol Loop",
+        "Network layer ready"
+      ],
+      "content": "A packet is accepted into the sender buffer, sent, and the sender's upper window edge advances.",
+      "source_line_start": 119,
+      "source_line_end": 123
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Frame arrival",
+      "normalized_title": "Frame arrival",
+      "key": "frame_arrival",
+      "path": [
+        "Event-Driven Protocol Loop",
+        "Frame arrival"
+      ],
+      "content": "An in-order frame is delivered upward and the expected receive sequence advances.\n\nPiggybacked acknowledgement state then contracts the sender window.",
+      "source_line_start": 123,
+      "source_line_end": 129
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Checksum error event",
+      "normalized_title": "Checksum error event",
+      "key": "checksum_error_event",
+      "path": [
+        "Event-Driven Protocol Loop",
+        "Checksum error event"
+      ],
+      "content": "The event is represented explicitly in the protocol event system.",
+      "source_line_start": 129,
+      "source_line_end": 133
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Timeout",
+      "normalized_title": "Timeout",
+      "key": "timeout",
+      "path": [
+        "Event-Driven Protocol Loop",
+        "Timeout"
+      ],
+      "content": "The sender resets `next_frame_to_send` to the oldest unacknowledged sequence and retransmits all currently buffered outstanding frames.\n\nThat is the defining Go-Back-N retransmission behavior.",
+      "source_line_start": 133,
+      "source_line_end": 139
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Flow Control",
+      "normalized_title": "Flow Control",
+      "key": "flow_control",
+      "path": [
+        "Flow Control"
+      ],
+      "content": "The network layer is enabled when sender buffering has room and disabled when the sender window is full.\n\nThis represents backpressure between the protocol and the layer above it.",
+      "source_line_start": 139,
+      "source_line_end": 145
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Console Simulation",
+      "normalized_title": "Console Simulation",
+      "key": "console_simulation",
+      "path": [
+        "Console Simulation"
+      ],
+      "content": "`GoBackN.cpp` provides a more directly observable simulation.\n\n### User-provided frames\n\nThe user enters:\n\n- number of frames;\n- a value for each frame.\n\n### Simulated loss/error\n\nFor each transmission, a random number is used to produce an approximately 10% error event.\n\n### Acknowledgement progression\n\nAcknowledgements are printed according to window progress.\n\n### Window retransmission\n\nWhen an error occurs:\n\n1. the error location is stored;\n2. frames continue through the current window;\n3. successful earlier frames receive acknowledgement output;\n4. the frame index is reset to the failed frame;\n5. the program prints `Retransmitting Window`;\n6. transmission resumes from that point.\n\n### Delayed output\n\n`usleep` is wrapped as `delay_ms`, making the console simulation unfold visibly over time.",
+      "source_line_start": 145,
+      "source_line_end": 179
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "User-provided frames",
+      "normalized_title": "User-provided frames",
+      "key": "user_provided_frames",
+      "path": [
+        "Console Simulation",
+        "User-provided frames"
+      ],
+      "content": "The user enters:\n\n- number of frames;\n- a value for each frame.",
+      "source_line_start": 149,
+      "source_line_end": 156
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Simulated loss/error",
+      "normalized_title": "Simulated loss/error",
+      "key": "simulated_loss_error",
+      "path": [
+        "Console Simulation",
+        "Simulated loss/error"
+      ],
+      "content": "For each transmission, a random number is used to produce an approximately 10% error event.",
+      "source_line_start": 156,
+      "source_line_end": 160
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Acknowledgement progression",
+      "normalized_title": "Acknowledgement progression",
+      "key": "acknowledgement_progression",
+      "path": [
+        "Console Simulation",
+        "Acknowledgement progression"
+      ],
+      "content": "Acknowledgements are printed according to window progress.",
+      "source_line_start": 160,
+      "source_line_end": 164
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Window retransmission",
+      "normalized_title": "Window retransmission",
+      "key": "window_retransmission",
+      "path": [
+        "Console Simulation",
+        "Window retransmission"
+      ],
+      "content": "When an error occurs:\n\n1. the error location is stored;\n2. frames continue through the current window;\n3. successful earlier frames receive acknowledgement output;\n4. the frame index is reset to the failed frame;\n5. the program prints `Retransmitting Window`;\n6. transmission resumes from that point.",
+      "source_line_start": 164,
+      "source_line_end": 175
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Delayed output",
+      "normalized_title": "Delayed output",
+      "key": "delayed_output",
+      "path": [
+        "Console Simulation",
+        "Delayed output"
+      ],
+      "content": "`usleep` is wrapped as `delay_ms`, making the console simulation unfold visibly over time.",
+      "source_line_start": 175,
+      "source_line_end": 179
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nNetwork-layer packet\n      ↓\nSender window / sequence state\n      ↓\nFrame construction\n      ↓\nPhysical-layer abstraction\n      ↓\nReceiver sequence state\n      ↓\nAcknowledgement processing\n      ↓\nSender-window contraction\n\ntimeout\n   ↓\noldest unacknowledged frame\n   ↓\nretransmit outstanding window\n```\n\nThe console version turns these ideas into a visible sequential demonstration.",
+      "source_line_start": 179,
+      "source_line_end": 205
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### C++\n\nC++ is used for:\n\n- protocol structs;\n- enums;\n- vectors;\n- console input/output;\n- state variables;\n- circular sequence arithmetic;\n- randomized error simulation.\n\n### POSIX `usleep`\n\n`unistd.h` provides delayed console output for the transmission simulation.",
+      "source_line_start": 205,
+      "source_line_end": 223
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Technical Stack",
+        "C++"
+      ],
+      "content": "C++ is used for:\n\n- protocol structs;\n- enums;\n- vectors;\n- console input/output;\n- state variables;\n- circular sequence arithmetic;\n- randomized error simulation.",
+      "source_line_start": 207,
+      "source_line_end": 219
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "POSIX `usleep`",
+      "normalized_title": "POSIX usleep",
+      "key": "posix_usleep",
+      "path": [
+        "Technical Stack",
+        "POSIX `usleep`"
+      ],
+      "content": "`unistd.h` provides delayed console output for the transmission simulation.",
+      "source_line_start": 219,
+      "source_line_end": 223
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Interactive Simulation\n\nThe console program makes protocol state visible through:\n\n- frame-send messages;\n- frame data;\n- acknowledgement output;\n- loss indication;\n- retransmission output.\n\nThis provides a direct manual way to observe window behavior.\n\n### Deterministic Protocol Structure\n\nThe event-driven `Protocol5.cpp` preserves canonical Go-Back-N invariants such as:\n\n- bounded sender buffering;\n- circular sequence numbers;\n- cumulative acknowledgement handling;\n- timeout-based retransmission from the oldest unacknowledged frame.",
+      "source_line_start": 223,
+      "source_line_end": 246
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Interactive Simulation",
+      "normalized_title": "Interactive Simulation",
+      "key": "interactive_simulation",
+      "path": [
+        "Verification",
+        "Interactive Simulation"
+      ],
+      "content": "The console program makes protocol state visible through:\n\n- frame-send messages;\n- frame data;\n- acknowledgement output;\n- loss indication;\n- retransmission output.\n\nThis provides a direct manual way to observe window behavior.",
+      "source_line_start": 225,
+      "source_line_end": 237
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Deterministic Protocol Structure",
+      "normalized_title": "Deterministic Protocol Structure",
+      "key": "deterministic_protocol_structure",
+      "path": [
+        "Verification",
+        "Deterministic Protocol Structure"
+      ],
+      "content": "The event-driven `Protocol5.cpp` preserves canonical Go-Back-N invariants such as:\n\n- bounded sender buffering;\n- circular sequence numbers;\n- cumulative acknowledgement handling;\n- timeout-based retransmission from the oldest unacknowledged frame.",
+      "source_line_start": 237,
+      "source_line_end": 246
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Explicit Protocol State\n\nSender and receiver state are represented through named variables tied directly to protocol concepts.\n\n### Circular Sequence Arithmetic\n\nThe code contains a dedicated helper for wrap-around ordering rather than using ordinary linear comparisons.\n\n### Error Simulation\n\nThe custom console path injects failures probabilistically to make retransmission behavior observable.\n\n### Layered Abstraction Vocabulary\n\nThe instructional protocol scaffold separates:\n\n- network layer;\n- data-link framing;\n- physical layer;\n- timers;\n- protocol events.\n\nThis provides hands-on exposure to layered networking architecture.",
+      "source_line_start": 246,
+      "source_line_end": 272
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Explicit Protocol State",
+      "normalized_title": "Explicit Protocol State",
+      "key": "explicit_protocol_state",
+      "path": [
+        "Engineering Practices",
+        "Explicit Protocol State"
+      ],
+      "content": "Sender and receiver state are represented through named variables tied directly to protocol concepts.",
+      "source_line_start": 248,
+      "source_line_end": 252
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Circular Sequence Arithmetic",
+      "normalized_title": "Circular Sequence Arithmetic",
+      "key": "circular_sequence_arithmetic",
+      "path": [
+        "Engineering Practices",
+        "Circular Sequence Arithmetic"
+      ],
+      "content": "The code contains a dedicated helper for wrap-around ordering rather than using ordinary linear comparisons.",
+      "source_line_start": 252,
+      "source_line_end": 256
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Error Simulation",
+      "normalized_title": "Error Simulation",
+      "key": "error_simulation",
+      "path": [
+        "Engineering Practices",
+        "Error Simulation"
+      ],
+      "content": "The custom console path injects failures probabilistically to make retransmission behavior observable.",
+      "source_line_start": 256,
+      "source_line_end": 260
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Layered Abstraction Vocabulary",
+      "normalized_title": "Layered Abstraction Vocabulary",
+      "key": "layered_abstraction_vocabulary",
+      "path": [
+        "Engineering Practices",
+        "Layered Abstraction Vocabulary"
+      ],
+      "content": "The instructional protocol scaffold separates:\n\n- network layer;\n- data-link framing;\n- physical layer;\n- timers;\n- protocol events.\n\nThis provides hands-on exposure to layered networking architecture.",
+      "source_line_start": 260,
+      "source_line_end": 272
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository contains four C++/header files.\n\n### Protocol Complexity\n\nThe central complexity comes from maintaining multiple pieces of state consistently:\n\n- sender window;\n- receiver expectation;\n- sequence wrap-around;\n- acknowledgements;\n- buffered packets;\n- timeout recovery.\n\n### Simulation Complexity\n\nThe custom console simulation adds randomized failure and visible retransmission behavior on top of the protocol concepts.",
+      "source_line_start": 272,
+      "source_line_end": 293
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository contains four C++/header files.",
+      "source_line_start": 274,
+      "source_line_end": 278
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Protocol Complexity",
+      "normalized_title": "Protocol Complexity",
+      "key": "protocol_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Protocol Complexity"
+      ],
+      "content": "The central complexity comes from maintaining multiple pieces of state consistently:\n\n- sender window;\n- receiver expectation;\n- sequence wrap-around;\n- acknowledgements;\n- buffered packets;\n- timeout recovery.",
+      "source_line_start": 278,
+      "source_line_end": 289
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Simulation Complexity",
+      "normalized_title": "Simulation Complexity",
+      "key": "simulation_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Simulation Complexity"
+      ],
+      "content": "The custom console simulation adds randomized failure and visible retransmission behavior on top of the protocol concepts.",
+      "source_line_start": 289,
+      "source_line_end": 293
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### C++\n\n- **C++ — strong repository evidence.**\n- **Structs/enums — strong evidence.**\n- **Vectors — strong evidence.**\n- **Console simulation — strong evidence.**\n\n### Networking\n\n- **Go-Back-N ARQ — strong repository evidence.**\n- **Sliding-window protocols — strong evidence.**\n- **Sequence numbers — strong evidence.**\n- **Cumulative acknowledgements — strong evidence.**\n- **Piggyback acknowledgements — strong repository evidence.**\n- **Timeout retransmission — strong evidence.**\n- **Sender/receiver state — strong evidence.**\n- **Network-layer flow control — moderate evidence.**\n- **Simulated transmission error — strong evidence.**",
+      "source_line_start": 293,
+      "source_line_end": 314
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Skills Demonstrated",
+        "C++"
+      ],
+      "content": "- **C++ — strong repository evidence.**\n- **Structs/enums — strong evidence.**\n- **Vectors — strong evidence.**\n- **Console simulation — strong evidence.**",
+      "source_line_start": 295,
+      "source_line_end": 302
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Skills Demonstrated",
+        "Networking"
+      ],
+      "content": "- **Go-Back-N ARQ — strong repository evidence.**\n- **Sliding-window protocols — strong evidence.**\n- **Sequence numbers — strong evidence.**\n- **Cumulative acknowledgements — strong evidence.**\n- **Piggyback acknowledgements — strong repository evidence.**\n- **Timeout retransmission — strong evidence.**\n- **Sender/receiver state — strong evidence.**\n- **Network-layer flow control — moderate evidence.**\n- **Simulated transmission error — strong evidence.**",
+      "source_line_start": 302,
+      "source_line_end": 314
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository introduces reliable networking-protocol reasoning into the processed corpus.\n\nThe key conceptual shift is from manipulating local program state to coordinating state across an unreliable communication channel.\n\nCorrectness depends on:\n\n- ordering;\n- window boundaries;\n- acknowledgement meaning;\n- sequence-number wrap-around;\n- timeout recovery.",
+      "source_line_start": 314,
+      "source_line_end": 328
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- a computer-networking protocol repository;\n- Go-Back-N ARQ;\n- sliding-window flow/reliability control;\n- timeout-driven window retransmission;\n- cumulative/piggyback acknowledgement logic;\n- simulated transmission loss.",
+      "source_line_start": 328,
+      "source_line_end": 339
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Go-Back-N-Protocol` broadens the portfolio from software architecture and digital hardware into computer networking.\n\nIt provides an early point of comparison for later networking and wireless projects because fundamental reliability concepts—windows, acknowledgements, retransmission, and sequence state—appear here in explicit code.",
+      "source_line_start": 339,
+      "source_line_end": 345
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Go-Back-N-Protocol` is a C++ educational networking repository centered on reliable frame delivery.\n\nOne source path mirrors the canonical event-driven Go-Back-N protocol: sender and receiver state advance through sequence numbers, acknowledgements contract the sender window, and timeout events retransmit all outstanding frames from the oldest missing acknowledgement. A second console path turns the same ideas into an interactive simulation with user-entered frames, probabilistic loss, delayed transmission messages, acknowledgement output, and visible window retransmission.\n\nIts strongest portfolio evidence is the first explicit implementation-level exposure to data-link reliability and sliding-window protocol state.\n\n# Project Tags",
+      "source_line_start": 345,
+      "source_line_end": 355
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `networking-protocol-simulation`\n- `educational-project`",
+      "source_line_start": 355,
+      "source_line_end": 360
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`\n- `instructional-scaffold`",
+      "source_line_start": 360,
+      "source_line_end": 365
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `cpp`",
+      "source_line_start": 365,
+      "source_line_end": 369
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Networking"
+      ],
+      "content": "- `computer-networking`\n- `go-back-n`\n- `automatic-repeat-request`\n- `sliding-window-protocol`\n- `sequence-numbers`\n- `cumulative-acknowledgements`\n- `piggyback-acknowledgements`\n- `timeout-retransmission`\n- `network-flow-control`\n- `frame-protocol`\n- `simulated-packet-loss`",
+      "source_line_start": 369,
+      "source_line_end": 383
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `event-driven-state-machine`\n- `circular-sequence-arithmetic`\n- `console-simulation`",
+      "source_line_start": 383,
+      "source_line_end": 389
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `manual-simulation`\n- `fault-injection-simulation`",
+      "source_line_start": 389,
+      "source_line_end": 394
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-computer-networking`\n- `earliest-observed-go-back-n`\n- `earliest-observed-sliding-window-protocol`\n- `earliest-observed-retransmission-protocol`",
+      "source_line_start": 394,
+      "source_line_end": 400
+    }
+  ],
+  "raw_analysis": "# Go-Back-N-Protocol\n\n## Repository Identity\n\n- Repository: 015 / 134\n- Name: `Go-Back-N-Protocol`\n- Repository start date: 2023-02-27\n- Latest meaningful update date: 2023-02-27\n- Primary type: Networking protocol simulation / educational implementation\n- Technical field: Computer networking and reliable data transfer\n- Application domain: Go-Back-N automatic repeat request\n- Project context: Personal repository containing instructional protocol work\n- Collaboration type: `individual-project`\n- Primary implementation language: C++\n\n## Collaboration and Authorship Context\n\nThe repository was uploaded in a single owner-attributed commit.\n\nThe source has two distinct evidence layers.\n\n`GoBackN.cpp` contains a custom interactive console simulation with user-entered frame values, simulated random errors, acknowledgement output, and window retransmission behavior.\n\n`Protocol5.cpp` contains a textbook-style event-driven Go-Back-N protocol skeleton with generic network/physical-layer and timer hooks. That file is strong evidence of hands-on exposure to the canonical protocol mechanics, while the generic scaffold is treated as instructional infrastructure rather than wholly original protocol design.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `GoBackN.cpp`;\n- `GoBackN.h`;\n- `Protocol5.cpp`;\n- `Protocol5.h`;\n- the owner-attributed repository commit.\n\n## What This Project Is\n\n`Go-Back-N-Protocol` explores reliable frame transmission using a sliding-window protocol.\n\nThe repository contains:\n\n1. an event-oriented Go-Back-N protocol implementation based around sequence numbers, sender/receiver window state, acknowledgements, and timeout retransmission;\n2. a standalone console simulation that lets the user enter frames and then models successful transmissions, acknowledgement progression, a 10% error event, and retransmission of the affected window.\n\nThe project introduces the networking domain into the processed portfolio.\n\n## Networking Model\n\nThe header defines:\n\n- sequence numbers;\n- packet structure;\n- frame kinds;\n- frame sequence number;\n- acknowledgement number;\n- payload;\n- protocol event types.\n\nVisible event types include:\n\n- `frame_arrival`;\n- `cksum_err`;\n- `timeout`;\n- `network_layer_ready`.\n\nThe code therefore models networking as an event-driven state process rather than a simple data-copy loop.\n\n## Static Protocol Configuration\n\n`GoBackN.h` defines values including:\n\n- sender window size: 4;\n- maximum sequence number: 7;\n- packet size: 1024 bytes;\n- buffer size: 5;\n- simulated error denominator: 10;\n- output delay.\n\nThese constants make the simulated protocol behavior explicit.\n\n## Go-Back-N Window Logic\n\n### Sender state\n\n`Protocol5.cpp` maintains:\n\n- `next_frame_to_send`;\n- `ack_expected`;\n- outbound packet buffer;\n- `nbuffered`.\n\n### Receiver state\n\nThe receiver tracks:\n\n- `frame_expected`;\n- incoming frame `r`.\n\n### Circular sequence-number reasoning\n\nThe `between(a, b, c)` helper checks whether an acknowledgement lies inside a circular sequence-number interval.\n\nThis is important because sequence numbers wrap around at `MAX_SEQ`.\n\n### Sending\n\n`send_data()` constructs a frame with:\n\n- sequence number;\n- payload;\n- piggybacked acknowledgement.\n\nIt then invokes the physical-layer hook and starts a timer.\n\n## Event-Driven Protocol Loop\n\n`protocol5()` switches on protocol events.\n\n### Network layer ready\n\nA packet is accepted into the sender buffer, sent, and the sender's upper window edge advances.\n\n### Frame arrival\n\nAn in-order frame is delivered upward and the expected receive sequence advances.\n\nPiggybacked acknowledgement state then contracts the sender window.\n\n### Checksum error event\n\nThe event is represented explicitly in the protocol event system.\n\n### Timeout\n\nThe sender resets `next_frame_to_send` to the oldest unacknowledged sequence and retransmits all currently buffered outstanding frames.\n\nThat is the defining Go-Back-N retransmission behavior.\n\n## Flow Control\n\nThe network layer is enabled when sender buffering has room and disabled when the sender window is full.\n\nThis represents backpressure between the protocol and the layer above it.\n\n## Console Simulation\n\n`GoBackN.cpp` provides a more directly observable simulation.\n\n### User-provided frames\n\nThe user enters:\n\n- number of frames;\n- a value for each frame.\n\n### Simulated loss/error\n\nFor each transmission, a random number is used to produce an approximately 10% error event.\n\n### Acknowledgement progression\n\nAcknowledgements are printed according to window progress.\n\n### Window retransmission\n\nWhen an error occurs:\n\n1. the error location is stored;\n2. frames continue through the current window;\n3. successful earlier frames receive acknowledgement output;\n4. the frame index is reset to the failed frame;\n5. the program prints `Retransmitting Window`;\n6. transmission resumes from that point.\n\n### Delayed output\n\n`usleep` is wrapped as `delay_ms`, making the console simulation unfold visibly over time.\n\n## Architecture and System Shape\n\n```text\nNetwork-layer packet\n      ↓\nSender window / sequence state\n      ↓\nFrame construction\n      ↓\nPhysical-layer abstraction\n      ↓\nReceiver sequence state\n      ↓\nAcknowledgement processing\n      ↓\nSender-window contraction\n\ntimeout\n   ↓\noldest unacknowledged frame\n   ↓\nretransmit outstanding window\n```\n\nThe console version turns these ideas into a visible sequential demonstration.\n\n## Technical Stack\n\n### C++\n\nC++ is used for:\n\n- protocol structs;\n- enums;\n- vectors;\n- console input/output;\n- state variables;\n- circular sequence arithmetic;\n- randomized error simulation.\n\n### POSIX `usleep`\n\n`unistd.h` provides delayed console output for the transmission simulation.\n\n## Verification\n\n### Interactive Simulation\n\nThe console program makes protocol state visible through:\n\n- frame-send messages;\n- frame data;\n- acknowledgement output;\n- loss indication;\n- retransmission output.\n\nThis provides a direct manual way to observe window behavior.\n\n### Deterministic Protocol Structure\n\nThe event-driven `Protocol5.cpp` preserves canonical Go-Back-N invariants such as:\n\n- bounded sender buffering;\n- circular sequence numbers;\n- cumulative acknowledgement handling;\n- timeout-based retransmission from the oldest unacknowledged frame.\n\n## Engineering Practices\n\n### Explicit Protocol State\n\nSender and receiver state are represented through named variables tied directly to protocol concepts.\n\n### Circular Sequence Arithmetic\n\nThe code contains a dedicated helper for wrap-around ordering rather than using ordinary linear comparisons.\n\n### Error Simulation\n\nThe custom console path injects failures probabilistically to make retransmission behavior observable.\n\n### Layered Abstraction Vocabulary\n\nThe instructional protocol scaffold separates:\n\n- network layer;\n- data-link framing;\n- physical layer;\n- timers;\n- protocol events.\n\nThis provides hands-on exposure to layered networking architecture.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository contains four C++/header files.\n\n### Protocol Complexity\n\nThe central complexity comes from maintaining multiple pieces of state consistently:\n\n- sender window;\n- receiver expectation;\n- sequence wrap-around;\n- acknowledgements;\n- buffered packets;\n- timeout recovery.\n\n### Simulation Complexity\n\nThe custom console simulation adds randomized failure and visible retransmission behavior on top of the protocol concepts.\n\n## Skills Demonstrated\n\n### C++\n\n- **C++ — strong repository evidence.**\n- **Structs/enums — strong evidence.**\n- **Vectors — strong evidence.**\n- **Console simulation — strong evidence.**\n\n### Networking\n\n- **Go-Back-N ARQ — strong repository evidence.**\n- **Sliding-window protocols — strong evidence.**\n- **Sequence numbers — strong evidence.**\n- **Cumulative acknowledgements — strong evidence.**\n- **Piggyback acknowledgements — strong repository evidence.**\n- **Timeout retransmission — strong evidence.**\n- **Sender/receiver state — strong evidence.**\n- **Network-layer flow control — moderate evidence.**\n- **Simulated transmission error — strong evidence.**\n\n## Capability Developed\n\nThis repository introduces reliable networking-protocol reasoning into the processed corpus.\n\nThe key conceptual shift is from manipulating local program state to coordinating state across an unreliable communication channel.\n\nCorrectness depends on:\n\n- ordering;\n- window boundaries;\n- acknowledgement meaning;\n- sequence-number wrap-around;\n- timeout recovery.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- a computer-networking protocol repository;\n- Go-Back-N ARQ;\n- sliding-window flow/reliability control;\n- timeout-driven window retransmission;\n- cumulative/piggyback acknowledgement logic;\n- simulated transmission loss.\n\n## Historical Significance\n\n`Go-Back-N-Protocol` broadens the portfolio from software architecture and digital hardware into computer networking.\n\nIt provides an early point of comparison for later networking and wireless projects because fundamental reliability concepts—windows, acknowledgements, retransmission, and sequence state—appear here in explicit code.\n\n## Overall Repository Narrative\n\n`Go-Back-N-Protocol` is a C++ educational networking repository centered on reliable frame delivery.\n\nOne source path mirrors the canonical event-driven Go-Back-N protocol: sender and receiver state advance through sequence numbers, acknowledgements contract the sender window, and timeout events retransmit all outstanding frames from the oldest missing acknowledgement. A second console path turns the same ideas into an interactive simulation with user-entered frames, probabilistic loss, delayed transmission messages, acknowledgement output, and visible window retransmission.\n\nIts strongest portfolio evidence is the first explicit implementation-level exposure to data-link reliability and sliding-window protocol state.\n\n# Project Tags\n\n## Project Type\n\n- `networking-protocol-simulation`\n- `educational-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n- `instructional-scaffold`\n\n## Languages\n\n- `cpp`\n\n## Networking\n\n- `computer-networking`\n- `go-back-n`\n- `automatic-repeat-request`\n- `sliding-window-protocol`\n- `sequence-numbers`\n- `cumulative-acknowledgements`\n- `piggyback-acknowledgements`\n- `timeout-retransmission`\n- `network-flow-control`\n- `frame-protocol`\n- `simulated-packet-loss`\n\n## Systems Engineering\n\n- `event-driven-state-machine`\n- `circular-sequence-arithmetic`\n- `console-simulation`\n\n## Testing and Verification\n\n- `manual-simulation`\n- `fault-injection-simulation`\n\n## Portfolio Significance\n\n- `earliest-observed-computer-networking`\n- `earliest-observed-go-back-n`\n- `earliest-observed-sliding-window-protocol`\n- `earliest-observed-retransmission-protocol`\n"
+}

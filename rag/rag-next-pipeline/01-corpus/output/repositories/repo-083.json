@@ -1,0 +1,560 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 83,
+  "repository_total": 134,
+  "repository_name": "LanguageStudy",
+  "header_title": "LanguageStudy",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-083-LanguageStudy/README.md",
+    "line_start": 1,
+    "line_end": 582,
+    "sha256": "05e83b6aeb8a07f3969353e16e01ba1f53e32f860de7f66e241c1da7c4b754ad"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "web-application",
+    "single-page-application",
+    "html",
+    "css",
+    "javascript",
+    "firebase",
+    "firebase-realtime-database",
+    "browser-database-write",
+    "language-learning",
+    "vocabulary-tracker",
+    "bilingual-ui",
+    "localization",
+    "english",
+    "french",
+    "category-based-data",
+    "duplicate-detection",
+    "case-insensitive-validation",
+    "timestamped-records",
+    "client-side-filtering",
+    "client-side-sorting",
+    "pdf-generation",
+    "jspdf",
+    "jspdf-autotable",
+    "client-side-export",
+    "responsive-layout",
+    "asynchronous-data-access",
+    "user-feedback",
+    "earliest-observed-pdf-generation",
+    "earliest-observed-jspdf"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/LanguageStudy`\n- **Corpus index:** 083\n- **Repository start date:** 2025-05-24\n- **Last meaningful update date:** 2025-05-24\n- **Latest meaningful commit:** `5c5411f755dac7377f5950c32a8ebf7ffb1a6ee5`\n- **Primary repository language:** HTML\n- **Project form:** single-page browser application\n- **Collaboration classification:** `individual-project`\n- **Source shape:** one substantive `index.html` plus a minimal source README"
+    },
+    "architecture": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe system is a client-heavy browser application.\n\nA simplified architecture is:\n\n```text\nBrowser\n  |\n  +-- HTML / CSS\n  |\n  +-- JavaScript state + validation\n  |\n  +-- Firebase Realtime Database\n  |     |\n  |     +-- words/\n  |           +-- English/\n  |           +-- French/\n  |\n  +-- jsPDF + AutoTable\n        |\n        +-- local PDF download\n```\n\nThere is no repository evidence of a custom backend.\n\nThere is no checked-in server-side API.\n\nThere is no application server responsible for validation.\n\nThere is no server-side PDF process.\n\nData access happens directly from browser code to Firebase Realtime Database.\n\nThis creates a very short implementation path, but it also places security-rule correctness outside the visible repository evidence."
+    },
+    "testing": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nNo automated test suite is checked into the repository.\n\nNo unit-test framework is visible.\n\nNo end-to-end browser test is visible.\n\nNo CI workflow is visible.\n\nNo Firebase emulator configuration is visible.\n\nNo database-rules test is visible.\n\nThe commit sequence shows several same-day updates to `index.html`.\n\nThat supports iterative manual development.\n\nIt does not by itself establish formal regression testing.\n\nThe implementation contains runtime success/error notifications.\n\nThose are user-facing error-handling paths, not automated verification."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "Security and Data Boundaries"
+      ],
+      "text": "## Security and Data Boundaries\nThe Firebase web configuration is embedded client-side.\n\nThat is normal for many Firebase browser applications and is not equivalent to a server secret by itself.\n\nActual protection would depend on Firebase security rules.\n\nThose rules are not present in the inspected repository.\n\nTherefore the corpus must not claim authenticated or authorization-protected data.\n\nThe application does not show a login flow.\n\nThe database paths shown in code are not user-scoped."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/LanguageStudy`\n- **Corpus index:** 083\n- **Repository start date:** 2025-05-24\n- **Last meaningful update date:** 2025-05-24\n- **Latest meaningful commit:** `5c5411f755dac7377f5950c32a8ebf7ffb1a6ee5`\n- **Primary repository language:** HTML\n- **Project form:** single-page browser application\n- **Collaboration classification:** `individual-project`\n- **Source shape:** one substantive `index.html` plus a minimal source README",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "This analysis is grounded in the repository metadata, commit history, recursive tree, and the checked-in `index.html`.\n\nThe source repository itself contains almost no explanatory README material.\n\nThe implementation therefore carries most of the evidentiary weight.\n\nThe current application title in the HTML is `SpreadTheWord`.\n\nThe page directly imports Firebase Realtime Database APIs in the browser.\n\nIt also loads jsPDF and the jsPDF AutoTable plugin.\n\nThe application embeds its JavaScript and CSS directly in the HTML document rather than splitting them into modules.\n\nThe source includes a Firebase web configuration.\n\nThis corpus analysis intentionally records the architectural fact that Firebase is configured client-side without reproducing the exact project identifiers or API-key-like values.",
+      "source_line_start": 15,
+      "source_line_end": 35
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "LanguageStudy is a small bilingual vocabulary-capture and study-support application.\n\nIts core workflow is not simply a static dictionary page.\n\nA user chooses between English and French, enters a word or expression, categorizes it, and stores it in Firebase Realtime Database.\n\nThe same application can later retrieve saved entries and turn selected vocabulary into a downloadable PDF.\n\nThis makes the project a compact combination of:\n\n- language-learning utility;\n- structured vocabulary capture;\n- lightweight persistence;\n- bilingual UI localization;\n- duplicate prevention;\n- filtering and sorting;\n- client-side document generation.\n\nThe application is oriented around building a personal language corpus over time.\n\nThe repository name is generic, but the implementation is specifically about vocabulary acquisition and export.",
+      "source_line_start": 35,
+      "source_line_end": 59
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope is deliberately narrow: vocabulary capture, language/category organization, Firebase persistence, duplicate rejection, retrieval, sorting, and PDF export.\n\nThe repository does not implement a general language-learning platform, spaced-repetition engine, account system, or NLP service.\n\nIts scope is best described as a personal bilingual vocabulary-management utility with export capability.",
+      "source_line_start": 59,
+      "source_line_end": 67
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "User-Facing Workflow",
+      "normalized_title": "User-Facing Workflow",
+      "key": "user_facing_workflow",
+      "path": [
+        "User-Facing Workflow"
+      ],
+      "content": "### Vocabulary Capture\n\nThe user enters a word or expression.\n\nThe user selects a category.\n\nObserved categories include:\n\n- Synonym\n- Phrasal\n- Idiom\n- Compound\n- Pronunciation\n- Conjunction\n- Collocations\n- Grammar\n\nThe selected interface language determines which logical language branch receives the new entry.\n\nThe application writes each accepted entry with:\n\n- the text of the word;\n- its category;\n- a timestamp.\n\nAfter a successful insert, the word input is cleared.\n\nThe category selection is intentionally retained.\n\nThe input is refocused to support fast repeated data entry.\n\nThis is a small but concrete productivity-oriented interaction decision.\n\n### Duplicate Prevention\n\nBefore writing a new entry, the application reads the stored words for the active language.\n\nIt checks existing entries for a case-insensitive match.\n\nThe duplicate rule is scoped to the same category.\n\nA duplicate is rejected before a new Firebase child is pushed.\n\nThis is application-level data validation rather than database-enforced uniqueness.\n\n### English/French Interface Switching\n\nThe code contains explicit translation dictionaries for English and French.\n\nSwitching language changes:\n\n- field labels;\n- placeholders;\n- category labels;\n- submit button copy;\n- validation messages;\n- PDF controls;\n- sort-option labels;\n- PDF success/error messages.\n\nThe UI theme also changes with the active language.\n\nThe language toggle includes visual flag treatment.\n\nThis is implemented localization logic rather than two manually duplicated HTML pages.\n\n### PDF Export\n\nA second form lets the user choose:\n\n- source language;\n- category;\n- sort order.\n\nThe application retrieves the stored entries for the selected language.\n\nIt filters records by category.\n\nIt supports alphabetical ordering.\n\nIt also exposes a chronological option.\n\nThe generated document includes a title, generation date, and a table of vocabulary entries.\n\njsPDF creates the document in the browser.\n\njsPDF AutoTable renders the tabular body.\n\nThe generated file is downloaded directly from the browser.\n\nNo backend document-generation service is involved.",
+      "source_line_start": 67,
+      "source_line_end": 161
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Vocabulary Capture",
+      "normalized_title": "Vocabulary Capture",
+      "key": "vocabulary_capture",
+      "path": [
+        "User-Facing Workflow",
+        "Vocabulary Capture"
+      ],
+      "content": "The user enters a word or expression.\n\nThe user selects a category.\n\nObserved categories include:\n\n- Synonym\n- Phrasal\n- Idiom\n- Compound\n- Pronunciation\n- Conjunction\n- Collocations\n- Grammar\n\nThe selected interface language determines which logical language branch receives the new entry.\n\nThe application writes each accepted entry with:\n\n- the text of the word;\n- its category;\n- a timestamp.\n\nAfter a successful insert, the word input is cleared.\n\nThe category selection is intentionally retained.\n\nThe input is refocused to support fast repeated data entry.\n\nThis is a small but concrete productivity-oriented interaction decision.",
+      "source_line_start": 69,
+      "source_line_end": 102
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Duplicate Prevention",
+      "normalized_title": "Duplicate Prevention",
+      "key": "duplicate_prevention",
+      "path": [
+        "User-Facing Workflow",
+        "Duplicate Prevention"
+      ],
+      "content": "Before writing a new entry, the application reads the stored words for the active language.\n\nIt checks existing entries for a case-insensitive match.\n\nThe duplicate rule is scoped to the same category.\n\nA duplicate is rejected before a new Firebase child is pushed.\n\nThis is application-level data validation rather than database-enforced uniqueness.",
+      "source_line_start": 102,
+      "source_line_end": 114
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "English/French Interface Switching",
+      "normalized_title": "English/French Interface Switching",
+      "key": "english_french_interface_switching",
+      "path": [
+        "User-Facing Workflow",
+        "English/French Interface Switching"
+      ],
+      "content": "The code contains explicit translation dictionaries for English and French.\n\nSwitching language changes:\n\n- field labels;\n- placeholders;\n- category labels;\n- submit button copy;\n- validation messages;\n- PDF controls;\n- sort-option labels;\n- PDF success/error messages.\n\nThe UI theme also changes with the active language.\n\nThe language toggle includes visual flag treatment.\n\nThis is implemented localization logic rather than two manually duplicated HTML pages.",
+      "source_line_start": 114,
+      "source_line_end": 135
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "PDF Export",
+      "normalized_title": "PDF Export",
+      "key": "pdf_export",
+      "path": [
+        "User-Facing Workflow",
+        "PDF Export"
+      ],
+      "content": "A second form lets the user choose:\n\n- source language;\n- category;\n- sort order.\n\nThe application retrieves the stored entries for the selected language.\n\nIt filters records by category.\n\nIt supports alphabetical ordering.\n\nIt also exposes a chronological option.\n\nThe generated document includes a title, generation date, and a table of vocabulary entries.\n\njsPDF creates the document in the browser.\n\njsPDF AutoTable renders the tabular body.\n\nThe generated file is downloaded directly from the browser.\n\nNo backend document-generation service is involved.",
+      "source_line_start": 135,
+      "source_line_end": 161
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The system is a client-heavy browser application.\n\nA simplified architecture is:\n\n```text\nBrowser\n  |\n  +-- HTML / CSS\n  |\n  +-- JavaScript state + validation\n  |\n  +-- Firebase Realtime Database\n  |     |\n  |     +-- words/\n  |           +-- English/\n  |           +-- French/\n  |\n  +-- jsPDF + AutoTable\n        |\n        +-- local PDF download\n```\n\nThere is no repository evidence of a custom backend.\n\nThere is no checked-in server-side API.\n\nThere is no application server responsible for validation.\n\nThere is no server-side PDF process.\n\nData access happens directly from browser code to Firebase Realtime Database.\n\nThis creates a very short implementation path, but it also places security-rule correctness outside the visible repository evidence.",
+      "source_line_start": 161,
+      "source_line_end": 197
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Data Model",
+      "normalized_title": "Data Model",
+      "key": "data_model",
+      "path": [
+        "Data Model"
+      ],
+      "content": "The observable logical structure is language-partitioned.\n\nA conceptual representation is:\n\n```text\nwords\n└── <language>\n    └── <generated-entry-id>\n        ├── word\n        ├── category\n        └── timestamp\n```\n\nThe generated child key comes from Firebase `push`.\n\nThe data model is intentionally lightweight.\n\nLanguage is encoded structurally in the database path.\n\nCategory is encoded as an attribute.\n\nTimestamp supports chronological presentation.\n\nThere is no visible user/account namespace.\n\nThere is no visible ownership field.\n\nThere is no visible per-user isolation in the application model.",
+      "source_line_start": 197,
+      "source_line_end": 228
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Frontend\n\n- HTML\n- CSS\n- browser JavaScript\n- responsive layout\n- DOM event handling\n\n### Persistence\n\n- Firebase\n- Firebase Realtime Database\n\n### Document Generation\n\n- jsPDF\n- jsPDF AutoTable\n\n### External Delivery Model\n\n- browser-loaded CDN dependencies\n- browser-side Firebase SDK\n- client-side PDF generation",
+      "source_line_start": 228,
+      "source_line_end": 254
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Technical Stack",
+        "Frontend"
+      ],
+      "content": "- HTML\n- CSS\n- browser JavaScript\n- responsive layout\n- DOM event handling",
+      "source_line_start": 230,
+      "source_line_end": 238
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Persistence",
+      "normalized_title": "Persistence",
+      "key": "persistence",
+      "path": [
+        "Technical Stack",
+        "Persistence"
+      ],
+      "content": "- Firebase\n- Firebase Realtime Database",
+      "source_line_start": 238,
+      "source_line_end": 243
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Document Generation",
+      "normalized_title": "Document Generation",
+      "key": "document_generation",
+      "path": [
+        "Technical Stack",
+        "Document Generation"
+      ],
+      "content": "- jsPDF\n- jsPDF AutoTable",
+      "source_line_start": 243,
+      "source_line_end": 248
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "External Delivery Model",
+      "normalized_title": "External Delivery Model",
+      "key": "external_delivery_model",
+      "path": [
+        "Technical Stack",
+        "External Delivery Model"
+      ],
+      "content": "- browser-loaded CDN dependencies\n- browser-side Firebase SDK\n- client-side PDF generation",
+      "source_line_start": 248,
+      "source_line_end": 254
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### 1. Bilingual State-Driven UI\n\nThe application models English/French text in translation objects.\n\nUI controls are refreshed from those objects.\n\nCategory options are reconstructed based on the active language.\n\nCurrent selection state is intentionally preserved when possible.\n\nThis demonstrates a small localization state model rather than only static translated copy.\n\n### 2. Duplicate Detection\n\nThe code implements a read-before-write workflow.\n\nIt performs case-insensitive comparison of vocabulary text.\n\nIt combines word identity with category identity.\n\nThis prevents accidental repeated entries within a category.\n\nThe check is implemented in application code.\n\nIt is therefore subject to the usual race limitations of client-side read-then-write logic.\n\n### 3. Firebase Persistence\n\nThe project establishes direct browser persistence.\n\nEntries are stored as structured objects rather than concatenated strings.\n\nA timestamp is added at insertion time.\n\nThe storage layout supports later filtering.\n\nThe same database becomes the source for document export.\n\n### 4. Query / Filter / Sort Pipeline\n\nFor PDF generation, the code:\n\n1. reads a language branch;\n2. converts database entries into an array;\n3. filters by category;\n4. transforms timestamps to local dates;\n5. conditionally sorts alphabetically;\n6. passes rows to a document generator.\n\nThis is a small end-to-end data transformation path.\n\n### 5. Client-Side PDF Generation\n\nThe project turns persisted application data into a user-facing artifact.\n\nThe PDF path is fully client-side.\n\nThe application constructs:\n\n- a document title;\n- generation metadata;\n- table headers;\n- table rows;\n- output filename.\n\nThis adds an export capability rather than keeping the stored vocabulary trapped inside the application UI.\n\n### 6. Fast Entry UX\n\nAfter successful storage:\n\n- the input clears;\n- the category stays selected;\n- focus returns to the word field.\n\nThat interaction reduces repetitive entry friction.\n\nIt reflects attention to the actual recurring usage pattern of a vocabulary tracker.",
+      "source_line_start": 254,
+      "source_line_end": 335
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "1. Bilingual State-Driven UI",
+      "normalized_title": "Bilingual State-Driven UI",
+      "key": "bilingual_state_driven_ui",
+      "path": [
+        "Major Engineering Work",
+        "1. Bilingual State-Driven UI"
+      ],
+      "content": "The application models English/French text in translation objects.\n\nUI controls are refreshed from those objects.\n\nCategory options are reconstructed based on the active language.\n\nCurrent selection state is intentionally preserved when possible.\n\nThis demonstrates a small localization state model rather than only static translated copy.",
+      "source_line_start": 256,
+      "source_line_end": 268
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "2. Duplicate Detection",
+      "normalized_title": "Duplicate Detection",
+      "key": "duplicate_detection",
+      "path": [
+        "Major Engineering Work",
+        "2. Duplicate Detection"
+      ],
+      "content": "The code implements a read-before-write workflow.\n\nIt performs case-insensitive comparison of vocabulary text.\n\nIt combines word identity with category identity.\n\nThis prevents accidental repeated entries within a category.\n\nThe check is implemented in application code.\n\nIt is therefore subject to the usual race limitations of client-side read-then-write logic.",
+      "source_line_start": 268,
+      "source_line_end": 282
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "3. Firebase Persistence",
+      "normalized_title": "Firebase Persistence",
+      "key": "firebase_persistence",
+      "path": [
+        "Major Engineering Work",
+        "3. Firebase Persistence"
+      ],
+      "content": "The project establishes direct browser persistence.\n\nEntries are stored as structured objects rather than concatenated strings.\n\nA timestamp is added at insertion time.\n\nThe storage layout supports later filtering.\n\nThe same database becomes the source for document export.",
+      "source_line_start": 282,
+      "source_line_end": 294
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "4. Query / Filter / Sort Pipeline",
+      "normalized_title": "Query / Filter / Sort Pipeline",
+      "key": "query_filter_sort_pipeline",
+      "path": [
+        "Major Engineering Work",
+        "4. Query / Filter / Sort Pipeline"
+      ],
+      "content": "For PDF generation, the code:\n\n1. reads a language branch;\n2. converts database entries into an array;\n3. filters by category;\n4. transforms timestamps to local dates;\n5. conditionally sorts alphabetically;\n6. passes rows to a document generator.\n\nThis is a small end-to-end data transformation path.",
+      "source_line_start": 294,
+      "source_line_end": 307
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "5. Client-Side PDF Generation",
+      "normalized_title": "Client-Side PDF Generation",
+      "key": "client_side_pdf_generation",
+      "path": [
+        "Major Engineering Work",
+        "5. Client-Side PDF Generation"
+      ],
+      "content": "The project turns persisted application data into a user-facing artifact.\n\nThe PDF path is fully client-side.\n\nThe application constructs:\n\n- a document title;\n- generation metadata;\n- table headers;\n- table rows;\n- output filename.\n\nThis adds an export capability rather than keeping the stored vocabulary trapped inside the application UI.",
+      "source_line_start": 307,
+      "source_line_end": 323
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "6. Fast Entry UX",
+      "normalized_title": "Fast Entry UX",
+      "key": "fast_entry_ux",
+      "path": [
+        "Major Engineering Work",
+        "6. Fast Entry UX"
+      ],
+      "content": "After successful storage:\n\n- the input clears;\n- the category stays selected;\n- focus returns to the word field.\n\nThat interaction reduces repetitive entry friction.\n\nIt reflects attention to the actual recurring usage pattern of a vocabulary tracker.",
+      "source_line_start": 323,
+      "source_line_end": 335
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "No automated test suite is checked into the repository.\n\nNo unit-test framework is visible.\n\nNo end-to-end browser test is visible.\n\nNo CI workflow is visible.\n\nNo Firebase emulator configuration is visible.\n\nNo database-rules test is visible.\n\nThe commit sequence shows several same-day updates to `index.html`.\n\nThat supports iterative manual development.\n\nIt does not by itself establish formal regression testing.\n\nThe implementation contains runtime success/error notifications.\n\nThose are user-facing error-handling paths, not automated verification.",
+      "source_line_start": 335,
+      "source_line_end": 359
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Positive implementation practices visible in the source include:\n\n- explicit field validation;\n- duplicate checking;\n- structured database records;\n- logical language separation;\n- reusable notification function;\n- centralized translation dictionaries;\n- separation between capture and export workflows;\n- user feedback for success/failure;\n- retained category state for repeated entry.\n\nConstraints visible in the snapshot include:\n\n- all application logic is concentrated in one HTML file;\n- Firebase access is browser-direct;\n- environment configuration is embedded in source;\n- no automated tests;\n- no CI;\n- no documented security rules;\n- no user identity layer;\n- no offline synchronization strategy;\n- no schema-versioning mechanism.",
+      "source_line_start": 359,
+      "source_line_end": 385
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The repository solves a recognizable recurring user need.\n\nThe application is more product-shaped than a pure frontend exercise because it combines:\n\n- persistent personal data;\n- data-quality checks;\n- language switching;\n- multiple data categories;\n- structured retrieval;\n- export.\n\nThe PDF export is particularly meaningful from a product perspective.\n\nIt lets the user transform a living database into a printable or portable study artifact.\n\nThe project does not provide evidence of:\n\n- multiple accounts;\n- shared vocabularies;\n- review scheduling;\n- spaced repetition;\n- quiz generation;\n- progress analytics;\n- authentication;\n- authorization.\n\nThose features should not be inferred from the language-learning domain.",
+      "source_line_start": 385,
+      "source_line_end": 415
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The source code footprint is modest.\n\nThe system has only one substantive source file.\n\nHowever, the behavioral surface is broader than the file count suggests.\n\nIt coordinates:\n\n- localization;\n- UI state;\n- remote persistence;\n- duplicate checks;\n- filtering;\n- sorting;\n- asynchronous data access;\n- PDF generation;\n- error states.\n\nThe complexity is primarily integration and workflow complexity rather than codebase scale.",
+      "source_line_start": 415,
+      "source_line_end": 437
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Security and Data Boundaries",
+      "normalized_title": "Security and Data Boundaries",
+      "key": "security_and_data_boundaries",
+      "path": [
+        "Security and Data Boundaries"
+      ],
+      "content": "The Firebase web configuration is embedded client-side.\n\nThat is normal for many Firebase browser applications and is not equivalent to a server secret by itself.\n\nActual protection would depend on Firebase security rules.\n\nThose rules are not present in the inspected repository.\n\nTherefore the corpus must not claim authenticated or authorization-protected data.\n\nThe application does not show a login flow.\n\nThe database paths shown in code are not user-scoped.",
+      "source_line_start": 437,
+      "source_line_end": 453
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports experience with:\n\n- browser JavaScript;\n- DOM state management;\n- HTML/CSS UI implementation;\n- Firebase Realtime Database integration;\n- asynchronous reads/writes;\n- data validation;\n- duplicate detection;\n- bilingual localization;\n- structured vocabulary modeling;\n- client-side filtering;\n- client-side sorting;\n- timestamp handling;\n- jsPDF;\n- jsPDF AutoTable;\n- client-side document export;\n- user feedback states;\n- responsive UI.",
+      "source_line_start": 453,
+      "source_line_end": 475
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "This repository demonstrates the ability to move from a static form to a small persistent utility.\n\nThe important progression is the integration of data lifecycle concerns:\n\n```text\ncapture\n→ validate\n→ persist\n→ retrieve\n→ filter\n→ sort\n→ export\n```\n\nIt also adds a localization concern across the same workflow.\n\nThe implementation shows that the UI copy, category labels, validation messages, and export controls all need to remain coherent when the language changes.",
+      "source_line_start": 475,
+      "source_line_end": 495
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "By repository 083, Firebase is no longer appearing merely as a novel backend service.\n\nIt is being used as a practical persistence layer inside a narrow domain product.\n\nCompared with earlier one-screen experiments, this repository emphasizes repeated personal workflow.\n\nIt also introduces document export as an explicit product capability.\n\nThe language domain connects earlier interest in word tracking with a more structured bilingual storage model.",
+      "source_line_start": 495,
+      "source_line_end": 507
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this repository is an early clear example of:\n\n- browser-side PDF generation from application data;\n- jsPDF integration;\n- vocabulary data organized by language and category;\n- bilingual vocabulary capture tied to persistent storage.\n\nIt marks a move from “store data” toward “store and transform data into another useful artifact.”",
+      "source_line_start": 507,
+      "source_line_end": 518
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "No evidence supports claiming:\n\n- production deployment;\n- production user counts;\n- authenticated multi-user isolation;\n- secure Firebase rules;\n- automated testing;\n- CI/CD;\n- backend API ownership;\n- server-side validation;\n- transactional uniqueness;\n- offline-first behavior;\n- spaced repetition;\n- ML/NLP functionality.\n\nChronological sorting is described by the UI and data handling, but the inspected code leaves database insertion order as the default rather than explicitly sorting timestamp values for that path.\n\nThat distinction should be preserved.",
+      "source_line_start": 518,
+      "source_line_end": 539
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "LanguageStudy is a compact bilingual vocabulary-management application built around a real recurring workflow.\n\nIts value is not codebase size.\n\nIts value is the complete data loop.\n\nA user can capture structured vocabulary, avoid duplicates, store it remotely, retrieve it by language/category, and export it into a PDF.\n\nThe repository demonstrates a practical transition from simple trackers toward small domain-specific productivity software.\n\n# Project Tags\n\n- `individual-project`\n- `web-application`\n- `single-page-application`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `browser-database-write`\n- `language-learning`\n- `vocabulary-tracker`\n- `bilingual-ui`\n- `localization`\n- `english`\n- `french`\n- `category-based-data`\n- `duplicate-detection`\n- `case-insensitive-validation`\n- `timestamped-records`\n- `client-side-filtering`\n- `client-side-sorting`\n- `pdf-generation`\n- `jspdf`\n- `jspdf-autotable`\n- `client-side-export`\n- `responsive-layout`\n- `asynchronous-data-access`\n- `user-feedback`\n- `earliest-observed-pdf-generation`\n- `earliest-observed-jspdf`",
+      "source_line_start": 539,
+      "source_line_end": 583
+    }
+  ],
+  "raw_analysis": "# Repository 083 — LanguageStudy\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/LanguageStudy`\n- **Corpus index:** 083\n- **Repository start date:** 2025-05-24\n- **Last meaningful update date:** 2025-05-24\n- **Latest meaningful commit:** `5c5411f755dac7377f5950c32a8ebf7ffb1a6ee5`\n- **Primary repository language:** HTML\n- **Project form:** single-page browser application\n- **Collaboration classification:** `individual-project`\n- **Source shape:** one substantive `index.html` plus a minimal source README\n\n## Evidence Basis\n\nThis analysis is grounded in the repository metadata, commit history, recursive tree, and the checked-in `index.html`.\n\nThe source repository itself contains almost no explanatory README material.\n\nThe implementation therefore carries most of the evidentiary weight.\n\nThe current application title in the HTML is `SpreadTheWord`.\n\nThe page directly imports Firebase Realtime Database APIs in the browser.\n\nIt also loads jsPDF and the jsPDF AutoTable plugin.\n\nThe application embeds its JavaScript and CSS directly in the HTML document rather than splitting them into modules.\n\nThe source includes a Firebase web configuration.\n\nThis corpus analysis intentionally records the architectural fact that Firebase is configured client-side without reproducing the exact project identifiers or API-key-like values.\n\n## What the Project Is\n\nLanguageStudy is a small bilingual vocabulary-capture and study-support application.\n\nIts core workflow is not simply a static dictionary page.\n\nA user chooses between English and French, enters a word or expression, categorizes it, and stores it in Firebase Realtime Database.\n\nThe same application can later retrieve saved entries and turn selected vocabulary into a downloadable PDF.\n\nThis makes the project a compact combination of:\n\n- language-learning utility;\n- structured vocabulary capture;\n- lightweight persistence;\n- bilingual UI localization;\n- duplicate prevention;\n- filtering and sorting;\n- client-side document generation.\n\nThe application is oriented around building a personal language corpus over time.\n\nThe repository name is generic, but the implementation is specifically about vocabulary acquisition and export.\n\n## Project Scope\n\nThe implemented scope is deliberately narrow: vocabulary capture, language/category organization, Firebase persistence, duplicate rejection, retrieval, sorting, and PDF export.\n\nThe repository does not implement a general language-learning platform, spaced-repetition engine, account system, or NLP service.\n\nIts scope is best described as a personal bilingual vocabulary-management utility with export capability.\n\n## User-Facing Workflow\n\n### Vocabulary Capture\n\nThe user enters a word or expression.\n\nThe user selects a category.\n\nObserved categories include:\n\n- Synonym\n- Phrasal\n- Idiom\n- Compound\n- Pronunciation\n- Conjunction\n- Collocations\n- Grammar\n\nThe selected interface language determines which logical language branch receives the new entry.\n\nThe application writes each accepted entry with:\n\n- the text of the word;\n- its category;\n- a timestamp.\n\nAfter a successful insert, the word input is cleared.\n\nThe category selection is intentionally retained.\n\nThe input is refocused to support fast repeated data entry.\n\nThis is a small but concrete productivity-oriented interaction decision.\n\n### Duplicate Prevention\n\nBefore writing a new entry, the application reads the stored words for the active language.\n\nIt checks existing entries for a case-insensitive match.\n\nThe duplicate rule is scoped to the same category.\n\nA duplicate is rejected before a new Firebase child is pushed.\n\nThis is application-level data validation rather than database-enforced uniqueness.\n\n### English/French Interface Switching\n\nThe code contains explicit translation dictionaries for English and French.\n\nSwitching language changes:\n\n- field labels;\n- placeholders;\n- category labels;\n- submit button copy;\n- validation messages;\n- PDF controls;\n- sort-option labels;\n- PDF success/error messages.\n\nThe UI theme also changes with the active language.\n\nThe language toggle includes visual flag treatment.\n\nThis is implemented localization logic rather than two manually duplicated HTML pages.\n\n### PDF Export\n\nA second form lets the user choose:\n\n- source language;\n- category;\n- sort order.\n\nThe application retrieves the stored entries for the selected language.\n\nIt filters records by category.\n\nIt supports alphabetical ordering.\n\nIt also exposes a chronological option.\n\nThe generated document includes a title, generation date, and a table of vocabulary entries.\n\njsPDF creates the document in the browser.\n\njsPDF AutoTable renders the tabular body.\n\nThe generated file is downloaded directly from the browser.\n\nNo backend document-generation service is involved.\n\n## Architecture / System Shape\n\nThe system is a client-heavy browser application.\n\nA simplified architecture is:\n\n```text\nBrowser\n  |\n  +-- HTML / CSS\n  |\n  +-- JavaScript state + validation\n  |\n  +-- Firebase Realtime Database\n  |     |\n  |     +-- words/\n  |           +-- English/\n  |           +-- French/\n  |\n  +-- jsPDF + AutoTable\n        |\n        +-- local PDF download\n```\n\nThere is no repository evidence of a custom backend.\n\nThere is no checked-in server-side API.\n\nThere is no application server responsible for validation.\n\nThere is no server-side PDF process.\n\nData access happens directly from browser code to Firebase Realtime Database.\n\nThis creates a very short implementation path, but it also places security-rule correctness outside the visible repository evidence.\n\n## Data Model\n\nThe observable logical structure is language-partitioned.\n\nA conceptual representation is:\n\n```text\nwords\n└── <language>\n    └── <generated-entry-id>\n        ├── word\n        ├── category\n        └── timestamp\n```\n\nThe generated child key comes from Firebase `push`.\n\nThe data model is intentionally lightweight.\n\nLanguage is encoded structurally in the database path.\n\nCategory is encoded as an attribute.\n\nTimestamp supports chronological presentation.\n\nThere is no visible user/account namespace.\n\nThere is no visible ownership field.\n\nThere is no visible per-user isolation in the application model.\n\n## Technical Stack\n\n### Frontend\n\n- HTML\n- CSS\n- browser JavaScript\n- responsive layout\n- DOM event handling\n\n### Persistence\n\n- Firebase\n- Firebase Realtime Database\n\n### Document Generation\n\n- jsPDF\n- jsPDF AutoTable\n\n### External Delivery Model\n\n- browser-loaded CDN dependencies\n- browser-side Firebase SDK\n- client-side PDF generation\n\n## Major Engineering Work\n\n### 1. Bilingual State-Driven UI\n\nThe application models English/French text in translation objects.\n\nUI controls are refreshed from those objects.\n\nCategory options are reconstructed based on the active language.\n\nCurrent selection state is intentionally preserved when possible.\n\nThis demonstrates a small localization state model rather than only static translated copy.\n\n### 2. Duplicate Detection\n\nThe code implements a read-before-write workflow.\n\nIt performs case-insensitive comparison of vocabulary text.\n\nIt combines word identity with category identity.\n\nThis prevents accidental repeated entries within a category.\n\nThe check is implemented in application code.\n\nIt is therefore subject to the usual race limitations of client-side read-then-write logic.\n\n### 3. Firebase Persistence\n\nThe project establishes direct browser persistence.\n\nEntries are stored as structured objects rather than concatenated strings.\n\nA timestamp is added at insertion time.\n\nThe storage layout supports later filtering.\n\nThe same database becomes the source for document export.\n\n### 4. Query / Filter / Sort Pipeline\n\nFor PDF generation, the code:\n\n1. reads a language branch;\n2. converts database entries into an array;\n3. filters by category;\n4. transforms timestamps to local dates;\n5. conditionally sorts alphabetically;\n6. passes rows to a document generator.\n\nThis is a small end-to-end data transformation path.\n\n### 5. Client-Side PDF Generation\n\nThe project turns persisted application data into a user-facing artifact.\n\nThe PDF path is fully client-side.\n\nThe application constructs:\n\n- a document title;\n- generation metadata;\n- table headers;\n- table rows;\n- output filename.\n\nThis adds an export capability rather than keeping the stored vocabulary trapped inside the application UI.\n\n### 6. Fast Entry UX\n\nAfter successful storage:\n\n- the input clears;\n- the category stays selected;\n- focus returns to the word field.\n\nThat interaction reduces repetitive entry friction.\n\nIt reflects attention to the actual recurring usage pattern of a vocabulary tracker.\n\n## Testing & Verification Evidence\n\nNo automated test suite is checked into the repository.\n\nNo unit-test framework is visible.\n\nNo end-to-end browser test is visible.\n\nNo CI workflow is visible.\n\nNo Firebase emulator configuration is visible.\n\nNo database-rules test is visible.\n\nThe commit sequence shows several same-day updates to `index.html`.\n\nThat supports iterative manual development.\n\nIt does not by itself establish formal regression testing.\n\nThe implementation contains runtime success/error notifications.\n\nThose are user-facing error-handling paths, not automated verification.\n\n## Engineering Discipline\n\nPositive implementation practices visible in the source include:\n\n- explicit field validation;\n- duplicate checking;\n- structured database records;\n- logical language separation;\n- reusable notification function;\n- centralized translation dictionaries;\n- separation between capture and export workflows;\n- user feedback for success/failure;\n- retained category state for repeated entry.\n\nConstraints visible in the snapshot include:\n\n- all application logic is concentrated in one HTML file;\n- Firebase access is browser-direct;\n- environment configuration is embedded in source;\n- no automated tests;\n- no CI;\n- no documented security rules;\n- no user identity layer;\n- no offline synchronization strategy;\n- no schema-versioning mechanism.\n\n## Product Engineering\n\nThe repository solves a recognizable recurring user need.\n\nThe application is more product-shaped than a pure frontend exercise because it combines:\n\n- persistent personal data;\n- data-quality checks;\n- language switching;\n- multiple data categories;\n- structured retrieval;\n- export.\n\nThe PDF export is particularly meaningful from a product perspective.\n\nIt lets the user transform a living database into a printable or portable study artifact.\n\nThe project does not provide evidence of:\n\n- multiple accounts;\n- shared vocabularies;\n- review scheduling;\n- spaced repetition;\n- quiz generation;\n- progress analytics;\n- authentication;\n- authorization.\n\nThose features should not be inferred from the language-learning domain.\n\n## Scale and Complexity\n\nThe source code footprint is modest.\n\nThe system has only one substantive source file.\n\nHowever, the behavioral surface is broader than the file count suggests.\n\nIt coordinates:\n\n- localization;\n- UI state;\n- remote persistence;\n- duplicate checks;\n- filtering;\n- sorting;\n- asynchronous data access;\n- PDF generation;\n- error states.\n\nThe complexity is primarily integration and workflow complexity rather than codebase scale.\n\n## Security and Data Boundaries\n\nThe Firebase web configuration is embedded client-side.\n\nThat is normal for many Firebase browser applications and is not equivalent to a server secret by itself.\n\nActual protection would depend on Firebase security rules.\n\nThose rules are not present in the inspected repository.\n\nTherefore the corpus must not claim authenticated or authorization-protected data.\n\nThe application does not show a login flow.\n\nThe database paths shown in code are not user-scoped.\n\n## Skills Demonstrated\n\nEvidence supports experience with:\n\n- browser JavaScript;\n- DOM state management;\n- HTML/CSS UI implementation;\n- Firebase Realtime Database integration;\n- asynchronous reads/writes;\n- data validation;\n- duplicate detection;\n- bilingual localization;\n- structured vocabulary modeling;\n- client-side filtering;\n- client-side sorting;\n- timestamp handling;\n- jsPDF;\n- jsPDF AutoTable;\n- client-side document export;\n- user feedback states;\n- responsive UI.\n\n## What Was Learned / Capability Developed\n\nThis repository demonstrates the ability to move from a static form to a small persistent utility.\n\nThe important progression is the integration of data lifecycle concerns:\n\n```text\ncapture\n→ validate\n→ persist\n→ retrieve\n→ filter\n→ sort\n→ export\n```\n\nIt also adds a localization concern across the same workflow.\n\nThe implementation shows that the UI copy, category labels, validation messages, and export controls all need to remain coherent when the language changes.\n\n## Portfolio Evolution Context\n\nBy repository 083, Firebase is no longer appearing merely as a novel backend service.\n\nIt is being used as a practical persistence layer inside a narrow domain product.\n\nCompared with earlier one-screen experiments, this repository emphasizes repeated personal workflow.\n\nIt also introduces document export as an explicit product capability.\n\nThe language domain connects earlier interest in word tracking with a more structured bilingual storage model.\n\n## Historical Significance\n\nWithin the processed corpus, this repository is an early clear example of:\n\n- browser-side PDF generation from application data;\n- jsPDF integration;\n- vocabulary data organized by language and category;\n- bilingual vocabulary capture tied to persistent storage.\n\nIt marks a move from “store data” toward “store and transform data into another useful artifact.”\n\n## Limitations and Missing Evidence\n\nNo evidence supports claiming:\n\n- production deployment;\n- production user counts;\n- authenticated multi-user isolation;\n- secure Firebase rules;\n- automated testing;\n- CI/CD;\n- backend API ownership;\n- server-side validation;\n- transactional uniqueness;\n- offline-first behavior;\n- spaced repetition;\n- ML/NLP functionality.\n\nChronological sorting is described by the UI and data handling, but the inspected code leaves database insertion order as the default rather than explicitly sorting timestamp values for that path.\n\nThat distinction should be preserved.\n\n## Overall Narrative\n\nLanguageStudy is a compact bilingual vocabulary-management application built around a real recurring workflow.\n\nIts value is not codebase size.\n\nIts value is the complete data loop.\n\nA user can capture structured vocabulary, avoid duplicates, store it remotely, retrieve it by language/category, and export it into a PDF.\n\nThe repository demonstrates a practical transition from simple trackers toward small domain-specific productivity software.\n\n# Project Tags\n\n- `individual-project`\n- `web-application`\n- `single-page-application`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `browser-database-write`\n- `language-learning`\n- `vocabulary-tracker`\n- `bilingual-ui`\n- `localization`\n- `english`\n- `french`\n- `category-based-data`\n- `duplicate-detection`\n- `case-insensitive-validation`\n- `timestamped-records`\n- `client-side-filtering`\n- `client-side-sorting`\n- `pdf-generation`\n- `jspdf`\n- `jspdf-autotable`\n- `client-side-export`\n- `responsive-layout`\n- `asynchronous-data-access`\n- `user-feedback`\n- `earliest-observed-pdf-generation`\n- `earliest-observed-jspdf`\n"
+}

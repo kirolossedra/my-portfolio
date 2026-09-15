@@ -1,0 +1,67 @@
+Portfolio GitHub RAG pipeline — Stage 03 / Cloudflare embedding generation v4
+
+STATUS: PASS
+
+INPUT
+  02-retrieval-documents\output\documents.jsonl
+  SHA-256: 15ce24d918d35adf426588b6104b0c34965d3214a13d1c0b5359ed5ae5545d20
+  Documents: 1429
+  Repositories: 134/134
+
+CLOUDFLARE EMBEDDING CONTRACT
+  Provider: cloudflare-workers-ai
+  Model: @cf/qwen/qwen3-embedding-0.6b
+  Dimensions: 1024
+  Context window: 8192 tokens
+  Document input mode: documents
+  Runtime query input mode: queries
+  Runtime query instruction: Given a web search query, retrieve relevant passages that answer the query
+  Postprocess: L2 normalize
+  Similarity: cosine
+  Matrix dtype: float32
+
+INPUT-SIZE / TRUNCATION PREFLIGHT
+  Embedding words min/median/max: 28/115/462
+  UTF-8 bytes min/median/max: 290/1110/4401
+  UTF-8 sanity guard: 32768 bytes
+  Client-side truncation: DISABLED
+  Full embedding_text submitted to Workers AI: YES
+  Exact Qwen token count returned by API: NO
+  Documents rejected by byte sanity guard: 0
+
+API CONTRACT SMOKE TEST
+  Document mode: PASS
+  Query mode: PASS
+  Document response shape: [1,1024]
+  Query response shape: [1,1024]
+
+VECTOR VALIDATION
+  Matrix shape: (1429, 1024)
+  Valid vectors: 1429/1429
+  Missing vectors: 0
+  Duplicate document IDs: 0
+  NaN/Inf vectors: 0
+  Zero vectors: 0
+  L2 norm min/median/max: 1.000000/1.000000/1.000000
+
+CHECKPOINT / API ACCOUNTING
+  Logical batches: 90
+  Newly embedded batches: 90
+  Resumed batches: 0
+  Successful Workers AI API requests this run: 92
+  HTTP attempts including retries: 94
+  Checkpoints are preserved on failure/quota exhaustion: YES
+
+OUTPUT
+  03-embeddings/output/embeddings-cloudflare-v1/embeddings.npy
+  03-embeddings/output/embeddings-cloudflare-v1/embedding-records.jsonl
+  03-embeddings/output/embeddings-cloudflare-v1/embedding-manifest.json
+  03-embeddings/output/embeddings-cloudflare-v1/embedding-validation-report.txt
+
+PRESERVATION
+  03-embeddings/output/embeddings-v2/ modified: NO
+  Step 02 retrieval documents modified: NO
+
+NEXT STAGE
+  Create a 1024-D cosine Cloudflare Vectorize index and publish these vectors.
+  Runtime query embeddings MUST use the query mode/instruction recorded above.

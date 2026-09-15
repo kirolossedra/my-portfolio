@@ -1,0 +1,489 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 61,
+  "repository_total": 134,
+  "repository_name": "Postgress-for-Data-Engineering",
+  "header_title": "Postgress-for-Data-Engineering",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-061-Postgress-for-Data-Engineering/README.md",
+    "line_start": 1,
+    "line_end": 248,
+    "sha256": "b89182b8a5133c42dd582ff4068fc32a78ac2a33de839af5eab93c5d24567be5"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "database-operations-lab",
+    "data-engineering-coursework",
+    "technical-lab",
+    "sql",
+    "shell",
+    "postgresql",
+    "pgadmin",
+    "database-administration",
+    "database-creation",
+    "credential-management",
+    "postgres-copy",
+    "csv-import",
+    "apt",
+    "ppa",
+    "bashrc",
+    "zshrc",
+    "shell-alias",
+    "linux-troubleshooting",
+    "operational-troubleshooting",
+    "failure-recovery",
+    "environment-configuration",
+    "operational-documentation",
+    "earliest-observed-postgresql",
+    "earliest-observed-pgadmin",
+    "earliest-observed-postgres-copy"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Postgress-for-Data-Engineering`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Primary technical field:** PostgreSQL administration and data-loading fundamentals\n- **Primary tools:** PostgreSQL, pgAdmin, Linux shell, SQL\n- **Project context:** individual data-engineering learning / operational lab\n- **Collaboration classification:** individual learning repository"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s008"
+      ],
+      "titles": [
+        "PostgreSQL Credential Administration"
+      ],
+      "text": "## PostgreSQL Credential Administration\nThe notes include opening the PostgreSQL shell as the postgres system user:\n\n```bash\nsudo -u postgres psql\n```\n\nand using:\n\n```text\n\\password postgres\n```\n\nto change the database user's password.\n\nThis is direct evidence of basic database administration, not only querying."
+    },
+    "documentation": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Operational Documentation"
+      ],
+      "text": "## Operational Documentation\nScreenshots and written steps preserve the setup and troubleshooting sequence for later reuse."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Postgress-for-Data-Engineering`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Primary technical field:** PostgreSQL administration and data-loading fundamentals\n- **Primary tools:** PostgreSQL, pgAdmin, Linux shell, SQL\n- **Project context:** individual data-engineering learning / operational lab\n- **Collaboration classification:** individual learning repository",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains:\n\n- a detailed operational README;\n- `fix.sql`.\n\nThe README documents actual setup problems and recovery steps rather than a generic PostgreSQL overview.\n\nThe latest meaningful commit on 2024-10-20 updates those operational notes.",
+      "source_line_start": 13,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Environment Setup",
+      "normalized_title": "Environment Setup",
+      "key": "environment_setup",
+      "path": [
+        "Environment Setup"
+      ],
+      "content": "### Python Version Compatibility\n\nThe README records a Python compatibility problem encountered during setup.\n\nThe documented response includes adding the Deadsnakes PPA and refreshing package metadata:\n\n```bash\nsudo add-apt-repository ppa:deadsnakes/ppa\nsudo apt update\n```\n\nThis is evidence of Linux package/environment troubleshooting around the database toolchain.",
+      "source_line_start": 24,
+      "source_line_end": 39
+    },
+    {
+      "id": "s004",
+      "level": 3,
+      "title": "Python Version Compatibility",
+      "normalized_title": "Python Version Compatibility",
+      "key": "python_version_compatibility",
+      "path": [
+        "Environment Setup",
+        "Python Version Compatibility"
+      ],
+      "content": "The README records a Python compatibility problem encountered during setup.\n\nThe documented response includes adding the Deadsnakes PPA and refreshing package metadata:\n\n```bash\nsudo add-apt-repository ppa:deadsnakes/ppa\nsudo apt update\n```\n\nThis is evidence of Linux package/environment troubleshooting around the database toolchain.",
+      "source_line_start": 26,
+      "source_line_end": 39
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Shell Configuration",
+      "normalized_title": "Shell Configuration",
+      "key": "shell_configuration",
+      "path": [
+        "Shell Configuration"
+      ],
+      "content": "The repository documents editing:\n\n- `~/.bashrc` for Bash;\n- `~/.zshrc` for Zsh.\n\nIt then adds a shell alias:\n\n```bash\nalias pgadmin4='/usr/pgadmin4/bin/pgadmin4'\n```\n\nThis shows persistent shell-environment configuration rather than one-off command execution.",
+      "source_line_start": 39,
+      "source_line_end": 54
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "pgAdmin Server Configuration",
+      "normalized_title": "pgAdmin Server Configuration",
+      "key": "pgadmin_server_configuration",
+      "path": [
+        "pgAdmin Server Configuration"
+      ],
+      "content": "The README walks through registering a local PostgreSQL server in pgAdmin with:\n\n- localhost / `127.0.0.1`;\n- default port `5432`;\n- `postgres` user credentials.",
+      "source_line_start": 54,
+      "source_line_end": 62
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Database Creation",
+      "normalized_title": "Database Creation",
+      "key": "database_creation",
+      "path": [
+        "Database Creation"
+      ],
+      "content": "The documented workflow creates a database named:\n\n```text\nCOFFEE\n```\n\nand proceeds to table/schema work inside it.",
+      "source_line_start": 62,
+      "source_line_end": 72
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "PostgreSQL Credential Administration",
+      "normalized_title": "PostgreSQL Credential Administration",
+      "key": "postgresql_credential_administration",
+      "path": [
+        "PostgreSQL Credential Administration"
+      ],
+      "content": "The notes include opening the PostgreSQL shell as the postgres system user:\n\n```bash\nsudo -u postgres psql\n```\n\nand using:\n\n```text\n\\password postgres\n```\n\nto change the database user's password.\n\nThis is direct evidence of basic database administration, not only querying.",
+      "source_line_start": 72,
+      "source_line_end": 90
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "CSV Import Troubleshooting",
+      "normalized_title": "CSV Import Troubleshooting",
+      "key": "csv_import_troubleshooting",
+      "path": [
+        "CSV Import Troubleshooting"
+      ],
+      "content": "The README records a CSV import failure caused by an unexpected extra row/formatting issue.\n\nInstead of abandoning the load, the workflow switches to explicit SQL.",
+      "source_line_start": 90,
+      "source_line_end": 96
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "`COPY`-Based Import",
+      "normalized_title": "COPY-Based Import",
+      "key": "copy_based_import",
+      "path": [
+        "`COPY`-Based Import"
+      ],
+      "content": "`fix.sql` contains:\n\n```sql\nCOPY myauthors (author_id, first_name, middle_name, last_name)\nFROM '/home/your_username/myauthors.csv'\nDELIMITER ','\nCSV HEADER;\n```\n\nThis demonstrates PostgreSQL's server-side bulk-import syntax with:\n\n- explicit target columns;\n- filesystem input;\n- delimiter declaration;\n- CSV header handling.",
+      "source_line_start": 96,
+      "source_line_end": 114
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Environment Troubleshooting\n\nThe repository captures dependency/runtime compatibility work around Python and pgAdmin.\n\n### Persistent Developer Environment\n\nShell aliases are stored in shell startup configuration.\n\n### Database Administration\n\nThe workflow includes server registration, database creation, and password management.\n\n### Failure Recovery\n\nA broken CSV/UI import path is replaced by explicit SQL `COPY`.\n\n### Operational Documentation\n\nScreenshots and written steps preserve the setup and troubleshooting sequence for later reuse.",
+      "source_line_start": 114,
+      "source_line_end": 136
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Environment Troubleshooting",
+      "normalized_title": "Environment Troubleshooting",
+      "key": "environment_troubleshooting",
+      "path": [
+        "Engineering Practices",
+        "Environment Troubleshooting"
+      ],
+      "content": "The repository captures dependency/runtime compatibility work around Python and pgAdmin.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Persistent Developer Environment",
+      "normalized_title": "Persistent Developer Environment",
+      "key": "persistent_developer_environment",
+      "path": [
+        "Engineering Practices",
+        "Persistent Developer Environment"
+      ],
+      "content": "Shell aliases are stored in shell startup configuration.",
+      "source_line_start": 120,
+      "source_line_end": 124
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Database Administration",
+      "normalized_title": "Database Administration",
+      "key": "database_administration",
+      "path": [
+        "Engineering Practices",
+        "Database Administration"
+      ],
+      "content": "The workflow includes server registration, database creation, and password management.",
+      "source_line_start": 124,
+      "source_line_end": 128
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Failure Recovery",
+      "normalized_title": "Failure Recovery",
+      "key": "failure_recovery",
+      "path": [
+        "Engineering Practices",
+        "Failure Recovery"
+      ],
+      "content": "A broken CSV/UI import path is replaced by explicit SQL `COPY`.",
+      "source_line_start": 128,
+      "source_line_end": 132
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Operational Documentation",
+      "normalized_title": "Operational Documentation",
+      "key": "operational_documentation",
+      "path": [
+        "Engineering Practices",
+        "Operational Documentation"
+      ],
+      "content": "Screenshots and written steps preserve the setup and troubleshooting sequence for later reuse.",
+      "source_line_start": 132,
+      "source_line_end": 136
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository contains little application code, but it covers an end-to-end local PostgreSQL operational workflow:\n\n```text\nprepare Linux environment\n  ↓\nconfigure pgAdmin launcher\n  ↓\nregister PostgreSQL server\n  ↓\ncreate database\n  ↓\nmanage credentials\n  ↓\nattempt CSV import\n  ↓\ndiagnose formatting problem\n  ↓\nuse SQL COPY fallback\n```",
+      "source_line_start": 136,
+      "source_line_end": 158
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### PostgreSQL\n\n- local server configuration;\n- default port/user concepts;\n- database creation;\n- password management;\n- `COPY` bulk import;\n- CSV handling.\n\n### Linux\n\n- APT/PPA package management;\n- shell startup files;\n- aliases;\n- sudo-based PostgreSQL administration.\n\n### Data Engineering\n\n- relational data ingestion;\n- CSV-to-table loading;\n- operational troubleshooting.",
+      "source_line_start": 158,
+      "source_line_end": 182
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "PostgreSQL",
+      "normalized_title": "PostgreSQL",
+      "key": "postgresql",
+      "path": [
+        "Skills Demonstrated",
+        "PostgreSQL"
+      ],
+      "content": "- local server configuration;\n- default port/user concepts;\n- database creation;\n- password management;\n- `COPY` bulk import;\n- CSV handling.",
+      "source_line_start": 160,
+      "source_line_end": 169
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Linux",
+      "normalized_title": "Linux",
+      "key": "linux",
+      "path": [
+        "Skills Demonstrated",
+        "Linux"
+      ],
+      "content": "- APT/PPA package management;\n- shell startup files;\n- aliases;\n- sudo-based PostgreSQL administration.",
+      "source_line_start": 169,
+      "source_line_end": 176
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Data Engineering"
+      ],
+      "content": "- relational data ingestion;\n- CSV-to-table loading;\n- operational troubleshooting.",
+      "source_line_start": 176,
+      "source_line_end": 182
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository turns relational knowledge into database operations.\n\nWhere repository 059 focuses on modeling correct relational schemas and repository 060 moves into managed Db2, this repository exercises running and administering PostgreSQL locally, including environment repair and failed-import recovery.",
+      "source_line_start": 182,
+      "source_line_end": 188
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository centered directly on:\n\n- PostgreSQL administration;\n- pgAdmin setup;\n- PostgreSQL `COPY` CSV ingestion;\n- local PostgreSQL credential management.",
+      "source_line_start": 188,
+      "source_line_end": 197
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Postgress-for-Data-Engineering` is a hands-on PostgreSQL operations notebook.\n\nIt records environment compatibility work, pgAdmin setup, local server registration, database creation, password administration, and a concrete recovery from malformed CSV import by switching to SQL `COPY`.\n\nIts strongest portfolio evidence is practical troubleshooting: the repository captures what happened when the normal path failed and how the workflow was recovered.\n\n# Project Tags",
+      "source_line_start": 197,
+      "source_line_end": 207
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `database-operations-lab`\n- `data-engineering-coursework`\n- `technical-lab`",
+      "source_line_start": 207,
+      "source_line_end": 213
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `sql`\n- `shell`",
+      "source_line_start": 213,
+      "source_line_end": 218
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Database",
+      "normalized_title": "Database",
+      "key": "database",
+      "path": [
+        "Database"
+      ],
+      "content": "- `postgresql`\n- `pgadmin`\n- `database-administration`\n- `database-creation`\n- `credential-management`\n- `postgres-copy`\n- `csv-import`",
+      "source_line_start": 218,
+      "source_line_end": 228
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Linux and Tooling",
+      "normalized_title": "Linux and Tooling",
+      "key": "linux_and_tooling",
+      "path": [
+        "Linux and Tooling"
+      ],
+      "content": "- `apt`\n- `ppa`\n- `bashrc`\n- `zshrc`\n- `shell-alias`\n- `linux-troubleshooting`",
+      "source_line_start": 228,
+      "source_line_end": 237
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `operational-troubleshooting`\n- `failure-recovery`\n- `environment-configuration`\n- `operational-documentation`",
+      "source_line_start": 237,
+      "source_line_end": 244
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-postgresql`\n- `earliest-observed-pgadmin`\n- `earliest-observed-postgres-copy`",
+      "source_line_start": 244,
+      "source_line_end": 249
+    }
+  ],
+  "raw_analysis": "# Repository 061 — Postgress-for-Data-Engineering\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Postgress-for-Data-Engineering`\n- **Repository start date:** 2024-10-19\n- **Last meaningful update date:** 2024-10-20\n- **Primary technical field:** PostgreSQL administration and data-loading fundamentals\n- **Primary tools:** PostgreSQL, pgAdmin, Linux shell, SQL\n- **Project context:** individual data-engineering learning / operational lab\n- **Collaboration classification:** individual learning repository\n\n## Evidence Basis\n\nThe repository contains:\n\n- a detailed operational README;\n- `fix.sql`.\n\nThe README documents actual setup problems and recovery steps rather than a generic PostgreSQL overview.\n\nThe latest meaningful commit on 2024-10-20 updates those operational notes.\n\n## Environment Setup\n\n### Python Version Compatibility\n\nThe README records a Python compatibility problem encountered during setup.\n\nThe documented response includes adding the Deadsnakes PPA and refreshing package metadata:\n\n```bash\nsudo add-apt-repository ppa:deadsnakes/ppa\nsudo apt update\n```\n\nThis is evidence of Linux package/environment troubleshooting around the database toolchain.\n\n## Shell Configuration\n\nThe repository documents editing:\n\n- `~/.bashrc` for Bash;\n- `~/.zshrc` for Zsh.\n\nIt then adds a shell alias:\n\n```bash\nalias pgadmin4='/usr/pgadmin4/bin/pgadmin4'\n```\n\nThis shows persistent shell-environment configuration rather than one-off command execution.\n\n## pgAdmin Server Configuration\n\nThe README walks through registering a local PostgreSQL server in pgAdmin with:\n\n- localhost / `127.0.0.1`;\n- default port `5432`;\n- `postgres` user credentials.\n\n## Database Creation\n\nThe documented workflow creates a database named:\n\n```text\nCOFFEE\n```\n\nand proceeds to table/schema work inside it.\n\n## PostgreSQL Credential Administration\n\nThe notes include opening the PostgreSQL shell as the postgres system user:\n\n```bash\nsudo -u postgres psql\n```\n\nand using:\n\n```text\n\\password postgres\n```\n\nto change the database user's password.\n\nThis is direct evidence of basic database administration, not only querying.\n\n## CSV Import Troubleshooting\n\nThe README records a CSV import failure caused by an unexpected extra row/formatting issue.\n\nInstead of abandoning the load, the workflow switches to explicit SQL.\n\n## `COPY`-Based Import\n\n`fix.sql` contains:\n\n```sql\nCOPY myauthors (author_id, first_name, middle_name, last_name)\nFROM '/home/your_username/myauthors.csv'\nDELIMITER ','\nCSV HEADER;\n```\n\nThis demonstrates PostgreSQL's server-side bulk-import syntax with:\n\n- explicit target columns;\n- filesystem input;\n- delimiter declaration;\n- CSV header handling.\n\n## Engineering Practices\n\n### Environment Troubleshooting\n\nThe repository captures dependency/runtime compatibility work around Python and pgAdmin.\n\n### Persistent Developer Environment\n\nShell aliases are stored in shell startup configuration.\n\n### Database Administration\n\nThe workflow includes server registration, database creation, and password management.\n\n### Failure Recovery\n\nA broken CSV/UI import path is replaced by explicit SQL `COPY`.\n\n### Operational Documentation\n\nScreenshots and written steps preserve the setup and troubleshooting sequence for later reuse.\n\n## Scale and Complexity\n\nThe repository contains little application code, but it covers an end-to-end local PostgreSQL operational workflow:\n\n```text\nprepare Linux environment\n  ↓\nconfigure pgAdmin launcher\n  ↓\nregister PostgreSQL server\n  ↓\ncreate database\n  ↓\nmanage credentials\n  ↓\nattempt CSV import\n  ↓\ndiagnose formatting problem\n  ↓\nuse SQL COPY fallback\n```\n\n## Skills Demonstrated\n\n### PostgreSQL\n\n- local server configuration;\n- default port/user concepts;\n- database creation;\n- password management;\n- `COPY` bulk import;\n- CSV handling.\n\n### Linux\n\n- APT/PPA package management;\n- shell startup files;\n- aliases;\n- sudo-based PostgreSQL administration.\n\n### Data Engineering\n\n- relational data ingestion;\n- CSV-to-table loading;\n- operational troubleshooting.\n\n## Capability Developed\n\nThis repository turns relational knowledge into database operations.\n\nWhere repository 059 focuses on modeling correct relational schemas and repository 060 moves into managed Db2, this repository exercises running and administering PostgreSQL locally, including environment repair and failed-import recovery.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository centered directly on:\n\n- PostgreSQL administration;\n- pgAdmin setup;\n- PostgreSQL `COPY` CSV ingestion;\n- local PostgreSQL credential management.\n\n## Overall Repository Narrative\n\n`Postgress-for-Data-Engineering` is a hands-on PostgreSQL operations notebook.\n\nIt records environment compatibility work, pgAdmin setup, local server registration, database creation, password administration, and a concrete recovery from malformed CSV import by switching to SQL `COPY`.\n\nIts strongest portfolio evidence is practical troubleshooting: the repository captures what happened when the normal path failed and how the workflow was recovered.\n\n# Project Tags\n\n## Project Type\n\n- `database-operations-lab`\n- `data-engineering-coursework`\n- `technical-lab`\n\n## Languages\n\n- `sql`\n- `shell`\n\n## Database\n\n- `postgresql`\n- `pgadmin`\n- `database-administration`\n- `database-creation`\n- `credential-management`\n- `postgres-copy`\n- `csv-import`\n\n## Linux and Tooling\n\n- `apt`\n- `ppa`\n- `bashrc`\n- `zshrc`\n- `shell-alias`\n- `linux-troubleshooting`\n\n## Software Engineering Practices\n\n- `operational-troubleshooting`\n- `failure-recovery`\n- `environment-configuration`\n- `operational-documentation`\n\n## Portfolio Significance\n\n- `earliest-observed-postgresql`\n- `earliest-observed-pgadmin`\n- `earliest-observed-postgres-copy`\n"
+}

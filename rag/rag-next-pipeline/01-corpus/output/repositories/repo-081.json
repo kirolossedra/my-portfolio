@@ -1,0 +1,501 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 81,
+  "repository_total": 134,
+  "repository_name": "Milestone",
+  "header_title": "Milestone",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-081-Milestone/README.md",
+    "line_start": 1,
+    "line_end": 521,
+    "sha256": "37ffc936b82559e1be71b690ff9249bada7854561b985dfdd3b3e67dde072283"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "ai-assisted-development",
+    "browser-application",
+    "progress-tracker",
+    "milestone-tracking",
+    "html",
+    "css",
+    "javascript",
+    "firebase",
+    "firebase-realtime-database",
+    "browser-database-crud",
+    "user-registration",
+    "user-login",
+    "web-crypto-api",
+    "sha-256",
+    "authority-gating",
+    "form-validation",
+    "track-management",
+    "milestone-management",
+    "timeline-ui",
+    "modal-workflow",
+    "responsive-ui",
+    "toast-notifications",
+    "report-generation",
+    "bottleneck-detection",
+    "iterative-debugging",
+    "ai-hallucination-debugging"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Milestone`\n- **Repository start date:** 2025-04-27\n- **Last meaningful update date:** 2025-04-28\n- **Latest meaningful commit:** `85573d12d69091d4ab4a136058aa468b8c2844df`\n- **Primary technical field:** browser application development\n- **Application domain:** personal milestone/progress tracking\n- **Primary technologies:** HTML, CSS, JavaScript, Firebase Realtime Database\n- **Project context:** personal product prototype with AI-assisted iteration\n- **Collaboration classification:** `individual-project`"
+    },
+    "testing": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe commit history demonstrates manual behavioral testing and bug correction.\n\nThe Firebase flows, track CRUD, and milestone CRUD are directly encoded.\n\nThe project does not establish a formal automated browser-test suite in the current snapshot.\n\nRather than listing that absence as a generic deficiency, the corpus treats manual iteration and bug-fix commits as the verified testing evidence that is present."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Milestone`\n- **Repository start date:** 2025-04-27\n- **Last meaningful update date:** 2025-04-28\n- **Latest meaningful commit:** `85573d12d69091d4ab4a136058aa468b8c2844df`\n- **Primary technical field:** browser application development\n- **Application domain:** personal milestone/progress tracking\n- **Primary technologies:** HTML, CSS, JavaScript, Firebase Realtime Database\n- **Project context:** personal product prototype with AI-assisted iteration\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The current repository contains:\n\n- `README.md`,\n- `index.html`,\n- `kilostone.html`.\n\n`index.html` implements account registration/login and authority gating.\n\n`kilostone.html` is a much larger milestone-tracking application.\n\nThe commit history is unusually informative.\n\nIt includes normal implementation commits and several messages explicitly referring to:\n\n- Grok attempts,\n- ChatGPT attempts,\n- mixing Grok and GPT,\n- hallucinations,\n- bug fixes.\n\nThose commit messages are treated as evidence that parts of the iteration were AI-assisted.\n\nThey do not identify exact authorship of every line.\n\nThe portfolio therefore attributes product ownership and integration to the repository owner while preserving AI-assisted implementation context.",
+      "source_line_start": 15,
+      "source_line_end": 43
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "`Milestone` is a browser-based progress tracker built around tracks and milestones.\n\nIts final checked-in application includes:\n\n- user registration,\n- user login,\n- hashed-password storage,\n- an authority field,\n- authority-based routing,\n- track creation and management,\n- milestone creation and management,\n- milestone timelines,\n- reports,\n- notifications,\n- bottleneck checks,\n- Firebase persistence.\n\nThe product is implemented as large static HTML documents with embedded CSS and JavaScript.\n\nThere is no separate frontend framework in the current snapshot.",
+      "source_line_start": 43,
+      "source_line_end": 66
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Application Split",
+      "normalized_title": "Application Split",
+      "key": "application_split",
+      "path": [
+        "Application Split"
+      ],
+      "content": "The application is split into two major pages.\n\n### `index.html`\n\nResponsible for:\n\n- registration,\n- login,\n- basic user validation,\n- password hashing,\n- storing user records,\n- authority assignment,\n- authority-based navigation.\n\n### `kilostone.html`\n\nResponsible for:\n\n- track management,\n- milestone management,\n- timeline interaction,\n- reporting,\n- notifications,\n- bottleneck detection,\n- Firebase CRUD operations.\n\nThis is a page-level separation rather than a componentized application architecture.",
+      "source_line_start": 66,
+      "source_line_end": 96
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "`index.html`",
+      "normalized_title": "index.html",
+      "key": "index_html",
+      "path": [
+        "Application Split",
+        "`index.html`"
+      ],
+      "content": "Responsible for:\n\n- registration,\n- login,\n- basic user validation,\n- password hashing,\n- storing user records,\n- authority assignment,\n- authority-based navigation.",
+      "source_line_start": 70,
+      "source_line_end": 82
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "`kilostone.html`",
+      "normalized_title": "kilostone.html",
+      "key": "kilostone_html",
+      "path": [
+        "Application Split",
+        "`kilostone.html`"
+      ],
+      "content": "Responsible for:\n\n- track management,\n- milestone management,\n- timeline interaction,\n- reporting,\n- notifications,\n- bottleneck detection,\n- Firebase CRUD operations.\n\nThis is a page-level separation rather than a componentized application architecture.",
+      "source_line_start": 82,
+      "source_line_end": 96
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Registration Workflow",
+      "normalized_title": "Registration Workflow",
+      "key": "registration_workflow",
+      "path": [
+        "Registration Workflow"
+      ],
+      "content": "The registration page collects:\n\n- username,\n- email,\n- birth date,\n- password,\n- password confirmation.\n\nClient-side validation checks include:\n\n- all required fields present,\n- username character restrictions,\n- email format,\n- minimum password length,\n- password confirmation match,\n- birth date in the past,\n- username uniqueness,\n- email uniqueness.\n\nThis is a meaningful validation flow for a prototype.",
+      "source_line_start": 96,
+      "source_line_end": 119
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Password Handling",
+      "normalized_title": "Password Handling",
+      "key": "password_handling",
+      "path": [
+        "Password Handling"
+      ],
+      "content": "The browser uses the Web Crypto API to compute a SHA-256 hash of the password before storing the user record.\n\nLogin recomputes the hash and compares it against the stored value.\n\nThis demonstrates awareness that plaintext passwords should not be stored directly.\n\nHowever, a raw unsalted SHA-256 password hash is not equivalent to a dedicated password-hashing scheme such as Argon2/bcrypt/scrypt.\n\nThe corpus therefore tags browser-side hashing, not production-grade authentication security.",
+      "source_line_start": 119,
+      "source_line_end": 131
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Database-Backed Accounts",
+      "normalized_title": "Database-Backed Accounts",
+      "key": "database_backed_accounts",
+      "path": [
+        "Database-Backed Accounts"
+      ],
+      "content": "The application uses Firebase Realtime Database directly from the browser.\n\nUser data is stored under a `users` hierarchy.\n\nThe registration path checks the current database state before writing a new user.\n\nThe login path reads the selected user record and verifies the supplied password hash.\n\nThis is a custom database-backed account mechanism, not Firebase Authentication.",
+      "source_line_start": 131,
+      "source_line_end": 143
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Authority Model",
+      "normalized_title": "Authority Model",
+      "key": "authority_model",
+      "path": [
+        "Authority Model"
+      ],
+      "content": "The code stores an `authority` value with each user.\n\nThe first user receives one authority value and subsequent users another.\n\nAfter login, the application routes the permitted authority to `kilostone.html`.\n\nOther authority values receive an ineligible state.\n\nThis is a simple prototype authorization mechanism.\n\nIt is not a full role/permission system.\n\nThe README itself lists multi-user hierarchy and broader authority behavior as future work.",
+      "source_line_start": 143,
+      "source_line_end": 159
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Implemented vs Planned Scope",
+      "normalized_title": "Implemented vs Planned Scope",
+      "key": "implemented_vs_planned_scope",
+      "path": [
+        "Implemented vs Planned Scope"
+      ],
+      "content": "The README marks deleting milestones as complete.\n\nIt leaves several items explicitly unchecked, including:\n\n- multiple users and email behavior as a broader product concept,\n- categories based on logged-user authority,\n- visual redesign,\n- a global multi-user hierarchy.\n\nThose unchecked items are not treated as implemented features.\n\nThe actual source provides a simpler user/authority mechanism.",
+      "source_line_start": 159,
+      "source_line_end": 174
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Track Model",
+      "normalized_title": "Track Model",
+      "key": "track_model",
+      "path": [
+        "Track Model"
+      ],
+      "content": "`kilostone.html` stores tracks in Firebase.\n\nThe application can load track records and render them into the UI.\n\nTrack behavior includes:\n\n- creation,\n- editing,\n- deletion,\n- color metadata,\n- selection.\n\nDeleting a track removes both:\n\n- the track record,\n- the milestones associated with that track.\n\nThat is direct multi-entity persistence logic.",
+      "source_line_start": 174,
+      "source_line_end": 195
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Milestone Model",
+      "normalized_title": "Milestone Model",
+      "key": "milestone_model",
+      "path": [
+        "Milestone Model"
+      ],
+      "content": "Each track can have milestone records.\n\nThe UI presents milestones in a horizontally scrollable timeline.\n\nMilestone behavior includes:\n\n- add,\n- edit,\n- delete,\n- data retrieval,\n- per-track association.\n\nThe source contains explicit deletion logic against Firebase paths.\n\nThis satisfies the README's checked milestone-deletion item.",
+      "source_line_start": 195,
+      "source_line_end": 213
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Timeline UI",
+      "normalized_title": "Timeline UI",
+      "key": "timeline_ui",
+      "path": [
+        "Timeline UI"
+      ],
+      "content": "The milestone view is implemented as a card-based horizontal timeline.\n\nEach milestone block includes presentation for:\n\n- date,\n- title,\n- time/metadata.\n\nThe timeline is scrollable when milestone count exceeds the viewport.\n\nAn add block is integrated into the same interaction model.\n\nThis is a recognizable product interaction rather than a plain form/list CRUD page.",
+      "source_line_start": 213,
+      "source_line_end": 229
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Navigation and Sections",
+      "normalized_title": "Navigation and Sections",
+      "key": "navigation_and_sections",
+      "path": [
+        "Navigation and Sections"
+      ],
+      "content": "The application includes multiple page sections and navigation states.\n\nThe CSS and DOM define:\n\n- track area,\n- notifications,\n- reports,\n- modal overlays,\n- toast notifications.\n\nSections are activated/deactivated through DOM state.\n\nThis creates a single-page-like interaction model even though no SPA framework is used.",
+      "source_line_start": 229,
+      "source_line_end": 245
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Modal Workflows",
+      "normalized_title": "Modal Workflows",
+      "key": "modal_workflows",
+      "path": [
+        "Modal Workflows"
+      ],
+      "content": "Track and milestone editing use modal overlays.\n\nThe application supports reusable add/edit flows rather than separate pages for each CRUD action.\n\nThat reduces navigation overhead and keeps the product focused around the timeline view.",
+      "source_line_start": 245,
+      "source_line_end": 253
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Notifications",
+      "normalized_title": "Notifications",
+      "key": "notifications",
+      "path": [
+        "Notifications"
+      ],
+      "content": "The source defines notification UI and a notification list.\n\nThe application includes logic around operational warnings and milestone/track state.\n\nThe notification system is local application logic rather than a push-notification infrastructure.",
+      "source_line_start": 253,
+      "source_line_end": 261
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Bottleneck Detection",
+      "normalized_title": "Bottleneck Detection",
+      "key": "bottleneck_detection",
+      "path": [
+        "Bottleneck Detection"
+      ],
+      "content": "The final source contains an asynchronous `checkBottlenecks()` workflow.\n\nIt inspects persisted track/milestone state and creates product feedback around stalled or problematic progress.\n\nThis adds lightweight analytical behavior on top of basic CRUD.\n\nThe implementation should be interpreted as rule-based application analysis, not machine learning.",
+      "source_line_start": 261,
+      "source_line_end": 271
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Reporting",
+      "normalized_title": "Reporting",
+      "key": "reporting",
+      "path": [
+        "Reporting"
+      ],
+      "content": "The UI includes report-oriented sections and date-range controls.\n\nThe application builds report content from stored progress information.\n\nIt also contains browser-side export behavior.\n\nThis moves the prototype beyond input-only tracking toward summary/review workflows.",
+      "source_line_start": 271,
+      "source_line_end": 281
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Firebase CRUD",
+      "normalized_title": "Firebase CRUD",
+      "key": "firebase_crud",
+      "path": [
+        "Firebase CRUD"
+      ],
+      "content": "The application imports Firebase Realtime Database operations including:\n\n- `ref`,\n- `push`,\n- `get`,\n- `set`,\n- `update`,\n- `remove`,\n- query helpers.\n\nThe code uses these operations for users, tracks, and milestones.\n\nThis is direct persistent browser-database integration.",
+      "source_line_start": 281,
+      "source_line_end": 297
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Responsive UI",
+      "normalized_title": "Responsive UI",
+      "key": "responsive_ui",
+      "path": [
+        "Responsive UI"
+      ],
+      "content": "The CSS includes responsive behavior for smaller screens.\n\nNavigation, page padding, and modal sizing adapt below a mobile-width breakpoint.\n\nThe application also defines:\n\n- card layouts,\n- horizontal overflow,\n- toast states,\n- modal transitions,\n- hover states.\n\nThis is more developed UI work than a raw database form.",
+      "source_line_start": 297,
+      "source_line_end": 313
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Bug-Fix Evidence",
+      "normalized_title": "Bug-Fix Evidence",
+      "key": "bug_fix_evidence",
+      "path": [
+        "Bug-Fix Evidence"
+      ],
+      "content": "A commit explicitly records:\n\n> solved editing duplication bug / date+1 bug\n\nThat is valuable product-engineering evidence.\n\nIt shows the project went through behavioral debugging rather than only first-pass generation.\n\nThe exact root cause is not reconstructed beyond the commit evidence, so the corpus does not invent a deeper explanation.",
+      "source_line_start": 313,
+      "source_line_end": 325
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "AI-Assisted Development Context",
+      "normalized_title": "AI-Assisted Development Context",
+      "key": "ai_assisted_development_context",
+      "path": [
+        "AI-Assisted Development Context"
+      ],
+      "content": "Several commits explicitly identify AI-model involvement.\n\nExamples in commit messages refer to:\n\n- Grok attempts,\n- ChatGPT,\n- mixed Grok/GPT,\n- hallucinations.\n\nThis means the codebase is not appropriate evidence for claiming every implementation detail was independently authored from scratch.\n\nThe stronger personally attributable skills are:\n\n- defining and evolving the product,\n- integrating generated changes,\n- identifying hallucinated/broken outputs,\n- debugging application behavior,\n- deciding which changes to retain,\n- maintaining the repository through multiple iterations.\n\nThis distinction is important for an evidence-first portfolio.",
+      "source_line_start": 325,
+      "source_line_end": 349
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The commit history demonstrates manual behavioral testing and bug correction.\n\nThe Firebase flows, track CRUD, and milestone CRUD are directly encoded.\n\nThe project does not establish a formal automated browser-test suite in the current snapshot.\n\nRather than listing that absence as a generic deficiency, the corpus treats manual iteration and bug-fix commits as the verified testing evidence that is present.",
+      "source_line_start": 349,
+      "source_line_end": 359
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository demonstrates several product concerns simultaneously:\n\n- onboarding,\n- account data,\n- authority gating,\n- user feedback,\n- progress organization,\n- editing,\n- destructive-action confirmation,\n- notifications,\n- reports,\n- responsive design.\n\nThe README also shows the owner thinking ahead about:\n\n- multi-user scaling,\n- authority-driven categories,\n- hierarchy.\n\nThose future items remain product intent, not implementation claims.",
+      "source_line_start": 359,
+      "source_line_end": 382
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The final `kilostone.html` is a large single-file application of roughly 65 KB.\n\nThat concentration creates substantial local complexity.\n\nThe application combines:\n\n- style system,\n- state,\n- modals,\n- database access,\n- CRUD logic,\n- reporting,\n- warnings,\n- navigation.\n\nIt is a prototype architecture rather than a modular production frontend.\n\nStill, it is meaningfully larger than the earlier single-purpose browser tools in the portfolio.",
+      "source_line_start": 382,
+      "source_line_end": 403
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Directly supported skills include:\n\n- HTML,\n- CSS,\n- JavaScript,\n- Firebase Realtime Database,\n- browser CRUD,\n- form validation,\n- Web Crypto API,\n- SHA-256 hashing,\n- database-backed user records,\n- authority gating,\n- track/milestone data modeling,\n- modal workflows,\n- responsive UI,\n- toast notifications,\n- report generation,\n- rule-based bottleneck checks,\n- iterative debugging,\n- AI-assisted software development.",
+      "source_line_start": 403,
+      "source_line_end": 426
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository demonstrates movement from small single-purpose browser utilities toward a multi-workflow product prototype.\n\nThe owner is working across:\n\n- account onboarding,\n- persistence,\n- domain modeling,\n- authorization concepts,\n- analytical feedback,\n- user experience,\n- debugging.\n\nIt also provides direct evidence of learning to manage AI-assisted code critically rather than treating generated output as automatically correct.\n\nThe repeated “hallucination” commit labels are especially relevant to that engineering lesson.",
+      "source_line_start": 426,
+      "source_line_end": 444
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "`Milestone` builds on earlier Firebase browser utilities such as `Word-Tracker`.\n\nIt expands the pattern from one database write form into a multi-entity application.\n\nIt also anticipates later products in the portfolio that use:\n\n- persistent personal data,\n- progress tracking,\n- roles/authority,\n- richer workflow modeling.\n\nThe project is an intermediate step toward more structured product engineering.",
+      "source_line_start": 444,
+      "source_line_end": 459
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is an early explicit example of:\n\n- AI-assisted implementation being visible in commit history,\n- active correction of AI hallucinations,\n- database-backed authority gating,\n- multi-entity progress tracking,\n- rule-based bottleneck analysis.\n\nIt is useful historically because the repository records both product ambition and implementation friction.",
+      "source_line_start": 459,
+      "source_line_end": 471
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Evidence Boundaries",
+      "normalized_title": "Evidence Boundaries",
+      "key": "evidence_boundaries",
+      "path": [
+        "Evidence Boundaries"
+      ],
+      "content": "The repository uses custom database-backed login logic, not Firebase Authentication.\n\nThe SHA-256 step should not be represented as production-grade password storage.\n\nUnchecked README features remain planned.\n\nCommit messages support AI-assisted iteration but do not quantify which exact lines came from each model.\n\nThe corpus does not reproduce the checked-in Firebase client configuration values.",
+      "source_line_start": 471,
+      "source_line_end": 483
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`Milestone` is a two-page Firebase-backed progress-tracking prototype that grew through rapid, explicitly AI-assisted iteration.\n\nIts final snapshot combines accounts, authority gating, tracks, milestones, timeline interaction, reports, notifications, and rule-based bottleneck checks.\n\nIts most important engineering signal is not only feature breadth.\n\nThe commit history also shows the owner confronting generated-code hallucinations, debugging concrete behavioral bugs, and repeatedly integrating/correcting candidate implementations.\n\n# Project Tags\n\n- `individual-project`\n- `ai-assisted-development`\n- `browser-application`\n- `progress-tracker`\n- `milestone-tracking`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `browser-database-crud`\n- `user-registration`\n- `user-login`\n- `web-crypto-api`\n- `sha-256`\n- `authority-gating`\n- `form-validation`\n- `track-management`\n- `milestone-management`\n- `timeline-ui`\n- `modal-workflow`\n- `responsive-ui`\n- `toast-notifications`\n- `report-generation`\n- `bottleneck-detection`\n- `iterative-debugging`\n- `ai-hallucination-debugging`",
+      "source_line_start": 483,
+      "source_line_end": 522
+    }
+  ],
+  "raw_analysis": "# Repository 081 — Milestone\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Milestone`\n- **Repository start date:** 2025-04-27\n- **Last meaningful update date:** 2025-04-28\n- **Latest meaningful commit:** `85573d12d69091d4ab4a136058aa468b8c2844df`\n- **Primary technical field:** browser application development\n- **Application domain:** personal milestone/progress tracking\n- **Primary technologies:** HTML, CSS, JavaScript, Firebase Realtime Database\n- **Project context:** personal product prototype with AI-assisted iteration\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe current repository contains:\n\n- `README.md`,\n- `index.html`,\n- `kilostone.html`.\n\n`index.html` implements account registration/login and authority gating.\n\n`kilostone.html` is a much larger milestone-tracking application.\n\nThe commit history is unusually informative.\n\nIt includes normal implementation commits and several messages explicitly referring to:\n\n- Grok attempts,\n- ChatGPT attempts,\n- mixing Grok and GPT,\n- hallucinations,\n- bug fixes.\n\nThose commit messages are treated as evidence that parts of the iteration were AI-assisted.\n\nThey do not identify exact authorship of every line.\n\nThe portfolio therefore attributes product ownership and integration to the repository owner while preserving AI-assisted implementation context.\n\n## What the Project Is\n\n`Milestone` is a browser-based progress tracker built around tracks and milestones.\n\nIts final checked-in application includes:\n\n- user registration,\n- user login,\n- hashed-password storage,\n- an authority field,\n- authority-based routing,\n- track creation and management,\n- milestone creation and management,\n- milestone timelines,\n- reports,\n- notifications,\n- bottleneck checks,\n- Firebase persistence.\n\nThe product is implemented as large static HTML documents with embedded CSS and JavaScript.\n\nThere is no separate frontend framework in the current snapshot.\n\n## Application Split\n\nThe application is split into two major pages.\n\n### `index.html`\n\nResponsible for:\n\n- registration,\n- login,\n- basic user validation,\n- password hashing,\n- storing user records,\n- authority assignment,\n- authority-based navigation.\n\n### `kilostone.html`\n\nResponsible for:\n\n- track management,\n- milestone management,\n- timeline interaction,\n- reporting,\n- notifications,\n- bottleneck detection,\n- Firebase CRUD operations.\n\nThis is a page-level separation rather than a componentized application architecture.\n\n## Registration Workflow\n\nThe registration page collects:\n\n- username,\n- email,\n- birth date,\n- password,\n- password confirmation.\n\nClient-side validation checks include:\n\n- all required fields present,\n- username character restrictions,\n- email format,\n- minimum password length,\n- password confirmation match,\n- birth date in the past,\n- username uniqueness,\n- email uniqueness.\n\nThis is a meaningful validation flow for a prototype.\n\n## Password Handling\n\nThe browser uses the Web Crypto API to compute a SHA-256 hash of the password before storing the user record.\n\nLogin recomputes the hash and compares it against the stored value.\n\nThis demonstrates awareness that plaintext passwords should not be stored directly.\n\nHowever, a raw unsalted SHA-256 password hash is not equivalent to a dedicated password-hashing scheme such as Argon2/bcrypt/scrypt.\n\nThe corpus therefore tags browser-side hashing, not production-grade authentication security.\n\n## Database-Backed Accounts\n\nThe application uses Firebase Realtime Database directly from the browser.\n\nUser data is stored under a `users` hierarchy.\n\nThe registration path checks the current database state before writing a new user.\n\nThe login path reads the selected user record and verifies the supplied password hash.\n\nThis is a custom database-backed account mechanism, not Firebase Authentication.\n\n## Authority Model\n\nThe code stores an `authority` value with each user.\n\nThe first user receives one authority value and subsequent users another.\n\nAfter login, the application routes the permitted authority to `kilostone.html`.\n\nOther authority values receive an ineligible state.\n\nThis is a simple prototype authorization mechanism.\n\nIt is not a full role/permission system.\n\nThe README itself lists multi-user hierarchy and broader authority behavior as future work.\n\n## Implemented vs Planned Scope\n\nThe README marks deleting milestones as complete.\n\nIt leaves several items explicitly unchecked, including:\n\n- multiple users and email behavior as a broader product concept,\n- categories based on logged-user authority,\n- visual redesign,\n- a global multi-user hierarchy.\n\nThose unchecked items are not treated as implemented features.\n\nThe actual source provides a simpler user/authority mechanism.\n\n## Track Model\n\n`kilostone.html` stores tracks in Firebase.\n\nThe application can load track records and render them into the UI.\n\nTrack behavior includes:\n\n- creation,\n- editing,\n- deletion,\n- color metadata,\n- selection.\n\nDeleting a track removes both:\n\n- the track record,\n- the milestones associated with that track.\n\nThat is direct multi-entity persistence logic.\n\n## Milestone Model\n\nEach track can have milestone records.\n\nThe UI presents milestones in a horizontally scrollable timeline.\n\nMilestone behavior includes:\n\n- add,\n- edit,\n- delete,\n- data retrieval,\n- per-track association.\n\nThe source contains explicit deletion logic against Firebase paths.\n\nThis satisfies the README's checked milestone-deletion item.\n\n## Timeline UI\n\nThe milestone view is implemented as a card-based horizontal timeline.\n\nEach milestone block includes presentation for:\n\n- date,\n- title,\n- time/metadata.\n\nThe timeline is scrollable when milestone count exceeds the viewport.\n\nAn add block is integrated into the same interaction model.\n\nThis is a recognizable product interaction rather than a plain form/list CRUD page.\n\n## Navigation and Sections\n\nThe application includes multiple page sections and navigation states.\n\nThe CSS and DOM define:\n\n- track area,\n- notifications,\n- reports,\n- modal overlays,\n- toast notifications.\n\nSections are activated/deactivated through DOM state.\n\nThis creates a single-page-like interaction model even though no SPA framework is used.\n\n## Modal Workflows\n\nTrack and milestone editing use modal overlays.\n\nThe application supports reusable add/edit flows rather than separate pages for each CRUD action.\n\nThat reduces navigation overhead and keeps the product focused around the timeline view.\n\n## Notifications\n\nThe source defines notification UI and a notification list.\n\nThe application includes logic around operational warnings and milestone/track state.\n\nThe notification system is local application logic rather than a push-notification infrastructure.\n\n## Bottleneck Detection\n\nThe final source contains an asynchronous `checkBottlenecks()` workflow.\n\nIt inspects persisted track/milestone state and creates product feedback around stalled or problematic progress.\n\nThis adds lightweight analytical behavior on top of basic CRUD.\n\nThe implementation should be interpreted as rule-based application analysis, not machine learning.\n\n## Reporting\n\nThe UI includes report-oriented sections and date-range controls.\n\nThe application builds report content from stored progress information.\n\nIt also contains browser-side export behavior.\n\nThis moves the prototype beyond input-only tracking toward summary/review workflows.\n\n## Firebase CRUD\n\nThe application imports Firebase Realtime Database operations including:\n\n- `ref`,\n- `push`,\n- `get`,\n- `set`,\n- `update`,\n- `remove`,\n- query helpers.\n\nThe code uses these operations for users, tracks, and milestones.\n\nThis is direct persistent browser-database integration.\n\n## Responsive UI\n\nThe CSS includes responsive behavior for smaller screens.\n\nNavigation, page padding, and modal sizing adapt below a mobile-width breakpoint.\n\nThe application also defines:\n\n- card layouts,\n- horizontal overflow,\n- toast states,\n- modal transitions,\n- hover states.\n\nThis is more developed UI work than a raw database form.\n\n## Bug-Fix Evidence\n\nA commit explicitly records:\n\n> solved editing duplication bug / date+1 bug\n\nThat is valuable product-engineering evidence.\n\nIt shows the project went through behavioral debugging rather than only first-pass generation.\n\nThe exact root cause is not reconstructed beyond the commit evidence, so the corpus does not invent a deeper explanation.\n\n## AI-Assisted Development Context\n\nSeveral commits explicitly identify AI-model involvement.\n\nExamples in commit messages refer to:\n\n- Grok attempts,\n- ChatGPT,\n- mixed Grok/GPT,\n- hallucinations.\n\nThis means the codebase is not appropriate evidence for claiming every implementation detail was independently authored from scratch.\n\nThe stronger personally attributable skills are:\n\n- defining and evolving the product,\n- integrating generated changes,\n- identifying hallucinated/broken outputs,\n- debugging application behavior,\n- deciding which changes to retain,\n- maintaining the repository through multiple iterations.\n\nThis distinction is important for an evidence-first portfolio.\n\n## Testing and Verification\n\nThe commit history demonstrates manual behavioral testing and bug correction.\n\nThe Firebase flows, track CRUD, and milestone CRUD are directly encoded.\n\nThe project does not establish a formal automated browser-test suite in the current snapshot.\n\nRather than listing that absence as a generic deficiency, the corpus treats manual iteration and bug-fix commits as the verified testing evidence that is present.\n\n## Product Engineering\n\nThis repository demonstrates several product concerns simultaneously:\n\n- onboarding,\n- account data,\n- authority gating,\n- user feedback,\n- progress organization,\n- editing,\n- destructive-action confirmation,\n- notifications,\n- reports,\n- responsive design.\n\nThe README also shows the owner thinking ahead about:\n\n- multi-user scaling,\n- authority-driven categories,\n- hierarchy.\n\nThose future items remain product intent, not implementation claims.\n\n## Scale and Complexity\n\nThe final `kilostone.html` is a large single-file application of roughly 65 KB.\n\nThat concentration creates substantial local complexity.\n\nThe application combines:\n\n- style system,\n- state,\n- modals,\n- database access,\n- CRUD logic,\n- reporting,\n- warnings,\n- navigation.\n\nIt is a prototype architecture rather than a modular production frontend.\n\nStill, it is meaningfully larger than the earlier single-purpose browser tools in the portfolio.\n\n## Skills Demonstrated\n\nDirectly supported skills include:\n\n- HTML,\n- CSS,\n- JavaScript,\n- Firebase Realtime Database,\n- browser CRUD,\n- form validation,\n- Web Crypto API,\n- SHA-256 hashing,\n- database-backed user records,\n- authority gating,\n- track/milestone data modeling,\n- modal workflows,\n- responsive UI,\n- toast notifications,\n- report generation,\n- rule-based bottleneck checks,\n- iterative debugging,\n- AI-assisted software development.\n\n## Capability Developed\n\nThe repository demonstrates movement from small single-purpose browser utilities toward a multi-workflow product prototype.\n\nThe owner is working across:\n\n- account onboarding,\n- persistence,\n- domain modeling,\n- authorization concepts,\n- analytical feedback,\n- user experience,\n- debugging.\n\nIt also provides direct evidence of learning to manage AI-assisted code critically rather than treating generated output as automatically correct.\n\nThe repeated “hallucination” commit labels are especially relevant to that engineering lesson.\n\n## Portfolio Evolution Context\n\n`Milestone` builds on earlier Firebase browser utilities such as `Word-Tracker`.\n\nIt expands the pattern from one database write form into a multi-entity application.\n\nIt also anticipates later products in the portfolio that use:\n\n- persistent personal data,\n- progress tracking,\n- roles/authority,\n- richer workflow modeling.\n\nThe project is an intermediate step toward more structured product engineering.\n\n## Historical Significance\n\nWithin the processed corpus, this is an early explicit example of:\n\n- AI-assisted implementation being visible in commit history,\n- active correction of AI hallucinations,\n- database-backed authority gating,\n- multi-entity progress tracking,\n- rule-based bottleneck analysis.\n\nIt is useful historically because the repository records both product ambition and implementation friction.\n\n## Evidence Boundaries\n\nThe repository uses custom database-backed login logic, not Firebase Authentication.\n\nThe SHA-256 step should not be represented as production-grade password storage.\n\nUnchecked README features remain planned.\n\nCommit messages support AI-assisted iteration but do not quantify which exact lines came from each model.\n\nThe corpus does not reproduce the checked-in Firebase client configuration values.\n\n## Overall Narrative\n\n`Milestone` is a two-page Firebase-backed progress-tracking prototype that grew through rapid, explicitly AI-assisted iteration.\n\nIts final snapshot combines accounts, authority gating, tracks, milestones, timeline interaction, reports, notifications, and rule-based bottleneck checks.\n\nIts most important engineering signal is not only feature breadth.\n\nThe commit history also shows the owner confronting generated-code hallucinations, debugging concrete behavioral bugs, and repeatedly integrating/correcting candidate implementations.\n\n# Project Tags\n\n- `individual-project`\n- `ai-assisted-development`\n- `browser-application`\n- `progress-tracker`\n- `milestone-tracking`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `browser-database-crud`\n- `user-registration`\n- `user-login`\n- `web-crypto-api`\n- `sha-256`\n- `authority-gating`\n- `form-validation`\n- `track-management`\n- `milestone-management`\n- `timeline-ui`\n- `modal-workflow`\n- `responsive-ui`\n- `toast-notifications`\n- `report-generation`\n- `bottleneck-detection`\n- `iterative-debugging`\n- `ai-hallucination-debugging`\n"
+}

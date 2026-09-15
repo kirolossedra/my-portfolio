@@ -1,0 +1,480 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 53,
+  "repository_total": 134,
+  "repository_name": "MLOps",
+  "header_title": "MLOps",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-053-MLOps/README.md",
+    "line_start": 1,
+    "line_end": 358,
+    "sha256": "25de099aa71f0c614f0131d3e9b331f1ff01b0fd3589d51560ccdc9e62d65163"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "jupyter-notebook",
+    "ml-serving",
+    "model-serving-experiment",
+    "fastapi",
+    "asgi",
+    "uvicorn",
+    "rest-api",
+    "http-post",
+    "file-upload",
+    "multipart-form-data",
+    "openapi",
+    "swagger-ui",
+    "http-exception-handling",
+    "json-response",
+    "streaming-response",
+    "opencv",
+    "computer-vision",
+    "yolov3",
+    "yolov3-tiny",
+    "inference-api",
+    "dependency-troubleshooting",
+    "manual-verification"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/MLOps`\n- **Repository start date:** 2024-10-10\n- **Last meaningful update date:** 2024-10-11\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary API framework:** FastAPI\n- **Model-serving context:** image upload / object-detection inference experiment\n- **Serving runtime evidence:** Uvicorn imports and local API documentation route\n- **Collaboration classification:** individual learning repository\n- **Repository type:** model-serving / API deployment experiment"
+    },
+    "testing": {
+      "section_ids": [
+        "s016",
+        "s020"
+      ],
+      "titles": [
+        "README Verification",
+        "Testing and Verification"
+      ],
+      "text": "## README Verification\nThe nested README contains screenshots showing:\n\n- the API running,\n- the upload interaction,\n- a returned response.\n\nThis is manual end-to-end evidence that the serving workflow was exercised.\n\n## Testing and Verification\nVerification is manual and notebook-based.\n\nEvidence includes:\n\n- executed package installation,\n- running API output,\n- interactive docs,\n- uploaded image flow,\n- README screenshots.\n\nNo automated API test suite is checked in."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s017"
+      ],
+      "titles": [
+        "What “Deployment” Means Here"
+      ],
+      "text": "## What “Deployment” Means Here\nThe repository calls the exercise deployment.\n\nThe inspected evidence supports:\n\n- a running FastAPI application,\n- notebook-hosted/local serving,\n- interactive API access,\n- uploaded-image processing.\n\nThe repository does not establish a persistent production cloud deployment.\n\nThe corpus therefore uses `model-serving-experiment` rather than implying production hosting."
+    },
+    "documentation": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Interactive API Documentation"
+      ],
+      "text": "## Interactive API Documentation\nSaved notebook text instructs the user to navigate to:\n\n`http://localhost:8000/docs`.\n\nThis is FastAPI's generated OpenAPI/Swagger-style interactive documentation interface.\n\nThe repository README screenshots document use of an upload interface and resulting response."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/MLOps`\n- **Repository start date:** 2024-10-10\n- **Last meaningful update date:** 2024-10-11\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary API framework:** FastAPI\n- **Model-serving context:** image upload / object-detection inference experiment\n- **Serving runtime evidence:** Uvicorn imports and local API documentation route\n- **Collaboration classification:** individual learning repository\n- **Repository type:** model-serving / API deployment experiment",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`MLOps` is a small repository focused on exposing machine-learning functionality through an HTTP API.\n\nThe substantive artifact is:\n\n`Simple Deployment using FAST Api/Deploying an ML Model.ipynb`.\n\nThe accompanying README documents a manual interaction flow:\n\n1. navigate to the notebook-provided API link,\n2. open the API interface,\n3. upload an image,\n4. receive a response.\n\nThis is model-serving experimentation rather than model training alone.",
+      "source_line_start": 15,
+      "source_line_end": 32
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "FastAPI Setup",
+      "normalized_title": "FastAPI Setup",
+      "key": "fastapi_setup",
+      "path": [
+        "FastAPI Setup"
+      ],
+      "content": "The executed notebook installs FastAPI.\n\nSaved installation output shows FastAPI and its dependencies being installed.\n\nThe notebook imports:\n\n- `FastAPI`,\n- `UploadFile`,\n- `File`,\n- `HTTPException`,\n- response classes.\n\nThis is direct framework usage.",
+      "source_line_start": 32,
+      "source_line_end": 48
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Uvicorn / Async Notebook Serving",
+      "normalized_title": "Uvicorn / Async Notebook Serving",
+      "key": "uvicorn_async_notebook_serving",
+      "path": [
+        "Uvicorn / Async Notebook Serving"
+      ],
+      "content": "The notebook imports:\n\n- `uvicorn`,\n- `nest_asyncio`.\n\nThese are commonly used to run an ASGI FastAPI application from an interactive notebook context.\n\nThe repository therefore experiments with serving the API from the notebook environment.",
+      "source_line_start": 48,
+      "source_line_end": 59
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "API Application",
+      "normalized_title": "API Application",
+      "key": "api_application",
+      "path": [
+        "API Application"
+      ],
+      "content": "The notebook creates FastAPI applications.\n\nVisible code includes:\n\n`app = FastAPI(...)`.\n\nThe API is not only described in prose.\n\nActual route decorators are present.",
+      "source_line_start": 59,
+      "source_line_end": 71
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "File Upload Route",
+      "normalized_title": "File Upload Route",
+      "key": "file_upload_route",
+      "path": [
+        "File Upload Route"
+      ],
+      "content": "The notebook defines an HTTP POST endpoint at:\n\n`/upload`.\n\nIt accepts:\n\n`UploadFile = File(...)`.\n\nThis is concrete multipart file-upload handling.",
+      "source_line_start": 71,
+      "source_line_end": 83
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Prediction Route",
+      "normalized_title": "Prediction Route",
+      "key": "prediction_route",
+      "path": [
+        "Prediction Route"
+      ],
+      "content": "The notebook also defines:\n\n`@app.post(\"/predict\")`.\n\nThe prediction function accepts:\n\n- a selected model,\n- an uploaded file.\n\nThis creates an API boundary around image/model inference behavior.",
+      "source_line_start": 83,
+      "source_line_end": 96
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Model Selection",
+      "normalized_title": "Model Selection",
+      "key": "model_selection",
+      "path": [
+        "Model Selection"
+      ],
+      "content": "The notebook defines a string `Enum` named `Model`.\n\nVisible options include:\n\n- `yolov3-tiny`,\n- `yolov3`.\n\nThis makes model choice part of the typed API input rather than a hidden constant.",
+      "source_line_start": 96,
+      "source_line_end": 107
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Image Processing",
+      "normalized_title": "Image Processing",
+      "key": "image_processing",
+      "path": [
+        "Image Processing"
+      ],
+      "content": "The API code imports:\n\n- OpenCV (`cv2`),\n- NumPy,\n- streaming/JSON response classes.\n\nThe notebook therefore combines:\n\nHTTP upload\n→ binary image handling\n→ computer-vision processing/inference path\n→ API response.",
+      "source_line_start": 107,
+      "source_line_end": 122
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Interactive API Documentation",
+      "normalized_title": "Interactive API Documentation",
+      "key": "interactive_api_documentation",
+      "path": [
+        "Interactive API Documentation"
+      ],
+      "content": "Saved notebook text instructs the user to navigate to:\n\n`http://localhost:8000/docs`.\n\nThis is FastAPI's generated OpenAPI/Swagger-style interactive documentation interface.\n\nThe repository README screenshots document use of an upload interface and resulting response.",
+      "source_line_start": 122,
+      "source_line_end": 132
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "API Error Handling",
+      "normalized_title": "API Error Handling",
+      "key": "api_error_handling",
+      "path": [
+        "API Error Handling"
+      ],
+      "content": "The notebook imports and uses `HTTPException` in the serving code path.\n\nThis introduces explicit HTTP failure semantics rather than only raw Python exceptions.",
+      "source_line_start": 132,
+      "source_line_end": 138
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Streaming / JSON Responses",
+      "normalized_title": "Streaming / JSON Responses",
+      "key": "streaming_json_responses",
+      "path": [
+        "Streaming / JSON Responses"
+      ],
+      "content": "The notebook imports response classes including:\n\n- `StreamingResponse`,\n- `JSONResponse`.\n\nThis shows experimentation with different HTTP response representations.",
+      "source_line_start": 138,
+      "source_line_end": 147
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Dependency Installation",
+      "normalized_title": "Dependency Installation",
+      "key": "dependency_installation",
+      "path": [
+        "Dependency Installation"
+      ],
+      "content": "The notebook installs packages interactively.\n\nVisible installation activity includes:\n\n- FastAPI,\n- TensorFlow,\n- OpenCV-related packages.\n\nThis demonstrates environment setup work but also exposes dependency-management problems.",
+      "source_line_start": 147,
+      "source_line_end": 159
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Dependency Conflict Evidence",
+      "normalized_title": "Dependency Conflict Evidence",
+      "key": "dependency_conflict_evidence",
+      "path": [
+        "Dependency Conflict Evidence"
+      ],
+      "content": "Saved notebook output records an installation error for:\n\n`tensorflow-keras`.\n\nIt also records a NumPy/TensorFlow compatibility warning where TensorFlow 2.17 expects NumPy below 2.0 but NumPy 2.1.2 is installed.\n\nThis is significant operational evidence.\n\nThe corpus retains it because model deployment is partly about environment compatibility.",
+      "source_line_start": 159,
+      "source_line_end": 171
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "CPU Runtime Evidence",
+      "normalized_title": "CPU Runtime Evidence",
+      "key": "cpu_runtime_evidence",
+      "path": [
+        "CPU Runtime Evidence"
+      ],
+      "content": "TensorFlow output in the notebook reports that CUDA drivers were not found and GPU would not be used.\n\nThat indicates the tested notebook environment was CPU-oriented at that point.\n\nThis is execution-environment evidence, not a design requirement.",
+      "source_line_start": 171,
+      "source_line_end": 179
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "README Verification",
+      "normalized_title": "README Verification",
+      "key": "readme_verification",
+      "path": [
+        "README Verification"
+      ],
+      "content": "The nested README contains screenshots showing:\n\n- the API running,\n- the upload interaction,\n- a returned response.\n\nThis is manual end-to-end evidence that the serving workflow was exercised.",
+      "source_line_start": 179,
+      "source_line_end": 189
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "What “Deployment” Means Here",
+      "normalized_title": "What “Deployment” Means Here",
+      "key": "what_deployment_means_here",
+      "path": [
+        "What “Deployment” Means Here"
+      ],
+      "content": "The repository calls the exercise deployment.\n\nThe inspected evidence supports:\n\n- a running FastAPI application,\n- notebook-hosted/local serving,\n- interactive API access,\n- uploaded-image processing.\n\nThe repository does not establish a persistent production cloud deployment.\n\nThe corpus therefore uses `model-serving-experiment` rather than implying production hosting.",
+      "source_line_start": 189,
+      "source_line_end": 204
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "MLOps Scope",
+      "normalized_title": "MLOps Scope",
+      "key": "mlops_scope",
+      "path": [
+        "MLOps Scope"
+      ],
+      "content": "The repository name is broad.\n\nThe implementation is narrower.\n\nConcrete MLOps-related capability shown here is:\n\n- packaging inference behind an HTTP boundary,\n- runtime dependency setup,\n- endpoint interaction,\n- input handling,\n- deployment troubleshooting.\n\nIt does not yet demonstrate a full ML lifecycle platform.",
+      "source_line_start": 204,
+      "source_line_end": 220
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Not Evidenced",
+      "normalized_title": "Not Evidenced",
+      "key": "not_evidenced",
+      "path": [
+        "Not Evidenced"
+      ],
+      "content": "The repository does not establish:\n\n- model registry,\n- experiment tracking,\n- feature store,\n- CI/CD for ML,\n- automated retraining,\n- drift monitoring,\n- canary deployment,\n- container orchestration.\n\nThose terms are intentionally omitted from project tags.",
+      "source_line_start": 220,
+      "source_line_end": 235
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is manual and notebook-based.\n\nEvidence includes:\n\n- executed package installation,\n- running API output,\n- interactive docs,\n- uploaded image flow,\n- README screenshots.\n\nNo automated API test suite is checked in.",
+      "source_line_start": 235,
+      "source_line_end": 249
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Backend / APIs\n\n- FastAPI\n- POST endpoints\n- file upload handling\n- typed enum input\n- HTTP exceptions\n- JSON/streaming responses\n- interactive OpenAPI docs\n\n### ML Serving\n\n- inference API boundary\n- selectable YOLO model variants\n- image ingestion\n- OpenCV integration\n\n### Runtime / Operations\n\n- package installation\n- dependency compatibility troubleshooting\n- notebook-hosted ASGI serving\n- Uvicorn\n- CPU runtime observation",
+      "source_line_start": 249,
+      "source_line_end": 276
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Backend / APIs",
+      "normalized_title": "Backend / APIs",
+      "key": "backend_apis",
+      "path": [
+        "Skills Demonstrated",
+        "Backend / APIs"
+      ],
+      "content": "- FastAPI\n- POST endpoints\n- file upload handling\n- typed enum input\n- HTTP exceptions\n- JSON/streaming responses\n- interactive OpenAPI docs",
+      "source_line_start": 251,
+      "source_line_end": 261
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "ML Serving",
+      "normalized_title": "ML Serving",
+      "key": "ml_serving",
+      "path": [
+        "Skills Demonstrated",
+        "ML Serving"
+      ],
+      "content": "- inference API boundary\n- selectable YOLO model variants\n- image ingestion\n- OpenCV integration",
+      "source_line_start": 261,
+      "source_line_end": 268
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Runtime / Operations",
+      "normalized_title": "Runtime / Operations",
+      "key": "runtime_operations",
+      "path": [
+        "Skills Demonstrated",
+        "Runtime / Operations"
+      ],
+      "content": "- package installation\n- dependency compatibility troubleshooting\n- notebook-hosted ASGI serving\n- Uvicorn\n- CPU runtime observation",
+      "source_line_start": 268,
+      "source_line_end": 276
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops a key productization transition:\n\na model is no longer useful only through a notebook cell.\n\nIt becomes callable through an HTTP contract.\n\nThat introduces new concerns:\n\n- request validation,\n- binary input,\n- model selection,\n- response design,\n- runtime dependencies,\n- serving process.",
+      "source_line_start": 276,
+      "source_line_end": 293
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "The preceding repositories are heavily model- and data-oriented.\n\n`MLOps` begins moving those capabilities toward service integration.\n\nThis is important because later software projects can consume an API without embedding an ML notebook.",
+      "source_line_start": 293,
+      "source_line_end": 301
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository centered specifically on exposing ML/computer-vision inference through FastAPI.\n\nIt is also an early explicit bridge between ML experimentation and backend service behavior.",
+      "source_line_start": 301,
+      "source_line_end": 307
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "The work is notebook-centric.\n\nThe API is not packaged as a standalone service repository.\n\nNo production hosting configuration is checked in.\n\nNo container is present.\n\nNo automated tests are present.\n\nNo CI/CD is present.\n\nDependency conflicts are visible in saved output.\n\nThe broad `MLOps` repository name should therefore not be interpreted as evidence for every MLOps discipline.",
+      "source_line_start": 307,
+      "source_line_end": 325
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`MLOps` is a focused model-serving experiment.\n\nIt exposes image/model functionality through FastAPI, supports file uploads and model selection, runs an interactive API surface, and documents a manual end-to-end request flow.\n\nIts operational problems are also informative: package conflicts and CPU-only TensorFlow output show the friction involved in turning notebook ML into a callable service.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `jupyter-notebook`\n- `ml-serving`\n- `model-serving-experiment`\n- `fastapi`\n- `asgi`\n- `uvicorn`\n- `rest-api`\n- `http-post`\n- `file-upload`\n- `multipart-form-data`\n- `openapi`\n- `swagger-ui`\n- `http-exception-handling`\n- `json-response`\n- `streaming-response`\n- `opencv`\n- `computer-vision`\n- `yolov3`\n- `yolov3-tiny`\n- `inference-api`\n- `dependency-troubleshooting`\n- `manual-verification`",
+      "source_line_start": 325,
+      "source_line_end": 359
+    }
+  ],
+  "raw_analysis": "# Repository 053 — MLOps\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/MLOps`\n- **Repository start date:** 2024-10-10\n- **Last meaningful update date:** 2024-10-11\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary API framework:** FastAPI\n- **Model-serving context:** image upload / object-detection inference experiment\n- **Serving runtime evidence:** Uvicorn imports and local API documentation route\n- **Collaboration classification:** individual learning repository\n- **Repository type:** model-serving / API deployment experiment\n\n## What This Project Is\n\n`MLOps` is a small repository focused on exposing machine-learning functionality through an HTTP API.\n\nThe substantive artifact is:\n\n`Simple Deployment using FAST Api/Deploying an ML Model.ipynb`.\n\nThe accompanying README documents a manual interaction flow:\n\n1. navigate to the notebook-provided API link,\n2. open the API interface,\n3. upload an image,\n4. receive a response.\n\nThis is model-serving experimentation rather than model training alone.\n\n## FastAPI Setup\n\nThe executed notebook installs FastAPI.\n\nSaved installation output shows FastAPI and its dependencies being installed.\n\nThe notebook imports:\n\n- `FastAPI`,\n- `UploadFile`,\n- `File`,\n- `HTTPException`,\n- response classes.\n\nThis is direct framework usage.\n\n## Uvicorn / Async Notebook Serving\n\nThe notebook imports:\n\n- `uvicorn`,\n- `nest_asyncio`.\n\nThese are commonly used to run an ASGI FastAPI application from an interactive notebook context.\n\nThe repository therefore experiments with serving the API from the notebook environment.\n\n## API Application\n\nThe notebook creates FastAPI applications.\n\nVisible code includes:\n\n`app = FastAPI(...)`.\n\nThe API is not only described in prose.\n\nActual route decorators are present.\n\n## File Upload Route\n\nThe notebook defines an HTTP POST endpoint at:\n\n`/upload`.\n\nIt accepts:\n\n`UploadFile = File(...)`.\n\nThis is concrete multipart file-upload handling.\n\n## Prediction Route\n\nThe notebook also defines:\n\n`@app.post(\"/predict\")`.\n\nThe prediction function accepts:\n\n- a selected model,\n- an uploaded file.\n\nThis creates an API boundary around image/model inference behavior.\n\n## Model Selection\n\nThe notebook defines a string `Enum` named `Model`.\n\nVisible options include:\n\n- `yolov3-tiny`,\n- `yolov3`.\n\nThis makes model choice part of the typed API input rather than a hidden constant.\n\n## Image Processing\n\nThe API code imports:\n\n- OpenCV (`cv2`),\n- NumPy,\n- streaming/JSON response classes.\n\nThe notebook therefore combines:\n\nHTTP upload\n→ binary image handling\n→ computer-vision processing/inference path\n→ API response.\n\n## Interactive API Documentation\n\nSaved notebook text instructs the user to navigate to:\n\n`http://localhost:8000/docs`.\n\nThis is FastAPI's generated OpenAPI/Swagger-style interactive documentation interface.\n\nThe repository README screenshots document use of an upload interface and resulting response.\n\n## API Error Handling\n\nThe notebook imports and uses `HTTPException` in the serving code path.\n\nThis introduces explicit HTTP failure semantics rather than only raw Python exceptions.\n\n## Streaming / JSON Responses\n\nThe notebook imports response classes including:\n\n- `StreamingResponse`,\n- `JSONResponse`.\n\nThis shows experimentation with different HTTP response representations.\n\n## Dependency Installation\n\nThe notebook installs packages interactively.\n\nVisible installation activity includes:\n\n- FastAPI,\n- TensorFlow,\n- OpenCV-related packages.\n\nThis demonstrates environment setup work but also exposes dependency-management problems.\n\n## Dependency Conflict Evidence\n\nSaved notebook output records an installation error for:\n\n`tensorflow-keras`.\n\nIt also records a NumPy/TensorFlow compatibility warning where TensorFlow 2.17 expects NumPy below 2.0 but NumPy 2.1.2 is installed.\n\nThis is significant operational evidence.\n\nThe corpus retains it because model deployment is partly about environment compatibility.\n\n## CPU Runtime Evidence\n\nTensorFlow output in the notebook reports that CUDA drivers were not found and GPU would not be used.\n\nThat indicates the tested notebook environment was CPU-oriented at that point.\n\nThis is execution-environment evidence, not a design requirement.\n\n## README Verification\n\nThe nested README contains screenshots showing:\n\n- the API running,\n- the upload interaction,\n- a returned response.\n\nThis is manual end-to-end evidence that the serving workflow was exercised.\n\n## What “Deployment” Means Here\n\nThe repository calls the exercise deployment.\n\nThe inspected evidence supports:\n\n- a running FastAPI application,\n- notebook-hosted/local serving,\n- interactive API access,\n- uploaded-image processing.\n\nThe repository does not establish a persistent production cloud deployment.\n\nThe corpus therefore uses `model-serving-experiment` rather than implying production hosting.\n\n## MLOps Scope\n\nThe repository name is broad.\n\nThe implementation is narrower.\n\nConcrete MLOps-related capability shown here is:\n\n- packaging inference behind an HTTP boundary,\n- runtime dependency setup,\n- endpoint interaction,\n- input handling,\n- deployment troubleshooting.\n\nIt does not yet demonstrate a full ML lifecycle platform.\n\n## Not Evidenced\n\nThe repository does not establish:\n\n- model registry,\n- experiment tracking,\n- feature store,\n- CI/CD for ML,\n- automated retraining,\n- drift monitoring,\n- canary deployment,\n- container orchestration.\n\nThose terms are intentionally omitted from project tags.\n\n## Testing and Verification\n\nVerification is manual and notebook-based.\n\nEvidence includes:\n\n- executed package installation,\n- running API output,\n- interactive docs,\n- uploaded image flow,\n- README screenshots.\n\nNo automated API test suite is checked in.\n\n## Skills Demonstrated\n\n### Backend / APIs\n\n- FastAPI\n- POST endpoints\n- file upload handling\n- typed enum input\n- HTTP exceptions\n- JSON/streaming responses\n- interactive OpenAPI docs\n\n### ML Serving\n\n- inference API boundary\n- selectable YOLO model variants\n- image ingestion\n- OpenCV integration\n\n### Runtime / Operations\n\n- package installation\n- dependency compatibility troubleshooting\n- notebook-hosted ASGI serving\n- Uvicorn\n- CPU runtime observation\n\n## Capability Developed\n\nThis repository develops a key productization transition:\n\na model is no longer useful only through a notebook cell.\n\nIt becomes callable through an HTTP contract.\n\nThat introduces new concerns:\n\n- request validation,\n- binary input,\n- model selection,\n- response design,\n- runtime dependencies,\n- serving process.\n\n## Portfolio Evolution\n\nThe preceding repositories are heavily model- and data-oriented.\n\n`MLOps` begins moving those capabilities toward service integration.\n\nThis is important because later software projects can consume an API without embedding an ML notebook.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository centered specifically on exposing ML/computer-vision inference through FastAPI.\n\nIt is also an early explicit bridge between ML experimentation and backend service behavior.\n\n## Limitations\n\nThe work is notebook-centric.\n\nThe API is not packaged as a standalone service repository.\n\nNo production hosting configuration is checked in.\n\nNo container is present.\n\nNo automated tests are present.\n\nNo CI/CD is present.\n\nDependency conflicts are visible in saved output.\n\nThe broad `MLOps` repository name should therefore not be interpreted as evidence for every MLOps discipline.\n\n## Overall Narrative\n\n`MLOps` is a focused model-serving experiment.\n\nIt exposes image/model functionality through FastAPI, supports file uploads and model selection, runs an interactive API surface, and documents a manual end-to-end request flow.\n\nIts operational problems are also informative: package conflicts and CPU-only TensorFlow output show the friction involved in turning notebook ML into a callable service.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `jupyter-notebook`\n- `ml-serving`\n- `model-serving-experiment`\n- `fastapi`\n- `asgi`\n- `uvicorn`\n- `rest-api`\n- `http-post`\n- `file-upload`\n- `multipart-form-data`\n- `openapi`\n- `swagger-ui`\n- `http-exception-handling`\n- `json-response`\n- `streaming-response`\n- `opencv`\n- `computer-vision`\n- `yolov3`\n- `yolov3-tiny`\n- `inference-api`\n- `dependency-troubleshooting`\n- `manual-verification`\n"
+}

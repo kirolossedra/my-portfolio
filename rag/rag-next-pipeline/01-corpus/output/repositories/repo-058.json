@@ -1,0 +1,727 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 58,
+  "repository_total": 134,
+  "repository_name": "Python-Essentials-for-Data-Engineering",
+  "header_title": "Python-Essentials-for-Data-Engineering",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-058-Python-Essentials-for-Data-Engineering/README.md",
+    "line_start": 1,
+    "line_end": 374,
+    "sha256": "5df3cf268510e7d4475ce3259f3ce24651d70c3cb1ef12cdba07eb5de37d399e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "data-engineering-coursework",
+    "course-assignment-repository",
+    "technical-lab",
+    "individual-coursework",
+    "course-supplied-infrastructure",
+    "python",
+    "sql",
+    "pandas",
+    "dataframe",
+    "csv",
+    "web-scraping",
+    "beautifulsoup",
+    "http-requests",
+    "etl-workflow",
+    "multi-format-persistence",
+    "sqlite",
+    "python-database-access",
+    "sql-querying",
+    "dataframe-to-sql",
+    "python-unittest",
+    "automated-pass-fail",
+    "executed-notebook-output",
+    "pylint",
+    "static-code-analysis",
+    "resource-lifecycle-management",
+    "automated-testing",
+    "static-analysis",
+    "reproducible-input-data",
+    "earliest-observed-python-unittest",
+    "earliest-observed-pylint",
+    "earliest-observed-python-sqlite"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Python-Essentials-for-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-18\n- **Primary environment:** Python / Jupyter Notebook / Google Colab\n- **Primary technical field:** Python data engineering foundations\n- **Project context:** structured learning / coursework repository\n- **Collaboration classification:** `individual-coursework`\n- **Authorship boundary:** instructional assets and IBM-hosted course datasets are separated from the executed exercises and code written in the notebooks"
+    },
+    "testing": {
+      "section_ids": [
+        "s016",
+        "s019",
+        "s026",
+        "s033",
+        "s044"
+      ],
+      "titles": [
+        "Unit Testing",
+        "Executed Verification",
+        "Automated Unit Verification",
+        "Testing",
+        "Testing and Verification"
+      ],
+      "text": "## Unit Testing\n### Test Target Module\n\n`mymodule.py` defines:\n\n- `square(number)`;\n- `double(number)`.\n\n### `unittest`\n\nThe notebook constructs `unittest.TestCase` classes for both functions.\n\nAssertions include:\n\n- `assertEqual`;\n- `assertNotEqual`;\n- positive, negative, zero, integer, and floating-point inputs.\n\n### Executed Verification\n\nThe preserved output reports:\n\n```text\nRan 1 test ... OK\nRan 1 test ... OK\n```\n\nand a `TextTestResult` with:\n\n```text\nerrors=0 failures=0\n```\n\nThis is direct positive evidence of Python unit-test execution.\n\n## Executed Verification\nThe preserved output reports:\n\n```text\nRan 1 test ... OK\nRan 1 test ... OK\n```\n\nand a `TextTestResult` with:\n\n```text\nerrors=0 failures=0\n```\n\nThis is direct positive evidence of Python unit-test execution.\n\n## Automated Unit Verification\nPython behavior is checked with executable assertions rather than print-only inspection.\n\n## Testing\n- Python `unittest`;\n- `TestCase`;\n- equality and inequality assertions;\n- executed passing tests.\n\n## Testing and Verification\n- `python-unittest`\n- `automated-pass-fail`\n- `executed-notebook-output`\n- `pylint`\n- `static-code-analysis`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s040"
+      ],
+      "titles": [
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship\n- `individual-coursework`\n- `course-supplied-infrastructure`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Python-Essentials-for-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-18\n- **Primary environment:** Python / Jupyter Notebook / Google Colab\n- **Primary technical field:** Python data engineering foundations\n- **Project context:** structured learning / coursework repository\n- **Collaboration classification:** `individual-coursework`\n- **Authorship boundary:** instructional assets and IBM-hosted course datasets are separated from the executed exercises and code written in the notebooks",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains separate learning units for:\n\n- accessing databases using Python;\n- static code analysis;\n- unit testing;\n- web scraping and API/data extraction.\n\nIt also checks in:\n\n- CSV datasets;\n- SQLite `.db` files;\n- small Python modules used by the testing/static-analysis exercises.\n\nSeveral notebook outputs are preserved, which makes execution evidence directly inspectable.",
+      "source_line_start": 14,
+      "source_line_end": 31
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "```text\nPython-Essentials-for-Data-Engineering/\n├── Accessing Databases using Python/\n│   ├── Accessing_Databases_using_Python.ipynb\n│   ├── INSTRUCTOR.csv\n│   ├── Departments.csv\n│   └── STAFF.db\n├── Static Code Analysis/\n│   ├── Static_Code_Analysis.ipynb\n│   └── sample1.py\n├── Unit Testing/\n│   ├── Unit_Testing.ipynb\n│   └── mymodule.py\n└── Web scraping and Extracting Data using APIs/\n    ├── Web_scraping_and_Extracting_Data_using_APIs.ipynb\n    ├── Movies.db\n    └── CSV/top_50_films.csv\n```",
+      "source_line_start": 31,
+      "source_line_end": 52
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Database Access with Python",
+      "normalized_title": "Database Access with Python",
+      "key": "database_access_with_python",
+      "path": [
+        "Database Access with Python"
+      ],
+      "content": "### SQLite Connection\n\nThe database notebook imports `sqlite3` and opens:\n\n```python\nsqlite3.connect('STAFF.db')\n```\n\nThis gives direct evidence of embedded relational-database access from Python.\n\n### CSV-to-DataFrame Loading\n\nThe instructor dataset is loaded through `pandas.read_csv` with an explicit attribute list.\n\n### DataFrame-to-SQL Loading\n\nThe notebook writes the DataFrame into SQLite through:\n\n```python\ndf.to_sql(table_name, conn, if_exists='replace', index=False)\n```\n\nThe saved notebook output confirms:\n\n```text\nTable is ready\n```\n\n### SQL Queries from Pandas\n\nExecuted examples include:\n\n```sql\nSELECT * FROM INSTRUCTOR\nSELECT FNAME FROM INSTRUCTOR\nSELECT COUNT(*) FROM INSTRUCTOR\n```\n\nThe notebook preserves returned tabular results, including a count of fourteen instructor records before the later append exercise.\n\n### Database Append Workflow\n\nA one-row DataFrame for `John Doe` is constructed and appended with `if_exists='append'`.\n\nThe notebook stores the runtime confirmation:\n\n```text\nData appended successfully\n```\n\n### Connection Cleanup\n\nThe SQLite connection is explicitly closed after the operations.",
+      "source_line_start": 52,
+      "source_line_end": 108
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "SQLite Connection",
+      "normalized_title": "SQLite Connection",
+      "key": "sqlite_connection",
+      "path": [
+        "Database Access with Python",
+        "SQLite Connection"
+      ],
+      "content": "The database notebook imports `sqlite3` and opens:\n\n```python\nsqlite3.connect('STAFF.db')\n```\n\nThis gives direct evidence of embedded relational-database access from Python.",
+      "source_line_start": 54,
+      "source_line_end": 64
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "CSV-to-DataFrame Loading",
+      "normalized_title": "CSV-to-DataFrame Loading",
+      "key": "csv_to_dataframe_loading",
+      "path": [
+        "Database Access with Python",
+        "CSV-to-DataFrame Loading"
+      ],
+      "content": "The instructor dataset is loaded through `pandas.read_csv` with an explicit attribute list.",
+      "source_line_start": 64,
+      "source_line_end": 68
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "DataFrame-to-SQL Loading",
+      "normalized_title": "DataFrame-to-SQL Loading",
+      "key": "dataframe_to_sql_loading",
+      "path": [
+        "Database Access with Python",
+        "DataFrame-to-SQL Loading"
+      ],
+      "content": "The notebook writes the DataFrame into SQLite through:\n\n```python\ndf.to_sql(table_name, conn, if_exists='replace', index=False)\n```\n\nThe saved notebook output confirms:\n\n```text\nTable is ready\n```",
+      "source_line_start": 68,
+      "source_line_end": 82
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "SQL Queries from Pandas",
+      "normalized_title": "SQL Queries from Pandas",
+      "key": "sql_queries_from_pandas",
+      "path": [
+        "Database Access with Python",
+        "SQL Queries from Pandas"
+      ],
+      "content": "Executed examples include:\n\n```sql\nSELECT * FROM INSTRUCTOR\nSELECT FNAME FROM INSTRUCTOR\nSELECT COUNT(*) FROM INSTRUCTOR\n```\n\nThe notebook preserves returned tabular results, including a count of fourteen instructor records before the later append exercise.",
+      "source_line_start": 82,
+      "source_line_end": 94
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Database Append Workflow",
+      "normalized_title": "Database Append Workflow",
+      "key": "database_append_workflow",
+      "path": [
+        "Database Access with Python",
+        "Database Append Workflow"
+      ],
+      "content": "A one-row DataFrame for `John Doe` is constructed and appended with `if_exists='append'`.\n\nThe notebook stores the runtime confirmation:\n\n```text\nData appended successfully\n```",
+      "source_line_start": 94,
+      "source_line_end": 104
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Connection Cleanup",
+      "normalized_title": "Connection Cleanup",
+      "key": "connection_cleanup",
+      "path": [
+        "Database Access with Python",
+        "Connection Cleanup"
+      ],
+      "content": "The SQLite connection is explicitly closed after the operations.",
+      "source_line_start": 104,
+      "source_line_end": 108
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Web Scraping and Data Extraction",
+      "normalized_title": "Web Scraping and Data Extraction",
+      "key": "web_scraping_and_data_extraction",
+      "path": [
+        "Web Scraping and Data Extraction"
+      ],
+      "content": "The extraction notebook imports:\n\n- `requests`;\n- `sqlite3`;\n- `pandas`;\n- `BeautifulSoup`.\n\n### HTTP Retrieval\n\nA preserved Web Archive page is fetched using:\n\n```python\nrequests.get(url).text\n```\n\n### HTML Parsing\n\nBeautifulSoup parses the returned HTML and the workflow locates the table body and row elements.\n\n### Top-50 Extraction\n\nThe notebook loops over table rows, extracts rank, film title, and year, and builds a DataFrame containing fifty films.\n\nThe executed output visibly contains records such as:\n\n- The Godfather;\n- Citizen Kane;\n- Casablanca;\n- Seven Samurai;\n- Parasite;\n- The Matrix.\n\n### Multi-Destination Persistence\n\nThe extracted DataFrame is persisted in two forms:\n\n1. CSV through `df.to_csv`;\n2. SQLite through `df.to_sql`.\n\nThis is a compact ETL-style workflow:\n\n```text\nweb page\n  ↓\nHTTP request\n  ↓\nHTML parse\n  ↓\nstructured row extraction\n  ↓\npandas DataFrame\n  ├─→ CSV\n  └─→ SQLite\n```",
+      "source_line_start": 108,
+      "source_line_end": 165
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "HTTP Retrieval",
+      "normalized_title": "HTTP Retrieval",
+      "key": "http_retrieval",
+      "path": [
+        "Web Scraping and Data Extraction",
+        "HTTP Retrieval"
+      ],
+      "content": "A preserved Web Archive page is fetched using:\n\n```python\nrequests.get(url).text\n```",
+      "source_line_start": 117,
+      "source_line_end": 125
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "HTML Parsing",
+      "normalized_title": "HTML Parsing",
+      "key": "html_parsing",
+      "path": [
+        "Web Scraping and Data Extraction",
+        "HTML Parsing"
+      ],
+      "content": "BeautifulSoup parses the returned HTML and the workflow locates the table body and row elements.",
+      "source_line_start": 125,
+      "source_line_end": 129
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Top-50 Extraction",
+      "normalized_title": "Top-50 Extraction",
+      "key": "top_50_extraction",
+      "path": [
+        "Web Scraping and Data Extraction",
+        "Top-50 Extraction"
+      ],
+      "content": "The notebook loops over table rows, extracts rank, film title, and year, and builds a DataFrame containing fifty films.\n\nThe executed output visibly contains records such as:\n\n- The Godfather;\n- Citizen Kane;\n- Casablanca;\n- Seven Samurai;\n- Parasite;\n- The Matrix.",
+      "source_line_start": 129,
+      "source_line_end": 142
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Multi-Destination Persistence",
+      "normalized_title": "Multi-Destination Persistence",
+      "key": "multi_destination_persistence",
+      "path": [
+        "Web Scraping and Data Extraction",
+        "Multi-Destination Persistence"
+      ],
+      "content": "The extracted DataFrame is persisted in two forms:\n\n1. CSV through `df.to_csv`;\n2. SQLite through `df.to_sql`.\n\nThis is a compact ETL-style workflow:\n\n```text\nweb page\n  ↓\nHTTP request\n  ↓\nHTML parse\n  ↓\nstructured row extraction\n  ↓\npandas DataFrame\n  ├─→ CSV\n  └─→ SQLite\n```",
+      "source_line_start": 142,
+      "source_line_end": 165
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Unit Testing",
+      "normalized_title": "Unit Testing",
+      "key": "unit_testing",
+      "path": [
+        "Unit Testing"
+      ],
+      "content": "### Test Target Module\n\n`mymodule.py` defines:\n\n- `square(number)`;\n- `double(number)`.\n\n### `unittest`\n\nThe notebook constructs `unittest.TestCase` classes for both functions.\n\nAssertions include:\n\n- `assertEqual`;\n- `assertNotEqual`;\n- positive, negative, zero, integer, and floating-point inputs.\n\n### Executed Verification\n\nThe preserved output reports:\n\n```text\nRan 1 test ... OK\nRan 1 test ... OK\n```\n\nand a `TextTestResult` with:\n\n```text\nerrors=0 failures=0\n```\n\nThis is direct positive evidence of Python unit-test execution.",
+      "source_line_start": 165,
+      "source_line_end": 201
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Test Target Module",
+      "normalized_title": "Test Target Module",
+      "key": "test_target_module",
+      "path": [
+        "Unit Testing",
+        "Test Target Module"
+      ],
+      "content": "`mymodule.py` defines:\n\n- `square(number)`;\n- `double(number)`.",
+      "source_line_start": 167,
+      "source_line_end": 174
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "`unittest`",
+      "normalized_title": "unittest",
+      "key": "unittest",
+      "path": [
+        "Unit Testing",
+        "`unittest`"
+      ],
+      "content": "The notebook constructs `unittest.TestCase` classes for both functions.\n\nAssertions include:\n\n- `assertEqual`;\n- `assertNotEqual`;\n- positive, negative, zero, integer, and floating-point inputs.",
+      "source_line_start": 174,
+      "source_line_end": 184
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Executed Verification",
+      "normalized_title": "Executed Verification",
+      "key": "executed_verification",
+      "path": [
+        "Unit Testing",
+        "Executed Verification"
+      ],
+      "content": "The preserved output reports:\n\n```text\nRan 1 test ... OK\nRan 1 test ... OK\n```\n\nand a `TextTestResult` with:\n\n```text\nerrors=0 failures=0\n```\n\nThis is direct positive evidence of Python unit-test execution.",
+      "source_line_start": 184,
+      "source_line_end": 201
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Static Code Analysis",
+      "normalized_title": "Static Code Analysis",
+      "key": "static_code_analysis",
+      "path": [
+        "Static Code Analysis"
+      ],
+      "content": "### Pylint Setup\n\nThe static-analysis notebook installs and runs Pylint.\n\n### Actual Diagnostics\n\nThe saved output includes concrete diagnostics for `sample1.py`, including:\n\n- line too long;\n- missing final newline;\n- missing module docstring;\n- missing function docstring;\n- naming-style warnings;\n- recommendation to use an f-string.\n\nThe recorded Pylint score is `0.00/10`.\n\nThat score is preserved as tool output rather than hidden or reframed as a quality rating of the portfolio.",
+      "source_line_start": 201,
+      "source_line_end": 222
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Pylint Setup",
+      "normalized_title": "Pylint Setup",
+      "key": "pylint_setup",
+      "path": [
+        "Static Code Analysis",
+        "Pylint Setup"
+      ],
+      "content": "The static-analysis notebook installs and runs Pylint.",
+      "source_line_start": 203,
+      "source_line_end": 207
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Actual Diagnostics",
+      "normalized_title": "Actual Diagnostics",
+      "key": "actual_diagnostics",
+      "path": [
+        "Static Code Analysis",
+        "Actual Diagnostics"
+      ],
+      "content": "The saved output includes concrete diagnostics for `sample1.py`, including:\n\n- line too long;\n- missing final newline;\n- missing module docstring;\n- missing function docstring;\n- naming-style warnings;\n- recommendation to use an f-string.\n\nThe recorded Pylint score is `0.00/10`.\n\nThat score is preserved as tool output rather than hidden or reframed as a quality rating of the portfolio.",
+      "source_line_start": 207,
+      "source_line_end": 222
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Database Resource Management\n\nSQLite connections are explicitly opened and closed.\n\n### Reproducible Data Artifacts\n\nSource CSV files and generated SQLite databases are checked into the learning repository.\n\n### Automated Unit Verification\n\nPython behavior is checked with executable assertions rather than print-only inspection.\n\n### Static Analysis\n\nPylint is used as an automated code-quality diagnostic tool.\n\n### Data Persistence\n\nThe same structured DataFrame is materialized into both CSV and relational-table forms.",
+      "source_line_start": 222,
+      "source_line_end": 244
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Database Resource Management",
+      "normalized_title": "Database Resource Management",
+      "key": "database_resource_management",
+      "path": [
+        "Engineering Practices",
+        "Database Resource Management"
+      ],
+      "content": "SQLite connections are explicitly opened and closed.",
+      "source_line_start": 224,
+      "source_line_end": 228
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Reproducible Data Artifacts",
+      "normalized_title": "Reproducible Data Artifacts",
+      "key": "reproducible_data_artifacts",
+      "path": [
+        "Engineering Practices",
+        "Reproducible Data Artifacts"
+      ],
+      "content": "Source CSV files and generated SQLite databases are checked into the learning repository.",
+      "source_line_start": 228,
+      "source_line_end": 232
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Automated Unit Verification",
+      "normalized_title": "Automated Unit Verification",
+      "key": "automated_unit_verification",
+      "path": [
+        "Engineering Practices",
+        "Automated Unit Verification"
+      ],
+      "content": "Python behavior is checked with executable assertions rather than print-only inspection.",
+      "source_line_start": 232,
+      "source_line_end": 236
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Static Analysis",
+      "normalized_title": "Static Analysis",
+      "key": "static_analysis",
+      "path": [
+        "Engineering Practices",
+        "Static Analysis"
+      ],
+      "content": "Pylint is used as an automated code-quality diagnostic tool.",
+      "source_line_start": 236,
+      "source_line_end": 240
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Data Persistence",
+      "normalized_title": "Data Persistence",
+      "key": "data_persistence",
+      "path": [
+        "Engineering Practices",
+        "Data Persistence"
+      ],
+      "content": "The same structured DataFrame is materialized into both CSV and relational-table forms.",
+      "source_line_start": 240,
+      "source_line_end": 244
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small in raw size but spans several practical engineering workflows:\n\n- database connectivity;\n- SQL execution;\n- DataFrame persistence;\n- web scraping;\n- file generation;\n- unit testing;\n- static analysis.\n\nIt is broader than a single tutorial notebook because multiple independent engineering practices are collected into one learning repository.",
+      "source_line_start": 244,
+      "source_line_end": 258
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Python\n\n- module imports;\n- DataFrames;\n- database connections;\n- file output;\n- HTTP requests;\n- HTML parsing.\n\n### Data Engineering\n\n- CSV ingestion;\n- relational persistence;\n- SQL querying;\n- append/replace table modes;\n- web-to-tabular extraction;\n- multi-format data persistence.\n\n### Testing\n\n- Python `unittest`;\n- `TestCase`;\n- equality and inequality assertions;\n- executed passing tests.\n\n### Code Quality\n\n- Pylint installation and execution;\n- interpretation of lint diagnostics.\n\n### Databases\n\n- SQLite;\n- SQL;\n- pandas-to-SQL integration.",
+      "source_line_start": 258,
+      "source_line_end": 296
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- module imports;\n- DataFrames;\n- database connections;\n- file output;\n- HTTP requests;\n- HTML parsing.",
+      "source_line_start": 260,
+      "source_line_end": 269
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Data Engineering"
+      ],
+      "content": "- CSV ingestion;\n- relational persistence;\n- SQL querying;\n- append/replace table modes;\n- web-to-tabular extraction;\n- multi-format data persistence.",
+      "source_line_start": 269,
+      "source_line_end": 278
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Testing",
+      "normalized_title": "Testing",
+      "key": "testing",
+      "path": [
+        "Skills Demonstrated",
+        "Testing"
+      ],
+      "content": "- Python `unittest`;\n- `TestCase`;\n- equality and inequality assertions;\n- executed passing tests.",
+      "source_line_start": 278,
+      "source_line_end": 285
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Code Quality",
+      "normalized_title": "Code Quality",
+      "key": "code_quality",
+      "path": [
+        "Skills Demonstrated",
+        "Code Quality"
+      ],
+      "content": "- Pylint installation and execution;\n- interpretation of lint diagnostics.",
+      "source_line_start": 285,
+      "source_line_end": 290
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Databases",
+      "normalized_title": "Databases",
+      "key": "databases",
+      "path": [
+        "Skills Demonstrated",
+        "Databases"
+      ],
+      "content": "- SQLite;\n- SQL;\n- pandas-to-SQL integration.",
+      "source_line_start": 290,
+      "source_line_end": 296
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository moves beyond using Python only for analysis or ML and exercises Python as glue between external data, relational storage, quality tooling, and automated tests.\n\nThe strongest portfolio signal is the integration of small engineering practices that later become essential in backend/data work: acquire data, structure it, persist it, query it, test code, and inspect quality diagnostics.",
+      "source_line_start": 296,
+      "source_line_end": 302
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository so far with direct evidence of:\n\n- Python `unittest`;\n- Pylint execution;\n- SQLite database integration from Python;\n- a web-scraping workflow persisted simultaneously to CSV and SQLite.",
+      "source_line_start": 302,
+      "source_line_end": 311
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Python-Essentials-for-Data-Engineering` is a compact data-engineering foundations repository built around executed Python notebooks.\n\nIt demonstrates relational access through SQLite and pandas, a complete web-scraping-to-storage pipeline, automated unit testing, and static code analysis.\n\nThe repository is instructional in origin, so the corpus attributes exercised skills and completed workflows without treating course-hosted datasets or scaffold material as personally designed infrastructure.\n\n# Project Tags",
+      "source_line_start": 311,
+      "source_line_end": 321
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `data-engineering-coursework`\n- `course-assignment-repository`\n- `technical-lab`",
+      "source_line_start": 321,
+      "source_line_end": 327
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-coursework`\n- `course-supplied-infrastructure`",
+      "source_line_start": 327,
+      "source_line_end": 332
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`\n- `sql`",
+      "source_line_start": 332,
+      "source_line_end": 337
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Data Engineering"
+      ],
+      "content": "- `pandas`\n- `dataframe`\n- `csv`\n- `web-scraping`\n- `beautifulsoup`\n- `http-requests`\n- `etl-workflow`\n- `multi-format-persistence`",
+      "source_line_start": 337,
+      "source_line_end": 348
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Database",
+      "normalized_title": "Database",
+      "key": "database",
+      "path": [
+        "Database"
+      ],
+      "content": "- `sqlite`\n- `python-database-access`\n- `sql-querying`\n- `dataframe-to-sql`",
+      "source_line_start": 348,
+      "source_line_end": 355
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `python-unittest`\n- `automated-pass-fail`\n- `executed-notebook-output`\n- `pylint`\n- `static-code-analysis`",
+      "source_line_start": 355,
+      "source_line_end": 363
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `resource-lifecycle-management`\n- `automated-testing`\n- `static-analysis`\n- `reproducible-input-data`",
+      "source_line_start": 363,
+      "source_line_end": 370
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-python-unittest`\n- `earliest-observed-pylint`\n- `earliest-observed-python-sqlite`",
+      "source_line_start": 370,
+      "source_line_end": 375
+    }
+  ],
+  "raw_analysis": "# Repository 058 — Python-Essentials-for-Data-Engineering\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Python-Essentials-for-Data-Engineering`\n- **Repository start date:** 2024-10-18\n- **Last meaningful update date:** 2024-10-18\n- **Primary environment:** Python / Jupyter Notebook / Google Colab\n- **Primary technical field:** Python data engineering foundations\n- **Project context:** structured learning / coursework repository\n- **Collaboration classification:** `individual-coursework`\n- **Authorship boundary:** instructional assets and IBM-hosted course datasets are separated from the executed exercises and code written in the notebooks\n\n## Evidence Basis\n\nThe repository contains separate learning units for:\n\n- accessing databases using Python;\n- static code analysis;\n- unit testing;\n- web scraping and API/data extraction.\n\nIt also checks in:\n\n- CSV datasets;\n- SQLite `.db` files;\n- small Python modules used by the testing/static-analysis exercises.\n\nSeveral notebook outputs are preserved, which makes execution evidence directly inspectable.\n\n## Repository Structure\n\n```text\nPython-Essentials-for-Data-Engineering/\n├── Accessing Databases using Python/\n│   ├── Accessing_Databases_using_Python.ipynb\n│   ├── INSTRUCTOR.csv\n│   ├── Departments.csv\n│   └── STAFF.db\n├── Static Code Analysis/\n│   ├── Static_Code_Analysis.ipynb\n│   └── sample1.py\n├── Unit Testing/\n│   ├── Unit_Testing.ipynb\n│   └── mymodule.py\n└── Web scraping and Extracting Data using APIs/\n    ├── Web_scraping_and_Extracting_Data_using_APIs.ipynb\n    ├── Movies.db\n    └── CSV/top_50_films.csv\n```\n\n## Database Access with Python\n\n### SQLite Connection\n\nThe database notebook imports `sqlite3` and opens:\n\n```python\nsqlite3.connect('STAFF.db')\n```\n\nThis gives direct evidence of embedded relational-database access from Python.\n\n### CSV-to-DataFrame Loading\n\nThe instructor dataset is loaded through `pandas.read_csv` with an explicit attribute list.\n\n### DataFrame-to-SQL Loading\n\nThe notebook writes the DataFrame into SQLite through:\n\n```python\ndf.to_sql(table_name, conn, if_exists='replace', index=False)\n```\n\nThe saved notebook output confirms:\n\n```text\nTable is ready\n```\n\n### SQL Queries from Pandas\n\nExecuted examples include:\n\n```sql\nSELECT * FROM INSTRUCTOR\nSELECT FNAME FROM INSTRUCTOR\nSELECT COUNT(*) FROM INSTRUCTOR\n```\n\nThe notebook preserves returned tabular results, including a count of fourteen instructor records before the later append exercise.\n\n### Database Append Workflow\n\nA one-row DataFrame for `John Doe` is constructed and appended with `if_exists='append'`.\n\nThe notebook stores the runtime confirmation:\n\n```text\nData appended successfully\n```\n\n### Connection Cleanup\n\nThe SQLite connection is explicitly closed after the operations.\n\n## Web Scraping and Data Extraction\n\nThe extraction notebook imports:\n\n- `requests`;\n- `sqlite3`;\n- `pandas`;\n- `BeautifulSoup`.\n\n### HTTP Retrieval\n\nA preserved Web Archive page is fetched using:\n\n```python\nrequests.get(url).text\n```\n\n### HTML Parsing\n\nBeautifulSoup parses the returned HTML and the workflow locates the table body and row elements.\n\n### Top-50 Extraction\n\nThe notebook loops over table rows, extracts rank, film title, and year, and builds a DataFrame containing fifty films.\n\nThe executed output visibly contains records such as:\n\n- The Godfather;\n- Citizen Kane;\n- Casablanca;\n- Seven Samurai;\n- Parasite;\n- The Matrix.\n\n### Multi-Destination Persistence\n\nThe extracted DataFrame is persisted in two forms:\n\n1. CSV through `df.to_csv`;\n2. SQLite through `df.to_sql`.\n\nThis is a compact ETL-style workflow:\n\n```text\nweb page\n  ↓\nHTTP request\n  ↓\nHTML parse\n  ↓\nstructured row extraction\n  ↓\npandas DataFrame\n  ├─→ CSV\n  └─→ SQLite\n```\n\n## Unit Testing\n\n### Test Target Module\n\n`mymodule.py` defines:\n\n- `square(number)`;\n- `double(number)`.\n\n### `unittest`\n\nThe notebook constructs `unittest.TestCase` classes for both functions.\n\nAssertions include:\n\n- `assertEqual`;\n- `assertNotEqual`;\n- positive, negative, zero, integer, and floating-point inputs.\n\n### Executed Verification\n\nThe preserved output reports:\n\n```text\nRan 1 test ... OK\nRan 1 test ... OK\n```\n\nand a `TextTestResult` with:\n\n```text\nerrors=0 failures=0\n```\n\nThis is direct positive evidence of Python unit-test execution.\n\n## Static Code Analysis\n\n### Pylint Setup\n\nThe static-analysis notebook installs and runs Pylint.\n\n### Actual Diagnostics\n\nThe saved output includes concrete diagnostics for `sample1.py`, including:\n\n- line too long;\n- missing final newline;\n- missing module docstring;\n- missing function docstring;\n- naming-style warnings;\n- recommendation to use an f-string.\n\nThe recorded Pylint score is `0.00/10`.\n\nThat score is preserved as tool output rather than hidden or reframed as a quality rating of the portfolio.\n\n## Engineering Practices\n\n### Database Resource Management\n\nSQLite connections are explicitly opened and closed.\n\n### Reproducible Data Artifacts\n\nSource CSV files and generated SQLite databases are checked into the learning repository.\n\n### Automated Unit Verification\n\nPython behavior is checked with executable assertions rather than print-only inspection.\n\n### Static Analysis\n\nPylint is used as an automated code-quality diagnostic tool.\n\n### Data Persistence\n\nThe same structured DataFrame is materialized into both CSV and relational-table forms.\n\n## Scale and Complexity\n\nThe repository is small in raw size but spans several practical engineering workflows:\n\n- database connectivity;\n- SQL execution;\n- DataFrame persistence;\n- web scraping;\n- file generation;\n- unit testing;\n- static analysis.\n\nIt is broader than a single tutorial notebook because multiple independent engineering practices are collected into one learning repository.\n\n## Skills Demonstrated\n\n### Python\n\n- module imports;\n- DataFrames;\n- database connections;\n- file output;\n- HTTP requests;\n- HTML parsing.\n\n### Data Engineering\n\n- CSV ingestion;\n- relational persistence;\n- SQL querying;\n- append/replace table modes;\n- web-to-tabular extraction;\n- multi-format data persistence.\n\n### Testing\n\n- Python `unittest`;\n- `TestCase`;\n- equality and inequality assertions;\n- executed passing tests.\n\n### Code Quality\n\n- Pylint installation and execution;\n- interpretation of lint diagnostics.\n\n### Databases\n\n- SQLite;\n- SQL;\n- pandas-to-SQL integration.\n\n## Capability Developed\n\nThis repository moves beyond using Python only for analysis or ML and exercises Python as glue between external data, relational storage, quality tooling, and automated tests.\n\nThe strongest portfolio signal is the integration of small engineering practices that later become essential in backend/data work: acquire data, structure it, persist it, query it, test code, and inspect quality diagnostics.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository so far with direct evidence of:\n\n- Python `unittest`;\n- Pylint execution;\n- SQLite database integration from Python;\n- a web-scraping workflow persisted simultaneously to CSV and SQLite.\n\n## Overall Repository Narrative\n\n`Python-Essentials-for-Data-Engineering` is a compact data-engineering foundations repository built around executed Python notebooks.\n\nIt demonstrates relational access through SQLite and pandas, a complete web-scraping-to-storage pipeline, automated unit testing, and static code analysis.\n\nThe repository is instructional in origin, so the corpus attributes exercised skills and completed workflows without treating course-hosted datasets or scaffold material as personally designed infrastructure.\n\n# Project Tags\n\n## Project Type\n\n- `data-engineering-coursework`\n- `course-assignment-repository`\n- `technical-lab`\n\n## Collaboration and Authorship\n\n- `individual-coursework`\n- `course-supplied-infrastructure`\n\n## Languages\n\n- `python`\n- `sql`\n\n## Data Engineering\n\n- `pandas`\n- `dataframe`\n- `csv`\n- `web-scraping`\n- `beautifulsoup`\n- `http-requests`\n- `etl-workflow`\n- `multi-format-persistence`\n\n## Database\n\n- `sqlite`\n- `python-database-access`\n- `sql-querying`\n- `dataframe-to-sql`\n\n## Testing and Verification\n\n- `python-unittest`\n- `automated-pass-fail`\n- `executed-notebook-output`\n- `pylint`\n- `static-code-analysis`\n\n## Software Engineering Practices\n\n- `resource-lifecycle-management`\n- `automated-testing`\n- `static-analysis`\n- `reproducible-input-data`\n\n## Portfolio Significance\n\n- `earliest-observed-python-unittest`\n- `earliest-observed-pylint`\n- `earliest-observed-python-sqlite`\n"
+}

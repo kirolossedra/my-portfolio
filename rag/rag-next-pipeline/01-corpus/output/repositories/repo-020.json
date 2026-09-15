@@ -1,0 +1,753 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 20,
+  "repository_total": 134,
+  "repository_name": "Sedra-Platformer-Game",
+  "header_title": "Sedra-Platformer-Game",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-020-Sedra-Platformer-Game/README.md",
+    "line_start": 1,
+    "line_end": 427,
+    "sha256": "0a9441440c6ec85091c7e680a543c661339aac453fa697b214ff5553deb8c2e4"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "personal-project",
+    "prototype",
+    "individual-project",
+    "java",
+    "desktop-gui",
+    "event-driven-ui",
+    "swing",
+    "awt-graphics",
+    "sprite-sheet-animation",
+    "game-loop",
+    "threaded-runtime",
+    "update-render-separation",
+    "frame-timing",
+    "input-state-tracking",
+    "animation-state-machine",
+    "build-artifact-evidence",
+    "earliest-observed-game-development",
+    "earliest-observed-java-game-loop",
+    "earliest-observed-sprite-sheet-animation",
+    "earliest-observed-update-render-separation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 020 / 134\n- Name: `Sedra-Platformer-Game`\n- Repository start date: 2023-03-05\n- Latest meaningful update date: 2023-03-05\n- Primary type: Desktop game prototype\n- Technical field: Java game programming and real-time rendering\n- Application domain: 2D character movement and sprite animation\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005",
+        "s038"
+      ],
+      "titles": [
+        "Architecture and System Shape",
+        "Architecture"
+      ],
+      "text": "## Architecture and System Shape\n```text\nMain\n  ↓\nSedraPlatformer\n  ├─ MainWindow\n  │    ↓\n  │  MainPanel\n  │    ├─ Keyboard listener\n  │    └─ Mouse listener\n  │\n  ├─ update / render loop\n  │\n  └─ Protagonist\n       ├─ position state\n       ├─ movement flags\n       ├─ attack state\n       └─ sprite animation grid\n```\n\nThe application separates windowing, rendering, input handling, runtime control, and player state into distinct classes/packages.\n\n## Architecture\n- **Input/render/model decomposition — strong evidence.**\n- **Persistent input state — strong evidence.**\n- **Resource loading — strong evidence.**"
+    },
+    "testing": {
+      "section_ids": [
+        "s048"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\n- `build-artifact-evidence`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s044"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository has two owner-attributed commits and stores both source and compiled class outputs.\n\nThe Java implementation is therefore treated as personally attributable repository work.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 020 / 134\n- Name: `Sedra-Platformer-Game`\n- Repository start date: 2023-03-05\n- Latest meaningful update date: 2023-03-05\n- Primary type: Desktop game prototype\n- Technical field: Java game programming and real-time rendering\n- Application domain: 2D character movement and sprite animation\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository has two owner-attributed commits and stores both source and compiled class outputs.\n\nThe Java implementation is therefore treated as personally attributable repository work.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The source tree includes:\n\n- `main/Main.java`;\n- `main/MainWindow.java`;\n- `main/MainPanel.java`;\n- `main/SedraPlatformer.java`;\n- `listeners/Keyboard.java`;\n- `listeners/Mouse.java`;\n- `things/Character.java`;\n- `things/Protagonist.java`;\n- `utilities/Globals.java`;\n- sprite-sheet image assets.\n\nA parallel `bin` hierarchy contains compiled `.class` files for the same application structure.",
+      "source_line_start": 22,
+      "source_line_end": 39
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Sedra-Platformer-Game` is a Java desktop game prototype built directly with Swing/AWT-style rendering and event listeners.\n\nThe project implements a controllable protagonist with:\n\n- keyboard movement;\n- mouse-triggered attacks;\n- sprite-sheet animation;\n- multiple animation states;\n- a continuously running update/render loop;\n- explicit frames-per-second and updates-per-second targets.\n\nThe project is a compact but real interactive runtime rather than a static object-oriented example.",
+      "source_line_start": 39,
+      "source_line_end": 54
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nMain\n  ↓\nSedraPlatformer\n  ├─ MainWindow\n  │    ↓\n  │  MainPanel\n  │    ├─ Keyboard listener\n  │    └─ Mouse listener\n  │\n  ├─ update / render loop\n  │\n  └─ Protagonist\n       ├─ position state\n       ├─ movement flags\n       ├─ attack state\n       └─ sprite animation grid\n```\n\nThe application separates windowing, rendering, input handling, runtime control, and player state into distinct classes/packages.",
+      "source_line_start": 54,
+      "source_line_end": 77
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Java\n\nJava provides the application runtime and object model.\n\n### Swing\n\n`JPanel` is used as the rendering surface.\n\nThe panel overrides `paintComponent(Graphics)` and delegates drawing to the game controller.\n\n### AWT Graphics and Events\n\nThe project uses:\n\n- `Graphics` for rendering;\n- `BufferedImage` for sprite data;\n- `KeyListener` for keyboard input;\n- `MouseListener` and `MouseMotionListener` for mouse input.\n\n### ImageIO\n\n`ImageIO.read()` loads the committed sprite sheet from the classpath.",
+      "source_line_start": 77,
+      "source_line_end": 102
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Technical Stack",
+        "Java"
+      ],
+      "content": "Java provides the application runtime and object model.",
+      "source_line_start": 79,
+      "source_line_end": 83
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Swing",
+      "normalized_title": "Swing",
+      "key": "swing",
+      "path": [
+        "Technical Stack",
+        "Swing"
+      ],
+      "content": "`JPanel` is used as the rendering surface.\n\nThe panel overrides `paintComponent(Graphics)` and delegates drawing to the game controller.",
+      "source_line_start": 83,
+      "source_line_end": 89
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "AWT Graphics and Events",
+      "normalized_title": "AWT Graphics and Events",
+      "key": "awt_graphics_and_events",
+      "path": [
+        "Technical Stack",
+        "AWT Graphics and Events"
+      ],
+      "content": "The project uses:\n\n- `Graphics` for rendering;\n- `BufferedImage` for sprite data;\n- `KeyListener` for keyboard input;\n- `MouseListener` and `MouseMotionListener` for mouse input.",
+      "source_line_start": 89,
+      "source_line_end": 98
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "ImageIO",
+      "normalized_title": "ImageIO",
+      "key": "imageio",
+      "path": [
+        "Technical Stack",
+        "ImageIO"
+      ],
+      "content": "`ImageIO.read()` loads the committed sprite sheet from the classpath.",
+      "source_line_start": 98,
+      "source_line_end": 102
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Runtime Game Loop",
+      "normalized_title": "Runtime Game Loop",
+      "key": "runtime_game_loop",
+      "path": [
+        "Runtime Game Loop"
+      ],
+      "content": "`SedraPlatformer` implements `Runnable` and starts a dedicated thread for the game loop.\n\nThe loop defines separate targets:\n\n- `FPS_REQUIRED = 120`;\n- `UPS_REQUIRED = 200`.\n\nNanosecond timing accumulators independently track when the next update and render should occur.\n\nThis is important because simulation updates and display refreshes are not treated as one identical cadence.\n\n### Update Path\n\nWhen the update accumulator reaches its threshold, the loop calls `refresh()`.\n\nThat delegates to `Protagonist.refresh()`.\n\n### Render Path\n\nWhen the frame accumulator reaches its threshold, the loop invokes `mainPanel.repaint()`.\n\nSwing then calls the panel's `paintComponent()` method, which delegates drawing back through the game object.\n\n### Runtime Instrumentation\n\nOnce per second, the loop prints measured frame and update counts:\n\n```text\nfps: <count> ups: <count>\n```\n\nThis provides a simple runtime observation mechanism for whether the loop is reaching its configured cadence.",
+      "source_line_start": 102,
+      "source_line_end": 137
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Update Path",
+      "normalized_title": "Update Path",
+      "key": "update_path",
+      "path": [
+        "Runtime Game Loop",
+        "Update Path"
+      ],
+      "content": "When the update accumulator reaches its threshold, the loop calls `refresh()`.\n\nThat delegates to `Protagonist.refresh()`.",
+      "source_line_start": 115,
+      "source_line_end": 121
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Render Path",
+      "normalized_title": "Render Path",
+      "key": "render_path",
+      "path": [
+        "Runtime Game Loop",
+        "Render Path"
+      ],
+      "content": "When the frame accumulator reaches its threshold, the loop invokes `mainPanel.repaint()`.\n\nSwing then calls the panel's `paintComponent()` method, which delegates drawing back through the game object.",
+      "source_line_start": 121,
+      "source_line_end": 127
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Runtime Instrumentation",
+      "normalized_title": "Runtime Instrumentation",
+      "key": "runtime_instrumentation",
+      "path": [
+        "Runtime Game Loop",
+        "Runtime Instrumentation"
+      ],
+      "content": "Once per second, the loop prints measured frame and update counts:\n\n```text\nfps: <count> ups: <count>\n```\n\nThis provides a simple runtime observation mechanism for whether the loop is reaching its configured cadence.",
+      "source_line_start": 127,
+      "source_line_end": 137
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Keyboard Input",
+      "normalized_title": "Keyboard Input",
+      "key": "keyboard_input",
+      "path": [
+        "Keyboard Input"
+      ],
+      "content": "`Keyboard` implements `KeyListener`.\n\nThe movement controls are:\n\n- `A` → left;\n- `S` → down;\n- `D` → right;\n- `W` → up.\n\nOn key press, the corresponding movement flag becomes true.\n\nOn key release, it becomes false.\n\nThe input layer therefore tracks sustained movement rather than treating each key press as one fixed displacement.",
+      "source_line_start": 137,
+      "source_line_end": 154
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Mouse Input",
+      "normalized_title": "Mouse Input",
+      "key": "mouse_input",
+      "path": [
+        "Mouse Input"
+      ],
+      "content": "`Mouse` implements both:\n\n- `MouseListener`;\n- `MouseMotionListener`.\n\nA left-button click sets the protagonist's attack flag.\n\nThis gives the prototype simultaneous keyboard navigation and mouse-triggered action input.",
+      "source_line_start": 154,
+      "source_line_end": 165
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Protagonist State",
+      "normalized_title": "Protagonist State",
+      "key": "protagonist_state",
+      "path": [
+        "Protagonist State"
+      ],
+      "content": "`Protagonist` extends the repository's `Character` abstraction.\n\nIts runtime state includes:\n\n- X/Y position;\n- speed;\n- movement flags;\n- attack flag;\n- current animation;\n- animation timer;\n- animation frame selector;\n- sprite animation grid.",
+      "source_line_start": 165,
+      "source_line_end": 180
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Movement Logic",
+      "normalized_title": "Movement Logic",
+      "key": "movement_logic",
+      "path": [
+        "Movement Logic"
+      ],
+      "content": "`alterPosition()` updates the player position according to active directional flags.\n\nOpposing directions are explicitly checked so left/right and up/down conflict behavior is controlled.\n\nThe method also calculates whether the protagonist is currently moving.\n\nThat movement state influences animation selection.",
+      "source_line_start": 180,
+      "source_line_end": 190
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Animation State Selection",
+      "normalized_title": "Animation State Selection",
+      "key": "animation_state_selection",
+      "path": [
+        "Animation State Selection"
+      ],
+      "content": "`alterAnimation()` switches between at least:\n\n- running;\n- idle;\n- attack.\n\nAttack state overrides ordinary movement/idle selection.\n\nWhen the selected animation changes, frame counters are reset so the new animation begins cleanly.",
+      "source_line_start": 190,
+      "source_line_end": 202
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Animation Timing",
+      "normalized_title": "Animation Timing",
+      "key": "animation_timing",
+      "path": [
+        "Animation Timing"
+      ],
+      "content": "`refreshAnimation()` increments an animation timer.\n\nAfter the configured refresh interval, the frame selector advances.\n\nWhen the frame count for the active animation is exhausted, the selector wraps back to zero.\n\nAttack completion also clears the attack flag after the animation cycle.\n\nThis is concrete frame-sequencing logic rather than a single static sprite draw.",
+      "source_line_start": 202,
+      "source_line_end": 214
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Sprite-Sheet Processing",
+      "normalized_title": "Sprite-Sheet Processing",
+      "key": "sprite_sheet_processing",
+      "path": [
+        "Sprite-Sheet Processing"
+      ],
+      "content": "`formAnimations()` loads `/main.png` and slices it into subimages through repeated `BufferedImage.getSubimage()` calls.\n\nThe code builds a two-dimensional `AnimationGrid` covering animation groups such as:\n\n- idle;\n- running;\n- jumping;\n- attack 1;\n- attack 2;\n- attack 3;\n- falling;\n- hurt;\n- death.\n\nEach row of the sprite sheet is mapped into frame indices for an animation category.\n\nThis provides direct evidence of manual sprite-sheet coordinate management.",
+      "source_line_start": 214,
+      "source_line_end": 234
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Rendering",
+      "normalized_title": "Rendering",
+      "key": "rendering",
+      "path": [
+        "Rendering"
+      ],
+      "content": "`Protagonist.show(Graphics)` draws the current animation frame at the protagonist's current position.\n\nThe frame is selected by:\n\n```text\nAnimationGrid[playerAnimation][AnimationSelector]\n```\n\nThe result is rendered with explicit destination width and height.",
+      "source_line_start": 234,
+      "source_line_end": 246
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Window and Panel Structure",
+      "normalized_title": "Window and Panel Structure",
+      "key": "window_and_panel_structure",
+      "path": [
+        "Window and Panel Structure"
+      ],
+      "content": "`MainPanel` owns the input listeners and receives a reference to `SedraPlatformer`.\n\nIt configures panel dimensions and delegates game drawing during `paintComponent()`.\n\nThe game controller creates both the panel and the window, then requests focus so keyboard events are delivered to the panel.\n\nThis is a small separation of concerns between:\n\n- application loop;\n- window/container;\n- drawing surface;\n- player model;\n- input listeners.",
+      "source_line_start": 246,
+      "source_line_end": 262
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Build Evidence",
+      "normalized_title": "Build Evidence",
+      "key": "build_evidence",
+      "path": [
+        "Build Evidence"
+      ],
+      "content": "The repository includes a `bin` tree with compiled class files for:\n\n- listeners;\n- main runtime classes;\n- protagonist/domain classes;\n- utility classes.\n\nThis shows the source had progressed through compilation into executable Java bytecode artifacts.",
+      "source_line_start": 262,
+      "source_line_end": 273
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Update/Render Separation\n\nThe code explicitly targets updates and frames at different rates.\n\nThis introduces real-time loop reasoning beyond ordinary event-driven desktop UI.\n\n### Input State Tracking\n\nKeyboard events update persistent movement flags, which the update loop later consumes.\n\nThis decouples event arrival from movement simulation.\n\n### Class Decomposition\n\nRuntime, rendering panel, window, player model, listeners, and globals are separated into packages/classes.\n\n### Resource-Based Asset Loading\n\nThe sprite sheet is loaded from the classpath rather than an absolute filesystem path.\n\n### Animation State Reset\n\nChanging animation clears frame/timer state so transitions begin from the first frame.",
+      "source_line_start": 273,
+      "source_line_end": 299
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Update/Render Separation",
+      "normalized_title": "Update/Render Separation",
+      "key": "update_render_separation",
+      "path": [
+        "Engineering Practices",
+        "Update/Render Separation"
+      ],
+      "content": "The code explicitly targets updates and frames at different rates.\n\nThis introduces real-time loop reasoning beyond ordinary event-driven desktop UI.",
+      "source_line_start": 275,
+      "source_line_end": 281
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Input State Tracking",
+      "normalized_title": "Input State Tracking",
+      "key": "input_state_tracking",
+      "path": [
+        "Engineering Practices",
+        "Input State Tracking"
+      ],
+      "content": "Keyboard events update persistent movement flags, which the update loop later consumes.\n\nThis decouples event arrival from movement simulation.",
+      "source_line_start": 281,
+      "source_line_end": 287
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Class Decomposition",
+      "normalized_title": "Class Decomposition",
+      "key": "class_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Class Decomposition"
+      ],
+      "content": "Runtime, rendering panel, window, player model, listeners, and globals are separated into packages/classes.",
+      "source_line_start": 287,
+      "source_line_end": 291
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Resource-Based Asset Loading",
+      "normalized_title": "Resource-Based Asset Loading",
+      "key": "resource_based_asset_loading",
+      "path": [
+        "Engineering Practices",
+        "Resource-Based Asset Loading"
+      ],
+      "content": "The sprite sheet is loaded from the classpath rather than an absolute filesystem path.",
+      "source_line_start": 291,
+      "source_line_end": 295
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Animation State Reset",
+      "normalized_title": "Animation State Reset",
+      "key": "animation_state_reset",
+      "path": [
+        "Engineering Practices",
+        "Animation State Reset"
+      ],
+      "content": "Changing animation clears frame/timer state so transitions begin from the first frame.",
+      "source_line_start": 295,
+      "source_line_end": 299
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThe repository is small, but it contains a complete interactive loop and several cooperating classes rather than one standalone exercise.\n\n### Runtime Complexity\n\nThe application simultaneously manages:\n\n- real-time timing;\n- event-driven input;\n- mutable position;\n- animation state;\n- rendering cadence;\n- resource loading.\n\n### Asset Complexity\n\nA single sprite sheet is manually decomposed into multiple animation families and frame counts.",
+      "source_line_start": 299,
+      "source_line_end": 320
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "The repository is small, but it contains a complete interactive loop and several cooperating classes rather than one standalone exercise.",
+      "source_line_start": 301,
+      "source_line_end": 305
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Runtime Complexity",
+      "normalized_title": "Runtime Complexity",
+      "key": "runtime_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Runtime Complexity"
+      ],
+      "content": "The application simultaneously manages:\n\n- real-time timing;\n- event-driven input;\n- mutable position;\n- animation state;\n- rendering cadence;\n- resource loading.",
+      "source_line_start": 305,
+      "source_line_end": 316
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Asset Complexity",
+      "normalized_title": "Asset Complexity",
+      "key": "asset_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Asset Complexity"
+      ],
+      "content": "A single sprite sheet is manually decomposed into multiple animation families and frame counts.",
+      "source_line_start": 316,
+      "source_line_end": 320
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Java Desktop Development\n\n- **Java — strong evidence.**\n- **Swing rendering — strong evidence.**\n- **AWT event handling — strong evidence.**\n- **Threads / `Runnable` — strong evidence.**\n- **Buffered image processing — strong evidence.**\n\n### Game Programming\n\n- **Game loop — strong evidence.**\n- **Separate update and frame rates — strong evidence.**\n- **Keyboard movement — strong evidence.**\n- **Mouse attack input — strong evidence.**\n- **Sprite-sheet animation — strong evidence.**\n- **Animation state switching — strong evidence.**\n- **Frame timing — strong evidence.**\n\n### Architecture\n\n- **Input/render/model decomposition — strong evidence.**\n- **Persistent input state — strong evidence.**\n- **Resource loading — strong evidence.**",
+      "source_line_start": 320,
+      "source_line_end": 346
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Java Desktop Development",
+      "normalized_title": "Java Desktop Development",
+      "key": "java_desktop_development",
+      "path": [
+        "Skills Demonstrated",
+        "Java Desktop Development"
+      ],
+      "content": "- **Java — strong evidence.**\n- **Swing rendering — strong evidence.**\n- **AWT event handling — strong evidence.**\n- **Threads / `Runnable` — strong evidence.**\n- **Buffered image processing — strong evidence.**",
+      "source_line_start": 322,
+      "source_line_end": 330
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Game Programming",
+      "normalized_title": "Game Programming",
+      "key": "game_programming",
+      "path": [
+        "Skills Demonstrated",
+        "Game Programming"
+      ],
+      "content": "- **Game loop — strong evidence.**\n- **Separate update and frame rates — strong evidence.**\n- **Keyboard movement — strong evidence.**\n- **Mouse attack input — strong evidence.**\n- **Sprite-sheet animation — strong evidence.**\n- **Animation state switching — strong evidence.**\n- **Frame timing — strong evidence.**",
+      "source_line_start": 330,
+      "source_line_end": 340
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Architecture",
+      "normalized_title": "Architecture",
+      "key": "architecture",
+      "path": [
+        "Skills Demonstrated",
+        "Architecture"
+      ],
+      "content": "- **Input/render/model decomposition — strong evidence.**\n- **Persistent input state — strong evidence.**\n- **Resource loading — strong evidence.**",
+      "source_line_start": 340,
+      "source_line_end": 346
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository turns Java from a design-pattern learning language into an interactive real-time application environment.\n\nThe key new capability is coordinating multiple timing domains and state sources:\n\n- user input arrives asynchronously;\n- movement updates happen at a configured update cadence;\n- rendering happens at a separate frame cadence;\n- animation frames advance on their own timer;\n- attack and movement flags change the rendered state.\n\nThat introduces practical runtime/game-loop reasoning absent from the earlier pattern repositories.",
+      "source_line_start": 346,
+      "source_line_end": 360
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- Java game programming;\n- Swing-based game rendering;\n- an explicit threaded game loop;\n- separate FPS and UPS targets;\n- sprite-sheet slicing;\n- animation-state sequencing;\n- combined keyboard and mouse game input.",
+      "source_line_start": 360,
+      "source_line_end": 372
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Sedra-Platformer-Game` records an early experiment in interactive real-time software.\n\nIt sits between object-oriented design study and later systems/projects by showing the same Java fundamentals applied to timing, graphics, events, and animation rather than purely structural examples.",
+      "source_line_start": 372,
+      "source_line_end": 378
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Sedra-Platformer-Game` is a personally authored Java desktop game prototype with a threaded runtime loop, Swing rendering, keyboard movement, mouse-triggered attacks, and manual sprite-sheet animation.\n\nThe runtime independently tracks update and render timing, the protagonist maintains movement and animation state, and the rendering path selects frames from a two-dimensional sprite grid. Compiled class files provide direct build evidence.\n\nIts strongest portfolio evidence is the transition into real-time interactive programming: timing loops, event state, rendering, and animated assets coordinated inside one application.\n\n# Project Tags",
+      "source_line_start": 378,
+      "source_line_end": 388
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `personal-project`\n- `prototype`",
+      "source_line_start": 388,
+      "source_line_end": 393
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 393,
+      "source_line_end": 397
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `java`",
+      "source_line_start": 397,
+      "source_line_end": 401
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Frontend and Presentation",
+      "normalized_title": "Frontend and Presentation",
+      "key": "frontend_and_presentation",
+      "path": [
+        "Frontend and Presentation"
+      ],
+      "content": "- `desktop-gui`\n- `event-driven-ui`\n- `swing`\n- `awt-graphics`\n- `sprite-sheet-animation`",
+      "source_line_start": 401,
+      "source_line_end": 409
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Systems Engineering and Algorithms",
+      "normalized_title": "Systems Engineering and Algorithms",
+      "key": "systems_engineering_and_algorithms",
+      "path": [
+        "Systems Engineering and Algorithms"
+      ],
+      "content": "- `game-loop`\n- `threaded-runtime`\n- `update-render-separation`\n- `frame-timing`\n- `input-state-tracking`\n- `animation-state-machine`",
+      "source_line_start": 409,
+      "source_line_end": 418
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `build-artifact-evidence`",
+      "source_line_start": 418,
+      "source_line_end": 422
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-game-development`\n- `earliest-observed-java-game-loop`\n- `earliest-observed-sprite-sheet-animation`\n- `earliest-observed-update-render-separation`",
+      "source_line_start": 422,
+      "source_line_end": 428
+    }
+  ],
+  "raw_analysis": "# Sedra-Platformer-Game\n\n## Repository Identity\n\n- Repository: 020 / 134\n- Name: `Sedra-Platformer-Game`\n- Repository start date: 2023-03-05\n- Latest meaningful update date: 2023-03-05\n- Primary type: Desktop game prototype\n- Technical field: Java game programming and real-time rendering\n- Application domain: 2D character movement and sprite animation\n- Project context: Personal project\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n\n## Collaboration and Authorship Context\n\nThe repository has two owner-attributed commits and stores both source and compiled class outputs.\n\nThe Java implementation is therefore treated as personally attributable repository work.\n\n## Evidence Basis\n\nThe source tree includes:\n\n- `main/Main.java`;\n- `main/MainWindow.java`;\n- `main/MainPanel.java`;\n- `main/SedraPlatformer.java`;\n- `listeners/Keyboard.java`;\n- `listeners/Mouse.java`;\n- `things/Character.java`;\n- `things/Protagonist.java`;\n- `utilities/Globals.java`;\n- sprite-sheet image assets.\n\nA parallel `bin` hierarchy contains compiled `.class` files for the same application structure.\n\n## What This Project Is\n\n`Sedra-Platformer-Game` is a Java desktop game prototype built directly with Swing/AWT-style rendering and event listeners.\n\nThe project implements a controllable protagonist with:\n\n- keyboard movement;\n- mouse-triggered attacks;\n- sprite-sheet animation;\n- multiple animation states;\n- a continuously running update/render loop;\n- explicit frames-per-second and updates-per-second targets.\n\nThe project is a compact but real interactive runtime rather than a static object-oriented example.\n\n## Architecture and System Shape\n\n```text\nMain\n  ↓\nSedraPlatformer\n  ├─ MainWindow\n  │    ↓\n  │  MainPanel\n  │    ├─ Keyboard listener\n  │    └─ Mouse listener\n  │\n  ├─ update / render loop\n  │\n  └─ Protagonist\n       ├─ position state\n       ├─ movement flags\n       ├─ attack state\n       └─ sprite animation grid\n```\n\nThe application separates windowing, rendering, input handling, runtime control, and player state into distinct classes/packages.\n\n## Technical Stack\n\n### Java\n\nJava provides the application runtime and object model.\n\n### Swing\n\n`JPanel` is used as the rendering surface.\n\nThe panel overrides `paintComponent(Graphics)` and delegates drawing to the game controller.\n\n### AWT Graphics and Events\n\nThe project uses:\n\n- `Graphics` for rendering;\n- `BufferedImage` for sprite data;\n- `KeyListener` for keyboard input;\n- `MouseListener` and `MouseMotionListener` for mouse input.\n\n### ImageIO\n\n`ImageIO.read()` loads the committed sprite sheet from the classpath.\n\n## Runtime Game Loop\n\n`SedraPlatformer` implements `Runnable` and starts a dedicated thread for the game loop.\n\nThe loop defines separate targets:\n\n- `FPS_REQUIRED = 120`;\n- `UPS_REQUIRED = 200`.\n\nNanosecond timing accumulators independently track when the next update and render should occur.\n\nThis is important because simulation updates and display refreshes are not treated as one identical cadence.\n\n### Update Path\n\nWhen the update accumulator reaches its threshold, the loop calls `refresh()`.\n\nThat delegates to `Protagonist.refresh()`.\n\n### Render Path\n\nWhen the frame accumulator reaches its threshold, the loop invokes `mainPanel.repaint()`.\n\nSwing then calls the panel's `paintComponent()` method, which delegates drawing back through the game object.\n\n### Runtime Instrumentation\n\nOnce per second, the loop prints measured frame and update counts:\n\n```text\nfps: <count> ups: <count>\n```\n\nThis provides a simple runtime observation mechanism for whether the loop is reaching its configured cadence.\n\n## Keyboard Input\n\n`Keyboard` implements `KeyListener`.\n\nThe movement controls are:\n\n- `A` → left;\n- `S` → down;\n- `D` → right;\n- `W` → up.\n\nOn key press, the corresponding movement flag becomes true.\n\nOn key release, it becomes false.\n\nThe input layer therefore tracks sustained movement rather than treating each key press as one fixed displacement.\n\n## Mouse Input\n\n`Mouse` implements both:\n\n- `MouseListener`;\n- `MouseMotionListener`.\n\nA left-button click sets the protagonist's attack flag.\n\nThis gives the prototype simultaneous keyboard navigation and mouse-triggered action input.\n\n## Protagonist State\n\n`Protagonist` extends the repository's `Character` abstraction.\n\nIts runtime state includes:\n\n- X/Y position;\n- speed;\n- movement flags;\n- attack flag;\n- current animation;\n- animation timer;\n- animation frame selector;\n- sprite animation grid.\n\n## Movement Logic\n\n`alterPosition()` updates the player position according to active directional flags.\n\nOpposing directions are explicitly checked so left/right and up/down conflict behavior is controlled.\n\nThe method also calculates whether the protagonist is currently moving.\n\nThat movement state influences animation selection.\n\n## Animation State Selection\n\n`alterAnimation()` switches between at least:\n\n- running;\n- idle;\n- attack.\n\nAttack state overrides ordinary movement/idle selection.\n\nWhen the selected animation changes, frame counters are reset so the new animation begins cleanly.\n\n## Animation Timing\n\n`refreshAnimation()` increments an animation timer.\n\nAfter the configured refresh interval, the frame selector advances.\n\nWhen the frame count for the active animation is exhausted, the selector wraps back to zero.\n\nAttack completion also clears the attack flag after the animation cycle.\n\nThis is concrete frame-sequencing logic rather than a single static sprite draw.\n\n## Sprite-Sheet Processing\n\n`formAnimations()` loads `/main.png` and slices it into subimages through repeated `BufferedImage.getSubimage()` calls.\n\nThe code builds a two-dimensional `AnimationGrid` covering animation groups such as:\n\n- idle;\n- running;\n- jumping;\n- attack 1;\n- attack 2;\n- attack 3;\n- falling;\n- hurt;\n- death.\n\nEach row of the sprite sheet is mapped into frame indices for an animation category.\n\nThis provides direct evidence of manual sprite-sheet coordinate management.\n\n## Rendering\n\n`Protagonist.show(Graphics)` draws the current animation frame at the protagonist's current position.\n\nThe frame is selected by:\n\n```text\nAnimationGrid[playerAnimation][AnimationSelector]\n```\n\nThe result is rendered with explicit destination width and height.\n\n## Window and Panel Structure\n\n`MainPanel` owns the input listeners and receives a reference to `SedraPlatformer`.\n\nIt configures panel dimensions and delegates game drawing during `paintComponent()`.\n\nThe game controller creates both the panel and the window, then requests focus so keyboard events are delivered to the panel.\n\nThis is a small separation of concerns between:\n\n- application loop;\n- window/container;\n- drawing surface;\n- player model;\n- input listeners.\n\n## Build Evidence\n\nThe repository includes a `bin` tree with compiled class files for:\n\n- listeners;\n- main runtime classes;\n- protagonist/domain classes;\n- utility classes.\n\nThis shows the source had progressed through compilation into executable Java bytecode artifacts.\n\n## Engineering Practices\n\n### Update/Render Separation\n\nThe code explicitly targets updates and frames at different rates.\n\nThis introduces real-time loop reasoning beyond ordinary event-driven desktop UI.\n\n### Input State Tracking\n\nKeyboard events update persistent movement flags, which the update loop later consumes.\n\nThis decouples event arrival from movement simulation.\n\n### Class Decomposition\n\nRuntime, rendering panel, window, player model, listeners, and globals are separated into packages/classes.\n\n### Resource-Based Asset Loading\n\nThe sprite sheet is loaded from the classpath rather than an absolute filesystem path.\n\n### Animation State Reset\n\nChanging animation clears frame/timer state so transitions begin from the first frame.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThe repository is small, but it contains a complete interactive loop and several cooperating classes rather than one standalone exercise.\n\n### Runtime Complexity\n\nThe application simultaneously manages:\n\n- real-time timing;\n- event-driven input;\n- mutable position;\n- animation state;\n- rendering cadence;\n- resource loading.\n\n### Asset Complexity\n\nA single sprite sheet is manually decomposed into multiple animation families and frame counts.\n\n## Skills Demonstrated\n\n### Java Desktop Development\n\n- **Java — strong evidence.**\n- **Swing rendering — strong evidence.**\n- **AWT event handling — strong evidence.**\n- **Threads / `Runnable` — strong evidence.**\n- **Buffered image processing — strong evidence.**\n\n### Game Programming\n\n- **Game loop — strong evidence.**\n- **Separate update and frame rates — strong evidence.**\n- **Keyboard movement — strong evidence.**\n- **Mouse attack input — strong evidence.**\n- **Sprite-sheet animation — strong evidence.**\n- **Animation state switching — strong evidence.**\n- **Frame timing — strong evidence.**\n\n### Architecture\n\n- **Input/render/model decomposition — strong evidence.**\n- **Persistent input state — strong evidence.**\n- **Resource loading — strong evidence.**\n\n## Capability Developed\n\nThis repository turns Java from a design-pattern learning language into an interactive real-time application environment.\n\nThe key new capability is coordinating multiple timing domains and state sources:\n\n- user input arrives asynchronously;\n- movement updates happen at a configured update cadence;\n- rendering happens at a separate frame cadence;\n- animation frames advance on their own timer;\n- attack and movement flags change the rendered state.\n\nThat introduces practical runtime/game-loop reasoning absent from the earlier pattern repositories.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- Java game programming;\n- Swing-based game rendering;\n- an explicit threaded game loop;\n- separate FPS and UPS targets;\n- sprite-sheet slicing;\n- animation-state sequencing;\n- combined keyboard and mouse game input.\n\n## Historical Significance\n\n`Sedra-Platformer-Game` records an early experiment in interactive real-time software.\n\nIt sits between object-oriented design study and later systems/projects by showing the same Java fundamentals applied to timing, graphics, events, and animation rather than purely structural examples.\n\n## Overall Repository Narrative\n\n`Sedra-Platformer-Game` is a personally authored Java desktop game prototype with a threaded runtime loop, Swing rendering, keyboard movement, mouse-triggered attacks, and manual sprite-sheet animation.\n\nThe runtime independently tracks update and render timing, the protagonist maintains movement and animation state, and the rendering path selects frames from a two-dimensional sprite grid. Compiled class files provide direct build evidence.\n\nIts strongest portfolio evidence is the transition into real-time interactive programming: timing loops, event state, rendering, and animated assets coordinated inside one application.\n\n# Project Tags\n\n## Project Type\n\n- `personal-project`\n- `prototype`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `java`\n\n## Frontend and Presentation\n\n- `desktop-gui`\n- `event-driven-ui`\n- `swing`\n- `awt-graphics`\n- `sprite-sheet-animation`\n\n## Systems Engineering and Algorithms\n\n- `game-loop`\n- `threaded-runtime`\n- `update-render-separation`\n- `frame-timing`\n- `input-state-tracking`\n- `animation-state-machine`\n\n## Testing and Verification\n\n- `build-artifact-evidence`\n\n## Portfolio Significance\n\n- `earliest-observed-game-development`\n- `earliest-observed-java-game-loop`\n- `earliest-observed-sprite-sheet-animation`\n- `earliest-observed-update-render-separation`\n"
+}

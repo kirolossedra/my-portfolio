@@ -1,0 +1,2047 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 132,
+  "repository_total": 134,
+  "repository_name": "LInC-Church-Management",
+  "header_title": "LInC-Church-Management",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-132-LInC-Church-Management/README.md",
+    "line_start": 1,
+    "line_end": 1932,
+    "sha256": "7596c318a1f8a44368407576d4345a8162b82014f94d9b7beef9cd78cf5345d6"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "linc-one",
+    "church-management-platform",
+    "ministry-management",
+    "full-stack-application",
+    "production-deployed",
+    "react-19",
+    "typescript",
+    "vite",
+    "react-router",
+    "hono",
+    "cloudflare-workers",
+    "firebase-authentication",
+    "firebase-realtime-database",
+    "backblaze-b2",
+    "brevo",
+    "google-gemini",
+    "netlify",
+    "cloudflare-rate-limiting",
+    "cloudflare-durable-objects",
+    "canonical-identity",
+    "identity-linking",
+    "authentication-authorization-separation",
+    "capability-based-authorization",
+    "domain-scoped-authorization",
+    "administrator-hierarchy",
+    "access-request-workflow",
+    "pastor-workspace",
+    "pastoral-booking",
+    "conflict-safe-booking",
+    "calendar-scheduling",
+    "availability-management",
+    "ics-export",
+    "people-notes",
+    "people-development",
+    "group-notes",
+    "recurring-schedules",
+    "assessment-forms",
+    "yaml-defined-forms",
+    "ministry-domain",
+    "mission-trip-management",
+    "servant-management",
+    "consent-based-membership",
+    "service-invitations",
+    "weekly-availability",
+    "recipient-scoped-files",
+    "discipleship",
+    "location-scoped-authority",
+    "attendance-management",
+    "attendance-analytics",
+    "public-library",
+    "signed-object-storage",
+    "blog-publishing",
+    "pastor-blog-management",
+    "support-ticketing",
+    "voice-support-messages",
+    "governance-workflows",
+    "audit-logging",
+    "human-approval-workflow",
+    "deletion-recovery",
+    "constrained-ai-actions",
+    "human-in-the-loop-ai",
+    "bounded-ai-context",
+    "public-abuse-protection",
+    "zod-validation",
+    "server-side-secrets",
+    "scheduled-worker-cron",
+    "bilingual-ui",
+    "arabic-rtl",
+    "design-system",
+    "architecture-gates",
+    "bundle-gates",
+    "vitest",
+    "testing-library",
+    "playwright",
+    "e2e-testing",
+    "production-smoke-tests",
+    "github-actions",
+    "structured-telemetry",
+    "opentelemetry",
+    "otlp",
+    "better-stack",
+    "dependency-modelling",
+    "cost-modelling",
+    "security-modelling",
+    "documentation-as-code",
+    "mermaid",
+    "finite-state-machines",
+    "entity-relationship-diagrams",
+    "change-manifests",
+    "ai-context-system",
+    "commit-synchronized-context",
+    "exact-commit-materialization",
+    "task-aware-context-selection",
+    "context-budgeting",
+    "ast-symbol-indexing",
+    "typescript-compiler-api",
+    "python-ast",
+    "symbol-range-projection",
+    "rename-aware-cochange",
+    "git-history-analysis",
+    "controlled-ablations",
+    "feedback-partitioning",
+    "benchmark-leakage-prevention",
+    "atomic-git-publication",
+    "static-history-factorial-experiment",
+    "software-evolution-research"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s010"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Canonical Identity Directory"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/LInC-Church-Management`\n- **Product name:** LInC One\n- **Repository index:** 132\n- **Start date:** 2026-04-29\n- **Latest meaningful update:** 2026-09-08\n- **Latest meaningful commit:** `e06ed291d6e01db89cdbac61c22afbd43f06e16c` — `docs(ai-context): link factorial experiment runbook`\n- **Primary stack:** React 19, TypeScript, Vite, Hono, Cloudflare Workers, Firebase Authentication, Firebase Realtime Database\n- **Collaboration classification:** `individual-project`\n- **Deployment state:** documented production frontend and backend surfaces with dedicated production-smoke workflows\n- **Primary domain:** bilingual church/ministry operations, pastoral workflows, spiritual-development administration, people/service coordination, governance, resources, support, and AI-assisted operations\n\n## Canonical Identity Directory\nPrimary identity roots include:\n\n```text\nuserDirectory/users\nuserDirectory/identityLinks\n```\n\nThe effective resolution flow is:\n\n```text\nFirebase UID\n   |\n   v\nidentity link\n   |\n   v\ncanonical UID / account\n   |\n   v\nactive access state\n   |\n   +--> labels\n   +--> servant labels\n   +--> administrator authority\n   +--> domain-specific policy\n```\n\nThis avoids treating each product feature as if it owned a separate copy of a person."
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s112"
+      ],
+      "titles": [
+        "Repository Evolution Metadata"
+      ],
+      "text": "## Repository Evolution Metadata\nV4 can record changes between repository states such as:\n\n- added files;\n- removed files;\n- modified files;\n- domain changes;\n- symbol-count changes;\n- repository change ratio;\n- trust/drift state."
+    },
+    "architecture": {
+      "section_ids": [
+        "s005",
+        "s073"
+      ],
+      "titles": [
+        "High-Level Architecture",
+        "Frontend Architecture Gate"
+      ],
+      "text": "## High-Level Architecture\nThe current architecture is hybrid:\n\n```text\nBrowser\n  |\n  v\nReact + TypeScript + Vite\n  |\n  +--> Firebase Authentication\n  |\n  +--> selected established Firebase data subscriptions\n  |\n  v\nHono API on Cloudflare Workers\n  |\n  +--> canonical identity / authorization\n  +--> Firebase Realtime Database\n  +--> Backblaze B2\n  +--> Brevo\n  +--> Google Gemini\n  +--> Cloudflare rate limiting\n  +--> Durable Object abuse guard\n```\n\nThe source does not falsely claim that every browser data path has already been migrated behind the Worker.\n\nInstead, the architecture explicitly identifies retained direct Firebase data paths while preferring the Worker for sensitive and transactional behavior.\n\n## Frontend Architecture Gate\n`npm run check:architecture` validates architectural invariants such as the centralized session authority.\n\nThis converts architecture from documentation-only guidance into executable quality policy."
+    },
+    "maturity": {
+      "section_ids": [
+        "s125",
+        "s137"
+      ],
+      "titles": [
+        "Product Maturity Evidence",
+        "Maturity Assessment"
+      ],
+      "text": "## Product Maturity Evidence\nLInC One has evidence across several maturity dimensions:\n\n- multiple production deployment surfaces;\n- a broad multi-role domain model;\n- backend authorization;\n- canonical identity;\n- capability-based administration;\n- governance/audit state;\n- consent-based membership;\n- object-storage separation;\n- public abuse controls;\n- unit/integration testing;\n- Playwright E2E;\n- production smoke tests;\n- release-quality scripts;\n- observability;\n- documentation-as-code;\n- dependency/cost/security modelling;\n- context-synchronization CI.\n\nThis is much stronger evidence than a UI prototype or CRUD-only application.\n\n## Maturity Assessment\nLInC One is a **production-deployed, multi-domain full-stack application with explicit authorization/governance architecture, substantial automated verification, operational observability, and a separate research-grade AI-context subsystem**.\n\nThe repository still documents migration boundaries and retained direct Firebase paths, which is a strength for corpus accuracy: maturity does not require pretending every historical architectural decision has already been eliminated.\n\nThe current implementation should be retrieved as evidence of sustained product evolution and architecture hardening, not merely feature accumulation."
+    },
+    "testing": {
+      "section_ids": [
+        "s078",
+        "s079",
+        "s083",
+        "s132"
+      ],
+      "titles": [
+        "Unit and Integration Testing",
+        "Backend Testing",
+        "Production Smoke Testing",
+        "Testing and Quality Skills"
+      ],
+      "text": "## Unit and Integration Testing\nThe frontend uses:\n\n- Vitest;\n- Testing Library;\n- V8 coverage.\n\nThe backend also uses Vitest and Cloudflare's Worker testing pool.\n\n## Backend Testing\nThe root documentation identifies backend tests around:\n\n- authorization;\n- route contracts;\n- persistence;\n- provider adapters;\n- governance;\n- Ministry;\n- support;\n- Library;\n- security behavior.\n\n## Production Smoke Testing\nFrontend and backend each have dedicated production-smoke workflows.\n\nThis matches the two-surface deployment model.\n\nObserved workflow files include:\n\n```text\n.github/workflows/frontend-build.yml\n.github/workflows/frontend-e2e.yml\n.github/workflows/frontend-production-smoke.yml\n.github/workflows/backend-tests.yml\n.github/workflows/backend-production-smoke.yml\n.github/workflows/ai-context-sync.yml\n```\n\n## Testing and Quality Skills\nEvidence includes:\n\n- TypeScript type checking;\n- ESLint zero-warning policy;\n- Vitest;\n- Testing Library;\n- coverage;\n- architecture checks;\n- design-system checks;\n- bundle checks;\n- built-dist smoke testing;\n- production smoke testing;\n- Playwright;\n- Worker tests;\n- AI-context regression tests;\n- CI artifact retention."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s009",
+        "s068",
+        "s090",
+        "s091",
+        "s092",
+        "s093",
+        "s131"
+      ],
+      "titles": [
+        "Authentication Is Not Authorization",
+        "Rate Limiting Is Not Authorization",
+        "Security Programme",
+        "Privacy Boundaries",
+        "Email Privacy",
+        "Object-Storage Security",
+        "Security Engineering Skills"
+      ],
+      "text": "## Authentication Is Not Authorization\nThe repository states this explicitly and repeatedly.\n\nFirebase Authentication establishes authenticated identity.\n\nApplication authority is determined later from canonical identity and domain policy.\n\nA successful login therefore does not automatically grant:\n\n- Pastor access;\n- administrator authority;\n- Spiritual Program participation;\n- Ministry authority;\n- service membership;\n- Discipleship teaching authority;\n- support-desk authority.\n\nThis is one of the strongest architectural themes in the project.\n\n## Rate Limiting Is Not Authorization\nThe repository explicitly keeps abuse mitigation separate from business validation.\n\nRate limiting protects exposed endpoints from excessive use.\n\nIt does not decide whether a business operation is valid.\n\n## Security Programme\n`docs/security/` contains dedicated security/threat-modelling work.\n\nSecurity boundaries described in the root README include:\n\n- authentication vs authorization;\n- public endpoint validation;\n- confidential Pastor data;\n- bounded AI context;\n- provider credentials;\n- recipient privacy;\n- object-storage signing;\n- deletion/audit behavior.\n\n## Privacy Boundaries\nThe product contains human/ministry information, so authorization is intentionally domain specific.\n\nExamples include:\n\n- People Notes restricted to Pastor authority;\n- administrator capability not implying universal pastoral access;\n- recipient-scoped service files;\n- location-scoped Discipleship authority;\n- public support projections separated from staff operations.\n\n## Email Privacy\nThe documentation differentiates group BCC-style messaging from individualized confidential delivery.\n\nIt also prefers server-generated templates over arbitrary browser-provided HTML.\n\n## Object-Storage Security\nB2 provider credentials stay on the Worker side.\n\nAuthorized clients receive signed operations instead of raw storage credentials.\n\n## Security Engineering Skills\nEvidence includes:\n\n- authentication/authorization separation;\n- canonical identity resolution;\n- domain-specific authorization;\n- backend validation;\n- provider secret isolation;\n- signed object access;\n- abuse mitigation;\n- sensitive-domain access boundaries;\n- governance/audit trails;\n- approval lifecycle;\n- controlled deletion/recovery;\n- AI authority boundaries."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s084"
+      ],
+      "titles": [
+        "CI/CD Separation"
+      ],
+      "text": "## CI/CD Separation\nNetlify and Cloudflare are separate delivery systems.\n\nThe repository preserves this operational distinction in both documentation and workflow structure."
+    },
+    "documentation": {
+      "section_ids": [
+        "s095",
+        "s134"
+      ],
+      "titles": [
+        "Repository Documentation System",
+        "Documentation Engineering Skills"
+      ],
+      "text": "## Repository Documentation System\nThe repository contains extensive technical documentation beyond the root README.\n\nMajor areas include:\n\n- database ERDs;\n- finite-state machines;\n- design patterns;\n- security;\n- testing;\n- road-to-100 maturity work;\n- dependency modelling;\n- AI-context management;\n- engineering-evolution study;\n- cost analysis;\n- incidents;\n- Gantt history/roadmap.\n\n## Documentation Engineering Skills\nEvidence includes:\n\n- text-native architecture diagrams;\n- ERDs;\n- FSMs;\n- generated Gantts;\n- feature change manifests;\n- security documentation;\n- testing documentation;\n- dependency modelling;\n- cost modelling;\n- incident records;\n- AI-agent contracts;\n- README/documentation changelogs."
+    },
+    "strengths": {
+      "section_ids": [
+        "s126",
+        "s127"
+      ],
+      "titles": [
+        "Architectural Strengths",
+        "Product-Engineering Strengths"
+      ],
+      "text": "## Architectural Strengths\nStrong architecture evidence includes:\n\n- single frontend session authority;\n- canonical identity distinct from Firebase auth;\n- fine-grained admin capabilities;\n- domain-scoped authority;\n- consent-aware servant membership;\n- backend revalidation for booking races;\n- bounded AI authority;\n- governed destructive actions;\n- provider credential isolation;\n- B2 signed storage operations;\n- separate production surfaces;\n- executable architecture/design-system gates;\n- exact-commit AI context.\n\n## Product-Engineering Strengths\nStrong product evidence includes:\n\n- differentiated user roles;\n- public and authenticated journeys;\n- bilingual/RTL behavior;\n- scheduling and availability;\n- support workflows;\n- resource publication;\n- role-specific content distribution;\n- ministry-instance modelling;\n- human-consent workflows;\n- access-request UX;\n- operational administration."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/LInC-Church-Management`\n- **Product name:** LInC One\n- **Repository index:** 132\n- **Start date:** 2026-04-29\n- **Latest meaningful update:** 2026-09-08\n- **Latest meaningful commit:** `e06ed291d6e01db89cdbac61c22afbd43f06e16c` — `docs(ai-context): link factorial experiment runbook`\n- **Primary stack:** React 19, TypeScript, Vite, Hono, Cloudflare Workers, Firebase Authentication, Firebase Realtime Database\n- **Collaboration classification:** `individual-project`\n- **Deployment state:** documented production frontend and backend surfaces with dedicated production-smoke workflows\n- **Primary domain:** bilingual church/ministry operations, pastoral workflows, spiritual-development administration, people/service coordination, governance, resources, support, and AI-assisted operations",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`LInC-Church-Management` is the source repository for **LInC One**, a large bilingual ministry-management platform.\n\nIt is not a single-purpose church calendar or form application.\n\nThe current codebase spans:\n\n- public ministry-facing pages;\n- authentication and canonical identity;\n- protected capability routing;\n- Pastor scheduling and booking;\n- People Notes;\n- People Development;\n- assessment forms;\n- Ministry operations;\n- Mission Trips;\n- Servant Management;\n- Discipleship;\n- attendance;\n- public Library resources;\n- support ticketing;\n- administrator governance;\n- server-side AI assistants;\n- transactional email;\n- object storage;\n- abuse controls;\n- production observability;\n- CI/CD and E2E verification;\n- a separate commit-synchronized AI-context research system.\n\nThis is one of the broadest product-engineering repositories in the portfolio corpus.",
+      "source_line_start": 16,
+      "source_line_end": 49
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Product Purpose",
+      "normalized_title": "Product Purpose",
+      "key": "product_purpose",
+      "path": [
+        "Product Purpose"
+      ],
+      "content": "LInC One acts as a shared digital operating surface for a ministry rather than a collection of disconnected admin tools.\n\nThe implementation attempts to preserve one canonical person/account identity while projecting different capabilities to different domains.\n\nThat design is visible in the separation between:\n\n```text\nFirebase identity\n        |\n        v\ncanonical application account\n        |\n        +--> ordinary participant capabilities\n        +--> Pastor capability\n        +--> servant/service capabilities\n        +--> Ministry capabilities\n        +--> administrator authority\n        +--> support authority\n```\n\nThe repository repeatedly treats authentication, identity, membership, consent, and authorization as distinct concepts.",
+      "source_line_start": 49,
+      "source_line_end": 73
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Current Production Surfaces",
+      "normalized_title": "Current Production Surfaces",
+      "key": "current_production_surfaces",
+      "path": [
+        "Current Production Surfaces"
+      ],
+      "content": "The root README documents two independent production surfaces:\n\n- **Frontend:** `lincministry.com`, hosted on Netlify.\n- **Backend:** Cloudflare Worker at the LInC backend workers.dev endpoint.\n\nThe repository explicitly treats frontend and backend deployment as separate systems.\n\nA successful frontend deployment is not assumed to mean the Worker was deployed, and vice versa.\n\nThis distinction is reinforced by separate production-smoke workflows.",
+      "source_line_start": 73,
+      "source_line_end": 86
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "High-Level Architecture",
+      "normalized_title": "High-Level Architecture",
+      "key": "high_level_architecture",
+      "path": [
+        "High-Level Architecture"
+      ],
+      "content": "The current architecture is hybrid:\n\n```text\nBrowser\n  |\n  v\nReact + TypeScript + Vite\n  |\n  +--> Firebase Authentication\n  |\n  +--> selected established Firebase data subscriptions\n  |\n  v\nHono API on Cloudflare Workers\n  |\n  +--> canonical identity / authorization\n  +--> Firebase Realtime Database\n  +--> Backblaze B2\n  +--> Brevo\n  +--> Google Gemini\n  +--> Cloudflare rate limiting\n  +--> Durable Object abuse guard\n```\n\nThe source does not falsely claim that every browser data path has already been migrated behind the Worker.\n\nInstead, the architecture explicitly identifies retained direct Firebase data paths while preferring the Worker for sensitive and transactional behavior.",
+      "source_line_start": 86,
+      "source_line_end": 116
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Frontend Stack",
+      "normalized_title": "Frontend Stack",
+      "key": "frontend_stack",
+      "path": [
+        "Frontend Stack"
+      ],
+      "content": "The root package is a modern TypeScript frontend.\n\nObserved runtime dependencies include:\n\n- React 19;\n- React DOM;\n- React Router;\n- Firebase;\n- date-fns;\n- Leaflet;\n- React Leaflet;\n- Google Maps loader;\n- Motion;\n- Lucide React;\n- YAML parsing.\n\nThe application uses Vite for development and production bundling.",
+      "source_line_start": 116,
+      "source_line_end": 136
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Frontend Application Spine",
+      "normalized_title": "Frontend Application Spine",
+      "key": "frontend_application_spine",
+      "path": [
+        "Frontend Application Spine"
+      ],
+      "content": "The root README describes `src/App.tsx` as a composition point rather than a monolithic application component.\n\nThe application separates:\n\n- provider composition;\n- route composition;\n- session authority;\n- feature modules;\n- services.\n\nThe important session flow is:\n\n```text\nFirebase Auth\n    |\n    v\nSessionProvider\n    |\n    v\ncanonical account\n    |\n    v\nuseSession()\n    |\n    v\nAppRoutes / RequireAccess / feature UI\n```",
+      "source_line_start": 136,
+      "source_line_end": 166
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Single Session Authority",
+      "normalized_title": "Single Session Authority",
+      "key": "single_session_authority",
+      "path": [
+        "Single Session Authority"
+      ],
+      "content": "A notable frontend architecture rule is the **single production auth-state observer**.\n\n`SessionProvider` owns:\n\n- Firebase authentication-state observation;\n- canonical-account loading;\n- session refresh behavior;\n- identity-switch race protection.\n\nOrdinary pages and features consume `useSession()` rather than independently recreating Firebase auth observers and canonical-account caches.\n\nThis is not just a documentation preference.\n\n`npm run check:architecture` exists to enforce the boundary.",
+      "source_line_start": 166,
+      "source_line_end": 183
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Authentication Is Not Authorization",
+      "normalized_title": "Authentication Is Not Authorization",
+      "key": "authentication_is_not_authorization",
+      "path": [
+        "Authentication Is Not Authorization"
+      ],
+      "content": "The repository states this explicitly and repeatedly.\n\nFirebase Authentication establishes authenticated identity.\n\nApplication authority is determined later from canonical identity and domain policy.\n\nA successful login therefore does not automatically grant:\n\n- Pastor access;\n- administrator authority;\n- Spiritual Program participation;\n- Ministry authority;\n- service membership;\n- Discipleship teaching authority;\n- support-desk authority.\n\nThis is one of the strongest architectural themes in the project.",
+      "source_line_start": 183,
+      "source_line_end": 203
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Canonical Identity Directory",
+      "normalized_title": "Canonical Identity Directory",
+      "key": "canonical_identity_directory",
+      "path": [
+        "Canonical Identity Directory"
+      ],
+      "content": "Primary identity roots include:\n\n```text\nuserDirectory/users\nuserDirectory/identityLinks\n```\n\nThe effective resolution flow is:\n\n```text\nFirebase UID\n   |\n   v\nidentity link\n   |\n   v\ncanonical UID / account\n   |\n   v\nactive access state\n   |\n   +--> labels\n   +--> servant labels\n   +--> administrator authority\n   +--> domain-specific policy\n```\n\nThis avoids treating each product feature as if it owned a separate copy of a person.",
+      "source_line_start": 203,
+      "source_line_end": 234
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Access Activation and Suspension",
+      "normalized_title": "Access Activation and Suspension",
+      "key": "access_activation_and_suspension",
+      "path": [
+        "Access Activation and Suspension"
+      ],
+      "content": "Canonical application access has explicit state rather than being inferred only from the existence of a Firebase account.\n\nThe platform supports governance around:\n\n- account activation;\n- suspension;\n- identity reconciliation;\n- deletion protection;\n- access requests.\n\nThis is evidence of application-level identity lifecycle management beyond login/logout.",
+      "source_line_start": 234,
+      "source_line_end": 248
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Protected Route UX",
+      "normalized_title": "Protected Route UX",
+      "key": "protected_route_ux",
+      "path": [
+        "Protected Route UX"
+      ],
+      "content": "The frontend centralizes protected-route behavior through `RequireAccess`.\n\nAn anonymous visitor can remain on the requested route and receive the shared authentication gateway instead of being blindly redirected away from context.\n\nAfter authentication, lack of capability produces an explicit access-denied/request flow rather than silently treating identity as permission.",
+      "source_line_start": 248,
+      "source_line_end": 256
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Access Requests",
+      "normalized_title": "Access Requests",
+      "key": "access_requests",
+      "path": [
+        "Access Requests"
+      ],
+      "content": "Requestable capabilities include protected areas such as:\n\n- Spiritual Program;\n- People Development / Group Notes;\n- Ministry;\n- Discipleship;\n- servant/service workflows.\n\nThe request records the attempted capability and route for human review.\n\nThe system does not grant the capability automatically merely because it was requested.\n\nPastor workspace access is intentionally not treated as a self-service capability request.",
+      "source_line_start": 256,
+      "source_line_end": 272
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Pastor Authority",
+      "normalized_title": "Pastor Authority",
+      "key": "pastor_authority",
+      "path": [
+        "Pastor Authority"
+      ],
+      "content": "Pastor authority is represented through the canonical account/label system.\n\nIt is separate from administrator authority.\n\nThis allows a Pastor to have pastoral capabilities without implicitly becoming a global administrator, and an administrator to perform delegated administration without automatically receiving confidential pastoral access.",
+      "source_line_start": 272,
+      "source_line_end": 280
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Administrator Hierarchy",
+      "normalized_title": "Administrator Hierarchy",
+      "key": "administrator_hierarchy",
+      "path": [
+        "Administrator Hierarchy"
+      ],
+      "content": "Administrator state is stored under:\n\n```text\nadministration/adminHierarchy\n```\n\nObserved lifecycle states include:\n\n- `pending`;\n- `active`;\n- `suspended`.",
+      "source_line_start": 280,
+      "source_line_end": 294
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Capability-Based Administration",
+      "normalized_title": "Capability-Based Administration",
+      "key": "capability_based_administration",
+      "path": [
+        "Capability-Based Administration"
+      ],
+      "content": "The platform does not reduce administrator authorization to one `isAdmin` boolean.\n\nDocumented authorities include:\n\n- `manageAssessmentForms`;\n- `manageAttendance`;\n- `manageLibrary`;\n- `manageMinistry`;\n- `managePeopleAccess`;\n- `manageAbout`;\n- `manageWebsiteSettings`.\n\nThe Chief receives the full authority set.\n\nOther administrators receive only explicitly allocated capabilities.\n\nThis is evidence of fine-grained role/capability modelling.",
+      "source_line_start": 294,
+      "source_line_end": 314
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Legacy Authority Migration",
+      "normalized_title": "Legacy Authority Migration",
+      "key": "legacy_authority_migration",
+      "path": [
+        "Legacy Authority Migration"
+      ],
+      "content": "The historical NextGen domain has been replaced by Ministry.\n\nA legacy `manageNextGenQa` value is retained as a compatibility alias for current `manageMinistry` reads.\n\nCurrent authority writes use the current name.\n\nThis is a concrete migration strategy:\n\n```text\nold persisted authority\n        |\n        v\ncompatibility read\n        |\n        v\ncurrent domain name for new writes\n```",
+      "source_line_start": 314,
+      "source_line_end": 334
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Bilingual Product Design",
+      "normalized_title": "Bilingual Product Design",
+      "key": "bilingual_product_design",
+      "path": [
+        "Bilingual Product Design"
+      ],
+      "content": "The product supports English and Arabic.\n\nThat includes RTL-aware UI behavior rather than simple text substitution.\n\nLocalization therefore affects:\n\n- navigation;\n- forms;\n- resource content;\n- layouts;\n- Ministry workflows;\n- support/participant experiences.",
+      "source_line_start": 334,
+      "source_line_end": 349
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Public Application Hub",
+      "normalized_title": "Public Application Hub",
+      "key": "public_application_hub",
+      "path": [
+        "Public Application Hub"
+      ],
+      "content": "Public visitors can reach product entry surfaces without possessing a canonical account.\n\nPublic areas include combinations of:\n\n- application navigation;\n- About/Legal content;\n- booking;\n- Library resources;\n- Oholiab Support.\n\nProtected domains are then layered on top of the same application.",
+      "source_line_start": 349,
+      "source_line_end": 363
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Assessment System",
+      "normalized_title": "Assessment System",
+      "key": "assessment_system",
+      "path": [
+        "Assessment System"
+      ],
+      "content": "Assessments/forms are represented through structured YAML-defined form content and backend-mediated response/control operations.\n\nThe platform therefore separates assessment definitions from hardcoded component trees.\n\nAdministrator authority controls form administration independently from ordinary participant use.",
+      "source_line_start": 363,
+      "source_line_end": 371
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Public Pastor Booking",
+      "normalized_title": "Public Pastor Booking",
+      "key": "public_pastor_booking",
+      "path": [
+        "Public Pastor Booking"
+      ],
+      "content": "The platform contains a public booking system for Pastor meetings.\n\nDocumented behavior includes:\n\n- 30-minute slots;\n- public schedule projection;\n- request creation;\n- conflict-safe reservation logic;\n- earliest-available booking mode;\n- server-side revalidation at mutation time.\n\nThe browser schedule is treated as a projection, not as an authoritative reservation lock.",
+      "source_line_start": 371,
+      "source_line_end": 386
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Conflict-Safe Booking",
+      "normalized_title": "Conflict-Safe Booking",
+      "key": "conflict_safe_booking",
+      "path": [
+        "Conflict-Safe Booking"
+      ],
+      "content": "The root README explicitly explains that a slot visible in the browser can still be rejected if another reservation/meeting claims it before mutation.\n\nThis demonstrates awareness of stale-client race conditions.\n\nThe backend revalidates availability when the booking request is committed.",
+      "source_line_start": 386,
+      "source_line_end": 394
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Pastor Calendar",
+      "normalized_title": "Pastor Calendar",
+      "key": "pastor_calendar",
+      "path": [
+        "Pastor Calendar"
+      ],
+      "content": "The Pastor workspace supports a substantial scheduling domain.\n\nCurrent capabilities include:\n\n- meeting creation;\n- meeting updates;\n- meeting deletion;\n- participant selection;\n- invitation delivery;\n- meeting-request review;\n- conflict-safe acceptance/rejection;\n- availability;\n- unavailability;\n- editable availability ranges;\n- trim-style range interaction;\n- flexible recurring group scheduling;\n- Pastor notifications;\n- People Development schedule awareness;\n- ICS export;\n- Bezalel assistance.",
+      "source_line_start": 394,
+      "source_line_end": 417
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Availability as Domain Data",
+      "normalized_title": "Availability as Domain Data",
+      "key": "availability_as_domain_data",
+      "path": [
+        "Availability as Domain Data"
+      ],
+      "content": "Availability ranges are persisted business data, not purely decorative calendar elements.\n\nThat distinction allows booking and scheduling logic to consume the same state used for rendering.",
+      "source_line_start": 417,
+      "source_line_end": 423
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Meeting Invitations",
+      "normalized_title": "Meeting Invitations",
+      "key": "meeting_invitations",
+      "path": [
+        "Meeting Invitations"
+      ],
+      "content": "Transactional meeting invitation delivery is mediated by a backend route family.\n\nThis keeps server-side mail credentials and message-generation concerns out of the React client.",
+      "source_line_start": 423,
+      "source_line_end": 429
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "People Notes",
+      "normalized_title": "People Notes",
+      "key": "people_notes",
+      "path": [
+        "People Notes"
+      ],
+      "content": "People Notes is a confidential Pastor-only domain.\n\nIt supports person-specific records such as:\n\n- note items;\n- comments;\n- follow-up state;\n- deletion.\n\nAdministrator authority alone does not grant access to these confidential notes.\n\nThis is an important privacy/authorization boundary.",
+      "source_line_start": 429,
+      "source_line_end": 444
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "People Development",
+      "normalized_title": "People Development",
+      "key": "people_development",
+      "path": [
+        "People Development"
+      ],
+      "content": "People Development manages development groups and participant-facing group workflows.\n\nDocumented capabilities include:\n\n- group assignment;\n- assignments;\n- PDF material;\n- recurring schedules;\n- private Pastor notes;\n- participant-facing group notes;\n- notification workflows;\n- canonical identity linkage.",
+      "source_line_start": 444,
+      "source_line_end": 459
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Group Notes",
+      "normalized_title": "Group Notes",
+      "key": "group_notes",
+      "path": [
+        "Group Notes"
+      ],
+      "content": "The Group Notes portal first passes through the shared capability boundary and then applies feature-specific participant projection.\n\nThat means route-level access and resource-level visibility are separate decisions.",
+      "source_line_start": 459,
+      "source_line_end": 465
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Ministry Domain",
+      "normalized_title": "Ministry Domain",
+      "key": "ministry_domain",
+      "path": [
+        "Ministry Domain"
+      ],
+      "content": "`Ministry` is the active domain replacing historical NextGen functionality.\n\nThe main subdomains are:\n\n```text\nMinistry\n  |\n  +--> Mission Trips\n  +--> Servant Management\n  +--> Discipleship\n```\n\nThese subdomains do not share one unrestricted mutation authority.",
+      "source_line_start": 465,
+      "source_line_end": 481
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Mission Trips",
+      "normalized_title": "Mission Trips",
+      "key": "mission_trips",
+      "path": [
+        "Mission Trips"
+      ],
+      "content": "Mission Trips model reusable trip/location concepts plus dated instances.\n\nDocumented concepts include:\n\n- trip definitions;\n- dated instances;\n- clearance deadlines;\n- responsibilities;\n- accommodation entities;\n- transportation entities;\n- participant allocation;\n- PDF roster/export behavior;\n- participant notification.\n\nThe implementation references canonical users instead of duplicating a separate Ministry-only people database.",
+      "source_line_start": 481,
+      "source_line_end": 499
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Servant Management",
+      "normalized_title": "Servant Management",
+      "key": "servant_management",
+      "path": [
+        "Servant Management"
+      ],
+      "content": "Servant Management is one of the clearest examples of domain modelling in the repository.\n\nThe project explicitly encodes the principle:\n\n> selection is not membership.\n\nA leader can invite a servant, but that does not immediately create service membership.",
+      "source_line_start": 499,
+      "source_line_end": 509
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Consent-Based Service Membership",
+      "normalized_title": "Consent-Based Service Membership",
+      "key": "consent_based_service_membership",
+      "path": [
+        "Consent-Based Service Membership"
+      ],
+      "content": "The lifecycle is:\n\n```text\neligible servant\n      |\n      v\npending invitation\n   /       \\\naccept     decline\n  |           |\n  v           v\nmember     declined state\n```\n\nInvitation records preserve:\n\n- who invited the person;\n- when the invitation occurred;\n- how/when the recipient responded.\n\nThis is evidence of consent-aware workflow modelling rather than automatic allocation.",
+      "source_line_start": 509,
+      "source_line_end": 533
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Service-Scoped Leadership",
+      "normalized_title": "Service-Scoped Leadership",
+      "key": "service_scoped_leadership",
+      "path": [
+        "Service-Scoped Leadership"
+      ],
+      "content": "A service leader receives management authority for the applicable service.\n\nThat does not imply authority over every Ministry domain.\n\nThis localizes authorization to the resource/domain scope that requires it.",
+      "source_line_start": 533,
+      "source_line_end": 541
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Weekly Servant Availability",
+      "normalized_title": "Weekly Servant Availability",
+      "key": "weekly_servant_availability",
+      "path": [
+        "Weekly Servant Availability"
+      ],
+      "content": "The weekly Sunday workflow distinguishes standing service membership from date-specific availability.\n\nA servant submits availability for the applicable Sunday.\n\nAssignment candidates are then constrained by:\n\n- accepted membership;\n- submitted availability;\n- relevant service role;\n- acting leader/Chief authority.",
+      "source_line_start": 541,
+      "source_line_end": 554
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Weekly Assignment History",
+      "normalized_title": "Weekly Assignment History",
+      "key": "weekly_assignment_history",
+      "path": [
+        "Weekly Assignment History"
+      ],
+      "content": "Published assignments become part of Sunday history.\n\nThe system does not model old weekly availability as if it were still an actionable present-tense form.\n\nThis shows temporal-domain reasoning rather than storing all weekly forms as interchangeable records.",
+      "source_line_start": 554,
+      "source_line_end": 562
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Recipient-Scoped Weekly Files",
+      "normalized_title": "Recipient-Scoped Weekly Files",
+      "key": "recipient_scoped_weekly_files",
+      "path": [
+        "Recipient-Scoped Weekly Files"
+      ],
+      "content": "Weekly service files can target specific recipient UIDs.\n\nThat allows leaders to distribute material to intended servants without exposing every file to the full service membership.",
+      "source_line_start": 562,
+      "source_line_end": 568
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Discipleship",
+      "normalized_title": "Discipleship",
+      "key": "discipleship",
+      "path": [
+        "Discipleship"
+      ],
+      "content": "Discipleship has a distinct access and authority model.\n\nDocumented capabilities include:\n\n- bilingual/location-specific forms;\n- participant form submission;\n- persisted baseline enrollment form;\n- language selection;\n- application emails;\n- constrained availability choices;\n- multi-city teacher assignment;\n- location-scoped submission review;\n- explicit enrollment/admission;\n- enrollment removal without silently deleting underlying access.",
+      "source_line_start": 568,
+      "source_line_end": 585
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Discipleship State Separation",
+      "normalized_title": "Discipleship State Separation",
+      "key": "discipleship_state_separation",
+      "path": [
+        "Discipleship State Separation"
+      ],
+      "content": "The repository distinguishes:\n\n- route/access label;\n- form submission;\n- enrollment;\n- teaching authority.\n\nThose are not collapsed into one state field.\n\nThis supports more accurate lifecycle behaviour.",
+      "source_line_start": 585,
+      "source_line_end": 598
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Location-Scoped Teaching Authority",
+      "normalized_title": "Location-Scoped Teaching Authority",
+      "key": "location_scoped_teaching_authority",
+      "path": [
+        "Location-Scoped Teaching Authority"
+      ],
+      "content": "Teaching authority is validated against active servant status and assigned locations.\n\nA teacher may be assigned to multiple active church locations.\n\nThis is an example of multi-scope authorization inside one domain.",
+      "source_line_start": 598,
+      "source_line_end": 606
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Attendance",
+      "normalized_title": "Attendance",
+      "key": "attendance",
+      "path": [
+        "Attendance"
+      ],
+      "content": "Attendance is implemented through protected administrator workflows rather than only direct browser writes.\n\nCapabilities include:\n\n- people listing;\n- person editing;\n- person deletion;\n- Sunday attendance workflow;\n- record updates;\n- search/filtering;\n- analytics;\n- individual attendance analysis;\n- photo/camera-related person information where applicable.",
+      "source_line_start": 606,
+      "source_line_end": 622
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Public Library",
+      "normalized_title": "Public Library",
+      "key": "public_library",
+      "path": [
+        "Public Library"
+      ],
+      "content": "The Library is a public resource catalog with protected management.\n\nPublic behaviors include:\n\n- folder listing;\n- published file listing;\n- signed view/download URLs;\n- Bezalel Library chat using selected resource context.\n\nManagement behaviors include:\n\n- folder management;\n- uploads;\n- publication completion;\n- deletion;\n- AI-summary metadata for PDFs.",
+      "source_line_start": 622,
+      "source_line_end": 641
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Library Storage Separation",
+      "normalized_title": "Library Storage Separation",
+      "key": "library_storage_separation",
+      "path": [
+        "Library Storage Separation"
+      ],
+      "content": "The storage architecture separates catalog metadata from binary objects.\n\n```text\nFirebase RTDB\n  -> Library catalog + metadata\n\nBackblaze B2\n  -> file objects\n\nprivate metadata\n  -> AI summary/context support\n```\n\nThis avoids putting large Library binaries directly into Firebase.",
+      "source_line_start": 641,
+      "source_line_end": 658
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Signed Object Operations",
+      "normalized_title": "Signed Object Operations",
+      "key": "signed_object_operations",
+      "path": [
+        "Signed Object Operations"
+      ],
+      "content": "B2 credentials remain server-side.\n\nBrowser transfers use signed operations produced after authorization.\n\nThis is an explicit trust-boundary design.",
+      "source_line_start": 658,
+      "source_line_end": 666
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Resource Evolution and Blog Publishing",
+      "normalized_title": "Resource Evolution and Blog Publishing",
+      "key": "resource_evolution_and_blog_publishing",
+      "path": [
+        "Resource Evolution and Blog Publishing"
+      ],
+      "content": "Recent September 2026 commits add Pastor blog publishing to the Resources experience and then fix the surrounding management/undo/test paths.\n\nThe commit sequence includes:\n\n- `feat(resources): add Pastor blog publishing`;\n- UUID-safe blog test-fixture correction;\n- render-safe blog undo state correction;\n- navigation tests aligned with Resources;\n- Pastor workspace blog-management exposure.\n\nThis shows the feature was integrated across source, tests, navigation, and Pastor workflow rather than existing only as an isolated screen.",
+      "source_line_start": 666,
+      "source_line_end": 680
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Oholiab Support",
+      "normalized_title": "Oholiab Support",
+      "key": "oholiab_support",
+      "path": [
+        "Oholiab Support"
+      ],
+      "content": "Oholiab is the public support/ticketing system.\n\nPublic users can:\n\n- submit contact information and a message;\n- optionally attach a voice recording;\n- receive a tracking code;\n- track ticket state/activity without an application account.",
+      "source_line_start": 680,
+      "source_line_end": 691
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Support Ticket Lifecycle",
+      "normalized_title": "Support Ticket Lifecycle",
+      "key": "support_ticket_lifecycle",
+      "path": [
+        "Support Ticket Lifecycle"
+      ],
+      "content": "Current documented states are:\n\n```text\nsubmitted\nopen\nin_progress\nresolved\nclosed\n```\n\nSupport staff can:\n\n- list tickets;\n- inspect details;\n- assign a support agent;\n- change status through validated transitions;\n- send public updates;\n- request information;\n- trigger transactional email;\n- review voice data while available.",
+      "source_line_start": 691,
+      "source_line_end": 714
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Support Voice Data",
+      "normalized_title": "Support Voice Data",
+      "key": "support_voice_data",
+      "path": [
+        "Support Voice Data"
+      ],
+      "content": "Voice messages are stored as validated Base64 support audio in the current implementation.\n\nThe voice data is deleted when the ticket is closed.\n\nThe repository treats this as a deliberate current-state exception rather than a generic pattern for all binary data.",
+      "source_line_start": 714,
+      "source_line_end": 722
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Governance Layer",
+      "normalized_title": "Governance Layer",
+      "key": "governance_layer",
+      "path": [
+        "Governance Layer"
+      ],
+      "content": "Governance is modeled explicitly rather than as incidental logging.\n\nImportant roots include:\n\n```text\nadministration/auditLog\ngovernance/notifications\ngovernance/approvals\ngovernance/accessRequests\n```",
+      "source_line_start": 722,
+      "source_line_end": 735
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Actor Origin",
+      "normalized_title": "Actor Origin",
+      "key": "actor_origin",
+      "path": [
+        "Actor Origin"
+      ],
+      "content": "Governed actions can identify origin such as:\n\n- direct;\n- Bezalel;\n- system.\n\nThis preserves whether a change originated from an ordinary UI flow, an AI-mediated proposal, or an automated system process.",
+      "source_line_start": 735,
+      "source_line_end": 745
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Actor Role",
+      "normalized_title": "Actor Role",
+      "key": "actor_role",
+      "path": [
+        "Actor Role"
+      ],
+      "content": "Governance can distinguish roles such as:\n\n- Chief;\n- administrator;\n- Pastor;\n- servant;\n- participant.\n\nThis provides more context than a generic user ID alone.",
+      "source_line_start": 745,
+      "source_line_end": 757
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Approval Lifecycle",
+      "normalized_title": "Approval Lifecycle",
+      "key": "approval_lifecycle",
+      "path": [
+        "Approval Lifecycle"
+      ],
+      "content": "The repository documents approval states such as:\n\n```text\npending\n   |\n   v\nexecuting\n  /   \\\n v     v\napproved failed\n\npending -> rejected\n```\n\nThis supports privileged operations that require a human decision before execution.",
+      "source_line_start": 757,
+      "source_line_end": 775
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Auditability",
+      "normalized_title": "Auditability",
+      "key": "auditability",
+      "path": [
+        "Auditability"
+      ],
+      "content": "Governed mutations can record:\n\n- actor;\n- action origin;\n- target;\n- recipients;\n- read state;\n- approval state;\n- destructive-action history where applicable.",
+      "source_line_start": 775,
+      "source_line_end": 787
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Deletion Recovery",
+      "normalized_title": "Deletion Recovery",
+      "key": "deletion_recovery",
+      "path": [
+        "Deletion Recovery"
+      ],
+      "content": "Selected governed deletions have recovery/accountability mechanisms.\n\nThe design does not assume every privileged deletion should become immediately invisible and irreversible.",
+      "source_line_start": 787,
+      "source_line_end": 793
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Bezalel AI",
+      "normalized_title": "Bezalel AI",
+      "key": "bezalel_ai",
+      "path": [
+        "Bezalel AI"
+      ],
+      "content": "Bezalel is the product's server-mediated AI capability.\n\nGoogle Gemini is the model provider.\n\nThe application, not the model, remains the authority boundary.",
+      "source_line_start": 793,
+      "source_line_end": 801
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "AI as Proposal, Not Authority",
+      "normalized_title": "AI as Proposal, Not Authority",
+      "key": "ai_as_proposal_not_authority",
+      "path": [
+        "AI as Proposal, Not Authority"
+      ],
+      "content": "The repository explicitly disallows treating model output as automatic authorization or ministry judgment.\n\nA model proposal must pass the same domain constraints as a comparable manual action.\n\nThe model does not get a bypass around:\n\n- authorization;\n- membership rules;\n- consent;\n- approval workflows;\n- sensitive-domain policy.",
+      "source_line_start": 801,
+      "source_line_end": 815
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Bounded AI Context",
+      "normalized_title": "Bounded AI Context",
+      "key": "bounded_ai_context",
+      "path": [
+        "Bounded AI Context"
+      ],
+      "content": "Gemini receives bounded context appropriate to the specific Bezalel mode.\n\nThe architecture avoids treating the entire application database as unrestricted model context.\n\nThis is particularly important because the product contains pastoral and people-related information.",
+      "source_line_start": 815,
+      "source_line_end": 823
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Human Authority Boundary",
+      "normalized_title": "Human Authority Boundary",
+      "key": "human_authority_boundary",
+      "path": [
+        "Human Authority Boundary"
+      ],
+      "content": "The repository documentation emphasizes human responsibility for ministry decisions affecting participation, status, or pastoral judgment.\n\nAI can assist with navigation, drafting, summarization, and constrained proposals, but does not silently convert human ministry decisions into autonomous model decisions.",
+      "source_line_start": 823,
+      "source_line_end": 829
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Bezalel Modes",
+      "normalized_title": "Bezalel Modes",
+      "key": "bezalel_modes",
+      "path": [
+        "Bezalel Modes"
+      ],
+      "content": "The backend exposes Bezalel through domain-dependent API routes.\n\nExamples include assistance around:\n\n- booking;\n- Pastor workflows;\n- Library resources.\n\nEach mode has a different context and action surface.",
+      "source_line_start": 829,
+      "source_line_end": 841
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Backend Runtime",
+      "normalized_title": "Backend Runtime",
+      "key": "backend_runtime",
+      "path": [
+        "Backend Runtime"
+      ],
+      "content": "The backend is a TypeScript Hono application deployed to Cloudflare Workers.\n\nObserved direct runtime dependencies are intentionally small:\n\n- Hono;\n- Zod;\n- aws4fetch.\n\nWrangler is used for local development, deployment, and Worker type generation.",
+      "source_line_start": 841,
+      "source_line_end": 853
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Backend Validation",
+      "normalized_title": "Backend Validation",
+      "key": "backend_validation",
+      "path": [
+        "Backend Validation"
+      ],
+      "content": "Zod provides runtime validation at server boundaries.\n\nThe architecture consistently positions backend validation near protected operations rather than trusting browser types as a security mechanism.",
+      "source_line_start": 853,
+      "source_line_end": 859
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Worker Route Families",
+      "normalized_title": "Worker Route Families",
+      "key": "worker_route_families",
+      "path": [
+        "Worker Route Families"
+      ],
+      "content": "Documented API roots include:\n\n- `/api/v1/auth`;\n- `/api/v1/people-notes`;\n- `/api/v1/people-development`;\n- `/api/v1/booking`;\n- `/api/v1/bezalel`;\n- `/api/v1/pastor-calendar`;\n- `/api/v1/assessment`;\n- `/api/v1/website-settings`;\n- `/api/v1/admin`;\n- `/api/v1/about`;\n- `/api/v1/support`;\n- `/api/v1/ministry/servant-management`;\n- `/api/v1/ministry`;\n- `/api/v1/library`;\n- `/api/v1/meeting-invitations`;\n- `/api/v1/governance`.",
+      "source_line_start": 859,
+      "source_line_end": 880
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Router Ordering as Policy",
+      "normalized_title": "Router Ordering as Policy",
+      "key": "router_ordering_as_policy",
+      "path": [
+        "Router Ordering as Policy"
+      ],
+      "content": "The dedicated Servant Management router is mounted before the broader Ministry router.\n\nThe repository documents this as intentional so older/direct membership semantics cannot accidentally bypass the newer consent-aware contract.\n\nThis is an example where route composition participates in preserving a business invariant.",
+      "source_line_start": 880,
+      "source_line_end": 888
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Firebase Realtime Database",
+      "normalized_title": "Firebase Realtime Database",
+      "key": "firebase_realtime_database",
+      "path": [
+        "Firebase Realtime Database"
+      ],
+      "content": "Firebase RTDB is the primary structured persistence store.\n\nImportant logical roots include:\n\n- canonical users;\n- identity links;\n- administrator hierarchy;\n- audit log;\n- governance notifications;\n- approvals;\n- access requests;\n- website settings;\n- Mission Trips;\n- Servant Management services/members/invitations/roles/Sundays;\n- Discipleship;\n- Library metadata;\n- support tickets/tracking/audio;\n- People Notes;\n- assessment-response lineage.",
+      "source_line_start": 888,
+      "source_line_end": 910
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Canonical UID Reuse",
+      "normalized_title": "Canonical UID Reuse",
+      "key": "canonical_uid_reuse",
+      "path": [
+        "Canonical UID Reuse"
+      ],
+      "content": "The data model prefers canonical UIDs across domains rather than copying person identity into each feature.\n\nThat supports cross-domain consistency and reduces identity drift.",
+      "source_line_start": 910,
+      "source_line_end": 916
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Backblaze B2",
+      "normalized_title": "Backblaze B2",
+      "key": "backblaze_b2",
+      "path": [
+        "Backblaze B2"
+      ],
+      "content": "B2 is used for Library/archive object storage through the S3-compatible API.\n\nServer-side signing isolates provider credentials from the browser.\n\nThe repository recognizes older/special Base64 domains separately rather than pretending all binary storage has one implementation.",
+      "source_line_start": 916,
+      "source_line_end": 924
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Brevo",
+      "normalized_title": "Brevo",
+      "key": "brevo",
+      "path": [
+        "Brevo"
+      ],
+      "content": "Brevo provides transactional email transport from the Worker.\n\nEmail sending is a backend responsibility for protected workflows.\n\nThe external provider is not itself owner-authored; the integration, templates, authorization, and recipient logic are application evidence.",
+      "source_line_start": 924,
+      "source_line_end": 932
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Cloudflare Public Abuse Controls",
+      "normalized_title": "Cloudflare Public Abuse Controls",
+      "key": "cloudflare_public_abuse_controls",
+      "path": [
+        "Cloudflare Public Abuse Controls"
+      ],
+      "content": "Public routes are deliberately exposed for use cases such as:\n\n- public booking;\n- support submission/tracking;\n- public AI booking chat.\n\nThe Worker applies abuse controls including:\n\n- Cloudflare rate-limit bindings;\n- a Durable Object `PublicAbuseGuard`;\n- enforcement mode configuration.",
+      "source_line_start": 932,
+      "source_line_end": 946
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Rate Limiting Is Not Authorization",
+      "normalized_title": "Rate Limiting Is Not Authorization",
+      "key": "rate_limiting_is_not_authorization",
+      "path": [
+        "Rate Limiting Is Not Authorization"
+      ],
+      "content": "The repository explicitly keeps abuse mitigation separate from business validation.\n\nRate limiting protects exposed endpoints from excessive use.\n\nIt does not decide whether a business operation is valid.",
+      "source_line_start": 946,
+      "source_line_end": 954
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "Durable Object Abuse Guard",
+      "normalized_title": "Durable Object Abuse Guard",
+      "key": "durable_object_abuse_guard",
+      "path": [
+        "Durable Object Abuse Guard"
+      ],
+      "content": "The Durable Object provides stateful abuse-control behavior for public surfaces.\n\nThis is distinct from Firebase domain data and distinct from application authorization.",
+      "source_line_start": 954,
+      "source_line_end": 960
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Scheduled Work",
+      "normalized_title": "Scheduled Work",
+      "key": "scheduled_work",
+      "path": [
+        "Scheduled Work"
+      ],
+      "content": "The Worker contains scheduled work via a Saturday cron trigger.\n\nThe scheduled service-reminder logic still applies its own domain/time-zone checks instead of assuming the raw cron execution timestamp is itself the ministry deadline.",
+      "source_line_start": 960,
+      "source_line_end": 966
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Website Settings",
+      "normalized_title": "Website Settings",
+      "key": "website_settings",
+      "path": [
+        "Website Settings"
+      ],
+      "content": "Global settings are persisted under `website/settings`.\n\nWebsite Settings authority controls mutation.\n\nCurrent dark-theme IDs include multiple configured theme variants rather than one hardcoded dark mode.",
+      "source_line_start": 966,
+      "source_line_end": 974
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Design System",
+      "normalized_title": "Design System",
+      "key": "design_system",
+      "path": [
+        "Design System"
+      ],
+      "content": "The frontend has a shared design-system layer.\n\nThe repository includes a design-system quality gate so new pages cannot freely diverge into independent styling systems without detection.",
+      "source_line_start": 974,
+      "source_line_end": 980
+    },
+    {
+      "id": "s073",
+      "level": 2,
+      "title": "Frontend Architecture Gate",
+      "normalized_title": "Frontend Architecture Gate",
+      "key": "frontend_architecture_gate",
+      "path": [
+        "Frontend Architecture Gate"
+      ],
+      "content": "`npm run check:architecture` validates architectural invariants such as the centralized session authority.\n\nThis converts architecture from documentation-only guidance into executable quality policy.",
+      "source_line_start": 980,
+      "source_line_end": 986
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "Design-System Gate",
+      "normalized_title": "Design-System Gate",
+      "key": "design_system_gate",
+      "path": [
+        "Design-System Gate"
+      ],
+      "content": "`npm run check:design-system` validates shared UI/design constraints.\n\nThis supports consistency across a large multi-domain frontend.",
+      "source_line_start": 986,
+      "source_line_end": 992
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Bundle Gate",
+      "normalized_title": "Bundle Gate",
+      "key": "bundle_gate",
+      "path": [
+        "Bundle Gate"
+      ],
+      "content": "`npm run check:bundle` validates the built bundle against repository-defined expectations/budgets.\n\nThis makes bundle behavior part of release quality.",
+      "source_line_start": 992,
+      "source_line_end": 998
+    },
+    {
+      "id": "s076",
+      "level": 2,
+      "title": "Frontend Quality Pipeline",
+      "normalized_title": "Frontend Quality Pipeline",
+      "key": "frontend_quality_pipeline",
+      "path": [
+        "Frontend Quality Pipeline"
+      ],
+      "content": "`npm run ci:quality` composes:\n\n- TypeScript type checking;\n- ESLint with zero warnings;\n- architecture checks;\n- design-system checks;\n- test coverage.",
+      "source_line_start": 998,
+      "source_line_end": 1008
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "Frontend Release Pipeline",
+      "normalized_title": "Frontend Release Pipeline",
+      "key": "frontend_release_pipeline",
+      "path": [
+        "Frontend Release Pipeline"
+      ],
+      "content": "`npm run ci:release` adds:\n\n- production dependency audit;\n- production bundle generation;\n- bundle checks;\n- built-distribution smoke testing.\n\nThis is a stronger release gate than a plain `vite build`.",
+      "source_line_start": 1008,
+      "source_line_end": 1019
+    },
+    {
+      "id": "s078",
+      "level": 2,
+      "title": "Unit and Integration Testing",
+      "normalized_title": "Unit and Integration Testing",
+      "key": "unit_and_integration_testing",
+      "path": [
+        "Unit and Integration Testing"
+      ],
+      "content": "The frontend uses:\n\n- Vitest;\n- Testing Library;\n- V8 coverage.\n\nThe backend also uses Vitest and Cloudflare's Worker testing pool.",
+      "source_line_start": 1019,
+      "source_line_end": 1029
+    },
+    {
+      "id": "s079",
+      "level": 2,
+      "title": "Backend Testing",
+      "normalized_title": "Backend Testing",
+      "key": "backend_testing",
+      "path": [
+        "Backend Testing"
+      ],
+      "content": "The root documentation identifies backend tests around:\n\n- authorization;\n- route contracts;\n- persistence;\n- provider adapters;\n- governance;\n- Ministry;\n- support;\n- Library;\n- security behavior.",
+      "source_line_start": 1029,
+      "source_line_end": 1043
+    },
+    {
+      "id": "s080",
+      "level": 2,
+      "title": "Playwright E2E",
+      "normalized_title": "Playwright E2E",
+      "key": "playwright_e2e",
+      "path": [
+        "Playwright E2E"
+      ],
+      "content": "The repository contains an isolated `e2e/` project using Playwright.\n\nThe CI E2E workflow:\n\n- installs locked dependencies;\n- installs Chromium and Linux dependencies;\n- runs public/anonymous scenarios;\n- retains reports;\n- retains failure artifacts.",
+      "source_line_start": 1043,
+      "source_line_end": 1055
+    },
+    {
+      "id": "s081",
+      "level": 2,
+      "title": "Protected-Route E2E",
+      "normalized_title": "Protected-Route E2E",
+      "key": "protected_route_e2e",
+      "path": [
+        "Protected-Route E2E"
+      ],
+      "content": "The anonymous protected-route suite checks that a visitor:\n\n- remains on the requested path;\n- sees the shared login gateway;\n- preserves the capability being requested.\n\nThat verifies product-level access UX rather than only component rendering.",
+      "source_line_start": 1055,
+      "source_line_end": 1065
+    },
+    {
+      "id": "s082",
+      "level": 2,
+      "title": "Test Environment Isolation",
+      "normalized_title": "Test Environment Isolation",
+      "key": "test_environment_isolation",
+      "path": [
+        "Test Environment Isolation"
+      ],
+      "content": "The documentation explicitly warns against using the production Firebase project as disposable E2E state.\n\nAnonymous Playwright tests use isolated frontend Firebase configuration so public rendering tests do not depend on production identity state.",
+      "source_line_start": 1065,
+      "source_line_end": 1071
+    },
+    {
+      "id": "s083",
+      "level": 2,
+      "title": "Production Smoke Testing",
+      "normalized_title": "Production Smoke Testing",
+      "key": "production_smoke_testing",
+      "path": [
+        "Production Smoke Testing"
+      ],
+      "content": "Frontend and backend each have dedicated production-smoke workflows.\n\nThis matches the two-surface deployment model.\n\nObserved workflow files include:\n\n```text\n.github/workflows/frontend-build.yml\n.github/workflows/frontend-e2e.yml\n.github/workflows/frontend-production-smoke.yml\n.github/workflows/backend-tests.yml\n.github/workflows/backend-production-smoke.yml\n.github/workflows/ai-context-sync.yml\n```",
+      "source_line_start": 1071,
+      "source_line_end": 1088
+    },
+    {
+      "id": "s084",
+      "level": 2,
+      "title": "CI/CD Separation",
+      "normalized_title": "CI/CD Separation",
+      "key": "ci_cd_separation",
+      "path": [
+        "CI/CD Separation"
+      ],
+      "content": "Netlify and Cloudflare are separate delivery systems.\n\nThe repository preserves this operational distinction in both documentation and workflow structure.",
+      "source_line_start": 1088,
+      "source_line_end": 1094
+    },
+    {
+      "id": "s085",
+      "level": 2,
+      "title": "Production Observability",
+      "normalized_title": "Production Observability",
+      "key": "production_observability",
+      "path": [
+        "Production Observability"
+      ],
+      "content": "Recent September 2026 commits add structured Worker request telemetry and export it to Better Stack.\n\nThe dependency documentation records an important decoupling decision:\n\n- telemetry uses OpenTelemetry/OTLP;\n- application code does not depend on a Better Stack SDK package;\n- changing OTLP backends does not require rewriting Hono routes.\n\nThis is evidence of provider-independent observability architecture.",
+      "source_line_start": 1094,
+      "source_line_end": 1106
+    },
+    {
+      "id": "s086",
+      "level": 2,
+      "title": "Structured Request Telemetry",
+      "normalized_title": "Structured Request Telemetry",
+      "key": "structured_request_telemetry",
+      "path": [
+        "Structured Request Telemetry"
+      ],
+      "content": "The observability feature records structured request-level information from the Worker rather than relying only on ad-hoc console text.\n\nThe export path is separated from individual business routes.",
+      "source_line_start": 1106,
+      "source_line_end": 1112
+    },
+    {
+      "id": "s087",
+      "level": 2,
+      "title": "OpenTelemetry Boundary",
+      "normalized_title": "OpenTelemetry Boundary",
+      "key": "opentelemetry_boundary",
+      "path": [
+        "OpenTelemetry Boundary"
+      ],
+      "content": "Using OTLP as the protocol makes Better Stack an observability destination rather than a deeply coupled application framework.\n\nThis improves exit/migration options.",
+      "source_line_start": 1112,
+      "source_line_end": 1118
+    },
+    {
+      "id": "s088",
+      "level": 2,
+      "title": "Dependency Modelling",
+      "normalized_title": "Dependency Modelling",
+      "key": "dependency_modelling",
+      "path": [
+        "Dependency Modelling"
+      ],
+      "content": "The repository contains a dedicated `docs/dependency-modelling/` body of work.\n\nIt records:\n\n- direct dependencies;\n- provider roles;\n- migration/exit paths;\n- coupling strength;\n- dependency evidence.\n\nThis is unusual for a hobby/project repository and is direct evidence of architecture-level dependency reasoning.",
+      "source_line_start": 1118,
+      "source_line_end": 1132
+    },
+    {
+      "id": "s089",
+      "level": 2,
+      "title": "Cost Analysis",
+      "normalized_title": "Cost Analysis",
+      "key": "cost_analysis",
+      "path": [
+        "Cost Analysis"
+      ],
+      "content": "`docs/cost-analysis/` models the active provider inventory and cost considerations.\n\nThe repository therefore treats cloud-service choice as an engineering constraint rather than an invisible deployment detail.",
+      "source_line_start": 1132,
+      "source_line_end": 1138
+    },
+    {
+      "id": "s090",
+      "level": 2,
+      "title": "Security Programme",
+      "normalized_title": "Security Programme",
+      "key": "security_programme",
+      "path": [
+        "Security Programme"
+      ],
+      "content": "`docs/security/` contains dedicated security/threat-modelling work.\n\nSecurity boundaries described in the root README include:\n\n- authentication vs authorization;\n- public endpoint validation;\n- confidential Pastor data;\n- bounded AI context;\n- provider credentials;\n- recipient privacy;\n- object-storage signing;\n- deletion/audit behavior.",
+      "source_line_start": 1138,
+      "source_line_end": 1153
+    },
+    {
+      "id": "s091",
+      "level": 2,
+      "title": "Privacy Boundaries",
+      "normalized_title": "Privacy Boundaries",
+      "key": "privacy_boundaries",
+      "path": [
+        "Privacy Boundaries"
+      ],
+      "content": "The product contains human/ministry information, so authorization is intentionally domain specific.\n\nExamples include:\n\n- People Notes restricted to Pastor authority;\n- administrator capability not implying universal pastoral access;\n- recipient-scoped service files;\n- location-scoped Discipleship authority;\n- public support projections separated from staff operations.",
+      "source_line_start": 1153,
+      "source_line_end": 1165
+    },
+    {
+      "id": "s092",
+      "level": 2,
+      "title": "Email Privacy",
+      "normalized_title": "Email Privacy",
+      "key": "email_privacy",
+      "path": [
+        "Email Privacy"
+      ],
+      "content": "The documentation differentiates group BCC-style messaging from individualized confidential delivery.\n\nIt also prefers server-generated templates over arbitrary browser-provided HTML.",
+      "source_line_start": 1165,
+      "source_line_end": 1171
+    },
+    {
+      "id": "s093",
+      "level": 2,
+      "title": "Object-Storage Security",
+      "normalized_title": "Object-Storage Security",
+      "key": "object_storage_security",
+      "path": [
+        "Object-Storage Security"
+      ],
+      "content": "B2 provider credentials stay on the Worker side.\n\nAuthorized clients receive signed operations instead of raw storage credentials.",
+      "source_line_start": 1171,
+      "source_line_end": 1177
+    },
+    {
+      "id": "s094",
+      "level": 2,
+      "title": "Legacy Direct Firebase Paths",
+      "normalized_title": "Legacy Direct Firebase Paths",
+      "key": "legacy_direct_firebase_paths",
+      "path": [
+        "Legacy Direct Firebase Paths"
+      ],
+      "content": "The repository explicitly records that selected direct Firebase data paths remain.\n\nThis transparency matters for RAG accuracy.\n\nThe project should not be retrieved as evidence of a completely Worker-mediated data architecture.\n\nHowever, Firebase **authentication state** is centralized even while some data subscriptions remain direct.",
+      "source_line_start": 1177,
+      "source_line_end": 1187
+    },
+    {
+      "id": "s095",
+      "level": 2,
+      "title": "Repository Documentation System",
+      "normalized_title": "Repository Documentation System",
+      "key": "repository_documentation_system",
+      "path": [
+        "Repository Documentation System"
+      ],
+      "content": "The repository contains extensive technical documentation beyond the root README.\n\nMajor areas include:\n\n- database ERDs;\n- finite-state machines;\n- design patterns;\n- security;\n- testing;\n- road-to-100 maturity work;\n- dependency modelling;\n- AI-context management;\n- engineering-evolution study;\n- cost analysis;\n- incidents;\n- Gantt history/roadmap.",
+      "source_line_start": 1187,
+      "source_line_end": 1206
+    },
+    {
+      "id": "s096",
+      "level": 2,
+      "title": "Text-Native Diagram Policy",
+      "normalized_title": "Text-Native Diagram Policy",
+      "key": "text_native_diagram_policy",
+      "path": [
+        "Text-Native Diagram Policy"
+      ],
+      "content": "The project prefers maintainable text-native diagrams.\n\nSupported editing surfaces include:\n\n- Mermaid in Markdown;\n- `.mmd` Mermaid source;\n- YAML-to-Mermaid generation;\n- LaTeX/TikZ.\n\nGenerated screenshots are not treated as the primary editable diagram source.",
+      "source_line_start": 1206,
+      "source_line_end": 1219
+    },
+    {
+      "id": "s097",
+      "level": 2,
+      "title": "Gantt Source of Truth",
+      "normalized_title": "Gantt Source of Truth",
+      "key": "gantt_source_of_truth",
+      "path": [
+        "Gantt Source of Truth"
+      ],
+      "content": "The Gantt workflow uses a YAML source and generator:\n\n```text\ndocs/gantt/source/churchone-gantt.yaml\n          |\n          v\ndocs/gantt/generate-gantt.py\n       /          \\\n      v            v\nMermaid        LaTeX/TikZ\n```\n\nThis is evidence of documentation-as-code.",
+      "source_line_start": 1219,
+      "source_line_end": 1235
+    },
+    {
+      "id": "s098",
+      "level": 2,
+      "title": "Change Manifests",
+      "normalized_title": "Change Manifests",
+      "key": "change_manifests",
+      "path": [
+        "Change Manifests"
+      ],
+      "content": "The repository contains feature/change manifests for significant updates.\n\nObserved root-level examples include work around:\n\n- Mission Trips;\n- People Development PDFs;\n- phased architecture changes;\n- Spiritual Program overhaul.\n\nThese provide explicit delivery evidence and affected-surface records.",
+      "source_line_start": 1235,
+      "source_line_end": 1248
+    },
+    {
+      "id": "s099",
+      "level": 2,
+      "title": "AGENTS Contract",
+      "normalized_title": "AGENTS Contract",
+      "key": "agents_contract",
+      "path": [
+        "AGENTS Contract"
+      ],
+      "content": "`AGENTS.md` contains repository-specific engineering instructions for coding agents.\n\nThis is separate from the user-facing README.\n\nIt participates in the project's broader attempt to make AI-assisted engineering reproducible and bounded.",
+      "source_line_start": 1248,
+      "source_line_end": 1256
+    },
+    {
+      "id": "s100",
+      "level": 2,
+      "title": "AI Context System",
+      "normalized_title": "AI Context System",
+      "key": "ai_context_system",
+      "path": [
+        "AI Context System"
+      ],
+      "content": "`ai-context/` is a distinct engineering/research subsystem inside the repository.\n\nIt generates cumulative metadata-only branches describing the exact accepted `main` source revision.\n\nThe branches are:\n\n```text\nai-context-v1\nai-context-v2\nai-context-v3\nai-context-v4\nai-context     # compatibility alias of V1\n```",
+      "source_line_start": 1256,
+      "source_line_end": 1272
+    },
+    {
+      "id": "s101",
+      "level": 2,
+      "title": "AI Context Core Invariant",
+      "normalized_title": "AI Context Core Invariant",
+      "key": "ai_context_core_invariant",
+      "path": [
+        "AI Context Core Invariant"
+      ],
+      "content": "The treatments are cumulative:\n\n```text\nV1 ⊂ V2 ⊂ V3 ⊂ V4\n```\n\nFor one successful synchronization, every generated version refers to the same source commit.\n\nGenerated branches contain repository metadata, not a second copy of application implementation.",
+      "source_line_start": 1272,
+      "source_line_end": 1284
+    },
+    {
+      "id": "s102",
+      "level": 2,
+      "title": "Exact-Commit Context",
+      "normalized_title": "Exact-Commit Context",
+      "key": "exact_commit_context",
+      "path": [
+        "Exact-Commit Context"
+      ],
+      "content": "The context system writes `SOURCE-COMMIT` metadata and materializes actual source from the matching `main` revision.\n\nThe consumer refuses source/projection commit mismatch by default.\n\nThis directly addresses stale AI context.",
+      "source_line_start": 1284,
+      "source_line_end": 1292
+    },
+    {
+      "id": "s103",
+      "level": 2,
+      "title": "V1 — Repository Intelligence",
+      "normalized_title": "V1 — Repository Intelligence",
+      "key": "v1_repository_intelligence",
+      "path": [
+        "V1 — Repository Intelligence"
+      ],
+      "content": "V1 includes conservative repository intelligence such as:\n\n- Git-tracked file inventory;\n- file classes;\n- source-cost estimates;\n- feature/domain inference;\n- local import edges;\n- Hono route composition;\n- frontend-to-backend API mapping;\n- verification relationships;\n- authorization relationships;\n- database-expression hints;\n- canonical/generated provenance;\n- architecture-drift reporting;\n- sparse manifests;\n- basic heuristic task-aware selection.",
+      "source_line_start": 1292,
+      "source_line_end": 1311
+    },
+    {
+      "id": "s104",
+      "level": 2,
+      "title": "Protective Relationships",
+      "normalized_title": "Protective Relationships",
+      "key": "protective_relationships",
+      "path": [
+        "Protective Relationships"
+      ],
+      "content": "The context graph recognizes relationships such as:\n\n```text\nAUTHORIZED_BY\nTESTED_BY\n```\n\nThese are treated as protective context relationships rather than optional ranking decoration.",
+      "source_line_start": 1311,
+      "source_line_end": 1322
+    },
+    {
+      "id": "s105",
+      "level": 2,
+      "title": "V2 — Ranked Task Projection",
+      "normalized_title": "V2 — Ranked Task Projection",
+      "key": "v2_ranked_task_projection",
+      "path": [
+        "V2 — Ranked Task Projection"
+      ],
+      "content": "V2 extends V1 with explicit task-routing metadata.\n\nThe flow is roughly:\n\n```text\ntask text\n  |\n  v\ncandidate domains\n  |\n  v\nlexical / metadata relevance\n  |\n  v\nranked seeds\n  |\n  v\nbounded graph expansion\n  |\n  v\nauth/test protective floor\n  |\n  v\nmust-read / likely / fallback tiers\n  |\n  v\noptional context budget\n```\n\nThe repository is careful not to mislabel this deterministic lexical/metadata ranking as embedding-based semantic retrieval.",
+      "source_line_start": 1322,
+      "source_line_end": 1355
+    },
+    {
+      "id": "s106",
+      "level": 2,
+      "title": "V2 Budget Semantics",
+      "normalized_title": "V2 Budget Semantics",
+      "key": "v2_budget_semantics",
+      "path": [
+        "V2 Budget Semantics"
+      ],
+      "content": "A T4/context budget can constrain ordinary candidate selection.\n\nProtective/core context is allowed to exceed the requested budget when required.\n\nThe system does not drop authorization/test evidence merely to satisfy a smaller numeric token target.",
+      "source_line_start": 1355,
+      "source_line_end": 1363
+    },
+    {
+      "id": "s107",
+      "level": 2,
+      "title": "V3 — AST-Backed Symbol Projection",
+      "normalized_title": "V3 — AST-Backed Symbol Projection",
+      "key": "v3_ast_backed_symbol_projection",
+      "path": [
+        "V3 — AST-Backed Symbol Projection"
+      ],
+      "content": "V3 introduces fine-grained symbol/range projection for large files.\n\nParser policy includes:\n\n- Python standard-library AST;\n- TypeScript compiler API for JS/TS/JSX/TSX.\n\nA heuristic parser exists only as an operational fallback and is not accepted as publication-grade JS/TS analysis.",
+      "source_line_start": 1363,
+      "source_line_end": 1374
+    },
+    {
+      "id": "s108",
+      "level": 2,
+      "title": "V3 Symbol Types",
+      "normalized_title": "V3 Symbol Types",
+      "key": "v3_symbol_types",
+      "path": [
+        "V3 Symbol Types"
+      ],
+      "content": "The symbol extractor can identify constructs such as:\n\n- functions;\n- arrow/function-expression declarations;\n- React-style components;\n- classes;\n- class methods/accessors;\n- interfaces;\n- type aliases;\n- enums;\n- Hono route calls;\n- Vitest/Jest-style test calls;\n- Playwright `test.describe` structures.",
+      "source_line_start": 1374,
+      "source_line_end": 1390
+    },
+    {
+      "id": "s109",
+      "level": 2,
+      "title": "Bounded Range Materialization",
+      "normalized_title": "Bounded Range Materialization",
+      "key": "bounded_range_materialization",
+      "path": [
+        "Bounded Range Materialization"
+      ],
+      "content": "For large selected files, V3 can score symbols and merge selected source ranges.\n\nSmall files, protective files, parser uncertainty, and unsafe cases fall back to whole-file inclusion.\n\nThis balances context reduction against reliability.",
+      "source_line_start": 1390,
+      "source_line_end": 1398
+    },
+    {
+      "id": "s110",
+      "level": 2,
+      "title": "V3 Information Barrier",
+      "normalized_title": "V3 Information Barrier",
+      "key": "v3_information_barrier",
+      "path": [
+        "V3 Information Barrier"
+      ],
+      "content": "V1/V2 publications intentionally strip symbol and symbol-parser metadata.\n\nThis prevents experimental treatments from accidentally receiving later-version information.",
+      "source_line_start": 1398,
+      "source_line_end": 1404
+    },
+    {
+      "id": "s111",
+      "level": 2,
+      "title": "V4 — Evolution and Research Intelligence",
+      "normalized_title": "V4 — Evolution and Research Intelligence",
+      "key": "v4_evolution_and_research_intelligence",
+      "path": [
+        "V4 — Evolution and Research Intelligence"
+      ],
+      "content": "V4 adds repository-evolution and controlled research features.\n\nIt does **not** take credit for V1 capabilities such as architecture drift or basic freshness.",
+      "source_line_start": 1404,
+      "source_line_end": 1410
+    },
+    {
+      "id": "s112",
+      "level": 2,
+      "title": "Repository Evolution Metadata",
+      "normalized_title": "Repository Evolution Metadata",
+      "key": "repository_evolution_metadata",
+      "path": [
+        "Repository Evolution Metadata"
+      ],
+      "content": "V4 can record changes between repository states such as:\n\n- added files;\n- removed files;\n- modified files;\n- domain changes;\n- symbol-count changes;\n- repository change ratio;\n- trust/drift state.",
+      "source_line_start": 1410,
+      "source_line_end": 1422
+    },
+    {
+      "id": "s113",
+      "level": 2,
+      "title": "Rename-Aware Co-Change",
+      "normalized_title": "Rename-Aware Co-Change",
+      "key": "rename_aware_co_change",
+      "path": [
+        "Rename-Aware Co-Change"
+      ],
+      "content": "The research subsystem derives co-change evidence from Git history using rename detection.\n\nHistorical paths are normalized toward current renamed paths before pair counts are used.\n\nThe repository explicitly treats co-change as a ranking hint, not architectural truth.",
+      "source_line_start": 1422,
+      "source_line_end": 1430
+    },
+    {
+      "id": "s114",
+      "level": 2,
+      "title": "Controlled Ablations",
+      "normalized_title": "Controlled Ablations",
+      "key": "controlled_ablations",
+      "path": [
+        "Controlled Ablations"
+      ],
+      "content": "V4 exposes reproducible ablation switches including:\n\n```text\nno-auth-floor\nno-test-floor\nno-provenance-rewrite\nno-graph-expansion\nno-task-ranking\nno-symbol-slicing\nno-cochange\nno-feedback\n```\n\nThis turns architectural retrieval choices into measurable experimental factors.",
+      "source_line_start": 1430,
+      "source_line_end": 1447
+    },
+    {
+      "id": "s115",
+      "level": 2,
+      "title": "Feedback Partitioning",
+      "normalized_title": "Feedback Partitioning",
+      "key": "feedback_partitioning",
+      "path": [
+        "Feedback Partitioning"
+      ],
+      "content": "Projection misses can be recorded with dataset partition metadata.\n\nOnly retrieval-eligible training data can influence future ranking.\n\nDevelopment/evaluation records may be stored for analysis but are not fed back into retrieval.\n\nThe current task ID can also be excluded from feedback loading.\n\nThis is explicit benchmark-leakage control.",
+      "source_line_start": 1447,
+      "source_line_end": 1459
+    },
+    {
+      "id": "s116",
+      "level": 2,
+      "title": "Static-History Factorial Treatments",
+      "normalized_title": "Static-History Factorial Treatments",
+      "key": "static_history_factorial_treatments",
+      "path": [
+        "Static-History Factorial Treatments"
+      ],
+      "content": "Recent commits add static-history factorial treatments and associated research documentation.\n\nThe latest commit sequence includes:\n\n- static-history factorial treatment implementation;\n- static-history research protocol;\n- static-history research model;\n- factorial branch/publication documentation;\n- script contracts;\n- benchmark test plan;\n- metrics and validity plan;\n- experiment runbook;\n- root/context linkage.\n\nThis shows the context system is being treated as an experimental research object rather than only a developer convenience.",
+      "source_line_start": 1459,
+      "source_line_end": 1477
+    },
+    {
+      "id": "s117",
+      "level": 2,
+      "title": "AI Context Publication Pipeline",
+      "normalized_title": "AI Context Publication Pipeline",
+      "key": "ai_context_publication_pipeline",
+      "path": [
+        "AI Context Publication Pipeline"
+      ],
+      "content": "The synchronization workflow performs a multi-stage publication process.\n\nDocumented steps include:\n\n1. checkout exact source commit with full history;\n2. install Python/Node dependencies;\n3. install TypeScript dependencies for parser-grade AST extraction;\n4. run context regression tests;\n5. record source commit;\n6. load prior baselines where available;\n7. analyze the repository once;\n8. compute drift/evolution metadata;\n9. generate cumulative publications;\n10. validate profiles and information barriers;\n11. transfer the publication matrix as a workflow artifact;\n12. recheck remote `main` immediately before publication;\n13. create metadata-only commits;\n14. atomically update V1–V4 plus compatibility branch.",
+      "source_line_start": 1477,
+      "source_line_end": 1498
+    },
+    {
+      "id": "s118",
+      "level": 2,
+      "title": "Atomic Multi-Ref Publication",
+      "normalized_title": "Atomic Multi-Ref Publication",
+      "key": "atomic_multi_ref_publication",
+      "path": [
+        "Atomic Multi-Ref Publication"
+      ],
+      "content": "Publication uses an atomic Git push across the generated branches.\n\nIf `main` advanced, the stale run updates no generated branch.\n\nIf atomic publication fails, the experimental versions cannot partially advance.\n\nThis is strong evidence of consistency-oriented CI design.",
+      "source_line_start": 1498,
+      "source_line_end": 1508
+    },
+    {
+      "id": "s119",
+      "level": 2,
+      "title": "Latest AI Context Workflow Evidence",
+      "normalized_title": "Latest AI Context Workflow Evidence",
+      "key": "latest_ai_context_workflow_evidence",
+      "path": [
+        "Latest AI Context Workflow Evidence"
+      ],
+      "content": "At the latest repository head, GitHub Actions run 128 of **AI Context Sync** completed successfully.\n\nThe successful run used head SHA:\n\n`e06ed291d6e01db89cdbac61c22afbd43f06e16c`\n\nThat is the same latest meaningful commit recorded for this corpus analysis.\n\nTherefore the context-publication mechanism is not only documented; a successful workflow run exists at the analyzed head.",
+      "source_line_start": 1508,
+      "source_line_end": 1520
+    },
+    {
+      "id": "s120",
+      "level": 2,
+      "title": "Publication Validation",
+      "normalized_title": "Publication Validation",
+      "key": "publication_validation",
+      "path": [
+        "Publication Validation"
+      ],
+      "content": "Validation checks include invariants such as:\n\n- common source commit across generated profiles;\n- information separation between V1/V2 and symbol-aware versions;\n- V2 routing artifacts;\n- V3/V4 symbol metadata;\n- publication-grade TypeScript compiler coverage for JS/TS text files;\n- V4 evolution/research artifacts;\n- cumulative version prefixes;\n- unsupported verification/architecture mechanisms remaining visible as drift rather than disappearing silently.",
+      "source_line_start": 1520,
+      "source_line_end": 1533
+    },
+    {
+      "id": "s121",
+      "level": 2,
+      "title": "Context Materialization",
+      "normalized_title": "Context Materialization",
+      "key": "context_materialization",
+      "path": [
+        "Context Materialization"
+      ],
+      "content": "A materializer consumes projection metadata and reads actual source from the exact recorded commit.\n\nThis separates:\n\n- metadata publication;\n- future task arrival;\n- task-specific projection;\n- exact-source materialization.\n\nThe generated context branches are not claimed to predict unknown future engineering tasks.",
+      "source_line_start": 1533,
+      "source_line_end": 1546
+    },
+    {
+      "id": "s122",
+      "level": 2,
+      "title": "Context Safety Philosophy",
+      "normalized_title": "Context Safety Philosophy",
+      "key": "context_safety_philosophy",
+      "path": [
+        "Context Safety Philosophy"
+      ],
+      "content": "The documented optimization target is:\n\n> the smallest sufficient trustworthy context\n\nrather than the smallest context at any cost.\n\nAuthorization, verification, provenance, and contradictory runtime evidence outrank a numeric context budget.",
+      "source_line_start": 1546,
+      "source_line_end": 1556
+    },
+    {
+      "id": "s123",
+      "level": 2,
+      "title": "Engineering-Evolution Study",
+      "normalized_title": "Engineering-Evolution Study",
+      "key": "engineering_evolution_study",
+      "path": [
+        "Engineering-Evolution Study"
+      ],
+      "content": "The repository also contains a dedicated mathematical/software-evolution study under documentation.\n\nThat sits alongside the AI-context research but is conceptually distinct: it studies how the software changes, while the context system tries to project sufficient repository knowledge for future engineering tasks.",
+      "source_line_start": 1556,
+      "source_line_end": 1562
+    },
+    {
+      "id": "s124",
+      "level": 2,
+      "title": "Better Stack / OTLP Observability and AI Context Together",
+      "normalized_title": "Better Stack / OTLP Observability and AI Context Together",
+      "key": "better_stack_otlp_observability_and_ai_context_together",
+      "path": [
+        "Better Stack / OTLP Observability and AI Context Together"
+      ],
+      "content": "The coexistence of structured production telemetry and repository-context research shows two different observability layers:\n\n- runtime observability of the deployed Worker;\n- repository-state observability for AI-assisted engineering.\n\nThe corpus keeps those concepts separate.",
+      "source_line_start": 1562,
+      "source_line_end": 1571
+    },
+    {
+      "id": "s125",
+      "level": 2,
+      "title": "Product Maturity Evidence",
+      "normalized_title": "Product Maturity Evidence",
+      "key": "product_maturity_evidence",
+      "path": [
+        "Product Maturity Evidence"
+      ],
+      "content": "LInC One has evidence across several maturity dimensions:\n\n- multiple production deployment surfaces;\n- a broad multi-role domain model;\n- backend authorization;\n- canonical identity;\n- capability-based administration;\n- governance/audit state;\n- consent-based membership;\n- object-storage separation;\n- public abuse controls;\n- unit/integration testing;\n- Playwright E2E;\n- production smoke tests;\n- release-quality scripts;\n- observability;\n- documentation-as-code;\n- dependency/cost/security modelling;\n- context-synchronization CI.\n\nThis is much stronger evidence than a UI prototype or CRUD-only application.",
+      "source_line_start": 1571,
+      "source_line_end": 1595
+    },
+    {
+      "id": "s126",
+      "level": 2,
+      "title": "Architectural Strengths",
+      "normalized_title": "Architectural Strengths",
+      "key": "architectural_strengths",
+      "path": [
+        "Architectural Strengths"
+      ],
+      "content": "Strong architecture evidence includes:\n\n- single frontend session authority;\n- canonical identity distinct from Firebase auth;\n- fine-grained admin capabilities;\n- domain-scoped authority;\n- consent-aware servant membership;\n- backend revalidation for booking races;\n- bounded AI authority;\n- governed destructive actions;\n- provider credential isolation;\n- B2 signed storage operations;\n- separate production surfaces;\n- executable architecture/design-system gates;\n- exact-commit AI context.",
+      "source_line_start": 1595,
+      "source_line_end": 1613
+    },
+    {
+      "id": "s127",
+      "level": 2,
+      "title": "Product-Engineering Strengths",
+      "normalized_title": "Product-Engineering Strengths",
+      "key": "product_engineering_strengths",
+      "path": [
+        "Product-Engineering Strengths"
+      ],
+      "content": "Strong product evidence includes:\n\n- differentiated user roles;\n- public and authenticated journeys;\n- bilingual/RTL behavior;\n- scheduling and availability;\n- support workflows;\n- resource publication;\n- role-specific content distribution;\n- ministry-instance modelling;\n- human-consent workflows;\n- access-request UX;\n- operational administration.",
+      "source_line_start": 1613,
+      "source_line_end": 1629
+    },
+    {
+      "id": "s128",
+      "level": 2,
+      "title": "Backend Engineering Skills",
+      "normalized_title": "Backend Engineering Skills",
+      "key": "backend_engineering_skills",
+      "path": [
+        "Backend Engineering Skills"
+      ],
+      "content": "The repository provides evidence of:\n\n- Hono route architecture;\n- Cloudflare Worker deployment;\n- Zod validation;\n- Firebase Admin/service integration;\n- authorization middleware/policy;\n- server-side provider adapters;\n- scheduled work;\n- audit/governance workflows;\n- signed object operations;\n- transactional email;\n- AI-provider integration;\n- rate limiting;\n- Durable Objects.",
+      "source_line_start": 1629,
+      "source_line_end": 1647
+    },
+    {
+      "id": "s129",
+      "level": 2,
+      "title": "Frontend Engineering Skills",
+      "normalized_title": "Frontend Engineering Skills",
+      "key": "frontend_engineering_skills",
+      "path": [
+        "Frontend Engineering Skills"
+      ],
+      "content": "The repository provides evidence of:\n\n- React 19;\n- TypeScript;\n- Vite;\n- centralized session/context architecture;\n- React Router;\n- protected-route composition;\n- bilingual/RTL UI;\n- design-system enforcement;\n- complex form/workflow UI;\n- map integrations;\n- calendar/scheduling interaction;\n- typed frontend service boundaries;\n- unit/integration testing;\n- Playwright E2E.",
+      "source_line_start": 1647,
+      "source_line_end": 1666
+    },
+    {
+      "id": "s130",
+      "level": 2,
+      "title": "Cloud Engineering Skills",
+      "normalized_title": "Cloud Engineering Skills",
+      "key": "cloud_engineering_skills",
+      "path": [
+        "Cloud Engineering Skills"
+      ],
+      "content": "The deployed system integrates:\n\n- Netlify;\n- Cloudflare Workers;\n- Cloudflare rate limiting;\n- Cloudflare Durable Objects;\n- Firebase Auth;\n- Firebase RTDB;\n- Backblaze B2;\n- Brevo;\n- Gemini;\n- Better Stack through OTLP;\n- GitHub Actions.",
+      "source_line_start": 1666,
+      "source_line_end": 1682
+    },
+    {
+      "id": "s131",
+      "level": 2,
+      "title": "Security Engineering Skills",
+      "normalized_title": "Security Engineering Skills",
+      "key": "security_engineering_skills",
+      "path": [
+        "Security Engineering Skills"
+      ],
+      "content": "Evidence includes:\n\n- authentication/authorization separation;\n- canonical identity resolution;\n- domain-specific authorization;\n- backend validation;\n- provider secret isolation;\n- signed object access;\n- abuse mitigation;\n- sensitive-domain access boundaries;\n- governance/audit trails;\n- approval lifecycle;\n- controlled deletion/recovery;\n- AI authority boundaries.",
+      "source_line_start": 1682,
+      "source_line_end": 1699
+    },
+    {
+      "id": "s132",
+      "level": 2,
+      "title": "Testing and Quality Skills",
+      "normalized_title": "Testing and Quality Skills",
+      "key": "testing_and_quality_skills",
+      "path": [
+        "Testing and Quality Skills"
+      ],
+      "content": "Evidence includes:\n\n- TypeScript type checking;\n- ESLint zero-warning policy;\n- Vitest;\n- Testing Library;\n- coverage;\n- architecture checks;\n- design-system checks;\n- bundle checks;\n- built-dist smoke testing;\n- production smoke testing;\n- Playwright;\n- Worker tests;\n- AI-context regression tests;\n- CI artifact retention.",
+      "source_line_start": 1699,
+      "source_line_end": 1718
+    },
+    {
+      "id": "s133",
+      "level": 2,
+      "title": "Research Engineering Skills",
+      "normalized_title": "Research Engineering Skills",
+      "key": "research_engineering_skills",
+      "path": [
+        "Research Engineering Skills"
+      ],
+      "content": "The AI-context subsystem adds evidence of:\n\n- experimental treatment design;\n- cumulative treatment invariants;\n- information barriers;\n- deterministic task ranking;\n- token/context budgeting;\n- AST extraction;\n- symbol-range projection;\n- Git-history co-change analysis;\n- rename normalization;\n- controlled ablation;\n- train/dev/eval partition discipline;\n- benchmark leakage prevention;\n- exact-commit reproducibility;\n- atomic publication.",
+      "source_line_start": 1718,
+      "source_line_end": 1737
+    },
+    {
+      "id": "s134",
+      "level": 2,
+      "title": "Documentation Engineering Skills",
+      "normalized_title": "Documentation Engineering Skills",
+      "key": "documentation_engineering_skills",
+      "path": [
+        "Documentation Engineering Skills"
+      ],
+      "content": "Evidence includes:\n\n- text-native architecture diagrams;\n- ERDs;\n- FSMs;\n- generated Gantts;\n- feature change manifests;\n- security documentation;\n- testing documentation;\n- dependency modelling;\n- cost modelling;\n- incident records;\n- AI-agent contracts;\n- README/documentation changelogs.",
+      "source_line_start": 1737,
+      "source_line_end": 1754
+    },
+    {
+      "id": "s135",
+      "level": 2,
+      "title": "Business / Domain Modelling Skills",
+      "normalized_title": "Business / Domain Modelling Skills",
+      "key": "business_domain_modelling_skills",
+      "path": [
+        "Business / Domain Modelling Skills"
+      ],
+      "content": "The project demonstrates modelling beyond simple tables:\n\n- role/capability separation;\n- canonical identity;\n- consent-based invitation state;\n- date-specific availability;\n- trip definition vs trip instance;\n- enrollment vs access;\n- location-scoped teaching authority;\n- support ticket lifecycle;\n- governance approval lifecycle;\n- meeting availability/reservation conflict;\n- recipient-specific files.",
+      "source_line_start": 1754,
+      "source_line_end": 1770
+    },
+    {
+      "id": "s136",
+      "level": 2,
+      "title": "Scale and Complexity Character",
+      "normalized_title": "Scale and Complexity Character",
+      "key": "scale_and_complexity_character",
+      "path": [
+        "Scale and Complexity Character"
+      ],
+      "content": "The repository contains many interacting domains but intentionally uses a modular-monolith/serverless architecture rather than claiming microservices.\n\nThe main deployment surfaces are:\n\n- one React frontend;\n- one Hono Worker backend;\n- external managed providers.\n\nThe complexity comes from product/domain breadth, authorization, integrations, and operational governance rather than from a large number of independently deployed services.",
+      "source_line_start": 1770,
+      "source_line_end": 1782
+    },
+    {
+      "id": "s137",
+      "level": 2,
+      "title": "Maturity Assessment",
+      "normalized_title": "Maturity Assessment",
+      "key": "maturity_assessment",
+      "path": [
+        "Maturity Assessment"
+      ],
+      "content": "LInC One is a **production-deployed, multi-domain full-stack application with explicit authorization/governance architecture, substantial automated verification, operational observability, and a separate research-grade AI-context subsystem**.\n\nThe repository still documents migration boundaries and retained direct Firebase paths, which is a strength for corpus accuracy: maturity does not require pretending every historical architectural decision has already been eliminated.\n\nThe current implementation should be retrieved as evidence of sustained product evolution and architecture hardening, not merely feature accumulation.",
+      "source_line_start": 1782,
+      "source_line_end": 1790
+    },
+    {
+      "id": "s138",
+      "level": 2,
+      "title": "RAG Retrieval Guidance",
+      "normalized_title": "RAG Retrieval Guidance",
+      "key": "rag_retrieval_guidance",
+      "path": [
+        "RAG Retrieval Guidance"
+      ],
+      "content": "This repository is a particularly strong match for queries involving:\n\n- React/TypeScript product architecture;\n- Hono on Cloudflare Workers;\n- Firebase Authentication;\n- Firebase Realtime Database;\n- canonical identity systems;\n- authentication vs authorization;\n- capability-based administration;\n- role-based/domain-scoped authorization;\n- public booking;\n- calendar scheduling;\n- consent-based membership;\n- workflow state machines;\n- Backblaze B2 signed uploads;\n- transactional email;\n- Gemini/LLM integration with human authority boundaries;\n- public rate limiting;\n- Durable Objects;\n- production observability;\n- Better Stack / OTLP;\n- Vitest/Playwright;\n- production smoke testing;\n- documentation-as-code;\n- dependency modelling;\n- AI context engineering;\n- AST-based context slicing;\n- Git co-change retrieval;\n- controlled retrieval ablations;\n- exact-commit context synchronization.\n\nIt is also a strong source for questions about moving from a feature-rich hobby application toward explicit operational/product engineering discipline.\n\n# Project Tags\n\n- `linc-one`\n- `church-management-platform`\n- `ministry-management`\n- `full-stack-application`\n- `production-deployed`\n- `react-19`\n- `typescript`\n- `vite`\n- `react-router`\n- `hono`\n- `cloudflare-workers`\n- `firebase-authentication`\n- `firebase-realtime-database`\n- `backblaze-b2`\n- `brevo`\n- `google-gemini`\n- `netlify`\n- `cloudflare-rate-limiting`\n- `cloudflare-durable-objects`\n- `canonical-identity`\n- `identity-linking`\n- `authentication-authorization-separation`\n- `capability-based-authorization`\n- `domain-scoped-authorization`\n- `administrator-hierarchy`\n- `access-request-workflow`\n- `pastor-workspace`\n- `pastoral-booking`\n- `conflict-safe-booking`\n- `calendar-scheduling`\n- `availability-management`\n- `ics-export`\n- `people-notes`\n- `people-development`\n- `group-notes`\n- `recurring-schedules`\n- `assessment-forms`\n- `yaml-defined-forms`\n- `ministry-domain`\n- `mission-trip-management`\n- `servant-management`\n- `consent-based-membership`\n- `service-invitations`\n- `weekly-availability`\n- `recipient-scoped-files`\n- `discipleship`\n- `location-scoped-authority`\n- `attendance-management`\n- `attendance-analytics`\n- `public-library`\n- `signed-object-storage`\n- `blog-publishing`\n- `pastor-blog-management`\n- `support-ticketing`\n- `voice-support-messages`\n- `governance-workflows`\n- `audit-logging`\n- `human-approval-workflow`\n- `deletion-recovery`\n- `constrained-ai-actions`\n- `human-in-the-loop-ai`\n- `bounded-ai-context`\n- `public-abuse-protection`\n- `zod-validation`\n- `server-side-secrets`\n- `scheduled-worker-cron`\n- `bilingual-ui`\n- `arabic-rtl`\n- `design-system`\n- `architecture-gates`\n- `bundle-gates`\n- `vitest`\n- `testing-library`\n- `playwright`\n- `e2e-testing`\n- `production-smoke-tests`\n- `github-actions`\n- `structured-telemetry`\n- `opentelemetry`\n- `otlp`\n- `better-stack`\n- `dependency-modelling`\n- `cost-modelling`\n- `security-modelling`\n- `documentation-as-code`\n- `mermaid`\n- `finite-state-machines`\n- `entity-relationship-diagrams`\n- `change-manifests`\n- `ai-context-system`\n- `commit-synchronized-context`\n- `exact-commit-materialization`\n- `task-aware-context-selection`\n- `context-budgeting`\n- `ast-symbol-indexing`\n- `typescript-compiler-api`\n- `python-ast`\n- `symbol-range-projection`\n- `rename-aware-cochange`\n- `git-history-analysis`\n- `controlled-ablations`\n- `feedback-partitioning`\n- `benchmark-leakage-prevention`\n- `atomic-git-publication`\n- `static-history-factorial-experiment`\n- `software-evolution-research`",
+      "source_line_start": 1790,
+      "source_line_end": 1933
+    }
+  ],
+  "raw_analysis": "# Repository 132 — LInC-Church-Management\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/LInC-Church-Management`\n- **Product name:** LInC One\n- **Repository index:** 132\n- **Start date:** 2026-04-29\n- **Latest meaningful update:** 2026-09-08\n- **Latest meaningful commit:** `e06ed291d6e01db89cdbac61c22afbd43f06e16c` — `docs(ai-context): link factorial experiment runbook`\n- **Primary stack:** React 19, TypeScript, Vite, Hono, Cloudflare Workers, Firebase Authentication, Firebase Realtime Database\n- **Collaboration classification:** `individual-project`\n- **Deployment state:** documented production frontend and backend surfaces with dedicated production-smoke workflows\n- **Primary domain:** bilingual church/ministry operations, pastoral workflows, spiritual-development administration, people/service coordination, governance, resources, support, and AI-assisted operations\n\n## What This Repository Is\n\n`LInC-Church-Management` is the source repository for **LInC One**, a large bilingual ministry-management platform.\n\nIt is not a single-purpose church calendar or form application.\n\nThe current codebase spans:\n\n- public ministry-facing pages;\n- authentication and canonical identity;\n- protected capability routing;\n- Pastor scheduling and booking;\n- People Notes;\n- People Development;\n- assessment forms;\n- Ministry operations;\n- Mission Trips;\n- Servant Management;\n- Discipleship;\n- attendance;\n- public Library resources;\n- support ticketing;\n- administrator governance;\n- server-side AI assistants;\n- transactional email;\n- object storage;\n- abuse controls;\n- production observability;\n- CI/CD and E2E verification;\n- a separate commit-synchronized AI-context research system.\n\nThis is one of the broadest product-engineering repositories in the portfolio corpus.\n\n## Product Purpose\n\nLInC One acts as a shared digital operating surface for a ministry rather than a collection of disconnected admin tools.\n\nThe implementation attempts to preserve one canonical person/account identity while projecting different capabilities to different domains.\n\nThat design is visible in the separation between:\n\n```text\nFirebase identity\n        |\n        v\ncanonical application account\n        |\n        +--> ordinary participant capabilities\n        +--> Pastor capability\n        +--> servant/service capabilities\n        +--> Ministry capabilities\n        +--> administrator authority\n        +--> support authority\n```\n\nThe repository repeatedly treats authentication, identity, membership, consent, and authorization as distinct concepts.\n\n## Current Production Surfaces\n\nThe root README documents two independent production surfaces:\n\n- **Frontend:** `lincministry.com`, hosted on Netlify.\n- **Backend:** Cloudflare Worker at the LInC backend workers.dev endpoint.\n\nThe repository explicitly treats frontend and backend deployment as separate systems.\n\nA successful frontend deployment is not assumed to mean the Worker was deployed, and vice versa.\n\nThis distinction is reinforced by separate production-smoke workflows.\n\n## High-Level Architecture\n\nThe current architecture is hybrid:\n\n```text\nBrowser\n  |\n  v\nReact + TypeScript + Vite\n  |\n  +--> Firebase Authentication\n  |\n  +--> selected established Firebase data subscriptions\n  |\n  v\nHono API on Cloudflare Workers\n  |\n  +--> canonical identity / authorization\n  +--> Firebase Realtime Database\n  +--> Backblaze B2\n  +--> Brevo\n  +--> Google Gemini\n  +--> Cloudflare rate limiting\n  +--> Durable Object abuse guard\n```\n\nThe source does not falsely claim that every browser data path has already been migrated behind the Worker.\n\nInstead, the architecture explicitly identifies retained direct Firebase data paths while preferring the Worker for sensitive and transactional behavior.\n\n## Frontend Stack\n\nThe root package is a modern TypeScript frontend.\n\nObserved runtime dependencies include:\n\n- React 19;\n- React DOM;\n- React Router;\n- Firebase;\n- date-fns;\n- Leaflet;\n- React Leaflet;\n- Google Maps loader;\n- Motion;\n- Lucide React;\n- YAML parsing.\n\nThe application uses Vite for development and production bundling.\n\n## Frontend Application Spine\n\nThe root README describes `src/App.tsx` as a composition point rather than a monolithic application component.\n\nThe application separates:\n\n- provider composition;\n- route composition;\n- session authority;\n- feature modules;\n- services.\n\nThe important session flow is:\n\n```text\nFirebase Auth\n    |\n    v\nSessionProvider\n    |\n    v\ncanonical account\n    |\n    v\nuseSession()\n    |\n    v\nAppRoutes / RequireAccess / feature UI\n```\n\n## Single Session Authority\n\nA notable frontend architecture rule is the **single production auth-state observer**.\n\n`SessionProvider` owns:\n\n- Firebase authentication-state observation;\n- canonical-account loading;\n- session refresh behavior;\n- identity-switch race protection.\n\nOrdinary pages and features consume `useSession()` rather than independently recreating Firebase auth observers and canonical-account caches.\n\nThis is not just a documentation preference.\n\n`npm run check:architecture` exists to enforce the boundary.\n\n## Authentication Is Not Authorization\n\nThe repository states this explicitly and repeatedly.\n\nFirebase Authentication establishes authenticated identity.\n\nApplication authority is determined later from canonical identity and domain policy.\n\nA successful login therefore does not automatically grant:\n\n- Pastor access;\n- administrator authority;\n- Spiritual Program participation;\n- Ministry authority;\n- service membership;\n- Discipleship teaching authority;\n- support-desk authority.\n\nThis is one of the strongest architectural themes in the project.\n\n## Canonical Identity Directory\n\nPrimary identity roots include:\n\n```text\nuserDirectory/users\nuserDirectory/identityLinks\n```\n\nThe effective resolution flow is:\n\n```text\nFirebase UID\n   |\n   v\nidentity link\n   |\n   v\ncanonical UID / account\n   |\n   v\nactive access state\n   |\n   +--> labels\n   +--> servant labels\n   +--> administrator authority\n   +--> domain-specific policy\n```\n\nThis avoids treating each product feature as if it owned a separate copy of a person.\n\n## Access Activation and Suspension\n\nCanonical application access has explicit state rather than being inferred only from the existence of a Firebase account.\n\nThe platform supports governance around:\n\n- account activation;\n- suspension;\n- identity reconciliation;\n- deletion protection;\n- access requests.\n\nThis is evidence of application-level identity lifecycle management beyond login/logout.\n\n## Protected Route UX\n\nThe frontend centralizes protected-route behavior through `RequireAccess`.\n\nAn anonymous visitor can remain on the requested route and receive the shared authentication gateway instead of being blindly redirected away from context.\n\nAfter authentication, lack of capability produces an explicit access-denied/request flow rather than silently treating identity as permission.\n\n## Access Requests\n\nRequestable capabilities include protected areas such as:\n\n- Spiritual Program;\n- People Development / Group Notes;\n- Ministry;\n- Discipleship;\n- servant/service workflows.\n\nThe request records the attempted capability and route for human review.\n\nThe system does not grant the capability automatically merely because it was requested.\n\nPastor workspace access is intentionally not treated as a self-service capability request.\n\n## Pastor Authority\n\nPastor authority is represented through the canonical account/label system.\n\nIt is separate from administrator authority.\n\nThis allows a Pastor to have pastoral capabilities without implicitly becoming a global administrator, and an administrator to perform delegated administration without automatically receiving confidential pastoral access.\n\n## Administrator Hierarchy\n\nAdministrator state is stored under:\n\n```text\nadministration/adminHierarchy\n```\n\nObserved lifecycle states include:\n\n- `pending`;\n- `active`;\n- `suspended`.\n\n## Capability-Based Administration\n\nThe platform does not reduce administrator authorization to one `isAdmin` boolean.\n\nDocumented authorities include:\n\n- `manageAssessmentForms`;\n- `manageAttendance`;\n- `manageLibrary`;\n- `manageMinistry`;\n- `managePeopleAccess`;\n- `manageAbout`;\n- `manageWebsiteSettings`.\n\nThe Chief receives the full authority set.\n\nOther administrators receive only explicitly allocated capabilities.\n\nThis is evidence of fine-grained role/capability modelling.\n\n## Legacy Authority Migration\n\nThe historical NextGen domain has been replaced by Ministry.\n\nA legacy `manageNextGenQa` value is retained as a compatibility alias for current `manageMinistry` reads.\n\nCurrent authority writes use the current name.\n\nThis is a concrete migration strategy:\n\n```text\nold persisted authority\n        |\n        v\ncompatibility read\n        |\n        v\ncurrent domain name for new writes\n```\n\n## Bilingual Product Design\n\nThe product supports English and Arabic.\n\nThat includes RTL-aware UI behavior rather than simple text substitution.\n\nLocalization therefore affects:\n\n- navigation;\n- forms;\n- resource content;\n- layouts;\n- Ministry workflows;\n- support/participant experiences.\n\n## Public Application Hub\n\nPublic visitors can reach product entry surfaces without possessing a canonical account.\n\nPublic areas include combinations of:\n\n- application navigation;\n- About/Legal content;\n- booking;\n- Library resources;\n- Oholiab Support.\n\nProtected domains are then layered on top of the same application.\n\n## Assessment System\n\nAssessments/forms are represented through structured YAML-defined form content and backend-mediated response/control operations.\n\nThe platform therefore separates assessment definitions from hardcoded component trees.\n\nAdministrator authority controls form administration independently from ordinary participant use.\n\n## Public Pastor Booking\n\nThe platform contains a public booking system for Pastor meetings.\n\nDocumented behavior includes:\n\n- 30-minute slots;\n- public schedule projection;\n- request creation;\n- conflict-safe reservation logic;\n- earliest-available booking mode;\n- server-side revalidation at mutation time.\n\nThe browser schedule is treated as a projection, not as an authoritative reservation lock.\n\n## Conflict-Safe Booking\n\nThe root README explicitly explains that a slot visible in the browser can still be rejected if another reservation/meeting claims it before mutation.\n\nThis demonstrates awareness of stale-client race conditions.\n\nThe backend revalidates availability when the booking request is committed.\n\n## Pastor Calendar\n\nThe Pastor workspace supports a substantial scheduling domain.\n\nCurrent capabilities include:\n\n- meeting creation;\n- meeting updates;\n- meeting deletion;\n- participant selection;\n- invitation delivery;\n- meeting-request review;\n- conflict-safe acceptance/rejection;\n- availability;\n- unavailability;\n- editable availability ranges;\n- trim-style range interaction;\n- flexible recurring group scheduling;\n- Pastor notifications;\n- People Development schedule awareness;\n- ICS export;\n- Bezalel assistance.\n\n## Availability as Domain Data\n\nAvailability ranges are persisted business data, not purely decorative calendar elements.\n\nThat distinction allows booking and scheduling logic to consume the same state used for rendering.\n\n## Meeting Invitations\n\nTransactional meeting invitation delivery is mediated by a backend route family.\n\nThis keeps server-side mail credentials and message-generation concerns out of the React client.\n\n## People Notes\n\nPeople Notes is a confidential Pastor-only domain.\n\nIt supports person-specific records such as:\n\n- note items;\n- comments;\n- follow-up state;\n- deletion.\n\nAdministrator authority alone does not grant access to these confidential notes.\n\nThis is an important privacy/authorization boundary.\n\n## People Development\n\nPeople Development manages development groups and participant-facing group workflows.\n\nDocumented capabilities include:\n\n- group assignment;\n- assignments;\n- PDF material;\n- recurring schedules;\n- private Pastor notes;\n- participant-facing group notes;\n- notification workflows;\n- canonical identity linkage.\n\n## Group Notes\n\nThe Group Notes portal first passes through the shared capability boundary and then applies feature-specific participant projection.\n\nThat means route-level access and resource-level visibility are separate decisions.\n\n## Ministry Domain\n\n`Ministry` is the active domain replacing historical NextGen functionality.\n\nThe main subdomains are:\n\n```text\nMinistry\n  |\n  +--> Mission Trips\n  +--> Servant Management\n  +--> Discipleship\n```\n\nThese subdomains do not share one unrestricted mutation authority.\n\n## Mission Trips\n\nMission Trips model reusable trip/location concepts plus dated instances.\n\nDocumented concepts include:\n\n- trip definitions;\n- dated instances;\n- clearance deadlines;\n- responsibilities;\n- accommodation entities;\n- transportation entities;\n- participant allocation;\n- PDF roster/export behavior;\n- participant notification.\n\nThe implementation references canonical users instead of duplicating a separate Ministry-only people database.\n\n## Servant Management\n\nServant Management is one of the clearest examples of domain modelling in the repository.\n\nThe project explicitly encodes the principle:\n\n> selection is not membership.\n\nA leader can invite a servant, but that does not immediately create service membership.\n\n## Consent-Based Service Membership\n\nThe lifecycle is:\n\n```text\neligible servant\n      |\n      v\npending invitation\n   /       \\\naccept     decline\n  |           |\n  v           v\nmember     declined state\n```\n\nInvitation records preserve:\n\n- who invited the person;\n- when the invitation occurred;\n- how/when the recipient responded.\n\nThis is evidence of consent-aware workflow modelling rather than automatic allocation.\n\n## Service-Scoped Leadership\n\nA service leader receives management authority for the applicable service.\n\nThat does not imply authority over every Ministry domain.\n\nThis localizes authorization to the resource/domain scope that requires it.\n\n## Weekly Servant Availability\n\nThe weekly Sunday workflow distinguishes standing service membership from date-specific availability.\n\nA servant submits availability for the applicable Sunday.\n\nAssignment candidates are then constrained by:\n\n- accepted membership;\n- submitted availability;\n- relevant service role;\n- acting leader/Chief authority.\n\n## Weekly Assignment History\n\nPublished assignments become part of Sunday history.\n\nThe system does not model old weekly availability as if it were still an actionable present-tense form.\n\nThis shows temporal-domain reasoning rather than storing all weekly forms as interchangeable records.\n\n## Recipient-Scoped Weekly Files\n\nWeekly service files can target specific recipient UIDs.\n\nThat allows leaders to distribute material to intended servants without exposing every file to the full service membership.\n\n## Discipleship\n\nDiscipleship has a distinct access and authority model.\n\nDocumented capabilities include:\n\n- bilingual/location-specific forms;\n- participant form submission;\n- persisted baseline enrollment form;\n- language selection;\n- application emails;\n- constrained availability choices;\n- multi-city teacher assignment;\n- location-scoped submission review;\n- explicit enrollment/admission;\n- enrollment removal without silently deleting underlying access.\n\n## Discipleship State Separation\n\nThe repository distinguishes:\n\n- route/access label;\n- form submission;\n- enrollment;\n- teaching authority.\n\nThose are not collapsed into one state field.\n\nThis supports more accurate lifecycle behaviour.\n\n## Location-Scoped Teaching Authority\n\nTeaching authority is validated against active servant status and assigned locations.\n\nA teacher may be assigned to multiple active church locations.\n\nThis is an example of multi-scope authorization inside one domain.\n\n## Attendance\n\nAttendance is implemented through protected administrator workflows rather than only direct browser writes.\n\nCapabilities include:\n\n- people listing;\n- person editing;\n- person deletion;\n- Sunday attendance workflow;\n- record updates;\n- search/filtering;\n- analytics;\n- individual attendance analysis;\n- photo/camera-related person information where applicable.\n\n## Public Library\n\nThe Library is a public resource catalog with protected management.\n\nPublic behaviors include:\n\n- folder listing;\n- published file listing;\n- signed view/download URLs;\n- Bezalel Library chat using selected resource context.\n\nManagement behaviors include:\n\n- folder management;\n- uploads;\n- publication completion;\n- deletion;\n- AI-summary metadata for PDFs.\n\n## Library Storage Separation\n\nThe storage architecture separates catalog metadata from binary objects.\n\n```text\nFirebase RTDB\n  -> Library catalog + metadata\n\nBackblaze B2\n  -> file objects\n\nprivate metadata\n  -> AI summary/context support\n```\n\nThis avoids putting large Library binaries directly into Firebase.\n\n## Signed Object Operations\n\nB2 credentials remain server-side.\n\nBrowser transfers use signed operations produced after authorization.\n\nThis is an explicit trust-boundary design.\n\n## Resource Evolution and Blog Publishing\n\nRecent September 2026 commits add Pastor blog publishing to the Resources experience and then fix the surrounding management/undo/test paths.\n\nThe commit sequence includes:\n\n- `feat(resources): add Pastor blog publishing`;\n- UUID-safe blog test-fixture correction;\n- render-safe blog undo state correction;\n- navigation tests aligned with Resources;\n- Pastor workspace blog-management exposure.\n\nThis shows the feature was integrated across source, tests, navigation, and Pastor workflow rather than existing only as an isolated screen.\n\n## Oholiab Support\n\nOholiab is the public support/ticketing system.\n\nPublic users can:\n\n- submit contact information and a message;\n- optionally attach a voice recording;\n- receive a tracking code;\n- track ticket state/activity without an application account.\n\n## Support Ticket Lifecycle\n\nCurrent documented states are:\n\n```text\nsubmitted\nopen\nin_progress\nresolved\nclosed\n```\n\nSupport staff can:\n\n- list tickets;\n- inspect details;\n- assign a support agent;\n- change status through validated transitions;\n- send public updates;\n- request information;\n- trigger transactional email;\n- review voice data while available.\n\n## Support Voice Data\n\nVoice messages are stored as validated Base64 support audio in the current implementation.\n\nThe voice data is deleted when the ticket is closed.\n\nThe repository treats this as a deliberate current-state exception rather than a generic pattern for all binary data.\n\n## Governance Layer\n\nGovernance is modeled explicitly rather than as incidental logging.\n\nImportant roots include:\n\n```text\nadministration/auditLog\ngovernance/notifications\ngovernance/approvals\ngovernance/accessRequests\n```\n\n## Actor Origin\n\nGoverned actions can identify origin such as:\n\n- direct;\n- Bezalel;\n- system.\n\nThis preserves whether a change originated from an ordinary UI flow, an AI-mediated proposal, or an automated system process.\n\n## Actor Role\n\nGovernance can distinguish roles such as:\n\n- Chief;\n- administrator;\n- Pastor;\n- servant;\n- participant.\n\nThis provides more context than a generic user ID alone.\n\n## Approval Lifecycle\n\nThe repository documents approval states such as:\n\n```text\npending\n   |\n   v\nexecuting\n  /   \\\n v     v\napproved failed\n\npending -> rejected\n```\n\nThis supports privileged operations that require a human decision before execution.\n\n## Auditability\n\nGoverned mutations can record:\n\n- actor;\n- action origin;\n- target;\n- recipients;\n- read state;\n- approval state;\n- destructive-action history where applicable.\n\n## Deletion Recovery\n\nSelected governed deletions have recovery/accountability mechanisms.\n\nThe design does not assume every privileged deletion should become immediately invisible and irreversible.\n\n## Bezalel AI\n\nBezalel is the product's server-mediated AI capability.\n\nGoogle Gemini is the model provider.\n\nThe application, not the model, remains the authority boundary.\n\n## AI as Proposal, Not Authority\n\nThe repository explicitly disallows treating model output as automatic authorization or ministry judgment.\n\nA model proposal must pass the same domain constraints as a comparable manual action.\n\nThe model does not get a bypass around:\n\n- authorization;\n- membership rules;\n- consent;\n- approval workflows;\n- sensitive-domain policy.\n\n## Bounded AI Context\n\nGemini receives bounded context appropriate to the specific Bezalel mode.\n\nThe architecture avoids treating the entire application database as unrestricted model context.\n\nThis is particularly important because the product contains pastoral and people-related information.\n\n## Human Authority Boundary\n\nThe repository documentation emphasizes human responsibility for ministry decisions affecting participation, status, or pastoral judgment.\n\nAI can assist with navigation, drafting, summarization, and constrained proposals, but does not silently convert human ministry decisions into autonomous model decisions.\n\n## Bezalel Modes\n\nThe backend exposes Bezalel through domain-dependent API routes.\n\nExamples include assistance around:\n\n- booking;\n- Pastor workflows;\n- Library resources.\n\nEach mode has a different context and action surface.\n\n## Backend Runtime\n\nThe backend is a TypeScript Hono application deployed to Cloudflare Workers.\n\nObserved direct runtime dependencies are intentionally small:\n\n- Hono;\n- Zod;\n- aws4fetch.\n\nWrangler is used for local development, deployment, and Worker type generation.\n\n## Backend Validation\n\nZod provides runtime validation at server boundaries.\n\nThe architecture consistently positions backend validation near protected operations rather than trusting browser types as a security mechanism.\n\n## Worker Route Families\n\nDocumented API roots include:\n\n- `/api/v1/auth`;\n- `/api/v1/people-notes`;\n- `/api/v1/people-development`;\n- `/api/v1/booking`;\n- `/api/v1/bezalel`;\n- `/api/v1/pastor-calendar`;\n- `/api/v1/assessment`;\n- `/api/v1/website-settings`;\n- `/api/v1/admin`;\n- `/api/v1/about`;\n- `/api/v1/support`;\n- `/api/v1/ministry/servant-management`;\n- `/api/v1/ministry`;\n- `/api/v1/library`;\n- `/api/v1/meeting-invitations`;\n- `/api/v1/governance`.\n\n## Router Ordering as Policy\n\nThe dedicated Servant Management router is mounted before the broader Ministry router.\n\nThe repository documents this as intentional so older/direct membership semantics cannot accidentally bypass the newer consent-aware contract.\n\nThis is an example where route composition participates in preserving a business invariant.\n\n## Firebase Realtime Database\n\nFirebase RTDB is the primary structured persistence store.\n\nImportant logical roots include:\n\n- canonical users;\n- identity links;\n- administrator hierarchy;\n- audit log;\n- governance notifications;\n- approvals;\n- access requests;\n- website settings;\n- Mission Trips;\n- Servant Management services/members/invitations/roles/Sundays;\n- Discipleship;\n- Library metadata;\n- support tickets/tracking/audio;\n- People Notes;\n- assessment-response lineage.\n\n## Canonical UID Reuse\n\nThe data model prefers canonical UIDs across domains rather than copying person identity into each feature.\n\nThat supports cross-domain consistency and reduces identity drift.\n\n## Backblaze B2\n\nB2 is used for Library/archive object storage through the S3-compatible API.\n\nServer-side signing isolates provider credentials from the browser.\n\nThe repository recognizes older/special Base64 domains separately rather than pretending all binary storage has one implementation.\n\n## Brevo\n\nBrevo provides transactional email transport from the Worker.\n\nEmail sending is a backend responsibility for protected workflows.\n\nThe external provider is not itself owner-authored; the integration, templates, authorization, and recipient logic are application evidence.\n\n## Cloudflare Public Abuse Controls\n\nPublic routes are deliberately exposed for use cases such as:\n\n- public booking;\n- support submission/tracking;\n- public AI booking chat.\n\nThe Worker applies abuse controls including:\n\n- Cloudflare rate-limit bindings;\n- a Durable Object `PublicAbuseGuard`;\n- enforcement mode configuration.\n\n## Rate Limiting Is Not Authorization\n\nThe repository explicitly keeps abuse mitigation separate from business validation.\n\nRate limiting protects exposed endpoints from excessive use.\n\nIt does not decide whether a business operation is valid.\n\n## Durable Object Abuse Guard\n\nThe Durable Object provides stateful abuse-control behavior for public surfaces.\n\nThis is distinct from Firebase domain data and distinct from application authorization.\n\n## Scheduled Work\n\nThe Worker contains scheduled work via a Saturday cron trigger.\n\nThe scheduled service-reminder logic still applies its own domain/time-zone checks instead of assuming the raw cron execution timestamp is itself the ministry deadline.\n\n## Website Settings\n\nGlobal settings are persisted under `website/settings`.\n\nWebsite Settings authority controls mutation.\n\nCurrent dark-theme IDs include multiple configured theme variants rather than one hardcoded dark mode.\n\n## Design System\n\nThe frontend has a shared design-system layer.\n\nThe repository includes a design-system quality gate so new pages cannot freely diverge into independent styling systems without detection.\n\n## Frontend Architecture Gate\n\n`npm run check:architecture` validates architectural invariants such as the centralized session authority.\n\nThis converts architecture from documentation-only guidance into executable quality policy.\n\n## Design-System Gate\n\n`npm run check:design-system` validates shared UI/design constraints.\n\nThis supports consistency across a large multi-domain frontend.\n\n## Bundle Gate\n\n`npm run check:bundle` validates the built bundle against repository-defined expectations/budgets.\n\nThis makes bundle behavior part of release quality.\n\n## Frontend Quality Pipeline\n\n`npm run ci:quality` composes:\n\n- TypeScript type checking;\n- ESLint with zero warnings;\n- architecture checks;\n- design-system checks;\n- test coverage.\n\n## Frontend Release Pipeline\n\n`npm run ci:release` adds:\n\n- production dependency audit;\n- production bundle generation;\n- bundle checks;\n- built-distribution smoke testing.\n\nThis is a stronger release gate than a plain `vite build`.\n\n## Unit and Integration Testing\n\nThe frontend uses:\n\n- Vitest;\n- Testing Library;\n- V8 coverage.\n\nThe backend also uses Vitest and Cloudflare's Worker testing pool.\n\n## Backend Testing\n\nThe root documentation identifies backend tests around:\n\n- authorization;\n- route contracts;\n- persistence;\n- provider adapters;\n- governance;\n- Ministry;\n- support;\n- Library;\n- security behavior.\n\n## Playwright E2E\n\nThe repository contains an isolated `e2e/` project using Playwright.\n\nThe CI E2E workflow:\n\n- installs locked dependencies;\n- installs Chromium and Linux dependencies;\n- runs public/anonymous scenarios;\n- retains reports;\n- retains failure artifacts.\n\n## Protected-Route E2E\n\nThe anonymous protected-route suite checks that a visitor:\n\n- remains on the requested path;\n- sees the shared login gateway;\n- preserves the capability being requested.\n\nThat verifies product-level access UX rather than only component rendering.\n\n## Test Environment Isolation\n\nThe documentation explicitly warns against using the production Firebase project as disposable E2E state.\n\nAnonymous Playwright tests use isolated frontend Firebase configuration so public rendering tests do not depend on production identity state.\n\n## Production Smoke Testing\n\nFrontend and backend each have dedicated production-smoke workflows.\n\nThis matches the two-surface deployment model.\n\nObserved workflow files include:\n\n```text\n.github/workflows/frontend-build.yml\n.github/workflows/frontend-e2e.yml\n.github/workflows/frontend-production-smoke.yml\n.github/workflows/backend-tests.yml\n.github/workflows/backend-production-smoke.yml\n.github/workflows/ai-context-sync.yml\n```\n\n## CI/CD Separation\n\nNetlify and Cloudflare are separate delivery systems.\n\nThe repository preserves this operational distinction in both documentation and workflow structure.\n\n## Production Observability\n\nRecent September 2026 commits add structured Worker request telemetry and export it to Better Stack.\n\nThe dependency documentation records an important decoupling decision:\n\n- telemetry uses OpenTelemetry/OTLP;\n- application code does not depend on a Better Stack SDK package;\n- changing OTLP backends does not require rewriting Hono routes.\n\nThis is evidence of provider-independent observability architecture.\n\n## Structured Request Telemetry\n\nThe observability feature records structured request-level information from the Worker rather than relying only on ad-hoc console text.\n\nThe export path is separated from individual business routes.\n\n## OpenTelemetry Boundary\n\nUsing OTLP as the protocol makes Better Stack an observability destination rather than a deeply coupled application framework.\n\nThis improves exit/migration options.\n\n## Dependency Modelling\n\nThe repository contains a dedicated `docs/dependency-modelling/` body of work.\n\nIt records:\n\n- direct dependencies;\n- provider roles;\n- migration/exit paths;\n- coupling strength;\n- dependency evidence.\n\nThis is unusual for a hobby/project repository and is direct evidence of architecture-level dependency reasoning.\n\n## Cost Analysis\n\n`docs/cost-analysis/` models the active provider inventory and cost considerations.\n\nThe repository therefore treats cloud-service choice as an engineering constraint rather than an invisible deployment detail.\n\n## Security Programme\n\n`docs/security/` contains dedicated security/threat-modelling work.\n\nSecurity boundaries described in the root README include:\n\n- authentication vs authorization;\n- public endpoint validation;\n- confidential Pastor data;\n- bounded AI context;\n- provider credentials;\n- recipient privacy;\n- object-storage signing;\n- deletion/audit behavior.\n\n## Privacy Boundaries\n\nThe product contains human/ministry information, so authorization is intentionally domain specific.\n\nExamples include:\n\n- People Notes restricted to Pastor authority;\n- administrator capability not implying universal pastoral access;\n- recipient-scoped service files;\n- location-scoped Discipleship authority;\n- public support projections separated from staff operations.\n\n## Email Privacy\n\nThe documentation differentiates group BCC-style messaging from individualized confidential delivery.\n\nIt also prefers server-generated templates over arbitrary browser-provided HTML.\n\n## Object-Storage Security\n\nB2 provider credentials stay on the Worker side.\n\nAuthorized clients receive signed operations instead of raw storage credentials.\n\n## Legacy Direct Firebase Paths\n\nThe repository explicitly records that selected direct Firebase data paths remain.\n\nThis transparency matters for RAG accuracy.\n\nThe project should not be retrieved as evidence of a completely Worker-mediated data architecture.\n\nHowever, Firebase **authentication state** is centralized even while some data subscriptions remain direct.\n\n## Repository Documentation System\n\nThe repository contains extensive technical documentation beyond the root README.\n\nMajor areas include:\n\n- database ERDs;\n- finite-state machines;\n- design patterns;\n- security;\n- testing;\n- road-to-100 maturity work;\n- dependency modelling;\n- AI-context management;\n- engineering-evolution study;\n- cost analysis;\n- incidents;\n- Gantt history/roadmap.\n\n## Text-Native Diagram Policy\n\nThe project prefers maintainable text-native diagrams.\n\nSupported editing surfaces include:\n\n- Mermaid in Markdown;\n- `.mmd` Mermaid source;\n- YAML-to-Mermaid generation;\n- LaTeX/TikZ.\n\nGenerated screenshots are not treated as the primary editable diagram source.\n\n## Gantt Source of Truth\n\nThe Gantt workflow uses a YAML source and generator:\n\n```text\ndocs/gantt/source/churchone-gantt.yaml\n          |\n          v\ndocs/gantt/generate-gantt.py\n       /          \\\n      v            v\nMermaid        LaTeX/TikZ\n```\n\nThis is evidence of documentation-as-code.\n\n## Change Manifests\n\nThe repository contains feature/change manifests for significant updates.\n\nObserved root-level examples include work around:\n\n- Mission Trips;\n- People Development PDFs;\n- phased architecture changes;\n- Spiritual Program overhaul.\n\nThese provide explicit delivery evidence and affected-surface records.\n\n## AGENTS Contract\n\n`AGENTS.md` contains repository-specific engineering instructions for coding agents.\n\nThis is separate from the user-facing README.\n\nIt participates in the project's broader attempt to make AI-assisted engineering reproducible and bounded.\n\n## AI Context System\n\n`ai-context/` is a distinct engineering/research subsystem inside the repository.\n\nIt generates cumulative metadata-only branches describing the exact accepted `main` source revision.\n\nThe branches are:\n\n```text\nai-context-v1\nai-context-v2\nai-context-v3\nai-context-v4\nai-context     # compatibility alias of V1\n```\n\n## AI Context Core Invariant\n\nThe treatments are cumulative:\n\n```text\nV1 ⊂ V2 ⊂ V3 ⊂ V4\n```\n\nFor one successful synchronization, every generated version refers to the same source commit.\n\nGenerated branches contain repository metadata, not a second copy of application implementation.\n\n## Exact-Commit Context\n\nThe context system writes `SOURCE-COMMIT` metadata and materializes actual source from the matching `main` revision.\n\nThe consumer refuses source/projection commit mismatch by default.\n\nThis directly addresses stale AI context.\n\n## V1 — Repository Intelligence\n\nV1 includes conservative repository intelligence such as:\n\n- Git-tracked file inventory;\n- file classes;\n- source-cost estimates;\n- feature/domain inference;\n- local import edges;\n- Hono route composition;\n- frontend-to-backend API mapping;\n- verification relationships;\n- authorization relationships;\n- database-expression hints;\n- canonical/generated provenance;\n- architecture-drift reporting;\n- sparse manifests;\n- basic heuristic task-aware selection.\n\n## Protective Relationships\n\nThe context graph recognizes relationships such as:\n\n```text\nAUTHORIZED_BY\nTESTED_BY\n```\n\nThese are treated as protective context relationships rather than optional ranking decoration.\n\n## V2 — Ranked Task Projection\n\nV2 extends V1 with explicit task-routing metadata.\n\nThe flow is roughly:\n\n```text\ntask text\n  |\n  v\ncandidate domains\n  |\n  v\nlexical / metadata relevance\n  |\n  v\nranked seeds\n  |\n  v\nbounded graph expansion\n  |\n  v\nauth/test protective floor\n  |\n  v\nmust-read / likely / fallback tiers\n  |\n  v\noptional context budget\n```\n\nThe repository is careful not to mislabel this deterministic lexical/metadata ranking as embedding-based semantic retrieval.\n\n## V2 Budget Semantics\n\nA T4/context budget can constrain ordinary candidate selection.\n\nProtective/core context is allowed to exceed the requested budget when required.\n\nThe system does not drop authorization/test evidence merely to satisfy a smaller numeric token target.\n\n## V3 — AST-Backed Symbol Projection\n\nV3 introduces fine-grained symbol/range projection for large files.\n\nParser policy includes:\n\n- Python standard-library AST;\n- TypeScript compiler API for JS/TS/JSX/TSX.\n\nA heuristic parser exists only as an operational fallback and is not accepted as publication-grade JS/TS analysis.\n\n## V3 Symbol Types\n\nThe symbol extractor can identify constructs such as:\n\n- functions;\n- arrow/function-expression declarations;\n- React-style components;\n- classes;\n- class methods/accessors;\n- interfaces;\n- type aliases;\n- enums;\n- Hono route calls;\n- Vitest/Jest-style test calls;\n- Playwright `test.describe` structures.\n\n## Bounded Range Materialization\n\nFor large selected files, V3 can score symbols and merge selected source ranges.\n\nSmall files, protective files, parser uncertainty, and unsafe cases fall back to whole-file inclusion.\n\nThis balances context reduction against reliability.\n\n## V3 Information Barrier\n\nV1/V2 publications intentionally strip symbol and symbol-parser metadata.\n\nThis prevents experimental treatments from accidentally receiving later-version information.\n\n## V4 — Evolution and Research Intelligence\n\nV4 adds repository-evolution and controlled research features.\n\nIt does **not** take credit for V1 capabilities such as architecture drift or basic freshness.\n\n## Repository Evolution Metadata\n\nV4 can record changes between repository states such as:\n\n- added files;\n- removed files;\n- modified files;\n- domain changes;\n- symbol-count changes;\n- repository change ratio;\n- trust/drift state.\n\n## Rename-Aware Co-Change\n\nThe research subsystem derives co-change evidence from Git history using rename detection.\n\nHistorical paths are normalized toward current renamed paths before pair counts are used.\n\nThe repository explicitly treats co-change as a ranking hint, not architectural truth.\n\n## Controlled Ablations\n\nV4 exposes reproducible ablation switches including:\n\n```text\nno-auth-floor\nno-test-floor\nno-provenance-rewrite\nno-graph-expansion\nno-task-ranking\nno-symbol-slicing\nno-cochange\nno-feedback\n```\n\nThis turns architectural retrieval choices into measurable experimental factors.\n\n## Feedback Partitioning\n\nProjection misses can be recorded with dataset partition metadata.\n\nOnly retrieval-eligible training data can influence future ranking.\n\nDevelopment/evaluation records may be stored for analysis but are not fed back into retrieval.\n\nThe current task ID can also be excluded from feedback loading.\n\nThis is explicit benchmark-leakage control.\n\n## Static-History Factorial Treatments\n\nRecent commits add static-history factorial treatments and associated research documentation.\n\nThe latest commit sequence includes:\n\n- static-history factorial treatment implementation;\n- static-history research protocol;\n- static-history research model;\n- factorial branch/publication documentation;\n- script contracts;\n- benchmark test plan;\n- metrics and validity plan;\n- experiment runbook;\n- root/context linkage.\n\nThis shows the context system is being treated as an experimental research object rather than only a developer convenience.\n\n## AI Context Publication Pipeline\n\nThe synchronization workflow performs a multi-stage publication process.\n\nDocumented steps include:\n\n1. checkout exact source commit with full history;\n2. install Python/Node dependencies;\n3. install TypeScript dependencies for parser-grade AST extraction;\n4. run context regression tests;\n5. record source commit;\n6. load prior baselines where available;\n7. analyze the repository once;\n8. compute drift/evolution metadata;\n9. generate cumulative publications;\n10. validate profiles and information barriers;\n11. transfer the publication matrix as a workflow artifact;\n12. recheck remote `main` immediately before publication;\n13. create metadata-only commits;\n14. atomically update V1–V4 plus compatibility branch.\n\n## Atomic Multi-Ref Publication\n\nPublication uses an atomic Git push across the generated branches.\n\nIf `main` advanced, the stale run updates no generated branch.\n\nIf atomic publication fails, the experimental versions cannot partially advance.\n\nThis is strong evidence of consistency-oriented CI design.\n\n## Latest AI Context Workflow Evidence\n\nAt the latest repository head, GitHub Actions run 128 of **AI Context Sync** completed successfully.\n\nThe successful run used head SHA:\n\n`e06ed291d6e01db89cdbac61c22afbd43f06e16c`\n\nThat is the same latest meaningful commit recorded for this corpus analysis.\n\nTherefore the context-publication mechanism is not only documented; a successful workflow run exists at the analyzed head.\n\n## Publication Validation\n\nValidation checks include invariants such as:\n\n- common source commit across generated profiles;\n- information separation between V1/V2 and symbol-aware versions;\n- V2 routing artifacts;\n- V3/V4 symbol metadata;\n- publication-grade TypeScript compiler coverage for JS/TS text files;\n- V4 evolution/research artifacts;\n- cumulative version prefixes;\n- unsupported verification/architecture mechanisms remaining visible as drift rather than disappearing silently.\n\n## Context Materialization\n\nA materializer consumes projection metadata and reads actual source from the exact recorded commit.\n\nThis separates:\n\n- metadata publication;\n- future task arrival;\n- task-specific projection;\n- exact-source materialization.\n\nThe generated context branches are not claimed to predict unknown future engineering tasks.\n\n## Context Safety Philosophy\n\nThe documented optimization target is:\n\n> the smallest sufficient trustworthy context\n\nrather than the smallest context at any cost.\n\nAuthorization, verification, provenance, and contradictory runtime evidence outrank a numeric context budget.\n\n## Engineering-Evolution Study\n\nThe repository also contains a dedicated mathematical/software-evolution study under documentation.\n\nThat sits alongside the AI-context research but is conceptually distinct: it studies how the software changes, while the context system tries to project sufficient repository knowledge for future engineering tasks.\n\n## Better Stack / OTLP Observability and AI Context Together\n\nThe coexistence of structured production telemetry and repository-context research shows two different observability layers:\n\n- runtime observability of the deployed Worker;\n- repository-state observability for AI-assisted engineering.\n\nThe corpus keeps those concepts separate.\n\n## Product Maturity Evidence\n\nLInC One has evidence across several maturity dimensions:\n\n- multiple production deployment surfaces;\n- a broad multi-role domain model;\n- backend authorization;\n- canonical identity;\n- capability-based administration;\n- governance/audit state;\n- consent-based membership;\n- object-storage separation;\n- public abuse controls;\n- unit/integration testing;\n- Playwright E2E;\n- production smoke tests;\n- release-quality scripts;\n- observability;\n- documentation-as-code;\n- dependency/cost/security modelling;\n- context-synchronization CI.\n\nThis is much stronger evidence than a UI prototype or CRUD-only application.\n\n## Architectural Strengths\n\nStrong architecture evidence includes:\n\n- single frontend session authority;\n- canonical identity distinct from Firebase auth;\n- fine-grained admin capabilities;\n- domain-scoped authority;\n- consent-aware servant membership;\n- backend revalidation for booking races;\n- bounded AI authority;\n- governed destructive actions;\n- provider credential isolation;\n- B2 signed storage operations;\n- separate production surfaces;\n- executable architecture/design-system gates;\n- exact-commit AI context.\n\n## Product-Engineering Strengths\n\nStrong product evidence includes:\n\n- differentiated user roles;\n- public and authenticated journeys;\n- bilingual/RTL behavior;\n- scheduling and availability;\n- support workflows;\n- resource publication;\n- role-specific content distribution;\n- ministry-instance modelling;\n- human-consent workflows;\n- access-request UX;\n- operational administration.\n\n## Backend Engineering Skills\n\nThe repository provides evidence of:\n\n- Hono route architecture;\n- Cloudflare Worker deployment;\n- Zod validation;\n- Firebase Admin/service integration;\n- authorization middleware/policy;\n- server-side provider adapters;\n- scheduled work;\n- audit/governance workflows;\n- signed object operations;\n- transactional email;\n- AI-provider integration;\n- rate limiting;\n- Durable Objects.\n\n## Frontend Engineering Skills\n\nThe repository provides evidence of:\n\n- React 19;\n- TypeScript;\n- Vite;\n- centralized session/context architecture;\n- React Router;\n- protected-route composition;\n- bilingual/RTL UI;\n- design-system enforcement;\n- complex form/workflow UI;\n- map integrations;\n- calendar/scheduling interaction;\n- typed frontend service boundaries;\n- unit/integration testing;\n- Playwright E2E.\n\n## Cloud Engineering Skills\n\nThe deployed system integrates:\n\n- Netlify;\n- Cloudflare Workers;\n- Cloudflare rate limiting;\n- Cloudflare Durable Objects;\n- Firebase Auth;\n- Firebase RTDB;\n- Backblaze B2;\n- Brevo;\n- Gemini;\n- Better Stack through OTLP;\n- GitHub Actions.\n\n## Security Engineering Skills\n\nEvidence includes:\n\n- authentication/authorization separation;\n- canonical identity resolution;\n- domain-specific authorization;\n- backend validation;\n- provider secret isolation;\n- signed object access;\n- abuse mitigation;\n- sensitive-domain access boundaries;\n- governance/audit trails;\n- approval lifecycle;\n- controlled deletion/recovery;\n- AI authority boundaries.\n\n## Testing and Quality Skills\n\nEvidence includes:\n\n- TypeScript type checking;\n- ESLint zero-warning policy;\n- Vitest;\n- Testing Library;\n- coverage;\n- architecture checks;\n- design-system checks;\n- bundle checks;\n- built-dist smoke testing;\n- production smoke testing;\n- Playwright;\n- Worker tests;\n- AI-context regression tests;\n- CI artifact retention.\n\n## Research Engineering Skills\n\nThe AI-context subsystem adds evidence of:\n\n- experimental treatment design;\n- cumulative treatment invariants;\n- information barriers;\n- deterministic task ranking;\n- token/context budgeting;\n- AST extraction;\n- symbol-range projection;\n- Git-history co-change analysis;\n- rename normalization;\n- controlled ablation;\n- train/dev/eval partition discipline;\n- benchmark leakage prevention;\n- exact-commit reproducibility;\n- atomic publication.\n\n## Documentation Engineering Skills\n\nEvidence includes:\n\n- text-native architecture diagrams;\n- ERDs;\n- FSMs;\n- generated Gantts;\n- feature change manifests;\n- security documentation;\n- testing documentation;\n- dependency modelling;\n- cost modelling;\n- incident records;\n- AI-agent contracts;\n- README/documentation changelogs.\n\n## Business / Domain Modelling Skills\n\nThe project demonstrates modelling beyond simple tables:\n\n- role/capability separation;\n- canonical identity;\n- consent-based invitation state;\n- date-specific availability;\n- trip definition vs trip instance;\n- enrollment vs access;\n- location-scoped teaching authority;\n- support ticket lifecycle;\n- governance approval lifecycle;\n- meeting availability/reservation conflict;\n- recipient-specific files.\n\n## Scale and Complexity Character\n\nThe repository contains many interacting domains but intentionally uses a modular-monolith/serverless architecture rather than claiming microservices.\n\nThe main deployment surfaces are:\n\n- one React frontend;\n- one Hono Worker backend;\n- external managed providers.\n\nThe complexity comes from product/domain breadth, authorization, integrations, and operational governance rather than from a large number of independently deployed services.\n\n## Maturity Assessment\n\nLInC One is a **production-deployed, multi-domain full-stack application with explicit authorization/governance architecture, substantial automated verification, operational observability, and a separate research-grade AI-context subsystem**.\n\nThe repository still documents migration boundaries and retained direct Firebase paths, which is a strength for corpus accuracy: maturity does not require pretending every historical architectural decision has already been eliminated.\n\nThe current implementation should be retrieved as evidence of sustained product evolution and architecture hardening, not merely feature accumulation.\n\n## RAG Retrieval Guidance\n\nThis repository is a particularly strong match for queries involving:\n\n- React/TypeScript product architecture;\n- Hono on Cloudflare Workers;\n- Firebase Authentication;\n- Firebase Realtime Database;\n- canonical identity systems;\n- authentication vs authorization;\n- capability-based administration;\n- role-based/domain-scoped authorization;\n- public booking;\n- calendar scheduling;\n- consent-based membership;\n- workflow state machines;\n- Backblaze B2 signed uploads;\n- transactional email;\n- Gemini/LLM integration with human authority boundaries;\n- public rate limiting;\n- Durable Objects;\n- production observability;\n- Better Stack / OTLP;\n- Vitest/Playwright;\n- production smoke testing;\n- documentation-as-code;\n- dependency modelling;\n- AI context engineering;\n- AST-based context slicing;\n- Git co-change retrieval;\n- controlled retrieval ablations;\n- exact-commit context synchronization.\n\nIt is also a strong source for questions about moving from a feature-rich hobby application toward explicit operational/product engineering discipline.\n\n# Project Tags\n\n- `linc-one`\n- `church-management-platform`\n- `ministry-management`\n- `full-stack-application`\n- `production-deployed`\n- `react-19`\n- `typescript`\n- `vite`\n- `react-router`\n- `hono`\n- `cloudflare-workers`\n- `firebase-authentication`\n- `firebase-realtime-database`\n- `backblaze-b2`\n- `brevo`\n- `google-gemini`\n- `netlify`\n- `cloudflare-rate-limiting`\n- `cloudflare-durable-objects`\n- `canonical-identity`\n- `identity-linking`\n- `authentication-authorization-separation`\n- `capability-based-authorization`\n- `domain-scoped-authorization`\n- `administrator-hierarchy`\n- `access-request-workflow`\n- `pastor-workspace`\n- `pastoral-booking`\n- `conflict-safe-booking`\n- `calendar-scheduling`\n- `availability-management`\n- `ics-export`\n- `people-notes`\n- `people-development`\n- `group-notes`\n- `recurring-schedules`\n- `assessment-forms`\n- `yaml-defined-forms`\n- `ministry-domain`\n- `mission-trip-management`\n- `servant-management`\n- `consent-based-membership`\n- `service-invitations`\n- `weekly-availability`\n- `recipient-scoped-files`\n- `discipleship`\n- `location-scoped-authority`\n- `attendance-management`\n- `attendance-analytics`\n- `public-library`\n- `signed-object-storage`\n- `blog-publishing`\n- `pastor-blog-management`\n- `support-ticketing`\n- `voice-support-messages`\n- `governance-workflows`\n- `audit-logging`\n- `human-approval-workflow`\n- `deletion-recovery`\n- `constrained-ai-actions`\n- `human-in-the-loop-ai`\n- `bounded-ai-context`\n- `public-abuse-protection`\n- `zod-validation`\n- `server-side-secrets`\n- `scheduled-worker-cron`\n- `bilingual-ui`\n- `arabic-rtl`\n- `design-system`\n- `architecture-gates`\n- `bundle-gates`\n- `vitest`\n- `testing-library`\n- `playwright`\n- `e2e-testing`\n- `production-smoke-tests`\n- `github-actions`\n- `structured-telemetry`\n- `opentelemetry`\n- `otlp`\n- `better-stack`\n- `dependency-modelling`\n- `cost-modelling`\n- `security-modelling`\n- `documentation-as-code`\n- `mermaid`\n- `finite-state-machines`\n- `entity-relationship-diagrams`\n- `change-manifests`\n- `ai-context-system`\n- `commit-synchronized-context`\n- `exact-commit-materialization`\n- `task-aware-context-selection`\n- `context-budgeting`\n- `ast-symbol-indexing`\n- `typescript-compiler-api`\n- `python-ast`\n- `symbol-range-projection`\n- `rename-aware-cochange`\n- `git-history-analysis`\n- `controlled-ablations`\n- `feedback-partitioning`\n- `benchmark-leakage-prevention`\n- `atomic-git-publication`\n- `static-history-factorial-experiment`\n- `software-evolution-research`\n"
+}

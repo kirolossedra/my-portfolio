@@ -1,0 +1,1306 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 110,
+  "repository_total": 134,
+  "repository_name": "CV-Highly-Organized",
+  "header_title": "CV-Highly-Organized",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-110-CV-Highly-Organized/README.md",
+    "line_start": 1,
+    "line_end": 601,
+    "sha256": "8bdf14302810255026e5d34a9c2e17349bd907693751cbdebe02d14d1fb57b4e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "multi-cv-library",
+    "document-build-system",
+    "artifact-browser",
+    "individual-project",
+    "latex",
+    "tex",
+    "html",
+    "css",
+    "javascript",
+    "python",
+    "github-actions",
+    "ci",
+    "automated-latex-pdf-build",
+    "generated-artifact-commit",
+    "path-filtered-ci",
+    "build-artifact-evidence",
+    "responsive-web-ui",
+    "repository-tree-browser",
+    "recursive-navigation",
+    "search",
+    "dark-mode",
+    "localstorage-cache",
+    "cache-then-refresh",
+    "firebase-authentication",
+    "email-password-authentication",
+    "github-api",
+    "github-recursive-tree-api",
+    "api-rate-limit-handling",
+    "role-specific-cv-variants",
+    "single-branch-document-variants",
+    "source-artifact-pairing",
+    "reproducible-document-authoring",
+    "nrf",
+    "j-link",
+    "serial-communication",
+    "pyserial",
+    "pyside6",
+    "pyqtgraph",
+    "rssi",
+    "live-signal-plotting",
+    "physical-board-disambiguation",
+    "timestamped-run-folders",
+    "earliest-observed-automated-multi-cv-latex-build-library",
+    "earliest-observed-authenticated-github-cv-artifact-browser"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 110 / 134\n- Name: `CV-Highly-Organized`\n- Repository start date: 2026-07-19\n- Last meaningful update date: 2026-08-22\n- Latest meaningful commit: `85f0549993d2085bfb6e84e08888387c45f4e4bf`\n- Primary type: Structured multi-CV source repository with automated PDF builds and authenticated artifact browser\n- Technical field: LaTeX document engineering, CI automation, frontend engineering, repository tooling\n- Application domain: Career-document generation and role-specific CV management\n- Collaboration type: `individual-project`\n- Primary languages: TeX / LaTeX, HTML, CSS, JavaScript, Python"
+    },
+    "architecture": {
+      "section_ids": [
+        "s025"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nRole-specific main.tex sources\n            ↓\nGitHub push to main\n            ↓\nGitHub Actions / latex-action\n            ↓\nmain.pdf artifacts\n            ↓\nautomated bot commit\n            ↓\nGitHub repository tree\n            ↓ GitHub API\nAuthenticated browser\n            ↓\nrecursive category navigation / search\n            ↓\nPDF download with local timestamped filename\n```\n\nThe repository itself is both the source store and the artifact catalog."
+    },
+    "testing": {
+      "section_ids": [
+        "s041"
+      ],
+      "titles": [
+        "CI and Verification"
+      ],
+      "text": "## CI and Verification\n### LaTeX Compilation as CI Validation\n\nEvery matching `main.tex` is compiled by the workflow.\n\nBecause `continue_on_error` is false, a failed document build prevents the normal artifact-commit step from representing the source as successfully compiled.\n\n### No-Change Guard\n\nThe workflow checks the staged diff before creating a bot commit.\n\nThis prevents empty automation commits when generated PDFs remain identical.\n\n### Built Artifact Evidence\n\nThe checked-in `main.pdf` files and bot build commits provide direct evidence that the document-build workflow has executed."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s015",
+        "s031",
+        "s039",
+        "s072",
+        "s082"
+      ],
+      "titles": [
+        "Firebase Authentication",
+        "Firebase Authentication",
+        "Authentication State Transition",
+        "Authentication and APIs",
+        "Authentication and APIs"
+      ],
+      "text": "## Firebase Authentication\nThe application initializes Firebase Authentication and uses:\n\n- `signInWithEmailAndPassword`;\n- `onAuthStateChanged`;\n- `signOut`.\n\nThe document browser is shown only within the authenticated session state.\n\nThe corpus records the authentication mechanism without reproducing repository configuration values.\n\n## Firebase Authentication\nFirebase supplies email/password session authentication for access to the browser workspace.\n\n## Authentication State Transition\nThe frontend explicitly separates login and application views and reacts to Firebase authentication-state changes.\n\n## Authentication and APIs\n- **Firebase email/password authentication — strong evidence.**\n- **GitHub REST API integration — strong evidence.**\n- **API error/rate-limit handling — strong evidence.**\n\n## Authentication and APIs\n- `firebase-authentication`\n- `email-password-authentication`\n- `github-api`\n- `github-recursive-tree-api`\n- `api-rate-limit-handling`"
+    },
+    "documentation": {
+      "section_ids": [
+        "s048"
+      ],
+      "titles": [
+        "Automated Reproducibility"
+      ],
+      "text": "## Automated Reproducibility\nCompilation is encoded in CI rather than relying on an undocumented local TeX command."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository is owner-driven. The current latest commit is authored by `github-actions[bot]` because the checked-in GitHub Actions workflow compiles updated LaTeX sources and commits the generated PDFs automatically.\n\nThe bot-authored PDF commits are build artifacts produced by owner-configured automation; they are not treated as separate human authorship.\n\nThe repository also contains an auxiliary Python nRF RSSI tool. That utility is documented separately from the primary CV-management system so its hardware-measurement purpose does not blur the repository's main role."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 110 / 134\n- Name: `CV-Highly-Organized`\n- Repository start date: 2026-07-19\n- Last meaningful update date: 2026-08-22\n- Latest meaningful commit: `85f0549993d2085bfb6e84e08888387c45f4e4bf`\n- Primary type: Structured multi-CV source repository with automated PDF builds and authenticated artifact browser\n- Technical field: LaTeX document engineering, CI automation, frontend engineering, repository tooling\n- Application domain: Career-document generation and role-specific CV management\n- Collaboration type: `individual-project`\n- Primary languages: TeX / LaTeX, HTML, CSS, JavaScript, Python",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository is owner-driven. The current latest commit is authored by `github-actions[bot]` because the checked-in GitHub Actions workflow compiles updated LaTeX sources and commits the generated PDFs automatically.\n\nThe bot-authored PDF commits are build artifacts produced by owner-configured automation; they are not treated as separate human authorship.\n\nThe repository also contains an auxiliary Python nRF RSSI tool. That utility is documented separately from the primary CV-management system so its hardware-measurement purpose does not blur the repository's main role.",
+      "source_line_start": 16,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- root `README.md`;\n- the structured CV directory hierarchy;\n- `.github/workflows/build-cvs.yml`;\n- the authenticated `index.html` CV manager;\n- representative `main.tex` and category README artifacts;\n- auxiliary `tesp.py`;\n- commit history through the August 22 automated PDF build.",
+      "source_line_start": 24,
+      "source_line_end": 36
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`CV-Highly-Organized` is a source-controlled library of role-specific CV variants organized by career category rather than by Git branch.\n\nThe repository preserves a master CV and specialized positioning variants for areas such as:\n\n- embedded engineering;\n- QA;\n- software engineering;\n- systems engineering;\n- wireless engineering;\n- 5G/RAN;\n- wireless systems;\n- RF testing;\n- technical sales.\n\nEach active CV remains ordinary repository content, with Git history providing version history across all variants.\n\nThe project then adds two pieces of automation around this document library:\n\n1. GitHub Actions compiles every `main.tex` into a colocated `main.pdf` and commits changed PDFs.\n2. A responsive authenticated browser reads the repository hierarchy through the GitHub API and exposes the built PDFs as a searchable/downloadable CV workspace.\n\nThis turns what could have been a directory of independent documents into a managed artifact system.",
+      "source_line_start": 36,
+      "source_line_end": 61
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Career Hierarchy\n\nThe root README explicitly defines a hierarchical organization.\n\nThe major top-level families include:\n\n- `Engineering`;\n- `MasterCV`;\n- `Non-Engineering`.\n\nEngineering branches then specialize further into role families and sub-specializations.\n\nThis hierarchy allows closely related positioning variants to remain structurally adjacent instead of being duplicated into disconnected repositories or branches.\n\n### CV Source Contract\n\nCV categories are centered on:\n\n- `main.tex` — active LaTeX source;\n- `README.md` — positioning/category documentation.\n\nThe generated `main.pdf` becomes the built artifact next to the source.\n\n### Git-Based Versioning\n\nThe root documentation explicitly rejects the pattern of maintaining each CV variant in a separate Git branch.\n\nInstead:\n\n- all active variants coexist on `main`;\n- directories encode category identity;\n- commits preserve evolution over time.\n\nThis makes cross-variant maintenance and discovery easier than branch-per-document organization.",
+      "source_line_start": 61,
+      "source_line_end": 98
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Career Hierarchy",
+      "normalized_title": "Career Hierarchy",
+      "key": "career_hierarchy",
+      "path": [
+        "Project Scope",
+        "Career Hierarchy"
+      ],
+      "content": "The root README explicitly defines a hierarchical organization.\n\nThe major top-level families include:\n\n- `Engineering`;\n- `MasterCV`;\n- `Non-Engineering`.\n\nEngineering branches then specialize further into role families and sub-specializations.\n\nThis hierarchy allows closely related positioning variants to remain structurally adjacent instead of being duplicated into disconnected repositories or branches.",
+      "source_line_start": 63,
+      "source_line_end": 77
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "CV Source Contract",
+      "normalized_title": "CV Source Contract",
+      "key": "cv_source_contract",
+      "path": [
+        "Project Scope",
+        "CV Source Contract"
+      ],
+      "content": "CV categories are centered on:\n\n- `main.tex` — active LaTeX source;\n- `README.md` — positioning/category documentation.\n\nThe generated `main.pdf` becomes the built artifact next to the source.",
+      "source_line_start": 77,
+      "source_line_end": 86
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Git-Based Versioning",
+      "normalized_title": "Git-Based Versioning",
+      "key": "git_based_versioning",
+      "path": [
+        "Project Scope",
+        "Git-Based Versioning"
+      ],
+      "content": "The root documentation explicitly rejects the pattern of maintaining each CV variant in a separate Git branch.\n\nInstead:\n\n- all active variants coexist on `main`;\n- directories encode category identity;\n- commits preserve evolution over time.\n\nThis makes cross-variant maintenance and discovery easier than branch-per-document organization.",
+      "source_line_start": 86,
+      "source_line_end": 98
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Automated PDF Build Pipeline",
+      "normalized_title": "Automated PDF Build Pipeline",
+      "key": "automated_pdf_build_pipeline",
+      "path": [
+        "Automated PDF Build Pipeline"
+      ],
+      "content": "### GitHub Actions Trigger\n\n`Build CV PDFs` runs on:\n\n- pushes to `main` affecting `**/*.tex`;\n- changes to the workflow itself;\n- manual `workflow_dispatch`.\n\nThe path filter prevents unrelated changes from needlessly recompiling the document set.\n\n### Multi-CV Compilation\n\nThe workflow uses `xu-cheng/latex-action@v4` with:\n\n- root pattern `**/main.tex`;\n- compilation in each root file's own directory;\n- Debian environment;\n- current TeX Live;\n- failure propagation rather than silently ignoring compile failures.\n\nThe pattern allows all role-specific CVs to be built through one workflow.\n\n### Generated Artifact Commit\n\nAfter compilation, the workflow searches recursively for `main.pdf`, stages them, checks whether any PDF actually changed, and exits cleanly when there is nothing to commit.\n\nWhen changes exist, it configures the GitHub Actions bot identity, commits the generated PDFs, and pushes them back to the repository.\n\nThis creates a source-plus-built-artifact workflow in which users can retrieve a current PDF without compiling LaTeX locally.",
+      "source_line_start": 98,
+      "source_line_end": 130
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "GitHub Actions Trigger",
+      "normalized_title": "GitHub Actions Trigger",
+      "key": "github_actions_trigger",
+      "path": [
+        "Automated PDF Build Pipeline",
+        "GitHub Actions Trigger"
+      ],
+      "content": "`Build CV PDFs` runs on:\n\n- pushes to `main` affecting `**/*.tex`;\n- changes to the workflow itself;\n- manual `workflow_dispatch`.\n\nThe path filter prevents unrelated changes from needlessly recompiling the document set.",
+      "source_line_start": 100,
+      "source_line_end": 110
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Multi-CV Compilation",
+      "normalized_title": "Multi-CV Compilation",
+      "key": "multi_cv_compilation",
+      "path": [
+        "Automated PDF Build Pipeline",
+        "Multi-CV Compilation"
+      ],
+      "content": "The workflow uses `xu-cheng/latex-action@v4` with:\n\n- root pattern `**/main.tex`;\n- compilation in each root file's own directory;\n- Debian environment;\n- current TeX Live;\n- failure propagation rather than silently ignoring compile failures.\n\nThe pattern allows all role-specific CVs to be built through one workflow.",
+      "source_line_start": 110,
+      "source_line_end": 122
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Generated Artifact Commit",
+      "normalized_title": "Generated Artifact Commit",
+      "key": "generated_artifact_commit",
+      "path": [
+        "Automated PDF Build Pipeline",
+        "Generated Artifact Commit"
+      ],
+      "content": "After compilation, the workflow searches recursively for `main.pdf`, stages them, checks whether any PDF actually changed, and exits cleanly when there is nothing to commit.\n\nWhen changes exist, it configures the GitHub Actions bot identity, commits the generated PDFs, and pushes them back to the repository.\n\nThis creates a source-plus-built-artifact workflow in which users can retrieve a current PDF without compiling LaTeX locally.",
+      "source_line_start": 122,
+      "source_line_end": 130
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Authenticated Career CV Manager",
+      "normalized_title": "Authenticated Career CV Manager",
+      "key": "authenticated_career_cv_manager",
+      "path": [
+        "Authenticated Career CV Manager"
+      ],
+      "content": "### Browser Application\n\n`index.html` is a large standalone browser application that presents the repository as a CV workspace.\n\nIts interface includes:\n\n- Firebase email/password login;\n- desktop sidebar navigation;\n- mobile drawer navigation;\n- repository breadcrumb;\n- recursive folder tree;\n- search;\n- grid/list views;\n- dark/light theme;\n- repository refresh;\n- CV/folder statistics;\n- built-PDF download actions;\n- status toasts and error states.\n\n### Firebase Authentication\n\nThe application initializes Firebase Authentication and uses:\n\n- `signInWithEmailAndPassword`;\n- `onAuthStateChanged`;\n- `signOut`.\n\nThe document browser is shown only within the authenticated session state.\n\nThe corpus records the authentication mechanism without reproducing repository configuration values.\n\n### Fixed Repository Boundary\n\nThe browser is intentionally scoped to one fixed GitHub repository:\n\n`kirolossedra/CV-Highly-Organized`.\n\nThe application does not ask the user to supply arbitrary owner/repository names.\n\nThis gives the UI a narrow operational purpose: browse and retrieve this particular CV library.\n\n### Recursive GitHub Tree Loading\n\nThe application calls the GitHub repository tree endpoint with recursive traversal enabled.\n\nThe returned paths are converted into an in-memory folder structure.\n\nThe builder:\n\n- filters hidden/build/dependency paths;\n- creates folder nodes from path segments;\n- recognizes built `main.pdf` blobs;\n- associates each PDF with a sibling `main.tex` source path;\n- sorts folders and files;\n- counts descendant PDFs;\n- produces flat folder/file lists for search and statistics.\n\n### Dynamic Hierarchy\n\nThe frontend does not maintain a hard-coded JavaScript list of every CV category.\n\nIt derives the navigation tree from the GitHub repository itself.\n\nNew qualifying folders/PDFs can therefore appear in the browser without manually changing a second category registry in the frontend.\n\n### Repository Cache\n\nThe recursive tree response is cached in `localStorage`.\n\nThe application:\n\n- namespaces the cache by owner/repository/branch;\n- records synchronization time;\n- accepts cached data only within a bounded age;\n- renders cached data quickly;\n- then performs a forced background refresh.\n\nThis balances responsiveness with repository freshness.\n\n### GitHub Error Handling\n\nThe frontend handles notable API failure states including:\n\n- GitHub API rate-limit exhaustion;\n- missing repository/main branch;\n- truncated recursive tree responses.\n\nThese states are surfaced through repository-status UI and toasts rather than being swallowed silently.\n\n### Search and Navigation\n\nFolders and files are flattened from the tree to support search while retaining their hierarchical paths.\n\nNavigation uses the URL hash so the current repository path is represented in browser state.\n\nAncestor folders are expanded when navigating to nested paths.\n\n### Download Naming\n\nThe UI downloads the CI-built PDF while applying a locally generated filename derived from:\n\n- the CV folder/category;\n- current timestamp.\n\nThis makes downloaded artifacts distinguishable without changing the canonical checked-in `main.pdf` filename.\n\n### Theme and View Persistence\n\nThe selected theme and grid/list preference are stored in `localStorage`.\n\nThis is separate from the short-lived GitHub tree cache.\n\n### Responsive UI\n\nThe interface adapts from a desktop sidebar layout to a mobile drawer and single-column card presentation.\n\nIt also honors reduced-motion preferences by reducing animation/transition durations.",
+      "source_line_start": 130,
+      "source_line_end": 250
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Browser Application",
+      "normalized_title": "Browser Application",
+      "key": "browser_application",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Browser Application"
+      ],
+      "content": "`index.html` is a large standalone browser application that presents the repository as a CV workspace.\n\nIts interface includes:\n\n- Firebase email/password login;\n- desktop sidebar navigation;\n- mobile drawer navigation;\n- repository breadcrumb;\n- recursive folder tree;\n- search;\n- grid/list views;\n- dark/light theme;\n- repository refresh;\n- CV/folder statistics;\n- built-PDF download actions;\n- status toasts and error states.",
+      "source_line_start": 132,
+      "source_line_end": 151
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Firebase Authentication",
+      "normalized_title": "Firebase Authentication",
+      "key": "firebase_authentication",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Firebase Authentication"
+      ],
+      "content": "The application initializes Firebase Authentication and uses:\n\n- `signInWithEmailAndPassword`;\n- `onAuthStateChanged`;\n- `signOut`.\n\nThe document browser is shown only within the authenticated session state.\n\nThe corpus records the authentication mechanism without reproducing repository configuration values.",
+      "source_line_start": 151,
+      "source_line_end": 163
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Fixed Repository Boundary",
+      "normalized_title": "Fixed Repository Boundary",
+      "key": "fixed_repository_boundary",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Fixed Repository Boundary"
+      ],
+      "content": "The browser is intentionally scoped to one fixed GitHub repository:\n\n`kirolossedra/CV-Highly-Organized`.\n\nThe application does not ask the user to supply arbitrary owner/repository names.\n\nThis gives the UI a narrow operational purpose: browse and retrieve this particular CV library.",
+      "source_line_start": 163,
+      "source_line_end": 173
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Recursive GitHub Tree Loading",
+      "normalized_title": "Recursive GitHub Tree Loading",
+      "key": "recursive_github_tree_loading",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Recursive GitHub Tree Loading"
+      ],
+      "content": "The application calls the GitHub repository tree endpoint with recursive traversal enabled.\n\nThe returned paths are converted into an in-memory folder structure.\n\nThe builder:\n\n- filters hidden/build/dependency paths;\n- creates folder nodes from path segments;\n- recognizes built `main.pdf` blobs;\n- associates each PDF with a sibling `main.tex` source path;\n- sorts folders and files;\n- counts descendant PDFs;\n- produces flat folder/file lists for search and statistics.",
+      "source_line_start": 173,
+      "source_line_end": 189
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Dynamic Hierarchy",
+      "normalized_title": "Dynamic Hierarchy",
+      "key": "dynamic_hierarchy",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Dynamic Hierarchy"
+      ],
+      "content": "The frontend does not maintain a hard-coded JavaScript list of every CV category.\n\nIt derives the navigation tree from the GitHub repository itself.\n\nNew qualifying folders/PDFs can therefore appear in the browser without manually changing a second category registry in the frontend.",
+      "source_line_start": 189,
+      "source_line_end": 197
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Repository Cache",
+      "normalized_title": "Repository Cache",
+      "key": "repository_cache",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Repository Cache"
+      ],
+      "content": "The recursive tree response is cached in `localStorage`.\n\nThe application:\n\n- namespaces the cache by owner/repository/branch;\n- records synchronization time;\n- accepts cached data only within a bounded age;\n- renders cached data quickly;\n- then performs a forced background refresh.\n\nThis balances responsiveness with repository freshness.",
+      "source_line_start": 197,
+      "source_line_end": 211
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "GitHub Error Handling",
+      "normalized_title": "GitHub Error Handling",
+      "key": "github_error_handling",
+      "path": [
+        "Authenticated Career CV Manager",
+        "GitHub Error Handling"
+      ],
+      "content": "The frontend handles notable API failure states including:\n\n- GitHub API rate-limit exhaustion;\n- missing repository/main branch;\n- truncated recursive tree responses.\n\nThese states are surfaced through repository-status UI and toasts rather than being swallowed silently.",
+      "source_line_start": 211,
+      "source_line_end": 221
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Search and Navigation",
+      "normalized_title": "Search and Navigation",
+      "key": "search_and_navigation",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Search and Navigation"
+      ],
+      "content": "Folders and files are flattened from the tree to support search while retaining their hierarchical paths.\n\nNavigation uses the URL hash so the current repository path is represented in browser state.\n\nAncestor folders are expanded when navigating to nested paths.",
+      "source_line_start": 221,
+      "source_line_end": 229
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Download Naming",
+      "normalized_title": "Download Naming",
+      "key": "download_naming",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Download Naming"
+      ],
+      "content": "The UI downloads the CI-built PDF while applying a locally generated filename derived from:\n\n- the CV folder/category;\n- current timestamp.\n\nThis makes downloaded artifacts distinguishable without changing the canonical checked-in `main.pdf` filename.",
+      "source_line_start": 229,
+      "source_line_end": 238
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Theme and View Persistence",
+      "normalized_title": "Theme and View Persistence",
+      "key": "theme_and_view_persistence",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Theme and View Persistence"
+      ],
+      "content": "The selected theme and grid/list preference are stored in `localStorage`.\n\nThis is separate from the short-lived GitHub tree cache.",
+      "source_line_start": 238,
+      "source_line_end": 244
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Responsive UI",
+      "normalized_title": "Responsive UI",
+      "key": "responsive_ui",
+      "path": [
+        "Authenticated Career CV Manager",
+        "Responsive UI"
+      ],
+      "content": "The interface adapts from a desktop sidebar layout to a mobile drawer and single-column card presentation.\n\nIt also honors reduced-motion preferences by reducing animation/transition durations.",
+      "source_line_start": 244,
+      "source_line_end": 250
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nRole-specific main.tex sources\n            ↓\nGitHub push to main\n            ↓\nGitHub Actions / latex-action\n            ↓\nmain.pdf artifacts\n            ↓\nautomated bot commit\n            ↓\nGitHub repository tree\n            ↓ GitHub API\nAuthenticated browser\n            ↓\nrecursive category navigation / search\n            ↓\nPDF download with local timestamped filename\n```\n\nThe repository itself is both the source store and the artifact catalog.",
+      "source_line_start": 250,
+      "source_line_end": 274
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### LaTeX\n\nLaTeX provides the editable source format for the CV variants.\n\n### GitHub Actions\n\nGitHub Actions turns document edits into reproducible PDF builds and checked-in artifacts.\n\n### Bash\n\nThe workflow's shell step discovers PDFs, stages changes, checks the index, configures the bot identity, commits, and pushes.\n\n### HTML / CSS / JavaScript\n\nA standalone frontend implements the authenticated CV browser without requiring a separate frontend framework.\n\n### Firebase Authentication\n\nFirebase supplies email/password session authentication for access to the browser workspace.\n\n### GitHub REST API\n\nThe browser retrieves the recursive repository tree directly from GitHub.\n\n### localStorage\n\nBrowser storage persists:\n\n- repository-tree cache;\n- theme preference;\n- view preference.",
+      "source_line_start": 274,
+      "source_line_end": 308
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "LaTeX",
+      "normalized_title": "LaTeX",
+      "key": "latex",
+      "path": [
+        "Technical Stack",
+        "LaTeX"
+      ],
+      "content": "LaTeX provides the editable source format for the CV variants.",
+      "source_line_start": 276,
+      "source_line_end": 280
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "GitHub Actions",
+      "normalized_title": "GitHub Actions",
+      "key": "github_actions",
+      "path": [
+        "Technical Stack",
+        "GitHub Actions"
+      ],
+      "content": "GitHub Actions turns document edits into reproducible PDF builds and checked-in artifacts.",
+      "source_line_start": 280,
+      "source_line_end": 284
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Bash",
+      "normalized_title": "Bash",
+      "key": "bash",
+      "path": [
+        "Technical Stack",
+        "Bash"
+      ],
+      "content": "The workflow's shell step discovers PDFs, stages changes, checks the index, configures the bot identity, commits, and pushes.",
+      "source_line_start": 284,
+      "source_line_end": 288
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "HTML / CSS / JavaScript",
+      "normalized_title": "HTML / CSS / JavaScript",
+      "key": "html_css_javascript",
+      "path": [
+        "Technical Stack",
+        "HTML / CSS / JavaScript"
+      ],
+      "content": "A standalone frontend implements the authenticated CV browser without requiring a separate frontend framework.",
+      "source_line_start": 288,
+      "source_line_end": 292
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Firebase Authentication",
+      "normalized_title": "Firebase Authentication",
+      "key": "firebase_authentication",
+      "path": [
+        "Technical Stack",
+        "Firebase Authentication"
+      ],
+      "content": "Firebase supplies email/password session authentication for access to the browser workspace.",
+      "source_line_start": 292,
+      "source_line_end": 296
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "GitHub REST API",
+      "normalized_title": "GitHub REST API",
+      "key": "github_rest_api",
+      "path": [
+        "Technical Stack",
+        "GitHub REST API"
+      ],
+      "content": "The browser retrieves the recursive repository tree directly from GitHub.",
+      "source_line_start": 296,
+      "source_line_end": 300
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "localStorage",
+      "normalized_title": "localStorage",
+      "key": "localstorage",
+      "path": [
+        "Technical Stack",
+        "localStorage"
+      ],
+      "content": "Browser storage persists:\n\n- repository-tree cache;\n- theme preference;\n- view preference.",
+      "source_line_start": 300,
+      "source_line_end": 308
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Repository-as-Data-Source Design\n\nThe source repository hierarchy is the canonical category model for the frontend.\n\nThis avoids maintaining the same CV taxonomy separately in source-control folders and application configuration.\n\n### Build Artifact Automation\n\nA source edit can propagate through compilation and artifact commit without manual local PDF generation.\n\n### Recursive Tree Materialization\n\nGitHub flat path entries are transformed into a navigable folder object graph and flat indexes for search.\n\n### Cache-Then-Refresh Behavior\n\nFresh-enough cached hierarchy data can render immediately while a remote synchronization follows in the background.\n\n### Authentication State Transition\n\nThe frontend explicitly separates login and application views and reacts to Firebase authentication-state changes.\n\n### Artifact-Oriented UX\n\nThe interface is optimized around one concrete user task: locate a career-specific CV and download the current built PDF.",
+      "source_line_start": 308,
+      "source_line_end": 336
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Repository-as-Data-Source Design",
+      "normalized_title": "Repository-as-Data-Source Design",
+      "key": "repository_as_data_source_design",
+      "path": [
+        "Major Engineering Work",
+        "Repository-as-Data-Source Design"
+      ],
+      "content": "The source repository hierarchy is the canonical category model for the frontend.\n\nThis avoids maintaining the same CV taxonomy separately in source-control folders and application configuration.",
+      "source_line_start": 310,
+      "source_line_end": 316
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Build Artifact Automation",
+      "normalized_title": "Build Artifact Automation",
+      "key": "build_artifact_automation",
+      "path": [
+        "Major Engineering Work",
+        "Build Artifact Automation"
+      ],
+      "content": "A source edit can propagate through compilation and artifact commit without manual local PDF generation.",
+      "source_line_start": 316,
+      "source_line_end": 320
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Recursive Tree Materialization",
+      "normalized_title": "Recursive Tree Materialization",
+      "key": "recursive_tree_materialization",
+      "path": [
+        "Major Engineering Work",
+        "Recursive Tree Materialization"
+      ],
+      "content": "GitHub flat path entries are transformed into a navigable folder object graph and flat indexes for search.",
+      "source_line_start": 320,
+      "source_line_end": 324
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Cache-Then-Refresh Behavior",
+      "normalized_title": "Cache-Then-Refresh Behavior",
+      "key": "cache_then_refresh_behavior",
+      "path": [
+        "Major Engineering Work",
+        "Cache-Then-Refresh Behavior"
+      ],
+      "content": "Fresh-enough cached hierarchy data can render immediately while a remote synchronization follows in the background.",
+      "source_line_start": 324,
+      "source_line_end": 328
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Authentication State Transition",
+      "normalized_title": "Authentication State Transition",
+      "key": "authentication_state_transition",
+      "path": [
+        "Major Engineering Work",
+        "Authentication State Transition"
+      ],
+      "content": "The frontend explicitly separates login and application views and reacts to Firebase authentication-state changes.",
+      "source_line_start": 328,
+      "source_line_end": 332
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Artifact-Oriented UX",
+      "normalized_title": "Artifact-Oriented UX",
+      "key": "artifact_oriented_ux",
+      "path": [
+        "Major Engineering Work",
+        "Artifact-Oriented UX"
+      ],
+      "content": "The interface is optimized around one concrete user task: locate a career-specific CV and download the current built PDF.",
+      "source_line_start": 332,
+      "source_line_end": 336
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "CI and Verification",
+      "normalized_title": "CI and Verification",
+      "key": "ci_and_verification",
+      "path": [
+        "CI and Verification"
+      ],
+      "content": "### LaTeX Compilation as CI Validation\n\nEvery matching `main.tex` is compiled by the workflow.\n\nBecause `continue_on_error` is false, a failed document build prevents the normal artifact-commit step from representing the source as successfully compiled.\n\n### No-Change Guard\n\nThe workflow checks the staged diff before creating a bot commit.\n\nThis prevents empty automation commits when generated PDFs remain identical.\n\n### Built Artifact Evidence\n\nThe checked-in `main.pdf` files and bot build commits provide direct evidence that the document-build workflow has executed.",
+      "source_line_start": 336,
+      "source_line_end": 354
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "LaTeX Compilation as CI Validation",
+      "normalized_title": "LaTeX Compilation as CI Validation",
+      "key": "latex_compilation_as_ci_validation",
+      "path": [
+        "CI and Verification",
+        "LaTeX Compilation as CI Validation"
+      ],
+      "content": "Every matching `main.tex` is compiled by the workflow.\n\nBecause `continue_on_error` is false, a failed document build prevents the normal artifact-commit step from representing the source as successfully compiled.",
+      "source_line_start": 338,
+      "source_line_end": 344
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "No-Change Guard",
+      "normalized_title": "No-Change Guard",
+      "key": "no_change_guard",
+      "path": [
+        "CI and Verification",
+        "No-Change Guard"
+      ],
+      "content": "The workflow checks the staged diff before creating a bot commit.\n\nThis prevents empty automation commits when generated PDFs remain identical.",
+      "source_line_start": 344,
+      "source_line_end": 350
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Built Artifact Evidence",
+      "normalized_title": "Built Artifact Evidence",
+      "key": "built_artifact_evidence",
+      "path": [
+        "CI and Verification",
+        "Built Artifact Evidence"
+      ],
+      "content": "The checked-in `main.pdf` files and bot build commits provide direct evidence that the document-build workflow has executed.",
+      "source_line_start": 350,
+      "source_line_end": 354
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Single-Branch Multi-Variant Organization\n\nDirectories, rather than branches, represent active CV variants.\n\n### Source / Artifact Pairing\n\nEach CV keeps editable source and generated output colocated.\n\n### Automated Reproducibility\n\nCompilation is encoded in CI rather than relying on an undocumented local TeX command.\n\n### Derived Navigation\n\nThe frontend derives its data model from repository state rather than a duplicated manual category list.\n\n### Bounded Browser Caching\n\nThe application gives repository metadata a finite cache lifetime and refreshes in the background.\n\n### Graceful API Diagnostics\n\nRate limits, missing repository state, and truncated tree responses receive specific handling.",
+      "source_line_start": 354,
+      "source_line_end": 380
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Single-Branch Multi-Variant Organization",
+      "normalized_title": "Single-Branch Multi-Variant Organization",
+      "key": "single_branch_multi_variant_organization",
+      "path": [
+        "Engineering Practices",
+        "Single-Branch Multi-Variant Organization"
+      ],
+      "content": "Directories, rather than branches, represent active CV variants.",
+      "source_line_start": 356,
+      "source_line_end": 360
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Source / Artifact Pairing",
+      "normalized_title": "Source / Artifact Pairing",
+      "key": "source_artifact_pairing",
+      "path": [
+        "Engineering Practices",
+        "Source / Artifact Pairing"
+      ],
+      "content": "Each CV keeps editable source and generated output colocated.",
+      "source_line_start": 360,
+      "source_line_end": 364
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Automated Reproducibility",
+      "normalized_title": "Automated Reproducibility",
+      "key": "automated_reproducibility",
+      "path": [
+        "Engineering Practices",
+        "Automated Reproducibility"
+      ],
+      "content": "Compilation is encoded in CI rather than relying on an undocumented local TeX command.",
+      "source_line_start": 364,
+      "source_line_end": 368
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Derived Navigation",
+      "normalized_title": "Derived Navigation",
+      "key": "derived_navigation",
+      "path": [
+        "Engineering Practices",
+        "Derived Navigation"
+      ],
+      "content": "The frontend derives its data model from repository state rather than a duplicated manual category list.",
+      "source_line_start": 368,
+      "source_line_end": 372
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Bounded Browser Caching",
+      "normalized_title": "Bounded Browser Caching",
+      "key": "bounded_browser_caching",
+      "path": [
+        "Engineering Practices",
+        "Bounded Browser Caching"
+      ],
+      "content": "The application gives repository metadata a finite cache lifetime and refreshes in the background.",
+      "source_line_start": 372,
+      "source_line_end": 376
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Graceful API Diagnostics",
+      "normalized_title": "Graceful API Diagnostics",
+      "key": "graceful_api_diagnostics",
+      "path": [
+        "Engineering Practices",
+        "Graceful API Diagnostics"
+      ],
+      "content": "Rate limits, missing repository state, and truncated tree responses receive specific handling.",
+      "source_line_start": 376,
+      "source_line_end": 380
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Auxiliary nRF RSSI Measurement Utility",
+      "normalized_title": "Auxiliary nRF RSSI Measurement Utility",
+      "key": "auxiliary_nrf_rssi_measurement_utility",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility"
+      ],
+      "content": "The repository also contains `tesp.py`, a separate Python desktop measurement tool.\n\nThis utility is not part of the CV build/browser architecture, but it is substantive repository evidence and is therefore preserved as an auxiliary capability.\n\n### Physical Board Detection\n\nThe script enumerates serial ports and identifies likely nRF/J-Link/CMSIS-DAP interfaces.\n\nMultiple serial interfaces exposed by one physical debugger board are grouped using identifiers such as:\n\n- serial number;\n- physical USB location;\n- HWID-derived serial/location data.\n\nThis avoids treating multiple CDC interfaces as multiple physical nRF boards.\n\n### UART Interface Probing\n\nFor each physical board, candidate serial interfaces are opened briefly and probed for readable output.\n\nIf one interface clearly produces UART data, it is selected automatically.\n\nAmbiguous cases fall back to explicit operator selection.\n\n### Timestamped Run Artifacts\n\nMeasurement runs are placed into uniquely timestamped folders.\n\n### RSSI Parsing and Visualization\n\nThe program identifies RSSI values from incoming text and uses PySide6 plus pyqtgraph for live desktop visualization.\n\n### Cutoff Events\n\nThe source defines a `CutoffEvent` model representing transitions in which the leading board changes, retaining:\n\n- event number;\n- timestamp;\n- elapsed time;\n- previous/new leader;\n- both RSSI values;\n- pre-cutoff gap;\n- gap at the transition.\n\nThis is direct evidence of turning two-board signal observations into structured events.",
+      "source_line_start": 380,
+      "source_line_end": 428
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Physical Board Detection",
+      "normalized_title": "Physical Board Detection",
+      "key": "physical_board_detection",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility",
+        "Physical Board Detection"
+      ],
+      "content": "The script enumerates serial ports and identifies likely nRF/J-Link/CMSIS-DAP interfaces.\n\nMultiple serial interfaces exposed by one physical debugger board are grouped using identifiers such as:\n\n- serial number;\n- physical USB location;\n- HWID-derived serial/location data.\n\nThis avoids treating multiple CDC interfaces as multiple physical nRF boards.",
+      "source_line_start": 386,
+      "source_line_end": 398
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "UART Interface Probing",
+      "normalized_title": "UART Interface Probing",
+      "key": "uart_interface_probing",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility",
+        "UART Interface Probing"
+      ],
+      "content": "For each physical board, candidate serial interfaces are opened briefly and probed for readable output.\n\nIf one interface clearly produces UART data, it is selected automatically.\n\nAmbiguous cases fall back to explicit operator selection.",
+      "source_line_start": 398,
+      "source_line_end": 406
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Timestamped Run Artifacts",
+      "normalized_title": "Timestamped Run Artifacts",
+      "key": "timestamped_run_artifacts",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility",
+        "Timestamped Run Artifacts"
+      ],
+      "content": "Measurement runs are placed into uniquely timestamped folders.",
+      "source_line_start": 406,
+      "source_line_end": 410
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "RSSI Parsing and Visualization",
+      "normalized_title": "RSSI Parsing and Visualization",
+      "key": "rssi_parsing_and_visualization",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility",
+        "RSSI Parsing and Visualization"
+      ],
+      "content": "The program identifies RSSI values from incoming text and uses PySide6 plus pyqtgraph for live desktop visualization.",
+      "source_line_start": 410,
+      "source_line_end": 414
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Cutoff Events",
+      "normalized_title": "Cutoff Events",
+      "key": "cutoff_events",
+      "path": [
+        "Auxiliary nRF RSSI Measurement Utility",
+        "Cutoff Events"
+      ],
+      "content": "The source defines a `CutoffEvent` model representing transitions in which the leading board changes, retaining:\n\n- event number;\n- timestamp;\n- elapsed time;\n- previous/new leader;\n- both RSSI values;\n- pre-cutoff gap;\n- gap at the transition.\n\nThis is direct evidence of turning two-board signal observations into structured events.",
+      "source_line_start": 414,
+      "source_line_end": 428
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Auxiliary Technical Stack",
+      "normalized_title": "Auxiliary Technical Stack",
+      "key": "auxiliary_technical_stack",
+      "path": [
+        "Auxiliary Technical Stack"
+      ],
+      "content": "### Python\n\nPython implements serial discovery, run management, event modeling, and GUI orchestration.\n\n### PySerial\n\nPySerial enumerates and reads J-Link/nRF serial interfaces.\n\n### PySide6\n\nPySide6 implements the desktop application UI and worker-thread signaling.\n\n### pyqtgraph\n\npyqtgraph renders live RSSI data.",
+      "source_line_start": 428,
+      "source_line_end": 446
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Auxiliary Technical Stack",
+        "Python"
+      ],
+      "content": "Python implements serial discovery, run management, event modeling, and GUI orchestration.",
+      "source_line_start": 430,
+      "source_line_end": 434
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "PySerial",
+      "normalized_title": "PySerial",
+      "key": "pyserial",
+      "path": [
+        "Auxiliary Technical Stack",
+        "PySerial"
+      ],
+      "content": "PySerial enumerates and reads J-Link/nRF serial interfaces.",
+      "source_line_start": 434,
+      "source_line_end": 438
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "PySide6",
+      "normalized_title": "PySide6",
+      "key": "pyside6",
+      "path": [
+        "Auxiliary Technical Stack",
+        "PySide6"
+      ],
+      "content": "PySide6 implements the desktop application UI and worker-thread signaling.",
+      "source_line_start": 438,
+      "source_line_end": 442
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "pyqtgraph",
+      "normalized_title": "pyqtgraph",
+      "key": "pyqtgraph",
+      "path": [
+        "Auxiliary Technical Stack",
+        "pyqtgraph"
+      ],
+      "content": "pyqtgraph renders live RSSI data.",
+      "source_line_start": 442,
+      "source_line_end": 446
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Document Scale\n\nThe primary system maintains multiple career-specific documents across a nested taxonomy rather than one CV source.\n\n### Build Scale\n\nOne workflow recursively compiles every matching CV source and publishes changed PDF artifacts.\n\n### Frontend State Complexity\n\nThe browser manages authentication, hierarchical repository state, search, navigation, caching, theme/view preferences, and artifact downloads.\n\n### Repository Breadth\n\nThe repository also preserves a separate hardware-measurement utility, demonstrating that the workspace accumulated a secondary operational tool alongside the CV system.",
+      "source_line_start": 446,
+      "source_line_end": 464
+    },
+    {
+      "id": "s064",
+      "level": 3,
+      "title": "Document Scale",
+      "normalized_title": "Document Scale",
+      "key": "document_scale",
+      "path": [
+        "Scale and Complexity",
+        "Document Scale"
+      ],
+      "content": "The primary system maintains multiple career-specific documents across a nested taxonomy rather than one CV source.",
+      "source_line_start": 448,
+      "source_line_end": 452
+    },
+    {
+      "id": "s065",
+      "level": 3,
+      "title": "Build Scale",
+      "normalized_title": "Build Scale",
+      "key": "build_scale",
+      "path": [
+        "Scale and Complexity",
+        "Build Scale"
+      ],
+      "content": "One workflow recursively compiles every matching CV source and publishes changed PDF artifacts.",
+      "source_line_start": 452,
+      "source_line_end": 456
+    },
+    {
+      "id": "s066",
+      "level": 3,
+      "title": "Frontend State Complexity",
+      "normalized_title": "Frontend State Complexity",
+      "key": "frontend_state_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Frontend State Complexity"
+      ],
+      "content": "The browser manages authentication, hierarchical repository state, search, navigation, caching, theme/view preferences, and artifact downloads.",
+      "source_line_start": 456,
+      "source_line_end": 460
+    },
+    {
+      "id": "s067",
+      "level": 3,
+      "title": "Repository Breadth",
+      "normalized_title": "Repository Breadth",
+      "key": "repository_breadth",
+      "path": [
+        "Scale and Complexity",
+        "Repository Breadth"
+      ],
+      "content": "The repository also preserves a separate hardware-measurement utility, demonstrating that the workspace accumulated a secondary operational tool alongside the CV system.",
+      "source_line_start": 460,
+      "source_line_end": 464
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Document Engineering\n\n- **LaTeX — strong evidence.**\n- **Multi-document information architecture — strong evidence.**\n- **Role-specific document variants — strong evidence.**\n\n### CI / Delivery\n\n- **GitHub Actions — strong evidence.**\n- **Automated LaTeX compilation — strong evidence.**\n- **Generated artifact commits — strong evidence.**\n- **Path-filtered workflow triggers — strong evidence.**\n\n### Frontend\n\n- **HTML/CSS/JavaScript — strong evidence.**\n- **Responsive application UI — strong evidence.**\n- **Recursive tree navigation — strong evidence.**\n- **Search and URL-state navigation — strong evidence.**\n- **localStorage caching/preferences — strong evidence.**\n\n### Authentication and APIs\n\n- **Firebase email/password authentication — strong evidence.**\n- **GitHub REST API integration — strong evidence.**\n- **API error/rate-limit handling — strong evidence.**\n\n### Auxiliary Hardware Tooling\n\n- **nRF/J-Link serial discovery — strong evidence.**\n- **Physical-device/interface disambiguation — strong evidence.**\n- **PySide6 — strong evidence.**\n- **pyqtgraph — strong evidence.**\n- **Live RSSI visualization — strong evidence.**",
+      "source_line_start": 464,
+      "source_line_end": 501
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Document Engineering",
+      "normalized_title": "Document Engineering",
+      "key": "document_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Document Engineering"
+      ],
+      "content": "- **LaTeX — strong evidence.**\n- **Multi-document information architecture — strong evidence.**\n- **Role-specific document variants — strong evidence.**",
+      "source_line_start": 466,
+      "source_line_end": 472
+    },
+    {
+      "id": "s070",
+      "level": 3,
+      "title": "CI / Delivery",
+      "normalized_title": "CI / Delivery",
+      "key": "ci_delivery",
+      "path": [
+        "Skills Demonstrated",
+        "CI / Delivery"
+      ],
+      "content": "- **GitHub Actions — strong evidence.**\n- **Automated LaTeX compilation — strong evidence.**\n- **Generated artifact commits — strong evidence.**\n- **Path-filtered workflow triggers — strong evidence.**",
+      "source_line_start": 472,
+      "source_line_end": 479
+    },
+    {
+      "id": "s071",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **HTML/CSS/JavaScript — strong evidence.**\n- **Responsive application UI — strong evidence.**\n- **Recursive tree navigation — strong evidence.**\n- **Search and URL-state navigation — strong evidence.**\n- **localStorage caching/preferences — strong evidence.**",
+      "source_line_start": 479,
+      "source_line_end": 487
+    },
+    {
+      "id": "s072",
+      "level": 3,
+      "title": "Authentication and APIs",
+      "normalized_title": "Authentication and APIs",
+      "key": "authentication_and_apis",
+      "path": [
+        "Skills Demonstrated",
+        "Authentication and APIs"
+      ],
+      "content": "- **Firebase email/password authentication — strong evidence.**\n- **GitHub REST API integration — strong evidence.**\n- **API error/rate-limit handling — strong evidence.**",
+      "source_line_start": 487,
+      "source_line_end": 493
+    },
+    {
+      "id": "s073",
+      "level": 3,
+      "title": "Auxiliary Hardware Tooling",
+      "normalized_title": "Auxiliary Hardware Tooling",
+      "key": "auxiliary_hardware_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Auxiliary Hardware Tooling"
+      ],
+      "content": "- **nRF/J-Link serial discovery — strong evidence.**\n- **Physical-device/interface disambiguation — strong evidence.**\n- **PySide6 — strong evidence.**\n- **pyqtgraph — strong evidence.**\n- **Live RSSI visualization — strong evidence.**",
+      "source_line_start": 493,
+      "source_line_end": 501
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The primary development represented here is treating professional documents as a maintained software-like artifact system.\n\nRole variants are structured as source, reproducibly compiled, versioned together, exposed through a derived repository hierarchy, authenticated, cached, searchable, and downloadable as built artifacts.",
+      "source_line_start": 501,
+      "source_line_end": 507
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 107 established the explicit career-repositioning strategy in a single LaTeX CV repository.\n\n`CV-Highly-Organized` expands that approach into a managed family of variants with automated compilation and an application interface over the resulting artifact library.\n\nThe progression is therefore from one source-controlled CV to a reusable career-document platform organized around multiple positioning strategies.",
+      "source_line_start": 507,
+      "source_line_end": 515
+    },
+    {
+      "id": "s076",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository that combines:\n\n- a nested multi-CV LaTeX library;\n- one CI workflow compiling every CV;\n- automated generated-PDF commits;\n- an authenticated GitHub-backed artifact browser;\n- dynamically derived repository navigation.",
+      "source_line_start": 515,
+      "source_line_end": 525
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`CV-Highly-Organized` is a structured career-document repository that applies software-engineering practices to a growing set of LaTeX CV variants.\n\nThe repository taxonomy keeps multiple role-positioned documents on one branch. GitHub Actions compiles every `main.tex`, commits changed PDFs, and turns the repository into a source-plus-artifact store. An authenticated standalone web application then reads the recursive GitHub tree, reconstructs the hierarchy, caches it locally, supports search and responsive navigation, and downloads the current CI-built PDF with a useful timestamped filename.\n\nThe repository also contains a separate nRF RSSI measurement utility with physical-board disambiguation, serial probing, timestamped runs, and live plotting. That secondary tool is meaningful evidence, but the primary architectural story remains the CV document pipeline and artifact browser.\n\n# Project Tags",
+      "source_line_start": 525,
+      "source_line_end": 535
+    },
+    {
+      "id": "s078",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `multi-cv-library`\n- `document-build-system`\n- `artifact-browser`\n- `individual-project`",
+      "source_line_start": 535,
+      "source_line_end": 542
+    },
+    {
+      "id": "s079",
+      "level": 2,
+      "title": "Languages and Formats",
+      "normalized_title": "Languages and Formats",
+      "key": "languages_and_formats",
+      "path": [
+        "Languages and Formats"
+      ],
+      "content": "- `latex`\n- `tex`\n- `html`\n- `css`\n- `javascript`\n- `python`",
+      "source_line_start": 542,
+      "source_line_end": 551
+    },
+    {
+      "id": "s080",
+      "level": 2,
+      "title": "CI and Delivery",
+      "normalized_title": "CI and Delivery",
+      "key": "ci_and_delivery",
+      "path": [
+        "CI and Delivery"
+      ],
+      "content": "- `github-actions`\n- `ci`\n- `automated-latex-pdf-build`\n- `generated-artifact-commit`\n- `path-filtered-ci`\n- `build-artifact-evidence`",
+      "source_line_start": 551,
+      "source_line_end": 560
+    },
+    {
+      "id": "s081",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `responsive-web-ui`\n- `repository-tree-browser`\n- `recursive-navigation`\n- `search`\n- `dark-mode`\n- `localstorage-cache`\n- `cache-then-refresh`",
+      "source_line_start": 560,
+      "source_line_end": 570
+    },
+    {
+      "id": "s082",
+      "level": 2,
+      "title": "Authentication and APIs",
+      "normalized_title": "Authentication and APIs",
+      "key": "authentication_and_apis",
+      "path": [
+        "Authentication and APIs"
+      ],
+      "content": "- `firebase-authentication`\n- `email-password-authentication`\n- `github-api`\n- `github-recursive-tree-api`\n- `api-rate-limit-handling`",
+      "source_line_start": 570,
+      "source_line_end": 578
+    },
+    {
+      "id": "s083",
+      "level": 2,
+      "title": "Document Engineering",
+      "normalized_title": "Document Engineering",
+      "key": "document_engineering",
+      "path": [
+        "Document Engineering"
+      ],
+      "content": "- `role-specific-cv-variants`\n- `single-branch-document-variants`\n- `source-artifact-pairing`\n- `reproducible-document-authoring`",
+      "source_line_start": 578,
+      "source_line_end": 585
+    },
+    {
+      "id": "s084",
+      "level": 2,
+      "title": "Auxiliary Hardware Tooling",
+      "normalized_title": "Auxiliary Hardware Tooling",
+      "key": "auxiliary_hardware_tooling",
+      "path": [
+        "Auxiliary Hardware Tooling"
+      ],
+      "content": "- `nrf`\n- `j-link`\n- `serial-communication`\n- `pyserial`\n- `pyside6`\n- `pyqtgraph`\n- `rssi`\n- `live-signal-plotting`\n- `physical-board-disambiguation`\n- `timestamped-run-folders`",
+      "source_line_start": 585,
+      "source_line_end": 598
+    },
+    {
+      "id": "s085",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-automated-multi-cv-latex-build-library`\n- `earliest-observed-authenticated-github-cv-artifact-browser`",
+      "source_line_start": 598,
+      "source_line_end": 602
+    }
+  ],
+  "raw_analysis": "# CV-Highly-Organized\n\n## Repository Identity\n\n- Repository: 110 / 134\n- Name: `CV-Highly-Organized`\n- Repository start date: 2026-07-19\n- Last meaningful update date: 2026-08-22\n- Latest meaningful commit: `85f0549993d2085bfb6e84e08888387c45f4e4bf`\n- Primary type: Structured multi-CV source repository with automated PDF builds and authenticated artifact browser\n- Technical field: LaTeX document engineering, CI automation, frontend engineering, repository tooling\n- Application domain: Career-document generation and role-specific CV management\n- Collaboration type: `individual-project`\n- Primary languages: TeX / LaTeX, HTML, CSS, JavaScript, Python\n\n## Collaboration and Authorship Context\n\nThe repository is owner-driven. The current latest commit is authored by `github-actions[bot]` because the checked-in GitHub Actions workflow compiles updated LaTeX sources and commits the generated PDFs automatically.\n\nThe bot-authored PDF commits are build artifacts produced by owner-configured automation; they are not treated as separate human authorship.\n\nThe repository also contains an auxiliary Python nRF RSSI tool. That utility is documented separately from the primary CV-management system so its hardware-measurement purpose does not blur the repository's main role.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- root `README.md`;\n- the structured CV directory hierarchy;\n- `.github/workflows/build-cvs.yml`;\n- the authenticated `index.html` CV manager;\n- representative `main.tex` and category README artifacts;\n- auxiliary `tesp.py`;\n- commit history through the August 22 automated PDF build.\n\n## What This Project Is\n\n`CV-Highly-Organized` is a source-controlled library of role-specific CV variants organized by career category rather than by Git branch.\n\nThe repository preserves a master CV and specialized positioning variants for areas such as:\n\n- embedded engineering;\n- QA;\n- software engineering;\n- systems engineering;\n- wireless engineering;\n- 5G/RAN;\n- wireless systems;\n- RF testing;\n- technical sales.\n\nEach active CV remains ordinary repository content, with Git history providing version history across all variants.\n\nThe project then adds two pieces of automation around this document library:\n\n1. GitHub Actions compiles every `main.tex` into a colocated `main.pdf` and commits changed PDFs.\n2. A responsive authenticated browser reads the repository hierarchy through the GitHub API and exposes the built PDFs as a searchable/downloadable CV workspace.\n\nThis turns what could have been a directory of independent documents into a managed artifact system.\n\n## Project Scope\n\n### Career Hierarchy\n\nThe root README explicitly defines a hierarchical organization.\n\nThe major top-level families include:\n\n- `Engineering`;\n- `MasterCV`;\n- `Non-Engineering`.\n\nEngineering branches then specialize further into role families and sub-specializations.\n\nThis hierarchy allows closely related positioning variants to remain structurally adjacent instead of being duplicated into disconnected repositories or branches.\n\n### CV Source Contract\n\nCV categories are centered on:\n\n- `main.tex` — active LaTeX source;\n- `README.md` — positioning/category documentation.\n\nThe generated `main.pdf` becomes the built artifact next to the source.\n\n### Git-Based Versioning\n\nThe root documentation explicitly rejects the pattern of maintaining each CV variant in a separate Git branch.\n\nInstead:\n\n- all active variants coexist on `main`;\n- directories encode category identity;\n- commits preserve evolution over time.\n\nThis makes cross-variant maintenance and discovery easier than branch-per-document organization.\n\n## Automated PDF Build Pipeline\n\n### GitHub Actions Trigger\n\n`Build CV PDFs` runs on:\n\n- pushes to `main` affecting `**/*.tex`;\n- changes to the workflow itself;\n- manual `workflow_dispatch`.\n\nThe path filter prevents unrelated changes from needlessly recompiling the document set.\n\n### Multi-CV Compilation\n\nThe workflow uses `xu-cheng/latex-action@v4` with:\n\n- root pattern `**/main.tex`;\n- compilation in each root file's own directory;\n- Debian environment;\n- current TeX Live;\n- failure propagation rather than silently ignoring compile failures.\n\nThe pattern allows all role-specific CVs to be built through one workflow.\n\n### Generated Artifact Commit\n\nAfter compilation, the workflow searches recursively for `main.pdf`, stages them, checks whether any PDF actually changed, and exits cleanly when there is nothing to commit.\n\nWhen changes exist, it configures the GitHub Actions bot identity, commits the generated PDFs, and pushes them back to the repository.\n\nThis creates a source-plus-built-artifact workflow in which users can retrieve a current PDF without compiling LaTeX locally.\n\n## Authenticated Career CV Manager\n\n### Browser Application\n\n`index.html` is a large standalone browser application that presents the repository as a CV workspace.\n\nIts interface includes:\n\n- Firebase email/password login;\n- desktop sidebar navigation;\n- mobile drawer navigation;\n- repository breadcrumb;\n- recursive folder tree;\n- search;\n- grid/list views;\n- dark/light theme;\n- repository refresh;\n- CV/folder statistics;\n- built-PDF download actions;\n- status toasts and error states.\n\n### Firebase Authentication\n\nThe application initializes Firebase Authentication and uses:\n\n- `signInWithEmailAndPassword`;\n- `onAuthStateChanged`;\n- `signOut`.\n\nThe document browser is shown only within the authenticated session state.\n\nThe corpus records the authentication mechanism without reproducing repository configuration values.\n\n### Fixed Repository Boundary\n\nThe browser is intentionally scoped to one fixed GitHub repository:\n\n`kirolossedra/CV-Highly-Organized`.\n\nThe application does not ask the user to supply arbitrary owner/repository names.\n\nThis gives the UI a narrow operational purpose: browse and retrieve this particular CV library.\n\n### Recursive GitHub Tree Loading\n\nThe application calls the GitHub repository tree endpoint with recursive traversal enabled.\n\nThe returned paths are converted into an in-memory folder structure.\n\nThe builder:\n\n- filters hidden/build/dependency paths;\n- creates folder nodes from path segments;\n- recognizes built `main.pdf` blobs;\n- associates each PDF with a sibling `main.tex` source path;\n- sorts folders and files;\n- counts descendant PDFs;\n- produces flat folder/file lists for search and statistics.\n\n### Dynamic Hierarchy\n\nThe frontend does not maintain a hard-coded JavaScript list of every CV category.\n\nIt derives the navigation tree from the GitHub repository itself.\n\nNew qualifying folders/PDFs can therefore appear in the browser without manually changing a second category registry in the frontend.\n\n### Repository Cache\n\nThe recursive tree response is cached in `localStorage`.\n\nThe application:\n\n- namespaces the cache by owner/repository/branch;\n- records synchronization time;\n- accepts cached data only within a bounded age;\n- renders cached data quickly;\n- then performs a forced background refresh.\n\nThis balances responsiveness with repository freshness.\n\n### GitHub Error Handling\n\nThe frontend handles notable API failure states including:\n\n- GitHub API rate-limit exhaustion;\n- missing repository/main branch;\n- truncated recursive tree responses.\n\nThese states are surfaced through repository-status UI and toasts rather than being swallowed silently.\n\n### Search and Navigation\n\nFolders and files are flattened from the tree to support search while retaining their hierarchical paths.\n\nNavigation uses the URL hash so the current repository path is represented in browser state.\n\nAncestor folders are expanded when navigating to nested paths.\n\n### Download Naming\n\nThe UI downloads the CI-built PDF while applying a locally generated filename derived from:\n\n- the CV folder/category;\n- current timestamp.\n\nThis makes downloaded artifacts distinguishable without changing the canonical checked-in `main.pdf` filename.\n\n### Theme and View Persistence\n\nThe selected theme and grid/list preference are stored in `localStorage`.\n\nThis is separate from the short-lived GitHub tree cache.\n\n### Responsive UI\n\nThe interface adapts from a desktop sidebar layout to a mobile drawer and single-column card presentation.\n\nIt also honors reduced-motion preferences by reducing animation/transition durations.\n\n## Architecture and System Shape\n\n```text\nRole-specific main.tex sources\n            ↓\nGitHub push to main\n            ↓\nGitHub Actions / latex-action\n            ↓\nmain.pdf artifacts\n            ↓\nautomated bot commit\n            ↓\nGitHub repository tree\n            ↓ GitHub API\nAuthenticated browser\n            ↓\nrecursive category navigation / search\n            ↓\nPDF download with local timestamped filename\n```\n\nThe repository itself is both the source store and the artifact catalog.\n\n## Technical Stack\n\n### LaTeX\n\nLaTeX provides the editable source format for the CV variants.\n\n### GitHub Actions\n\nGitHub Actions turns document edits into reproducible PDF builds and checked-in artifacts.\n\n### Bash\n\nThe workflow's shell step discovers PDFs, stages changes, checks the index, configures the bot identity, commits, and pushes.\n\n### HTML / CSS / JavaScript\n\nA standalone frontend implements the authenticated CV browser without requiring a separate frontend framework.\n\n### Firebase Authentication\n\nFirebase supplies email/password session authentication for access to the browser workspace.\n\n### GitHub REST API\n\nThe browser retrieves the recursive repository tree directly from GitHub.\n\n### localStorage\n\nBrowser storage persists:\n\n- repository-tree cache;\n- theme preference;\n- view preference.\n\n## Major Engineering Work\n\n### Repository-as-Data-Source Design\n\nThe source repository hierarchy is the canonical category model for the frontend.\n\nThis avoids maintaining the same CV taxonomy separately in source-control folders and application configuration.\n\n### Build Artifact Automation\n\nA source edit can propagate through compilation and artifact commit without manual local PDF generation.\n\n### Recursive Tree Materialization\n\nGitHub flat path entries are transformed into a navigable folder object graph and flat indexes for search.\n\n### Cache-Then-Refresh Behavior\n\nFresh-enough cached hierarchy data can render immediately while a remote synchronization follows in the background.\n\n### Authentication State Transition\n\nThe frontend explicitly separates login and application views and reacts to Firebase authentication-state changes.\n\n### Artifact-Oriented UX\n\nThe interface is optimized around one concrete user task: locate a career-specific CV and download the current built PDF.\n\n## CI and Verification\n\n### LaTeX Compilation as CI Validation\n\nEvery matching `main.tex` is compiled by the workflow.\n\nBecause `continue_on_error` is false, a failed document build prevents the normal artifact-commit step from representing the source as successfully compiled.\n\n### No-Change Guard\n\nThe workflow checks the staged diff before creating a bot commit.\n\nThis prevents empty automation commits when generated PDFs remain identical.\n\n### Built Artifact Evidence\n\nThe checked-in `main.pdf` files and bot build commits provide direct evidence that the document-build workflow has executed.\n\n## Engineering Practices\n\n### Single-Branch Multi-Variant Organization\n\nDirectories, rather than branches, represent active CV variants.\n\n### Source / Artifact Pairing\n\nEach CV keeps editable source and generated output colocated.\n\n### Automated Reproducibility\n\nCompilation is encoded in CI rather than relying on an undocumented local TeX command.\n\n### Derived Navigation\n\nThe frontend derives its data model from repository state rather than a duplicated manual category list.\n\n### Bounded Browser Caching\n\nThe application gives repository metadata a finite cache lifetime and refreshes in the background.\n\n### Graceful API Diagnostics\n\nRate limits, missing repository state, and truncated tree responses receive specific handling.\n\n## Auxiliary nRF RSSI Measurement Utility\n\nThe repository also contains `tesp.py`, a separate Python desktop measurement tool.\n\nThis utility is not part of the CV build/browser architecture, but it is substantive repository evidence and is therefore preserved as an auxiliary capability.\n\n### Physical Board Detection\n\nThe script enumerates serial ports and identifies likely nRF/J-Link/CMSIS-DAP interfaces.\n\nMultiple serial interfaces exposed by one physical debugger board are grouped using identifiers such as:\n\n- serial number;\n- physical USB location;\n- HWID-derived serial/location data.\n\nThis avoids treating multiple CDC interfaces as multiple physical nRF boards.\n\n### UART Interface Probing\n\nFor each physical board, candidate serial interfaces are opened briefly and probed for readable output.\n\nIf one interface clearly produces UART data, it is selected automatically.\n\nAmbiguous cases fall back to explicit operator selection.\n\n### Timestamped Run Artifacts\n\nMeasurement runs are placed into uniquely timestamped folders.\n\n### RSSI Parsing and Visualization\n\nThe program identifies RSSI values from incoming text and uses PySide6 plus pyqtgraph for live desktop visualization.\n\n### Cutoff Events\n\nThe source defines a `CutoffEvent` model representing transitions in which the leading board changes, retaining:\n\n- event number;\n- timestamp;\n- elapsed time;\n- previous/new leader;\n- both RSSI values;\n- pre-cutoff gap;\n- gap at the transition.\n\nThis is direct evidence of turning two-board signal observations into structured events.\n\n## Auxiliary Technical Stack\n\n### Python\n\nPython implements serial discovery, run management, event modeling, and GUI orchestration.\n\n### PySerial\n\nPySerial enumerates and reads J-Link/nRF serial interfaces.\n\n### PySide6\n\nPySide6 implements the desktop application UI and worker-thread signaling.\n\n### pyqtgraph\n\npyqtgraph renders live RSSI data.\n\n## Scale and Complexity\n\n### Document Scale\n\nThe primary system maintains multiple career-specific documents across a nested taxonomy rather than one CV source.\n\n### Build Scale\n\nOne workflow recursively compiles every matching CV source and publishes changed PDF artifacts.\n\n### Frontend State Complexity\n\nThe browser manages authentication, hierarchical repository state, search, navigation, caching, theme/view preferences, and artifact downloads.\n\n### Repository Breadth\n\nThe repository also preserves a separate hardware-measurement utility, demonstrating that the workspace accumulated a secondary operational tool alongside the CV system.\n\n## Skills Demonstrated\n\n### Document Engineering\n\n- **LaTeX — strong evidence.**\n- **Multi-document information architecture — strong evidence.**\n- **Role-specific document variants — strong evidence.**\n\n### CI / Delivery\n\n- **GitHub Actions — strong evidence.**\n- **Automated LaTeX compilation — strong evidence.**\n- **Generated artifact commits — strong evidence.**\n- **Path-filtered workflow triggers — strong evidence.**\n\n### Frontend\n\n- **HTML/CSS/JavaScript — strong evidence.**\n- **Responsive application UI — strong evidence.**\n- **Recursive tree navigation — strong evidence.**\n- **Search and URL-state navigation — strong evidence.**\n- **localStorage caching/preferences — strong evidence.**\n\n### Authentication and APIs\n\n- **Firebase email/password authentication — strong evidence.**\n- **GitHub REST API integration — strong evidence.**\n- **API error/rate-limit handling — strong evidence.**\n\n### Auxiliary Hardware Tooling\n\n- **nRF/J-Link serial discovery — strong evidence.**\n- **Physical-device/interface disambiguation — strong evidence.**\n- **PySide6 — strong evidence.**\n- **pyqtgraph — strong evidence.**\n- **Live RSSI visualization — strong evidence.**\n\n## Capability Developed\n\nThe primary development represented here is treating professional documents as a maintained software-like artifact system.\n\nRole variants are structured as source, reproducibly compiled, versioned together, exposed through a derived repository hierarchy, authenticated, cached, searchable, and downloadable as built artifacts.\n\n## Portfolio Evolution Context\n\nRepository 107 established the explicit career-repositioning strategy in a single LaTeX CV repository.\n\n`CV-Highly-Organized` expands that approach into a managed family of variants with automated compilation and an application interface over the resulting artifact library.\n\nThe progression is therefore from one source-controlled CV to a reusable career-document platform organized around multiple positioning strategies.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository that combines:\n\n- a nested multi-CV LaTeX library;\n- one CI workflow compiling every CV;\n- automated generated-PDF commits;\n- an authenticated GitHub-backed artifact browser;\n- dynamically derived repository navigation.\n\n## Overall Repository Narrative\n\n`CV-Highly-Organized` is a structured career-document repository that applies software-engineering practices to a growing set of LaTeX CV variants.\n\nThe repository taxonomy keeps multiple role-positioned documents on one branch. GitHub Actions compiles every `main.tex`, commits changed PDFs, and turns the repository into a source-plus-artifact store. An authenticated standalone web application then reads the recursive GitHub tree, reconstructs the hierarchy, caches it locally, supports search and responsive navigation, and downloads the current CI-built PDF with a useful timestamped filename.\n\nThe repository also contains a separate nRF RSSI measurement utility with physical-board disambiguation, serial probing, timestamped runs, and live plotting. That secondary tool is meaningful evidence, but the primary architectural story remains the CV document pipeline and artifact browser.\n\n# Project Tags\n\n## Project Type\n\n- `multi-cv-library`\n- `document-build-system`\n- `artifact-browser`\n- `individual-project`\n\n## Languages and Formats\n\n- `latex`\n- `tex`\n- `html`\n- `css`\n- `javascript`\n- `python`\n\n## CI and Delivery\n\n- `github-actions`\n- `ci`\n- `automated-latex-pdf-build`\n- `generated-artifact-commit`\n- `path-filtered-ci`\n- `build-artifact-evidence`\n\n## Frontend\n\n- `responsive-web-ui`\n- `repository-tree-browser`\n- `recursive-navigation`\n- `search`\n- `dark-mode`\n- `localstorage-cache`\n- `cache-then-refresh`\n\n## Authentication and APIs\n\n- `firebase-authentication`\n- `email-password-authentication`\n- `github-api`\n- `github-recursive-tree-api`\n- `api-rate-limit-handling`\n\n## Document Engineering\n\n- `role-specific-cv-variants`\n- `single-branch-document-variants`\n- `source-artifact-pairing`\n- `reproducible-document-authoring`\n\n## Auxiliary Hardware Tooling\n\n- `nrf`\n- `j-link`\n- `serial-communication`\n- `pyserial`\n- `pyside6`\n- `pyqtgraph`\n- `rssi`\n- `live-signal-plotting`\n- `physical-board-disambiguation`\n- `timestamped-run-folders`\n\n## Portfolio Significance\n\n- `earliest-observed-automated-multi-cv-latex-build-library`\n- `earliest-observed-authenticated-github-cv-artifact-browser`\n"
+}

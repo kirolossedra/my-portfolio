@@ -1,0 +1,1167 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 102,
+  "repository_total": 134,
+  "repository_name": "George-Sedra-Website",
+  "header_title": "George-Sedra-Website",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-102-George-Sedra-Website/README.md",
+    "line_start": 1,
+    "line_end": 653,
+    "sha256": "cc9dea07526f4b1c2cb99963d02e9e9da464103e9683637ac5403198a20603be"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "full-stack-application",
+    "company-website",
+    "business-workflow-application",
+    "consulting-platform",
+    "careers-platform",
+    "individual-project",
+    "owner-attributed-source",
+    "typescript",
+    "tsx",
+    "sql",
+    "css",
+    "react",
+    "react-router",
+    "vite",
+    "single-page-application",
+    "responsive-web-design",
+    "multi-route-frontend",
+    "hono",
+    "rest-api",
+    "cloudflare-workers",
+    "public-api",
+    "admin-api",
+    "middleware",
+    "request-id",
+    "structured-errors",
+    "bearer-token-authentication",
+    "cors",
+    "secure-headers",
+    "payload-validation",
+    "cloudflare-d1",
+    "relational-database",
+    "sql-migrations",
+    "foreign-keys",
+    "database-indexes",
+    "check-constraints",
+    "repository-pattern",
+    "status-history",
+    "base64-file-storage",
+    "resume-storage",
+    "job-posting-workflow",
+    "job-application-workflow",
+    "human-review-workflow",
+    "contact-request-workflow",
+    "project-inquiry-workflow",
+    "job-archival",
+    "pagination",
+    "wrangler",
+    "eslint",
+    "typescript-typecheck",
+    "production-build",
+    "d1-migrations",
+    "database-seeding",
+    "environment-secret",
+    "earliest-observed-hono",
+    "earliest-observed-cloudflare-d1",
+    "earliest-observed-business-workflow-api",
+    "earliest-observed-d1-base64-document-storage",
+    "earliest-observed-public-admin-api-separation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 102 / 134\n- Name: `George-Sedra-Website`\n- Repository start date: 2025-12-24\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `341f1aa31bf8d383f5f4d3b448175347891e84bf`\n- Primary type: Full-stack company consulting website and business-workflow API\n- Technical field: React frontend engineering, TypeScript backend engineering, serverless APIs, relational persistence\n- Application domain: Engineering, environmental, real-estate, careers, contact, and project-inquiry workflows\n- Collaboration type: `individual-project`\n- Primary languages: TypeScript, TSX, SQL, CSS\n- Frontend framework/tooling: React 19, React Router, Vite, ESLint\n- Backend framework/tooling: Hono, Cloudflare Workers tooling, Wrangler\n- Persistence model: Cloudflare D1 relational schema with resume data stored as Base64\n- Current source state: Responsive frontend plus implemented API/backend foundation"
+    },
+    "architecture": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nReact + TypeScript + Vite\n        |\n        +-- public company/service routes\n        +-- careers / job detail / apply routes\n        +-- contact and business inquiry interfaces\n\nHono API boundary\n        |\n        +-- request ID middleware\n        +-- security headers\n        +-- configured CORS\n        +-- logging\n        |\n        +-- /api/v1 public routes\n        |     +-- published jobs\n        |     +-- job detail\n        |     +-- applications\n        |     +-- contact requests\n        |     +-- project inquiries\n        |\n        +-- /api/v1/admin routes\n              +-- bearer authentication\n              +-- job lifecycle\n              +-- application review\n              +-- resume retrieval\n              +-- request/inquiry workflow\n\nCloudflare D1\n        |\n        +-- jobs\n        +-- responsibilities\n        +-- qualifications\n        +-- applications\n        +-- application resumes\n        +-- application status history\n        +-- contact requests\n        +-- project inquiries\n```\n\nThe application separates UI routing, API routing, domain validation, database repositories, middleware, services, and relational schema."
+    },
+    "testing": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "Verification"
+      ],
+      "text": "## Verification\n### Configured Frontend Checks\n\nThe project exposes:\n\n```text\nnpm run lint\nnpm run build\nnpm run check\n```\n\nwith `check` combining ESLint and the TypeScript/Vite production build.\n\n### Configured Backend Checks\n\nThe backend exposes:\n\n```text\nnpm run api:typecheck\nnpm run check:all\n```\n\nwhere `check:all` combines frontend lint/build and API typechecking.\n\n### Schema Execution Evidence\n\nRepository implementation notes record D1-compatible schema execution/validation against SQLite and TypeScript syntax checking during the backend construction work.\n\n### Compile-Time Structure\n\nSeparate frontend and API TypeScript configurations provide a static validation boundary between browser and Worker code."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "Security Headers and CORS"
+      ],
+      "text": "## Security Headers and CORS\n`secureHeaders()` is applied globally, while configured CORS is scoped to the API path."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s068"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe current repository history is owner-driven, and the latest backend/resume-storage work is explicitly authored and committed by the repository owner. The corpus therefore treats the application architecture, frontend implementation, backend repositories/routes, relational schema, validation layer, and integration decisions as personally attributable repository work.\n\nThe company/service content itself is domain content presented by the website. The engineering claim is the software system that structures and serves that content.\n\n## Collaboration and Authorship\n- `individual-project`\n- `owner-attributed-source`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 102 / 134\n- Name: `George-Sedra-Website`\n- Repository start date: 2025-12-24\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `341f1aa31bf8d383f5f4d3b448175347891e84bf`\n- Primary type: Full-stack company consulting website and business-workflow API\n- Technical field: React frontend engineering, TypeScript backend engineering, serverless APIs, relational persistence\n- Application domain: Engineering, environmental, real-estate, careers, contact, and project-inquiry workflows\n- Collaboration type: `individual-project`\n- Primary languages: TypeScript, TSX, SQL, CSS\n- Frontend framework/tooling: React 19, React Router, Vite, ESLint\n- Backend framework/tooling: Hono, Cloudflare Workers tooling, Wrangler\n- Persistence model: Cloudflare D1 relational schema with resume data stored as Base64\n- Current source state: Responsive frontend plus implemented API/backend foundation",
+      "source_line_start": 3,
+      "source_line_end": 20
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The current repository history is owner-driven, and the latest backend/resume-storage work is explicitly authored and committed by the repository owner. The corpus therefore treats the application architecture, frontend implementation, backend repositories/routes, relational schema, validation layer, and integration decisions as personally attributable repository work.\n\nThe company/service content itself is domain content presented by the website. The engineering claim is the software system that structures and serves that content.",
+      "source_line_start": 20,
+      "source_line_end": 26
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- root `README.md`;\n- current recursive repository tree;\n- `package.json`;\n- `src/App.tsx` and frontend page/component/data structure;\n- `api/src/index.ts`;\n- public and admin Hono route modules;\n- API database repository modules;\n- authentication, CORS, request-ID, and validation modules;\n- D1 migration and seed SQL;\n- resume service code;\n- Wrangler/TypeScript/ESLint configuration;\n- commit history through the September 6, 2026 backend expansion and Base64-resume correction.\n\nThe latest commit changes resume persistence from a bucket-oriented design to D1-only Base64 storage, making the current persistence model a deliberate architectural choice rather than a repository-name inference.",
+      "source_line_start": 26,
+      "source_line_end": 45
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`George-Sedra-Website` is a React/TypeScript company website that evolved into a two-layer full-stack system.\n\nThe frontend presents consulting services and business-facing workflows. It contains dedicated routes for:\n\n- home;\n- engineering services;\n- environmental services;\n- real-estate services;\n- careers;\n- individual job details;\n- job applications;\n- about;\n- contact;\n- fallback/not-found behavior.\n\nThe backend is a Hono API structured for Cloudflare Workers and Cloudflare D1. It models job publishing, candidate applications, resumes, contact requests, project inquiries, and administrator review workflows.\n\nThe repository therefore goes substantially beyond a static brochure site: it models operational business entities and lifecycle transitions behind a public consulting interface.",
+      "source_line_start": 45,
+      "source_line_end": 66
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Public Website\n\nThe React application includes:\n\n- service-line navigation;\n- engineering service presentation;\n- environmental Phase I / Phase II service presentation;\n- real-estate service presentation;\n- careers listing;\n- job-detail routing;\n- job-application interface;\n- contact interface;\n- about/company presentation;\n- responsive layout behavior.\n\n### Careers Domain\n\nThe backend supports a structured careers workflow around:\n\n- job records;\n- publish/draft/closed/archive lifecycle states;\n- ordered responsibility items;\n- ordered qualification items;\n- public published-job retrieval;\n- job filtering by department;\n- application creation;\n- application review status;\n- application status history;\n- resume metadata and payload persistence.\n\n### Inquiry Domain\n\nThe backend separately models:\n\n- general contact requests;\n- structured project inquiries;\n- service-line selection;\n- sub-service fields;\n- property/location context;\n- desired timeline;\n- administrative review status.\n\n### Administrative Domain\n\nBearer-protected administration routes support:\n\n- job listing and filtering;\n- job creation;\n- job editing;\n- job archival;\n- application listing;\n- application detail retrieval;\n- application status transitions;\n- resume download;\n- contact-request listing;\n- project-inquiry listing;\n- status updates for requests and inquiries.",
+      "source_line_start": 66,
+      "source_line_end": 126
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Public Website",
+      "normalized_title": "Public Website",
+      "key": "public_website",
+      "path": [
+        "Project Scope",
+        "Public Website"
+      ],
+      "content": "The React application includes:\n\n- service-line navigation;\n- engineering service presentation;\n- environmental Phase I / Phase II service presentation;\n- real-estate service presentation;\n- careers listing;\n- job-detail routing;\n- job-application interface;\n- contact interface;\n- about/company presentation;\n- responsive layout behavior.",
+      "source_line_start": 68,
+      "source_line_end": 83
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Careers Domain",
+      "normalized_title": "Careers Domain",
+      "key": "careers_domain",
+      "path": [
+        "Project Scope",
+        "Careers Domain"
+      ],
+      "content": "The backend supports a structured careers workflow around:\n\n- job records;\n- publish/draft/closed/archive lifecycle states;\n- ordered responsibility items;\n- ordered qualification items;\n- public published-job retrieval;\n- job filtering by department;\n- application creation;\n- application review status;\n- application status history;\n- resume metadata and payload persistence.",
+      "source_line_start": 83,
+      "source_line_end": 98
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Inquiry Domain",
+      "normalized_title": "Inquiry Domain",
+      "key": "inquiry_domain",
+      "path": [
+        "Project Scope",
+        "Inquiry Domain"
+      ],
+      "content": "The backend separately models:\n\n- general contact requests;\n- structured project inquiries;\n- service-line selection;\n- sub-service fields;\n- property/location context;\n- desired timeline;\n- administrative review status.",
+      "source_line_start": 98,
+      "source_line_end": 110
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Administrative Domain",
+      "normalized_title": "Administrative Domain",
+      "key": "administrative_domain",
+      "path": [
+        "Project Scope",
+        "Administrative Domain"
+      ],
+      "content": "Bearer-protected administration routes support:\n\n- job listing and filtering;\n- job creation;\n- job editing;\n- job archival;\n- application listing;\n- application detail retrieval;\n- application status transitions;\n- resume download;\n- contact-request listing;\n- project-inquiry listing;\n- status updates for requests and inquiries.",
+      "source_line_start": 110,
+      "source_line_end": 126
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nReact + TypeScript + Vite\n        |\n        +-- public company/service routes\n        +-- careers / job detail / apply routes\n        +-- contact and business inquiry interfaces\n\nHono API boundary\n        |\n        +-- request ID middleware\n        +-- security headers\n        +-- configured CORS\n        +-- logging\n        |\n        +-- /api/v1 public routes\n        |     +-- published jobs\n        |     +-- job detail\n        |     +-- applications\n        |     +-- contact requests\n        |     +-- project inquiries\n        |\n        +-- /api/v1/admin routes\n              +-- bearer authentication\n              +-- job lifecycle\n              +-- application review\n              +-- resume retrieval\n              +-- request/inquiry workflow\n\nCloudflare D1\n        |\n        +-- jobs\n        +-- responsibilities\n        +-- qualifications\n        +-- applications\n        +-- application resumes\n        +-- application status history\n        +-- contact requests\n        +-- project inquiries\n```\n\nThe application separates UI routing, API routing, domain validation, database repositories, middleware, services, and relational schema.",
+      "source_line_start": 126,
+      "source_line_end": 170
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### React 19 + React Router\n\nThe frontend uses React component composition and React Router route declarations for the major company and careers pages.\n\n### TypeScript\n\nTypeScript is used across the React frontend and Hono backend, including typed environment bindings, domain statuses, repository return values, validation inputs, and Worker-facing API code.\n\n### Vite\n\nVite provides frontend development, production build, and preview workflows.\n\n### Hono\n\nHono implements the serverless API surface, routing, middleware composition, body limits, response handling, and Worker entrypoint.\n\n### Cloudflare Workers Tooling\n\nWrangler scripts are defined for:\n\n- local API development;\n- Worker deployment;\n- Worker environment type generation;\n- D1 migration execution;\n- D1 local seeding.\n\n### Cloudflare D1 / SQL\n\nThe schema uses SQLite-compatible D1 SQL with:\n\n- strict tables;\n- primary keys;\n- foreign keys;\n- cascading deletes where appropriate;\n- unique slugs;\n- status `CHECK` constraints;\n- file-type and resume-size constraints;\n- query-supporting indexes.\n\n### ESLint + TypeScript Project Builds\n\nThe repository exposes combined lint/build/typecheck commands through `npm run check`, `npm run api:typecheck`, and `npm run check:all`.",
+      "source_line_start": 170,
+      "source_line_end": 215
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "React 19 + React Router",
+      "normalized_title": "React 19 + React Router",
+      "key": "react_19_react_router",
+      "path": [
+        "Technical Stack",
+        "React 19 + React Router"
+      ],
+      "content": "The frontend uses React component composition and React Router route declarations for the major company and careers pages.",
+      "source_line_start": 172,
+      "source_line_end": 176
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "TypeScript",
+      "normalized_title": "TypeScript",
+      "key": "typescript",
+      "path": [
+        "Technical Stack",
+        "TypeScript"
+      ],
+      "content": "TypeScript is used across the React frontend and Hono backend, including typed environment bindings, domain statuses, repository return values, validation inputs, and Worker-facing API code.",
+      "source_line_start": 176,
+      "source_line_end": 180
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Vite",
+      "normalized_title": "Vite",
+      "key": "vite",
+      "path": [
+        "Technical Stack",
+        "Vite"
+      ],
+      "content": "Vite provides frontend development, production build, and preview workflows.",
+      "source_line_start": 180,
+      "source_line_end": 184
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Hono",
+      "normalized_title": "Hono",
+      "key": "hono",
+      "path": [
+        "Technical Stack",
+        "Hono"
+      ],
+      "content": "Hono implements the serverless API surface, routing, middleware composition, body limits, response handling, and Worker entrypoint.",
+      "source_line_start": 184,
+      "source_line_end": 188
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Cloudflare Workers Tooling",
+      "normalized_title": "Cloudflare Workers Tooling",
+      "key": "cloudflare_workers_tooling",
+      "path": [
+        "Technical Stack",
+        "Cloudflare Workers Tooling"
+      ],
+      "content": "Wrangler scripts are defined for:\n\n- local API development;\n- Worker deployment;\n- Worker environment type generation;\n- D1 migration execution;\n- D1 local seeding.",
+      "source_line_start": 188,
+      "source_line_end": 198
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Cloudflare D1 / SQL",
+      "normalized_title": "Cloudflare D1 / SQL",
+      "key": "cloudflare_d1_sql",
+      "path": [
+        "Technical Stack",
+        "Cloudflare D1 / SQL"
+      ],
+      "content": "The schema uses SQLite-compatible D1 SQL with:\n\n- strict tables;\n- primary keys;\n- foreign keys;\n- cascading deletes where appropriate;\n- unique slugs;\n- status `CHECK` constraints;\n- file-type and resume-size constraints;\n- query-supporting indexes.",
+      "source_line_start": 198,
+      "source_line_end": 211
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "ESLint + TypeScript Project Builds",
+      "normalized_title": "ESLint + TypeScript Project Builds",
+      "key": "eslint_typescript_project_builds",
+      "path": [
+        "Technical Stack",
+        "ESLint + TypeScript Project Builds"
+      ],
+      "content": "The repository exposes combined lint/build/typecheck commands through `npm run check`, `npm run api:typecheck`, and `npm run check:all`.",
+      "source_line_start": 211,
+      "source_line_end": 215
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Responsive React Consulting Frontend\n\nThe repository replaces a simple company-site shape with a routed React platform covering multiple consulting service lines and careers.\n\nThe route table is explicit rather than dynamically inferred, giving business areas stable URLs and distinct page responsibilities.\n\n### Careers Data Modeling\n\nThe D1 schema models jobs as operational records instead of flat page content.\n\nA job contains:\n\n- identifier and unique slug;\n- title and department;\n- location;\n- employment type;\n- work mode;\n- summary and full description;\n- lifecycle status;\n- publication timestamps.\n\nResponsibilities and qualifications are normalized into ordered child tables.\n\n### Job Application Workflow\n\nApplications are tied to jobs through foreign keys and include:\n\n- applicant identity/contact fields;\n- portfolio URL;\n- interest statement;\n- experience statement;\n- consent timestamp;\n- explicit review status.\n\nApplication status history records transitions separately, enabling lifecycle tracking rather than destructive state replacement without history.\n\n### Resume Persistence in D1\n\nThe current architecture stores resume payloads in the `application_resumes` table as Base64.\n\nImportant implementation choices include:\n\n- separate resume table rather than embedding the large payload into the main application row;\n- PDF/DOC/DOCX content-type restriction;\n- maximum decoded size of 1 MB;\n- stored metadata for file name, type, size, and creation time;\n- protected download path that reconstructs bytes from Base64;\n- content-disposition sanitization for downloaded names;\n- `private, no-store` cache policy.\n\n### Public API Routes\n\nThe public API implements:\n\n- published job collection;\n- job lookup by slug;\n- application submission;\n- contact-request submission;\n- project-inquiry submission.\n\nApplications are checked against a currently published job before persistence.\n\n### Admin API Routes\n\nAdministrator routes expose operational workflows rather than a single generic CRUD endpoint.\n\nThe code supports:\n\n- pagination;\n- status filters;\n- job filters;\n- job create/update/archive;\n- application detail and review-state transitions;\n- resume downloads;\n- contact/project inquiry queues;\n- request status transitions.\n\n### Bearer-Protected Administration\n\nAdmin middleware reads `ADMIN_API_TOKEN` from the Worker environment and compares it against a Bearer token from the request.\n\nThis provides a clear trust boundary between public endpoints and internal business operations.\n\n### Shared Request Validation\n\nThe backend contains dedicated validation modules for:\n\n- common values and pagination;\n- jobs;\n- applications;\n- contact requests;\n- project inquiries.\n\nThe latest commit series specifically adds and expands shared payload validation before database operations.\n\n### Request Tracing and Error Envelopes\n\nThe Hono entrypoint adds request-ID middleware and includes the request ID in successful/error response handling.\n\nStructured `ApiError` handling maps domain failures into HTTP status/code/message responses.\n\n### Security Headers and CORS\n\n`secureHeaders()` is applied globally, while configured CORS is scoped to the API path.\n\n### D1 Health Check\n\nThe health route performs `SELECT 1 AS ok` through D1, which checks the API/database path rather than returning an unconditional static health string.\n\n### Prototype Seed Separation\n\nPrototype job seed data is kept under `api/seed/` separately from the migration schema, making schema creation independent from sample business records.",
+      "source_line_start": 215,
+      "source_line_end": 330
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Responsive React Consulting Frontend",
+      "normalized_title": "Responsive React Consulting Frontend",
+      "key": "responsive_react_consulting_frontend",
+      "path": [
+        "Major Engineering Work",
+        "Responsive React Consulting Frontend"
+      ],
+      "content": "The repository replaces a simple company-site shape with a routed React platform covering multiple consulting service lines and careers.\n\nThe route table is explicit rather than dynamically inferred, giving business areas stable URLs and distinct page responsibilities.",
+      "source_line_start": 217,
+      "source_line_end": 223
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Careers Data Modeling",
+      "normalized_title": "Careers Data Modeling",
+      "key": "careers_data_modeling",
+      "path": [
+        "Major Engineering Work",
+        "Careers Data Modeling"
+      ],
+      "content": "The D1 schema models jobs as operational records instead of flat page content.\n\nA job contains:\n\n- identifier and unique slug;\n- title and department;\n- location;\n- employment type;\n- work mode;\n- summary and full description;\n- lifecycle status;\n- publication timestamps.\n\nResponsibilities and qualifications are normalized into ordered child tables.",
+      "source_line_start": 223,
+      "source_line_end": 240
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Job Application Workflow",
+      "normalized_title": "Job Application Workflow",
+      "key": "job_application_workflow",
+      "path": [
+        "Major Engineering Work",
+        "Job Application Workflow"
+      ],
+      "content": "Applications are tied to jobs through foreign keys and include:\n\n- applicant identity/contact fields;\n- portfolio URL;\n- interest statement;\n- experience statement;\n- consent timestamp;\n- explicit review status.\n\nApplication status history records transitions separately, enabling lifecycle tracking rather than destructive state replacement without history.",
+      "source_line_start": 240,
+      "source_line_end": 253
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Resume Persistence in D1",
+      "normalized_title": "Resume Persistence in D1",
+      "key": "resume_persistence_in_d1",
+      "path": [
+        "Major Engineering Work",
+        "Resume Persistence in D1"
+      ],
+      "content": "The current architecture stores resume payloads in the `application_resumes` table as Base64.\n\nImportant implementation choices include:\n\n- separate resume table rather than embedding the large payload into the main application row;\n- PDF/DOC/DOCX content-type restriction;\n- maximum decoded size of 1 MB;\n- stored metadata for file name, type, size, and creation time;\n- protected download path that reconstructs bytes from Base64;\n- content-disposition sanitization for downloaded names;\n- `private, no-store` cache policy.",
+      "source_line_start": 253,
+      "source_line_end": 267
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Public API Routes",
+      "normalized_title": "Public API Routes",
+      "key": "public_api_routes",
+      "path": [
+        "Major Engineering Work",
+        "Public API Routes"
+      ],
+      "content": "The public API implements:\n\n- published job collection;\n- job lookup by slug;\n- application submission;\n- contact-request submission;\n- project-inquiry submission.\n\nApplications are checked against a currently published job before persistence.",
+      "source_line_start": 267,
+      "source_line_end": 279
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Admin API Routes",
+      "normalized_title": "Admin API Routes",
+      "key": "admin_api_routes",
+      "path": [
+        "Major Engineering Work",
+        "Admin API Routes"
+      ],
+      "content": "Administrator routes expose operational workflows rather than a single generic CRUD endpoint.\n\nThe code supports:\n\n- pagination;\n- status filters;\n- job filters;\n- job create/update/archive;\n- application detail and review-state transitions;\n- resume downloads;\n- contact/project inquiry queues;\n- request status transitions.",
+      "source_line_start": 279,
+      "source_line_end": 294
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Bearer-Protected Administration",
+      "normalized_title": "Bearer-Protected Administration",
+      "key": "bearer_protected_administration",
+      "path": [
+        "Major Engineering Work",
+        "Bearer-Protected Administration"
+      ],
+      "content": "Admin middleware reads `ADMIN_API_TOKEN` from the Worker environment and compares it against a Bearer token from the request.\n\nThis provides a clear trust boundary between public endpoints and internal business operations.",
+      "source_line_start": 294,
+      "source_line_end": 300
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Shared Request Validation",
+      "normalized_title": "Shared Request Validation",
+      "key": "shared_request_validation",
+      "path": [
+        "Major Engineering Work",
+        "Shared Request Validation"
+      ],
+      "content": "The backend contains dedicated validation modules for:\n\n- common values and pagination;\n- jobs;\n- applications;\n- contact requests;\n- project inquiries.\n\nThe latest commit series specifically adds and expands shared payload validation before database operations.",
+      "source_line_start": 300,
+      "source_line_end": 312
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Request Tracing and Error Envelopes",
+      "normalized_title": "Request Tracing and Error Envelopes",
+      "key": "request_tracing_and_error_envelopes",
+      "path": [
+        "Major Engineering Work",
+        "Request Tracing and Error Envelopes"
+      ],
+      "content": "The Hono entrypoint adds request-ID middleware and includes the request ID in successful/error response handling.\n\nStructured `ApiError` handling maps domain failures into HTTP status/code/message responses.",
+      "source_line_start": 312,
+      "source_line_end": 318
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Security Headers and CORS",
+      "normalized_title": "Security Headers and CORS",
+      "key": "security_headers_and_cors",
+      "path": [
+        "Major Engineering Work",
+        "Security Headers and CORS"
+      ],
+      "content": "`secureHeaders()` is applied globally, while configured CORS is scoped to the API path.",
+      "source_line_start": 318,
+      "source_line_end": 322
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "D1 Health Check",
+      "normalized_title": "D1 Health Check",
+      "key": "d1_health_check",
+      "path": [
+        "Major Engineering Work",
+        "D1 Health Check"
+      ],
+      "content": "The health route performs `SELECT 1 AS ok` through D1, which checks the API/database path rather than returning an unconditional static health string.",
+      "source_line_start": 322,
+      "source_line_end": 326
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Prototype Seed Separation",
+      "normalized_title": "Prototype Seed Separation",
+      "key": "prototype_seed_separation",
+      "path": [
+        "Major Engineering Work",
+        "Prototype Seed Separation"
+      ],
+      "content": "Prototype job seed data is kept under `api/seed/` separately from the migration schema, making schema creation independent from sample business records.",
+      "source_line_start": 326,
+      "source_line_end": 330
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Configured Frontend Checks\n\nThe project exposes:\n\n```text\nnpm run lint\nnpm run build\nnpm run check\n```\n\nwith `check` combining ESLint and the TypeScript/Vite production build.\n\n### Configured Backend Checks\n\nThe backend exposes:\n\n```text\nnpm run api:typecheck\nnpm run check:all\n```\n\nwhere `check:all` combines frontend lint/build and API typechecking.\n\n### Schema Execution Evidence\n\nRepository implementation notes record D1-compatible schema execution/validation against SQLite and TypeScript syntax checking during the backend construction work.\n\n### Compile-Time Structure\n\nSeparate frontend and API TypeScript configurations provide a static validation boundary between browser and Worker code.",
+      "source_line_start": 330,
+      "source_line_end": 363
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Configured Frontend Checks",
+      "normalized_title": "Configured Frontend Checks",
+      "key": "configured_frontend_checks",
+      "path": [
+        "Verification",
+        "Configured Frontend Checks"
+      ],
+      "content": "The project exposes:\n\n```text\nnpm run lint\nnpm run build\nnpm run check\n```\n\nwith `check` combining ESLint and the TypeScript/Vite production build.",
+      "source_line_start": 332,
+      "source_line_end": 344
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Configured Backend Checks",
+      "normalized_title": "Configured Backend Checks",
+      "key": "configured_backend_checks",
+      "path": [
+        "Verification",
+        "Configured Backend Checks"
+      ],
+      "content": "The backend exposes:\n\n```text\nnpm run api:typecheck\nnpm run check:all\n```\n\nwhere `check:all` combines frontend lint/build and API typechecking.",
+      "source_line_start": 344,
+      "source_line_end": 355
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Schema Execution Evidence",
+      "normalized_title": "Schema Execution Evidence",
+      "key": "schema_execution_evidence",
+      "path": [
+        "Verification",
+        "Schema Execution Evidence"
+      ],
+      "content": "Repository implementation notes record D1-compatible schema execution/validation against SQLite and TypeScript syntax checking during the backend construction work.",
+      "source_line_start": 355,
+      "source_line_end": 359
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Compile-Time Structure",
+      "normalized_title": "Compile-Time Structure",
+      "key": "compile_time_structure",
+      "path": [
+        "Verification",
+        "Compile-Time Structure"
+      ],
+      "content": "Separate frontend and API TypeScript configurations provide a static validation boundary between browser and Worker code.",
+      "source_line_start": 359,
+      "source_line_end": 363
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Layered Backend Design\n\nPersistence, routing, middleware, services, validation, domain types, and error handling are separated rather than concentrated in the Worker entrypoint.\n\n### Database Constraints as Domain Guardrails\n\nBusiness invariants are represented in SQL through:\n\n- enumerated status checks;\n- department checks;\n- employment-type checks;\n- work-mode checks;\n- resume content-type checks;\n- resume size checks;\n- foreign-key relationships.\n\n### Soft Lifecycle Handling\n\nJob deletion is implemented as archival behavior through the repository/service path, preserving lifecycle semantics.\n\n### Human-Review Workflow Modeling\n\nApplications expose explicit human-review states and status history.\n\n### Minimal-Payload Listing\n\nResume binary/Base64 data is separated from ordinary application listing/detail metadata, reducing the amount of large file content moved through routine queries.\n\n### Input Validation Before Persistence\n\nPublic and admin payloads pass dedicated parsers before reaching database repositories.\n\n### Explicit Error Taxonomy\n\nDomain failures use stable codes such as job/application/resume not found and empty update conditions.\n\n### Environment-Based Secrets\n\nThe admin token is read from environment bindings rather than embedded in source.\n\n### Incremental Architectural Evolution\n\nCommit history shows a clear sequence:\n\n1. React consulting frontend rebuild;\n2. Hono backend foundation;\n3. Worker/API entrypoint;\n4. authentication and CORS;\n5. database repositories;\n6. admin/public routes;\n7. shared validation;\n8. D1-only Base64 resume correction.\n\nThat history provides evidence of architecture being built in layers rather than appearing as one undifferentiated source dump.",
+      "source_line_start": 363,
+      "source_line_end": 420
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Layered Backend Design",
+      "normalized_title": "Layered Backend Design",
+      "key": "layered_backend_design",
+      "path": [
+        "Engineering Practices",
+        "Layered Backend Design"
+      ],
+      "content": "Persistence, routing, middleware, services, validation, domain types, and error handling are separated rather than concentrated in the Worker entrypoint.",
+      "source_line_start": 365,
+      "source_line_end": 369
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Database Constraints as Domain Guardrails",
+      "normalized_title": "Database Constraints as Domain Guardrails",
+      "key": "database_constraints_as_domain_guardrails",
+      "path": [
+        "Engineering Practices",
+        "Database Constraints as Domain Guardrails"
+      ],
+      "content": "Business invariants are represented in SQL through:\n\n- enumerated status checks;\n- department checks;\n- employment-type checks;\n- work-mode checks;\n- resume content-type checks;\n- resume size checks;\n- foreign-key relationships.",
+      "source_line_start": 369,
+      "source_line_end": 381
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Soft Lifecycle Handling",
+      "normalized_title": "Soft Lifecycle Handling",
+      "key": "soft_lifecycle_handling",
+      "path": [
+        "Engineering Practices",
+        "Soft Lifecycle Handling"
+      ],
+      "content": "Job deletion is implemented as archival behavior through the repository/service path, preserving lifecycle semantics.",
+      "source_line_start": 381,
+      "source_line_end": 385
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Human-Review Workflow Modeling",
+      "normalized_title": "Human-Review Workflow Modeling",
+      "key": "human_review_workflow_modeling",
+      "path": [
+        "Engineering Practices",
+        "Human-Review Workflow Modeling"
+      ],
+      "content": "Applications expose explicit human-review states and status history.",
+      "source_line_start": 385,
+      "source_line_end": 389
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Minimal-Payload Listing",
+      "normalized_title": "Minimal-Payload Listing",
+      "key": "minimal_payload_listing",
+      "path": [
+        "Engineering Practices",
+        "Minimal-Payload Listing"
+      ],
+      "content": "Resume binary/Base64 data is separated from ordinary application listing/detail metadata, reducing the amount of large file content moved through routine queries.",
+      "source_line_start": 389,
+      "source_line_end": 393
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Input Validation Before Persistence",
+      "normalized_title": "Input Validation Before Persistence",
+      "key": "input_validation_before_persistence",
+      "path": [
+        "Engineering Practices",
+        "Input Validation Before Persistence"
+      ],
+      "content": "Public and admin payloads pass dedicated parsers before reaching database repositories.",
+      "source_line_start": 393,
+      "source_line_end": 397
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Explicit Error Taxonomy",
+      "normalized_title": "Explicit Error Taxonomy",
+      "key": "explicit_error_taxonomy",
+      "path": [
+        "Engineering Practices",
+        "Explicit Error Taxonomy"
+      ],
+      "content": "Domain failures use stable codes such as job/application/resume not found and empty update conditions.",
+      "source_line_start": 397,
+      "source_line_end": 401
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Environment-Based Secrets",
+      "normalized_title": "Environment-Based Secrets",
+      "key": "environment_based_secrets",
+      "path": [
+        "Engineering Practices",
+        "Environment-Based Secrets"
+      ],
+      "content": "The admin token is read from environment bindings rather than embedded in source.",
+      "source_line_start": 401,
+      "source_line_end": 405
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Incremental Architectural Evolution",
+      "normalized_title": "Incremental Architectural Evolution",
+      "key": "incremental_architectural_evolution",
+      "path": [
+        "Engineering Practices",
+        "Incremental Architectural Evolution"
+      ],
+      "content": "Commit history shows a clear sequence:\n\n1. React consulting frontend rebuild;\n2. Hono backend foundation;\n3. Worker/API entrypoint;\n4. authentication and CORS;\n5. database repositories;\n6. admin/public routes;\n7. shared validation;\n8. D1-only Base64 resume correction.\n\nThat history provides evidence of architecture being built in layers rather than appearing as one undifferentiated source dump.",
+      "source_line_start": 405,
+      "source_line_end": 420
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The software maps website pages to actual company workflows.\n\n### Service Discovery\n\nThree major service domains are given dedicated user journeys.\n\n### Hiring Funnel\n\nThe careers surface connects:\n\n```text\ncareers list\n   ↓\njob detail\n   ↓\napplication form\n   ↓\napplication persistence\n   ↓\nhuman-review status workflow\n```\n\n### Lead Intake\n\nContact requests and project inquiries are modeled separately, allowing a simple contact message and a structured project lead to have different data shapes.\n\n### Administrative Operations\n\nThe API provides queues and state transitions for staff-facing processing of jobs, candidates, contact requests, and project inquiries.",
+      "source_line_start": 420,
+      "source_line_end": 452
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Service Discovery",
+      "normalized_title": "Service Discovery",
+      "key": "service_discovery",
+      "path": [
+        "Product Engineering",
+        "Service Discovery"
+      ],
+      "content": "Three major service domains are given dedicated user journeys.",
+      "source_line_start": 424,
+      "source_line_end": 428
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Hiring Funnel",
+      "normalized_title": "Hiring Funnel",
+      "key": "hiring_funnel",
+      "path": [
+        "Product Engineering",
+        "Hiring Funnel"
+      ],
+      "content": "The careers surface connects:\n\n```text\ncareers list\n   ↓\njob detail\n   ↓\napplication form\n   ↓\napplication persistence\n   ↓\nhuman-review status workflow\n```",
+      "source_line_start": 428,
+      "source_line_end": 444
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Lead Intake",
+      "normalized_title": "Lead Intake",
+      "key": "lead_intake",
+      "path": [
+        "Product Engineering",
+        "Lead Intake"
+      ],
+      "content": "Contact requests and project inquiries are modeled separately, allowing a simple contact message and a structured project lead to have different data shapes.",
+      "source_line_start": 444,
+      "source_line_end": 448
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Administrative Operations",
+      "normalized_title": "Administrative Operations",
+      "key": "administrative_operations",
+      "path": [
+        "Product Engineering",
+        "Administrative Operations"
+      ],
+      "content": "The API provides queues and state transitions for staff-facing processing of jobs, candidates, contact requests, and project inquiries.",
+      "source_line_start": 448,
+      "source_line_end": 452
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository contains both frontend and backend source, configuration, SQL migrations, seed data, static assets, and architecture/change documentation.\n\n### Domain Scale\n\nThe backend models four business workflow families:\n\n- jobs;\n- applicants;\n- contact leads;\n- project inquiries.\n\n### Data-Model Complexity\n\nMultiple normalized tables, foreign keys, indexes, status histories, and constrained enum-like fields create meaningful relational complexity.\n\n### API Complexity\n\nPublic and administrative surfaces have different authentication, payload, pagination, and response needs.\n\n### Operational Complexity\n\nThe project includes local development, frontend build, API typechecking, D1 migration, local seeding, Worker deployment tooling, and environment-bound secrets.",
+      "source_line_start": 452,
+      "source_line_end": 479
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository contains both frontend and backend source, configuration, SQL migrations, seed data, static assets, and architecture/change documentation.",
+      "source_line_start": 454,
+      "source_line_end": 458
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Domain Scale",
+      "normalized_title": "Domain Scale",
+      "key": "domain_scale",
+      "path": [
+        "Scale and Complexity",
+        "Domain Scale"
+      ],
+      "content": "The backend models four business workflow families:\n\n- jobs;\n- applicants;\n- contact leads;\n- project inquiries.",
+      "source_line_start": 458,
+      "source_line_end": 467
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Data-Model Complexity",
+      "normalized_title": "Data-Model Complexity",
+      "key": "data_model_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Data-Model Complexity"
+      ],
+      "content": "Multiple normalized tables, foreign keys, indexes, status histories, and constrained enum-like fields create meaningful relational complexity.",
+      "source_line_start": 467,
+      "source_line_end": 471
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "API Complexity",
+      "normalized_title": "API Complexity",
+      "key": "api_complexity",
+      "path": [
+        "Scale and Complexity",
+        "API Complexity"
+      ],
+      "content": "Public and administrative surfaces have different authentication, payload, pagination, and response needs.",
+      "source_line_start": 471,
+      "source_line_end": 475
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Operational Complexity",
+      "normalized_title": "Operational Complexity",
+      "key": "operational_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Operational Complexity"
+      ],
+      "content": "The project includes local development, frontend build, API typechecking, D1 migration, local seeding, Worker deployment tooling, and environment-bound secrets.",
+      "source_line_start": 475,
+      "source_line_end": 479
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Frontend\n\n- **React — strong evidence.**\n- **TypeScript/TSX — strong evidence.**\n- **React Router — strong evidence.**\n- **Responsive company-website construction — strong evidence.**\n- **Multi-page SPA routing — strong evidence.**\n\n### Backend\n\n- **Hono — strong evidence.**\n- **REST-style route design — strong evidence.**\n- **Cloudflare Workers-oriented backend structure — strong evidence.**\n- **Middleware composition — strong evidence.**\n- **Structured error handling — strong evidence.**\n- **Payload validation — strong evidence.**\n- **Bearer-token authorization — strong evidence.**\n\n### Data\n\n- **Cloudflare D1 / relational SQL — strong evidence.**\n- **Schema migration design — strong evidence.**\n- **Foreign keys and relational normalization — strong evidence.**\n- **Indexes and database constraints — strong evidence.**\n- **Repository-layer SQL access — strong evidence.**\n- **Lifecycle/history modeling — strong evidence.**\n- **Base64 file persistence — strong evidence.**\n\n### Delivery and Quality\n\n- **Vite — strong evidence.**\n- **ESLint — strong evidence.**\n- **TypeScript build/typecheck workflows — strong evidence.**\n- **Wrangler — strong evidence.**\n- **D1 migration/seeding commands — strong evidence.**",
+      "source_line_start": 479,
+      "source_line_end": 517
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **React — strong evidence.**\n- **TypeScript/TSX — strong evidence.**\n- **React Router — strong evidence.**\n- **Responsive company-website construction — strong evidence.**\n- **Multi-page SPA routing — strong evidence.**",
+      "source_line_start": 481,
+      "source_line_end": 489
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Backend",
+      "normalized_title": "Backend",
+      "key": "backend",
+      "path": [
+        "Skills Demonstrated",
+        "Backend"
+      ],
+      "content": "- **Hono — strong evidence.**\n- **REST-style route design — strong evidence.**\n- **Cloudflare Workers-oriented backend structure — strong evidence.**\n- **Middleware composition — strong evidence.**\n- **Structured error handling — strong evidence.**\n- **Payload validation — strong evidence.**\n- **Bearer-token authorization — strong evidence.**",
+      "source_line_start": 489,
+      "source_line_end": 499
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Data",
+      "normalized_title": "Data",
+      "key": "data",
+      "path": [
+        "Skills Demonstrated",
+        "Data"
+      ],
+      "content": "- **Cloudflare D1 / relational SQL — strong evidence.**\n- **Schema migration design — strong evidence.**\n- **Foreign keys and relational normalization — strong evidence.**\n- **Indexes and database constraints — strong evidence.**\n- **Repository-layer SQL access — strong evidence.**\n- **Lifecycle/history modeling — strong evidence.**\n- **Base64 file persistence — strong evidence.**",
+      "source_line_start": 499,
+      "source_line_end": 509
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "Delivery and Quality",
+      "normalized_title": "Delivery and Quality",
+      "key": "delivery_and_quality",
+      "path": [
+        "Skills Demonstrated",
+        "Delivery and Quality"
+      ],
+      "content": "- **Vite — strong evidence.**\n- **ESLint — strong evidence.**\n- **TypeScript build/typecheck workflows — strong evidence.**\n- **Wrangler — strong evidence.**\n- **D1 migration/seeding commands — strong evidence.**",
+      "source_line_start": 509,
+      "source_line_end": 517
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository is a major full-stack expansion in the processed chronology.\n\nEarlier personal sites established browser and portfolio capabilities; this project turns a company website into a structured business system with:\n\n- typed frontend routes;\n- backend APIs;\n- protected administration;\n- relational persistence;\n- file handling;\n- business-state workflows;\n- schema constraints;\n- deployment-oriented serverless tooling.\n\nThe engineering object is no longer only a page or utility. It is a product architecture that connects public interactions to persistent business operations.",
+      "source_line_start": 517,
+      "source_line_end": 534
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Within the processed corpus, this repository is the clearest evidence so far of combining:\n\n- React/TypeScript SPA work;\n- Hono backend development;\n- Cloudflare Workers conventions;\n- Cloudflare D1 relational persistence;\n- public/admin API separation;\n- database repositories;\n- structured request validation;\n- application-status history;\n- business lead/careers workflows;\n- D1 Base64 document storage.\n\nIt also demonstrates later-stage defensive thinking around constraints, validation, file-size limits, protected downloads, environment secrets, request tracing, and operational lifecycle states.",
+      "source_line_start": 534,
+      "source_line_end": 551
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`George-Sedra-Website` marks a transition from frontend company presentation toward full-stack business software.\n\nIts chronology is particularly useful because the repository begins as a website and later gains a serverless backend and persistence architecture without discarding the original product surface.\n\nThe September 2026 commit sequence provides strong evidence of deliberate backend decomposition and business-domain modeling.",
+      "source_line_start": 551,
+      "source_line_end": 559
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`George-Sedra-Website` is a full-stack consulting-company platform built from a React/TypeScript frontend and a Hono/Cloudflare backend.\n\nThe frontend gives engineering, environmental, real-estate, careers, contact, and company content dedicated routes. The backend models the operational data behind jobs, applications, resumes, contacts, and project inquiries.\n\nCloudflare D1 provides normalized relational persistence with strict constraints and indexes. Public endpoints accept business inputs; admin endpoints provide protected review and lifecycle operations. Dedicated validation, error handling, middleware, repository modules, request IDs, and Base64 resume persistence demonstrate a materially more structured engineering style than a simple brochure site.\n\n# Project Tags",
+      "source_line_start": 559,
+      "source_line_end": 569
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `full-stack-application`\n- `company-website`\n- `business-workflow-application`\n- `consulting-platform`\n- `careers-platform`\n- `individual-project`",
+      "source_line_start": 569,
+      "source_line_end": 578
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`\n- `owner-attributed-source`",
+      "source_line_start": 578,
+      "source_line_end": 583
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `typescript`\n- `tsx`\n- `sql`\n- `css`",
+      "source_line_start": 583,
+      "source_line_end": 590
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `react`\n- `react-router`\n- `vite`\n- `single-page-application`\n- `responsive-web-design`\n- `multi-route-frontend`",
+      "source_line_start": 590,
+      "source_line_end": 599
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Backend",
+      "normalized_title": "Backend",
+      "key": "backend",
+      "path": [
+        "Backend"
+      ],
+      "content": "- `hono`\n- `rest-api`\n- `cloudflare-workers`\n- `public-api`\n- `admin-api`\n- `middleware`\n- `request-id`\n- `structured-errors`\n- `bearer-token-authentication`\n- `cors`\n- `secure-headers`\n- `payload-validation`",
+      "source_line_start": 599,
+      "source_line_end": 614
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `cloudflare-d1`\n- `relational-database`\n- `sql-migrations`\n- `foreign-keys`\n- `database-indexes`\n- `check-constraints`\n- `repository-pattern`\n- `status-history`\n- `base64-file-storage`\n- `resume-storage`",
+      "source_line_start": 614,
+      "source_line_end": 627
+    },
+    {
+      "id": "s073",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "- `job-posting-workflow`\n- `job-application-workflow`\n- `human-review-workflow`\n- `contact-request-workflow`\n- `project-inquiry-workflow`\n- `job-archival`\n- `pagination`",
+      "source_line_start": 627,
+      "source_line_end": 637
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "DevOps and Quality",
+      "normalized_title": "DevOps and Quality",
+      "key": "devops_and_quality",
+      "path": [
+        "DevOps and Quality"
+      ],
+      "content": "- `wrangler`\n- `eslint`\n- `typescript-typecheck`\n- `production-build`\n- `d1-migrations`\n- `database-seeding`\n- `environment-secret`",
+      "source_line_start": 637,
+      "source_line_end": 647
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-hono`\n- `earliest-observed-cloudflare-d1`\n- `earliest-observed-business-workflow-api`\n- `earliest-observed-d1-base64-document-storage`\n- `earliest-observed-public-admin-api-separation`",
+      "source_line_start": 647,
+      "source_line_end": 654
+    }
+  ],
+  "raw_analysis": "# George-Sedra-Website\n\n## Repository Identity\n\n- Repository: 102 / 134\n- Name: `George-Sedra-Website`\n- Repository start date: 2025-12-24\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `341f1aa31bf8d383f5f4d3b448175347891e84bf`\n- Primary type: Full-stack company consulting website and business-workflow API\n- Technical field: React frontend engineering, TypeScript backend engineering, serverless APIs, relational persistence\n- Application domain: Engineering, environmental, real-estate, careers, contact, and project-inquiry workflows\n- Collaboration type: `individual-project`\n- Primary languages: TypeScript, TSX, SQL, CSS\n- Frontend framework/tooling: React 19, React Router, Vite, ESLint\n- Backend framework/tooling: Hono, Cloudflare Workers tooling, Wrangler\n- Persistence model: Cloudflare D1 relational schema with resume data stored as Base64\n- Current source state: Responsive frontend plus implemented API/backend foundation\n\n## Collaboration and Authorship Context\n\nThe current repository history is owner-driven, and the latest backend/resume-storage work is explicitly authored and committed by the repository owner. The corpus therefore treats the application architecture, frontend implementation, backend repositories/routes, relational schema, validation layer, and integration decisions as personally attributable repository work.\n\nThe company/service content itself is domain content presented by the website. The engineering claim is the software system that structures and serves that content.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- root `README.md`;\n- current recursive repository tree;\n- `package.json`;\n- `src/App.tsx` and frontend page/component/data structure;\n- `api/src/index.ts`;\n- public and admin Hono route modules;\n- API database repository modules;\n- authentication, CORS, request-ID, and validation modules;\n- D1 migration and seed SQL;\n- resume service code;\n- Wrangler/TypeScript/ESLint configuration;\n- commit history through the September 6, 2026 backend expansion and Base64-resume correction.\n\nThe latest commit changes resume persistence from a bucket-oriented design to D1-only Base64 storage, making the current persistence model a deliberate architectural choice rather than a repository-name inference.\n\n## What This Project Is\n\n`George-Sedra-Website` is a React/TypeScript company website that evolved into a two-layer full-stack system.\n\nThe frontend presents consulting services and business-facing workflows. It contains dedicated routes for:\n\n- home;\n- engineering services;\n- environmental services;\n- real-estate services;\n- careers;\n- individual job details;\n- job applications;\n- about;\n- contact;\n- fallback/not-found behavior.\n\nThe backend is a Hono API structured for Cloudflare Workers and Cloudflare D1. It models job publishing, candidate applications, resumes, contact requests, project inquiries, and administrator review workflows.\n\nThe repository therefore goes substantially beyond a static brochure site: it models operational business entities and lifecycle transitions behind a public consulting interface.\n\n## Project Scope\n\n### Public Website\n\nThe React application includes:\n\n- service-line navigation;\n- engineering service presentation;\n- environmental Phase I / Phase II service presentation;\n- real-estate service presentation;\n- careers listing;\n- job-detail routing;\n- job-application interface;\n- contact interface;\n- about/company presentation;\n- responsive layout behavior.\n\n### Careers Domain\n\nThe backend supports a structured careers workflow around:\n\n- job records;\n- publish/draft/closed/archive lifecycle states;\n- ordered responsibility items;\n- ordered qualification items;\n- public published-job retrieval;\n- job filtering by department;\n- application creation;\n- application review status;\n- application status history;\n- resume metadata and payload persistence.\n\n### Inquiry Domain\n\nThe backend separately models:\n\n- general contact requests;\n- structured project inquiries;\n- service-line selection;\n- sub-service fields;\n- property/location context;\n- desired timeline;\n- administrative review status.\n\n### Administrative Domain\n\nBearer-protected administration routes support:\n\n- job listing and filtering;\n- job creation;\n- job editing;\n- job archival;\n- application listing;\n- application detail retrieval;\n- application status transitions;\n- resume download;\n- contact-request listing;\n- project-inquiry listing;\n- status updates for requests and inquiries.\n\n## Architecture and System Shape\n\n```text\nReact + TypeScript + Vite\n        |\n        +-- public company/service routes\n        +-- careers / job detail / apply routes\n        +-- contact and business inquiry interfaces\n\nHono API boundary\n        |\n        +-- request ID middleware\n        +-- security headers\n        +-- configured CORS\n        +-- logging\n        |\n        +-- /api/v1 public routes\n        |     +-- published jobs\n        |     +-- job detail\n        |     +-- applications\n        |     +-- contact requests\n        |     +-- project inquiries\n        |\n        +-- /api/v1/admin routes\n              +-- bearer authentication\n              +-- job lifecycle\n              +-- application review\n              +-- resume retrieval\n              +-- request/inquiry workflow\n\nCloudflare D1\n        |\n        +-- jobs\n        +-- responsibilities\n        +-- qualifications\n        +-- applications\n        +-- application resumes\n        +-- application status history\n        +-- contact requests\n        +-- project inquiries\n```\n\nThe application separates UI routing, API routing, domain validation, database repositories, middleware, services, and relational schema.\n\n## Technical Stack\n\n### React 19 + React Router\n\nThe frontend uses React component composition and React Router route declarations for the major company and careers pages.\n\n### TypeScript\n\nTypeScript is used across the React frontend and Hono backend, including typed environment bindings, domain statuses, repository return values, validation inputs, and Worker-facing API code.\n\n### Vite\n\nVite provides frontend development, production build, and preview workflows.\n\n### Hono\n\nHono implements the serverless API surface, routing, middleware composition, body limits, response handling, and Worker entrypoint.\n\n### Cloudflare Workers Tooling\n\nWrangler scripts are defined for:\n\n- local API development;\n- Worker deployment;\n- Worker environment type generation;\n- D1 migration execution;\n- D1 local seeding.\n\n### Cloudflare D1 / SQL\n\nThe schema uses SQLite-compatible D1 SQL with:\n\n- strict tables;\n- primary keys;\n- foreign keys;\n- cascading deletes where appropriate;\n- unique slugs;\n- status `CHECK` constraints;\n- file-type and resume-size constraints;\n- query-supporting indexes.\n\n### ESLint + TypeScript Project Builds\n\nThe repository exposes combined lint/build/typecheck commands through `npm run check`, `npm run api:typecheck`, and `npm run check:all`.\n\n## Major Engineering Work\n\n### Responsive React Consulting Frontend\n\nThe repository replaces a simple company-site shape with a routed React platform covering multiple consulting service lines and careers.\n\nThe route table is explicit rather than dynamically inferred, giving business areas stable URLs and distinct page responsibilities.\n\n### Careers Data Modeling\n\nThe D1 schema models jobs as operational records instead of flat page content.\n\nA job contains:\n\n- identifier and unique slug;\n- title and department;\n- location;\n- employment type;\n- work mode;\n- summary and full description;\n- lifecycle status;\n- publication timestamps.\n\nResponsibilities and qualifications are normalized into ordered child tables.\n\n### Job Application Workflow\n\nApplications are tied to jobs through foreign keys and include:\n\n- applicant identity/contact fields;\n- portfolio URL;\n- interest statement;\n- experience statement;\n- consent timestamp;\n- explicit review status.\n\nApplication status history records transitions separately, enabling lifecycle tracking rather than destructive state replacement without history.\n\n### Resume Persistence in D1\n\nThe current architecture stores resume payloads in the `application_resumes` table as Base64.\n\nImportant implementation choices include:\n\n- separate resume table rather than embedding the large payload into the main application row;\n- PDF/DOC/DOCX content-type restriction;\n- maximum decoded size of 1 MB;\n- stored metadata for file name, type, size, and creation time;\n- protected download path that reconstructs bytes from Base64;\n- content-disposition sanitization for downloaded names;\n- `private, no-store` cache policy.\n\n### Public API Routes\n\nThe public API implements:\n\n- published job collection;\n- job lookup by slug;\n- application submission;\n- contact-request submission;\n- project-inquiry submission.\n\nApplications are checked against a currently published job before persistence.\n\n### Admin API Routes\n\nAdministrator routes expose operational workflows rather than a single generic CRUD endpoint.\n\nThe code supports:\n\n- pagination;\n- status filters;\n- job filters;\n- job create/update/archive;\n- application detail and review-state transitions;\n- resume downloads;\n- contact/project inquiry queues;\n- request status transitions.\n\n### Bearer-Protected Administration\n\nAdmin middleware reads `ADMIN_API_TOKEN` from the Worker environment and compares it against a Bearer token from the request.\n\nThis provides a clear trust boundary between public endpoints and internal business operations.\n\n### Shared Request Validation\n\nThe backend contains dedicated validation modules for:\n\n- common values and pagination;\n- jobs;\n- applications;\n- contact requests;\n- project inquiries.\n\nThe latest commit series specifically adds and expands shared payload validation before database operations.\n\n### Request Tracing and Error Envelopes\n\nThe Hono entrypoint adds request-ID middleware and includes the request ID in successful/error response handling.\n\nStructured `ApiError` handling maps domain failures into HTTP status/code/message responses.\n\n### Security Headers and CORS\n\n`secureHeaders()` is applied globally, while configured CORS is scoped to the API path.\n\n### D1 Health Check\n\nThe health route performs `SELECT 1 AS ok` through D1, which checks the API/database path rather than returning an unconditional static health string.\n\n### Prototype Seed Separation\n\nPrototype job seed data is kept under `api/seed/` separately from the migration schema, making schema creation independent from sample business records.\n\n## Verification\n\n### Configured Frontend Checks\n\nThe project exposes:\n\n```text\nnpm run lint\nnpm run build\nnpm run check\n```\n\nwith `check` combining ESLint and the TypeScript/Vite production build.\n\n### Configured Backend Checks\n\nThe backend exposes:\n\n```text\nnpm run api:typecheck\nnpm run check:all\n```\n\nwhere `check:all` combines frontend lint/build and API typechecking.\n\n### Schema Execution Evidence\n\nRepository implementation notes record D1-compatible schema execution/validation against SQLite and TypeScript syntax checking during the backend construction work.\n\n### Compile-Time Structure\n\nSeparate frontend and API TypeScript configurations provide a static validation boundary between browser and Worker code.\n\n## Engineering Practices\n\n### Layered Backend Design\n\nPersistence, routing, middleware, services, validation, domain types, and error handling are separated rather than concentrated in the Worker entrypoint.\n\n### Database Constraints as Domain Guardrails\n\nBusiness invariants are represented in SQL through:\n\n- enumerated status checks;\n- department checks;\n- employment-type checks;\n- work-mode checks;\n- resume content-type checks;\n- resume size checks;\n- foreign-key relationships.\n\n### Soft Lifecycle Handling\n\nJob deletion is implemented as archival behavior through the repository/service path, preserving lifecycle semantics.\n\n### Human-Review Workflow Modeling\n\nApplications expose explicit human-review states and status history.\n\n### Minimal-Payload Listing\n\nResume binary/Base64 data is separated from ordinary application listing/detail metadata, reducing the amount of large file content moved through routine queries.\n\n### Input Validation Before Persistence\n\nPublic and admin payloads pass dedicated parsers before reaching database repositories.\n\n### Explicit Error Taxonomy\n\nDomain failures use stable codes such as job/application/resume not found and empty update conditions.\n\n### Environment-Based Secrets\n\nThe admin token is read from environment bindings rather than embedded in source.\n\n### Incremental Architectural Evolution\n\nCommit history shows a clear sequence:\n\n1. React consulting frontend rebuild;\n2. Hono backend foundation;\n3. Worker/API entrypoint;\n4. authentication and CORS;\n5. database repositories;\n6. admin/public routes;\n7. shared validation;\n8. D1-only Base64 resume correction.\n\nThat history provides evidence of architecture being built in layers rather than appearing as one undifferentiated source dump.\n\n## Product Engineering\n\nThe software maps website pages to actual company workflows.\n\n### Service Discovery\n\nThree major service domains are given dedicated user journeys.\n\n### Hiring Funnel\n\nThe careers surface connects:\n\n```text\ncareers list\n   ↓\njob detail\n   ↓\napplication form\n   ↓\napplication persistence\n   ↓\nhuman-review status workflow\n```\n\n### Lead Intake\n\nContact requests and project inquiries are modeled separately, allowing a simple contact message and a structured project lead to have different data shapes.\n\n### Administrative Operations\n\nThe API provides queues and state transitions for staff-facing processing of jobs, candidates, contact requests, and project inquiries.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository contains both frontend and backend source, configuration, SQL migrations, seed data, static assets, and architecture/change documentation.\n\n### Domain Scale\n\nThe backend models four business workflow families:\n\n- jobs;\n- applicants;\n- contact leads;\n- project inquiries.\n\n### Data-Model Complexity\n\nMultiple normalized tables, foreign keys, indexes, status histories, and constrained enum-like fields create meaningful relational complexity.\n\n### API Complexity\n\nPublic and administrative surfaces have different authentication, payload, pagination, and response needs.\n\n### Operational Complexity\n\nThe project includes local development, frontend build, API typechecking, D1 migration, local seeding, Worker deployment tooling, and environment-bound secrets.\n\n## Skills Demonstrated\n\n### Frontend\n\n- **React — strong evidence.**\n- **TypeScript/TSX — strong evidence.**\n- **React Router — strong evidence.**\n- **Responsive company-website construction — strong evidence.**\n- **Multi-page SPA routing — strong evidence.**\n\n### Backend\n\n- **Hono — strong evidence.**\n- **REST-style route design — strong evidence.**\n- **Cloudflare Workers-oriented backend structure — strong evidence.**\n- **Middleware composition — strong evidence.**\n- **Structured error handling — strong evidence.**\n- **Payload validation — strong evidence.**\n- **Bearer-token authorization — strong evidence.**\n\n### Data\n\n- **Cloudflare D1 / relational SQL — strong evidence.**\n- **Schema migration design — strong evidence.**\n- **Foreign keys and relational normalization — strong evidence.**\n- **Indexes and database constraints — strong evidence.**\n- **Repository-layer SQL access — strong evidence.**\n- **Lifecycle/history modeling — strong evidence.**\n- **Base64 file persistence — strong evidence.**\n\n### Delivery and Quality\n\n- **Vite — strong evidence.**\n- **ESLint — strong evidence.**\n- **TypeScript build/typecheck workflows — strong evidence.**\n- **Wrangler — strong evidence.**\n- **D1 migration/seeding commands — strong evidence.**\n\n## Capability Developed\n\nThis repository is a major full-stack expansion in the processed chronology.\n\nEarlier personal sites established browser and portfolio capabilities; this project turns a company website into a structured business system with:\n\n- typed frontend routes;\n- backend APIs;\n- protected administration;\n- relational persistence;\n- file handling;\n- business-state workflows;\n- schema constraints;\n- deployment-oriented serverless tooling.\n\nThe engineering object is no longer only a page or utility. It is a product architecture that connects public interactions to persistent business operations.\n\n## Portfolio Evolution Context\n\nWithin the processed corpus, this repository is the clearest evidence so far of combining:\n\n- React/TypeScript SPA work;\n- Hono backend development;\n- Cloudflare Workers conventions;\n- Cloudflare D1 relational persistence;\n- public/admin API separation;\n- database repositories;\n- structured request validation;\n- application-status history;\n- business lead/careers workflows;\n- D1 Base64 document storage.\n\nIt also demonstrates later-stage defensive thinking around constraints, validation, file-size limits, protected downloads, environment secrets, request tracing, and operational lifecycle states.\n\n## Historical Significance\n\n`George-Sedra-Website` marks a transition from frontend company presentation toward full-stack business software.\n\nIts chronology is particularly useful because the repository begins as a website and later gains a serverless backend and persistence architecture without discarding the original product surface.\n\nThe September 2026 commit sequence provides strong evidence of deliberate backend decomposition and business-domain modeling.\n\n## Overall Repository Narrative\n\n`George-Sedra-Website` is a full-stack consulting-company platform built from a React/TypeScript frontend and a Hono/Cloudflare backend.\n\nThe frontend gives engineering, environmental, real-estate, careers, contact, and company content dedicated routes. The backend models the operational data behind jobs, applications, resumes, contacts, and project inquiries.\n\nCloudflare D1 provides normalized relational persistence with strict constraints and indexes. Public endpoints accept business inputs; admin endpoints provide protected review and lifecycle operations. Dedicated validation, error handling, middleware, repository modules, request IDs, and Base64 resume persistence demonstrate a materially more structured engineering style than a simple brochure site.\n\n# Project Tags\n\n## Project Type\n\n- `full-stack-application`\n- `company-website`\n- `business-workflow-application`\n- `consulting-platform`\n- `careers-platform`\n- `individual-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n- `owner-attributed-source`\n\n## Languages\n\n- `typescript`\n- `tsx`\n- `sql`\n- `css`\n\n## Frontend\n\n- `react`\n- `react-router`\n- `vite`\n- `single-page-application`\n- `responsive-web-design`\n- `multi-route-frontend`\n\n## Backend\n\n- `hono`\n- `rest-api`\n- `cloudflare-workers`\n- `public-api`\n- `admin-api`\n- `middleware`\n- `request-id`\n- `structured-errors`\n- `bearer-token-authentication`\n- `cors`\n- `secure-headers`\n- `payload-validation`\n\n## Database and Data\n\n- `cloudflare-d1`\n- `relational-database`\n- `sql-migrations`\n- `foreign-keys`\n- `database-indexes`\n- `check-constraints`\n- `repository-pattern`\n- `status-history`\n- `base64-file-storage`\n- `resume-storage`\n\n## Product Engineering\n\n- `job-posting-workflow`\n- `job-application-workflow`\n- `human-review-workflow`\n- `contact-request-workflow`\n- `project-inquiry-workflow`\n- `job-archival`\n- `pagination`\n\n## DevOps and Quality\n\n- `wrangler`\n- `eslint`\n- `typescript-typecheck`\n- `production-build`\n- `d1-migrations`\n- `database-seeding`\n- `environment-secret`\n\n## Portfolio Significance\n\n- `earliest-observed-hono`\n- `earliest-observed-cloudflare-d1`\n- `earliest-observed-business-workflow-api`\n- `earliest-observed-d1-base64-document-storage`\n- `earliest-observed-public-admin-api-separation`\n"
+}

@@ -1,0 +1,1158 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 128,
+  "repository_total": 134,
+  "repository_name": "Indoor-Journal-",
+  "header_title": "Indoor-Journal-",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-128-Indoor-Journal-/README.md",
+    "line_start": 1,
+    "line_end": 816,
+    "sha256": "f7f7818aede1d4caeccd9f8b44c0cd04e5e4d922e4d83db239fcf9033e50acfb"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "research-journal",
+    "research-collaboration",
+    "wireless-networking",
+    "mobile-robotics",
+    "indoor-mobility",
+    "wifi",
+    "wifi-5",
+    "wifi-6",
+    "wifi-6e",
+    "5g",
+    "5g-nsa",
+    "n78",
+    "mmwave",
+    "los-nlos",
+    "handover",
+    "roaming",
+    "quectel",
+    "qconnectmanager",
+    "qmi",
+    "kernel-module-operations",
+    "linux-networking",
+    "hping3",
+    "tcp-latency",
+    "iperf3",
+    "ros2-logging",
+    "motion-event-analysis",
+    "repeatability-analysis",
+    "coefficient-of-variation",
+    "link-quality-analysis",
+    "trajectory-normalization",
+    "normalized-motion-progress",
+    "time-series-binning",
+    "throughput-analysis",
+    "sinr",
+    "rsrp",
+    "rsrq",
+    "python",
+    "pyside6",
+    "matplotlib",
+    "bash",
+    "cpp",
+    "sustained-load-testing",
+    "thermal-testing",
+    "traffic-throttling",
+    "experimental-reproducibility"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 128 / 138\n- Name: `Indoor-Journal-`\n- Start date: 2025-12-13\n- Latest meaningful update: 2026-03-04\n- Latest meaningful commit: `59ae627d8852c780cbccd276fedab911a079e39f`\n- Primary repository language metadata: Python\n- Technical field: indoor wireless experimentation, mobility, 5G/Wi-Fi measurement and processing\n- Domain: mobile-robot telecommunications research\n- Context: evolving indoor experimental journal and research-tool repository\n- Collaboration type: `research-collaboration`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Repository Architecture"
+      ],
+      "text": "## Repository Architecture\nThe repository is divided into research responsibilities.\n\n```text\nData Collection/\n    5G/\n    Wi-Fi/\n    ROS monitor\n\nLogs Processing/\n    5G analytics\n    throughput processing\n    latency processing\n\nThermal Platform/\n    sustained speed-test server\n\nThrottling/\n    rate control\n\nSystem Setup/\nDynamic MultiConnectivity/\n```\n\nSome subdirectories are planning/organization markers.\n\nThe implemented code is concentrated in data collection, processing, load generation, and rate-control tools."
+    },
+    "documentation": {
+      "section_ids": [
+        "s060"
+      ],
+      "titles": [
+        "Experimental Reproducibility"
+      ],
+      "text": "## Experimental Reproducibility\nThis repository contains unusually strong evidence of reproducibility work.\n\n### Explicit Repetition\n\nExperiments are structured around ten repeated runs.\n\n### Repeatability Statistics\n\nThe project measures route-duration variability before using the runs in aligned analysis.\n\n### Motion Event Logging\n\nStart/stop timestamps create common segmentation boundaries.\n\n### Cross-Source Time Alignment\n\nThroughput and link-quality samples are mapped into motion windows.\n\n### Normalized Trajectory Coordinate\n\nRuns are compared by relative progress, reducing sensitivity to small motion-duration differences.\n\n### Experiment Journal\n\nOperational failures and protocol fixes are recorded rather than silently discarded.\n\nThis gives the project an auditable evolution path."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 128 / 138\n- Name: `Indoor-Journal-`\n- Start date: 2025-12-13\n- Latest meaningful update: 2026-03-04\n- Latest meaningful commit: `59ae627d8852c780cbccd276fedab911a079e39f`\n- Primary repository language metadata: Python\n- Technical field: indoor wireless experimentation, mobility, 5G/Wi-Fi measurement and processing\n- Domain: mobile-robot telecommunications research\n- Context: evolving indoor experimental journal and research-tool repository\n- Collaboration type: `research-collaboration`",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Indoor-Journal-` is an evolving research workspace for designing, running, debugging, and processing indoor mobile-network experiments.\n\nIt combines:\n\n- experimental plans,\n- field notes,\n- data-collection scripts,\n- ROS-related motion logging,\n- Wi-Fi measurements,\n- 5G modem measurements,\n- throughput and latency tooling,\n- repeatability analysis,\n- link-quality analysis,\n- traffic generation,\n- throttling,\n- thermal/sustained-load infrastructure.\n\nThe term `Journal` is accurate.\n\nThe repository does not only preserve polished final tools.\n\nIt also records operational discoveries and protocol changes while experiments are being developed.\n\nThat makes it valuable evidence for research engineering because it exposes the feedback loop between:\n\n```text\nexperiment design\n      ↓\ndata collection\n      ↓\nfailure / observation\n      ↓\ntool or protocol correction\n      ↓\nnext experiment\n```",
+      "source_line_start": 16,
+      "source_line_end": 55
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Research Context",
+      "normalized_title": "Research Context",
+      "key": "research_context",
+      "path": [
+        "Research Context"
+      ],
+      "content": "The experiment design compares wireless technologies while a robot follows a route containing different propagation conditions.\n\nThe data-collection notes describe:\n\n- line-of-sight portions,\n- non-line-of-sight portions,\n- Wi-Fi handover behavior,\n- 5G conditions,\n- motion event timing.\n\nThe repository therefore links network measurements to a physical trajectory rather than treating samples as context-free points.",
+      "source_line_start": 55,
+      "source_line_end": 69
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Experimental Matrix",
+      "normalized_title": "Experimental Matrix",
+      "key": "experimental_matrix",
+      "path": [
+        "Experimental Matrix"
+      ],
+      "content": "The data-collection plan defines repeated experiments across a broad matrix.\n\n### 5G n78\n\nThe plan includes:\n\n- uplink,\n- downlink,\n- bidirectional traffic,\n\nat:\n\n- morning,\n- noon,\n- evening.\n\n### 5G mmWave\n\nThe same directional/time-of-day structure is described for mmWave experiments.\n\n### Wi-Fi 6\n\nWi-Fi 6 experiments are structured across:\n\n- 80 MHz,\n- 40 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- morning/noon/evening windows.\n\n### Wi-Fi 6E\n\nWi-Fi 6E experiments include:\n\n- 80 MHz,\n- 160 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- time-of-day repetition.\n\n### Wi-Fi 5\n\nWi-Fi 5 experiments include:\n\n- 80 MHz,\n- 40 MHz,\n- traffic-direction variants,\n- time-of-day variants.\n\n### Repeat Count\n\nThe plan states that each experiment is intended to be run ten times.\n\nThis creates a substantial repeatability requirement and explains why the repository contains dedicated repeatability-statistics tooling.",
+      "source_line_start": 69,
+      "source_line_end": 128
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "5G n78",
+      "normalized_title": "G n78",
+      "key": "g_n78",
+      "path": [
+        "Experimental Matrix",
+        "5G n78"
+      ],
+      "content": "The plan includes:\n\n- uplink,\n- downlink,\n- bidirectional traffic,\n\nat:\n\n- morning,\n- noon,\n- evening.",
+      "source_line_start": 73,
+      "source_line_end": 87
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "5G mmWave",
+      "normalized_title": "G mmWave",
+      "key": "g_mmwave",
+      "path": [
+        "Experimental Matrix",
+        "5G mmWave"
+      ],
+      "content": "The same directional/time-of-day structure is described for mmWave experiments.",
+      "source_line_start": 87,
+      "source_line_end": 91
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Wi-Fi 6",
+      "normalized_title": "Wi-Fi 6",
+      "key": "wi_fi_6",
+      "path": [
+        "Experimental Matrix",
+        "Wi-Fi 6"
+      ],
+      "content": "Wi-Fi 6 experiments are structured across:\n\n- 80 MHz,\n- 40 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- morning/noon/evening windows.",
+      "source_line_start": 91,
+      "source_line_end": 102
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Wi-Fi 6E",
+      "normalized_title": "Wi-Fi 6E",
+      "key": "wi_fi_6e",
+      "path": [
+        "Experimental Matrix",
+        "Wi-Fi 6E"
+      ],
+      "content": "Wi-Fi 6E experiments include:\n\n- 80 MHz,\n- 160 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- time-of-day repetition.",
+      "source_line_start": 102,
+      "source_line_end": 113
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Wi-Fi 5",
+      "normalized_title": "Wi-Fi 5",
+      "key": "wi_fi_5",
+      "path": [
+        "Experimental Matrix",
+        "Wi-Fi 5"
+      ],
+      "content": "Wi-Fi 5 experiments include:\n\n- 80 MHz,\n- 40 MHz,\n- traffic-direction variants,\n- time-of-day variants.",
+      "source_line_start": 113,
+      "source_line_end": 122
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Repeat Count",
+      "normalized_title": "Repeat Count",
+      "key": "repeat_count",
+      "path": [
+        "Experimental Matrix",
+        "Repeat Count"
+      ],
+      "content": "The plan states that each experiment is intended to be run ten times.\n\nThis creates a substantial repeatability requirement and explains why the repository contains dedicated repeatability-statistics tooling.",
+      "source_line_start": 122,
+      "source_line_end": 128
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Mobility-Aware Experiment Procedure",
+      "normalized_title": "Mobility-Aware Experiment Procedure",
+      "key": "mobility_aware_experiment_procedure",
+      "path": [
+        "Mobility-Aware Experiment Procedure"
+      ],
+      "content": "The data-collection procedure emphasizes running several data sources at the same time.\n\nThe plan calls for:\n\n- throughput collection during each test,\n- latency measurement,\n- motion start/stop markers,\n- AirRecorder or cellular logs,\n- synchronized timestamps.\n\nMotion events can be tied to ROS2 logging.\n\nThat relationship enables later analysis to ask how network behavior changes specifically during motion.",
+      "source_line_start": 128,
+      "source_line_end": 144
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "TCP Latency Measurement",
+      "normalized_title": "TCP Latency Measurement",
+      "key": "tcp_latency_measurement",
+      "path": [
+        "TCP Latency Measurement"
+      ],
+      "content": "The root journal records a TCP SYN measurement command using `hping3`.\n\nThe command is run with:\n\n- TCP SYN packets,\n- port 80,\n- high-frequency interval,\n- timestamping through `ts`,\n- output logging.\n\nThe notes describe measuring in both directions between server and client.\n\nThis provides an additional latency-observation method beyond ordinary ICMP ping.",
+      "source_line_start": 144,
+      "source_line_end": 160
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Experiment-Day Feedback Loop",
+      "normalized_title": "Experiment-Day Feedback Loop",
+      "key": "experiment_day_feedback_loop",
+      "path": [
+        "Experiment-Day Feedback Loop"
+      ],
+      "content": "The data-collection journal records issues discovered during actual experiment days.\n\nExamples include:\n\n- a motion-logging script failing and being fixed,\n- a ping command initially not writing its output to file,\n- observing stable route completion times,\n- selecting a longer route to create a more informative experiment,\n- observing anchoring in deep NLOS,\n- observing throughput changes around handover.\n\nThese entries are useful evidence of iterative experiment debugging.\n\nThey show that the protocol was revised from observed behavior rather than assumed correct before collection.",
+      "source_line_start": 160,
+      "source_line_end": 177
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Repository Architecture",
+      "normalized_title": "Repository Architecture",
+      "key": "repository_architecture",
+      "path": [
+        "Repository Architecture"
+      ],
+      "content": "The repository is divided into research responsibilities.\n\n```text\nData Collection/\n    5G/\n    Wi-Fi/\n    ROS monitor\n\nLogs Processing/\n    5G analytics\n    throughput processing\n    latency processing\n\nThermal Platform/\n    sustained speed-test server\n\nThrottling/\n    rate control\n\nSystem Setup/\nDynamic MultiConnectivity/\n```\n\nSome subdirectories are planning/organization markers.\n\nThe implemented code is concentrated in data collection, processing, load generation, and rate-control tools.",
+      "source_line_start": 177,
+      "source_line_end": 206
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "5G Data Collection and Modem Operations",
+      "normalized_title": "G Data Collection and Modem Operations",
+      "key": "g_data_collection_and_modem_operations",
+      "path": [
+        "5G Data Collection and Modem Operations"
+      ],
+      "content": "The `Data Collection/5G` material documents the Quectel modem workflow in detail.\n\n### Linux Setup\n\nThe documented environment uses Linux/Ubuntu.\n\nThe modem is connected over USB, with emphasis on the correct USB interface.\n\n### ModemManager Coordination\n\nThe setup temporarily stops Linux `ModemManager` when direct control of the Quectel interface is required.\n\n### QConnectManager Build and Install\n\nThe project documents:\n\n- cloning the UWaterloo QConnectManager repository,\n- compiling it,\n- installing its kernel module,\n- running `quectel-CM`.\n\nThe QConnectManager source itself is external research infrastructure.\n\nThe owner-attributable evidence is the setup, troubleshooting, automation, and use in the experimental platform.\n\n### Kernel-Module Lifecycle\n\nThe documentation explicitly recognizes that Linux kernel updates can invalidate previously built modules.\n\nThe recovery procedure includes:\n\n- checking the running kernel,\n- rebuilding,\n- reinstalling,\n- validating with `modinfo`,\n- rerunning the startup flow.\n\nThis is concrete systems-operation experience around experimental networking hardware.\n\n### Automated Startup Script\n\nThe documented `runtest` workflow automates modem startup.\n\nIts shell logic:\n\n1. stops ModemManager,\n2. removes/reloads QMI-related kernel modules,\n3. waits between transitions,\n4. runs QConnectManager with IPv4 and IPv6.\n\nThe script is described as a practical workaround for obtaining stable modem operation and throughput.",
+      "source_line_start": 206,
+      "source_line_end": 260
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Linux Setup",
+      "normalized_title": "Linux Setup",
+      "key": "linux_setup",
+      "path": [
+        "5G Data Collection and Modem Operations",
+        "Linux Setup"
+      ],
+      "content": "The documented environment uses Linux/Ubuntu.\n\nThe modem is connected over USB, with emphasis on the correct USB interface.",
+      "source_line_start": 210,
+      "source_line_end": 216
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "ModemManager Coordination",
+      "normalized_title": "ModemManager Coordination",
+      "key": "modemmanager_coordination",
+      "path": [
+        "5G Data Collection and Modem Operations",
+        "ModemManager Coordination"
+      ],
+      "content": "The setup temporarily stops Linux `ModemManager` when direct control of the Quectel interface is required.",
+      "source_line_start": 216,
+      "source_line_end": 220
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "QConnectManager Build and Install",
+      "normalized_title": "QConnectManager Build and Install",
+      "key": "qconnectmanager_build_and_install",
+      "path": [
+        "5G Data Collection and Modem Operations",
+        "QConnectManager Build and Install"
+      ],
+      "content": "The project documents:\n\n- cloning the UWaterloo QConnectManager repository,\n- compiling it,\n- installing its kernel module,\n- running `quectel-CM`.\n\nThe QConnectManager source itself is external research infrastructure.\n\nThe owner-attributable evidence is the setup, troubleshooting, automation, and use in the experimental platform.",
+      "source_line_start": 220,
+      "source_line_end": 233
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Kernel-Module Lifecycle",
+      "normalized_title": "Kernel-Module Lifecycle",
+      "key": "kernel_module_lifecycle",
+      "path": [
+        "5G Data Collection and Modem Operations",
+        "Kernel-Module Lifecycle"
+      ],
+      "content": "The documentation explicitly recognizes that Linux kernel updates can invalidate previously built modules.\n\nThe recovery procedure includes:\n\n- checking the running kernel,\n- rebuilding,\n- reinstalling,\n- validating with `modinfo`,\n- rerunning the startup flow.\n\nThis is concrete systems-operation experience around experimental networking hardware.",
+      "source_line_start": 233,
+      "source_line_end": 247
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Automated Startup Script",
+      "normalized_title": "Automated Startup Script",
+      "key": "automated_startup_script",
+      "path": [
+        "5G Data Collection and Modem Operations",
+        "Automated Startup Script"
+      ],
+      "content": "The documented `runtest` workflow automates modem startup.\n\nIts shell logic:\n\n1. stops ModemManager,\n2. removes/reloads QMI-related kernel modules,\n3. waits between transitions,\n4. runs QConnectManager with IPv4 and IPv6.\n\nThe script is described as a practical workaround for obtaining stable modem operation and throughput.",
+      "source_line_start": 247,
+      "source_line_end": 260
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Cellular Radio Monitoring",
+      "normalized_title": "Cellular Radio Monitoring",
+      "key": "cellular_radio_monitoring",
+      "path": [
+        "Cellular Radio Monitoring"
+      ],
+      "content": "The repository documents continuous monitoring of radio metrics such as:\n\n- SINR,\n- RSRP,\n- RSRQ.\n\nIt also uses manual AT-command inspection through `minicom`.\n\nThe serving-cell output is interpreted for both LTE and NR legs.\n\nThis provides cross-layer context around performance measurements.",
+      "source_line_start": 260,
+      "source_line_end": 274
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Wi-Fi Data Collection",
+      "normalized_title": "Wi-Fi Data Collection",
+      "key": "wi_fi_data_collection",
+      "path": [
+        "Wi-Fi Data Collection"
+      ],
+      "content": "The Wi-Fi directory contains utilities including:\n\n- `AppleSNRMonitor.py`,\n- `Wi-FiMetrics.bash`,\n- `dhcp_takeover.bash`,\n- `rssi.sh`.\n\nThe latest commits add Wi-Fi metrics and DHCP-related operating scripts.\n\nThese tools show an effort to pull signal/network state from the client/AP environment rather than relying only on throughput.",
+      "source_line_start": 274,
+      "source_line_end": 287
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "ROS Motion Monitoring",
+      "normalized_title": "ROS Motion Monitoring",
+      "key": "ros_motion_monitoring",
+      "path": [
+        "ROS Motion Monitoring"
+      ],
+      "content": "`ROSMontior.py` is part of the data-collection layer.\n\nThe broader procedure uses robot motion start/stop times so that logs can be segmented around physical movement.\n\nThis creates the event boundaries used by downstream repeatability and link-quality analysis.",
+      "source_line_start": 287,
+      "source_line_end": 295
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "5G Log Processing",
+      "normalized_title": "G Log Processing",
+      "key": "g_log_processing",
+      "path": [
+        "5G Log Processing"
+      ],
+      "content": "The `Logs Processing/5G` directory contains several substantial Python GUI tools.\n\nThese tools move the project from one-off scripts toward reusable analysis applications.",
+      "source_line_start": 295,
+      "source_line_end": 301
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Motion Repeatability Statistics",
+      "normalized_title": "Motion Repeatability Statistics",
+      "key": "motion_repeatability_statistics",
+      "path": [
+        "Motion Repeatability Statistics"
+      ],
+      "content": "`RepeatabilityStatistics.py` is a PySide6 GUI for motion-duration repeatability.\n\n### Duration Extraction\n\nThe parser searches for logged motion-event durations.\n\nDurations are converted to numeric seconds.\n\n### Filtering\n\nA configurable minimum-duration threshold can be applied.\n\nThe checked-in UI defaults to retaining runs longer than 50 seconds.\n\n### Forward and Backward Separation\n\nAfter filtering, the tool interprets alternating runs as:\n\n- forward,\n- backward.\n\nThis creates direction-specific repeatability groups.\n\n### Cycle Pairing\n\nForward and backward runs can be paired.\n\nThe code derives:\n\n- complete-cycle durations,\n- backward-minus-forward differences.\n\n### Statistical Outputs\n\nThe `Stats` dataclass contains:\n\n- sample count,\n- mean,\n- standard deviation,\n- coefficient of variation,\n- median,\n- Q1,\n- Q3,\n- interquartile range,\n- minimum,\n- maximum.\n\nThis is direct evidence of evaluating trajectory repeatability before relying on mobility-aligned network comparisons.\n\n### GUI Workflow\n\nThe PySide6 application supports:\n\n- drag-and-drop files,\n- browse controls,\n- an optional second input part,\n- configurable threshold,\n- results table,\n- text report,\n- CSV export,\n- report copy.",
+      "source_line_start": 301,
+      "source_line_end": 365
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Duration Extraction",
+      "normalized_title": "Duration Extraction",
+      "key": "duration_extraction",
+      "path": [
+        "Motion Repeatability Statistics",
+        "Duration Extraction"
+      ],
+      "content": "The parser searches for logged motion-event durations.\n\nDurations are converted to numeric seconds.",
+      "source_line_start": 305,
+      "source_line_end": 311
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Filtering",
+      "normalized_title": "Filtering",
+      "key": "filtering",
+      "path": [
+        "Motion Repeatability Statistics",
+        "Filtering"
+      ],
+      "content": "A configurable minimum-duration threshold can be applied.\n\nThe checked-in UI defaults to retaining runs longer than 50 seconds.",
+      "source_line_start": 311,
+      "source_line_end": 317
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Forward and Backward Separation",
+      "normalized_title": "Forward and Backward Separation",
+      "key": "forward_and_backward_separation",
+      "path": [
+        "Motion Repeatability Statistics",
+        "Forward and Backward Separation"
+      ],
+      "content": "After filtering, the tool interprets alternating runs as:\n\n- forward,\n- backward.\n\nThis creates direction-specific repeatability groups.",
+      "source_line_start": 317,
+      "source_line_end": 326
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Cycle Pairing",
+      "normalized_title": "Cycle Pairing",
+      "key": "cycle_pairing",
+      "path": [
+        "Motion Repeatability Statistics",
+        "Cycle Pairing"
+      ],
+      "content": "Forward and backward runs can be paired.\n\nThe code derives:\n\n- complete-cycle durations,\n- backward-minus-forward differences.",
+      "source_line_start": 326,
+      "source_line_end": 335
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Statistical Outputs",
+      "normalized_title": "Statistical Outputs",
+      "key": "statistical_outputs",
+      "path": [
+        "Motion Repeatability Statistics",
+        "Statistical Outputs"
+      ],
+      "content": "The `Stats` dataclass contains:\n\n- sample count,\n- mean,\n- standard deviation,\n- coefficient of variation,\n- median,\n- Q1,\n- Q3,\n- interquartile range,\n- minimum,\n- maximum.\n\nThis is direct evidence of evaluating trajectory repeatability before relying on mobility-aligned network comparisons.",
+      "source_line_start": 335,
+      "source_line_end": 352
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "GUI Workflow",
+      "normalized_title": "GUI Workflow",
+      "key": "gui_workflow",
+      "path": [
+        "Motion Repeatability Statistics",
+        "GUI Workflow"
+      ],
+      "content": "The PySide6 application supports:\n\n- drag-and-drop files,\n- browse controls,\n- an optional second input part,\n- configurable threshold,\n- results table,\n- text report,\n- CSV export,\n- report copy.",
+      "source_line_start": 352,
+      "source_line_end": 365
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Link Quality and Throughput Over Normalized Motion",
+      "normalized_title": "Link Quality and Throughput Over Normalized Motion",
+      "key": "link_quality_and_throughput_over_normalized_motion",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion"
+      ],
+      "content": "`linkQuality.py` is one of the most important analytical tools in the repository.\n\nIts documented workflow is:\n\n1. recursively scan a selected experiment root,\n2. identify monitor/timing logs,\n3. identify throughput logs,\n4. identify link-quality JSON logs,\n5. select a monitor file,\n6. choose throughput or link-quality mode,\n7. extract motion events,\n8. filter invalid/short runs,\n9. split alternating runs into forward/backward,\n10. slice network samples by motion windows,\n11. normalize each run to motion progress,\n12. bin normalized progress,\n13. compute per-bin statistics,\n14. export plots and text reports.\n\n### Motion Normalization\n\nFor each run, the tool computes a normalized progress variable:\n\n```text\ntau = (sample_time - run_start) / (run_stop - run_start)\n```\n\nThis is a powerful experimental normalization.\n\nRuns of slightly different wall-clock duration can be compared at the same **fraction of trajectory progress**.\n\n### Progress Binning\n\nThe tool can aggregate normalized motion into percentage bins.\n\nThe documented default interpretation includes 1% progress bins.\n\n### Bin Statistics\n\nFor each bin it computes:\n\n- minimum,\n- maximum,\n- mean,\n- standard deviation,\n- sample count.\n\n### Throughput Mode\n\nThe parser reads timestamped iperf output.\n\nIt recognizes throughput units including:\n\n- bits/sec,\n- Kbits/sec,\n- Mbits/sec,\n- Gbits/sec.\n\nAll values are normalized into Mbps for comparison.\n\n### Link-Quality Mode\n\nThe tool reads JSON link-quality logs.\n\nIt can select radio technology/metric combinations such as:\n\n- LTE SINR,\n- LTE RSRP,\n- LTE RSRQ,\n- 5G SINR,\n- 5G RSRP,\n- 5G RSRQ.\n\nThis creates a consistent analysis path for both application performance and radio state.",
+      "source_line_start": 365,
+      "source_line_end": 442
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Motion Normalization",
+      "normalized_title": "Motion Normalization",
+      "key": "motion_normalization",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion",
+        "Motion Normalization"
+      ],
+      "content": "For each run, the tool computes a normalized progress variable:\n\n```text\ntau = (sample_time - run_start) / (run_stop - run_start)\n```\n\nThis is a powerful experimental normalization.\n\nRuns of slightly different wall-clock duration can be compared at the same **fraction of trajectory progress**.",
+      "source_line_start": 386,
+      "source_line_end": 398
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Progress Binning",
+      "normalized_title": "Progress Binning",
+      "key": "progress_binning",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion",
+        "Progress Binning"
+      ],
+      "content": "The tool can aggregate normalized motion into percentage bins.\n\nThe documented default interpretation includes 1% progress bins.",
+      "source_line_start": 398,
+      "source_line_end": 404
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Bin Statistics",
+      "normalized_title": "Bin Statistics",
+      "key": "bin_statistics",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion",
+        "Bin Statistics"
+      ],
+      "content": "For each bin it computes:\n\n- minimum,\n- maximum,\n- mean,\n- standard deviation,\n- sample count.",
+      "source_line_start": 404,
+      "source_line_end": 414
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Throughput Mode",
+      "normalized_title": "Throughput Mode",
+      "key": "throughput_mode",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion",
+        "Throughput Mode"
+      ],
+      "content": "The parser reads timestamped iperf output.\n\nIt recognizes throughput units including:\n\n- bits/sec,\n- Kbits/sec,\n- Mbits/sec,\n- Gbits/sec.\n\nAll values are normalized into Mbps for comparison.",
+      "source_line_start": 414,
+      "source_line_end": 427
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Link-Quality Mode",
+      "normalized_title": "Link-Quality Mode",
+      "key": "link_quality_mode",
+      "path": [
+        "Link Quality and Throughput Over Normalized Motion",
+        "Link-Quality Mode"
+      ],
+      "content": "The tool reads JSON link-quality logs.\n\nIt can select radio technology/metric combinations such as:\n\n- LTE SINR,\n- LTE RSRP,\n- LTE RSRQ,\n- 5G SINR,\n- 5G RSRP,\n- 5G RSRQ.\n\nThis creates a consistent analysis path for both application performance and radio state.",
+      "source_line_start": 427,
+      "source_line_end": 442
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Why Normalized Motion Matters",
+      "normalized_title": "Why Normalized Motion Matters",
+      "key": "why_normalized_motion_matters",
+      "path": [
+        "Why Normalized Motion Matters"
+      ],
+      "content": "This repository does not assume ten runs take exactly the same number of seconds.\n\nInstead, the link-quality tool can map every run onto a common 0-to-1 motion coordinate.\n\nThat lets later analysis compare:\n\n- the beginning of a route,\n- corridor transitions,\n- NLOS portions,\n- handover regions,\n- route completion,\n\nacross repeated trials.\n\nThis is a substantial research-data-engineering technique.",
+      "source_line_start": 442,
+      "source_line_end": 460
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Throughput-Only Processing",
+      "normalized_title": "Throughput-Only Processing",
+      "key": "throughput_only_processing",
+      "path": [
+        "Throughput-Only Processing"
+      ],
+      "content": "`ThroughputOnly.py` provides a dedicated throughput-analysis path.\n\nIts existence alongside `linkQuality.py` shows that the processing suite separates specialized views instead of forcing every analysis into one monolithic application.",
+      "source_line_start": 460,
+      "source_line_end": 466
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "General 5G Processing GUI",
+      "normalized_title": "General 5G Processing GUI",
+      "key": "general_5g_processing_gui",
+      "path": [
+        "General 5G Processing GUI"
+      ],
+      "content": "`Logs Processing/5G.py` is a large Python application in the processing layer.\n\nIts repository size and commit history show iterative GUI and visualization work around cellular logs.\n\nRelated commits mention:\n\n- improved GUI,\n- time representation changes,\n- physical-cell-ID handling,\n- color/legend refinement.\n\nThis is evidence of repeated refinement of the research-analysis interface.",
+      "source_line_start": 466,
+      "source_line_end": 481
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Link-Quality Processing Evolution",
+      "normalized_title": "Link-Quality Processing Evolution",
+      "key": "link_quality_processing_evolution",
+      "path": [
+        "Link-Quality Processing Evolution"
+      ],
+      "content": "The commit history records a dedicated `linkQuality.py` addition after the other processing tools.\n\nThis indicates the analysis grew from throughput/repeatability toward a more explicitly cross-layer representation combining:\n\n- motion,\n- throughput,\n- cellular link metrics.",
+      "source_line_start": 481,
+      "source_line_end": 491
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Throughput Processing",
+      "normalized_title": "Throughput Processing",
+      "key": "throughput_processing",
+      "path": [
+        "Throughput Processing"
+      ],
+      "content": "`throughputProcessor.py` provides another reusable processing artifact for throughput logs.\n\nCombined with the specialized GUI tools, it demonstrates a layered approach:\n\n- raw log conversion,\n- focused processing,\n- statistical presentation.",
+      "source_line_start": 491,
+      "source_line_end": 501
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Latency Processing",
+      "normalized_title": "Latency Processing",
+      "key": "latency_processing",
+      "path": [
+        "Latency Processing"
+      ],
+      "content": "The repository also contains a `latencyPerfect` artifact in the log-processing directory.\n\nIts placement beside throughput processors indicates latency was maintained as an independent analysis stream in the indoor experimental pipeline.",
+      "source_line_start": 501,
+      "source_line_end": 507
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Thermal / Sustained-Load Platform",
+      "normalized_title": "Thermal / Sustained-Load Platform",
+      "key": "thermal_sustained_load_platform",
+      "path": [
+        "Thermal / Sustained-Load Platform"
+      ],
+      "content": "`Thermal Platform/server.py` is an HTTPS endless-download speed-test server.\n\nIts purpose is explicitly described as a high-performance endless download server for speed testing.\n\n### Browser Interface\n\nThe server embeds an HTML UI that reports:\n\n- current speed,\n- downloaded amount,\n- duration,\n- peak speed,\n- average speed.\n\n### Streaming Test\n\nThe browser fetches an `/infinite` endpoint.\n\nIt reads the response as a stream and continuously accumulates byte counts.\n\n### Instantaneous Speed\n\nThe page periodically computes instantaneous speed from:\n\n- bytes received since the last update,\n- elapsed time since the last update.\n\n### Average Speed\n\nAverage transfer rate is computed over the full elapsed test.\n\n### Abort Support\n\nThe browser uses `AbortController`.\n\nThe operator can stop an active endless-download test without closing the page.\n\n### Why the Thermal Platform Exists\n\nAn endless/sustained workload is useful for investigating:\n\n- stable throughput,\n- long-duration behavior,\n- thermal effects,\n- throttling behavior.\n\nThis extends the research from short discrete transfers toward sustained system stress.",
+      "source_line_start": 507,
+      "source_line_end": 557
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Browser Interface",
+      "normalized_title": "Browser Interface",
+      "key": "browser_interface",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Browser Interface"
+      ],
+      "content": "The server embeds an HTML UI that reports:\n\n- current speed,\n- downloaded amount,\n- duration,\n- peak speed,\n- average speed.",
+      "source_line_start": 513,
+      "source_line_end": 523
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Streaming Test",
+      "normalized_title": "Streaming Test",
+      "key": "streaming_test",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Streaming Test"
+      ],
+      "content": "The browser fetches an `/infinite` endpoint.\n\nIt reads the response as a stream and continuously accumulates byte counts.",
+      "source_line_start": 523,
+      "source_line_end": 529
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Instantaneous Speed",
+      "normalized_title": "Instantaneous Speed",
+      "key": "instantaneous_speed",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Instantaneous Speed"
+      ],
+      "content": "The page periodically computes instantaneous speed from:\n\n- bytes received since the last update,\n- elapsed time since the last update.",
+      "source_line_start": 529,
+      "source_line_end": 536
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Average Speed",
+      "normalized_title": "Average Speed",
+      "key": "average_speed",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Average Speed"
+      ],
+      "content": "Average transfer rate is computed over the full elapsed test.",
+      "source_line_start": 536,
+      "source_line_end": 540
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Abort Support",
+      "normalized_title": "Abort Support",
+      "key": "abort_support",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Abort Support"
+      ],
+      "content": "The browser uses `AbortController`.\n\nThe operator can stop an active endless-download test without closing the page.",
+      "source_line_start": 540,
+      "source_line_end": 546
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Why the Thermal Platform Exists",
+      "normalized_title": "Why the Thermal Platform Exists",
+      "key": "why_the_thermal_platform_exists",
+      "path": [
+        "Thermal / Sustained-Load Platform",
+        "Why the Thermal Platform Exists"
+      ],
+      "content": "An endless/sustained workload is useful for investigating:\n\n- stable throughput,\n- long-duration behavior,\n- thermal effects,\n- throttling behavior.\n\nThis extends the research from short discrete transfers toward sustained system stress.",
+      "source_line_start": 546,
+      "source_line_end": 557
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Traffic Throttling",
+      "normalized_title": "Traffic Throttling",
+      "key": "traffic_throttling",
+      "path": [
+        "Traffic Throttling"
+      ],
+      "content": "The `Throttling` directory contains a C++ rate-control program.\n\nThis adds a different systems layer to the repository.\n\nRather than only measuring whatever bandwidth the environment naturally provides, the experiment platform can include explicit traffic-rate shaping behavior.\n\nThe presence of a compiled C++ rate tool alongside Python processing and Bash setup scripts reflects the multi-language nature of the research platform.",
+      "source_line_start": 557,
+      "source_line_end": 567
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Dynamic Multi-Connectivity Research Direction",
+      "normalized_title": "Dynamic Multi-Connectivity Research Direction",
+      "key": "dynamic_multi_connectivity_research_direction",
+      "path": [
+        "Dynamic Multi-Connectivity Research Direction"
+      ],
+      "content": "The journal describes an environment-aware multi-connectivity idea.\n\nThe proposed policy is conceptually:\n\n- favor 5G when Wi-Fi is roaming and 5G has strong LOS conditions,\n- favor Wi-Fi when 5G enters NLOS.\n\nThe repository currently documents this as a research direction/design concept.\n\nIt should not be confused with evidence of a fully implemented production multi-connectivity controller.\n\nThe important portfolio evidence is the cross-layer reasoning: network selection is being framed as a function of environmental and mobility state rather than static preference.",
+      "source_line_start": 567,
+      "source_line_end": 582
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Research Tooling Stack",
+      "normalized_title": "Research Tooling Stack",
+      "key": "research_tooling_stack",
+      "path": [
+        "Research Tooling Stack"
+      ],
+      "content": "### Python\n\nPython is used for:\n\n- GUIs,\n- log parsing,\n- repeatability statistics,\n- link-quality analysis,\n- throughput processing,\n- server tooling.\n\n### PySide6\n\nPySide6 provides desktop analysis interfaces for several tools.\n\n### Matplotlib\n\nMatplotlib is used to render analytical plots from processed experiment data.\n\n### Bash\n\nShell scripts support:\n\n- Wi-Fi metrics,\n- DHCP/network operations,\n- RSSI collection,\n- modem/kernel-module workflows.\n\n### C++\n\nC++ appears in the throttling layer.\n\n### Linux Networking Tools\n\nThe repository uses or documents:\n\n- `hping3`,\n- `iperf3`,\n- `ssh`,\n- `minicom`,\n- `modprobe`,\n- `rmmod`,\n- `modinfo`,\n- QMI network interfaces.",
+      "source_line_start": 582,
+      "source_line_end": 629
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Research Tooling Stack",
+        "Python"
+      ],
+      "content": "Python is used for:\n\n- GUIs,\n- log parsing,\n- repeatability statistics,\n- link-quality analysis,\n- throughput processing,\n- server tooling.",
+      "source_line_start": 584,
+      "source_line_end": 595
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "PySide6",
+      "normalized_title": "PySide6",
+      "key": "pyside6",
+      "path": [
+        "Research Tooling Stack",
+        "PySide6"
+      ],
+      "content": "PySide6 provides desktop analysis interfaces for several tools.",
+      "source_line_start": 595,
+      "source_line_end": 599
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Matplotlib",
+      "normalized_title": "Matplotlib",
+      "key": "matplotlib",
+      "path": [
+        "Research Tooling Stack",
+        "Matplotlib"
+      ],
+      "content": "Matplotlib is used to render analytical plots from processed experiment data.",
+      "source_line_start": 599,
+      "source_line_end": 603
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Bash",
+      "normalized_title": "Bash",
+      "key": "bash",
+      "path": [
+        "Research Tooling Stack",
+        "Bash"
+      ],
+      "content": "Shell scripts support:\n\n- Wi-Fi metrics,\n- DHCP/network operations,\n- RSSI collection,\n- modem/kernel-module workflows.",
+      "source_line_start": 603,
+      "source_line_end": 612
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Research Tooling Stack",
+        "C++"
+      ],
+      "content": "C++ appears in the throttling layer.",
+      "source_line_start": 612,
+      "source_line_end": 616
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Linux Networking Tools",
+      "normalized_title": "Linux Networking Tools",
+      "key": "linux_networking_tools",
+      "path": [
+        "Research Tooling Stack",
+        "Linux Networking Tools"
+      ],
+      "content": "The repository uses or documents:\n\n- `hping3`,\n- `iperf3`,\n- `ssh`,\n- `minicom`,\n- `modprobe`,\n- `rmmod`,\n- `modinfo`,\n- QMI network interfaces.",
+      "source_line_start": 616,
+      "source_line_end": 629
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Experimental Reproducibility",
+      "normalized_title": "Experimental Reproducibility",
+      "key": "experimental_reproducibility",
+      "path": [
+        "Experimental Reproducibility"
+      ],
+      "content": "This repository contains unusually strong evidence of reproducibility work.\n\n### Explicit Repetition\n\nExperiments are structured around ten repeated runs.\n\n### Repeatability Statistics\n\nThe project measures route-duration variability before using the runs in aligned analysis.\n\n### Motion Event Logging\n\nStart/stop timestamps create common segmentation boundaries.\n\n### Cross-Source Time Alignment\n\nThroughput and link-quality samples are mapped into motion windows.\n\n### Normalized Trajectory Coordinate\n\nRuns are compared by relative progress, reducing sensitivity to small motion-duration differences.\n\n### Experiment Journal\n\nOperational failures and protocol fixes are recorded rather than silently discarded.\n\nThis gives the project an auditable evolution path.",
+      "source_line_start": 629,
+      "source_line_end": 659
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Explicit Repetition",
+      "normalized_title": "Explicit Repetition",
+      "key": "explicit_repetition",
+      "path": [
+        "Experimental Reproducibility",
+        "Explicit Repetition"
+      ],
+      "content": "Experiments are structured around ten repeated runs.",
+      "source_line_start": 633,
+      "source_line_end": 637
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "Repeatability Statistics",
+      "normalized_title": "Repeatability Statistics",
+      "key": "repeatability_statistics",
+      "path": [
+        "Experimental Reproducibility",
+        "Repeatability Statistics"
+      ],
+      "content": "The project measures route-duration variability before using the runs in aligned analysis.",
+      "source_line_start": 637,
+      "source_line_end": 641
+    },
+    {
+      "id": "s063",
+      "level": 3,
+      "title": "Motion Event Logging",
+      "normalized_title": "Motion Event Logging",
+      "key": "motion_event_logging",
+      "path": [
+        "Experimental Reproducibility",
+        "Motion Event Logging"
+      ],
+      "content": "Start/stop timestamps create common segmentation boundaries.",
+      "source_line_start": 641,
+      "source_line_end": 645
+    },
+    {
+      "id": "s064",
+      "level": 3,
+      "title": "Cross-Source Time Alignment",
+      "normalized_title": "Cross-Source Time Alignment",
+      "key": "cross_source_time_alignment",
+      "path": [
+        "Experimental Reproducibility",
+        "Cross-Source Time Alignment"
+      ],
+      "content": "Throughput and link-quality samples are mapped into motion windows.",
+      "source_line_start": 645,
+      "source_line_end": 649
+    },
+    {
+      "id": "s065",
+      "level": 3,
+      "title": "Normalized Trajectory Coordinate",
+      "normalized_title": "Normalized Trajectory Coordinate",
+      "key": "normalized_trajectory_coordinate",
+      "path": [
+        "Experimental Reproducibility",
+        "Normalized Trajectory Coordinate"
+      ],
+      "content": "Runs are compared by relative progress, reducing sensitivity to small motion-duration differences.",
+      "source_line_start": 649,
+      "source_line_end": 653
+    },
+    {
+      "id": "s066",
+      "level": 3,
+      "title": "Experiment Journal",
+      "normalized_title": "Experiment Journal",
+      "key": "experiment_journal",
+      "path": [
+        "Experimental Reproducibility",
+        "Experiment Journal"
+      ],
+      "content": "Operational failures and protocol fixes are recorded rather than silently discarded.\n\nThis gives the project an auditable evolution path.",
+      "source_line_start": 653,
+      "source_line_end": 659
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "`Indoor-Journal-` crosses several engineering layers:\n\n- physical robot motion,\n- cellular modem integration,\n- Wi-Fi client/AP measurement,\n- Linux networking,\n- shell automation,\n- Python GUIs,\n- statistical processing,\n- sustained-load serving,\n- C++ throttling.\n\nThe experiment matrix itself spans:\n\n- multiple radio technologies,\n- bandwidths,\n- traffic directions,\n- times of day,\n- repeated trials.\n\nThe codebase exists because that matrix would be difficult to execute and interpret manually.",
+      "source_line_start": 659,
+      "source_line_end": 683
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Research Engineering\n\n- designing a multi-factor experiment matrix,\n- logging experiment-day failures,\n- changing procedures in response to observed issues,\n- developing supporting tools alongside data collection.\n\n### Wireless Systems\n\n- Wi-Fi metrics,\n- 5G radio metrics,\n- LOS/NLOS reasoning,\n- handover observation,\n- cellular interface operation.\n\n### Linux Systems\n\n- kernel-module rebuild/install,\n- network-interface control,\n- shell scripting,\n- SSH,\n- modem serial access.\n\n### Data Engineering\n\n- recursive experiment discovery,\n- heterogeneous log parsing,\n- timestamp parsing,\n- unit normalization,\n- motion-window slicing,\n- relative-time normalization.\n\n### Statistical Analysis\n\n- mean,\n- standard deviation,\n- coefficient of variation,\n- quartiles,\n- IQR,\n- min/max,\n- direction-specific comparison,\n- normalized-bin statistics.\n\n### GUI Development\n\n- PySide6 analysis tools,\n- file selection,\n- drag-and-drop,\n- result tables,\n- export workflows.\n\n### Performance Engineering\n\n- sustained download workload,\n- instantaneous/average speed measurement,\n- rate throttling.",
+      "source_line_start": 683,
+      "source_line_end": 742
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Research Engineering",
+      "normalized_title": "Research Engineering",
+      "key": "research_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Research Engineering"
+      ],
+      "content": "- designing a multi-factor experiment matrix,\n- logging experiment-day failures,\n- changing procedures in response to observed issues,\n- developing supporting tools alongside data collection.",
+      "source_line_start": 685,
+      "source_line_end": 692
+    },
+    {
+      "id": "s070",
+      "level": 3,
+      "title": "Wireless Systems",
+      "normalized_title": "Wireless Systems",
+      "key": "wireless_systems",
+      "path": [
+        "Skills Demonstrated",
+        "Wireless Systems"
+      ],
+      "content": "- Wi-Fi metrics,\n- 5G radio metrics,\n- LOS/NLOS reasoning,\n- handover observation,\n- cellular interface operation.",
+      "source_line_start": 692,
+      "source_line_end": 700
+    },
+    {
+      "id": "s071",
+      "level": 3,
+      "title": "Linux Systems",
+      "normalized_title": "Linux Systems",
+      "key": "linux_systems",
+      "path": [
+        "Skills Demonstrated",
+        "Linux Systems"
+      ],
+      "content": "- kernel-module rebuild/install,\n- network-interface control,\n- shell scripting,\n- SSH,\n- modem serial access.",
+      "source_line_start": 700,
+      "source_line_end": 708
+    },
+    {
+      "id": "s072",
+      "level": 3,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Data Engineering"
+      ],
+      "content": "- recursive experiment discovery,\n- heterogeneous log parsing,\n- timestamp parsing,\n- unit normalization,\n- motion-window slicing,\n- relative-time normalization.",
+      "source_line_start": 708,
+      "source_line_end": 717
+    },
+    {
+      "id": "s073",
+      "level": 3,
+      "title": "Statistical Analysis",
+      "normalized_title": "Statistical Analysis",
+      "key": "statistical_analysis",
+      "path": [
+        "Skills Demonstrated",
+        "Statistical Analysis"
+      ],
+      "content": "- mean,\n- standard deviation,\n- coefficient of variation,\n- quartiles,\n- IQR,\n- min/max,\n- direction-specific comparison,\n- normalized-bin statistics.",
+      "source_line_start": 717,
+      "source_line_end": 728
+    },
+    {
+      "id": "s074",
+      "level": 3,
+      "title": "GUI Development",
+      "normalized_title": "GUI Development",
+      "key": "gui_development",
+      "path": [
+        "Skills Demonstrated",
+        "GUI Development"
+      ],
+      "content": "- PySide6 analysis tools,\n- file selection,\n- drag-and-drop,\n- result tables,\n- export workflows.",
+      "source_line_start": 728,
+      "source_line_end": 736
+    },
+    {
+      "id": "s075",
+      "level": 3,
+      "title": "Performance Engineering",
+      "normalized_title": "Performance Engineering",
+      "key": "performance_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Performance Engineering"
+      ],
+      "content": "- sustained download workload,\n- instantaneous/average speed measurement,\n- rate throttling.",
+      "source_line_start": 736,
+      "source_line_end": 742
+    },
+    {
+      "id": "s076",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "This repository represents a move from isolated network measurement tools toward an integrated **experimental operating system of small utilities**.\n\nEarlier work demonstrates traffic generation and post-processing.\n\nHere, the portfolio connects:\n\n- planning,\n- acquisition,\n- motion instrumentation,\n- repeatability verification,\n- cross-layer link analysis,\n- sustained-load generation,\n- troubleshooting.\n\nThe repository therefore preserves not just code, but how the wireless research methodology became more systematic.",
+      "source_line_start": 742,
+      "source_line_end": 760
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Indoor-Journal-` is a research engineering journal for indoor mobile-network experiments.\n\nIts technical value comes from the way it binds physical motion and wireless state into a reproducible data pipeline.\n\nThe project treats data acquisition, modem operation, robot timing, link-quality parsing, statistics, and sustained-load infrastructure as connected parts of one experimental system.\n\nIt also preserves real failure-and-fix episodes, which makes the repository especially useful for understanding how the experimental method evolved rather than only seeing a final polished analysis.\n\n# Project Tags\n\n- `research-journal`\n- `research-collaboration`\n- `wireless-networking`\n- `mobile-robotics`\n- `indoor-mobility`\n- `wifi`\n- `wifi-5`\n- `wifi-6`\n- `wifi-6e`\n- `5g`\n- `5g-nsa`\n- `n78`\n- `mmwave`\n- `los-nlos`\n- `handover`\n- `roaming`\n- `quectel`\n- `qconnectmanager`\n- `qmi`\n- `kernel-module-operations`\n- `linux-networking`\n- `hping3`\n- `tcp-latency`\n- `iperf3`\n- `ros2-logging`\n- `motion-event-analysis`\n- `repeatability-analysis`\n- `coefficient-of-variation`\n- `link-quality-analysis`\n- `trajectory-normalization`\n- `normalized-motion-progress`\n- `time-series-binning`\n- `throughput-analysis`\n- `sinr`\n- `rsrp`\n- `rsrq`\n- `python`\n- `pyside6`\n- `matplotlib`\n- `bash`\n- `cpp`\n- `sustained-load-testing`\n- `thermal-testing`\n- `traffic-throttling`\n- `experimental-reproducibility`",
+      "source_line_start": 760,
+      "source_line_end": 817
+    }
+  ],
+  "raw_analysis": "# Indoor-Journal-\n\n## Repository Identity\n\n- Repository: 128 / 138\n- Name: `Indoor-Journal-`\n- Start date: 2025-12-13\n- Latest meaningful update: 2026-03-04\n- Latest meaningful commit: `59ae627d8852c780cbccd276fedab911a079e39f`\n- Primary repository language metadata: Python\n- Technical field: indoor wireless experimentation, mobility, 5G/Wi-Fi measurement and processing\n- Domain: mobile-robot telecommunications research\n- Context: evolving indoor experimental journal and research-tool repository\n- Collaboration type: `research-collaboration`\n\n## What This Project Is\n\n`Indoor-Journal-` is an evolving research workspace for designing, running, debugging, and processing indoor mobile-network experiments.\n\nIt combines:\n\n- experimental plans,\n- field notes,\n- data-collection scripts,\n- ROS-related motion logging,\n- Wi-Fi measurements,\n- 5G modem measurements,\n- throughput and latency tooling,\n- repeatability analysis,\n- link-quality analysis,\n- traffic generation,\n- throttling,\n- thermal/sustained-load infrastructure.\n\nThe term `Journal` is accurate.\n\nThe repository does not only preserve polished final tools.\n\nIt also records operational discoveries and protocol changes while experiments are being developed.\n\nThat makes it valuable evidence for research engineering because it exposes the feedback loop between:\n\n```text\nexperiment design\n      ↓\ndata collection\n      ↓\nfailure / observation\n      ↓\ntool or protocol correction\n      ↓\nnext experiment\n```\n\n## Research Context\n\nThe experiment design compares wireless technologies while a robot follows a route containing different propagation conditions.\n\nThe data-collection notes describe:\n\n- line-of-sight portions,\n- non-line-of-sight portions,\n- Wi-Fi handover behavior,\n- 5G conditions,\n- motion event timing.\n\nThe repository therefore links network measurements to a physical trajectory rather than treating samples as context-free points.\n\n## Experimental Matrix\n\nThe data-collection plan defines repeated experiments across a broad matrix.\n\n### 5G n78\n\nThe plan includes:\n\n- uplink,\n- downlink,\n- bidirectional traffic,\n\nat:\n\n- morning,\n- noon,\n- evening.\n\n### 5G mmWave\n\nThe same directional/time-of-day structure is described for mmWave experiments.\n\n### Wi-Fi 6\n\nWi-Fi 6 experiments are structured across:\n\n- 80 MHz,\n- 40 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- morning/noon/evening windows.\n\n### Wi-Fi 6E\n\nWi-Fi 6E experiments include:\n\n- 80 MHz,\n- 160 MHz,\n- uplink,\n- downlink,\n- bidirectional traffic,\n- time-of-day repetition.\n\n### Wi-Fi 5\n\nWi-Fi 5 experiments include:\n\n- 80 MHz,\n- 40 MHz,\n- traffic-direction variants,\n- time-of-day variants.\n\n### Repeat Count\n\nThe plan states that each experiment is intended to be run ten times.\n\nThis creates a substantial repeatability requirement and explains why the repository contains dedicated repeatability-statistics tooling.\n\n## Mobility-Aware Experiment Procedure\n\nThe data-collection procedure emphasizes running several data sources at the same time.\n\nThe plan calls for:\n\n- throughput collection during each test,\n- latency measurement,\n- motion start/stop markers,\n- AirRecorder or cellular logs,\n- synchronized timestamps.\n\nMotion events can be tied to ROS2 logging.\n\nThat relationship enables later analysis to ask how network behavior changes specifically during motion.\n\n## TCP Latency Measurement\n\nThe root journal records a TCP SYN measurement command using `hping3`.\n\nThe command is run with:\n\n- TCP SYN packets,\n- port 80,\n- high-frequency interval,\n- timestamping through `ts`,\n- output logging.\n\nThe notes describe measuring in both directions between server and client.\n\nThis provides an additional latency-observation method beyond ordinary ICMP ping.\n\n## Experiment-Day Feedback Loop\n\nThe data-collection journal records issues discovered during actual experiment days.\n\nExamples include:\n\n- a motion-logging script failing and being fixed,\n- a ping command initially not writing its output to file,\n- observing stable route completion times,\n- selecting a longer route to create a more informative experiment,\n- observing anchoring in deep NLOS,\n- observing throughput changes around handover.\n\nThese entries are useful evidence of iterative experiment debugging.\n\nThey show that the protocol was revised from observed behavior rather than assumed correct before collection.\n\n## Repository Architecture\n\nThe repository is divided into research responsibilities.\n\n```text\nData Collection/\n    5G/\n    Wi-Fi/\n    ROS monitor\n\nLogs Processing/\n    5G analytics\n    throughput processing\n    latency processing\n\nThermal Platform/\n    sustained speed-test server\n\nThrottling/\n    rate control\n\nSystem Setup/\nDynamic MultiConnectivity/\n```\n\nSome subdirectories are planning/organization markers.\n\nThe implemented code is concentrated in data collection, processing, load generation, and rate-control tools.\n\n## 5G Data Collection and Modem Operations\n\nThe `Data Collection/5G` material documents the Quectel modem workflow in detail.\n\n### Linux Setup\n\nThe documented environment uses Linux/Ubuntu.\n\nThe modem is connected over USB, with emphasis on the correct USB interface.\n\n### ModemManager Coordination\n\nThe setup temporarily stops Linux `ModemManager` when direct control of the Quectel interface is required.\n\n### QConnectManager Build and Install\n\nThe project documents:\n\n- cloning the UWaterloo QConnectManager repository,\n- compiling it,\n- installing its kernel module,\n- running `quectel-CM`.\n\nThe QConnectManager source itself is external research infrastructure.\n\nThe owner-attributable evidence is the setup, troubleshooting, automation, and use in the experimental platform.\n\n### Kernel-Module Lifecycle\n\nThe documentation explicitly recognizes that Linux kernel updates can invalidate previously built modules.\n\nThe recovery procedure includes:\n\n- checking the running kernel,\n- rebuilding,\n- reinstalling,\n- validating with `modinfo`,\n- rerunning the startup flow.\n\nThis is concrete systems-operation experience around experimental networking hardware.\n\n### Automated Startup Script\n\nThe documented `runtest` workflow automates modem startup.\n\nIts shell logic:\n\n1. stops ModemManager,\n2. removes/reloads QMI-related kernel modules,\n3. waits between transitions,\n4. runs QConnectManager with IPv4 and IPv6.\n\nThe script is described as a practical workaround for obtaining stable modem operation and throughput.\n\n## Cellular Radio Monitoring\n\nThe repository documents continuous monitoring of radio metrics such as:\n\n- SINR,\n- RSRP,\n- RSRQ.\n\nIt also uses manual AT-command inspection through `minicom`.\n\nThe serving-cell output is interpreted for both LTE and NR legs.\n\nThis provides cross-layer context around performance measurements.\n\n## Wi-Fi Data Collection\n\nThe Wi-Fi directory contains utilities including:\n\n- `AppleSNRMonitor.py`,\n- `Wi-FiMetrics.bash`,\n- `dhcp_takeover.bash`,\n- `rssi.sh`.\n\nThe latest commits add Wi-Fi metrics and DHCP-related operating scripts.\n\nThese tools show an effort to pull signal/network state from the client/AP environment rather than relying only on throughput.\n\n## ROS Motion Monitoring\n\n`ROSMontior.py` is part of the data-collection layer.\n\nThe broader procedure uses robot motion start/stop times so that logs can be segmented around physical movement.\n\nThis creates the event boundaries used by downstream repeatability and link-quality analysis.\n\n## 5G Log Processing\n\nThe `Logs Processing/5G` directory contains several substantial Python GUI tools.\n\nThese tools move the project from one-off scripts toward reusable analysis applications.\n\n## Motion Repeatability Statistics\n\n`RepeatabilityStatistics.py` is a PySide6 GUI for motion-duration repeatability.\n\n### Duration Extraction\n\nThe parser searches for logged motion-event durations.\n\nDurations are converted to numeric seconds.\n\n### Filtering\n\nA configurable minimum-duration threshold can be applied.\n\nThe checked-in UI defaults to retaining runs longer than 50 seconds.\n\n### Forward and Backward Separation\n\nAfter filtering, the tool interprets alternating runs as:\n\n- forward,\n- backward.\n\nThis creates direction-specific repeatability groups.\n\n### Cycle Pairing\n\nForward and backward runs can be paired.\n\nThe code derives:\n\n- complete-cycle durations,\n- backward-minus-forward differences.\n\n### Statistical Outputs\n\nThe `Stats` dataclass contains:\n\n- sample count,\n- mean,\n- standard deviation,\n- coefficient of variation,\n- median,\n- Q1,\n- Q3,\n- interquartile range,\n- minimum,\n- maximum.\n\nThis is direct evidence of evaluating trajectory repeatability before relying on mobility-aligned network comparisons.\n\n### GUI Workflow\n\nThe PySide6 application supports:\n\n- drag-and-drop files,\n- browse controls,\n- an optional second input part,\n- configurable threshold,\n- results table,\n- text report,\n- CSV export,\n- report copy.\n\n## Link Quality and Throughput Over Normalized Motion\n\n`linkQuality.py` is one of the most important analytical tools in the repository.\n\nIts documented workflow is:\n\n1. recursively scan a selected experiment root,\n2. identify monitor/timing logs,\n3. identify throughput logs,\n4. identify link-quality JSON logs,\n5. select a monitor file,\n6. choose throughput or link-quality mode,\n7. extract motion events,\n8. filter invalid/short runs,\n9. split alternating runs into forward/backward,\n10. slice network samples by motion windows,\n11. normalize each run to motion progress,\n12. bin normalized progress,\n13. compute per-bin statistics,\n14. export plots and text reports.\n\n### Motion Normalization\n\nFor each run, the tool computes a normalized progress variable:\n\n```text\ntau = (sample_time - run_start) / (run_stop - run_start)\n```\n\nThis is a powerful experimental normalization.\n\nRuns of slightly different wall-clock duration can be compared at the same **fraction of trajectory progress**.\n\n### Progress Binning\n\nThe tool can aggregate normalized motion into percentage bins.\n\nThe documented default interpretation includes 1% progress bins.\n\n### Bin Statistics\n\nFor each bin it computes:\n\n- minimum,\n- maximum,\n- mean,\n- standard deviation,\n- sample count.\n\n### Throughput Mode\n\nThe parser reads timestamped iperf output.\n\nIt recognizes throughput units including:\n\n- bits/sec,\n- Kbits/sec,\n- Mbits/sec,\n- Gbits/sec.\n\nAll values are normalized into Mbps for comparison.\n\n### Link-Quality Mode\n\nThe tool reads JSON link-quality logs.\n\nIt can select radio technology/metric combinations such as:\n\n- LTE SINR,\n- LTE RSRP,\n- LTE RSRQ,\n- 5G SINR,\n- 5G RSRP,\n- 5G RSRQ.\n\nThis creates a consistent analysis path for both application performance and radio state.\n\n## Why Normalized Motion Matters\n\nThis repository does not assume ten runs take exactly the same number of seconds.\n\nInstead, the link-quality tool can map every run onto a common 0-to-1 motion coordinate.\n\nThat lets later analysis compare:\n\n- the beginning of a route,\n- corridor transitions,\n- NLOS portions,\n- handover regions,\n- route completion,\n\nacross repeated trials.\n\nThis is a substantial research-data-engineering technique.\n\n## Throughput-Only Processing\n\n`ThroughputOnly.py` provides a dedicated throughput-analysis path.\n\nIts existence alongside `linkQuality.py` shows that the processing suite separates specialized views instead of forcing every analysis into one monolithic application.\n\n## General 5G Processing GUI\n\n`Logs Processing/5G.py` is a large Python application in the processing layer.\n\nIts repository size and commit history show iterative GUI and visualization work around cellular logs.\n\nRelated commits mention:\n\n- improved GUI,\n- time representation changes,\n- physical-cell-ID handling,\n- color/legend refinement.\n\nThis is evidence of repeated refinement of the research-analysis interface.\n\n## Link-Quality Processing Evolution\n\nThe commit history records a dedicated `linkQuality.py` addition after the other processing tools.\n\nThis indicates the analysis grew from throughput/repeatability toward a more explicitly cross-layer representation combining:\n\n- motion,\n- throughput,\n- cellular link metrics.\n\n## Throughput Processing\n\n`throughputProcessor.py` provides another reusable processing artifact for throughput logs.\n\nCombined with the specialized GUI tools, it demonstrates a layered approach:\n\n- raw log conversion,\n- focused processing,\n- statistical presentation.\n\n## Latency Processing\n\nThe repository also contains a `latencyPerfect` artifact in the log-processing directory.\n\nIts placement beside throughput processors indicates latency was maintained as an independent analysis stream in the indoor experimental pipeline.\n\n## Thermal / Sustained-Load Platform\n\n`Thermal Platform/server.py` is an HTTPS endless-download speed-test server.\n\nIts purpose is explicitly described as a high-performance endless download server for speed testing.\n\n### Browser Interface\n\nThe server embeds an HTML UI that reports:\n\n- current speed,\n- downloaded amount,\n- duration,\n- peak speed,\n- average speed.\n\n### Streaming Test\n\nThe browser fetches an `/infinite` endpoint.\n\nIt reads the response as a stream and continuously accumulates byte counts.\n\n### Instantaneous Speed\n\nThe page periodically computes instantaneous speed from:\n\n- bytes received since the last update,\n- elapsed time since the last update.\n\n### Average Speed\n\nAverage transfer rate is computed over the full elapsed test.\n\n### Abort Support\n\nThe browser uses `AbortController`.\n\nThe operator can stop an active endless-download test without closing the page.\n\n### Why the Thermal Platform Exists\n\nAn endless/sustained workload is useful for investigating:\n\n- stable throughput,\n- long-duration behavior,\n- thermal effects,\n- throttling behavior.\n\nThis extends the research from short discrete transfers toward sustained system stress.\n\n## Traffic Throttling\n\nThe `Throttling` directory contains a C++ rate-control program.\n\nThis adds a different systems layer to the repository.\n\nRather than only measuring whatever bandwidth the environment naturally provides, the experiment platform can include explicit traffic-rate shaping behavior.\n\nThe presence of a compiled C++ rate tool alongside Python processing and Bash setup scripts reflects the multi-language nature of the research platform.\n\n## Dynamic Multi-Connectivity Research Direction\n\nThe journal describes an environment-aware multi-connectivity idea.\n\nThe proposed policy is conceptually:\n\n- favor 5G when Wi-Fi is roaming and 5G has strong LOS conditions,\n- favor Wi-Fi when 5G enters NLOS.\n\nThe repository currently documents this as a research direction/design concept.\n\nIt should not be confused with evidence of a fully implemented production multi-connectivity controller.\n\nThe important portfolio evidence is the cross-layer reasoning: network selection is being framed as a function of environmental and mobility state rather than static preference.\n\n## Research Tooling Stack\n\n### Python\n\nPython is used for:\n\n- GUIs,\n- log parsing,\n- repeatability statistics,\n- link-quality analysis,\n- throughput processing,\n- server tooling.\n\n### PySide6\n\nPySide6 provides desktop analysis interfaces for several tools.\n\n### Matplotlib\n\nMatplotlib is used to render analytical plots from processed experiment data.\n\n### Bash\n\nShell scripts support:\n\n- Wi-Fi metrics,\n- DHCP/network operations,\n- RSSI collection,\n- modem/kernel-module workflows.\n\n### C++\n\nC++ appears in the throttling layer.\n\n### Linux Networking Tools\n\nThe repository uses or documents:\n\n- `hping3`,\n- `iperf3`,\n- `ssh`,\n- `minicom`,\n- `modprobe`,\n- `rmmod`,\n- `modinfo`,\n- QMI network interfaces.\n\n## Experimental Reproducibility\n\nThis repository contains unusually strong evidence of reproducibility work.\n\n### Explicit Repetition\n\nExperiments are structured around ten repeated runs.\n\n### Repeatability Statistics\n\nThe project measures route-duration variability before using the runs in aligned analysis.\n\n### Motion Event Logging\n\nStart/stop timestamps create common segmentation boundaries.\n\n### Cross-Source Time Alignment\n\nThroughput and link-quality samples are mapped into motion windows.\n\n### Normalized Trajectory Coordinate\n\nRuns are compared by relative progress, reducing sensitivity to small motion-duration differences.\n\n### Experiment Journal\n\nOperational failures and protocol fixes are recorded rather than silently discarded.\n\nThis gives the project an auditable evolution path.\n\n## Scale and Complexity\n\n`Indoor-Journal-` crosses several engineering layers:\n\n- physical robot motion,\n- cellular modem integration,\n- Wi-Fi client/AP measurement,\n- Linux networking,\n- shell automation,\n- Python GUIs,\n- statistical processing,\n- sustained-load serving,\n- C++ throttling.\n\nThe experiment matrix itself spans:\n\n- multiple radio technologies,\n- bandwidths,\n- traffic directions,\n- times of day,\n- repeated trials.\n\nThe codebase exists because that matrix would be difficult to execute and interpret manually.\n\n## Skills Demonstrated\n\n### Research Engineering\n\n- designing a multi-factor experiment matrix,\n- logging experiment-day failures,\n- changing procedures in response to observed issues,\n- developing supporting tools alongside data collection.\n\n### Wireless Systems\n\n- Wi-Fi metrics,\n- 5G radio metrics,\n- LOS/NLOS reasoning,\n- handover observation,\n- cellular interface operation.\n\n### Linux Systems\n\n- kernel-module rebuild/install,\n- network-interface control,\n- shell scripting,\n- SSH,\n- modem serial access.\n\n### Data Engineering\n\n- recursive experiment discovery,\n- heterogeneous log parsing,\n- timestamp parsing,\n- unit normalization,\n- motion-window slicing,\n- relative-time normalization.\n\n### Statistical Analysis\n\n- mean,\n- standard deviation,\n- coefficient of variation,\n- quartiles,\n- IQR,\n- min/max,\n- direction-specific comparison,\n- normalized-bin statistics.\n\n### GUI Development\n\n- PySide6 analysis tools,\n- file selection,\n- drag-and-drop,\n- result tables,\n- export workflows.\n\n### Performance Engineering\n\n- sustained download workload,\n- instantaneous/average speed measurement,\n- rate throttling.\n\n## Historical Portfolio Significance\n\nThis repository represents a move from isolated network measurement tools toward an integrated **experimental operating system of small utilities**.\n\nEarlier work demonstrates traffic generation and post-processing.\n\nHere, the portfolio connects:\n\n- planning,\n- acquisition,\n- motion instrumentation,\n- repeatability verification,\n- cross-layer link analysis,\n- sustained-load generation,\n- troubleshooting.\n\nThe repository therefore preserves not just code, but how the wireless research methodology became more systematic.\n\n## Overall Project Narrative\n\n`Indoor-Journal-` is a research engineering journal for indoor mobile-network experiments.\n\nIts technical value comes from the way it binds physical motion and wireless state into a reproducible data pipeline.\n\nThe project treats data acquisition, modem operation, robot timing, link-quality parsing, statistics, and sustained-load infrastructure as connected parts of one experimental system.\n\nIt also preserves real failure-and-fix episodes, which makes the repository especially useful for understanding how the experimental method evolved rather than only seeing a final polished analysis.\n\n# Project Tags\n\n- `research-journal`\n- `research-collaboration`\n- `wireless-networking`\n- `mobile-robotics`\n- `indoor-mobility`\n- `wifi`\n- `wifi-5`\n- `wifi-6`\n- `wifi-6e`\n- `5g`\n- `5g-nsa`\n- `n78`\n- `mmwave`\n- `los-nlos`\n- `handover`\n- `roaming`\n- `quectel`\n- `qconnectmanager`\n- `qmi`\n- `kernel-module-operations`\n- `linux-networking`\n- `hping3`\n- `tcp-latency`\n- `iperf3`\n- `ros2-logging`\n- `motion-event-analysis`\n- `repeatability-analysis`\n- `coefficient-of-variation`\n- `link-quality-analysis`\n- `trajectory-normalization`\n- `normalized-motion-progress`\n- `time-series-binning`\n- `throughput-analysis`\n- `sinr`\n- `rsrp`\n- `rsrq`\n- `python`\n- `pyside6`\n- `matplotlib`\n- `bash`\n- `cpp`\n- `sustained-load-testing`\n- `thermal-testing`\n- `traffic-throttling`\n- `experimental-reproducibility`\n"
+}

@@ -1,0 +1,469 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 32,
+  "repository_total": 134,
+  "repository_name": "MachineLearning",
+  "header_title": "MachineLearning",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-032-MachineLearning/README.md",
+    "line_start": 1,
+    "line_end": 279,
+    "sha256": "bfe79ae8ddc07c00559bb596898f9dd7305985e63f6956dce6990aa1f6ef402e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "python",
+    "jupyter-notebook",
+    "individual-project",
+    "machine-learning",
+    "supervised-learning",
+    "regression",
+    "linear-regression",
+    "pandas",
+    "scikit-learn",
+    "tabular-data",
+    "train-test-split",
+    "reproducible-split",
+    "model-training",
+    "model-prediction",
+    "mean-squared-error",
+    "r2-score",
+    "held-out-evaluation",
+    "molecular-solubility",
+    "molecular-descriptors",
+    "dataframe",
+    "earliest-observed-pandas",
+    "earliest-observed-scikit-learn-regression",
+    "earliest-observed-r2-evaluation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 032 / 134\n- Name: `MachineLearning`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Artifact: `FirstMLProject.ipynb`\n- Primary Language: Python\n- Technical Field: Supervised machine learning, regression\n- Domain: Molecular solubility prediction\n- Collaboration Type: Individual Project"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository contains one owner-uploaded notebook.\n\nThe notebook’s Colab execution metadata identifies `Kirolos Sedra` as the executing user for the preserved cells.\n\nThat gives direct evidence of hands-on execution and experimentation."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 032 / 134\n- Name: `MachineLearning`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Artifact: `FirstMLProject.ipynb`\n- Primary Language: Python\n- Technical Field: Supervised machine learning, regression\n- Domain: Molecular solubility prediction\n- Collaboration Type: Individual Project",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository contains one owner-uploaded notebook.\n\nThe notebook’s Colab execution metadata identifies `Kirolos Sedra` as the executing user for the preserved cells.\n\nThat gives direct evidence of hands-on execution and experimentation.",
+      "source_line_start": 15,
+      "source_line_end": 23
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`MachineLearning` contains a single Jupyter notebook explicitly named:\n\n`FirstMLProject.ipynb`\n\nThe notebook builds a regression workflow for predicting molecular aqueous solubility.\n\nThe target variable is:\n\n`logS`\n\nThe feature set contains molecular descriptors such as:\n\n- `MolLogP`,\n- `MolWt`,\n- `NumRotatableBonds`,\n- `AromaticProportion`.\n\nThe preserved dataframe contains 1,144 rows and five columns including the target.",
+      "source_line_start": 23,
+      "source_line_end": 44
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Data Source and Preparation",
+      "normalized_title": "Data Source and Preparation",
+      "key": "data_source_and_preparation",
+      "path": [
+        "Data Source and Preparation"
+      ],
+      "content": "The notebook loads a CSV dataset with pandas.\n\nIt uses:\n\n```text\npd.read_csv(...)\n```\n\nagainst a publicly hosted molecular-solubility dataset.\n\nThe target column `logS` is separated from the explanatory variables.\n\nConceptually:\n\n```text\nmolecular descriptor dataset\n          ↓\npandas DataFrame\n          ↓\nX = descriptor columns\ny = logS\n```",
+      "source_line_start": 44,
+      "source_line_end": 69
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Dataset Shape",
+      "normalized_title": "Dataset Shape",
+      "key": "dataset_shape",
+      "path": [
+        "Dataset Shape"
+      ],
+      "content": "The preserved notebook output shows:\n\n- 1,144 observations,\n- four input descriptors,\n- one `logS` target.\n\nThis provides direct data-scale evidence.",
+      "source_line_start": 69,
+      "source_line_end": 79
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Train/Test Split",
+      "normalized_title": "Train/Test Split",
+      "key": "train_test_split",
+      "path": [
+        "Train/Test Split"
+      ],
+      "content": "The notebook uses scikit-learn’s `train_test_split`.\n\nThe split is configured with:\n\n- `test_size=0.2`,\n- `random_state=2`.\n\nThat produces an 80/20 training/evaluation partition with reproducible randomization.",
+      "source_line_start": 79,
+      "source_line_end": 90
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Model Building",
+      "normalized_title": "Model Building",
+      "key": "model_building",
+      "path": [
+        "Model Building"
+      ],
+      "content": "The model is scikit-learn `LinearRegression`.\n\nThe workflow is explicit:\n\n```text\nlr = LinearRegression()\nlr.fit(X_train, y_train)\n```\n\nPredictions are then produced for both:\n\n- training data,\n- test data.\n\nThis makes the notebook a complete supervised-regression workflow rather than only a dataset visualization.",
+      "source_line_start": 90,
+      "source_line_end": 108
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Evaluation Metrics",
+      "normalized_title": "Evaluation Metrics",
+      "key": "evaluation_metrics",
+      "path": [
+        "Evaluation Metrics"
+      ],
+      "content": "The notebook evaluates the regression model with:\n\n- mean squared error,\n- R² score.\n\nIt calculates both metrics independently for training and test partitions.\n\nPreserved outputs include:\n\n### Training\n\n- MSE: approximately `0.97397`\n- R²: approximately `0.77658`\n\n### Test\n\n- MSE: approximately `1.16132`\n- R²: approximately `0.74186`\n\nThese values provide concrete model-evaluation evidence.",
+      "source_line_start": 108,
+      "source_line_end": 131
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Training",
+      "normalized_title": "Training",
+      "key": "training",
+      "path": [
+        "Evaluation Metrics",
+        "Training"
+      ],
+      "content": "- MSE: approximately `0.97397`\n- R²: approximately `0.77658`",
+      "source_line_start": 119,
+      "source_line_end": 124
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Test",
+      "normalized_title": "Test",
+      "key": "test",
+      "path": [
+        "Evaluation Metrics",
+        "Test"
+      ],
+      "content": "- MSE: approximately `1.16132`\n- R²: approximately `0.74186`\n\nThese values provide concrete model-evaluation evidence.",
+      "source_line_start": 124,
+      "source_line_end": 131
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Generalization Comparison",
+      "normalized_title": "Generalization Comparison",
+      "key": "generalization_comparison",
+      "path": [
+        "Generalization Comparison"
+      ],
+      "content": "Because the notebook records both train and test metrics, it supports basic generalization reasoning.\n\nThe test MSE is higher than training MSE.\n\nThe test R² is lower than training R².\n\nThe repository therefore demonstrates the practice of evaluating a model on unseen held-out data rather than judging it only on the training set.",
+      "source_line_start": 131,
+      "source_line_end": 141
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nThe notebook implementation language.\n\n### pandas\n\nUsed to load and manipulate the tabular dataset.\n\n### scikit-learn\n\nUsed for:\n\n- train/test splitting,\n- linear regression,\n- mean squared error,\n- R² evaluation.\n\n### Jupyter / Google Colab\n\nUsed for iterative execution and preserved outputs.",
+      "source_line_start": 141,
+      "source_line_end": 164
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "The notebook implementation language.",
+      "source_line_start": 143,
+      "source_line_end": 147
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "pandas",
+      "normalized_title": "pandas",
+      "key": "pandas",
+      "path": [
+        "Technical Stack",
+        "pandas"
+      ],
+      "content": "Used to load and manipulate the tabular dataset.",
+      "source_line_start": 147,
+      "source_line_end": 151
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "scikit-learn",
+      "normalized_title": "scikit-learn",
+      "key": "scikit_learn",
+      "path": [
+        "Technical Stack",
+        "scikit-learn"
+      ],
+      "content": "Used for:\n\n- train/test splitting,\n- linear regression,\n- mean squared error,\n- R² evaluation.",
+      "source_line_start": 151,
+      "source_line_end": 160
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Jupyter / Google Colab",
+      "normalized_title": "Jupyter / Google Colab",
+      "key": "jupyter_google_colab",
+      "path": [
+        "Technical Stack",
+        "Jupyter / Google Colab"
+      ],
+      "content": "Used for iterative execution and preserved outputs.",
+      "source_line_start": 160,
+      "source_line_end": 164
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering and Data Practices",
+      "normalized_title": "Engineering and Data Practices",
+      "key": "engineering_and_data_practices",
+      "path": [
+        "Engineering and Data Practices"
+      ],
+      "content": "### Reproducible Data Split\n\n`random_state=2` makes the partition repeatable.\n\n### Feature/Target Separation\n\nThe target is explicitly removed from the model-input dataframe.\n\n### Held-Out Evaluation\n\nThe model is measured on both train and test subsets.\n\n### Metric-Based Assessment\n\nPerformance is quantified with numerical regression metrics.",
+      "source_line_start": 164,
+      "source_line_end": 182
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Reproducible Data Split",
+      "normalized_title": "Reproducible Data Split",
+      "key": "reproducible_data_split",
+      "path": [
+        "Engineering and Data Practices",
+        "Reproducible Data Split"
+      ],
+      "content": "`random_state=2` makes the partition repeatable.",
+      "source_line_start": 166,
+      "source_line_end": 170
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Feature/Target Separation",
+      "normalized_title": "Feature/Target Separation",
+      "key": "feature_target_separation",
+      "path": [
+        "Engineering and Data Practices",
+        "Feature/Target Separation"
+      ],
+      "content": "The target is explicitly removed from the model-input dataframe.",
+      "source_line_start": 170,
+      "source_line_end": 174
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Held-Out Evaluation",
+      "normalized_title": "Held-Out Evaluation",
+      "key": "held_out_evaluation",
+      "path": [
+        "Engineering and Data Practices",
+        "Held-Out Evaluation"
+      ],
+      "content": "The model is measured on both train and test subsets.",
+      "source_line_start": 174,
+      "source_line_end": 178
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Metric-Based Assessment",
+      "normalized_title": "Metric-Based Assessment",
+      "key": "metric_based_assessment",
+      "path": [
+        "Engineering and Data Practices",
+        "Metric-Based Assessment"
+      ],
+      "content": "Performance is quantified with numerical regression metrics.",
+      "source_line_start": 178,
+      "source_line_end": 182
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Implementation Scale"
+      ],
+      "content": "The repository contains only one notebook, but it spans a complete elementary ML pipeline:\n\n```text\nload data\n   ↓\ninspect dataframe\n   ↓\nseparate X / y\n   ↓\nsplit train / test\n   ↓\nfit regression model\n   ↓\npredict\n   ↓\nevaluate MSE and R²\n```\n\nThat makes it a coherent end-to-end learning artifact.",
+      "source_line_start": 182,
+      "source_line_end": 204
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Data Science\n\n- dataframe inspection,\n- feature/target separation,\n- tabular data handling,\n- regression metrics.\n\n### Machine Learning\n\n- supervised learning,\n- linear regression,\n- train/test splitting,\n- model fitting,\n- prediction,\n- held-out evaluation.\n\n### Python Ecosystem\n\n- pandas,\n- scikit-learn,\n- Jupyter Notebook,\n- Colab execution.",
+      "source_line_start": 204,
+      "source_line_end": 229
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Data Science",
+      "normalized_title": "Data Science",
+      "key": "data_science",
+      "path": [
+        "Skills Demonstrated",
+        "Data Science"
+      ],
+      "content": "- dataframe inspection,\n- feature/target separation,\n- tabular data handling,\n- regression metrics.",
+      "source_line_start": 206,
+      "source_line_end": 213
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Machine Learning",
+      "normalized_title": "Machine Learning",
+      "key": "machine_learning",
+      "path": [
+        "Skills Demonstrated",
+        "Machine Learning"
+      ],
+      "content": "- supervised learning,\n- linear regression,\n- train/test splitting,\n- model fitting,\n- prediction,\n- held-out evaluation.",
+      "source_line_start": 213,
+      "source_line_end": 222
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Python Ecosystem",
+      "normalized_title": "Python Ecosystem",
+      "key": "python_ecosystem",
+      "path": [
+        "Skills Demonstrated",
+        "Python Ecosystem"
+      ],
+      "content": "- pandas,\n- scikit-learn,\n- Jupyter Notebook,\n- Colab execution.",
+      "source_line_start": 222,
+      "source_line_end": 229
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository is a useful bridge between the earlier neural-network coursework and conventional applied machine learning.\n\nThe neural-network repository demonstrated model implementation and gradient-based learning.\n\n`MachineLearning` demonstrates a compact scikit-learn workflow around a real tabular regression problem.\n\nThat broadens the portfolio from neural networks into general supervised-learning tooling.",
+      "source_line_start": 229,
+      "source_line_end": 239
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "This is the earliest processed repository centered on scikit-learn linear regression.\n\nIt is also the earliest processed repository with directly evidenced pandas data loading and held-out R²/MSE regression evaluation.\n\nThe notebook title itself—`FirstMLProject`—records the owner’s framing of this as an early machine-learning project.",
+      "source_line_start": 239,
+      "source_line_end": 247
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`MachineLearning` is a concise first applied regression project.\n\nIt takes a real molecular-descriptor dataset, separates explanatory variables from a continuous target, creates a deterministic train/test split, trains a linear model and compares performance on seen and unseen data.\n\nIts strongest portfolio value is that it captures the entire basic supervised-learning lifecycle in one executable notebook with preserved outputs.\n\n# Project Tags\n\n- `python`\n- `jupyter-notebook`\n- `individual-project`\n- `machine-learning`\n- `supervised-learning`\n- `regression`\n- `linear-regression`\n- `pandas`\n- `scikit-learn`\n- `tabular-data`\n- `train-test-split`\n- `reproducible-split`\n- `model-training`\n- `model-prediction`\n- `mean-squared-error`\n- `r2-score`\n- `held-out-evaluation`\n- `molecular-solubility`\n- `molecular-descriptors`\n- `dataframe`\n- `earliest-observed-pandas`\n- `earliest-observed-scikit-learn-regression`\n- `earliest-observed-r2-evaluation`",
+      "source_line_start": 247,
+      "source_line_end": 280
+    }
+  ],
+  "raw_analysis": "# MachineLearning\n\n## Repository Identity\n\n- Repository: 032 / 134\n- Name: `MachineLearning`\n- Repository Start Date: 2024-05-31\n- Latest Meaningful Update Date: 2024-05-31\n- Primary Artifact: `FirstMLProject.ipynb`\n- Primary Language: Python\n- Technical Field: Supervised machine learning, regression\n- Domain: Molecular solubility prediction\n- Collaboration Type: Individual Project\n\n## Collaboration and Authorship Context\n\nThe repository contains one owner-uploaded notebook.\n\nThe notebook’s Colab execution metadata identifies `Kirolos Sedra` as the executing user for the preserved cells.\n\nThat gives direct evidence of hands-on execution and experimentation.\n\n## What This Project Is\n\n`MachineLearning` contains a single Jupyter notebook explicitly named:\n\n`FirstMLProject.ipynb`\n\nThe notebook builds a regression workflow for predicting molecular aqueous solubility.\n\nThe target variable is:\n\n`logS`\n\nThe feature set contains molecular descriptors such as:\n\n- `MolLogP`,\n- `MolWt`,\n- `NumRotatableBonds`,\n- `AromaticProportion`.\n\nThe preserved dataframe contains 1,144 rows and five columns including the target.\n\n## Data Source and Preparation\n\nThe notebook loads a CSV dataset with pandas.\n\nIt uses:\n\n```text\npd.read_csv(...)\n```\n\nagainst a publicly hosted molecular-solubility dataset.\n\nThe target column `logS` is separated from the explanatory variables.\n\nConceptually:\n\n```text\nmolecular descriptor dataset\n          ↓\npandas DataFrame\n          ↓\nX = descriptor columns\ny = logS\n```\n\n## Dataset Shape\n\nThe preserved notebook output shows:\n\n- 1,144 observations,\n- four input descriptors,\n- one `logS` target.\n\nThis provides direct data-scale evidence.\n\n## Train/Test Split\n\nThe notebook uses scikit-learn’s `train_test_split`.\n\nThe split is configured with:\n\n- `test_size=0.2`,\n- `random_state=2`.\n\nThat produces an 80/20 training/evaluation partition with reproducible randomization.\n\n## Model Building\n\nThe model is scikit-learn `LinearRegression`.\n\nThe workflow is explicit:\n\n```text\nlr = LinearRegression()\nlr.fit(X_train, y_train)\n```\n\nPredictions are then produced for both:\n\n- training data,\n- test data.\n\nThis makes the notebook a complete supervised-regression workflow rather than only a dataset visualization.\n\n## Evaluation Metrics\n\nThe notebook evaluates the regression model with:\n\n- mean squared error,\n- R² score.\n\nIt calculates both metrics independently for training and test partitions.\n\nPreserved outputs include:\n\n### Training\n\n- MSE: approximately `0.97397`\n- R²: approximately `0.77658`\n\n### Test\n\n- MSE: approximately `1.16132`\n- R²: approximately `0.74186`\n\nThese values provide concrete model-evaluation evidence.\n\n## Generalization Comparison\n\nBecause the notebook records both train and test metrics, it supports basic generalization reasoning.\n\nThe test MSE is higher than training MSE.\n\nThe test R² is lower than training R².\n\nThe repository therefore demonstrates the practice of evaluating a model on unseen held-out data rather than judging it only on the training set.\n\n## Technical Stack\n\n### Python\n\nThe notebook implementation language.\n\n### pandas\n\nUsed to load and manipulate the tabular dataset.\n\n### scikit-learn\n\nUsed for:\n\n- train/test splitting,\n- linear regression,\n- mean squared error,\n- R² evaluation.\n\n### Jupyter / Google Colab\n\nUsed for iterative execution and preserved outputs.\n\n## Engineering and Data Practices\n\n### Reproducible Data Split\n\n`random_state=2` makes the partition repeatable.\n\n### Feature/Target Separation\n\nThe target is explicitly removed from the model-input dataframe.\n\n### Held-Out Evaluation\n\nThe model is measured on both train and test subsets.\n\n### Metric-Based Assessment\n\nPerformance is quantified with numerical regression metrics.\n\n## Implementation Scale\n\nThe repository contains only one notebook, but it spans a complete elementary ML pipeline:\n\n```text\nload data\n   ↓\ninspect dataframe\n   ↓\nseparate X / y\n   ↓\nsplit train / test\n   ↓\nfit regression model\n   ↓\npredict\n   ↓\nevaluate MSE and R²\n```\n\nThat makes it a coherent end-to-end learning artifact.\n\n## Skills Demonstrated\n\n### Data Science\n\n- dataframe inspection,\n- feature/target separation,\n- tabular data handling,\n- regression metrics.\n\n### Machine Learning\n\n- supervised learning,\n- linear regression,\n- train/test splitting,\n- model fitting,\n- prediction,\n- held-out evaluation.\n\n### Python Ecosystem\n\n- pandas,\n- scikit-learn,\n- Jupyter Notebook,\n- Colab execution.\n\n## Capability Developed\n\nThis repository is a useful bridge between the earlier neural-network coursework and conventional applied machine learning.\n\nThe neural-network repository demonstrated model implementation and gradient-based learning.\n\n`MachineLearning` demonstrates a compact scikit-learn workflow around a real tabular regression problem.\n\nThat broadens the portfolio from neural networks into general supervised-learning tooling.\n\n## Historical Portfolio Significance\n\nThis is the earliest processed repository centered on scikit-learn linear regression.\n\nIt is also the earliest processed repository with directly evidenced pandas data loading and held-out R²/MSE regression evaluation.\n\nThe notebook title itself—`FirstMLProject`—records the owner’s framing of this as an early machine-learning project.\n\n## Overall Project Narrative\n\n`MachineLearning` is a concise first applied regression project.\n\nIt takes a real molecular-descriptor dataset, separates explanatory variables from a continuous target, creates a deterministic train/test split, trains a linear model and compares performance on seen and unseen data.\n\nIts strongest portfolio value is that it captures the entire basic supervised-learning lifecycle in one executable notebook with preserved outputs.\n\n# Project Tags\n\n- `python`\n- `jupyter-notebook`\n- `individual-project`\n- `machine-learning`\n- `supervised-learning`\n- `regression`\n- `linear-regression`\n- `pandas`\n- `scikit-learn`\n- `tabular-data`\n- `train-test-split`\n- `reproducible-split`\n- `model-training`\n- `model-prediction`\n- `mean-squared-error`\n- `r2-score`\n- `held-out-evaluation`\n- `molecular-solubility`\n- `molecular-descriptors`\n- `dataframe`\n- `earliest-observed-pandas`\n- `earliest-observed-scikit-learn-regression`\n- `earliest-observed-r2-evaluation`\n"
+}

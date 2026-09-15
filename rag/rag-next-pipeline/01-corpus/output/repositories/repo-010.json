@@ -1,0 +1,696 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 10,
+  "repository_total": 134,
+  "repository_name": "Creational-Design-Patterns",
+  "header_title": "Creational-Design-Patterns",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-010-Creational-Design-Patterns/README.md",
+    "line_start": 1,
+    "line_end": 290,
+    "sha256": "419cad1dbc87ad417b03cd1b5dc7a03e0ec0c208665ed94eb3422264a45ca4bc"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "design-pattern-learning",
+    "educational-project",
+    "personal-project",
+    "individual-project",
+    "java",
+    "maven",
+    "object-oriented-programming",
+    "interfaces",
+    "abstract-classes",
+    "polymorphism",
+    "composition",
+    "object-creation-abstraction",
+    "builder-pattern",
+    "factory-method-pattern",
+    "singleton-pattern",
+    "creational-design-patterns",
+    "build-artifact-evidence",
+    "manual-execution-demo",
+    "earliest-observed-java",
+    "earliest-observed-maven",
+    "earliest-observed-design-patterns",
+    "earliest-observed-builder-pattern",
+    "earliest-observed-factory-method-pattern",
+    "earliest-observed-singleton-pattern"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 010 / 134\n- Name: `Creational-Design-Patterns`\n- Repository start date: 2023-02-16\n- Last meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven"
+    },
+    "testing": {
+      "section_ids": [
+        "s019",
+        "s043"
+      ],
+      "titles": [
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Maven Build Artifacts\n\nChecked-in `target/classes` output provides direct evidence that the examples were compiled through Maven project structures.\n\n### Runtime Demonstration\n\nThe Builder example contains a `main` method and prints a resulting property.\n\nThe Factory Method products print which button implementation is rendered or triggered.\n\nThese examples provide simple execution demonstrations of the pattern relationships.\n\n## Testing and Verification\n- `build-artifact-evidence`\n- `manual-execution-demo`"
+    },
+    "documentation": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "Documentation"
+      ],
+      "text": "## Documentation\nThe root README identifies the learning subject, and the Builder project includes additional README material."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s040"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible Java sources include owner author headers and the commit history is owner-attributed, supporting personal attribution of the pattern implementations.\n\nGenerated Maven `target` output is treated as build evidence rather than authored source complexity.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 010 / 134\n- Name: `Creational-Design-Patterns`\n- Repository start date: 2023-02-16\n- Last meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible Java sources include owner author headers and the commit history is owner-attributed, supporting personal attribution of the pattern implementations.\n\nGenerated Maven `target` output is treated as build evidence rather than authored source complexity.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository README states that the project contains creational design-pattern implementations in Java.\n\nThe current root contains implementations for:\n\n- Builder;\n- Factory Method;\n- Singleton, under the misspelled `Singeleton` directory.\n\nThe README also discusses Prototype conceptually. Because the corpus uses implementation-backed tagging, the implemented pattern tags are based on the concrete source directories and classes.",
+      "source_line_start": 22,
+      "source_line_end": 34
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`Creational-Design-Patterns` is a compact Java learning repository that implements object-creation patterns as separate Maven projects.\n\nThe subject of the code is software architecture itself: object creation is isolated behind interfaces, abstract creators, builders, and controlled construction relationships.",
+      "source_line_start": 34,
+      "source_line_end": 40
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "```text\nCreational-Design-Patterns/\n  Builder/\n      pom.xml\n      src/main/java/...\n      target/...\n  Factory Method/\n      pom.xml\n      src/main/java/...\n      target/...\n  Singeleton/\n      pom.xml\n      src/main/java/...\n      target/...\n  README.md\n```\n\nThe presence of compiled `target/classes` artifacts provides build evidence for the Maven projects.",
+      "source_line_start": 40,
+      "source_line_end": 61
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Java\n\nJava is used to express:\n\n- classes;\n- interfaces;\n- abstract classes;\n- overriding;\n- encapsulated construction;\n- polymorphism;\n- composition.\n\n### Maven\n\nEach pattern example is organized as its own Maven project through a `pom.xml`.",
+      "source_line_start": 61,
+      "source_line_end": 79
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Technical Stack",
+        "Java"
+      ],
+      "content": "Java is used to express:\n\n- classes;\n- interfaces;\n- abstract classes;\n- overriding;\n- encapsulated construction;\n- polymorphism;\n- composition.",
+      "source_line_start": 63,
+      "source_line_end": 75
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Maven",
+      "normalized_title": "Maven",
+      "key": "maven",
+      "path": [
+        "Technical Stack",
+        "Maven"
+      ],
+      "content": "Each pattern example is organized as its own Maven project through a `pom.xml`.",
+      "source_line_start": 75,
+      "source_line_end": 79
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Builder Pattern\n\nThe Builder example contains:\n\n- `Car`;\n- `Builder` interface;\n- `CarBuilder`;\n- `Director`;\n- `BuilderPattern` entry point.\n\nThe `Builder` interface defines incremental construction operations for:\n\n- reset;\n- seat configuration;\n- engine configuration;\n- trip-computer configuration;\n- GPS configuration.\n\n`CarBuilder` stores the in-progress `Car`, returns the completed product, and resets itself for reuse.\n\n`Director` defines reusable construction recipes such as a sports car and SUV.\n\nThis demonstrates separation among product representation, construction steps, concrete construction logic, and higher-level recipes.\n\n### Factory Method Pattern\n\nThe Factory Method example centers on an abstract `Dialog`.\n\n`Dialog.createButton()` is the factory method.\n\nConcrete creators select product implementations:\n\n- `WindowsDialog` → `WindowsButton`;\n- `WebDialog` → `HTMLButton`.\n\nThe shared `render()` workflow consumes the result through the `Button` interface.\n\nThis demonstrates product variation behind an abstract creator contract.\n\n### Singleton Pattern\n\nThe `Singeleton` Maven project contains the Singleton example and compiled `Database`/application classes.\n\nThis gives the repository direct implementation evidence for controlled single-instance access as a studied pattern.",
+      "source_line_start": 79,
+      "source_line_end": 126
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Builder Pattern",
+      "normalized_title": "Builder Pattern",
+      "key": "builder_pattern",
+      "path": [
+        "Major Engineering Work",
+        "Builder Pattern"
+      ],
+      "content": "The Builder example contains:\n\n- `Car`;\n- `Builder` interface;\n- `CarBuilder`;\n- `Director`;\n- `BuilderPattern` entry point.\n\nThe `Builder` interface defines incremental construction operations for:\n\n- reset;\n- seat configuration;\n- engine configuration;\n- trip-computer configuration;\n- GPS configuration.\n\n`CarBuilder` stores the in-progress `Car`, returns the completed product, and resets itself for reuse.\n\n`Director` defines reusable construction recipes such as a sports car and SUV.\n\nThis demonstrates separation among product representation, construction steps, concrete construction logic, and higher-level recipes.",
+      "source_line_start": 81,
+      "source_line_end": 105
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Factory Method Pattern",
+      "normalized_title": "Factory Method Pattern",
+      "key": "factory_method_pattern",
+      "path": [
+        "Major Engineering Work",
+        "Factory Method Pattern"
+      ],
+      "content": "The Factory Method example centers on an abstract `Dialog`.\n\n`Dialog.createButton()` is the factory method.\n\nConcrete creators select product implementations:\n\n- `WindowsDialog` → `WindowsButton`;\n- `WebDialog` → `HTMLButton`.\n\nThe shared `render()` workflow consumes the result through the `Button` interface.\n\nThis demonstrates product variation behind an abstract creator contract.",
+      "source_line_start": 105,
+      "source_line_end": 120
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Singleton Pattern",
+      "normalized_title": "Singleton Pattern",
+      "key": "singleton_pattern",
+      "path": [
+        "Major Engineering Work",
+        "Singleton Pattern"
+      ],
+      "content": "The `Singeleton` Maven project contains the Singleton example and compiled `Database`/application classes.\n\nThis gives the repository direct implementation evidence for controlled single-instance access as a studied pattern.",
+      "source_line_start": 120,
+      "source_line_end": 126
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Object-Oriented Design Concepts",
+      "normalized_title": "Object-Oriented Design Concepts",
+      "key": "object_oriented_design_concepts",
+      "path": [
+        "Object-Oriented Design Concepts"
+      ],
+      "content": "### Interfaces\n\n`Builder` and `Button` define behavior behind abstractions.\n\n### Abstract Classes\n\nFactory Method uses an abstract `Dialog` creator.\n\n### Polymorphism\n\nHigher-level logic works through `Builder` and `Button` contracts.\n\n### Composition\n\nThe concrete builder owns the product being constructed.\n\n### Encapsulation of Creation\n\nCreation decisions are moved into specialized construction objects/methods rather than being spread across consumers.",
+      "source_line_start": 126,
+      "source_line_end": 148
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Interfaces",
+      "normalized_title": "Interfaces",
+      "key": "interfaces",
+      "path": [
+        "Object-Oriented Design Concepts",
+        "Interfaces"
+      ],
+      "content": "`Builder` and `Button` define behavior behind abstractions.",
+      "source_line_start": 128,
+      "source_line_end": 132
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Abstract Classes",
+      "normalized_title": "Abstract Classes",
+      "key": "abstract_classes",
+      "path": [
+        "Object-Oriented Design Concepts",
+        "Abstract Classes"
+      ],
+      "content": "Factory Method uses an abstract `Dialog` creator.",
+      "source_line_start": 132,
+      "source_line_end": 136
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Polymorphism",
+      "normalized_title": "Polymorphism",
+      "key": "polymorphism",
+      "path": [
+        "Object-Oriented Design Concepts",
+        "Polymorphism"
+      ],
+      "content": "Higher-level logic works through `Builder` and `Button` contracts.",
+      "source_line_start": 136,
+      "source_line_end": 140
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Composition",
+      "normalized_title": "Composition",
+      "key": "composition",
+      "path": [
+        "Object-Oriented Design Concepts",
+        "Composition"
+      ],
+      "content": "The concrete builder owns the product being constructed.",
+      "source_line_start": 140,
+      "source_line_end": 144
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Encapsulation of Creation",
+      "normalized_title": "Encapsulation of Creation",
+      "key": "encapsulation_of_creation",
+      "path": [
+        "Object-Oriented Design Concepts",
+        "Encapsulation of Creation"
+      ],
+      "content": "Creation decisions are moved into specialized construction objects/methods rather than being spread across consumers.",
+      "source_line_start": 144,
+      "source_line_end": 148
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Maven Build Artifacts\n\nChecked-in `target/classes` output provides direct evidence that the examples were compiled through Maven project structures.\n\n### Runtime Demonstration\n\nThe Builder example contains a `main` method and prints a resulting property.\n\nThe Factory Method products print which button implementation is rendered or triggered.\n\nThese examples provide simple execution demonstrations of the pattern relationships.",
+      "source_line_start": 148,
+      "source_line_end": 162
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Maven Build Artifacts",
+      "normalized_title": "Maven Build Artifacts",
+      "key": "maven_build_artifacts",
+      "path": [
+        "Verification",
+        "Maven Build Artifacts"
+      ],
+      "content": "Checked-in `target/classes` output provides direct evidence that the examples were compiled through Maven project structures.",
+      "source_line_start": 150,
+      "source_line_end": 154
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Runtime Demonstration",
+      "normalized_title": "Runtime Demonstration",
+      "key": "runtime_demonstration",
+      "path": [
+        "Verification",
+        "Runtime Demonstration"
+      ],
+      "content": "The Builder example contains a `main` method and prints a resulting property.\n\nThe Factory Method products print which button implementation is rendered or triggered.\n\nThese examples provide simple execution demonstrations of the pattern relationships.",
+      "source_line_start": 154,
+      "source_line_end": 162
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Pattern Isolation\n\nEach implemented pattern lives in its own Maven subproject.\n\n### Abstraction-Oriented Design\n\nInterfaces and abstract classes are used at intended extension points.\n\n### Separation of Construction Concerns\n\nThe examples deliberately move object-creation responsibility away from direct consumer code.\n\n### Documentation\n\nThe root README identifies the learning subject, and the Builder project includes additional README material.",
+      "source_line_start": 162,
+      "source_line_end": 180
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Pattern Isolation",
+      "normalized_title": "Pattern Isolation",
+      "key": "pattern_isolation",
+      "path": [
+        "Engineering Practices",
+        "Pattern Isolation"
+      ],
+      "content": "Each implemented pattern lives in its own Maven subproject.",
+      "source_line_start": 164,
+      "source_line_end": 168
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Abstraction-Oriented Design",
+      "normalized_title": "Abstraction-Oriented Design",
+      "key": "abstraction_oriented_design",
+      "path": [
+        "Engineering Practices",
+        "Abstraction-Oriented Design"
+      ],
+      "content": "Interfaces and abstract classes are used at intended extension points.",
+      "source_line_start": 168,
+      "source_line_end": 172
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Separation of Construction Concerns",
+      "normalized_title": "Separation of Construction Concerns",
+      "key": "separation_of_construction_concerns",
+      "path": [
+        "Engineering Practices",
+        "Separation of Construction Concerns"
+      ],
+      "content": "The examples deliberately move object-creation responsibility away from direct consumer code.",
+      "source_line_start": 172,
+      "source_line_end": 176
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "Engineering Practices",
+        "Documentation"
+      ],
+      "content": "The root README identifies the learning subject, and the Builder project includes additional README material.",
+      "source_line_start": 176,
+      "source_line_end": 180
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository is composed of small, focused examples.\n\n### Conceptual Scale\n\nThe main breadth comes from comparing multiple approaches to object creation and understanding how responsibilities move between products, creators, builders, and clients.",
+      "source_line_start": 180,
+      "source_line_end": 190
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository is composed of small, focused examples.",
+      "source_line_start": 182,
+      "source_line_end": 186
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Conceptual Scale",
+      "normalized_title": "Conceptual Scale",
+      "key": "conceptual_scale",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Scale"
+      ],
+      "content": "The main breadth comes from comparing multiple approaches to object creation and understanding how responsibilities move between products, creators, builders, and clients.",
+      "source_line_start": 186,
+      "source_line_end": 190
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Language\n\n- **Java — strong evidence.**\n\n### Object-Oriented Programming\n\n- **Interfaces — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Encapsulation of creation logic — strong evidence.**\n\n### Design Patterns\n\n- **Builder — strong implemented evidence.**\n- **Factory Method — strong implemented evidence.**\n- **Singleton — strong implemented evidence.**\n\n### Build Tooling\n\n- **Maven — moderate-to-strong evidence.**",
+      "source_line_start": 190,
+      "source_line_end": 215
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Language",
+      "normalized_title": "Language",
+      "key": "language",
+      "path": [
+        "Skills Demonstrated",
+        "Language"
+      ],
+      "content": "- **Java — strong evidence.**",
+      "source_line_start": 192,
+      "source_line_end": 196
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Object-Oriented Programming",
+      "normalized_title": "Object-Oriented Programming",
+      "key": "object_oriented_programming",
+      "path": [
+        "Skills Demonstrated",
+        "Object-Oriented Programming"
+      ],
+      "content": "- **Interfaces — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Encapsulation of creation logic — strong evidence.**",
+      "source_line_start": 196,
+      "source_line_end": 205
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Design Patterns",
+      "normalized_title": "Design Patterns",
+      "key": "design_patterns",
+      "path": [
+        "Skills Demonstrated",
+        "Design Patterns"
+      ],
+      "content": "- **Builder — strong implemented evidence.**\n- **Factory Method — strong implemented evidence.**\n- **Singleton — strong implemented evidence.**",
+      "source_line_start": 205,
+      "source_line_end": 211
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Build Tooling",
+      "normalized_title": "Build Tooling",
+      "key": "build_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Build Tooling"
+      ],
+      "content": "- **Maven — moderate-to-strong evidence.**",
+      "source_line_start": 211,
+      "source_line_end": 215
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository marks a shift from solving only domain-specific implementation problems toward deliberately studying reusable object-oriented design structures.\n\nThe key capability is recognizing object creation as an architectural responsibility that can be isolated behind stable abstractions.",
+      "source_line_start": 215,
+      "source_line_end": 221
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- Java;\n- Maven;\n- a dedicated design-pattern repository;\n- Builder pattern;\n- Factory Method pattern;\n- Singleton pattern.\n\nExplicit object-oriented design vocabulary becomes substantially stronger here because the source is organized around extension points and construction responsibilities.",
+      "source_line_start": 221,
+      "source_line_end": 234
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Creational-Design-Patterns` establishes an explicit software-design-learning phase in the processed chronology.\n\nIt is also the earliest observed Java/Maven repository, creating a useful historical baseline for later Java and framework-based backend work.",
+      "source_line_start": 234,
+      "source_line_end": 240
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Creational-Design-Patterns` is a focused Java repository for learning object-creation architecture.\n\nBuilder separates configurable product construction from reusable construction recipes. Factory Method delegates concrete product selection to subclasses while keeping a shared workflow stable. Singleton provides a controlled single-instance example.\n\nThe repository is historically important because Java and explicit design-pattern study enter the processed portfolio here as first-class learning subjects.\n\n# Project Tags",
+      "source_line_start": 240,
+      "source_line_end": 250
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `design-pattern-learning`\n- `educational-project`\n- `personal-project`",
+      "source_line_start": 250,
+      "source_line_end": 256
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 256,
+      "source_line_end": 260
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `java`",
+      "source_line_start": 260,
+      "source_line_end": 264
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `maven`\n- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `polymorphism`\n- `composition`\n- `object-creation-abstraction`\n- `builder-pattern`\n- `factory-method-pattern`\n- `singleton-pattern`\n- `creational-design-patterns`",
+      "source_line_start": 264,
+      "source_line_end": 278
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `build-artifact-evidence`\n- `manual-execution-demo`",
+      "source_line_start": 278,
+      "source_line_end": 283
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-java`\n- `earliest-observed-maven`\n- `earliest-observed-design-patterns`\n- `earliest-observed-builder-pattern`\n- `earliest-observed-factory-method-pattern`\n- `earliest-observed-singleton-pattern`",
+      "source_line_start": 283,
+      "source_line_end": 291
+    }
+  ],
+  "raw_analysis": "# Creational-Design-Patterns\n\n## Repository Identity\n\n- Repository: 010 / 134\n- Name: `Creational-Design-Patterns`\n- Repository start date: 2023-02-16\n- Last meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven\n\n## Collaboration and Authorship Context\n\nThe visible Java sources include owner author headers and the commit history is owner-attributed, supporting personal attribution of the pattern implementations.\n\nGenerated Maven `target` output is treated as build evidence rather than authored source complexity.\n\n## Evidence Basis\n\nThe repository README states that the project contains creational design-pattern implementations in Java.\n\nThe current root contains implementations for:\n\n- Builder;\n- Factory Method;\n- Singleton, under the misspelled `Singeleton` directory.\n\nThe README also discusses Prototype conceptually. Because the corpus uses implementation-backed tagging, the implemented pattern tags are based on the concrete source directories and classes.\n\n## What This Repository Is\n\n`Creational-Design-Patterns` is a compact Java learning repository that implements object-creation patterns as separate Maven projects.\n\nThe subject of the code is software architecture itself: object creation is isolated behind interfaces, abstract creators, builders, and controlled construction relationships.\n\n## Repository Structure\n\n```text\nCreational-Design-Patterns/\n  Builder/\n      pom.xml\n      src/main/java/...\n      target/...\n  Factory Method/\n      pom.xml\n      src/main/java/...\n      target/...\n  Singeleton/\n      pom.xml\n      src/main/java/...\n      target/...\n  README.md\n```\n\nThe presence of compiled `target/classes` artifacts provides build evidence for the Maven projects.\n\n## Technical Stack\n\n### Java\n\nJava is used to express:\n\n- classes;\n- interfaces;\n- abstract classes;\n- overriding;\n- encapsulated construction;\n- polymorphism;\n- composition.\n\n### Maven\n\nEach pattern example is organized as its own Maven project through a `pom.xml`.\n\n## Major Engineering Work\n\n### Builder Pattern\n\nThe Builder example contains:\n\n- `Car`;\n- `Builder` interface;\n- `CarBuilder`;\n- `Director`;\n- `BuilderPattern` entry point.\n\nThe `Builder` interface defines incremental construction operations for:\n\n- reset;\n- seat configuration;\n- engine configuration;\n- trip-computer configuration;\n- GPS configuration.\n\n`CarBuilder` stores the in-progress `Car`, returns the completed product, and resets itself for reuse.\n\n`Director` defines reusable construction recipes such as a sports car and SUV.\n\nThis demonstrates separation among product representation, construction steps, concrete construction logic, and higher-level recipes.\n\n### Factory Method Pattern\n\nThe Factory Method example centers on an abstract `Dialog`.\n\n`Dialog.createButton()` is the factory method.\n\nConcrete creators select product implementations:\n\n- `WindowsDialog` → `WindowsButton`;\n- `WebDialog` → `HTMLButton`.\n\nThe shared `render()` workflow consumes the result through the `Button` interface.\n\nThis demonstrates product variation behind an abstract creator contract.\n\n### Singleton Pattern\n\nThe `Singeleton` Maven project contains the Singleton example and compiled `Database`/application classes.\n\nThis gives the repository direct implementation evidence for controlled single-instance access as a studied pattern.\n\n## Object-Oriented Design Concepts\n\n### Interfaces\n\n`Builder` and `Button` define behavior behind abstractions.\n\n### Abstract Classes\n\nFactory Method uses an abstract `Dialog` creator.\n\n### Polymorphism\n\nHigher-level logic works through `Builder` and `Button` contracts.\n\n### Composition\n\nThe concrete builder owns the product being constructed.\n\n### Encapsulation of Creation\n\nCreation decisions are moved into specialized construction objects/methods rather than being spread across consumers.\n\n## Verification\n\n### Maven Build Artifacts\n\nChecked-in `target/classes` output provides direct evidence that the examples were compiled through Maven project structures.\n\n### Runtime Demonstration\n\nThe Builder example contains a `main` method and prints a resulting property.\n\nThe Factory Method products print which button implementation is rendered or triggered.\n\nThese examples provide simple execution demonstrations of the pattern relationships.\n\n## Engineering Practices\n\n### Pattern Isolation\n\nEach implemented pattern lives in its own Maven subproject.\n\n### Abstraction-Oriented Design\n\nInterfaces and abstract classes are used at intended extension points.\n\n### Separation of Construction Concerns\n\nThe examples deliberately move object-creation responsibility away from direct consumer code.\n\n### Documentation\n\nThe root README identifies the learning subject, and the Builder project includes additional README material.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository is composed of small, focused examples.\n\n### Conceptual Scale\n\nThe main breadth comes from comparing multiple approaches to object creation and understanding how responsibilities move between products, creators, builders, and clients.\n\n## Skills Demonstrated\n\n### Language\n\n- **Java — strong evidence.**\n\n### Object-Oriented Programming\n\n- **Interfaces — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Encapsulation of creation logic — strong evidence.**\n\n### Design Patterns\n\n- **Builder — strong implemented evidence.**\n- **Factory Method — strong implemented evidence.**\n- **Singleton — strong implemented evidence.**\n\n### Build Tooling\n\n- **Maven — moderate-to-strong evidence.**\n\n## Capability Developed\n\nThis repository marks a shift from solving only domain-specific implementation problems toward deliberately studying reusable object-oriented design structures.\n\nThe key capability is recognizing object creation as an architectural responsibility that can be isolated behind stable abstractions.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- Java;\n- Maven;\n- a dedicated design-pattern repository;\n- Builder pattern;\n- Factory Method pattern;\n- Singleton pattern.\n\nExplicit object-oriented design vocabulary becomes substantially stronger here because the source is organized around extension points and construction responsibilities.\n\n## Historical Significance\n\n`Creational-Design-Patterns` establishes an explicit software-design-learning phase in the processed chronology.\n\nIt is also the earliest observed Java/Maven repository, creating a useful historical baseline for later Java and framework-based backend work.\n\n## Overall Repository Narrative\n\n`Creational-Design-Patterns` is a focused Java repository for learning object-creation architecture.\n\nBuilder separates configurable product construction from reusable construction recipes. Factory Method delegates concrete product selection to subclasses while keeping a shared workflow stable. Singleton provides a controlled single-instance example.\n\nThe repository is historically important because Java and explicit design-pattern study enter the processed portfolio here as first-class learning subjects.\n\n# Project Tags\n\n## Project Type\n\n- `design-pattern-learning`\n- `educational-project`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `java`\n\n## Software Engineering Practices\n\n- `maven`\n- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `polymorphism`\n- `composition`\n- `object-creation-abstraction`\n- `builder-pattern`\n- `factory-method-pattern`\n- `singleton-pattern`\n- `creational-design-patterns`\n\n## Testing and Verification\n\n- `build-artifact-evidence`\n- `manual-execution-demo`\n\n## Portfolio Significance\n\n- `earliest-observed-java`\n- `earliest-observed-maven`\n- `earliest-observed-design-patterns`\n- `earliest-observed-builder-pattern`\n- `earliest-observed-factory-method-pattern`\n- `earliest-observed-singleton-pattern`\n"
+}

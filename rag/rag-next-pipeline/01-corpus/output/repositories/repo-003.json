@@ -1,0 +1,908 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 3,
+  "repository_total": 134,
+  "repository_name": "xml_Parse_project",
+  "header_title": "xml_Parse_project",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-003-xml_Parse_project/README.md",
+    "line_start": 1,
+    "line_end": 407,
+    "sha256": "2080ced46ad762cdf225cf8526928f82b1b32fa084e46c1ccaf95d5a527d125b"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "desktop-application",
+    "academic-team-project",
+    "group-project",
+    "shared-authorship",
+    "multi-contributor-repository",
+    "cpp",
+    "qt-style-ui",
+    "desktop-gui",
+    "syntax-highlighting",
+    "xml-processing",
+    "xml-parsing",
+    "xml-validation",
+    "xml-correction",
+    "xml-pretty-printing",
+    "xml-minification",
+    "xml-to-json",
+    "json-generation",
+    "binary-file-io",
+    "tree-data-structure",
+    "stack-data-structure",
+    "graph-adjacency-list",
+    "graph-analysis",
+    "recursive-tree-traversal",
+    "min-heap",
+    "huffman-coding",
+    "file-compression",
+    "file-decompression",
+    "module-decomposition",
+    "complexity-analysis-comments",
+    "social-network-analysis",
+    "structured-document-processing",
+    "earliest-observed-cpp",
+    "earliest-observed-desktop-gui",
+    "earliest-observed-xml-processing",
+    "earliest-observed-json-conversion",
+    "earliest-observed-graph-analysis",
+    "earliest-observed-compression",
+    "earliest-observed-team-repository"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 003 / 134\n- Name: `xml_Parse_project`\n- Repository start date: 2021-11-12\n- Last meaningful update date: 2022-02-08\n- Primary type: C++ desktop XML-processing application\n- Technical field: Data structures, file-format processing, desktop GUI, compression, and graph analysis\n- Application domain: XML tooling and social-network data analysis\n- Project context: Collaborative academic/team project\n- Collaboration type: `group-project`\n- Default branch: `milestone1`\n- Primary implementation language: C++\n- GUI technology: Qt-style `.ui`, header, and implementation structure"
+    },
+    "architecture": {
+      "section_ids": [
+        "s012",
+        "s045"
+      ],
+      "titles": [
+        "Architecture and System Shape",
+        "Architecture"
+      ],
+      "text": "## Architecture and System Shape\n```text\nQt desktop GUI\n    ↓\nXML application layer\n    ├─ parsing\n    ├─ tree construction\n    ├─ formatting\n    ├─ minification\n    ├─ XML → JSON\n    ├─ correction\n    └─ compression/decompression\n    ↓\nCore structures and algorithms\n    ├─ Tree / Node\n    ├─ Stack\n    ├─ tag representation\n    ├─ Huffman tree / min-heap\n    └─ graph adjacency structures\n    ↓\nFilesystem / XML documents\n```\n\nA second analytical path operates on social-network XML:\n\n```text\nXML social-network data\n      ↓\nObject construction\n      ↓\nFollower/following graph\n      ↓\nInfluence / activity / mutual / suggestion queries\n      ↓\nDesktop presentation\n```\n\n## Architecture\n- **Module decomposition — moderate-to-strong repository evidence.**\n- **Layered desktop application shape — moderate repository evidence.**"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s052"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThis is the first processed repository where collaboration materially affects attribution.\n\nThe current history contains multiple contributors. Later commits are attributed to collaborators including `hussameldin171` and Nada Youssef, and several source headers explicitly name other authors.\n\nRepository-level capability is therefore broader than personally attributable capability.\n\nExamples of explicit attribution in the inspected tree include:\n\n- `xmlFile.h` — Hussam Eldin Wael;\n- `SocialGraph.h` — Hussam Eldin Wael;\n- `correction.h` — Nada Yousef and Nada Amgad.\n\nThe correct portfolio interpretation is participation in a team project spanning these technical areas, with stronger personal claims made only where file/commit evidence supports them.\n\n## Collaboration and Authorship\n- `group-project`\n- `shared-authorship`\n- `multi-contributor-repository`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 003 / 134\n- Name: `xml_Parse_project`\n- Repository start date: 2021-11-12\n- Last meaningful update date: 2022-02-08\n- Primary type: C++ desktop XML-processing application\n- Technical field: Data structures, file-format processing, desktop GUI, compression, and graph analysis\n- Application domain: XML tooling and social-network data analysis\n- Project context: Collaborative academic/team project\n- Collaboration type: `group-project`\n- Default branch: `milestone1`\n- Primary implementation language: C++\n- GUI technology: Qt-style `.ui`, header, and implementation structure",
+      "source_line_start": 3,
+      "source_line_end": 18
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "This is the first processed repository where collaboration materially affects attribution.\n\nThe current history contains multiple contributors. Later commits are attributed to collaborators including `hussameldin171` and Nada Youssef, and several source headers explicitly name other authors.\n\nRepository-level capability is therefore broader than personally attributable capability.\n\nExamples of explicit attribution in the inspected tree include:\n\n- `xmlFile.h` — Hussam Eldin Wael;\n- `SocialGraph.h` — Hussam Eldin Wael;\n- `correction.h` — Nada Yousef and Nada Amgad.\n\nThe correct portfolio interpretation is participation in a team project spanning these technical areas, with stronger personal claims made only where file/commit evidence supports them.",
+      "source_line_start": 18,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in the `milestone1` tree, C++ source/header files, Qt-style GUI artifacts, repository history, and author comments embedded in source.",
+      "source_line_start": 34,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`xml_Parse_project` is a multi-feature C++ desktop application for working with XML documents and social-network data represented in XML.\n\nThe repository contains parsing, tree representation, structural correction, pretty printing, minification, XML-to-JSON conversion, Huffman compression/decompression, graph analysis, and a graphical desktop interface.\n\nThe project is therefore a substantial step beyond isolated algorithm exercises: several independent transformations and analyses are integrated into one desktop software system.",
+      "source_line_start": 38,
+      "source_line_end": 46
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### XML Parsing and Representation\n\nCore files such as `parse.cpp`, `parse.h`, `tag.cpp`, `tag.h`, `Tree.h`, `Stack.h`, and `xmlFile.h` support tokenization, tag extraction, tree construction, and structured document handling.\n\n### XML Formatting and Conversion\n\nThe `XML_File` logic supports:\n\n- aligned / pretty-printed XML;\n- minified XML;\n- recursive structural traversal;\n- XML-to-JSON conversion;\n- repeated-child detection for JSON array representation.\n\n### XML Error Detection and Correction\n\n`correction.cpp` / `correction.h` expose structural error detection, line/tag information, and corrected-tree generation.\n\nThe inspected header attributes this subsystem to Nada Yousef and Nada Amgad.\n\n### Compression and Decompression\n\nThe repository contains Huffman-tree structures, min-heap logic, frequency counting, code construction, bit-level output, and tree-guided decompression.\n\n### Social Graph Analysis\n\n`network.*` and `SocialGraph.*` model follower/following relationships and expose queries for:\n\n- most influential user;\n- most active user;\n- mutual followers;\n- follower-of-follower suggestions.\n\n`SocialGraph.h` explicitly attributes this area to Hussam Eldin Wael.\n\n### Desktop GUI\n\nThe GUI layer includes:\n\n- Qt-style `.ui` files;\n- a main window;\n- fix/error dialogs;\n- help/about windows;\n- syntax-highlighting components.",
+      "source_line_start": 46,
+      "source_line_end": 93
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "XML Parsing and Representation",
+      "normalized_title": "XML Parsing and Representation",
+      "key": "xml_parsing_and_representation",
+      "path": [
+        "Project Scope",
+        "XML Parsing and Representation"
+      ],
+      "content": "Core files such as `parse.cpp`, `parse.h`, `tag.cpp`, `tag.h`, `Tree.h`, `Stack.h`, and `xmlFile.h` support tokenization, tag extraction, tree construction, and structured document handling.",
+      "source_line_start": 48,
+      "source_line_end": 52
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "XML Formatting and Conversion",
+      "normalized_title": "XML Formatting and Conversion",
+      "key": "xml_formatting_and_conversion",
+      "path": [
+        "Project Scope",
+        "XML Formatting and Conversion"
+      ],
+      "content": "The `XML_File` logic supports:\n\n- aligned / pretty-printed XML;\n- minified XML;\n- recursive structural traversal;\n- XML-to-JSON conversion;\n- repeated-child detection for JSON array representation.",
+      "source_line_start": 52,
+      "source_line_end": 62
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "XML Error Detection and Correction",
+      "normalized_title": "XML Error Detection and Correction",
+      "key": "xml_error_detection_and_correction",
+      "path": [
+        "Project Scope",
+        "XML Error Detection and Correction"
+      ],
+      "content": "`correction.cpp` / `correction.h` expose structural error detection, line/tag information, and corrected-tree generation.\n\nThe inspected header attributes this subsystem to Nada Yousef and Nada Amgad.",
+      "source_line_start": 62,
+      "source_line_end": 68
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Compression and Decompression",
+      "normalized_title": "Compression and Decompression",
+      "key": "compression_and_decompression",
+      "path": [
+        "Project Scope",
+        "Compression and Decompression"
+      ],
+      "content": "The repository contains Huffman-tree structures, min-heap logic, frequency counting, code construction, bit-level output, and tree-guided decompression.",
+      "source_line_start": 68,
+      "source_line_end": 72
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Social Graph Analysis",
+      "normalized_title": "Social Graph Analysis",
+      "key": "social_graph_analysis",
+      "path": [
+        "Project Scope",
+        "Social Graph Analysis"
+      ],
+      "content": "`network.*` and `SocialGraph.*` model follower/following relationships and expose queries for:\n\n- most influential user;\n- most active user;\n- mutual followers;\n- follower-of-follower suggestions.\n\n`SocialGraph.h` explicitly attributes this area to Hussam Eldin Wael.",
+      "source_line_start": 72,
+      "source_line_end": 83
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Desktop GUI",
+      "normalized_title": "Desktop GUI",
+      "key": "desktop_gui",
+      "path": [
+        "Project Scope",
+        "Desktop GUI"
+      ],
+      "content": "The GUI layer includes:\n\n- Qt-style `.ui` files;\n- a main window;\n- fix/error dialogs;\n- help/about windows;\n- syntax-highlighting components.",
+      "source_line_start": 83,
+      "source_line_end": 93
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nQt desktop GUI\n    ↓\nXML application layer\n    ├─ parsing\n    ├─ tree construction\n    ├─ formatting\n    ├─ minification\n    ├─ XML → JSON\n    ├─ correction\n    └─ compression/decompression\n    ↓\nCore structures and algorithms\n    ├─ Tree / Node\n    ├─ Stack\n    ├─ tag representation\n    ├─ Huffman tree / min-heap\n    └─ graph adjacency structures\n    ↓\nFilesystem / XML documents\n```\n\nA second analytical path operates on social-network XML:\n\n```text\nXML social-network data\n      ↓\nObject construction\n      ↓\nFollower/following graph\n      ↓\nInfluence / activity / mutual / suggestion queries\n      ↓\nDesktop presentation\n```",
+      "source_line_start": 93,
+      "source_line_end": 131
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### C++\n\nC++ is used for file I/O, strings, vectors, classes, pointers, recursive traversal, graph structures, heap/tree algorithms, and bit-level compression.\n\n### Qt-Style Desktop UI\n\nThe presence of `.ui` files and corresponding C++ window/dialog classes provides strong repository-level evidence of Qt-style desktop application development.\n\n### XML\n\nXML is the primary input format and the main processing domain.\n\n### JSON\n\nThe repository includes recursive XML-to-JSON transformation logic, including repeated-tag handling for array-like structures.\n\n### Huffman Coding\n\nThe compression subsystem includes tree construction, min-heap operations, frequency tables, binary packing, and decompression traversal.",
+      "source_line_start": 131,
+      "source_line_end": 153
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Technical Stack",
+        "C++"
+      ],
+      "content": "C++ is used for file I/O, strings, vectors, classes, pointers, recursive traversal, graph structures, heap/tree algorithms, and bit-level compression.",
+      "source_line_start": 133,
+      "source_line_end": 137
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Qt-Style Desktop UI",
+      "normalized_title": "Qt-Style Desktop UI",
+      "key": "qt_style_desktop_ui",
+      "path": [
+        "Technical Stack",
+        "Qt-Style Desktop UI"
+      ],
+      "content": "The presence of `.ui` files and corresponding C++ window/dialog classes provides strong repository-level evidence of Qt-style desktop application development.",
+      "source_line_start": 137,
+      "source_line_end": 141
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "XML",
+      "normalized_title": "XML",
+      "key": "xml",
+      "path": [
+        "Technical Stack",
+        "XML"
+      ],
+      "content": "XML is the primary input format and the main processing domain.",
+      "source_line_start": 141,
+      "source_line_end": 145
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "JSON",
+      "normalized_title": "JSON",
+      "key": "json",
+      "path": [
+        "Technical Stack",
+        "JSON"
+      ],
+      "content": "The repository includes recursive XML-to-JSON transformation logic, including repeated-tag handling for array-like structures.",
+      "source_line_start": 145,
+      "source_line_end": 149
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Huffman Coding",
+      "normalized_title": "Huffman Coding",
+      "key": "huffman_coding",
+      "path": [
+        "Technical Stack",
+        "Huffman Coding"
+      ],
+      "content": "The compression subsystem includes tree construction, min-heap operations, frequency tables, binary packing, and decompression traversal.",
+      "source_line_start": 149,
+      "source_line_end": 153
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### XML Parsing\n\nThe parser exposes multiple operations for loading file content, tokenizing it, extracting tags, locating tags, and obtaining data values.\n\n### Tree-Based XML Representation\n\nXML hierarchy is modeled through a custom tree structure, enabling recursive algorithms that align naturally with nested documents.\n\n### Pretty Printing\n\nRecursive traversal emits opening tags, content, nested children, and closing tags with indentation derived from structural depth.\n\n### XML Minification\n\nThe same structured representation is serialized without formatting whitespace to produce a compact XML form.\n\n### XML-to-JSON Conversion\n\nThe conversion logic maps hierarchical XML into JSON-like output, distinguishes scalar value forms, and handles repeated siblings as arrays.\n\n### Error Detection and Correction\n\nThe correction interface reports structural errors with tag/line context and can produce a corrected tree. This is a repository-level capability with explicit collaborator attribution.\n\n### Huffman Compression\n\nThe compression subsystem contains:\n\n- character-frequency tracking;\n- min-heap operations;\n- Huffman tree construction;\n- code generation;\n- bit-packed output;\n- decompression traversal;\n- file-size tracking.\n\n### Social Graph Analysis\n\nFollower relationships are represented using adjacency-style structures to derive influence, activity, mutual-follow, and recommendation-style queries.\n\n### Desktop Integration\n\nThe GUI integrates the file-processing and analytical operations into an interactive desktop workspace rather than leaving them as isolated classes.",
+      "source_line_start": 153,
+      "source_line_end": 199
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "XML Parsing",
+      "normalized_title": "XML Parsing",
+      "key": "xml_parsing",
+      "path": [
+        "Major Engineering Work",
+        "XML Parsing"
+      ],
+      "content": "The parser exposes multiple operations for loading file content, tokenizing it, extracting tags, locating tags, and obtaining data values.",
+      "source_line_start": 155,
+      "source_line_end": 159
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Tree-Based XML Representation",
+      "normalized_title": "Tree-Based XML Representation",
+      "key": "tree_based_xml_representation",
+      "path": [
+        "Major Engineering Work",
+        "Tree-Based XML Representation"
+      ],
+      "content": "XML hierarchy is modeled through a custom tree structure, enabling recursive algorithms that align naturally with nested documents.",
+      "source_line_start": 159,
+      "source_line_end": 163
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Pretty Printing",
+      "normalized_title": "Pretty Printing",
+      "key": "pretty_printing",
+      "path": [
+        "Major Engineering Work",
+        "Pretty Printing"
+      ],
+      "content": "Recursive traversal emits opening tags, content, nested children, and closing tags with indentation derived from structural depth.",
+      "source_line_start": 163,
+      "source_line_end": 167
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "XML Minification",
+      "normalized_title": "XML Minification",
+      "key": "xml_minification",
+      "path": [
+        "Major Engineering Work",
+        "XML Minification"
+      ],
+      "content": "The same structured representation is serialized without formatting whitespace to produce a compact XML form.",
+      "source_line_start": 167,
+      "source_line_end": 171
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "XML-to-JSON Conversion",
+      "normalized_title": "XML-to-JSON Conversion",
+      "key": "xml_to_json_conversion",
+      "path": [
+        "Major Engineering Work",
+        "XML-to-JSON Conversion"
+      ],
+      "content": "The conversion logic maps hierarchical XML into JSON-like output, distinguishes scalar value forms, and handles repeated siblings as arrays.",
+      "source_line_start": 171,
+      "source_line_end": 175
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Error Detection and Correction",
+      "normalized_title": "Error Detection and Correction",
+      "key": "error_detection_and_correction",
+      "path": [
+        "Major Engineering Work",
+        "Error Detection and Correction"
+      ],
+      "content": "The correction interface reports structural errors with tag/line context and can produce a corrected tree. This is a repository-level capability with explicit collaborator attribution.",
+      "source_line_start": 175,
+      "source_line_end": 179
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Huffman Compression",
+      "normalized_title": "Huffman Compression",
+      "key": "huffman_compression",
+      "path": [
+        "Major Engineering Work",
+        "Huffman Compression"
+      ],
+      "content": "The compression subsystem contains:\n\n- character-frequency tracking;\n- min-heap operations;\n- Huffman tree construction;\n- code generation;\n- bit-packed output;\n- decompression traversal;\n- file-size tracking.",
+      "source_line_start": 179,
+      "source_line_end": 191
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Social Graph Analysis",
+      "normalized_title": "Social Graph Analysis",
+      "key": "social_graph_analysis",
+      "path": [
+        "Major Engineering Work",
+        "Social Graph Analysis"
+      ],
+      "content": "Follower relationships are represented using adjacency-style structures to derive influence, activity, mutual-follow, and recommendation-style queries.",
+      "source_line_start": 191,
+      "source_line_end": 195
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Desktop Integration",
+      "normalized_title": "Desktop Integration",
+      "key": "desktop_integration",
+      "path": [
+        "Major Engineering Work",
+        "Desktop Integration"
+      ],
+      "content": "The GUI integrates the file-processing and analytical operations into an interactive desktop workspace rather than leaving them as isolated classes.",
+      "source_line_start": 195,
+      "source_line_end": 199
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Modular File Organization\n\nParsing, correction, compression, graph analysis, GUI windows, and supporting structures are separated into distinct source/header units.\n\n### Data-Structure Selection\n\n- trees model XML hierarchy;\n- stacks support structural processing;\n- adjacency structures model social relationships;\n- min-heaps support Huffman coding.\n\n### Recursive Algorithms\n\nRecursive traversal is used for hierarchical formatting, minification, and JSON conversion.\n\n### Complexity Awareness\n\nSome functions contain explicit time/space complexity comments.\n\n### Diagnostic Error Reporting\n\nThe correction interface associates errors with tags and lines, supporting user-facing diagnosis.",
+      "source_line_start": 199,
+      "source_line_end": 224
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Modular File Organization",
+      "normalized_title": "Modular File Organization",
+      "key": "modular_file_organization",
+      "path": [
+        "Engineering Practices",
+        "Modular File Organization"
+      ],
+      "content": "Parsing, correction, compression, graph analysis, GUI windows, and supporting structures are separated into distinct source/header units.",
+      "source_line_start": 201,
+      "source_line_end": 205
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Data-Structure Selection",
+      "normalized_title": "Data-Structure Selection",
+      "key": "data_structure_selection",
+      "path": [
+        "Engineering Practices",
+        "Data-Structure Selection"
+      ],
+      "content": "- trees model XML hierarchy;\n- stacks support structural processing;\n- adjacency structures model social relationships;\n- min-heaps support Huffman coding.",
+      "source_line_start": 205,
+      "source_line_end": 212
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Recursive Algorithms",
+      "normalized_title": "Recursive Algorithms",
+      "key": "recursive_algorithms",
+      "path": [
+        "Engineering Practices",
+        "Recursive Algorithms"
+      ],
+      "content": "Recursive traversal is used for hierarchical formatting, minification, and JSON conversion.",
+      "source_line_start": 212,
+      "source_line_end": 216
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Complexity Awareness",
+      "normalized_title": "Complexity Awareness",
+      "key": "complexity_awareness",
+      "path": [
+        "Engineering Practices",
+        "Complexity Awareness"
+      ],
+      "content": "Some functions contain explicit time/space complexity comments.",
+      "source_line_start": 216,
+      "source_line_end": 220
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Diagnostic Error Reporting",
+      "normalized_title": "Diagnostic Error Reporting",
+      "key": "diagnostic_error_reporting",
+      "path": [
+        "Engineering Practices",
+        "Diagnostic Error Reporting"
+      ],
+      "content": "The correction interface associates errors with tags and lines, supporting user-facing diagnosis.",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The repository presents multiple capabilities behind a desktop interface:\n\n- XML editing/workspace behavior;\n- formatting and minification;\n- JSON conversion;\n- error-fix dialogs;\n- help/about surfaces;\n- syntax highlighting;\n- compression/decompression;\n- social-network analysis.\n\nThis gives the project a broader user-facing shape than a collection of standalone algorithms.",
+      "source_line_start": 224,
+      "source_line_end": 239
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThe repository contains many C++/header/UI artifacts across multiple functional modules.\n\n### Product Scale\n\nThe desktop tool combines editing, validation, conversion, compression, and graph-analysis workflows.\n\n### Conceptual Complexity\n\nThe team project spans:\n\n- recursive hierarchical parsing;\n- custom data structures;\n- GUI integration;\n- graph algorithms;\n- format conversion;\n- structural correction;\n- binary compression.",
+      "source_line_start": 239,
+      "source_line_end": 261
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "The repository contains many C++/header/UI artifacts across multiple functional modules.",
+      "source_line_start": 241,
+      "source_line_end": 245
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Product Scale",
+      "normalized_title": "Product Scale",
+      "key": "product_scale",
+      "path": [
+        "Scale and Complexity",
+        "Product Scale"
+      ],
+      "content": "The desktop tool combines editing, validation, conversion, compression, and graph-analysis workflows.",
+      "source_line_start": 245,
+      "source_line_end": 249
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The team project spans:\n\n- recursive hierarchical parsing;\n- custom data structures;\n- GUI integration;\n- graph algorithms;\n- format conversion;\n- structural correction;\n- binary compression.",
+      "source_line_start": 249,
+      "source_line_end": 261
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Languages\n\n- **C++ — strong repository evidence; personally attributable scope requires contribution-level evidence.**\n\n### Desktop / GUI\n\n- **Qt-style GUI development — strong repository-level evidence.**\n- **Desktop workflow integration — strong repository-level evidence.**\n- **Syntax highlighting — repository-level evidence.**\n\n### Data Structures and Algorithms\n\n- **Trees — strong repository evidence.**\n- **Stacks — strong repository evidence.**\n- **Graph adjacency structures — strong repository evidence.**\n- **Min-heaps — strong repository evidence.**\n- **Huffman coding — strong repository evidence.**\n- **Recursive traversal — strong repository evidence.**\n\n### Data / File Processing\n\n- **XML parsing — strong repository evidence.**\n- **XML validation/correction — strong repository evidence; explicitly collaborator-authored in the inspected header.**\n- **XML minification — strong repository evidence.**\n- **XML pretty printing — strong repository evidence.**\n- **XML-to-JSON conversion — strong repository evidence.**\n- **Binary file I/O — strong repository evidence.**\n\n### Architecture\n\n- **Module decomposition — moderate-to-strong repository evidence.**\n- **Layered desktop application shape — moderate repository evidence.**\n\n### Collaboration\n\n- **Multi-contributor software development — strong evidence.**\n- **Authorship-boundary reasoning — strong evidence from commit/source provenance.**",
+      "source_line_start": 261,
+      "source_line_end": 301
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Skills Demonstrated",
+        "Languages"
+      ],
+      "content": "- **C++ — strong repository evidence; personally attributable scope requires contribution-level evidence.**",
+      "source_line_start": 263,
+      "source_line_end": 267
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Desktop / GUI",
+      "normalized_title": "Desktop / GUI",
+      "key": "desktop_gui",
+      "path": [
+        "Skills Demonstrated",
+        "Desktop / GUI"
+      ],
+      "content": "- **Qt-style GUI development — strong repository-level evidence.**\n- **Desktop workflow integration — strong repository-level evidence.**\n- **Syntax highlighting — repository-level evidence.**",
+      "source_line_start": 267,
+      "source_line_end": 273
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Data Structures and Algorithms",
+      "normalized_title": "Data Structures and Algorithms",
+      "key": "data_structures_and_algorithms",
+      "path": [
+        "Skills Demonstrated",
+        "Data Structures and Algorithms"
+      ],
+      "content": "- **Trees — strong repository evidence.**\n- **Stacks — strong repository evidence.**\n- **Graph adjacency structures — strong repository evidence.**\n- **Min-heaps — strong repository evidence.**\n- **Huffman coding — strong repository evidence.**\n- **Recursive traversal — strong repository evidence.**",
+      "source_line_start": 273,
+      "source_line_end": 282
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Data / File Processing",
+      "normalized_title": "Data / File Processing",
+      "key": "data_file_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Data / File Processing"
+      ],
+      "content": "- **XML parsing — strong repository evidence.**\n- **XML validation/correction — strong repository evidence; explicitly collaborator-authored in the inspected header.**\n- **XML minification — strong repository evidence.**\n- **XML pretty printing — strong repository evidence.**\n- **XML-to-JSON conversion — strong repository evidence.**\n- **Binary file I/O — strong repository evidence.**",
+      "source_line_start": 282,
+      "source_line_end": 291
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Architecture",
+      "normalized_title": "Architecture",
+      "key": "architecture",
+      "path": [
+        "Skills Demonstrated",
+        "Architecture"
+      ],
+      "content": "- **Module decomposition — moderate-to-strong repository evidence.**\n- **Layered desktop application shape — moderate repository evidence.**",
+      "source_line_start": 291,
+      "source_line_end": 296
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Collaboration",
+      "normalized_title": "Collaboration",
+      "key": "collaboration",
+      "path": [
+        "Skills Demonstrated",
+        "Collaboration"
+      ],
+      "content": "- **Multi-contributor software development — strong evidence.**\n- **Authorship-boundary reasoning — strong evidence from commit/source provenance.**",
+      "source_line_start": 296,
+      "source_line_end": 301
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "At the repository level, this project marks a major increase in software-system breadth relative to repositories 001 and 002.\n\nIt introduces a multi-module native application in which data structures and algorithms are integrated with persistent file workflows and a GUI.\n\nFor personal portfolio reasoning, the project also establishes the need to distinguish participation in a technically broad team repository from sole authorship of each subsystem.",
+      "source_line_start": 301,
+      "source_line_end": 309
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- C++;\n- desktop GUI source;\n- Qt-style `.ui` files;\n- explicit tree and stack structures;\n- XML parsing;\n- XML-to-JSON conversion;\n- recursive pretty printing and minification;\n- XML structural correction;\n- graph adjacency analysis;\n- Huffman compression/decompression;\n- binary file processing;\n- a clearly multi-contributor software repository.\n\nThese are repository-level first occurrences unless contribution evidence supports stronger personal attribution.",
+      "source_line_start": 309,
+      "source_line_end": 328
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`xml_Parse_project` is the earliest processed repository that resembles a conventional multi-module software-engineering project rather than a small utility.\n\nIts second historical contribution is methodological: collaboration and authorship provenance become first-class constraints on portfolio analysis.",
+      "source_line_start": 328,
+      "source_line_end": 334
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`xml_Parse_project` is a broad collaborative C++ desktop project centered on XML processing. A Qt-style interface sits above parsing, structured tree construction, pretty printing, minification, XML-to-JSON conversion, structural correction, Huffman compression, and social-network graph analysis.\n\nThe repository demonstrates the integration of classic computer-science structures with practical application workflows. Trees model XML hierarchy, adjacency lists represent social relationships, a min-heap supports compression, and GUI components expose these capabilities to users.\n\nBecause source headers and commit history identify multiple contributors, the portfolio corpus preserves the project's technical breadth without assigning every subsystem to one person.\n\n# Project Tags",
+      "source_line_start": 334,
+      "source_line_end": 344
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `desktop-application`\n- `academic-team-project`",
+      "source_line_start": 344,
+      "source_line_end": 349
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `group-project`\n- `shared-authorship`\n- `multi-contributor-repository`",
+      "source_line_start": 349,
+      "source_line_end": 355
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `cpp`",
+      "source_line_start": 355,
+      "source_line_end": 359
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `qt-style-ui`\n- `desktop-gui`\n- `syntax-highlighting`",
+      "source_line_start": 359,
+      "source_line_end": 365
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `xml-processing`\n- `xml-parsing`\n- `xml-validation`\n- `xml-correction`\n- `xml-pretty-printing`\n- `xml-minification`\n- `xml-to-json`\n- `json-generation`\n- `binary-file-io`",
+      "source_line_start": 365,
+      "source_line_end": 377
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `tree-data-structure`\n- `stack-data-structure`\n- `graph-adjacency-list`\n- `graph-analysis`\n- `recursive-tree-traversal`\n- `min-heap`\n- `huffman-coding`\n- `file-compression`\n- `file-decompression`",
+      "source_line_start": 377,
+      "source_line_end": 389
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `module-decomposition`\n- `complexity-analysis-comments`",
+      "source_line_start": 389,
+      "source_line_end": 394
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Domain",
+      "normalized_title": "Domain",
+      "key": "domain",
+      "path": [
+        "Domain"
+      ],
+      "content": "- `social-network-analysis`\n- `structured-document-processing`",
+      "source_line_start": 394,
+      "source_line_end": 399
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-cpp`\n- `earliest-observed-desktop-gui`\n- `earliest-observed-xml-processing`\n- `earliest-observed-json-conversion`\n- `earliest-observed-graph-analysis`\n- `earliest-observed-compression`\n- `earliest-observed-team-repository`",
+      "source_line_start": 399,
+      "source_line_end": 408
+    }
+  ],
+  "raw_analysis": "# xml_Parse_project\n\n## Repository Identity\n\n- Repository: 003 / 134\n- Name: `xml_Parse_project`\n- Repository start date: 2021-11-12\n- Last meaningful update date: 2022-02-08\n- Primary type: C++ desktop XML-processing application\n- Technical field: Data structures, file-format processing, desktop GUI, compression, and graph analysis\n- Application domain: XML tooling and social-network data analysis\n- Project context: Collaborative academic/team project\n- Collaboration type: `group-project`\n- Default branch: `milestone1`\n- Primary implementation language: C++\n- GUI technology: Qt-style `.ui`, header, and implementation structure\n\n## Collaboration and Authorship Context\n\nThis is the first processed repository where collaboration materially affects attribution.\n\nThe current history contains multiple contributors. Later commits are attributed to collaborators including `hussameldin171` and Nada Youssef, and several source headers explicitly name other authors.\n\nRepository-level capability is therefore broader than personally attributable capability.\n\nExamples of explicit attribution in the inspected tree include:\n\n- `xmlFile.h` — Hussam Eldin Wael;\n- `SocialGraph.h` — Hussam Eldin Wael;\n- `correction.h` — Nada Yousef and Nada Amgad.\n\nThe correct portfolio interpretation is participation in a team project spanning these technical areas, with stronger personal claims made only where file/commit evidence supports them.\n\n## Evidence Basis\n\nThe analysis is grounded in the `milestone1` tree, C++ source/header files, Qt-style GUI artifacts, repository history, and author comments embedded in source.\n\n## What This Project Is\n\n`xml_Parse_project` is a multi-feature C++ desktop application for working with XML documents and social-network data represented in XML.\n\nThe repository contains parsing, tree representation, structural correction, pretty printing, minification, XML-to-JSON conversion, Huffman compression/decompression, graph analysis, and a graphical desktop interface.\n\nThe project is therefore a substantial step beyond isolated algorithm exercises: several independent transformations and analyses are integrated into one desktop software system.\n\n## Project Scope\n\n### XML Parsing and Representation\n\nCore files such as `parse.cpp`, `parse.h`, `tag.cpp`, `tag.h`, `Tree.h`, `Stack.h`, and `xmlFile.h` support tokenization, tag extraction, tree construction, and structured document handling.\n\n### XML Formatting and Conversion\n\nThe `XML_File` logic supports:\n\n- aligned / pretty-printed XML;\n- minified XML;\n- recursive structural traversal;\n- XML-to-JSON conversion;\n- repeated-child detection for JSON array representation.\n\n### XML Error Detection and Correction\n\n`correction.cpp` / `correction.h` expose structural error detection, line/tag information, and corrected-tree generation.\n\nThe inspected header attributes this subsystem to Nada Yousef and Nada Amgad.\n\n### Compression and Decompression\n\nThe repository contains Huffman-tree structures, min-heap logic, frequency counting, code construction, bit-level output, and tree-guided decompression.\n\n### Social Graph Analysis\n\n`network.*` and `SocialGraph.*` model follower/following relationships and expose queries for:\n\n- most influential user;\n- most active user;\n- mutual followers;\n- follower-of-follower suggestions.\n\n`SocialGraph.h` explicitly attributes this area to Hussam Eldin Wael.\n\n### Desktop GUI\n\nThe GUI layer includes:\n\n- Qt-style `.ui` files;\n- a main window;\n- fix/error dialogs;\n- help/about windows;\n- syntax-highlighting components.\n\n## Architecture and System Shape\n\n```text\nQt desktop GUI\n    ↓\nXML application layer\n    ├─ parsing\n    ├─ tree construction\n    ├─ formatting\n    ├─ minification\n    ├─ XML → JSON\n    ├─ correction\n    └─ compression/decompression\n    ↓\nCore structures and algorithms\n    ├─ Tree / Node\n    ├─ Stack\n    ├─ tag representation\n    ├─ Huffman tree / min-heap\n    └─ graph adjacency structures\n    ↓\nFilesystem / XML documents\n```\n\nA second analytical path operates on social-network XML:\n\n```text\nXML social-network data\n      ↓\nObject construction\n      ↓\nFollower/following graph\n      ↓\nInfluence / activity / mutual / suggestion queries\n      ↓\nDesktop presentation\n```\n\n## Technical Stack\n\n### C++\n\nC++ is used for file I/O, strings, vectors, classes, pointers, recursive traversal, graph structures, heap/tree algorithms, and bit-level compression.\n\n### Qt-Style Desktop UI\n\nThe presence of `.ui` files and corresponding C++ window/dialog classes provides strong repository-level evidence of Qt-style desktop application development.\n\n### XML\n\nXML is the primary input format and the main processing domain.\n\n### JSON\n\nThe repository includes recursive XML-to-JSON transformation logic, including repeated-tag handling for array-like structures.\n\n### Huffman Coding\n\nThe compression subsystem includes tree construction, min-heap operations, frequency tables, binary packing, and decompression traversal.\n\n## Major Engineering Work\n\n### XML Parsing\n\nThe parser exposes multiple operations for loading file content, tokenizing it, extracting tags, locating tags, and obtaining data values.\n\n### Tree-Based XML Representation\n\nXML hierarchy is modeled through a custom tree structure, enabling recursive algorithms that align naturally with nested documents.\n\n### Pretty Printing\n\nRecursive traversal emits opening tags, content, nested children, and closing tags with indentation derived from structural depth.\n\n### XML Minification\n\nThe same structured representation is serialized without formatting whitespace to produce a compact XML form.\n\n### XML-to-JSON Conversion\n\nThe conversion logic maps hierarchical XML into JSON-like output, distinguishes scalar value forms, and handles repeated siblings as arrays.\n\n### Error Detection and Correction\n\nThe correction interface reports structural errors with tag/line context and can produce a corrected tree. This is a repository-level capability with explicit collaborator attribution.\n\n### Huffman Compression\n\nThe compression subsystem contains:\n\n- character-frequency tracking;\n- min-heap operations;\n- Huffman tree construction;\n- code generation;\n- bit-packed output;\n- decompression traversal;\n- file-size tracking.\n\n### Social Graph Analysis\n\nFollower relationships are represented using adjacency-style structures to derive influence, activity, mutual-follow, and recommendation-style queries.\n\n### Desktop Integration\n\nThe GUI integrates the file-processing and analytical operations into an interactive desktop workspace rather than leaving them as isolated classes.\n\n## Engineering Practices\n\n### Modular File Organization\n\nParsing, correction, compression, graph analysis, GUI windows, and supporting structures are separated into distinct source/header units.\n\n### Data-Structure Selection\n\n- trees model XML hierarchy;\n- stacks support structural processing;\n- adjacency structures model social relationships;\n- min-heaps support Huffman coding.\n\n### Recursive Algorithms\n\nRecursive traversal is used for hierarchical formatting, minification, and JSON conversion.\n\n### Complexity Awareness\n\nSome functions contain explicit time/space complexity comments.\n\n### Diagnostic Error Reporting\n\nThe correction interface associates errors with tags and lines, supporting user-facing diagnosis.\n\n## Product Engineering\n\nThe repository presents multiple capabilities behind a desktop interface:\n\n- XML editing/workspace behavior;\n- formatting and minification;\n- JSON conversion;\n- error-fix dialogs;\n- help/about surfaces;\n- syntax highlighting;\n- compression/decompression;\n- social-network analysis.\n\nThis gives the project a broader user-facing shape than a collection of standalone algorithms.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThe repository contains many C++/header/UI artifacts across multiple functional modules.\n\n### Product Scale\n\nThe desktop tool combines editing, validation, conversion, compression, and graph-analysis workflows.\n\n### Conceptual Complexity\n\nThe team project spans:\n\n- recursive hierarchical parsing;\n- custom data structures;\n- GUI integration;\n- graph algorithms;\n- format conversion;\n- structural correction;\n- binary compression.\n\n## Skills Demonstrated\n\n### Languages\n\n- **C++ — strong repository evidence; personally attributable scope requires contribution-level evidence.**\n\n### Desktop / GUI\n\n- **Qt-style GUI development — strong repository-level evidence.**\n- **Desktop workflow integration — strong repository-level evidence.**\n- **Syntax highlighting — repository-level evidence.**\n\n### Data Structures and Algorithms\n\n- **Trees — strong repository evidence.**\n- **Stacks — strong repository evidence.**\n- **Graph adjacency structures — strong repository evidence.**\n- **Min-heaps — strong repository evidence.**\n- **Huffman coding — strong repository evidence.**\n- **Recursive traversal — strong repository evidence.**\n\n### Data / File Processing\n\n- **XML parsing — strong repository evidence.**\n- **XML validation/correction — strong repository evidence; explicitly collaborator-authored in the inspected header.**\n- **XML minification — strong repository evidence.**\n- **XML pretty printing — strong repository evidence.**\n- **XML-to-JSON conversion — strong repository evidence.**\n- **Binary file I/O — strong repository evidence.**\n\n### Architecture\n\n- **Module decomposition — moderate-to-strong repository evidence.**\n- **Layered desktop application shape — moderate repository evidence.**\n\n### Collaboration\n\n- **Multi-contributor software development — strong evidence.**\n- **Authorship-boundary reasoning — strong evidence from commit/source provenance.**\n\n## Capability Developed\n\nAt the repository level, this project marks a major increase in software-system breadth relative to repositories 001 and 002.\n\nIt introduces a multi-module native application in which data structures and algorithms are integrated with persistent file workflows and a GUI.\n\nFor personal portfolio reasoning, the project also establishes the need to distinguish participation in a technically broad team repository from sole authorship of each subsystem.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- C++;\n- desktop GUI source;\n- Qt-style `.ui` files;\n- explicit tree and stack structures;\n- XML parsing;\n- XML-to-JSON conversion;\n- recursive pretty printing and minification;\n- XML structural correction;\n- graph adjacency analysis;\n- Huffman compression/decompression;\n- binary file processing;\n- a clearly multi-contributor software repository.\n\nThese are repository-level first occurrences unless contribution evidence supports stronger personal attribution.\n\n## Historical Significance\n\n`xml_Parse_project` is the earliest processed repository that resembles a conventional multi-module software-engineering project rather than a small utility.\n\nIts second historical contribution is methodological: collaboration and authorship provenance become first-class constraints on portfolio analysis.\n\n## Overall Repository Narrative\n\n`xml_Parse_project` is a broad collaborative C++ desktop project centered on XML processing. A Qt-style interface sits above parsing, structured tree construction, pretty printing, minification, XML-to-JSON conversion, structural correction, Huffman compression, and social-network graph analysis.\n\nThe repository demonstrates the integration of classic computer-science structures with practical application workflows. Trees model XML hierarchy, adjacency lists represent social relationships, a min-heap supports compression, and GUI components expose these capabilities to users.\n\nBecause source headers and commit history identify multiple contributors, the portfolio corpus preserves the project's technical breadth without assigning every subsystem to one person.\n\n# Project Tags\n\n## Project Type\n\n- `desktop-application`\n- `academic-team-project`\n\n## Collaboration and Authorship\n\n- `group-project`\n- `shared-authorship`\n- `multi-contributor-repository`\n\n## Languages\n\n- `cpp`\n\n## Frontend\n\n- `qt-style-ui`\n- `desktop-gui`\n- `syntax-highlighting`\n\n## Database and Data\n\n- `xml-processing`\n- `xml-parsing`\n- `xml-validation`\n- `xml-correction`\n- `xml-pretty-printing`\n- `xml-minification`\n- `xml-to-json`\n- `json-generation`\n- `binary-file-io`\n\n## Systems Engineering\n\n- `tree-data-structure`\n- `stack-data-structure`\n- `graph-adjacency-list`\n- `graph-analysis`\n- `recursive-tree-traversal`\n- `min-heap`\n- `huffman-coding`\n- `file-compression`\n- `file-decompression`\n\n## Software Engineering Practices\n\n- `module-decomposition`\n- `complexity-analysis-comments`\n\n## Domain\n\n- `social-network-analysis`\n- `structured-document-processing`\n\n## Portfolio Significance\n\n- `earliest-observed-cpp`\n- `earliest-observed-desktop-gui`\n- `earliest-observed-xml-processing`\n- `earliest-observed-json-conversion`\n- `earliest-observed-graph-analysis`\n- `earliest-observed-compression`\n- `earliest-observed-team-repository`\n"
+}

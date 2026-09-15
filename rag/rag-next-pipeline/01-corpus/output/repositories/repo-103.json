@@ -1,0 +1,1021 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 103,
+  "repository_total": 134,
+  "repository_name": "test3",
+  "header_title": "test3",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-103-test3/README.md",
+    "line_start": 1,
+    "line_end": 453,
+    "sha256": "41b68640740c245588613248c7d77b8685671701359b58e34a9d65605cbf0404"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "instructional-tooling",
+    "automated-grader",
+    "networking-lab",
+    "reference-implementation",
+    "individual-project-with-course-scaffold",
+    "owner-attributed-grader",
+    "supplied-assignment-context",
+    "python",
+    "bash",
+    "mininet",
+    "tcp-sockets",
+    "layer-4-load-balancer",
+    "round-robin-load-balancing",
+    "dual-homed-host",
+    "network-isolation",
+    "multi-subnet-topology",
+    "json-protocol",
+    "python-threading",
+    "thread-per-client",
+    "mutex",
+    "shared-state-synchronization",
+    "automated-grading",
+    "integration-testing",
+    "sequential-testing",
+    "concurrent-testing",
+    "connectivity-testing",
+    "semantic-output-validation",
+    "exit-code-verification",
+    "csv-grading-output",
+    "tmux",
+    "mnexec",
+    "linux-network-namespaces",
+    "process-orchestration",
+    "earliest-observed-mininet-grader",
+    "earliest-observed-automated-network-lab-grading",
+    "earliest-observed-thread-safe-round-robin-grading"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s024"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Backend Identity Normalization"
+      ],
+      "text": "## Repository Identity\n- Repository: 103 / 134\n- Name: `test3`\n- Repository start date: 2026-02-02\n- Last meaningful update date: 2026-04-04\n- Latest meaningful commit: `5f77f7d9d2338ec43e44d0b3d02ada4e8b511791`\n- Primary type: Automated computer-networks lab grading and reference-solution toolkit\n- Technical field: Networking education, Mininet, TCP sockets, load balancing, automated verification\n- Application domain: University networking-lab evaluation\n- Collaboration type: `individual-project-with-course-scaffold`\n- Primary languages: Python and Bash\n- Major systems: Mininet topology, round-robin load balancer, backend/client sample programs, grading harness\n\n## Backend Identity Normalization\nBackend IP addresses are mapped to expected symbolic names (`b1`, `b2`, `b3`) before returning results to clients."
+    },
+    "architecture": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\n                  grading_script.sh\n                        |\n          +-------------+-------------+\n          |                           |\n    Mininet topology              test execution\n          |                           |\n clients h1-h3                 sequential clients\n       \\                           concurrent clients\n        \\                              |\n         +----> load balancer <--------+\n                  |\n         thread-safe round robin\n                  |\n        +---------+---------+\n        |         |         |\n       b1        b2        b3\n        |         |         |\n        +---------+---------+\n                  |\n             CSV evidence\n                  |\n           verify_output.py\n                  |\n             grades.csv\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s009",
+        "s030",
+        "s035",
+        "s054",
+        "s064"
+      ],
+      "titles": [
+        "Output Verification",
+        "Verification",
+        "Row-Level Semantic Verification",
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Output Verification\n`verify_output.py` checks each output row for:\n\n- request-ID preservation;\n- equal client/backend/received vertex counts;\n- backend name/IP consistency.\n\nIt produces a percentage score and exits non-zero when rows fail.\n\n## Verification\n### IP-Configuration Checks\n\nThe grading harness checks configured addresses against an explicit expected IP map.\n\n### Connectivity Checks\n\nExpected reachability/isolation is exercised through automated pings.\n\n### Sequential Functional Tests\n\nEach client is run repeatedly in the foreground and graded separately.\n\n### Concurrent Functional Tests\n\nClients are launched together to exercise load-balancer concurrency and request correlation.\n\n### Row-Level Semantic Verification\n\nThe verifier validates request IDs, graph/vertex counts, and backend name/IP mapping.\n\n### Exit-Code Integration\n\nVerification exits non-zero when failures occur, enabling shell-level pass/fail orchestration.\n\n## Row-Level Semantic Verification\nThe verifier validates request IDs, graph/vertex counts, and backend name/IP mapping.\n\n## Verification\n- **Machine-readable semantic checks — strong evidence.**\n- **Sequential/concurrent integration testing — strong evidence.**\n- **Exit-code-driven validation — strong evidence.**\n\n## Testing and Verification\n- `automated-grading`\n- `integration-testing`\n- `sequential-testing`\n- `concurrent-testing`\n- `connectivity-testing`\n- `semantic-output-validation`\n- `exit-code-verification`\n- `csv-grading-output`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s060"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository README explicitly describes the directory as containing sample solutions for the load-balancer and topology tasks together with a Bash grading script intended to evaluate student submissions.\n\nA second Markdown file reconstructs the assignment specification. That assignment text is instructional/course material and is kept separate from the engineering attribution.\n\nThe repository owner is attributed in the commit history, including the latest upload commit. The corpus therefore attributes the grader/tooling integration and retained sample-solution work to the repository owner while distinguishing the assignment specification as supplied instructional context.\n\n## Collaboration and Authorship\n- `individual-project-with-course-scaffold`\n- `owner-attributed-grader`\n- `supplied-assignment-context`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 103 / 134\n- Name: `test3`\n- Repository start date: 2026-02-02\n- Last meaningful update date: 2026-04-04\n- Latest meaningful commit: `5f77f7d9d2338ec43e44d0b3d02ada4e8b511791`\n- Primary type: Automated computer-networks lab grading and reference-solution toolkit\n- Technical field: Networking education, Mininet, TCP sockets, load balancing, automated verification\n- Application domain: University networking-lab evaluation\n- Collaboration type: `individual-project-with-course-scaffold`\n- Primary languages: Python and Bash\n- Major systems: Mininet topology, round-robin load balancer, backend/client sample programs, grading harness",
+      "source_line_start": 3,
+      "source_line_end": 17
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository README explicitly describes the directory as containing sample solutions for the load-balancer and topology tasks together with a Bash grading script intended to evaluate student submissions.\n\nA second Markdown file reconstructs the assignment specification. That assignment text is instructional/course material and is kept separate from the engineering attribution.\n\nThe repository owner is attributed in the commit history, including the latest upload commit. The corpus therefore attributes the grader/tooling integration and retained sample-solution work to the repository owner while distinguishing the assignment specification as supplied instructional context.",
+      "source_line_start": 17,
+      "source_line_end": 25
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `README.md`;\n- reconstructed lab specification in `READAME.md`;\n- `lab_topology.py`;\n- `load_balancer.py`;\n- `client.py`;\n- `backend_server.py`;\n- `grading_script.sh`;\n- `verify_output.py`;\n- `monitor.py`;\n- startup CLI/script assets;\n- current commit history.",
+      "source_line_start": 25,
+      "source_line_end": 41
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`test3` is an instructional network-lab automation repository centered on a layer-4 load-balancing exercise.\n\nThe system builds a Mininet topology with:\n\n- three clients;\n- a dual-homed load balancer;\n- three backend servers;\n- separate client and backend subnets.\n\nThe sample load balancer accepts TCP client connections, dispatches requests to backend servers using a thread-safe round-robin index, receives backend results, rewrites backend identity into the expected name, and sends responses back to the correct client connection.\n\nA Bash grader starts the Mininet environment, inspects IP assignments, tests connectivity/isolation, launches backends and the load balancer, executes sequential and concurrent client tests, grades produced CSV rows, and writes aggregate grading output.",
+      "source_line_start": 41,
+      "source_line_end": 56
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Mininet Topology\n\nThe topology creates:\n\n- clients `h1`, `h2`, `h3` in `10.0.0.0/24`;\n- load-balancer client-facing interface `10.0.0.9/24`;\n- load-balancer backend-facing interface `20.0.0.2/24`;\n- backend servers `b1`, `b2`, `b3` in `20.0.0.0/24`;\n- two virtual switches.\n\nThe load balancer is modeled as a dual-homed Mininet node.\n\n### Layer-4 Load Balancer\n\nThe sample implementation provides:\n\n- TCP listening;\n- thread-per-client handling;\n- newline-delimited request framing;\n- JSON decoding;\n- client IP injection;\n- shared round-robin backend selection;\n- mutex protection around round-robin state;\n- backend TCP connection;\n- backend response parsing;\n- backend IP-to-name normalization;\n- client response forwarding.\n\n### Automated Grading\n\nThe Bash grading harness checks:\n\n- interface addressing;\n- expected reachability;\n- expected isolation;\n- backend startup;\n- load-balancer startup;\n- sequential requests;\n- concurrent requests;\n- per-client output grading;\n- summary CSV generation.\n\n### Output Verification\n\n`verify_output.py` checks each output row for:\n\n- request-ID preservation;\n- equal client/backend/received vertex counts;\n- backend name/IP consistency.\n\nIt produces a percentage score and exits non-zero when rows fail.",
+      "source_line_start": 56,
+      "source_line_end": 110
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Mininet Topology",
+      "normalized_title": "Mininet Topology",
+      "key": "mininet_topology",
+      "path": [
+        "Project Scope",
+        "Mininet Topology"
+      ],
+      "content": "The topology creates:\n\n- clients `h1`, `h2`, `h3` in `10.0.0.0/24`;\n- load-balancer client-facing interface `10.0.0.9/24`;\n- load-balancer backend-facing interface `20.0.0.2/24`;\n- backend servers `b1`, `b2`, `b3` in `20.0.0.0/24`;\n- two virtual switches.\n\nThe load balancer is modeled as a dual-homed Mininet node.",
+      "source_line_start": 58,
+      "source_line_end": 70
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Layer-4 Load Balancer",
+      "normalized_title": "Layer-4 Load Balancer",
+      "key": "layer_4_load_balancer",
+      "path": [
+        "Project Scope",
+        "Layer-4 Load Balancer"
+      ],
+      "content": "The sample implementation provides:\n\n- TCP listening;\n- thread-per-client handling;\n- newline-delimited request framing;\n- JSON decoding;\n- client IP injection;\n- shared round-robin backend selection;\n- mutex protection around round-robin state;\n- backend TCP connection;\n- backend response parsing;\n- backend IP-to-name normalization;\n- client response forwarding.",
+      "source_line_start": 70,
+      "source_line_end": 86
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Automated Grading",
+      "normalized_title": "Automated Grading",
+      "key": "automated_grading",
+      "path": [
+        "Project Scope",
+        "Automated Grading"
+      ],
+      "content": "The Bash grading harness checks:\n\n- interface addressing;\n- expected reachability;\n- expected isolation;\n- backend startup;\n- load-balancer startup;\n- sequential requests;\n- concurrent requests;\n- per-client output grading;\n- summary CSV generation.",
+      "source_line_start": 86,
+      "source_line_end": 100
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Output Verification",
+      "normalized_title": "Output Verification",
+      "key": "output_verification",
+      "path": [
+        "Project Scope",
+        "Output Verification"
+      ],
+      "content": "`verify_output.py` checks each output row for:\n\n- request-ID preservation;\n- equal client/backend/received vertex counts;\n- backend name/IP consistency.\n\nIt produces a percentage score and exits non-zero when rows fail.",
+      "source_line_start": 100,
+      "source_line_end": 110
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\n                  grading_script.sh\n                        |\n          +-------------+-------------+\n          |                           |\n    Mininet topology              test execution\n          |                           |\n clients h1-h3                 sequential clients\n       \\                           concurrent clients\n        \\                              |\n         +----> load balancer <--------+\n                  |\n         thread-safe round robin\n                  |\n        +---------+---------+\n        |         |         |\n       b1        b2        b3\n        |         |         |\n        +---------+---------+\n                  |\n             CSV evidence\n                  |\n           verify_output.py\n                  |\n             grades.csv\n```",
+      "source_line_start": 110,
+      "source_line_end": 139
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython implements the Mininet topology, load balancer, client/backend behavior, monitoring, and output verification.\n\n### Bash\n\nThe grading harness uses Bash for:\n\n- lifecycle orchestration;\n- Mininet process discovery;\n- interface inspection;\n- connectivity tests;\n- process execution;\n- sequential/concurrent test coordination;\n- CSV aggregation.\n\n### Mininet\n\nMininet supplies virtual hosts, switches, interfaces, links, namespaces, and the network CLI.\n\n### TCP Sockets\n\nThe sample load balancer and endpoint programs use direct TCP sockets.\n\n### JSON\n\nRequests/responses use JSON fields to preserve request IDs, client identity, graph input, backend identity, and computed results.\n\n### tmux / mnexec\n\nThe grader uses detached `tmux` sessions and `mnexec` to run programs inside Mininet host namespaces.",
+      "source_line_start": 139,
+      "source_line_end": 173
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python implements the Mininet topology, load balancer, client/backend behavior, monitoring, and output verification.",
+      "source_line_start": 141,
+      "source_line_end": 145
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Bash",
+      "normalized_title": "Bash",
+      "key": "bash",
+      "path": [
+        "Technical Stack",
+        "Bash"
+      ],
+      "content": "The grading harness uses Bash for:\n\n- lifecycle orchestration;\n- Mininet process discovery;\n- interface inspection;\n- connectivity tests;\n- process execution;\n- sequential/concurrent test coordination;\n- CSV aggregation.",
+      "source_line_start": 145,
+      "source_line_end": 157
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Mininet",
+      "normalized_title": "Mininet",
+      "key": "mininet",
+      "path": [
+        "Technical Stack",
+        "Mininet"
+      ],
+      "content": "Mininet supplies virtual hosts, switches, interfaces, links, namespaces, and the network CLI.",
+      "source_line_start": 157,
+      "source_line_end": 161
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "TCP Sockets",
+      "normalized_title": "TCP Sockets",
+      "key": "tcp_sockets",
+      "path": [
+        "Technical Stack",
+        "TCP Sockets"
+      ],
+      "content": "The sample load balancer and endpoint programs use direct TCP sockets.",
+      "source_line_start": 161,
+      "source_line_end": 165
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "JSON",
+      "normalized_title": "JSON",
+      "key": "json",
+      "path": [
+        "Technical Stack",
+        "JSON"
+      ],
+      "content": "Requests/responses use JSON fields to preserve request IDs, client identity, graph input, backend identity, and computed results.",
+      "source_line_start": 165,
+      "source_line_end": 169
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "tmux / mnexec",
+      "normalized_title": "tmux / mnexec",
+      "key": "tmux_mnexec",
+      "path": [
+        "Technical Stack",
+        "tmux / mnexec"
+      ],
+      "content": "The grader uses detached `tmux` sessions and `mnexec` to run programs inside Mininet host namespaces.",
+      "source_line_start": 169,
+      "source_line_end": 173
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Dual-Subnet Topology Construction\n\nThe topology creates two client/backend networks and a load-balancer host with one interface in each subnet.\n\nThis exercises explicit interface addressing rather than relying on automatic topology defaults.\n\n### Thread-Safe Round-Robin Selection\n\nThe load balancer maintains a global backend index and protects selection/update with a `threading.Lock`.\n\nThis is the central concurrency requirement of the assignment.\n\n### Client Request Framing\n\nThe handler accumulates bytes and splits on newline boundaries, allowing multiple framed requests to travel over one client connection.\n\n### Per-Client Concurrency\n\nEvery accepted client connection is handled by a daemon thread, allowing the grader to exercise multiple clients concurrently.\n\n### Request Correlation\n\nThe JSON communication contract carries request IDs through client, load balancer, backend, and response paths.\n\nThe verifier checks that received IDs match original IDs.\n\n### Backend Identity Normalization\n\nBackend IP addresses are mapped to expected symbolic names (`b1`, `b2`, `b3`) before returning results to clients.\n\n### Automated Interface Validation\n\nThe grading script enters Mininet namespaces and inspects expected IP addresses on:\n\n- six endpoint interfaces;\n- both load-balancer interfaces.\n\n### Automated Connectivity Matrix\n\nThe grader computes expected reachability between client, backend, and load-balancer endpoints, runs pings, and compares observed packet-loss values to expected behavior.\n\n### Sequential Request Evaluation\n\nThe script runs multiple client rounds one at a time and grades each generated output set independently.\n\n### Concurrent Request Evaluation\n\nThree client workloads are launched concurrently, then their combined results are sliced by client IP and graded independently.\n\n### Programmatic Output Scoring\n\nThe verifier calculates row-level correctness and a percentage score, giving the Bash harness a deterministic machine-readable grading signal.",
+      "source_line_start": 173,
+      "source_line_end": 228
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Dual-Subnet Topology Construction",
+      "normalized_title": "Dual-Subnet Topology Construction",
+      "key": "dual_subnet_topology_construction",
+      "path": [
+        "Major Engineering Work",
+        "Dual-Subnet Topology Construction"
+      ],
+      "content": "The topology creates two client/backend networks and a load-balancer host with one interface in each subnet.\n\nThis exercises explicit interface addressing rather than relying on automatic topology defaults.",
+      "source_line_start": 175,
+      "source_line_end": 181
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Thread-Safe Round-Robin Selection",
+      "normalized_title": "Thread-Safe Round-Robin Selection",
+      "key": "thread_safe_round_robin_selection",
+      "path": [
+        "Major Engineering Work",
+        "Thread-Safe Round-Robin Selection"
+      ],
+      "content": "The load balancer maintains a global backend index and protects selection/update with a `threading.Lock`.\n\nThis is the central concurrency requirement of the assignment.",
+      "source_line_start": 181,
+      "source_line_end": 187
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Client Request Framing",
+      "normalized_title": "Client Request Framing",
+      "key": "client_request_framing",
+      "path": [
+        "Major Engineering Work",
+        "Client Request Framing"
+      ],
+      "content": "The handler accumulates bytes and splits on newline boundaries, allowing multiple framed requests to travel over one client connection.",
+      "source_line_start": 187,
+      "source_line_end": 191
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Per-Client Concurrency",
+      "normalized_title": "Per-Client Concurrency",
+      "key": "per_client_concurrency",
+      "path": [
+        "Major Engineering Work",
+        "Per-Client Concurrency"
+      ],
+      "content": "Every accepted client connection is handled by a daemon thread, allowing the grader to exercise multiple clients concurrently.",
+      "source_line_start": 191,
+      "source_line_end": 195
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Request Correlation",
+      "normalized_title": "Request Correlation",
+      "key": "request_correlation",
+      "path": [
+        "Major Engineering Work",
+        "Request Correlation"
+      ],
+      "content": "The JSON communication contract carries request IDs through client, load balancer, backend, and response paths.\n\nThe verifier checks that received IDs match original IDs.",
+      "source_line_start": 195,
+      "source_line_end": 201
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Backend Identity Normalization",
+      "normalized_title": "Backend Identity Normalization",
+      "key": "backend_identity_normalization",
+      "path": [
+        "Major Engineering Work",
+        "Backend Identity Normalization"
+      ],
+      "content": "Backend IP addresses are mapped to expected symbolic names (`b1`, `b2`, `b3`) before returning results to clients.",
+      "source_line_start": 201,
+      "source_line_end": 205
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Automated Interface Validation",
+      "normalized_title": "Automated Interface Validation",
+      "key": "automated_interface_validation",
+      "path": [
+        "Major Engineering Work",
+        "Automated Interface Validation"
+      ],
+      "content": "The grading script enters Mininet namespaces and inspects expected IP addresses on:\n\n- six endpoint interfaces;\n- both load-balancer interfaces.",
+      "source_line_start": 205,
+      "source_line_end": 212
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Automated Connectivity Matrix",
+      "normalized_title": "Automated Connectivity Matrix",
+      "key": "automated_connectivity_matrix",
+      "path": [
+        "Major Engineering Work",
+        "Automated Connectivity Matrix"
+      ],
+      "content": "The grader computes expected reachability between client, backend, and load-balancer endpoints, runs pings, and compares observed packet-loss values to expected behavior.",
+      "source_line_start": 212,
+      "source_line_end": 216
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Sequential Request Evaluation",
+      "normalized_title": "Sequential Request Evaluation",
+      "key": "sequential_request_evaluation",
+      "path": [
+        "Major Engineering Work",
+        "Sequential Request Evaluation"
+      ],
+      "content": "The script runs multiple client rounds one at a time and grades each generated output set independently.",
+      "source_line_start": 216,
+      "source_line_end": 220
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Concurrent Request Evaluation",
+      "normalized_title": "Concurrent Request Evaluation",
+      "key": "concurrent_request_evaluation",
+      "path": [
+        "Major Engineering Work",
+        "Concurrent Request Evaluation"
+      ],
+      "content": "Three client workloads are launched concurrently, then their combined results are sliced by client IP and graded independently.",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Programmatic Output Scoring",
+      "normalized_title": "Programmatic Output Scoring",
+      "key": "programmatic_output_scoring",
+      "path": [
+        "Major Engineering Work",
+        "Programmatic Output Scoring"
+      ],
+      "content": "The verifier calculates row-level correctness and a percentage score, giving the Bash harness a deterministic machine-readable grading signal.",
+      "source_line_start": 224,
+      "source_line_end": 228
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### IP-Configuration Checks\n\nThe grading harness checks configured addresses against an explicit expected IP map.\n\n### Connectivity Checks\n\nExpected reachability/isolation is exercised through automated pings.\n\n### Sequential Functional Tests\n\nEach client is run repeatedly in the foreground and graded separately.\n\n### Concurrent Functional Tests\n\nClients are launched together to exercise load-balancer concurrency and request correlation.\n\n### Row-Level Semantic Verification\n\nThe verifier validates request IDs, graph/vertex counts, and backend name/IP mapping.\n\n### Exit-Code Integration\n\nVerification exits non-zero when failures occur, enabling shell-level pass/fail orchestration.",
+      "source_line_start": 228,
+      "source_line_end": 254
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "IP-Configuration Checks",
+      "normalized_title": "IP-Configuration Checks",
+      "key": "ip_configuration_checks",
+      "path": [
+        "Verification",
+        "IP-Configuration Checks"
+      ],
+      "content": "The grading harness checks configured addresses against an explicit expected IP map.",
+      "source_line_start": 230,
+      "source_line_end": 234
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Connectivity Checks",
+      "normalized_title": "Connectivity Checks",
+      "key": "connectivity_checks",
+      "path": [
+        "Verification",
+        "Connectivity Checks"
+      ],
+      "content": "Expected reachability/isolation is exercised through automated pings.",
+      "source_line_start": 234,
+      "source_line_end": 238
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Sequential Functional Tests",
+      "normalized_title": "Sequential Functional Tests",
+      "key": "sequential_functional_tests",
+      "path": [
+        "Verification",
+        "Sequential Functional Tests"
+      ],
+      "content": "Each client is run repeatedly in the foreground and graded separately.",
+      "source_line_start": 238,
+      "source_line_end": 242
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Concurrent Functional Tests",
+      "normalized_title": "Concurrent Functional Tests",
+      "key": "concurrent_functional_tests",
+      "path": [
+        "Verification",
+        "Concurrent Functional Tests"
+      ],
+      "content": "Clients are launched together to exercise load-balancer concurrency and request correlation.",
+      "source_line_start": 242,
+      "source_line_end": 246
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Row-Level Semantic Verification",
+      "normalized_title": "Row-Level Semantic Verification",
+      "key": "row_level_semantic_verification",
+      "path": [
+        "Verification",
+        "Row-Level Semantic Verification"
+      ],
+      "content": "The verifier validates request IDs, graph/vertex counts, and backend name/IP mapping.",
+      "source_line_start": 246,
+      "source_line_end": 250
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Exit-Code Integration",
+      "normalized_title": "Exit-Code Integration",
+      "key": "exit_code_integration",
+      "path": [
+        "Verification",
+        "Exit-Code Integration"
+      ],
+      "content": "Verification exits non-zero when failures occur, enabling shell-level pass/fail orchestration.",
+      "source_line_start": 250,
+      "source_line_end": 254
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Automated Evaluation\n\nManual lab checking is converted into a repeatable executable grading workflow.\n\n### Deterministic Network Model\n\nHostnames, IPs, ports, and subnet boundaries are explicit and reused by the grader.\n\n### Concurrency Safety\n\nRound-robin state is protected by a lock.\n\n### Test Isolation\n\nSequential CSV output is reset between individual client runs; concurrent output is partitioned by client identity before grading.\n\n### Layer Separation\n\nTopology construction, traffic generation, backend processing, load balancing, grading, and row verification are separated into different files.\n\n### Defensive Process Handling\n\nThe Bash script checks for Mininet process IDs, handles existing tmux sessions, cleans previous output, and performs Mininet cleanup at the end.",
+      "source_line_start": 254,
+      "source_line_end": 280
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Automated Evaluation",
+      "normalized_title": "Automated Evaluation",
+      "key": "automated_evaluation",
+      "path": [
+        "Engineering Practices",
+        "Automated Evaluation"
+      ],
+      "content": "Manual lab checking is converted into a repeatable executable grading workflow.",
+      "source_line_start": 256,
+      "source_line_end": 260
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Deterministic Network Model",
+      "normalized_title": "Deterministic Network Model",
+      "key": "deterministic_network_model",
+      "path": [
+        "Engineering Practices",
+        "Deterministic Network Model"
+      ],
+      "content": "Hostnames, IPs, ports, and subnet boundaries are explicit and reused by the grader.",
+      "source_line_start": 260,
+      "source_line_end": 264
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Concurrency Safety",
+      "normalized_title": "Concurrency Safety",
+      "key": "concurrency_safety",
+      "path": [
+        "Engineering Practices",
+        "Concurrency Safety"
+      ],
+      "content": "Round-robin state is protected by a lock.",
+      "source_line_start": 264,
+      "source_line_end": 268
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Test Isolation",
+      "normalized_title": "Test Isolation",
+      "key": "test_isolation",
+      "path": [
+        "Engineering Practices",
+        "Test Isolation"
+      ],
+      "content": "Sequential CSV output is reset between individual client runs; concurrent output is partitioned by client identity before grading.",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Layer Separation",
+      "normalized_title": "Layer Separation",
+      "key": "layer_separation",
+      "path": [
+        "Engineering Practices",
+        "Layer Separation"
+      ],
+      "content": "Topology construction, traffic generation, backend processing, load balancing, grading, and row verification are separated into different files.",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Defensive Process Handling",
+      "normalized_title": "Defensive Process Handling",
+      "key": "defensive_process_handling",
+      "path": [
+        "Engineering Practices",
+        "Defensive Process Handling"
+      ],
+      "content": "The Bash script checks for Mininet process IDs, handles existing tmux sessions, cleans previous output, and performs Mininet cleanup at the end.",
+      "source_line_start": 276,
+      "source_line_end": 280
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository is best understood as educational infrastructure.\n\nIts primary users are a grader/instructor/teaching workflow rather than consumers of a network service.\n\nThe main product-facing outcome is reproducibility:\n\n- one command starts the topology;\n- network properties are checked automatically;\n- workloads are executed;\n- outputs are scored;\n- summary grades are written to CSV.",
+      "source_line_start": 280,
+      "source_line_end": 294
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Topology Scale\n\nThe lab contains seven virtual hosts across two L2 domains plus switches.\n\n### Concurrency Scale\n\nThe load-balancer service supports concurrent client threads, and the grader explicitly launches three simultaneous workloads.\n\n### Evaluation Scale\n\nThe grader evaluates addressing, connectivity, multiple sequential runs, and multiple concurrent runs in one orchestration script.\n\n### Integration Complexity\n\nThe repository coordinates:\n\n- Mininet;\n- Linux namespaces;\n- TCP applications;\n- JSON contracts;\n- Bash;\n- tmux;\n- CSV;\n- process management;\n- Python verification.",
+      "source_line_start": 294,
+      "source_line_end": 322
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Topology Scale",
+      "normalized_title": "Topology Scale",
+      "key": "topology_scale",
+      "path": [
+        "Scale and Complexity",
+        "Topology Scale"
+      ],
+      "content": "The lab contains seven virtual hosts across two L2 domains plus switches.",
+      "source_line_start": 296,
+      "source_line_end": 300
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Concurrency Scale",
+      "normalized_title": "Concurrency Scale",
+      "key": "concurrency_scale",
+      "path": [
+        "Scale and Complexity",
+        "Concurrency Scale"
+      ],
+      "content": "The load-balancer service supports concurrent client threads, and the grader explicitly launches three simultaneous workloads.",
+      "source_line_start": 300,
+      "source_line_end": 304
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Evaluation Scale",
+      "normalized_title": "Evaluation Scale",
+      "key": "evaluation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Evaluation Scale"
+      ],
+      "content": "The grader evaluates addressing, connectivity, multiple sequential runs, and multiple concurrent runs in one orchestration script.",
+      "source_line_start": 304,
+      "source_line_end": 308
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Integration Complexity",
+      "normalized_title": "Integration Complexity",
+      "key": "integration_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Integration Complexity"
+      ],
+      "content": "The repository coordinates:\n\n- Mininet;\n- Linux namespaces;\n- TCP applications;\n- JSON contracts;\n- Bash;\n- tmux;\n- CSV;\n- process management;\n- Python verification.",
+      "source_line_start": 308,
+      "source_line_end": 322
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Networking\n\n- **Mininet — strong evidence.**\n- **Virtual network topology construction — strong evidence.**\n- **Layer-4 load balancing — strong evidence.**\n- **TCP socket programming — strong evidence.**\n- **Network isolation testing — strong evidence.**\n- **Multi-interface host configuration — strong evidence.**\n\n### Concurrency\n\n- **Python threading — strong evidence.**\n- **Thread-per-client servers — strong evidence.**\n- **Mutex-protected shared state — strong evidence.**\n- **Concurrent workload testing — strong evidence.**\n\n### Automation\n\n- **Bash automation — strong evidence.**\n- **Automated grading — strong evidence.**\n- **Namespace process execution — strong evidence.**\n- **CSV result aggregation — strong evidence.**\n\n### Verification\n\n- **Machine-readable semantic checks — strong evidence.**\n- **Sequential/concurrent integration testing — strong evidence.**\n- **Exit-code-driven validation — strong evidence.**",
+      "source_line_start": 322,
+      "source_line_end": 353
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Skills Demonstrated",
+        "Networking"
+      ],
+      "content": "- **Mininet — strong evidence.**\n- **Virtual network topology construction — strong evidence.**\n- **Layer-4 load balancing — strong evidence.**\n- **TCP socket programming — strong evidence.**\n- **Network isolation testing — strong evidence.**\n- **Multi-interface host configuration — strong evidence.**",
+      "source_line_start": 324,
+      "source_line_end": 333
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Concurrency",
+      "normalized_title": "Concurrency",
+      "key": "concurrency",
+      "path": [
+        "Skills Demonstrated",
+        "Concurrency"
+      ],
+      "content": "- **Python threading — strong evidence.**\n- **Thread-per-client servers — strong evidence.**\n- **Mutex-protected shared state — strong evidence.**\n- **Concurrent workload testing — strong evidence.**",
+      "source_line_start": 333,
+      "source_line_end": 340
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Automation",
+      "normalized_title": "Automation",
+      "key": "automation",
+      "path": [
+        "Skills Demonstrated",
+        "Automation"
+      ],
+      "content": "- **Bash automation — strong evidence.**\n- **Automated grading — strong evidence.**\n- **Namespace process execution — strong evidence.**\n- **CSV result aggregation — strong evidence.**",
+      "source_line_start": 340,
+      "source_line_end": 347
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Skills Demonstrated",
+        "Verification"
+      ],
+      "content": "- **Machine-readable semantic checks — strong evidence.**\n- **Sequential/concurrent integration testing — strong evidence.**\n- **Exit-code-driven validation — strong evidence.**",
+      "source_line_start": 347,
+      "source_line_end": 353
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository moves from implementing networking concepts to building infrastructure that evaluates networking implementations.\n\nThat adds a different engineering dimension:\n\n- defining expected behavior;\n- orchestrating environments;\n- automating tests;\n- measuring correctness;\n- producing grading outputs.\n\nIt combines network programming with developer/test tooling.",
+      "source_line_start": 353,
+      "source_line_end": 367
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Within the processed corpus, this repository provides especially strong evidence of:\n\n- Mininet-based network automation;\n- automated network-lab grading;\n- load-balancer correctness verification;\n- thread-safe round-robin dispatch;\n- automated connectivity/isolation matrices;\n- sequential versus concurrent evaluation design.",
+      "source_line_start": 367,
+      "source_line_end": 378
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`test3` is significant because the repository is not only a networking implementation. It is a **testing and evaluation system for networking work**.\n\nThe code demonstrates the mindset of turning a lab specification into repeatable infrastructure with explicit correctness checks.",
+      "source_line_start": 378,
+      "source_line_end": 384
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`test3` packages a load-balancing networking lab into an executable grading environment.\n\nA Mininet topology creates separated client/backend networks around a dual-homed load balancer. The reference load balancer uses direct TCP sockets and a lock-protected round-robin index. The Bash grader validates topology configuration, launches network services, drives sequential and concurrent workloads, and invokes a Python verifier that checks request correlation and backend consistency.\n\nThe result is both a sample implementation and an automated evaluation framework.\n\n# Project Tags",
+      "source_line_start": 384,
+      "source_line_end": 394
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `instructional-tooling`\n- `automated-grader`\n- `networking-lab`\n- `reference-implementation`\n- `individual-project-with-course-scaffold`",
+      "source_line_start": 394,
+      "source_line_end": 402
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project-with-course-scaffold`\n- `owner-attributed-grader`\n- `supplied-assignment-context`",
+      "source_line_start": 402,
+      "source_line_end": 408
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`\n- `bash`",
+      "source_line_start": 408,
+      "source_line_end": 413
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Networking"
+      ],
+      "content": "- `mininet`\n- `tcp-sockets`\n- `layer-4-load-balancer`\n- `round-robin-load-balancing`\n- `dual-homed-host`\n- `network-isolation`\n- `multi-subnet-topology`\n- `json-protocol`",
+      "source_line_start": 413,
+      "source_line_end": 424
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Concurrency",
+      "normalized_title": "Concurrency",
+      "key": "concurrency",
+      "path": [
+        "Concurrency"
+      ],
+      "content": "- `python-threading`\n- `thread-per-client`\n- `mutex`\n- `shared-state-synchronization`",
+      "source_line_start": 424,
+      "source_line_end": 431
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `automated-grading`\n- `integration-testing`\n- `sequential-testing`\n- `concurrent-testing`\n- `connectivity-testing`\n- `semantic-output-validation`\n- `exit-code-verification`\n- `csv-grading-output`",
+      "source_line_start": 431,
+      "source_line_end": 442
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Tooling",
+      "normalized_title": "Tooling",
+      "key": "tooling",
+      "path": [
+        "Tooling"
+      ],
+      "content": "- `tmux`\n- `mnexec`\n- `linux-network-namespaces`\n- `process-orchestration`",
+      "source_line_start": 442,
+      "source_line_end": 449
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-mininet-grader`\n- `earliest-observed-automated-network-lab-grading`\n- `earliest-observed-thread-safe-round-robin-grading`",
+      "source_line_start": 449,
+      "source_line_end": 454
+    }
+  ],
+  "raw_analysis": "# test3\n\n## Repository Identity\n\n- Repository: 103 / 134\n- Name: `test3`\n- Repository start date: 2026-02-02\n- Last meaningful update date: 2026-04-04\n- Latest meaningful commit: `5f77f7d9d2338ec43e44d0b3d02ada4e8b511791`\n- Primary type: Automated computer-networks lab grading and reference-solution toolkit\n- Technical field: Networking education, Mininet, TCP sockets, load balancing, automated verification\n- Application domain: University networking-lab evaluation\n- Collaboration type: `individual-project-with-course-scaffold`\n- Primary languages: Python and Bash\n- Major systems: Mininet topology, round-robin load balancer, backend/client sample programs, grading harness\n\n## Collaboration and Authorship Context\n\nThe repository README explicitly describes the directory as containing sample solutions for the load-balancer and topology tasks together with a Bash grading script intended to evaluate student submissions.\n\nA second Markdown file reconstructs the assignment specification. That assignment text is instructional/course material and is kept separate from the engineering attribution.\n\nThe repository owner is attributed in the commit history, including the latest upload commit. The corpus therefore attributes the grader/tooling integration and retained sample-solution work to the repository owner while distinguishing the assignment specification as supplied instructional context.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `README.md`;\n- reconstructed lab specification in `READAME.md`;\n- `lab_topology.py`;\n- `load_balancer.py`;\n- `client.py`;\n- `backend_server.py`;\n- `grading_script.sh`;\n- `verify_output.py`;\n- `monitor.py`;\n- startup CLI/script assets;\n- current commit history.\n\n## What This Project Is\n\n`test3` is an instructional network-lab automation repository centered on a layer-4 load-balancing exercise.\n\nThe system builds a Mininet topology with:\n\n- three clients;\n- a dual-homed load balancer;\n- three backend servers;\n- separate client and backend subnets.\n\nThe sample load balancer accepts TCP client connections, dispatches requests to backend servers using a thread-safe round-robin index, receives backend results, rewrites backend identity into the expected name, and sends responses back to the correct client connection.\n\nA Bash grader starts the Mininet environment, inspects IP assignments, tests connectivity/isolation, launches backends and the load balancer, executes sequential and concurrent client tests, grades produced CSV rows, and writes aggregate grading output.\n\n## Project Scope\n\n### Mininet Topology\n\nThe topology creates:\n\n- clients `h1`, `h2`, `h3` in `10.0.0.0/24`;\n- load-balancer client-facing interface `10.0.0.9/24`;\n- load-balancer backend-facing interface `20.0.0.2/24`;\n- backend servers `b1`, `b2`, `b3` in `20.0.0.0/24`;\n- two virtual switches.\n\nThe load balancer is modeled as a dual-homed Mininet node.\n\n### Layer-4 Load Balancer\n\nThe sample implementation provides:\n\n- TCP listening;\n- thread-per-client handling;\n- newline-delimited request framing;\n- JSON decoding;\n- client IP injection;\n- shared round-robin backend selection;\n- mutex protection around round-robin state;\n- backend TCP connection;\n- backend response parsing;\n- backend IP-to-name normalization;\n- client response forwarding.\n\n### Automated Grading\n\nThe Bash grading harness checks:\n\n- interface addressing;\n- expected reachability;\n- expected isolation;\n- backend startup;\n- load-balancer startup;\n- sequential requests;\n- concurrent requests;\n- per-client output grading;\n- summary CSV generation.\n\n### Output Verification\n\n`verify_output.py` checks each output row for:\n\n- request-ID preservation;\n- equal client/backend/received vertex counts;\n- backend name/IP consistency.\n\nIt produces a percentage score and exits non-zero when rows fail.\n\n## Architecture and System Shape\n\n```text\n                  grading_script.sh\n                        |\n          +-------------+-------------+\n          |                           |\n    Mininet topology              test execution\n          |                           |\n clients h1-h3                 sequential clients\n       \\                           concurrent clients\n        \\                              |\n         +----> load balancer <--------+\n                  |\n         thread-safe round robin\n                  |\n        +---------+---------+\n        |         |         |\n       b1        b2        b3\n        |         |         |\n        +---------+---------+\n                  |\n             CSV evidence\n                  |\n           verify_output.py\n                  |\n             grades.csv\n```\n\n## Technical Stack\n\n### Python\n\nPython implements the Mininet topology, load balancer, client/backend behavior, monitoring, and output verification.\n\n### Bash\n\nThe grading harness uses Bash for:\n\n- lifecycle orchestration;\n- Mininet process discovery;\n- interface inspection;\n- connectivity tests;\n- process execution;\n- sequential/concurrent test coordination;\n- CSV aggregation.\n\n### Mininet\n\nMininet supplies virtual hosts, switches, interfaces, links, namespaces, and the network CLI.\n\n### TCP Sockets\n\nThe sample load balancer and endpoint programs use direct TCP sockets.\n\n### JSON\n\nRequests/responses use JSON fields to preserve request IDs, client identity, graph input, backend identity, and computed results.\n\n### tmux / mnexec\n\nThe grader uses detached `tmux` sessions and `mnexec` to run programs inside Mininet host namespaces.\n\n## Major Engineering Work\n\n### Dual-Subnet Topology Construction\n\nThe topology creates two client/backend networks and a load-balancer host with one interface in each subnet.\n\nThis exercises explicit interface addressing rather than relying on automatic topology defaults.\n\n### Thread-Safe Round-Robin Selection\n\nThe load balancer maintains a global backend index and protects selection/update with a `threading.Lock`.\n\nThis is the central concurrency requirement of the assignment.\n\n### Client Request Framing\n\nThe handler accumulates bytes and splits on newline boundaries, allowing multiple framed requests to travel over one client connection.\n\n### Per-Client Concurrency\n\nEvery accepted client connection is handled by a daemon thread, allowing the grader to exercise multiple clients concurrently.\n\n### Request Correlation\n\nThe JSON communication contract carries request IDs through client, load balancer, backend, and response paths.\n\nThe verifier checks that received IDs match original IDs.\n\n### Backend Identity Normalization\n\nBackend IP addresses are mapped to expected symbolic names (`b1`, `b2`, `b3`) before returning results to clients.\n\n### Automated Interface Validation\n\nThe grading script enters Mininet namespaces and inspects expected IP addresses on:\n\n- six endpoint interfaces;\n- both load-balancer interfaces.\n\n### Automated Connectivity Matrix\n\nThe grader computes expected reachability between client, backend, and load-balancer endpoints, runs pings, and compares observed packet-loss values to expected behavior.\n\n### Sequential Request Evaluation\n\nThe script runs multiple client rounds one at a time and grades each generated output set independently.\n\n### Concurrent Request Evaluation\n\nThree client workloads are launched concurrently, then their combined results are sliced by client IP and graded independently.\n\n### Programmatic Output Scoring\n\nThe verifier calculates row-level correctness and a percentage score, giving the Bash harness a deterministic machine-readable grading signal.\n\n## Verification\n\n### IP-Configuration Checks\n\nThe grading harness checks configured addresses against an explicit expected IP map.\n\n### Connectivity Checks\n\nExpected reachability/isolation is exercised through automated pings.\n\n### Sequential Functional Tests\n\nEach client is run repeatedly in the foreground and graded separately.\n\n### Concurrent Functional Tests\n\nClients are launched together to exercise load-balancer concurrency and request correlation.\n\n### Row-Level Semantic Verification\n\nThe verifier validates request IDs, graph/vertex counts, and backend name/IP mapping.\n\n### Exit-Code Integration\n\nVerification exits non-zero when failures occur, enabling shell-level pass/fail orchestration.\n\n## Engineering Practices\n\n### Automated Evaluation\n\nManual lab checking is converted into a repeatable executable grading workflow.\n\n### Deterministic Network Model\n\nHostnames, IPs, ports, and subnet boundaries are explicit and reused by the grader.\n\n### Concurrency Safety\n\nRound-robin state is protected by a lock.\n\n### Test Isolation\n\nSequential CSV output is reset between individual client runs; concurrent output is partitioned by client identity before grading.\n\n### Layer Separation\n\nTopology construction, traffic generation, backend processing, load balancing, grading, and row verification are separated into different files.\n\n### Defensive Process Handling\n\nThe Bash script checks for Mininet process IDs, handles existing tmux sessions, cleans previous output, and performs Mininet cleanup at the end.\n\n## Product Engineering\n\nThis repository is best understood as educational infrastructure.\n\nIts primary users are a grader/instructor/teaching workflow rather than consumers of a network service.\n\nThe main product-facing outcome is reproducibility:\n\n- one command starts the topology;\n- network properties are checked automatically;\n- workloads are executed;\n- outputs are scored;\n- summary grades are written to CSV.\n\n## Scale and Complexity\n\n### Topology Scale\n\nThe lab contains seven virtual hosts across two L2 domains plus switches.\n\n### Concurrency Scale\n\nThe load-balancer service supports concurrent client threads, and the grader explicitly launches three simultaneous workloads.\n\n### Evaluation Scale\n\nThe grader evaluates addressing, connectivity, multiple sequential runs, and multiple concurrent runs in one orchestration script.\n\n### Integration Complexity\n\nThe repository coordinates:\n\n- Mininet;\n- Linux namespaces;\n- TCP applications;\n- JSON contracts;\n- Bash;\n- tmux;\n- CSV;\n- process management;\n- Python verification.\n\n## Skills Demonstrated\n\n### Networking\n\n- **Mininet — strong evidence.**\n- **Virtual network topology construction — strong evidence.**\n- **Layer-4 load balancing — strong evidence.**\n- **TCP socket programming — strong evidence.**\n- **Network isolation testing — strong evidence.**\n- **Multi-interface host configuration — strong evidence.**\n\n### Concurrency\n\n- **Python threading — strong evidence.**\n- **Thread-per-client servers — strong evidence.**\n- **Mutex-protected shared state — strong evidence.**\n- **Concurrent workload testing — strong evidence.**\n\n### Automation\n\n- **Bash automation — strong evidence.**\n- **Automated grading — strong evidence.**\n- **Namespace process execution — strong evidence.**\n- **CSV result aggregation — strong evidence.**\n\n### Verification\n\n- **Machine-readable semantic checks — strong evidence.**\n- **Sequential/concurrent integration testing — strong evidence.**\n- **Exit-code-driven validation — strong evidence.**\n\n## Capability Developed\n\nThe repository moves from implementing networking concepts to building infrastructure that evaluates networking implementations.\n\nThat adds a different engineering dimension:\n\n- defining expected behavior;\n- orchestrating environments;\n- automating tests;\n- measuring correctness;\n- producing grading outputs.\n\nIt combines network programming with developer/test tooling.\n\n## Portfolio Evolution Context\n\nWithin the processed corpus, this repository provides especially strong evidence of:\n\n- Mininet-based network automation;\n- automated network-lab grading;\n- load-balancer correctness verification;\n- thread-safe round-robin dispatch;\n- automated connectivity/isolation matrices;\n- sequential versus concurrent evaluation design.\n\n## Historical Significance\n\n`test3` is significant because the repository is not only a networking implementation. It is a **testing and evaluation system for networking work**.\n\nThe code demonstrates the mindset of turning a lab specification into repeatable infrastructure with explicit correctness checks.\n\n## Overall Repository Narrative\n\n`test3` packages a load-balancing networking lab into an executable grading environment.\n\nA Mininet topology creates separated client/backend networks around a dual-homed load balancer. The reference load balancer uses direct TCP sockets and a lock-protected round-robin index. The Bash grader validates topology configuration, launches network services, drives sequential and concurrent workloads, and invokes a Python verifier that checks request correlation and backend consistency.\n\nThe result is both a sample implementation and an automated evaluation framework.\n\n# Project Tags\n\n## Project Type\n\n- `instructional-tooling`\n- `automated-grader`\n- `networking-lab`\n- `reference-implementation`\n- `individual-project-with-course-scaffold`\n\n## Collaboration and Authorship\n\n- `individual-project-with-course-scaffold`\n- `owner-attributed-grader`\n- `supplied-assignment-context`\n\n## Languages\n\n- `python`\n- `bash`\n\n## Networking\n\n- `mininet`\n- `tcp-sockets`\n- `layer-4-load-balancer`\n- `round-robin-load-balancing`\n- `dual-homed-host`\n- `network-isolation`\n- `multi-subnet-topology`\n- `json-protocol`\n\n## Concurrency\n\n- `python-threading`\n- `thread-per-client`\n- `mutex`\n- `shared-state-synchronization`\n\n## Testing and Verification\n\n- `automated-grading`\n- `integration-testing`\n- `sequential-testing`\n- `concurrent-testing`\n- `connectivity-testing`\n- `semantic-output-validation`\n- `exit-code-verification`\n- `csv-grading-output`\n\n## Tooling\n\n- `tmux`\n- `mnexec`\n- `linux-network-namespaces`\n- `process-orchestration`\n\n## Portfolio Significance\n\n- `earliest-observed-mininet-grader`\n- `earliest-observed-automated-network-lab-grading`\n- `earliest-observed-thread-safe-round-robin-grading`\n"
+}

@@ -1,0 +1,532 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 92,
+  "repository_total": 134,
+  "repository_name": "Coptic",
+  "header_title": "Coptic",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-092-Coptic/README.md",
+    "line_start": 1,
+    "line_end": 381,
+    "sha256": "85b0f49e468543a1106b60730645346fb6f2c8c5a13bef17d4c5ad14bfe5e8d0"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "coptic",
+    "coptic-language",
+    "coptic-script",
+    "bohairic",
+    "bohairic-dialect",
+    "lexicography",
+    "lexicon",
+    "dictionary",
+    "language-tooling",
+    "translation-lookup",
+    "dictionary-based-translation",
+    "one-to-many-mapping",
+    "dialect-normalization",
+    "form-normalization",
+    "unicode",
+    "domain-data",
+    "data-curation",
+    "javascript",
+    "html",
+    "python",
+    "static-web-app",
+    "browser-lookup",
+    "large-static-dictionary",
+    "duplicate-key-risk",
+    "linguistic-provenance-boundary",
+    "ancient-language-computing",
+    "earliest-observed-coptic-lexicography-centered-repository",
+    "earliest-observed-bohairic-mapping"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Coptic`\n- **Corpus index:** 092\n- **Repository start date:** 2025-08-24\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `c7ff34dadcb52b820ed9e29f9c1a3d3c6211276a`\n- **Primary project form:** Coptic lexicon, browser translator/lookup, and dialect-normalization data tooling\n- **Collaboration classification:** `individual-project`\n- **Substantive files:** `index.html`, `dictionary.py`, `tla.py`, `bohairic.py`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe repository has two practical layers.\n\n### Browser Lookup Layer\n\n```text\nuser term\n   ↓\nJavaScript dictionary lookup\n   ↓\nmatching Coptic entries\n   ↓\nrendered browser result\n```\n\n### Lexical Data/Preparation Layer\n\n```text\ncurated Coptic forms\n      ↓\nPython dictionaries / mappings\n      ↓\nnormalization / dialect mapping\n      ↓\nlexical artifacts consumed or maintained separately\n```\n\nThe two layers are related by domain rather than packaged as a formal service architecture.\n\nThere is no server API between them."
+    },
+    "testing": {
+      "section_ids": [
+        "s021"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nVerification is primarily manual/data-oriented.\n\nThe browser provides direct lookup feedback for dictionary entries.\n\nPython's import/runtime semantics validate that mapping files are syntactically valid.\n\nThe repository does not contain a linguistic gold-standard comparison or automated duplicate-key audit.\n\nThe duplicate-key representation issue is therefore especially relevant to verification quality.\n\nThe corpus does not claim dictionary completeness or philological correctness beyond the checked-in data."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Coptic`\n- **Corpus index:** 092\n- **Repository start date:** 2025-08-24\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `c7ff34dadcb52b820ed9e29f9c1a3d3c6211276a`\n- **Primary project form:** Coptic lexicon, browser translator/lookup, and dialect-normalization data tooling\n- **Collaboration classification:** `individual-project`\n- **Substantive files:** `index.html`, `dictionary.py`, `tla.py`, `bohairic.py`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The root README contains no substantive project description.\n\nThe repository's meaning therefore comes from its data structures and lookup logic.\n\n`index.html` embeds a large JavaScript dictionary for English-to-Coptic lookup.\n\n`dictionary.py` contains another large Coptic lexical mapping.\n\n`tla.py` contains additional lexicon/transliteration-oriented mappings.\n\n`bohairic.py` maps Coptic forms into Bohairic-oriented equivalents.\n\nThe code is data-heavy.\n\nMost repository size represents curated lexical entries rather than algorithmically complex source.\n\nThat distinction matters for portfolio interpretation.\n\nA large dictionary demonstrates domain-data construction and normalization work, but should not be described as equivalent to a large backend service.",
+      "source_line_start": 14,
+      "source_line_end": 36
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "Coptic is a language-tooling repository centered on lexical lookup and dialect/form mapping for the Coptic language.\n\nIt continues the owner's long-running interest in Ancient Egyptian and Coptic computational tools.\n\nThe visible browser page provides a translation/lookup experience.\n\nPython files hold or transform lexical mappings outside the browser.\n\nThe project therefore combines:\n\n- language-domain data;\n- browser lookup UX;\n- dictionary construction;\n- dialect normalization;\n- script-aware text handling.",
+      "source_line_start": 36,
+      "source_line_end": 54
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The retained implementation supports:\n\n- Coptic-script lexical data;\n- English lemma lookup;\n- one-to-many Coptic equivalents;\n- browser-side dictionary search;\n- Python dictionary representations;\n- Bohairic mapping/normalization;\n- additional transliteration/lexical mapping data.\n\nThe repository does not establish a statistical machine-translation model.\n\nIt does not use an LLM or neural sequence-to-sequence architecture in the retained implementation.\n\nThe appropriate description is dictionary/lexicon-based language tooling.",
+      "source_line_start": 54,
+      "source_line_end": 72
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The repository has two practical layers.\n\n### Browser Lookup Layer\n\n```text\nuser term\n   ↓\nJavaScript dictionary lookup\n   ↓\nmatching Coptic entries\n   ↓\nrendered browser result\n```\n\n### Lexical Data/Preparation Layer\n\n```text\ncurated Coptic forms\n      ↓\nPython dictionaries / mappings\n      ↓\nnormalization / dialect mapping\n      ↓\nlexical artifacts consumed or maintained separately\n```\n\nThe two layers are related by domain rather than packaged as a formal service architecture.\n\nThere is no server API between them.",
+      "source_line_start": 72,
+      "source_line_end": 104
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Browser Lookup Layer",
+      "normalized_title": "Browser Lookup Layer",
+      "key": "browser_lookup_layer",
+      "path": [
+        "Architecture / System Shape",
+        "Browser Lookup Layer"
+      ],
+      "content": "```text\nuser term\n   ↓\nJavaScript dictionary lookup\n   ↓\nmatching Coptic entries\n   ↓\nrendered browser result\n```",
+      "source_line_start": 76,
+      "source_line_end": 88
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Lexical Data/Preparation Layer",
+      "normalized_title": "Lexical Data/Preparation Layer",
+      "key": "lexical_data_preparation_layer",
+      "path": [
+        "Architecture / System Shape",
+        "Lexical Data/Preparation Layer"
+      ],
+      "content": "```text\ncurated Coptic forms\n      ↓\nPython dictionaries / mappings\n      ↓\nnormalization / dialect mapping\n      ↓\nlexical artifacts consumed or maintained separately\n```\n\nThe two layers are related by domain rather than packaged as a formal service architecture.\n\nThere is no server API between them.",
+      "source_line_start": 88,
+      "source_line_end": 104
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- HTML\n- CSS\n- JavaScript\n- Python\n- Unicode Coptic text\n- large static dictionaries\n- key/value lexical lookup\n- dialect mapping\n- browser-side rendering",
+      "source_line_start": 104,
+      "source_line_end": 116
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Browser Translator / Lookup",
+      "normalized_title": "Browser Translator / Lookup",
+      "key": "browser_translator_lookup",
+      "path": [
+        "Browser Translator / Lookup"
+      ],
+      "content": "`index.html` presents a Coptic translator/lookup interface.\n\nThe page embeds a substantial `copticDictionary` object directly in JavaScript.\n\nEnglish keys map to Coptic candidate forms.\n\nMany keys map to arrays rather than a single string.\n\nThis allows the data model to preserve multiple lexical equivalents.\n\nThat is important for dictionary-style language software because translation is rarely a one-to-one substitution problem.\n\nThe browser can operate without a remote database because the lexical data is shipped with the page.\n\nThe tradeoff is that updates require updating the bundled dictionary.",
+      "source_line_start": 116,
+      "source_line_end": 134
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Lexical Data Model",
+      "normalized_title": "Lexical Data Model",
+      "key": "lexical_data_model",
+      "path": [
+        "Lexical Data Model"
+      ],
+      "content": "The repository relies heavily on static map/dictionary structures.\n\nThis gives lookup approximately direct key-based access for exact terms.\n\nIt also makes the lexical corpus human-inspectable in source control.\n\nThe model is suitable for a small static language utility.\n\nIt does not intrinsically handle semantic context, inflectional analysis, or sentence-level disambiguation.\n\nThose capabilities should not be inferred from the word “translator.”",
+      "source_line_start": 134,
+      "source_line_end": 148
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "`dictionary.py`",
+      "normalized_title": "dictionary.py",
+      "key": "dictionary_py",
+      "path": [
+        "`dictionary.py`"
+      ],
+      "content": "`dictionary.py` retains a large Python dictionary of Coptic vocabulary.\n\nThe vocabulary spans everyday terms, religious vocabulary, and forms with Greek influence.\n\nThis file functions primarily as a lexical corpus/artifact.\n\nIts engineering contribution is in data representation and curation rather than a complex execution pipeline.\n\nThe corpus should therefore tag both Python and lexical-data work, while avoiding an inflated algorithmic-complexity claim.",
+      "source_line_start": 148,
+      "source_line_end": 160
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "`tla.py`",
+      "normalized_title": "tla.py",
+      "key": "tla_py",
+      "path": [
+        "`tla.py`"
+      ],
+      "content": "`tla.py` contains another large mapping related to the broader lexical/transliteration effort.\n\nIts presence shows that the repository is not just a copied browser dictionary.\n\nThere are multiple representations/data-processing artifacts around the language domain.\n\nThe exact linguistic provenance of individual entries is not documented sufficiently in the repository for this corpus to certify scholarly accuracy.\n\nThe file is evidence of language-data engineering, not external linguistic validation.",
+      "source_line_start": 160,
+      "source_line_end": 172
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Bohairic Mapping",
+      "normalized_title": "Bohairic Mapping",
+      "key": "bohairic_mapping",
+      "path": [
+        "Bohairic Mapping"
+      ],
+      "content": "`bohairic.py` is the most historically distinctive file in the repository.\n\nIt defines a large `old_to_bohairic` mapping.\n\nThe intent is to map existing Coptic forms into Bohairic-oriented forms.\n\nThis is a dialect/form-normalization task rather than a generic English translation task.\n\nThat adds a second dimension to the project:\n\n```text\nlexical meaning lookup\n+\ndialect/form conversion\n```\n\nThe repository therefore demonstrates awareness that Coptic is not a single undifferentiated textual representation.",
+      "source_line_start": 172,
+      "source_line_end": 192
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Duplicate-Key Correctness Boundary",
+      "normalized_title": "Duplicate-Key Correctness Boundary",
+      "key": "duplicate_key_correctness_boundary",
+      "path": [
+        "Duplicate-Key Correctness Boundary"
+      ],
+      "content": "Python dictionary literals silently keep only the last value for a repeated key.\n\nThe large Bohairic mapping contains duplicate-key risk in the retained source.\n\nThat matters because a human-maintained lexical corpus can accidentally encode several intended alternatives using a representation that overwrites earlier entries.\n\nThe source does not include a preflight validator that detects duplicate literal keys before runtime.\n\nThis is a meaningful data-quality lesson.\n\nA future corpus implementation would benefit from list-valued entries or an input format that can preserve duplicate source records before normalization.",
+      "source_line_start": 192,
+      "source_line_end": 206
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Unicode / Script Handling",
+      "normalized_title": "Unicode / Script Handling",
+      "key": "unicode_script_handling",
+      "path": [
+        "Unicode / Script Handling"
+      ],
+      "content": "The repository works directly with Coptic Unicode characters.\n\nThat avoids image-based or transliterated-only representation for the core output.\n\nUnicode handling is central to the project because lookup data, display, and Python source all need to preserve the script accurately.\n\nThis continues the user's earlier work with Egyptian/Coptic character systems.",
+      "source_line_start": 206,
+      "source_line_end": 216
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Domain Corpus Construction\n\nA major portion of the work is building and maintaining large lexical datasets.\n\nThat involves normalization choices, spelling/form choices, and key organization.\n\n### Browserization of Domain Data\n\nThe lexical corpus is surfaced through a browser interaction rather than remaining only a Python dictionary.\n\nThis makes the language data directly usable by a non-programmer.\n\n### One-to-Many Translation Representation\n\nThe browser dictionary can retain several Coptic candidates for an English term.\n\nThis is a better fit for lexical ambiguity than forced one-to-one replacement.\n\n### Bohairic Normalization\n\nThe dialect/form mapping adds a specialized transformation layer.\n\nThis is narrower and more domain-specific than the earlier generic Coptic-script inclusion elsewhere in the portfolio.",
+      "source_line_start": 216,
+      "source_line_end": 242
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Domain Corpus Construction",
+      "normalized_title": "Domain Corpus Construction",
+      "key": "domain_corpus_construction",
+      "path": [
+        "Major Engineering Work",
+        "Domain Corpus Construction"
+      ],
+      "content": "A major portion of the work is building and maintaining large lexical datasets.\n\nThat involves normalization choices, spelling/form choices, and key organization.",
+      "source_line_start": 218,
+      "source_line_end": 224
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Browserization of Domain Data",
+      "normalized_title": "Browserization of Domain Data",
+      "key": "browserization_of_domain_data",
+      "path": [
+        "Major Engineering Work",
+        "Browserization of Domain Data"
+      ],
+      "content": "The lexical corpus is surfaced through a browser interaction rather than remaining only a Python dictionary.\n\nThis makes the language data directly usable by a non-programmer.",
+      "source_line_start": 224,
+      "source_line_end": 230
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "One-to-Many Translation Representation",
+      "normalized_title": "One-to-Many Translation Representation",
+      "key": "one_to_many_translation_representation",
+      "path": [
+        "Major Engineering Work",
+        "One-to-Many Translation Representation"
+      ],
+      "content": "The browser dictionary can retain several Coptic candidates for an English term.\n\nThis is a better fit for lexical ambiguity than forced one-to-one replacement.",
+      "source_line_start": 230,
+      "source_line_end": 236
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Bohairic Normalization",
+      "normalized_title": "Bohairic Normalization",
+      "key": "bohairic_normalization",
+      "path": [
+        "Major Engineering Work",
+        "Bohairic Normalization"
+      ],
+      "content": "The dialect/form mapping adds a specialized transformation layer.\n\nThis is narrower and more domain-specific than the earlier generic Coptic-script inclusion elsewhere in the portfolio.",
+      "source_line_start": 236,
+      "source_line_end": 242
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "Verification is primarily manual/data-oriented.\n\nThe browser provides direct lookup feedback for dictionary entries.\n\nPython's import/runtime semantics validate that mapping files are syntactically valid.\n\nThe repository does not contain a linguistic gold-standard comparison or automated duplicate-key audit.\n\nThe duplicate-key representation issue is therefore especially relevant to verification quality.\n\nThe corpus does not claim dictionary completeness or philological correctness beyond the checked-in data.",
+      "source_line_start": 242,
+      "source_line_end": 256
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The project demonstrates:\n\n- structured key/value lexical representation;\n- explicit use of arrays where multiple meanings/forms are needed in JavaScript;\n- Unicode-first script representation;\n- separation of some data concerns into Python files;\n- domain-specific dialect conversion.\n\nThe most important discipline gap visible in the source is data provenance/validation.\n\nFor a language corpus, correctness depends not only on code execution but also on the trustworthiness and reproducibility of lexical sources.",
+      "source_line_start": 256,
+      "source_line_end": 270
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The browser page turns a large domain dataset into a simple task-oriented utility.\n\nThe user can search rather than inspect source files.\n\nThis is consistent with a recurring portfolio pattern: specialized knowledge is wrapped in a lightweight interface.\n\nThe project remains local/static rather than account-based or collaborative.\n\nThat is appropriate to its lookup-oriented scope.",
+      "source_line_start": 270,
+      "source_line_end": 282
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "Algorithmic complexity is modest.\n\nData complexity is the dominant dimension.\n\nThe repository contains many manually represented lexical relationships.\n\nMaintaining those relationships creates challenges around:\n\n- duplicate keys;\n- spelling normalization;\n- dialect variants;\n- one-to-many meanings;\n- Unicode correctness;\n- provenance;\n- consistency between representations.\n\nThis is a data-intensive language project more than a compute-intensive one.",
+      "source_line_start": 282,
+      "source_line_end": 302
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Language/Data Engineering\n\n- Coptic-script handling\n- lexicon construction\n- dictionary modeling\n- one-to-many lexical mapping\n- dialect/form mapping\n- Bohairic normalization\n- Unicode-aware source data\n- domain-data curation\n\n### Software\n\n- JavaScript object lookup\n- browser UI integration\n- Python dictionary representation\n- static application design\n- data-driven frontend behavior\n\n### Data-Quality Awareness\n\nThe repository also surfaces practical schema lessons around duplicate keys and multi-valued lexical data.",
+      "source_line_start": 302,
+      "source_line_end": 327
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Language/Data Engineering",
+      "normalized_title": "Language/Data Engineering",
+      "key": "language_data_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Language/Data Engineering"
+      ],
+      "content": "- Coptic-script handling\n- lexicon construction\n- dictionary modeling\n- one-to-many lexical mapping\n- dialect/form mapping\n- Bohairic normalization\n- Unicode-aware source data\n- domain-data curation",
+      "source_line_start": 304,
+      "source_line_end": 315
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Software",
+      "normalized_title": "Software",
+      "key": "software",
+      "path": [
+        "Skills Demonstrated",
+        "Software"
+      ],
+      "content": "- JavaScript object lookup\n- browser UI integration\n- Python dictionary representation\n- static application design\n- data-driven frontend behavior",
+      "source_line_start": 315,
+      "source_line_end": 323
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Data-Quality Awareness",
+      "normalized_title": "Data-Quality Awareness",
+      "key": "data_quality_awareness",
+      "path": [
+        "Skills Demonstrated",
+        "Data-Quality Awareness"
+      ],
+      "content": "The repository also surfaces practical schema lessons around duplicate keys and multi-valued lexical data.",
+      "source_line_start": 323,
+      "source_line_end": 327
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The project reinforces that language software is often constrained by data modeling more than by interface code.\n\nRepresenting several valid forms requires schemas that preserve alternatives.\n\nDialect conversion requires explicit normalization rules.\n\nLarge hand-maintained mappings also expose why validation tooling and provenance become increasingly important as a corpus grows.\n\nThose lessons are directly relevant to later RAG/corpus-building work in the portfolio.",
+      "source_line_start": 327,
+      "source_line_end": 339
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Coptic script had appeared earlier in repository 006 `Egypt`.\n\nThis repository should therefore not be tagged as the first Coptic-script use in the portfolio.\n\nIts historical contribution is specialization.\n\nThe earlier project mixed Ancient Egyptian transliteration, calendars, numbers, names, and Coptic representations inside a broader historical-language utility.\n\nRepository 092 narrows the focus to Coptic lexical tooling and Bohairic mapping.\n\nThat is a transition from broad cultural/language features toward a more concentrated domain corpus.",
+      "source_line_start": 339,
+      "source_line_end": 353
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository centered primarily on Coptic lexicography and Bohairic-oriented form mapping.\n\nIt is also a useful bridge between early domain-specific static applications and later corpus/data-engineering concerns.\n\nThe repository shows that specialized linguistic data remained a recurring technical domain several years after the earliest Egyptinator work.",
+      "source_line_start": 353,
+      "source_line_end": 361
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The repository does not document authoritative lexical sources well enough to independently verify linguistic provenance.\n\nThe dictionary-based approach does not support contextual sentence translation by itself.\n\nDuplicate Python dictionary keys can overwrite intended earlier values in large mappings.\n\nThese are data-quality and semantic-scope boundaries rather than generic software checklist omissions.",
+      "source_line_start": 361,
+      "source_line_end": 371
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "Coptic is a specialized language-data project that combines a browser Coptic lookup tool with large Python/JavaScript lexicons and an explicit Bohairic form-mapping layer.\n\nIts engineering value lies in domain corpus construction, Unicode script handling, one-to-many lexical representation, and dialect normalization.\n\nIt continues one of the oldest themes in the portfolio while making the work more linguistically focused and data-structured.\n\n# Project Tags\n\n`individual-project`, `coptic`, `coptic-language`, `coptic-script`, `bohairic`, `bohairic-dialect`, `lexicography`, `lexicon`, `dictionary`, `language-tooling`, `translation-lookup`, `dictionary-based-translation`, `one-to-many-mapping`, `dialect-normalization`, `form-normalization`, `unicode`, `domain-data`, `data-curation`, `javascript`, `html`, `python`, `static-web-app`, `browser-lookup`, `large-static-dictionary`, `duplicate-key-risk`, `linguistic-provenance-boundary`, `ancient-language-computing`, `earliest-observed-coptic-lexicography-centered-repository`, `earliest-observed-bohairic-mapping`",
+      "source_line_start": 371,
+      "source_line_end": 382
+    }
+  ],
+  "raw_analysis": "# Repository 092 — Coptic\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Coptic`\n- **Corpus index:** 092\n- **Repository start date:** 2025-08-24\n- **Last meaningful update date:** 2025-08-26\n- **Latest meaningful commit:** `c7ff34dadcb52b820ed9e29f9c1a3d3c6211276a`\n- **Primary project form:** Coptic lexicon, browser translator/lookup, and dialect-normalization data tooling\n- **Collaboration classification:** `individual-project`\n- **Substantive files:** `index.html`, `dictionary.py`, `tla.py`, `bohairic.py`\n\n## Evidence Basis\n\nThe root README contains no substantive project description.\n\nThe repository's meaning therefore comes from its data structures and lookup logic.\n\n`index.html` embeds a large JavaScript dictionary for English-to-Coptic lookup.\n\n`dictionary.py` contains another large Coptic lexical mapping.\n\n`tla.py` contains additional lexicon/transliteration-oriented mappings.\n\n`bohairic.py` maps Coptic forms into Bohairic-oriented equivalents.\n\nThe code is data-heavy.\n\nMost repository size represents curated lexical entries rather than algorithmically complex source.\n\nThat distinction matters for portfolio interpretation.\n\nA large dictionary demonstrates domain-data construction and normalization work, but should not be described as equivalent to a large backend service.\n\n## What the Project Is\n\nCoptic is a language-tooling repository centered on lexical lookup and dialect/form mapping for the Coptic language.\n\nIt continues the owner's long-running interest in Ancient Egyptian and Coptic computational tools.\n\nThe visible browser page provides a translation/lookup experience.\n\nPython files hold or transform lexical mappings outside the browser.\n\nThe project therefore combines:\n\n- language-domain data;\n- browser lookup UX;\n- dictionary construction;\n- dialect normalization;\n- script-aware text handling.\n\n## Project Scope\n\nThe retained implementation supports:\n\n- Coptic-script lexical data;\n- English lemma lookup;\n- one-to-many Coptic equivalents;\n- browser-side dictionary search;\n- Python dictionary representations;\n- Bohairic mapping/normalization;\n- additional transliteration/lexical mapping data.\n\nThe repository does not establish a statistical machine-translation model.\n\nIt does not use an LLM or neural sequence-to-sequence architecture in the retained implementation.\n\nThe appropriate description is dictionary/lexicon-based language tooling.\n\n## Architecture / System Shape\n\nThe repository has two practical layers.\n\n### Browser Lookup Layer\n\n```text\nuser term\n   ↓\nJavaScript dictionary lookup\n   ↓\nmatching Coptic entries\n   ↓\nrendered browser result\n```\n\n### Lexical Data/Preparation Layer\n\n```text\ncurated Coptic forms\n      ↓\nPython dictionaries / mappings\n      ↓\nnormalization / dialect mapping\n      ↓\nlexical artifacts consumed or maintained separately\n```\n\nThe two layers are related by domain rather than packaged as a formal service architecture.\n\nThere is no server API between them.\n\n## Technical Stack\n\n- HTML\n- CSS\n- JavaScript\n- Python\n- Unicode Coptic text\n- large static dictionaries\n- key/value lexical lookup\n- dialect mapping\n- browser-side rendering\n\n## Browser Translator / Lookup\n\n`index.html` presents a Coptic translator/lookup interface.\n\nThe page embeds a substantial `copticDictionary` object directly in JavaScript.\n\nEnglish keys map to Coptic candidate forms.\n\nMany keys map to arrays rather than a single string.\n\nThis allows the data model to preserve multiple lexical equivalents.\n\nThat is important for dictionary-style language software because translation is rarely a one-to-one substitution problem.\n\nThe browser can operate without a remote database because the lexical data is shipped with the page.\n\nThe tradeoff is that updates require updating the bundled dictionary.\n\n## Lexical Data Model\n\nThe repository relies heavily on static map/dictionary structures.\n\nThis gives lookup approximately direct key-based access for exact terms.\n\nIt also makes the lexical corpus human-inspectable in source control.\n\nThe model is suitable for a small static language utility.\n\nIt does not intrinsically handle semantic context, inflectional analysis, or sentence-level disambiguation.\n\nThose capabilities should not be inferred from the word “translator.”\n\n## `dictionary.py`\n\n`dictionary.py` retains a large Python dictionary of Coptic vocabulary.\n\nThe vocabulary spans everyday terms, religious vocabulary, and forms with Greek influence.\n\nThis file functions primarily as a lexical corpus/artifact.\n\nIts engineering contribution is in data representation and curation rather than a complex execution pipeline.\n\nThe corpus should therefore tag both Python and lexical-data work, while avoiding an inflated algorithmic-complexity claim.\n\n## `tla.py`\n\n`tla.py` contains another large mapping related to the broader lexical/transliteration effort.\n\nIts presence shows that the repository is not just a copied browser dictionary.\n\nThere are multiple representations/data-processing artifacts around the language domain.\n\nThe exact linguistic provenance of individual entries is not documented sufficiently in the repository for this corpus to certify scholarly accuracy.\n\nThe file is evidence of language-data engineering, not external linguistic validation.\n\n## Bohairic Mapping\n\n`bohairic.py` is the most historically distinctive file in the repository.\n\nIt defines a large `old_to_bohairic` mapping.\n\nThe intent is to map existing Coptic forms into Bohairic-oriented forms.\n\nThis is a dialect/form-normalization task rather than a generic English translation task.\n\nThat adds a second dimension to the project:\n\n```text\nlexical meaning lookup\n+\ndialect/form conversion\n```\n\nThe repository therefore demonstrates awareness that Coptic is not a single undifferentiated textual representation.\n\n## Duplicate-Key Correctness Boundary\n\nPython dictionary literals silently keep only the last value for a repeated key.\n\nThe large Bohairic mapping contains duplicate-key risk in the retained source.\n\nThat matters because a human-maintained lexical corpus can accidentally encode several intended alternatives using a representation that overwrites earlier entries.\n\nThe source does not include a preflight validator that detects duplicate literal keys before runtime.\n\nThis is a meaningful data-quality lesson.\n\nA future corpus implementation would benefit from list-valued entries or an input format that can preserve duplicate source records before normalization.\n\n## Unicode / Script Handling\n\nThe repository works directly with Coptic Unicode characters.\n\nThat avoids image-based or transliterated-only representation for the core output.\n\nUnicode handling is central to the project because lookup data, display, and Python source all need to preserve the script accurately.\n\nThis continues the user's earlier work with Egyptian/Coptic character systems.\n\n## Major Engineering Work\n\n### Domain Corpus Construction\n\nA major portion of the work is building and maintaining large lexical datasets.\n\nThat involves normalization choices, spelling/form choices, and key organization.\n\n### Browserization of Domain Data\n\nThe lexical corpus is surfaced through a browser interaction rather than remaining only a Python dictionary.\n\nThis makes the language data directly usable by a non-programmer.\n\n### One-to-Many Translation Representation\n\nThe browser dictionary can retain several Coptic candidates for an English term.\n\nThis is a better fit for lexical ambiguity than forced one-to-one replacement.\n\n### Bohairic Normalization\n\nThe dialect/form mapping adds a specialized transformation layer.\n\nThis is narrower and more domain-specific than the earlier generic Coptic-script inclusion elsewhere in the portfolio.\n\n## Testing & Verification\n\nVerification is primarily manual/data-oriented.\n\nThe browser provides direct lookup feedback for dictionary entries.\n\nPython's import/runtime semantics validate that mapping files are syntactically valid.\n\nThe repository does not contain a linguistic gold-standard comparison or automated duplicate-key audit.\n\nThe duplicate-key representation issue is therefore especially relevant to verification quality.\n\nThe corpus does not claim dictionary completeness or philological correctness beyond the checked-in data.\n\n## Engineering Discipline\n\nThe project demonstrates:\n\n- structured key/value lexical representation;\n- explicit use of arrays where multiple meanings/forms are needed in JavaScript;\n- Unicode-first script representation;\n- separation of some data concerns into Python files;\n- domain-specific dialect conversion.\n\nThe most important discipline gap visible in the source is data provenance/validation.\n\nFor a language corpus, correctness depends not only on code execution but also on the trustworthiness and reproducibility of lexical sources.\n\n## Product Engineering\n\nThe browser page turns a large domain dataset into a simple task-oriented utility.\n\nThe user can search rather than inspect source files.\n\nThis is consistent with a recurring portfolio pattern: specialized knowledge is wrapped in a lightweight interface.\n\nThe project remains local/static rather than account-based or collaborative.\n\nThat is appropriate to its lookup-oriented scope.\n\n## Scale / Complexity\n\nAlgorithmic complexity is modest.\n\nData complexity is the dominant dimension.\n\nThe repository contains many manually represented lexical relationships.\n\nMaintaining those relationships creates challenges around:\n\n- duplicate keys;\n- spelling normalization;\n- dialect variants;\n- one-to-many meanings;\n- Unicode correctness;\n- provenance;\n- consistency between representations.\n\nThis is a data-intensive language project more than a compute-intensive one.\n\n## Skills Demonstrated\n\n### Language/Data Engineering\n\n- Coptic-script handling\n- lexicon construction\n- dictionary modeling\n- one-to-many lexical mapping\n- dialect/form mapping\n- Bohairic normalization\n- Unicode-aware source data\n- domain-data curation\n\n### Software\n\n- JavaScript object lookup\n- browser UI integration\n- Python dictionary representation\n- static application design\n- data-driven frontend behavior\n\n### Data-Quality Awareness\n\nThe repository also surfaces practical schema lessons around duplicate keys and multi-valued lexical data.\n\n## What Was Learned / Capability Developed\n\nThe project reinforces that language software is often constrained by data modeling more than by interface code.\n\nRepresenting several valid forms requires schemas that preserve alternatives.\n\nDialect conversion requires explicit normalization rules.\n\nLarge hand-maintained mappings also expose why validation tooling and provenance become increasingly important as a corpus grows.\n\nThose lessons are directly relevant to later RAG/corpus-building work in the portfolio.\n\n## Portfolio Evolution Context\n\nCoptic script had appeared earlier in repository 006 `Egypt`.\n\nThis repository should therefore not be tagged as the first Coptic-script use in the portfolio.\n\nIts historical contribution is specialization.\n\nThe earlier project mixed Ancient Egyptian transliteration, calendars, numbers, names, and Coptic representations inside a broader historical-language utility.\n\nRepository 092 narrows the focus to Coptic lexical tooling and Bohairic mapping.\n\nThat is a transition from broad cultural/language features toward a more concentrated domain corpus.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository centered primarily on Coptic lexicography and Bohairic-oriented form mapping.\n\nIt is also a useful bridge between early domain-specific static applications and later corpus/data-engineering concerns.\n\nThe repository shows that specialized linguistic data remained a recurring technical domain several years after the earliest Egyptinator work.\n\n## Limitations & Missing Evidence\n\nThe repository does not document authoritative lexical sources well enough to independently verify linguistic provenance.\n\nThe dictionary-based approach does not support contextual sentence translation by itself.\n\nDuplicate Python dictionary keys can overwrite intended earlier values in large mappings.\n\nThese are data-quality and semantic-scope boundaries rather than generic software checklist omissions.\n\n## Overall Narrative\n\nCoptic is a specialized language-data project that combines a browser Coptic lookup tool with large Python/JavaScript lexicons and an explicit Bohairic form-mapping layer.\n\nIts engineering value lies in domain corpus construction, Unicode script handling, one-to-many lexical representation, and dialect normalization.\n\nIt continues one of the oldest themes in the portfolio while making the work more linguistically focused and data-structured.\n\n# Project Tags\n\n`individual-project`, `coptic`, `coptic-language`, `coptic-script`, `bohairic`, `bohairic-dialect`, `lexicography`, `lexicon`, `dictionary`, `language-tooling`, `translation-lookup`, `dictionary-based-translation`, `one-to-many-mapping`, `dialect-normalization`, `form-normalization`, `unicode`, `domain-data`, `data-curation`, `javascript`, `html`, `python`, `static-web-app`, `browser-lookup`, `large-static-dictionary`, `duplicate-key-risk`, `linguistic-provenance-boundary`, `ancient-language-computing`, `earliest-observed-coptic-lexicography-centered-repository`, `earliest-observed-bohairic-mapping`\n"
+}

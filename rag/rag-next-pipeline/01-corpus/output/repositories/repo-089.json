@@ -1,0 +1,494 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 89,
+  "repository_total": 134,
+  "repository_name": "Robotics-Project",
+  "header_title": "Robotics-Project",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-089-Robotics-Project/README.md",
+    "line_start": 1,
+    "line_end": 443,
+    "sha256": "c59f19a246a248050f07b5bc5dc5525096672e17964f0a63573e30b7049e55d8"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "numpy",
+    "robotics",
+    "mobile-robot",
+    "mobile-manipulator",
+    "unicycle-model",
+    "feedback-control",
+    "proportional-control",
+    "position-control",
+    "heading-control",
+    "angle-normalization",
+    "velocity-saturation",
+    "simulation-integration",
+    "goal-reaching",
+    "timeout-guard",
+    "clf-inspired",
+    "not-formal-clf-qp",
+    "known-external-simulator-dependency",
+    "earliest-observed-unicycle-feedback-control"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Robotics-Project`\n- **Corpus index:** 089\n- **Repository start date:** 2025-07-09\n- **Last meaningful update date:** 2025-07-09\n- **Latest meaningful commit:** `8980cce61274faca32179b4f9fa39cfb25965c8d`\n- **Primary repository language:** Python\n- **Project form:** mobile-robot control experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `CLF-ONLY.py`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s013"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\n```text\nmobile_manipulator_unicycle_sim\n          |\n          v\n      robot pose\n          |\n          v\nposition + heading error\n          |\n          v\n proportional control\n   v = kv * distance\n   w = kw * heading_error\n          |\n          v\n velocity saturation\n          |\n          v\nsimulator command\n          |\n          +------> repeat until threshold/timeout\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nNo automated tests exist.\n\nNo saved simulation output is checked in.\n\nNo trajectory plot is present.\n\nNo benchmark comparison is present.\n\nNo assertion confirms reaching the goal.\n\nRuntime verification consists of:\n\n- loop distance criterion;\n- timeout message;\n- final pose print.\n\nThe code appears designed for direct simulator execution.\n\nExecution success is not stored in the repository."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Robotics-Project`\n- **Corpus index:** 089\n- **Repository start date:** 2025-07-09\n- **Last meaningful update date:** 2025-07-09\n- **Latest meaningful commit:** `8980cce61274faca32179b4f9fa39cfb25965c8d`\n- **Primary repository language:** Python\n- **Project form:** mobile-robot control experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `CLF-ONLY.py`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains one short Python script plus a minimal README.\n\nThe script imports an external/local module:\n\n`mobile_manipulator_unicycle_sim`\n\nThat simulator implementation is not checked into this repository.\n\nThe analysis can therefore evaluate the controller integration code.\n\nIt cannot independently validate the simulator internals.\n\nThe filename `CLF-ONLY.py` describes the intended control approach.\n\nThe comments also describe a simple CLF-based control law.\n\nHowever, the positive-definite matrix `P` defined as the “CLF Matrix” is not used in the visible control update.\n\nThere is no explicit Lyapunov-function evaluation or derivative constraint in the checked-in loop.\n\nTherefore this corpus should not overstate the implementation as a formal CLF-QP controller.",
+      "source_line_start": 15,
+      "source_line_end": 39
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "Robotics-Project is a compact mobile-manipulator/unicycle navigation controller experiment.\n\nIt initializes a simulation with:\n\n- initial robot pose;\n- pickup location;\n- drop-off location;\n- multiple obstacle coordinates.\n\nThe active controller drives the mobile base toward the pickup location.\n\nIt computes position and heading error.\n\nIt converts those errors into:\n\n- linear velocity `v`;\n- angular velocity `omega`.\n\nIt clips both controls to configured limits.\n\nThe loop stops when the robot is sufficiently close to the goal or after a timeout.",
+      "source_line_start": 39,
+      "source_line_end": 63
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope is a small goal-reaching control loop for a unicycle-style mobile base inside an external simulator.\n\nIt does not include the simulator implementation, formal CLF optimization, obstacle avoidance, manipulation logic, path planning, or physical-robot control.",
+      "source_line_start": 63,
+      "source_line_end": 69
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Simulation Setup",
+      "normalized_title": "Simulation Setup",
+      "key": "simulation_setup",
+      "path": [
+        "Simulation Setup"
+      ],
+      "content": "`MobileManipulatorUnicycleSim` is instantiated with:\n\n- `robot_id`;\n- no backend server IP;\n- robot pose;\n- pickup location;\n- drop-off location;\n- obstacle locations.\n\nThe script reads robot state through `get_poses`.\n\nIt commands the base through `set_mobile_base_speed_and_gripper_power`.\n\nGripper power remains zero during the visible controller.\n\nThe script is therefore focused on base motion rather than manipulation.",
+      "source_line_start": 69,
+      "source_line_end": 88
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Goal Selection",
+      "normalized_title": "Goal Selection",
+      "key": "goal_selection",
+      "path": [
+        "Goal Selection"
+      ],
+      "content": "The target pose is set from `robot.pickup_location`.\n\nThe controller extracts:\n\n- `x_goal`;\n- `y_goal`;\n- `theta_goal`.\n\nIn the visible loop, `theta_goal` is not directly used as the final orientation target.\n\nInstead, heading target is recalculated toward the current goal position.\n\nThis means the controller's effective objective is reaching the pickup position.\n\nIt is not enforcing the pickup location's stored final orientation.",
+      "source_line_start": 88,
+      "source_line_end": 106
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Error Model",
+      "normalized_title": "Error Model",
+      "key": "error_model",
+      "path": [
+        "Error Model"
+      ],
+      "content": "Each iteration computes:\n\n```text\ne_pos = [x_goal - x, y_goal - y]\n```\n\nThe Euclidean position error becomes `distance_error`.\n\nA desired heading is computed using `atan2`.\n\nHeading error is:\n\n```text\ntheta_target - theta\n```\n\nIt is normalized using sine/cosine through `atan2`.\n\nThis prevents discontinuities from raw angle wraparound.",
+      "source_line_start": 106,
+      "source_line_end": 128
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Control Law",
+      "normalized_title": "Control Law",
+      "key": "control_law",
+      "path": [
+        "Control Law"
+      ],
+      "content": "The visible controller uses proportional relationships:\n\n```text\nv = k_v * distance_error\nomega = k_omega * theta_error\n```\n\nThis is a simple feedback controller.\n\nIt is CLF-inspired in repository naming/comments.\n\nIt is not a solved quadratic program.\n\nThere is no QP dependency.\n\nThere is no inequality constraint solved from a Lyapunov derivative.\n\nThis evidence boundary is important.",
+      "source_line_start": 128,
+      "source_line_end": 149
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Velocity Limits",
+      "normalized_title": "Velocity Limits",
+      "key": "velocity_limits",
+      "path": [
+        "Velocity Limits"
+      ],
+      "content": "Linear velocity is clipped to:\n\n```text\n[-v_max, v_max]\n```\n\nAngular velocity is clipped similarly.\n\nThat ensures the controller command stays within explicit configured bounds.\n\nThe bounds are software limits in the experiment.\n\nThey are not evidence of hardware limits.",
+      "source_line_start": 149,
+      "source_line_end": 165
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Termination Logic",
+      "normalized_title": "Termination Logic",
+      "key": "termination_logic",
+      "path": [
+        "Termination Logic"
+      ],
+      "content": "The main loop continues while planar position error exceeds a threshold.\n\nThe threshold is 0.05 in the source coordinate units.\n\nA second guard stops the experiment after 60 seconds.\n\nOn either completion path, the robot receives a zero-motion command.\n\nThe final pose is printed.\n\nThis gives the experiment a deterministic cleanup path.",
+      "source_line_start": 165,
+      "source_line_end": 179
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Obstacle Data Boundary",
+      "normalized_title": "Obstacle Data Boundary",
+      "key": "obstacle_data_boundary",
+      "path": [
+        "Obstacle Data Boundary"
+      ],
+      "content": "Obstacle coordinates are passed into the simulator.\n\nHowever, the visible controller does not query obstacle distances.\n\nIt does not calculate collision constraints.\n\nIt does not alter commands based on obstacles.\n\nThe presence of obstacle coordinates therefore does not prove obstacle avoidance in this controller.\n\nAny collision handling inside the external simulator is outside repository evidence.\n\nDo not tag this repository as obstacle-avoidance implementation.",
+      "source_line_start": 179,
+      "source_line_end": 195
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "CLF Evidence Boundary",
+      "normalized_title": "CLF Evidence Boundary",
+      "key": "clf_evidence_boundary",
+      "path": [
+        "CLF Evidence Boundary"
+      ],
+      "content": "The source defines:\n\n```text\nP = diag([1.0, 1.0, 0.5])\n```\n\nand comments label it a positive-definite CLF matrix.\n\nBut `P` is unused afterward.\n\nA formal quadratic Lyapunov candidate such as `eᵀPe` is not evaluated in the checked-in code.\n\nNo `Vdot` is computed.\n\nNo stability inequality is enforced.\n\nThe safest retrieval description is:\n\n**CLF-labeled / CLF-inspired proportional unicycle control experiment.**\n\nIt should not be represented as proof of formal Control Lyapunov Function synthesis.",
+      "source_line_start": 195,
+      "source_line_end": 219
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "```text\nmobile_manipulator_unicycle_sim\n          |\n          v\n      robot pose\n          |\n          v\nposition + heading error\n          |\n          v\n proportional control\n   v = kv * distance\n   w = kw * heading_error\n          |\n          v\n velocity saturation\n          |\n          v\nsimulator command\n          |\n          +------> repeat until threshold/timeout\n```",
+      "source_line_start": 219,
+      "source_line_end": 244
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- Python\n- NumPy\n- simulation integration\n- unicycle mobile-robot control\n- feedback control\n- angle normalization\n- velocity saturation",
+      "source_line_start": 244,
+      "source_line_end": 254
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### 1. Simulator Integration\n\nThe script configures and controls a mobile-manipulator simulation through a small API.\n\n### 2. Goal-Directed Unicycle Control\n\nPlanar error is translated into linear and angular motion.\n\n### 3. Heading Normalization\n\nAngular difference is normalized robustly.\n\n### 4. Command Saturation\n\nMotion commands are clipped before being sent.\n\n### 5. Safe Stop Path\n\nThe script sends zero velocity after termination.\n\n### 6. Timeout Guard\n\nA runtime limit prevents an endless loop when the goal is not reached.",
+      "source_line_start": 254,
+      "source_line_end": 280
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "1. Simulator Integration",
+      "normalized_title": "Simulator Integration",
+      "key": "simulator_integration",
+      "path": [
+        "Major Engineering Work",
+        "1. Simulator Integration"
+      ],
+      "content": "The script configures and controls a mobile-manipulator simulation through a small API.",
+      "source_line_start": 256,
+      "source_line_end": 260
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "2. Goal-Directed Unicycle Control",
+      "normalized_title": "Goal-Directed Unicycle Control",
+      "key": "goal_directed_unicycle_control",
+      "path": [
+        "Major Engineering Work",
+        "2. Goal-Directed Unicycle Control"
+      ],
+      "content": "Planar error is translated into linear and angular motion.",
+      "source_line_start": 260,
+      "source_line_end": 264
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "3. Heading Normalization",
+      "normalized_title": "Heading Normalization",
+      "key": "heading_normalization",
+      "path": [
+        "Major Engineering Work",
+        "3. Heading Normalization"
+      ],
+      "content": "Angular difference is normalized robustly.",
+      "source_line_start": 264,
+      "source_line_end": 268
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "4. Command Saturation",
+      "normalized_title": "Command Saturation",
+      "key": "command_saturation",
+      "path": [
+        "Major Engineering Work",
+        "4. Command Saturation"
+      ],
+      "content": "Motion commands are clipped before being sent.",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "5. Safe Stop Path",
+      "normalized_title": "Safe Stop Path",
+      "key": "safe_stop_path",
+      "path": [
+        "Major Engineering Work",
+        "5. Safe Stop Path"
+      ],
+      "content": "The script sends zero velocity after termination.",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "6. Timeout Guard",
+      "normalized_title": "Timeout Guard",
+      "key": "timeout_guard",
+      "path": [
+        "Major Engineering Work",
+        "6. Timeout Guard"
+      ],
+      "content": "A runtime limit prevents an endless loop when the goal is not reached.",
+      "source_line_start": 276,
+      "source_line_end": 280
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "No automated tests exist.\n\nNo saved simulation output is checked in.\n\nNo trajectory plot is present.\n\nNo benchmark comparison is present.\n\nNo assertion confirms reaching the goal.\n\nRuntime verification consists of:\n\n- loop distance criterion;\n- timeout message;\n- final pose print.\n\nThe code appears designed for direct simulator execution.\n\nExecution success is not stored in the repository.",
+      "source_line_start": 280,
+      "source_line_end": 302
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Positive evidence:\n\n- explicit tunable gains;\n- explicit command limits;\n- angle normalization;\n- convergence threshold;\n- timeout;\n- final stop command;\n- clear state/control loop.\n\nConstraints:\n\n- single script;\n- external simulator missing from repo;\n- no requirements file;\n- no tests;\n- no CI;\n- unused `P` matrix;\n- unused `theta_goal`;\n- no obstacle-aware feedback despite obstacle coordinates;\n- fixed time sleep rather than measured loop period;\n- no logged trajectory.",
+      "source_line_start": 302,
+      "source_line_end": 327
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This is not a product.\n\nIt is a control experiment.\n\nNo UI, API, deployment, or end-user workflow is present.\n\nThe code is useful as a small robotics-controller test artifact.",
+      "source_line_start": 327,
+      "source_line_end": 337
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The codebase is tiny.\n\nThe algorithm is intentionally simple.\n\nIts portfolio value lies in control-loop reasoning and evidence discipline rather than complexity.\n\nIt demonstrates that even a short script contains important distinctions:\n\n- simulation environment vs controller;\n- obstacle configuration vs avoidance;\n- CLF naming vs formal CLF implementation;\n- goal position vs goal orientation.",
+      "source_line_start": 337,
+      "source_line_end": 352
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports:\n\n- Python;\n- NumPy;\n- robotics simulation integration;\n- unicycle kinematics/control;\n- feedback control;\n- position-error calculation;\n- heading control;\n- angle wrapping;\n- velocity saturation;\n- convergence threshold;\n- runtime timeout handling.",
+      "source_line_start": 352,
+      "source_line_end": 368
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "This repository shows a direct controller loop rather than relying on a full robotics navigation framework.\n\nThe developer computes the state error and the command explicitly.\n\nIt also highlights an important engineering lesson:\n\nnaming a control approach is not the same as implementing its mathematical conditions.\n\nThe unused CLF matrix makes that distinction visible.",
+      "source_line_start": 368,
+      "source_line_end": 380
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "The corpus already contains richer robotics work.\n\nThis repo is not more complex than those earlier projects.\n\nIts role is narrower.\n\nIt captures a focused control-law experiment around a mobile base.\n\nChronologically it appears after the inverse-kinematics assignment, giving this period both manipulator and mobile-base control work.",
+      "source_line_start": 380,
+      "source_line_end": 392
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is an early explicit unicycle feedback-control script tied to a mobile-manipulator simulator.\n\nIt also provides a useful evidence case for distinguishing intended control theory from implemented mathematics.",
+      "source_line_start": 392,
+      "source_line_end": 398
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "No evidence supports:\n\n- formal CLF stability proof;\n- CLF-QP;\n- CBF;\n- obstacle avoidance;\n- trajectory optimization;\n- physical robot execution;\n- sensor feedback;\n- ROS;\n- path planning;\n- gripper operation;\n- multi-robot coordination.",
+      "source_line_start": 398,
+      "source_line_end": 414
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "Robotics-Project is a concise mobile-robot control experiment.\n\nIt drives a simulated unicycle-style base toward a pickup point using proportional distance and heading feedback.\n\nIts strongest corpus value comes from precise interpretation: the code is CLF-labeled, but the checked-in implementation is a simple saturated feedback law rather than a formal CLF optimization controller.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `numpy`\n- `robotics`\n- `mobile-robot`\n- `mobile-manipulator`\n- `unicycle-model`\n- `feedback-control`\n- `proportional-control`\n- `position-control`\n- `heading-control`\n- `angle-normalization`\n- `velocity-saturation`\n- `simulation-integration`\n- `goal-reaching`\n- `timeout-guard`\n- `clf-inspired`\n- `not-formal-clf-qp`\n- `known-external-simulator-dependency`\n- `earliest-observed-unicycle-feedback-control`",
+      "source_line_start": 414,
+      "source_line_end": 444
+    }
+  ],
+  "raw_analysis": "# Repository 089 — Robotics-Project\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Robotics-Project`\n- **Corpus index:** 089\n- **Repository start date:** 2025-07-09\n- **Last meaningful update date:** 2025-07-09\n- **Latest meaningful commit:** `8980cce61274faca32179b4f9fa39cfb25965c8d`\n- **Primary repository language:** Python\n- **Project form:** mobile-robot control experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `CLF-ONLY.py`\n\n## Evidence Basis\n\nThe repository contains one short Python script plus a minimal README.\n\nThe script imports an external/local module:\n\n`mobile_manipulator_unicycle_sim`\n\nThat simulator implementation is not checked into this repository.\n\nThe analysis can therefore evaluate the controller integration code.\n\nIt cannot independently validate the simulator internals.\n\nThe filename `CLF-ONLY.py` describes the intended control approach.\n\nThe comments also describe a simple CLF-based control law.\n\nHowever, the positive-definite matrix `P` defined as the “CLF Matrix” is not used in the visible control update.\n\nThere is no explicit Lyapunov-function evaluation or derivative constraint in the checked-in loop.\n\nTherefore this corpus should not overstate the implementation as a formal CLF-QP controller.\n\n## What the Project Is\n\nRobotics-Project is a compact mobile-manipulator/unicycle navigation controller experiment.\n\nIt initializes a simulation with:\n\n- initial robot pose;\n- pickup location;\n- drop-off location;\n- multiple obstacle coordinates.\n\nThe active controller drives the mobile base toward the pickup location.\n\nIt computes position and heading error.\n\nIt converts those errors into:\n\n- linear velocity `v`;\n- angular velocity `omega`.\n\nIt clips both controls to configured limits.\n\nThe loop stops when the robot is sufficiently close to the goal or after a timeout.\n\n## Project Scope\n\nThe implemented scope is a small goal-reaching control loop for a unicycle-style mobile base inside an external simulator.\n\nIt does not include the simulator implementation, formal CLF optimization, obstacle avoidance, manipulation logic, path planning, or physical-robot control.\n\n## Simulation Setup\n\n`MobileManipulatorUnicycleSim` is instantiated with:\n\n- `robot_id`;\n- no backend server IP;\n- robot pose;\n- pickup location;\n- drop-off location;\n- obstacle locations.\n\nThe script reads robot state through `get_poses`.\n\nIt commands the base through `set_mobile_base_speed_and_gripper_power`.\n\nGripper power remains zero during the visible controller.\n\nThe script is therefore focused on base motion rather than manipulation.\n\n## Goal Selection\n\nThe target pose is set from `robot.pickup_location`.\n\nThe controller extracts:\n\n- `x_goal`;\n- `y_goal`;\n- `theta_goal`.\n\nIn the visible loop, `theta_goal` is not directly used as the final orientation target.\n\nInstead, heading target is recalculated toward the current goal position.\n\nThis means the controller's effective objective is reaching the pickup position.\n\nIt is not enforcing the pickup location's stored final orientation.\n\n## Error Model\n\nEach iteration computes:\n\n```text\ne_pos = [x_goal - x, y_goal - y]\n```\n\nThe Euclidean position error becomes `distance_error`.\n\nA desired heading is computed using `atan2`.\n\nHeading error is:\n\n```text\ntheta_target - theta\n```\n\nIt is normalized using sine/cosine through `atan2`.\n\nThis prevents discontinuities from raw angle wraparound.\n\n## Control Law\n\nThe visible controller uses proportional relationships:\n\n```text\nv = k_v * distance_error\nomega = k_omega * theta_error\n```\n\nThis is a simple feedback controller.\n\nIt is CLF-inspired in repository naming/comments.\n\nIt is not a solved quadratic program.\n\nThere is no QP dependency.\n\nThere is no inequality constraint solved from a Lyapunov derivative.\n\nThis evidence boundary is important.\n\n## Velocity Limits\n\nLinear velocity is clipped to:\n\n```text\n[-v_max, v_max]\n```\n\nAngular velocity is clipped similarly.\n\nThat ensures the controller command stays within explicit configured bounds.\n\nThe bounds are software limits in the experiment.\n\nThey are not evidence of hardware limits.\n\n## Termination Logic\n\nThe main loop continues while planar position error exceeds a threshold.\n\nThe threshold is 0.05 in the source coordinate units.\n\nA second guard stops the experiment after 60 seconds.\n\nOn either completion path, the robot receives a zero-motion command.\n\nThe final pose is printed.\n\nThis gives the experiment a deterministic cleanup path.\n\n## Obstacle Data Boundary\n\nObstacle coordinates are passed into the simulator.\n\nHowever, the visible controller does not query obstacle distances.\n\nIt does not calculate collision constraints.\n\nIt does not alter commands based on obstacles.\n\nThe presence of obstacle coordinates therefore does not prove obstacle avoidance in this controller.\n\nAny collision handling inside the external simulator is outside repository evidence.\n\nDo not tag this repository as obstacle-avoidance implementation.\n\n## CLF Evidence Boundary\n\nThe source defines:\n\n```text\nP = diag([1.0, 1.0, 0.5])\n```\n\nand comments label it a positive-definite CLF matrix.\n\nBut `P` is unused afterward.\n\nA formal quadratic Lyapunov candidate such as `eᵀPe` is not evaluated in the checked-in code.\n\nNo `Vdot` is computed.\n\nNo stability inequality is enforced.\n\nThe safest retrieval description is:\n\n**CLF-labeled / CLF-inspired proportional unicycle control experiment.**\n\nIt should not be represented as proof of formal Control Lyapunov Function synthesis.\n\n## Architecture / System Shape\n\n```text\nmobile_manipulator_unicycle_sim\n          |\n          v\n      robot pose\n          |\n          v\nposition + heading error\n          |\n          v\n proportional control\n   v = kv * distance\n   w = kw * heading_error\n          |\n          v\n velocity saturation\n          |\n          v\nsimulator command\n          |\n          +------> repeat until threshold/timeout\n```\n\n## Technical Stack\n\n- Python\n- NumPy\n- simulation integration\n- unicycle mobile-robot control\n- feedback control\n- angle normalization\n- velocity saturation\n\n## Major Engineering Work\n\n### 1. Simulator Integration\n\nThe script configures and controls a mobile-manipulator simulation through a small API.\n\n### 2. Goal-Directed Unicycle Control\n\nPlanar error is translated into linear and angular motion.\n\n### 3. Heading Normalization\n\nAngular difference is normalized robustly.\n\n### 4. Command Saturation\n\nMotion commands are clipped before being sent.\n\n### 5. Safe Stop Path\n\nThe script sends zero velocity after termination.\n\n### 6. Timeout Guard\n\nA runtime limit prevents an endless loop when the goal is not reached.\n\n## Testing & Verification Evidence\n\nNo automated tests exist.\n\nNo saved simulation output is checked in.\n\nNo trajectory plot is present.\n\nNo benchmark comparison is present.\n\nNo assertion confirms reaching the goal.\n\nRuntime verification consists of:\n\n- loop distance criterion;\n- timeout message;\n- final pose print.\n\nThe code appears designed for direct simulator execution.\n\nExecution success is not stored in the repository.\n\n## Engineering Discipline\n\nPositive evidence:\n\n- explicit tunable gains;\n- explicit command limits;\n- angle normalization;\n- convergence threshold;\n- timeout;\n- final stop command;\n- clear state/control loop.\n\nConstraints:\n\n- single script;\n- external simulator missing from repo;\n- no requirements file;\n- no tests;\n- no CI;\n- unused `P` matrix;\n- unused `theta_goal`;\n- no obstacle-aware feedback despite obstacle coordinates;\n- fixed time sleep rather than measured loop period;\n- no logged trajectory.\n\n## Product Engineering\n\nThis is not a product.\n\nIt is a control experiment.\n\nNo UI, API, deployment, or end-user workflow is present.\n\nThe code is useful as a small robotics-controller test artifact.\n\n## Scale and Complexity\n\nThe codebase is tiny.\n\nThe algorithm is intentionally simple.\n\nIts portfolio value lies in control-loop reasoning and evidence discipline rather than complexity.\n\nIt demonstrates that even a short script contains important distinctions:\n\n- simulation environment vs controller;\n- obstacle configuration vs avoidance;\n- CLF naming vs formal CLF implementation;\n- goal position vs goal orientation.\n\n## Skills Demonstrated\n\nEvidence supports:\n\n- Python;\n- NumPy;\n- robotics simulation integration;\n- unicycle kinematics/control;\n- feedback control;\n- position-error calculation;\n- heading control;\n- angle wrapping;\n- velocity saturation;\n- convergence threshold;\n- runtime timeout handling.\n\n## What Was Learned / Capability Developed\n\nThis repository shows a direct controller loop rather than relying on a full robotics navigation framework.\n\nThe developer computes the state error and the command explicitly.\n\nIt also highlights an important engineering lesson:\n\nnaming a control approach is not the same as implementing its mathematical conditions.\n\nThe unused CLF matrix makes that distinction visible.\n\n## Portfolio Evolution Context\n\nThe corpus already contains richer robotics work.\n\nThis repo is not more complex than those earlier projects.\n\nIts role is narrower.\n\nIt captures a focused control-law experiment around a mobile base.\n\nChronologically it appears after the inverse-kinematics assignment, giving this period both manipulator and mobile-base control work.\n\n## Historical Significance\n\nWithin the processed corpus, this is an early explicit unicycle feedback-control script tied to a mobile-manipulator simulator.\n\nIt also provides a useful evidence case for distinguishing intended control theory from implemented mathematics.\n\n## Limitations and Missing Evidence\n\nNo evidence supports:\n\n- formal CLF stability proof;\n- CLF-QP;\n- CBF;\n- obstacle avoidance;\n- trajectory optimization;\n- physical robot execution;\n- sensor feedback;\n- ROS;\n- path planning;\n- gripper operation;\n- multi-robot coordination.\n\n## Overall Narrative\n\nRobotics-Project is a concise mobile-robot control experiment.\n\nIt drives a simulated unicycle-style base toward a pickup point using proportional distance and heading feedback.\n\nIts strongest corpus value comes from precise interpretation: the code is CLF-labeled, but the checked-in implementation is a simple saturated feedback law rather than a formal CLF optimization controller.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `numpy`\n- `robotics`\n- `mobile-robot`\n- `mobile-manipulator`\n- `unicycle-model`\n- `feedback-control`\n- `proportional-control`\n- `position-control`\n- `heading-control`\n- `angle-normalization`\n- `velocity-saturation`\n- `simulation-integration`\n- `goal-reaching`\n- `timeout-guard`\n- `clf-inspired`\n- `not-formal-clf-qp`\n- `known-external-simulator-dependency`\n- `earliest-observed-unicycle-feedback-control`\n"
+}

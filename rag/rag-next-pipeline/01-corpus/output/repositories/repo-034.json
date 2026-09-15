@@ -1,0 +1,516 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 34,
+  "repository_total": 134,
+  "repository_name": "STOP-WATCH-AVR",
+  "header_title": "STOP-WATCH-AVR",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-034-STOP-WATCH-AVR/README.md",
+    "line_start": 1,
+    "line_end": 194,
+    "sha256": "29790a6b764d9757d14c5c5d219ef6bcc0d8319fe8fa4fb349da23b11d97d428"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "embedded-application",
+    "educational-project",
+    "stopwatch-application",
+    "individual-project",
+    "c",
+    "avr",
+    "timer-ctc",
+    "timer-interrupt",
+    "external-interrupts",
+    "seven-segment-display",
+    "display-multiplexing",
+    "gpio",
+    "interrupt-driven-embedded-system",
+    "direct-register-programming",
+    "proteus",
+    "embedded-simulation",
+    "manual-simulation",
+    "event-driven-state-machine",
+    "state-driven-control",
+    "modulo-arithmetic",
+    "earliest-observed-avr",
+    "earliest-observed-seven-segment-display",
+    "earliest-observed-display-multiplexing",
+    "earliest-observed-proteus"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/STOP-WATCH-AVR`\n- **Repository start date:** 2024-05-31\n- **Last meaningful update date:** 2024-05-31\n- **Primary implementation language:** C\n- **Project context:** AVR embedded-system exercise\n- **Collaboration classification:** individual repository project\n- **Primary runtime target:** AVR microcontroller\n- **Simulation artifact:** Proteus project"
+    },
+    "architecture": {
+      "section_ids": [
+        "s004"
+      ],
+      "titles": [
+        "Embedded Architecture"
+      ],
+      "text": "## Embedded Architecture\nThe project separates two timing responsibilities.\n\n### Long-period timekeeping\n\nTimer1 compare-match interrupts drive the logical stopwatch state.\n\n### Short-period display refresh\n\nThe foreground loop repeatedly multiplexes the physical display.\n\nThis separation matters because stopwatch time does not depend on how quickly the display-refresh loop runs."
+    },
+    "testing": {
+      "section_ids": [
+        "s030"
+      ],
+      "titles": [
+        "Simulation and Verification"
+      ],
+      "text": "## Simulation and Verification\n- `proteus`\n- `embedded-simulation`\n- `manual-simulation`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/STOP-WATCH-AVR`\n- **Repository start date:** 2024-05-31\n- **Last meaningful update date:** 2024-05-31\n- **Primary implementation language:** C\n- **Project context:** AVR embedded-system exercise\n- **Collaboration classification:** individual repository project\n- **Primary runtime target:** AVR microcontroller\n- **Simulation artifact:** Proteus project",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`STOP-WATCH-AVR` implements a digital stopwatch directly against AVR peripheral registers.\n\nThe application maintains hours, minutes, and seconds, advances the clock from a Timer1 compare-match interrupt, multiplexes six seven-segment digits, and uses three external interrupts for reset, pause, and resume behavior.\n\nThe repository also contains a Proteus project, so the project is not only source code: it preserves a hardware-simulation representation of the microcontroller circuit.",
+      "source_line_start": 14,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Functional Scope",
+      "normalized_title": "Functional Scope",
+      "key": "functional_scope",
+      "path": [
+        "Functional Scope"
+      ],
+      "content": "The implemented stopwatch supports seconds counting, minute rollover, hour rollover, six displayed decimal digits, reset to `00:00:00`, pause, resume, and continuously multiplexed seven-segment output.\n\nThe source keeps three explicit state variables: `seconds`, `minutes`, and `hours`. That makes the temporal model small and directly inspectable.",
+      "source_line_start": 22,
+      "source_line_end": 28
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Embedded Architecture",
+      "normalized_title": "Embedded Architecture",
+      "key": "embedded_architecture",
+      "path": [
+        "Embedded Architecture"
+      ],
+      "content": "The project separates two timing responsibilities.\n\n### Long-period timekeeping\n\nTimer1 compare-match interrupts drive the logical stopwatch state.\n\n### Short-period display refresh\n\nThe foreground loop repeatedly multiplexes the physical display.\n\nThis separation matters because stopwatch time does not depend on how quickly the display-refresh loop runs.",
+      "source_line_start": 28,
+      "source_line_end": 42
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Long-period timekeeping",
+      "normalized_title": "Long-period timekeeping",
+      "key": "long_period_timekeeping",
+      "path": [
+        "Embedded Architecture",
+        "Long-period timekeeping"
+      ],
+      "content": "Timer1 compare-match interrupts drive the logical stopwatch state.",
+      "source_line_start": 32,
+      "source_line_end": 36
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Short-period display refresh",
+      "normalized_title": "Short-period display refresh",
+      "key": "short_period_display_refresh",
+      "path": [
+        "Embedded Architecture",
+        "Short-period display refresh"
+      ],
+      "content": "The foreground loop repeatedly multiplexes the physical display.\n\nThis separation matters because stopwatch time does not depend on how quickly the display-refresh loop runs.",
+      "source_line_start": 36,
+      "source_line_end": 42
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Foreground Display Loop",
+      "normalized_title": "Foreground Display Loop",
+      "key": "foreground_display_loop",
+      "path": [
+        "Foreground Display Loop"
+      ],
+      "content": "`main()` repeatedly calls `s7seg()`.\n\n`s7seg()` activates one display position at a time through `PORTA`, writes the decimal digit through `PORTC`, waits approximately 3 ms, and advances to the next position.\n\nThe six positions correspond to seconds units, seconds tens, minutes units, minutes tens, hours units, and hours tens.\n\nThis is explicit display multiplexing rather than dedicating a separate complete output bus to every digit.",
+      "source_line_start": 42,
+      "source_line_end": 52
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Timer1 Timebase",
+      "normalized_title": "Timer1 Timebase",
+      "key": "timer1_timebase",
+      "path": [
+        "Timer1 Timebase"
+      ],
+      "content": "`Timer1_CTC_Init()` configures Timer1 in compare mode.\n\nThe implementation resets `TCNT1`, loads `OCR1A = 15625`, enables the output-compare-A interrupt, enables CTC behavior with `WGM12`, and selects a timer prescaler through `CS11` and `CS10`.\n\nThe compare ISR becomes the application's timekeeping heartbeat.",
+      "source_line_start": 52,
+      "source_line_end": 60
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Time Rollover Logic",
+      "normalized_title": "Time Rollover Logic",
+      "key": "time_rollover_logic",
+      "path": [
+        "Time Rollover Logic"
+      ],
+      "content": "`TIMER1_COMPA_vect` updates time hierarchically.\n\nWhen seconds reach 59, seconds return to zero and minutes increment.\n\nWhen minutes also reach 59, minutes return to zero and hours increment.\n\nThe rollover rules are encoded explicitly rather than delegated to a time library.",
+      "source_line_start": 60,
+      "source_line_end": 70
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "External Interrupt Controls",
+      "normalized_title": "External Interrupt Controls",
+      "key": "external_interrupt_controls",
+      "path": [
+        "External Interrupt Controls"
+      ],
+      "content": "### INT0 — Reset\n\n`INT0_vect` sets seconds, minutes, and hours to zero.\n\n### INT1 — Pause\n\n`INT1_vect` disables the Timer1 compare interrupt by clearing the corresponding `TIMSK` bit.\n\nThe timer configuration can stay intact while stopwatch state stops advancing.\n\n### INT2 — Resume\n\n`INT2_vect` re-enables the Timer1 compare interrupt.\n\nPause and resume therefore manipulate delivery of the timing event rather than reconstructing the timer configuration.",
+      "source_line_start": 70,
+      "source_line_end": 88
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "INT0 — Reset",
+      "normalized_title": "INT0 — Reset",
+      "key": "int0_reset",
+      "path": [
+        "External Interrupt Controls",
+        "INT0 — Reset"
+      ],
+      "content": "`INT0_vect` sets seconds, minutes, and hours to zero.",
+      "source_line_start": 72,
+      "source_line_end": 76
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "INT1 — Pause",
+      "normalized_title": "INT1 — Pause",
+      "key": "int1_pause",
+      "path": [
+        "External Interrupt Controls",
+        "INT1 — Pause"
+      ],
+      "content": "`INT1_vect` disables the Timer1 compare interrupt by clearing the corresponding `TIMSK` bit.\n\nThe timer configuration can stay intact while stopwatch state stops advancing.",
+      "source_line_start": 76,
+      "source_line_end": 82
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "INT2 — Resume",
+      "normalized_title": "INT2 — Resume",
+      "key": "int2_resume",
+      "path": [
+        "External Interrupt Controls",
+        "INT2 — Resume"
+      ],
+      "content": "`INT2_vect` re-enables the Timer1 compare interrupt.\n\nPause and resume therefore manipulate delivery of the timing event rather than reconstructing the timer configuration.",
+      "source_line_start": 82,
+      "source_line_end": 88
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Seven-Segment Multiplexing",
+      "normalized_title": "Seven-Segment Multiplexing",
+      "key": "seven_segment_multiplexing",
+      "path": [
+        "Seven-Segment Multiplexing"
+      ],
+      "content": "`PORTA` serves as the digit-selection side and `PORTC` carries the decimal value for the selected digit.\n\nFor each position the code selects one display, calculates the relevant decimal digit, writes it, delays briefly, and moves to the next display.\n\nDecimal extraction uses modulo and division directly on the stopwatch counters, for example `seconds % 10` for units and tens reconstruction from the remaining value.",
+      "source_line_start": 88,
+      "source_line_end": 96
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Hardware-Level Programming",
+      "normalized_title": "Hardware-Level Programming",
+      "key": "hardware_level_programming",
+      "path": [
+        "Hardware-Level Programming"
+      ],
+      "content": "The project works directly with AVR registers including `PORTA`, `PORTC`, `DDRA`, `DDRC`, `GICR`, `MCUCR`, `MCUCSR`, `TIMSK`, `TCNT1`, `OCR1A`, `TCCR1A`, `TCCR1B`, and `SREG`.\n\nThis provides concrete exposure to pin direction configuration, global interrupt control, external interrupt setup, timer configuration, compare events, and output-register manipulation.",
+      "source_line_start": 96,
+      "source_line_end": 102
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Simulation Evidence",
+      "normalized_title": "Simulation Evidence",
+      "key": "simulation_evidence",
+      "path": [
+        "Simulation Evidence"
+      ],
+      "content": "The repository contains `proteus/mytest.pdsprj`.\n\nThat is concrete evidence that the stopwatch was paired with a Proteus circuit/simulation project rather than existing only as isolated C source.\n\nThe source is naturally observable through timer-driven count progression, interrupt-driven control, and six visible seven-segment outputs.",
+      "source_line_start": 102,
+      "source_line_end": 110
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### Embedded C\n\nThe implementation operates close to AVR hardware and manipulates peripheral registers explicitly.\n\n### Interrupt-Driven Design\n\nTimekeeping and user controls are handled through interrupt service routines rather than foreground polling alone.\n\n### Timer Configuration\n\nTimer1 compare-match behavior is used as a deterministic software timebase.\n\n### Digital Display Driving\n\nSix display digits are multiplexed through shared output resources.\n\n### Hardware/Software Co-Design\n\nFirmware is paired with a Proteus simulation artifact.\n\n### State Management\n\nTime state is compact and deterministic, with explicit rollover rules.",
+      "source_line_start": 110,
+      "source_line_end": 136
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Embedded C",
+      "normalized_title": "Embedded C",
+      "key": "embedded_c",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Embedded C"
+      ],
+      "content": "The implementation operates close to AVR hardware and manipulates peripheral registers explicitly.",
+      "source_line_start": 112,
+      "source_line_end": 116
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Interrupt-Driven Design",
+      "normalized_title": "Interrupt-Driven Design",
+      "key": "interrupt_driven_design",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Interrupt-Driven Design"
+      ],
+      "content": "Timekeeping and user controls are handled through interrupt service routines rather than foreground polling alone.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Timer Configuration",
+      "normalized_title": "Timer Configuration",
+      "key": "timer_configuration",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Timer Configuration"
+      ],
+      "content": "Timer1 compare-match behavior is used as a deterministic software timebase.",
+      "source_line_start": 120,
+      "source_line_end": 124
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Digital Display Driving",
+      "normalized_title": "Digital Display Driving",
+      "key": "digital_display_driving",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Digital Display Driving"
+      ],
+      "content": "Six display digits are multiplexed through shared output resources.",
+      "source_line_start": 124,
+      "source_line_end": 128
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Hardware/Software Co-Design",
+      "normalized_title": "Hardware/Software Co-Design",
+      "key": "hardware_software_co_design",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Hardware/Software Co-Design"
+      ],
+      "content": "Firmware is paired with a Proteus simulation artifact.",
+      "source_line_start": 128,
+      "source_line_end": 132
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "State Management",
+      "normalized_title": "State Management",
+      "key": "state_management",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "State Management"
+      ],
+      "content": "Time state is compact and deterministic, with explicit rollover rules.",
+      "source_line_start": 132,
+      "source_line_end": 136
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The core capability is coordinating asynchronous interrupt events, persistent state, timer peripherals, display refresh, and hardware register configuration.\n\nThat is a reusable embedded-systems foundation beyond the stopwatch arithmetic itself.",
+      "source_line_start": 136,
+      "source_line_end": 142
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Chronologically, this repository appears immediately after `Port-AUTOSAR-ARM`.\n\nIt shifts from configurable driver-layer work to a compact end application where timers, interrupts, GPIO, and display behavior are assembled into one visible device.\n\nIt is the earliest processed repository where an AVR application combines interrupt-driven timekeeping with explicit six-digit seven-segment multiplexing.",
+      "source_line_start": 142,
+      "source_line_end": 150
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`STOP-WATCH-AVR` is a small but complete hardware-facing application.\n\nA Timer1 compare interrupt advances the stopwatch independently of the foreground display loop. Three external interrupts provide reset, pause, and resume controls. The foreground continuously multiplexes six seven-segment positions through shared ports. A Proteus project preserves the circuit-level simulation context.\n\nThe repository captures a classic embedded pattern: hardware timers create deterministic events, ISRs modify shared state, and a foreground loop renders that state to a physical interface.\n\n# Project Tags",
+      "source_line_start": 150,
+      "source_line_end": 160
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `embedded-application`\n- `educational-project`\n- `stopwatch-application`\n- `individual-project`",
+      "source_line_start": 160,
+      "source_line_end": 166
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `c`",
+      "source_line_start": 166,
+      "source_line_end": 169
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `avr`\n- `timer-ctc`\n- `timer-interrupt`\n- `external-interrupts`\n- `seven-segment-display`\n- `display-multiplexing`\n- `gpio`\n- `interrupt-driven-embedded-system`\n- `direct-register-programming`",
+      "source_line_start": 169,
+      "source_line_end": 180
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Simulation and Verification",
+      "normalized_title": "Simulation and Verification",
+      "key": "simulation_and_verification",
+      "path": [
+        "Simulation and Verification"
+      ],
+      "content": "- `proteus`\n- `embedded-simulation`\n- `manual-simulation`",
+      "source_line_start": 180,
+      "source_line_end": 185
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Software Engineering and Algorithms",
+      "normalized_title": "Software Engineering and Algorithms",
+      "key": "software_engineering_and_algorithms",
+      "path": [
+        "Software Engineering and Algorithms"
+      ],
+      "content": "- `event-driven-state-machine`\n- `state-driven-control`\n- `modulo-arithmetic`",
+      "source_line_start": 185,
+      "source_line_end": 190
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-avr`\n- `earliest-observed-seven-segment-display`\n- `earliest-observed-display-multiplexing`\n- `earliest-observed-proteus`",
+      "source_line_start": 190,
+      "source_line_end": 195
+    }
+  ],
+  "raw_analysis": "# Repository 034 — STOP-WATCH-AVR\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/STOP-WATCH-AVR`\n- **Repository start date:** 2024-05-31\n- **Last meaningful update date:** 2024-05-31\n- **Primary implementation language:** C\n- **Project context:** AVR embedded-system exercise\n- **Collaboration classification:** individual repository project\n- **Primary runtime target:** AVR microcontroller\n- **Simulation artifact:** Proteus project\n\n## What This Project Is\n\n`STOP-WATCH-AVR` implements a digital stopwatch directly against AVR peripheral registers.\n\nThe application maintains hours, minutes, and seconds, advances the clock from a Timer1 compare-match interrupt, multiplexes six seven-segment digits, and uses three external interrupts for reset, pause, and resume behavior.\n\nThe repository also contains a Proteus project, so the project is not only source code: it preserves a hardware-simulation representation of the microcontroller circuit.\n\n## Functional Scope\n\nThe implemented stopwatch supports seconds counting, minute rollover, hour rollover, six displayed decimal digits, reset to `00:00:00`, pause, resume, and continuously multiplexed seven-segment output.\n\nThe source keeps three explicit state variables: `seconds`, `minutes`, and `hours`. That makes the temporal model small and directly inspectable.\n\n## Embedded Architecture\n\nThe project separates two timing responsibilities.\n\n### Long-period timekeeping\n\nTimer1 compare-match interrupts drive the logical stopwatch state.\n\n### Short-period display refresh\n\nThe foreground loop repeatedly multiplexes the physical display.\n\nThis separation matters because stopwatch time does not depend on how quickly the display-refresh loop runs.\n\n## Foreground Display Loop\n\n`main()` repeatedly calls `s7seg()`.\n\n`s7seg()` activates one display position at a time through `PORTA`, writes the decimal digit through `PORTC`, waits approximately 3 ms, and advances to the next position.\n\nThe six positions correspond to seconds units, seconds tens, minutes units, minutes tens, hours units, and hours tens.\n\nThis is explicit display multiplexing rather than dedicating a separate complete output bus to every digit.\n\n## Timer1 Timebase\n\n`Timer1_CTC_Init()` configures Timer1 in compare mode.\n\nThe implementation resets `TCNT1`, loads `OCR1A = 15625`, enables the output-compare-A interrupt, enables CTC behavior with `WGM12`, and selects a timer prescaler through `CS11` and `CS10`.\n\nThe compare ISR becomes the application's timekeeping heartbeat.\n\n## Time Rollover Logic\n\n`TIMER1_COMPA_vect` updates time hierarchically.\n\nWhen seconds reach 59, seconds return to zero and minutes increment.\n\nWhen minutes also reach 59, minutes return to zero and hours increment.\n\nThe rollover rules are encoded explicitly rather than delegated to a time library.\n\n## External Interrupt Controls\n\n### INT0 — Reset\n\n`INT0_vect` sets seconds, minutes, and hours to zero.\n\n### INT1 — Pause\n\n`INT1_vect` disables the Timer1 compare interrupt by clearing the corresponding `TIMSK` bit.\n\nThe timer configuration can stay intact while stopwatch state stops advancing.\n\n### INT2 — Resume\n\n`INT2_vect` re-enables the Timer1 compare interrupt.\n\nPause and resume therefore manipulate delivery of the timing event rather than reconstructing the timer configuration.\n\n## Seven-Segment Multiplexing\n\n`PORTA` serves as the digit-selection side and `PORTC` carries the decimal value for the selected digit.\n\nFor each position the code selects one display, calculates the relevant decimal digit, writes it, delays briefly, and moves to the next display.\n\nDecimal extraction uses modulo and division directly on the stopwatch counters, for example `seconds % 10` for units and tens reconstruction from the remaining value.\n\n## Hardware-Level Programming\n\nThe project works directly with AVR registers including `PORTA`, `PORTC`, `DDRA`, `DDRC`, `GICR`, `MCUCR`, `MCUCSR`, `TIMSK`, `TCNT1`, `OCR1A`, `TCCR1A`, `TCCR1B`, and `SREG`.\n\nThis provides concrete exposure to pin direction configuration, global interrupt control, external interrupt setup, timer configuration, compare events, and output-register manipulation.\n\n## Simulation Evidence\n\nThe repository contains `proteus/mytest.pdsprj`.\n\nThat is concrete evidence that the stopwatch was paired with a Proteus circuit/simulation project rather than existing only as isolated C source.\n\nThe source is naturally observable through timer-driven count progression, interrupt-driven control, and six visible seven-segment outputs.\n\n## Engineering Skills Demonstrated\n\n### Embedded C\n\nThe implementation operates close to AVR hardware and manipulates peripheral registers explicitly.\n\n### Interrupt-Driven Design\n\nTimekeeping and user controls are handled through interrupt service routines rather than foreground polling alone.\n\n### Timer Configuration\n\nTimer1 compare-match behavior is used as a deterministic software timebase.\n\n### Digital Display Driving\n\nSix display digits are multiplexed through shared output resources.\n\n### Hardware/Software Co-Design\n\nFirmware is paired with a Proteus simulation artifact.\n\n### State Management\n\nTime state is compact and deterministic, with explicit rollover rules.\n\n## Capability Developed\n\nThe core capability is coordinating asynchronous interrupt events, persistent state, timer peripherals, display refresh, and hardware register configuration.\n\nThat is a reusable embedded-systems foundation beyond the stopwatch arithmetic itself.\n\n## Portfolio Evolution\n\nChronologically, this repository appears immediately after `Port-AUTOSAR-ARM`.\n\nIt shifts from configurable driver-layer work to a compact end application where timers, interrupts, GPIO, and display behavior are assembled into one visible device.\n\nIt is the earliest processed repository where an AVR application combines interrupt-driven timekeeping with explicit six-digit seven-segment multiplexing.\n\n## Overall Project Narrative\n\n`STOP-WATCH-AVR` is a small but complete hardware-facing application.\n\nA Timer1 compare interrupt advances the stopwatch independently of the foreground display loop. Three external interrupts provide reset, pause, and resume controls. The foreground continuously multiplexes six seven-segment positions through shared ports. A Proteus project preserves the circuit-level simulation context.\n\nThe repository captures a classic embedded pattern: hardware timers create deterministic events, ISRs modify shared state, and a foreground loop renders that state to a physical interface.\n\n# Project Tags\n\n## Project Type\n- `embedded-application`\n- `educational-project`\n- `stopwatch-application`\n- `individual-project`\n\n## Languages\n- `c`\n\n## Embedded and Hardware\n- `avr`\n- `timer-ctc`\n- `timer-interrupt`\n- `external-interrupts`\n- `seven-segment-display`\n- `display-multiplexing`\n- `gpio`\n- `interrupt-driven-embedded-system`\n- `direct-register-programming`\n\n## Simulation and Verification\n- `proteus`\n- `embedded-simulation`\n- `manual-simulation`\n\n## Software Engineering and Algorithms\n- `event-driven-state-machine`\n- `state-driven-control`\n- `modulo-arithmetic`\n\n## Portfolio Significance\n- `earliest-observed-avr`\n- `earliest-observed-seven-segment-display`\n- `earliest-observed-display-multiplexing`\n- `earliest-observed-proteus`\n"
+}

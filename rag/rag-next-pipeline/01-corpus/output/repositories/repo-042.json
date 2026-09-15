@@ -1,0 +1,511 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 42,
+  "repository_total": 134,
+  "repository_name": "RVIZ-GAZEBO-URDF",
+  "header_title": "RVIZ-GAZEBO-URDF",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-042-RVIZ-GAZEBO-URDF/README.md",
+    "line_start": 1,
+    "line_end": 417,
+    "sha256": "d1e5e3cafd8a0f50f728d7d9c4891fab919f94986a2650f7d8a944c08decc107"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-project",
+    "ros",
+    "ros2",
+    "robotics",
+    "urdf",
+    "xacro",
+    "rviz",
+    "gazebo",
+    "robot-description",
+    "robot-kinematics",
+    "robot-links",
+    "robot-joints",
+    "continuous-joint",
+    "collision-geometry",
+    "inertial-modeling",
+    "differential-drive",
+    "gazebo-plugin",
+    "odometry",
+    "cmake",
+    "ros-package",
+    "ros-launch",
+    "build-artifact-evidence",
+    "simulation",
+    "manual-verification",
+    "module-decomposition"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/RVIZ-GAZEBO-URDF`\n- **Repository start date:** 2024-08-25\n- **Last meaningful update date:** 2024-10-12\n- **Primary repository language classification:** CMake\n- **Core formats:** URDF, Xacro, XML, ROS 2 package metadata\n- **Frameworks/tools:** ROS 2, RViz, Gazebo, CMake, Xacro\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** robot-description experiments plus a built ROS 2 description workspace and command notes"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "CMake and Package Metadata"
+      ],
+      "text": "## CMake and Package Metadata\n`CMakeLists.txt` and `package.xml` are checked into the source package.\n\nThe repository therefore contains:\n\n- ROS package metadata,\n- CMake build configuration,\n- installable robot-description assets,\n- launch assets.\n\nThis is stronger evidence than loose `.urdf` files alone."
+    },
+    "testing": {
+      "section_ids": [
+        "s020"
+      ],
+      "titles": [
+        "Verification and Validation"
+      ],
+      "text": "## Verification and Validation\nThe repository has no conventional automated unit test suite.\n\nVerification evidence instead comes from:\n\n- generated build artifacts,\n- RViz/Gazebo-oriented repository documentation,\n- maintained robot-description files,\n- later README updates.\n\nThe repository is therefore best characterized as simulation/visualization-verified learning work rather than automated-test-driven software."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/RVIZ-GAZEBO-URDF`\n- **Repository start date:** 2024-08-25\n- **Last meaningful update date:** 2024-10-12\n- **Primary repository language classification:** CMake\n- **Core formats:** URDF, Xacro, XML, ROS 2 package metadata\n- **Frameworks/tools:** ROS 2, RViz, Gazebo, CMake, Xacro\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** robot-description experiments plus a built ROS 2 description workspace and command notes",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`RVIZ-GAZEBO-URDF` is a robotics-modeling repository focused on describing a robot structurally and making that description usable in ROS 2 visualization and Gazebo simulation.\n\nIt contains three layers of learning:\n\n- small standalone URDF experiments,\n- command/reference notes for ROS 2, URDF, and Gazebo,\n- a ROS 2 workspace containing the `sedrawybot_description` package.\n\nThe repository also checks in generated `build` artifacts, which provide direct evidence that the ROS package was passed through the CMake/colcon build path.",
+      "source_line_start": 14,
+      "source_line_end": 26
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "At the root, the repository is organized into:\n\n- `Command Cheat Sheet/`,\n- `basics/`,\n- `gazebo/`.\n\nThe `basics` directory contains focused URDF models such as:\n\n- `jointing.urdf`,\n- `nonfixedjoints.urdf`,\n- `simpleboxwithwheel.urdf`.\n\nThe `gazebo` directory contains a ROS 2 workspace and repository documentation.",
+      "source_line_start": 26,
+      "source_line_end": 42
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Robot Description Package",
+      "normalized_title": "Robot Description Package",
+      "key": "robot_description_package",
+      "path": [
+        "Robot Description Package"
+      ],
+      "content": "Inside the workspace, the source package is:\n\n`gazebo/ros2_rviz_ws/src/sedrawybot_description`.\n\nIts visible source structure contains:\n\n- `CMakeLists.txt`,\n- `package.xml`,\n- `config/`,\n- `launch/`,\n- `urdf/`.\n\nThis is a conventional ROS 2 robot-description package organization.",
+      "source_line_start": 42,
+      "source_line_end": 58
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Xacro-Based Robot Model",
+      "normalized_title": "Xacro-Based Robot Model",
+      "key": "xacro_based_robot_model",
+      "path": [
+        "Xacro-Based Robot Model"
+      ],
+      "content": "The main model is:\n\n`urdf/sedrawybot.urdf.xacro`.\n\nIt defines a robot named `sedrawy`.\n\nThe model uses Xacro features rather than duplicating every physical element by hand.\n\nIt imports a common Xacro file and defines reusable properties and macros.",
+      "source_line_start": 58,
+      "source_line_end": 70
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Xacro Properties and Macros",
+      "normalized_title": "Xacro Properties and Macros",
+      "key": "xacro_properties_and_macros",
+      "path": [
+        "Xacro Properties and Macros"
+      ],
+      "content": "The model defines a body-length property.\n\nIt also defines a reusable `wheel_link` macro.\n\nThat macro creates wheel links with:\n\n- cylindrical visual geometry,\n- material assignment,\n- inertial properties,\n- collision geometry.\n\nThe macro is instantiated for both left and right wheels.\n\nThis demonstrates parameterized robot-description construction.",
+      "source_line_start": 70,
+      "source_line_end": 87
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Inertia Modeling",
+      "normalized_title": "Inertia Modeling",
+      "key": "inertia_modeling",
+      "path": [
+        "Inertia Modeling"
+      ],
+      "content": "The Xacro defines reusable inertia macros for:\n\n- spheres,\n- boxes.\n\nThe sphere macro computes the solid-sphere inertia expression from mass and radius.\n\nThe box macro computes the three principal inertia components from mass and dimensions.\n\nThe resulting inertial blocks are inserted into links.\n\nThis goes beyond a purely visual URDF.\n\nThe model carries physics-related mass and inertia data needed by simulation engines.",
+      "source_line_start": 87,
+      "source_line_end": 104
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Robot Links",
+      "normalized_title": "Robot Links",
+      "key": "robot_links",
+      "path": [
+        "Robot Links"
+      ],
+      "content": "The main model includes:\n\n- `base_link`,\n- `second_link`,\n- `sphere_link`,\n- `right_wheel_link`,\n- `left_wheel_link`.\n\nThe body link uses box geometry.\n\nThe sphere link uses sphere geometry.\n\nThe wheel links use cylinder geometry.\n\nEach physical element has a clear role in the kinematic model.",
+      "source_line_start": 104,
+      "source_line_end": 122
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Collision Geometry",
+      "normalized_title": "Collision Geometry",
+      "key": "collision_geometry",
+      "path": [
+        "Collision Geometry"
+      ],
+      "content": "Collision elements are defined separately from visual elements.\n\nThe body has box collision geometry.\n\nThe sphere has sphere collision geometry.\n\nThe wheels have cylinder collision geometry.\n\nThis distinguishes visual representation from simulation collision representation.",
+      "source_line_start": 122,
+      "source_line_end": 134
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Joint Modeling",
+      "normalized_title": "Joint Modeling",
+      "key": "joint_modeling",
+      "path": [
+        "Joint Modeling"
+      ],
+      "content": "The model defines multiple joint types.\n\nA fixed joint connects the sphere to the body.\n\nAnother fixed joint connects the base to the body.\n\nContinuous joints connect the left and right wheel links.\n\nThe wheel joints define a rotational axis.\n\nThis demonstrates both rigid and rotational kinematic relationships.",
+      "source_line_start": 134,
+      "source_line_end": 148
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Gazebo Integration",
+      "normalized_title": "Gazebo Integration",
+      "key": "gazebo_integration",
+      "path": [
+        "Gazebo Integration"
+      ],
+      "content": "The Xacro embeds a Gazebo plugin declaration.\n\nThe plugin references:\n\n`libgazebo_ros_diff_drive.so`.\n\nIt configures differential-drive behavior.\n\nVisible configuration includes:\n\n- update rate,\n- wheel joints,\n- wheel separation,\n- wheel diameter,\n- odometry publication,\n- `/odom` topic,\n- odometry frame,\n- robot base frame.\n\nThis is concrete simulator integration, not only an RViz visualization model.",
+      "source_line_start": 148,
+      "source_line_end": 171
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Differential-Drive Configuration Boundary",
+      "normalized_title": "Differential-Drive Configuration Boundary",
+      "key": "differential_drive_configuration_boundary",
+      "path": [
+        "Differential-Drive Configuration Boundary"
+      ],
+      "content": "The checked-in plugin configuration maps both `left_joint` and `right_joint` to `base_lwheel`.\n\nThat likely prevents the configuration from representing the intended two-wheel pairing.\n\nThe corpus records the actual checked-in configuration rather than silently correcting it.\n\nThis is useful implementation evidence and also a concrete limitation.",
+      "source_line_start": 171,
+      "source_line_end": 181
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "ROS 2 Launch Integration",
+      "normalized_title": "ROS 2 Launch Integration",
+      "key": "ros_2_launch_integration",
+      "path": [
+        "ROS 2 Launch Integration"
+      ],
+      "content": "The package contains:\n\n`launch/display.launch.xml`.\n\nThat establishes a launch-level integration artifact for displaying the robot-description package.\n\nThe package structure also contains configuration files intended for the visualization/runtime workflow.",
+      "source_line_start": 181,
+      "source_line_end": 191
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "CMake and Package Metadata",
+      "normalized_title": "CMake and Package Metadata",
+      "key": "cmake_and_package_metadata",
+      "path": [
+        "CMake and Package Metadata"
+      ],
+      "content": "`CMakeLists.txt` and `package.xml` are checked into the source package.\n\nThe repository therefore contains:\n\n- ROS package metadata,\n- CMake build configuration,\n- installable robot-description assets,\n- launch assets.\n\nThis is stronger evidence than loose `.urdf` files alone.",
+      "source_line_start": 191,
+      "source_line_end": 204
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Build Evidence",
+      "normalized_title": "Build Evidence",
+      "key": "build_evidence",
+      "path": [
+        "Build Evidence"
+      ],
+      "content": "The repository checks in `gazebo/ros2_rviz_ws/build`.\n\nVisible build artifacts include:\n\n- `CMakeCache.txt`,\n- generated CMake files,\n- compiler-identification artifacts,\n- package-specific build directories.\n\nThis demonstrates that the workspace reached at least the configuration/build stage.\n\nIt does not by itself prove a clean fresh build on another machine.",
+      "source_line_start": 204,
+      "source_line_end": 219
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "URDF Learning Progression",
+      "normalized_title": "URDF Learning Progression",
+      "key": "urdf_learning_progression",
+      "path": [
+        "URDF Learning Progression"
+      ],
+      "content": "The `basics` directory preserves focused experiments before the larger Xacro model.\n\nThe visible filenames show progression through:\n\n- simple body/wheel composition,\n- jointing,\n- non-fixed joints.\n\nThe later package then moves to reusable Xacro and Gazebo integration.",
+      "source_line_start": 219,
+      "source_line_end": 231
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "RViz Role",
+      "normalized_title": "RViz Role",
+      "key": "rviz_role",
+      "path": [
+        "RViz Role"
+      ],
+      "content": "The repository title and command notes establish RViz as the visualization environment.\n\nThe robot-description package is structured to make the model available to ROS tools.\n\nThis is a robot-model visualization workflow rather than application UI development.",
+      "source_line_start": 231,
+      "source_line_end": 239
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Gazebo Role",
+      "normalized_title": "Gazebo Role",
+      "key": "gazebo_role",
+      "path": [
+        "Gazebo Role"
+      ],
+      "content": "Gazebo is used as the physics/simulation environment.\n\nThe robot model includes:\n\n- inertia,\n- collision geometry,\n- differential-drive plugin configuration.\n\nThose are simulation-facing concerns.",
+      "source_line_start": 239,
+      "source_line_end": 251
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Engineering Work Evidenced",
+      "normalized_title": "Engineering Work Evidenced",
+      "key": "engineering_work_evidenced",
+      "path": [
+        "Engineering Work Evidenced"
+      ],
+      "content": "The repository positively demonstrates:\n\n- URDF modeling,\n- Xacro parameterization,\n- reusable Xacro macros,\n- robot link composition,\n- fixed and continuous joints,\n- collision geometry,\n- inertial modeling,\n- ROS 2 package structure,\n- CMake-based package configuration,\n- launch-file integration,\n- Gazebo plugin integration,\n- differential-drive configuration,\n- odometry topic configuration,\n- build-tool execution.",
+      "source_line_start": 251,
+      "source_line_end": 270
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Verification and Validation",
+      "normalized_title": "Verification and Validation",
+      "key": "verification_and_validation",
+      "path": [
+        "Verification and Validation"
+      ],
+      "content": "The repository has no conventional automated unit test suite.\n\nVerification evidence instead comes from:\n\n- generated build artifacts,\n- RViz/Gazebo-oriented repository documentation,\n- maintained robot-description files,\n- later README updates.\n\nThe repository is therefore best characterized as simulation/visualization-verified learning work rather than automated-test-driven software.",
+      "source_line_start": 270,
+      "source_line_end": 283
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The source package separates:\n\n- model definition,\n- configuration,\n- launch behavior,\n- package metadata.\n\nXacro macros reduce duplication.\n\nPhysics properties are explicitly represented.\n\nThe repository preserves incremental learning artifacts instead of only the final robot model.",
+      "source_line_start": 283,
+      "source_line_end": 298
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Robot Modeling\n\n- URDF\n- Xacro\n- robot links\n- joint definitions\n- collision geometry\n- inertial properties\n- reusable model macros\n\n### ROS 2 Packaging\n\n- CMake\n- `package.xml`\n- launch assets\n- description package layout\n- build workspace structure\n\n### Simulation\n\n- Gazebo\n- differential-drive plugin\n- odometry configuration\n- wheel geometry\n- physics-facing robot parameters\n\n### Visualization\n\n- RViz-oriented description workflow\n- robot state/model inspection",
+      "source_line_start": 298,
+      "source_line_end": 331
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Robot Modeling",
+      "normalized_title": "Robot Modeling",
+      "key": "robot_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Robot Modeling"
+      ],
+      "content": "- URDF\n- Xacro\n- robot links\n- joint definitions\n- collision geometry\n- inertial properties\n- reusable model macros",
+      "source_line_start": 300,
+      "source_line_end": 310
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "ROS 2 Packaging",
+      "normalized_title": "ROS 2 Packaging",
+      "key": "ros_2_packaging",
+      "path": [
+        "Skills Demonstrated",
+        "ROS 2 Packaging"
+      ],
+      "content": "- CMake\n- `package.xml`\n- launch assets\n- description package layout\n- build workspace structure",
+      "source_line_start": 310,
+      "source_line_end": 318
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Simulation",
+      "normalized_title": "Simulation",
+      "key": "simulation",
+      "path": [
+        "Skills Demonstrated",
+        "Simulation"
+      ],
+      "content": "- Gazebo\n- differential-drive plugin\n- odometry configuration\n- wheel geometry\n- physics-facing robot parameters",
+      "source_line_start": 318,
+      "source_line_end": 326
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Visualization",
+      "normalized_title": "Visualization",
+      "key": "visualization",
+      "path": [
+        "Skills Demonstrated",
+        "Visualization"
+      ],
+      "content": "- RViz-oriented description workflow\n- robot state/model inspection",
+      "source_line_start": 326,
+      "source_line_end": 331
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository develops the ability to convert a conceptual mobile robot into a ROS-compatible model with:\n\n- geometry,\n- kinematics,\n- collision shapes,\n- inertia,\n- simulator plugins,\n- launch/build packaging.\n\nThat is a meaningful systems-integration skill because correctness spans XML structure, physics semantics, ROS packaging, and simulator expectations.",
+      "source_line_start": 331,
+      "source_line_end": 344
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "This follows `Turtle-Hunter`.\n\nThe earlier repository controlled an already-provided simulated turtle.\n\nThis repository instead starts modeling the robot itself.\n\nThat shifts the robotics work from middleware behavior toward representation and simulation infrastructure.",
+      "source_line_start": 344,
+      "source_line_end": 354
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository centered on URDF/Xacro robot-description engineering.\n\nIt is also the earliest observed checked-in Gazebo differential-drive plugin configuration.",
+      "source_line_start": 354,
+      "source_line_end": 360
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Maintenance Span",
+      "normalized_title": "Maintenance Span",
+      "key": "maintenance_span",
+      "path": [
+        "Maintenance Span"
+      ],
+      "content": "The repository was created on 2024-08-25.\n\nIts latest meaningful repository update is 2024-10-12.\n\nThe later activity consists of README maintenance.\n\nThat means the implementation belongs historically to the late-August robotics sequence while documentation continued later.",
+      "source_line_start": 360,
+      "source_line_end": 370
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "No automated test suite is checked in.\n\nGenerated build artifacts are committed into the repository, increasing repository noise.\n\nThe differential-drive plugin visibly maps both wheel-joint fields to the same left-wheel joint.\n\nNo production robot hardware integration is evidenced here.\n\nNo Nav2 path-planning configuration is evidenced in this repository.",
+      "source_line_start": 370,
+      "source_line_end": 382
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`RVIZ-GAZEBO-URDF` captures the move from commanding a simulator-provided agent to defining a robot's own structure and physics.\n\nThe repository combines progressively more complex URDF examples with a packaged Xacro robot, simulation properties, a Gazebo differential-drive plugin, launch integration, and actual build artifacts.\n\nThat makes it a concrete robot-description and simulation-integration artifact rather than a command-note repository.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `ros`\n- `ros2`\n- `robotics`\n- `urdf`\n- `xacro`\n- `rviz`\n- `gazebo`\n- `robot-description`\n- `robot-kinematics`\n- `robot-links`\n- `robot-joints`\n- `continuous-joint`\n- `collision-geometry`\n- `inertial-modeling`\n- `differential-drive`\n- `gazebo-plugin`\n- `odometry`\n- `cmake`\n- `ros-package`\n- `ros-launch`\n- `build-artifact-evidence`\n- `simulation`\n- `manual-verification`\n- `module-decomposition`",
+      "source_line_start": 382,
+      "source_line_end": 418
+    }
+  ],
+  "raw_analysis": "# Repository 042 — RVIZ-GAZEBO-URDF\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/RVIZ-GAZEBO-URDF`\n- **Repository start date:** 2024-08-25\n- **Last meaningful update date:** 2024-10-12\n- **Primary repository language classification:** CMake\n- **Core formats:** URDF, Xacro, XML, ROS 2 package metadata\n- **Frameworks/tools:** ROS 2, RViz, Gazebo, CMake, Xacro\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** robot-description experiments plus a built ROS 2 description workspace and command notes\n\n## What This Project Is\n\n`RVIZ-GAZEBO-URDF` is a robotics-modeling repository focused on describing a robot structurally and making that description usable in ROS 2 visualization and Gazebo simulation.\n\nIt contains three layers of learning:\n\n- small standalone URDF experiments,\n- command/reference notes for ROS 2, URDF, and Gazebo,\n- a ROS 2 workspace containing the `sedrawybot_description` package.\n\nThe repository also checks in generated `build` artifacts, which provide direct evidence that the ROS package was passed through the CMake/colcon build path.\n\n## Repository Structure\n\nAt the root, the repository is organized into:\n\n- `Command Cheat Sheet/`,\n- `basics/`,\n- `gazebo/`.\n\nThe `basics` directory contains focused URDF models such as:\n\n- `jointing.urdf`,\n- `nonfixedjoints.urdf`,\n- `simpleboxwithwheel.urdf`.\n\nThe `gazebo` directory contains a ROS 2 workspace and repository documentation.\n\n## Robot Description Package\n\nInside the workspace, the source package is:\n\n`gazebo/ros2_rviz_ws/src/sedrawybot_description`.\n\nIts visible source structure contains:\n\n- `CMakeLists.txt`,\n- `package.xml`,\n- `config/`,\n- `launch/`,\n- `urdf/`.\n\nThis is a conventional ROS 2 robot-description package organization.\n\n## Xacro-Based Robot Model\n\nThe main model is:\n\n`urdf/sedrawybot.urdf.xacro`.\n\nIt defines a robot named `sedrawy`.\n\nThe model uses Xacro features rather than duplicating every physical element by hand.\n\nIt imports a common Xacro file and defines reusable properties and macros.\n\n## Xacro Properties and Macros\n\nThe model defines a body-length property.\n\nIt also defines a reusable `wheel_link` macro.\n\nThat macro creates wheel links with:\n\n- cylindrical visual geometry,\n- material assignment,\n- inertial properties,\n- collision geometry.\n\nThe macro is instantiated for both left and right wheels.\n\nThis demonstrates parameterized robot-description construction.\n\n## Inertia Modeling\n\nThe Xacro defines reusable inertia macros for:\n\n- spheres,\n- boxes.\n\nThe sphere macro computes the solid-sphere inertia expression from mass and radius.\n\nThe box macro computes the three principal inertia components from mass and dimensions.\n\nThe resulting inertial blocks are inserted into links.\n\nThis goes beyond a purely visual URDF.\n\nThe model carries physics-related mass and inertia data needed by simulation engines.\n\n## Robot Links\n\nThe main model includes:\n\n- `base_link`,\n- `second_link`,\n- `sphere_link`,\n- `right_wheel_link`,\n- `left_wheel_link`.\n\nThe body link uses box geometry.\n\nThe sphere link uses sphere geometry.\n\nThe wheel links use cylinder geometry.\n\nEach physical element has a clear role in the kinematic model.\n\n## Collision Geometry\n\nCollision elements are defined separately from visual elements.\n\nThe body has box collision geometry.\n\nThe sphere has sphere collision geometry.\n\nThe wheels have cylinder collision geometry.\n\nThis distinguishes visual representation from simulation collision representation.\n\n## Joint Modeling\n\nThe model defines multiple joint types.\n\nA fixed joint connects the sphere to the body.\n\nAnother fixed joint connects the base to the body.\n\nContinuous joints connect the left and right wheel links.\n\nThe wheel joints define a rotational axis.\n\nThis demonstrates both rigid and rotational kinematic relationships.\n\n## Gazebo Integration\n\nThe Xacro embeds a Gazebo plugin declaration.\n\nThe plugin references:\n\n`libgazebo_ros_diff_drive.so`.\n\nIt configures differential-drive behavior.\n\nVisible configuration includes:\n\n- update rate,\n- wheel joints,\n- wheel separation,\n- wheel diameter,\n- odometry publication,\n- `/odom` topic,\n- odometry frame,\n- robot base frame.\n\nThis is concrete simulator integration, not only an RViz visualization model.\n\n## Differential-Drive Configuration Boundary\n\nThe checked-in plugin configuration maps both `left_joint` and `right_joint` to `base_lwheel`.\n\nThat likely prevents the configuration from representing the intended two-wheel pairing.\n\nThe corpus records the actual checked-in configuration rather than silently correcting it.\n\nThis is useful implementation evidence and also a concrete limitation.\n\n## ROS 2 Launch Integration\n\nThe package contains:\n\n`launch/display.launch.xml`.\n\nThat establishes a launch-level integration artifact for displaying the robot-description package.\n\nThe package structure also contains configuration files intended for the visualization/runtime workflow.\n\n## CMake and Package Metadata\n\n`CMakeLists.txt` and `package.xml` are checked into the source package.\n\nThe repository therefore contains:\n\n- ROS package metadata,\n- CMake build configuration,\n- installable robot-description assets,\n- launch assets.\n\nThis is stronger evidence than loose `.urdf` files alone.\n\n## Build Evidence\n\nThe repository checks in `gazebo/ros2_rviz_ws/build`.\n\nVisible build artifacts include:\n\n- `CMakeCache.txt`,\n- generated CMake files,\n- compiler-identification artifacts,\n- package-specific build directories.\n\nThis demonstrates that the workspace reached at least the configuration/build stage.\n\nIt does not by itself prove a clean fresh build on another machine.\n\n## URDF Learning Progression\n\nThe `basics` directory preserves focused experiments before the larger Xacro model.\n\nThe visible filenames show progression through:\n\n- simple body/wheel composition,\n- jointing,\n- non-fixed joints.\n\nThe later package then moves to reusable Xacro and Gazebo integration.\n\n## RViz Role\n\nThe repository title and command notes establish RViz as the visualization environment.\n\nThe robot-description package is structured to make the model available to ROS tools.\n\nThis is a robot-model visualization workflow rather than application UI development.\n\n## Gazebo Role\n\nGazebo is used as the physics/simulation environment.\n\nThe robot model includes:\n\n- inertia,\n- collision geometry,\n- differential-drive plugin configuration.\n\nThose are simulation-facing concerns.\n\n## Engineering Work Evidenced\n\nThe repository positively demonstrates:\n\n- URDF modeling,\n- Xacro parameterization,\n- reusable Xacro macros,\n- robot link composition,\n- fixed and continuous joints,\n- collision geometry,\n- inertial modeling,\n- ROS 2 package structure,\n- CMake-based package configuration,\n- launch-file integration,\n- Gazebo plugin integration,\n- differential-drive configuration,\n- odometry topic configuration,\n- build-tool execution.\n\n## Verification and Validation\n\nThe repository has no conventional automated unit test suite.\n\nVerification evidence instead comes from:\n\n- generated build artifacts,\n- RViz/Gazebo-oriented repository documentation,\n- maintained robot-description files,\n- later README updates.\n\nThe repository is therefore best characterized as simulation/visualization-verified learning work rather than automated-test-driven software.\n\n## Engineering Discipline\n\nThe source package separates:\n\n- model definition,\n- configuration,\n- launch behavior,\n- package metadata.\n\nXacro macros reduce duplication.\n\nPhysics properties are explicitly represented.\n\nThe repository preserves incremental learning artifacts instead of only the final robot model.\n\n## Skills Demonstrated\n\n### Robot Modeling\n\n- URDF\n- Xacro\n- robot links\n- joint definitions\n- collision geometry\n- inertial properties\n- reusable model macros\n\n### ROS 2 Packaging\n\n- CMake\n- `package.xml`\n- launch assets\n- description package layout\n- build workspace structure\n\n### Simulation\n\n- Gazebo\n- differential-drive plugin\n- odometry configuration\n- wheel geometry\n- physics-facing robot parameters\n\n### Visualization\n\n- RViz-oriented description workflow\n- robot state/model inspection\n\n## Capability Developed\n\nThe repository develops the ability to convert a conceptual mobile robot into a ROS-compatible model with:\n\n- geometry,\n- kinematics,\n- collision shapes,\n- inertia,\n- simulator plugins,\n- launch/build packaging.\n\nThat is a meaningful systems-integration skill because correctness spans XML structure, physics semantics, ROS packaging, and simulator expectations.\n\n## Portfolio Evolution\n\nThis follows `Turtle-Hunter`.\n\nThe earlier repository controlled an already-provided simulated turtle.\n\nThis repository instead starts modeling the robot itself.\n\nThat shifts the robotics work from middleware behavior toward representation and simulation infrastructure.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository centered on URDF/Xacro robot-description engineering.\n\nIt is also the earliest observed checked-in Gazebo differential-drive plugin configuration.\n\n## Maintenance Span\n\nThe repository was created on 2024-08-25.\n\nIts latest meaningful repository update is 2024-10-12.\n\nThe later activity consists of README maintenance.\n\nThat means the implementation belongs historically to the late-August robotics sequence while documentation continued later.\n\n## Limitations\n\nNo automated test suite is checked in.\n\nGenerated build artifacts are committed into the repository, increasing repository noise.\n\nThe differential-drive plugin visibly maps both wheel-joint fields to the same left-wheel joint.\n\nNo production robot hardware integration is evidenced here.\n\nNo Nav2 path-planning configuration is evidenced in this repository.\n\n## Overall Narrative\n\n`RVIZ-GAZEBO-URDF` captures the move from commanding a simulator-provided agent to defining a robot's own structure and physics.\n\nThe repository combines progressively more complex URDF examples with a packaged Xacro robot, simulation properties, a Gazebo differential-drive plugin, launch integration, and actual build artifacts.\n\nThat makes it a concrete robot-description and simulation-integration artifact rather than a command-note repository.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `ros`\n- `ros2`\n- `robotics`\n- `urdf`\n- `xacro`\n- `rviz`\n- `gazebo`\n- `robot-description`\n- `robot-kinematics`\n- `robot-links`\n- `robot-joints`\n- `continuous-joint`\n- `collision-geometry`\n- `inertial-modeling`\n- `differential-drive`\n- `gazebo-plugin`\n- `odometry`\n- `cmake`\n- `ros-package`\n- `ros-launch`\n- `build-artifact-evidence`\n- `simulation`\n- `manual-verification`\n- `module-decomposition`\n"
+}

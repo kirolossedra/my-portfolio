@@ -1,0 +1,798 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 19,
+  "repository_total": 134,
+  "repository_name": "RADAR-Experiement-SENSOR-FUSION-TEAM",
+  "header_title": "RADAR-Experiement-SENSOR-FUSION-TEAM",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-019-RADAR-Experiement-SENSOR-FUSION-TEAM/README.md",
+    "line_start": 1,
+    "line_end": 406,
+    "sha256": "4b5dfda0b44ca364bcfad1f09db7a64ed958c964641d146bb24f65ed03aaa8e6"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "autonomous-driving-simulation",
+    "sensor-simulation-project",
+    "group-project",
+    "matlab",
+    "simulink",
+    "prescan",
+    "vehicle-simulation",
+    "radar-simulation",
+    "sensor-configuration",
+    "3d-simulation-assets",
+    "ros",
+    "ros-node",
+    "ros-topics",
+    "publish-subscribe",
+    "topic-publication",
+    "topic-subscription",
+    "sensor-fusion",
+    "autonomous-driving",
+    "radar-range",
+    "doppler-velocity",
+    "azimuth-elevation",
+    "target-identification",
+    "energy-loss",
+    "hardware-system-integration",
+    "signal-interface-definition",
+    "earliest-observed-autonomous-driving",
+    "earliest-observed-radar-simulation",
+    "earliest-observed-ros",
+    "earliest-observed-simulink",
+    "earliest-observed-sensor-fusion"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s012"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Target Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 019 / 134\n- Name: `RADAR-Experiement-SENSOR-FUSION-TEAM`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-02-28\n- Primary type: Autonomous-driving sensor simulation repository\n- Technical field: Radar simulation, ROS integration, and sensor fusion\n- Application domain: Autonomous / self-driving vehicle sensing\n- Project context: Sensor Fusion Team work within an autonomous vehicle project\n- Collaboration type: `group-project`\n- Primary environment: MATLAB / Simulink / PreScan\n\n## Target Identity\n`TargetID[-]` identifies the detected object type."
+    },
+    "testing": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "Verification and Demonstration"
+      ],
+      "text": "## Verification and Demonstration\n### Published Topic Evidence\n\nREADME screenshots document radar signals being published.\n\n### Subscriber Evidence\n\nSeparate screenshots document signal subscription.\n\n### Executable Simulation State\n\nCommitted Simulink/PreScan project files and sensor assignments provide an executable-model evidence layer beyond documentation alone."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s047"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository explicitly identifies itself as the work of a **Sensor Fusion Team** and describes the radar experiment as a component intended to integrate with other teams in an autonomous self-driving aided vehicle project.\n\nThe visible GitHub commits are owner-attributed, including the final README update, so the repository owner clearly maintained and documented this repository.\n\nThe system-level project context is collaborative; the corpus therefore separates the repository's technical capability from any unsupported claim that one person authored the complete autonomous-vehicle stack or all generated simulation assets.\n\n## Collaboration and Authorship\n- `group-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 019 / 134\n- Name: `RADAR-Experiement-SENSOR-FUSION-TEAM`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-02-28\n- Primary type: Autonomous-driving sensor simulation repository\n- Technical field: Radar simulation, ROS integration, and sensor fusion\n- Application domain: Autonomous / self-driving vehicle sensing\n- Project context: Sensor Fusion Team work within an autonomous vehicle project\n- Collaboration type: `group-project`\n- Primary environment: MATLAB / Simulink / PreScan",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository explicitly identifies itself as the work of a **Sensor Fusion Team** and describes the radar experiment as a component intended to integrate with other teams in an autonomous self-driving aided vehicle project.\n\nThe visible GitHub commits are owner-attributed, including the final README update, so the repository owner clearly maintained and documented this repository.\n\nThe system-level project context is collaborative; the corpus therefore separates the repository's technical capability from any unsupported claim that one person authored the complete autonomous-vehicle stack or all generated simulation assets.",
+      "source_line_start": 16,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a substantial PreScan/Simulink simulation artifact set, including:\n\n- `radar_final_cs.slx` and related Simulink versions/autosaves;\n- `radar_final.pb`;\n- `radar_final.pex`;\n- `radar_final.references`;\n- `radar_final.tunable`;\n- `RadarSensorConfig/RadarSensorAssignments.xml`;\n- Aimsun integration configuration;\n- Vissim integration configuration;\n- V2X plugin configuration;\n- viewer/camera plugin artifacts;\n- 3D world/model assets;\n- simulation cache/state files;\n- repository documentation of ROS topic publication and subscription.\n\nThe README documents the radar-signal model and shows publication/subscription screenshots.",
+      "source_line_start": 24,
+      "source_line_end": 44
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "This repository captures a radar-sensor simulation experiment used by a sensor-fusion team inside a larger autonomous-vehicle project.\n\nIts explicit goal is to simulate radar measurements in PreScan and expose radar outputs through ROS topics so that other components can publish, subscribe, and integrate the measurements into a broader vehicle-sensing workflow.\n\nThe repository therefore sits at the intersection of:\n\n- simulated vehicle environments;\n- radar sensing;\n- MATLAB/Simulink modeling;\n- ROS messaging;\n- inter-team sensor-fusion integration.\n\nIt is not merely a static signal list: the committed experiment includes complete simulation/project artifacts and documentation of live topic publication and subscription behavior.",
+      "source_line_start": 44,
+      "source_line_end": 60
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "System Shape",
+      "normalized_title": "System Shape",
+      "key": "system_shape",
+      "path": [
+        "System Shape"
+      ],
+      "content": "```text\nPreScan / simulated world\n          ↓\n     Radar sensor\n          ↓\n   radar signal outputs\n          ↓\n MATLAB / Simulink model\n          ↓\n       ROS node\n          ↓\n topic-per-signal publication\n          ↓\n ROS subscribers / other teams\n          ↓\n broader sensor-fusion workflow\n```\n\nThe central integration idea is that simulated radar outputs become message-oriented interfaces rather than remaining isolated inside the simulator.",
+      "source_line_start": 60,
+      "source_line_end": 82
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Radar Signal Model",
+      "normalized_title": "Radar Signal Model",
+      "key": "radar_signal_model",
+      "path": [
+        "Radar Signal Model"
+      ],
+      "content": "The README documents a set of radar outputs with physical meaning.\n\n### Active Beam ID\n\n`Active BeamID[-]` identifies the active beam in the current simulation time step and uses zero when no detection exists.\n\n### Range\n\n`Range[m]` reports the range at which the target object is detected.\n\n### Doppler Velocity\n\n`DopplerVelocity[ms-1]` expresses target velocity relative to the sensor along the radar beam.\n\n### Cartesian Doppler Components\n\n`DopplerVelocityXYZ[ms-1]` decomposes relative target velocity into X, Y, and Z components in the sensor coordinate system.\n\n### Angular Measurements\n\nThe simulation documents:\n\n- `Theta[deg]` for azimuth;\n- `Phi[deg]` for elevation.\n\n### Target Identity\n\n`TargetID[-]` identifies the detected object type.\n\n### Energy Loss\n\n`EnergyLoss[dB]` represents the received/transmitted power ratio in decibels.\n\n### Incidence Angles\n\nThe signal set also includes:\n\n- `Alpha[deg]` for azimuthal incidence;\n- `Beta[deg]` for elevation incidence.\n\nThis gives the integration layer a rich sensor observation rather than a single range measurement.",
+      "source_line_start": 82,
+      "source_line_end": 126
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Active Beam ID",
+      "normalized_title": "Active Beam ID",
+      "key": "active_beam_id",
+      "path": [
+        "Radar Signal Model",
+        "Active Beam ID"
+      ],
+      "content": "`Active BeamID[-]` identifies the active beam in the current simulation time step and uses zero when no detection exists.",
+      "source_line_start": 86,
+      "source_line_end": 90
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Range",
+      "normalized_title": "Range",
+      "key": "range",
+      "path": [
+        "Radar Signal Model",
+        "Range"
+      ],
+      "content": "`Range[m]` reports the range at which the target object is detected.",
+      "source_line_start": 90,
+      "source_line_end": 94
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Doppler Velocity",
+      "normalized_title": "Doppler Velocity",
+      "key": "doppler_velocity",
+      "path": [
+        "Radar Signal Model",
+        "Doppler Velocity"
+      ],
+      "content": "`DopplerVelocity[ms-1]` expresses target velocity relative to the sensor along the radar beam.",
+      "source_line_start": 94,
+      "source_line_end": 98
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Cartesian Doppler Components",
+      "normalized_title": "Cartesian Doppler Components",
+      "key": "cartesian_doppler_components",
+      "path": [
+        "Radar Signal Model",
+        "Cartesian Doppler Components"
+      ],
+      "content": "`DopplerVelocityXYZ[ms-1]` decomposes relative target velocity into X, Y, and Z components in the sensor coordinate system.",
+      "source_line_start": 98,
+      "source_line_end": 102
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Angular Measurements",
+      "normalized_title": "Angular Measurements",
+      "key": "angular_measurements",
+      "path": [
+        "Radar Signal Model",
+        "Angular Measurements"
+      ],
+      "content": "The simulation documents:\n\n- `Theta[deg]` for azimuth;\n- `Phi[deg]` for elevation.",
+      "source_line_start": 102,
+      "source_line_end": 109
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Target Identity",
+      "normalized_title": "Target Identity",
+      "key": "target_identity",
+      "path": [
+        "Radar Signal Model",
+        "Target Identity"
+      ],
+      "content": "`TargetID[-]` identifies the detected object type.",
+      "source_line_start": 109,
+      "source_line_end": 113
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Energy Loss",
+      "normalized_title": "Energy Loss",
+      "key": "energy_loss",
+      "path": [
+        "Radar Signal Model",
+        "Energy Loss"
+      ],
+      "content": "`EnergyLoss[dB]` represents the received/transmitted power ratio in decibels.",
+      "source_line_start": 113,
+      "source_line_end": 117
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Incidence Angles",
+      "normalized_title": "Incidence Angles",
+      "key": "incidence_angles",
+      "path": [
+        "Radar Signal Model",
+        "Incidence Angles"
+      ],
+      "content": "The signal set also includes:\n\n- `Alpha[deg]` for azimuthal incidence;\n- `Beta[deg]` for elevation incidence.\n\nThis gives the integration layer a rich sensor observation rather than a single range measurement.",
+      "source_line_start": 117,
+      "source_line_end": 126
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "ROS Integration",
+      "normalized_title": "ROS Integration",
+      "key": "ros_integration",
+      "path": [
+        "ROS Integration"
+      ],
+      "content": "The README explicitly instructs starting a ROS node from MATLAB with:\n\n```text\nrosinit\n```\n\nThe project then publishes radar signals as ROS topics.\n\nThe documentation states that each radar signal is shared in a topic associated with its signal name.\n\nThis provides a clean integration boundary between the simulation model and external consumers.",
+      "source_line_start": 126,
+      "source_line_end": 140
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Publication Workflow",
+      "normalized_title": "Publication Workflow",
+      "key": "publication_workflow",
+      "path": [
+        "Publication Workflow"
+      ],
+      "content": "The README includes screenshots under a `Publishing Signals` section.\n\nThese images are evidence that the model was exercised as a publisher rather than only designed as a diagram.\n\nThe topic-based interface allows downstream systems to consume individual radar measurements without direct access to the simulator's internal model state.",
+      "source_line_start": 140,
+      "source_line_end": 148
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Subscription Workflow",
+      "normalized_title": "Subscription Workflow",
+      "key": "subscription_workflow",
+      "path": [
+        "Subscription Workflow"
+      ],
+      "content": "A separate `Subscriping Signals` section shows subscriber-side screenshots.\n\nThis documents the complementary read path and demonstrates that the experiment considered both sides of message exchange:\n\n- publish simulated radar outputs;\n- subscribe to those outputs from another ROS participant.",
+      "source_line_start": 148,
+      "source_line_end": 157
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "MATLAB and Simulink",
+      "normalized_title": "MATLAB and Simulink",
+      "key": "matlab_and_simulink",
+      "path": [
+        "MATLAB and Simulink"
+      ],
+      "content": "The repository includes multiple Simulink model variants and cached model state.\n\n`radar_final_cs.slx` is the central committed Simulink artifact, with additional forms preserved for different versions and autosave/original states.\n\nThe presence of `.slxc`, `slprj`, `.mat`, and versioned `.slx` artifacts places the experiment in a real Simulink execution workflow rather than a text-only conceptual exercise.",
+      "source_line_start": 157,
+      "source_line_end": 165
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "PreScan Simulation Artifacts",
+      "normalized_title": "PreScan Simulation Artifacts",
+      "key": "prescan_simulation_artifacts",
+      "path": [
+        "PreScan Simulation Artifacts"
+      ],
+      "content": "The repository contains PreScan-style experiment and world files, including:\n\n- `.pb`;\n- `.pepb`;\n- `.pex`;\n- `.references`;\n- `.tunable`;\n- `.ps3d`;\n- `.osgb`.\n\nThese artifacts represent the simulated environment, configuration, references, and 3D world/model resources used by the experiment.",
+      "source_line_start": 165,
+      "source_line_end": 179
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Sensor Configuration",
+      "normalized_title": "Sensor Configuration",
+      "key": "sensor_configuration",
+      "path": [
+        "Sensor Configuration"
+      ],
+      "content": "`RadarSensorConfig/RadarSensorAssignments.xml` provides explicit radar-sensor assignment configuration.\n\nThis is concrete evidence that radar behavior is configured as part of the simulation environment rather than merely described in prose.",
+      "source_line_start": 179,
+      "source_line_end": 185
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Simulation Ecosystem Integrations",
+      "normalized_title": "Simulation Ecosystem Integrations",
+      "key": "simulation_ecosystem_integrations",
+      "path": [
+        "Simulation Ecosystem Integrations"
+      ],
+      "content": "The repository also stores configuration for:\n\n- Aimsun;\n- Vissim;\n- V2X;\n- remote/world viewers;\n- physics-based camera tooling.\n\nThese files show that the experiment lives in a broader vehicle-simulation ecosystem with multiple optional federates/plugins and external simulation interfaces.\n\nThe corpus treats these as repository-level integration artifacts rather than claiming that every plugin was personally implemented from source.",
+      "source_line_start": 185,
+      "source_line_end": 199
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "3D Environment Assets",
+      "normalized_title": "D Environment Assets",
+      "key": "d_environment_assets",
+      "path": [
+        "3D Environment Assets"
+      ],
+      "content": "The `Models` hierarchy includes:\n\n- road/asphalt textures;\n- material data;\n- a world model;\n- image resources.\n\nThese assets support a physically rendered simulation scene used by the experiment.",
+      "source_line_start": 199,
+      "source_line_end": 210
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Topic-Oriented Integration\n\nRadar measurements are exposed as named ROS topics.\n\nThis turns simulator outputs into an interface that can be consumed by independently developed components.\n\n### Signal-Level Interface Definition\n\nThe README documents the semantics and units of each radar field.\n\nThat is important in a multi-team integration context because downstream consumers need shared meaning, not only transport connectivity.\n\n### Simulation Artifact Preservation\n\nThe repository preserves the model, world, sensor configuration, plugin configuration, and runtime artifacts together.\n\nThis creates a concrete snapshot of the simulation environment used for integration work.\n\n### Cross-Team Boundary\n\nThe repository description explicitly says the radar experiment supports integration with other teams in the autonomous vehicle project.\n\nThe ROS topic layer acts as that cross-team technical boundary.",
+      "source_line_start": 210,
+      "source_line_end": 236
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Topic-Oriented Integration",
+      "normalized_title": "Topic-Oriented Integration",
+      "key": "topic_oriented_integration",
+      "path": [
+        "Engineering Practices",
+        "Topic-Oriented Integration"
+      ],
+      "content": "Radar measurements are exposed as named ROS topics.\n\nThis turns simulator outputs into an interface that can be consumed by independently developed components.",
+      "source_line_start": 212,
+      "source_line_end": 218
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Signal-Level Interface Definition",
+      "normalized_title": "Signal-Level Interface Definition",
+      "key": "signal_level_interface_definition",
+      "path": [
+        "Engineering Practices",
+        "Signal-Level Interface Definition"
+      ],
+      "content": "The README documents the semantics and units of each radar field.\n\nThat is important in a multi-team integration context because downstream consumers need shared meaning, not only transport connectivity.",
+      "source_line_start": 218,
+      "source_line_end": 224
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Simulation Artifact Preservation",
+      "normalized_title": "Simulation Artifact Preservation",
+      "key": "simulation_artifact_preservation",
+      "path": [
+        "Engineering Practices",
+        "Simulation Artifact Preservation"
+      ],
+      "content": "The repository preserves the model, world, sensor configuration, plugin configuration, and runtime artifacts together.\n\nThis creates a concrete snapshot of the simulation environment used for integration work.",
+      "source_line_start": 224,
+      "source_line_end": 230
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Cross-Team Boundary",
+      "normalized_title": "Cross-Team Boundary",
+      "key": "cross_team_boundary",
+      "path": [
+        "Engineering Practices",
+        "Cross-Team Boundary"
+      ],
+      "content": "The repository description explicitly says the radar experiment supports integration with other teams in the autonomous vehicle project.\n\nThe ROS topic layer acts as that cross-team technical boundary.",
+      "source_line_start": 230,
+      "source_line_end": 236
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Verification and Demonstration",
+      "normalized_title": "Verification and Demonstration",
+      "key": "verification_and_demonstration",
+      "path": [
+        "Verification and Demonstration"
+      ],
+      "content": "### Published Topic Evidence\n\nREADME screenshots document radar signals being published.\n\n### Subscriber Evidence\n\nSeparate screenshots document signal subscription.\n\n### Executable Simulation State\n\nCommitted Simulink/PreScan project files and sensor assignments provide an executable-model evidence layer beyond documentation alone.",
+      "source_line_start": 236,
+      "source_line_end": 250
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Published Topic Evidence",
+      "normalized_title": "Published Topic Evidence",
+      "key": "published_topic_evidence",
+      "path": [
+        "Verification and Demonstration",
+        "Published Topic Evidence"
+      ],
+      "content": "README screenshots document radar signals being published.",
+      "source_line_start": 238,
+      "source_line_end": 242
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Subscriber Evidence",
+      "normalized_title": "Subscriber Evidence",
+      "key": "subscriber_evidence",
+      "path": [
+        "Verification and Demonstration",
+        "Subscriber Evidence"
+      ],
+      "content": "Separate screenshots document signal subscription.",
+      "source_line_start": 242,
+      "source_line_end": 246
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Executable Simulation State",
+      "normalized_title": "Executable Simulation State",
+      "key": "executable_simulation_state",
+      "path": [
+        "Verification and Demonstration",
+        "Executable Simulation State"
+      ],
+      "content": "Committed Simulink/PreScan project files and sensor assignments provide an executable-model evidence layer beyond documentation alone.",
+      "source_line_start": 246,
+      "source_line_end": 250
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Repository Scale\n\nThis is a large artifact-heavy repository, with tens of megabytes of simulation assets rather than a small source-only exercise.\n\n### Integration Scale\n\nThe repository spans:\n\n- radar sensing;\n- simulation world configuration;\n- MATLAB/Simulink;\n- ROS messaging;\n- sensor assignments;\n- plugin/federate configuration;\n- cross-team autonomous-vehicle integration.\n\n### Data-Model Complexity\n\nA single radar detection exposes range, velocity, three-axis velocity decomposition, angular position, identity, power loss, and incidence-angle information.\n\n### System Complexity\n\nThe technically important challenge is coordinating tools and interfaces across simulation and robotics ecosystems rather than implementing one isolated algorithm.",
+      "source_line_start": 250,
+      "source_line_end": 276
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Repository Scale",
+      "normalized_title": "Repository Scale",
+      "key": "repository_scale",
+      "path": [
+        "Scale and Complexity",
+        "Repository Scale"
+      ],
+      "content": "This is a large artifact-heavy repository, with tens of megabytes of simulation assets rather than a small source-only exercise.",
+      "source_line_start": 252,
+      "source_line_end": 256
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Integration Scale",
+      "normalized_title": "Integration Scale",
+      "key": "integration_scale",
+      "path": [
+        "Scale and Complexity",
+        "Integration Scale"
+      ],
+      "content": "The repository spans:\n\n- radar sensing;\n- simulation world configuration;\n- MATLAB/Simulink;\n- ROS messaging;\n- sensor assignments;\n- plugin/federate configuration;\n- cross-team autonomous-vehicle integration.",
+      "source_line_start": 256,
+      "source_line_end": 268
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Data-Model Complexity",
+      "normalized_title": "Data-Model Complexity",
+      "key": "data_model_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Data-Model Complexity"
+      ],
+      "content": "A single radar detection exposes range, velocity, three-axis velocity decomposition, angular position, identity, power loss, and incidence-angle information.",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "System Complexity",
+      "normalized_title": "System Complexity",
+      "key": "system_complexity",
+      "path": [
+        "Scale and Complexity",
+        "System Complexity"
+      ],
+      "content": "The technically important challenge is coordinating tools and interfaces across simulation and robotics ecosystems rather than implementing one isolated algorithm.",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Simulation and Modeling\n\n- **PreScan-style vehicle simulation workflow — strong repository evidence.**\n- **MATLAB/Simulink model workflow — strong evidence.**\n- **Radar sensor configuration — strong evidence.**\n- **3D simulation environment assets — strong evidence.**\n\n### Robotics and Messaging\n\n- **ROS initialization from MATLAB — strong evidence.**\n- **ROS topic publication — strong evidence.**\n- **ROS topic subscription — strong evidence.**\n- **Signal-oriented interface design — strong evidence.**\n\n### Radar / Sensor Fusion\n\n- **Radar range measurement integration — strong evidence.**\n- **Doppler velocity signals — strong evidence.**\n- **Azimuth/elevation signal handling — strong evidence.**\n- **Target identity signals — strong evidence.**\n- **Energy-loss signal handling — strong evidence.**\n- **Sensor-fusion team integration context — strong evidence.**\n\n### Systems Integration\n\n- **Cross-tool integration — strong evidence.**\n- **Cross-team interface thinking — strong evidence.**\n- **Configuration-driven simulation — strong evidence.**",
+      "source_line_start": 276,
+      "source_line_end": 307
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Simulation and Modeling",
+      "normalized_title": "Simulation and Modeling",
+      "key": "simulation_and_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Simulation and Modeling"
+      ],
+      "content": "- **PreScan-style vehicle simulation workflow — strong repository evidence.**\n- **MATLAB/Simulink model workflow — strong evidence.**\n- **Radar sensor configuration — strong evidence.**\n- **3D simulation environment assets — strong evidence.**",
+      "source_line_start": 278,
+      "source_line_end": 285
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Robotics and Messaging",
+      "normalized_title": "Robotics and Messaging",
+      "key": "robotics_and_messaging",
+      "path": [
+        "Skills Demonstrated",
+        "Robotics and Messaging"
+      ],
+      "content": "- **ROS initialization from MATLAB — strong evidence.**\n- **ROS topic publication — strong evidence.**\n- **ROS topic subscription — strong evidence.**\n- **Signal-oriented interface design — strong evidence.**",
+      "source_line_start": 285,
+      "source_line_end": 292
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Radar / Sensor Fusion",
+      "normalized_title": "Radar / Sensor Fusion",
+      "key": "radar_sensor_fusion",
+      "path": [
+        "Skills Demonstrated",
+        "Radar / Sensor Fusion"
+      ],
+      "content": "- **Radar range measurement integration — strong evidence.**\n- **Doppler velocity signals — strong evidence.**\n- **Azimuth/elevation signal handling — strong evidence.**\n- **Target identity signals — strong evidence.**\n- **Energy-loss signal handling — strong evidence.**\n- **Sensor-fusion team integration context — strong evidence.**",
+      "source_line_start": 292,
+      "source_line_end": 301
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Systems Integration",
+      "normalized_title": "Systems Integration",
+      "key": "systems_integration",
+      "path": [
+        "Skills Demonstrated",
+        "Systems Integration"
+      ],
+      "content": "- **Cross-tool integration — strong evidence.**\n- **Cross-team interface thinking — strong evidence.**\n- **Configuration-driven simulation — strong evidence.**",
+      "source_line_start": 301,
+      "source_line_end": 307
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository introduces a very different form of engineering from the adjacent design-pattern and HDL exercises.\n\nThe core capability is **integration across engineering environments**.\n\nA simulated physical sensor must expose measurements with clear units and semantics; MATLAB/Simulink must participate in ROS; topics must be published and consumed; the experiment must remain connected to a broader autonomous-driving simulation environment.\n\nThat requires thinking simultaneously about:\n\n- physical signals;\n- simulation configuration;\n- software messaging;\n- interoperability;\n- team boundaries.",
+      "source_line_start": 307,
+      "source_line_end": 323
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- autonomous-driving simulation;\n- radar-sensor simulation;\n- ROS;\n- ROS topic publication;\n- ROS topic subscription;\n- MATLAB/Simulink integration;\n- PreScan simulation artifacts;\n- sensor-fusion team context;\n- simulated Doppler/range radar outputs.\n\nIt marks a clear expansion from local software/hardware exercises into multi-tool cyber-physical simulation and team integration.",
+      "source_line_start": 323,
+      "source_line_end": 339
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "The project provides an early bridge between software engineering and intelligent-vehicle systems.\n\nIts historical importance comes from making simulated sensing interoperable with a robotics messaging layer, allowing a radar subsystem to participate in a larger autonomous-vehicle architecture.\n\nIt also establishes an early portfolio precedent for work where the engineering result is not one executable source file, but a coordinated experiment spanning models, configuration, simulator assets, and inter-process interfaces.",
+      "source_line_start": 339,
+      "source_line_end": 347
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`RADAR-Experiement-SENSOR-FUSION-TEAM` is a collaborative autonomous-vehicle simulation repository centered on moving radar measurements from PreScan/Simulink into ROS topics for sensor-fusion integration.\n\nThe repository preserves the radar signal definitions, Simulink models, sensor assignments, vehicle-simulation project files, world assets, plugin configuration, and screenshots of publishing and subscribing. The owner-attributed repository history establishes direct maintenance/documentation involvement, while the broader system is explicitly framed as team work.\n\nIts strongest corpus evidence is cross-domain systems integration: simulated radar physics, MATLAB/Simulink, ROS message transport, and a team-oriented sensor-fusion boundary.\n\n# Project Tags",
+      "source_line_start": 347,
+      "source_line_end": 357
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `autonomous-driving-simulation`\n- `sensor-simulation-project`",
+      "source_line_start": 357,
+      "source_line_end": 362
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `group-project`",
+      "source_line_start": 362,
+      "source_line_end": 366
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Simulation and Modeling",
+      "normalized_title": "Simulation and Modeling",
+      "key": "simulation_and_modeling",
+      "path": [
+        "Simulation and Modeling"
+      ],
+      "content": "- `matlab`\n- `simulink`\n- `prescan`\n- `vehicle-simulation`\n- `radar-simulation`\n- `sensor-configuration`\n- `3d-simulation-assets`",
+      "source_line_start": 366,
+      "source_line_end": 376
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Robotics and Networking",
+      "normalized_title": "Robotics and Networking",
+      "key": "robotics_and_networking",
+      "path": [
+        "Robotics and Networking"
+      ],
+      "content": "- `ros`\n- `ros-node`\n- `ros-topics`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`",
+      "source_line_start": 376,
+      "source_line_end": 385
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Sensors and Autonomous Systems",
+      "normalized_title": "Sensors and Autonomous Systems",
+      "key": "sensors_and_autonomous_systems",
+      "path": [
+        "Sensors and Autonomous Systems"
+      ],
+      "content": "- `sensor-fusion`\n- `autonomous-driving`\n- `radar-range`\n- `doppler-velocity`\n- `azimuth-elevation`\n- `target-identification`\n- `energy-loss`",
+      "source_line_start": 385,
+      "source_line_end": 395
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `hardware-system-integration`\n- `signal-interface-definition`",
+      "source_line_start": 395,
+      "source_line_end": 400
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-autonomous-driving`\n- `earliest-observed-radar-simulation`\n- `earliest-observed-ros`\n- `earliest-observed-simulink`\n- `earliest-observed-sensor-fusion`",
+      "source_line_start": 400,
+      "source_line_end": 407
+    }
+  ],
+  "raw_analysis": "# RADAR-Experiement-SENSOR-FUSION-TEAM\n\n## Repository Identity\n\n- Repository: 019 / 134\n- Name: `RADAR-Experiement-SENSOR-FUSION-TEAM`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-02-28\n- Primary type: Autonomous-driving sensor simulation repository\n- Technical field: Radar simulation, ROS integration, and sensor fusion\n- Application domain: Autonomous / self-driving vehicle sensing\n- Project context: Sensor Fusion Team work within an autonomous vehicle project\n- Collaboration type: `group-project`\n- Primary environment: MATLAB / Simulink / PreScan\n\n## Collaboration and Authorship Context\n\nThe repository explicitly identifies itself as the work of a **Sensor Fusion Team** and describes the radar experiment as a component intended to integrate with other teams in an autonomous self-driving aided vehicle project.\n\nThe visible GitHub commits are owner-attributed, including the final README update, so the repository owner clearly maintained and documented this repository.\n\nThe system-level project context is collaborative; the corpus therefore separates the repository's technical capability from any unsupported claim that one person authored the complete autonomous-vehicle stack or all generated simulation assets.\n\n## Evidence Basis\n\nThe repository contains a substantial PreScan/Simulink simulation artifact set, including:\n\n- `radar_final_cs.slx` and related Simulink versions/autosaves;\n- `radar_final.pb`;\n- `radar_final.pex`;\n- `radar_final.references`;\n- `radar_final.tunable`;\n- `RadarSensorConfig/RadarSensorAssignments.xml`;\n- Aimsun integration configuration;\n- Vissim integration configuration;\n- V2X plugin configuration;\n- viewer/camera plugin artifacts;\n- 3D world/model assets;\n- simulation cache/state files;\n- repository documentation of ROS topic publication and subscription.\n\nThe README documents the radar-signal model and shows publication/subscription screenshots.\n\n## What This Project Is\n\nThis repository captures a radar-sensor simulation experiment used by a sensor-fusion team inside a larger autonomous-vehicle project.\n\nIts explicit goal is to simulate radar measurements in PreScan and expose radar outputs through ROS topics so that other components can publish, subscribe, and integrate the measurements into a broader vehicle-sensing workflow.\n\nThe repository therefore sits at the intersection of:\n\n- simulated vehicle environments;\n- radar sensing;\n- MATLAB/Simulink modeling;\n- ROS messaging;\n- inter-team sensor-fusion integration.\n\nIt is not merely a static signal list: the committed experiment includes complete simulation/project artifacts and documentation of live topic publication and subscription behavior.\n\n## System Shape\n\n```text\nPreScan / simulated world\n          ↓\n     Radar sensor\n          ↓\n   radar signal outputs\n          ↓\n MATLAB / Simulink model\n          ↓\n       ROS node\n          ↓\n topic-per-signal publication\n          ↓\n ROS subscribers / other teams\n          ↓\n broader sensor-fusion workflow\n```\n\nThe central integration idea is that simulated radar outputs become message-oriented interfaces rather than remaining isolated inside the simulator.\n\n## Radar Signal Model\n\nThe README documents a set of radar outputs with physical meaning.\n\n### Active Beam ID\n\n`Active BeamID[-]` identifies the active beam in the current simulation time step and uses zero when no detection exists.\n\n### Range\n\n`Range[m]` reports the range at which the target object is detected.\n\n### Doppler Velocity\n\n`DopplerVelocity[ms-1]` expresses target velocity relative to the sensor along the radar beam.\n\n### Cartesian Doppler Components\n\n`DopplerVelocityXYZ[ms-1]` decomposes relative target velocity into X, Y, and Z components in the sensor coordinate system.\n\n### Angular Measurements\n\nThe simulation documents:\n\n- `Theta[deg]` for azimuth;\n- `Phi[deg]` for elevation.\n\n### Target Identity\n\n`TargetID[-]` identifies the detected object type.\n\n### Energy Loss\n\n`EnergyLoss[dB]` represents the received/transmitted power ratio in decibels.\n\n### Incidence Angles\n\nThe signal set also includes:\n\n- `Alpha[deg]` for azimuthal incidence;\n- `Beta[deg]` for elevation incidence.\n\nThis gives the integration layer a rich sensor observation rather than a single range measurement.\n\n## ROS Integration\n\nThe README explicitly instructs starting a ROS node from MATLAB with:\n\n```text\nrosinit\n```\n\nThe project then publishes radar signals as ROS topics.\n\nThe documentation states that each radar signal is shared in a topic associated with its signal name.\n\nThis provides a clean integration boundary between the simulation model and external consumers.\n\n## Publication Workflow\n\nThe README includes screenshots under a `Publishing Signals` section.\n\nThese images are evidence that the model was exercised as a publisher rather than only designed as a diagram.\n\nThe topic-based interface allows downstream systems to consume individual radar measurements without direct access to the simulator's internal model state.\n\n## Subscription Workflow\n\nA separate `Subscriping Signals` section shows subscriber-side screenshots.\n\nThis documents the complementary read path and demonstrates that the experiment considered both sides of message exchange:\n\n- publish simulated radar outputs;\n- subscribe to those outputs from another ROS participant.\n\n## MATLAB and Simulink\n\nThe repository includes multiple Simulink model variants and cached model state.\n\n`radar_final_cs.slx` is the central committed Simulink artifact, with additional forms preserved for different versions and autosave/original states.\n\nThe presence of `.slxc`, `slprj`, `.mat`, and versioned `.slx` artifacts places the experiment in a real Simulink execution workflow rather than a text-only conceptual exercise.\n\n## PreScan Simulation Artifacts\n\nThe repository contains PreScan-style experiment and world files, including:\n\n- `.pb`;\n- `.pepb`;\n- `.pex`;\n- `.references`;\n- `.tunable`;\n- `.ps3d`;\n- `.osgb`.\n\nThese artifacts represent the simulated environment, configuration, references, and 3D world/model resources used by the experiment.\n\n## Sensor Configuration\n\n`RadarSensorConfig/RadarSensorAssignments.xml` provides explicit radar-sensor assignment configuration.\n\nThis is concrete evidence that radar behavior is configured as part of the simulation environment rather than merely described in prose.\n\n## Simulation Ecosystem Integrations\n\nThe repository also stores configuration for:\n\n- Aimsun;\n- Vissim;\n- V2X;\n- remote/world viewers;\n- physics-based camera tooling.\n\nThese files show that the experiment lives in a broader vehicle-simulation ecosystem with multiple optional federates/plugins and external simulation interfaces.\n\nThe corpus treats these as repository-level integration artifacts rather than claiming that every plugin was personally implemented from source.\n\n## 3D Environment Assets\n\nThe `Models` hierarchy includes:\n\n- road/asphalt textures;\n- material data;\n- a world model;\n- image resources.\n\nThese assets support a physically rendered simulation scene used by the experiment.\n\n## Engineering Practices\n\n### Topic-Oriented Integration\n\nRadar measurements are exposed as named ROS topics.\n\nThis turns simulator outputs into an interface that can be consumed by independently developed components.\n\n### Signal-Level Interface Definition\n\nThe README documents the semantics and units of each radar field.\n\nThat is important in a multi-team integration context because downstream consumers need shared meaning, not only transport connectivity.\n\n### Simulation Artifact Preservation\n\nThe repository preserves the model, world, sensor configuration, plugin configuration, and runtime artifacts together.\n\nThis creates a concrete snapshot of the simulation environment used for integration work.\n\n### Cross-Team Boundary\n\nThe repository description explicitly says the radar experiment supports integration with other teams in the autonomous vehicle project.\n\nThe ROS topic layer acts as that cross-team technical boundary.\n\n## Verification and Demonstration\n\n### Published Topic Evidence\n\nREADME screenshots document radar signals being published.\n\n### Subscriber Evidence\n\nSeparate screenshots document signal subscription.\n\n### Executable Simulation State\n\nCommitted Simulink/PreScan project files and sensor assignments provide an executable-model evidence layer beyond documentation alone.\n\n## Scale and Complexity\n\n### Repository Scale\n\nThis is a large artifact-heavy repository, with tens of megabytes of simulation assets rather than a small source-only exercise.\n\n### Integration Scale\n\nThe repository spans:\n\n- radar sensing;\n- simulation world configuration;\n- MATLAB/Simulink;\n- ROS messaging;\n- sensor assignments;\n- plugin/federate configuration;\n- cross-team autonomous-vehicle integration.\n\n### Data-Model Complexity\n\nA single radar detection exposes range, velocity, three-axis velocity decomposition, angular position, identity, power loss, and incidence-angle information.\n\n### System Complexity\n\nThe technically important challenge is coordinating tools and interfaces across simulation and robotics ecosystems rather than implementing one isolated algorithm.\n\n## Skills Demonstrated\n\n### Simulation and Modeling\n\n- **PreScan-style vehicle simulation workflow — strong repository evidence.**\n- **MATLAB/Simulink model workflow — strong evidence.**\n- **Radar sensor configuration — strong evidence.**\n- **3D simulation environment assets — strong evidence.**\n\n### Robotics and Messaging\n\n- **ROS initialization from MATLAB — strong evidence.**\n- **ROS topic publication — strong evidence.**\n- **ROS topic subscription — strong evidence.**\n- **Signal-oriented interface design — strong evidence.**\n\n### Radar / Sensor Fusion\n\n- **Radar range measurement integration — strong evidence.**\n- **Doppler velocity signals — strong evidence.**\n- **Azimuth/elevation signal handling — strong evidence.**\n- **Target identity signals — strong evidence.**\n- **Energy-loss signal handling — strong evidence.**\n- **Sensor-fusion team integration context — strong evidence.**\n\n### Systems Integration\n\n- **Cross-tool integration — strong evidence.**\n- **Cross-team interface thinking — strong evidence.**\n- **Configuration-driven simulation — strong evidence.**\n\n## Capability Developed\n\nThis repository introduces a very different form of engineering from the adjacent design-pattern and HDL exercises.\n\nThe core capability is **integration across engineering environments**.\n\nA simulated physical sensor must expose measurements with clear units and semantics; MATLAB/Simulink must participate in ROS; topics must be published and consumed; the experiment must remain connected to a broader autonomous-driving simulation environment.\n\nThat requires thinking simultaneously about:\n\n- physical signals;\n- simulation configuration;\n- software messaging;\n- interoperability;\n- team boundaries.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- autonomous-driving simulation;\n- radar-sensor simulation;\n- ROS;\n- ROS topic publication;\n- ROS topic subscription;\n- MATLAB/Simulink integration;\n- PreScan simulation artifacts;\n- sensor-fusion team context;\n- simulated Doppler/range radar outputs.\n\nIt marks a clear expansion from local software/hardware exercises into multi-tool cyber-physical simulation and team integration.\n\n## Historical Significance\n\nThe project provides an early bridge between software engineering and intelligent-vehicle systems.\n\nIts historical importance comes from making simulated sensing interoperable with a robotics messaging layer, allowing a radar subsystem to participate in a larger autonomous-vehicle architecture.\n\nIt also establishes an early portfolio precedent for work where the engineering result is not one executable source file, but a coordinated experiment spanning models, configuration, simulator assets, and inter-process interfaces.\n\n## Overall Repository Narrative\n\n`RADAR-Experiement-SENSOR-FUSION-TEAM` is a collaborative autonomous-vehicle simulation repository centered on moving radar measurements from PreScan/Simulink into ROS topics for sensor-fusion integration.\n\nThe repository preserves the radar signal definitions, Simulink models, sensor assignments, vehicle-simulation project files, world assets, plugin configuration, and screenshots of publishing and subscribing. The owner-attributed repository history establishes direct maintenance/documentation involvement, while the broader system is explicitly framed as team work.\n\nIts strongest corpus evidence is cross-domain systems integration: simulated radar physics, MATLAB/Simulink, ROS message transport, and a team-oriented sensor-fusion boundary.\n\n# Project Tags\n\n## Project Type\n\n- `autonomous-driving-simulation`\n- `sensor-simulation-project`\n\n## Collaboration and Authorship\n\n- `group-project`\n\n## Simulation and Modeling\n\n- `matlab`\n- `simulink`\n- `prescan`\n- `vehicle-simulation`\n- `radar-simulation`\n- `sensor-configuration`\n- `3d-simulation-assets`\n\n## Robotics and Networking\n\n- `ros`\n- `ros-node`\n- `ros-topics`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`\n\n## Sensors and Autonomous Systems\n\n- `sensor-fusion`\n- `autonomous-driving`\n- `radar-range`\n- `doppler-velocity`\n- `azimuth-elevation`\n- `target-identification`\n- `energy-loss`\n\n## Systems Engineering\n\n- `hardware-system-integration`\n- `signal-interface-definition`\n\n## Portfolio Significance\n\n- `earliest-observed-autonomous-driving`\n- `earliest-observed-radar-simulation`\n- `earliest-observed-ros`\n- `earliest-observed-simulink`\n- `earliest-observed-sensor-fusion`\n"
+}

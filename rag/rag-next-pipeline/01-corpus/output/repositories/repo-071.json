@@ -1,0 +1,641 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 71,
+  "repository_total": 134,
+  "repository_name": "Bash-Scripting",
+  "header_title": "Bash-Scripting",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-071-Bash-Scripting/README.md",
+    "line_start": 1,
+    "line_end": 296,
+    "sha256": "5cef02c32338a1d97501efaa494446d831d0550fec7ceb4d19c2f4da1f076fb8"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "scripting-utility-collection",
+    "developer-tooling",
+    "filesystem-automation",
+    "individual-project",
+    "windows-batch",
+    "powershell",
+    "file-renaming",
+    "directory-generation",
+    "recursive-directory-search",
+    "recursive-file-deletion",
+    "text-file-processing",
+    "parameterized-script",
+    "input-validation",
+    "automation",
+    "operational-tooling",
+    "earliest-observed-windows-batch",
+    "earliest-observed-powershell",
+    "earliest-observed-windows-filesystem-automation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Bash-Scripting`\n- **Repository start date:** 2024-10-26\n- **Last meaningful update date:** 2024-11-21\n- **Latest meaningful commit:** `c196d94ed379f991975d2def156c22b7dae915dc`\n- **Primary technical field:** Windows filesystem automation\n- **Primary technologies:** Windows Batch, PowerShell\n- **Project context:** personal scripting utility collection\n- **Collaboration classification:** `individual-project`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s038"
+      ],
+      "titles": [
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Bash-Scripting`\n- **Repository start date:** 2024-10-26\n- **Last meaningful update date:** 2024-11-21\n- **Latest meaningful commit:** `c196d94ed379f991975d2def156c22b7dae915dc`\n- **Primary technical field:** Windows filesystem automation\n- **Primary technologies:** Windows Batch, PowerShell\n- **Project context:** personal scripting utility collection\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "Despite the repository name, the checked-in executable scripts are:\n\n- `rename.bat`;\n- `naming.bat`;\n- `DeleteRecovery.ps1`.\n\nThe implementation evidence therefore supports **Windows Batch and PowerShell**, not Bash.\n\nThis distinction is important for RAG accuracy: repository naming is not substituted for source evidence.",
+      "source_line_start": 14,
+      "source_line_end": 26
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Bash-Scripting` is a compact utility repository for repetitive filesystem operations on Windows.\n\nThe scripts automate three concrete workflows:\n\n1. sequentially rename image files;\n2. create numbered directories from a line-oriented names file;\n3. recursively locate and delete directories named `RECOVERY`.\n\nThe repository is small, but each file has a narrow operational purpose.",
+      "source_line_start": 26,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "```text\nBash-Scripting/\n├── DeleteRecovery.ps1\n├── naming.bat\n├── rename.bat\n└── README.md\n```",
+      "source_line_start": 38,
+      "source_line_end": 48
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Sequential Image Renaming",
+      "normalized_title": "Sequential Image Renaming",
+      "key": "sequential_image_renaming",
+      "path": [
+        "Sequential Image Renaming"
+      ],
+      "content": "`rename.bat` operates on image files in the current working directory.\n\n### File Selection\n\nA `for` loop enumerates:\n\n- `*.jpg`;\n- `*.png`.\n\n### Counter State\n\nThe script initializes a counter at one and enables delayed environment-variable expansion.\n\n### Rename Operation\n\nEach image is renamed to a sequential number while retaining its original extension.\n\nConceptually:\n\n```text\nphotoA.jpg  → 1.jpg\nimageB.png  → 2.png\nscanC.jpg   → 3.jpg\n```\n\n### Batch-Scripting Concepts\n\nThis script demonstrates:\n\n- `@echo off`;\n- `setlocal`;\n- delayed expansion;\n- `for` loops;\n- file-extension expansion;\n- arithmetic with `set /a`;\n- `ren`.",
+      "source_line_start": 48,
+      "source_line_end": 87
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "File Selection",
+      "normalized_title": "File Selection",
+      "key": "file_selection",
+      "path": [
+        "Sequential Image Renaming",
+        "File Selection"
+      ],
+      "content": "A `for` loop enumerates:\n\n- `*.jpg`;\n- `*.png`.",
+      "source_line_start": 52,
+      "source_line_end": 59
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Counter State",
+      "normalized_title": "Counter State",
+      "key": "counter_state",
+      "path": [
+        "Sequential Image Renaming",
+        "Counter State"
+      ],
+      "content": "The script initializes a counter at one and enables delayed environment-variable expansion.",
+      "source_line_start": 59,
+      "source_line_end": 63
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Rename Operation",
+      "normalized_title": "Rename Operation",
+      "key": "rename_operation",
+      "path": [
+        "Sequential Image Renaming",
+        "Rename Operation"
+      ],
+      "content": "Each image is renamed to a sequential number while retaining its original extension.\n\nConceptually:\n\n```text\nphotoA.jpg  → 1.jpg\nimageB.png  → 2.png\nscanC.jpg   → 3.jpg\n```",
+      "source_line_start": 63,
+      "source_line_end": 75
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Batch-Scripting Concepts",
+      "normalized_title": "Batch-Scripting Concepts",
+      "key": "batch_scripting_concepts",
+      "path": [
+        "Sequential Image Renaming",
+        "Batch-Scripting Concepts"
+      ],
+      "content": "This script demonstrates:\n\n- `@echo off`;\n- `setlocal`;\n- delayed expansion;\n- `for` loops;\n- file-extension expansion;\n- arithmetic with `set /a`;\n- `ren`.",
+      "source_line_start": 75,
+      "source_line_end": 87
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Folder Generation from Text Data",
+      "normalized_title": "Folder Generation from Text Data",
+      "key": "folder_generation_from_text_data",
+      "path": [
+        "Folder Generation from Text Data"
+      ],
+      "content": "`naming.bat` turns a text file into a directory structure.\n\n### Input Guard\n\nThe script first checks whether `Names.txt` exists.\n\nIf the required file is absent, it exits early.\n\n### Line-Oriented Processing\n\n`for /f \"delims=\"` reads the text file line by line.\n\n### Deterministic Naming\n\nEach line becomes part of a folder name with a numeric prefix:\n\n```text\n0_<first line>\n1_<second line>\n2_<third line>\n```\n\n### Directory Creation\n\nThe script creates each resulting path through `mkdir`.\n\nThis is a small example of converting text data into filesystem structure.",
+      "source_line_start": 87,
+      "source_line_end": 117
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Input Guard",
+      "normalized_title": "Input Guard",
+      "key": "input_guard",
+      "path": [
+        "Folder Generation from Text Data",
+        "Input Guard"
+      ],
+      "content": "The script first checks whether `Names.txt` exists.\n\nIf the required file is absent, it exits early.",
+      "source_line_start": 91,
+      "source_line_end": 97
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Line-Oriented Processing",
+      "normalized_title": "Line-Oriented Processing",
+      "key": "line_oriented_processing",
+      "path": [
+        "Folder Generation from Text Data",
+        "Line-Oriented Processing"
+      ],
+      "content": "`for /f \"delims=\"` reads the text file line by line.",
+      "source_line_start": 97,
+      "source_line_end": 101
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Deterministic Naming",
+      "normalized_title": "Deterministic Naming",
+      "key": "deterministic_naming",
+      "path": [
+        "Folder Generation from Text Data",
+        "Deterministic Naming"
+      ],
+      "content": "Each line becomes part of a folder name with a numeric prefix:\n\n```text\n0_<first line>\n1_<second line>\n2_<third line>\n```",
+      "source_line_start": 101,
+      "source_line_end": 111
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Directory Creation",
+      "normalized_title": "Directory Creation",
+      "key": "directory_creation",
+      "path": [
+        "Folder Generation from Text Data",
+        "Directory Creation"
+      ],
+      "content": "The script creates each resulting path through `mkdir`.\n\nThis is a small example of converting text data into filesystem structure.",
+      "source_line_start": 111,
+      "source_line_end": 117
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "PowerShell Recursive Cleanup",
+      "normalized_title": "PowerShell Recursive Cleanup",
+      "key": "powershell_recursive_cleanup",
+      "path": [
+        "PowerShell Recursive Cleanup"
+      ],
+      "content": "`DeleteRecovery.ps1` uses a different Windows scripting environment for a recursive cleanup task.\n\n### Parameterized Root Path\n\nThe script accepts a `RootDir` parameter.\n\nA missing path triggers an explicit exception message.\n\n### Recursive Directory Discovery\n\nPowerShell's `Get-ChildItem` searches recursively for directories named:\n\n```text\nRECOVERY\n```\n\n### Pipeline Processing\n\nMatching directories are piped into `ForEach-Object`.\n\n### Recursive Deletion\n\nEach directory is removed through:\n\n```powershell\nRemove-Item -Recurse -Force\n```\n\n### Operational Output\n\nThe script prints each deleted folder and a final completion message.",
+      "source_line_start": 117,
+      "source_line_end": 151
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Parameterized Root Path",
+      "normalized_title": "Parameterized Root Path",
+      "key": "parameterized_root_path",
+      "path": [
+        "PowerShell Recursive Cleanup",
+        "Parameterized Root Path"
+      ],
+      "content": "The script accepts a `RootDir` parameter.\n\nA missing path triggers an explicit exception message.",
+      "source_line_start": 121,
+      "source_line_end": 127
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Recursive Directory Discovery",
+      "normalized_title": "Recursive Directory Discovery",
+      "key": "recursive_directory_discovery",
+      "path": [
+        "PowerShell Recursive Cleanup",
+        "Recursive Directory Discovery"
+      ],
+      "content": "PowerShell's `Get-ChildItem` searches recursively for directories named:\n\n```text\nRECOVERY\n```",
+      "source_line_start": 127,
+      "source_line_end": 135
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Pipeline Processing",
+      "normalized_title": "Pipeline Processing",
+      "key": "pipeline_processing",
+      "path": [
+        "PowerShell Recursive Cleanup",
+        "Pipeline Processing"
+      ],
+      "content": "Matching directories are piped into `ForEach-Object`.",
+      "source_line_start": 135,
+      "source_line_end": 139
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Recursive Deletion",
+      "normalized_title": "Recursive Deletion",
+      "key": "recursive_deletion",
+      "path": [
+        "PowerShell Recursive Cleanup",
+        "Recursive Deletion"
+      ],
+      "content": "Each directory is removed through:\n\n```powershell\nRemove-Item -Recurse -Force\n```",
+      "source_line_start": 139,
+      "source_line_end": 147
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Operational Output",
+      "normalized_title": "Operational Output",
+      "key": "operational_output",
+      "path": [
+        "PowerShell Recursive Cleanup",
+        "Operational Output"
+      ],
+      "content": "The script prints each deleted folder and a final completion message.",
+      "source_line_start": 147,
+      "source_line_end": 151
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Why Two Scripting Environments Matter",
+      "normalized_title": "Why Two Scripting Environments Matter",
+      "key": "why_two_scripting_environments_matter",
+      "path": [
+        "Why Two Scripting Environments Matter"
+      ],
+      "content": "The repository shows choosing a scripting environment based on the operation.\n\nBatch handles small current-directory transforms efficiently.\n\nPowerShell provides a richer object/pipeline model for recursive filesystem traversal.\n\nThat is more informative than treating all command automation as one generic “shell” skill.",
+      "source_line_start": 151,
+      "source_line_end": 161
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Input Validation\n\n`naming.bat` verifies that its source text file exists.\n\n`DeleteRecovery.ps1` requires or throws for the root-directory input.\n\n### Automation of Repetitive Work\n\nAll three scripts replace repetitive manual filesystem operations.\n\n### Parameterization\n\nThe PowerShell utility accepts its search root instead of hard-coding one path.\n\n### Progress Feedback\n\nScripts emit status messages after actions.\n\n### Extension Preservation\n\nThe image-renaming script retains the existing file extension while changing the base name.",
+      "source_line_start": 161,
+      "source_line_end": 185
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Engineering Practices",
+        "Input Validation"
+      ],
+      "content": "`naming.bat` verifies that its source text file exists.\n\n`DeleteRecovery.ps1` requires or throws for the root-directory input.",
+      "source_line_start": 163,
+      "source_line_end": 169
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Automation of Repetitive Work",
+      "normalized_title": "Automation of Repetitive Work",
+      "key": "automation_of_repetitive_work",
+      "path": [
+        "Engineering Practices",
+        "Automation of Repetitive Work"
+      ],
+      "content": "All three scripts replace repetitive manual filesystem operations.",
+      "source_line_start": 169,
+      "source_line_end": 173
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Parameterization",
+      "normalized_title": "Parameterization",
+      "key": "parameterization",
+      "path": [
+        "Engineering Practices",
+        "Parameterization"
+      ],
+      "content": "The PowerShell utility accepts its search root instead of hard-coding one path.",
+      "source_line_start": 173,
+      "source_line_end": 177
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Progress Feedback",
+      "normalized_title": "Progress Feedback",
+      "key": "progress_feedback",
+      "path": [
+        "Engineering Practices",
+        "Progress Feedback"
+      ],
+      "content": "Scripts emit status messages after actions.",
+      "source_line_start": 177,
+      "source_line_end": 181
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Extension Preservation",
+      "normalized_title": "Extension Preservation",
+      "key": "extension_preservation",
+      "path": [
+        "Engineering Practices",
+        "Extension Preservation"
+      ],
+      "content": "The image-renaming script retains the existing file extension while changing the base name.",
+      "source_line_start": 181,
+      "source_line_end": 185
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository contains only three short scripts.\n\nIts value comes from concrete automation breadth:\n\n- file enumeration;\n- renaming;\n- text-file iteration;\n- directory creation;\n- recursive search;\n- recursive deletion;\n- argument handling.",
+      "source_line_start": 185,
+      "source_line_end": 199
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Windows Batch\n\n- **Batch control flow — strong evidence.**\n- **Delayed variable expansion — strong evidence.**\n- **Filesystem iteration — strong evidence.**\n- **File renaming — strong evidence.**\n- **Folder creation — strong evidence.**\n\n### PowerShell\n\n- **Parameter handling — strong evidence.**\n- **Recursive filesystem traversal — strong evidence.**\n- **Object pipeline processing — strong evidence.**\n- **Recursive deletion — strong evidence.**\n\n### Automation\n\n- **Filesystem automation — strong evidence.**\n- **Input guards — strong evidence.**\n- **Small operational tooling — strong evidence.**",
+      "source_line_start": 199,
+      "source_line_end": 222
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Windows Batch",
+      "normalized_title": "Windows Batch",
+      "key": "windows_batch",
+      "path": [
+        "Skills Demonstrated",
+        "Windows Batch"
+      ],
+      "content": "- **Batch control flow — strong evidence.**\n- **Delayed variable expansion — strong evidence.**\n- **Filesystem iteration — strong evidence.**\n- **File renaming — strong evidence.**\n- **Folder creation — strong evidence.**",
+      "source_line_start": 201,
+      "source_line_end": 209
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "PowerShell",
+      "normalized_title": "PowerShell",
+      "key": "powershell",
+      "path": [
+        "Skills Demonstrated",
+        "PowerShell"
+      ],
+      "content": "- **Parameter handling — strong evidence.**\n- **Recursive filesystem traversal — strong evidence.**\n- **Object pipeline processing — strong evidence.**\n- **Recursive deletion — strong evidence.**",
+      "source_line_start": 209,
+      "source_line_end": 216
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Automation",
+      "normalized_title": "Automation",
+      "key": "automation",
+      "path": [
+        "Skills Demonstrated",
+        "Automation"
+      ],
+      "content": "- **Filesystem automation — strong evidence.**\n- **Input guards — strong evidence.**\n- **Small operational tooling — strong evidence.**",
+      "source_line_start": 216,
+      "source_line_end": 222
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository adds direct evidence of Windows-native scripting.\n\nEarlier command-line repositories focus on Linux and Unix tools.\n\nHere the portfolio expands into:\n\n- Windows Batch syntax;\n- PowerShell pipelines;\n- Windows-oriented filesystem automation.",
+      "source_line_start": 222,
+      "source_line_end": 234
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest processed repository with direct evidence of:\n\n- Windows Batch;\n- PowerShell;\n- Windows-focused filesystem automation.\n\nThe repository title itself is not used as evidence for Bash.",
+      "source_line_start": 234,
+      "source_line_end": 244
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Bash-Scripting` is a useful evidence-quality example because the source contradicts the repository name.\n\nThe corpus preserves what was actually implemented: Batch and PowerShell utilities.\n\nThat makes this repository relevant both technically and methodologically.",
+      "source_line_start": 244,
+      "source_line_end": 252
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Bash-Scripting` is a small collection of Windows automation scripts.\n\nThe code sequentially renames images, generates numbered folders from text input, and recursively removes `RECOVERY` directories using PowerShell.\n\nIts strongest evidence is pragmatic filesystem automation and the use of two different Windows scripting environments for distinct tasks.\n\n# Project Tags",
+      "source_line_start": 252,
+      "source_line_end": 262
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `scripting-utility-collection`\n- `developer-tooling`\n- `filesystem-automation`",
+      "source_line_start": 262,
+      "source_line_end": 268
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 268,
+      "source_line_end": 272
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `windows-batch`\n- `powershell`",
+      "source_line_start": 272,
+      "source_line_end": 277
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Tooling",
+      "normalized_title": "Tooling",
+      "key": "tooling",
+      "path": [
+        "Tooling"
+      ],
+      "content": "- `file-renaming`\n- `directory-generation`\n- `recursive-directory-search`\n- `recursive-file-deletion`\n- `text-file-processing`\n- `parameterized-script`",
+      "source_line_start": 277,
+      "source_line_end": 286
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `input-validation`\n- `automation`\n- `operational-tooling`",
+      "source_line_start": 286,
+      "source_line_end": 292
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-windows-batch`\n- `earliest-observed-powershell`\n- `earliest-observed-windows-filesystem-automation`",
+      "source_line_start": 292,
+      "source_line_end": 297
+    }
+  ],
+  "raw_analysis": "# Repository 071 — Bash-Scripting\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Bash-Scripting`\n- **Repository start date:** 2024-10-26\n- **Last meaningful update date:** 2024-11-21\n- **Latest meaningful commit:** `c196d94ed379f991975d2def156c22b7dae915dc`\n- **Primary technical field:** Windows filesystem automation\n- **Primary technologies:** Windows Batch, PowerShell\n- **Project context:** personal scripting utility collection\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nDespite the repository name, the checked-in executable scripts are:\n\n- `rename.bat`;\n- `naming.bat`;\n- `DeleteRecovery.ps1`.\n\nThe implementation evidence therefore supports **Windows Batch and PowerShell**, not Bash.\n\nThis distinction is important for RAG accuracy: repository naming is not substituted for source evidence.\n\n## What This Project Is\n\n`Bash-Scripting` is a compact utility repository for repetitive filesystem operations on Windows.\n\nThe scripts automate three concrete workflows:\n\n1. sequentially rename image files;\n2. create numbered directories from a line-oriented names file;\n3. recursively locate and delete directories named `RECOVERY`.\n\nThe repository is small, but each file has a narrow operational purpose.\n\n## Repository Shape\n\n```text\nBash-Scripting/\n├── DeleteRecovery.ps1\n├── naming.bat\n├── rename.bat\n└── README.md\n```\n\n## Sequential Image Renaming\n\n`rename.bat` operates on image files in the current working directory.\n\n### File Selection\n\nA `for` loop enumerates:\n\n- `*.jpg`;\n- `*.png`.\n\n### Counter State\n\nThe script initializes a counter at one and enables delayed environment-variable expansion.\n\n### Rename Operation\n\nEach image is renamed to a sequential number while retaining its original extension.\n\nConceptually:\n\n```text\nphotoA.jpg  → 1.jpg\nimageB.png  → 2.png\nscanC.jpg   → 3.jpg\n```\n\n### Batch-Scripting Concepts\n\nThis script demonstrates:\n\n- `@echo off`;\n- `setlocal`;\n- delayed expansion;\n- `for` loops;\n- file-extension expansion;\n- arithmetic with `set /a`;\n- `ren`.\n\n## Folder Generation from Text Data\n\n`naming.bat` turns a text file into a directory structure.\n\n### Input Guard\n\nThe script first checks whether `Names.txt` exists.\n\nIf the required file is absent, it exits early.\n\n### Line-Oriented Processing\n\n`for /f \"delims=\"` reads the text file line by line.\n\n### Deterministic Naming\n\nEach line becomes part of a folder name with a numeric prefix:\n\n```text\n0_<first line>\n1_<second line>\n2_<third line>\n```\n\n### Directory Creation\n\nThe script creates each resulting path through `mkdir`.\n\nThis is a small example of converting text data into filesystem structure.\n\n## PowerShell Recursive Cleanup\n\n`DeleteRecovery.ps1` uses a different Windows scripting environment for a recursive cleanup task.\n\n### Parameterized Root Path\n\nThe script accepts a `RootDir` parameter.\n\nA missing path triggers an explicit exception message.\n\n### Recursive Directory Discovery\n\nPowerShell's `Get-ChildItem` searches recursively for directories named:\n\n```text\nRECOVERY\n```\n\n### Pipeline Processing\n\nMatching directories are piped into `ForEach-Object`.\n\n### Recursive Deletion\n\nEach directory is removed through:\n\n```powershell\nRemove-Item -Recurse -Force\n```\n\n### Operational Output\n\nThe script prints each deleted folder and a final completion message.\n\n## Why Two Scripting Environments Matter\n\nThe repository shows choosing a scripting environment based on the operation.\n\nBatch handles small current-directory transforms efficiently.\n\nPowerShell provides a richer object/pipeline model for recursive filesystem traversal.\n\nThat is more informative than treating all command automation as one generic “shell” skill.\n\n## Engineering Practices\n\n### Input Validation\n\n`naming.bat` verifies that its source text file exists.\n\n`DeleteRecovery.ps1` requires or throws for the root-directory input.\n\n### Automation of Repetitive Work\n\nAll three scripts replace repetitive manual filesystem operations.\n\n### Parameterization\n\nThe PowerShell utility accepts its search root instead of hard-coding one path.\n\n### Progress Feedback\n\nScripts emit status messages after actions.\n\n### Extension Preservation\n\nThe image-renaming script retains the existing file extension while changing the base name.\n\n## Scale and Complexity\n\nThe repository contains only three short scripts.\n\nIts value comes from concrete automation breadth:\n\n- file enumeration;\n- renaming;\n- text-file iteration;\n- directory creation;\n- recursive search;\n- recursive deletion;\n- argument handling.\n\n## Skills Demonstrated\n\n### Windows Batch\n\n- **Batch control flow — strong evidence.**\n- **Delayed variable expansion — strong evidence.**\n- **Filesystem iteration — strong evidence.**\n- **File renaming — strong evidence.**\n- **Folder creation — strong evidence.**\n\n### PowerShell\n\n- **Parameter handling — strong evidence.**\n- **Recursive filesystem traversal — strong evidence.**\n- **Object pipeline processing — strong evidence.**\n- **Recursive deletion — strong evidence.**\n\n### Automation\n\n- **Filesystem automation — strong evidence.**\n- **Input guards — strong evidence.**\n- **Small operational tooling — strong evidence.**\n\n## Capability Developed\n\nThis repository adds direct evidence of Windows-native scripting.\n\nEarlier command-line repositories focus on Linux and Unix tools.\n\nHere the portfolio expands into:\n\n- Windows Batch syntax;\n- PowerShell pipelines;\n- Windows-oriented filesystem automation.\n\n## Portfolio Evolution Context\n\nThis is the earliest processed repository with direct evidence of:\n\n- Windows Batch;\n- PowerShell;\n- Windows-focused filesystem automation.\n\nThe repository title itself is not used as evidence for Bash.\n\n## Historical Significance\n\n`Bash-Scripting` is a useful evidence-quality example because the source contradicts the repository name.\n\nThe corpus preserves what was actually implemented: Batch and PowerShell utilities.\n\nThat makes this repository relevant both technically and methodologically.\n\n## Overall Repository Narrative\n\n`Bash-Scripting` is a small collection of Windows automation scripts.\n\nThe code sequentially renames images, generates numbered folders from text input, and recursively removes `RECOVERY` directories using PowerShell.\n\nIts strongest evidence is pragmatic filesystem automation and the use of two different Windows scripting environments for distinct tasks.\n\n# Project Tags\n\n## Project Type\n\n- `scripting-utility-collection`\n- `developer-tooling`\n- `filesystem-automation`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `windows-batch`\n- `powershell`\n\n## Tooling\n\n- `file-renaming`\n- `directory-generation`\n- `recursive-directory-search`\n- `recursive-file-deletion`\n- `text-file-processing`\n- `parameterized-script`\n\n## Software Engineering Practices\n\n- `input-validation`\n- `automation`\n- `operational-tooling`\n\n## Portfolio Significance\n\n- `earliest-observed-windows-batch`\n- `earliest-observed-powershell`\n- `earliest-observed-windows-filesystem-automation`\n"
+}

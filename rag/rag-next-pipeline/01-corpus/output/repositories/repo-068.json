@@ -1,0 +1,611 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 68,
+  "repository_total": 134,
+  "repository_name": "GCP",
+  "header_title": "GCP",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-068-GCP/README.md",
+    "line_start": 1,
+    "line_end": 391,
+    "sha256": "e4a0e47685dd600e58e6f3ff17a75c03a0c3bca6b96d9f82777f83a81c77342d"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-coursework",
+    "cloud-lab",
+    "troubleshooting-log",
+    "gcp",
+    "google-cloud-platform",
+    "google-cloud-shell",
+    "google-cloud-storage",
+    "cloud-composer-context",
+    "gcloud-storage",
+    "gsutil",
+    "bash",
+    "object-storage",
+    "bucket",
+    "object-prefix",
+    "gs-uri",
+    "iam-awareness",
+    "cloud-troubleshooting",
+    "error-driven-debugging",
+    "resource-path-disambiguation",
+    "hypothesis-vs-evidence",
+    "earliest-observed-gcp",
+    "earliest-observed-google-cloud-shell",
+    "earliest-observed-google-cloud-storage",
+    "earliest-observed-gsutil",
+    "earliest-observed-gcloud-storage",
+    "earliest-observed-cloud-composer-context"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/GCP`\n- **Repository start date:** 2024-10-22\n- **Last meaningful update date:** 2024-10-22\n- **Latest meaningful commit:** `181ac55375ac2691165bcf82ac5b84f4a5a9a8f9`\n- **Primary technical field:** Google Cloud troubleshooting and object-storage operations\n- **Primary tools:** Google Cloud Shell, Google Cloud Storage, `gcloud storage`, `gsutil`\n- **Project context:** individual cloud coursework / troubleshooting record\n- **Collaboration classification:** `individual-coursework`"
+    },
+    "testing": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification in the repository is interactive.\n\nThe suggested checks include:\n\n```bash\ngsutil ls\n```\n\nto verify storage visibility and:\n\n```bash\ngsutil cp\n```\n\nto retry the transfer using explicit Cloud Storage paths.\n\nThere is no automated verification or infrastructure-as-code."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "Authorship and Evidence Boundary"
+      ],
+      "text": "## Authorship and Evidence Boundary\nMost explanatory prose in the README is a saved ChatGPT conversation.\n\nThe corpus does not treat that prose as original authored documentation.\n\nThe directly attributable evidence is the user's:\n\n- Cloud Shell context;\n- failed `cd`;\n- attempted `gcloud storage cp`;\n- follow-up problem description.\n\nPlatform capability is therefore scoped to troubleshooting exposure and practiced commands."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/GCP`\n- **Repository start date:** 2024-10-22\n- **Last meaningful update date:** 2024-10-22\n- **Latest meaningful commit:** `181ac55375ac2691165bcf82ac5b84f4a5a9a8f9`\n- **Primary technical field:** Google Cloud troubleshooting and object-storage operations\n- **Primary tools:** Google Cloud Shell, Google Cloud Storage, `gcloud storage`, `gsutil`\n- **Project context:** individual cloud coursework / troubleshooting record\n- **Collaboration classification:** `individual-coursework`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains one substantial README.\n\nThe README is a saved troubleshooting dialogue from a lab named:\n\n```text\nAn Introduction to Cloud Composer\n```\n\nThe direct evidence is therefore:\n\n- the user's actual Cloud Shell prompt/output;\n- commands attempted;\n- error messages;\n- troubleshooting paths.\n\nThe repository is not evidence of a deployed GCP application or a checked-in Composer DAG.",
+      "source_line_start": 14,
+      "source_line_end": 33
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Original Problem",
+      "normalized_title": "Original Problem",
+      "key": "original_problem",
+      "path": [
+        "Original Problem"
+      ],
+      "content": "The user was working in Google Cloud Shell inside a directory named after a storage bucket.\n\nThe shell showed:\n\n```text\ndags\n```\n\nbut:\n\n```bash\ncd dags\n```\n\nfailed with:\n\n```text\n-bash: cd: dags: Not a directory\n```\n\nThis is the key technical clue.",
+      "source_line_start": 33,
+      "source_line_end": 57
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Filesystem vs Object Storage",
+      "normalized_title": "Filesystem vs Object Storage",
+      "key": "filesystem_vs_object_storage",
+      "path": [
+        "Filesystem vs Object Storage"
+      ],
+      "content": "The troubleshooting distinguishes two different abstractions:\n\n### Local POSIX Filesystem\n\nNormal commands such as:\n\n```bash\ncd\nls\n```\n\noperate on local filesystem objects.\n\n### Google Cloud Storage\n\nCloud Storage uses buckets and objects referenced with URIs such as:\n\n```text\ngs://bucket-name/object-prefix/\n```\n\nA storage \"folder\" is commonly represented by object-name prefixes rather than a true POSIX directory.\n\nThat explains why seeing `dags` in one context does not automatically mean it is a local directory that `cd` can enter.",
+      "source_line_start": 57,
+      "source_line_end": 84
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Local POSIX Filesystem",
+      "normalized_title": "Local POSIX Filesystem",
+      "key": "local_posix_filesystem",
+      "path": [
+        "Filesystem vs Object Storage",
+        "Local POSIX Filesystem"
+      ],
+      "content": "Normal commands such as:\n\n```bash\ncd\nls\n```\n\noperate on local filesystem objects.",
+      "source_line_start": 61,
+      "source_line_end": 72
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Google Cloud Storage",
+      "normalized_title": "Google Cloud Storage",
+      "key": "google_cloud_storage",
+      "path": [
+        "Filesystem vs Object Storage",
+        "Google Cloud Storage"
+      ],
+      "content": "Cloud Storage uses buckets and objects referenced with URIs such as:\n\n```text\ngs://bucket-name/object-prefix/\n```\n\nA storage \"folder\" is commonly represented by object-name prefixes rather than a true POSIX directory.\n\nThat explains why seeing `dags` in one context does not automatically mean it is a local directory that `cd` can enter.",
+      "source_line_start": 72,
+      "source_line_end": 84
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Failed Copy Attempt",
+      "normalized_title": "Failed Copy Attempt",
+      "key": "failed_copy_attempt",
+      "path": [
+        "Failed Copy Attempt"
+      ],
+      "content": "The recorded command was:\n\n```bash\ngcloud storage cp \\\n  gs://cloud-training/datawarehousing/lab_assets/hadoop_tutorial.py \\\n  us-west1-highcpu-59d0d12f-bucket/dags\n```\n\nThe destination is written like a local path rather than an explicit Cloud Storage URI.",
+      "source_line_start": 84,
+      "source_line_end": 96
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Alternative Storage Command",
+      "normalized_title": "Alternative Storage Command",
+      "key": "alternative_storage_command",
+      "path": [
+        "Alternative Storage Command"
+      ],
+      "content": "The troubleshooting proposes:\n\n```bash\ngsutil cp \\\n  gs://cloud-training/datawarehousing/lab_assets/hadoop_tutorial.py \\\n  gs://us-west1-highcpu-59d0d12f-bucket/dags/\n```\n\nThe important difference is the destination:\n\n```text\ngs://...\n```\n\nThat makes the target unambiguously a Cloud Storage bucket/object prefix.",
+      "source_line_start": 96,
+      "source_line_end": 114
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Storage Inspection",
+      "normalized_title": "Storage Inspection",
+      "key": "storage_inspection",
+      "path": [
+        "Storage Inspection"
+      ],
+      "content": "The notes also discuss using:\n\n```bash\ngsutil ls gs://<bucket>/\n```\n\nand:\n\n```bash\ngsutil ls gs://<bucket>/dags/\n```\n\nto inspect Cloud Storage directly.",
+      "source_line_start": 114,
+      "source_line_end": 130
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "IAM Awareness",
+      "normalized_title": "IAM Awareness",
+      "key": "iam_awareness",
+      "path": [
+        "IAM Awareness"
+      ],
+      "content": "The troubleshooting considers whether the failure might be related to permissions.\n\nIt mentions:\n\n- IAM roles;\n- Storage Object Viewer;\n- Storage Object Admin;\n- bucket permissions;\n- IAM Policy Troubleshooter.\n\nHowever, the repository does not prove that IAM was the actual root cause.\n\nThe concrete shell evidence more directly exposes a path/abstraction mismatch.\n\nFor that reason, IAM is recorded as troubleshooting awareness rather than a confirmed diagnosis.",
+      "source_line_start": 130,
+      "source_line_end": 148
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Cloud Composer Context",
+      "normalized_title": "Cloud Composer Context",
+      "key": "cloud_composer_context",
+      "path": [
+        "Cloud Composer Context"
+      ],
+      "content": "The README says the issue occurred during a lab called:\n\n```text\nAn Introduction to Cloud Composer\n```\n\nThis establishes Cloud Composer as learning context.\n\nThe repository does not contain:\n\n- a Composer environment definition;\n- an Airflow DAG;\n- Terraform;\n- deployment configuration.\n\nCloud Composer therefore remains a context tag rather than an implemented system capability.",
+      "source_line_start": 148,
+      "source_line_end": 167
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Google Cloud\n\n- Google Cloud Platform\n- Google Cloud Shell\n- Google Cloud Storage\n- Cloud Composer lab context\n\n### CLI\n\n- `gcloud storage`\n- `gsutil`\n- Bash shell\n\n### Cloud Concepts\n\n- bucket/object addressing;\n- `gs://` URIs;\n- object prefixes;\n- IAM troubleshooting awareness.",
+      "source_line_start": 167,
+      "source_line_end": 189
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Google Cloud",
+      "normalized_title": "Google Cloud",
+      "key": "google_cloud",
+      "path": [
+        "Technical Stack",
+        "Google Cloud"
+      ],
+      "content": "- Google Cloud Platform\n- Google Cloud Shell\n- Google Cloud Storage\n- Cloud Composer lab context",
+      "source_line_start": 169,
+      "source_line_end": 176
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "CLI",
+      "normalized_title": "CLI",
+      "key": "cli",
+      "path": [
+        "Technical Stack",
+        "CLI"
+      ],
+      "content": "- `gcloud storage`\n- `gsutil`\n- Bash shell",
+      "source_line_start": 176,
+      "source_line_end": 182
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Cloud Concepts",
+      "normalized_title": "Cloud Concepts",
+      "key": "cloud_concepts",
+      "path": [
+        "Technical Stack",
+        "Cloud Concepts"
+      ],
+      "content": "- bucket/object addressing;\n- `gs://` URIs;\n- object prefixes;\n- IAM troubleshooting awareness.",
+      "source_line_start": 182,
+      "source_line_end": 189
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification in the repository is interactive.\n\nThe suggested checks include:\n\n```bash\ngsutil ls\n```\n\nto verify storage visibility and:\n\n```bash\ngsutil cp\n```\n\nto retry the transfer using explicit Cloud Storage paths.\n\nThere is no automated verification or infrastructure-as-code.",
+      "source_line_start": 189,
+      "source_line_end": 209
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "### Read the Error Literally\n\nThe key diagnostic message is:\n\n```text\nNot a directory\n```\n\nrather than simply assuming an authorization failure.\n\n### Distinguish Abstractions\n\nThe repository captures an important cloud-operations principle:\n\n> a cloud object-storage namespace is not the same thing as a local filesystem hierarchy.\n\n### Use Fully Qualified Resource Identifiers\n\nExplicit `gs://` paths reduce ambiguity about whether a command targets local disk or Cloud Storage.\n\n### Separate Hypothesis From Root Cause\n\nIAM is considered, but the evidence does not justify declaring it the confirmed cause.",
+      "source_line_start": 209,
+      "source_line_end": 235
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Read the Error Literally",
+      "normalized_title": "Read the Error Literally",
+      "key": "read_the_error_literally",
+      "path": [
+        "Engineering Discipline",
+        "Read the Error Literally"
+      ],
+      "content": "The key diagnostic message is:\n\n```text\nNot a directory\n```\n\nrather than simply assuming an authorization failure.",
+      "source_line_start": 211,
+      "source_line_end": 221
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Distinguish Abstractions",
+      "normalized_title": "Distinguish Abstractions",
+      "key": "distinguish_abstractions",
+      "path": [
+        "Engineering Discipline",
+        "Distinguish Abstractions"
+      ],
+      "content": "The repository captures an important cloud-operations principle:\n\n> a cloud object-storage namespace is not the same thing as a local filesystem hierarchy.",
+      "source_line_start": 221,
+      "source_line_end": 227
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Use Fully Qualified Resource Identifiers",
+      "normalized_title": "Use Fully Qualified Resource Identifiers",
+      "key": "use_fully_qualified_resource_identifiers",
+      "path": [
+        "Engineering Discipline",
+        "Use Fully Qualified Resource Identifiers"
+      ],
+      "content": "Explicit `gs://` paths reduce ambiguity about whether a command targets local disk or Cloud Storage.",
+      "source_line_start": 227,
+      "source_line_end": 231
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Separate Hypothesis From Root Cause",
+      "normalized_title": "Separate Hypothesis From Root Cause",
+      "key": "separate_hypothesis_from_root_cause",
+      "path": [
+        "Engineering Discipline",
+        "Separate Hypothesis From Root Cause"
+      ],
+      "content": "IAM is considered, but the evidence does not justify declaring it the confirmed cause.",
+      "source_line_start": 231,
+      "source_line_end": 235
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Product Engineering Context",
+      "normalized_title": "Product Engineering Context",
+      "key": "product_engineering_context",
+      "path": [
+        "Product Engineering Context"
+      ],
+      "content": "This is not a product repository.\n\nIts value is operational and conceptual.\n\nUnderstanding the difference between local files and cloud object storage is foundational for:\n\n- data pipelines;\n- cloud ETL;\n- model/data artifact movement;\n- workflow orchestration.",
+      "source_line_start": 235,
+      "source_line_end": 248
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small and contains no application code.\n\nIts technical significance comes from the troubleshooting scenario rather than source-code volume.\n\nThe problem crosses:\n\n- shell semantics;\n- cloud storage;\n- CLI syntax;\n- permissions concepts;\n- managed workflow context.",
+      "source_line_start": 248,
+      "source_line_end": 262
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Google Cloud Storage\n\n- bucket URI syntax;\n- object/prefix navigation;\n- object copy operations.\n\n### Cloud Shell\n\n- command execution;\n- interpreting filesystem errors;\n- differentiating local and remote namespaces.\n\n### GCP CLI\n\n- `gcloud storage cp`;\n- `gsutil ls`;\n- `gsutil cp`.\n\n### Cloud Troubleshooting\n\n- path diagnosis;\n- resource identification;\n- permission hypothesis;\n- command fallback.",
+      "source_line_start": 262,
+      "source_line_end": 289
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Google Cloud Storage",
+      "normalized_title": "Google Cloud Storage",
+      "key": "google_cloud_storage",
+      "path": [
+        "Skills Demonstrated",
+        "Google Cloud Storage"
+      ],
+      "content": "- bucket URI syntax;\n- object/prefix navigation;\n- object copy operations.",
+      "source_line_start": 264,
+      "source_line_end": 270
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Cloud Shell",
+      "normalized_title": "Cloud Shell",
+      "key": "cloud_shell",
+      "path": [
+        "Skills Demonstrated",
+        "Cloud Shell"
+      ],
+      "content": "- command execution;\n- interpreting filesystem errors;\n- differentiating local and remote namespaces.",
+      "source_line_start": 270,
+      "source_line_end": 276
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "GCP CLI",
+      "normalized_title": "GCP CLI",
+      "key": "gcp_cli",
+      "path": [
+        "Skills Demonstrated",
+        "GCP CLI"
+      ],
+      "content": "- `gcloud storage cp`;\n- `gsutil ls`;\n- `gsutil cp`.",
+      "source_line_start": 276,
+      "source_line_end": 282
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Cloud Troubleshooting",
+      "normalized_title": "Cloud Troubleshooting",
+      "key": "cloud_troubleshooting",
+      "path": [
+        "Skills Demonstrated",
+        "Cloud Troubleshooting"
+      ],
+      "content": "- path diagnosis;\n- resource identification;\n- permission hypothesis;\n- command fallback.",
+      "source_line_start": 282,
+      "source_line_end": 289
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops a practical cloud-operations mental model.\n\nThe key lesson is that cloud resources often expose abstractions that resemble local resources without behaving identically.\n\nCorrectly distinguishing those abstractions prevents a large class of path, copy, and permissions mistakes.",
+      "source_line_start": 289,
+      "source_line_end": 297
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "The preceding repositories focus on:\n\n- shell scripting;\n- databases;\n- Airflow;\n- Kafka;\n- data warehouses.\n\n`GCP` moves those data-engineering foundations into a cloud environment.\n\nWithin processed chronology, it is the earliest repository centered specifically on:\n\n- GCP;\n- Google Cloud Shell;\n- Google Cloud Storage;\n- `gsutil`;\n- `gcloud storage`;\n- Cloud Composer context.",
+      "source_line_start": 297,
+      "source_line_end": 318
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "This repository is a small but clear cloud-transition marker in the portfolio.\n\nThe user's data-engineering learning is no longer exclusively local/lab-server based; it begins to interact with managed cloud storage and workflow tooling.",
+      "source_line_start": 318,
+      "source_line_end": 324
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Authorship and Evidence Boundary",
+      "normalized_title": "Authorship and Evidence Boundary",
+      "key": "authorship_and_evidence_boundary",
+      "path": [
+        "Authorship and Evidence Boundary"
+      ],
+      "content": "Most explanatory prose in the README is a saved ChatGPT conversation.\n\nThe corpus does not treat that prose as original authored documentation.\n\nThe directly attributable evidence is the user's:\n\n- Cloud Shell context;\n- failed `cd`;\n- attempted `gcloud storage cp`;\n- follow-up problem description.\n\nPlatform capability is therefore scoped to troubleshooting exposure and practiced commands.",
+      "source_line_start": 324,
+      "source_line_end": 339
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`GCP` is a focused troubleshooting record from a Cloud Composer lab.\n\nIts main engineering lesson is the difference between a local filesystem path and a Google Cloud Storage object prefix, expressed through a real failed copy/navigation workflow and corrected `gs://` storage addressing.\n\nIt is modest in size but historically important as the first dedicated GCP repository in the processed portfolio.\n\n# Project Tags",
+      "source_line_start": 339,
+      "source_line_end": 349
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `individual-coursework`\n- `cloud-lab`\n- `troubleshooting-log`",
+      "source_line_start": 349,
+      "source_line_end": 355
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Cloud",
+      "normalized_title": "Cloud",
+      "key": "cloud",
+      "path": [
+        "Cloud"
+      ],
+      "content": "- `gcp`\n- `google-cloud-platform`\n- `google-cloud-shell`\n- `google-cloud-storage`\n- `cloud-composer-context`",
+      "source_line_start": 355,
+      "source_line_end": 363
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "CLI",
+      "normalized_title": "CLI",
+      "key": "cli",
+      "path": [
+        "CLI"
+      ],
+      "content": "- `gcloud-storage`\n- `gsutil`\n- `bash`",
+      "source_line_start": 363,
+      "source_line_end": 369
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Cloud Concepts",
+      "normalized_title": "Cloud Concepts",
+      "key": "cloud_concepts",
+      "path": [
+        "Cloud Concepts"
+      ],
+      "content": "- `object-storage`\n- `bucket`\n- `object-prefix`\n- `gs-uri`\n- `iam-awareness`",
+      "source_line_start": 369,
+      "source_line_end": 377
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "- `cloud-troubleshooting`\n- `error-driven-debugging`\n- `resource-path-disambiguation`\n- `hypothesis-vs-evidence`",
+      "source_line_start": 377,
+      "source_line_end": 384
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-gcp`\n- `earliest-observed-google-cloud-shell`\n- `earliest-observed-google-cloud-storage`\n- `earliest-observed-gsutil`\n- `earliest-observed-gcloud-storage`\n- `earliest-observed-cloud-composer-context`",
+      "source_line_start": 384,
+      "source_line_end": 391
+    }
+  ],
+  "raw_analysis": "# Repository 068 — GCP\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/GCP`\n- **Repository start date:** 2024-10-22\n- **Last meaningful update date:** 2024-10-22\n- **Latest meaningful commit:** `181ac55375ac2691165bcf82ac5b84f4a5a9a8f9`\n- **Primary technical field:** Google Cloud troubleshooting and object-storage operations\n- **Primary tools:** Google Cloud Shell, Google Cloud Storage, `gcloud storage`, `gsutil`\n- **Project context:** individual cloud coursework / troubleshooting record\n- **Collaboration classification:** `individual-coursework`\n\n## Evidence Basis\n\nThe repository contains one substantial README.\n\nThe README is a saved troubleshooting dialogue from a lab named:\n\n```text\nAn Introduction to Cloud Composer\n```\n\nThe direct evidence is therefore:\n\n- the user's actual Cloud Shell prompt/output;\n- commands attempted;\n- error messages;\n- troubleshooting paths.\n\nThe repository is not evidence of a deployed GCP application or a checked-in Composer DAG.\n\n## Original Problem\n\nThe user was working in Google Cloud Shell inside a directory named after a storage bucket.\n\nThe shell showed:\n\n```text\ndags\n```\n\nbut:\n\n```bash\ncd dags\n```\n\nfailed with:\n\n```text\n-bash: cd: dags: Not a directory\n```\n\nThis is the key technical clue.\n\n## Filesystem vs Object Storage\n\nThe troubleshooting distinguishes two different abstractions:\n\n### Local POSIX Filesystem\n\nNormal commands such as:\n\n```bash\ncd\nls\n```\n\noperate on local filesystem objects.\n\n### Google Cloud Storage\n\nCloud Storage uses buckets and objects referenced with URIs such as:\n\n```text\ngs://bucket-name/object-prefix/\n```\n\nA storage \"folder\" is commonly represented by object-name prefixes rather than a true POSIX directory.\n\nThat explains why seeing `dags` in one context does not automatically mean it is a local directory that `cd` can enter.\n\n## Failed Copy Attempt\n\nThe recorded command was:\n\n```bash\ngcloud storage cp \\\n  gs://cloud-training/datawarehousing/lab_assets/hadoop_tutorial.py \\\n  us-west1-highcpu-59d0d12f-bucket/dags\n```\n\nThe destination is written like a local path rather than an explicit Cloud Storage URI.\n\n## Alternative Storage Command\n\nThe troubleshooting proposes:\n\n```bash\ngsutil cp \\\n  gs://cloud-training/datawarehousing/lab_assets/hadoop_tutorial.py \\\n  gs://us-west1-highcpu-59d0d12f-bucket/dags/\n```\n\nThe important difference is the destination:\n\n```text\ngs://...\n```\n\nThat makes the target unambiguously a Cloud Storage bucket/object prefix.\n\n## Storage Inspection\n\nThe notes also discuss using:\n\n```bash\ngsutil ls gs://<bucket>/\n```\n\nand:\n\n```bash\ngsutil ls gs://<bucket>/dags/\n```\n\nto inspect Cloud Storage directly.\n\n## IAM Awareness\n\nThe troubleshooting considers whether the failure might be related to permissions.\n\nIt mentions:\n\n- IAM roles;\n- Storage Object Viewer;\n- Storage Object Admin;\n- bucket permissions;\n- IAM Policy Troubleshooter.\n\nHowever, the repository does not prove that IAM was the actual root cause.\n\nThe concrete shell evidence more directly exposes a path/abstraction mismatch.\n\nFor that reason, IAM is recorded as troubleshooting awareness rather than a confirmed diagnosis.\n\n## Cloud Composer Context\n\nThe README says the issue occurred during a lab called:\n\n```text\nAn Introduction to Cloud Composer\n```\n\nThis establishes Cloud Composer as learning context.\n\nThe repository does not contain:\n\n- a Composer environment definition;\n- an Airflow DAG;\n- Terraform;\n- deployment configuration.\n\nCloud Composer therefore remains a context tag rather than an implemented system capability.\n\n## Technical Stack\n\n### Google Cloud\n\n- Google Cloud Platform\n- Google Cloud Shell\n- Google Cloud Storage\n- Cloud Composer lab context\n\n### CLI\n\n- `gcloud storage`\n- `gsutil`\n- Bash shell\n\n### Cloud Concepts\n\n- bucket/object addressing;\n- `gs://` URIs;\n- object prefixes;\n- IAM troubleshooting awareness.\n\n## Testing and Verification\n\nVerification in the repository is interactive.\n\nThe suggested checks include:\n\n```bash\ngsutil ls\n```\n\nto verify storage visibility and:\n\n```bash\ngsutil cp\n```\n\nto retry the transfer using explicit Cloud Storage paths.\n\nThere is no automated verification or infrastructure-as-code.\n\n## Engineering Discipline\n\n### Read the Error Literally\n\nThe key diagnostic message is:\n\n```text\nNot a directory\n```\n\nrather than simply assuming an authorization failure.\n\n### Distinguish Abstractions\n\nThe repository captures an important cloud-operations principle:\n\n> a cloud object-storage namespace is not the same thing as a local filesystem hierarchy.\n\n### Use Fully Qualified Resource Identifiers\n\nExplicit `gs://` paths reduce ambiguity about whether a command targets local disk or Cloud Storage.\n\n### Separate Hypothesis From Root Cause\n\nIAM is considered, but the evidence does not justify declaring it the confirmed cause.\n\n## Product Engineering Context\n\nThis is not a product repository.\n\nIts value is operational and conceptual.\n\nUnderstanding the difference between local files and cloud object storage is foundational for:\n\n- data pipelines;\n- cloud ETL;\n- model/data artifact movement;\n- workflow orchestration.\n\n## Scale and Complexity\n\nThe repository is small and contains no application code.\n\nIts technical significance comes from the troubleshooting scenario rather than source-code volume.\n\nThe problem crosses:\n\n- shell semantics;\n- cloud storage;\n- CLI syntax;\n- permissions concepts;\n- managed workflow context.\n\n## Skills Demonstrated\n\n### Google Cloud Storage\n\n- bucket URI syntax;\n- object/prefix navigation;\n- object copy operations.\n\n### Cloud Shell\n\n- command execution;\n- interpreting filesystem errors;\n- differentiating local and remote namespaces.\n\n### GCP CLI\n\n- `gcloud storage cp`;\n- `gsutil ls`;\n- `gsutil cp`.\n\n### Cloud Troubleshooting\n\n- path diagnosis;\n- resource identification;\n- permission hypothesis;\n- command fallback.\n\n## Capability Developed\n\nThis repository develops a practical cloud-operations mental model.\n\nThe key lesson is that cloud resources often expose abstractions that resemble local resources without behaving identically.\n\nCorrectly distinguishing those abstractions prevents a large class of path, copy, and permissions mistakes.\n\n## Portfolio Evolution Context\n\nThe preceding repositories focus on:\n\n- shell scripting;\n- databases;\n- Airflow;\n- Kafka;\n- data warehouses.\n\n`GCP` moves those data-engineering foundations into a cloud environment.\n\nWithin processed chronology, it is the earliest repository centered specifically on:\n\n- GCP;\n- Google Cloud Shell;\n- Google Cloud Storage;\n- `gsutil`;\n- `gcloud storage`;\n- Cloud Composer context.\n\n## Historical Significance\n\nThis repository is a small but clear cloud-transition marker in the portfolio.\n\nThe user's data-engineering learning is no longer exclusively local/lab-server based; it begins to interact with managed cloud storage and workflow tooling.\n\n## Authorship and Evidence Boundary\n\nMost explanatory prose in the README is a saved ChatGPT conversation.\n\nThe corpus does not treat that prose as original authored documentation.\n\nThe directly attributable evidence is the user's:\n\n- Cloud Shell context;\n- failed `cd`;\n- attempted `gcloud storage cp`;\n- follow-up problem description.\n\nPlatform capability is therefore scoped to troubleshooting exposure and practiced commands.\n\n## Overall Repository Narrative\n\n`GCP` is a focused troubleshooting record from a Cloud Composer lab.\n\nIts main engineering lesson is the difference between a local filesystem path and a Google Cloud Storage object prefix, expressed through a real failed copy/navigation workflow and corrected `gs://` storage addressing.\n\nIt is modest in size but historically important as the first dedicated GCP repository in the processed portfolio.\n\n# Project Tags\n\n## Project Type\n\n- `individual-coursework`\n- `cloud-lab`\n- `troubleshooting-log`\n\n## Cloud\n\n- `gcp`\n- `google-cloud-platform`\n- `google-cloud-shell`\n- `google-cloud-storage`\n- `cloud-composer-context`\n\n## CLI\n\n- `gcloud-storage`\n- `gsutil`\n- `bash`\n\n## Cloud Concepts\n\n- `object-storage`\n- `bucket`\n- `object-prefix`\n- `gs-uri`\n- `iam-awareness`\n\n## Engineering Practices\n\n- `cloud-troubleshooting`\n- `error-driven-debugging`\n- `resource-path-disambiguation`\n- `hypothesis-vs-evidence`\n\n## Portfolio Significance\n\n- `earliest-observed-gcp`\n- `earliest-observed-google-cloud-shell`\n- `earliest-observed-google-cloud-storage`\n- `earliest-observed-gsutil`\n- `earliest-observed-gcloud-storage`\n- `earliest-observed-cloud-composer-context`"
+}

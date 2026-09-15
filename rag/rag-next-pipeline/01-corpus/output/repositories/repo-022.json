@@ -1,0 +1,821 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 22,
+  "repository_total": 134,
+  "repository_name": "CPP_LIB",
+  "header_title": "CPP_LIB",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-022-CPP_LIB/README.md",
+    "line_start": 1,
+    "line_end": 377,
+    "sha256": "20791877198722d0c47e1435bdb2c5e5e565be670244fff09ad8746d908a33d3"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "utility-library",
+    "developer-tooling",
+    "algorithm-utility-collection",
+    "personal-project",
+    "individual-project",
+    "cpp",
+    "prime-factorization",
+    "primality-testing",
+    "sieve-of-eratosthenes",
+    "gcd",
+    "sorting",
+    "bitwise-xor",
+    "integer-digit-reversal",
+    "text-parsing",
+    "text-normalization",
+    "whitespace-tokenization",
+    "collection-difference",
+    "expected-output-verification",
+    "manual-execution-demo",
+    "input-validation",
+    "small-function-decomposition",
+    "known-limitations-documented",
+    "earliest-observed-general-cpp-utility-library"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 022 / 134\n- Name: `CPP_LIB`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2024-02-29\n- Primary type: Personal C++ utility collection\n- Technical field: General-purpose programming utilities, text processing, and number-theory helpers\n- Collaboration type: `individual-project`\n- Primary implementation language: C++"
+    },
+    "architecture": {
+      "section_ids": [
+        "s009"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\nThe repository is a flat utility collection:\n\n```text\nCPP_LIB\n├─ text-processing snippets\n│  ├─ irregular multi-line difference\n│  ├─ trimming / cleaning\n│  └─ whitespace tokenization\n├─ number-theory snippets\n│  ├─ primality\n│  ├─ sieve\n│  ├─ factorization\n│  └─ GCD-derived factor search\n└─ integer helpers\n   ├─ reverse digits\n   ├─ overflow check\n   └─ XOR accumulation\n```\n\nEach file is largely self-contained and can be copied or adapted independently."
+    },
+    "testing": {
+      "section_ids": [
+        "s025",
+        "s041",
+        "s051"
+      ],
+      "titles": [
+        "Verification",
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Embedded Expected-Output Checks\n\n`Trim String.cpp` contains four explicit test cases for trimming behavior.\n\nThe program compares actual returned strings with expected strings and reports a success percentage.\n\n### Console Demonstration\n\nSeveral utilities are executable console snippets that print intermediate values, counts, or generated output for direct inspection.\n\n## Verification\n- **Embedded expected-output checks — moderate evidence.**\n- **Manual console verification — strong evidence.**\n\n## Testing and Verification\n- `expected-output-verification`\n- `manual-execution-demo`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s047"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository history is owner-authored, including the latest `Factorization.cpp` commit on 2024-02-29. The current utility implementations are therefore personally attributable at repository level.\n\nThe collection is intentionally small and heterogeneous: individual `.cpp` files capture reusable snippets, experiments, and helper functions rather than one integrated application.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 022 / 134\n- Name: `CPP_LIB`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2024-02-29\n- Primary type: Personal C++ utility collection\n- Technical field: General-purpose programming utilities, text processing, and number-theory helpers\n- Collaboration type: `individual-project`\n- Primary implementation language: C++",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository history is owner-authored, including the latest `Factorization.cpp` commit on 2024-02-29. The current utility implementations are therefore personally attributable at repository level.\n\nThe collection is intentionally small and heterogeneous: individual `.cpp` files capture reusable snippets, experiments, and helper functions rather than one integrated application.",
+      "source_line_start": 14,
+      "source_line_end": 20
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in the repository tree, README, C++ source files, and commit history.\n\nThe current tree contains utilities including:\n\n- `Irregular String Input Difference.cpp`;\n- `Trim String.cpp`;\n- `Factorization.cpp`;\n- `isPrime.cpp`;\n- `sieve.cpp`;\n- `LCD.cpp`;\n- `numberToEnglish.cpp`;\n- `reverseInt.cpp`;\n- `overflowChecker.cpp`;\n- `splitSpace.cpp`;\n- `xorv.cpp`.",
+      "source_line_start": 20,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`CPP_LIB` is a personal collection of compact C++ utilities accumulated across late 2023 and early 2024.\n\nThe repository is not organized around a single product workflow. Instead, it acts as a reusable scratch/library area for frequently useful programming operations: string cleanup, tokenization, set-like comparison of word collections, integer reversal, XOR accumulation, prime testing, prime counting, factorization, common-divisor reasoning, and exploratory number-to-text conversion.\n\nThis gives the project value as evidence of reusable coding patterns and small-function problem solving rather than application architecture.",
+      "source_line_start": 38,
+      "source_line_end": 46
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The repository covers several distinct utility families.\n\n### Text Input and String Processing\n\n`Irregular String Input Difference.cpp` reads two multi-line text blocks until a sentinel string is encountered, tokenizes both streams using whitespace-aware extraction, compares their word collections, sorts the values present only in the first input, and prefixes those values with `SELECT * FROM `.\n\n`Trim String.cpp` contains:\n\n- repeated-whitespace cleanup;\n- leading/trailing blank trimming;\n- conversion of a ratio string into percentage output;\n- a small executable test harness.\n\n`splitSpace.cpp` manually tokenizes a string into whitespace-delimited pieces.\n\n### Number-Theory and Arithmetic Helpers\n\n`Factorization.cpp` computes prime factors of a positive integer.\n\n`isPrime.cpp` checks primality by searching divisors only up to the square root.\n\n`sieve.cpp` implements a Sieve-of-Eratosthenes-style boolean table and counts primes below a bound.\n\n`LCD.cpp` computes a GCD across an integer vector and then reduces that value until a prime divisor remains.\n\n`xorv.cpp` accumulates the bitwise XOR of an integer vector.\n\n### Integer Representation Helpers\n\n`reverseInt.cpp` reverses decimal digits through modulus and integer division.\n\n`overflowChecker.cpp` compares a `BigInt` value against `INT32_MAX`.\n\n`numberToEnglish.cpp` is an exploratory partial number decomposition / English-word conversion experiment containing `unitator`, `hunds`, and an unfinished `DigitSectionizer` direction.",
+      "source_line_start": 46,
+      "source_line_end": 83
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Text Input and String Processing",
+      "normalized_title": "Text Input and String Processing",
+      "key": "text_input_and_string_processing",
+      "path": [
+        "Project Scope",
+        "Text Input and String Processing"
+      ],
+      "content": "`Irregular String Input Difference.cpp` reads two multi-line text blocks until a sentinel string is encountered, tokenizes both streams using whitespace-aware extraction, compares their word collections, sorts the values present only in the first input, and prefixes those values with `SELECT * FROM `.\n\n`Trim String.cpp` contains:\n\n- repeated-whitespace cleanup;\n- leading/trailing blank trimming;\n- conversion of a ratio string into percentage output;\n- a small executable test harness.\n\n`splitSpace.cpp` manually tokenizes a string into whitespace-delimited pieces.",
+      "source_line_start": 50,
+      "source_line_end": 63
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Number-Theory and Arithmetic Helpers",
+      "normalized_title": "Number-Theory and Arithmetic Helpers",
+      "key": "number_theory_and_arithmetic_helpers",
+      "path": [
+        "Project Scope",
+        "Number-Theory and Arithmetic Helpers"
+      ],
+      "content": "`Factorization.cpp` computes prime factors of a positive integer.\n\n`isPrime.cpp` checks primality by searching divisors only up to the square root.\n\n`sieve.cpp` implements a Sieve-of-Eratosthenes-style boolean table and counts primes below a bound.\n\n`LCD.cpp` computes a GCD across an integer vector and then reduces that value until a prime divisor remains.\n\n`xorv.cpp` accumulates the bitwise XOR of an integer vector.",
+      "source_line_start": 63,
+      "source_line_end": 75
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Integer Representation Helpers",
+      "normalized_title": "Integer Representation Helpers",
+      "key": "integer_representation_helpers",
+      "path": [
+        "Project Scope",
+        "Integer Representation Helpers"
+      ],
+      "content": "`reverseInt.cpp` reverses decimal digits through modulus and integer division.\n\n`overflowChecker.cpp` compares a `BigInt` value against `INT32_MAX`.\n\n`numberToEnglish.cpp` is an exploratory partial number decomposition / English-word conversion experiment containing `unitator`, `hunds`, and an unfinished `DigitSectionizer` direction.",
+      "source_line_start": 75,
+      "source_line_end": 83
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "The repository is a flat utility collection:\n\n```text\nCPP_LIB\n├─ text-processing snippets\n│  ├─ irregular multi-line difference\n│  ├─ trimming / cleaning\n│  └─ whitespace tokenization\n├─ number-theory snippets\n│  ├─ primality\n│  ├─ sieve\n│  ├─ factorization\n│  └─ GCD-derived factor search\n└─ integer helpers\n   ├─ reverse digits\n   ├─ overflow check\n   └─ XOR accumulation\n```\n\nEach file is largely self-contained and can be copied or adapted independently.",
+      "source_line_start": 83,
+      "source_line_end": 106
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### C++\n\nC++ is used throughout for:\n\n- `std::string`;\n- `std::vector`;\n- streams;\n- `std::istringstream`;\n- algorithms such as sorting;\n- integer arithmetic;\n- exception throwing;\n- loops and conditionals;\n- basic test/demo `main` functions.\n\n### Standard Library Text Processing\n\nThe irregular-string utility uses `std::getline` for multi-line collection and `std::istringstream >>` for whitespace-aware tokenization.\n\n### Standard Library Containers\n\n`std::vector` is the primary collection structure for token lists, integer lists, and factor outputs.",
+      "source_line_start": 106,
+      "source_line_end": 130
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Technical Stack",
+        "C++"
+      ],
+      "content": "C++ is used throughout for:\n\n- `std::string`;\n- `std::vector`;\n- streams;\n- `std::istringstream`;\n- algorithms such as sorting;\n- integer arithmetic;\n- exception throwing;\n- loops and conditionals;\n- basic test/demo `main` functions.",
+      "source_line_start": 108,
+      "source_line_end": 122
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Standard Library Text Processing",
+      "normalized_title": "Standard Library Text Processing",
+      "key": "standard_library_text_processing",
+      "path": [
+        "Technical Stack",
+        "Standard Library Text Processing"
+      ],
+      "content": "The irregular-string utility uses `std::getline` for multi-line collection and `std::istringstream >>` for whitespace-aware tokenization.",
+      "source_line_start": 122,
+      "source_line_end": 126
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Standard Library Containers",
+      "normalized_title": "Standard Library Containers",
+      "key": "standard_library_containers",
+      "path": [
+        "Technical Stack",
+        "Standard Library Containers"
+      ],
+      "content": "`std::vector` is the primary collection structure for token lists, integer lists, and factor outputs.",
+      "source_line_start": 126,
+      "source_line_end": 130
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Multi-Line Input Comparison\n\nThe largest utility reads arbitrary multi-line blocks until the sentinel `STOP`.\n\nIt then:\n\n1. preserves the entered blocks;\n2. tokenizes both;\n3. records word counts;\n4. compares every token from the first set with tokens in the second;\n5. retains values present only in the first;\n6. sorts those values;\n7. converts each result into a `SELECT * FROM ...` line.\n\nThe repository README explicitly documents this tool as comparing first-input items against second-input items.\n\nThis is practical developer tooling for reconciling irregular text lists.\n\n### Prime Factorization\n\n`primeFactors(int n)`:\n\n- returns an empty factor list for `1`;\n- throws `std::invalid_argument` for negative values;\n- repeatedly extracts factor `2`;\n- searches odd factors up to `sqrt(n)`;\n- appends a remaining prime factor.\n\nThe function demonstrates both input validation and a more efficient factor search than testing every integer through `n`.\n\n### Sieve-Based Prime Counting\n\n`_sieve(int n)` initializes a boolean prime table, marks composite multiples beginning at `p*p`, and counts surviving primes below `n`.\n\nThis demonstrates the Sieve of Eratosthenes as a different prime-related strategy from direct divisor testing.\n\n### Direct Primality Check\n\n`is_prime(int n)` tests candidate divisors only while `i*i <= n`.\n\nThe repository therefore preserves multiple number-theory approaches rather than one repeated implementation.\n\n### String Trimming and Local Test Harness\n\n`Trim String.cpp` includes a `cleaner` function that advances inward over leading/trailing blank characters and reconstructs the trimmed substring.\n\nIts `main` function executes four concrete cases, increments a success counter, and prints the success ratio as a percentage.\n\nThat is direct evidence of small-scale expected-output verification inside a utility file.\n\n### Reusable Tokenization\n\n`splitSpace` manually accumulates non-space characters into a temporary token and emits tokens to a vector when whitespace is encountered.\n\n### Integer Digit Reversal\n\n`reverseInt` repeatedly uses `% 10` and `/ 10` to reconstruct a decimal integer in reverse digit order.\n\n### XOR Reduction\n\n`_xorv` reduces a vector into one integer through repeated bitwise XOR.\n\n### Overflow Boundary Check\n\n`overflowChecker` compares a `BigInt`-style value to the signed 32-bit maximum.\n\n### Exploratory Number-to-English Work\n\n`numberToEnglish.cpp` decomposes digits and contains partial branches for units, tens, and hundreds.\n\nThe source itself shows this as exploratory/incomplete work rather than a complete arbitrary-number formatter.",
+      "source_line_start": 130,
+      "source_line_end": 204
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Multi-Line Input Comparison",
+      "normalized_title": "Multi-Line Input Comparison",
+      "key": "multi_line_input_comparison",
+      "path": [
+        "Major Engineering Work",
+        "Multi-Line Input Comparison"
+      ],
+      "content": "The largest utility reads arbitrary multi-line blocks until the sentinel `STOP`.\n\nIt then:\n\n1. preserves the entered blocks;\n2. tokenizes both;\n3. records word counts;\n4. compares every token from the first set with tokens in the second;\n5. retains values present only in the first;\n6. sorts those values;\n7. converts each result into a `SELECT * FROM ...` line.\n\nThe repository README explicitly documents this tool as comparing first-input items against second-input items.\n\nThis is practical developer tooling for reconciling irregular text lists.",
+      "source_line_start": 132,
+      "source_line_end": 150
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Prime Factorization",
+      "normalized_title": "Prime Factorization",
+      "key": "prime_factorization",
+      "path": [
+        "Major Engineering Work",
+        "Prime Factorization"
+      ],
+      "content": "`primeFactors(int n)`:\n\n- returns an empty factor list for `1`;\n- throws `std::invalid_argument` for negative values;\n- repeatedly extracts factor `2`;\n- searches odd factors up to `sqrt(n)`;\n- appends a remaining prime factor.\n\nThe function demonstrates both input validation and a more efficient factor search than testing every integer through `n`.",
+      "source_line_start": 150,
+      "source_line_end": 162
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Sieve-Based Prime Counting",
+      "normalized_title": "Sieve-Based Prime Counting",
+      "key": "sieve_based_prime_counting",
+      "path": [
+        "Major Engineering Work",
+        "Sieve-Based Prime Counting"
+      ],
+      "content": "`_sieve(int n)` initializes a boolean prime table, marks composite multiples beginning at `p*p`, and counts surviving primes below `n`.\n\nThis demonstrates the Sieve of Eratosthenes as a different prime-related strategy from direct divisor testing.",
+      "source_line_start": 162,
+      "source_line_end": 168
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Direct Primality Check",
+      "normalized_title": "Direct Primality Check",
+      "key": "direct_primality_check",
+      "path": [
+        "Major Engineering Work",
+        "Direct Primality Check"
+      ],
+      "content": "`is_prime(int n)` tests candidate divisors only while `i*i <= n`.\n\nThe repository therefore preserves multiple number-theory approaches rather than one repeated implementation.",
+      "source_line_start": 168,
+      "source_line_end": 174
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "String Trimming and Local Test Harness",
+      "normalized_title": "String Trimming and Local Test Harness",
+      "key": "string_trimming_and_local_test_harness",
+      "path": [
+        "Major Engineering Work",
+        "String Trimming and Local Test Harness"
+      ],
+      "content": "`Trim String.cpp` includes a `cleaner` function that advances inward over leading/trailing blank characters and reconstructs the trimmed substring.\n\nIts `main` function executes four concrete cases, increments a success counter, and prints the success ratio as a percentage.\n\nThat is direct evidence of small-scale expected-output verification inside a utility file.",
+      "source_line_start": 174,
+      "source_line_end": 182
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Reusable Tokenization",
+      "normalized_title": "Reusable Tokenization",
+      "key": "reusable_tokenization",
+      "path": [
+        "Major Engineering Work",
+        "Reusable Tokenization"
+      ],
+      "content": "`splitSpace` manually accumulates non-space characters into a temporary token and emits tokens to a vector when whitespace is encountered.",
+      "source_line_start": 182,
+      "source_line_end": 186
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Integer Digit Reversal",
+      "normalized_title": "Integer Digit Reversal",
+      "key": "integer_digit_reversal",
+      "path": [
+        "Major Engineering Work",
+        "Integer Digit Reversal"
+      ],
+      "content": "`reverseInt` repeatedly uses `% 10` and `/ 10` to reconstruct a decimal integer in reverse digit order.",
+      "source_line_start": 186,
+      "source_line_end": 190
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "XOR Reduction",
+      "normalized_title": "XOR Reduction",
+      "key": "xor_reduction",
+      "path": [
+        "Major Engineering Work",
+        "XOR Reduction"
+      ],
+      "content": "`_xorv` reduces a vector into one integer through repeated bitwise XOR.",
+      "source_line_start": 190,
+      "source_line_end": 194
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Overflow Boundary Check",
+      "normalized_title": "Overflow Boundary Check",
+      "key": "overflow_boundary_check",
+      "path": [
+        "Major Engineering Work",
+        "Overflow Boundary Check"
+      ],
+      "content": "`overflowChecker` compares a `BigInt`-style value to the signed 32-bit maximum.",
+      "source_line_start": 194,
+      "source_line_end": 198
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Exploratory Number-to-English Work",
+      "normalized_title": "Exploratory Number-to-English Work",
+      "key": "exploratory_number_to_english_work",
+      "path": [
+        "Major Engineering Work",
+        "Exploratory Number-to-English Work"
+      ],
+      "content": "`numberToEnglish.cpp` decomposes digits and contains partial branches for units, tens, and hundreds.\n\nThe source itself shows this as exploratory/incomplete work rather than a complete arbitrary-number formatter.",
+      "source_line_start": 198,
+      "source_line_end": 204
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Embedded Expected-Output Checks\n\n`Trim String.cpp` contains four explicit test cases for trimming behavior.\n\nThe program compares actual returned strings with expected strings and reports a success percentage.\n\n### Console Demonstration\n\nSeveral utilities are executable console snippets that print intermediate values, counts, or generated output for direct inspection.",
+      "source_line_start": 204,
+      "source_line_end": 216
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Embedded Expected-Output Checks",
+      "normalized_title": "Embedded Expected-Output Checks",
+      "key": "embedded_expected_output_checks",
+      "path": [
+        "Verification",
+        "Embedded Expected-Output Checks"
+      ],
+      "content": "`Trim String.cpp` contains four explicit test cases for trimming behavior.\n\nThe program compares actual returned strings with expected strings and reports a success percentage.",
+      "source_line_start": 206,
+      "source_line_end": 212
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Console Demonstration",
+      "normalized_title": "Console Demonstration",
+      "key": "console_demonstration",
+      "path": [
+        "Verification",
+        "Console Demonstration"
+      ],
+      "content": "Several utilities are executable console snippets that print intermediate values, counts, or generated output for direct inspection.",
+      "source_line_start": 212,
+      "source_line_end": 216
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Small Reusable Functions\n\nThe repository isolates narrow responsibilities into compact helpers such as:\n\n- `is_prime`;\n- `primeFactors`;\n- `_sieve`;\n- `splitSpace`;\n- `reverseInt`;\n- `_xorv`;\n- `overflowChecker`.\n\n### Input Validation\n\nThe factorization helper rejects negative input through an exception.\n\n### Algorithm Selection by Problem Shape\n\nThe repository includes both direct divisor search and sieve-style prime processing, reflecting selection of different techniques for one-off primality versus range-oriented counting.\n\n### Self-Documented Limitations\n\nThe README documents the irregular-string tool's whitespace tokenization behavior and one-direction comparison.\n\nThe partial number-to-English source also preserves the exploratory state directly in implementation.",
+      "source_line_start": 216,
+      "source_line_end": 244
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Small Reusable Functions",
+      "normalized_title": "Small Reusable Functions",
+      "key": "small_reusable_functions",
+      "path": [
+        "Engineering Practices",
+        "Small Reusable Functions"
+      ],
+      "content": "The repository isolates narrow responsibilities into compact helpers such as:\n\n- `is_prime`;\n- `primeFactors`;\n- `_sieve`;\n- `splitSpace`;\n- `reverseInt`;\n- `_xorv`;\n- `overflowChecker`.",
+      "source_line_start": 218,
+      "source_line_end": 230
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Engineering Practices",
+        "Input Validation"
+      ],
+      "content": "The factorization helper rejects negative input through an exception.",
+      "source_line_start": 230,
+      "source_line_end": 234
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Algorithm Selection by Problem Shape",
+      "normalized_title": "Algorithm Selection by Problem Shape",
+      "key": "algorithm_selection_by_problem_shape",
+      "path": [
+        "Engineering Practices",
+        "Algorithm Selection by Problem Shape"
+      ],
+      "content": "The repository includes both direct divisor search and sieve-style prime processing, reflecting selection of different techniques for one-off primality versus range-oriented counting.",
+      "source_line_start": 234,
+      "source_line_end": 238
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Self-Documented Limitations",
+      "normalized_title": "Self-Documented Limitations",
+      "key": "self_documented_limitations",
+      "path": [
+        "Engineering Practices",
+        "Self-Documented Limitations"
+      ],
+      "content": "The README documents the irregular-string tool's whitespace tokenization behavior and one-direction comparison.\n\nThe partial number-to-English source also preserves the exploratory state directly in implementation.",
+      "source_line_start": 238,
+      "source_line_end": 244
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThe repository contains roughly a dozen small source artifacts rather than a large application.\n\n### Breadth\n\nIts scale comes from the number of reusable problem types represented:\n\n- strings;\n- stream input;\n- collection comparison;\n- sorting;\n- prime testing;\n- factorization;\n- sieve processing;\n- GCD reasoning;\n- bitwise operations;\n- integer digit manipulation.\n\n### Historical Time Span\n\nThe repository starts in November 2023 and continues receiving utility additions through February 2024.",
+      "source_line_start": 244,
+      "source_line_end": 269
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "The repository contains roughly a dozen small source artifacts rather than a large application.",
+      "source_line_start": 246,
+      "source_line_end": 250
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Breadth",
+      "normalized_title": "Breadth",
+      "key": "breadth",
+      "path": [
+        "Scale and Complexity",
+        "Breadth"
+      ],
+      "content": "Its scale comes from the number of reusable problem types represented:\n\n- strings;\n- stream input;\n- collection comparison;\n- sorting;\n- prime testing;\n- factorization;\n- sieve processing;\n- GCD reasoning;\n- bitwise operations;\n- integer digit manipulation.",
+      "source_line_start": 250,
+      "source_line_end": 265
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Historical Time Span",
+      "normalized_title": "Historical Time Span",
+      "key": "historical_time_span",
+      "path": [
+        "Scale and Complexity",
+        "Historical Time Span"
+      ],
+      "content": "The repository starts in November 2023 and continues receiving utility additions through February 2024.",
+      "source_line_start": 265,
+      "source_line_end": 269
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### C++\n\n- **C++ utility development — strong evidence.**\n- **Standard-library strings and vectors — strong evidence.**\n- **Stream-based input parsing — strong evidence.**\n- **Exception-based input validation — moderate evidence.**\n- **Bitwise operations — moderate evidence.**\n\n### Algorithms\n\n- **Prime factorization — strong evidence.**\n- **Primality testing — strong evidence.**\n- **Sieve of Eratosthenes — strong evidence.**\n- **GCD-based reasoning — moderate evidence.**\n- **Sorting — strong evidence.**\n- **Nested collection comparison — strong evidence.**\n\n### Text Processing\n\n- **Multi-line console input — strong evidence.**\n- **Whitespace tokenization — strong evidence.**\n- **String trimming — strong evidence.**\n- **Generated SQL-line formatting — moderate evidence.**\n\n### Verification\n\n- **Embedded expected-output checks — moderate evidence.**\n- **Manual console verification — strong evidence.**",
+      "source_line_start": 269,
+      "source_line_end": 300
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Skills Demonstrated",
+        "C++"
+      ],
+      "content": "- **C++ utility development — strong evidence.**\n- **Standard-library strings and vectors — strong evidence.**\n- **Stream-based input parsing — strong evidence.**\n- **Exception-based input validation — moderate evidence.**\n- **Bitwise operations — moderate evidence.**",
+      "source_line_start": 271,
+      "source_line_end": 279
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Algorithms",
+      "normalized_title": "Algorithms",
+      "key": "algorithms",
+      "path": [
+        "Skills Demonstrated",
+        "Algorithms"
+      ],
+      "content": "- **Prime factorization — strong evidence.**\n- **Primality testing — strong evidence.**\n- **Sieve of Eratosthenes — strong evidence.**\n- **GCD-based reasoning — moderate evidence.**\n- **Sorting — strong evidence.**\n- **Nested collection comparison — strong evidence.**",
+      "source_line_start": 279,
+      "source_line_end": 288
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Text Processing",
+      "normalized_title": "Text Processing",
+      "key": "text_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Text Processing"
+      ],
+      "content": "- **Multi-line console input — strong evidence.**\n- **Whitespace tokenization — strong evidence.**\n- **String trimming — strong evidence.**\n- **Generated SQL-line formatting — moderate evidence.**",
+      "source_line_start": 288,
+      "source_line_end": 295
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Skills Demonstrated",
+        "Verification"
+      ],
+      "content": "- **Embedded expected-output checks — moderate evidence.**\n- **Manual console verification — strong evidence.**",
+      "source_line_start": 295,
+      "source_line_end": 300
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository represents a shift toward maintaining a personal bank of reusable implementation patterns.\n\nRather than solving only a single project problem, small algorithms and text-processing helpers are preserved independently for later reuse.\n\nThat pattern is useful historically because it shows deliberate accumulation of coding utilities alongside the larger product, hardware, networking, and ML repositories.",
+      "source_line_start": 300,
+      "source_line_end": 308
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This repository strengthens personally attributable C++ evidence after the earlier collaborative XML project and the longitudinal LeetCode repository.\n\nIt also introduces the earliest observed dedicated personal **general C++ utility library** in the processed corpus.\n\nThe repository connects interview-style algorithm practice with reusable day-to-day programming helpers.",
+      "source_line_start": 308,
+      "source_line_end": 316
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`CPP_LIB` marks a utility-library phase in the portfolio: small, frequently reusable solutions are collected outside a single application.\n\nIts later February 2024 additions show the repository continuing to accumulate algorithms rather than being a one-day exercise.",
+      "source_line_start": 316,
+      "source_line_end": 322
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`CPP_LIB` is a compact owner-authored C++ utility collection spanning text processing and algorithmic helpers.\n\nThe largest text tool compares two irregular multi-line token sets and emits SQL-style lines for values that exist only in the first input. Smaller utilities cover trimming, whitespace splitting, prime testing, factorization, sieve-based prime counting, GCD-derived factor reasoning, integer reversal, overflow checking, XOR reduction, and exploratory number decomposition.\n\nThe repository's strongest portfolio value is breadth of reusable C++ problem-solving patterns and evidence of maintaining personal implementation snippets over time.\n\n# Project Tags",
+      "source_line_start": 322,
+      "source_line_end": 332
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `utility-library`\n- `developer-tooling`\n- `algorithm-utility-collection`\n- `personal-project`",
+      "source_line_start": 332,
+      "source_line_end": 339
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 339,
+      "source_line_end": 343
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `cpp`",
+      "source_line_start": 343,
+      "source_line_end": 347
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Systems Engineering and Algorithms",
+      "normalized_title": "Systems Engineering and Algorithms",
+      "key": "systems_engineering_and_algorithms",
+      "path": [
+        "Systems Engineering and Algorithms"
+      ],
+      "content": "- `prime-factorization`\n- `primality-testing`\n- `sieve-of-eratosthenes`\n- `gcd`\n- `sorting`\n- `bitwise-xor`\n- `integer-digit-reversal`",
+      "source_line_start": 347,
+      "source_line_end": 357
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `text-parsing`\n- `text-normalization`\n- `whitespace-tokenization`\n- `collection-difference`",
+      "source_line_start": 357,
+      "source_line_end": 364
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `expected-output-verification`\n- `manual-execution-demo`",
+      "source_line_start": 364,
+      "source_line_end": 369
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `input-validation`\n- `small-function-decomposition`\n- `known-limitations-documented`",
+      "source_line_start": 369,
+      "source_line_end": 375
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-general-cpp-utility-library`",
+      "source_line_start": 375,
+      "source_line_end": 378
+    }
+  ],
+  "raw_analysis": "# CPP_LIB\n\n## Repository Identity\n\n- Repository: 022 / 134\n- Name: `CPP_LIB`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2024-02-29\n- Primary type: Personal C++ utility collection\n- Technical field: General-purpose programming utilities, text processing, and number-theory helpers\n- Collaboration type: `individual-project`\n- Primary implementation language: C++\n\n## Collaboration and Authorship Context\n\nThe visible repository history is owner-authored, including the latest `Factorization.cpp` commit on 2024-02-29. The current utility implementations are therefore personally attributable at repository level.\n\nThe collection is intentionally small and heterogeneous: individual `.cpp` files capture reusable snippets, experiments, and helper functions rather than one integrated application.\n\n## Evidence Basis\n\nThe analysis is grounded in the repository tree, README, C++ source files, and commit history.\n\nThe current tree contains utilities including:\n\n- `Irregular String Input Difference.cpp`;\n- `Trim String.cpp`;\n- `Factorization.cpp`;\n- `isPrime.cpp`;\n- `sieve.cpp`;\n- `LCD.cpp`;\n- `numberToEnglish.cpp`;\n- `reverseInt.cpp`;\n- `overflowChecker.cpp`;\n- `splitSpace.cpp`;\n- `xorv.cpp`.\n\n## What This Project Is\n\n`CPP_LIB` is a personal collection of compact C++ utilities accumulated across late 2023 and early 2024.\n\nThe repository is not organized around a single product workflow. Instead, it acts as a reusable scratch/library area for frequently useful programming operations: string cleanup, tokenization, set-like comparison of word collections, integer reversal, XOR accumulation, prime testing, prime counting, factorization, common-divisor reasoning, and exploratory number-to-text conversion.\n\nThis gives the project value as evidence of reusable coding patterns and small-function problem solving rather than application architecture.\n\n## Project Scope\n\nThe repository covers several distinct utility families.\n\n### Text Input and String Processing\n\n`Irregular String Input Difference.cpp` reads two multi-line text blocks until a sentinel string is encountered, tokenizes both streams using whitespace-aware extraction, compares their word collections, sorts the values present only in the first input, and prefixes those values with `SELECT * FROM `.\n\n`Trim String.cpp` contains:\n\n- repeated-whitespace cleanup;\n- leading/trailing blank trimming;\n- conversion of a ratio string into percentage output;\n- a small executable test harness.\n\n`splitSpace.cpp` manually tokenizes a string into whitespace-delimited pieces.\n\n### Number-Theory and Arithmetic Helpers\n\n`Factorization.cpp` computes prime factors of a positive integer.\n\n`isPrime.cpp` checks primality by searching divisors only up to the square root.\n\n`sieve.cpp` implements a Sieve-of-Eratosthenes-style boolean table and counts primes below a bound.\n\n`LCD.cpp` computes a GCD across an integer vector and then reduces that value until a prime divisor remains.\n\n`xorv.cpp` accumulates the bitwise XOR of an integer vector.\n\n### Integer Representation Helpers\n\n`reverseInt.cpp` reverses decimal digits through modulus and integer division.\n\n`overflowChecker.cpp` compares a `BigInt` value against `INT32_MAX`.\n\n`numberToEnglish.cpp` is an exploratory partial number decomposition / English-word conversion experiment containing `unitator`, `hunds`, and an unfinished `DigitSectionizer` direction.\n\n## Architecture and System Shape\n\nThe repository is a flat utility collection:\n\n```text\nCPP_LIB\n├─ text-processing snippets\n│  ├─ irregular multi-line difference\n│  ├─ trimming / cleaning\n│  └─ whitespace tokenization\n├─ number-theory snippets\n│  ├─ primality\n│  ├─ sieve\n│  ├─ factorization\n│  └─ GCD-derived factor search\n└─ integer helpers\n   ├─ reverse digits\n   ├─ overflow check\n   └─ XOR accumulation\n```\n\nEach file is largely self-contained and can be copied or adapted independently.\n\n## Technical Stack\n\n### C++\n\nC++ is used throughout for:\n\n- `std::string`;\n- `std::vector`;\n- streams;\n- `std::istringstream`;\n- algorithms such as sorting;\n- integer arithmetic;\n- exception throwing;\n- loops and conditionals;\n- basic test/demo `main` functions.\n\n### Standard Library Text Processing\n\nThe irregular-string utility uses `std::getline` for multi-line collection and `std::istringstream >>` for whitespace-aware tokenization.\n\n### Standard Library Containers\n\n`std::vector` is the primary collection structure for token lists, integer lists, and factor outputs.\n\n## Major Engineering Work\n\n### Multi-Line Input Comparison\n\nThe largest utility reads arbitrary multi-line blocks until the sentinel `STOP`.\n\nIt then:\n\n1. preserves the entered blocks;\n2. tokenizes both;\n3. records word counts;\n4. compares every token from the first set with tokens in the second;\n5. retains values present only in the first;\n6. sorts those values;\n7. converts each result into a `SELECT * FROM ...` line.\n\nThe repository README explicitly documents this tool as comparing first-input items against second-input items.\n\nThis is practical developer tooling for reconciling irregular text lists.\n\n### Prime Factorization\n\n`primeFactors(int n)`:\n\n- returns an empty factor list for `1`;\n- throws `std::invalid_argument` for negative values;\n- repeatedly extracts factor `2`;\n- searches odd factors up to `sqrt(n)`;\n- appends a remaining prime factor.\n\nThe function demonstrates both input validation and a more efficient factor search than testing every integer through `n`.\n\n### Sieve-Based Prime Counting\n\n`_sieve(int n)` initializes a boolean prime table, marks composite multiples beginning at `p*p`, and counts surviving primes below `n`.\n\nThis demonstrates the Sieve of Eratosthenes as a different prime-related strategy from direct divisor testing.\n\n### Direct Primality Check\n\n`is_prime(int n)` tests candidate divisors only while `i*i <= n`.\n\nThe repository therefore preserves multiple number-theory approaches rather than one repeated implementation.\n\n### String Trimming and Local Test Harness\n\n`Trim String.cpp` includes a `cleaner` function that advances inward over leading/trailing blank characters and reconstructs the trimmed substring.\n\nIts `main` function executes four concrete cases, increments a success counter, and prints the success ratio as a percentage.\n\nThat is direct evidence of small-scale expected-output verification inside a utility file.\n\n### Reusable Tokenization\n\n`splitSpace` manually accumulates non-space characters into a temporary token and emits tokens to a vector when whitespace is encountered.\n\n### Integer Digit Reversal\n\n`reverseInt` repeatedly uses `% 10` and `/ 10` to reconstruct a decimal integer in reverse digit order.\n\n### XOR Reduction\n\n`_xorv` reduces a vector into one integer through repeated bitwise XOR.\n\n### Overflow Boundary Check\n\n`overflowChecker` compares a `BigInt`-style value to the signed 32-bit maximum.\n\n### Exploratory Number-to-English Work\n\n`numberToEnglish.cpp` decomposes digits and contains partial branches for units, tens, and hundreds.\n\nThe source itself shows this as exploratory/incomplete work rather than a complete arbitrary-number formatter.\n\n## Verification\n\n### Embedded Expected-Output Checks\n\n`Trim String.cpp` contains four explicit test cases for trimming behavior.\n\nThe program compares actual returned strings with expected strings and reports a success percentage.\n\n### Console Demonstration\n\nSeveral utilities are executable console snippets that print intermediate values, counts, or generated output for direct inspection.\n\n## Engineering Practices\n\n### Small Reusable Functions\n\nThe repository isolates narrow responsibilities into compact helpers such as:\n\n- `is_prime`;\n- `primeFactors`;\n- `_sieve`;\n- `splitSpace`;\n- `reverseInt`;\n- `_xorv`;\n- `overflowChecker`.\n\n### Input Validation\n\nThe factorization helper rejects negative input through an exception.\n\n### Algorithm Selection by Problem Shape\n\nThe repository includes both direct divisor search and sieve-style prime processing, reflecting selection of different techniques for one-off primality versus range-oriented counting.\n\n### Self-Documented Limitations\n\nThe README documents the irregular-string tool's whitespace tokenization behavior and one-direction comparison.\n\nThe partial number-to-English source also preserves the exploratory state directly in implementation.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThe repository contains roughly a dozen small source artifacts rather than a large application.\n\n### Breadth\n\nIts scale comes from the number of reusable problem types represented:\n\n- strings;\n- stream input;\n- collection comparison;\n- sorting;\n- prime testing;\n- factorization;\n- sieve processing;\n- GCD reasoning;\n- bitwise operations;\n- integer digit manipulation.\n\n### Historical Time Span\n\nThe repository starts in November 2023 and continues receiving utility additions through February 2024.\n\n## Skills Demonstrated\n\n### C++\n\n- **C++ utility development — strong evidence.**\n- **Standard-library strings and vectors — strong evidence.**\n- **Stream-based input parsing — strong evidence.**\n- **Exception-based input validation — moderate evidence.**\n- **Bitwise operations — moderate evidence.**\n\n### Algorithms\n\n- **Prime factorization — strong evidence.**\n- **Primality testing — strong evidence.**\n- **Sieve of Eratosthenes — strong evidence.**\n- **GCD-based reasoning — moderate evidence.**\n- **Sorting — strong evidence.**\n- **Nested collection comparison — strong evidence.**\n\n### Text Processing\n\n- **Multi-line console input — strong evidence.**\n- **Whitespace tokenization — strong evidence.**\n- **String trimming — strong evidence.**\n- **Generated SQL-line formatting — moderate evidence.**\n\n### Verification\n\n- **Embedded expected-output checks — moderate evidence.**\n- **Manual console verification — strong evidence.**\n\n## Capability Developed\n\nThe repository represents a shift toward maintaining a personal bank of reusable implementation patterns.\n\nRather than solving only a single project problem, small algorithms and text-processing helpers are preserved independently for later reuse.\n\nThat pattern is useful historically because it shows deliberate accumulation of coding utilities alongside the larger product, hardware, networking, and ML repositories.\n\n## Portfolio Evolution Context\n\nThis repository strengthens personally attributable C++ evidence after the earlier collaborative XML project and the longitudinal LeetCode repository.\n\nIt also introduces the earliest observed dedicated personal **general C++ utility library** in the processed corpus.\n\nThe repository connects interview-style algorithm practice with reusable day-to-day programming helpers.\n\n## Historical Significance\n\n`CPP_LIB` marks a utility-library phase in the portfolio: small, frequently reusable solutions are collected outside a single application.\n\nIts later February 2024 additions show the repository continuing to accumulate algorithms rather than being a one-day exercise.\n\n## Overall Repository Narrative\n\n`CPP_LIB` is a compact owner-authored C++ utility collection spanning text processing and algorithmic helpers.\n\nThe largest text tool compares two irregular multi-line token sets and emits SQL-style lines for values that exist only in the first input. Smaller utilities cover trimming, whitespace splitting, prime testing, factorization, sieve-based prime counting, GCD-derived factor reasoning, integer reversal, overflow checking, XOR reduction, and exploratory number decomposition.\n\nThe repository's strongest portfolio value is breadth of reusable C++ problem-solving patterns and evidence of maintaining personal implementation snippets over time.\n\n# Project Tags\n\n## Project Type\n\n- `utility-library`\n- `developer-tooling`\n- `algorithm-utility-collection`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `cpp`\n\n## Systems Engineering and Algorithms\n\n- `prime-factorization`\n- `primality-testing`\n- `sieve-of-eratosthenes`\n- `gcd`\n- `sorting`\n- `bitwise-xor`\n- `integer-digit-reversal`\n\n## Database and Data\n\n- `text-parsing`\n- `text-normalization`\n- `whitespace-tokenization`\n- `collection-difference`\n\n## Testing and Verification\n\n- `expected-output-verification`\n- `manual-execution-demo`\n\n## Software Engineering Practices\n\n- `input-validation`\n- `small-function-decomposition`\n- `known-limitations-documented`\n\n## Portfolio Significance\n\n- `earliest-observed-general-cpp-utility-library`\n"
+}

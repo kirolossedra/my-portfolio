@@ -1,0 +1,929 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 111,
+  "repository_total": 134,
+  "repository_name": "MegaRepo",
+  "header_title": "MegaRepo",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-111-MegaRepo/README.md",
+    "line_start": 1,
+    "line_end": 457,
+    "sha256": "cd046dfcecc0f6c02391140331ee144854bcf2913e5a656550ca72487a19c962"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "multi-language-practice",
+    "cli-applications",
+    "individual-project",
+    "go",
+    "ruby",
+    "php",
+    "rust",
+    "json",
+    "local-file-persistence",
+    "temporary-file-replacement",
+    "domain-modeling",
+    "input-validation",
+    "error-handling",
+    "search-filtering",
+    "state-transition-modeling",
+    "cli-command-dispatch",
+    "task-manager",
+    "library-manager",
+    "inventory-manager",
+    "earliest-observed-go-ruby-php-rust-comparative-practice-repository"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 111 / 134\n- Name: `MegaRepo`\n- Repository start date: 2026-07-23\n- Last meaningful update date: 2026-07-23\n- Latest meaningful commit: `5cc872db07cfeaf3bbc8f000b6c31451c7d0a309`\n- Primary type: Multi-language command-line application practice repository\n- Technical field: General software development, data modeling, file persistence, CLI application design\n- Collaboration type: `individual-project`\n- Primary languages: Go, Ruby, PHP, Rust"
+    },
+    "architecture": {
+      "section_ids": [
+        "s027"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\nThe three substantive programs share a broad application shape despite language differences:\n\n```text\nCLI input\n   ↓\nvalidation / command dispatch\n   ↓\ndomain objects and collection/store logic\n   ↓\nJSON serialization\n   ↓\ntemporary file\n   ↓\natomic-style rename replacement\n```\n\nThe repeated structure makes cross-language comparison possible inside one repository."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository is owner-driven and contains independent implementations used to exercise several programming languages. The corpus treats these command-line programs as personally attributable learning/practice work.\n\nThe files do not form one deployed application. They are best understood as parallel language exercises that repeatedly explore small stateful application patterns."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 111 / 134\n- Name: `MegaRepo`\n- Repository start date: 2026-07-23\n- Last meaningful update date: 2026-07-23\n- Latest meaningful commit: `5cc872db07cfeaf3bbc8f000b6c31451c7d0a309`\n- Primary type: Multi-language command-line application practice repository\n- Technical field: General software development, data modeling, file persistence, CLI application design\n- Collaboration type: `individual-project`\n- Primary languages: Go, Ruby, PHP, Rust",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository is owner-driven and contains independent implementations used to exercise several programming languages. The corpus treats these command-line programs as personally attributable learning/practice work.\n\nThe files do not form one deployed application. They are best understood as parallel language exercises that repeatedly explore small stateful application patterns.",
+      "source_line_start": 15,
+      "source_line_end": 21
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `test.go`;\n- `test.rb`;\n- `inv.php`;\n- `test.rs`;\n- repository history from July 23, 2026.\n\nThe root README is minimal, so the implementation files provide the substantive evidence.",
+      "source_line_start": 21,
+      "source_line_end": 33
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`MegaRepo` is a compact multi-language practice repository containing several command-line applications.\n\nThe main exercises are:\n\n- a persistent task manager in Go;\n- a persistent library manager in Ruby;\n- a persistent inventory manager in PHP;\n- a minimal stdin/stdout Rust program.\n\nThe first three applications independently practice a similar set of software concerns: domain objects, command/menu handling, validation, search/filtering, persistent JSON state, and safe replacement of data files.\n\nThis makes the repository useful as evidence of translating familiar application patterns across different language idioms rather than only writing syntax demonstrations.",
+      "source_line_start": 33,
+      "source_line_end": 48
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Go Task Manager",
+      "normalized_title": "Go Task Manager",
+      "key": "go_task_manager",
+      "path": [
+        "Go Task Manager"
+      ],
+      "content": "### Domain Model\n\n`test.go` defines:\n\n- `Priority` as an integer-backed enum-like type;\n- `Task` with ID, title, description, priority, completion state, creation time, and optional completion time;\n- `Store` containing tasks and the next ID.\n\nPriorities are represented as:\n\n- low;\n- medium;\n- high.\n\n### JSON Persistence\n\nState is stored in `tasks.json`.\n\nThe program:\n\n- initializes a new store when the file does not exist;\n- decodes existing JSON;\n- repairs `NextID` when required;\n- serializes indented JSON;\n- writes to a temporary file;\n- renames the temporary file over the main data file.\n\nThe temp-file/rename pattern reduces the chance of replacing the primary state file with partially written content.\n\n### Task Lifecycle\n\nThe Go application supports:\n\n- adding tasks;\n- listing all tasks;\n- listing open tasks;\n- listing completed tasks;\n- text search;\n- completing a task;\n- reopening a task;\n- removing a task;\n- clearing completed tasks;\n- viewing statistics.\n\nCompletion stores a timestamp, while reopening clears the completion timestamp.\n\n### Filtering and Ordering\n\nThe task list is filtered by lifecycle state or search text.\n\nResults are stably sorted so that:\n\n1. open tasks precede completed tasks;\n2. higher priority precedes lower priority;\n3. earlier creation time breaks remaining ties.\n\n### Statistics\n\nThe application calculates:\n\n- total tasks;\n- open tasks;\n- completed tasks;\n- open high-priority tasks;\n- completion percentage.\n\n### Input Validation\n\nThe CLI validates:\n\n- required text;\n- positive integer task IDs;\n- recognized priority values;\n- confirmation before deletions/clearing.",
+      "source_line_start": 48,
+      "source_line_end": 125
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Domain Model",
+      "normalized_title": "Domain Model",
+      "key": "domain_model",
+      "path": [
+        "Go Task Manager",
+        "Domain Model"
+      ],
+      "content": "`test.go` defines:\n\n- `Priority` as an integer-backed enum-like type;\n- `Task` with ID, title, description, priority, completion state, creation time, and optional completion time;\n- `Store` containing tasks and the next ID.\n\nPriorities are represented as:\n\n- low;\n- medium;\n- high.",
+      "source_line_start": 50,
+      "source_line_end": 64
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "JSON Persistence",
+      "normalized_title": "JSON Persistence",
+      "key": "json_persistence",
+      "path": [
+        "Go Task Manager",
+        "JSON Persistence"
+      ],
+      "content": "State is stored in `tasks.json`.\n\nThe program:\n\n- initializes a new store when the file does not exist;\n- decodes existing JSON;\n- repairs `NextID` when required;\n- serializes indented JSON;\n- writes to a temporary file;\n- renames the temporary file over the main data file.\n\nThe temp-file/rename pattern reduces the chance of replacing the primary state file with partially written content.",
+      "source_line_start": 64,
+      "source_line_end": 79
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Task Lifecycle",
+      "normalized_title": "Task Lifecycle",
+      "key": "task_lifecycle",
+      "path": [
+        "Go Task Manager",
+        "Task Lifecycle"
+      ],
+      "content": "The Go application supports:\n\n- adding tasks;\n- listing all tasks;\n- listing open tasks;\n- listing completed tasks;\n- text search;\n- completing a task;\n- reopening a task;\n- removing a task;\n- clearing completed tasks;\n- viewing statistics.\n\nCompletion stores a timestamp, while reopening clears the completion timestamp.",
+      "source_line_start": 79,
+      "source_line_end": 96
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Filtering and Ordering",
+      "normalized_title": "Filtering and Ordering",
+      "key": "filtering_and_ordering",
+      "path": [
+        "Go Task Manager",
+        "Filtering and Ordering"
+      ],
+      "content": "The task list is filtered by lifecycle state or search text.\n\nResults are stably sorted so that:\n\n1. open tasks precede completed tasks;\n2. higher priority precedes lower priority;\n3. earlier creation time breaks remaining ties.",
+      "source_line_start": 96,
+      "source_line_end": 106
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Statistics",
+      "normalized_title": "Statistics",
+      "key": "statistics",
+      "path": [
+        "Go Task Manager",
+        "Statistics"
+      ],
+      "content": "The application calculates:\n\n- total tasks;\n- open tasks;\n- completed tasks;\n- open high-priority tasks;\n- completion percentage.",
+      "source_line_start": 106,
+      "source_line_end": 116
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Go Task Manager",
+        "Input Validation"
+      ],
+      "content": "The CLI validates:\n\n- required text;\n- positive integer task IDs;\n- recognized priority values;\n- confirmation before deletions/clearing.",
+      "source_line_start": 116,
+      "source_line_end": 125
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Ruby Library Manager",
+      "normalized_title": "Ruby Library Manager",
+      "key": "ruby_library_manager",
+      "path": [
+        "Ruby Library Manager"
+      ],
+      "content": "### Object-Oriented Domain Model\n\n`test.rb` defines separate `Book`, `Library`, and `LibraryApp` classes.\n\nA `Book` stores:\n\n- ID;\n- title;\n- author;\n- publication year;\n- borrowed state;\n- borrower.\n\nThe object owns behavior for borrowing, returning, availability checks, matching searches, and serialization.\n\n### Collection Service\n\n`Library` manages:\n\n- loading/saving;\n- ID allocation;\n- book addition/removal;\n- lookup;\n- search;\n- available/borrowed subsets;\n- sorted books;\n- aggregate statistics.\n\n### Borrowing Workflow\n\nThe application protects state transitions:\n\n- a borrowed book cannot be borrowed again;\n- a return applies only to a borrowed book;\n- borrower identity is stored while the book is checked out.\n\n### JSON Persistence\n\n`library_data.json` stores the library.\n\nLike the Go implementation, Ruby writes pretty-printed JSON through a temporary file before rename replacement.\n\n### Publication-Year Validation\n\nBook creation validates the year against a range based on the current calendar year.\n\n### Search and Statistics\n\nSearch covers title, author, and year text.\n\nStatistics report total, available, and borrowed books.",
+      "source_line_start": 125,
+      "source_line_end": 179
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Object-Oriented Domain Model",
+      "normalized_title": "Object-Oriented Domain Model",
+      "key": "object_oriented_domain_model",
+      "path": [
+        "Ruby Library Manager",
+        "Object-Oriented Domain Model"
+      ],
+      "content": "`test.rb` defines separate `Book`, `Library`, and `LibraryApp` classes.\n\nA `Book` stores:\n\n- ID;\n- title;\n- author;\n- publication year;\n- borrowed state;\n- borrower.\n\nThe object owns behavior for borrowing, returning, availability checks, matching searches, and serialization.",
+      "source_line_start": 127,
+      "source_line_end": 142
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Collection Service",
+      "normalized_title": "Collection Service",
+      "key": "collection_service",
+      "path": [
+        "Ruby Library Manager",
+        "Collection Service"
+      ],
+      "content": "`Library` manages:\n\n- loading/saving;\n- ID allocation;\n- book addition/removal;\n- lookup;\n- search;\n- available/borrowed subsets;\n- sorted books;\n- aggregate statistics.",
+      "source_line_start": 142,
+      "source_line_end": 155
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Borrowing Workflow",
+      "normalized_title": "Borrowing Workflow",
+      "key": "borrowing_workflow",
+      "path": [
+        "Ruby Library Manager",
+        "Borrowing Workflow"
+      ],
+      "content": "The application protects state transitions:\n\n- a borrowed book cannot be borrowed again;\n- a return applies only to a borrowed book;\n- borrower identity is stored while the book is checked out.",
+      "source_line_start": 155,
+      "source_line_end": 163
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "JSON Persistence",
+      "normalized_title": "JSON Persistence",
+      "key": "json_persistence",
+      "path": [
+        "Ruby Library Manager",
+        "JSON Persistence"
+      ],
+      "content": "`library_data.json` stores the library.\n\nLike the Go implementation, Ruby writes pretty-printed JSON through a temporary file before rename replacement.",
+      "source_line_start": 163,
+      "source_line_end": 169
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Publication-Year Validation",
+      "normalized_title": "Publication-Year Validation",
+      "key": "publication_year_validation",
+      "path": [
+        "Ruby Library Manager",
+        "Publication-Year Validation"
+      ],
+      "content": "Book creation validates the year against a range based on the current calendar year.",
+      "source_line_start": 169,
+      "source_line_end": 173
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Search and Statistics",
+      "normalized_title": "Search and Statistics",
+      "key": "search_and_statistics",
+      "path": [
+        "Ruby Library Manager",
+        "Search and Statistics"
+      ],
+      "content": "Search covers title, author, and year text.\n\nStatistics report total, available, and borrowed books.",
+      "source_line_start": 173,
+      "source_line_end": 179
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "PHP Inventory Manager",
+      "normalized_title": "PHP Inventory Manager",
+      "key": "php_inventory_manager",
+      "path": [
+        "PHP Inventory Manager"
+      ],
+      "content": "### Strictly Typed PHP\n\n`inv.php` begins with `declare(strict_types=1)` and uses typed properties, parameter types, and return types throughout the domain model.\n\n### Product Model\n\n`Product` stores:\n\n- ID;\n- name;\n- category;\n- quantity;\n- price.\n\nThe model provides behavior for:\n\n- inventory value calculation;\n- low-stock detection;\n- query matching;\n- array serialization/deserialization.\n\n### Inventory Service\n\n`Inventory` owns the product collection and provides:\n\n- load/save;\n- addition;\n- sorted listing;\n- ID lookup;\n- removal;\n- search;\n- low-stock filtering;\n- total inventory-value calculation;\n- item count.\n\n### JSON Persistence\n\nInventory state is stored in `inventory_data.json`.\n\nThe persistence path:\n\n- JSON-encodes structured state;\n- writes a temporary file;\n- renames it to the canonical file;\n- raises runtime exceptions on invalid or failed persistence operations.\n\n### Inventory Workflow\n\nThe menu-driven application supports:\n\n- adding products;\n- listing products;\n- searching;\n- quantity updates;\n- product removal;\n- low-stock reporting;\n- statistics;\n- save-and-exit.\n\n### Validation\n\nThe CLI contains reusable integer/float parsing and required-value input helpers.",
+      "source_line_start": 179,
+      "source_line_end": 244
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Strictly Typed PHP",
+      "normalized_title": "Strictly Typed PHP",
+      "key": "strictly_typed_php",
+      "path": [
+        "PHP Inventory Manager",
+        "Strictly Typed PHP"
+      ],
+      "content": "`inv.php` begins with `declare(strict_types=1)` and uses typed properties, parameter types, and return types throughout the domain model.",
+      "source_line_start": 181,
+      "source_line_end": 185
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Product Model",
+      "normalized_title": "Product Model",
+      "key": "product_model",
+      "path": [
+        "PHP Inventory Manager",
+        "Product Model"
+      ],
+      "content": "`Product` stores:\n\n- ID;\n- name;\n- category;\n- quantity;\n- price.\n\nThe model provides behavior for:\n\n- inventory value calculation;\n- low-stock detection;\n- query matching;\n- array serialization/deserialization.",
+      "source_line_start": 185,
+      "source_line_end": 202
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Inventory Service",
+      "normalized_title": "Inventory Service",
+      "key": "inventory_service",
+      "path": [
+        "PHP Inventory Manager",
+        "Inventory Service"
+      ],
+      "content": "`Inventory` owns the product collection and provides:\n\n- load/save;\n- addition;\n- sorted listing;\n- ID lookup;\n- removal;\n- search;\n- low-stock filtering;\n- total inventory-value calculation;\n- item count.",
+      "source_line_start": 202,
+      "source_line_end": 216
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "JSON Persistence",
+      "normalized_title": "JSON Persistence",
+      "key": "json_persistence",
+      "path": [
+        "PHP Inventory Manager",
+        "JSON Persistence"
+      ],
+      "content": "Inventory state is stored in `inventory_data.json`.\n\nThe persistence path:\n\n- JSON-encodes structured state;\n- writes a temporary file;\n- renames it to the canonical file;\n- raises runtime exceptions on invalid or failed persistence operations.",
+      "source_line_start": 216,
+      "source_line_end": 227
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Inventory Workflow",
+      "normalized_title": "Inventory Workflow",
+      "key": "inventory_workflow",
+      "path": [
+        "PHP Inventory Manager",
+        "Inventory Workflow"
+      ],
+      "content": "The menu-driven application supports:\n\n- adding products;\n- listing products;\n- searching;\n- quantity updates;\n- product removal;\n- low-stock reporting;\n- statistics;\n- save-and-exit.",
+      "source_line_start": 227,
+      "source_line_end": 240
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Validation",
+      "normalized_title": "Validation",
+      "key": "validation",
+      "path": [
+        "PHP Inventory Manager",
+        "Validation"
+      ],
+      "content": "The CLI contains reusable integer/float parsing and required-value input helpers.",
+      "source_line_start": 240,
+      "source_line_end": 244
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Rust Input/Output Exercise",
+      "normalized_title": "Rust Input/Output Exercise",
+      "key": "rust_input_output_exercise",
+      "path": [
+        "Rust Input/Output Exercise"
+      ],
+      "content": "`test.rs` is intentionally much smaller than the other files.\n\nIt demonstrates basic Rust console interaction:\n\n- create a mutable `String`;\n- read a line from stdin;\n- handle the read result with `expect`;\n- trim the input;\n- interpolate it into output.\n\nThe corpus preserves this as limited but direct Rust evidence rather than inflating it to the scope of the Go, Ruby, or PHP applications.",
+      "source_line_start": 244,
+      "source_line_end": 258
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "The three substantive programs share a broad application shape despite language differences:\n\n```text\nCLI input\n   ↓\nvalidation / command dispatch\n   ↓\ndomain objects and collection/store logic\n   ↓\nJSON serialization\n   ↓\ntemporary file\n   ↓\natomic-style rename replacement\n```\n\nThe repeated structure makes cross-language comparison possible inside one repository.",
+      "source_line_start": 258,
+      "source_line_end": 278
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Go\n\nGo is used for a command-loop task manager with structs, methods, slices, JSON encoding, sorting, time values, and explicit error handling.\n\n### Ruby\n\nRuby is used for an object-oriented library manager with classes, predicate methods, enumerable operations, JSON serialization, and exception handling.\n\n### PHP\n\nPHP is used for a strictly typed inventory manager with final classes, typed properties, array functions, JSON persistence, and runtime exceptions.\n\n### Rust\n\nRust is represented by a small stdin/stdout ownership-and-string exercise.",
+      "source_line_start": 278,
+      "source_line_end": 296
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Go",
+      "normalized_title": "Go",
+      "key": "go",
+      "path": [
+        "Technical Stack",
+        "Go"
+      ],
+      "content": "Go is used for a command-loop task manager with structs, methods, slices, JSON encoding, sorting, time values, and explicit error handling.",
+      "source_line_start": 280,
+      "source_line_end": 284
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Ruby",
+      "normalized_title": "Ruby",
+      "key": "ruby",
+      "path": [
+        "Technical Stack",
+        "Ruby"
+      ],
+      "content": "Ruby is used for an object-oriented library manager with classes, predicate methods, enumerable operations, JSON serialization, and exception handling.",
+      "source_line_start": 284,
+      "source_line_end": 288
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "PHP",
+      "normalized_title": "PHP",
+      "key": "php",
+      "path": [
+        "Technical Stack",
+        "PHP"
+      ],
+      "content": "PHP is used for a strictly typed inventory manager with final classes, typed properties, array functions, JSON persistence, and runtime exceptions.",
+      "source_line_start": 288,
+      "source_line_end": 292
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Rust",
+      "normalized_title": "Rust",
+      "key": "rust",
+      "path": [
+        "Technical Stack",
+        "Rust"
+      ],
+      "content": "Rust is represented by a small stdin/stdout ownership-and-string exercise.",
+      "source_line_start": 292,
+      "source_line_end": 296
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Cross-Language Domain Modeling\n\nThe repository repeatedly maps application concepts into different language constructs:\n\n- Go structs and methods;\n- Ruby classes and idiomatic predicates;\n- PHP typed classes and methods.\n\n### Persistent Local State\n\nGo, Ruby, and PHP each use JSON to make command-line state survive process restarts.\n\n### Safer File Replacement\n\nAll three substantive persistence implementations write new state to a temporary file before renaming it over the canonical data file.\n\n### Lifecycle Rules\n\nEach application contains domain-specific state transitions:\n\n- task open/completed/reopened;\n- book available/borrowed/returned;\n- product quantities and low-stock classification.\n\n### Search and Aggregation\n\nThe programs include text search plus summary/statistical operations appropriate to their domain.",
+      "source_line_start": 296,
+      "source_line_end": 326
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Cross-Language Domain Modeling",
+      "normalized_title": "Cross-Language Domain Modeling",
+      "key": "cross_language_domain_modeling",
+      "path": [
+        "Major Engineering Work",
+        "Cross-Language Domain Modeling"
+      ],
+      "content": "The repository repeatedly maps application concepts into different language constructs:\n\n- Go structs and methods;\n- Ruby classes and idiomatic predicates;\n- PHP typed classes and methods.",
+      "source_line_start": 298,
+      "source_line_end": 306
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Persistent Local State",
+      "normalized_title": "Persistent Local State",
+      "key": "persistent_local_state",
+      "path": [
+        "Major Engineering Work",
+        "Persistent Local State"
+      ],
+      "content": "Go, Ruby, and PHP each use JSON to make command-line state survive process restarts.",
+      "source_line_start": 306,
+      "source_line_end": 310
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Safer File Replacement",
+      "normalized_title": "Safer File Replacement",
+      "key": "safer_file_replacement",
+      "path": [
+        "Major Engineering Work",
+        "Safer File Replacement"
+      ],
+      "content": "All three substantive persistence implementations write new state to a temporary file before renaming it over the canonical data file.",
+      "source_line_start": 310,
+      "source_line_end": 314
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Lifecycle Rules",
+      "normalized_title": "Lifecycle Rules",
+      "key": "lifecycle_rules",
+      "path": [
+        "Major Engineering Work",
+        "Lifecycle Rules"
+      ],
+      "content": "Each application contains domain-specific state transitions:\n\n- task open/completed/reopened;\n- book available/borrowed/returned;\n- product quantities and low-stock classification.",
+      "source_line_start": 314,
+      "source_line_end": 322
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Search and Aggregation",
+      "normalized_title": "Search and Aggregation",
+      "key": "search_and_aggregation",
+      "path": [
+        "Major Engineering Work",
+        "Search and Aggregation"
+      ],
+      "content": "The programs include text search plus summary/statistical operations appropriate to their domain.",
+      "source_line_start": 322,
+      "source_line_end": 326
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Input Validation\n\nThe CLIs validate required strings, numeric input, IDs, ranges, and state-transition preconditions.\n\n### Error Handling\n\nThe languages use their native mechanisms:\n\n- Go returned errors and wrapped errors;\n- Ruby rescue blocks;\n- PHP exceptions and nullable parse results;\n- Rust `expect` in the small input example.\n\n### Separation of Domain and Interface Logic\n\nThe Go store, Ruby library, and PHP inventory objects keep core collection behavior separate from much of the menu/prompt code.\n\n### Explicit Serialization Contracts\n\nEach persistent domain defines how in-memory objects map to JSON-compatible structures.",
+      "source_line_start": 326,
+      "source_line_end": 349
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Input Validation",
+      "normalized_title": "Input Validation",
+      "key": "input_validation",
+      "path": [
+        "Engineering Practices",
+        "Input Validation"
+      ],
+      "content": "The CLIs validate required strings, numeric input, IDs, ranges, and state-transition preconditions.",
+      "source_line_start": 328,
+      "source_line_end": 332
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Error Handling",
+      "normalized_title": "Error Handling",
+      "key": "error_handling",
+      "path": [
+        "Engineering Practices",
+        "Error Handling"
+      ],
+      "content": "The languages use their native mechanisms:\n\n- Go returned errors and wrapped errors;\n- Ruby rescue blocks;\n- PHP exceptions and nullable parse results;\n- Rust `expect` in the small input example.",
+      "source_line_start": 332,
+      "source_line_end": 341
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Separation of Domain and Interface Logic",
+      "normalized_title": "Separation of Domain and Interface Logic",
+      "key": "separation_of_domain_and_interface_logic",
+      "path": [
+        "Engineering Practices",
+        "Separation of Domain and Interface Logic"
+      ],
+      "content": "The Go store, Ruby library, and PHP inventory objects keep core collection behavior separate from much of the menu/prompt code.",
+      "source_line_start": 341,
+      "source_line_end": 345
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Explicit Serialization Contracts",
+      "normalized_title": "Explicit Serialization Contracts",
+      "key": "explicit_serialization_contracts",
+      "path": [
+        "Engineering Practices",
+        "Explicit Serialization Contracts"
+      ],
+      "content": "Each persistent domain defines how in-memory objects map to JSON-compatible structures.",
+      "source_line_start": 345,
+      "source_line_end": 349
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Language Breadth\n\nThe repository covers four languages in one day of practice, with three substantive stateful CLI applications.\n\n### Application Complexity\n\nThe individual programs remain local command-line tools, but they go beyond syntax-only examples by implementing persistence, search, state transitions, and validation.",
+      "source_line_start": 349,
+      "source_line_end": 359
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Language Breadth",
+      "normalized_title": "Language Breadth",
+      "key": "language_breadth",
+      "path": [
+        "Scale and Complexity",
+        "Language Breadth"
+      ],
+      "content": "The repository covers four languages in one day of practice, with three substantive stateful CLI applications.",
+      "source_line_start": 351,
+      "source_line_end": 355
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Application Complexity",
+      "normalized_title": "Application Complexity",
+      "key": "application_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Application Complexity"
+      ],
+      "content": "The individual programs remain local command-line tools, but they go beyond syntax-only examples by implementing persistence, search, state transitions, and validation.",
+      "source_line_start": 355,
+      "source_line_end": 359
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Go\n\n- **Struct and method design — strong evidence.**\n- **JSON file persistence — strong evidence.**\n- **Slice filtering/sorting — strong evidence.**\n- **Time handling — strong evidence.**\n- **Error handling — strong evidence.**\n\n### Ruby\n\n- **Class-based domain modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Enumerable collection operations — strong evidence.**\n- **Stateful borrow/return workflow — strong evidence.**\n\n### PHP\n\n- **Strictly typed PHP — strong evidence.**\n- **Typed object modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Inventory calculations/filtering — strong evidence.**\n\n### Rust\n\n- **Basic stdin/string handling — limited direct evidence.**\n\n### General Software Engineering\n\n- **CLI application design — strong evidence.**\n- **Input validation — strong evidence.**\n- **Local JSON persistence — strong evidence.**\n- **Temporary-file replacement — strong evidence.**\n- **Search/filter/statistics workflows — strong evidence.**",
+      "source_line_start": 359,
+      "source_line_end": 395
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Go",
+      "normalized_title": "Go",
+      "key": "go",
+      "path": [
+        "Skills Demonstrated",
+        "Go"
+      ],
+      "content": "- **Struct and method design — strong evidence.**\n- **JSON file persistence — strong evidence.**\n- **Slice filtering/sorting — strong evidence.**\n- **Time handling — strong evidence.**\n- **Error handling — strong evidence.**",
+      "source_line_start": 361,
+      "source_line_end": 369
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Ruby",
+      "normalized_title": "Ruby",
+      "key": "ruby",
+      "path": [
+        "Skills Demonstrated",
+        "Ruby"
+      ],
+      "content": "- **Class-based domain modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Enumerable collection operations — strong evidence.**\n- **Stateful borrow/return workflow — strong evidence.**",
+      "source_line_start": 369,
+      "source_line_end": 376
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "PHP",
+      "normalized_title": "PHP",
+      "key": "php",
+      "path": [
+        "Skills Demonstrated",
+        "PHP"
+      ],
+      "content": "- **Strictly typed PHP — strong evidence.**\n- **Typed object modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Inventory calculations/filtering — strong evidence.**",
+      "source_line_start": 376,
+      "source_line_end": 383
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Rust",
+      "normalized_title": "Rust",
+      "key": "rust",
+      "path": [
+        "Skills Demonstrated",
+        "Rust"
+      ],
+      "content": "- **Basic stdin/string handling — limited direct evidence.**",
+      "source_line_start": 383,
+      "source_line_end": 387
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "General Software Engineering",
+      "normalized_title": "General Software Engineering",
+      "key": "general_software_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "General Software Engineering"
+      ],
+      "content": "- **CLI application design — strong evidence.**\n- **Input validation — strong evidence.**\n- **Local JSON persistence — strong evidence.**\n- **Temporary-file replacement — strong evidence.**\n- **Search/filter/statistics workflows — strong evidence.**",
+      "source_line_start": 387,
+      "source_line_end": 395
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "`MegaRepo` is useful primarily as cross-language implementation practice.\n\nThe repeated application patterns expose how comparable concerns—domain objects, state mutation, persistence, validation, and CLI interaction—are expressed differently in Go, Ruby, PHP, and Rust.",
+      "source_line_start": 395,
+      "source_line_end": 401
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "The processed corpus already contains extensive C/C++, Java, Python, JavaScript, and other language experience.\n\nThis repository adds direct implementation evidence for Go, Ruby, PHP, and Rust within one focused practice workspace, with substantially more depth in Go/Ruby/PHP than in the Rust file.",
+      "source_line_start": 401,
+      "source_line_end": 407
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, `MegaRepo` is the clearest single repository explicitly practicing several server/general-purpose languages side by side through small stateful applications.",
+      "source_line_start": 407,
+      "source_line_end": 411
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`MegaRepo` is a multi-language practice workspace containing a Go task manager, Ruby library manager, PHP inventory manager, and small Rust console exercise.\n\nThe Go, Ruby, and PHP programs all implement persistent local state, domain rules, search/filtering, input validation, and menu-driven interaction while using the idioms of their respective languages. Their repeated temporary-file-plus-rename persistence pattern also shows attention to safer state replacement rather than direct destructive overwrites.\n\nThe repository should therefore be retrieved as evidence of cross-language application practice and language comparison, not as one production product.\n\n# Project Tags",
+      "source_line_start": 411,
+      "source_line_end": 421
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `multi-language-practice`\n- `cli-applications`\n- `individual-project`",
+      "source_line_start": 421,
+      "source_line_end": 427
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `go`\n- `ruby`\n- `php`\n- `rust`",
+      "source_line_start": 427,
+      "source_line_end": 434
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Data and Persistence",
+      "normalized_title": "Data and Persistence",
+      "key": "data_and_persistence",
+      "path": [
+        "Data and Persistence"
+      ],
+      "content": "- `json`\n- `local-file-persistence`\n- `temporary-file-replacement`",
+      "source_line_start": 434,
+      "source_line_end": 440
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `domain-modeling`\n- `input-validation`\n- `error-handling`\n- `search-filtering`\n- `state-transition-modeling`\n- `cli-command-dispatch`",
+      "source_line_start": 440,
+      "source_line_end": 449
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Application Domains",
+      "normalized_title": "Application Domains",
+      "key": "application_domains",
+      "path": [
+        "Application Domains"
+      ],
+      "content": "- `task-manager`\n- `library-manager`\n- `inventory-manager`",
+      "source_line_start": 449,
+      "source_line_end": 455
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-go-ruby-php-rust-comparative-practice-repository`",
+      "source_line_start": 455,
+      "source_line_end": 458
+    }
+  ],
+  "raw_analysis": "# MegaRepo\n\n## Repository Identity\n\n- Repository: 111 / 134\n- Name: `MegaRepo`\n- Repository start date: 2026-07-23\n- Last meaningful update date: 2026-07-23\n- Latest meaningful commit: `5cc872db07cfeaf3bbc8f000b6c31451c7d0a309`\n- Primary type: Multi-language command-line application practice repository\n- Technical field: General software development, data modeling, file persistence, CLI application design\n- Collaboration type: `individual-project`\n- Primary languages: Go, Ruby, PHP, Rust\n\n## Collaboration and Authorship Context\n\nThe repository is owner-driven and contains independent implementations used to exercise several programming languages. The corpus treats these command-line programs as personally attributable learning/practice work.\n\nThe files do not form one deployed application. They are best understood as parallel language exercises that repeatedly explore small stateful application patterns.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `test.go`;\n- `test.rb`;\n- `inv.php`;\n- `test.rs`;\n- repository history from July 23, 2026.\n\nThe root README is minimal, so the implementation files provide the substantive evidence.\n\n## What This Project Is\n\n`MegaRepo` is a compact multi-language practice repository containing several command-line applications.\n\nThe main exercises are:\n\n- a persistent task manager in Go;\n- a persistent library manager in Ruby;\n- a persistent inventory manager in PHP;\n- a minimal stdin/stdout Rust program.\n\nThe first three applications independently practice a similar set of software concerns: domain objects, command/menu handling, validation, search/filtering, persistent JSON state, and safe replacement of data files.\n\nThis makes the repository useful as evidence of translating familiar application patterns across different language idioms rather than only writing syntax demonstrations.\n\n## Go Task Manager\n\n### Domain Model\n\n`test.go` defines:\n\n- `Priority` as an integer-backed enum-like type;\n- `Task` with ID, title, description, priority, completion state, creation time, and optional completion time;\n- `Store` containing tasks and the next ID.\n\nPriorities are represented as:\n\n- low;\n- medium;\n- high.\n\n### JSON Persistence\n\nState is stored in `tasks.json`.\n\nThe program:\n\n- initializes a new store when the file does not exist;\n- decodes existing JSON;\n- repairs `NextID` when required;\n- serializes indented JSON;\n- writes to a temporary file;\n- renames the temporary file over the main data file.\n\nThe temp-file/rename pattern reduces the chance of replacing the primary state file with partially written content.\n\n### Task Lifecycle\n\nThe Go application supports:\n\n- adding tasks;\n- listing all tasks;\n- listing open tasks;\n- listing completed tasks;\n- text search;\n- completing a task;\n- reopening a task;\n- removing a task;\n- clearing completed tasks;\n- viewing statistics.\n\nCompletion stores a timestamp, while reopening clears the completion timestamp.\n\n### Filtering and Ordering\n\nThe task list is filtered by lifecycle state or search text.\n\nResults are stably sorted so that:\n\n1. open tasks precede completed tasks;\n2. higher priority precedes lower priority;\n3. earlier creation time breaks remaining ties.\n\n### Statistics\n\nThe application calculates:\n\n- total tasks;\n- open tasks;\n- completed tasks;\n- open high-priority tasks;\n- completion percentage.\n\n### Input Validation\n\nThe CLI validates:\n\n- required text;\n- positive integer task IDs;\n- recognized priority values;\n- confirmation before deletions/clearing.\n\n## Ruby Library Manager\n\n### Object-Oriented Domain Model\n\n`test.rb` defines separate `Book`, `Library`, and `LibraryApp` classes.\n\nA `Book` stores:\n\n- ID;\n- title;\n- author;\n- publication year;\n- borrowed state;\n- borrower.\n\nThe object owns behavior for borrowing, returning, availability checks, matching searches, and serialization.\n\n### Collection Service\n\n`Library` manages:\n\n- loading/saving;\n- ID allocation;\n- book addition/removal;\n- lookup;\n- search;\n- available/borrowed subsets;\n- sorted books;\n- aggregate statistics.\n\n### Borrowing Workflow\n\nThe application protects state transitions:\n\n- a borrowed book cannot be borrowed again;\n- a return applies only to a borrowed book;\n- borrower identity is stored while the book is checked out.\n\n### JSON Persistence\n\n`library_data.json` stores the library.\n\nLike the Go implementation, Ruby writes pretty-printed JSON through a temporary file before rename replacement.\n\n### Publication-Year Validation\n\nBook creation validates the year against a range based on the current calendar year.\n\n### Search and Statistics\n\nSearch covers title, author, and year text.\n\nStatistics report total, available, and borrowed books.\n\n## PHP Inventory Manager\n\n### Strictly Typed PHP\n\n`inv.php` begins with `declare(strict_types=1)` and uses typed properties, parameter types, and return types throughout the domain model.\n\n### Product Model\n\n`Product` stores:\n\n- ID;\n- name;\n- category;\n- quantity;\n- price.\n\nThe model provides behavior for:\n\n- inventory value calculation;\n- low-stock detection;\n- query matching;\n- array serialization/deserialization.\n\n### Inventory Service\n\n`Inventory` owns the product collection and provides:\n\n- load/save;\n- addition;\n- sorted listing;\n- ID lookup;\n- removal;\n- search;\n- low-stock filtering;\n- total inventory-value calculation;\n- item count.\n\n### JSON Persistence\n\nInventory state is stored in `inventory_data.json`.\n\nThe persistence path:\n\n- JSON-encodes structured state;\n- writes a temporary file;\n- renames it to the canonical file;\n- raises runtime exceptions on invalid or failed persistence operations.\n\n### Inventory Workflow\n\nThe menu-driven application supports:\n\n- adding products;\n- listing products;\n- searching;\n- quantity updates;\n- product removal;\n- low-stock reporting;\n- statistics;\n- save-and-exit.\n\n### Validation\n\nThe CLI contains reusable integer/float parsing and required-value input helpers.\n\n## Rust Input/Output Exercise\n\n`test.rs` is intentionally much smaller than the other files.\n\nIt demonstrates basic Rust console interaction:\n\n- create a mutable `String`;\n- read a line from stdin;\n- handle the read result with `expect`;\n- trim the input;\n- interpolate it into output.\n\nThe corpus preserves this as limited but direct Rust evidence rather than inflating it to the scope of the Go, Ruby, or PHP applications.\n\n## Architecture and System Shape\n\nThe three substantive programs share a broad application shape despite language differences:\n\n```text\nCLI input\n   ↓\nvalidation / command dispatch\n   ↓\ndomain objects and collection/store logic\n   ↓\nJSON serialization\n   ↓\ntemporary file\n   ↓\natomic-style rename replacement\n```\n\nThe repeated structure makes cross-language comparison possible inside one repository.\n\n## Technical Stack\n\n### Go\n\nGo is used for a command-loop task manager with structs, methods, slices, JSON encoding, sorting, time values, and explicit error handling.\n\n### Ruby\n\nRuby is used for an object-oriented library manager with classes, predicate methods, enumerable operations, JSON serialization, and exception handling.\n\n### PHP\n\nPHP is used for a strictly typed inventory manager with final classes, typed properties, array functions, JSON persistence, and runtime exceptions.\n\n### Rust\n\nRust is represented by a small stdin/stdout ownership-and-string exercise.\n\n## Major Engineering Work\n\n### Cross-Language Domain Modeling\n\nThe repository repeatedly maps application concepts into different language constructs:\n\n- Go structs and methods;\n- Ruby classes and idiomatic predicates;\n- PHP typed classes and methods.\n\n### Persistent Local State\n\nGo, Ruby, and PHP each use JSON to make command-line state survive process restarts.\n\n### Safer File Replacement\n\nAll three substantive persistence implementations write new state to a temporary file before renaming it over the canonical data file.\n\n### Lifecycle Rules\n\nEach application contains domain-specific state transitions:\n\n- task open/completed/reopened;\n- book available/borrowed/returned;\n- product quantities and low-stock classification.\n\n### Search and Aggregation\n\nThe programs include text search plus summary/statistical operations appropriate to their domain.\n\n## Engineering Practices\n\n### Input Validation\n\nThe CLIs validate required strings, numeric input, IDs, ranges, and state-transition preconditions.\n\n### Error Handling\n\nThe languages use their native mechanisms:\n\n- Go returned errors and wrapped errors;\n- Ruby rescue blocks;\n- PHP exceptions and nullable parse results;\n- Rust `expect` in the small input example.\n\n### Separation of Domain and Interface Logic\n\nThe Go store, Ruby library, and PHP inventory objects keep core collection behavior separate from much of the menu/prompt code.\n\n### Explicit Serialization Contracts\n\nEach persistent domain defines how in-memory objects map to JSON-compatible structures.\n\n## Scale and Complexity\n\n### Language Breadth\n\nThe repository covers four languages in one day of practice, with three substantive stateful CLI applications.\n\n### Application Complexity\n\nThe individual programs remain local command-line tools, but they go beyond syntax-only examples by implementing persistence, search, state transitions, and validation.\n\n## Skills Demonstrated\n\n### Go\n\n- **Struct and method design — strong evidence.**\n- **JSON file persistence — strong evidence.**\n- **Slice filtering/sorting — strong evidence.**\n- **Time handling — strong evidence.**\n- **Error handling — strong evidence.**\n\n### Ruby\n\n- **Class-based domain modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Enumerable collection operations — strong evidence.**\n- **Stateful borrow/return workflow — strong evidence.**\n\n### PHP\n\n- **Strictly typed PHP — strong evidence.**\n- **Typed object modeling — strong evidence.**\n- **JSON persistence — strong evidence.**\n- **Inventory calculations/filtering — strong evidence.**\n\n### Rust\n\n- **Basic stdin/string handling — limited direct evidence.**\n\n### General Software Engineering\n\n- **CLI application design — strong evidence.**\n- **Input validation — strong evidence.**\n- **Local JSON persistence — strong evidence.**\n- **Temporary-file replacement — strong evidence.**\n- **Search/filter/statistics workflows — strong evidence.**\n\n## Capability Developed\n\n`MegaRepo` is useful primarily as cross-language implementation practice.\n\nThe repeated application patterns expose how comparable concerns—domain objects, state mutation, persistence, validation, and CLI interaction—are expressed differently in Go, Ruby, PHP, and Rust.\n\n## Portfolio Evolution Context\n\nThe processed corpus already contains extensive C/C++, Java, Python, JavaScript, and other language experience.\n\nThis repository adds direct implementation evidence for Go, Ruby, PHP, and Rust within one focused practice workspace, with substantially more depth in Go/Ruby/PHP than in the Rust file.\n\n## Historical Significance\n\nWithin the processed corpus so far, `MegaRepo` is the clearest single repository explicitly practicing several server/general-purpose languages side by side through small stateful applications.\n\n## Overall Repository Narrative\n\n`MegaRepo` is a multi-language practice workspace containing a Go task manager, Ruby library manager, PHP inventory manager, and small Rust console exercise.\n\nThe Go, Ruby, and PHP programs all implement persistent local state, domain rules, search/filtering, input validation, and menu-driven interaction while using the idioms of their respective languages. Their repeated temporary-file-plus-rename persistence pattern also shows attention to safer state replacement rather than direct destructive overwrites.\n\nThe repository should therefore be retrieved as evidence of cross-language application practice and language comparison, not as one production product.\n\n# Project Tags\n\n## Project Type\n\n- `multi-language-practice`\n- `cli-applications`\n- `individual-project`\n\n## Languages\n\n- `go`\n- `ruby`\n- `php`\n- `rust`\n\n## Data and Persistence\n\n- `json`\n- `local-file-persistence`\n- `temporary-file-replacement`\n\n## Software Engineering Practices\n\n- `domain-modeling`\n- `input-validation`\n- `error-handling`\n- `search-filtering`\n- `state-transition-modeling`\n- `cli-command-dispatch`\n\n## Application Domains\n\n- `task-manager`\n- `library-manager`\n- `inventory-manager`\n\n## Portfolio Significance\n\n- `earliest-observed-go-ruby-php-rust-comparative-practice-repository`\n"
+}

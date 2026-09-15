@@ -1,0 +1,427 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 37,
+  "repository_total": 134,
+  "repository_name": "Door-Lock-System",
+  "header_title": "Door-Lock-System",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-037-Door-Lock-System/README.md",
+    "line_start": 1,
+    "line_end": 174,
+    "sha256": "76ae0b723db00c9ccba4d0f1e84b7675f2f93d2ee9586a052d90b0206f807a44"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "embedded-system-reference",
+    "dual-microcontroller-system",
+    "access-control-system",
+    "educational-project",
+    "c",
+    "avr",
+    "uart",
+    "twi-i2c",
+    "external-eeprom",
+    "keypad-interface",
+    "lcd-interface",
+    "dc-motor-control",
+    "pwm",
+    "timer-callback",
+    "buzzer",
+    "inter-mcu-communication",
+    "persistent-credential-storage",
+    "password-authentication",
+    "retry-limit",
+    "alarm-control",
+    "timed-actuation",
+    "externally-attributed-source",
+    "instructional-reference-code",
+    "earliest-observed-dual-microcontroller-system",
+    "earliest-observed-external-eeprom",
+    "earliest-observed-inter-mcu-communication"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Door-Lock-System`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR embedded system\n- **System shape:** two-microcontroller door-lock architecture\n- **Source-provenance classification:** externally attributed core implementation preserved in the owner's portfolio repository"
+    },
+    "architecture": {
+      "section_ids": [
+        "s003"
+      ],
+      "titles": [
+        "System Architecture"
+      ],
+      "text": "## System Architecture\n### MC1 — User Interface Controller\n\nMC1 handles keypad entry, LCD prompts, password creation, password confirmation, menu selection, retry counting, and UART transmission.\n\nThe menu supports:\n\n- opening the door,\n- changing the password.\n\n### MC2 — Security and Actuation Controller\n\nMC2 handles UART command reception, EEPROM persistence, password comparison, motor actuation, timer callbacks, TWI, and buzzer response.\n\nThis architecture separates user interaction from persistent security state and physical actuation."
+    },
+    "testing": {
+      "section_ids": [
+        "s007"
+      ],
+      "titles": [
+        "Password Verification"
+      ],
+      "text": "## Password Verification\nFor a protected action, MC1 reads five keypad values and transmits them to MC2.\n\nMC2 reads the stored five-byte credential from EEPROM, compares the received sequence, and sends an acceptance byte when all positions match.\n\nThe verification decision is therefore made by the MCU that owns the stored credential."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "MC2 — Security and Actuation Controller"
+      ],
+      "text": "## MC2 — Security and Actuation Controller\nMC2 handles UART command reception, EEPROM persistence, password comparison, motor actuation, timer callbacks, TWI, and buzzer response.\n\nThis architecture separates user interaction from persistent security state and physical actuation."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s013",
+        "s023"
+      ],
+      "titles": [
+        "Authorship Boundary",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Authorship Boundary\nThe strongest direct source evidence attributes `MC1.c` and `MC2.c` to Mohamed Tarek.\n\nAccordingly, the corpus distinguishes two things.\n\n### Repository-level capability\n\nThe repository contains a functioning architectural pattern for dual-MCU access control with persistent credentials, communication, actuation, and alarm behavior.\n\n### Personally attributable evidence\n\nThe repository supports evidence that the owner studied, organized, retained, and worked with this architecture.\n\nIt does **not** support a claim that the owner originally authored the central controller application source.\n\nThis prevents future RAG answers from converting possession of a repository into false implementation credit.\n\n## Collaboration and Authorship\n- `externally-attributed-source`\n- `instructional-reference-code`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Door-Lock-System`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR embedded system\n- **System shape:** two-microcontroller door-lock architecture\n- **Source-provenance classification:** externally attributed core implementation preserved in the owner's portfolio repository",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Contains",
+      "normalized_title": "What This Repository Contains",
+      "key": "what_this_repository_contains",
+      "path": [
+        "What This Repository Contains"
+      ],
+      "content": "`Door-Lock-System` contains a two-controller embedded access-control design split between `MC1` and `MC2`.\n\nThe system integrates keypad input, LCD output, UART communication, external EEPROM, TWI/I²C, DC motor control, PWM, timers, and buzzer behavior.\n\nProvenance is critical: both central application files explicitly state **Author: Mohamed Tarek**, date **25/4/2014**, and identify themselves as challenge code. Repository ownership therefore does not support claiming original authorship of the core system.",
+      "source_line_start": 13,
+      "source_line_end": 21
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "System Architecture",
+      "normalized_title": "System Architecture",
+      "key": "system_architecture",
+      "path": [
+        "System Architecture"
+      ],
+      "content": "### MC1 — User Interface Controller\n\nMC1 handles keypad entry, LCD prompts, password creation, password confirmation, menu selection, retry counting, and UART transmission.\n\nThe menu supports:\n\n- opening the door,\n- changing the password.\n\n### MC2 — Security and Actuation Controller\n\nMC2 handles UART command reception, EEPROM persistence, password comparison, motor actuation, timer callbacks, TWI, and buzzer response.\n\nThis architecture separates user interaction from persistent security state and physical actuation.",
+      "source_line_start": 21,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 3,
+      "title": "MC1 — User Interface Controller",
+      "normalized_title": "MC1 — User Interface Controller",
+      "key": "mc1_user_interface_controller",
+      "path": [
+        "System Architecture",
+        "MC1 — User Interface Controller"
+      ],
+      "content": "MC1 handles keypad entry, LCD prompts, password creation, password confirmation, menu selection, retry counting, and UART transmission.\n\nThe menu supports:\n\n- opening the door,\n- changing the password.",
+      "source_line_start": 23,
+      "source_line_end": 32
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "MC2 — Security and Actuation Controller",
+      "normalized_title": "MC2 — Security and Actuation Controller",
+      "key": "mc2_security_and_actuation_controller",
+      "path": [
+        "System Architecture",
+        "MC2 — Security and Actuation Controller"
+      ],
+      "content": "MC2 handles UART command reception, EEPROM persistence, password comparison, motor actuation, timer callbacks, TWI, and buzzer response.\n\nThis architecture separates user interaction from persistent security state and physical actuation.",
+      "source_line_start": 32,
+      "source_line_end": 38
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Password Creation",
+      "normalized_title": "Password Creation",
+      "key": "password_creation",
+      "path": [
+        "Password Creation"
+      ],
+      "content": "MC1 asks for a five-digit password and then requests the same password again.\n\nWhen the two local entries agree, MC1 transmits the five bytes over UART.\n\nMC2 receives them and writes each byte to external EEPROM.\n\nCredential persistence therefore resides on the control MCU rather than only in volatile UI memory.",
+      "source_line_start": 38,
+      "source_line_end": 48
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Password Verification",
+      "normalized_title": "Password Verification",
+      "key": "password_verification",
+      "path": [
+        "Password Verification"
+      ],
+      "content": "For a protected action, MC1 reads five keypad values and transmits them to MC2.\n\nMC2 reads the stored five-byte credential from EEPROM, compares the received sequence, and sends an acceptance byte when all positions match.\n\nThe verification decision is therefore made by the MCU that owns the stored credential.",
+      "source_line_start": 48,
+      "source_line_end": 56
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Retry and Alarm Behavior",
+      "normalized_title": "Retry and Alarm Behavior",
+      "key": "retry_and_alarm_behavior",
+      "path": [
+        "Retry and Alarm Behavior"
+      ],
+      "content": "MC1 permits up to three verification attempts.\n\nIt displays remaining attempts after failures.\n\nAfter the third failure it transmits a buzzer command.\n\nMC2 reacts by enabling the buzzer and using timer/callback logic to terminate the alarm behavior.",
+      "source_line_start": 56,
+      "source_line_end": 66
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Door Actuation",
+      "normalized_title": "Door Actuation",
+      "key": "door_actuation",
+      "path": [
+        "Door Actuation"
+      ],
+      "content": "A valid open-door path sends an `OPEN_DOOR` command to MC2.\n\nMC2 installs a timer callback and drives the DC motor through a timed sequence.\n\nThe motor initially rotates in one direction, later stops, then rotates in the opposite direction before the timer sequence is deinitialized.\n\nDoor behavior is therefore represented as a temporal actuator workflow rather than a static GPIO state.",
+      "source_line_start": 66,
+      "source_line_end": 76
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Password Change",
+      "normalized_title": "Password Change",
+      "key": "password_change",
+      "path": [
+        "Password Change"
+      ],
+      "content": "The password-change path first authenticates the current password.\n\nOnly after successful verification does MC1 trigger the password-entry workflow again and MC2 update EEPROM-backed credential data.\n\nThis reuses the same trust boundary as door opening.",
+      "source_line_start": 76,
+      "source_line_end": 84
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Inter-MCU Protocol",
+      "normalized_title": "Inter-MCU Protocol",
+      "key": "inter_mcu_protocol",
+      "path": [
+        "Inter-MCU Protocol"
+      ],
+      "content": "UART carries both commands and password data.\n\nDefined control values include acceptance, open-door command, and buzzer command.\n\nThe system is therefore a small embedded distributed protocol across two processors.",
+      "source_line_start": 84,
+      "source_line_end": 92
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Peripheral Stack",
+      "normalized_title": "Peripheral Stack",
+      "key": "peripheral_stack",
+      "path": [
+        "Peripheral Stack"
+      ],
+      "content": "Repository-level capability includes UART, keypad, LCD, GPIO, external EEPROM, TWI/I²C, DC motor, PWM, timers, and buzzer.\n\nThis is a broad embedded-system integration example at the repository level.",
+      "source_line_start": 92,
+      "source_line_end": 98
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Authorship Boundary",
+      "normalized_title": "Authorship Boundary",
+      "key": "authorship_boundary",
+      "path": [
+        "Authorship Boundary"
+      ],
+      "content": "The strongest direct source evidence attributes `MC1.c` and `MC2.c` to Mohamed Tarek.\n\nAccordingly, the corpus distinguishes two things.\n\n### Repository-level capability\n\nThe repository contains a functioning architectural pattern for dual-MCU access control with persistent credentials, communication, actuation, and alarm behavior.\n\n### Personally attributable evidence\n\nThe repository supports evidence that the owner studied, organized, retained, and worked with this architecture.\n\nIt does **not** support a claim that the owner originally authored the central controller application source.\n\nThis prevents future RAG answers from converting possession of a repository into false implementation credit.",
+      "source_line_start": 98,
+      "source_line_end": 116
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Repository-level capability",
+      "normalized_title": "Repository-level capability",
+      "key": "repository_level_capability",
+      "path": [
+        "Authorship Boundary",
+        "Repository-level capability"
+      ],
+      "content": "The repository contains a functioning architectural pattern for dual-MCU access control with persistent credentials, communication, actuation, and alarm behavior.",
+      "source_line_start": 104,
+      "source_line_end": 108
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Personally attributable evidence",
+      "normalized_title": "Personally attributable evidence",
+      "key": "personally_attributable_evidence",
+      "path": [
+        "Authorship Boundary",
+        "Personally attributable evidence"
+      ],
+      "content": "The repository supports evidence that the owner studied, organized, retained, and worked with this architecture.\n\nIt does **not** support a claim that the owner originally authored the central controller application source.\n\nThis prevents future RAG answers from converting possession of a repository into false implementation credit.",
+      "source_line_start": 108,
+      "source_line_end": 116
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Engineering Concepts Represented",
+      "normalized_title": "Engineering Concepts Represented",
+      "key": "engineering_concepts_represented",
+      "path": [
+        "Engineering Concepts Represented"
+      ],
+      "content": "The codebase materially demonstrates multi-controller responsibility partitioning, UART command/data exchange, persistent EEPROM-backed state, authentication flow, retry limits, timer-driven actuation, alarm behavior, TWI/I²C peripheral access, and keypad/LCD interaction.",
+      "source_line_start": 116,
+      "source_line_end": 120
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "This repository appears directly after personally attributed AVR stopwatch, calculator, and fan-controller work.\n\nIts significance is different.\n\nIt expands the observed embedded architecture into a two-MCU system while also becoming an important provenance case: technical repository scope and personal authorship must be stored as separate facts.",
+      "source_line_start": 120,
+      "source_line_end": 128
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Door-Lock-System` models a distributed embedded access-control device.\n\nOne controller owns keypad/LCD interaction. The other owns password storage, verification, motor control, and alarm response. UART connects the processors, TWI connects persistent EEPROM, and timers coordinate actuator timing.\n\nThe architecture is technically substantial, but the core source explicitly credits another author. The corpus therefore records the design in detail without misattributing its implementation.\n\n# Project Tags",
+      "source_line_start": 128,
+      "source_line_end": 138
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `embedded-system-reference`\n- `dual-microcontroller-system`\n- `access-control-system`\n- `educational-project`",
+      "source_line_start": 138,
+      "source_line_end": 144
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `c`",
+      "source_line_start": 144,
+      "source_line_end": 147
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `avr`\n- `uart`\n- `twi-i2c`\n- `external-eeprom`\n- `keypad-interface`\n- `lcd-interface`\n- `dc-motor-control`\n- `pwm`\n- `timer-callback`\n- `buzzer`",
+      "source_line_start": 147,
+      "source_line_end": 159
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `inter-mcu-communication`\n- `persistent-credential-storage`\n- `password-authentication`\n- `retry-limit`\n- `alarm-control`\n- `timed-actuation`",
+      "source_line_start": 159,
+      "source_line_end": 167
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `externally-attributed-source`\n- `instructional-reference-code`",
+      "source_line_start": 167,
+      "source_line_end": 171
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-dual-microcontroller-system`\n- `earliest-observed-external-eeprom`\n- `earliest-observed-inter-mcu-communication`",
+      "source_line_start": 171,
+      "source_line_end": 175
+    }
+  ],
+  "raw_analysis": "# Repository 037 — Door-Lock-System\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Door-Lock-System`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR embedded system\n- **System shape:** two-microcontroller door-lock architecture\n- **Source-provenance classification:** externally attributed core implementation preserved in the owner's portfolio repository\n\n## What This Repository Contains\n\n`Door-Lock-System` contains a two-controller embedded access-control design split between `MC1` and `MC2`.\n\nThe system integrates keypad input, LCD output, UART communication, external EEPROM, TWI/I²C, DC motor control, PWM, timers, and buzzer behavior.\n\nProvenance is critical: both central application files explicitly state **Author: Mohamed Tarek**, date **25/4/2014**, and identify themselves as challenge code. Repository ownership therefore does not support claiming original authorship of the core system.\n\n## System Architecture\n\n### MC1 — User Interface Controller\n\nMC1 handles keypad entry, LCD prompts, password creation, password confirmation, menu selection, retry counting, and UART transmission.\n\nThe menu supports:\n\n- opening the door,\n- changing the password.\n\n### MC2 — Security and Actuation Controller\n\nMC2 handles UART command reception, EEPROM persistence, password comparison, motor actuation, timer callbacks, TWI, and buzzer response.\n\nThis architecture separates user interaction from persistent security state and physical actuation.\n\n## Password Creation\n\nMC1 asks for a five-digit password and then requests the same password again.\n\nWhen the two local entries agree, MC1 transmits the five bytes over UART.\n\nMC2 receives them and writes each byte to external EEPROM.\n\nCredential persistence therefore resides on the control MCU rather than only in volatile UI memory.\n\n## Password Verification\n\nFor a protected action, MC1 reads five keypad values and transmits them to MC2.\n\nMC2 reads the stored five-byte credential from EEPROM, compares the received sequence, and sends an acceptance byte when all positions match.\n\nThe verification decision is therefore made by the MCU that owns the stored credential.\n\n## Retry and Alarm Behavior\n\nMC1 permits up to three verification attempts.\n\nIt displays remaining attempts after failures.\n\nAfter the third failure it transmits a buzzer command.\n\nMC2 reacts by enabling the buzzer and using timer/callback logic to terminate the alarm behavior.\n\n## Door Actuation\n\nA valid open-door path sends an `OPEN_DOOR` command to MC2.\n\nMC2 installs a timer callback and drives the DC motor through a timed sequence.\n\nThe motor initially rotates in one direction, later stops, then rotates in the opposite direction before the timer sequence is deinitialized.\n\nDoor behavior is therefore represented as a temporal actuator workflow rather than a static GPIO state.\n\n## Password Change\n\nThe password-change path first authenticates the current password.\n\nOnly after successful verification does MC1 trigger the password-entry workflow again and MC2 update EEPROM-backed credential data.\n\nThis reuses the same trust boundary as door opening.\n\n## Inter-MCU Protocol\n\nUART carries both commands and password data.\n\nDefined control values include acceptance, open-door command, and buzzer command.\n\nThe system is therefore a small embedded distributed protocol across two processors.\n\n## Peripheral Stack\n\nRepository-level capability includes UART, keypad, LCD, GPIO, external EEPROM, TWI/I²C, DC motor, PWM, timers, and buzzer.\n\nThis is a broad embedded-system integration example at the repository level.\n\n## Authorship Boundary\n\nThe strongest direct source evidence attributes `MC1.c` and `MC2.c` to Mohamed Tarek.\n\nAccordingly, the corpus distinguishes two things.\n\n### Repository-level capability\n\nThe repository contains a functioning architectural pattern for dual-MCU access control with persistent credentials, communication, actuation, and alarm behavior.\n\n### Personally attributable evidence\n\nThe repository supports evidence that the owner studied, organized, retained, and worked with this architecture.\n\nIt does **not** support a claim that the owner originally authored the central controller application source.\n\nThis prevents future RAG answers from converting possession of a repository into false implementation credit.\n\n## Engineering Concepts Represented\n\nThe codebase materially demonstrates multi-controller responsibility partitioning, UART command/data exchange, persistent EEPROM-backed state, authentication flow, retry limits, timer-driven actuation, alarm behavior, TWI/I²C peripheral access, and keypad/LCD interaction.\n\n## Portfolio Evolution\n\nThis repository appears directly after personally attributed AVR stopwatch, calculator, and fan-controller work.\n\nIts significance is different.\n\nIt expands the observed embedded architecture into a two-MCU system while also becoming an important provenance case: technical repository scope and personal authorship must be stored as separate facts.\n\n## Overall Repository Narrative\n\n`Door-Lock-System` models a distributed embedded access-control device.\n\nOne controller owns keypad/LCD interaction. The other owns password storage, verification, motor control, and alarm response. UART connects the processors, TWI connects persistent EEPROM, and timers coordinate actuator timing.\n\nThe architecture is technically substantial, but the core source explicitly credits another author. The corpus therefore records the design in detail without misattributing its implementation.\n\n# Project Tags\n\n## Project Type\n- `embedded-system-reference`\n- `dual-microcontroller-system`\n- `access-control-system`\n- `educational-project`\n\n## Languages\n- `c`\n\n## Embedded and Hardware\n- `avr`\n- `uart`\n- `twi-i2c`\n- `external-eeprom`\n- `keypad-interface`\n- `lcd-interface`\n- `dc-motor-control`\n- `pwm`\n- `timer-callback`\n- `buzzer`\n\n## Systems Engineering\n- `inter-mcu-communication`\n- `persistent-credential-storage`\n- `password-authentication`\n- `retry-limit`\n- `alarm-control`\n- `timed-actuation`\n\n## Collaboration and Authorship\n- `externally-attributed-source`\n- `instructional-reference-code`\n\n## Portfolio Significance\n- `earliest-observed-dual-microcontroller-system`\n- `earliest-observed-external-eeprom`\n- `earliest-observed-inter-mcu-communication`\n"
+}

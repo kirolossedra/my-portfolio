@@ -1,0 +1,612 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 88,
+  "repository_total": 134,
+  "repository_name": "Quizedra",
+  "header_title": "Quizedra",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-088-Quizedra/README.md",
+    "line_start": 1,
+    "line_end": 565,
+    "sha256": "061b65ed3cd5da711a84aa4d0aad0844555342a18736277c1aa435c832681116"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "web-application",
+    "realtime-application",
+    "audience-feedback",
+    "meeting-feedback",
+    "multi-device-workflow",
+    "presenter-display",
+    "participant-form",
+    "html",
+    "css",
+    "javascript",
+    "firebase",
+    "firebase-realtime-database",
+    "realtime-subscription",
+    "qr-code",
+    "qrcodejs",
+    "web-audio-api",
+    "audio-synthesis",
+    "session-filtering",
+    "message-deduplication",
+    "participant-counting",
+    "dynamic-bubble-layout",
+    "css-animation",
+    "async-form-submission",
+    "input-validation",
+    "responsive-layout",
+    "known-xss-risk",
+    "earliest-observed-qr-driven-realtime-feedback",
+    "earliest-observed-web-audio-api"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Quizedra`\n- **Corpus index:** 088\n- **Repository start date:** 2025-06-23\n- **Last meaningful update date:** 2025-06-23\n- **Latest meaningful commit:** `fb5d8bed12a9992971d6e0ed814c0602dabccabb`\n- **Primary repository language:** HTML\n- **Project form:** real-time audience feedback / meeting interaction prototype\n- **Collaboration classification:** `individual-project`\n- **Main files:** `index.html`, `index2.html`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s018"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\n```text\n                  shared display\n                  index.html\n                      |\n              QR code to participant\n                      |\n                      v\n                index2.html\n                      |\n                 Firebase push\n                      |\n                      v\n           Firebase Realtime Database\n                      |\n                 onValue listener\n                      |\n                      v\n              master bubble UI\n```\n\nSupporting client APIs:\n\n- QRCode.js\n- Web Audio API\n- browser DOM/CSS animation"
+    },
+    "testing": {
+      "section_ids": [
+        "s030"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nNo automated tests are checked in.\n\nNo E2E browser test exists in the repository.\n\nNo CI workflow is visible.\n\nThe commit history shows many rapid iterative updates to the participant page.\n\nThat indicates hands-on UI debugging.\n\nIt does not establish regression coverage.\n\nThe built-in success/error/loading paths support manual verification.\n\nFirebase realtime behavior itself can be observed directly through the two-screen flow."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Quizedra`\n- **Corpus index:** 088\n- **Repository start date:** 2025-06-23\n- **Last meaningful update date:** 2025-06-23\n- **Latest meaningful commit:** `fb5d8bed12a9992971d6e0ed814c0602dabccabb`\n- **Primary repository language:** HTML\n- **Project form:** real-time audience feedback / meeting interaction prototype\n- **Collaboration classification:** `individual-project`\n- **Main files:** `index.html`, `index2.html`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains two substantive browser pages.\n\n`index.html` is titled `Meeting Feedback - Master Display`.\n\n`index2.html` is titled `Share Your Feedback`.\n\nBoth directly integrate Firebase Realtime Database.\n\nThe master page generates a QR code that points to the participant page.\n\nThe participant page writes feedback.\n\nThe master page subscribes to feedback and displays new responses live.\n\nThe source includes Firebase web configuration.\n\nThis corpus analysis records the architecture without reproducing exact project identifiers or configuration values.",
+      "source_line_start": 15,
+      "source_line_end": 35
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "Quizedra is a two-screen live meeting-feedback system.\n\nOne screen acts as a shared presentation/master display.\n\nThe other acts as a mobile-friendly participant submission form.\n\nParticipants can scan a QR code from the master screen.\n\nThey enter their name and feedback.\n\nThe feedback is written to Firebase.\n\nThe master screen receives updates in real time.\n\nNew messages appear as animated bubbles.\n\nThe display also tracks session message and participant counts.\n\nThis is closer to a lightweight audience-engagement tool than a traditional quiz engine.\n\nThe repository name `Quizedra` should not be allowed to override the actual implementation.",
+      "source_line_start": 35,
+      "source_line_end": 59
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope is a two-page live meeting-feedback experience: QR-based participant onboarding, realtime submission, and a shared master display.\n\nIt does not implement quiz scoring, moderation, authenticated sessions, or a general event-management platform.",
+      "source_line_start": 59,
+      "source_line_end": 65
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Two-Page Interaction Model",
+      "normalized_title": "Two-Page Interaction Model",
+      "key": "two_page_interaction_model",
+      "path": [
+        "Two-Page Interaction Model"
+      ],
+      "content": "### Master Display — `index.html`\n\nThe master page:\n\n- shows meeting-feedback branding;\n- generates a QR code;\n- points the QR code at `index2.html`;\n- opens a real-time Firebase listener;\n- displays new responses;\n- counts messages;\n- counts distinct participant names;\n- positions feedback bubbles;\n- plays a synthesized bubble sound.\n\n### Participant Page — `index2.html`\n\nThe participant page:\n\n- collects a name;\n- collects a feedback message;\n- enforces length limits;\n- shows a live character count;\n- writes the response to Firebase;\n- displays loading, success, and error states;\n- resets after successful submission.\n\nThe two pages form complementary roles.",
+      "source_line_start": 65,
+      "source_line_end": 95
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Master Display — `index.html`",
+      "normalized_title": "Master Display — index.html",
+      "key": "master_display_index_html",
+      "path": [
+        "Two-Page Interaction Model",
+        "Master Display — `index.html`"
+      ],
+      "content": "The master page:\n\n- shows meeting-feedback branding;\n- generates a QR code;\n- points the QR code at `index2.html`;\n- opens a real-time Firebase listener;\n- displays new responses;\n- counts messages;\n- counts distinct participant names;\n- positions feedback bubbles;\n- plays a synthesized bubble sound.",
+      "source_line_start": 67,
+      "source_line_end": 81
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Participant Page — `index2.html`",
+      "normalized_title": "Participant Page — index2.html",
+      "key": "participant_page_index2_html",
+      "path": [
+        "Two-Page Interaction Model",
+        "Participant Page — `index2.html`"
+      ],
+      "content": "The participant page:\n\n- collects a name;\n- collects a feedback message;\n- enforces length limits;\n- shows a live character count;\n- writes the response to Firebase;\n- displays loading, success, and error states;\n- resets after successful submission.\n\nThe two pages form complementary roles.",
+      "source_line_start": 81,
+      "source_line_end": 95
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "QR-Code Onboarding",
+      "normalized_title": "QR-Code Onboarding",
+      "key": "qr_code_onboarding",
+      "path": [
+        "QR-Code Onboarding"
+      ],
+      "content": "The master page calculates the participant-page URL relative to its current URL.\n\nIt then uses `qrcodejs` to generate a QR code.\n\nThis avoids hard-coding a full deployment URL into the QR logic.\n\nThe intended physical workflow is:\n\n```text\npresenter opens master page\n          |\n          v\naudience sees QR code\n          |\n          v\nparticipant scans QR\n          |\n          v\nparticipant page opens\n```\n\nThis is an effective bridge between a shared display and personal mobile devices.",
+      "source_line_start": 95,
+      "source_line_end": 120
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Firebase Data Flow",
+      "normalized_title": "Firebase Data Flow",
+      "key": "firebase_data_flow",
+      "path": [
+        "Firebase Data Flow"
+      ],
+      "content": "The participant page writes to:\n\n```text\nthegame/messages\n```\n\nEach message contains:\n\n- name;\n- message;\n- timestamp.\n\nThe master page subscribes to the same path using a real-time listener.\n\nThis produces a direct shared-state system:\n\n```text\nparticipant browser\n       |\n       v\nFirebase Realtime Database\n       |\n       v\nmaster display listener\n```\n\nNo custom backend sits between clients and Firebase.",
+      "source_line_start": 120,
+      "source_line_end": 150
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Session Boundary",
+      "normalized_title": "Session Boundary",
+      "key": "session_boundary",
+      "path": [
+        "Session Boundary"
+      ],
+      "content": "The master page records `masterOpenTime`.\n\nIt filters incoming messages so the screen shows only those whose timestamps are at or after that session start.\n\nIt also tracks message IDs already rendered.\n\nThis avoids redisplaying the entire historical Firebase dataset every time the master opens.\n\nIt creates a lightweight session concept without creating an explicit session record in the database.\n\nThat is a practical but client-local design.",
+      "source_line_start": 150,
+      "source_line_end": 164
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Real-Time Subscription",
+      "normalized_title": "Real-Time Subscription",
+      "key": "real_time_subscription",
+      "path": [
+        "Real-Time Subscription"
+      ],
+      "content": "The master page uses `onValue`.\n\nEvery database update causes the current message set to be evaluated.\n\nThe code:\n\n1. converts keyed records into message objects;\n2. filters by session time;\n3. filters already displayed IDs;\n4. schedules bubble creation;\n5. recomputes session statistics.\n\nThis is event-driven UI behavior built on realtime database synchronization.",
+      "source_line_start": 164,
+      "source_line_end": 180
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Participant Counting",
+      "normalized_title": "Participant Counting",
+      "key": "participant_counting",
+      "path": [
+        "Participant Counting"
+      ],
+      "content": "The master page uses a JavaScript `Set`.\n\nParticipant identity is represented by the submitted `name` string.\n\nDistinct names are counted.\n\nThere is no account identity.\n\nTwo people using the same name are counted as one participant.\n\nOne person using multiple names can be counted more than once.\n\nThis should be understood as a display statistic, not authenticated attendance.",
+      "source_line_start": 180,
+      "source_line_end": 196
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Message Bubble Placement",
+      "normalized_title": "Message Bubble Placement",
+      "key": "message_bubble_placement",
+      "path": [
+        "Message Bubble Placement"
+      ],
+      "content": "The master page tries to avoid overlapping message bubbles.\n\nIt defines an approximate grid.\n\nIt tracks occupied positions in a `Set`.\n\nIt searches for an available cell.\n\nOlder position reservations are periodically cleaned up.\n\nIf no suitable grid position is found after repeated attempts, it falls back to random positioning.\n\nThis is a simple spatial-layout heuristic.\n\nIt is more deliberate than purely random placement.",
+      "source_line_start": 196,
+      "source_line_end": 214
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Animated Feedback",
+      "normalized_title": "Animated Feedback",
+      "key": "animated_feedback",
+      "path": [
+        "Animated Feedback"
+      ],
+      "content": "New bubbles use CSS animation.\n\nThe animation combines:\n\n- translation;\n- scaling;\n- opacity.\n\nThe master display delays consecutive messages slightly.\n\nThat creates a staged arrival effect when several responses appear together.",
+      "source_line_start": 214,
+      "source_line_end": 228
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Browser Audio Synthesis",
+      "normalized_title": "Browser Audio Synthesis",
+      "key": "browser_audio_synthesis",
+      "path": [
+        "Browser Audio Synthesis"
+      ],
+      "content": "The master creates a Web Audio `AudioContext`.\n\nFor each new bubble it attempts to synthesize a short tone using:\n\n- oscillator;\n- gain node;\n- frequency ramp;\n- gain ramp.\n\nThe audio context is resumed after user interaction if browser autoplay policy suspended it.\n\nThis is direct Web Audio API use.\n\nNo audio file is required.",
+      "source_line_start": 228,
+      "source_line_end": 245
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Participant Validation",
+      "normalized_title": "Participant Validation",
+      "key": "participant_validation",
+      "path": [
+        "Participant Validation"
+      ],
+      "content": "The participant page validates:\n\n- non-empty name;\n- non-empty message;\n- maximum name length;\n- maximum message length.\n\nThe message character counter updates continuously.\n\nVisual color changes warn as the message approaches the limit.\n\nThe input itself is truncated at 500 characters.",
+      "source_line_start": 245,
+      "source_line_end": 260
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Submission State Management",
+      "normalized_title": "Submission State Management",
+      "key": "submission_state_management",
+      "path": [
+        "Submission State Management"
+      ],
+      "content": "On submission, the page:\n\n- disables the submit button;\n- shows a loading state;\n- hides prior error/success states;\n- awaits Firebase `push`;\n- shows success on completion;\n- resets after a delay.\n\nOn failure, the page:\n\n- shows an error state;\n- re-enables submission;\n- automatically hides the error later.\n\nThis is a complete asynchronous form lifecycle.",
+      "source_line_start": 260,
+      "source_line_end": 279
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "```text\n                  shared display\n                  index.html\n                      |\n              QR code to participant\n                      |\n                      v\n                index2.html\n                      |\n                 Firebase push\n                      |\n                      v\n           Firebase Realtime Database\n                      |\n                 onValue listener\n                      |\n                      v\n              master bubble UI\n```\n\nSupporting client APIs:\n\n- QRCode.js\n- Web Audio API\n- browser DOM/CSS animation",
+      "source_line_start": 279,
+      "source_line_end": 307
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- HTML\n- CSS\n- browser JavaScript\n- Firebase\n- Firebase Realtime Database\n- QRCode.js\n- Web Audio API\n- responsive browser UI\n- realtime event subscription",
+      "source_line_start": 307,
+      "source_line_end": 319
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### 1. Role-Specific Pages\n\nThe developer separated presenter and participant experiences.\n\nThat avoids overloading one interface with conflicting needs.\n\n### 2. Frictionless Join Flow\n\nQR onboarding turns a shared screen into a multi-device interaction entry point.\n\n### 3. Real-Time Data Propagation\n\nParticipant submissions reach the master through Firebase subscriptions.\n\n### 4. Session Filtering\n\nThe master avoids automatically rendering stale messages from before it was opened.\n\n### 5. Duplicate Render Prevention\n\nMessage IDs already displayed are tracked.\n\n### 6. Participant and Message Metrics\n\nThe UI exposes basic session statistics.\n\n### 7. Spatial Bubble Layout\n\nThe application implements a collision-avoidance heuristic for feedback placement.\n\n### 8. Audio Feedback\n\nThe app generates a sound in-browser for new messages.\n\n### 9. Input Guardrails\n\nSubmission fields have explicit validation and visual character feedback.",
+      "source_line_start": 319,
+      "source_line_end": 359
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "1. Role-Specific Pages",
+      "normalized_title": "Role-Specific Pages",
+      "key": "role_specific_pages",
+      "path": [
+        "Major Engineering Work",
+        "1. Role-Specific Pages"
+      ],
+      "content": "The developer separated presenter and participant experiences.\n\nThat avoids overloading one interface with conflicting needs.",
+      "source_line_start": 321,
+      "source_line_end": 327
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "2. Frictionless Join Flow",
+      "normalized_title": "Frictionless Join Flow",
+      "key": "frictionless_join_flow",
+      "path": [
+        "Major Engineering Work",
+        "2. Frictionless Join Flow"
+      ],
+      "content": "QR onboarding turns a shared screen into a multi-device interaction entry point.",
+      "source_line_start": 327,
+      "source_line_end": 331
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "3. Real-Time Data Propagation",
+      "normalized_title": "Real-Time Data Propagation",
+      "key": "real_time_data_propagation",
+      "path": [
+        "Major Engineering Work",
+        "3. Real-Time Data Propagation"
+      ],
+      "content": "Participant submissions reach the master through Firebase subscriptions.",
+      "source_line_start": 331,
+      "source_line_end": 335
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "4. Session Filtering",
+      "normalized_title": "Session Filtering",
+      "key": "session_filtering",
+      "path": [
+        "Major Engineering Work",
+        "4. Session Filtering"
+      ],
+      "content": "The master avoids automatically rendering stale messages from before it was opened.",
+      "source_line_start": 335,
+      "source_line_end": 339
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "5. Duplicate Render Prevention",
+      "normalized_title": "Duplicate Render Prevention",
+      "key": "duplicate_render_prevention",
+      "path": [
+        "Major Engineering Work",
+        "5. Duplicate Render Prevention"
+      ],
+      "content": "Message IDs already displayed are tracked.",
+      "source_line_start": 339,
+      "source_line_end": 343
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "6. Participant and Message Metrics",
+      "normalized_title": "Participant and Message Metrics",
+      "key": "participant_and_message_metrics",
+      "path": [
+        "Major Engineering Work",
+        "6. Participant and Message Metrics"
+      ],
+      "content": "The UI exposes basic session statistics.",
+      "source_line_start": 343,
+      "source_line_end": 347
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "7. Spatial Bubble Layout",
+      "normalized_title": "Spatial Bubble Layout",
+      "key": "spatial_bubble_layout",
+      "path": [
+        "Major Engineering Work",
+        "7. Spatial Bubble Layout"
+      ],
+      "content": "The application implements a collision-avoidance heuristic for feedback placement.",
+      "source_line_start": 347,
+      "source_line_end": 351
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "8. Audio Feedback",
+      "normalized_title": "Audio Feedback",
+      "key": "audio_feedback",
+      "path": [
+        "Major Engineering Work",
+        "8. Audio Feedback"
+      ],
+      "content": "The app generates a sound in-browser for new messages.",
+      "source_line_start": 351,
+      "source_line_end": 355
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "9. Input Guardrails",
+      "normalized_title": "Input Guardrails",
+      "key": "input_guardrails",
+      "path": [
+        "Major Engineering Work",
+        "9. Input Guardrails"
+      ],
+      "content": "Submission fields have explicit validation and visual character feedback.",
+      "source_line_start": 355,
+      "source_line_end": 359
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "No automated tests are checked in.\n\nNo E2E browser test exists in the repository.\n\nNo CI workflow is visible.\n\nThe commit history shows many rapid iterative updates to the participant page.\n\nThat indicates hands-on UI debugging.\n\nIt does not establish regression coverage.\n\nThe built-in success/error/loading paths support manual verification.\n\nFirebase realtime behavior itself can be observed directly through the two-screen flow.",
+      "source_line_start": 359,
+      "source_line_end": 377
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Positive evidence:\n\n- clear separation of master vs participant role;\n- asynchronous submission handling;\n- input validation;\n- realtime subscription;\n- session-time filtering;\n- deduplication of rendered IDs;\n- responsive participant form;\n- graceful audio fallback;\n- URL-relative QR construction;\n- user-visible error states.\n\nConstraints:\n\n- Firebase browser configuration embedded in source;\n- no authentication;\n- no database security rules in repo;\n- no explicit session ID;\n- session defined only by master-open timestamp;\n- participant identity based only on name;\n- user-provided strings inserted into `innerHTML` on the master page;\n- no sanitization visible before that HTML interpolation;\n- no moderation workflow;\n- no rate limiting;\n- no automated tests.\n\nThe `innerHTML` interpolation is a meaningful security limitation.\n\nUntrusted `name` or `message` content could be rendered as markup.\n\nThe corpus should not label the application XSS-safe.",
+      "source_line_start": 377,
+      "source_line_end": 412
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This prototype is strongly product-shaped.\n\nIt solves a recognizable live-meeting workflow:\n\n- presenter needs a shared interaction surface;\n- participants need near-zero-friction entry;\n- feedback should appear immediately;\n- the room benefits from visible participation.\n\nThe QR code reduces onboarding friction.\n\nThe live bubble visualization creates social feedback.\n\nThe simple session stats make participation visible.\n\nThis is a good example of product behavior emerging from a very small codebase.",
+      "source_line_start": 412,
+      "source_line_end": 431
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository has only two major pages.\n\nThe system nevertheless spans:\n\n- multi-device workflow;\n- realtime shared data;\n- session filtering;\n- QR onboarding;\n- dynamic layout;\n- audio;\n- async form lifecycle.\n\nIt is a compact distributed interaction pattern.\n\nFirebase carries most of the backend infrastructure.",
+      "source_line_start": 431,
+      "source_line_end": 449
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports:\n\n- browser JavaScript;\n- realtime database integration;\n- event-driven frontend design;\n- Firebase `onValue`;\n- QR-code generation;\n- multi-device interaction design;\n- session-state filtering;\n- deduplication;\n- JavaScript Sets;\n- dynamic DOM creation;\n- CSS animation;\n- Web Audio API;\n- responsive forms;\n- async form handling;\n- UX feedback states.",
+      "source_line_start": 449,
+      "source_line_end": 469
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "This project demonstrates a shift from single-user browser utilities to a synchronized multi-user interaction.\n\nThe central engineering problem is coordination.\n\nOne browser writes.\n\nAnother browser subscribes.\n\nThe shared screen must decide what is new and how to present it.\n\nThat is a useful precursor to larger realtime applications.",
+      "source_line_start": 469,
+      "source_line_end": 483
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier Firebase projects in the corpus focused on trackers and persistent CRUD-style data.\n\nQuizedra uses Firebase differently.\n\nThe primary value is not persistence.\n\nIt is immediate cross-device propagation.\n\nThis marks a meaningful evolution from “database-backed page” to “live shared experience.”",
+      "source_line_start": 483,
+      "source_line_end": 495
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, Quizedra is an early clear example of:\n\n- QR-driven multi-device onboarding;\n- realtime audience feedback;\n- role-separated presenter/participant browser pages;\n- Web Audio synthesis;\n- realtime Firebase subscription used for live room interaction.",
+      "source_line_start": 495,
+      "source_line_end": 505
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "No evidence supports:\n\n- authentication;\n- moderation;\n- anonymous identity protection;\n- XSS hardening;\n- production scaling;\n- rate limiting;\n- session persistence model;\n- access control;\n- automated tests;\n- analytics backend;\n- quiz scoring.\n\nDespite the repository name, there is no observed MCQ engine.\n\nThe product is a live feedback tool in this snapshot.",
+      "source_line_start": 505,
+      "source_line_end": 525
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "Quizedra is a compact realtime audience-engagement prototype.\n\nIts strongest idea is the end-to-end room workflow.\n\nA QR code gets participants onto a dedicated submission surface, Firebase propagates responses, and the master display turns them into a live animated conversation.\n\nThe implementation shows growing comfort with realtime, multi-client product behavior.\n\n# Project Tags\n\n- `individual-project`\n- `web-application`\n- `realtime-application`\n- `audience-feedback`\n- `meeting-feedback`\n- `multi-device-workflow`\n- `presenter-display`\n- `participant-form`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `realtime-subscription`\n- `qr-code`\n- `qrcodejs`\n- `web-audio-api`\n- `audio-synthesis`\n- `session-filtering`\n- `message-deduplication`\n- `participant-counting`\n- `dynamic-bubble-layout`\n- `css-animation`\n- `async-form-submission`\n- `input-validation`\n- `responsive-layout`\n- `known-xss-risk`\n- `earliest-observed-qr-driven-realtime-feedback`\n- `earliest-observed-web-audio-api`",
+      "source_line_start": 525,
+      "source_line_end": 566
+    }
+  ],
+  "raw_analysis": "# Repository 088 — Quizedra\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Quizedra`\n- **Corpus index:** 088\n- **Repository start date:** 2025-06-23\n- **Last meaningful update date:** 2025-06-23\n- **Latest meaningful commit:** `fb5d8bed12a9992971d6e0ed814c0602dabccabb`\n- **Primary repository language:** HTML\n- **Project form:** real-time audience feedback / meeting interaction prototype\n- **Collaboration classification:** `individual-project`\n- **Main files:** `index.html`, `index2.html`\n\n## Evidence Basis\n\nThe repository contains two substantive browser pages.\n\n`index.html` is titled `Meeting Feedback - Master Display`.\n\n`index2.html` is titled `Share Your Feedback`.\n\nBoth directly integrate Firebase Realtime Database.\n\nThe master page generates a QR code that points to the participant page.\n\nThe participant page writes feedback.\n\nThe master page subscribes to feedback and displays new responses live.\n\nThe source includes Firebase web configuration.\n\nThis corpus analysis records the architecture without reproducing exact project identifiers or configuration values.\n\n## What the Project Is\n\nQuizedra is a two-screen live meeting-feedback system.\n\nOne screen acts as a shared presentation/master display.\n\nThe other acts as a mobile-friendly participant submission form.\n\nParticipants can scan a QR code from the master screen.\n\nThey enter their name and feedback.\n\nThe feedback is written to Firebase.\n\nThe master screen receives updates in real time.\n\nNew messages appear as animated bubbles.\n\nThe display also tracks session message and participant counts.\n\nThis is closer to a lightweight audience-engagement tool than a traditional quiz engine.\n\nThe repository name `Quizedra` should not be allowed to override the actual implementation.\n\n## Project Scope\n\nThe implemented scope is a two-page live meeting-feedback experience: QR-based participant onboarding, realtime submission, and a shared master display.\n\nIt does not implement quiz scoring, moderation, authenticated sessions, or a general event-management platform.\n\n## Two-Page Interaction Model\n\n### Master Display — `index.html`\n\nThe master page:\n\n- shows meeting-feedback branding;\n- generates a QR code;\n- points the QR code at `index2.html`;\n- opens a real-time Firebase listener;\n- displays new responses;\n- counts messages;\n- counts distinct participant names;\n- positions feedback bubbles;\n- plays a synthesized bubble sound.\n\n### Participant Page — `index2.html`\n\nThe participant page:\n\n- collects a name;\n- collects a feedback message;\n- enforces length limits;\n- shows a live character count;\n- writes the response to Firebase;\n- displays loading, success, and error states;\n- resets after successful submission.\n\nThe two pages form complementary roles.\n\n## QR-Code Onboarding\n\nThe master page calculates the participant-page URL relative to its current URL.\n\nIt then uses `qrcodejs` to generate a QR code.\n\nThis avoids hard-coding a full deployment URL into the QR logic.\n\nThe intended physical workflow is:\n\n```text\npresenter opens master page\n          |\n          v\naudience sees QR code\n          |\n          v\nparticipant scans QR\n          |\n          v\nparticipant page opens\n```\n\nThis is an effective bridge between a shared display and personal mobile devices.\n\n## Firebase Data Flow\n\nThe participant page writes to:\n\n```text\nthegame/messages\n```\n\nEach message contains:\n\n- name;\n- message;\n- timestamp.\n\nThe master page subscribes to the same path using a real-time listener.\n\nThis produces a direct shared-state system:\n\n```text\nparticipant browser\n       |\n       v\nFirebase Realtime Database\n       |\n       v\nmaster display listener\n```\n\nNo custom backend sits between clients and Firebase.\n\n## Session Boundary\n\nThe master page records `masterOpenTime`.\n\nIt filters incoming messages so the screen shows only those whose timestamps are at or after that session start.\n\nIt also tracks message IDs already rendered.\n\nThis avoids redisplaying the entire historical Firebase dataset every time the master opens.\n\nIt creates a lightweight session concept without creating an explicit session record in the database.\n\nThat is a practical but client-local design.\n\n## Real-Time Subscription\n\nThe master page uses `onValue`.\n\nEvery database update causes the current message set to be evaluated.\n\nThe code:\n\n1. converts keyed records into message objects;\n2. filters by session time;\n3. filters already displayed IDs;\n4. schedules bubble creation;\n5. recomputes session statistics.\n\nThis is event-driven UI behavior built on realtime database synchronization.\n\n## Participant Counting\n\nThe master page uses a JavaScript `Set`.\n\nParticipant identity is represented by the submitted `name` string.\n\nDistinct names are counted.\n\nThere is no account identity.\n\nTwo people using the same name are counted as one participant.\n\nOne person using multiple names can be counted more than once.\n\nThis should be understood as a display statistic, not authenticated attendance.\n\n## Message Bubble Placement\n\nThe master page tries to avoid overlapping message bubbles.\n\nIt defines an approximate grid.\n\nIt tracks occupied positions in a `Set`.\n\nIt searches for an available cell.\n\nOlder position reservations are periodically cleaned up.\n\nIf no suitable grid position is found after repeated attempts, it falls back to random positioning.\n\nThis is a simple spatial-layout heuristic.\n\nIt is more deliberate than purely random placement.\n\n## Animated Feedback\n\nNew bubbles use CSS animation.\n\nThe animation combines:\n\n- translation;\n- scaling;\n- opacity.\n\nThe master display delays consecutive messages slightly.\n\nThat creates a staged arrival effect when several responses appear together.\n\n## Browser Audio Synthesis\n\nThe master creates a Web Audio `AudioContext`.\n\nFor each new bubble it attempts to synthesize a short tone using:\n\n- oscillator;\n- gain node;\n- frequency ramp;\n- gain ramp.\n\nThe audio context is resumed after user interaction if browser autoplay policy suspended it.\n\nThis is direct Web Audio API use.\n\nNo audio file is required.\n\n## Participant Validation\n\nThe participant page validates:\n\n- non-empty name;\n- non-empty message;\n- maximum name length;\n- maximum message length.\n\nThe message character counter updates continuously.\n\nVisual color changes warn as the message approaches the limit.\n\nThe input itself is truncated at 500 characters.\n\n## Submission State Management\n\nOn submission, the page:\n\n- disables the submit button;\n- shows a loading state;\n- hides prior error/success states;\n- awaits Firebase `push`;\n- shows success on completion;\n- resets after a delay.\n\nOn failure, the page:\n\n- shows an error state;\n- re-enables submission;\n- automatically hides the error later.\n\nThis is a complete asynchronous form lifecycle.\n\n## Architecture / System Shape\n\n```text\n                  shared display\n                  index.html\n                      |\n              QR code to participant\n                      |\n                      v\n                index2.html\n                      |\n                 Firebase push\n                      |\n                      v\n           Firebase Realtime Database\n                      |\n                 onValue listener\n                      |\n                      v\n              master bubble UI\n```\n\nSupporting client APIs:\n\n- QRCode.js\n- Web Audio API\n- browser DOM/CSS animation\n\n## Technical Stack\n\n- HTML\n- CSS\n- browser JavaScript\n- Firebase\n- Firebase Realtime Database\n- QRCode.js\n- Web Audio API\n- responsive browser UI\n- realtime event subscription\n\n## Major Engineering Work\n\n### 1. Role-Specific Pages\n\nThe developer separated presenter and participant experiences.\n\nThat avoids overloading one interface with conflicting needs.\n\n### 2. Frictionless Join Flow\n\nQR onboarding turns a shared screen into a multi-device interaction entry point.\n\n### 3. Real-Time Data Propagation\n\nParticipant submissions reach the master through Firebase subscriptions.\n\n### 4. Session Filtering\n\nThe master avoids automatically rendering stale messages from before it was opened.\n\n### 5. Duplicate Render Prevention\n\nMessage IDs already displayed are tracked.\n\n### 6. Participant and Message Metrics\n\nThe UI exposes basic session statistics.\n\n### 7. Spatial Bubble Layout\n\nThe application implements a collision-avoidance heuristic for feedback placement.\n\n### 8. Audio Feedback\n\nThe app generates a sound in-browser for new messages.\n\n### 9. Input Guardrails\n\nSubmission fields have explicit validation and visual character feedback.\n\n## Testing & Verification Evidence\n\nNo automated tests are checked in.\n\nNo E2E browser test exists in the repository.\n\nNo CI workflow is visible.\n\nThe commit history shows many rapid iterative updates to the participant page.\n\nThat indicates hands-on UI debugging.\n\nIt does not establish regression coverage.\n\nThe built-in success/error/loading paths support manual verification.\n\nFirebase realtime behavior itself can be observed directly through the two-screen flow.\n\n## Engineering Discipline\n\nPositive evidence:\n\n- clear separation of master vs participant role;\n- asynchronous submission handling;\n- input validation;\n- realtime subscription;\n- session-time filtering;\n- deduplication of rendered IDs;\n- responsive participant form;\n- graceful audio fallback;\n- URL-relative QR construction;\n- user-visible error states.\n\nConstraints:\n\n- Firebase browser configuration embedded in source;\n- no authentication;\n- no database security rules in repo;\n- no explicit session ID;\n- session defined only by master-open timestamp;\n- participant identity based only on name;\n- user-provided strings inserted into `innerHTML` on the master page;\n- no sanitization visible before that HTML interpolation;\n- no moderation workflow;\n- no rate limiting;\n- no automated tests.\n\nThe `innerHTML` interpolation is a meaningful security limitation.\n\nUntrusted `name` or `message` content could be rendered as markup.\n\nThe corpus should not label the application XSS-safe.\n\n## Product Engineering\n\nThis prototype is strongly product-shaped.\n\nIt solves a recognizable live-meeting workflow:\n\n- presenter needs a shared interaction surface;\n- participants need near-zero-friction entry;\n- feedback should appear immediately;\n- the room benefits from visible participation.\n\nThe QR code reduces onboarding friction.\n\nThe live bubble visualization creates social feedback.\n\nThe simple session stats make participation visible.\n\nThis is a good example of product behavior emerging from a very small codebase.\n\n## Scale and Complexity\n\nThe repository has only two major pages.\n\nThe system nevertheless spans:\n\n- multi-device workflow;\n- realtime shared data;\n- session filtering;\n- QR onboarding;\n- dynamic layout;\n- audio;\n- async form lifecycle.\n\nIt is a compact distributed interaction pattern.\n\nFirebase carries most of the backend infrastructure.\n\n## Skills Demonstrated\n\nEvidence supports:\n\n- browser JavaScript;\n- realtime database integration;\n- event-driven frontend design;\n- Firebase `onValue`;\n- QR-code generation;\n- multi-device interaction design;\n- session-state filtering;\n- deduplication;\n- JavaScript Sets;\n- dynamic DOM creation;\n- CSS animation;\n- Web Audio API;\n- responsive forms;\n- async form handling;\n- UX feedback states.\n\n## What Was Learned / Capability Developed\n\nThis project demonstrates a shift from single-user browser utilities to a synchronized multi-user interaction.\n\nThe central engineering problem is coordination.\n\nOne browser writes.\n\nAnother browser subscribes.\n\nThe shared screen must decide what is new and how to present it.\n\nThat is a useful precursor to larger realtime applications.\n\n## Portfolio Evolution Context\n\nEarlier Firebase projects in the corpus focused on trackers and persistent CRUD-style data.\n\nQuizedra uses Firebase differently.\n\nThe primary value is not persistence.\n\nIt is immediate cross-device propagation.\n\nThis marks a meaningful evolution from “database-backed page” to “live shared experience.”\n\n## Historical Significance\n\nWithin the processed corpus, Quizedra is an early clear example of:\n\n- QR-driven multi-device onboarding;\n- realtime audience feedback;\n- role-separated presenter/participant browser pages;\n- Web Audio synthesis;\n- realtime Firebase subscription used for live room interaction.\n\n## Limitations and Missing Evidence\n\nNo evidence supports:\n\n- authentication;\n- moderation;\n- anonymous identity protection;\n- XSS hardening;\n- production scaling;\n- rate limiting;\n- session persistence model;\n- access control;\n- automated tests;\n- analytics backend;\n- quiz scoring.\n\nDespite the repository name, there is no observed MCQ engine.\n\nThe product is a live feedback tool in this snapshot.\n\n## Overall Narrative\n\nQuizedra is a compact realtime audience-engagement prototype.\n\nIts strongest idea is the end-to-end room workflow.\n\nA QR code gets participants onto a dedicated submission surface, Firebase propagates responses, and the master display turns them into a live animated conversation.\n\nThe implementation shows growing comfort with realtime, multi-client product behavior.\n\n# Project Tags\n\n- `individual-project`\n- `web-application`\n- `realtime-application`\n- `audience-feedback`\n- `meeting-feedback`\n- `multi-device-workflow`\n- `presenter-display`\n- `participant-form`\n- `html`\n- `css`\n- `javascript`\n- `firebase`\n- `firebase-realtime-database`\n- `realtime-subscription`\n- `qr-code`\n- `qrcodejs`\n- `web-audio-api`\n- `audio-synthesis`\n- `session-filtering`\n- `message-deduplication`\n- `participant-counting`\n- `dynamic-bubble-layout`\n- `css-animation`\n- `async-form-submission`\n- `input-validation`\n- `responsive-layout`\n- `known-xss-risk`\n- `earliest-observed-qr-driven-realtime-feedback`\n- `earliest-observed-web-audio-api`\n"
+}

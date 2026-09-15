@@ -1,0 +1,759 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 121,
+  "repository_total": 134,
+  "repository_name": "NetSeer",
+  "header_title": "NetSeer",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-121-NetSeer/README.md",
+    "line_start": 1,
+    "line_end": 554,
+    "sha256": "405337ae7b7fe625d3f94d25d94625617a4705bc4e48897abd8a80395d7885ac"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "html",
+    "javascript",
+    "css",
+    "chart-js",
+    "network-log-analysis",
+    "network-performance-analysis",
+    "throughput-visualization",
+    "ftp-log-analysis",
+    "ftp-performance-analysis",
+    "time-series-visualization",
+    "moving-average",
+    "regular-expression-parsing",
+    "client-side-data-processing",
+    "timestamp-normalization",
+    "unit-conversion",
+    "duplicate-removal",
+    "descriptive-statistics",
+    "standard-deviation",
+    "csv-export",
+    "clipboard-api",
+    "canvas-api",
+    "png-export",
+    "filesaver-js",
+    "browser-tool"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 121 / 138\n- Name: `NetSeer`\n- Start Date: 2025-03-30\n- Latest Meaningful Update: 2026-02-06\n- Latest Meaningful Commit: `b21146f1da5114c6665b069bab8490bb98fb6315`\n- Primary Language: HTML with embedded JavaScript and CSS\n- Primary Type: Browser-based network-log analysis and visualization utility\n- Technical Fields: network performance analysis, time-series visualization, FTP transfer analysis\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s012"
+      ],
+      "titles": [
+        "Editable Presentation Metadata"
+      ],
+      "text": "## Editable Presentation Metadata\nThe chart title itself is interactive.\n\nClicking the title exposes a text input.\n\nOn blur or Enter, the edited title is saved as `customTitle` and subsequently used when the chart is regenerated.\n\nThis makes the utility suitable for preparing plots for reports or presentations rather than only exploratory viewing."
+    },
+    "architecture": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "Client-Side Architecture"
+      ],
+      "text": "## Client-Side Architecture\nThe application architecture is deliberately direct:\n\n```text\nHTML document\n  + CSS\n  + embedded JavaScript\n  + CDN libraries\n          |\n          v\n     browser runtime\n```\n\nNo server round trip is required for the parsing or statistics shown in the inspected source.\n\nThis has practical advantages for experiment logs:\n\n- immediate use;\n- no upload step for local data;\n- easy portability as a single HTML file;\n- direct access to browser canvas and clipboard APIs."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 121 / 138\n- Name: `NetSeer`\n- Start Date: 2025-03-30\n- Latest Meaningful Update: 2026-02-06\n- Latest Meaningful Commit: `b21146f1da5114c6665b069bab8490bb98fb6315`\n- Primary Language: HTML with embedded JavaScript and CSS\n- Primary Type: Browser-based network-log analysis and visualization utility\n- Technical Fields: network performance analysis, time-series visualization, FTP transfer analysis\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`NetSeer` is a lightweight, browser-executed analysis tool for turning raw network-performance logs into readable metrics, smoothed time-series plots, and portable outputs.\n\nThe repository contains two self-contained analysis surfaces:\n\n```text\nindex.html -> upload/download throughput-log processor\nftp.html   -> FTP transfer-time and transfer-speed analyzer\n```\n\nBoth tools accept pasted text directly in the browser.\n\nThey parse the text locally, derive numerical measurements, and present the result through interactive Chart.js visualizations.\n\nThe project therefore avoids an ingestion server or database and instead treats the browser as a small analysis workstation:\n\n```text\nraw pasted logs\n      |\n      v\nregular-expression parsing\n      |\n      v\nnormalization / deduplication / statistics\n      |\n      v\nChart.js plots + numeric summaries\n      |\n      v\nclipboard / image / CSV output\n```",
+      "source_line_start": 16,
+      "source_line_end": 49
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Main Network Log Processor",
+      "normalized_title": "Main Network Log Processor",
+      "key": "main_network_log_processor",
+      "path": [
+        "Main Network Log Processor"
+      ],
+      "content": "`index.html` is titled **Network Log Processor**.\n\nIts expected input format is represented directly in the interface:\n\n```text\n2024-01-15 10:30:45 | Download: 1234567 B/s | Upload: 987654 B/s\n```\n\nThe page provides:\n\n- a multiline log-input area;\n- processing status messages;\n- separate upload and download views;\n- an averaging-window control;\n- chart color selection;\n- editable chart title;\n- chart-to-clipboard output;\n- PNG chart output;\n- processed CSV output.\n\nThe whole pipeline runs client side.",
+      "source_line_start": 49,
+      "source_line_end": 73
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Log Parsing",
+      "normalized_title": "Log Parsing",
+      "key": "log_parsing",
+      "path": [
+        "Log Parsing"
+      ],
+      "content": "### Regular-expression extraction\n\nThe parser matches:\n\n- full date and time;\n- `HH:MM:SS`;\n- download bytes per second;\n- upload bytes per second.\n\nIt iterates through all regex matches in the pasted content and turns each line into a structured JavaScript object.\n\n### Explicit field correction\n\nA repository-specific rule intentionally swaps the two speed fields:\n\n```text\nDownload in source log -> upload in processed data\nUpload in source log   -> download in processed data\n```\n\nThe source comments explicitly identify this as a requirement.\n\nThis is significant because the application is not merely graphing source text verbatim; it contains domain-specific normalization logic for the format being analyzed.",
+      "source_line_start": 73,
+      "source_line_end": 99
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Regular-expression extraction",
+      "normalized_title": "Regular-expression extraction",
+      "key": "regular_expression_extraction",
+      "path": [
+        "Log Parsing",
+        "Regular-expression extraction"
+      ],
+      "content": "The parser matches:\n\n- full date and time;\n- `HH:MM:SS`;\n- download bytes per second;\n- upload bytes per second.\n\nIt iterates through all regex matches in the pasted content and turns each line into a structured JavaScript object.",
+      "source_line_start": 75,
+      "source_line_end": 86
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Explicit field correction",
+      "normalized_title": "Explicit field correction",
+      "key": "explicit_field_correction",
+      "path": [
+        "Log Parsing",
+        "Explicit field correction"
+      ],
+      "content": "A repository-specific rule intentionally swaps the two speed fields:\n\n```text\nDownload in source log -> upload in processed data\nUpload in source log   -> download in processed data\n```\n\nThe source comments explicitly identify this as a requirement.\n\nThis is significant because the application is not merely graphing source text verbatim; it contains domain-specific normalization logic for the format being analyzed.",
+      "source_line_start": 86,
+      "source_line_end": 99
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Time Normalization",
+      "normalized_title": "Time Normalization",
+      "key": "time_normalization",
+      "path": [
+        "Time Normalization"
+      ],
+      "content": "The first valid entry becomes the temporal reference point.\n\n`parseTimeToSeconds` converts `HH:MM:SS` into seconds.\n\nFor every record, the application computes:\n\n```text\ncumulativeTime = currentTimeSeconds - t0\n```\n\nThe chart can therefore use experiment-relative elapsed time rather than absolute wall-clock labels.\n\nThis is well suited to comparing network runs that start at different times.",
+      "source_line_start": 99,
+      "source_line_end": 115
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Throughput Unit Conversion",
+      "normalized_title": "Throughput Unit Conversion",
+      "key": "throughput_unit_conversion",
+      "path": [
+        "Throughput Unit Conversion"
+      ],
+      "content": "The source speed values are parsed in bytes per second.\n\nThe application converts them to MiB-style megabytes per second using:\n\n```text\nvalue / (1024 * 1024)\n```\n\nThe chart and CSV export therefore work with a higher-level throughput unit.",
+      "source_line_start": 115,
+      "source_line_end": 127
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Upload / Download Mode Separation",
+      "normalized_title": "Upload / Download Mode Separation",
+      "key": "upload_download_mode_separation",
+      "path": [
+        "Upload / Download Mode Separation"
+      ],
+      "content": "The results interface contains two tabs:\n\n- Upload Speed\n- Download Speed\n\nA `currentMode` state variable determines which processed series is rendered.\n\nChanging tabs regenerates the chart from the same parsed dataset.\n\nThis keeps ingestion separate from presentation mode.",
+      "source_line_start": 127,
+      "source_line_end": 140
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Moving-Average Smoothing",
+      "normalized_title": "Moving-Average Smoothing",
+      "key": "moving_average_smoothing",
+      "path": [
+        "Moving-Average Smoothing"
+      ],
+      "content": "The application exposes an averaging window between 1 and 50 points.\n\nWhen the window is greater than one, `applyMovingAverage` creates a new plotted series.\n\nFor each point it:\n\n1. finds the bounded start of the trailing window;\n2. sums values from that window;\n3. divides by the number of values present;\n4. copies the original point;\n5. replaces the selected metric with the smoothed value.\n\nThe use of a partial window at the beginning avoids discarding the early observations.\n\nThe chart title also reflects the active moving-average window when a custom title has not replaced it.",
+      "source_line_start": 140,
+      "source_line_end": 158
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Chart.js Visualization",
+      "normalized_title": "Chart.js Visualization",
+      "key": "chart_js_visualization",
+      "path": [
+        "Chart.js Visualization"
+      ],
+      "content": "The network processor creates a Chart.js line chart.\n\nIts visualization uses:\n\n- elapsed seconds on the x axis;\n- selected upload/download MB/s on the y axis;\n- point radius zero for a continuous trace;\n- configurable line/background color;\n- hover tooltips with formatted throughput;\n- tooltip time converted back into hours, minutes, and seconds.\n\nThe plot is rebuilt when relevant presentation state changes.",
+      "source_line_start": 158,
+      "source_line_end": 173
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Editable Presentation Metadata",
+      "normalized_title": "Editable Presentation Metadata",
+      "key": "editable_presentation_metadata",
+      "path": [
+        "Editable Presentation Metadata"
+      ],
+      "content": "The chart title itself is interactive.\n\nClicking the title exposes a text input.\n\nOn blur or Enter, the edited title is saved as `customTitle` and subsequently used when the chart is regenerated.\n\nThis makes the utility suitable for preparing plots for reports or presentations rather than only exploratory viewing.",
+      "source_line_start": 173,
+      "source_line_end": 183
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Chart Color Controls",
+      "normalized_title": "Chart Color Controls",
+      "key": "chart_color_controls",
+      "path": [
+        "Chart Color Controls"
+      ],
+      "content": "The interface exposes several predefined chart palettes.\n\nSelecting a color updates both line and fill values and rerenders the chart.\n\nThis is a small feature, but it shows that presentation customization is part of the tool's intended workflow.",
+      "source_line_start": 183,
+      "source_line_end": 191
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Copy-to-Clipboard Workflow",
+      "normalized_title": "Copy-to-Clipboard Workflow",
+      "key": "copy_to_clipboard_workflow",
+      "path": [
+        "Copy-to-Clipboard Workflow"
+      ],
+      "content": "The chart can be copied directly as PNG image data.\n\nThe code:\n\n1. creates an offscreen canvas;\n2. sizes it to the rendered chart;\n3. paints a white background;\n4. draws the chart canvas onto it;\n5. converts the result to a PNG blob;\n6. writes the blob through `navigator.clipboard.write` and `ClipboardItem`.\n\nThe explicit white-background step avoids a transparent canvas becoming visually unsuitable when pasted into a document with a different background.\n\nThe code reports success or failure through the page's status component.",
+      "source_line_start": 191,
+      "source_line_end": 208
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "PNG Export",
+      "normalized_title": "PNG Export",
+      "key": "png_export",
+      "path": [
+        "PNG Export"
+      ],
+      "content": "The image-download path uses a similar offscreen-canvas approach.\n\nThe rendered chart is composited over white and converted to a PNG data URL.\n\nA temporary anchor is assigned a mode-specific filename such as:\n\n```text\nupload-speed-chart.png\ndownload-speed-chart.png\n```\n\nand programmatically triggered.",
+      "source_line_start": 208,
+      "source_line_end": 223
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Processed CSV Export",
+      "normalized_title": "Processed CSV Export",
+      "key": "processed_csv_export",
+      "path": [
+        "Processed CSV Export"
+      ],
+      "content": "The network processor creates a CSV with:\n\n```text\nTime,CumulativeTime,Download (MB/s),Upload (MB/s)\n```\n\nEvery parsed record is serialized into this normalized format.\n\nA Blob is then handed to FileSaver.js.\n\nThe application therefore supports both visual output and machine-readable processed data.",
+      "source_line_start": 223,
+      "source_line_end": 237
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "FTP Log Analyzer",
+      "normalized_title": "FTP Log Analyzer",
+      "key": "ftp_log_analyzer",
+      "path": [
+        "FTP Log Analyzer"
+      ],
+      "content": "`ftp.html` is a second, separately focused browser tool titled **FTP Log Analyzer**.\n\nIts expected log shape is:\n\n```text\nTransfer completed=1 seconds=670.199 bytes=1000000000\n```\n\nThe analyzer extracts:\n\n- completion flag;\n- transfer duration;\n- transferred byte count.\n\nIt then turns repeated FTP-transfer log output into descriptive statistics and two chronological plots.",
+      "source_line_start": 237,
+      "source_line_end": 255
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "FTP Entry Parsing",
+      "normalized_title": "FTP Entry Parsing",
+      "key": "ftp_entry_parsing",
+      "path": [
+        "FTP Entry Parsing"
+      ],
+      "content": "Each nonempty input line is examined for three regular-expression fields:\n\n```text\ncompleted=\nseconds=\nbytes=\n```\n\nA record is accepted when all three are present.\n\nNumeric strings are converted into JavaScript integer/float values.\n\nThe raw source line is also retained in the structured entry.",
+      "source_line_start": 255,
+      "source_line_end": 271
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Duplicate Removal",
+      "normalized_title": "Duplicate Removal",
+      "key": "duplicate_removal",
+      "path": [
+        "Duplicate Removal"
+      ],
+      "content": "The FTP analyzer creates a key from:\n\n```text\ncompleted + seconds + bytes\n```\n\nand stores records in a `Map`.\n\nThe resulting values form a set of unique transfer observations.\n\nThis prevents exact repeated lines from inflating the aggregate statistics.",
+      "source_line_start": 271,
+      "source_line_end": 285
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Completed-Transfer Filtering",
+      "normalized_title": "Completed-Transfer Filtering",
+      "key": "completed_transfer_filtering",
+      "path": [
+        "Completed-Transfer Filtering"
+      ],
+      "content": "Statistical calculations operate on entries with:\n\n```text\ncompleted === 1\n```\n\nThis prevents incomplete transfer observations from being treated as successful throughput samples.\n\nThe UI separately reports the count of completed entries.",
+      "source_line_start": 285,
+      "source_line_end": 297
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Transfer-Time Statistics",
+      "normalized_title": "Transfer-Time Statistics",
+      "key": "transfer_time_statistics",
+      "path": [
+        "Transfer-Time Statistics"
+      ],
+      "content": "For completed unique transfers, the tool computes:\n\n- arithmetic mean transfer time;\n- population variance;\n- population standard deviation.\n\nThese values are surfaced in summary cards.",
+      "source_line_start": 297,
+      "source_line_end": 307
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Transfer-Speed Derivation",
+      "normalized_title": "Transfer-Speed Derivation",
+      "key": "transfer_speed_derivation",
+      "path": [
+        "Transfer-Speed Derivation"
+      ],
+      "content": "The FTP analyzer derives each run's throughput as:\n\n```text\n(bytes / 1,000,000) / seconds\n```\n\nThe use of decimal megabytes here is distinct from the `1024 * 1024` conversion in `index.html`.\n\nFor the completed run set, the page computes:\n\n- average MB/s;\n- speed variance;\n- speed standard deviation.\n\nThis turns raw duration/byte logs into directly comparable performance measurements.",
+      "source_line_start": 307,
+      "source_line_end": 325
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Chronological FTP Plots",
+      "normalized_title": "Chronological FTP Plots",
+      "key": "chronological_ftp_plots",
+      "path": [
+        "Chronological FTP Plots"
+      ],
+      "content": "Two Chart.js line charts are produced:\n\n1. Transfer Time by run\n2. Transfer Speed by run\n\nThe run order follows the order of the unique completed entries.\n\nThis preserves the observation sequence for experiment-to-experiment variation.",
+      "source_line_start": 325,
+      "source_line_end": 336
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Sorted FTP Result View",
+      "normalized_title": "Sorted FTP Result View",
+      "key": "sorted_ftp_result_view",
+      "path": [
+        "Sorted FTP Result View"
+      ],
+      "content": "A separate textual result block sorts the unique observations by transfer duration.\n\nEach completed transfer is presented as:\n\n```text\n<seconds> seconds (<size> MB) -> <speed> MB/s\n```\n\nThe page therefore gives both chronological visualization and a duration-sorted comparison view.",
+      "source_line_start": 336,
+      "source_line_end": 348
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Evolution Across the Repository History",
+      "normalized_title": "Evolution Across the Repository History",
+      "key": "evolution_across_the_repository_history",
+      "path": [
+        "Evolution Across the Repository History"
+      ],
+      "content": "The repository has a longer development span than its small file count initially suggests.\n\n### Initial logger\n\nThe first implementation appeared in March 2025 as `logger.html`.\n\n### Stable entry point\n\nIn May 2025 it was renamed to `index.html`, turning the logger into the primary browser entry point.\n\n### Input-format adaptation\n\nNovember 2025 commits changed the expected input format.\n\nThat is consistent with the explicit field-normalization rule now preserved in the parser.\n\n### Clipboard-centered reporting\n\nA later November commit changed output behavior toward copying the chart to the clipboard.\n\nThe current code still also supports file and CSV export.\n\n### FTP analysis\n\nDecember 2025 introduced `ftp.html`, extending the project from upload/download rate logs to complete FTP-transfer measurements.\n\n### Additional plots\n\nThe latest February 2026 commit is titled `Adding plots`.\n\nThe current FTP tool contains both transfer-time and transfer-speed Chart.js plots.\n\nThe repository history therefore shows a progression from one-purpose log parsing to a small suite of browser analysis views.",
+      "source_line_start": 348,
+      "source_line_end": 384
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Initial logger",
+      "normalized_title": "Initial logger",
+      "key": "initial_logger",
+      "path": [
+        "Evolution Across the Repository History",
+        "Initial logger"
+      ],
+      "content": "The first implementation appeared in March 2025 as `logger.html`.",
+      "source_line_start": 352,
+      "source_line_end": 356
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Stable entry point",
+      "normalized_title": "Stable entry point",
+      "key": "stable_entry_point",
+      "path": [
+        "Evolution Across the Repository History",
+        "Stable entry point"
+      ],
+      "content": "In May 2025 it was renamed to `index.html`, turning the logger into the primary browser entry point.",
+      "source_line_start": 356,
+      "source_line_end": 360
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Input-format adaptation",
+      "normalized_title": "Input-format adaptation",
+      "key": "input_format_adaptation",
+      "path": [
+        "Evolution Across the Repository History",
+        "Input-format adaptation"
+      ],
+      "content": "November 2025 commits changed the expected input format.\n\nThat is consistent with the explicit field-normalization rule now preserved in the parser.",
+      "source_line_start": 360,
+      "source_line_end": 366
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Clipboard-centered reporting",
+      "normalized_title": "Clipboard-centered reporting",
+      "key": "clipboard_centered_reporting",
+      "path": [
+        "Evolution Across the Repository History",
+        "Clipboard-centered reporting"
+      ],
+      "content": "A later November commit changed output behavior toward copying the chart to the clipboard.\n\nThe current code still also supports file and CSV export.",
+      "source_line_start": 366,
+      "source_line_end": 372
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "FTP analysis",
+      "normalized_title": "FTP analysis",
+      "key": "ftp_analysis",
+      "path": [
+        "Evolution Across the Repository History",
+        "FTP analysis"
+      ],
+      "content": "December 2025 introduced `ftp.html`, extending the project from upload/download rate logs to complete FTP-transfer measurements.",
+      "source_line_start": 372,
+      "source_line_end": 376
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Additional plots",
+      "normalized_title": "Additional plots",
+      "key": "additional_plots",
+      "path": [
+        "Evolution Across the Repository History",
+        "Additional plots"
+      ],
+      "content": "The latest February 2026 commit is titled `Adding plots`.\n\nThe current FTP tool contains both transfer-time and transfer-speed Chart.js plots.\n\nThe repository history therefore shows a progression from one-purpose log parsing to a small suite of browser analysis views.",
+      "source_line_start": 376,
+      "source_line_end": 384
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Client-Side Architecture",
+      "normalized_title": "Client-Side Architecture",
+      "key": "client_side_architecture",
+      "path": [
+        "Client-Side Architecture"
+      ],
+      "content": "The application architecture is deliberately direct:\n\n```text\nHTML document\n  + CSS\n  + embedded JavaScript\n  + CDN libraries\n          |\n          v\n     browser runtime\n```\n\nNo server round trip is required for the parsing or statistics shown in the inspected source.\n\nThis has practical advantages for experiment logs:\n\n- immediate use;\n- no upload step for local data;\n- easy portability as a single HTML file;\n- direct access to browser canvas and clipboard APIs.",
+      "source_line_start": 384,
+      "source_line_end": 407
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### HTML\n\nEach analyzer is a standalone page containing layout, controls, and script.\n\n### JavaScript\n\nJavaScript performs:\n\n- regex parsing;\n- data shaping;\n- unit conversion;\n- time normalization;\n- moving averages;\n- deduplication;\n- descriptive statistics;\n- chart state;\n- file generation;\n- clipboard operations.\n\n### CSS\n\nThe pages include their full visual styling without an external build pipeline.\n\n### Chart.js\n\nChart.js is used for the interactive throughput and FTP line plots.\n\n### FileSaver.js\n\nThe main network-log processor uses FileSaver.js for CSV download.\n\n### Clipboard API\n\nThe browser Clipboard API is used for direct PNG chart copying.\n\n### Canvas API\n\nOffscreen canvases are used to control exported image background and rasterization.",
+      "source_line_start": 407,
+      "source_line_end": 448
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "HTML",
+      "normalized_title": "HTML",
+      "key": "html",
+      "path": [
+        "Technical Stack",
+        "HTML"
+      ],
+      "content": "Each analyzer is a standalone page containing layout, controls, and script.",
+      "source_line_start": 409,
+      "source_line_end": 413
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "JavaScript",
+      "normalized_title": "JavaScript",
+      "key": "javascript",
+      "path": [
+        "Technical Stack",
+        "JavaScript"
+      ],
+      "content": "JavaScript performs:\n\n- regex parsing;\n- data shaping;\n- unit conversion;\n- time normalization;\n- moving averages;\n- deduplication;\n- descriptive statistics;\n- chart state;\n- file generation;\n- clipboard operations.",
+      "source_line_start": 413,
+      "source_line_end": 428
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "CSS",
+      "normalized_title": "CSS",
+      "key": "css",
+      "path": [
+        "Technical Stack",
+        "CSS"
+      ],
+      "content": "The pages include their full visual styling without an external build pipeline.",
+      "source_line_start": 428,
+      "source_line_end": 432
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Chart.js",
+      "normalized_title": "Chart.js",
+      "key": "chart_js",
+      "path": [
+        "Technical Stack",
+        "Chart.js"
+      ],
+      "content": "Chart.js is used for the interactive throughput and FTP line plots.",
+      "source_line_start": 432,
+      "source_line_end": 436
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "FileSaver.js",
+      "normalized_title": "FileSaver.js",
+      "key": "filesaver_js",
+      "path": [
+        "Technical Stack",
+        "FileSaver.js"
+      ],
+      "content": "The main network-log processor uses FileSaver.js for CSV download.",
+      "source_line_start": 436,
+      "source_line_end": 440
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Clipboard API",
+      "normalized_title": "Clipboard API",
+      "key": "clipboard_api",
+      "path": [
+        "Technical Stack",
+        "Clipboard API"
+      ],
+      "content": "The browser Clipboard API is used for direct PNG chart copying.",
+      "source_line_start": 440,
+      "source_line_end": 444
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Canvas API",
+      "normalized_title": "Canvas API",
+      "key": "canvas_api",
+      "path": [
+        "Technical Stack",
+        "Canvas API"
+      ],
+      "content": "Offscreen canvases are used to control exported image background and rasterization.",
+      "source_line_start": 444,
+      "source_line_end": 448
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Data-Processing Skills Demonstrated",
+      "normalized_title": "Data-Processing Skills Demonstrated",
+      "key": "data_processing_skills_demonstrated",
+      "path": [
+        "Data-Processing Skills Demonstrated"
+      ],
+      "content": "The project concretely demonstrates:\n\n- extracting structured measurements from semi-structured text;\n- regex-based parsing;\n- handling domain-specific source-field corrections;\n- timestamp normalization;\n- unit conversion;\n- moving-average smoothing;\n- duplicate removal;\n- completed-observation filtering;\n- mean and standard-deviation calculation;\n- derived throughput calculation;\n- chronological and sorted views.",
+      "source_line_start": 448,
+      "source_line_end": 464
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Visualization Skills Demonstrated",
+      "normalized_title": "Visualization Skills Demonstrated",
+      "key": "visualization_skills_demonstrated",
+      "path": [
+        "Visualization Skills Demonstrated"
+      ],
+      "content": "The repository shows:\n\n- time-series plotting;\n- dynamic metric selection;\n- dynamically computed labels;\n- tooltip formatting;\n- plot customization;\n- report-oriented chart export;\n- multiple coordinated plot types for the same experiment set.",
+      "source_line_start": 464,
+      "source_line_end": 476
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Network-Analysis Skills Demonstrated",
+      "normalized_title": "Network-Analysis Skills Demonstrated",
+      "key": "network_analysis_skills_demonstrated",
+      "path": [
+        "Network-Analysis Skills Demonstrated"
+      ],
+      "content": "The data models are tied directly to network experiments.\n\nThe application understands and transforms:\n\n- upload speed;\n- download speed;\n- FTP transfer completion;\n- transfer duration;\n- transferred bytes;\n- derived MB/s.\n\nThis makes `NetSeer` more specific than a generic CSV charting page.",
+      "source_line_start": 476,
+      "source_line_end": 491
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Engineering Practices Evidenced",
+      "normalized_title": "Engineering Practices Evidenced",
+      "key": "engineering_practices_evidenced",
+      "path": [
+        "Engineering Practices Evidenced"
+      ],
+      "content": "### Single-file portability\n\nEach analyzer packages its UI and processing logic into one transportable HTML file.\n\n### Explicit validation feedback\n\nBoth tools validate the input before rendering results and surface useful error/status messages.\n\n### Presentation separated from parsed data\n\nThe main processor stores `processedData` and then derives chart state from it.\n\nMode switching and smoothing therefore do not require reparsing the raw logs.\n\n### Reusable derived-state functions\n\nMoving average, chart update, export, status, and parsing are separated into named functions.\n\n### Output reuse\n\nThe project supports taking results into another workflow through:\n\n- clipboard image data;\n- PNG file;\n- CSV data.",
+      "source_line_start": 491,
+      "source_line_end": 519
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Single-file portability",
+      "normalized_title": "Single-file portability",
+      "key": "single_file_portability",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Single-file portability"
+      ],
+      "content": "Each analyzer packages its UI and processing logic into one transportable HTML file.",
+      "source_line_start": 493,
+      "source_line_end": 497
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Explicit validation feedback",
+      "normalized_title": "Explicit validation feedback",
+      "key": "explicit_validation_feedback",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Explicit validation feedback"
+      ],
+      "content": "Both tools validate the input before rendering results and surface useful error/status messages.",
+      "source_line_start": 497,
+      "source_line_end": 501
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Presentation separated from parsed data",
+      "normalized_title": "Presentation separated from parsed data",
+      "key": "presentation_separated_from_parsed_data",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Presentation separated from parsed data"
+      ],
+      "content": "The main processor stores `processedData` and then derives chart state from it.\n\nMode switching and smoothing therefore do not require reparsing the raw logs.",
+      "source_line_start": 501,
+      "source_line_end": 507
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Reusable derived-state functions",
+      "normalized_title": "Reusable derived-state functions",
+      "key": "reusable_derived_state_functions",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Reusable derived-state functions"
+      ],
+      "content": "Moving average, chart update, export, status, and parsing are separated into named functions.",
+      "source_line_start": 507,
+      "source_line_end": 511
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Output reuse",
+      "normalized_title": "Output reuse",
+      "key": "output_reuse",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Output reuse"
+      ],
+      "content": "The project supports taking results into another workflow through:\n\n- clipboard image data;\n- PNG file;\n- CSV data.",
+      "source_line_start": 511,
+      "source_line_end": 519
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "`NetSeer` is evidence of building small tools around the actual friction of technical experimentation.\n\nInstead of manually transforming network logs in a spreadsheet for each run, the repository encodes repeatable rules for parsing, normalizing, smoothing, comparing, and exporting measurements.\n\nIts development across 2025–2026 also shows that the tool was revisited as the shape of the underlying network experiments changed.\n\nThe project combines web-development skills with network measurement analysis rather than treating those as separate domains.\n\n# Project Tags\n\n- `html`\n- `javascript`\n- `css`\n- `chart-js`\n- `network-log-analysis`\n- `network-performance-analysis`\n- `throughput-visualization`\n- `ftp-log-analysis`\n- `ftp-performance-analysis`\n- `time-series-visualization`\n- `moving-average`\n- `regular-expression-parsing`\n- `client-side-data-processing`\n- `timestamp-normalization`\n- `unit-conversion`\n- `duplicate-removal`\n- `descriptive-statistics`\n- `standard-deviation`\n- `csv-export`\n- `clipboard-api`\n- `canvas-api`\n- `png-export`\n- `filesaver-js`\n- `browser-tool`",
+      "source_line_start": 519,
+      "source_line_end": 555
+    }
+  ],
+  "raw_analysis": "# NetSeer\n\n## Repository Identity\n\n- Repository: 121 / 138\n- Name: `NetSeer`\n- Start Date: 2025-03-30\n- Latest Meaningful Update: 2026-02-06\n- Latest Meaningful Commit: `b21146f1da5114c6665b069bab8490bb98fb6315`\n- Primary Language: HTML with embedded JavaScript and CSS\n- Primary Type: Browser-based network-log analysis and visualization utility\n- Technical Fields: network performance analysis, time-series visualization, FTP transfer analysis\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set\n\n## What This Project Is\n\n`NetSeer` is a lightweight, browser-executed analysis tool for turning raw network-performance logs into readable metrics, smoothed time-series plots, and portable outputs.\n\nThe repository contains two self-contained analysis surfaces:\n\n```text\nindex.html -> upload/download throughput-log processor\nftp.html   -> FTP transfer-time and transfer-speed analyzer\n```\n\nBoth tools accept pasted text directly in the browser.\n\nThey parse the text locally, derive numerical measurements, and present the result through interactive Chart.js visualizations.\n\nThe project therefore avoids an ingestion server or database and instead treats the browser as a small analysis workstation:\n\n```text\nraw pasted logs\n      |\n      v\nregular-expression parsing\n      |\n      v\nnormalization / deduplication / statistics\n      |\n      v\nChart.js plots + numeric summaries\n      |\n      v\nclipboard / image / CSV output\n```\n\n## Main Network Log Processor\n\n`index.html` is titled **Network Log Processor**.\n\nIts expected input format is represented directly in the interface:\n\n```text\n2024-01-15 10:30:45 | Download: 1234567 B/s | Upload: 987654 B/s\n```\n\nThe page provides:\n\n- a multiline log-input area;\n- processing status messages;\n- separate upload and download views;\n- an averaging-window control;\n- chart color selection;\n- editable chart title;\n- chart-to-clipboard output;\n- PNG chart output;\n- processed CSV output.\n\nThe whole pipeline runs client side.\n\n## Log Parsing\n\n### Regular-expression extraction\n\nThe parser matches:\n\n- full date and time;\n- `HH:MM:SS`;\n- download bytes per second;\n- upload bytes per second.\n\nIt iterates through all regex matches in the pasted content and turns each line into a structured JavaScript object.\n\n### Explicit field correction\n\nA repository-specific rule intentionally swaps the two speed fields:\n\n```text\nDownload in source log -> upload in processed data\nUpload in source log   -> download in processed data\n```\n\nThe source comments explicitly identify this as a requirement.\n\nThis is significant because the application is not merely graphing source text verbatim; it contains domain-specific normalization logic for the format being analyzed.\n\n## Time Normalization\n\nThe first valid entry becomes the temporal reference point.\n\n`parseTimeToSeconds` converts `HH:MM:SS` into seconds.\n\nFor every record, the application computes:\n\n```text\ncumulativeTime = currentTimeSeconds - t0\n```\n\nThe chart can therefore use experiment-relative elapsed time rather than absolute wall-clock labels.\n\nThis is well suited to comparing network runs that start at different times.\n\n## Throughput Unit Conversion\n\nThe source speed values are parsed in bytes per second.\n\nThe application converts them to MiB-style megabytes per second using:\n\n```text\nvalue / (1024 * 1024)\n```\n\nThe chart and CSV export therefore work with a higher-level throughput unit.\n\n## Upload / Download Mode Separation\n\nThe results interface contains two tabs:\n\n- Upload Speed\n- Download Speed\n\nA `currentMode` state variable determines which processed series is rendered.\n\nChanging tabs regenerates the chart from the same parsed dataset.\n\nThis keeps ingestion separate from presentation mode.\n\n## Moving-Average Smoothing\n\nThe application exposes an averaging window between 1 and 50 points.\n\nWhen the window is greater than one, `applyMovingAverage` creates a new plotted series.\n\nFor each point it:\n\n1. finds the bounded start of the trailing window;\n2. sums values from that window;\n3. divides by the number of values present;\n4. copies the original point;\n5. replaces the selected metric with the smoothed value.\n\nThe use of a partial window at the beginning avoids discarding the early observations.\n\nThe chart title also reflects the active moving-average window when a custom title has not replaced it.\n\n## Chart.js Visualization\n\nThe network processor creates a Chart.js line chart.\n\nIts visualization uses:\n\n- elapsed seconds on the x axis;\n- selected upload/download MB/s on the y axis;\n- point radius zero for a continuous trace;\n- configurable line/background color;\n- hover tooltips with formatted throughput;\n- tooltip time converted back into hours, minutes, and seconds.\n\nThe plot is rebuilt when relevant presentation state changes.\n\n## Editable Presentation Metadata\n\nThe chart title itself is interactive.\n\nClicking the title exposes a text input.\n\nOn blur or Enter, the edited title is saved as `customTitle` and subsequently used when the chart is regenerated.\n\nThis makes the utility suitable for preparing plots for reports or presentations rather than only exploratory viewing.\n\n## Chart Color Controls\n\nThe interface exposes several predefined chart palettes.\n\nSelecting a color updates both line and fill values and rerenders the chart.\n\nThis is a small feature, but it shows that presentation customization is part of the tool's intended workflow.\n\n## Copy-to-Clipboard Workflow\n\nThe chart can be copied directly as PNG image data.\n\nThe code:\n\n1. creates an offscreen canvas;\n2. sizes it to the rendered chart;\n3. paints a white background;\n4. draws the chart canvas onto it;\n5. converts the result to a PNG blob;\n6. writes the blob through `navigator.clipboard.write` and `ClipboardItem`.\n\nThe explicit white-background step avoids a transparent canvas becoming visually unsuitable when pasted into a document with a different background.\n\nThe code reports success or failure through the page's status component.\n\n## PNG Export\n\nThe image-download path uses a similar offscreen-canvas approach.\n\nThe rendered chart is composited over white and converted to a PNG data URL.\n\nA temporary anchor is assigned a mode-specific filename such as:\n\n```text\nupload-speed-chart.png\ndownload-speed-chart.png\n```\n\nand programmatically triggered.\n\n## Processed CSV Export\n\nThe network processor creates a CSV with:\n\n```text\nTime,CumulativeTime,Download (MB/s),Upload (MB/s)\n```\n\nEvery parsed record is serialized into this normalized format.\n\nA Blob is then handed to FileSaver.js.\n\nThe application therefore supports both visual output and machine-readable processed data.\n\n## FTP Log Analyzer\n\n`ftp.html` is a second, separately focused browser tool titled **FTP Log Analyzer**.\n\nIts expected log shape is:\n\n```text\nTransfer completed=1 seconds=670.199 bytes=1000000000\n```\n\nThe analyzer extracts:\n\n- completion flag;\n- transfer duration;\n- transferred byte count.\n\nIt then turns repeated FTP-transfer log output into descriptive statistics and two chronological plots.\n\n## FTP Entry Parsing\n\nEach nonempty input line is examined for three regular-expression fields:\n\n```text\ncompleted=\nseconds=\nbytes=\n```\n\nA record is accepted when all three are present.\n\nNumeric strings are converted into JavaScript integer/float values.\n\nThe raw source line is also retained in the structured entry.\n\n## Duplicate Removal\n\nThe FTP analyzer creates a key from:\n\n```text\ncompleted + seconds + bytes\n```\n\nand stores records in a `Map`.\n\nThe resulting values form a set of unique transfer observations.\n\nThis prevents exact repeated lines from inflating the aggregate statistics.\n\n## Completed-Transfer Filtering\n\nStatistical calculations operate on entries with:\n\n```text\ncompleted === 1\n```\n\nThis prevents incomplete transfer observations from being treated as successful throughput samples.\n\nThe UI separately reports the count of completed entries.\n\n## Transfer-Time Statistics\n\nFor completed unique transfers, the tool computes:\n\n- arithmetic mean transfer time;\n- population variance;\n- population standard deviation.\n\nThese values are surfaced in summary cards.\n\n## Transfer-Speed Derivation\n\nThe FTP analyzer derives each run's throughput as:\n\n```text\n(bytes / 1,000,000) / seconds\n```\n\nThe use of decimal megabytes here is distinct from the `1024 * 1024` conversion in `index.html`.\n\nFor the completed run set, the page computes:\n\n- average MB/s;\n- speed variance;\n- speed standard deviation.\n\nThis turns raw duration/byte logs into directly comparable performance measurements.\n\n## Chronological FTP Plots\n\nTwo Chart.js line charts are produced:\n\n1. Transfer Time by run\n2. Transfer Speed by run\n\nThe run order follows the order of the unique completed entries.\n\nThis preserves the observation sequence for experiment-to-experiment variation.\n\n## Sorted FTP Result View\n\nA separate textual result block sorts the unique observations by transfer duration.\n\nEach completed transfer is presented as:\n\n```text\n<seconds> seconds (<size> MB) -> <speed> MB/s\n```\n\nThe page therefore gives both chronological visualization and a duration-sorted comparison view.\n\n## Evolution Across the Repository History\n\nThe repository has a longer development span than its small file count initially suggests.\n\n### Initial logger\n\nThe first implementation appeared in March 2025 as `logger.html`.\n\n### Stable entry point\n\nIn May 2025 it was renamed to `index.html`, turning the logger into the primary browser entry point.\n\n### Input-format adaptation\n\nNovember 2025 commits changed the expected input format.\n\nThat is consistent with the explicit field-normalization rule now preserved in the parser.\n\n### Clipboard-centered reporting\n\nA later November commit changed output behavior toward copying the chart to the clipboard.\n\nThe current code still also supports file and CSV export.\n\n### FTP analysis\n\nDecember 2025 introduced `ftp.html`, extending the project from upload/download rate logs to complete FTP-transfer measurements.\n\n### Additional plots\n\nThe latest February 2026 commit is titled `Adding plots`.\n\nThe current FTP tool contains both transfer-time and transfer-speed Chart.js plots.\n\nThe repository history therefore shows a progression from one-purpose log parsing to a small suite of browser analysis views.\n\n## Client-Side Architecture\n\nThe application architecture is deliberately direct:\n\n```text\nHTML document\n  + CSS\n  + embedded JavaScript\n  + CDN libraries\n          |\n          v\n     browser runtime\n```\n\nNo server round trip is required for the parsing or statistics shown in the inspected source.\n\nThis has practical advantages for experiment logs:\n\n- immediate use;\n- no upload step for local data;\n- easy portability as a single HTML file;\n- direct access to browser canvas and clipboard APIs.\n\n## Technical Stack\n\n### HTML\n\nEach analyzer is a standalone page containing layout, controls, and script.\n\n### JavaScript\n\nJavaScript performs:\n\n- regex parsing;\n- data shaping;\n- unit conversion;\n- time normalization;\n- moving averages;\n- deduplication;\n- descriptive statistics;\n- chart state;\n- file generation;\n- clipboard operations.\n\n### CSS\n\nThe pages include their full visual styling without an external build pipeline.\n\n### Chart.js\n\nChart.js is used for the interactive throughput and FTP line plots.\n\n### FileSaver.js\n\nThe main network-log processor uses FileSaver.js for CSV download.\n\n### Clipboard API\n\nThe browser Clipboard API is used for direct PNG chart copying.\n\n### Canvas API\n\nOffscreen canvases are used to control exported image background and rasterization.\n\n## Data-Processing Skills Demonstrated\n\nThe project concretely demonstrates:\n\n- extracting structured measurements from semi-structured text;\n- regex-based parsing;\n- handling domain-specific source-field corrections;\n- timestamp normalization;\n- unit conversion;\n- moving-average smoothing;\n- duplicate removal;\n- completed-observation filtering;\n- mean and standard-deviation calculation;\n- derived throughput calculation;\n- chronological and sorted views.\n\n## Visualization Skills Demonstrated\n\nThe repository shows:\n\n- time-series plotting;\n- dynamic metric selection;\n- dynamically computed labels;\n- tooltip formatting;\n- plot customization;\n- report-oriented chart export;\n- multiple coordinated plot types for the same experiment set.\n\n## Network-Analysis Skills Demonstrated\n\nThe data models are tied directly to network experiments.\n\nThe application understands and transforms:\n\n- upload speed;\n- download speed;\n- FTP transfer completion;\n- transfer duration;\n- transferred bytes;\n- derived MB/s.\n\nThis makes `NetSeer` more specific than a generic CSV charting page.\n\n## Engineering Practices Evidenced\n\n### Single-file portability\n\nEach analyzer packages its UI and processing logic into one transportable HTML file.\n\n### Explicit validation feedback\n\nBoth tools validate the input before rendering results and surface useful error/status messages.\n\n### Presentation separated from parsed data\n\nThe main processor stores `processedData` and then derives chart state from it.\n\nMode switching and smoothing therefore do not require reparsing the raw logs.\n\n### Reusable derived-state functions\n\nMoving average, chart update, export, status, and parsing are separated into named functions.\n\n### Output reuse\n\nThe project supports taking results into another workflow through:\n\n- clipboard image data;\n- PNG file;\n- CSV data.\n\n## Portfolio Significance\n\n`NetSeer` is evidence of building small tools around the actual friction of technical experimentation.\n\nInstead of manually transforming network logs in a spreadsheet for each run, the repository encodes repeatable rules for parsing, normalizing, smoothing, comparing, and exporting measurements.\n\nIts development across 2025–2026 also shows that the tool was revisited as the shape of the underlying network experiments changed.\n\nThe project combines web-development skills with network measurement analysis rather than treating those as separate domains.\n\n# Project Tags\n\n- `html`\n- `javascript`\n- `css`\n- `chart-js`\n- `network-log-analysis`\n- `network-performance-analysis`\n- `throughput-visualization`\n- `ftp-log-analysis`\n- `ftp-performance-analysis`\n- `time-series-visualization`\n- `moving-average`\n- `regular-expression-parsing`\n- `client-side-data-processing`\n- `timestamp-normalization`\n- `unit-conversion`\n- `duplicate-removal`\n- `descriptive-statistics`\n- `standard-deviation`\n- `csv-export`\n- `clipboard-api`\n- `canvas-api`\n- `png-export`\n- `filesaver-js`\n- `browser-tool`\n"
+}

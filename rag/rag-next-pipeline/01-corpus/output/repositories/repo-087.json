@@ -1,0 +1,516 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 87,
+  "repository_total": 134,
+  "repository_name": "NLP-Project",
+  "header_title": "NLP-Project",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-087-NLP-Project/README.md",
+    "line_start": 1,
+    "line_end": 560,
+    "sha256": "f811c64737320ca192c5b84d7c3c8d0fbf5843c6bfd7c355a43f312c972a1065"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "documentation-heavy-project",
+    "documented-workflow",
+    "natural-language-processing",
+    "generative-nlp",
+    "story-generation",
+    "transformers",
+    "hugging-face",
+    "hugging-face-datasets",
+    "hugging-face-trainer",
+    "pytorch",
+    "gpt2",
+    "causal-language-modeling",
+    "tokenization",
+    "model-fine-tuning-workflow",
+    "dataset-exploration",
+    "text-preprocessing",
+    "vocabulary-analysis",
+    "readability-analysis",
+    "nltk",
+    "textstat",
+    "wordcloud",
+    "train-validation-split",
+    "dataset-fallback",
+    "tinystories",
+    "openwebtext",
+    "wikitext",
+    "documented-evaluation-workflow",
+    "not-execution-verified",
+    "earliest-observed-gpt2-finetuning-workflow"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NLP-Project`\n- **Corpus index:** 087\n- **Repository start date:** 2025-06-14\n- **Last meaningful update date:** 2025-06-14\n- **Latest meaningful commit:** `1ae2ed6462a99ae7f4c83e34d8a7582c904dd3d5`\n- **Repository language metadata:** no programming language detected\n- **Project form:** documented NLP / language-model fine-tuning workflow\n- **Collaboration classification:** `individual-project`\n- **Checked-in artifacts:** `README.md`, `second.md`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s019"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\n```text\nHugging Face dataset\n        |\n        v\ndataset exploration\n        |\n        v\ntext preprocessing\n        |\n        v\ntrain / validation split\n        |\n        v\ntokenizer\n        |\n        v\nGPT-2 causal LM\n        |\n        v\nHugging Face Trainer\n        |\n        v\nevaluation / checkpoint\n        |\n        v\nstory generation\n```\n\nThis is a documented architecture.\n\nNo repository evidence establishes a running service around it."
+    },
+    "testing": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nThere is no automated test suite.\n\nThere is no executed notebook output.\n\nThere are no saved metrics.\n\nThere are no checkpoints.\n\nThere is no training log.\n\nThere is no CI workflow.\n\nThe documentation includes intended evaluation steps.\n\nThat supports `documented-evaluation-workflow`.\n\nIt does not support `executed-model-evaluation`."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NLP-Project`\n- **Corpus index:** 087\n- **Repository start date:** 2025-06-14\n- **Last meaningful update date:** 2025-06-14\n- **Latest meaningful commit:** `1ae2ed6462a99ae7f4c83e34d8a7582c904dd3d5`\n- **Repository language metadata:** no programming language detected\n- **Project form:** documented NLP / language-model fine-tuning workflow\n- **Collaboration classification:** `individual-project`\n- **Checked-in artifacts:** `README.md`, `second.md`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "This repository is Markdown-only.\n\nThere is no checked-in `.py` file.\n\nThere is no checked-in `.ipynb`.\n\nThere is no model artifact.\n\nThere is no training-output directory.\n\nThe two documents contain detailed code blocks and step-by-step notebook-style instructions.\n\nThey describe complete proposed pipelines.\n\nThose code blocks are valuable evidence of designed workflow and technical understanding.\n\nThey are not, by themselves, proof that the training was executed.\n\nThis distinction is mandatory.",
+      "source_line_start": 15,
+      "source_line_end": 37
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "NLP-Project documents a story-generation language-model workflow.\n\nThe first guide is centered on BookCorpus, with a fallback dataset.\n\nThe second guide adapts the workflow to alternative Hugging Face-hosted datasets.\n\nThe documented workflow spans:\n\n- environment setup;\n- dataset acquisition;\n- exploratory data analysis;\n- text statistics;\n- vocabulary analysis;\n- readability analysis;\n- preprocessing;\n- tokenization;\n- causal-language-model data preparation;\n- GPT-2 loading;\n- Hugging Face Trainer configuration;\n- fine-tuning;\n- evaluation;\n- story generation.\n\nThe repository is best understood as an executable-style technical recipe captured in Markdown.\n\nIt is not evidence of a deployed NLP product.",
+      "source_line_start": 37,
+      "source_line_end": 66
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The checked-in scope is documentation of an end-to-end generative NLP experiment workflow.\n\nIt covers data acquisition through model fine-tuning and generation in code blocks, but it does not contain the runnable notebook/source, saved training run, model checkpoint, or serving application.",
+      "source_line_start": 66,
+      "source_line_end": 72
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Document 1 — BookCorpus Story Generation Pipeline",
+      "normalized_title": "Document 1 — BookCorpus Story Generation Pipeline",
+      "key": "document_1_bookcorpus_story_generation_pipeline",
+      "path": [
+        "Document 1 — BookCorpus Story Generation Pipeline"
+      ],
+      "content": "The README describes a pipeline intended to:\n\n1. install required packages;\n2. import ML/NLP tooling;\n3. inspect GPU availability;\n4. load a BookCorpus subset;\n5. fall back to TinyStories if necessary;\n6. convert the dataset to Pandas;\n7. calculate text-length statistics;\n8. calculate word-count statistics;\n9. visualize distributions;\n10. analyze vocabulary;\n11. calculate readability metrics;\n12. generate a word cloud;\n13. inspect sample texts;\n14. preprocess text;\n15. load GPT-2;\n16. tokenize the dataset;\n17. split train/validation data;\n18. configure a causal-language-model collator;\n19. configure Hugging Face `TrainingArguments`;\n20. instantiate `Trainer`;\n21. call `trainer.train()`;\n22. save the intended fine-tuned model;\n23. generate sample stories.\n\nThese are documented steps.\n\nNo checked-in outputs demonstrate that they were run in this repository.",
+      "source_line_start": 72,
+      "source_line_end": 104
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Document 2 — Alternative Story Datasets Pipeline",
+      "normalized_title": "Document 2 — Alternative Story Datasets Pipeline",
+      "key": "document_2_alternative_story_datasets_pipeline",
+      "path": [
+        "Document 2 — Alternative Story Datasets Pipeline"
+      ],
+      "content": "`second.md` keeps much of the same pipeline but changes dataset strategy.\n\nIt explicitly recognizes that BookCorpus availability can be problematic.\n\nIt provides alternatives including:\n\n- TinyStories;\n- OpenWebText;\n- WikiText-103;\n- Daily Dialog.\n\nThe code defines a dataset-selection mapping.\n\nIt selects a dataset by a single configuration value.\n\nIt includes a TinyStories fallback.\n\nThis is an important refinement in workflow robustness.",
+      "source_line_start": 104,
+      "source_line_end": 125
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Data Exploration Design",
+      "normalized_title": "Data Exploration Design",
+      "key": "data_exploration_design",
+      "path": [
+        "Data Exploration Design"
+      ],
+      "content": "The documentation includes several exploratory-analysis components.\n\n### Dataset Shape\n\nThe workflow prints dataset size, features, shape, and columns.\n\n### Text Length\n\nIt computes:\n\n- mean character length;\n- median character length;\n- min/max;\n- word counts;\n- percentile values.\n\n### Vocabulary\n\nIt builds a word-frequency counter.\n\nIt calculates:\n\n- total tokens;\n- unique tokens;\n- type-token ratio;\n- frequent words;\n- singleton word count.\n\n### Readability\n\nUsing `textstat`, the documented workflow calculates:\n\n- Flesch Reading Ease;\n- Flesch-Kincaid Grade;\n- sentence count.\n\nThe guide maps average Flesch score to a descriptive difficulty level.\n\n### Visualization\n\nThe recipe includes:\n\n- histograms;\n- box plots;\n- word cloud.\n\nThis makes the documented project broader than only model fine-tuning.\n\nIt includes corpus characterization.",
+      "source_line_start": 125,
+      "source_line_end": 177
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Dataset Shape",
+      "normalized_title": "Dataset Shape",
+      "key": "dataset_shape",
+      "path": [
+        "Data Exploration Design",
+        "Dataset Shape"
+      ],
+      "content": "The workflow prints dataset size, features, shape, and columns.",
+      "source_line_start": 129,
+      "source_line_end": 133
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Text Length",
+      "normalized_title": "Text Length",
+      "key": "text_length",
+      "path": [
+        "Data Exploration Design",
+        "Text Length"
+      ],
+      "content": "It computes:\n\n- mean character length;\n- median character length;\n- min/max;\n- word counts;\n- percentile values.",
+      "source_line_start": 133,
+      "source_line_end": 143
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Vocabulary",
+      "normalized_title": "Vocabulary",
+      "key": "vocabulary",
+      "path": [
+        "Data Exploration Design",
+        "Vocabulary"
+      ],
+      "content": "It builds a word-frequency counter.\n\nIt calculates:\n\n- total tokens;\n- unique tokens;\n- type-token ratio;\n- frequent words;\n- singleton word count.",
+      "source_line_start": 143,
+      "source_line_end": 155
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Readability",
+      "normalized_title": "Readability",
+      "key": "readability",
+      "path": [
+        "Data Exploration Design",
+        "Readability"
+      ],
+      "content": "Using `textstat`, the documented workflow calculates:\n\n- Flesch Reading Ease;\n- Flesch-Kincaid Grade;\n- sentence count.\n\nThe guide maps average Flesch score to a descriptive difficulty level.",
+      "source_line_start": 155,
+      "source_line_end": 165
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Visualization",
+      "normalized_title": "Visualization",
+      "key": "visualization",
+      "path": [
+        "Data Exploration Design",
+        "Visualization"
+      ],
+      "content": "The recipe includes:\n\n- histograms;\n- box plots;\n- word cloud.\n\nThis makes the documented project broader than only model fine-tuning.\n\nIt includes corpus characterization.",
+      "source_line_start": 165,
+      "source_line_end": 177
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Preprocessing Design",
+      "normalized_title": "Preprocessing Design",
+      "key": "preprocessing_design",
+      "path": [
+        "Preprocessing Design"
+      ],
+      "content": "The documented preprocessing function:\n\n- collapses repeated whitespace;\n- strips boundaries;\n- ensures terminal punctuation;\n- filters very short text.\n\nThe intended pipeline then builds a processed text list.\n\nIt manually creates a 90/10 train-validation split.\n\nThe split is positional rather than randomly shuffled in the shown code.\n\nThat is a reproducibility/experimental-design limitation worth preserving.",
+      "source_line_start": 177,
+      "source_line_end": 194
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Model Design",
+      "normalized_title": "Model Design",
+      "key": "model_design",
+      "path": [
+        "Model Design"
+      ],
+      "content": "The primary documented model is GPT-2.\n\nThe guide also mentions DistilGPT-2 as a lighter alternative.\n\nIt uses:\n\n- `AutoTokenizer`;\n- `AutoModelForCausalLM`.\n\nIf no pad token exists, the EOS token is reused as padding.\n\nThis is a common causal-LM preparation pattern.",
+      "source_line_start": 194,
+      "source_line_end": 209
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Tokenization",
+      "normalized_title": "Tokenization",
+      "key": "tokenization",
+      "path": [
+        "Tokenization"
+      ],
+      "content": "The documented tokenizer configuration uses:\n\n- truncation;\n- padding;\n- maximum sequence length;\n- labels cloned from input IDs.\n\nA Hugging Face `Dataset` is created from processed strings.\n\nThe dataset is mapped through the tokenizer.",
+      "source_line_start": 209,
+      "source_line_end": 222
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Causal Language Modeling",
+      "normalized_title": "Causal Language Modeling",
+      "key": "causal_language_modeling",
+      "path": [
+        "Causal Language Modeling"
+      ],
+      "content": "`DataCollatorForLanguageModeling` is configured with:\n\n```text\nmlm=False\n```\n\nThat correctly expresses causal rather than masked language modeling in the documented design.",
+      "source_line_start": 222,
+      "source_line_end": 232
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Training Configuration",
+      "normalized_title": "Training Configuration",
+      "key": "training_configuration",
+      "path": [
+        "Training Configuration"
+      ],
+      "content": "The guide documents Hugging Face `TrainingArguments`.\n\nVisible concerns include:\n\n- output directory;\n- epochs;\n- per-device batch sizes;\n- warmup;\n- logging;\n- save cadence;\n- evaluation cadence;\n- model selection by evaluation loss;\n- disabled hub push;\n- disabled external reporting.\n\nThe documented code initializes `Trainer`.\n\nIt calls `trainer.train()`.\n\nIt then saves the model and tokenizer.\n\nAgain, these are planned/documented operations, not proven executions.",
+      "source_line_start": 232,
+      "source_line_end": 257
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Inference Design",
+      "normalized_title": "Inference Design",
+      "key": "inference_design",
+      "path": [
+        "Inference Design"
+      ],
+      "content": "The later section defines a story-generation function.\n\nThe intended generation path uses the fine-tuned causal LM for prompt continuation.\n\nTemperature and generation length are configurable.\n\nThis closes the proposed lifecycle from dataset acquisition to application-level generation.",
+      "source_line_start": 257,
+      "source_line_end": 267
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "```text\nHugging Face dataset\n        |\n        v\ndataset exploration\n        |\n        v\ntext preprocessing\n        |\n        v\ntrain / validation split\n        |\n        v\ntokenizer\n        |\n        v\nGPT-2 causal LM\n        |\n        v\nHugging Face Trainer\n        |\n        v\nevaluation / checkpoint\n        |\n        v\nstory generation\n```\n\nThis is a documented architecture.\n\nNo repository evidence establishes a running service around it.",
+      "source_line_start": 267,
+      "source_line_end": 301
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "The documented workflow uses or references:\n\n- Python;\n- PyTorch;\n- Hugging Face Transformers;\n- Hugging Face Datasets;\n- Hugging Face Trainer;\n- Pandas;\n- NumPy;\n- Matplotlib;\n- Seaborn;\n- NLTK;\n- textstat;\n- WordCloud;\n- CUDA when available.\n\nBecause these appear inside Markdown code blocks rather than checked-in executable files, this stack should be read as the designed experiment stack.",
+      "source_line_start": 301,
+      "source_line_end": 321
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "The substantive work represented in the repository is workflow design and technical specification.\n\nMajor components include:\n\n1. defining multiple dataset acquisition strategies;\n2. planning corpus statistics and exploratory analysis;\n3. defining text-cleaning rules;\n4. structuring train/validation preparation;\n5. configuring GPT-2 tokenization;\n6. configuring causal-language-model collation;\n7. specifying Trainer-based fine-tuning;\n8. defining checkpoint/model-save behavior;\n9. defining generation/inference behavior;\n10. revising the workflow around dataset-availability constraints.\n\nThe second document is not merely duplicate prose.\n\nIt adapts the pipeline to alternative Hugging Face datasets and makes dataset choice configurable.",
+      "source_line_start": 321,
+      "source_line_end": 342
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Technical Concepts Represented",
+      "normalized_title": "Technical Concepts Represented",
+      "key": "technical_concepts_represented",
+      "path": [
+        "Technical Concepts Represented"
+      ],
+      "content": "The documents directly contain examples using:\n\n- Python\n- PyTorch\n- Hugging Face Transformers\n- Hugging Face Datasets\n- Pandas\n- NumPy\n- Matplotlib\n- Seaborn\n- NLTK\n- textstat\n- WordCloud\n- GPT-2\n- causal language modeling\n- tokenization\n- train/validation split\n- GPU selection\n- model fine-tuning\n- text generation\n\nBecause these appear as detailed code recipes, they can support tags for **documented workflow knowledge**.\n\nThey should not be tagged as proven production execution unless later evidence supplies it.",
+      "source_line_start": 342,
+      "source_line_end": 369
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "There is no automated test suite.\n\nThere is no executed notebook output.\n\nThere are no saved metrics.\n\nThere are no checkpoints.\n\nThere is no training log.\n\nThere is no CI workflow.\n\nThe documentation includes intended evaluation steps.\n\nThat supports `documented-evaluation-workflow`.\n\nIt does not support `executed-model-evaluation`.",
+      "source_line_start": 369,
+      "source_line_end": 389
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Positive documented practices:\n\n- random seeds;\n- GPU availability check;\n- fallback dataset path;\n- train/validation separation;\n- explicit tokenization configuration;\n- model checkpoint saving;\n- evaluation loss selection;\n- memory-conscious dataset subsets;\n- exploratory statistics before training.\n\nLimitations:\n\n- Markdown code is not packaged as runnable source;\n- no requirements file;\n- no lock file;\n- no exact library versions;\n- no saved run;\n- no experiment metadata;\n- no actual random shuffle before the positional train/validation split in the shown path;\n- dataset availability notes are partially inconsistent between the two documents;\n- no license/data-governance analysis beyond availability comments.",
+      "source_line_start": 389,
+      "source_line_end": 415
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository is not a user-facing product.\n\nIt defines a model-development pipeline that could become part of one.\n\nNo endpoint is implemented.\n\nNo UI is implemented.\n\nNo authentication is implemented.\n\nNo deployment configuration is checked in.\n\nThe later `NLP_ENDPOINT` repository should be analyzed separately rather than projecting endpoint behavior into this repo.",
+      "source_line_start": 415,
+      "source_line_end": 431
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "There are only two files.\n\nHowever, the documents cover a full ML workflow.\n\nThe intellectual scope includes:\n\n- data sourcing;\n- EDA;\n- readability;\n- NLP preprocessing;\n- transformer configuration;\n- training;\n- evaluation;\n- generation.\n\nThe implementation maturity remains limited because the code is embedded as documentation rather than committed as runnable project artifacts.",
+      "source_line_start": 431,
+      "source_line_end": 450
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "At the evidence-appropriate level, the repository demonstrates documented familiarity with:\n\n- NLP dataset pipelines;\n- Hugging Face Datasets;\n- transformer fine-tuning workflow;\n- GPT-2;\n- causal language modeling;\n- tokenization;\n- language-model data collators;\n- Trainer API;\n- exploratory text analysis;\n- vocabulary statistics;\n- readability metrics;\n- text preprocessing;\n- dataset fallback strategy;\n- GPU-aware workflow design.",
+      "source_line_start": 450,
+      "source_line_end": 469
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository shows thinking across the complete lifecycle of an NLP experiment.\n\nThe second document is especially useful historically.\n\nIt reacts to dataset-access constraints by offering alternative corpora and a configurable dataset choice.\n\nThat reflects an understanding that data availability is part of model engineering, not a secondary detail.",
+      "source_line_start": 469,
+      "source_line_end": 479
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier NLP coursework repositories in the corpus focus on classification, vector spaces, probabilistic models, and sequence models.\n\nThis repository shifts toward modern transformer fine-tuning and generative language modeling.\n\nIt also appears shortly before `NLP_ENDPOINT`.\n\nThat suggests a chronological progression from model-workflow design toward serving/integration, although `NLP_ENDPOINT` must be evaluated independently.",
+      "source_line_start": 479,
+      "source_line_end": 489
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus this is an early explicit documented workflow for:\n\n- GPT-2 fine-tuning;\n- Hugging Face Trainer-based causal LM training;\n- story-generation model preparation;\n- dataset-switching/fallback around generative NLP.\n\nIt marks a transition from course exercise concepts toward an end-to-end generative NLP experiment design.",
+      "source_line_start": 489,
+      "source_line_end": 500
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "Do not infer:\n\n- successful training;\n- final model quality;\n- GPU runtime;\n- checkpoint existence;\n- perplexity result;\n- published model;\n- endpoint deployment;\n- user-facing generation;\n- production inference;\n- BookCorpus legal clearance.\n\nThe repository contains code-like documentation.\n\nThat is the central evidence boundary.",
+      "source_line_start": 500,
+      "source_line_end": 519
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "NLP-Project is a technically broad but execution-light repository.\n\nIts contribution to the portfolio is the design of a complete generative NLP workflow.\n\nIt demonstrates how the developer planned to move from raw story corpora through analysis and preprocessing into GPT-2 fine-tuning and generation.\n\nIts maturity limit is equally clear: the repository stores the recipe, not the executed experiment.\n\n# Project Tags\n\n- `individual-project`\n- `documentation-heavy-project`\n- `documented-workflow`\n- `natural-language-processing`\n- `generative-nlp`\n- `story-generation`\n- `transformers`\n- `hugging-face`\n- `hugging-face-datasets`\n- `hugging-face-trainer`\n- `pytorch`\n- `gpt2`\n- `causal-language-modeling`\n- `tokenization`\n- `model-fine-tuning-workflow`\n- `dataset-exploration`\n- `text-preprocessing`\n- `vocabulary-analysis`\n- `readability-analysis`\n- `nltk`\n- `textstat`\n- `wordcloud`\n- `train-validation-split`\n- `dataset-fallback`\n- `tinystories`\n- `openwebtext`\n- `wikitext`\n- `documented-evaluation-workflow`\n- `not-execution-verified`\n- `earliest-observed-gpt2-finetuning-workflow`",
+      "source_line_start": 519,
+      "source_line_end": 561
+    }
+  ],
+  "raw_analysis": "# Repository 087 — NLP-Project\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NLP-Project`\n- **Corpus index:** 087\n- **Repository start date:** 2025-06-14\n- **Last meaningful update date:** 2025-06-14\n- **Latest meaningful commit:** `1ae2ed6462a99ae7f4c83e34d8a7582c904dd3d5`\n- **Repository language metadata:** no programming language detected\n- **Project form:** documented NLP / language-model fine-tuning workflow\n- **Collaboration classification:** `individual-project`\n- **Checked-in artifacts:** `README.md`, `second.md`\n\n## Evidence Basis\n\nThis repository is Markdown-only.\n\nThere is no checked-in `.py` file.\n\nThere is no checked-in `.ipynb`.\n\nThere is no model artifact.\n\nThere is no training-output directory.\n\nThe two documents contain detailed code blocks and step-by-step notebook-style instructions.\n\nThey describe complete proposed pipelines.\n\nThose code blocks are valuable evidence of designed workflow and technical understanding.\n\nThey are not, by themselves, proof that the training was executed.\n\nThis distinction is mandatory.\n\n## What the Project Is\n\nNLP-Project documents a story-generation language-model workflow.\n\nThe first guide is centered on BookCorpus, with a fallback dataset.\n\nThe second guide adapts the workflow to alternative Hugging Face-hosted datasets.\n\nThe documented workflow spans:\n\n- environment setup;\n- dataset acquisition;\n- exploratory data analysis;\n- text statistics;\n- vocabulary analysis;\n- readability analysis;\n- preprocessing;\n- tokenization;\n- causal-language-model data preparation;\n- GPT-2 loading;\n- Hugging Face Trainer configuration;\n- fine-tuning;\n- evaluation;\n- story generation.\n\nThe repository is best understood as an executable-style technical recipe captured in Markdown.\n\nIt is not evidence of a deployed NLP product.\n\n## Project Scope\n\nThe checked-in scope is documentation of an end-to-end generative NLP experiment workflow.\n\nIt covers data acquisition through model fine-tuning and generation in code blocks, but it does not contain the runnable notebook/source, saved training run, model checkpoint, or serving application.\n\n## Document 1 — BookCorpus Story Generation Pipeline\n\nThe README describes a pipeline intended to:\n\n1. install required packages;\n2. import ML/NLP tooling;\n3. inspect GPU availability;\n4. load a BookCorpus subset;\n5. fall back to TinyStories if necessary;\n6. convert the dataset to Pandas;\n7. calculate text-length statistics;\n8. calculate word-count statistics;\n9. visualize distributions;\n10. analyze vocabulary;\n11. calculate readability metrics;\n12. generate a word cloud;\n13. inspect sample texts;\n14. preprocess text;\n15. load GPT-2;\n16. tokenize the dataset;\n17. split train/validation data;\n18. configure a causal-language-model collator;\n19. configure Hugging Face `TrainingArguments`;\n20. instantiate `Trainer`;\n21. call `trainer.train()`;\n22. save the intended fine-tuned model;\n23. generate sample stories.\n\nThese are documented steps.\n\nNo checked-in outputs demonstrate that they were run in this repository.\n\n## Document 2 — Alternative Story Datasets Pipeline\n\n`second.md` keeps much of the same pipeline but changes dataset strategy.\n\nIt explicitly recognizes that BookCorpus availability can be problematic.\n\nIt provides alternatives including:\n\n- TinyStories;\n- OpenWebText;\n- WikiText-103;\n- Daily Dialog.\n\nThe code defines a dataset-selection mapping.\n\nIt selects a dataset by a single configuration value.\n\nIt includes a TinyStories fallback.\n\nThis is an important refinement in workflow robustness.\n\n## Data Exploration Design\n\nThe documentation includes several exploratory-analysis components.\n\n### Dataset Shape\n\nThe workflow prints dataset size, features, shape, and columns.\n\n### Text Length\n\nIt computes:\n\n- mean character length;\n- median character length;\n- min/max;\n- word counts;\n- percentile values.\n\n### Vocabulary\n\nIt builds a word-frequency counter.\n\nIt calculates:\n\n- total tokens;\n- unique tokens;\n- type-token ratio;\n- frequent words;\n- singleton word count.\n\n### Readability\n\nUsing `textstat`, the documented workflow calculates:\n\n- Flesch Reading Ease;\n- Flesch-Kincaid Grade;\n- sentence count.\n\nThe guide maps average Flesch score to a descriptive difficulty level.\n\n### Visualization\n\nThe recipe includes:\n\n- histograms;\n- box plots;\n- word cloud.\n\nThis makes the documented project broader than only model fine-tuning.\n\nIt includes corpus characterization.\n\n## Preprocessing Design\n\nThe documented preprocessing function:\n\n- collapses repeated whitespace;\n- strips boundaries;\n- ensures terminal punctuation;\n- filters very short text.\n\nThe intended pipeline then builds a processed text list.\n\nIt manually creates a 90/10 train-validation split.\n\nThe split is positional rather than randomly shuffled in the shown code.\n\nThat is a reproducibility/experimental-design limitation worth preserving.\n\n## Model Design\n\nThe primary documented model is GPT-2.\n\nThe guide also mentions DistilGPT-2 as a lighter alternative.\n\nIt uses:\n\n- `AutoTokenizer`;\n- `AutoModelForCausalLM`.\n\nIf no pad token exists, the EOS token is reused as padding.\n\nThis is a common causal-LM preparation pattern.\n\n## Tokenization\n\nThe documented tokenizer configuration uses:\n\n- truncation;\n- padding;\n- maximum sequence length;\n- labels cloned from input IDs.\n\nA Hugging Face `Dataset` is created from processed strings.\n\nThe dataset is mapped through the tokenizer.\n\n## Causal Language Modeling\n\n`DataCollatorForLanguageModeling` is configured with:\n\n```text\nmlm=False\n```\n\nThat correctly expresses causal rather than masked language modeling in the documented design.\n\n## Training Configuration\n\nThe guide documents Hugging Face `TrainingArguments`.\n\nVisible concerns include:\n\n- output directory;\n- epochs;\n- per-device batch sizes;\n- warmup;\n- logging;\n- save cadence;\n- evaluation cadence;\n- model selection by evaluation loss;\n- disabled hub push;\n- disabled external reporting.\n\nThe documented code initializes `Trainer`.\n\nIt calls `trainer.train()`.\n\nIt then saves the model and tokenizer.\n\nAgain, these are planned/documented operations, not proven executions.\n\n## Inference Design\n\nThe later section defines a story-generation function.\n\nThe intended generation path uses the fine-tuned causal LM for prompt continuation.\n\nTemperature and generation length are configurable.\n\nThis closes the proposed lifecycle from dataset acquisition to application-level generation.\n\n## Architecture / System Shape\n\n```text\nHugging Face dataset\n        |\n        v\ndataset exploration\n        |\n        v\ntext preprocessing\n        |\n        v\ntrain / validation split\n        |\n        v\ntokenizer\n        |\n        v\nGPT-2 causal LM\n        |\n        v\nHugging Face Trainer\n        |\n        v\nevaluation / checkpoint\n        |\n        v\nstory generation\n```\n\nThis is a documented architecture.\n\nNo repository evidence establishes a running service around it.\n\n## Technical Stack\n\nThe documented workflow uses or references:\n\n- Python;\n- PyTorch;\n- Hugging Face Transformers;\n- Hugging Face Datasets;\n- Hugging Face Trainer;\n- Pandas;\n- NumPy;\n- Matplotlib;\n- Seaborn;\n- NLTK;\n- textstat;\n- WordCloud;\n- CUDA when available.\n\nBecause these appear inside Markdown code blocks rather than checked-in executable files, this stack should be read as the designed experiment stack.\n\n## Major Engineering Work\n\nThe substantive work represented in the repository is workflow design and technical specification.\n\nMajor components include:\n\n1. defining multiple dataset acquisition strategies;\n2. planning corpus statistics and exploratory analysis;\n3. defining text-cleaning rules;\n4. structuring train/validation preparation;\n5. configuring GPT-2 tokenization;\n6. configuring causal-language-model collation;\n7. specifying Trainer-based fine-tuning;\n8. defining checkpoint/model-save behavior;\n9. defining generation/inference behavior;\n10. revising the workflow around dataset-availability constraints.\n\nThe second document is not merely duplicate prose.\n\nIt adapts the pipeline to alternative Hugging Face datasets and makes dataset choice configurable.\n\n## Technical Concepts Represented\n\nThe documents directly contain examples using:\n\n- Python\n- PyTorch\n- Hugging Face Transformers\n- Hugging Face Datasets\n- Pandas\n- NumPy\n- Matplotlib\n- Seaborn\n- NLTK\n- textstat\n- WordCloud\n- GPT-2\n- causal language modeling\n- tokenization\n- train/validation split\n- GPU selection\n- model fine-tuning\n- text generation\n\nBecause these appear as detailed code recipes, they can support tags for **documented workflow knowledge**.\n\nThey should not be tagged as proven production execution unless later evidence supplies it.\n\n## Testing & Verification Evidence\n\nThere is no automated test suite.\n\nThere is no executed notebook output.\n\nThere are no saved metrics.\n\nThere are no checkpoints.\n\nThere is no training log.\n\nThere is no CI workflow.\n\nThe documentation includes intended evaluation steps.\n\nThat supports `documented-evaluation-workflow`.\n\nIt does not support `executed-model-evaluation`.\n\n## Engineering Discipline\n\nPositive documented practices:\n\n- random seeds;\n- GPU availability check;\n- fallback dataset path;\n- train/validation separation;\n- explicit tokenization configuration;\n- model checkpoint saving;\n- evaluation loss selection;\n- memory-conscious dataset subsets;\n- exploratory statistics before training.\n\nLimitations:\n\n- Markdown code is not packaged as runnable source;\n- no requirements file;\n- no lock file;\n- no exact library versions;\n- no saved run;\n- no experiment metadata;\n- no actual random shuffle before the positional train/validation split in the shown path;\n- dataset availability notes are partially inconsistent between the two documents;\n- no license/data-governance analysis beyond availability comments.\n\n## Product Engineering\n\nThis repository is not a user-facing product.\n\nIt defines a model-development pipeline that could become part of one.\n\nNo endpoint is implemented.\n\nNo UI is implemented.\n\nNo authentication is implemented.\n\nNo deployment configuration is checked in.\n\nThe later `NLP_ENDPOINT` repository should be analyzed separately rather than projecting endpoint behavior into this repo.\n\n## Scale and Complexity\n\nThere are only two files.\n\nHowever, the documents cover a full ML workflow.\n\nThe intellectual scope includes:\n\n- data sourcing;\n- EDA;\n- readability;\n- NLP preprocessing;\n- transformer configuration;\n- training;\n- evaluation;\n- generation.\n\nThe implementation maturity remains limited because the code is embedded as documentation rather than committed as runnable project artifacts.\n\n## Skills Demonstrated\n\nAt the evidence-appropriate level, the repository demonstrates documented familiarity with:\n\n- NLP dataset pipelines;\n- Hugging Face Datasets;\n- transformer fine-tuning workflow;\n- GPT-2;\n- causal language modeling;\n- tokenization;\n- language-model data collators;\n- Trainer API;\n- exploratory text analysis;\n- vocabulary statistics;\n- readability metrics;\n- text preprocessing;\n- dataset fallback strategy;\n- GPU-aware workflow design.\n\n## What Was Learned / Capability Developed\n\nThe repository shows thinking across the complete lifecycle of an NLP experiment.\n\nThe second document is especially useful historically.\n\nIt reacts to dataset-access constraints by offering alternative corpora and a configurable dataset choice.\n\nThat reflects an understanding that data availability is part of model engineering, not a secondary detail.\n\n## Portfolio Evolution Context\n\nEarlier NLP coursework repositories in the corpus focus on classification, vector spaces, probabilistic models, and sequence models.\n\nThis repository shifts toward modern transformer fine-tuning and generative language modeling.\n\nIt also appears shortly before `NLP_ENDPOINT`.\n\nThat suggests a chronological progression from model-workflow design toward serving/integration, although `NLP_ENDPOINT` must be evaluated independently.\n\n## Historical Significance\n\nWithin the processed corpus this is an early explicit documented workflow for:\n\n- GPT-2 fine-tuning;\n- Hugging Face Trainer-based causal LM training;\n- story-generation model preparation;\n- dataset-switching/fallback around generative NLP.\n\nIt marks a transition from course exercise concepts toward an end-to-end generative NLP experiment design.\n\n## Limitations and Missing Evidence\n\nDo not infer:\n\n- successful training;\n- final model quality;\n- GPU runtime;\n- checkpoint existence;\n- perplexity result;\n- published model;\n- endpoint deployment;\n- user-facing generation;\n- production inference;\n- BookCorpus legal clearance.\n\nThe repository contains code-like documentation.\n\nThat is the central evidence boundary.\n\n## Overall Narrative\n\nNLP-Project is a technically broad but execution-light repository.\n\nIts contribution to the portfolio is the design of a complete generative NLP workflow.\n\nIt demonstrates how the developer planned to move from raw story corpora through analysis and preprocessing into GPT-2 fine-tuning and generation.\n\nIts maturity limit is equally clear: the repository stores the recipe, not the executed experiment.\n\n# Project Tags\n\n- `individual-project`\n- `documentation-heavy-project`\n- `documented-workflow`\n- `natural-language-processing`\n- `generative-nlp`\n- `story-generation`\n- `transformers`\n- `hugging-face`\n- `hugging-face-datasets`\n- `hugging-face-trainer`\n- `pytorch`\n- `gpt2`\n- `causal-language-modeling`\n- `tokenization`\n- `model-fine-tuning-workflow`\n- `dataset-exploration`\n- `text-preprocessing`\n- `vocabulary-analysis`\n- `readability-analysis`\n- `nltk`\n- `textstat`\n- `wordcloud`\n- `train-validation-split`\n- `dataset-fallback`\n- `tinystories`\n- `openwebtext`\n- `wikitext`\n- `documented-evaluation-workflow`\n- `not-execution-verified`\n- `earliest-observed-gpt2-finetuning-workflow`\n"
+}

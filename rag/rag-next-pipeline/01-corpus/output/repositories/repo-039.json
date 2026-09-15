@@ -1,0 +1,385 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 39,
+  "repository_total": 134,
+  "repository_name": "Linux",
+  "header_title": "Linux",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-039-Linux/README.md",
+    "line_start": 1,
+    "line_end": 159,
+    "sha256": "92a3bbbe721ead99c7c6956f2ca85fd5b85129770a479822b881212f39d9fa01"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "engineering-notes",
+    "developer-reference",
+    "linux-command-reference",
+    "individual-project",
+    "linux",
+    "apt",
+    "bashrc",
+    "sudo",
+    "filesystem-permissions",
+    "chown",
+    "github-cli",
+    "git",
+    "cmake",
+    "gpp",
+    "pcl",
+    "eigen",
+    "rviz",
+    "software-rendering",
+    "environment-setup",
+    "dependency-installation",
+    "source-control-workflow",
+    "troubleshooting-notes",
+    "earliest-observed-linux-command-reference",
+    "earliest-observed-github-cli",
+    "earliest-observed-rviz"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Linux`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-25\n- **Artifact type:** Linux operational notes and command reference\n- **Primary formats:** Markdown and shell-command text\n- **Collaboration classification:** individual reference repository"
+    },
+    "responsibility": {
+      "section_ids": [
+        "s012"
+      ],
+      "titles": [
+        "Filesystem Ownership"
+      ],
+      "text": "## Filesystem Ownership\n`chown -R` is used to repair workspace ownership."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Linux`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-25\n- **Artifact type:** Linux operational notes and command reference\n- **Primary formats:** Markdown and shell-command text\n- **Collaboration classification:** individual reference repository",
+      "source_line_start": 3,
+      "source_line_end": 12
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`Linux` is a compact personal operational reference.\n\nIt records commands used around a Linux robotics/development environment rather than implementing a standalone application.\n\nThe material covers package installation, shell startup configuration, sudo/ownership operations, Git and GitHub CLI, PDF viewing, and RViz graphics troubleshooting.",
+      "source_line_start": 12,
+      "source_line_end": 20
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Development Environment Bootstrap",
+      "normalized_title": "Development Environment Bootstrap",
+      "key": "development_environment_bootstrap",
+      "path": [
+        "Development Environment Bootstrap"
+      ],
+      "content": "`ImportantLibraries.bashrc` records installation commands for:\n\n- Git,\n- `g++`,\n- CMake,\n- PCL development headers,\n- Eigen3 development headers.\n\nThese dependencies align directly with the contemporaneous C++, point-cloud, Kalman-filter, and robotics repositories.",
+      "source_line_start": 20,
+      "source_line_end": 32
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Shell Configuration",
+      "normalized_title": "Shell Configuration",
+      "key": "shell_configuration",
+      "path": [
+        "Shell Configuration"
+      ],
+      "content": "The `SUDO` notes include:\n\n- inspecting `~/.bashrc`,\n- editing `~/.bashrc`,\n- sourcing `~/.bashrc`.\n\nThis preserves the practical cycle of changing shell initialization and reloading the environment.",
+      "source_line_start": 32,
+      "source_line_end": 42
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "GitHub CLI",
+      "normalized_title": "GitHub CLI",
+      "key": "github_cli",
+      "path": [
+        "GitHub CLI"
+      ],
+      "content": "The same notes record installing `gh`, authenticating with `gh auth login`, and cloning through `gh repo clone`.\n\nThis is direct evidence of GitHub CLI use in the Linux workflow.",
+      "source_line_start": 42,
+      "source_line_end": 48
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Filesystem Permissions",
+      "normalized_title": "Filesystem Permissions",
+      "key": "filesystem_permissions",
+      "path": [
+        "Filesystem Permissions"
+      ],
+      "content": "A concrete command recursively changes ownership of:\n\n`/home/kiro/Robotics/src/`\n\nThat ties the repository directly to a robotics workspace and documents resolution of a Linux ownership/permission problem.",
+      "source_line_start": 48,
+      "source_line_end": 56
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Git Workflow Notes",
+      "normalized_title": "Git Workflow Notes",
+      "key": "git_workflow_notes",
+      "path": [
+        "Git Workflow Notes"
+      ],
+      "content": "`git.md` records a basic change lifecycle:\n\n1. `git add`,\n2. `git commit`,\n3. `git push`.\n\nIt also records a force-push command.\n\nThe repository therefore served as a working source-control cheat sheet.",
+      "source_line_start": 56,
+      "source_line_end": 68
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Graphics and Robotics Troubleshooting",
+      "normalized_title": "Graphics and Robotics Troubleshooting",
+      "key": "graphics_and_robotics_troubleshooting",
+      "path": [
+        "Graphics and Robotics Troubleshooting"
+      ],
+      "content": "`media.md` records PDF opening through `evince`, setting `LIBGL_ALWAYS_SOFTWARE=1`, and starting `rviz2`.\n\nThe environment variable forces software rendering, which is a concrete workaround for graphics/runtime problems when launching RViz.",
+      "source_line_start": 68,
+      "source_line_end": 74
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Technical Context",
+      "normalized_title": "Technical Context",
+      "key": "technical_context",
+      "path": [
+        "Technical Context"
+      ],
+      "content": "The repository connects Linux package management with C++ compilation, CMake, Eigen, PCL, ROS/RViz, Git, and GitHub CLI.\n\nIt is best interpreted as operational knowledge accumulated while setting up robotics development.",
+      "source_line_start": 74,
+      "source_line_end": 80
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### Package Management\n\n`apt` and `apt-get` provision development dependencies.\n\n### Filesystem Ownership\n\n`chown -R` is used to repair workspace ownership.\n\n### Shell Environment Management\n\n`.bashrc` is inspected, edited, and sourced.\n\n### Source Control Operations\n\nGit and GitHub CLI commands are retained as a reusable workflow.\n\n### Graphics Troubleshooting\n\nRViz is launched with software rendering as an environment workaround.",
+      "source_line_start": 80,
+      "source_line_end": 102
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Package Management",
+      "normalized_title": "Package Management",
+      "key": "package_management",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Package Management"
+      ],
+      "content": "`apt` and `apt-get` provision development dependencies.",
+      "source_line_start": 82,
+      "source_line_end": 86
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Filesystem Ownership",
+      "normalized_title": "Filesystem Ownership",
+      "key": "filesystem_ownership",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Filesystem Ownership"
+      ],
+      "content": "`chown -R` is used to repair workspace ownership.",
+      "source_line_start": 86,
+      "source_line_end": 90
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Shell Environment Management",
+      "normalized_title": "Shell Environment Management",
+      "key": "shell_environment_management",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Shell Environment Management"
+      ],
+      "content": "`.bashrc` is inspected, edited, and sourced.",
+      "source_line_start": 90,
+      "source_line_end": 94
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Source Control Operations",
+      "normalized_title": "Source Control Operations",
+      "key": "source_control_operations",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Source Control Operations"
+      ],
+      "content": "Git and GitHub CLI commands are retained as a reusable workflow.",
+      "source_line_start": 94,
+      "source_line_end": 98
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Graphics Troubleshooting",
+      "normalized_title": "Graphics Troubleshooting",
+      "key": "graphics_troubleshooting",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Graphics Troubleshooting"
+      ],
+      "content": "RViz is launched with software rendering as an environment workaround.",
+      "source_line_start": 98,
+      "source_line_end": 102
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository captures the operational layer beneath robotics software.\n\nThe capability is moving between source code, package dependencies, build tools, shell environment, filesystem permissions, source control, and visualization runtime.",
+      "source_line_start": 102,
+      "source_line_end": 108
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "`Linux` appears on the same day as `Kalman-Filters` and immediately before the dedicated `ROS` repository.\n\nThe PCL, Eigen, CMake dependencies and concrete `/home/kiro/Robotics/src/` path make the connection explicit.\n\nIt marks a transition into hands-on Linux robotics tooling.",
+      "source_line_start": 108,
+      "source_line_end": 116
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Linux` is a small engineering notebook built around real environment friction.\n\nIt records how a native robotics environment was provisioned, how shell state was reloaded, how GitHub CLI authentication/cloning worked, how workspace ownership was corrected, and how RViz was launched under software rendering.\n\nIts portfolio value is operational rather than product-oriented.\n\n# Project Tags",
+      "source_line_start": 116,
+      "source_line_end": 126
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `engineering-notes`\n- `developer-reference`\n- `linux-command-reference`\n- `individual-project`",
+      "source_line_start": 126,
+      "source_line_end": 132
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Operating Systems and Tooling",
+      "normalized_title": "Operating Systems and Tooling",
+      "key": "operating_systems_and_tooling",
+      "path": [
+        "Operating Systems and Tooling"
+      ],
+      "content": "- `linux`\n- `apt`\n- `bashrc`\n- `sudo`\n- `filesystem-permissions`\n- `chown`\n- `github-cli`\n- `git`\n- `cmake`\n- `gpp`",
+      "source_line_start": 132,
+      "source_line_end": 144
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Robotics Environment",
+      "normalized_title": "Robotics Environment",
+      "key": "robotics_environment",
+      "path": [
+        "Robotics Environment"
+      ],
+      "content": "- `pcl`\n- `eigen`\n- `rviz`\n- `software-rendering`",
+      "source_line_start": 144,
+      "source_line_end": 150
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `environment-setup`\n- `dependency-installation`\n- `source-control-workflow`\n- `troubleshooting-notes`",
+      "source_line_start": 150,
+      "source_line_end": 156
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-linux-command-reference`\n- `earliest-observed-github-cli`\n- `earliest-observed-rviz`",
+      "source_line_start": 156,
+      "source_line_end": 160
+    }
+  ],
+  "raw_analysis": "# Repository 039 — Linux\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Linux`\n- **Repository start date:** 2024-08-17\n- **Last meaningful update date:** 2024-08-25\n- **Artifact type:** Linux operational notes and command reference\n- **Primary formats:** Markdown and shell-command text\n- **Collaboration classification:** individual reference repository\n\n## What This Repository Is\n\n`Linux` is a compact personal operational reference.\n\nIt records commands used around a Linux robotics/development environment rather than implementing a standalone application.\n\nThe material covers package installation, shell startup configuration, sudo/ownership operations, Git and GitHub CLI, PDF viewing, and RViz graphics troubleshooting.\n\n## Development Environment Bootstrap\n\n`ImportantLibraries.bashrc` records installation commands for:\n\n- Git,\n- `g++`,\n- CMake,\n- PCL development headers,\n- Eigen3 development headers.\n\nThese dependencies align directly with the contemporaneous C++, point-cloud, Kalman-filter, and robotics repositories.\n\n## Shell Configuration\n\nThe `SUDO` notes include:\n\n- inspecting `~/.bashrc`,\n- editing `~/.bashrc`,\n- sourcing `~/.bashrc`.\n\nThis preserves the practical cycle of changing shell initialization and reloading the environment.\n\n## GitHub CLI\n\nThe same notes record installing `gh`, authenticating with `gh auth login`, and cloning through `gh repo clone`.\n\nThis is direct evidence of GitHub CLI use in the Linux workflow.\n\n## Filesystem Permissions\n\nA concrete command recursively changes ownership of:\n\n`/home/kiro/Robotics/src/`\n\nThat ties the repository directly to a robotics workspace and documents resolution of a Linux ownership/permission problem.\n\n## Git Workflow Notes\n\n`git.md` records a basic change lifecycle:\n\n1. `git add`,\n2. `git commit`,\n3. `git push`.\n\nIt also records a force-push command.\n\nThe repository therefore served as a working source-control cheat sheet.\n\n## Graphics and Robotics Troubleshooting\n\n`media.md` records PDF opening through `evince`, setting `LIBGL_ALWAYS_SOFTWARE=1`, and starting `rviz2`.\n\nThe environment variable forces software rendering, which is a concrete workaround for graphics/runtime problems when launching RViz.\n\n## Technical Context\n\nThe repository connects Linux package management with C++ compilation, CMake, Eigen, PCL, ROS/RViz, Git, and GitHub CLI.\n\nIt is best interpreted as operational knowledge accumulated while setting up robotics development.\n\n## Engineering Skills Demonstrated\n\n### Package Management\n\n`apt` and `apt-get` provision development dependencies.\n\n### Filesystem Ownership\n\n`chown -R` is used to repair workspace ownership.\n\n### Shell Environment Management\n\n`.bashrc` is inspected, edited, and sourced.\n\n### Source Control Operations\n\nGit and GitHub CLI commands are retained as a reusable workflow.\n\n### Graphics Troubleshooting\n\nRViz is launched with software rendering as an environment workaround.\n\n## Capability Developed\n\nThe repository captures the operational layer beneath robotics software.\n\nThe capability is moving between source code, package dependencies, build tools, shell environment, filesystem permissions, source control, and visualization runtime.\n\n## Portfolio Evolution\n\n`Linux` appears on the same day as `Kalman-Filters` and immediately before the dedicated `ROS` repository.\n\nThe PCL, Eigen, CMake dependencies and concrete `/home/kiro/Robotics/src/` path make the connection explicit.\n\nIt marks a transition into hands-on Linux robotics tooling.\n\n## Overall Repository Narrative\n\n`Linux` is a small engineering notebook built around real environment friction.\n\nIt records how a native robotics environment was provisioned, how shell state was reloaded, how GitHub CLI authentication/cloning worked, how workspace ownership was corrected, and how RViz was launched under software rendering.\n\nIts portfolio value is operational rather than product-oriented.\n\n# Project Tags\n\n## Project Type\n- `engineering-notes`\n- `developer-reference`\n- `linux-command-reference`\n- `individual-project`\n\n## Operating Systems and Tooling\n- `linux`\n- `apt`\n- `bashrc`\n- `sudo`\n- `filesystem-permissions`\n- `chown`\n- `github-cli`\n- `git`\n- `cmake`\n- `gpp`\n\n## Robotics Environment\n- `pcl`\n- `eigen`\n- `rviz`\n- `software-rendering`\n\n## Software Engineering Practices\n- `environment-setup`\n- `dependency-installation`\n- `source-control-workflow`\n- `troubleshooting-notes`\n\n## Portfolio Significance\n- `earliest-observed-linux-command-reference`\n- `earliest-observed-github-cli`\n- `earliest-observed-rviz`\n"
+}

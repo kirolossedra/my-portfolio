@@ -14,7 +14,6 @@ export const RAG_GENERATION_MODEL = '@cf/zai-org/glm-4.7-flash';
 export const RAG_QUERY_INSTRUCTION = 'Given a web search query, retrieve relevant passages that answer the query';
 export const RAG_VECTOR_INDEX_NAME = 'portfolio-career-rag-cloudflare-v1';
 
-const EXPECTED_DOCUMENTS = 2808;
 const EXPECTED_REPOSITORIES = 134;
 const VECTOR_CANDIDATES = 40;
 const RERANK_TOP_K = 20;
@@ -341,11 +340,11 @@ function citationFromEvidence(item: RankedEvidence, index: number): RagCitation 
 
 async function assertCorpusReady(env: Env): Promise<void> {
   const meta = await getRagCorpusMeta(env.DB);
-  if (!meta || meta.document_count !== EXPECTED_DOCUMENTS || meta.repository_count !== EXPECTED_REPOSITORIES) {
+  if (!meta || meta.document_count < 1 || meta.repository_count !== EXPECTED_REPOSITORIES || await countRagDocuments(env.DB) !== meta.document_count) {
     throw new HttpError(
       503,
       'rag_corpus_not_ready',
-      `RAG D1 corpus is not ready. Expected ${EXPECTED_DOCUMENTS} documents across ${EXPECTED_REPOSITORIES} repositories.`,
+      `RAG D1 corpus is not ready across ${EXPECTED_REPOSITORIES} repositories.`,
     );
   }
 }
@@ -420,7 +419,7 @@ async function retrieveEvidence(question: string, env: Env): Promise<{
 
 async function handleHealth(env: Env): Promise<Response> {
   const [meta, count] = await Promise.all([getRagCorpusMeta(env.DB), countRagDocuments(env.DB)]);
-  if (!meta || count !== EXPECTED_DOCUMENTS || meta.repository_count !== EXPECTED_REPOSITORIES) {
+  if (!meta || count < 1 || count !== meta.document_count || meta.repository_count !== EXPECTED_REPOSITORIES) {
     throw new HttpError(503, 'rag_corpus_not_ready', 'RAG D1 corpus is not fully published.');
   }
 
@@ -429,7 +428,7 @@ async function handleHealth(env: Env): Promise<Response> {
       status: 'ok',
       corpusDocuments: count,
       corpusRepositories: meta.repository_count,
-      expectedDocuments: EXPECTED_DOCUMENTS,
+      expectedDocuments: meta.document_count,
       vectorIndex: RAG_VECTOR_INDEX_NAME,
     },
   };

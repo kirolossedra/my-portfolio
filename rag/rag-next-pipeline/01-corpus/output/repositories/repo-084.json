@@ -1,0 +1,639 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 84,
+  "repository_total": 134,
+  "repository_name": "assignment",
+  "header_title": "assignment",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-084-assignment/README.md",
+    "line_start": 1,
+    "line_end": 598,
+    "sha256": "1737d6093e895eadcfdcdcb1786594b897c2a09c1cc86f687ce59c47b8855b4d"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "numpy",
+    "matplotlib",
+    "robotics",
+    "robotics-toolbox-python",
+    "denavit-hartenberg",
+    "dhrobot",
+    "serial-manipulator",
+    "forward-kinematics",
+    "inverse-kinematics",
+    "jacobian",
+    "jacobian-pseudoinverse",
+    "svd",
+    "damped-least-squares",
+    "jacobian-transpose",
+    "numerical-methods",
+    "convergence-analysis",
+    "pose-estimation",
+    "euler-angles",
+    "3d-visualization",
+    "trajectory-analysis",
+    "experiment-comparison",
+    "earliest-observed-robotics-toolbox-python",
+    "earliest-observed-damped-least-squares-ik"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/assignment`\n- **Corpus index:** 084\n- **Repository start date:** 2025-05-26\n- **Last meaningful update date:** 2025-05-26\n- **Latest meaningful commit:** `e02a15c2e703948a93a6c88af4259bd701570415`\n- **Primary repository language:** Python\n- **Project form:** numerical robotics / inverse-kinematics experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `test.py`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s023"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe project is a self-contained numerical experiment.\n\nA simplified flow is:\n\n```text\nDH robot model\n     |\n     v\nforward kinematics\n     |\n     v\ncurrent end-effector pose\n     |\n     v\ntarget error\n     |\n     v\nrobot Jacobian\n     |\n     +-----------------------------+\n     |              |              |\n     v              v              v\nSVD pinv        DLS pinv       J transpose\n     |              |              |\n     +--------------+--------------+\n                    |\n                    v\n             joint update\n                    |\n                    v\n          trajectory + metrics\n                    |\n                    v\n               plots/report\n```\n\nThere is no application server.\n\nThere is no UI product.\n\nThere is no robotics middleware in this repository.\n\nThe emphasis is algorithmic comparison."
+    },
+    "testing": {
+      "section_ids": [
+        "s032"
+      ],
+      "titles": [
+        "Testing & Verification Evidence"
+      ],
+      "text": "## Testing & Verification Evidence\nThere is no formal unit-test suite.\n\nThere is no `pytest` setup.\n\nThere is no CI workflow.\n\nThere are no assertions establishing expected numerical outputs.\n\nVerification is experiment-oriented.\n\nEvidence of runtime-oriented verification includes:\n\n- convergence tolerance;\n- maximum iteration guard;\n- convergence/error output;\n- comparative plots;\n- final summary printing.\n\nThis is numerical experiment instrumentation.\n\nIt is not automated regression testing."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/assignment`\n- **Corpus index:** 084\n- **Repository start date:** 2025-05-26\n- **Last meaningful update date:** 2025-05-26\n- **Latest meaningful commit:** `e02a15c2e703948a93a6c88af4259bd701570415`\n- **Primary repository language:** Python\n- **Project form:** numerical robotics / inverse-kinematics experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `test.py`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains one substantive Python source file and a minimal README.\n\nThe analysis is therefore based primarily on `test.py` plus repository history.\n\nThe file directly imports:\n\n- NumPy;\n- Matplotlib;\n- Matplotlib 3D tooling;\n- `roboticstoolbox`;\n- `DHRobot`;\n- `RevoluteDH`.\n\nThe code defines a spatial manipulator using Denavit-Hartenberg parameters.\n\nIt implements and compares multiple Jacobian-based inverse-kinematics methods.\n\nThe repository name `assignment` does not communicate this domain.\n\nThe code does.",
+      "source_line_start": 15,
+      "source_line_end": 38
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "This project is a numerical robotics experiment for iterative inverse kinematics of a spatial anthropomorphic manipulator.\n\nThe source models a revolute-joint serial robot.\n\nIt computes end-effector pose through forward kinematics.\n\nIt then iteratively drives the robot toward a desired pose using Jacobian-based update laws.\n\nThe implementation compares three main methods:\n\n- Jacobian pseudoinverse using SVD;\n- damped least-squares pseudoinverse;\n- Jacobian transpose.\n\nIt records trajectories and errors for analysis.\n\nIt produces multiple comparative plots.\n\nThis is not a generic Python assignment.\n\nIt is a focused robotics/control/numerical-methods implementation.",
+      "source_line_start": 38,
+      "source_line_end": 62
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope is a numerical comparison of Jacobian-based inverse-kinematics techniques on a spatial serial manipulator model.\n\nThe repository does not attempt dynamics, torque control, path planning, collision avoidance, hardware control, or a complete robotics application.\n\nIts focus is task-space convergence and algorithm comparison.",
+      "source_line_start": 62,
+      "source_line_end": 70
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Manipulator Model",
+      "normalized_title": "Manipulator Model",
+      "key": "manipulator_model",
+      "path": [
+        "Manipulator Model"
+      ],
+      "content": "The source constructs a `DHRobot`.\n\nThe link model uses revolute DH joints.\n\nThe comments describe the intended physical interpretation as:\n\n- base/shoulder yaw;\n- shoulder pitch;\n- elbow pitch;\n- wrist joint.\n\nThe code defines:\n\n- link lengths;\n- base height offset;\n- DH `d`;\n- DH `a`;\n- DH `alpha`.\n\nA target pose is defined numerically.\n\nAn initial joint-angle guess is also defined.",
+      "source_line_start": 70,
+      "source_line_end": 95
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Pose Representations",
+      "normalized_title": "Pose Representations",
+      "key": "pose_representations",
+      "path": [
+        "Pose Representations"
+      ],
+      "content": "The code provides two pose functions.\n\n### Full Pose\n\n`ee_pose_spatial` computes:\n\n- x;\n- y;\n- z;\n- roll;\n- pitch;\n- yaw.\n\nIt obtains position and rotation from `fkine`.\n\nEuler angles are extracted from the rotation matrix.\n\nThe code explicitly handles a singular branch in the Euler conversion.\n\n### Simplified Pose\n\n`ee_pose_simplified` returns:\n\n- x;\n- y;\n- z;\n- summed joint angle.\n\nThis creates a reduced orientation representation for comparative iteration.\n\nThe main comparison path uses the simplified target.",
+      "source_line_start": 95,
+      "source_line_end": 129
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Full Pose",
+      "normalized_title": "Full Pose",
+      "key": "full_pose",
+      "path": [
+        "Pose Representations",
+        "Full Pose"
+      ],
+      "content": "`ee_pose_spatial` computes:\n\n- x;\n- y;\n- z;\n- roll;\n- pitch;\n- yaw.\n\nIt obtains position and rotation from `fkine`.\n\nEuler angles are extracted from the rotation matrix.\n\nThe code explicitly handles a singular branch in the Euler conversion.",
+      "source_line_start": 99,
+      "source_line_end": 116
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Simplified Pose",
+      "normalized_title": "Simplified Pose",
+      "key": "simplified_pose",
+      "path": [
+        "Pose Representations",
+        "Simplified Pose"
+      ],
+      "content": "`ee_pose_simplified` returns:\n\n- x;\n- y;\n- z;\n- summed joint angle.\n\nThis creates a reduced orientation representation for comparative iteration.\n\nThe main comparison path uses the simplified target.",
+      "source_line_start": 116,
+      "source_line_end": 129
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Inverse-Kinematics Algorithms",
+      "normalized_title": "Inverse-Kinematics Algorithms",
+      "key": "inverse_kinematics_algorithms",
+      "path": [
+        "Inverse-Kinematics Algorithms"
+      ],
+      "content": "### SVD Pseudoinverse\n\n`JacobianPseudoinverse_SVD`:\n\n1. computes an SVD;\n2. thresholds singular values;\n3. reciprocates values above the threshold;\n4. reconstructs a pseudoinverse.\n\nThis explicitly handles small singular values.\n\n### Damped Least Squares\n\n`JacobianPseudoinverse` computes a damped inverse based on:\n\n```text\n(JᵀJ + λI)^-1 Jᵀ\n```\n\nThe damping term is intended to improve numerical stability.\n\nThis provides a second treatment of singular or ill-conditioned Jacobian behavior.\n\n### Jacobian Transpose\n\n`JacobianTranspose` returns a scaled transpose.\n\nAn additional adaptive transpose function adjusts its scaling using the current error magnitude.\n\nThe three main comparison algorithms stored in the run dictionary are:\n\n- SVD pseudoinverse;\n- damped least squares;\n- Jacobian transpose.",
+      "source_line_start": 129,
+      "source_line_end": 166
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "SVD Pseudoinverse",
+      "normalized_title": "SVD Pseudoinverse",
+      "key": "svd_pseudoinverse",
+      "path": [
+        "Inverse-Kinematics Algorithms",
+        "SVD Pseudoinverse"
+      ],
+      "content": "`JacobianPseudoinverse_SVD`:\n\n1. computes an SVD;\n2. thresholds singular values;\n3. reciprocates values above the threshold;\n4. reconstructs a pseudoinverse.\n\nThis explicitly handles small singular values.",
+      "source_line_start": 131,
+      "source_line_end": 142
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Damped Least Squares",
+      "normalized_title": "Damped Least Squares",
+      "key": "damped_least_squares",
+      "path": [
+        "Inverse-Kinematics Algorithms",
+        "Damped Least Squares"
+      ],
+      "content": "`JacobianPseudoinverse` computes a damped inverse based on:\n\n```text\n(JᵀJ + λI)^-1 Jᵀ\n```\n\nThe damping term is intended to improve numerical stability.\n\nThis provides a second treatment of singular or ill-conditioned Jacobian behavior.",
+      "source_line_start": 142,
+      "source_line_end": 154
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Jacobian Transpose",
+      "normalized_title": "Jacobian Transpose",
+      "key": "jacobian_transpose",
+      "path": [
+        "Inverse-Kinematics Algorithms",
+        "Jacobian Transpose"
+      ],
+      "content": "`JacobianTranspose` returns a scaled transpose.\n\nAn additional adaptive transpose function adjusts its scaling using the current error magnitude.\n\nThe three main comparison algorithms stored in the run dictionary are:\n\n- SVD pseudoinverse;\n- damped least squares;\n- Jacobian transpose.",
+      "source_line_start": 154,
+      "source_line_end": 166
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Iterative Solver",
+      "normalized_title": "Iterative Solver",
+      "key": "iterative_solver",
+      "path": [
+        "Iterative Solver"
+      ],
+      "content": "`IK_Jacobian_Spatial` implements the reusable iterative solve loop.\n\nIts inputs include:\n\n- IK algorithm;\n- manipulator;\n- target pose;\n- initial guess;\n- pose function;\n- step size;\n- maximum iterations;\n- tolerance;\n- Jacobian mode.\n\nOn every iteration, it:\n\n1. computes current end-effector pose;\n2. computes target error;\n3. records pose history;\n4. records error history;\n5. records joint-angle history;\n6. records error norm;\n7. tests convergence;\n8. builds the appropriate Jacobian;\n9. applies the selected algorithm;\n10. updates joint angles.\n\nThis design makes the numerical method swappable without duplicating the full solve loop.",
+      "source_line_start": 166,
+      "source_line_end": 197
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Reduced Jacobian Construction",
+      "normalized_title": "Reduced Jacobian Construction",
+      "key": "reduced_jacobian_construction",
+      "path": [
+        "Reduced Jacobian Construction"
+      ],
+      "content": "For the simplified four-component pose, the source builds a reduced Jacobian.\n\nThe first three rows come from the translational portion of the robotics-toolbox Jacobian.\n\nThe orientation row is modeled as ones because the simplified orientation is the sum of joint angles.\n\nThis is an explicit modeling choice.\n\nIt is not equivalent to a full physical 6-DOF orientation Jacobian.\n\nThe code retains a path for the full Jacobian.\n\nThe main comparison configuration uses the simplified representation.",
+      "source_line_start": 197,
+      "source_line_end": 213
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Convergence Criteria",
+      "normalized_title": "Convergence Criteria",
+      "key": "convergence_criteria",
+      "path": [
+        "Convergence Criteria"
+      ],
+      "content": "The solver computes a norm of the pose error.\n\nIt stops when the norm drops below a tolerance.\n\nIt also has a maximum-iteration cap.\n\nThe current comparison call uses:\n\n- a small step size;\n- up to 1,500 iterations;\n- a tight tolerance.\n\nThe source prints whether convergence occurs or maximum iterations are reached.",
+      "source_line_start": 213,
+      "source_line_end": 229
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Experiment Harness",
+      "normalized_title": "Experiment Harness",
+      "key": "experiment_harness",
+      "path": [
+        "Experiment Harness"
+      ],
+      "content": "The source defines an algorithm dictionary.\n\nThe main run executes each method under the same general target and initial-guess setup.\n\nFor each algorithm it stores:\n\n- final joint pose;\n- end-effector trajectory;\n- error history;\n- joint trajectory;\n- convergence metrics.\n\nThat shared result format supports consistent downstream comparison.",
+      "source_line_start": 229,
+      "source_line_end": 245
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Visualization",
+      "normalized_title": "Visualization",
+      "key": "visualization",
+      "path": [
+        "Visualization"
+      ],
+      "content": "The project contains an extensive visualization layer.\n\n### 3D End-Effector Trajectories\n\nEach algorithm receives a 3D trajectory plot.\n\nThe plots include:\n\n- path;\n- start;\n- target;\n- approximate workspace boundary.\n\n### Per-Dimension Error\n\nSeparate error plots show:\n\n- X error;\n- Y error;\n- Z error;\n- orientation error.\n\nEach algorithm receives a dedicated column.\n\n### Pose Trajectory\n\nThe code plots executed pose dimensions against target values.\n\nThis exposes how each state component approaches the target.\n\n### Joint Trajectory\n\nJoint-angle histories are plotted individually.\n\nThis makes numerical convergence visible in configuration space as well as task space.\n\n### Convergence Comparison\n\nA convergence plot compares error norms between algorithms.\n\nThe source also prints a comprehensive results summary.",
+      "source_line_start": 245,
+      "source_line_end": 289
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "3D End-Effector Trajectories",
+      "normalized_title": "D End-Effector Trajectories",
+      "key": "d_end_effector_trajectories",
+      "path": [
+        "Visualization",
+        "3D End-Effector Trajectories"
+      ],
+      "content": "Each algorithm receives a 3D trajectory plot.\n\nThe plots include:\n\n- path;\n- start;\n- target;\n- approximate workspace boundary.",
+      "source_line_start": 249,
+      "source_line_end": 260
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Per-Dimension Error",
+      "normalized_title": "Per-Dimension Error",
+      "key": "per_dimension_error",
+      "path": [
+        "Visualization",
+        "Per-Dimension Error"
+      ],
+      "content": "Separate error plots show:\n\n- X error;\n- Y error;\n- Z error;\n- orientation error.\n\nEach algorithm receives a dedicated column.",
+      "source_line_start": 260,
+      "source_line_end": 271
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Pose Trajectory",
+      "normalized_title": "Pose Trajectory",
+      "key": "pose_trajectory",
+      "path": [
+        "Visualization",
+        "Pose Trajectory"
+      ],
+      "content": "The code plots executed pose dimensions against target values.\n\nThis exposes how each state component approaches the target.",
+      "source_line_start": 271,
+      "source_line_end": 277
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Joint Trajectory",
+      "normalized_title": "Joint Trajectory",
+      "key": "joint_trajectory",
+      "path": [
+        "Visualization",
+        "Joint Trajectory"
+      ],
+      "content": "Joint-angle histories are plotted individually.\n\nThis makes numerical convergence visible in configuration space as well as task space.",
+      "source_line_start": 277,
+      "source_line_end": 283
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Convergence Comparison",
+      "normalized_title": "Convergence Comparison",
+      "key": "convergence_comparison",
+      "path": [
+        "Visualization",
+        "Convergence Comparison"
+      ],
+      "content": "A convergence plot compares error norms between algorithms.\n\nThe source also prints a comprehensive results summary.",
+      "source_line_start": 283,
+      "source_line_end": 289
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The project is a self-contained numerical experiment.\n\nA simplified flow is:\n\n```text\nDH robot model\n     |\n     v\nforward kinematics\n     |\n     v\ncurrent end-effector pose\n     |\n     v\ntarget error\n     |\n     v\nrobot Jacobian\n     |\n     +-----------------------------+\n     |              |              |\n     v              v              v\nSVD pinv        DLS pinv       J transpose\n     |              |              |\n     +--------------+--------------+\n                    |\n                    v\n             joint update\n                    |\n                    v\n          trajectory + metrics\n                    |\n                    v\n               plots/report\n```\n\nThere is no application server.\n\nThere is no UI product.\n\nThere is no robotics middleware in this repository.\n\nThe emphasis is algorithmic comparison.",
+      "source_line_start": 289,
+      "source_line_end": 335
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- Python\n- NumPy\n- Matplotlib\n- Matplotlib 3D\n- Robotics Toolbox for Python\n- DHRobot\n- RevoluteDH\n- linear algebra\n- numerical optimization-style iteration",
+      "source_line_start": 335,
+      "source_line_end": 347
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### 1. Spatial Robot Modeling\n\nThe repository moves beyond a planar hand-written kinematics model.\n\nIt uses a DH representation and a robotics library to model a serial manipulator.\n\n### 2. Full / Simplified Pose Abstraction\n\nTwo pose functions allow experimentation at different output dimensions.\n\nThis makes the solver reusable.\n\n### 3. Multiple Jacobian Methods\n\nThe same target problem is approached with multiple update rules.\n\nThat turns the script into a comparison experiment rather than a single hard-coded solver.\n\n### 4. Numerical-Stability Handling\n\nThe SVD path thresholds singular values.\n\nThe damped path adds regularization.\n\nThese are directly relevant to inverse-kinematics stability.\n\n### 5. Instrumentation\n\nThe solver records enough history to study behavior after execution.\n\nIt does not only return a final joint configuration.\n\n### 6. Comparative Visualization\n\nThe project builds several views of the same experiment:\n\n- task-space geometry;\n- component-level error;\n- component-level pose;\n- joint trajectories;\n- aggregate convergence.\n\nThis is useful engineering-analysis discipline.",
+      "source_line_start": 347,
+      "source_line_end": 393
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "1. Spatial Robot Modeling",
+      "normalized_title": "Spatial Robot Modeling",
+      "key": "spatial_robot_modeling",
+      "path": [
+        "Major Engineering Work",
+        "1. Spatial Robot Modeling"
+      ],
+      "content": "The repository moves beyond a planar hand-written kinematics model.\n\nIt uses a DH representation and a robotics library to model a serial manipulator.",
+      "source_line_start": 349,
+      "source_line_end": 355
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "2. Full / Simplified Pose Abstraction",
+      "normalized_title": "Full / Simplified Pose Abstraction",
+      "key": "full_simplified_pose_abstraction",
+      "path": [
+        "Major Engineering Work",
+        "2. Full / Simplified Pose Abstraction"
+      ],
+      "content": "Two pose functions allow experimentation at different output dimensions.\n\nThis makes the solver reusable.",
+      "source_line_start": 355,
+      "source_line_end": 361
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "3. Multiple Jacobian Methods",
+      "normalized_title": "Multiple Jacobian Methods",
+      "key": "multiple_jacobian_methods",
+      "path": [
+        "Major Engineering Work",
+        "3. Multiple Jacobian Methods"
+      ],
+      "content": "The same target problem is approached with multiple update rules.\n\nThat turns the script into a comparison experiment rather than a single hard-coded solver.",
+      "source_line_start": 361,
+      "source_line_end": 367
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "4. Numerical-Stability Handling",
+      "normalized_title": "Numerical-Stability Handling",
+      "key": "numerical_stability_handling",
+      "path": [
+        "Major Engineering Work",
+        "4. Numerical-Stability Handling"
+      ],
+      "content": "The SVD path thresholds singular values.\n\nThe damped path adds regularization.\n\nThese are directly relevant to inverse-kinematics stability.",
+      "source_line_start": 367,
+      "source_line_end": 375
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "5. Instrumentation",
+      "normalized_title": "Instrumentation",
+      "key": "instrumentation",
+      "path": [
+        "Major Engineering Work",
+        "5. Instrumentation"
+      ],
+      "content": "The solver records enough history to study behavior after execution.\n\nIt does not only return a final joint configuration.",
+      "source_line_start": 375,
+      "source_line_end": 381
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "6. Comparative Visualization",
+      "normalized_title": "Comparative Visualization",
+      "key": "comparative_visualization",
+      "path": [
+        "Major Engineering Work",
+        "6. Comparative Visualization"
+      ],
+      "content": "The project builds several views of the same experiment:\n\n- task-space geometry;\n- component-level error;\n- component-level pose;\n- joint trajectories;\n- aggregate convergence.\n\nThis is useful engineering-analysis discipline.",
+      "source_line_start": 381,
+      "source_line_end": 393
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Testing & Verification Evidence",
+      "normalized_title": "Testing & Verification Evidence",
+      "key": "testing_and_verification_evidence",
+      "path": [
+        "Testing & Verification Evidence"
+      ],
+      "content": "There is no formal unit-test suite.\n\nThere is no `pytest` setup.\n\nThere is no CI workflow.\n\nThere are no assertions establishing expected numerical outputs.\n\nVerification is experiment-oriented.\n\nEvidence of runtime-oriented verification includes:\n\n- convergence tolerance;\n- maximum iteration guard;\n- convergence/error output;\n- comparative plots;\n- final summary printing.\n\nThis is numerical experiment instrumentation.\n\nIt is not automated regression testing.",
+      "source_line_start": 393,
+      "source_line_end": 417
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "Strong aspects visible in source:\n\n- algorithms isolated as functions;\n- solver parameterization;\n- consistent result schema;\n- explicit numerical tolerances;\n- singular-value thresholding;\n- damped inverse option;\n- iteration cap;\n- trajectory capture;\n- shared comparison conditions.\n\nConstraints:\n\n- one large source file;\n- no dependency manifest;\n- no environment lock;\n- no unit tests;\n- no CI;\n- no saved benchmark output in the repository;\n- no reproducibility document beyond code constants;\n- joint limits are present only as commented optional logic;\n- the model description says RRR while the implementation constructs four revolute joints.\n\nThat last inconsistency matters.\n\nThe source variable is called `spatial_rrr`, but the DHRobot list contains four `RevoluteDH` entries.\n\nThe corpus should therefore describe the actual implementation as four revolute joints rather than blindly repeating the RRR label.",
+      "source_line_start": 417,
+      "source_line_end": 449
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository is not a product.\n\nIt is a computational robotics assignment/experiment.\n\nIts strongest value is technical analysis.\n\nNo evidence supports:\n\n- end-user deployment;\n- physical robot execution;\n- hardware integration;\n- ROS integration;\n- real-time control guarantees;\n- safety constraints;\n- collision avoidance.",
+      "source_line_start": 449,
+      "source_line_end": 467
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is tiny in file count.\n\nThe source file is comparatively substantial.\n\nComplexity comes from:\n\n- 3D kinematics;\n- coordinate transformations;\n- Euler-angle extraction;\n- Jacobian manipulation;\n- SVD;\n- damping;\n- iterative control;\n- multi-dimensional visualization.\n\nThis is algorithmic/numerical complexity rather than system-scale complexity.",
+      "source_line_start": 467,
+      "source_line_end": 486
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "Evidence supports:\n\n- Python;\n- NumPy;\n- numerical linear algebra;\n- robotics kinematics;\n- Denavit-Hartenberg modeling;\n- forward kinematics;\n- inverse kinematics;\n- Jacobian methods;\n- SVD pseudoinverse;\n- damped least squares;\n- Jacobian transpose;\n- convergence analysis;\n- pose-error modeling;\n- Matplotlib;\n- 3D visualization;\n- experiment comparison.",
+      "source_line_start": 486,
+      "source_line_end": 507
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "This repository demonstrates a move from using a robotics library as a black box toward reasoning about iterative IK directly.\n\nThe code explicitly controls:\n\n- the pose representation;\n- the Jacobian reduction;\n- the inverse method;\n- convergence threshold;\n- update rate;\n- error recording.\n\nThe most transferable capability is comparative numerical experimentation.\n\nInstead of asking whether one algorithm works, the script creates an infrastructure for comparing how several methods converge.",
+      "source_line_start": 507,
+      "source_line_end": 524
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier robotics repositories in the corpus focused on ROS, navigation, URDF, perception, and sensor processing.\n\nThis repository returns to a lower-level mathematical layer.\n\nIt emphasizes manipulator kinematics and numerical solution behavior.\n\nIt complements the broader robotics portfolio by adding explicit iterative inverse-kinematics reasoning.",
+      "source_line_start": 524,
+      "source_line_end": 534
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the clearest observed implementation of:\n\n- Robotics Toolbox for Python;\n- DHRobot modeling;\n- Jacobian pseudoinverse comparison;\n- damped least-squares inverse kinematics;\n- inverse-kinematics convergence visualization.",
+      "source_line_start": 534,
+      "source_line_end": 544
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Limitations and Missing Evidence",
+      "normalized_title": "Limitations and Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations and Missing Evidence"
+      ],
+      "content": "The repository does not establish:\n\n- execution on physical hardware;\n- real-time performance;\n- collision checking;\n- joint-limit enforcement;\n- torque control;\n- dynamics;\n- controller stability proof;\n- automated tests;\n- benchmark reproducibility across machines.\n\nThe defined positive-definite CLF-style or optimization concepts from later robotics work should not be projected backward onto this repo.\n\nThis source is a Jacobian IK comparison.",
+      "source_line_start": 544,
+      "source_line_end": 562
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`assignment` is poorly named but technically specific.\n\nIt is a numerical robotics study that compares several Jacobian-based inverse-kinematics methods on a spatial serial manipulator.\n\nThe code builds a common experiment harness, records rich trajectory data, and visualizes convergence from several angles.\n\nIts portfolio significance is mathematical robotics implementation and comparative numerical reasoning rather than product scale.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `numpy`\n- `matplotlib`\n- `robotics`\n- `robotics-toolbox-python`\n- `denavit-hartenberg`\n- `dhrobot`\n- `serial-manipulator`\n- `forward-kinematics`\n- `inverse-kinematics`\n- `jacobian`\n- `jacobian-pseudoinverse`\n- `svd`\n- `damped-least-squares`\n- `jacobian-transpose`\n- `numerical-methods`\n- `convergence-analysis`\n- `pose-estimation`\n- `euler-angles`\n- `3d-visualization`\n- `trajectory-analysis`\n- `experiment-comparison`\n- `earliest-observed-robotics-toolbox-python`\n- `earliest-observed-damped-least-squares-ik`",
+      "source_line_start": 562,
+      "source_line_end": 599
+    }
+  ],
+  "raw_analysis": "# Repository 084 — assignment\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/assignment`\n- **Corpus index:** 084\n- **Repository start date:** 2025-05-26\n- **Last meaningful update date:** 2025-05-26\n- **Latest meaningful commit:** `e02a15c2e703948a93a6c88af4259bd701570415`\n- **Primary repository language:** Python\n- **Project form:** numerical robotics / inverse-kinematics experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `test.py`\n\n## Evidence Basis\n\nThe repository contains one substantive Python source file and a minimal README.\n\nThe analysis is therefore based primarily on `test.py` plus repository history.\n\nThe file directly imports:\n\n- NumPy;\n- Matplotlib;\n- Matplotlib 3D tooling;\n- `roboticstoolbox`;\n- `DHRobot`;\n- `RevoluteDH`.\n\nThe code defines a spatial manipulator using Denavit-Hartenberg parameters.\n\nIt implements and compares multiple Jacobian-based inverse-kinematics methods.\n\nThe repository name `assignment` does not communicate this domain.\n\nThe code does.\n\n## What the Project Is\n\nThis project is a numerical robotics experiment for iterative inverse kinematics of a spatial anthropomorphic manipulator.\n\nThe source models a revolute-joint serial robot.\n\nIt computes end-effector pose through forward kinematics.\n\nIt then iteratively drives the robot toward a desired pose using Jacobian-based update laws.\n\nThe implementation compares three main methods:\n\n- Jacobian pseudoinverse using SVD;\n- damped least-squares pseudoinverse;\n- Jacobian transpose.\n\nIt records trajectories and errors for analysis.\n\nIt produces multiple comparative plots.\n\nThis is not a generic Python assignment.\n\nIt is a focused robotics/control/numerical-methods implementation.\n\n## Project Scope\n\nThe implemented scope is a numerical comparison of Jacobian-based inverse-kinematics techniques on a spatial serial manipulator model.\n\nThe repository does not attempt dynamics, torque control, path planning, collision avoidance, hardware control, or a complete robotics application.\n\nIts focus is task-space convergence and algorithm comparison.\n\n## Manipulator Model\n\nThe source constructs a `DHRobot`.\n\nThe link model uses revolute DH joints.\n\nThe comments describe the intended physical interpretation as:\n\n- base/shoulder yaw;\n- shoulder pitch;\n- elbow pitch;\n- wrist joint.\n\nThe code defines:\n\n- link lengths;\n- base height offset;\n- DH `d`;\n- DH `a`;\n- DH `alpha`.\n\nA target pose is defined numerically.\n\nAn initial joint-angle guess is also defined.\n\n## Pose Representations\n\nThe code provides two pose functions.\n\n### Full Pose\n\n`ee_pose_spatial` computes:\n\n- x;\n- y;\n- z;\n- roll;\n- pitch;\n- yaw.\n\nIt obtains position and rotation from `fkine`.\n\nEuler angles are extracted from the rotation matrix.\n\nThe code explicitly handles a singular branch in the Euler conversion.\n\n### Simplified Pose\n\n`ee_pose_simplified` returns:\n\n- x;\n- y;\n- z;\n- summed joint angle.\n\nThis creates a reduced orientation representation for comparative iteration.\n\nThe main comparison path uses the simplified target.\n\n## Inverse-Kinematics Algorithms\n\n### SVD Pseudoinverse\n\n`JacobianPseudoinverse_SVD`:\n\n1. computes an SVD;\n2. thresholds singular values;\n3. reciprocates values above the threshold;\n4. reconstructs a pseudoinverse.\n\nThis explicitly handles small singular values.\n\n### Damped Least Squares\n\n`JacobianPseudoinverse` computes a damped inverse based on:\n\n```text\n(JᵀJ + λI)^-1 Jᵀ\n```\n\nThe damping term is intended to improve numerical stability.\n\nThis provides a second treatment of singular or ill-conditioned Jacobian behavior.\n\n### Jacobian Transpose\n\n`JacobianTranspose` returns a scaled transpose.\n\nAn additional adaptive transpose function adjusts its scaling using the current error magnitude.\n\nThe three main comparison algorithms stored in the run dictionary are:\n\n- SVD pseudoinverse;\n- damped least squares;\n- Jacobian transpose.\n\n## Iterative Solver\n\n`IK_Jacobian_Spatial` implements the reusable iterative solve loop.\n\nIts inputs include:\n\n- IK algorithm;\n- manipulator;\n- target pose;\n- initial guess;\n- pose function;\n- step size;\n- maximum iterations;\n- tolerance;\n- Jacobian mode.\n\nOn every iteration, it:\n\n1. computes current end-effector pose;\n2. computes target error;\n3. records pose history;\n4. records error history;\n5. records joint-angle history;\n6. records error norm;\n7. tests convergence;\n8. builds the appropriate Jacobian;\n9. applies the selected algorithm;\n10. updates joint angles.\n\nThis design makes the numerical method swappable without duplicating the full solve loop.\n\n## Reduced Jacobian Construction\n\nFor the simplified four-component pose, the source builds a reduced Jacobian.\n\nThe first three rows come from the translational portion of the robotics-toolbox Jacobian.\n\nThe orientation row is modeled as ones because the simplified orientation is the sum of joint angles.\n\nThis is an explicit modeling choice.\n\nIt is not equivalent to a full physical 6-DOF orientation Jacobian.\n\nThe code retains a path for the full Jacobian.\n\nThe main comparison configuration uses the simplified representation.\n\n## Convergence Criteria\n\nThe solver computes a norm of the pose error.\n\nIt stops when the norm drops below a tolerance.\n\nIt also has a maximum-iteration cap.\n\nThe current comparison call uses:\n\n- a small step size;\n- up to 1,500 iterations;\n- a tight tolerance.\n\nThe source prints whether convergence occurs or maximum iterations are reached.\n\n## Experiment Harness\n\nThe source defines an algorithm dictionary.\n\nThe main run executes each method under the same general target and initial-guess setup.\n\nFor each algorithm it stores:\n\n- final joint pose;\n- end-effector trajectory;\n- error history;\n- joint trajectory;\n- convergence metrics.\n\nThat shared result format supports consistent downstream comparison.\n\n## Visualization\n\nThe project contains an extensive visualization layer.\n\n### 3D End-Effector Trajectories\n\nEach algorithm receives a 3D trajectory plot.\n\nThe plots include:\n\n- path;\n- start;\n- target;\n- approximate workspace boundary.\n\n### Per-Dimension Error\n\nSeparate error plots show:\n\n- X error;\n- Y error;\n- Z error;\n- orientation error.\n\nEach algorithm receives a dedicated column.\n\n### Pose Trajectory\n\nThe code plots executed pose dimensions against target values.\n\nThis exposes how each state component approaches the target.\n\n### Joint Trajectory\n\nJoint-angle histories are plotted individually.\n\nThis makes numerical convergence visible in configuration space as well as task space.\n\n### Convergence Comparison\n\nA convergence plot compares error norms between algorithms.\n\nThe source also prints a comprehensive results summary.\n\n## Architecture / System Shape\n\nThe project is a self-contained numerical experiment.\n\nA simplified flow is:\n\n```text\nDH robot model\n     |\n     v\nforward kinematics\n     |\n     v\ncurrent end-effector pose\n     |\n     v\ntarget error\n     |\n     v\nrobot Jacobian\n     |\n     +-----------------------------+\n     |              |              |\n     v              v              v\nSVD pinv        DLS pinv       J transpose\n     |              |              |\n     +--------------+--------------+\n                    |\n                    v\n             joint update\n                    |\n                    v\n          trajectory + metrics\n                    |\n                    v\n               plots/report\n```\n\nThere is no application server.\n\nThere is no UI product.\n\nThere is no robotics middleware in this repository.\n\nThe emphasis is algorithmic comparison.\n\n## Technical Stack\n\n- Python\n- NumPy\n- Matplotlib\n- Matplotlib 3D\n- Robotics Toolbox for Python\n- DHRobot\n- RevoluteDH\n- linear algebra\n- numerical optimization-style iteration\n\n## Major Engineering Work\n\n### 1. Spatial Robot Modeling\n\nThe repository moves beyond a planar hand-written kinematics model.\n\nIt uses a DH representation and a robotics library to model a serial manipulator.\n\n### 2. Full / Simplified Pose Abstraction\n\nTwo pose functions allow experimentation at different output dimensions.\n\nThis makes the solver reusable.\n\n### 3. Multiple Jacobian Methods\n\nThe same target problem is approached with multiple update rules.\n\nThat turns the script into a comparison experiment rather than a single hard-coded solver.\n\n### 4. Numerical-Stability Handling\n\nThe SVD path thresholds singular values.\n\nThe damped path adds regularization.\n\nThese are directly relevant to inverse-kinematics stability.\n\n### 5. Instrumentation\n\nThe solver records enough history to study behavior after execution.\n\nIt does not only return a final joint configuration.\n\n### 6. Comparative Visualization\n\nThe project builds several views of the same experiment:\n\n- task-space geometry;\n- component-level error;\n- component-level pose;\n- joint trajectories;\n- aggregate convergence.\n\nThis is useful engineering-analysis discipline.\n\n## Testing & Verification Evidence\n\nThere is no formal unit-test suite.\n\nThere is no `pytest` setup.\n\nThere is no CI workflow.\n\nThere are no assertions establishing expected numerical outputs.\n\nVerification is experiment-oriented.\n\nEvidence of runtime-oriented verification includes:\n\n- convergence tolerance;\n- maximum iteration guard;\n- convergence/error output;\n- comparative plots;\n- final summary printing.\n\nThis is numerical experiment instrumentation.\n\nIt is not automated regression testing.\n\n## Engineering Discipline\n\nStrong aspects visible in source:\n\n- algorithms isolated as functions;\n- solver parameterization;\n- consistent result schema;\n- explicit numerical tolerances;\n- singular-value thresholding;\n- damped inverse option;\n- iteration cap;\n- trajectory capture;\n- shared comparison conditions.\n\nConstraints:\n\n- one large source file;\n- no dependency manifest;\n- no environment lock;\n- no unit tests;\n- no CI;\n- no saved benchmark output in the repository;\n- no reproducibility document beyond code constants;\n- joint limits are present only as commented optional logic;\n- the model description says RRR while the implementation constructs four revolute joints.\n\nThat last inconsistency matters.\n\nThe source variable is called `spatial_rrr`, but the DHRobot list contains four `RevoluteDH` entries.\n\nThe corpus should therefore describe the actual implementation as four revolute joints rather than blindly repeating the RRR label.\n\n## Product Engineering\n\nThis repository is not a product.\n\nIt is a computational robotics assignment/experiment.\n\nIts strongest value is technical analysis.\n\nNo evidence supports:\n\n- end-user deployment;\n- physical robot execution;\n- hardware integration;\n- ROS integration;\n- real-time control guarantees;\n- safety constraints;\n- collision avoidance.\n\n## Scale and Complexity\n\nThe repository is tiny in file count.\n\nThe source file is comparatively substantial.\n\nComplexity comes from:\n\n- 3D kinematics;\n- coordinate transformations;\n- Euler-angle extraction;\n- Jacobian manipulation;\n- SVD;\n- damping;\n- iterative control;\n- multi-dimensional visualization.\n\nThis is algorithmic/numerical complexity rather than system-scale complexity.\n\n## Skills Demonstrated\n\nEvidence supports:\n\n- Python;\n- NumPy;\n- numerical linear algebra;\n- robotics kinematics;\n- Denavit-Hartenberg modeling;\n- forward kinematics;\n- inverse kinematics;\n- Jacobian methods;\n- SVD pseudoinverse;\n- damped least squares;\n- Jacobian transpose;\n- convergence analysis;\n- pose-error modeling;\n- Matplotlib;\n- 3D visualization;\n- experiment comparison.\n\n## What Was Learned / Capability Developed\n\nThis repository demonstrates a move from using a robotics library as a black box toward reasoning about iterative IK directly.\n\nThe code explicitly controls:\n\n- the pose representation;\n- the Jacobian reduction;\n- the inverse method;\n- convergence threshold;\n- update rate;\n- error recording.\n\nThe most transferable capability is comparative numerical experimentation.\n\nInstead of asking whether one algorithm works, the script creates an infrastructure for comparing how several methods converge.\n\n## Portfolio Evolution Context\n\nEarlier robotics repositories in the corpus focused on ROS, navigation, URDF, perception, and sensor processing.\n\nThis repository returns to a lower-level mathematical layer.\n\nIt emphasizes manipulator kinematics and numerical solution behavior.\n\nIt complements the broader robotics portfolio by adding explicit iterative inverse-kinematics reasoning.\n\n## Historical Significance\n\nWithin the processed corpus, this is the clearest observed implementation of:\n\n- Robotics Toolbox for Python;\n- DHRobot modeling;\n- Jacobian pseudoinverse comparison;\n- damped least-squares inverse kinematics;\n- inverse-kinematics convergence visualization.\n\n## Limitations and Missing Evidence\n\nThe repository does not establish:\n\n- execution on physical hardware;\n- real-time performance;\n- collision checking;\n- joint-limit enforcement;\n- torque control;\n- dynamics;\n- controller stability proof;\n- automated tests;\n- benchmark reproducibility across machines.\n\nThe defined positive-definite CLF-style or optimization concepts from later robotics work should not be projected backward onto this repo.\n\nThis source is a Jacobian IK comparison.\n\n## Overall Narrative\n\n`assignment` is poorly named but technically specific.\n\nIt is a numerical robotics study that compares several Jacobian-based inverse-kinematics methods on a spatial serial manipulator.\n\nThe code builds a common experiment harness, records rich trajectory data, and visualizes convergence from several angles.\n\nIts portfolio significance is mathematical robotics implementation and comparative numerical reasoning rather than product scale.\n\n# Project Tags\n\n- `individual-project`\n- `python`\n- `numpy`\n- `matplotlib`\n- `robotics`\n- `robotics-toolbox-python`\n- `denavit-hartenberg`\n- `dhrobot`\n- `serial-manipulator`\n- `forward-kinematics`\n- `inverse-kinematics`\n- `jacobian`\n- `jacobian-pseudoinverse`\n- `svd`\n- `damped-least-squares`\n- `jacobian-transpose`\n- `numerical-methods`\n- `convergence-analysis`\n- `pose-estimation`\n- `euler-angles`\n- `3d-visualization`\n- `trajectory-analysis`\n- `experiment-comparison`\n- `earliest-observed-robotics-toolbox-python`\n- `earliest-observed-damped-least-squares-ik`\n"
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 43,
+  "repository_total": 134,
+  "repository_name": "ROS-Nav2",
+  "header_title": "ROS-Nav2",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-043-ROS-Nav2/README.md",
+    "line_start": 1,
+    "line_end": 245,
+    "sha256": "22eb600b7111e6044f8aad3a4fed311c757a9d8a3d31958f92c12fe35b725a2f"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-project",
+    "ros",
+    "ros2",
+    "turtlebot3",
+    "gazebo",
+    "rviz",
+    "slam",
+    "cartographer",
+    "lidar",
+    "occupancy-grid",
+    "map-generation",
+    "map-persistence",
+    "nav2",
+    "nav2-map-server",
+    "teleoperation",
+    "cyclonedds",
+    "robotics",
+    "robotics-perception",
+    "localization-foundations",
+    "experimental-result-documentation",
+    "manual-verification"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/ROS-Nav2`\n- **Repository start date:** 2024-08-28\n- **Last meaningful update date:** 2024-08-28\n- **Primary domain:** ROS 2 mobile-robot navigation learning\n- **Key tools:** TurtleBot3, Gazebo, Cartographer, RViz, Nav2 map server\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** command workflow, SLAM documentation, and saved occupancy-map artifacts"
+    },
+    "testing": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Verification Evidence"
+      ],
+      "text": "## Verification Evidence\nThe strongest verification evidence is artifact-based.\n\nThe repository contains actual generated maps and screenshot documentation.\n\nThat is stronger than a prose-only tutorial record because it demonstrates an exercised workflow.\n\nThere is no automated unit/integration test suite."
+    },
+    "documentation": {
+      "section_ids": [
+        "s007"
+      ],
+      "titles": [
+        "Visual Documentation"
+      ],
+      "text": "## Visual Documentation\n`SLAM/README.md` documents two generated maps.\n\nThe descriptions identify:\n\n- an RViz-generated map using LiDAR scanning in Turtle World,\n- an RViz-generated map using LiDAR scanning in Turtle House.\n\nScreenshots are linked in the repository documentation.\n\nThis provides visual validation that mapping was exercised in multiple simulated environments."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/ROS-Nav2`\n- **Repository start date:** 2024-08-28\n- **Last meaningful update date:** 2024-08-28\n- **Primary domain:** ROS 2 mobile-robot navigation learning\n- **Key tools:** TurtleBot3, Gazebo, Cartographer, RViz, Nav2 map server\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** command workflow, SLAM documentation, and saved occupancy-map artifacts",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`ROS-Nav2` is a focused ROS 2 navigation/SLAM repository.\n\nIt does not contain a custom navigation planner implementation.\n\nInstead it documents and preserves a working TurtleBot3 simulation-to-map workflow.\n\nThe repository includes commands for launching a TurtleBot3 Gazebo world, teleoperating it, running Cartographer, and saving the resulting map.\n\nIt also checks in generated occupancy-grid map files.",
+      "source_line_start": 13,
+      "source_line_end": 25
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The repository contains:\n\n- root `README.md`,\n- `Command Cheat Sheet/README.md`,\n- `SLAM/README.md`,\n- `SLAM/maps/`,\n- two `.pgm` occupancy-map image files,\n- two corresponding `.yaml` metadata files.\n\nThis is a compact workflow/evidence repository rather than a source-code package.",
+      "source_line_start": 25,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "TurtleBot3 Simulation Workflow",
+      "normalized_title": "TurtleBot3 Simulation Workflow",
+      "key": "turtlebot3_simulation_workflow",
+      "path": [
+        "TurtleBot3 Simulation Workflow"
+      ],
+      "content": "The command sheet includes:\n\n`ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py`.\n\nThat launches the simulated TurtleBot3 world.\n\nThe workflow also includes:\n\n`ros2 run turtlebot3_teleop teleop_keyboard`.\n\nThis allows manual robot motion during exploration.",
+      "source_line_start": 38,
+      "source_line_end": 52
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "SLAM Workflow",
+      "normalized_title": "SLAM Workflow",
+      "key": "slam_workflow",
+      "path": [
+        "SLAM Workflow"
+      ],
+      "content": "The repository runs Cartographer using:\n\n`ros2 launch turtlebot3_cartographer cartographer.launch.py`.\n\nThis establishes a LiDAR-based SLAM workflow using the standard TurtleBot3 stack.\n\nThe generated map is then saved with:\n\n`ros2 run nav2_map_server map_saver_cli -f maps/my_map`.\n\nThis is concrete interaction with the Nav2 map server.",
+      "source_line_start": 52,
+      "source_line_end": 66
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Saved Mapping Artifacts",
+      "normalized_title": "Saved Mapping Artifacts",
+      "key": "saved_mapping_artifacts",
+      "path": [
+        "Saved Mapping Artifacts"
+      ],
+      "content": "The repository checks in:\n\n- `map_1724872442.pgm`,\n- `map_1724872442.yaml`,\n- `my_map.pgm`,\n- `my_map.yaml`.\n\nThe `.pgm` files are occupancy-grid images.\n\nThe `.yaml` files provide the map metadata required by ROS map consumers.\n\nThese files are direct output evidence from the mapping workflow.",
+      "source_line_start": 66,
+      "source_line_end": 81
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Visual Documentation",
+      "normalized_title": "Visual Documentation",
+      "key": "visual_documentation",
+      "path": [
+        "Visual Documentation"
+      ],
+      "content": "`SLAM/README.md` documents two generated maps.\n\nThe descriptions identify:\n\n- an RViz-generated map using LiDAR scanning in Turtle World,\n- an RViz-generated map using LiDAR scanning in Turtle House.\n\nScreenshots are linked in the repository documentation.\n\nThis provides visual validation that mapping was exercised in multiple simulated environments.",
+      "source_line_start": 81,
+      "source_line_end": 94
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Nav2 Scope",
+      "normalized_title": "Nav2 Scope",
+      "key": "nav2_scope",
+      "path": [
+        "Nav2 Scope"
+      ],
+      "content": "Despite the repository name, the strongest checked-in evidence is mapping and map persistence.\n\nThe repository does not visibly contain:\n\n- custom Nav2 behavior trees,\n- planner configuration,\n- controller tuning,\n- costmap parameter files,\n- localization launch files,\n- autonomous goal-navigation code.\n\nThe corpus therefore classifies it as Nav2/SLAM workflow practice rather than a custom Nav2 stack implementation.",
+      "source_line_start": 94,
+      "source_line_end": 109
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "ROS Middleware Configuration",
+      "normalized_title": "ROS Middleware Configuration",
+      "key": "ros_middleware_configuration",
+      "path": [
+        "ROS Middleware Configuration"
+      ],
+      "content": "The command sheet also installs:\n\n`ros-humble-rmw-cyclonedds-cpp`.\n\nThis records experimentation with Cyclone DDS as the ROS middleware implementation.\n\nDependency installation alone is not treated as proof of custom DDS engineering.\n\nIt is retained as environment/configuration evidence.",
+      "source_line_start": 109,
+      "source_line_end": 121
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Verification Evidence",
+      "normalized_title": "Verification Evidence",
+      "key": "verification_evidence",
+      "path": [
+        "Verification Evidence"
+      ],
+      "content": "The strongest verification evidence is artifact-based.\n\nThe repository contains actual generated maps and screenshot documentation.\n\nThat is stronger than a prose-only tutorial record because it demonstrates an exercised workflow.\n\nThere is no automated unit/integration test suite.",
+      "source_line_start": 121,
+      "source_line_end": 131
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Engineering Work Evidenced",
+      "normalized_title": "Engineering Work Evidenced",
+      "key": "engineering_work_evidenced",
+      "path": [
+        "Engineering Work Evidenced"
+      ],
+      "content": "The repository positively demonstrates:\n\n- ROS 2 environment operation,\n- TurtleBot3 simulation,\n- keyboard teleoperation,\n- Cartographer SLAM execution,\n- LiDAR mapping workflow,\n- RViz map inspection,\n- Nav2 map-server usage,\n- occupancy-map persistence,\n- ROS map metadata handling,\n- middleware-package setup.",
+      "source_line_start": 131,
+      "source_line_end": 146
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Robotics\n\n- SLAM\n- occupancy grids\n- LiDAR mapping\n- robot teleoperation\n- map persistence\n\n### ROS 2\n\n- `ros2 launch`\n- `ros2 run`\n- TurtleBot3 packages\n- Cartographer\n- Nav2 map server\n- ROS middleware configuration\n\n### Simulation and Visualization\n\n- Gazebo\n- RViz\n- simulated-world exploration",
+      "source_line_start": 146,
+      "source_line_end": 171
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Robotics",
+      "normalized_title": "Robotics",
+      "key": "robotics",
+      "path": [
+        "Skills Demonstrated",
+        "Robotics"
+      ],
+      "content": "- SLAM\n- occupancy grids\n- LiDAR mapping\n- robot teleoperation\n- map persistence",
+      "source_line_start": 148,
+      "source_line_end": 156
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "ROS 2",
+      "normalized_title": "ROS 2",
+      "key": "ros_2",
+      "path": [
+        "Skills Demonstrated",
+        "ROS 2"
+      ],
+      "content": "- `ros2 launch`\n- `ros2 run`\n- TurtleBot3 packages\n- Cartographer\n- Nav2 map server\n- ROS middleware configuration",
+      "source_line_start": 156,
+      "source_line_end": 165
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Simulation and Visualization",
+      "normalized_title": "Simulation and Visualization",
+      "key": "simulation_and_visualization",
+      "path": [
+        "Skills Demonstrated",
+        "Simulation and Visualization"
+      ],
+      "content": "- Gazebo\n- RViz\n- simulated-world exploration",
+      "source_line_start": 165,
+      "source_line_end": 171
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops operational familiarity with the data path required to turn robot motion and LiDAR scans into a reusable map.\n\nThe workflow spans:\n\n1. launching the robot/world,\n2. controlling the robot,\n3. running SLAM,\n4. observing results,\n5. serializing map artifacts.\n\nThat is an important navigation prerequisite even though autonomous path planning itself is not implemented here.",
+      "source_line_start": 171,
+      "source_line_end": 185
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "This repository follows `RVIZ-GAZEBO-URDF`.\n\nTogether the sequence forms a coherent robotics progression:\n\n- `ROS`: middleware primitives,\n- `Turtle-Hunter`: task-specific robot behavior,\n- `RVIZ-GAZEBO-URDF`: robot description and simulation integration,\n- `ROS-Nav2`: environment mapping and navigation-stack tooling.",
+      "source_line_start": 185,
+      "source_line_end": 196
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository with saved ROS occupancy maps generated from a SLAM workflow.\n\nIt is also the earliest observed explicit use of Cartographer and Nav2 map saving.",
+      "source_line_start": 196,
+      "source_line_end": 202
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "No custom SLAM algorithm is implemented.\n\nNo custom Nav2 planner/controller is implemented.\n\nThe repository mainly preserves commands, maps, and screenshots.\n\nNo automated tests are present.\n\nThe root README is nearly empty; the substantive documentation lives in subdirectories.",
+      "source_line_start": 202,
+      "source_line_end": 214
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`ROS-Nav2` is an evidence-rich operational learning artifact.\n\nIts importance is that the repository preserves outputs from a real ROS 2 mapping workflow rather than merely listing commands.\n\nThe saved occupancy maps make the learning outcome concrete: simulation, LiDAR scanning, Cartographer, RViz, and Nav2 map serialization were connected into one usable pipeline.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `ros`\n- `ros2`\n- `turtlebot3`\n- `gazebo`\n- `rviz`\n- `slam`\n- `cartographer`\n- `lidar`\n- `occupancy-grid`\n- `map-generation`\n- `map-persistence`\n- `nav2`\n- `nav2-map-server`\n- `teleoperation`\n- `cyclonedds`\n- `robotics`\n- `robotics-perception`\n- `localization-foundations`\n- `experimental-result-documentation`\n- `manual-verification`",
+      "source_line_start": 214,
+      "source_line_end": 246
+    }
+  ],
+  "raw_analysis": "# Repository 043 — ROS-Nav2\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/ROS-Nav2`\n- **Repository start date:** 2024-08-28\n- **Last meaningful update date:** 2024-08-28\n- **Primary domain:** ROS 2 mobile-robot navigation learning\n- **Key tools:** TurtleBot3, Gazebo, Cartographer, RViz, Nav2 map server\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** command workflow, SLAM documentation, and saved occupancy-map artifacts\n\n## What This Project Is\n\n`ROS-Nav2` is a focused ROS 2 navigation/SLAM repository.\n\nIt does not contain a custom navigation planner implementation.\n\nInstead it documents and preserves a working TurtleBot3 simulation-to-map workflow.\n\nThe repository includes commands for launching a TurtleBot3 Gazebo world, teleoperating it, running Cartographer, and saving the resulting map.\n\nIt also checks in generated occupancy-grid map files.\n\n## Repository Structure\n\nThe repository contains:\n\n- root `README.md`,\n- `Command Cheat Sheet/README.md`,\n- `SLAM/README.md`,\n- `SLAM/maps/`,\n- two `.pgm` occupancy-map image files,\n- two corresponding `.yaml` metadata files.\n\nThis is a compact workflow/evidence repository rather than a source-code package.\n\n## TurtleBot3 Simulation Workflow\n\nThe command sheet includes:\n\n`ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py`.\n\nThat launches the simulated TurtleBot3 world.\n\nThe workflow also includes:\n\n`ros2 run turtlebot3_teleop teleop_keyboard`.\n\nThis allows manual robot motion during exploration.\n\n## SLAM Workflow\n\nThe repository runs Cartographer using:\n\n`ros2 launch turtlebot3_cartographer cartographer.launch.py`.\n\nThis establishes a LiDAR-based SLAM workflow using the standard TurtleBot3 stack.\n\nThe generated map is then saved with:\n\n`ros2 run nav2_map_server map_saver_cli -f maps/my_map`.\n\nThis is concrete interaction with the Nav2 map server.\n\n## Saved Mapping Artifacts\n\nThe repository checks in:\n\n- `map_1724872442.pgm`,\n- `map_1724872442.yaml`,\n- `my_map.pgm`,\n- `my_map.yaml`.\n\nThe `.pgm` files are occupancy-grid images.\n\nThe `.yaml` files provide the map metadata required by ROS map consumers.\n\nThese files are direct output evidence from the mapping workflow.\n\n## Visual Documentation\n\n`SLAM/README.md` documents two generated maps.\n\nThe descriptions identify:\n\n- an RViz-generated map using LiDAR scanning in Turtle World,\n- an RViz-generated map using LiDAR scanning in Turtle House.\n\nScreenshots are linked in the repository documentation.\n\nThis provides visual validation that mapping was exercised in multiple simulated environments.\n\n## Nav2 Scope\n\nDespite the repository name, the strongest checked-in evidence is mapping and map persistence.\n\nThe repository does not visibly contain:\n\n- custom Nav2 behavior trees,\n- planner configuration,\n- controller tuning,\n- costmap parameter files,\n- localization launch files,\n- autonomous goal-navigation code.\n\nThe corpus therefore classifies it as Nav2/SLAM workflow practice rather than a custom Nav2 stack implementation.\n\n## ROS Middleware Configuration\n\nThe command sheet also installs:\n\n`ros-humble-rmw-cyclonedds-cpp`.\n\nThis records experimentation with Cyclone DDS as the ROS middleware implementation.\n\nDependency installation alone is not treated as proof of custom DDS engineering.\n\nIt is retained as environment/configuration evidence.\n\n## Verification Evidence\n\nThe strongest verification evidence is artifact-based.\n\nThe repository contains actual generated maps and screenshot documentation.\n\nThat is stronger than a prose-only tutorial record because it demonstrates an exercised workflow.\n\nThere is no automated unit/integration test suite.\n\n## Engineering Work Evidenced\n\nThe repository positively demonstrates:\n\n- ROS 2 environment operation,\n- TurtleBot3 simulation,\n- keyboard teleoperation,\n- Cartographer SLAM execution,\n- LiDAR mapping workflow,\n- RViz map inspection,\n- Nav2 map-server usage,\n- occupancy-map persistence,\n- ROS map metadata handling,\n- middleware-package setup.\n\n## Skills Demonstrated\n\n### Robotics\n\n- SLAM\n- occupancy grids\n- LiDAR mapping\n- robot teleoperation\n- map persistence\n\n### ROS 2\n\n- `ros2 launch`\n- `ros2 run`\n- TurtleBot3 packages\n- Cartographer\n- Nav2 map server\n- ROS middleware configuration\n\n### Simulation and Visualization\n\n- Gazebo\n- RViz\n- simulated-world exploration\n\n## Capability Developed\n\nThis repository develops operational familiarity with the data path required to turn robot motion and LiDAR scans into a reusable map.\n\nThe workflow spans:\n\n1. launching the robot/world,\n2. controlling the robot,\n3. running SLAM,\n4. observing results,\n5. serializing map artifacts.\n\nThat is an important navigation prerequisite even though autonomous path planning itself is not implemented here.\n\n## Portfolio Evolution\n\nThis repository follows `RVIZ-GAZEBO-URDF`.\n\nTogether the sequence forms a coherent robotics progression:\n\n- `ROS`: middleware primitives,\n- `Turtle-Hunter`: task-specific robot behavior,\n- `RVIZ-GAZEBO-URDF`: robot description and simulation integration,\n- `ROS-Nav2`: environment mapping and navigation-stack tooling.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository with saved ROS occupancy maps generated from a SLAM workflow.\n\nIt is also the earliest observed explicit use of Cartographer and Nav2 map saving.\n\n## Limitations\n\nNo custom SLAM algorithm is implemented.\n\nNo custom Nav2 planner/controller is implemented.\n\nThe repository mainly preserves commands, maps, and screenshots.\n\nNo automated tests are present.\n\nThe root README is nearly empty; the substantive documentation lives in subdirectories.\n\n## Overall Narrative\n\n`ROS-Nav2` is an evidence-rich operational learning artifact.\n\nIts importance is that the repository preserves outputs from a real ROS 2 mapping workflow rather than merely listing commands.\n\nThe saved occupancy maps make the learning outcome concrete: simulation, LiDAR scanning, Cartographer, RViz, and Nav2 map serialization were connected into one usable pipeline.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `ros`\n- `ros2`\n- `turtlebot3`\n- `gazebo`\n- `rviz`\n- `slam`\n- `cartographer`\n- `lidar`\n- `occupancy-grid`\n- `map-generation`\n- `map-persistence`\n- `nav2`\n- `nav2-map-server`\n- `teleoperation`\n- `cyclonedds`\n- `robotics`\n- `robotics-perception`\n- `localization-foundations`\n- `experimental-result-documentation`\n- `manual-verification`\n"
+}

@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 118,
+  "repository_total": 134,
+  "repository_name": "Security",
+  "header_title": "Security",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-118-Security/README.md",
+    "line_start": 1,
+    "line_end": 202,
+    "sha256": "7277ee63a0e9a9288de8139a077f00e7290c406ba2c681fb5ef8d54a58346640"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "- python",
+    "security-experiment",
+    "hashlib",
+    "sha256",
+    "hashing",
+    "deterministic-string-derivation",
+    "seeded-prng",
+    "python-random",
+    "character-set-generation",
+    "configurable-output-length",
+    "standard-library",
+    "text-transformation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 118\n- Name: `Security`\n- Repository Start Date: 2024-10-15\n- Latest Meaningful Update Date: 2024-10-15\n- Latest Meaningful Commit: `6d0eb99f825fc4bbdffb4bc2e23c2199b72daa0a`\n- Primary Type: Python security-oriented utility experiment\n- Technical Field: Deterministic text hashing and derived string generation\n- Context: Individual programming experiment\n- Collaboration Type: `individual-project`\n- Primary Language: Python\n- Historical Position: Chronology backfill discovered after private-repository access was reconciled."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 118\n- Name: `Security`\n- Repository Start Date: 2024-10-15\n- Latest Meaningful Update Date: 2024-10-15\n- Latest Meaningful Commit: `6d0eb99f825fc4bbdffb4bc2e23c2199b72daa0a`\n- Primary Type: Python security-oriented utility experiment\n- Technical Field: Deterministic text hashing and derived string generation\n- Context: Individual programming experiment\n- Collaboration Type: `individual-project`\n- Primary Language: Python\n- Historical Position: Chronology backfill discovered after private-repository access was reconciled.",
+      "source_line_start": 3,
+      "source_line_end": 17
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Security` is a compact Python experiment around deterministic transformation of input text.\n\nThe repository contains a script named `Password Hashing.py`.\n\nThe script hashes input text with SHA-256.\n\nIt converts the resulting hexadecimal digest into an integer.\n\nThat integer seeds Python's pseudo-random generator.\n\nThe seeded generator then selects characters from a configured alphabet to produce a fixed-length output string.\n\nThe result is deterministic for a given input and output length because the same SHA-256 digest produces the same pseudo-random seed.",
+      "source_line_start": 17,
+      "source_line_end": 33
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Core Function",
+      "normalized_title": "Core Function",
+      "key": "core_function",
+      "path": [
+        "Core Function"
+      ],
+      "content": "The script defines:\n\n```python\nhash_text_to_alphanumeric(text, length=14)\n```\n\nThe function takes arbitrary input text and an optional output length.\n\nThe default output length is 14 characters.\n\nIts implementation has four main stages.\n\n1. Encode the input text.\n2. Compute a SHA-256 digest.\n3. Seed the pseudo-random generator from the digest value.\n4. Generate a string from the configured output alphabet.\n\nThis forms a reproducible text-to-string derivation pipeline.",
+      "source_line_start": 33,
+      "source_line_end": 54
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "SHA-256 Digest Stage",
+      "normalized_title": "SHA-256 Digest Stage",
+      "key": "sha_256_digest_stage",
+      "path": [
+        "SHA-256 Digest Stage"
+      ],
+      "content": "The script uses Python's standard `hashlib` module.\n\nIt creates a SHA-256 hash object from the UTF-8-encoded input text.\n\nThe digest is converted to hexadecimal representation.\n\nThe hexadecimal digest is then parsed as an integer.\n\nThis large integer becomes deterministic seed material for the next stage.",
+      "source_line_start": 54,
+      "source_line_end": 66
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Character Alphabet",
+      "normalized_title": "Character Alphabet",
+      "key": "character_alphabet",
+      "path": [
+        "Character Alphabet"
+      ],
+      "content": "The output alphabet combines:\n\n- uppercase ASCII letters,\n- lowercase ASCII letters,\n- decimal digits,\n- selected special characters.\n\nThe special-character set includes common punctuation used in password-style strings.\n\nThe generator therefore produces output that can contain multiple character classes.",
+      "source_line_start": 66,
+      "source_line_end": 79
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Deterministic Pseudo-Random Selection",
+      "normalized_title": "Deterministic Pseudo-Random Selection",
+      "key": "deterministic_pseudo_random_selection",
+      "path": [
+        "Deterministic Pseudo-Random Selection"
+      ],
+      "content": "The script calls:\n\n```python\nrandom.seed(int(hex_dig, 16))\n```\n\nIt then repeatedly calls `random.choice` over the configured character alphabet.\n\nBecause the seed is derived entirely from the SHA-256 digest, identical function inputs reproduce the same character sequence.\n\nChanging the source text changes the digest and therefore changes the seed sequence.\n\nChanging the requested output length changes how many characters are drawn.",
+      "source_line_start": 79,
+      "source_line_end": 95
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Output-Length Parameterization",
+      "normalized_title": "Output-Length Parameterization",
+      "key": "output_length_parameterization",
+      "path": [
+        "Output-Length Parameterization"
+      ],
+      "content": "The `length` argument controls the generated string length.\n\nThe default is 14.\n\nThe function uses a range over that length to construct the final string.\n\nThis makes the output format configurable without altering the hashing stage.",
+      "source_line_start": 95,
+      "source_line_end": 105
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Example Execution",
+      "normalized_title": "Example Execution",
+      "key": "example_execution",
+      "path": [
+        "Example Execution"
+      ],
+      "content": "The script contains an example invocation and prints the derived output.\n\nThe source example demonstrates the intended end-to-end use of the function.\n\nThe corpus does not reproduce the personal example input.\n\nThe relevant engineering evidence is the deterministic function behavior and the standard-library implementation.",
+      "source_line_start": 105,
+      "source_line_end": 115
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nThe entire experiment is implemented as a small Python script.\n\n### `hashlib`\n\n`hashlib.sha256` supplies the cryptographic hash primitive used to derive deterministic seed material.\n\n### `string`\n\nThe standard `string` module supplies predefined ASCII letter and digit sets.\n\n### `random`\n\nPython's standard pseudo-random module turns the digest-derived seed into repeatable character selection.",
+      "source_line_start": 115,
+      "source_line_end": 133
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "The entire experiment is implemented as a small Python script.",
+      "source_line_start": 117,
+      "source_line_end": 121
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "`hashlib`",
+      "normalized_title": "hashlib",
+      "key": "hashlib",
+      "path": [
+        "Technical Stack",
+        "`hashlib`"
+      ],
+      "content": "`hashlib.sha256` supplies the cryptographic hash primitive used to derive deterministic seed material.",
+      "source_line_start": 121,
+      "source_line_end": 125
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "`string`",
+      "normalized_title": "string",
+      "key": "string",
+      "path": [
+        "Technical Stack",
+        "`string`"
+      ],
+      "content": "The standard `string` module supplies predefined ASCII letter and digit sets.",
+      "source_line_start": 125,
+      "source_line_end": 129
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "`random`",
+      "normalized_title": "random",
+      "key": "random",
+      "path": [
+        "Technical Stack",
+        "`random`"
+      ],
+      "content": "Python's standard pseudo-random module turns the digest-derived seed into repeatable character selection.",
+      "source_line_start": 129,
+      "source_line_end": 133
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Engineering Characteristics",
+      "normalized_title": "Engineering Characteristics",
+      "key": "engineering_characteristics",
+      "path": [
+        "Engineering Characteristics"
+      ],
+      "content": "### Functional Decomposition\n\nThe transformation is encapsulated in a reusable function rather than being written entirely inline.\n\nThe example call is separated from the function definition.\n\n### Parameterization\n\nOutput length is exposed as a function parameter.\n\nThe character alphabet is assembled programmatically from standard-library constants and an explicit punctuation suffix.\n\n### Determinism\n\nThe function deliberately converts hash output into repeatable pseudo-random selection.\n\nThis is the central behavior of the experiment.\n\n### Standard-Library Implementation\n\nThe repository relies only on Python standard-library modules for its core logic.\n\nThe experiment can therefore run without third-party packages.",
+      "source_line_start": 133,
+      "source_line_end": 159
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Functional Decomposition",
+      "normalized_title": "Functional Decomposition",
+      "key": "functional_decomposition",
+      "path": [
+        "Engineering Characteristics",
+        "Functional Decomposition"
+      ],
+      "content": "The transformation is encapsulated in a reusable function rather than being written entirely inline.\n\nThe example call is separated from the function definition.",
+      "source_line_start": 135,
+      "source_line_end": 141
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Parameterization",
+      "normalized_title": "Parameterization",
+      "key": "parameterization",
+      "path": [
+        "Engineering Characteristics",
+        "Parameterization"
+      ],
+      "content": "Output length is exposed as a function parameter.\n\nThe character alphabet is assembled programmatically from standard-library constants and an explicit punctuation suffix.",
+      "source_line_start": 141,
+      "source_line_end": 147
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Determinism",
+      "normalized_title": "Determinism",
+      "key": "determinism",
+      "path": [
+        "Engineering Characteristics",
+        "Determinism"
+      ],
+      "content": "The function deliberately converts hash output into repeatable pseudo-random selection.\n\nThis is the central behavior of the experiment.",
+      "source_line_start": 147,
+      "source_line_end": 153
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Standard-Library Implementation",
+      "normalized_title": "Standard-Library Implementation",
+      "key": "standard_library_implementation",
+      "path": [
+        "Engineering Characteristics",
+        "Standard-Library Implementation"
+      ],
+      "content": "The repository relies only on Python standard-library modules for its core logic.\n\nThe experiment can therefore run without third-party packages.",
+      "source_line_start": 153,
+      "source_line_end": 159
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Evidence Boundary",
+      "normalized_title": "Evidence Boundary",
+      "key": "evidence_boundary",
+      "path": [
+        "Evidence Boundary"
+      ],
+      "content": "The filename uses the phrase `Password Hashing`, while the actual code performs a SHA-256-derived deterministic character transformation.\n\nThe portfolio corpus describes the implementation at that concrete algorithmic level.\n\nThis preserves what was actually engineered without inferring a broader authentication or password-storage system from the repository name.",
+      "source_line_start": 159,
+      "source_line_end": 167
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "- Python scripting\n- function design\n- input encoding\n- SHA-256 hashing\n- hexadecimal digest handling\n- integer conversion\n- seeded pseudo-random generation\n- configurable output construction\n- ASCII character-set composition\n- deterministic transformations\n- standard-library programming",
+      "source_line_start": 167,
+      "source_line_end": 181
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "The repository records a small security-themed programming experiment from October 2024.\n\nIts main value in a cross-repository RAG corpus is as direct evidence of early experimentation with hashing primitives and deterministic derivation logic.\n\nIt also provides a useful historical boundary: later repositories contain substantially broader authentication, authorization, cryptographic-session, and secure-state designs, whereas this artifact captures a focused low-level transformation experiment.\n\n# Project Tags\n\n- python\n- security-experiment\n- hashlib\n- sha256\n- hashing\n- deterministic-string-derivation\n- seeded-prng\n- python-random\n- character-set-generation\n- configurable-output-length\n- standard-library\n- text-transformation",
+      "source_line_start": 181,
+      "source_line_end": 203
+    }
+  ],
+  "raw_analysis": "# Security\n\n## Repository Identity\n\n- Repository: 118\n- Name: `Security`\n- Repository Start Date: 2024-10-15\n- Latest Meaningful Update Date: 2024-10-15\n- Latest Meaningful Commit: `6d0eb99f825fc4bbdffb4bc2e23c2199b72daa0a`\n- Primary Type: Python security-oriented utility experiment\n- Technical Field: Deterministic text hashing and derived string generation\n- Context: Individual programming experiment\n- Collaboration Type: `individual-project`\n- Primary Language: Python\n- Historical Position: Chronology backfill discovered after private-repository access was reconciled.\n\n## What This Project Is\n\n`Security` is a compact Python experiment around deterministic transformation of input text.\n\nThe repository contains a script named `Password Hashing.py`.\n\nThe script hashes input text with SHA-256.\n\nIt converts the resulting hexadecimal digest into an integer.\n\nThat integer seeds Python's pseudo-random generator.\n\nThe seeded generator then selects characters from a configured alphabet to produce a fixed-length output string.\n\nThe result is deterministic for a given input and output length because the same SHA-256 digest produces the same pseudo-random seed.\n\n## Core Function\n\nThe script defines:\n\n```python\nhash_text_to_alphanumeric(text, length=14)\n```\n\nThe function takes arbitrary input text and an optional output length.\n\nThe default output length is 14 characters.\n\nIts implementation has four main stages.\n\n1. Encode the input text.\n2. Compute a SHA-256 digest.\n3. Seed the pseudo-random generator from the digest value.\n4. Generate a string from the configured output alphabet.\n\nThis forms a reproducible text-to-string derivation pipeline.\n\n## SHA-256 Digest Stage\n\nThe script uses Python's standard `hashlib` module.\n\nIt creates a SHA-256 hash object from the UTF-8-encoded input text.\n\nThe digest is converted to hexadecimal representation.\n\nThe hexadecimal digest is then parsed as an integer.\n\nThis large integer becomes deterministic seed material for the next stage.\n\n## Character Alphabet\n\nThe output alphabet combines:\n\n- uppercase ASCII letters,\n- lowercase ASCII letters,\n- decimal digits,\n- selected special characters.\n\nThe special-character set includes common punctuation used in password-style strings.\n\nThe generator therefore produces output that can contain multiple character classes.\n\n## Deterministic Pseudo-Random Selection\n\nThe script calls:\n\n```python\nrandom.seed(int(hex_dig, 16))\n```\n\nIt then repeatedly calls `random.choice` over the configured character alphabet.\n\nBecause the seed is derived entirely from the SHA-256 digest, identical function inputs reproduce the same character sequence.\n\nChanging the source text changes the digest and therefore changes the seed sequence.\n\nChanging the requested output length changes how many characters are drawn.\n\n## Output-Length Parameterization\n\nThe `length` argument controls the generated string length.\n\nThe default is 14.\n\nThe function uses a range over that length to construct the final string.\n\nThis makes the output format configurable without altering the hashing stage.\n\n## Example Execution\n\nThe script contains an example invocation and prints the derived output.\n\nThe source example demonstrates the intended end-to-end use of the function.\n\nThe corpus does not reproduce the personal example input.\n\nThe relevant engineering evidence is the deterministic function behavior and the standard-library implementation.\n\n## Technical Stack\n\n### Python\n\nThe entire experiment is implemented as a small Python script.\n\n### `hashlib`\n\n`hashlib.sha256` supplies the cryptographic hash primitive used to derive deterministic seed material.\n\n### `string`\n\nThe standard `string` module supplies predefined ASCII letter and digit sets.\n\n### `random`\n\nPython's standard pseudo-random module turns the digest-derived seed into repeatable character selection.\n\n## Engineering Characteristics\n\n### Functional Decomposition\n\nThe transformation is encapsulated in a reusable function rather than being written entirely inline.\n\nThe example call is separated from the function definition.\n\n### Parameterization\n\nOutput length is exposed as a function parameter.\n\nThe character alphabet is assembled programmatically from standard-library constants and an explicit punctuation suffix.\n\n### Determinism\n\nThe function deliberately converts hash output into repeatable pseudo-random selection.\n\nThis is the central behavior of the experiment.\n\n### Standard-Library Implementation\n\nThe repository relies only on Python standard-library modules for its core logic.\n\nThe experiment can therefore run without third-party packages.\n\n## Evidence Boundary\n\nThe filename uses the phrase `Password Hashing`, while the actual code performs a SHA-256-derived deterministic character transformation.\n\nThe portfolio corpus describes the implementation at that concrete algorithmic level.\n\nThis preserves what was actually engineered without inferring a broader authentication or password-storage system from the repository name.\n\n## Skills Demonstrated\n\n- Python scripting\n- function design\n- input encoding\n- SHA-256 hashing\n- hexadecimal digest handling\n- integer conversion\n- seeded pseudo-random generation\n- configurable output construction\n- ASCII character-set composition\n- deterministic transformations\n- standard-library programming\n\n## Portfolio Significance\n\nThe repository records a small security-themed programming experiment from October 2024.\n\nIts main value in a cross-repository RAG corpus is as direct evidence of early experimentation with hashing primitives and deterministic derivation logic.\n\nIt also provides a useful historical boundary: later repositories contain substantially broader authentication, authorization, cryptographic-session, and secure-state designs, whereas this artifact captures a focused low-level transformation experiment.\n\n# Project Tags\n\n- python\n- security-experiment\n- hashlib\n- sha256\n- hashing\n- deterministic-string-derivation\n- seeded-prng\n- python-random\n- character-set-generation\n- configurable-output-length\n- standard-library\n- text-transformation\n"
+}

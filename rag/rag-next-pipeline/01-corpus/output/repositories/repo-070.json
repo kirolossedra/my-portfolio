@@ -1,0 +1,642 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 70,
+  "repository_total": 134,
+  "repository_name": "Testing-Model-Deployment",
+  "header_title": "Testing-Model-Deployment",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-070-Testing-Model-Deployment/README.md",
+    "line_start": 1,
+    "line_end": 374,
+    "sha256": "2ef3567ed505e8017ea474e91074a9e3513ea2646a80ea9c2d1b45b44779cbd5"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "model-deployment-prototype",
+    "static-web-application",
+    "machine-learning-demo",
+    "interactive-utility",
+    "individual-project",
+    "html",
+    "css",
+    "javascript",
+    "canvas-api",
+    "canvas-drawing-input",
+    "image-upload",
+    "event-driven-ui",
+    "async-javascript",
+    "tensorflow-js",
+    "browser-ml-inference",
+    "client-side-model-loading",
+    "handwritten-digit-recognition",
+    "image-preprocessing",
+    "browser-logistic-regression",
+    "model-artifact-loading",
+    "tensor-lifecycle-management",
+    "github-pages",
+    "static-site-deployment",
+    "static-model-deployment"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Testing-Model-Deployment`\n- **Repository start date:** 2024-10-24\n- **Last meaningful update date:** 2024-10-26\n- **Latest meaningful commit:** `d22ef114e2f41fa1c067bc7b82317e3c0ed80432`\n- **Primary technical field:** client-side machine-learning deployment\n- **Primary technologies:** HTML, CSS, JavaScript, TensorFlow.js\n- **Deployment evidence:** GitHub Pages\n- **Project context:** personal model-deployment experiment\n- **Collaboration classification:** `individual-project`"
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s005",
+        "s014",
+        "s018",
+        "s030"
+      ],
+      "titles": [
+        "Digit-Recognition Deployment",
+        "Logistic-Regression Deployment",
+        "Static Deployment",
+        "Machine Learning Deployment"
+      ],
+      "text": "## Digit-Recognition Deployment\n`index.html` implements a complete interaction loop around a TensorFlow.js model.\n\n### TensorFlow.js Runtime\n\nThe page imports TensorFlow.js and TensorFlow.js visualization support from CDNs.\n\n### Model Loading\n\nThe checked-in model is loaded at page startup using:\n\n```javascript\ntf.loadLayersModel('model.json')\n```\n\nA visible status area communicates model-loading state.\n\n### Input Modes\n\nTwo user input methods are implemented:\n\n- upload an existing image;\n- draw a digit freehand on a canvas.\n\nThis makes the deployment test interactive rather than hard-coded to one test image.\n\n## Logistic-Regression Deployment\n`logistic-regression.html` demonstrates a different deployment strategy.\n\nInstead of loading a model through TensorFlow.js, the page directly contains learned coefficients.\n\n### User Inputs\n\nThe form collects:\n\n- gender;\n- marital status;\n- dependents;\n- education;\n- self-employment;\n- applicant income;\n- co-applicant income;\n- loan amount;\n- loan term;\n- credit history;\n- property area.\n\n### Feature Transformation\n\nCategorical values are mapped to numerical encodings.\n\nNumeric inputs are parsed from form values.\n\n### Direct Numerical Inference\n\nAn 11-element weight array and scalar bias are stored in JavaScript.\n\nThe prediction function computes the weighted sum and applies the logistic sigmoid.\n\n```javascript\nconst z = weights.reduce((sum, weight, i) => sum + weight * features[i], bias);\nreturn 1 / (1 + Math.exp(-z));\n```\n\nA `0.5` threshold selects the rendered approval label.\n\nThis is strong evidence of understanding how a simple trained model can be detached from its training environment and reproduced as deterministic frontend math.\n\n## Static Deployment\nRepository metadata indicates GitHub Pages is enabled.\n\nThat makes the model demonstrations compatible with an entirely static hosting path:\n\n```text\nGitHub repository\n    ↓\nHTML + JS + model artifacts\n    ↓\nGitHub Pages\n    ↓\nBrowser TensorFlow.js runtime\n    ↓\nInteractive inference\n```\n\n## Machine Learning Deployment\n- **TensorFlow.js — strong evidence.**\n- **Client-side neural-network inference — strong evidence.**\n- **Model artifact loading — strong evidence.**\n- **Image preprocessing — strong evidence.**\n- **Direct logistic-regression inference — strong evidence.**"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s037"
+      ],
+      "titles": [
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Testing-Model-Deployment`\n- **Repository start date:** 2024-10-24\n- **Last meaningful update date:** 2024-10-26\n- **Latest meaningful commit:** `d22ef114e2f41fa1c067bc7b82317e3c0ed80432`\n- **Primary technical field:** client-side machine-learning deployment\n- **Primary technologies:** HTML, CSS, JavaScript, TensorFlow.js\n- **Deployment evidence:** GitHub Pages\n- **Project context:** personal model-deployment experiment\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains:\n\n- `index.html`;\n- `logistic-regression.html`;\n- `model.json`;\n- TensorFlow.js weight shards;\n- a minimal README.\n\nThe repository metadata confirms GitHub Pages is enabled.\n\nThe strongest evidence comes from the client-side inference code and the model artifacts stored alongside it.",
+      "source_line_start": 15,
+      "source_line_end": 29
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Testing-Model-Deployment` is a focused experiment in taking trained machine-learning models out of notebook/Python contexts and making them executable through a static website.\n\nIt explores two deployment styles:\n\n1. load a TensorFlow/Keras-style model through TensorFlow.js and perform handwritten-digit inference;\n2. encode logistic-regression parameters directly into JavaScript and calculate predictions numerically in the browser.\n\nThe repository is therefore a deployment prototype rather than a model-training repository.",
+      "source_line_start": 29,
+      "source_line_end": 40
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "```text\nTesting-Model-Deployment/\n├── index.html\n├── logistic-regression.html\n├── model.json\n├── group1-shard1of1.bin\n├── folder/\n│   └── group1-shard1of1.bin\n└── README.md\n```\n\nThe JSON and binary files are concrete browser-loadable model artifacts.",
+      "source_line_start": 40,
+      "source_line_end": 55
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Digit-Recognition Deployment",
+      "normalized_title": "Digit-Recognition Deployment",
+      "key": "digit_recognition_deployment",
+      "path": [
+        "Digit-Recognition Deployment"
+      ],
+      "content": "`index.html` implements a complete interaction loop around a TensorFlow.js model.\n\n### TensorFlow.js Runtime\n\nThe page imports TensorFlow.js and TensorFlow.js visualization support from CDNs.\n\n### Model Loading\n\nThe checked-in model is loaded at page startup using:\n\n```javascript\ntf.loadLayersModel('model.json')\n```\n\nA visible status area communicates model-loading state.\n\n### Input Modes\n\nTwo user input methods are implemented:\n\n- upload an existing image;\n- draw a digit freehand on a canvas.\n\nThis makes the deployment test interactive rather than hard-coded to one test image.",
+      "source_line_start": 55,
+      "source_line_end": 82
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "TensorFlow.js Runtime",
+      "normalized_title": "TensorFlow.js Runtime",
+      "key": "tensorflow_js_runtime",
+      "path": [
+        "Digit-Recognition Deployment",
+        "TensorFlow.js Runtime"
+      ],
+      "content": "The page imports TensorFlow.js and TensorFlow.js visualization support from CDNs.",
+      "source_line_start": 59,
+      "source_line_end": 63
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Model Loading",
+      "normalized_title": "Model Loading",
+      "key": "model_loading",
+      "path": [
+        "Digit-Recognition Deployment",
+        "Model Loading"
+      ],
+      "content": "The checked-in model is loaded at page startup using:\n\n```javascript\ntf.loadLayersModel('model.json')\n```\n\nA visible status area communicates model-loading state.",
+      "source_line_start": 63,
+      "source_line_end": 73
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Input Modes",
+      "normalized_title": "Input Modes",
+      "key": "input_modes",
+      "path": [
+        "Digit-Recognition Deployment",
+        "Input Modes"
+      ],
+      "content": "Two user input methods are implemented:\n\n- upload an existing image;\n- draw a digit freehand on a canvas.\n\nThis makes the deployment test interactive rather than hard-coded to one test image.",
+      "source_line_start": 73,
+      "source_line_end": 82
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Drawing Interface",
+      "normalized_title": "Drawing Interface",
+      "key": "drawing_interface",
+      "path": [
+        "Drawing Interface"
+      ],
+      "content": "The drawing canvas is initialized at 280×280 pixels.\n\nMouse listeners implement:\n\n- start drawing;\n- continuous stroke updates;\n- stop drawing;\n- clear;\n- predict.\n\nStroke width, line cap, and line join are configured to produce digit-like freehand input.",
+      "source_line_start": 82,
+      "source_line_end": 96
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Drawing Preprocessing",
+      "normalized_title": "Drawing Preprocessing",
+      "key": "drawing_preprocessing",
+      "path": [
+        "Drawing Preprocessing"
+      ],
+      "content": "Before inference, the 280×280 drawing is copied into a temporary 28×28 canvas.\n\nThe resulting image is converted to a TensorFlow.js grayscale tensor.\n\nThe preprocessing pipeline includes:\n\n- resize;\n- floating-point conversion;\n- division by 255;\n- mean-intensity measurement;\n- conditional inversion for light backgrounds;\n- contrast normalization;\n- batch-dimension expansion.\n\nThis is direct evidence of model-serving preprocessing implemented in JavaScript.",
+      "source_line_start": 96,
+      "source_line_end": 114
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Prediction Pipeline",
+      "normalized_title": "Prediction Pipeline",
+      "key": "prediction_pipeline",
+      "path": [
+        "Prediction Pipeline"
+      ],
+      "content": "After preprocessing:\n\n```text\nprocessed image\n    ↓\nmodel.predict\n    ↓\nprediction vector\n    ↓\nargMax\n    ↓\npredicted digit\n    ↓\nconfidence percentage\n```\n\nThe page displays both the predicted class and confidence.\n\nPrediction tensors are disposed after use.",
+      "source_line_start": 114,
+      "source_line_end": 136
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Image-Upload Workflow",
+      "normalized_title": "Image-Upload Workflow",
+      "key": "image_upload_workflow",
+      "path": [
+        "Image-Upload Workflow"
+      ],
+      "content": "Uploaded files are loaded into an `Image` object.\n\nThe browser:\n\n- calculates a display scale;\n- centers the image inside the preview canvas;\n- preprocesses the original image;\n- invokes the same model;\n- renders the prediction and confidence.\n\nThe architecture therefore reuses one inference path for two user input modes.",
+      "source_line_start": 136,
+      "source_line_end": 150
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Model-Loading and Processing Errors",
+      "normalized_title": "Model-Loading and Processing Errors",
+      "key": "model_loading_and_processing_errors",
+      "path": [
+        "Model-Loading and Processing Errors"
+      ],
+      "content": "Model loading and image processing use explicit `try/catch` handling.\n\nFailures are surfaced through the status element instead of silently failing.",
+      "source_line_start": 150,
+      "source_line_end": 156
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Logistic-Regression Deployment",
+      "normalized_title": "Logistic-Regression Deployment",
+      "key": "logistic_regression_deployment",
+      "path": [
+        "Logistic-Regression Deployment"
+      ],
+      "content": "`logistic-regression.html` demonstrates a different deployment strategy.\n\nInstead of loading a model through TensorFlow.js, the page directly contains learned coefficients.\n\n### User Inputs\n\nThe form collects:\n\n- gender;\n- marital status;\n- dependents;\n- education;\n- self-employment;\n- applicant income;\n- co-applicant income;\n- loan amount;\n- loan term;\n- credit history;\n- property area.\n\n### Feature Transformation\n\nCategorical values are mapped to numerical encodings.\n\nNumeric inputs are parsed from form values.\n\n### Direct Numerical Inference\n\nAn 11-element weight array and scalar bias are stored in JavaScript.\n\nThe prediction function computes the weighted sum and applies the logistic sigmoid.\n\n```javascript\nconst z = weights.reduce((sum, weight, i) => sum + weight * features[i], bias);\nreturn 1 / (1 + Math.exp(-z));\n```\n\nA `0.5` threshold selects the rendered approval label.\n\nThis is strong evidence of understanding how a simple trained model can be detached from its training environment and reproduced as deterministic frontend math.",
+      "source_line_start": 156,
+      "source_line_end": 199
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "User Inputs",
+      "normalized_title": "User Inputs",
+      "key": "user_inputs",
+      "path": [
+        "Logistic-Regression Deployment",
+        "User Inputs"
+      ],
+      "content": "The form collects:\n\n- gender;\n- marital status;\n- dependents;\n- education;\n- self-employment;\n- applicant income;\n- co-applicant income;\n- loan amount;\n- loan term;\n- credit history;\n- property area.",
+      "source_line_start": 162,
+      "source_line_end": 178
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Feature Transformation",
+      "normalized_title": "Feature Transformation",
+      "key": "feature_transformation",
+      "path": [
+        "Logistic-Regression Deployment",
+        "Feature Transformation"
+      ],
+      "content": "Categorical values are mapped to numerical encodings.\n\nNumeric inputs are parsed from form values.",
+      "source_line_start": 178,
+      "source_line_end": 184
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Direct Numerical Inference",
+      "normalized_title": "Direct Numerical Inference",
+      "key": "direct_numerical_inference",
+      "path": [
+        "Logistic-Regression Deployment",
+        "Direct Numerical Inference"
+      ],
+      "content": "An 11-element weight array and scalar bias are stored in JavaScript.\n\nThe prediction function computes the weighted sum and applies the logistic sigmoid.\n\n```javascript\nconst z = weights.reduce((sum, weight, i) => sum + weight * features[i], bias);\nreturn 1 / (1 + Math.exp(-z));\n```\n\nA `0.5` threshold selects the rendered approval label.\n\nThis is strong evidence of understanding how a simple trained model can be detached from its training environment and reproduced as deterministic frontend math.",
+      "source_line_start": 184,
+      "source_line_end": 199
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Static Deployment",
+      "normalized_title": "Static Deployment",
+      "key": "static_deployment",
+      "path": [
+        "Static Deployment"
+      ],
+      "content": "Repository metadata indicates GitHub Pages is enabled.\n\nThat makes the model demonstrations compatible with an entirely static hosting path:\n\n```text\nGitHub repository\n    ↓\nHTML + JS + model artifacts\n    ↓\nGitHub Pages\n    ↓\nBrowser TensorFlow.js runtime\n    ↓\nInteractive inference\n```",
+      "source_line_start": 199,
+      "source_line_end": 217
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Relationship to Portfolio-V2",
+      "normalized_title": "Relationship to Portfolio-V2",
+      "key": "relationship_to_portfolio_v2",
+      "path": [
+        "Relationship to Portfolio-V2"
+      ],
+      "content": "The handwritten-digit artifact is subsequently reused inside `Portfolio-V2`.\n\nThat sequence is historically useful:\n\n```text\ndeployment experiment\n     ↓\nworking browser inference\n     ↓\nintegration into broader portfolio\n```\n\nThe two repositories therefore show prototyping followed by integration.",
+      "source_line_start": 217,
+      "source_line_end": 233
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Model/Runtime Separation\n\nThe neural model topology and weights are stored separately from the webpage that loads them.\n\n### Reusable Preprocessing\n\nBoth uploaded images and drawn input are routed into the same preprocessing/prediction concept.\n\n### Resource Cleanup\n\nInference tensors are explicitly disposed.\n\n### Input Validation Through UI Controls\n\nThe loan form uses required fields and constrained select options before numerical inference.\n\n### Failure Visibility\n\nModel/image failures are represented in the interface.",
+      "source_line_start": 233,
+      "source_line_end": 255
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Model/Runtime Separation",
+      "normalized_title": "Model/Runtime Separation",
+      "key": "model_runtime_separation",
+      "path": [
+        "Engineering Practices",
+        "Model/Runtime Separation"
+      ],
+      "content": "The neural model topology and weights are stored separately from the webpage that loads them.",
+      "source_line_start": 235,
+      "source_line_end": 239
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Reusable Preprocessing",
+      "normalized_title": "Reusable Preprocessing",
+      "key": "reusable_preprocessing",
+      "path": [
+        "Engineering Practices",
+        "Reusable Preprocessing"
+      ],
+      "content": "Both uploaded images and drawn input are routed into the same preprocessing/prediction concept.",
+      "source_line_start": 239,
+      "source_line_end": 243
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Resource Cleanup",
+      "normalized_title": "Resource Cleanup",
+      "key": "resource_cleanup",
+      "path": [
+        "Engineering Practices",
+        "Resource Cleanup"
+      ],
+      "content": "Inference tensors are explicitly disposed.",
+      "source_line_start": 243,
+      "source_line_end": 247
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Input Validation Through UI Controls",
+      "normalized_title": "Input Validation Through UI Controls",
+      "key": "input_validation_through_ui_controls",
+      "path": [
+        "Engineering Practices",
+        "Input Validation Through UI Controls"
+      ],
+      "content": "The loan form uses required fields and constrained select options before numerical inference.",
+      "source_line_start": 247,
+      "source_line_end": 251
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Failure Visibility",
+      "normalized_title": "Failure Visibility",
+      "key": "failure_visibility",
+      "path": [
+        "Engineering Practices",
+        "Failure Visibility"
+      ],
+      "content": "Model/image failures are represented in the interface.",
+      "source_line_start": 251,
+      "source_line_end": 255
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "The deployment is designed for direct user experimentation.\n\nA user does not need:\n\n- a notebook;\n- Python;\n- a local ML environment.\n\nThe browser becomes the model execution environment.\n\nThat is the project's strongest product implication.",
+      "source_line_start": 255,
+      "source_line_end": 269
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is small in source count but contains multi-megabyte model weights.\n\nIts complexity comes from bridging:\n\n- model serialization;\n- browser model loading;\n- canvas input;\n- image processing;\n- tensor operations;\n- direct numerical inference;\n- static web delivery.",
+      "source_line_start": 269,
+      "source_line_end": 283
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Frontend\n\n- **HTML/CSS/JavaScript — strong evidence.**\n- **Canvas input — strong evidence.**\n- **File upload handling — strong evidence.**\n- **Async browser logic — strong evidence.**\n\n### Machine Learning Deployment\n\n- **TensorFlow.js — strong evidence.**\n- **Client-side neural-network inference — strong evidence.**\n- **Model artifact loading — strong evidence.**\n- **Image preprocessing — strong evidence.**\n- **Direct logistic-regression inference — strong evidence.**\n\n### Delivery\n\n- **Static ML deployment — strong evidence.**\n- **GitHub Pages — strong deployment evidence.**",
+      "source_line_start": 283,
+      "source_line_end": 305
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- **HTML/CSS/JavaScript — strong evidence.**\n- **Canvas input — strong evidence.**\n- **File upload handling — strong evidence.**\n- **Async browser logic — strong evidence.**",
+      "source_line_start": 285,
+      "source_line_end": 292
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Machine Learning Deployment",
+      "normalized_title": "Machine Learning Deployment",
+      "key": "machine_learning_deployment",
+      "path": [
+        "Skills Demonstrated",
+        "Machine Learning Deployment"
+      ],
+      "content": "- **TensorFlow.js — strong evidence.**\n- **Client-side neural-network inference — strong evidence.**\n- **Model artifact loading — strong evidence.**\n- **Image preprocessing — strong evidence.**\n- **Direct logistic-regression inference — strong evidence.**",
+      "source_line_start": 292,
+      "source_line_end": 300
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Delivery",
+      "normalized_title": "Delivery",
+      "key": "delivery",
+      "path": [
+        "Skills Demonstrated",
+        "Delivery"
+      ],
+      "content": "- **Static ML deployment — strong evidence.**\n- **GitHub Pages — strong deployment evidence.**",
+      "source_line_start": 300,
+      "source_line_end": 305
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository turns trained model artifacts into user-operable software.\n\nIt demonstrates two important deployment intuitions:\n\n- some models can be loaded into a browser runtime;\n- simpler models can be reduced to their numerical parameters and executed directly without a framework.",
+      "source_line_start": 305,
+      "source_line_end": 314
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "The immediately preceding `Portfolio-V2` is the earliest processed TensorFlow.js integration by repository creation date.\n\nThis repository provides the more focused deployment experiment that underlies part of that portfolio experience.",
+      "source_line_start": 314,
+      "source_line_end": 320
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Testing-Model-Deployment` is a concrete transition from ML experimentation toward deployment engineering.\n\nIt adds direct evidence that model-serving does not necessarily require a server: browser execution and static hosting can be viable for compatible models.",
+      "source_line_start": 320,
+      "source_line_end": 326
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Testing-Model-Deployment` is a compact but concrete client-side ML deployment prototype.\n\nThe repository contains the model files, JavaScript runtime integration, preprocessing, canvas and upload UX, prediction flow, numerical logistic-regression inference, and static deployment shape required to make machine-learning outputs directly usable in a browser.\n\n# Project Tags",
+      "source_line_start": 326,
+      "source_line_end": 334
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `model-deployment-prototype`\n- `static-web-application`\n- `machine-learning-demo`\n- `interactive-utility`",
+      "source_line_start": 334,
+      "source_line_end": 341
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 341,
+      "source_line_end": 345
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `html`\n- `css`\n- `javascript`",
+      "source_line_start": 345,
+      "source_line_end": 351
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Frontend"
+      ],
+      "content": "- `canvas-api`\n- `canvas-drawing-input`\n- `image-upload`\n- `event-driven-ui`\n- `async-javascript`",
+      "source_line_start": 351,
+      "source_line_end": 359
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Machine Learning",
+      "normalized_title": "Machine Learning",
+      "key": "machine_learning",
+      "path": [
+        "Machine Learning"
+      ],
+      "content": "- `tensorflow-js`\n- `browser-ml-inference`\n- `client-side-model-loading`\n- `handwritten-digit-recognition`\n- `image-preprocessing`\n- `browser-logistic-regression`\n- `model-artifact-loading`\n- `tensor-lifecycle-management`",
+      "source_line_start": 359,
+      "source_line_end": 370
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Cloud and Delivery",
+      "normalized_title": "Cloud and Delivery",
+      "key": "cloud_and_delivery",
+      "path": [
+        "Cloud and Delivery"
+      ],
+      "content": "- `github-pages`\n- `static-site-deployment`\n- `static-model-deployment`",
+      "source_line_start": 370,
+      "source_line_end": 375
+    }
+  ],
+  "raw_analysis": "# Repository 070 — Testing-Model-Deployment\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Testing-Model-Deployment`\n- **Repository start date:** 2024-10-24\n- **Last meaningful update date:** 2024-10-26\n- **Latest meaningful commit:** `d22ef114e2f41fa1c067bc7b82317e3c0ed80432`\n- **Primary technical field:** client-side machine-learning deployment\n- **Primary technologies:** HTML, CSS, JavaScript, TensorFlow.js\n- **Deployment evidence:** GitHub Pages\n- **Project context:** personal model-deployment experiment\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains:\n\n- `index.html`;\n- `logistic-regression.html`;\n- `model.json`;\n- TensorFlow.js weight shards;\n- a minimal README.\n\nThe repository metadata confirms GitHub Pages is enabled.\n\nThe strongest evidence comes from the client-side inference code and the model artifacts stored alongside it.\n\n## What This Project Is\n\n`Testing-Model-Deployment` is a focused experiment in taking trained machine-learning models out of notebook/Python contexts and making them executable through a static website.\n\nIt explores two deployment styles:\n\n1. load a TensorFlow/Keras-style model through TensorFlow.js and perform handwritten-digit inference;\n2. encode logistic-regression parameters directly into JavaScript and calculate predictions numerically in the browser.\n\nThe repository is therefore a deployment prototype rather than a model-training repository.\n\n## Repository Shape\n\n```text\nTesting-Model-Deployment/\n├── index.html\n├── logistic-regression.html\n├── model.json\n├── group1-shard1of1.bin\n├── folder/\n│   └── group1-shard1of1.bin\n└── README.md\n```\n\nThe JSON and binary files are concrete browser-loadable model artifacts.\n\n## Digit-Recognition Deployment\n\n`index.html` implements a complete interaction loop around a TensorFlow.js model.\n\n### TensorFlow.js Runtime\n\nThe page imports TensorFlow.js and TensorFlow.js visualization support from CDNs.\n\n### Model Loading\n\nThe checked-in model is loaded at page startup using:\n\n```javascript\ntf.loadLayersModel('model.json')\n```\n\nA visible status area communicates model-loading state.\n\n### Input Modes\n\nTwo user input methods are implemented:\n\n- upload an existing image;\n- draw a digit freehand on a canvas.\n\nThis makes the deployment test interactive rather than hard-coded to one test image.\n\n## Drawing Interface\n\nThe drawing canvas is initialized at 280×280 pixels.\n\nMouse listeners implement:\n\n- start drawing;\n- continuous stroke updates;\n- stop drawing;\n- clear;\n- predict.\n\nStroke width, line cap, and line join are configured to produce digit-like freehand input.\n\n## Drawing Preprocessing\n\nBefore inference, the 280×280 drawing is copied into a temporary 28×28 canvas.\n\nThe resulting image is converted to a TensorFlow.js grayscale tensor.\n\nThe preprocessing pipeline includes:\n\n- resize;\n- floating-point conversion;\n- division by 255;\n- mean-intensity measurement;\n- conditional inversion for light backgrounds;\n- contrast normalization;\n- batch-dimension expansion.\n\nThis is direct evidence of model-serving preprocessing implemented in JavaScript.\n\n## Prediction Pipeline\n\nAfter preprocessing:\n\n```text\nprocessed image\n    ↓\nmodel.predict\n    ↓\nprediction vector\n    ↓\nargMax\n    ↓\npredicted digit\n    ↓\nconfidence percentage\n```\n\nThe page displays both the predicted class and confidence.\n\nPrediction tensors are disposed after use.\n\n## Image-Upload Workflow\n\nUploaded files are loaded into an `Image` object.\n\nThe browser:\n\n- calculates a display scale;\n- centers the image inside the preview canvas;\n- preprocesses the original image;\n- invokes the same model;\n- renders the prediction and confidence.\n\nThe architecture therefore reuses one inference path for two user input modes.\n\n## Model-Loading and Processing Errors\n\nModel loading and image processing use explicit `try/catch` handling.\n\nFailures are surfaced through the status element instead of silently failing.\n\n## Logistic-Regression Deployment\n\n`logistic-regression.html` demonstrates a different deployment strategy.\n\nInstead of loading a model through TensorFlow.js, the page directly contains learned coefficients.\n\n### User Inputs\n\nThe form collects:\n\n- gender;\n- marital status;\n- dependents;\n- education;\n- self-employment;\n- applicant income;\n- co-applicant income;\n- loan amount;\n- loan term;\n- credit history;\n- property area.\n\n### Feature Transformation\n\nCategorical values are mapped to numerical encodings.\n\nNumeric inputs are parsed from form values.\n\n### Direct Numerical Inference\n\nAn 11-element weight array and scalar bias are stored in JavaScript.\n\nThe prediction function computes the weighted sum and applies the logistic sigmoid.\n\n```javascript\nconst z = weights.reduce((sum, weight, i) => sum + weight * features[i], bias);\nreturn 1 / (1 + Math.exp(-z));\n```\n\nA `0.5` threshold selects the rendered approval label.\n\nThis is strong evidence of understanding how a simple trained model can be detached from its training environment and reproduced as deterministic frontend math.\n\n## Static Deployment\n\nRepository metadata indicates GitHub Pages is enabled.\n\nThat makes the model demonstrations compatible with an entirely static hosting path:\n\n```text\nGitHub repository\n    ↓\nHTML + JS + model artifacts\n    ↓\nGitHub Pages\n    ↓\nBrowser TensorFlow.js runtime\n    ↓\nInteractive inference\n```\n\n## Relationship to Portfolio-V2\n\nThe handwritten-digit artifact is subsequently reused inside `Portfolio-V2`.\n\nThat sequence is historically useful:\n\n```text\ndeployment experiment\n     ↓\nworking browser inference\n     ↓\nintegration into broader portfolio\n```\n\nThe two repositories therefore show prototyping followed by integration.\n\n## Engineering Practices\n\n### Model/Runtime Separation\n\nThe neural model topology and weights are stored separately from the webpage that loads them.\n\n### Reusable Preprocessing\n\nBoth uploaded images and drawn input are routed into the same preprocessing/prediction concept.\n\n### Resource Cleanup\n\nInference tensors are explicitly disposed.\n\n### Input Validation Through UI Controls\n\nThe loan form uses required fields and constrained select options before numerical inference.\n\n### Failure Visibility\n\nModel/image failures are represented in the interface.\n\n## Product Engineering\n\nThe deployment is designed for direct user experimentation.\n\nA user does not need:\n\n- a notebook;\n- Python;\n- a local ML environment.\n\nThe browser becomes the model execution environment.\n\nThat is the project's strongest product implication.\n\n## Scale and Complexity\n\nThe repository is small in source count but contains multi-megabyte model weights.\n\nIts complexity comes from bridging:\n\n- model serialization;\n- browser model loading;\n- canvas input;\n- image processing;\n- tensor operations;\n- direct numerical inference;\n- static web delivery.\n\n## Skills Demonstrated\n\n### Frontend\n\n- **HTML/CSS/JavaScript — strong evidence.**\n- **Canvas input — strong evidence.**\n- **File upload handling — strong evidence.**\n- **Async browser logic — strong evidence.**\n\n### Machine Learning Deployment\n\n- **TensorFlow.js — strong evidence.**\n- **Client-side neural-network inference — strong evidence.**\n- **Model artifact loading — strong evidence.**\n- **Image preprocessing — strong evidence.**\n- **Direct logistic-regression inference — strong evidence.**\n\n### Delivery\n\n- **Static ML deployment — strong evidence.**\n- **GitHub Pages — strong deployment evidence.**\n\n## Capability Developed\n\nThis repository turns trained model artifacts into user-operable software.\n\nIt demonstrates two important deployment intuitions:\n\n- some models can be loaded into a browser runtime;\n- simpler models can be reduced to their numerical parameters and executed directly without a framework.\n\n## Portfolio Evolution Context\n\nThe immediately preceding `Portfolio-V2` is the earliest processed TensorFlow.js integration by repository creation date.\n\nThis repository provides the more focused deployment experiment that underlies part of that portfolio experience.\n\n## Historical Significance\n\n`Testing-Model-Deployment` is a concrete transition from ML experimentation toward deployment engineering.\n\nIt adds direct evidence that model-serving does not necessarily require a server: browser execution and static hosting can be viable for compatible models.\n\n## Overall Repository Narrative\n\n`Testing-Model-Deployment` is a compact but concrete client-side ML deployment prototype.\n\nThe repository contains the model files, JavaScript runtime integration, preprocessing, canvas and upload UX, prediction flow, numerical logistic-regression inference, and static deployment shape required to make machine-learning outputs directly usable in a browser.\n\n# Project Tags\n\n## Project Type\n\n- `model-deployment-prototype`\n- `static-web-application`\n- `machine-learning-demo`\n- `interactive-utility`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `html`\n- `css`\n- `javascript`\n\n## Frontend\n\n- `canvas-api`\n- `canvas-drawing-input`\n- `image-upload`\n- `event-driven-ui`\n- `async-javascript`\n\n## Machine Learning\n\n- `tensorflow-js`\n- `browser-ml-inference`\n- `client-side-model-loading`\n- `handwritten-digit-recognition`\n- `image-preprocessing`\n- `browser-logistic-regression`\n- `model-artifact-loading`\n- `tensor-lifecycle-management`\n\n## Cloud and Delivery\n\n- `github-pages`\n- `static-site-deployment`\n- `static-model-deployment`\n"
+}

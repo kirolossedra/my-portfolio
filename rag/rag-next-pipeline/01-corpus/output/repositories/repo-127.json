@@ -1,0 +1,979 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 127,
+  "repository_total": 134,
+  "repository_name": "Mobile-Robots-Telecommunications",
+  "header_title": "Mobile-Robots-Telecommunications",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-127-Mobile-Robots-Telecommunications/README.md",
+    "line_start": 1,
+    "line_end": 662,
+    "sha256": "8fb89e039e5d48a6a7ca4bca4a914d4f4076dcfe54e7c321e0d00823a73b9371"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "wireless-networking",
+    "mobile-robotics",
+    "husky-robot",
+    "wifi",
+    "wifi-roaming",
+    "multi-ap",
+    "5g",
+    "5g-nsa",
+    "n78",
+    "quectel",
+    "qconnectmanager",
+    "linux-networking",
+    "ssh",
+    "iperf3",
+    "at-commands",
+    "minicom",
+    "rsrp",
+    "rsrq",
+    "rssi",
+    "sinr",
+    "snr",
+    "noise-floor",
+    "throughput-analysis",
+    "latency-analysis",
+    "packet-loss-analysis",
+    "retransmission-analysis",
+    "handover-analysis",
+    "mobility-analysis",
+    "timestamp-normalization",
+    "time-series-alignment",
+    "downsampling",
+    "cdf-analysis",
+    "correlation-analysis",
+    "statistical-analysis",
+    "latex-table-generation",
+    "browser-analysis-tools",
+    "html",
+    "javascript",
+    "research-collaboration",
+    "rogers-experiment",
+    "uwaterloo"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 127 / 138\n- Name: `Mobile-Robots-Telecommunications`\n- Start date: 2025-11-30\n- Latest meaningful update: 2025-12-25\n- Latest meaningful commit: `a82d7783edf5b219d59d327e231062e8b1fb9877`\n- Primary repository language metadata: HTML\n- Technical field: mobile-robot wireless networking, Wi-Fi and cellular experimental analysis\n- Domain: robotics telecommunications research\n- Context: Rogers / University of Waterloo mobile-robot networking experimentation\n- Collaboration type: `research-collaboration`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s013"
+      ],
+      "titles": [
+        "Repository Architecture"
+      ],
+      "text": "## Repository Architecture\nA useful high-level view is:\n\n```text\nPhysical robot + Wi-Fi / 5G links\n              ↓\nraw network / radio / mobility logs\n              ↓\ntimestamp normalization and preprocessing\n              ↓\nalignment across latency, throughput, and radio state\n              ↓\nstatistical aggregation\n              ↓\ninteractive plots / tables / exportable evidence\n```\n\nThe project has no single runtime service.\n\nInstead, the architecture is a pipeline of research artifacts."
+    },
+    "testing": {
+      "section_ids": [
+        "s035",
+        "s049"
+      ],
+      "titles": [
+        "Interface-Bound Network Testing",
+        "Experimental Verification and Reproducibility"
+      ],
+      "text": "## Interface-Bound Network Testing\nThe documentation includes ping and iperf3 commands that explicitly bind to the cellular interface.\n\nThis helps ensure the measurement traverses the intended network path.\n\n## Experimental Verification and Reproducibility\nThe repository contains multiple forms of positive reproducibility evidence.\n\n### Repeated Runs\n\nSeveral analysis tools explicitly accept multiple runs.\n\n### Controlled Experiment Configuration\n\nThe root README records:\n\n- access-point count,\n- transmit-power adjustment,\n- RF placement,\n- uplink/downlink direction,\n- noise-floor collection.\n\n### Stable Processing Pipeline\n\nPreprocessors convert older or heterogeneous formats into the formats expected by downstream tools.\n\n### Publication-Oriented Outputs\n\nLaTeX table generation makes the statistics transferable into research manuscripts or reports."
+    },
+    "documentation": {
+      "section_ids": [
+        "s049"
+      ],
+      "titles": [
+        "Experimental Verification and Reproducibility"
+      ],
+      "text": "## Experimental Verification and Reproducibility\nThe repository contains multiple forms of positive reproducibility evidence.\n\n### Repeated Runs\n\nSeveral analysis tools explicitly accept multiple runs.\n\n### Controlled Experiment Configuration\n\nThe root README records:\n\n- access-point count,\n- transmit-power adjustment,\n- RF placement,\n- uplink/downlink direction,\n- noise-floor collection.\n\n### Stable Processing Pipeline\n\nPreprocessors convert older or heterogeneous formats into the formats expected by downstream tools.\n\n### Publication-Oriented Outputs\n\nLaTeX table generation makes the statistics transferable into research manuscripts or reports."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 127 / 138\n- Name: `Mobile-Robots-Telecommunications`\n- Start date: 2025-11-30\n- Latest meaningful update: 2025-12-25\n- Latest meaningful commit: `a82d7783edf5b219d59d327e231062e8b1fb9877`\n- Primary repository language metadata: HTML\n- Technical field: mobile-robot wireless networking, Wi-Fi and cellular experimental analysis\n- Domain: robotics telecommunications research\n- Context: Rogers / University of Waterloo mobile-robot networking experimentation\n- Collaboration type: `research-collaboration`",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Evidence Context",
+      "normalized_title": "Collaboration and Evidence Context",
+      "key": "collaboration_and_evidence_context",
+      "path": [
+        "Collaboration and Evidence Context"
+      ],
+      "content": "This repository is a research tooling and operating journal rather than a conventional software product.\n\nThe root documentation explicitly names a `Rogers Experiment`.\n\nIt also refers to:\n\n- a Husky mobile robot,\n- University of Waterloo RoboHub infrastructure,\n- a credentialed UWaterloo QConnectManager repository,\n- Quectel cellular hardware,\n- Wi-Fi access-point configurations,\n- 5G experiments.\n\nThe appropriate interpretation is therefore a research collaboration context.\n\nRepository-specific HTML tools, experiment procedures, and analysis workflows are strong evidence of hands-on experimental engineering.\n\nThe QConnectManager driver itself is described as being cloned from a University of Waterloo repository and must be treated as external research infrastructure rather than owner-authored modem-driver code.",
+      "source_line_start": 16,
+      "source_line_end": 37
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Mobile-Robots-Telecommunications` is a research toolkit for collecting, aligning, processing, visualizing, and statistically analyzing wireless performance data while a mobile robot operates across Wi-Fi and 5G networks.\n\nThe project connects several experimental dimensions:\n\n- robot mobility,\n- Wi-Fi association and roaming,\n- 5G radio metrics,\n- latency,\n- throughput,\n- packet loss,\n- retransmissions,\n- signal quality,\n- multi-run statistics.\n\nThe repository is organized by wireless technology and experiment shape.\n\nMajor branches include:\n\n- Wi-Fi single-access-point analysis,\n- Wi-Fi mesh / multi-access-point analysis,\n- 5G modem operation,\n- 5G data processing.\n\nThe repository therefore bridges **experiment operation** and **post-processing**.\n\nIt is not just a set of plots.\n\nIt records how the networking experiment is run, how clocks are normalized, how raw outputs are transformed, and how mobility events are related to network performance.",
+      "source_line_start": 37,
+      "source_line_end": 68
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Mobile Robot Experimental Setup",
+      "normalized_title": "Mobile Robot Experimental Setup",
+      "key": "mobile_robot_experimental_setup",
+      "path": [
+        "Mobile Robot Experimental Setup"
+      ],
+      "content": "The root README documents basic Husky access.\n\nThe workflow includes:\n\n1. configuring the Ethernet host on the same subnet as the Husky,\n2. pinging the Husky to verify connectivity,\n3. connecting through SSH,\n4. enabling joystick operation.\n\nThis grounds the project in a physical robot workflow rather than a purely simulated network dataset.",
+      "source_line_start": 68,
+      "source_line_end": 81
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Rogers Experiment Workstreams",
+      "normalized_title": "Rogers Experiment Workstreams",
+      "key": "rogers_experiment_workstreams",
+      "path": [
+        "Rogers Experiment Workstreams"
+      ],
+      "content": "The documented completed work includes:\n\n- mid-range 5G modem sanity checking,\n- collecting useful AT-command behavior,\n- repeating a two-access-point Wi-Fi setup,\n- repeating a single-access-point Wi-Fi setup,\n- collecting uplink data,\n- collecting downlink data,\n- logging noise-floor information,\n- running separate 5G uplink and downlink tests.\n\nThese are concrete experimental operations.",
+      "source_line_start": 81,
+      "source_line_end": 96
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Experimental-System Improvements",
+      "normalized_title": "Experimental-System Improvements",
+      "key": "experimental_system_improvements",
+      "path": [
+        "Experimental-System Improvements"
+      ],
+      "content": "The root documentation records a sequence of changes intended to improve measurement quality and repeatability.\n\n### Unified Timestamps\n\nThe workflow was moved toward unified timestamps across:\n\n- logs,\n- latency data,\n- iperf data.\n\nThis matters because the entire analysis depends on aligning multiple time series.\n\n### Lightweight Multi-Laptop Arrangement\n\nThe experiment was reorganized around two Linux laptops.\n\nThis reduced system overhead and distributed experiment responsibilities.\n\n### Consolidated Logging\n\nInstead of generating multiple files for each access point, the process was changed toward generating logs once per experiment.\n\nThis reduces file-fragmentation and alignment complexity.\n\n### RF Placement\n\nThe equipment was moved onto a plastic shelf instead of directly on concrete.\n\nThis is an example of physical-layer experimental awareness rather than treating the network purely as software.\n\n### Access-Point Transmit Power\n\nTransmit power was reduced so that roaming could occur in the two-AP experiment.\n\nThat is an important research-control decision: the network was intentionally configured to expose the mobility phenomenon being studied.\n\n### Retransmission and Noise-Floor Data\n\nThe experiment scripts were updated to surface retransmission information and add noise-floor logging.",
+      "source_line_start": 96,
+      "source_line_end": 138
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Unified Timestamps",
+      "normalized_title": "Unified Timestamps",
+      "key": "unified_timestamps",
+      "path": [
+        "Experimental-System Improvements",
+        "Unified Timestamps"
+      ],
+      "content": "The workflow was moved toward unified timestamps across:\n\n- logs,\n- latency data,\n- iperf data.\n\nThis matters because the entire analysis depends on aligning multiple time series.",
+      "source_line_start": 100,
+      "source_line_end": 110
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Lightweight Multi-Laptop Arrangement",
+      "normalized_title": "Lightweight Multi-Laptop Arrangement",
+      "key": "lightweight_multi_laptop_arrangement",
+      "path": [
+        "Experimental-System Improvements",
+        "Lightweight Multi-Laptop Arrangement"
+      ],
+      "content": "The experiment was reorganized around two Linux laptops.\n\nThis reduced system overhead and distributed experiment responsibilities.",
+      "source_line_start": 110,
+      "source_line_end": 116
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Consolidated Logging",
+      "normalized_title": "Consolidated Logging",
+      "key": "consolidated_logging",
+      "path": [
+        "Experimental-System Improvements",
+        "Consolidated Logging"
+      ],
+      "content": "Instead of generating multiple files for each access point, the process was changed toward generating logs once per experiment.\n\nThis reduces file-fragmentation and alignment complexity.",
+      "source_line_start": 116,
+      "source_line_end": 122
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "RF Placement",
+      "normalized_title": "RF Placement",
+      "key": "rf_placement",
+      "path": [
+        "Experimental-System Improvements",
+        "RF Placement"
+      ],
+      "content": "The equipment was moved onto a plastic shelf instead of directly on concrete.\n\nThis is an example of physical-layer experimental awareness rather than treating the network purely as software.",
+      "source_line_start": 122,
+      "source_line_end": 128
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Access-Point Transmit Power",
+      "normalized_title": "Access-Point Transmit Power",
+      "key": "access_point_transmit_power",
+      "path": [
+        "Experimental-System Improvements",
+        "Access-Point Transmit Power"
+      ],
+      "content": "Transmit power was reduced so that roaming could occur in the two-AP experiment.\n\nThat is an important research-control decision: the network was intentionally configured to expose the mobility phenomenon being studied.",
+      "source_line_start": 128,
+      "source_line_end": 134
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Retransmission and Noise-Floor Data",
+      "normalized_title": "Retransmission and Noise-Floor Data",
+      "key": "retransmission_and_noise_floor_data",
+      "path": [
+        "Experimental-System Improvements",
+        "Retransmission and Noise-Floor Data"
+      ],
+      "content": "The experiment scripts were updated to surface retransmission information and add noise-floor logging.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Repository Architecture",
+      "normalized_title": "Repository Architecture",
+      "key": "repository_architecture",
+      "path": [
+        "Repository Architecture"
+      ],
+      "content": "A useful high-level view is:\n\n```text\nPhysical robot + Wi-Fi / 5G links\n              ↓\nraw network / radio / mobility logs\n              ↓\ntimestamp normalization and preprocessing\n              ↓\nalignment across latency, throughput, and radio state\n              ↓\nstatistical aggregation\n              ↓\ninteractive plots / tables / exportable evidence\n```\n\nThe project has no single runtime service.\n\nInstead, the architecture is a pipeline of research artifacts.",
+      "source_line_start": 138,
+      "source_line_end": 160
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Wi-Fi Single-AP Processing Suite",
+      "normalized_title": "Wi-Fi Single-AP Processing Suite",
+      "key": "wi_fi_single_ap_processing_suite",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite"
+      ],
+      "content": "The `Wi-Fi/Single AP` directory contains a sequence of browser tools identified as `sap1`, `sap2`, and later versions.\n\nThe README documents the purpose of these variants.\n\n### `sap1`\n\n`sap1` performs multi-run analysis of SNR with throughput and latency.\n\nIt supports:\n\n- multiple runs,\n- fixed-duration enforcement,\n- SNR averaging,\n- throughput averaging,\n- latency averaging,\n- latency segmentation,\n- SNR-versus-performance plotting.\n\n### `sap2`\n\n`sap2` builds on that analysis with:\n\n- latency outlier filtering,\n- contiguous latency-region statistics,\n- plotting of categorized regions.\n\n### `sap3`\n\n`sap3` focuses on statistical latency analysis.\n\nIts outputs include:\n\n- percentile summaries,\n- CDF information,\n- histograms,\n- copy-paste-ready LaTeX tables.\n\nThis is direct evidence of tooling aimed at research reporting, not merely visual inspection.\n\n### `sap4`\n\n`sap4` preserves the statistical workflow while moving from Unix timestamps to EST timestamps.\n\nThe distinction reflects an active effort to standardize time representation.\n\n### `sap5`\n\n`sap5` introduces time-range segmentation.\n\nIt can divide a run into:\n\n- a user-selected interval,\n- the remainder of the run.\n\nStatistics and tables are then generated separately for the segments.\n\nThis supports questions such as comparing motion or transition periods against the rest of the trajectory.\n\n### `sap6`\n\n`sap6` performs throughput-oriented statistics on iperf3 data.\n\nThe documented output includes:\n\n- throughput statistics,\n- time-series statistics,\n- jitter,\n- retransmits,\n- LaTeX-ready tables.\n\n### `sap7`\n\n`sap7` converts Unix timestamps in ping logs to Eastern time.\n\nIt acts as a preprocessing utility before downstream tools.\n\n### `sap8`\n\n`sap8` reduces 20 Hz ping data to 1 Hz by averaging groups of twenty measurements.\n\nThis addresses mismatched sampling rates across experiment sources.\n\n### `sap9` and `sap11`\n\nThese versions alter latency categorization/display thresholds while keeping the broader plotting workflow.\n\n### `sap10`\n\n`sap10` aligns throughput and latency based on throughput timestamps.\n\nThis is another concrete synchronization utility in the pipeline.\n\n### `sap12`\n\n`sap12` cleans ping data by:\n\n- removing duplicate entries,\n- inserting explicit lost-packet markers when sequence/timing gaps indicate loss.\n\nThis improves downstream loss-rate analysis.\n\n### `sap13`\n\nThe documented purpose of `sap13` is advanced statistical handling of high-variability latency data using randomized techniques.\n\nThe README describes randomized or bootstrap/Monte-Carlo-style filtering intended to reduce outlier bias.\n\n### Later Visual Iteration\n\n`sap15` and `sap16` represent stylistic/visual iteration on the analytical plotting tools.\n\nThis indicates that research presentation quality became part of the tooling workflow.",
+      "source_line_start": 160,
+      "source_line_end": 275
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "`sap1`",
+      "normalized_title": "sap1",
+      "key": "sap1",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap1`"
+      ],
+      "content": "`sap1` performs multi-run analysis of SNR with throughput and latency.\n\nIt supports:\n\n- multiple runs,\n- fixed-duration enforcement,\n- SNR averaging,\n- throughput averaging,\n- latency averaging,\n- latency segmentation,\n- SNR-versus-performance plotting.",
+      "source_line_start": 166,
+      "source_line_end": 180
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "`sap2`",
+      "normalized_title": "sap2",
+      "key": "sap2",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap2`"
+      ],
+      "content": "`sap2` builds on that analysis with:\n\n- latency outlier filtering,\n- contiguous latency-region statistics,\n- plotting of categorized regions.",
+      "source_line_start": 180,
+      "source_line_end": 188
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "`sap3`",
+      "normalized_title": "sap3",
+      "key": "sap3",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap3`"
+      ],
+      "content": "`sap3` focuses on statistical latency analysis.\n\nIts outputs include:\n\n- percentile summaries,\n- CDF information,\n- histograms,\n- copy-paste-ready LaTeX tables.\n\nThis is direct evidence of tooling aimed at research reporting, not merely visual inspection.",
+      "source_line_start": 188,
+      "source_line_end": 201
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "`sap4`",
+      "normalized_title": "sap4",
+      "key": "sap4",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap4`"
+      ],
+      "content": "`sap4` preserves the statistical workflow while moving from Unix timestamps to EST timestamps.\n\nThe distinction reflects an active effort to standardize time representation.",
+      "source_line_start": 201,
+      "source_line_end": 207
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "`sap5`",
+      "normalized_title": "sap5",
+      "key": "sap5",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap5`"
+      ],
+      "content": "`sap5` introduces time-range segmentation.\n\nIt can divide a run into:\n\n- a user-selected interval,\n- the remainder of the run.\n\nStatistics and tables are then generated separately for the segments.\n\nThis supports questions such as comparing motion or transition periods against the rest of the trajectory.",
+      "source_line_start": 207,
+      "source_line_end": 220
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "`sap6`",
+      "normalized_title": "sap6",
+      "key": "sap6",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap6`"
+      ],
+      "content": "`sap6` performs throughput-oriented statistics on iperf3 data.\n\nThe documented output includes:\n\n- throughput statistics,\n- time-series statistics,\n- jitter,\n- retransmits,\n- LaTeX-ready tables.",
+      "source_line_start": 220,
+      "source_line_end": 232
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "`sap7`",
+      "normalized_title": "sap7",
+      "key": "sap7",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap7`"
+      ],
+      "content": "`sap7` converts Unix timestamps in ping logs to Eastern time.\n\nIt acts as a preprocessing utility before downstream tools.",
+      "source_line_start": 232,
+      "source_line_end": 238
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "`sap8`",
+      "normalized_title": "sap8",
+      "key": "sap8",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap8`"
+      ],
+      "content": "`sap8` reduces 20 Hz ping data to 1 Hz by averaging groups of twenty measurements.\n\nThis addresses mismatched sampling rates across experiment sources.",
+      "source_line_start": 238,
+      "source_line_end": 244
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "`sap9` and `sap11`",
+      "normalized_title": "sap9 and sap11",
+      "key": "sap9_and_sap11",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap9` and `sap11`"
+      ],
+      "content": "These versions alter latency categorization/display thresholds while keeping the broader plotting workflow.",
+      "source_line_start": 244,
+      "source_line_end": 248
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "`sap10`",
+      "normalized_title": "sap10",
+      "key": "sap10",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap10`"
+      ],
+      "content": "`sap10` aligns throughput and latency based on throughput timestamps.\n\nThis is another concrete synchronization utility in the pipeline.",
+      "source_line_start": 248,
+      "source_line_end": 254
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "`sap12`",
+      "normalized_title": "sap12",
+      "key": "sap12",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap12`"
+      ],
+      "content": "`sap12` cleans ping data by:\n\n- removing duplicate entries,\n- inserting explicit lost-packet markers when sequence/timing gaps indicate loss.\n\nThis improves downstream loss-rate analysis.",
+      "source_line_start": 254,
+      "source_line_end": 263
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "`sap13`",
+      "normalized_title": "sap13",
+      "key": "sap13",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "`sap13`"
+      ],
+      "content": "The documented purpose of `sap13` is advanced statistical handling of high-variability latency data using randomized techniques.\n\nThe README describes randomized or bootstrap/Monte-Carlo-style filtering intended to reduce outlier bias.",
+      "source_line_start": 263,
+      "source_line_end": 269
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Later Visual Iteration",
+      "normalized_title": "Later Visual Iteration",
+      "key": "later_visual_iteration",
+      "path": [
+        "Wi-Fi Single-AP Processing Suite",
+        "Later Visual Iteration"
+      ],
+      "content": "`sap15` and `sap16` represent stylistic/visual iteration on the analytical plotting tools.\n\nThis indicates that research presentation quality became part of the tooling workflow.",
+      "source_line_start": 269,
+      "source_line_end": 275
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Wi-Fi Mesh / Roaming Analysis",
+      "normalized_title": "Wi-Fi Mesh / Roaming Analysis",
+      "key": "wi_fi_mesh_roaming_analysis",
+      "path": [
+        "Wi-Fi Mesh / Roaming Analysis"
+      ],
+      "content": "The `Wi-Fi/Mesh` directory shifts from a single AP to association changes between access points.\n\n### AP Presence\n\n`tap1` plots signal strength against access-point presence.\n\nThe analysis can therefore show which AP the client is associated with at a given time.\n\n### SNR and AP Association\n\n`tap2` plots SNR against AP presence.\n\nThis links radio quality directly with roaming/association state.\n\n### Performance Overlay\n\nThe documented `tap3` design overlays:\n\n- latency,\n- throughput,\n- AP1/AP2 presence.\n\nThe throughput stream is aligned with presence.\n\nThe tool also includes plot copy-to-clipboard behavior.\n\nThis is direct evidence of investigating network mobility rather than analyzing performance as a stationary aggregate.",
+      "source_line_start": 275,
+      "source_line_end": 305
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "AP Presence",
+      "normalized_title": "AP Presence",
+      "key": "ap_presence",
+      "path": [
+        "Wi-Fi Mesh / Roaming Analysis",
+        "AP Presence"
+      ],
+      "content": "`tap1` plots signal strength against access-point presence.\n\nThe analysis can therefore show which AP the client is associated with at a given time.",
+      "source_line_start": 279,
+      "source_line_end": 285
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "SNR and AP Association",
+      "normalized_title": "SNR and AP Association",
+      "key": "snr_and_ap_association",
+      "path": [
+        "Wi-Fi Mesh / Roaming Analysis",
+        "SNR and AP Association"
+      ],
+      "content": "`tap2` plots SNR against AP presence.\n\nThis links radio quality directly with roaming/association state.",
+      "source_line_start": 285,
+      "source_line_end": 291
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Performance Overlay",
+      "normalized_title": "Performance Overlay",
+      "key": "performance_overlay",
+      "path": [
+        "Wi-Fi Mesh / Roaming Analysis",
+        "Performance Overlay"
+      ],
+      "content": "The documented `tap3` design overlays:\n\n- latency,\n- throughput,\n- AP1/AP2 presence.\n\nThe throughput stream is aligned with presence.\n\nThe tool also includes plot copy-to-clipboard behavior.\n\nThis is direct evidence of investigating network mobility rather than analyzing performance as a stationary aggregate.",
+      "source_line_start": 291,
+      "source_line_end": 305
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "5G Operating Workflow",
+      "normalized_title": "G Operating Workflow",
+      "key": "g_operating_workflow",
+      "path": [
+        "5G Operating Workflow"
+      ],
+      "content": "The `5G/Operating/MidBand` documentation describes how a Quectel modem is brought into service under Linux.\n\n### ModemManager Isolation\n\nThe procedure stops Linux `ModemManager` when direct modem access is needed.\n\n### QConnectManager\n\nThe documented workflow clones UWaterloo's QConnectManager repository and builds it locally.\n\nThe project records:\n\n- compiling the driver/tooling,\n- running `quectel-CM`,\n- exposing a `wwan0` interface,\n- using IPv4 and IPv6.\n\nThe QConnectManager code itself is external research infrastructure.\n\nThe engineering evidence here concerns setup, integration, troubleshooting, and use in the experiment.\n\n### Interface-Bound Network Testing\n\nThe documentation includes ping and iperf3 commands that explicitly bind to the cellular interface.\n\nThis helps ensure the measurement traverses the intended network path.\n\n### AT Commands\n\nThe project uses serial AT commands through tools such as `minicom`.\n\n`AT+QENG=\"servingcell\"` is used to obtain serving-cell information.\n\n### LTE Metrics\n\nThe documentation interprets fields including:\n\n- MCC,\n- MNC,\n- Cell ID,\n- physical cell ID,\n- EARFCN,\n- band,\n- uplink/downlink bandwidth,\n- tracking-area code,\n- RSRP,\n- RSRQ,\n- RSSI,\n- SINR,\n- CQI,\n- transmit power.\n\n### 5G NSA Metrics\n\nFor the NR leg it interprets fields such as:\n\n- physical cell ID,\n- RSRP,\n- SINR,\n- RSRQ,\n- ARFCN,\n- band,\n- subcarrier information.\n\nThis is strong evidence of cellular measurement literacy and not merely use of a generic speed-test application.",
+      "source_line_start": 305,
+      "source_line_end": 373
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "ModemManager Isolation",
+      "normalized_title": "ModemManager Isolation",
+      "key": "modemmanager_isolation",
+      "path": [
+        "5G Operating Workflow",
+        "ModemManager Isolation"
+      ],
+      "content": "The procedure stops Linux `ModemManager` when direct modem access is needed.",
+      "source_line_start": 309,
+      "source_line_end": 313
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "QConnectManager",
+      "normalized_title": "QConnectManager",
+      "key": "qconnectmanager",
+      "path": [
+        "5G Operating Workflow",
+        "QConnectManager"
+      ],
+      "content": "The documented workflow clones UWaterloo's QConnectManager repository and builds it locally.\n\nThe project records:\n\n- compiling the driver/tooling,\n- running `quectel-CM`,\n- exposing a `wwan0` interface,\n- using IPv4 and IPv6.\n\nThe QConnectManager code itself is external research infrastructure.\n\nThe engineering evidence here concerns setup, integration, troubleshooting, and use in the experiment.",
+      "source_line_start": 313,
+      "source_line_end": 328
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Interface-Bound Network Testing",
+      "normalized_title": "Interface-Bound Network Testing",
+      "key": "interface_bound_network_testing",
+      "path": [
+        "5G Operating Workflow",
+        "Interface-Bound Network Testing"
+      ],
+      "content": "The documentation includes ping and iperf3 commands that explicitly bind to the cellular interface.\n\nThis helps ensure the measurement traverses the intended network path.",
+      "source_line_start": 328,
+      "source_line_end": 334
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "AT Commands",
+      "normalized_title": "AT Commands",
+      "key": "at_commands",
+      "path": [
+        "5G Operating Workflow",
+        "AT Commands"
+      ],
+      "content": "The project uses serial AT commands through tools such as `minicom`.\n\n`AT+QENG=\"servingcell\"` is used to obtain serving-cell information.",
+      "source_line_start": 334,
+      "source_line_end": 340
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "LTE Metrics",
+      "normalized_title": "LTE Metrics",
+      "key": "lte_metrics",
+      "path": [
+        "5G Operating Workflow",
+        "LTE Metrics"
+      ],
+      "content": "The documentation interprets fields including:\n\n- MCC,\n- MNC,\n- Cell ID,\n- physical cell ID,\n- EARFCN,\n- band,\n- uplink/downlink bandwidth,\n- tracking-area code,\n- RSRP,\n- RSRQ,\n- RSSI,\n- SINR,\n- CQI,\n- transmit power.",
+      "source_line_start": 340,
+      "source_line_end": 359
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "5G NSA Metrics",
+      "normalized_title": "G NSA Metrics",
+      "key": "g_nsa_metrics",
+      "path": [
+        "5G Operating Workflow",
+        "5G NSA Metrics"
+      ],
+      "content": "For the NR leg it interprets fields such as:\n\n- physical cell ID,\n- RSRP,\n- SINR,\n- RSRQ,\n- ARFCN,\n- band,\n- subcarrier information.\n\nThis is strong evidence of cellular measurement literacy and not merely use of a generic speed-test application.",
+      "source_line_start": 359,
+      "source_line_end": 373
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "5G Processing Suite",
+      "normalized_title": "G Processing Suite",
+      "key": "g_processing_suite",
+      "path": [
+        "5G Processing Suite"
+      ],
+      "content": "The `5G/Processing` directory contains `fg` analysis tools.\n\n### `fg1`: Unified Multi-Source Viewer\n\n`fg1` combines:\n\n- device JSON logs,\n- latency measurements,\n- iperf3 throughput.\n\nThe documentation explicitly notes that the input sources originally use mixed Unix and EST timestamps.\n\nThe tool is designed to synchronize them onto a common timeline for viewing.\n\n### `fg2`: Throughput Versus Radio Quality\n\n`fg2` aggregates multiple runs.\n\nIt relates throughput to radio metrics such as:\n\n- RSRP,\n- SINR,\n- RSSI.\n\nOutputs include:\n\n- box plots,\n- CDFs,\n- scatter plots,\n- correlation statistics.\n\n### `fg3`: Latency Versus Radio Quality\n\n`fg3` applies the same multi-run analytical idea to latency.\n\nThis provides a direct way to investigate whether radio-state degradation corresponds to latency degradation.\n\n### `fg4`: Timestamp Normalization\n\n`fg4` converts raw JSON log timestamps from Unix time into EST.\n\nThis preprocessing stage exists specifically to reduce ambiguity before multi-run correlation.\n\n### `fg5`: Mobility Impact\n\n`fg5` investigates throughput during mobility.\n\nThe documented analysis includes:\n\n- handovers,\n- AP switches,\n- walking-route transitions,\n- speed estimation from log transitions,\n- throughput degradation per mobility event.\n\nThat is one of the most distinctive research capabilities in the repository.\n\nIt moves analysis from static radio-quality correlation toward event-oriented mobility analysis.",
+      "source_line_start": 373,
+      "source_line_end": 434
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "`fg1`: Unified Multi-Source Viewer",
+      "normalized_title": "fg1: Unified Multi-Source Viewer",
+      "key": "fg1_unified_multi_source_viewer",
+      "path": [
+        "5G Processing Suite",
+        "`fg1`: Unified Multi-Source Viewer"
+      ],
+      "content": "`fg1` combines:\n\n- device JSON logs,\n- latency measurements,\n- iperf3 throughput.\n\nThe documentation explicitly notes that the input sources originally use mixed Unix and EST timestamps.\n\nThe tool is designed to synchronize them onto a common timeline for viewing.",
+      "source_line_start": 377,
+      "source_line_end": 389
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "`fg2`: Throughput Versus Radio Quality",
+      "normalized_title": "fg2: Throughput Versus Radio Quality",
+      "key": "fg2_throughput_versus_radio_quality",
+      "path": [
+        "5G Processing Suite",
+        "`fg2`: Throughput Versus Radio Quality"
+      ],
+      "content": "`fg2` aggregates multiple runs.\n\nIt relates throughput to radio metrics such as:\n\n- RSRP,\n- SINR,\n- RSSI.\n\nOutputs include:\n\n- box plots,\n- CDFs,\n- scatter plots,\n- correlation statistics.",
+      "source_line_start": 389,
+      "source_line_end": 406
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "`fg3`: Latency Versus Radio Quality",
+      "normalized_title": "fg3: Latency Versus Radio Quality",
+      "key": "fg3_latency_versus_radio_quality",
+      "path": [
+        "5G Processing Suite",
+        "`fg3`: Latency Versus Radio Quality"
+      ],
+      "content": "`fg3` applies the same multi-run analytical idea to latency.\n\nThis provides a direct way to investigate whether radio-state degradation corresponds to latency degradation.",
+      "source_line_start": 406,
+      "source_line_end": 412
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "`fg4`: Timestamp Normalization",
+      "normalized_title": "fg4: Timestamp Normalization",
+      "key": "fg4_timestamp_normalization",
+      "path": [
+        "5G Processing Suite",
+        "`fg4`: Timestamp Normalization"
+      ],
+      "content": "`fg4` converts raw JSON log timestamps from Unix time into EST.\n\nThis preprocessing stage exists specifically to reduce ambiguity before multi-run correlation.",
+      "source_line_start": 412,
+      "source_line_end": 418
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "`fg5`: Mobility Impact",
+      "normalized_title": "fg5: Mobility Impact",
+      "key": "fg5_mobility_impact",
+      "path": [
+        "5G Processing Suite",
+        "`fg5`: Mobility Impact"
+      ],
+      "content": "`fg5` investigates throughput during mobility.\n\nThe documented analysis includes:\n\n- handovers,\n- AP switches,\n- walking-route transitions,\n- speed estimation from log transitions,\n- throughput degradation per mobility event.\n\nThat is one of the most distinctive research capabilities in the repository.\n\nIt moves analysis from static radio-quality correlation toward event-oriented mobility analysis.",
+      "source_line_start": 418,
+      "source_line_end": 434
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Latest SNR Extraction Work",
+      "normalized_title": "Latest SNR Extraction Work",
+      "key": "latest_snr_extraction_work",
+      "path": [
+        "Latest SNR Extraction Work"
+      ],
+      "content": "The latest meaningful commit adds a browser-based SNR log extractor.\n\nIts commit description states that it supports:\n\n- log-file upload,\n- MAC-address input,\n- extraction of timestamps,\n- extraction of `Last_Rx_SNR` values,\n- user-facing processing.\n\nThis continues the pattern of making raw network logs directly usable through lightweight browser utilities.",
+      "source_line_start": 434,
+      "source_line_end": 448
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Browser-Based Research Utilities",
+      "normalized_title": "Browser-Based Research Utilities",
+      "key": "browser_based_research_utilities",
+      "path": [
+        "Browser-Based Research Utilities"
+      ],
+      "content": "A large fraction of this repository is implemented as standalone HTML tools.\n\nThis design has practical research advantages:\n\n- no application server is needed,\n- a tool can be opened locally,\n- raw logs can be processed interactively,\n- plots can be inspected immediately,\n- utilities can be iterated independently.\n\nThe HTML tools use JavaScript for parsing, transformation, plotting, and export behavior.",
+      "source_line_start": 448,
+      "source_line_end": 462
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Statistical Analysis Capability",
+      "normalized_title": "Statistical Analysis Capability",
+      "key": "statistical_analysis_capability",
+      "path": [
+        "Statistical Analysis Capability"
+      ],
+      "content": "Across the documented tools, the project uses or generates:\n\n- averages,\n- percentiles,\n- CDFs,\n- histograms,\n- box plots,\n- scatter plots,\n- correlations,\n- segmented statistics,\n- outlier handling,\n- packet-loss markers,\n- jitter/retransmission summaries,\n- multiple-run aggregation.\n\nThis is more than visualization.\n\nIt is an analytical pipeline from raw experimental logs to publication-ready evidence.",
+      "source_line_start": 462,
+      "source_line_end": 483
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Time-Series Engineering",
+      "normalized_title": "Time-Series Engineering",
+      "key": "time_series_engineering",
+      "path": [
+        "Time-Series Engineering"
+      ],
+      "content": "Time alignment is a recurring engineering concern throughout the repository.\n\nEvidence includes:\n\n- Unix-to-EST conversion,\n- mixed-source synchronization,\n- throughput/latency alignment,\n- 20 Hz to 1 Hz downsampling,\n- fixed-duration clipping,\n- time-range segmentation,\n- event overlays.\n\nThis is a core skill demonstrated by the project because radio, latency, throughput, and mobility sources originate from separate logging systems.",
+      "source_line_start": 483,
+      "source_line_end": 499
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Experimental Verification and Reproducibility",
+      "normalized_title": "Experimental Verification and Reproducibility",
+      "key": "experimental_verification_and_reproducibility",
+      "path": [
+        "Experimental Verification and Reproducibility"
+      ],
+      "content": "The repository contains multiple forms of positive reproducibility evidence.\n\n### Repeated Runs\n\nSeveral analysis tools explicitly accept multiple runs.\n\n### Controlled Experiment Configuration\n\nThe root README records:\n\n- access-point count,\n- transmit-power adjustment,\n- RF placement,\n- uplink/downlink direction,\n- noise-floor collection.\n\n### Stable Processing Pipeline\n\nPreprocessors convert older or heterogeneous formats into the formats expected by downstream tools.\n\n### Publication-Oriented Outputs\n\nLaTeX table generation makes the statistics transferable into research manuscripts or reports.",
+      "source_line_start": 499,
+      "source_line_end": 525
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Repeated Runs",
+      "normalized_title": "Repeated Runs",
+      "key": "repeated_runs",
+      "path": [
+        "Experimental Verification and Reproducibility",
+        "Repeated Runs"
+      ],
+      "content": "Several analysis tools explicitly accept multiple runs.",
+      "source_line_start": 503,
+      "source_line_end": 507
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Controlled Experiment Configuration",
+      "normalized_title": "Controlled Experiment Configuration",
+      "key": "controlled_experiment_configuration",
+      "path": [
+        "Experimental Verification and Reproducibility",
+        "Controlled Experiment Configuration"
+      ],
+      "content": "The root README records:\n\n- access-point count,\n- transmit-power adjustment,\n- RF placement,\n- uplink/downlink direction,\n- noise-floor collection.",
+      "source_line_start": 507,
+      "source_line_end": 517
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Stable Processing Pipeline",
+      "normalized_title": "Stable Processing Pipeline",
+      "key": "stable_processing_pipeline",
+      "path": [
+        "Experimental Verification and Reproducibility",
+        "Stable Processing Pipeline"
+      ],
+      "content": "Preprocessors convert older or heterogeneous formats into the formats expected by downstream tools.",
+      "source_line_start": 517,
+      "source_line_end": 521
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Publication-Oriented Outputs",
+      "normalized_title": "Publication-Oriented Outputs",
+      "key": "publication_oriented_outputs",
+      "path": [
+        "Experimental Verification and Reproducibility",
+        "Publication-Oriented Outputs"
+      ],
+      "content": "LaTeX table generation makes the statistics transferable into research manuscripts or reports.",
+      "source_line_start": 521,
+      "source_line_end": 525
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository contains many independent processing utilities and multiple experimental modes.\n\nThe complexity comes from crossing several dimensions at once:\n\n- physical motion,\n- two wireless technology families,\n- different access-point topologies,\n- radio metrics,\n- latency,\n- throughput,\n- packet loss,\n- mixed timestamp domains,\n- multiple runs.\n\nThe codebase is therefore best characterized as a research analysis toolbox rather than a single application.",
+      "source_line_start": 525,
+      "source_line_end": 543
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Wireless Networking\n\n- Wi-Fi measurement,\n- Wi-Fi roaming analysis,\n- 5G NSA measurement,\n- cellular modem operation,\n- serving-cell interpretation,\n- radio-quality analysis.\n\n### Mobile Robotics Experimentation\n\n- Husky network access,\n- physical robot operation,\n- mobility-path reasoning,\n- handover-event analysis.\n\n### Linux Networking\n\n- SSH,\n- interface-specific ping,\n- iperf3,\n- serial modem access,\n- ModemManager control.\n\n### Data Processing\n\n- log parsing,\n- timestamp normalization,\n- downsampling,\n- deduplication,\n- packet-loss reconstruction,\n- multi-stream synchronization.\n\n### Statistical Analysis\n\n- multi-run aggregation,\n- percentile analysis,\n- CDF analysis,\n- histogram/boxplot/scatter generation,\n- correlation statistics,\n- segmented analysis.\n\n### Research Reporting\n\n- LaTeX-ready table generation,\n- browser visualizations,\n- reusable preprocessing tools.",
+      "source_line_start": 543,
+      "source_line_end": 593
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Wireless Networking",
+      "normalized_title": "Wireless Networking",
+      "key": "wireless_networking",
+      "path": [
+        "Skills Demonstrated",
+        "Wireless Networking"
+      ],
+      "content": "- Wi-Fi measurement,\n- Wi-Fi roaming analysis,\n- 5G NSA measurement,\n- cellular modem operation,\n- serving-cell interpretation,\n- radio-quality analysis.",
+      "source_line_start": 545,
+      "source_line_end": 554
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Mobile Robotics Experimentation",
+      "normalized_title": "Mobile Robotics Experimentation",
+      "key": "mobile_robotics_experimentation",
+      "path": [
+        "Skills Demonstrated",
+        "Mobile Robotics Experimentation"
+      ],
+      "content": "- Husky network access,\n- physical robot operation,\n- mobility-path reasoning,\n- handover-event analysis.",
+      "source_line_start": 554,
+      "source_line_end": 561
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Linux Networking",
+      "normalized_title": "Linux Networking",
+      "key": "linux_networking",
+      "path": [
+        "Skills Demonstrated",
+        "Linux Networking"
+      ],
+      "content": "- SSH,\n- interface-specific ping,\n- iperf3,\n- serial modem access,\n- ModemManager control.",
+      "source_line_start": 561,
+      "source_line_end": 569
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Data Processing",
+      "normalized_title": "Data Processing",
+      "key": "data_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Data Processing"
+      ],
+      "content": "- log parsing,\n- timestamp normalization,\n- downsampling,\n- deduplication,\n- packet-loss reconstruction,\n- multi-stream synchronization.",
+      "source_line_start": 569,
+      "source_line_end": 578
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Statistical Analysis",
+      "normalized_title": "Statistical Analysis",
+      "key": "statistical_analysis",
+      "path": [
+        "Skills Demonstrated",
+        "Statistical Analysis"
+      ],
+      "content": "- multi-run aggregation,\n- percentile analysis,\n- CDF analysis,\n- histogram/boxplot/scatter generation,\n- correlation statistics,\n- segmented analysis.",
+      "source_line_start": 578,
+      "source_line_end": 587
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Research Reporting",
+      "normalized_title": "Research Reporting",
+      "key": "research_reporting",
+      "path": [
+        "Skills Demonstrated",
+        "Research Reporting"
+      ],
+      "content": "- LaTeX-ready table generation,\n- browser visualizations,\n- reusable preprocessing tools.",
+      "source_line_start": 587,
+      "source_line_end": 593
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "This repository shows a distinct shift from generating network traffic to systematically **interrogating the experiment**.\n\nEarlier FTP and networking repositories focus heavily on creating workloads.\n\nHere, the tooling increasingly asks:\n\n- what happened during motion,\n- when did association change,\n- what was the radio condition,\n- how did throughput or latency respond,\n- how can heterogeneous logs be aligned,\n- how can the result be summarized across runs.\n\nThat transition is central to the portfolio's research-engineering progression.",
+      "source_line_start": 593,
+      "source_line_end": 610
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Mobile-Robots-Telecommunications` is a mobile-network research toolbox built around the practical difficulties of measuring Wi-Fi and 5G performance on a moving robot.\n\nIt combines experiment operation, modem integration, raw-log cleanup, time normalization, statistical aggregation, mobility-event reasoning, and publication-oriented visualization.\n\nThe repository demonstrates that the engineering challenge is not only collecting throughput and latency.\n\nIt is building enough instrumentation and processing around those measurements to make cross-run and cross-layer conclusions defensible.\n\n# Project Tags\n\n- `wireless-networking`\n- `mobile-robotics`\n- `husky-robot`\n- `wifi`\n- `wifi-roaming`\n- `multi-ap`\n- `5g`\n- `5g-nsa`\n- `n78`\n- `quectel`\n- `qconnectmanager`\n- `linux-networking`\n- `ssh`\n- `iperf3`\n- `at-commands`\n- `minicom`\n- `rsrp`\n- `rsrq`\n- `rssi`\n- `sinr`\n- `snr`\n- `noise-floor`\n- `throughput-analysis`\n- `latency-analysis`\n- `packet-loss-analysis`\n- `retransmission-analysis`\n- `handover-analysis`\n- `mobility-analysis`\n- `timestamp-normalization`\n- `time-series-alignment`\n- `downsampling`\n- `cdf-analysis`\n- `correlation-analysis`\n- `statistical-analysis`\n- `latex-table-generation`\n- `browser-analysis-tools`\n- `html`\n- `javascript`\n- `research-collaboration`\n- `rogers-experiment`\n- `uwaterloo`",
+      "source_line_start": 610,
+      "source_line_end": 663
+    }
+  ],
+  "raw_analysis": "# Mobile-Robots-Telecommunications\n\n## Repository Identity\n\n- Repository: 127 / 138\n- Name: `Mobile-Robots-Telecommunications`\n- Start date: 2025-11-30\n- Latest meaningful update: 2025-12-25\n- Latest meaningful commit: `a82d7783edf5b219d59d327e231062e8b1fb9877`\n- Primary repository language metadata: HTML\n- Technical field: mobile-robot wireless networking, Wi-Fi and cellular experimental analysis\n- Domain: robotics telecommunications research\n- Context: Rogers / University of Waterloo mobile-robot networking experimentation\n- Collaboration type: `research-collaboration`\n\n## Collaboration and Evidence Context\n\nThis repository is a research tooling and operating journal rather than a conventional software product.\n\nThe root documentation explicitly names a `Rogers Experiment`.\n\nIt also refers to:\n\n- a Husky mobile robot,\n- University of Waterloo RoboHub infrastructure,\n- a credentialed UWaterloo QConnectManager repository,\n- Quectel cellular hardware,\n- Wi-Fi access-point configurations,\n- 5G experiments.\n\nThe appropriate interpretation is therefore a research collaboration context.\n\nRepository-specific HTML tools, experiment procedures, and analysis workflows are strong evidence of hands-on experimental engineering.\n\nThe QConnectManager driver itself is described as being cloned from a University of Waterloo repository and must be treated as external research infrastructure rather than owner-authored modem-driver code.\n\n## What This Project Is\n\n`Mobile-Robots-Telecommunications` is a research toolkit for collecting, aligning, processing, visualizing, and statistically analyzing wireless performance data while a mobile robot operates across Wi-Fi and 5G networks.\n\nThe project connects several experimental dimensions:\n\n- robot mobility,\n- Wi-Fi association and roaming,\n- 5G radio metrics,\n- latency,\n- throughput,\n- packet loss,\n- retransmissions,\n- signal quality,\n- multi-run statistics.\n\nThe repository is organized by wireless technology and experiment shape.\n\nMajor branches include:\n\n- Wi-Fi single-access-point analysis,\n- Wi-Fi mesh / multi-access-point analysis,\n- 5G modem operation,\n- 5G data processing.\n\nThe repository therefore bridges **experiment operation** and **post-processing**.\n\nIt is not just a set of plots.\n\nIt records how the networking experiment is run, how clocks are normalized, how raw outputs are transformed, and how mobility events are related to network performance.\n\n## Mobile Robot Experimental Setup\n\nThe root README documents basic Husky access.\n\nThe workflow includes:\n\n1. configuring the Ethernet host on the same subnet as the Husky,\n2. pinging the Husky to verify connectivity,\n3. connecting through SSH,\n4. enabling joystick operation.\n\nThis grounds the project in a physical robot workflow rather than a purely simulated network dataset.\n\n## Rogers Experiment Workstreams\n\nThe documented completed work includes:\n\n- mid-range 5G modem sanity checking,\n- collecting useful AT-command behavior,\n- repeating a two-access-point Wi-Fi setup,\n- repeating a single-access-point Wi-Fi setup,\n- collecting uplink data,\n- collecting downlink data,\n- logging noise-floor information,\n- running separate 5G uplink and downlink tests.\n\nThese are concrete experimental operations.\n\n## Experimental-System Improvements\n\nThe root documentation records a sequence of changes intended to improve measurement quality and repeatability.\n\n### Unified Timestamps\n\nThe workflow was moved toward unified timestamps across:\n\n- logs,\n- latency data,\n- iperf data.\n\nThis matters because the entire analysis depends on aligning multiple time series.\n\n### Lightweight Multi-Laptop Arrangement\n\nThe experiment was reorganized around two Linux laptops.\n\nThis reduced system overhead and distributed experiment responsibilities.\n\n### Consolidated Logging\n\nInstead of generating multiple files for each access point, the process was changed toward generating logs once per experiment.\n\nThis reduces file-fragmentation and alignment complexity.\n\n### RF Placement\n\nThe equipment was moved onto a plastic shelf instead of directly on concrete.\n\nThis is an example of physical-layer experimental awareness rather than treating the network purely as software.\n\n### Access-Point Transmit Power\n\nTransmit power was reduced so that roaming could occur in the two-AP experiment.\n\nThat is an important research-control decision: the network was intentionally configured to expose the mobility phenomenon being studied.\n\n### Retransmission and Noise-Floor Data\n\nThe experiment scripts were updated to surface retransmission information and add noise-floor logging.\n\n## Repository Architecture\n\nA useful high-level view is:\n\n```text\nPhysical robot + Wi-Fi / 5G links\n              ↓\nraw network / radio / mobility logs\n              ↓\ntimestamp normalization and preprocessing\n              ↓\nalignment across latency, throughput, and radio state\n              ↓\nstatistical aggregation\n              ↓\ninteractive plots / tables / exportable evidence\n```\n\nThe project has no single runtime service.\n\nInstead, the architecture is a pipeline of research artifacts.\n\n## Wi-Fi Single-AP Processing Suite\n\nThe `Wi-Fi/Single AP` directory contains a sequence of browser tools identified as `sap1`, `sap2`, and later versions.\n\nThe README documents the purpose of these variants.\n\n### `sap1`\n\n`sap1` performs multi-run analysis of SNR with throughput and latency.\n\nIt supports:\n\n- multiple runs,\n- fixed-duration enforcement,\n- SNR averaging,\n- throughput averaging,\n- latency averaging,\n- latency segmentation,\n- SNR-versus-performance plotting.\n\n### `sap2`\n\n`sap2` builds on that analysis with:\n\n- latency outlier filtering,\n- contiguous latency-region statistics,\n- plotting of categorized regions.\n\n### `sap3`\n\n`sap3` focuses on statistical latency analysis.\n\nIts outputs include:\n\n- percentile summaries,\n- CDF information,\n- histograms,\n- copy-paste-ready LaTeX tables.\n\nThis is direct evidence of tooling aimed at research reporting, not merely visual inspection.\n\n### `sap4`\n\n`sap4` preserves the statistical workflow while moving from Unix timestamps to EST timestamps.\n\nThe distinction reflects an active effort to standardize time representation.\n\n### `sap5`\n\n`sap5` introduces time-range segmentation.\n\nIt can divide a run into:\n\n- a user-selected interval,\n- the remainder of the run.\n\nStatistics and tables are then generated separately for the segments.\n\nThis supports questions such as comparing motion or transition periods against the rest of the trajectory.\n\n### `sap6`\n\n`sap6` performs throughput-oriented statistics on iperf3 data.\n\nThe documented output includes:\n\n- throughput statistics,\n- time-series statistics,\n- jitter,\n- retransmits,\n- LaTeX-ready tables.\n\n### `sap7`\n\n`sap7` converts Unix timestamps in ping logs to Eastern time.\n\nIt acts as a preprocessing utility before downstream tools.\n\n### `sap8`\n\n`sap8` reduces 20 Hz ping data to 1 Hz by averaging groups of twenty measurements.\n\nThis addresses mismatched sampling rates across experiment sources.\n\n### `sap9` and `sap11`\n\nThese versions alter latency categorization/display thresholds while keeping the broader plotting workflow.\n\n### `sap10`\n\n`sap10` aligns throughput and latency based on throughput timestamps.\n\nThis is another concrete synchronization utility in the pipeline.\n\n### `sap12`\n\n`sap12` cleans ping data by:\n\n- removing duplicate entries,\n- inserting explicit lost-packet markers when sequence/timing gaps indicate loss.\n\nThis improves downstream loss-rate analysis.\n\n### `sap13`\n\nThe documented purpose of `sap13` is advanced statistical handling of high-variability latency data using randomized techniques.\n\nThe README describes randomized or bootstrap/Monte-Carlo-style filtering intended to reduce outlier bias.\n\n### Later Visual Iteration\n\n`sap15` and `sap16` represent stylistic/visual iteration on the analytical plotting tools.\n\nThis indicates that research presentation quality became part of the tooling workflow.\n\n## Wi-Fi Mesh / Roaming Analysis\n\nThe `Wi-Fi/Mesh` directory shifts from a single AP to association changes between access points.\n\n### AP Presence\n\n`tap1` plots signal strength against access-point presence.\n\nThe analysis can therefore show which AP the client is associated with at a given time.\n\n### SNR and AP Association\n\n`tap2` plots SNR against AP presence.\n\nThis links radio quality directly with roaming/association state.\n\n### Performance Overlay\n\nThe documented `tap3` design overlays:\n\n- latency,\n- throughput,\n- AP1/AP2 presence.\n\nThe throughput stream is aligned with presence.\n\nThe tool also includes plot copy-to-clipboard behavior.\n\nThis is direct evidence of investigating network mobility rather than analyzing performance as a stationary aggregate.\n\n## 5G Operating Workflow\n\nThe `5G/Operating/MidBand` documentation describes how a Quectel modem is brought into service under Linux.\n\n### ModemManager Isolation\n\nThe procedure stops Linux `ModemManager` when direct modem access is needed.\n\n### QConnectManager\n\nThe documented workflow clones UWaterloo's QConnectManager repository and builds it locally.\n\nThe project records:\n\n- compiling the driver/tooling,\n- running `quectel-CM`,\n- exposing a `wwan0` interface,\n- using IPv4 and IPv6.\n\nThe QConnectManager code itself is external research infrastructure.\n\nThe engineering evidence here concerns setup, integration, troubleshooting, and use in the experiment.\n\n### Interface-Bound Network Testing\n\nThe documentation includes ping and iperf3 commands that explicitly bind to the cellular interface.\n\nThis helps ensure the measurement traverses the intended network path.\n\n### AT Commands\n\nThe project uses serial AT commands through tools such as `minicom`.\n\n`AT+QENG=\"servingcell\"` is used to obtain serving-cell information.\n\n### LTE Metrics\n\nThe documentation interprets fields including:\n\n- MCC,\n- MNC,\n- Cell ID,\n- physical cell ID,\n- EARFCN,\n- band,\n- uplink/downlink bandwidth,\n- tracking-area code,\n- RSRP,\n- RSRQ,\n- RSSI,\n- SINR,\n- CQI,\n- transmit power.\n\n### 5G NSA Metrics\n\nFor the NR leg it interprets fields such as:\n\n- physical cell ID,\n- RSRP,\n- SINR,\n- RSRQ,\n- ARFCN,\n- band,\n- subcarrier information.\n\nThis is strong evidence of cellular measurement literacy and not merely use of a generic speed-test application.\n\n## 5G Processing Suite\n\nThe `5G/Processing` directory contains `fg` analysis tools.\n\n### `fg1`: Unified Multi-Source Viewer\n\n`fg1` combines:\n\n- device JSON logs,\n- latency measurements,\n- iperf3 throughput.\n\nThe documentation explicitly notes that the input sources originally use mixed Unix and EST timestamps.\n\nThe tool is designed to synchronize them onto a common timeline for viewing.\n\n### `fg2`: Throughput Versus Radio Quality\n\n`fg2` aggregates multiple runs.\n\nIt relates throughput to radio metrics such as:\n\n- RSRP,\n- SINR,\n- RSSI.\n\nOutputs include:\n\n- box plots,\n- CDFs,\n- scatter plots,\n- correlation statistics.\n\n### `fg3`: Latency Versus Radio Quality\n\n`fg3` applies the same multi-run analytical idea to latency.\n\nThis provides a direct way to investigate whether radio-state degradation corresponds to latency degradation.\n\n### `fg4`: Timestamp Normalization\n\n`fg4` converts raw JSON log timestamps from Unix time into EST.\n\nThis preprocessing stage exists specifically to reduce ambiguity before multi-run correlation.\n\n### `fg5`: Mobility Impact\n\n`fg5` investigates throughput during mobility.\n\nThe documented analysis includes:\n\n- handovers,\n- AP switches,\n- walking-route transitions,\n- speed estimation from log transitions,\n- throughput degradation per mobility event.\n\nThat is one of the most distinctive research capabilities in the repository.\n\nIt moves analysis from static radio-quality correlation toward event-oriented mobility analysis.\n\n## Latest SNR Extraction Work\n\nThe latest meaningful commit adds a browser-based SNR log extractor.\n\nIts commit description states that it supports:\n\n- log-file upload,\n- MAC-address input,\n- extraction of timestamps,\n- extraction of `Last_Rx_SNR` values,\n- user-facing processing.\n\nThis continues the pattern of making raw network logs directly usable through lightweight browser utilities.\n\n## Browser-Based Research Utilities\n\nA large fraction of this repository is implemented as standalone HTML tools.\n\nThis design has practical research advantages:\n\n- no application server is needed,\n- a tool can be opened locally,\n- raw logs can be processed interactively,\n- plots can be inspected immediately,\n- utilities can be iterated independently.\n\nThe HTML tools use JavaScript for parsing, transformation, plotting, and export behavior.\n\n## Statistical Analysis Capability\n\nAcross the documented tools, the project uses or generates:\n\n- averages,\n- percentiles,\n- CDFs,\n- histograms,\n- box plots,\n- scatter plots,\n- correlations,\n- segmented statistics,\n- outlier handling,\n- packet-loss markers,\n- jitter/retransmission summaries,\n- multiple-run aggregation.\n\nThis is more than visualization.\n\nIt is an analytical pipeline from raw experimental logs to publication-ready evidence.\n\n## Time-Series Engineering\n\nTime alignment is a recurring engineering concern throughout the repository.\n\nEvidence includes:\n\n- Unix-to-EST conversion,\n- mixed-source synchronization,\n- throughput/latency alignment,\n- 20 Hz to 1 Hz downsampling,\n- fixed-duration clipping,\n- time-range segmentation,\n- event overlays.\n\nThis is a core skill demonstrated by the project because radio, latency, throughput, and mobility sources originate from separate logging systems.\n\n## Experimental Verification and Reproducibility\n\nThe repository contains multiple forms of positive reproducibility evidence.\n\n### Repeated Runs\n\nSeveral analysis tools explicitly accept multiple runs.\n\n### Controlled Experiment Configuration\n\nThe root README records:\n\n- access-point count,\n- transmit-power adjustment,\n- RF placement,\n- uplink/downlink direction,\n- noise-floor collection.\n\n### Stable Processing Pipeline\n\nPreprocessors convert older or heterogeneous formats into the formats expected by downstream tools.\n\n### Publication-Oriented Outputs\n\nLaTeX table generation makes the statistics transferable into research manuscripts or reports.\n\n## Scale and Complexity\n\nThe repository contains many independent processing utilities and multiple experimental modes.\n\nThe complexity comes from crossing several dimensions at once:\n\n- physical motion,\n- two wireless technology families,\n- different access-point topologies,\n- radio metrics,\n- latency,\n- throughput,\n- packet loss,\n- mixed timestamp domains,\n- multiple runs.\n\nThe codebase is therefore best characterized as a research analysis toolbox rather than a single application.\n\n## Skills Demonstrated\n\n### Wireless Networking\n\n- Wi-Fi measurement,\n- Wi-Fi roaming analysis,\n- 5G NSA measurement,\n- cellular modem operation,\n- serving-cell interpretation,\n- radio-quality analysis.\n\n### Mobile Robotics Experimentation\n\n- Husky network access,\n- physical robot operation,\n- mobility-path reasoning,\n- handover-event analysis.\n\n### Linux Networking\n\n- SSH,\n- interface-specific ping,\n- iperf3,\n- serial modem access,\n- ModemManager control.\n\n### Data Processing\n\n- log parsing,\n- timestamp normalization,\n- downsampling,\n- deduplication,\n- packet-loss reconstruction,\n- multi-stream synchronization.\n\n### Statistical Analysis\n\n- multi-run aggregation,\n- percentile analysis,\n- CDF analysis,\n- histogram/boxplot/scatter generation,\n- correlation statistics,\n- segmented analysis.\n\n### Research Reporting\n\n- LaTeX-ready table generation,\n- browser visualizations,\n- reusable preprocessing tools.\n\n## Historical Portfolio Significance\n\nThis repository shows a distinct shift from generating network traffic to systematically **interrogating the experiment**.\n\nEarlier FTP and networking repositories focus heavily on creating workloads.\n\nHere, the tooling increasingly asks:\n\n- what happened during motion,\n- when did association change,\n- what was the radio condition,\n- how did throughput or latency respond,\n- how can heterogeneous logs be aligned,\n- how can the result be summarized across runs.\n\nThat transition is central to the portfolio's research-engineering progression.\n\n## Overall Project Narrative\n\n`Mobile-Robots-Telecommunications` is a mobile-network research toolbox built around the practical difficulties of measuring Wi-Fi and 5G performance on a moving robot.\n\nIt combines experiment operation, modem integration, raw-log cleanup, time normalization, statistical aggregation, mobility-event reasoning, and publication-oriented visualization.\n\nThe repository demonstrates that the engineering challenge is not only collecting throughput and latency.\n\nIt is building enough instrumentation and processing around those measurements to make cross-run and cross-layer conclusions defensible.\n\n# Project Tags\n\n- `wireless-networking`\n- `mobile-robotics`\n- `husky-robot`\n- `wifi`\n- `wifi-roaming`\n- `multi-ap`\n- `5g`\n- `5g-nsa`\n- `n78`\n- `quectel`\n- `qconnectmanager`\n- `linux-networking`\n- `ssh`\n- `iperf3`\n- `at-commands`\n- `minicom`\n- `rsrp`\n- `rsrq`\n- `rssi`\n- `sinr`\n- `snr`\n- `noise-floor`\n- `throughput-analysis`\n- `latency-analysis`\n- `packet-loss-analysis`\n- `retransmission-analysis`\n- `handover-analysis`\n- `mobility-analysis`\n- `timestamp-normalization`\n- `time-series-alignment`\n- `downsampling`\n- `cdf-analysis`\n- `correlation-analysis`\n- `statistical-analysis`\n- `latex-table-generation`\n- `browser-analysis-tools`\n- `html`\n- `javascript`\n- `research-collaboration`\n- `rogers-experiment`\n- `uwaterloo`\n"
+}

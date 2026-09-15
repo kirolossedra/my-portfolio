@@ -1,0 +1,94 @@
+{
+  "artifacts": {
+    "document-catalog.json": {
+      "bytes": 97971,
+      "sha256": "b7efe1ea5a79d1ef3290d5e2e0ccc5c40d00dd1b3f5b50d2c681b043d97408fd"
+    },
+    "document-validation-report.txt": {
+      "bytes": 1812,
+      "sha256": "c8e05eb42ba96fa4b498ce57089efd83b9990bc18fa349425b74e15ae6f76302"
+    },
+    "documents.jsonl": {
+      "bytes": 19564118,
+      "sha256": "15ce24d918d35adf426588b6104b0c34965d3214a13d1c0b5359ed5ae5545d20"
+    },
+    "excluded-source-units.jsonl": {
+      "bytes": 1407994,
+      "sha256": "60eefe7a3b881b24a590404c98f3a850c8f66888fa3472ac8a33b57530c6a18a"
+    }
+  },
+  "created_at_utc": "2026-09-09T23:10:11+00:00",
+  "input": {
+    "bytes": 5359622,
+    "manifest_sha256": "fceddf7606d631f438d6a860ccbaea5a8b5b69f7617d93ffa05f39b33ed0b4f8",
+    "path": "rag-corpus/repositories.jsonl",
+    "repository_count": 134,
+    "sha256": "dc015b1f4c4565d166bf7027e2f74b2fc1459a37494c5c3b5c12f7d473481977"
+  },
+  "next_pipeline_input": "rag-corpus/retrieval-documents-v2/documents.jsonl",
+  "pipeline_name": "evidence-aware retrieval-document compilation",
+  "pipeline_step": "Step 2 v2",
+  "policy": {
+    "citation_fields": [
+      "text",
+      "source_fragments"
+    ],
+    "embedding_field": "embedding_text",
+    "generic_title_repository_threshold": 34,
+    "grouping": "source blocks grouped repository-wide by retrieval class + stable semantic area, then packed to target size",
+    "hard_max_document_words": 820,
+    "hard_max_source_block_words": 650,
+    "retrieval_classes": [
+      "direct_evidence",
+      "interpretation",
+      "limitation",
+      "chronology",
+      "metadata"
+    ],
+    "soft_min_words": 70,
+    "target_words": 380,
+    "template_detection": "cross-repository normalized source-block frequency + explicit recurring scaffold phrases",
+    "template_handling": "excluded only from derived retrieval payload; Step 1 canonical source remains untouched",
+    "template_repository_threshold": 8
+  },
+  "schema_version": "2.0.0",
+  "script": "build-rag-retrieval-documents-v2.py",
+  "statistics": {
+    "document_words_max": 406,
+    "document_words_median": 80,
+    "document_words_min": 3,
+    "documents": 1429,
+    "documents_by_class": {
+      "chronology": 18,
+      "direct_evidence": 160,
+      "interpretation": 1051,
+      "limitation": 42,
+      "metadata": 158
+    },
+    "documents_by_evidence_level": {
+      "implemented_or_concrete": 36,
+      "interpretive": 284,
+      "methodology_or_interpretive": 46,
+      "repository_limitation": 56,
+      "repository_specific": 1007
+    },
+    "documents_by_polarity": {
+      "mixed": 33,
+      "negative": 59,
+      "neutral": 469,
+      "positive": 868
+    },
+    "embedding_words_max": 462,
+    "embedding_words_median": 115,
+    "embedding_words_min": 28,
+    "excluded_blocks": 3026,
+    "fallback_documents": 0,
+    "fallback_repositories": 0,
+    "repositories_covered": 134,
+    "repository_total": 134,
+    "retained_blocks": 24560,
+    "source_blocks_total": 27586,
+    "template_blocks_suppressed": 324,
+    "tiny_generic_blocks_suppressed": 2702
+  }
+}

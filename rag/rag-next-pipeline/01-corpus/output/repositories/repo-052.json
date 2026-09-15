@@ -1,0 +1,457 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 52,
+  "repository_total": 134,
+  "repository_name": "NLP-with-classification-and-vector-spaces",
+  "header_title": "NLP-with-classification-and-vector-spaces",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-052-NLP-with-classification-and-vector-spaces/README.md",
+    "line_start": 1,
+    "line_end": 313,
+    "sha256": "6c4abdc7464f1fcb2ea9e3ed3f4e7a59ca5d46d3cdb703dfa676e60f27adff51"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-coursework",
+    "instructional-scaffold",
+    "python",
+    "jupyter-notebook",
+    "natural-language-processing",
+    "sentiment-analysis",
+    "nltk",
+    "twitter-samples",
+    "text-preprocessing",
+    "feature-engineering",
+    "frequency-dictionary",
+    "logistic-regression",
+    "gradient-descent",
+    "naive-bayes",
+    "log-probability",
+    "binary-classification",
+    "supervised-learning",
+    "train-test-split",
+    "accuracy-evaluation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NLP-with-classification-and-vector-spaces`\n- **Repository start date:** 2024-10-08\n- **Last meaningful update date:** 2024-10-08\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** NLP sentiment classification\n- **Algorithms:** logistic regression and Naive Bayes\n- **Core libraries:** NumPy, Pandas, NLTK\n- **Repository type:** structured NLP coursework\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** notebooks contain graded-function markers and instructional scaffolding"
+    },
+    "testing": {
+      "section_ids": [
+        "s018"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification is notebook/assignment based.\n\nThe notebooks contain:\n\n- explicit training/test splits,\n- accuracy functions,\n- expected-output checks.\n\nThere is no repository-level CI pipeline.\n\nThere is no external model-serving layer."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NLP-with-classification-and-vector-spaces`\n- **Repository start date:** 2024-10-08\n- **Last meaningful update date:** 2024-10-08\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** NLP sentiment classification\n- **Algorithms:** logistic regression and Naive Bayes\n- **Core libraries:** NumPy, Pandas, NLTK\n- **Repository type:** structured NLP coursework\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** notebooks contain graded-function markers and instructional scaffolding",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`NLP-with-classification-and-vector-spaces` contains two sentiment-analysis notebooks:\n\n- `Logistic_Regression_Simple_NLP.ipynb`,\n- `Sentiment_Analysis_with_Naive_Bayes.ipynb`.\n\nThe repository explores classical NLP classification using explicit feature/count models rather than deep neural networks.",
+      "source_line_start": 16,
+      "source_line_end": 25
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Dataset",
+      "normalized_title": "Dataset",
+      "key": "dataset",
+      "path": [
+        "Dataset"
+      ],
+      "content": "The logistic-regression notebook loads NLTK's `twitter_samples` corpus.\n\nIt separates:\n\n- positive tweets,\n- negative tweets.\n\nThe visible split produces:\n\n- 8,000 training labels,\n- 2,000 test labels.\n\nThis is a balanced binary sentiment-classification exercise.",
+      "source_line_start": 25,
+      "source_line_end": 41
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Text Preprocessing Infrastructure",
+      "normalized_title": "Text Preprocessing Infrastructure",
+      "key": "text_preprocessing_infrastructure",
+      "path": [
+        "Text Preprocessing Infrastructure"
+      ],
+      "content": "The notebook imports helper functions including:\n\n- `process_tweet`,\n- `build_freqs`.\n\nThe workflow includes stopword resources and tweet preprocessing.\n\nThose utilities are part of the assignment environment.\n\nThe corpus does not claim they were independently authored unless the repository provides such evidence.",
+      "source_line_start": 41,
+      "source_line_end": 54
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Frequency Dictionary",
+      "normalized_title": "Frequency Dictionary",
+      "key": "frequency_dictionary",
+      "path": [
+        "Frequency Dictionary"
+      ],
+      "content": "The logistic-regression workflow builds a frequency dictionary from labeled training tweets.\n\nThis creates class-aware word-frequency features.\n\nA tweet can then be represented through counts associated with positive and negative classes.\n\nThis is a manually interpretable feature-engineering approach.",
+      "source_line_start": 54,
+      "source_line_end": 64
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Logistic Regression",
+      "normalized_title": "Logistic Regression",
+      "key": "logistic_regression",
+      "path": [
+        "Logistic Regression"
+      ],
+      "content": "The notebook contains a graded `gradientDescent` function.\n\nThe function optimizes logistic-regression parameters iteratively.\n\nThe visible code path applies gradient descent over a feature matrix and labels.\n\nThis provides lower-level implementation evidence beyond calling a prebuilt classifier.",
+      "source_line_start": 64,
+      "source_line_end": 74
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Cost Optimization",
+      "normalized_title": "Cost Optimization",
+      "key": "cost_optimization",
+      "path": [
+        "Cost Optimization"
+      ],
+      "content": "The exercise returns both:\n\n- cost,\n- learned parameters.\n\nThis reinforces the connection between objective function minimization and model training.",
+      "source_line_start": 74,
+      "source_line_end": 83
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Prediction",
+      "normalized_title": "Prediction",
+      "key": "prediction",
+      "path": [
+        "Prediction"
+      ],
+      "content": "The notebook includes a logistic-regression prediction path.\n\nTweet features are converted into a numeric feature vector and scored with learned parameters.\n\nThe result is thresholded into sentiment class.",
+      "source_line_start": 83,
+      "source_line_end": 91
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Evaluation",
+      "normalized_title": "Evaluation",
+      "key": "evaluation",
+      "path": [
+        "Evaluation"
+      ],
+      "content": "The notebook contains an accuracy computation:\n\ncorrect predictions / total test examples.\n\nThis provides explicit evaluation logic.\n\nThe repository therefore covers:\n\ntraining\n→ prediction\n→ held-out evaluation.",
+      "source_line_start": 91,
+      "source_line_end": 105
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Naive Bayes Notebook",
+      "normalized_title": "Naive Bayes Notebook",
+      "key": "naive_bayes_notebook",
+      "path": [
+        "Naive Bayes Notebook"
+      ],
+      "content": "`Sentiment_Analysis_with_Naive_Bayes.ipynb` implements a second classical classifier over the same general sentiment domain.\n\nThe notebook includes a graded:\n\n`naive_bayes_predict(tweet, logprior, loglikelihood)`.",
+      "source_line_start": 105,
+      "source_line_end": 113
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Probabilistic Classification",
+      "normalized_title": "Probabilistic Classification",
+      "key": "probabilistic_classification",
+      "path": [
+        "Probabilistic Classification"
+      ],
+      "content": "The Naive Bayes approach models sentiment through:\n\n- prior probability,\n- per-word likelihood evidence,\n- log-domain accumulation.\n\nUsing log probabilities avoids multiplying many small probabilities directly.",
+      "source_line_start": 113,
+      "source_line_end": 123
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Log Prior",
+      "normalized_title": "Log Prior",
+      "key": "log_prior",
+      "path": [
+        "Log Prior"
+      ],
+      "content": "The model estimates the relative prior probability of positive vs negative sentiment.\n\nFor a balanced training set this term is correspondingly constrained.\n\nThe exercise makes that probabilistic component explicit.",
+      "source_line_start": 123,
+      "source_line_end": 131
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Log Likelihood",
+      "normalized_title": "Log Likelihood",
+      "key": "log_likelihood",
+      "path": [
+        "Log Likelihood"
+      ],
+      "content": "The classifier builds word-level likelihood information.\n\nFor each processed token, the prediction score accumulates evidence from the learned log-likelihood dictionary.\n\nThis creates an interpretable token contribution model.",
+      "source_line_start": 131,
+      "source_line_end": 139
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Naive Bayes Prediction",
+      "normalized_title": "Naive Bayes Prediction",
+      "key": "naive_bayes_prediction",
+      "path": [
+        "Naive Bayes Prediction"
+      ],
+      "content": "The visible `naive_bayes_predict` function accepts:\n\n- raw tweet,\n- log prior,\n- log-likelihood dictionary.\n\nIt preprocesses/evaluates the tweet and returns its sentiment score.",
+      "source_line_start": 139,
+      "source_line_end": 149
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Evaluation",
+      "normalized_title": "Evaluation",
+      "key": "evaluation",
+      "path": [
+        "Evaluation"
+      ],
+      "content": "The Naive Bayes notebook also defines accuracy as:\n\ncorrectly classified tweets / total tweets.\n\nThis allows comparison of two classical NLP approaches within the same repository.",
+      "source_line_start": 149,
+      "source_line_end": 157
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Classical NLP vs Deep Learning",
+      "normalized_title": "Classical NLP vs Deep Learning",
+      "key": "classical_nlp_vs_deep_learning",
+      "path": [
+        "Classical NLP vs Deep Learning"
+      ],
+      "content": "Chronologically this repository appears after deep-learning sequence exercises.\n\nIts value is different.\n\nIt revisits NLP with simpler statistical models where:\n\n- features are inspectable,\n- counts are explicit,\n- probabilities can be reasoned about directly.\n\nThis broadens rather than merely advances model complexity.",
+      "source_line_start": 157,
+      "source_line_end": 171
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Instructional Markers",
+      "normalized_title": "Instructional Markers",
+      "key": "instructional_markers",
+      "path": [
+        "Instructional Markers"
+      ],
+      "content": "The notebooks contain labels such as:\n\n- `UNQ_C...`,\n- `UNIQUE CELL IDENTIFIER`,\n- graded-function comments.\n\nThese are clear evidence of assignment scaffolding.\n\nLearner capability is attributed to completed function regions and executed exercises.\n\nInstructional prose/framework is not attributed as original repository design.",
+      "source_line_start": 171,
+      "source_line_end": 185
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is notebook/assignment based.\n\nThe notebooks contain:\n\n- explicit training/test splits,\n- accuracy functions,\n- expected-output checks.\n\nThere is no repository-level CI pipeline.\n\nThere is no external model-serving layer.",
+      "source_line_start": 185,
+      "source_line_end": 199
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### NLP\n\n- sentiment analysis\n- tweet preprocessing\n- token frequency features\n- supervised text classification\n\n### Logistic Regression\n\n- sigmoid-based classification\n- gradient descent\n- cost optimization\n- prediction\n- accuracy measurement\n\n### Naive Bayes\n\n- class priors\n- likelihood estimation\n- log probability\n- probabilistic prediction\n\n### Python\n\n- NumPy\n- Pandas\n- NLTK\n- Jupyter",
+      "source_line_start": 199,
+      "source_line_end": 230
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "NLP",
+      "normalized_title": "NLP",
+      "key": "nlp",
+      "path": [
+        "Skills Demonstrated",
+        "NLP"
+      ],
+      "content": "- sentiment analysis\n- tweet preprocessing\n- token frequency features\n- supervised text classification",
+      "source_line_start": 201,
+      "source_line_end": 208
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Logistic Regression",
+      "normalized_title": "Logistic Regression",
+      "key": "logistic_regression",
+      "path": [
+        "Skills Demonstrated",
+        "Logistic Regression"
+      ],
+      "content": "- sigmoid-based classification\n- gradient descent\n- cost optimization\n- prediction\n- accuracy measurement",
+      "source_line_start": 208,
+      "source_line_end": 216
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Naive Bayes",
+      "normalized_title": "Naive Bayes",
+      "key": "naive_bayes",
+      "path": [
+        "Skills Demonstrated",
+        "Naive Bayes"
+      ],
+      "content": "- class priors\n- likelihood estimation\n- log probability\n- probabilistic prediction",
+      "source_line_start": 216,
+      "source_line_end": 223
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- NumPy\n- Pandas\n- NLTK\n- Jupyter",
+      "source_line_start": 223,
+      "source_line_end": 230
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository develops the ability to construct NLP classifiers from interpretable statistical primitives.\n\nRather than hiding feature extraction behind an end-to-end neural network, the exercises expose:\n\n- frequency tables,\n- feature vectors,\n- optimization,\n- probability ratios.\n\nThis is valuable for understanding why a text classifier makes a decision.",
+      "source_line_start": 230,
+      "source_line_end": 243
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "The preceding sequence-model repository focused on RNNs, embeddings, and attention.\n\nThis repository moves sideways into classical NLP.\n\nThat gives the portfolio both:\n\n- neural sequence modeling,\n- classical statistical text classification.",
+      "source_line_start": 243,
+      "source_line_end": 254
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed repository centered specifically on NLP sentiment classification.\n\nIt is also the earliest observed Naive Bayes text-classification implementation in the corpus.",
+      "source_line_start": 254,
+      "source_line_end": 260
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scope Boundaries",
+      "normalized_title": "Scope Boundaries",
+      "key": "scope_boundaries",
+      "path": [
+        "Scope Boundaries"
+      ],
+      "content": "The repository does not implement a production sentiment API.\n\nIt does not contain model deployment.\n\nIt does not contain online inference infrastructure.\n\nIt does not contain a custom dataset collection pipeline.",
+      "source_line_start": 260,
+      "source_line_end": 270
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "The work is instructional.\n\nThe root README is effectively empty.\n\nPreprocessing helpers are referenced from assignment utilities.\n\nNo dependency lockfile is present.\n\nNo CI workflow exists.\n\nNo production monitoring or persistence is present.",
+      "source_line_start": 270,
+      "source_line_end": 284
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`NLP-with-classification-and-vector-spaces` is a compact but conceptually useful classical NLP repository.\n\nIt implements and evaluates two transparent sentiment models—logistic regression and Naive Bayes—over tweet data.\n\nIts strongest evidence lies in learner-completed optimization/prediction functions and explicit evaluation, while the corpus carefully preserves the surrounding assignment-scaffold provenance.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `jupyter-notebook`\n- `natural-language-processing`\n- `sentiment-analysis`\n- `nltk`\n- `twitter-samples`\n- `text-preprocessing`\n- `feature-engineering`\n- `frequency-dictionary`\n- `logistic-regression`\n- `gradient-descent`\n- `naive-bayes`\n- `log-probability`\n- `binary-classification`\n- `supervised-learning`\n- `train-test-split`\n- `accuracy-evaluation`",
+      "source_line_start": 284,
+      "source_line_end": 314
+    }
+  ],
+  "raw_analysis": "# Repository 052 — NLP-with-classification-and-vector-spaces\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NLP-with-classification-and-vector-spaces`\n- **Repository start date:** 2024-10-08\n- **Last meaningful update date:** 2024-10-08\n- **Primary implementation environment:** Jupyter Notebook / Python\n- **Primary domain:** NLP sentiment classification\n- **Algorithms:** logistic regression and Naive Bayes\n- **Core libraries:** NumPy, Pandas, NLTK\n- **Repository type:** structured NLP coursework\n- **Collaboration classification:** individual learning repository\n- **Authorship boundary:** notebooks contain graded-function markers and instructional scaffolding\n\n## What This Project Is\n\n`NLP-with-classification-and-vector-spaces` contains two sentiment-analysis notebooks:\n\n- `Logistic_Regression_Simple_NLP.ipynb`,\n- `Sentiment_Analysis_with_Naive_Bayes.ipynb`.\n\nThe repository explores classical NLP classification using explicit feature/count models rather than deep neural networks.\n\n## Dataset\n\nThe logistic-regression notebook loads NLTK's `twitter_samples` corpus.\n\nIt separates:\n\n- positive tweets,\n- negative tweets.\n\nThe visible split produces:\n\n- 8,000 training labels,\n- 2,000 test labels.\n\nThis is a balanced binary sentiment-classification exercise.\n\n## Text Preprocessing Infrastructure\n\nThe notebook imports helper functions including:\n\n- `process_tweet`,\n- `build_freqs`.\n\nThe workflow includes stopword resources and tweet preprocessing.\n\nThose utilities are part of the assignment environment.\n\nThe corpus does not claim they were independently authored unless the repository provides such evidence.\n\n## Frequency Dictionary\n\nThe logistic-regression workflow builds a frequency dictionary from labeled training tweets.\n\nThis creates class-aware word-frequency features.\n\nA tweet can then be represented through counts associated with positive and negative classes.\n\nThis is a manually interpretable feature-engineering approach.\n\n## Logistic Regression\n\nThe notebook contains a graded `gradientDescent` function.\n\nThe function optimizes logistic-regression parameters iteratively.\n\nThe visible code path applies gradient descent over a feature matrix and labels.\n\nThis provides lower-level implementation evidence beyond calling a prebuilt classifier.\n\n## Cost Optimization\n\nThe exercise returns both:\n\n- cost,\n- learned parameters.\n\nThis reinforces the connection between objective function minimization and model training.\n\n## Prediction\n\nThe notebook includes a logistic-regression prediction path.\n\nTweet features are converted into a numeric feature vector and scored with learned parameters.\n\nThe result is thresholded into sentiment class.\n\n## Evaluation\n\nThe notebook contains an accuracy computation:\n\ncorrect predictions / total test examples.\n\nThis provides explicit evaluation logic.\n\nThe repository therefore covers:\n\ntraining\n→ prediction\n→ held-out evaluation.\n\n## Naive Bayes Notebook\n\n`Sentiment_Analysis_with_Naive_Bayes.ipynb` implements a second classical classifier over the same general sentiment domain.\n\nThe notebook includes a graded:\n\n`naive_bayes_predict(tweet, logprior, loglikelihood)`.\n\n## Probabilistic Classification\n\nThe Naive Bayes approach models sentiment through:\n\n- prior probability,\n- per-word likelihood evidence,\n- log-domain accumulation.\n\nUsing log probabilities avoids multiplying many small probabilities directly.\n\n## Log Prior\n\nThe model estimates the relative prior probability of positive vs negative sentiment.\n\nFor a balanced training set this term is correspondingly constrained.\n\nThe exercise makes that probabilistic component explicit.\n\n## Log Likelihood\n\nThe classifier builds word-level likelihood information.\n\nFor each processed token, the prediction score accumulates evidence from the learned log-likelihood dictionary.\n\nThis creates an interpretable token contribution model.\n\n## Naive Bayes Prediction\n\nThe visible `naive_bayes_predict` function accepts:\n\n- raw tweet,\n- log prior,\n- log-likelihood dictionary.\n\nIt preprocesses/evaluates the tweet and returns its sentiment score.\n\n## Evaluation\n\nThe Naive Bayes notebook also defines accuracy as:\n\ncorrectly classified tweets / total tweets.\n\nThis allows comparison of two classical NLP approaches within the same repository.\n\n## Classical NLP vs Deep Learning\n\nChronologically this repository appears after deep-learning sequence exercises.\n\nIts value is different.\n\nIt revisits NLP with simpler statistical models where:\n\n- features are inspectable,\n- counts are explicit,\n- probabilities can be reasoned about directly.\n\nThis broadens rather than merely advances model complexity.\n\n## Instructional Markers\n\nThe notebooks contain labels such as:\n\n- `UNQ_C...`,\n- `UNIQUE CELL IDENTIFIER`,\n- graded-function comments.\n\nThese are clear evidence of assignment scaffolding.\n\nLearner capability is attributed to completed function regions and executed exercises.\n\nInstructional prose/framework is not attributed as original repository design.\n\n## Testing and Verification\n\nVerification is notebook/assignment based.\n\nThe notebooks contain:\n\n- explicit training/test splits,\n- accuracy functions,\n- expected-output checks.\n\nThere is no repository-level CI pipeline.\n\nThere is no external model-serving layer.\n\n## Skills Demonstrated\n\n### NLP\n\n- sentiment analysis\n- tweet preprocessing\n- token frequency features\n- supervised text classification\n\n### Logistic Regression\n\n- sigmoid-based classification\n- gradient descent\n- cost optimization\n- prediction\n- accuracy measurement\n\n### Naive Bayes\n\n- class priors\n- likelihood estimation\n- log probability\n- probabilistic prediction\n\n### Python\n\n- NumPy\n- Pandas\n- NLTK\n- Jupyter\n\n## Capability Developed\n\nThe repository develops the ability to construct NLP classifiers from interpretable statistical primitives.\n\nRather than hiding feature extraction behind an end-to-end neural network, the exercises expose:\n\n- frequency tables,\n- feature vectors,\n- optimization,\n- probability ratios.\n\nThis is valuable for understanding why a text classifier makes a decision.\n\n## Portfolio Evolution\n\nThe preceding sequence-model repository focused on RNNs, embeddings, and attention.\n\nThis repository moves sideways into classical NLP.\n\nThat gives the portfolio both:\n\n- neural sequence modeling,\n- classical statistical text classification.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed repository centered specifically on NLP sentiment classification.\n\nIt is also the earliest observed Naive Bayes text-classification implementation in the corpus.\n\n## Scope Boundaries\n\nThe repository does not implement a production sentiment API.\n\nIt does not contain model deployment.\n\nIt does not contain online inference infrastructure.\n\nIt does not contain a custom dataset collection pipeline.\n\n## Limitations\n\nThe work is instructional.\n\nThe root README is effectively empty.\n\nPreprocessing helpers are referenced from assignment utilities.\n\nNo dependency lockfile is present.\n\nNo CI workflow exists.\n\nNo production monitoring or persistence is present.\n\n## Overall Narrative\n\n`NLP-with-classification-and-vector-spaces` is a compact but conceptually useful classical NLP repository.\n\nIt implements and evaluates two transparent sentiment models—logistic regression and Naive Bayes—over tweet data.\n\nIts strongest evidence lies in learner-completed optimization/prediction functions and explicit evaluation, while the corpus carefully preserves the surrounding assignment-scaffold provenance.\n\n# Project Tags\n\n- `educational-project`\n- `individual-coursework`\n- `instructional-scaffold`\n- `python`\n- `jupyter-notebook`\n- `natural-language-processing`\n- `sentiment-analysis`\n- `nltk`\n- `twitter-samples`\n- `text-preprocessing`\n- `feature-engineering`\n- `frequency-dictionary`\n- `logistic-regression`\n- `gradient-descent`\n- `naive-bayes`\n- `log-probability`\n- `binary-classification`\n- `supervised-learning`\n- `train-test-split`\n- `accuracy-evaluation`\n"
+}

@@ -1,0 +1,1143 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 26,
+  "repository_total": 134,
+  "repository_name": "Sensors",
+  "header_title": "Sensors",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-026-Sensors/README.md",
+    "line_start": 1,
+    "line_end": 619,
+    "sha256": "e4668268ba7bc9d591d63882ac9d2dfd902f672bd2fefda2eb16c0737bba524d"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "sensor-processing-coursework",
+    "autonomous-vehicle-coursework",
+    "course-assignment-repository",
+    "individual-project",
+    "course-supplied-infrastructure",
+    "instructional-scaffold",
+    "cpp",
+    "python",
+    "numpy",
+    "jupyter-notebook",
+    "matplotlib",
+    "fft",
+    "radar",
+    "lidar",
+    "radar-range-equation",
+    "fmcw-radar",
+    "beat-frequency",
+    "doppler-velocity",
+    "signal-sampling",
+    "noise-injection",
+    "frequency-domain-analysis",
+    "pcl",
+    "point-cloud-processing",
+    "voxel-grid-filtering",
+    "crop-box-filtering",
+    "ransac-plane-segmentation",
+    "kd-tree",
+    "euclidean-clustering",
+    "bounding-boxes",
+    "pcd-io",
+    "pcd-streaming",
+    "obstacle-detection",
+    "cmake",
+    "boost-filesystem",
+    "eigen",
+    "executed-notebook-output",
+    "runtime-performance-timing",
+    "visual-simulation-verification",
+    "experimental-result-documentation",
+    "earliest-observed-pcl",
+    "earliest-observed-point-cloud-processing",
+    "earliest-observed-lidar-obstacle-pipeline",
+    "earliest-observed-radar-range-equation",
+    "earliest-observed-doppler-velocity-calculation",
+    "earliest-observed-sensor-fft"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 026 / 134\n- Name: `Sensors`\n- Repository start date: 2024-04-27\n- Last meaningful update date: 2024-07-13\n- Primary type: Sensor-processing coursework and experiment archive\n- Technical field: Autonomous vehicles, LIDAR point clouds, radar signal calculations\n- Application domain: Self-driving vehicle perception\n- Project context: Course-derived sensor-fusion study repository\n- Collaboration type: `individual-project` with `course-supplied-infrastructure`\n- Primary implementation environments: C++, Jupyter Notebook / Python\n- Core external library: Point Cloud Library (PCL)"
+    },
+    "architecture": {
+      "section_ids": [
+        "s008"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n### Radar Path\n\n```text\nRadar physical parameters\n      ↓\nwavelength / range equations\n      ↓\nchirp bandwidth + sweep time\n      ↓\nbeat-frequency range estimates\n      ↓\nDoppler frequency\n      ↓\nradial velocity estimates\n      ↓\nsynthetic sampled signal\n      ↓\nnoise injection\n      ↓\nFFT / frequency-domain analysis\n```\n\n### LIDAR Path\n\n```text\nLIDAR / PCD frame\n      ↓\nFilterCloud\n  ├─ voxel grid\n  ├─ ROI crop\n  └─ roof-point removal\n      ↓\nSegmentPlane\n  └─ PCL RANSAC plane model\n      ↓\nSeparateClouds\n  ├─ road plane\n  └─ obstacle cloud\n      ↓\nClustering\n  ├─ KD tree\n  └─ Euclidean clusters\n      ↓\nBoundingBox\n      ↓\nPCL visualization\n```\n\nFor streamed city data, the main loop repeatedly loads the next PCD frame, clears the viewer, runs the obstacle-detection pipeline, renders the result, and wraps back to the first frame at the end of the dataset."
+    },
+    "testing": {
+      "section_ids": [
+        "s041",
+        "s073"
+      ],
+      "titles": [
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Executed Notebook Outputs\n\nThe radar notebook contains persisted numerical outputs for wavelength, maximum range, beat-frequency/range examples, and Doppler-derived velocities.\n\n### Runtime Performance Instrumentation\n\nThe point-cloud processing functions time filtering, plane segmentation, and clustering using `std::chrono`.\n\nThey print elapsed milliseconds and, for clustering, the number of clusters found.\n\n### Visual Simulation Inspection\n\nThe repository preserves LIDAR simulation screenshots and a PCL viewer workflow.\n\n### Streamed Playback\n\nChronological PCD playback repeatedly runs the full detection pipeline over successive sensor frames, enabling observation across a sequence rather than only one static cloud.\n\n## Testing and Verification\n- `executed-notebook-output`\n- `runtime-performance-timing`\n- `visual-simulation-verification`\n- `experimental-result-documentation`"
+    },
+    "documentation": {
+      "section_ids": [
+        "s040"
+      ],
+      "titles": [
+        "Experimental Documentation"
+      ],
+      "text": "## Experimental Documentation\n`LIDAR/readme.md` preserves screenshots from different simulations.\n\nThe documented comparisons include:\n\n- initial LIDAR with one horizontal parameter;\n- higher horizontal parameter;\n- more LIDAR layers;\n- higher radial setting;\n- increased error.\n\nThis is direct evidence of varying sensor-model parameters and recording visual outcomes."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s051",
+        "s067"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Attribution Discipline",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThis repository requires explicit attribution boundaries.\n\nThe LIDAR project README identifies the material as the **Sensor Fusion Self-Driving Car Course** and links directly to Udacity's `SFND_Lidar_Obstacle_Detection` repository.\n\n`LIDAR/Project/CODEOWNERS` assigns the project tree to:\n\n`@udacity/active-public-content`\n\nThe LIDAR environment source also carries an `\\author Aaron Brown` comment.\n\nAccordingly, the repository-level architecture, scaffolding, README, rendering helpers, and supplied course structure should not be treated as wholly original personal engineering.\n\nAt the same time, the checked-in files contain filled TODO regions, task comments, parameter experimentation, simulation-result documentation, and notebook calculations that provide positive evidence of hands-on coursework execution.\n\nThe corpus therefore credits the exercised capabilities while explicitly marking the supplied infrastructure.\n\n## Attribution Discipline\nThe repository itself preserves Udacity ownership/scaffolding evidence, so the corpus separates hands-on exercised skills from supplied project infrastructure.\n\n## Collaboration and Authorship\n- `individual-project`\n- `course-supplied-infrastructure`\n- `instructional-scaffold`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 026 / 134\n- Name: `Sensors`\n- Repository start date: 2024-04-27\n- Last meaningful update date: 2024-07-13\n- Primary type: Sensor-processing coursework and experiment archive\n- Technical field: Autonomous vehicles, LIDAR point clouds, radar signal calculations\n- Application domain: Self-driving vehicle perception\n- Project context: Course-derived sensor-fusion study repository\n- Collaboration type: `individual-project` with `course-supplied-infrastructure`\n- Primary implementation environments: C++, Jupyter Notebook / Python\n- Core external library: Point Cloud Library (PCL)",
+      "source_line_start": 3,
+      "source_line_end": 17
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "This repository requires explicit attribution boundaries.\n\nThe LIDAR project README identifies the material as the **Sensor Fusion Self-Driving Car Course** and links directly to Udacity's `SFND_Lidar_Obstacle_Detection` repository.\n\n`LIDAR/Project/CODEOWNERS` assigns the project tree to:\n\n`@udacity/active-public-content`\n\nThe LIDAR environment source also carries an `\\author Aaron Brown` comment.\n\nAccordingly, the repository-level architecture, scaffolding, README, rendering helpers, and supplied course structure should not be treated as wholly original personal engineering.\n\nAt the same time, the checked-in files contain filled TODO regions, task comments, parameter experimentation, simulation-result documentation, and notebook calculations that provide positive evidence of hands-on coursework execution.\n\nThe corpus therefore credits the exercised capabilities while explicitly marking the supplied infrastructure.",
+      "source_line_start": 17,
+      "source_line_end": 35
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains two major technical strands:\n\n1. `Radar_.ipynb`;\n2. a `LIDAR` directory containing a PCL-based C++ project.\n\nThe LIDAR tree includes:\n\n- `CMakeLists.txt`;\n- `CODEOWNERS`;\n- course README;\n- `environment.cpp`;\n- `processPointClouds.cpp`;\n- `processPointClouds.h`;\n- rendering helpers;\n- `lidar.h`;\n- LIDAR result screenshots.\n\nThe radar notebook contains executed Python/NumPy cells, mathematical notes, numerical outputs, and plotted signal-processing exercises.",
+      "source_line_start": 35,
+      "source_line_end": 56
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Sensors` is a study repository for autonomous-vehicle sensing.\n\nThe radar notebook explores how automotive radar range and velocity are derived from physical and signal-processing relationships.\n\nThe LIDAR project processes point clouds into road/obstacle representations and object clusters using PCL.\n\nTogether these strands expose two complementary perception modalities:\n\n- radar for range, beat-frequency, Doppler, and frequency-domain reasoning;\n- LIDAR for dense 3D point-cloud filtering, segmentation, clustering, and bounding-box generation.\n\nThe repository is not simply conceptual notes: it contains executable calculations, executed notebook outputs, C++ processing functions, streamed PCD playback, and documented simulation images.",
+      "source_line_start": 56,
+      "source_line_end": 71
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Radar Study\n\n`Radar_.ipynb` covers:\n\n- carrier frequency;\n- wavelength;\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- radar cross section;\n- maximum radar range;\n- range resolution;\n- chirp bandwidth;\n- chirp sweep time;\n- beat frequency;\n- target range estimation;\n- Doppler frequency shift;\n- radial velocity estimation;\n- synthetic time-domain signals;\n- injected noise;\n- FFT-based frequency analysis.\n\n### LIDAR Study\n\nThe C++ project covers:\n\n- simulated LIDAR scanning;\n- point-cloud visualization;\n- voxel-grid downsampling;\n- region-of-interest cropping;\n- ego-vehicle roof removal;\n- plane/obstacle separation;\n- RANSAC plane segmentation through PCL;\n- KD-tree-backed Euclidean clustering;\n- 3D bounding boxes;\n- PCD save/load;\n- chronological PCD streaming;\n- repeated frame playback;\n- parameter tuning for city-block data.",
+      "source_line_start": 71,
+      "source_line_end": 113
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Radar Study",
+      "normalized_title": "Radar Study",
+      "key": "radar_study",
+      "path": [
+        "Project Scope",
+        "Radar Study"
+      ],
+      "content": "`Radar_.ipynb` covers:\n\n- carrier frequency;\n- wavelength;\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- radar cross section;\n- maximum radar range;\n- range resolution;\n- chirp bandwidth;\n- chirp sweep time;\n- beat frequency;\n- target range estimation;\n- Doppler frequency shift;\n- radial velocity estimation;\n- synthetic time-domain signals;\n- injected noise;\n- FFT-based frequency analysis.",
+      "source_line_start": 73,
+      "source_line_end": 95
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "LIDAR Study",
+      "normalized_title": "LIDAR Study",
+      "key": "lidar_study",
+      "path": [
+        "Project Scope",
+        "LIDAR Study"
+      ],
+      "content": "The C++ project covers:\n\n- simulated LIDAR scanning;\n- point-cloud visualization;\n- voxel-grid downsampling;\n- region-of-interest cropping;\n- ego-vehicle roof removal;\n- plane/obstacle separation;\n- RANSAC plane segmentation through PCL;\n- KD-tree-backed Euclidean clustering;\n- 3D bounding boxes;\n- PCD save/load;\n- chronological PCD streaming;\n- repeated frame playback;\n- parameter tuning for city-block data.",
+      "source_line_start": 95,
+      "source_line_end": 113
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "### Radar Path\n\n```text\nRadar physical parameters\n      ↓\nwavelength / range equations\n      ↓\nchirp bandwidth + sweep time\n      ↓\nbeat-frequency range estimates\n      ↓\nDoppler frequency\n      ↓\nradial velocity estimates\n      ↓\nsynthetic sampled signal\n      ↓\nnoise injection\n      ↓\nFFT / frequency-domain analysis\n```\n\n### LIDAR Path\n\n```text\nLIDAR / PCD frame\n      ↓\nFilterCloud\n  ├─ voxel grid\n  ├─ ROI crop\n  └─ roof-point removal\n      ↓\nSegmentPlane\n  └─ PCL RANSAC plane model\n      ↓\nSeparateClouds\n  ├─ road plane\n  └─ obstacle cloud\n      ↓\nClustering\n  ├─ KD tree\n  └─ Euclidean clusters\n      ↓\nBoundingBox\n      ↓\nPCL visualization\n```\n\nFor streamed city data, the main loop repeatedly loads the next PCD frame, clears the viewer, runs the obstacle-detection pipeline, renders the result, and wraps back to the first frame at the end of the dataset.",
+      "source_line_start": 113,
+      "source_line_end": 165
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Radar Path",
+      "normalized_title": "Radar Path",
+      "key": "radar_path",
+      "path": [
+        "Architecture and System Shape",
+        "Radar Path"
+      ],
+      "content": "```text\nRadar physical parameters\n      ↓\nwavelength / range equations\n      ↓\nchirp bandwidth + sweep time\n      ↓\nbeat-frequency range estimates\n      ↓\nDoppler frequency\n      ↓\nradial velocity estimates\n      ↓\nsynthetic sampled signal\n      ↓\nnoise injection\n      ↓\nFFT / frequency-domain analysis\n```",
+      "source_line_start": 115,
+      "source_line_end": 137
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "LIDAR Path",
+      "normalized_title": "LIDAR Path",
+      "key": "lidar_path",
+      "path": [
+        "Architecture and System Shape",
+        "LIDAR Path"
+      ],
+      "content": "```text\nLIDAR / PCD frame\n      ↓\nFilterCloud\n  ├─ voxel grid\n  ├─ ROI crop\n  └─ roof-point removal\n      ↓\nSegmentPlane\n  └─ PCL RANSAC plane model\n      ↓\nSeparateClouds\n  ├─ road plane\n  └─ obstacle cloud\n      ↓\nClustering\n  ├─ KD tree\n  └─ Euclidean clusters\n      ↓\nBoundingBox\n      ↓\nPCL visualization\n```\n\nFor streamed city data, the main loop repeatedly loads the next PCD frame, clears the viewer, runs the obstacle-detection pipeline, renders the result, and wraps back to the first frame at the end of the dataset.",
+      "source_line_start": 137,
+      "source_line_end": 165
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nThe radar notebook uses Python for executable engineering calculations.\n\n### NumPy\n\nNumPy is used for:\n\n- arrays;\n- synthetic signals;\n- random noise;\n- numerical operations;\n- FFT-related computation.\n\n### Matplotlib\n\nMatplotlib is used to visualize sampled/noisy signals and frequency-domain results in the notebook.\n\n### Jupyter / Colab-Style Notebook\n\nThe notebook preserves:\n\n- Markdown equations;\n- executable code;\n- numerical outputs;\n- plotted figures.\n\n### C++\n\nC++ implements the point-cloud pipeline.\n\n### Point Cloud Library (PCL)\n\nPCL is used for:\n\n- voxel-grid filtering;\n- crop boxes;\n- index extraction;\n- SAC/RANSAC plane segmentation;\n- KD-tree search;\n- Euclidean cluster extraction;\n- min/max 3D bounding-box calculation;\n- PCD I/O;\n- 3D visualization.\n\n### Eigen\n\nEigen vector types define crop-box boundaries.\n\n### Boost Filesystem\n\nBoost filesystem iteration is used to enumerate and sort PCD files for chronological playback.\n\n### CMake\n\nThe supplied project includes CMake configuration for the PCL-based executable.",
+      "source_line_start": 165,
+      "source_line_end": 224
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "The radar notebook uses Python for executable engineering calculations.",
+      "source_line_start": 167,
+      "source_line_end": 171
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "NumPy",
+      "normalized_title": "NumPy",
+      "key": "numpy",
+      "path": [
+        "Technical Stack",
+        "NumPy"
+      ],
+      "content": "NumPy is used for:\n\n- arrays;\n- synthetic signals;\n- random noise;\n- numerical operations;\n- FFT-related computation.",
+      "source_line_start": 171,
+      "source_line_end": 181
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Matplotlib",
+      "normalized_title": "Matplotlib",
+      "key": "matplotlib",
+      "path": [
+        "Technical Stack",
+        "Matplotlib"
+      ],
+      "content": "Matplotlib is used to visualize sampled/noisy signals and frequency-domain results in the notebook.",
+      "source_line_start": 181,
+      "source_line_end": 185
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Jupyter / Colab-Style Notebook",
+      "normalized_title": "Jupyter / Colab-Style Notebook",
+      "key": "jupyter_colab_style_notebook",
+      "path": [
+        "Technical Stack",
+        "Jupyter / Colab-Style Notebook"
+      ],
+      "content": "The notebook preserves:\n\n- Markdown equations;\n- executable code;\n- numerical outputs;\n- plotted figures.",
+      "source_line_start": 185,
+      "source_line_end": 194
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "C++",
+      "normalized_title": "C++",
+      "key": "c",
+      "path": [
+        "Technical Stack",
+        "C++"
+      ],
+      "content": "C++ implements the point-cloud pipeline.",
+      "source_line_start": 194,
+      "source_line_end": 198
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Point Cloud Library (PCL)",
+      "normalized_title": "Point Cloud Library (PCL)",
+      "key": "point_cloud_library_pcl",
+      "path": [
+        "Technical Stack",
+        "Point Cloud Library (PCL)"
+      ],
+      "content": "PCL is used for:\n\n- voxel-grid filtering;\n- crop boxes;\n- index extraction;\n- SAC/RANSAC plane segmentation;\n- KD-tree search;\n- Euclidean cluster extraction;\n- min/max 3D bounding-box calculation;\n- PCD I/O;\n- 3D visualization.",
+      "source_line_start": 198,
+      "source_line_end": 212
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Eigen",
+      "normalized_title": "Eigen",
+      "key": "eigen",
+      "path": [
+        "Technical Stack",
+        "Eigen"
+      ],
+      "content": "Eigen vector types define crop-box boundaries.",
+      "source_line_start": 212,
+      "source_line_end": 216
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Boost Filesystem",
+      "normalized_title": "Boost Filesystem",
+      "key": "boost_filesystem",
+      "path": [
+        "Technical Stack",
+        "Boost Filesystem"
+      ],
+      "content": "Boost filesystem iteration is used to enumerate and sort PCD files for chronological playback.",
+      "source_line_start": 216,
+      "source_line_end": 220
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "CMake",
+      "normalized_title": "CMake",
+      "key": "cmake",
+      "path": [
+        "Technical Stack",
+        "CMake"
+      ],
+      "content": "The supplied project includes CMake configuration for the PCL-based executable.",
+      "source_line_start": 220,
+      "source_line_end": 224
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Radar Engineering Work",
+      "normalized_title": "Radar Engineering Work",
+      "key": "radar_engineering_work",
+      "path": [
+        "Radar Engineering Work"
+      ],
+      "content": "### Radar Wavelength\n\nThe notebook sets an automotive radar carrier frequency of 77 GHz and computes wavelength using:\n\n```text\nlambda = c / fc\n```\n\nThe executed result is approximately 0.003896 m.\n\n### Radar Maximum Range\n\nThe notebook defines:\n\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- car radar cross-section;\n- wavelength.\n\nIt then evaluates a radar-equation-style fourth-root expression.\n\nThe preserved output reports a maximum range of approximately **218.87 meters** for the selected parameters.\n\n### Range Resolution and Chirp Design\n\nThe notebook computes chirp bandwidth from:\n\n```text\nB_sweep = c / (2 * range_resolution)\n```\n\nFor 1-meter range resolution, the executed value is 150 MHz.\n\nIt computes chirp sweep time from maximum range and propagation speed.\n\n### Beat-Frequency Range Estimation\n\nThe notebook evaluates several beat frequencies and converts them into ranges.\n\nPreserved outputs include:\n\n- 0 MHz → 0 m;\n- 1.1 MHz → 12.1 m;\n- 13 MHz → 143 m;\n- 24 MHz → 264 m.\n\nThis is direct hands-on evidence of FMCW-style beat-frequency/range reasoning.\n\n### Doppler Velocity Estimation\n\nThe notebook uses wavelength and Doppler frequency shift to calculate radial velocity.\n\nExecuted examples include both positive and negative shifts, preserving direction-sensitive velocity results.\n\n### Synthetic Signal and Noise\n\nA sampled signal is built from two sinusoids at distinct frequencies and then corrupted with random noise.\n\nThis creates a concrete input for frequency-domain inspection rather than discussing FFT only conceptually.\n\n### FFT Analysis\n\nThe notebook explicitly transitions to FFT-based frequency analysis of the sampled signal.",
+      "source_line_start": 224,
+      "source_line_end": 291
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Radar Wavelength",
+      "normalized_title": "Radar Wavelength",
+      "key": "radar_wavelength",
+      "path": [
+        "Radar Engineering Work",
+        "Radar Wavelength"
+      ],
+      "content": "The notebook sets an automotive radar carrier frequency of 77 GHz and computes wavelength using:\n\n```text\nlambda = c / fc\n```\n\nThe executed result is approximately 0.003896 m.",
+      "source_line_start": 226,
+      "source_line_end": 236
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Radar Maximum Range",
+      "normalized_title": "Radar Maximum Range",
+      "key": "radar_maximum_range",
+      "path": [
+        "Radar Engineering Work",
+        "Radar Maximum Range"
+      ],
+      "content": "The notebook defines:\n\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- car radar cross-section;\n- wavelength.\n\nIt then evaluates a radar-equation-style fourth-root expression.\n\nThe preserved output reports a maximum range of approximately **218.87 meters** for the selected parameters.",
+      "source_line_start": 236,
+      "source_line_end": 250
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Range Resolution and Chirp Design",
+      "normalized_title": "Range Resolution and Chirp Design",
+      "key": "range_resolution_and_chirp_design",
+      "path": [
+        "Radar Engineering Work",
+        "Range Resolution and Chirp Design"
+      ],
+      "content": "The notebook computes chirp bandwidth from:\n\n```text\nB_sweep = c / (2 * range_resolution)\n```\n\nFor 1-meter range resolution, the executed value is 150 MHz.\n\nIt computes chirp sweep time from maximum range and propagation speed.",
+      "source_line_start": 250,
+      "source_line_end": 262
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Beat-Frequency Range Estimation",
+      "normalized_title": "Beat-Frequency Range Estimation",
+      "key": "beat_frequency_range_estimation",
+      "path": [
+        "Radar Engineering Work",
+        "Beat-Frequency Range Estimation"
+      ],
+      "content": "The notebook evaluates several beat frequencies and converts them into ranges.\n\nPreserved outputs include:\n\n- 0 MHz → 0 m;\n- 1.1 MHz → 12.1 m;\n- 13 MHz → 143 m;\n- 24 MHz → 264 m.\n\nThis is direct hands-on evidence of FMCW-style beat-frequency/range reasoning.",
+      "source_line_start": 262,
+      "source_line_end": 275
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Doppler Velocity Estimation",
+      "normalized_title": "Doppler Velocity Estimation",
+      "key": "doppler_velocity_estimation",
+      "path": [
+        "Radar Engineering Work",
+        "Doppler Velocity Estimation"
+      ],
+      "content": "The notebook uses wavelength and Doppler frequency shift to calculate radial velocity.\n\nExecuted examples include both positive and negative shifts, preserving direction-sensitive velocity results.",
+      "source_line_start": 275,
+      "source_line_end": 281
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Synthetic Signal and Noise",
+      "normalized_title": "Synthetic Signal and Noise",
+      "key": "synthetic_signal_and_noise",
+      "path": [
+        "Radar Engineering Work",
+        "Synthetic Signal and Noise"
+      ],
+      "content": "A sampled signal is built from two sinusoids at distinct frequencies and then corrupted with random noise.\n\nThis creates a concrete input for frequency-domain inspection rather than discussing FFT only conceptually.",
+      "source_line_start": 281,
+      "source_line_end": 287
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "FFT Analysis",
+      "normalized_title": "FFT Analysis",
+      "key": "fft_analysis",
+      "path": [
+        "Radar Engineering Work",
+        "FFT Analysis"
+      ],
+      "content": "The notebook explicitly transitions to FFT-based frequency analysis of the sampled signal.",
+      "source_line_start": 287,
+      "source_line_end": 291
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "LIDAR Engineering Work",
+      "normalized_title": "LIDAR Engineering Work",
+      "key": "lidar_engineering_work",
+      "path": [
+        "LIDAR Engineering Work"
+      ],
+      "content": "### Simulated Highway Scanning\n\n`simpleHighway` initializes an ego vehicle and other cars.\n\nThe code creates a `Lidar` object, performs a scan, obtains a PCL point cloud, segments the road plane, clusters obstacle points, and renders clusters/bounding boxes.\n\nTask comments in the file document the exercised sequence.\n\n### Voxel-Grid Filtering\n\n`FilterCloud` applies `pcl::VoxelGrid` with a configurable leaf size.\n\nThis reduces point density before later processing stages.\n\n### Region-of-Interest Cropping\n\nA `pcl::CropBox` keeps points inside configured spatial boundaries.\n\nThis focuses processing on the road region relevant to the vehicle.\n\n### Ego-Vehicle Roof Removal\n\nA second crop box identifies the roof region.\n\nThose indices are passed to `pcl::ExtractIndices` with negative extraction so points belonging to the sensing vehicle are removed from the working cloud.\n\n### Plane Segmentation\n\n`SegmentPlane` configures `pcl::SACSegmentation` for:\n\n- coefficient optimization;\n- `SACMODEL_PLANE`;\n- `SAC_RANSAC`;\n- configured maximum iterations;\n- configured distance threshold.\n\nThe inlier set is then separated from obstacle points.\n\n### Road / Obstacle Separation\n\n`SeparateClouds` constructs:\n\n- a point cloud containing plane inliers;\n- an obstacle cloud containing the remaining points.\n\n### Euclidean Clustering\n\n`Clustering` builds a PCL KD tree and configures `pcl::EuclideanClusterExtraction`.\n\nParameters control:\n\n- spatial cluster tolerance;\n- minimum cluster size;\n- maximum cluster size.\n\nEach cluster is copied into its own point cloud.\n\n### Bounding Boxes\n\n`BoundingBox` uses `pcl::getMinMax3D` to construct an axis-aligned bounding box around each cluster.\n\n### PCD Storage and Playback\n\nThe processing class supports:\n\n- ASCII PCD save;\n- PCD load;\n- directory streaming;\n- chronological filename sorting.\n\nThe main loop repeatedly loads frames and runs the processing pipeline.\n\n### Parameter Tuning\n\nThe city-block code uses different clustering tolerances and point-count limits for denser real PCD data.\n\nComments explicitly note that the parameters were changed because the real point cloud contains many more points than the earlier test cloud.",
+      "source_line_start": 291,
+      "source_line_end": 371
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Simulated Highway Scanning",
+      "normalized_title": "Simulated Highway Scanning",
+      "key": "simulated_highway_scanning",
+      "path": [
+        "LIDAR Engineering Work",
+        "Simulated Highway Scanning"
+      ],
+      "content": "`simpleHighway` initializes an ego vehicle and other cars.\n\nThe code creates a `Lidar` object, performs a scan, obtains a PCL point cloud, segments the road plane, clusters obstacle points, and renders clusters/bounding boxes.\n\nTask comments in the file document the exercised sequence.",
+      "source_line_start": 293,
+      "source_line_end": 301
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Voxel-Grid Filtering",
+      "normalized_title": "Voxel-Grid Filtering",
+      "key": "voxel_grid_filtering",
+      "path": [
+        "LIDAR Engineering Work",
+        "Voxel-Grid Filtering"
+      ],
+      "content": "`FilterCloud` applies `pcl::VoxelGrid` with a configurable leaf size.\n\nThis reduces point density before later processing stages.",
+      "source_line_start": 301,
+      "source_line_end": 307
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Region-of-Interest Cropping",
+      "normalized_title": "Region-of-Interest Cropping",
+      "key": "region_of_interest_cropping",
+      "path": [
+        "LIDAR Engineering Work",
+        "Region-of-Interest Cropping"
+      ],
+      "content": "A `pcl::CropBox` keeps points inside configured spatial boundaries.\n\nThis focuses processing on the road region relevant to the vehicle.",
+      "source_line_start": 307,
+      "source_line_end": 313
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Ego-Vehicle Roof Removal",
+      "normalized_title": "Ego-Vehicle Roof Removal",
+      "key": "ego_vehicle_roof_removal",
+      "path": [
+        "LIDAR Engineering Work",
+        "Ego-Vehicle Roof Removal"
+      ],
+      "content": "A second crop box identifies the roof region.\n\nThose indices are passed to `pcl::ExtractIndices` with negative extraction so points belonging to the sensing vehicle are removed from the working cloud.",
+      "source_line_start": 313,
+      "source_line_end": 319
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Plane Segmentation",
+      "normalized_title": "Plane Segmentation",
+      "key": "plane_segmentation",
+      "path": [
+        "LIDAR Engineering Work",
+        "Plane Segmentation"
+      ],
+      "content": "`SegmentPlane` configures `pcl::SACSegmentation` for:\n\n- coefficient optimization;\n- `SACMODEL_PLANE`;\n- `SAC_RANSAC`;\n- configured maximum iterations;\n- configured distance threshold.\n\nThe inlier set is then separated from obstacle points.",
+      "source_line_start": 319,
+      "source_line_end": 331
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Road / Obstacle Separation",
+      "normalized_title": "Road / Obstacle Separation",
+      "key": "road_obstacle_separation",
+      "path": [
+        "LIDAR Engineering Work",
+        "Road / Obstacle Separation"
+      ],
+      "content": "`SeparateClouds` constructs:\n\n- a point cloud containing plane inliers;\n- an obstacle cloud containing the remaining points.",
+      "source_line_start": 331,
+      "source_line_end": 338
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Euclidean Clustering",
+      "normalized_title": "Euclidean Clustering",
+      "key": "euclidean_clustering",
+      "path": [
+        "LIDAR Engineering Work",
+        "Euclidean Clustering"
+      ],
+      "content": "`Clustering` builds a PCL KD tree and configures `pcl::EuclideanClusterExtraction`.\n\nParameters control:\n\n- spatial cluster tolerance;\n- minimum cluster size;\n- maximum cluster size.\n\nEach cluster is copied into its own point cloud.",
+      "source_line_start": 338,
+      "source_line_end": 350
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Bounding Boxes",
+      "normalized_title": "Bounding Boxes",
+      "key": "bounding_boxes",
+      "path": [
+        "LIDAR Engineering Work",
+        "Bounding Boxes"
+      ],
+      "content": "`BoundingBox` uses `pcl::getMinMax3D` to construct an axis-aligned bounding box around each cluster.",
+      "source_line_start": 350,
+      "source_line_end": 354
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "PCD Storage and Playback",
+      "normalized_title": "PCD Storage and Playback",
+      "key": "pcd_storage_and_playback",
+      "path": [
+        "LIDAR Engineering Work",
+        "PCD Storage and Playback"
+      ],
+      "content": "The processing class supports:\n\n- ASCII PCD save;\n- PCD load;\n- directory streaming;\n- chronological filename sorting.\n\nThe main loop repeatedly loads frames and runs the processing pipeline.",
+      "source_line_start": 354,
+      "source_line_end": 365
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Parameter Tuning",
+      "normalized_title": "Parameter Tuning",
+      "key": "parameter_tuning",
+      "path": [
+        "LIDAR Engineering Work",
+        "Parameter Tuning"
+      ],
+      "content": "The city-block code uses different clustering tolerances and point-count limits for denser real PCD data.\n\nComments explicitly note that the parameters were changed because the real point cloud contains many more points than the earlier test cloud.",
+      "source_line_start": 365,
+      "source_line_end": 371
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Experimental Documentation",
+      "normalized_title": "Experimental Documentation",
+      "key": "experimental_documentation",
+      "path": [
+        "Experimental Documentation"
+      ],
+      "content": "`LIDAR/readme.md` preserves screenshots from different simulations.\n\nThe documented comparisons include:\n\n- initial LIDAR with one horizontal parameter;\n- higher horizontal parameter;\n- more LIDAR layers;\n- higher radial setting;\n- increased error.\n\nThis is direct evidence of varying sensor-model parameters and recording visual outcomes.",
+      "source_line_start": 371,
+      "source_line_end": 385
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Executed Notebook Outputs\n\nThe radar notebook contains persisted numerical outputs for wavelength, maximum range, beat-frequency/range examples, and Doppler-derived velocities.\n\n### Runtime Performance Instrumentation\n\nThe point-cloud processing functions time filtering, plane segmentation, and clustering using `std::chrono`.\n\nThey print elapsed milliseconds and, for clustering, the number of clusters found.\n\n### Visual Simulation Inspection\n\nThe repository preserves LIDAR simulation screenshots and a PCL viewer workflow.\n\n### Streamed Playback\n\nChronological PCD playback repeatedly runs the full detection pipeline over successive sensor frames, enabling observation across a sequence rather than only one static cloud.",
+      "source_line_start": 385,
+      "source_line_end": 405
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Executed Notebook Outputs",
+      "normalized_title": "Executed Notebook Outputs",
+      "key": "executed_notebook_outputs",
+      "path": [
+        "Verification",
+        "Executed Notebook Outputs"
+      ],
+      "content": "The radar notebook contains persisted numerical outputs for wavelength, maximum range, beat-frequency/range examples, and Doppler-derived velocities.",
+      "source_line_start": 387,
+      "source_line_end": 391
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Runtime Performance Instrumentation",
+      "normalized_title": "Runtime Performance Instrumentation",
+      "key": "runtime_performance_instrumentation",
+      "path": [
+        "Verification",
+        "Runtime Performance Instrumentation"
+      ],
+      "content": "The point-cloud processing functions time filtering, plane segmentation, and clustering using `std::chrono`.\n\nThey print elapsed milliseconds and, for clustering, the number of clusters found.",
+      "source_line_start": 391,
+      "source_line_end": 397
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Visual Simulation Inspection",
+      "normalized_title": "Visual Simulation Inspection",
+      "key": "visual_simulation_inspection",
+      "path": [
+        "Verification",
+        "Visual Simulation Inspection"
+      ],
+      "content": "The repository preserves LIDAR simulation screenshots and a PCL viewer workflow.",
+      "source_line_start": 397,
+      "source_line_end": 401
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Streamed Playback",
+      "normalized_title": "Streamed Playback",
+      "key": "streamed_playback",
+      "path": [
+        "Verification",
+        "Streamed Playback"
+      ],
+      "content": "Chronological PCD playback repeatedly runs the full detection pipeline over successive sensor frames, enabling observation across a sequence rather than only one static cloud.",
+      "source_line_start": 401,
+      "source_line_end": 405
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Pipeline Decomposition\n\nPoint-cloud processing is separated into named operations:\n\n- filtering;\n- separation;\n- segmentation;\n- clustering;\n- bounding boxes;\n- persistence/streaming.\n\n### Parameterization\n\nFilter resolution, crop boundaries, RANSAC thresholds, clustering tolerance, and cluster sizes are configurable arguments.\n\n### Performance Measurement\n\nFiltering, segmentation, and clustering are explicitly timed.\n\n### Real-vs-Simulated Parameter Adaptation\n\nThe code uses different settings for the simple simulated highway and denser city-block PCD data.\n\n### Attribution Discipline\n\nThe repository itself preserves Udacity ownership/scaffolding evidence, so the corpus separates hands-on exercised skills from supplied project infrastructure.",
+      "source_line_start": 405,
+      "source_line_end": 434
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Pipeline Decomposition",
+      "normalized_title": "Pipeline Decomposition",
+      "key": "pipeline_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Pipeline Decomposition"
+      ],
+      "content": "Point-cloud processing is separated into named operations:\n\n- filtering;\n- separation;\n- segmentation;\n- clustering;\n- bounding boxes;\n- persistence/streaming.",
+      "source_line_start": 407,
+      "source_line_end": 418
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Parameterization",
+      "normalized_title": "Parameterization",
+      "key": "parameterization",
+      "path": [
+        "Engineering Practices",
+        "Parameterization"
+      ],
+      "content": "Filter resolution, crop boundaries, RANSAC thresholds, clustering tolerance, and cluster sizes are configurable arguments.",
+      "source_line_start": 418,
+      "source_line_end": 422
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Performance Measurement",
+      "normalized_title": "Performance Measurement",
+      "key": "performance_measurement",
+      "path": [
+        "Engineering Practices",
+        "Performance Measurement"
+      ],
+      "content": "Filtering, segmentation, and clustering are explicitly timed.",
+      "source_line_start": 422,
+      "source_line_end": 426
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Real-vs-Simulated Parameter Adaptation",
+      "normalized_title": "Real-vs-Simulated Parameter Adaptation",
+      "key": "real_vs_simulated_parameter_adaptation",
+      "path": [
+        "Engineering Practices",
+        "Real-vs-Simulated Parameter Adaptation"
+      ],
+      "content": "The code uses different settings for the simple simulated highway and denser city-block PCD data.",
+      "source_line_start": 426,
+      "source_line_end": 430
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Attribution Discipline",
+      "normalized_title": "Attribution Discipline",
+      "key": "attribution_discipline",
+      "path": [
+        "Engineering Practices",
+        "Attribution Discipline"
+      ],
+      "content": "The repository itself preserves Udacity ownership/scaffolding evidence, so the corpus separates hands-on exercised skills from supplied project infrastructure.",
+      "source_line_start": 430,
+      "source_line_end": 434
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Data Scale\n\nThe LIDAR pipeline operates on 3D point clouds and streamed PCD sequences.\n\n### Processing Scale\n\nEach frame passes through several computational stages before rendering.\n\n### Experimental Scale\n\nThe repository includes multiple LIDAR parameter variants plus a radar notebook with several physical/signal-processing exercises.\n\n### Conceptual Complexity\n\nThe repository connects:\n\n- radar physics;\n- sampled signals;\n- frequency-domain processing;\n- 3D geometry;\n- point-cloud filtering;\n- robust plane estimation;\n- spatial clustering;\n- autonomous-vehicle perception.",
+      "source_line_start": 434,
+      "source_line_end": 461
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Data Scale",
+      "normalized_title": "Data Scale",
+      "key": "data_scale",
+      "path": [
+        "Scale and Complexity",
+        "Data Scale"
+      ],
+      "content": "The LIDAR pipeline operates on 3D point clouds and streamed PCD sequences.",
+      "source_line_start": 436,
+      "source_line_end": 440
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Processing Scale",
+      "normalized_title": "Processing Scale",
+      "key": "processing_scale",
+      "path": [
+        "Scale and Complexity",
+        "Processing Scale"
+      ],
+      "content": "Each frame passes through several computational stages before rendering.",
+      "source_line_start": 440,
+      "source_line_end": 444
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Experimental Scale",
+      "normalized_title": "Experimental Scale",
+      "key": "experimental_scale",
+      "path": [
+        "Scale and Complexity",
+        "Experimental Scale"
+      ],
+      "content": "The repository includes multiple LIDAR parameter variants plus a radar notebook with several physical/signal-processing exercises.",
+      "source_line_start": 444,
+      "source_line_end": 448
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The repository connects:\n\n- radar physics;\n- sampled signals;\n- frequency-domain processing;\n- 3D geometry;\n- point-cloud filtering;\n- robust plane estimation;\n- spatial clustering;\n- autonomous-vehicle perception.",
+      "source_line_start": 448,
+      "source_line_end": 461
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Radar and Signal Processing\n\n- **Radar range equation exercises — strong coursework evidence.**\n- **FMCW beat-frequency range calculation — strong coursework evidence.**\n- **Doppler velocity calculation — strong coursework evidence.**\n- **Sampling and synthetic-signal generation — strong evidence.**\n- **Noise injection — strong evidence.**\n- **FFT/frequency-domain analysis — strong evidence.**\n\n### LIDAR / Point Clouds\n\n- **PCL point-cloud processing — strong coursework evidence.**\n- **Voxel-grid downsampling — strong evidence.**\n- **ROI cropping — strong evidence.**\n- **RANSAC plane segmentation — strong evidence.**\n- **KD-tree spatial search — strong evidence.**\n- **Euclidean clustering — strong evidence.**\n- **3D bounding boxes — strong evidence.**\n- **PCD loading/streaming — strong evidence.**\n- **3D visualization — strong evidence.**\n\n### Languages and Tools\n\n- **C++ — strong evidence.**\n- **Python — strong evidence.**\n- **NumPy — strong evidence.**\n- **Matplotlib — strong evidence.**\n- **Jupyter Notebook — strong evidence.**\n- **CMake — repository-level course infrastructure evidence.**\n\n### Engineering Practices\n\n- **Processing-pipeline decomposition — strong evidence.**\n- **Parameter tuning — strong evidence.**\n- **Runtime timing — strong evidence.**\n- **Experiment result documentation — strong evidence.**",
+      "source_line_start": 461,
+      "source_line_end": 500
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Radar and Signal Processing",
+      "normalized_title": "Radar and Signal Processing",
+      "key": "radar_and_signal_processing",
+      "path": [
+        "Skills Demonstrated",
+        "Radar and Signal Processing"
+      ],
+      "content": "- **Radar range equation exercises — strong coursework evidence.**\n- **FMCW beat-frequency range calculation — strong coursework evidence.**\n- **Doppler velocity calculation — strong coursework evidence.**\n- **Sampling and synthetic-signal generation — strong evidence.**\n- **Noise injection — strong evidence.**\n- **FFT/frequency-domain analysis — strong evidence.**",
+      "source_line_start": 463,
+      "source_line_end": 472
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "LIDAR / Point Clouds",
+      "normalized_title": "LIDAR / Point Clouds",
+      "key": "lidar_point_clouds",
+      "path": [
+        "Skills Demonstrated",
+        "LIDAR / Point Clouds"
+      ],
+      "content": "- **PCL point-cloud processing — strong coursework evidence.**\n- **Voxel-grid downsampling — strong evidence.**\n- **ROI cropping — strong evidence.**\n- **RANSAC plane segmentation — strong evidence.**\n- **KD-tree spatial search — strong evidence.**\n- **Euclidean clustering — strong evidence.**\n- **3D bounding boxes — strong evidence.**\n- **PCD loading/streaming — strong evidence.**\n- **3D visualization — strong evidence.**",
+      "source_line_start": 472,
+      "source_line_end": 484
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Languages and Tools",
+      "normalized_title": "Languages and Tools",
+      "key": "languages_and_tools",
+      "path": [
+        "Skills Demonstrated",
+        "Languages and Tools"
+      ],
+      "content": "- **C++ — strong evidence.**\n- **Python — strong evidence.**\n- **NumPy — strong evidence.**\n- **Matplotlib — strong evidence.**\n- **Jupyter Notebook — strong evidence.**\n- **CMake — repository-level course infrastructure evidence.**",
+      "source_line_start": 484,
+      "source_line_end": 493
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Skills Demonstrated",
+        "Engineering Practices"
+      ],
+      "content": "- **Processing-pipeline decomposition — strong evidence.**\n- **Parameter tuning — strong evidence.**\n- **Runtime timing — strong evidence.**\n- **Experiment result documentation — strong evidence.**",
+      "source_line_start": 493,
+      "source_line_end": 500
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "`Sensors` broadens the portfolio from software and digital systems into autonomous-vehicle perception.\n\nThe repository exercises two different sensing philosophies:\n\n- radar reduces electromagnetic/sampled-signal behavior into range and velocity estimates;\n- LIDAR turns spatial point returns into filtered road geometry and clustered obstacles.\n\nEven with the course-infrastructure boundary, the hands-on technical surface is substantial and introduces several perception and signal-processing capabilities not previously present together.",
+      "source_line_start": 500,
+      "source_line_end": 511
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- Point Cloud Library;\n- voxel-grid point-cloud filtering;\n- crop-box ROI filtering;\n- PCL RANSAC plane segmentation;\n- KD-tree-backed Euclidean point-cloud clustering;\n- PCD streaming;\n- LIDAR 3D obstacle bounding boxes;\n- radar maximum-range calculation;\n- beat-frequency-to-range calculation;\n- Doppler-frequency-to-velocity calculation;\n- notebook-based FFT signal analysis in a sensor context.\n\nThe earlier RADAR team repository already establishes radar/autonomous-vehicle collaboration; this repository adds concrete radar math exercises and detailed LIDAR point-cloud processing.",
+      "source_line_start": 511,
+      "source_line_end": 529
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Sensors` marks a major expansion of the autonomous-systems thread.\n\nIt records practical engagement with both radar signal concepts and LIDAR obstacle-processing pipelines, while also providing unusually explicit evidence of course-supplied infrastructure.\n\nThat makes it useful for later RAG queries about both technical capability and how coursework-based evidence should be weighted.",
+      "source_line_start": 529,
+      "source_line_end": 537
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Sensors` is a course-derived autonomous-vehicle sensing repository combining a radar notebook with a PCL-based LIDAR obstacle-detection project.\n\nThe radar work computes wavelength, radar range, chirp bandwidth, sweep time, beat-frequency range, Doppler velocity, and frequency-domain behavior of noisy sampled signals.\n\nThe LIDAR work filters point clouds through voxel grids and spatial crops, removes ego-vehicle points, segments road planes with PCL RANSAC, clusters obstacles with KD-tree-backed Euclidean extraction, generates bounding boxes, streams PCD frames, and records simulation results under changing sensor parameters.\n\nThe repository's strongest analytical interpretation is hands-on sensor-processing coursework built on explicitly supplied Udacity infrastructure.\n\n# Project Tags",
+      "source_line_start": 537,
+      "source_line_end": 549
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `sensor-processing-coursework`\n- `autonomous-vehicle-coursework`\n- `course-assignment-repository`",
+      "source_line_start": 549,
+      "source_line_end": 555
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`\n- `course-supplied-infrastructure`\n- `instructional-scaffold`",
+      "source_line_start": 555,
+      "source_line_end": 561
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `cpp`\n- `python`",
+      "source_line_start": 561,
+      "source_line_end": 566
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "Machine Learning and Numerical Computing",
+      "normalized_title": "Machine Learning and Numerical Computing",
+      "key": "machine_learning_and_numerical_computing",
+      "path": [
+        "Machine Learning and Numerical Computing"
+      ],
+      "content": "- `numpy`\n- `jupyter-notebook`\n- `matplotlib`\n- `fft`",
+      "source_line_start": 566,
+      "source_line_end": 573
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Sensors and Signal Processing",
+      "normalized_title": "Sensors and Signal Processing",
+      "key": "sensors_and_signal_processing",
+      "path": [
+        "Sensors and Signal Processing"
+      ],
+      "content": "- `radar`\n- `lidar`\n- `radar-range-equation`\n- `fmcw-radar`\n- `beat-frequency`\n- `doppler-velocity`\n- `signal-sampling`\n- `noise-injection`\n- `frequency-domain-analysis`",
+      "source_line_start": 573,
+      "source_line_end": 585
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Point Clouds and Perception",
+      "normalized_title": "Point Clouds and Perception",
+      "key": "point_clouds_and_perception",
+      "path": [
+        "Point Clouds and Perception"
+      ],
+      "content": "- `pcl`\n- `point-cloud-processing`\n- `voxel-grid-filtering`\n- `crop-box-filtering`\n- `ransac-plane-segmentation`\n- `kd-tree`\n- `euclidean-clustering`\n- `bounding-boxes`\n- `pcd-io`\n- `pcd-streaming`\n- `obstacle-detection`",
+      "source_line_start": 585,
+      "source_line_end": 599
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Build and Tooling",
+      "normalized_title": "Build and Tooling",
+      "key": "build_and_tooling",
+      "path": [
+        "Build and Tooling"
+      ],
+      "content": "- `cmake`\n- `boost-filesystem`\n- `eigen`",
+      "source_line_start": 599,
+      "source_line_end": 605
+    },
+    {
+      "id": "s073",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `executed-notebook-output`\n- `runtime-performance-timing`\n- `visual-simulation-verification`\n- `experimental-result-documentation`",
+      "source_line_start": 605,
+      "source_line_end": 612
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-pcl`\n- `earliest-observed-point-cloud-processing`\n- `earliest-observed-lidar-obstacle-pipeline`\n- `earliest-observed-radar-range-equation`\n- `earliest-observed-doppler-velocity-calculation`\n- `earliest-observed-sensor-fft`",
+      "source_line_start": 612,
+      "source_line_end": 620
+    }
+  ],
+  "raw_analysis": "# Sensors\n\n## Repository Identity\n\n- Repository: 026 / 134\n- Name: `Sensors`\n- Repository start date: 2024-04-27\n- Last meaningful update date: 2024-07-13\n- Primary type: Sensor-processing coursework and experiment archive\n- Technical field: Autonomous vehicles, LIDAR point clouds, radar signal calculations\n- Application domain: Self-driving vehicle perception\n- Project context: Course-derived sensor-fusion study repository\n- Collaboration type: `individual-project` with `course-supplied-infrastructure`\n- Primary implementation environments: C++, Jupyter Notebook / Python\n- Core external library: Point Cloud Library (PCL)\n\n## Collaboration and Authorship Context\n\nThis repository requires explicit attribution boundaries.\n\nThe LIDAR project README identifies the material as the **Sensor Fusion Self-Driving Car Course** and links directly to Udacity's `SFND_Lidar_Obstacle_Detection` repository.\n\n`LIDAR/Project/CODEOWNERS` assigns the project tree to:\n\n`@udacity/active-public-content`\n\nThe LIDAR environment source also carries an `\\author Aaron Brown` comment.\n\nAccordingly, the repository-level architecture, scaffolding, README, rendering helpers, and supplied course structure should not be treated as wholly original personal engineering.\n\nAt the same time, the checked-in files contain filled TODO regions, task comments, parameter experimentation, simulation-result documentation, and notebook calculations that provide positive evidence of hands-on coursework execution.\n\nThe corpus therefore credits the exercised capabilities while explicitly marking the supplied infrastructure.\n\n## Evidence Basis\n\nThe repository contains two major technical strands:\n\n1. `Radar_.ipynb`;\n2. a `LIDAR` directory containing a PCL-based C++ project.\n\nThe LIDAR tree includes:\n\n- `CMakeLists.txt`;\n- `CODEOWNERS`;\n- course README;\n- `environment.cpp`;\n- `processPointClouds.cpp`;\n- `processPointClouds.h`;\n- rendering helpers;\n- `lidar.h`;\n- LIDAR result screenshots.\n\nThe radar notebook contains executed Python/NumPy cells, mathematical notes, numerical outputs, and plotted signal-processing exercises.\n\n## What This Project Is\n\n`Sensors` is a study repository for autonomous-vehicle sensing.\n\nThe radar notebook explores how automotive radar range and velocity are derived from physical and signal-processing relationships.\n\nThe LIDAR project processes point clouds into road/obstacle representations and object clusters using PCL.\n\nTogether these strands expose two complementary perception modalities:\n\n- radar for range, beat-frequency, Doppler, and frequency-domain reasoning;\n- LIDAR for dense 3D point-cloud filtering, segmentation, clustering, and bounding-box generation.\n\nThe repository is not simply conceptual notes: it contains executable calculations, executed notebook outputs, C++ processing functions, streamed PCD playback, and documented simulation images.\n\n## Project Scope\n\n### Radar Study\n\n`Radar_.ipynb` covers:\n\n- carrier frequency;\n- wavelength;\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- radar cross section;\n- maximum radar range;\n- range resolution;\n- chirp bandwidth;\n- chirp sweep time;\n- beat frequency;\n- target range estimation;\n- Doppler frequency shift;\n- radial velocity estimation;\n- synthetic time-domain signals;\n- injected noise;\n- FFT-based frequency analysis.\n\n### LIDAR Study\n\nThe C++ project covers:\n\n- simulated LIDAR scanning;\n- point-cloud visualization;\n- voxel-grid downsampling;\n- region-of-interest cropping;\n- ego-vehicle roof removal;\n- plane/obstacle separation;\n- RANSAC plane segmentation through PCL;\n- KD-tree-backed Euclidean clustering;\n- 3D bounding boxes;\n- PCD save/load;\n- chronological PCD streaming;\n- repeated frame playback;\n- parameter tuning for city-block data.\n\n## Architecture and System Shape\n\n### Radar Path\n\n```text\nRadar physical parameters\n      ↓\nwavelength / range equations\n      ↓\nchirp bandwidth + sweep time\n      ↓\nbeat-frequency range estimates\n      ↓\nDoppler frequency\n      ↓\nradial velocity estimates\n      ↓\nsynthetic sampled signal\n      ↓\nnoise injection\n      ↓\nFFT / frequency-domain analysis\n```\n\n### LIDAR Path\n\n```text\nLIDAR / PCD frame\n      ↓\nFilterCloud\n  ├─ voxel grid\n  ├─ ROI crop\n  └─ roof-point removal\n      ↓\nSegmentPlane\n  └─ PCL RANSAC plane model\n      ↓\nSeparateClouds\n  ├─ road plane\n  └─ obstacle cloud\n      ↓\nClustering\n  ├─ KD tree\n  └─ Euclidean clusters\n      ↓\nBoundingBox\n      ↓\nPCL visualization\n```\n\nFor streamed city data, the main loop repeatedly loads the next PCD frame, clears the viewer, runs the obstacle-detection pipeline, renders the result, and wraps back to the first frame at the end of the dataset.\n\n## Technical Stack\n\n### Python\n\nThe radar notebook uses Python for executable engineering calculations.\n\n### NumPy\n\nNumPy is used for:\n\n- arrays;\n- synthetic signals;\n- random noise;\n- numerical operations;\n- FFT-related computation.\n\n### Matplotlib\n\nMatplotlib is used to visualize sampled/noisy signals and frequency-domain results in the notebook.\n\n### Jupyter / Colab-Style Notebook\n\nThe notebook preserves:\n\n- Markdown equations;\n- executable code;\n- numerical outputs;\n- plotted figures.\n\n### C++\n\nC++ implements the point-cloud pipeline.\n\n### Point Cloud Library (PCL)\n\nPCL is used for:\n\n- voxel-grid filtering;\n- crop boxes;\n- index extraction;\n- SAC/RANSAC plane segmentation;\n- KD-tree search;\n- Euclidean cluster extraction;\n- min/max 3D bounding-box calculation;\n- PCD I/O;\n- 3D visualization.\n\n### Eigen\n\nEigen vector types define crop-box boundaries.\n\n### Boost Filesystem\n\nBoost filesystem iteration is used to enumerate and sort PCD files for chronological playback.\n\n### CMake\n\nThe supplied project includes CMake configuration for the PCL-based executable.\n\n## Radar Engineering Work\n\n### Radar Wavelength\n\nThe notebook sets an automotive radar carrier frequency of 77 GHz and computes wavelength using:\n\n```text\nlambda = c / fc\n```\n\nThe executed result is approximately 0.003896 m.\n\n### Radar Maximum Range\n\nThe notebook defines:\n\n- transmitted power;\n- antenna gain;\n- minimum detectable power;\n- car radar cross-section;\n- wavelength.\n\nIt then evaluates a radar-equation-style fourth-root expression.\n\nThe preserved output reports a maximum range of approximately **218.87 meters** for the selected parameters.\n\n### Range Resolution and Chirp Design\n\nThe notebook computes chirp bandwidth from:\n\n```text\nB_sweep = c / (2 * range_resolution)\n```\n\nFor 1-meter range resolution, the executed value is 150 MHz.\n\nIt computes chirp sweep time from maximum range and propagation speed.\n\n### Beat-Frequency Range Estimation\n\nThe notebook evaluates several beat frequencies and converts them into ranges.\n\nPreserved outputs include:\n\n- 0 MHz → 0 m;\n- 1.1 MHz → 12.1 m;\n- 13 MHz → 143 m;\n- 24 MHz → 264 m.\n\nThis is direct hands-on evidence of FMCW-style beat-frequency/range reasoning.\n\n### Doppler Velocity Estimation\n\nThe notebook uses wavelength and Doppler frequency shift to calculate radial velocity.\n\nExecuted examples include both positive and negative shifts, preserving direction-sensitive velocity results.\n\n### Synthetic Signal and Noise\n\nA sampled signal is built from two sinusoids at distinct frequencies and then corrupted with random noise.\n\nThis creates a concrete input for frequency-domain inspection rather than discussing FFT only conceptually.\n\n### FFT Analysis\n\nThe notebook explicitly transitions to FFT-based frequency analysis of the sampled signal.\n\n## LIDAR Engineering Work\n\n### Simulated Highway Scanning\n\n`simpleHighway` initializes an ego vehicle and other cars.\n\nThe code creates a `Lidar` object, performs a scan, obtains a PCL point cloud, segments the road plane, clusters obstacle points, and renders clusters/bounding boxes.\n\nTask comments in the file document the exercised sequence.\n\n### Voxel-Grid Filtering\n\n`FilterCloud` applies `pcl::VoxelGrid` with a configurable leaf size.\n\nThis reduces point density before later processing stages.\n\n### Region-of-Interest Cropping\n\nA `pcl::CropBox` keeps points inside configured spatial boundaries.\n\nThis focuses processing on the road region relevant to the vehicle.\n\n### Ego-Vehicle Roof Removal\n\nA second crop box identifies the roof region.\n\nThose indices are passed to `pcl::ExtractIndices` with negative extraction so points belonging to the sensing vehicle are removed from the working cloud.\n\n### Plane Segmentation\n\n`SegmentPlane` configures `pcl::SACSegmentation` for:\n\n- coefficient optimization;\n- `SACMODEL_PLANE`;\n- `SAC_RANSAC`;\n- configured maximum iterations;\n- configured distance threshold.\n\nThe inlier set is then separated from obstacle points.\n\n### Road / Obstacle Separation\n\n`SeparateClouds` constructs:\n\n- a point cloud containing plane inliers;\n- an obstacle cloud containing the remaining points.\n\n### Euclidean Clustering\n\n`Clustering` builds a PCL KD tree and configures `pcl::EuclideanClusterExtraction`.\n\nParameters control:\n\n- spatial cluster tolerance;\n- minimum cluster size;\n- maximum cluster size.\n\nEach cluster is copied into its own point cloud.\n\n### Bounding Boxes\n\n`BoundingBox` uses `pcl::getMinMax3D` to construct an axis-aligned bounding box around each cluster.\n\n### PCD Storage and Playback\n\nThe processing class supports:\n\n- ASCII PCD save;\n- PCD load;\n- directory streaming;\n- chronological filename sorting.\n\nThe main loop repeatedly loads frames and runs the processing pipeline.\n\n### Parameter Tuning\n\nThe city-block code uses different clustering tolerances and point-count limits for denser real PCD data.\n\nComments explicitly note that the parameters were changed because the real point cloud contains many more points than the earlier test cloud.\n\n## Experimental Documentation\n\n`LIDAR/readme.md` preserves screenshots from different simulations.\n\nThe documented comparisons include:\n\n- initial LIDAR with one horizontal parameter;\n- higher horizontal parameter;\n- more LIDAR layers;\n- higher radial setting;\n- increased error.\n\nThis is direct evidence of varying sensor-model parameters and recording visual outcomes.\n\n## Verification\n\n### Executed Notebook Outputs\n\nThe radar notebook contains persisted numerical outputs for wavelength, maximum range, beat-frequency/range examples, and Doppler-derived velocities.\n\n### Runtime Performance Instrumentation\n\nThe point-cloud processing functions time filtering, plane segmentation, and clustering using `std::chrono`.\n\nThey print elapsed milliseconds and, for clustering, the number of clusters found.\n\n### Visual Simulation Inspection\n\nThe repository preserves LIDAR simulation screenshots and a PCL viewer workflow.\n\n### Streamed Playback\n\nChronological PCD playback repeatedly runs the full detection pipeline over successive sensor frames, enabling observation across a sequence rather than only one static cloud.\n\n## Engineering Practices\n\n### Pipeline Decomposition\n\nPoint-cloud processing is separated into named operations:\n\n- filtering;\n- separation;\n- segmentation;\n- clustering;\n- bounding boxes;\n- persistence/streaming.\n\n### Parameterization\n\nFilter resolution, crop boundaries, RANSAC thresholds, clustering tolerance, and cluster sizes are configurable arguments.\n\n### Performance Measurement\n\nFiltering, segmentation, and clustering are explicitly timed.\n\n### Real-vs-Simulated Parameter Adaptation\n\nThe code uses different settings for the simple simulated highway and denser city-block PCD data.\n\n### Attribution Discipline\n\nThe repository itself preserves Udacity ownership/scaffolding evidence, so the corpus separates hands-on exercised skills from supplied project infrastructure.\n\n## Scale and Complexity\n\n### Data Scale\n\nThe LIDAR pipeline operates on 3D point clouds and streamed PCD sequences.\n\n### Processing Scale\n\nEach frame passes through several computational stages before rendering.\n\n### Experimental Scale\n\nThe repository includes multiple LIDAR parameter variants plus a radar notebook with several physical/signal-processing exercises.\n\n### Conceptual Complexity\n\nThe repository connects:\n\n- radar physics;\n- sampled signals;\n- frequency-domain processing;\n- 3D geometry;\n- point-cloud filtering;\n- robust plane estimation;\n- spatial clustering;\n- autonomous-vehicle perception.\n\n## Skills Demonstrated\n\n### Radar and Signal Processing\n\n- **Radar range equation exercises — strong coursework evidence.**\n- **FMCW beat-frequency range calculation — strong coursework evidence.**\n- **Doppler velocity calculation — strong coursework evidence.**\n- **Sampling and synthetic-signal generation — strong evidence.**\n- **Noise injection — strong evidence.**\n- **FFT/frequency-domain analysis — strong evidence.**\n\n### LIDAR / Point Clouds\n\n- **PCL point-cloud processing — strong coursework evidence.**\n- **Voxel-grid downsampling — strong evidence.**\n- **ROI cropping — strong evidence.**\n- **RANSAC plane segmentation — strong evidence.**\n- **KD-tree spatial search — strong evidence.**\n- **Euclidean clustering — strong evidence.**\n- **3D bounding boxes — strong evidence.**\n- **PCD loading/streaming — strong evidence.**\n- **3D visualization — strong evidence.**\n\n### Languages and Tools\n\n- **C++ — strong evidence.**\n- **Python — strong evidence.**\n- **NumPy — strong evidence.**\n- **Matplotlib — strong evidence.**\n- **Jupyter Notebook — strong evidence.**\n- **CMake — repository-level course infrastructure evidence.**\n\n### Engineering Practices\n\n- **Processing-pipeline decomposition — strong evidence.**\n- **Parameter tuning — strong evidence.**\n- **Runtime timing — strong evidence.**\n- **Experiment result documentation — strong evidence.**\n\n## Capability Developed\n\n`Sensors` broadens the portfolio from software and digital systems into autonomous-vehicle perception.\n\nThe repository exercises two different sensing philosophies:\n\n- radar reduces electromagnetic/sampled-signal behavior into range and velocity estimates;\n- LIDAR turns spatial point returns into filtered road geometry and clustered obstacles.\n\nEven with the course-infrastructure boundary, the hands-on technical surface is substantial and introduces several perception and signal-processing capabilities not previously present together.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- Point Cloud Library;\n- voxel-grid point-cloud filtering;\n- crop-box ROI filtering;\n- PCL RANSAC plane segmentation;\n- KD-tree-backed Euclidean point-cloud clustering;\n- PCD streaming;\n- LIDAR 3D obstacle bounding boxes;\n- radar maximum-range calculation;\n- beat-frequency-to-range calculation;\n- Doppler-frequency-to-velocity calculation;\n- notebook-based FFT signal analysis in a sensor context.\n\nThe earlier RADAR team repository already establishes radar/autonomous-vehicle collaboration; this repository adds concrete radar math exercises and detailed LIDAR point-cloud processing.\n\n## Historical Significance\n\n`Sensors` marks a major expansion of the autonomous-systems thread.\n\nIt records practical engagement with both radar signal concepts and LIDAR obstacle-processing pipelines, while also providing unusually explicit evidence of course-supplied infrastructure.\n\nThat makes it useful for later RAG queries about both technical capability and how coursework-based evidence should be weighted.\n\n## Overall Repository Narrative\n\n`Sensors` is a course-derived autonomous-vehicle sensing repository combining a radar notebook with a PCL-based LIDAR obstacle-detection project.\n\nThe radar work computes wavelength, radar range, chirp bandwidth, sweep time, beat-frequency range, Doppler velocity, and frequency-domain behavior of noisy sampled signals.\n\nThe LIDAR work filters point clouds through voxel grids and spatial crops, removes ego-vehicle points, segments road planes with PCL RANSAC, clusters obstacles with KD-tree-backed Euclidean extraction, generates bounding boxes, streams PCD frames, and records simulation results under changing sensor parameters.\n\nThe repository's strongest analytical interpretation is hands-on sensor-processing coursework built on explicitly supplied Udacity infrastructure.\n\n# Project Tags\n\n## Project Type\n\n- `sensor-processing-coursework`\n- `autonomous-vehicle-coursework`\n- `course-assignment-repository`\n\n## Collaboration and Authorship\n\n- `individual-project`\n- `course-supplied-infrastructure`\n- `instructional-scaffold`\n\n## Languages\n\n- `cpp`\n- `python`\n\n## Machine Learning and Numerical Computing\n\n- `numpy`\n- `jupyter-notebook`\n- `matplotlib`\n- `fft`\n\n## Sensors and Signal Processing\n\n- `radar`\n- `lidar`\n- `radar-range-equation`\n- `fmcw-radar`\n- `beat-frequency`\n- `doppler-velocity`\n- `signal-sampling`\n- `noise-injection`\n- `frequency-domain-analysis`\n\n## Point Clouds and Perception\n\n- `pcl`\n- `point-cloud-processing`\n- `voxel-grid-filtering`\n- `crop-box-filtering`\n- `ransac-plane-segmentation`\n- `kd-tree`\n- `euclidean-clustering`\n- `bounding-boxes`\n- `pcd-io`\n- `pcd-streaming`\n- `obstacle-detection`\n\n## Build and Tooling\n\n- `cmake`\n- `boost-filesystem`\n- `eigen`\n\n## Testing and Verification\n\n- `executed-notebook-output`\n- `runtime-performance-timing`\n- `visual-simulation-verification`\n- `experimental-result-documentation`\n\n## Portfolio Significance\n\n- `earliest-observed-pcl`\n- `earliest-observed-point-cloud-processing`\n- `earliest-observed-lidar-obstacle-pipeline`\n- `earliest-observed-radar-range-equation`\n- `earliest-observed-doppler-velocity-calculation`\n- `earliest-observed-sensor-fft`\n"
+}

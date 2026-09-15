@@ -1,0 +1,460 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 91,
+  "repository_total": 134,
+  "repository_name": "RogersExperiment",
+  "header_title": "RogersExperiment",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-091-RogersExperiment/README.md",
+    "line_start": 1,
+    "line_end": 365,
+    "sha256": "87a6b56b9acbbbdcdec2fe10947ad7e38d8fda5cefe621178690bced1beadfb7"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "c++",
+    "ns3",
+    "network-simulation",
+    "wireless-simulation",
+    "wifi",
+    "802-11ac",
+    "vht",
+    "vht-mcs5",
+    "constant-rate-wifi-manager",
+    "160-mhz-channel",
+    "access-point",
+    "station",
+    "waypoint-mobility",
+    "mobility-model",
+    "udp",
+    "onoff-application",
+    "flow-monitor",
+    "throughput-measurement",
+    "distance-sweep",
+    "throughput-vs-distance",
+    "ipv4",
+    "csv-export",
+    "experiment-design",
+    "controlled-parameters",
+    "simulation-not-physical-measurement",
+    "earliest-observed-vht-distance-throughput-sweep"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/RogersExperiment`\n- **Corpus index:** 091\n- **Repository start date:** 2025-08-01\n- **Last meaningful update date:** 2025-08-01\n- **Latest meaningful commit:** `62c0b17ad7330334e825ba822753f44352b2c6a9`\n- **Primary repository language:** C++\n- **Project form:** ns-3 wireless-network simulation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `SingleApp.cc`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe experiment has a simple repeated-run architecture:\n\n```text\nchoose distance\n     ↓\ncreate ns-3 AP + STA\n     ↓\nconfigure 802.11ac/VHT PHY/MAC\n     ↓\napply waypoint movement\n     ↓\ngenerate UDP traffic\n     ↓\ncollect FlowMonitor statistics\n     ↓\ncalculate throughput\n     ↓\nappend distance/throughput sample\n     ↓\nwrite CSV\n```\n\nThis shape makes the independent variable explicit: station distance.\n\nThe output variable is observed application throughput."
+    },
+    "testing": {
+      "section_ids": [
+        "s019"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nThe primary verification mechanism is simulation execution and FlowMonitor output.\n\nThe source prints or records the measured result for each configured distance.\n\nThe generated CSV provides a persistent experiment product.\n\nThere is no evidence of a separate automated regression suite around the simulation model.\n\nMore importantly, there is no repository evidence that the simulated curve was validated against physical Rogers-network measurements.\n\nThe corpus therefore keeps simulation and empirical experimentation distinct."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/RogersExperiment`\n- **Corpus index:** 091\n- **Repository start date:** 2025-08-01\n- **Last meaningful update date:** 2025-08-01\n- **Latest meaningful commit:** `62c0b17ad7330334e825ba822753f44352b2c6a9`\n- **Primary repository language:** C++\n- **Project form:** ns-3 wireless-network simulation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `SingleApp.cc`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository is intentionally small.\n\nIts root README is effectively empty.\n\nThe analysis is therefore anchored to `SingleApp.cc` rather than inferred from the repository name.\n\nThe source is an ns-3 Wi-Fi simulation.\n\nIt does not connect to a Rogers cellular network or a live Rogers testbed in the retained snapshot.\n\nThe name `RogersExperiment` is therefore historical/project context, not proof of operator-network measurement.\n\nThe source explicitly configures Wi-Fi, mobility, UDP traffic, FlowMonitor, and CSV output.\n\nThose are the supported capabilities for this corpus entry.",
+      "source_line_start": 15,
+      "source_line_end": 33
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "RogersExperiment is a focused simulation that studies how application throughput changes as a Wi-Fi station moves progressively farther from an access point.\n\nThe experiment repeatedly runs a simple AP/STA scenario.\n\nFor each run, it changes the station's distance from the AP.\n\nThe station follows waypoint mobility at a configured velocity.\n\nUDP traffic is generated toward the AP.\n\nFlowMonitor statistics are used to derive throughput.\n\nThe distance and throughput pair is written to a CSV file.\n\nThe result is a small measurement-generation experiment rather than a full network simulator framework.",
+      "source_line_start": 33,
+      "source_line_end": 51
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The implemented scope includes:\n\n- ns-3 Wi-Fi node creation;\n- one AP and one station;\n- 802.11ac/VHT PHY/MAC configuration;\n- fixed MCS selection;\n- wide-channel configuration;\n- waypoint mobility;\n- increasing separation distance;\n- UDP OnOff traffic;\n- IPv4 addressing;\n- FlowMonitor statistics;\n- throughput computation;\n- CSV export.\n\nThe repository does not establish cellular simulation, real-world modem interaction, or Rogers infrastructure access.",
+      "source_line_start": 51,
+      "source_line_end": 70
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The experiment has a simple repeated-run architecture:\n\n```text\nchoose distance\n     ↓\ncreate ns-3 AP + STA\n     ↓\nconfigure 802.11ac/VHT PHY/MAC\n     ↓\napply waypoint movement\n     ↓\ngenerate UDP traffic\n     ↓\ncollect FlowMonitor statistics\n     ↓\ncalculate throughput\n     ↓\nappend distance/throughput sample\n     ↓\nwrite CSV\n```\n\nThis shape makes the independent variable explicit: station distance.\n\nThe output variable is observed application throughput.",
+      "source_line_start": 70,
+      "source_line_end": 98
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- C++\n- ns-3\n- Wi-Fi module\n- mobility module\n- internet stack\n- applications module\n- FlowMonitor\n- IPv4\n- UDP\n- CSV output",
+      "source_line_start": 98,
+      "source_line_end": 111
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Wi-Fi Configuration",
+      "normalized_title": "Wi-Fi Configuration",
+      "key": "wi_fi_configuration",
+      "path": [
+        "Wi-Fi Configuration"
+      ],
+      "content": "The source configures an 802.11ac/VHT-oriented Wi-Fi scenario.\n\nA constant-rate Wi-Fi manager is used.\n\nThe configured data mode is `VhtMcs5`.\n\nThe control mode is `VhtMcs0`.\n\nThe source sets a 160 MHz channel width.\n\nThese are deliberate PHY/MAC assumptions in the simulation.\n\nThey should not be generalized into claims about all Wi-Fi deployments.\n\nThe use of fixed MCS is particularly important when interpreting the distance curve.\n\nThe experiment is not evaluating adaptive rate control.",
+      "source_line_start": 111,
+      "source_line_end": 131
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Network Topology",
+      "normalized_title": "Network Topology",
+      "key": "network_topology",
+      "path": [
+        "Network Topology"
+      ],
+      "content": "The network consists of two nodes:\n\n- one access point;\n- one station.\n\nThe internet stack is installed.\n\nIPv4 addresses are assigned.\n\nThe topology is deliberately minimal so that mobility/distance remains the main manipulated condition.\n\nThis reduces topology complexity but does not isolate all wireless-channel variables in a real-world sense.",
+      "source_line_start": 131,
+      "source_line_end": 146
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Mobility Model",
+      "normalized_title": "Mobility Model",
+      "key": "mobility_model",
+      "path": [
+        "Mobility Model"
+      ],
+      "content": "The station uses `WaypointMobilityModel`.\n\nThe experiment specifies station motion rather than teleporting between arbitrary points inside a single run.\n\nThe configured velocity is 1 m/s.\n\nDistance is incremented by 0.01 m between the repeated experiment configurations until the defined upper range.\n\nThat gives the simulation a fine-grained distance sweep.\n\nThe resulting large number of potential distance points is computationally more demanding than a handful of manually chosen distances.",
+      "source_line_start": 146,
+      "source_line_end": 160
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Traffic Generation",
+      "normalized_title": "Traffic Generation",
+      "key": "traffic_generation",
+      "path": [
+        "Traffic Generation"
+      ],
+      "content": "Traffic uses an ns-3 OnOff application.\n\nThe transport is UDP.\n\nThe offered data rate is configured at 10 Mbps.\n\nThe packet size is 1024 bytes.\n\nThe application sends traffic toward the access point.\n\nThis provides a stable offered-load configuration for comparing runs.\n\nIt is not a congestion-heavy multi-flow workload.",
+      "source_line_start": 160,
+      "source_line_end": 176
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "FlowMonitor Use",
+      "normalized_title": "FlowMonitor Use",
+      "key": "flowmonitor_use",
+      "path": [
+        "FlowMonitor Use"
+      ],
+      "content": "FlowMonitor is installed to retrieve per-flow packet/byte/timing statistics.\n\nThe experiment uses received-byte and timing information to derive throughput.\n\nThis is application-layer/flow-oriented simulation measurement.\n\nIt avoids estimating throughput merely from the configured sender rate.\n\nThat distinction matters because offered load and successfully received throughput are different quantities.",
+      "source_line_start": 176,
+      "source_line_end": 188
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Throughput Calculation",
+      "normalized_title": "Throughput Calculation",
+      "key": "throughput_calculation",
+      "path": [
+        "Throughput Calculation"
+      ],
+      "content": "Throughput is converted to Mbps from the flow statistics.\n\nThe resulting value is paired with the distance used for that run.\n\nThese pairs form the output series.\n\nThe experiment is therefore designed around a simple explanatory relationship:\n\n```text\ndistance from AP → measured simulated throughput\n```\n\nThe repository does not add confidence intervals, repeated random seeds, or statistical uncertainty analysis around each distance point.\n\nThe output is best understood as a deterministic/configured simulation sweep in the retained snapshot.",
+      "source_line_start": 188,
+      "source_line_end": 206
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "CSV Output",
+      "normalized_title": "CSV Output",
+      "key": "csv_output",
+      "path": [
+        "CSV Output"
+      ],
+      "content": "The experiment writes `throughput_data.csv`.\n\nThis separates simulation execution from downstream plotting or analysis.\n\nThe CSV acts as an interchange artifact.\n\nThat makes the simulation usable by external analysis scripts without coupling visualization into the ns-3 executable.\n\nThe repository itself does not retain a separate plotting script for this output.",
+      "source_line_start": 206,
+      "source_line_end": 218
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Controlled Wireless Scenario Construction\n\nThe code constructs a complete ns-3 Wi-Fi experiment from nodes through application traffic.\n\nThe configuration is compact but spans PHY/MAC assumptions, mobility, IP setup, application load, and flow measurement.\n\n### Distance Sweep\n\nThe experiment turns distance into an explicit independent variable across repeated runs.\n\nThat is more systematic than testing one arbitrarily selected topology.\n\n### Measurement Extraction\n\nFlowMonitor is used to convert simulated packet delivery into throughput values.\n\nThe sender's configured rate is not simply reported as if it were achieved throughput.\n\n### Machine-Readable Result Export\n\nCSV output supports later analysis outside the simulator.",
+      "source_line_start": 218,
+      "source_line_end": 242
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Controlled Wireless Scenario Construction",
+      "normalized_title": "Controlled Wireless Scenario Construction",
+      "key": "controlled_wireless_scenario_construction",
+      "path": [
+        "Major Engineering Work",
+        "Controlled Wireless Scenario Construction"
+      ],
+      "content": "The code constructs a complete ns-3 Wi-Fi experiment from nodes through application traffic.\n\nThe configuration is compact but spans PHY/MAC assumptions, mobility, IP setup, application load, and flow measurement.",
+      "source_line_start": 220,
+      "source_line_end": 226
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Distance Sweep",
+      "normalized_title": "Distance Sweep",
+      "key": "distance_sweep",
+      "path": [
+        "Major Engineering Work",
+        "Distance Sweep"
+      ],
+      "content": "The experiment turns distance into an explicit independent variable across repeated runs.\n\nThat is more systematic than testing one arbitrarily selected topology.",
+      "source_line_start": 226,
+      "source_line_end": 232
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Measurement Extraction",
+      "normalized_title": "Measurement Extraction",
+      "key": "measurement_extraction",
+      "path": [
+        "Major Engineering Work",
+        "Measurement Extraction"
+      ],
+      "content": "FlowMonitor is used to convert simulated packet delivery into throughput values.\n\nThe sender's configured rate is not simply reported as if it were achieved throughput.",
+      "source_line_start": 232,
+      "source_line_end": 238
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Machine-Readable Result Export",
+      "normalized_title": "Machine-Readable Result Export",
+      "key": "machine_readable_result_export",
+      "path": [
+        "Major Engineering Work",
+        "Machine-Readable Result Export"
+      ],
+      "content": "CSV output supports later analysis outside the simulator.",
+      "source_line_start": 238,
+      "source_line_end": 242
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "The primary verification mechanism is simulation execution and FlowMonitor output.\n\nThe source prints or records the measured result for each configured distance.\n\nThe generated CSV provides a persistent experiment product.\n\nThere is no evidence of a separate automated regression suite around the simulation model.\n\nMore importantly, there is no repository evidence that the simulated curve was validated against physical Rogers-network measurements.\n\nThe corpus therefore keeps simulation and empirical experimentation distinct.",
+      "source_line_start": 242,
+      "source_line_end": 256
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The experiment demonstrates:\n\n- a clearly manipulated independent variable;\n- fixed traffic parameters;\n- fixed PHY/MAC assumptions;\n- explicit mobility;\n- measured rather than assumed throughput;\n- machine-readable output.\n\nThe fixed MCS should be preserved when interpreting results.\n\nA throughput-versus-distance curve generated under `VhtMcs5` is not the same experiment as a Wi-Fi system allowed to adapt MCS dynamically.",
+      "source_line_start": 256,
+      "source_line_end": 271
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This is primarily an engineering experiment rather than an end-user product.\n\nThe product of the code is data.\n\nIts interface is the source/configuration and generated CSV.\n\nThe useful design choice is that the simulation produces a consumable artifact for downstream analysis rather than embedding every analytical concern into the simulator itself.",
+      "source_line_start": 271,
+      "source_line_end": 281
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "The node topology is intentionally small.\n\nThe complexity lies in the cross-layer simulation configuration and repeated measurement sweep.\n\nA two-node scenario still requires coordination of:\n\n- wireless standard configuration;\n- rate configuration;\n- mobility;\n- addressing;\n- application traffic;\n- flow instrumentation;\n- experiment iteration;\n- result export.\n\nIt is a narrow experiment, not a large network topology.",
+      "source_line_start": 281,
+      "source_line_end": 300
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "- ns-3 experiment construction\n- C++ simulation scripting\n- 802.11ac/VHT configuration\n- MCS configuration\n- Wi-Fi channel-width configuration\n- waypoint mobility\n- UDP traffic generation\n- FlowMonitor use\n- throughput computation\n- controlled-parameter sweeps\n- CSV experiment output\n- separation of simulation from downstream analysis",
+      "source_line_start": 300,
+      "source_line_end": 315
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository develops the ability to convert a wireless-performance question into a parameterized simulation.\n\nInstead of treating “distance affects throughput” as a qualitative statement, the code turns distance into a sweep and produces measured simulated outputs.\n\nIt also reinforces that network-performance experiments depend strongly on assumptions such as MCS, offered load, channel width, and mobility.\n\nThat is useful preparation for later physical wireless experiments in the portfolio.",
+      "source_line_start": 315,
+      "source_line_end": 325
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 077 had already established ns-3 network-simulation work.\n\nRogersExperiment is therefore not the first ns-3 repository in the corpus.\n\nIts relevance is the move toward a more specific wireless-performance question: throughput as a function of station displacement under explicit 802.11ac/VHT parameters.\n\nThat aligns with the later portfolio emphasis on wireless experiment methodology and mobility.",
+      "source_line_start": 325,
+      "source_line_end": 335
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is an early compact example of using ns-3 specifically as a wireless measurement generator for a distance/throughput relationship.\n\nThe repository also appears close in time to later thesis-oriented wireless tooling.\n\nThe name hints at that context, but the implementation must still be described as Wi-Fi simulation rather than Rogers cellular measurement.",
+      "source_line_start": 335,
+      "source_line_end": 343
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The source supports a simulated Wi-Fi result only.\n\nIt does not establish a Rogers network test, cellular radio model, or physical device measurement.\n\nThe fixed rate/MCS configuration limits how broadly the distance curve can be generalized.\n\nThe retained experiment does not establish repeated random seeds or uncertainty statistics for each point.\n\nThose are interpretation boundaries, not reasons to disregard the simulation work.",
+      "source_line_start": 343,
+      "source_line_end": 355
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "RogersExperiment is a focused ns-3 study that parameterizes station distance, drives a moving Wi-Fi station under explicit 802.11ac/VHT settings, measures received UDP flow throughput, and exports the resulting distance/throughput series to CSV.\n\nIts portfolio value comes from experiment construction and measurement discipline.\n\nThe strongest description is a controlled wireless simulation—not a live Rogers-network benchmark.\n\n# Project Tags\n\n`individual-project`, `c++`, `ns3`, `network-simulation`, `wireless-simulation`, `wifi`, `802-11ac`, `vht`, `vht-mcs5`, `constant-rate-wifi-manager`, `160-mhz-channel`, `access-point`, `station`, `waypoint-mobility`, `mobility-model`, `udp`, `onoff-application`, `flow-monitor`, `throughput-measurement`, `distance-sweep`, `throughput-vs-distance`, `ipv4`, `csv-export`, `experiment-design`, `controlled-parameters`, `simulation-not-physical-measurement`, `earliest-observed-vht-distance-throughput-sweep`",
+      "source_line_start": 355,
+      "source_line_end": 366
+    }
+  ],
+  "raw_analysis": "# Repository 091 — RogersExperiment\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/RogersExperiment`\n- **Corpus index:** 091\n- **Repository start date:** 2025-08-01\n- **Last meaningful update date:** 2025-08-01\n- **Latest meaningful commit:** `62c0b17ad7330334e825ba822753f44352b2c6a9`\n- **Primary repository language:** C++\n- **Project form:** ns-3 wireless-network simulation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `SingleApp.cc`\n\n## Evidence Basis\n\nThe repository is intentionally small.\n\nIts root README is effectively empty.\n\nThe analysis is therefore anchored to `SingleApp.cc` rather than inferred from the repository name.\n\nThe source is an ns-3 Wi-Fi simulation.\n\nIt does not connect to a Rogers cellular network or a live Rogers testbed in the retained snapshot.\n\nThe name `RogersExperiment` is therefore historical/project context, not proof of operator-network measurement.\n\nThe source explicitly configures Wi-Fi, mobility, UDP traffic, FlowMonitor, and CSV output.\n\nThose are the supported capabilities for this corpus entry.\n\n## What the Project Is\n\nRogersExperiment is a focused simulation that studies how application throughput changes as a Wi-Fi station moves progressively farther from an access point.\n\nThe experiment repeatedly runs a simple AP/STA scenario.\n\nFor each run, it changes the station's distance from the AP.\n\nThe station follows waypoint mobility at a configured velocity.\n\nUDP traffic is generated toward the AP.\n\nFlowMonitor statistics are used to derive throughput.\n\nThe distance and throughput pair is written to a CSV file.\n\nThe result is a small measurement-generation experiment rather than a full network simulator framework.\n\n## Project Scope\n\nThe implemented scope includes:\n\n- ns-3 Wi-Fi node creation;\n- one AP and one station;\n- 802.11ac/VHT PHY/MAC configuration;\n- fixed MCS selection;\n- wide-channel configuration;\n- waypoint mobility;\n- increasing separation distance;\n- UDP OnOff traffic;\n- IPv4 addressing;\n- FlowMonitor statistics;\n- throughput computation;\n- CSV export.\n\nThe repository does not establish cellular simulation, real-world modem interaction, or Rogers infrastructure access.\n\n## Architecture / System Shape\n\nThe experiment has a simple repeated-run architecture:\n\n```text\nchoose distance\n     ↓\ncreate ns-3 AP + STA\n     ↓\nconfigure 802.11ac/VHT PHY/MAC\n     ↓\napply waypoint movement\n     ↓\ngenerate UDP traffic\n     ↓\ncollect FlowMonitor statistics\n     ↓\ncalculate throughput\n     ↓\nappend distance/throughput sample\n     ↓\nwrite CSV\n```\n\nThis shape makes the independent variable explicit: station distance.\n\nThe output variable is observed application throughput.\n\n## Technical Stack\n\n- C++\n- ns-3\n- Wi-Fi module\n- mobility module\n- internet stack\n- applications module\n- FlowMonitor\n- IPv4\n- UDP\n- CSV output\n\n## Wi-Fi Configuration\n\nThe source configures an 802.11ac/VHT-oriented Wi-Fi scenario.\n\nA constant-rate Wi-Fi manager is used.\n\nThe configured data mode is `VhtMcs5`.\n\nThe control mode is `VhtMcs0`.\n\nThe source sets a 160 MHz channel width.\n\nThese are deliberate PHY/MAC assumptions in the simulation.\n\nThey should not be generalized into claims about all Wi-Fi deployments.\n\nThe use of fixed MCS is particularly important when interpreting the distance curve.\n\nThe experiment is not evaluating adaptive rate control.\n\n## Network Topology\n\nThe network consists of two nodes:\n\n- one access point;\n- one station.\n\nThe internet stack is installed.\n\nIPv4 addresses are assigned.\n\nThe topology is deliberately minimal so that mobility/distance remains the main manipulated condition.\n\nThis reduces topology complexity but does not isolate all wireless-channel variables in a real-world sense.\n\n## Mobility Model\n\nThe station uses `WaypointMobilityModel`.\n\nThe experiment specifies station motion rather than teleporting between arbitrary points inside a single run.\n\nThe configured velocity is 1 m/s.\n\nDistance is incremented by 0.01 m between the repeated experiment configurations until the defined upper range.\n\nThat gives the simulation a fine-grained distance sweep.\n\nThe resulting large number of potential distance points is computationally more demanding than a handful of manually chosen distances.\n\n## Traffic Generation\n\nTraffic uses an ns-3 OnOff application.\n\nThe transport is UDP.\n\nThe offered data rate is configured at 10 Mbps.\n\nThe packet size is 1024 bytes.\n\nThe application sends traffic toward the access point.\n\nThis provides a stable offered-load configuration for comparing runs.\n\nIt is not a congestion-heavy multi-flow workload.\n\n## FlowMonitor Use\n\nFlowMonitor is installed to retrieve per-flow packet/byte/timing statistics.\n\nThe experiment uses received-byte and timing information to derive throughput.\n\nThis is application-layer/flow-oriented simulation measurement.\n\nIt avoids estimating throughput merely from the configured sender rate.\n\nThat distinction matters because offered load and successfully received throughput are different quantities.\n\n## Throughput Calculation\n\nThroughput is converted to Mbps from the flow statistics.\n\nThe resulting value is paired with the distance used for that run.\n\nThese pairs form the output series.\n\nThe experiment is therefore designed around a simple explanatory relationship:\n\n```text\ndistance from AP → measured simulated throughput\n```\n\nThe repository does not add confidence intervals, repeated random seeds, or statistical uncertainty analysis around each distance point.\n\nThe output is best understood as a deterministic/configured simulation sweep in the retained snapshot.\n\n## CSV Output\n\nThe experiment writes `throughput_data.csv`.\n\nThis separates simulation execution from downstream plotting or analysis.\n\nThe CSV acts as an interchange artifact.\n\nThat makes the simulation usable by external analysis scripts without coupling visualization into the ns-3 executable.\n\nThe repository itself does not retain a separate plotting script for this output.\n\n## Major Engineering Work\n\n### Controlled Wireless Scenario Construction\n\nThe code constructs a complete ns-3 Wi-Fi experiment from nodes through application traffic.\n\nThe configuration is compact but spans PHY/MAC assumptions, mobility, IP setup, application load, and flow measurement.\n\n### Distance Sweep\n\nThe experiment turns distance into an explicit independent variable across repeated runs.\n\nThat is more systematic than testing one arbitrarily selected topology.\n\n### Measurement Extraction\n\nFlowMonitor is used to convert simulated packet delivery into throughput values.\n\nThe sender's configured rate is not simply reported as if it were achieved throughput.\n\n### Machine-Readable Result Export\n\nCSV output supports later analysis outside the simulator.\n\n## Testing & Verification\n\nThe primary verification mechanism is simulation execution and FlowMonitor output.\n\nThe source prints or records the measured result for each configured distance.\n\nThe generated CSV provides a persistent experiment product.\n\nThere is no evidence of a separate automated regression suite around the simulation model.\n\nMore importantly, there is no repository evidence that the simulated curve was validated against physical Rogers-network measurements.\n\nThe corpus therefore keeps simulation and empirical experimentation distinct.\n\n## Engineering Discipline\n\nThe experiment demonstrates:\n\n- a clearly manipulated independent variable;\n- fixed traffic parameters;\n- fixed PHY/MAC assumptions;\n- explicit mobility;\n- measured rather than assumed throughput;\n- machine-readable output.\n\nThe fixed MCS should be preserved when interpreting results.\n\nA throughput-versus-distance curve generated under `VhtMcs5` is not the same experiment as a Wi-Fi system allowed to adapt MCS dynamically.\n\n## Product Engineering\n\nThis is primarily an engineering experiment rather than an end-user product.\n\nThe product of the code is data.\n\nIts interface is the source/configuration and generated CSV.\n\nThe useful design choice is that the simulation produces a consumable artifact for downstream analysis rather than embedding every analytical concern into the simulator itself.\n\n## Scale / Complexity\n\nThe node topology is intentionally small.\n\nThe complexity lies in the cross-layer simulation configuration and repeated measurement sweep.\n\nA two-node scenario still requires coordination of:\n\n- wireless standard configuration;\n- rate configuration;\n- mobility;\n- addressing;\n- application traffic;\n- flow instrumentation;\n- experiment iteration;\n- result export.\n\nIt is a narrow experiment, not a large network topology.\n\n## Skills Demonstrated\n\n- ns-3 experiment construction\n- C++ simulation scripting\n- 802.11ac/VHT configuration\n- MCS configuration\n- Wi-Fi channel-width configuration\n- waypoint mobility\n- UDP traffic generation\n- FlowMonitor use\n- throughput computation\n- controlled-parameter sweeps\n- CSV experiment output\n- separation of simulation from downstream analysis\n\n## What Was Learned / Capability Developed\n\nThe repository develops the ability to convert a wireless-performance question into a parameterized simulation.\n\nInstead of treating “distance affects throughput” as a qualitative statement, the code turns distance into a sweep and produces measured simulated outputs.\n\nIt also reinforces that network-performance experiments depend strongly on assumptions such as MCS, offered load, channel width, and mobility.\n\nThat is useful preparation for later physical wireless experiments in the portfolio.\n\n## Portfolio Evolution Context\n\nRepository 077 had already established ns-3 network-simulation work.\n\nRogersExperiment is therefore not the first ns-3 repository in the corpus.\n\nIts relevance is the move toward a more specific wireless-performance question: throughput as a function of station displacement under explicit 802.11ac/VHT parameters.\n\nThat aligns with the later portfolio emphasis on wireless experiment methodology and mobility.\n\n## Historical Significance\n\nWithin the processed corpus, this is an early compact example of using ns-3 specifically as a wireless measurement generator for a distance/throughput relationship.\n\nThe repository also appears close in time to later thesis-oriented wireless tooling.\n\nThe name hints at that context, but the implementation must still be described as Wi-Fi simulation rather than Rogers cellular measurement.\n\n## Limitations & Missing Evidence\n\nThe source supports a simulated Wi-Fi result only.\n\nIt does not establish a Rogers network test, cellular radio model, or physical device measurement.\n\nThe fixed rate/MCS configuration limits how broadly the distance curve can be generalized.\n\nThe retained experiment does not establish repeated random seeds or uncertainty statistics for each point.\n\nThose are interpretation boundaries, not reasons to disregard the simulation work.\n\n## Overall Narrative\n\nRogersExperiment is a focused ns-3 study that parameterizes station distance, drives a moving Wi-Fi station under explicit 802.11ac/VHT settings, measures received UDP flow throughput, and exports the resulting distance/throughput series to CSV.\n\nIts portfolio value comes from experiment construction and measurement discipline.\n\nThe strongest description is a controlled wireless simulation—not a live Rogers-network benchmark.\n\n# Project Tags\n\n`individual-project`, `c++`, `ns3`, `network-simulation`, `wireless-simulation`, `wifi`, `802-11ac`, `vht`, `vht-mcs5`, `constant-rate-wifi-manager`, `160-mhz-channel`, `access-point`, `station`, `waypoint-mobility`, `mobility-model`, `udp`, `onoff-application`, `flow-monitor`, `throughput-measurement`, `distance-sweep`, `throughput-vs-distance`, `ipv4`, `csv-export`, `experiment-design`, `controlled-parameters`, `simulation-not-physical-measurement`, `earliest-observed-vht-distance-throughput-sweep`\n"
+}

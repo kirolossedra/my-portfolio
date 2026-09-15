@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 16,
+  "repository_total": 134,
+  "repository_name": "Vehicle-Control-System",
+  "header_title": "Vehicle-Control-System",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-016-Vehicle-Control-System/README.md",
+    "line_start": 1,
+    "line_end": 359,
+    "sha256": "76defc5cdfbdeb259116a9ebd71d0b10ccfb1b7ab65b12744a4dbe91866c8618"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "control-system-exercise",
+    "console-application",
+    "educational-project",
+    "individual-project",
+    "c",
+    "vehicle-control",
+    "sensor-control-logic",
+    "temperature-control",
+    "traffic-light-control",
+    "finite-state-machine",
+    "state-driven-control",
+    "rule-based-control",
+    "c-structs",
+    "c-pointers",
+    "console-state-simulation",
+    "functional-decomposition",
+    "state-diagram-documentation",
+    "manual-simulation",
+    "interactive-console-verification",
+    "earliest-observed-c",
+    "earliest-observed-state-diagram",
+    "earliest-observed-vehicle-control"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 016 / 134\n- Name: `Vehicle-Control-System`\n- Repository start date: 2023-02-28\n- Latest meaningful update date: 2023-03-03\n- Primary type: Console control-system exercise\n- Technical field: C programming and state-driven control logic\n- Application domain: Vehicle state, speed, and temperature control\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: C"
+    },
+    "architecture": {
+      "section_ids": [
+        "s017"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nUser input\n   ↓\nEngine state\n   ├─ OFF menu\n   └─ ON control menu\n          ├─ traffic light\n          │     ↓\n          │  vehicle speed\n          ├─ cabin temperature\n          │     ↓\n          │  AC state / target\n          └─ engine temperature\n                ↓\n             ETC state / target\n   ↓\nStatus output\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s025",
+        "s026",
+        "s046"
+      ],
+      "titles": [
+        "Verification",
+        "Interactive Console Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Interactive Console Verification\n\nThe program can be exercised by entering:\n\n- engine commands;\n- traffic-light colors;\n- room temperature;\n- engine temperature.\n\nThe resulting control state is printed after each loop.\n\n### State-Diagram Cross-Reference\n\nThe README's state diagram provides a second representation against which the implemented menu/state flow can be understood.\n\n## Interactive Console Verification\nThe program can be exercised by entering:\n\n- engine commands;\n- traffic-light colors;\n- room temperature;\n- engine temperature.\n\nThe resulting control state is printed after each loop.\n\n## Testing and Verification\n- `manual-simulation`\n- `interactive-console-verification`"
+    },
+    "documentation": {
+      "section_ids": [
+        "s018",
+        "s035"
+      ],
+      "titles": [
+        "State Diagram Documentation",
+        "Documentation"
+      ],
+      "text": "## State Diagram Documentation\nThe README includes a state diagram image for the control flow.\n\nThis is the earliest processed repository where a formal state-diagram artifact is directly documented alongside the implementation.\n\nThe diagram complements the code's engine-on / engine-off control structure.\n\n## Documentation\n- **State diagram — strong repository evidence.**"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s041"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository commits are owner-authored, and the C source header names Kirolos Sedra.\n\nThe implementation is therefore personally attributable at repository level.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 016 / 134\n- Name: `Vehicle-Control-System`\n- Repository start date: 2023-02-28\n- Latest meaningful update date: 2023-03-03\n- Primary type: Console control-system exercise\n- Technical field: C programming and state-driven control logic\n- Application domain: Vehicle state, speed, and temperature control\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: C",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository commits are owner-authored, and the C source header names Kirolos Sedra.\n\nThe implementation is therefore personally attributable at repository level.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `Vehicle.c`;\n- the repository README;\n- the documented state diagram;\n- owner-authored commit history through March 3, 2023.",
+      "source_line_start": 22,
+      "source_line_end": 31
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Vehicle-Control-System` is a small C console application that models a vehicle through explicit engine state and rule-based responses to:\n\n- traffic-light color;\n- cabin temperature;\n- engine temperature.\n\nThe user moves between an engine-off menu and an engine-on control menu.\n\nWhen the engine is active, sensor-like inputs change vehicle speed, air-conditioning state, and engine-temperature-control state.\n\nThe repository README also documents the system through a state diagram.",
+      "source_line_start": 31,
+      "source_line_end": 45
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "State Model",
+      "normalized_title": "State Model",
+      "key": "state_model",
+      "path": [
+        "State Model"
+      ],
+      "content": "The central application loop checks the engine state.\n\n```text\nEngine OFF\n   ├─ turn engine ON\n   └─ quit path\n\nEngine ON\n   ├─ turn engine OFF\n   ├─ set traffic light\n   ├─ set room temperature\n   └─ set engine temperature\n```\n\nThis gives the project a direct finite-state/control-system shape.",
+      "source_line_start": 45,
+      "source_line_end": 63
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### C\n\nC is used for:\n\n- global state;\n- functions;\n- `struct`s;\n- pointers;\n- `switch` statements;\n- conditional control logic;\n- console input/output.\n\nThis is the earliest processed repository whose primary implementation language is C.",
+      "source_line_start": 63,
+      "source_line_end": 79
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "C",
+      "normalized_title": "C",
+      "key": "c",
+      "path": [
+        "Technical Stack",
+        "C"
+      ],
+      "content": "C is used for:\n\n- global state;\n- functions;\n- `struct`s;\n- pointers;\n- `switch` statements;\n- conditional control logic;\n- console input/output.\n\nThis is the earliest processed repository whose primary implementation language is C.",
+      "source_line_start": 65,
+      "source_line_end": 79
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Data Structures",
+      "normalized_title": "Data Structures",
+      "key": "data_structures",
+      "path": [
+        "Data Structures"
+      ],
+      "content": "The source defines structures for:\n\n### Air Conditioner\n\n```text\nstate\ntemperature\n```\n\n### Engine Temperature Controller\n\n```text\nstate\ntemperature\n```\n\n### Engine\n\n```text\nstate\ntemperature\n```\n\nPointers are created for each control structure and used throughout the runtime logic.",
+      "source_line_start": 79,
+      "source_line_end": 106
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Air Conditioner",
+      "normalized_title": "Air Conditioner",
+      "key": "air_conditioner",
+      "path": [
+        "Data Structures",
+        "Air Conditioner"
+      ],
+      "content": "```text\nstate\ntemperature\n```",
+      "source_line_start": 83,
+      "source_line_end": 90
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Engine Temperature Controller",
+      "normalized_title": "Engine Temperature Controller",
+      "key": "engine_temperature_controller",
+      "path": [
+        "Data Structures",
+        "Engine Temperature Controller"
+      ],
+      "content": "```text\nstate\ntemperature\n```",
+      "source_line_start": 90,
+      "source_line_end": 97
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Engine",
+      "normalized_title": "Engine",
+      "key": "engine",
+      "path": [
+        "Data Structures",
+        "Engine"
+      ],
+      "content": "```text\nstate\ntemperature\n```\n\nPointers are created for each control structure and used throughout the runtime logic.",
+      "source_line_start": 97,
+      "source_line_end": 106
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Engine State Control",
+      "normalized_title": "Engine State Control",
+      "key": "engine_state_control",
+      "path": [
+        "Engine State Control"
+      ],
+      "content": "`EngineState()` maps engine-state values into console-readable status output.\n\n`EngineOff()` presents the off-state menu and updates engine state based on user input.\n\n`EngineON()` presents the active control menu and dispatches traffic or sensor updates.",
+      "source_line_start": 106,
+      "source_line_end": 114
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Traffic-Light Speed Control",
+      "normalized_title": "Traffic-Light Speed Control",
+      "key": "traffic_light_speed_control",
+      "path": [
+        "Traffic-Light Speed Control"
+      ],
+      "content": "`TrafficLight(color)` changes vehicle speed according to the entered traffic signal:\n\n- Green → 100;\n- Orange → 30;\n- Red → 0.\n\nThe function uses the runtime pointer `wPointer` to update `Vehicle_Speed`.\n\nThis maps an external symbolic input into a deterministic actuator-like system state.",
+      "source_line_start": 114,
+      "source_line_end": 126
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Cabin Temperature Control",
+      "normalized_title": "Cabin Temperature Control",
+      "key": "cabin_temperature_control",
+      "path": [
+        "Cabin Temperature Control"
+      ],
+      "content": "`ACkontrol(temp)` evaluates room temperature.\n\nExtreme temperatures trigger the air-conditioning control path and assign a target temperature of 20.\n\nThe AC struct carries both:\n\n- state;\n- resulting temperature.",
+      "source_line_start": 126,
+      "source_line_end": 137
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engine Temperature Control",
+      "normalized_title": "Engine Temperature Control",
+      "key": "engine_temperature_control",
+      "path": [
+        "Engine Temperature Control"
+      ],
+      "content": "`ETCkontrol(temp)` works through pointers to the engine and engine-temperature-controller structures.\n\nIt evaluates engine temperature and can activate the controller around a target value of 125.\n\nThis gives the application a second sensor/actuator control path distinct from cabin temperature.",
+      "source_line_start": 137,
+      "source_line_end": 145
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Runtime Status Reporting",
+      "normalized_title": "Runtime Status Reporting",
+      "key": "runtime_status_reporting",
+      "path": [
+        "Runtime Status Reporting"
+      ],
+      "content": "After each loop iteration, the program prints:\n\n- AC ON/OFF state;\n- vehicle speed;\n- room temperature;\n- engine temperature;\n- engine-temperature-controller ON/OFF state.\n\nThe console therefore acts as a live observable state display.",
+      "source_line_start": 145,
+      "source_line_end": 157
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nUser input\n   ↓\nEngine state\n   ├─ OFF menu\n   └─ ON control menu\n          ├─ traffic light\n          │     ↓\n          │  vehicle speed\n          ├─ cabin temperature\n          │     ↓\n          │  AC state / target\n          └─ engine temperature\n                ↓\n             ETC state / target\n   ↓\nStatus output\n```",
+      "source_line_start": 157,
+      "source_line_end": 178
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "State Diagram Documentation",
+      "normalized_title": "State Diagram Documentation",
+      "key": "state_diagram_documentation",
+      "path": [
+        "State Diagram Documentation"
+      ],
+      "content": "The README includes a state diagram image for the control flow.\n\nThis is the earliest processed repository where a formal state-diagram artifact is directly documented alongside the implementation.\n\nThe diagram complements the code's engine-on / engine-off control structure.",
+      "source_line_start": 178,
+      "source_line_end": 186
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### State-Based Decomposition\n\nSeparate functions correspond to major control responsibilities:\n\n- engine state;\n- traffic light;\n- AC;\n- engine temperature controller;\n- engine-on menu;\n- engine-off menu.\n\n### Struct-Based Domain State\n\nRelated values are grouped into C structures instead of represented entirely as unrelated primitive globals.\n\n### Pointer-Based State Mutation\n\nPointers to the engine and controllers are used to update runtime state.\n\n### Rule-Based Control\n\nTraffic and temperature inputs are mapped into deterministic output states.\n\n### Continuous Status Observation\n\nThe main loop prints the current state after handling input, making the control behavior directly observable.",
+      "source_line_start": 186,
+      "source_line_end": 215
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "State-Based Decomposition",
+      "normalized_title": "State-Based Decomposition",
+      "key": "state_based_decomposition",
+      "path": [
+        "Engineering Practices",
+        "State-Based Decomposition"
+      ],
+      "content": "Separate functions correspond to major control responsibilities:\n\n- engine state;\n- traffic light;\n- AC;\n- engine temperature controller;\n- engine-on menu;\n- engine-off menu.",
+      "source_line_start": 188,
+      "source_line_end": 199
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Struct-Based Domain State",
+      "normalized_title": "Struct-Based Domain State",
+      "key": "struct_based_domain_state",
+      "path": [
+        "Engineering Practices",
+        "Struct-Based Domain State"
+      ],
+      "content": "Related values are grouped into C structures instead of represented entirely as unrelated primitive globals.",
+      "source_line_start": 199,
+      "source_line_end": 203
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Pointer-Based State Mutation",
+      "normalized_title": "Pointer-Based State Mutation",
+      "key": "pointer_based_state_mutation",
+      "path": [
+        "Engineering Practices",
+        "Pointer-Based State Mutation"
+      ],
+      "content": "Pointers to the engine and controllers are used to update runtime state.",
+      "source_line_start": 203,
+      "source_line_end": 207
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Rule-Based Control",
+      "normalized_title": "Rule-Based Control",
+      "key": "rule_based_control",
+      "path": [
+        "Engineering Practices",
+        "Rule-Based Control"
+      ],
+      "content": "Traffic and temperature inputs are mapped into deterministic output states.",
+      "source_line_start": 207,
+      "source_line_end": 211
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Continuous Status Observation",
+      "normalized_title": "Continuous Status Observation",
+      "key": "continuous_status_observation",
+      "path": [
+        "Engineering Practices",
+        "Continuous Status Observation"
+      ],
+      "content": "The main loop prints the current state after handling input, making the control behavior directly observable.",
+      "source_line_start": 211,
+      "source_line_end": 215
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Interactive Console Verification\n\nThe program can be exercised by entering:\n\n- engine commands;\n- traffic-light colors;\n- room temperature;\n- engine temperature.\n\nThe resulting control state is printed after each loop.\n\n### State-Diagram Cross-Reference\n\nThe README's state diagram provides a second representation against which the implemented menu/state flow can be understood.",
+      "source_line_start": 215,
+      "source_line_end": 232
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Interactive Console Verification",
+      "normalized_title": "Interactive Console Verification",
+      "key": "interactive_console_verification",
+      "path": [
+        "Verification",
+        "Interactive Console Verification"
+      ],
+      "content": "The program can be exercised by entering:\n\n- engine commands;\n- traffic-light colors;\n- room temperature;\n- engine temperature.\n\nThe resulting control state is printed after each loop.",
+      "source_line_start": 217,
+      "source_line_end": 228
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "State-Diagram Cross-Reference",
+      "normalized_title": "State-Diagram Cross-Reference",
+      "key": "state_diagram_cross_reference",
+      "path": [
+        "Verification",
+        "State-Diagram Cross-Reference"
+      ],
+      "content": "The README's state diagram provides a second representation against which the implemented menu/state flow can be understood.",
+      "source_line_start": 228,
+      "source_line_end": 232
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository has one C implementation file plus documentation.\n\n### Functional Scale\n\nThe program models several interacting state variables:\n\n- engine state;\n- vehicle speed;\n- cabin temperature;\n- AC state;\n- engine temperature;\n- engine-temperature-controller state.\n\n### Conceptual Complexity\n\nThe project is small, but it introduces explicit state-machine reasoning and sensor-to-control relationships.",
+      "source_line_start": 232,
+      "source_line_end": 253
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository has one C implementation file plus documentation.",
+      "source_line_start": 234,
+      "source_line_end": 238
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Functional Scale",
+      "normalized_title": "Functional Scale",
+      "key": "functional_scale",
+      "path": [
+        "Scale and Complexity",
+        "Functional Scale"
+      ],
+      "content": "The program models several interacting state variables:\n\n- engine state;\n- vehicle speed;\n- cabin temperature;\n- AC state;\n- engine temperature;\n- engine-temperature-controller state.",
+      "source_line_start": 238,
+      "source_line_end": 249
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The project is small, but it introduces explicit state-machine reasoning and sensor-to-control relationships.",
+      "source_line_start": 249,
+      "source_line_end": 253
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### C Programming\n\n- **C — strong evidence.**\n- **Functions — strong evidence.**\n- **Structs — strong evidence.**\n- **Pointers — strong evidence.**\n- **Switch/case control flow — strong evidence.**\n- **Console I/O — strong evidence.**\n\n### Control and State Modeling\n\n- **Finite-state-style control — strong evidence.**\n- **Rule-based actuator logic — strong evidence.**\n- **Sensor-like input handling — strong evidence.**\n- **Traffic-light speed mapping — strong evidence.**\n- **Temperature-control logic — strong evidence.**\n\n### Documentation\n\n- **State diagram — strong repository evidence.**",
+      "source_line_start": 253,
+      "source_line_end": 276
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "C Programming",
+      "normalized_title": "C Programming",
+      "key": "c_programming",
+      "path": [
+        "Skills Demonstrated",
+        "C Programming"
+      ],
+      "content": "- **C — strong evidence.**\n- **Functions — strong evidence.**\n- **Structs — strong evidence.**\n- **Pointers — strong evidence.**\n- **Switch/case control flow — strong evidence.**\n- **Console I/O — strong evidence.**",
+      "source_line_start": 255,
+      "source_line_end": 264
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Control and State Modeling",
+      "normalized_title": "Control and State Modeling",
+      "key": "control_and_state_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Control and State Modeling"
+      ],
+      "content": "- **Finite-state-style control — strong evidence.**\n- **Rule-based actuator logic — strong evidence.**\n- **Sensor-like input handling — strong evidence.**\n- **Traffic-light speed mapping — strong evidence.**\n- **Temperature-control logic — strong evidence.**",
+      "source_line_start": 264,
+      "source_line_end": 272
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Documentation",
+      "normalized_title": "Documentation",
+      "key": "documentation",
+      "path": [
+        "Skills Demonstrated",
+        "Documentation"
+      ],
+      "content": "- **State diagram — strong repository evidence.**",
+      "source_line_start": 272,
+      "source_line_end": 276
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository introduces C as an implementation language and makes state-machine/control reasoning explicit.\n\nUnlike the protocol state in repository 015, this state model is tied to a physical-domain abstraction:\n\n- engine;\n- speed;\n- temperature;\n- control systems.\n\nThat creates a useful bridge between software logic and embedded/control-system thinking.",
+      "source_line_start": 276,
+      "source_line_end": 289
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- C as the primary implementation language;\n- a documented vehicle-control state system;\n- a repository state diagram;\n- C structs used for control-domain state;\n- C pointer-based control-state mutation.",
+      "source_line_start": 289,
+      "source_line_end": 299
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Vehicle-Control-System` is an early embedded/control-oriented software exercise.\n\nIt adds C and state-diagram thinking to a period of the portfolio already rich in HDL and architecture work, reinforcing the emerging low-level/systems orientation of early 2023.",
+      "source_line_start": 299,
+      "source_line_end": 305
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Vehicle-Control-System` is a compact C console program that models vehicle behavior through explicit engine state and sensor-driven rules.\n\nTraffic-light input controls speed, cabin temperature feeds AC logic, engine temperature feeds a temperature-controller path, and C structs/pointers hold and mutate controller state. The main loop continuously reports the resulting state, while the README preserves a state-diagram representation of the system.\n\nIts main portfolio significance is the introduction of C and explicit control-state modeling into the chronological corpus.\n\n# Project Tags",
+      "source_line_start": 305,
+      "source_line_end": 315
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `control-system-exercise`\n- `console-application`\n- `educational-project`",
+      "source_line_start": 315,
+      "source_line_end": 321
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 321,
+      "source_line_end": 325
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `c`",
+      "source_line_start": 325,
+      "source_line_end": 329
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `vehicle-control`\n- `sensor-control-logic`\n- `temperature-control`\n- `traffic-light-control`",
+      "source_line_start": 329,
+      "source_line_end": 336
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `finite-state-machine`\n- `state-driven-control`\n- `rule-based-control`\n- `c-structs`\n- `c-pointers`\n- `console-state-simulation`",
+      "source_line_start": 336,
+      "source_line_end": 345
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `functional-decomposition`\n- `state-diagram-documentation`",
+      "source_line_start": 345,
+      "source_line_end": 350
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `manual-simulation`\n- `interactive-console-verification`",
+      "source_line_start": 350,
+      "source_line_end": 355
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-c`\n- `earliest-observed-state-diagram`\n- `earliest-observed-vehicle-control`",
+      "source_line_start": 355,
+      "source_line_end": 360
+    }
+  ],
+  "raw_analysis": "# Vehicle-Control-System\n\n## Repository Identity\n\n- Repository: 016 / 134\n- Name: `Vehicle-Control-System`\n- Repository start date: 2023-02-28\n- Latest meaningful update date: 2023-03-03\n- Primary type: Console control-system exercise\n- Technical field: C programming and state-driven control logic\n- Application domain: Vehicle state, speed, and temperature control\n- Project context: Personal educational project\n- Collaboration type: `individual-project`\n- Primary implementation language: C\n\n## Collaboration and Authorship Context\n\nThe repository commits are owner-authored, and the C source header names Kirolos Sedra.\n\nThe implementation is therefore personally attributable at repository level.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `Vehicle.c`;\n- the repository README;\n- the documented state diagram;\n- owner-authored commit history through March 3, 2023.\n\n## What This Project Is\n\n`Vehicle-Control-System` is a small C console application that models a vehicle through explicit engine state and rule-based responses to:\n\n- traffic-light color;\n- cabin temperature;\n- engine temperature.\n\nThe user moves between an engine-off menu and an engine-on control menu.\n\nWhen the engine is active, sensor-like inputs change vehicle speed, air-conditioning state, and engine-temperature-control state.\n\nThe repository README also documents the system through a state diagram.\n\n## State Model\n\nThe central application loop checks the engine state.\n\n```text\nEngine OFF\n   ├─ turn engine ON\n   └─ quit path\n\nEngine ON\n   ├─ turn engine OFF\n   ├─ set traffic light\n   ├─ set room temperature\n   └─ set engine temperature\n```\n\nThis gives the project a direct finite-state/control-system shape.\n\n## Technical Stack\n\n### C\n\nC is used for:\n\n- global state;\n- functions;\n- `struct`s;\n- pointers;\n- `switch` statements;\n- conditional control logic;\n- console input/output.\n\nThis is the earliest processed repository whose primary implementation language is C.\n\n## Data Structures\n\nThe source defines structures for:\n\n### Air Conditioner\n\n```text\nstate\ntemperature\n```\n\n### Engine Temperature Controller\n\n```text\nstate\ntemperature\n```\n\n### Engine\n\n```text\nstate\ntemperature\n```\n\nPointers are created for each control structure and used throughout the runtime logic.\n\n## Engine State Control\n\n`EngineState()` maps engine-state values into console-readable status output.\n\n`EngineOff()` presents the off-state menu and updates engine state based on user input.\n\n`EngineON()` presents the active control menu and dispatches traffic or sensor updates.\n\n## Traffic-Light Speed Control\n\n`TrafficLight(color)` changes vehicle speed according to the entered traffic signal:\n\n- Green → 100;\n- Orange → 30;\n- Red → 0.\n\nThe function uses the runtime pointer `wPointer` to update `Vehicle_Speed`.\n\nThis maps an external symbolic input into a deterministic actuator-like system state.\n\n## Cabin Temperature Control\n\n`ACkontrol(temp)` evaluates room temperature.\n\nExtreme temperatures trigger the air-conditioning control path and assign a target temperature of 20.\n\nThe AC struct carries both:\n\n- state;\n- resulting temperature.\n\n## Engine Temperature Control\n\n`ETCkontrol(temp)` works through pointers to the engine and engine-temperature-controller structures.\n\nIt evaluates engine temperature and can activate the controller around a target value of 125.\n\nThis gives the application a second sensor/actuator control path distinct from cabin temperature.\n\n## Runtime Status Reporting\n\nAfter each loop iteration, the program prints:\n\n- AC ON/OFF state;\n- vehicle speed;\n- room temperature;\n- engine temperature;\n- engine-temperature-controller ON/OFF state.\n\nThe console therefore acts as a live observable state display.\n\n## Architecture and System Shape\n\n```text\nUser input\n   ↓\nEngine state\n   ├─ OFF menu\n   └─ ON control menu\n          ├─ traffic light\n          │     ↓\n          │  vehicle speed\n          ├─ cabin temperature\n          │     ↓\n          │  AC state / target\n          └─ engine temperature\n                ↓\n             ETC state / target\n   ↓\nStatus output\n```\n\n## State Diagram Documentation\n\nThe README includes a state diagram image for the control flow.\n\nThis is the earliest processed repository where a formal state-diagram artifact is directly documented alongside the implementation.\n\nThe diagram complements the code's engine-on / engine-off control structure.\n\n## Engineering Practices\n\n### State-Based Decomposition\n\nSeparate functions correspond to major control responsibilities:\n\n- engine state;\n- traffic light;\n- AC;\n- engine temperature controller;\n- engine-on menu;\n- engine-off menu.\n\n### Struct-Based Domain State\n\nRelated values are grouped into C structures instead of represented entirely as unrelated primitive globals.\n\n### Pointer-Based State Mutation\n\nPointers to the engine and controllers are used to update runtime state.\n\n### Rule-Based Control\n\nTraffic and temperature inputs are mapped into deterministic output states.\n\n### Continuous Status Observation\n\nThe main loop prints the current state after handling input, making the control behavior directly observable.\n\n## Verification\n\n### Interactive Console Verification\n\nThe program can be exercised by entering:\n\n- engine commands;\n- traffic-light colors;\n- room temperature;\n- engine temperature.\n\nThe resulting control state is printed after each loop.\n\n### State-Diagram Cross-Reference\n\nThe README's state diagram provides a second representation against which the implemented menu/state flow can be understood.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository has one C implementation file plus documentation.\n\n### Functional Scale\n\nThe program models several interacting state variables:\n\n- engine state;\n- vehicle speed;\n- cabin temperature;\n- AC state;\n- engine temperature;\n- engine-temperature-controller state.\n\n### Conceptual Complexity\n\nThe project is small, but it introduces explicit state-machine reasoning and sensor-to-control relationships.\n\n## Skills Demonstrated\n\n### C Programming\n\n- **C — strong evidence.**\n- **Functions — strong evidence.**\n- **Structs — strong evidence.**\n- **Pointers — strong evidence.**\n- **Switch/case control flow — strong evidence.**\n- **Console I/O — strong evidence.**\n\n### Control and State Modeling\n\n- **Finite-state-style control — strong evidence.**\n- **Rule-based actuator logic — strong evidence.**\n- **Sensor-like input handling — strong evidence.**\n- **Traffic-light speed mapping — strong evidence.**\n- **Temperature-control logic — strong evidence.**\n\n### Documentation\n\n- **State diagram — strong repository evidence.**\n\n## Capability Developed\n\nThis repository introduces C as an implementation language and makes state-machine/control reasoning explicit.\n\nUnlike the protocol state in repository 015, this state model is tied to a physical-domain abstraction:\n\n- engine;\n- speed;\n- temperature;\n- control systems.\n\nThat creates a useful bridge between software logic and embedded/control-system thinking.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- C as the primary implementation language;\n- a documented vehicle-control state system;\n- a repository state diagram;\n- C structs used for control-domain state;\n- C pointer-based control-state mutation.\n\n## Historical Significance\n\n`Vehicle-Control-System` is an early embedded/control-oriented software exercise.\n\nIt adds C and state-diagram thinking to a period of the portfolio already rich in HDL and architecture work, reinforcing the emerging low-level/systems orientation of early 2023.\n\n## Overall Repository Narrative\n\n`Vehicle-Control-System` is a compact C console program that models vehicle behavior through explicit engine state and sensor-driven rules.\n\nTraffic-light input controls speed, cabin temperature feeds AC logic, engine temperature feeds a temperature-controller path, and C structs/pointers hold and mutate controller state. The main loop continuously reports the resulting state, while the README preserves a state-diagram representation of the system.\n\nIts main portfolio significance is the introduction of C and explicit control-state modeling into the chronological corpus.\n\n# Project Tags\n\n## Project Type\n\n- `control-system-exercise`\n- `console-application`\n- `educational-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `c`\n\n## Embedded and Hardware\n\n- `vehicle-control`\n- `sensor-control-logic`\n- `temperature-control`\n- `traffic-light-control`\n\n## Systems Engineering\n\n- `finite-state-machine`\n- `state-driven-control`\n- `rule-based-control`\n- `c-structs`\n- `c-pointers`\n- `console-state-simulation`\n\n## Software Engineering Practices\n\n- `functional-decomposition`\n- `state-diagram-documentation`\n\n## Testing and Verification\n\n- `manual-simulation`\n- `interactive-console-verification`\n\n## Portfolio Significance\n\n- `earliest-observed-c`\n- `earliest-observed-state-diagram`\n- `earliest-observed-vehicle-control`\n"
+}

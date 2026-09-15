@@ -1,0 +1,115 @@
+{
+  "embedding_schema_version": "4.0.0",
+  "embedding_generation": "v4",
+  "provider_artifact_generation": "cloudflare-v1",
+  "pipeline_step": 3,
+  "generated_at_utc": "2026-09-15T00:04:31.281Z",
+  "script": "generate-rag-embeddings-v4-cloudflare.mjs",
+  "input": {
+    "path": "02-retrieval-documents\\output\\documents.jsonl",
+    "sha256": "15ce24d918d35adf426588b6104b0c34965d3214a13d1c0b5359ed5ae5545d20",
+    "document_count": 1429,
+    "repository_count": 134,
+    "repository_total": 134,
+    "embedding_words_min": 28,
+    "embedding_words_median": 115,
+    "embedding_words_max": 462,
+    "embedding_utf8_bytes_min": 290,
+    "embedding_utf8_bytes_median": 1110,
+    "embedding_utf8_bytes_max": 4401,
+    "input_utf8_bytes_sanity_limit": 32768,
+    "client_side_truncation": false
+  },
+  "embedding": {
+    "provider": "cloudflare-workers-ai",
+    "model": "@cf/qwen/qwen3-embedding-0.6b",
+    "dimensions": 1024,
+    "context_window_tokens": 8192,
+    "document_input_mode": "documents",
+    "runtime_query_input_mode": "queries",
+    "runtime_query_instruction": "Given a web search query, retrieve relevant passages that answer the query",
+    "postprocess": "L2 normalize",
+    "similarity": "cosine",
+    "dtype": "float32",
+    "field_embedded": "embedding_text",
+    "authoritative_evidence_field": "text",
+    "logical_checkpoint_batch_size": 16,
+    "input_utf8_bytes_sanity_limit": 32768,
+    "client_side_truncation": false,
+    "exact_qwen_token_count_available_from_response": false
+  },
+  "authentication": {
+    "account_resolution": "wrangler whoami",
+    "credential_resolution": "wrangler oauth",
+    "secret_persisted_to_artifacts": false
+  },
+  "smoke_validation": {
+    "document_mode": "PASS",
+    "query_mode": "PASS",
+    "document_shape": [
+      1,
+      1024
+    ],
+    "query_shape": [
+      1,
+      1024
+    ]
+  },
+  "matrix": {
+    "matrix_shape": [
+      1429,
+      1024
+    ],
+    "dtype": "float32",
+    "vector_count": 1429,
+    "dimension": 1024,
+    "invalid_vector_count": 0,
+    "zero_vector_count": 0,
+    "l2_norm_min": 0.9999999701036343,
+    "l2_norm_median": 1.000000000387316,
+    "l2_norm_max": 1.0000000298319236,
+    "l2_norm_max_error_from_one": 2.989636571637533e-8
+  },
+  "run": {
+    "logical_batch_count": 90,
+    "new_logical_batches": 90,
+    "resumed_logical_batches": 0,
+    "cached_document_count": 0,
+    "new_document_embeddings": 1429,
+    "raw_model_l2_norm_min": 0.9999999131183765,
+    "raw_model_l2_norm_max": 1.0000000920898098,
+    "successful_api_requests": 92,
+    "http_attempts_including_retries": 94
+  },
+  "artifacts": {
+    "embeddings.npy": {
+      "sha256": "87f0e09c535926028bd292a76f219a15fc11a3a5c40f79cf7495304a4af37493",
+      "rows": 1429,
+      "columns": 1024,
+      "dtype": "float32"
+    },
+    "embedding-records.jsonl": {
+      "sha256": "207c4d2350239f41fedfaff56c4ab587c6d1a17cb68e60027d0e7a68fa04cc6b",
+      "records": 1429
+    }
+  },
+  "integrity": {
+    "matrix_row_equals_record_vector_index": "PASS",
+    "document_id_order_preserved": "PASS",
+    "authoritative_text_preserved": "PASS",
+    "source_fragments_preserved": "PASS",
+    "embedding_text_preserved": "PASS",
+    "client_side_truncation": "DISABLED",
+    "repository_coverage": "PASS",
+    "duplicate_document_ids": 0,
+    "invalid_vectors": 0,
+    "nan_or_inf_vectors": 0,
+    "zero_vectors": 0,
+    "unit_normalized_vectors": "PASS"
+  },
+  "next_pipeline_input": {
+    "vectors": "03-embeddings/output/embeddings-cloudflare-v1/embeddings.npy",
+    "records": "03-embeddings/output/embeddings-cloudflare-v1/embedding-records.jsonl",
+    "configuration": "03-embeddings/output/embeddings-cloudflare-v1/embedding-manifest.json"
+  }
+}

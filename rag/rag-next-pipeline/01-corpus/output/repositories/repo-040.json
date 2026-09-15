@@ -1,0 +1,544 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 40,
+  "repository_total": 134,
+  "repository_name": "ROS",
+  "header_title": "ROS",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-040-ROS/README.md",
+    "line_start": 1,
+    "line_end": 252,
+    "sha256": "c08cb892fff66fc9553aafa0eeccebe353ba6150e65ec5dc7db20ed6d8fadbeb"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "robotics-learning-workspace",
+    "middleware-exercises",
+    "educational-project",
+    "individual-project",
+    "python",
+    "ros",
+    "ros2",
+    "rclpy",
+    "ros-node",
+    "ros-topics",
+    "publish-subscribe",
+    "topic-publication",
+    "topic-subscription",
+    "ros-services",
+    "custom-ros-message",
+    "custom-ros-service",
+    "ros-parameters",
+    "ros-timers",
+    "ros-callbacks",
+    "sensor-message",
+    "ros-workspace",
+    "ament",
+    "colcon",
+    "rosidl",
+    "cmake",
+    "build-artifact-evidence",
+    "event-driven-programming",
+    "interface-definition",
+    "troubleshooting-notes",
+    "error-log",
+    "package-structure",
+    "earliest-observed-ros2",
+    "earliest-observed-rclpy",
+    "earliest-observed-custom-ros-message",
+    "earliest-observed-custom-ros-service",
+    "earliest-observed-ros-parameters"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/ROS`\n- **Repository start date:** 2024-08-19\n- **Last meaningful update date:** 2024-08-22\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Workspace type:** ROS 2 learning and experimentation workspace\n- **Build/package tooling:** ROS workspace artifacts, Python package metadata, CMake interface package\n- **Collaboration classification:** individual learning repository"
+    },
+    "documentation": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Operational Documentation"
+      ],
+      "text": "## Operational Documentation\n`Command Cheat Sheet` contains material for nodes, topics, packages, visualization, and errors.\n\nThe repository therefore keeps both executable examples and operational commands needed to inspect and manage them."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/ROS`\n- **Repository start date:** 2024-08-19\n- **Last meaningful update date:** 2024-08-22\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Workspace type:** ROS 2 learning and experimentation workspace\n- **Build/package tooling:** ROS workspace artifacts, Python package metadata, CMake interface package\n- **Collaboration classification:** individual learning repository",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`ROS` is a working ROS 2 learning repository combining executable nodes with a command and error notebook.\n\nIt contains ROS command cheat sheets, a maintained error log, publishers, subscribers, parameters, services, service clients, custom messages, custom service definitions, package metadata, and generated workspace build output.\n\nThe repository therefore contains concrete middleware implementation rather than notes alone.",
+      "source_line_start": 14,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Workspace Structure",
+      "normalized_title": "Workspace Structure",
+      "key": "workspace_structure",
+      "path": [
+        "Workspace Structure"
+      ],
+      "content": "`Robotics/src` contains multiple packages, including:\n\n- `custom_interfaces`,\n- `kiro_custom_interfaces`,\n- `last`,\n- `realpkg`.\n\nThe repository also preserves `Robotics/build`, providing evidence that the workspace was passed through the ROS build toolchain.",
+      "source_line_start": 22,
+      "source_line_end": 33
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "ROS 2 Python Runtime",
+      "normalized_title": "ROS 2 Python Runtime",
+      "key": "ros_2_python_runtime",
+      "path": [
+        "ROS 2 Python Runtime"
+      ],
+      "content": "Executable examples import `rclpy` and derive classes from `rclpy.node.Node`.\n\nThey use `rclpy.init`, node construction, `rclpy.spin`, and `rclpy.shutdown`.\n\nThis is direct ROS 2 Python node development.",
+      "source_line_start": 33,
+      "source_line_end": 41
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Publisher/Subscriber Communication",
+      "normalized_title": "Publisher/Subscriber Communication",
+      "key": "publisher_subscriber_communication",
+      "path": [
+        "Publisher/Subscriber Communication"
+      ],
+      "content": "### Publisher\n\n`testpublisher.py` creates a publisher on `Greeting_topic`.\n\nIt declares two parameters, reads them, creates a `String` publisher, schedules periodic publication with a timer, and publishes generated greeting content.\n\n### Subscriber\n\n`testsubscriber.py` subscribes to `Greeting_topic`.\n\nIts callback logs received message content.\n\nTogether the files establish a complete ROS publish/subscribe path.",
+      "source_line_start": 41,
+      "source_line_end": 57
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Publisher",
+      "normalized_title": "Publisher",
+      "key": "publisher",
+      "path": [
+        "Publisher/Subscriber Communication",
+        "Publisher"
+      ],
+      "content": "`testpublisher.py` creates a publisher on `Greeting_topic`.\n\nIt declares two parameters, reads them, creates a `String` publisher, schedules periodic publication with a timer, and publishes generated greeting content.",
+      "source_line_start": 43,
+      "source_line_end": 49
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Subscriber",
+      "normalized_title": "Subscriber",
+      "key": "subscriber",
+      "path": [
+        "Publisher/Subscriber Communication",
+        "Subscriber"
+      ],
+      "content": "`testsubscriber.py` subscribes to `Greeting_topic`.\n\nIts callback logs received message content.\n\nTogether the files establish a complete ROS publish/subscribe path.",
+      "source_line_start": 49,
+      "source_line_end": 57
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "ROS Parameters",
+      "normalized_title": "ROS Parameters",
+      "key": "ros_parameters",
+      "path": [
+        "ROS Parameters"
+      ],
+      "content": "The publisher declares:\n\n- `Str_to_publish`,\n- `freq_setting`.\n\nIt retrieves parameter values from the node.\n\nThat is concrete runtime configuration rather than constants only.",
+      "source_line_start": 57,
+      "source_line_end": 68
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Custom Sensor Message",
+      "normalized_title": "Custom Sensor Message",
+      "key": "custom_sensor_message",
+      "path": [
+        "Custom Sensor Message"
+      ],
+      "content": "The repository defines:\n\n`custom_interfaces/msg/SensorState.msg`\n\nwith fields:\n\n- `string sensor_name`,\n- `bool new_readings_ready`,\n- `int64 reading_id`.\n\n`SensorPublisher.py` imports the generated type, creates a publisher on `Sensor_Readings`, fills the custom fields, and publishes every 0.5 seconds.\n\nThe example identifies the sensor as `\"Radar\"`.\n\nThis demonstrates the full custom-message flow from interface schema to generated Python type to topic publication.",
+      "source_line_start": 68,
+      "source_line_end": 86
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Custom Service",
+      "normalized_title": "Custom Service",
+      "key": "custom_service",
+      "path": [
+        "Custom Service"
+      ],
+      "content": "The repository defines:\n\n`CalculateTriangleArea.srv`\n\nwith request values `a`, `b`, and `c`, plus an `area` response.\n\n`TriangleService.py` creates a ROS service named `Triangle_Area`.\n\nIts callback calculates semiperimeter and applies Heron's formula before writing the result to the response.\n\nThe repository therefore implements a custom request/response contract rather than only built-in message types.",
+      "source_line_start": 86,
+      "source_line_end": 100
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "ROS Communication Models",
+      "normalized_title": "ROS Communication Models",
+      "key": "ros_communication_models",
+      "path": [
+        "ROS Communication Models"
+      ],
+      "content": "The repository exercises both major communication patterns:\n\n- asynchronous topic publish/subscribe,\n- service request/response.\n\nCommit history also contains explicit service- and interface-focused development steps.",
+      "source_line_start": 100,
+      "source_line_end": 109
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Interface Package",
+      "normalized_title": "Interface Package",
+      "key": "interface_package",
+      "path": [
+        "Interface Package"
+      ],
+      "content": "`custom_interfaces` includes:\n\n- `CMakeLists.txt`,\n- `package.xml`,\n- `msg/`,\n- `srv/`.\n\nIts visible custom definitions include `ColorState.msg`, `SensorState.msg`, and `CalculateTriangleArea.srv`.\n\nThis is a dedicated ROS interface package.",
+      "source_line_start": 109,
+      "source_line_end": 122
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Build Evidence",
+      "normalized_title": "Build Evidence",
+      "key": "build_evidence",
+      "path": [
+        "Build Evidence"
+      ],
+      "content": "The committed build tree contains generated output for `custom_interfaces`, including CMake cache/compiler metadata and ROS interface type-support exports.\n\nThat demonstrates actual interface generation through the ROS toolchain.",
+      "source_line_start": 122,
+      "source_line_end": 128
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Operational Documentation",
+      "normalized_title": "Operational Documentation",
+      "key": "operational_documentation",
+      "path": [
+        "Operational Documentation"
+      ],
+      "content": "`Command Cheat Sheet` contains material for nodes, topics, packages, visualization, and errors.\n\nThe repository therefore keeps both executable examples and operational commands needed to inspect and manage them.",
+      "source_line_start": 128,
+      "source_line_end": 134
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Error Log",
+      "normalized_title": "Error Log",
+      "key": "error_log",
+      "path": [
+        "Error Log"
+      ],
+      "content": "A dedicated `Error Log.md` is maintained through several commits.\n\nThat is useful engineering evidence because development failures are retained as reusable operational knowledge rather than discarded after a successful run.",
+      "source_line_start": 134,
+      "source_line_end": 140
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Visualization Context",
+      "normalized_title": "Visualization Context",
+      "key": "visualization_context",
+      "path": [
+        "Visualization Context"
+      ],
+      "content": "`Visual Ros.md` received repeated updates through the repository's final meaningful commit on 2024-08-22.\n\nThe adjacent Linux repository explicitly records `rviz2` and software-rendering troubleshooting, tying this period to hands-on ROS visualization work.",
+      "source_line_start": 140,
+      "source_line_end": 146
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### ROS 2 Node Development\n\nPython node classes participate in ROS initialization, spinning, callbacks, and shutdown.\n\n### Publish/Subscribe Messaging\n\nThe repository contains both producer and consumer implementations.\n\n### Service Development\n\nA custom service schema and server implement request/response middleware communication.\n\n### Custom Interface Definition\n\n`.msg` and `.srv` definitions create user-defined ROS types.\n\n### Parameters\n\nNode behavior reads ROS parameters.\n\n### Timers and Callbacks\n\nPeriodic publication and callback-driven execution demonstrate event-oriented middleware programming.\n\n### Workspace Packaging\n\nPython package setup, ROS package manifests, interface CMake files, and generated build outputs show package-level workflow.\n\n### Debugging\n\nCommand notes and an error log capture operational learning alongside code.",
+      "source_line_start": 146,
+      "source_line_end": 180
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "ROS 2 Node Development",
+      "normalized_title": "ROS 2 Node Development",
+      "key": "ros_2_node_development",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "ROS 2 Node Development"
+      ],
+      "content": "Python node classes participate in ROS initialization, spinning, callbacks, and shutdown.",
+      "source_line_start": 148,
+      "source_line_end": 152
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Publish/Subscribe Messaging",
+      "normalized_title": "Publish/Subscribe Messaging",
+      "key": "publish_subscribe_messaging",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Publish/Subscribe Messaging"
+      ],
+      "content": "The repository contains both producer and consumer implementations.",
+      "source_line_start": 152,
+      "source_line_end": 156
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Service Development",
+      "normalized_title": "Service Development",
+      "key": "service_development",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Service Development"
+      ],
+      "content": "A custom service schema and server implement request/response middleware communication.",
+      "source_line_start": 156,
+      "source_line_end": 160
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Custom Interface Definition",
+      "normalized_title": "Custom Interface Definition",
+      "key": "custom_interface_definition",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Custom Interface Definition"
+      ],
+      "content": "`.msg` and `.srv` definitions create user-defined ROS types.",
+      "source_line_start": 160,
+      "source_line_end": 164
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Parameters",
+      "normalized_title": "Parameters",
+      "key": "parameters",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Parameters"
+      ],
+      "content": "Node behavior reads ROS parameters.",
+      "source_line_start": 164,
+      "source_line_end": 168
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Timers and Callbacks",
+      "normalized_title": "Timers and Callbacks",
+      "key": "timers_and_callbacks",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Timers and Callbacks"
+      ],
+      "content": "Periodic publication and callback-driven execution demonstrate event-oriented middleware programming.",
+      "source_line_start": 168,
+      "source_line_end": 172
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Workspace Packaging",
+      "normalized_title": "Workspace Packaging",
+      "key": "workspace_packaging",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Workspace Packaging"
+      ],
+      "content": "Python package setup, ROS package manifests, interface CMake files, and generated build outputs show package-level workflow.",
+      "source_line_start": 172,
+      "source_line_end": 176
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Debugging",
+      "normalized_title": "Debugging",
+      "key": "debugging",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Debugging"
+      ],
+      "content": "Command notes and an error log capture operational learning alongside code.",
+      "source_line_start": 176,
+      "source_line_end": 180
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository demonstrates a transition from using ROS as integration infrastructure to creating ROS 2 middleware primitives directly.\n\nThe developer creates nodes, topics, publishers, subscribers, services, custom messages, custom service definitions, parameters, timers, and workspace packages.",
+      "source_line_start": 180,
+      "source_line_end": 186
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "ROS appeared earlier in the collaborative autonomous-driving work as existing integration infrastructure.\n\nThis is the first processed repository dedicated specifically to implementing and learning ROS 2 primitives.\n\nThe chronological progression is coherent:\n\n**sensors → perception → estimation → Linux robotics environment → ROS middleware development**",
+      "source_line_start": 186,
+      "source_line_end": 196
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`ROS` is a compact but real ROS 2 workspace.\n\nIt progresses from command experiments into Python nodes, publisher/subscriber communication, parameters, services, and custom interfaces.\n\nA radar-oriented `SensorState` message and triangle-area service provide concrete custom data contracts. Build outputs show interface generation, while command sheets and error logs preserve the troubleshooting knowledge developed alongside the code.\n\n# Project Tags",
+      "source_line_start": 196,
+      "source_line_end": 206
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `robotics-learning-workspace`\n- `middleware-exercises`\n- `educational-project`\n- `individual-project`",
+      "source_line_start": 206,
+      "source_line_end": 212
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`",
+      "source_line_start": 212,
+      "source_line_end": 215
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Robotics and Autonomous Systems",
+      "normalized_title": "Robotics and Autonomous Systems",
+      "key": "robotics_and_autonomous_systems",
+      "path": [
+        "Robotics and Autonomous Systems"
+      ],
+      "content": "- `ros`\n- `ros2`\n- `rclpy`\n- `ros-node`\n- `ros-topics`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`\n- `ros-services`\n- `custom-ros-message`\n- `custom-ros-service`\n- `ros-parameters`\n- `ros-timers`\n- `ros-callbacks`\n- `sensor-message`",
+      "source_line_start": 215,
+      "source_line_end": 232
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Build and Tooling",
+      "normalized_title": "Build and Tooling",
+      "key": "build_and_tooling",
+      "path": [
+        "Build and Tooling"
+      ],
+      "content": "- `ros-workspace`\n- `ament`\n- `colcon`\n- `rosidl`\n- `cmake`\n- `build-artifact-evidence`",
+      "source_line_start": 232,
+      "source_line_end": 240
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `event-driven-programming`\n- `interface-definition`\n- `troubleshooting-notes`\n- `error-log`\n- `package-structure`",
+      "source_line_start": 240,
+      "source_line_end": 247
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-ros2`\n- `earliest-observed-rclpy`\n- `earliest-observed-custom-ros-message`\n- `earliest-observed-custom-ros-service`\n- `earliest-observed-ros-parameters`",
+      "source_line_start": 247,
+      "source_line_end": 253
+    }
+  ],
+  "raw_analysis": "# Repository 040 — ROS\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/ROS`\n- **Repository start date:** 2024-08-19\n- **Last meaningful update date:** 2024-08-22\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Workspace type:** ROS 2 learning and experimentation workspace\n- **Build/package tooling:** ROS workspace artifacts, Python package metadata, CMake interface package\n- **Collaboration classification:** individual learning repository\n\n## What This Project Is\n\n`ROS` is a working ROS 2 learning repository combining executable nodes with a command and error notebook.\n\nIt contains ROS command cheat sheets, a maintained error log, publishers, subscribers, parameters, services, service clients, custom messages, custom service definitions, package metadata, and generated workspace build output.\n\nThe repository therefore contains concrete middleware implementation rather than notes alone.\n\n## Workspace Structure\n\n`Robotics/src` contains multiple packages, including:\n\n- `custom_interfaces`,\n- `kiro_custom_interfaces`,\n- `last`,\n- `realpkg`.\n\nThe repository also preserves `Robotics/build`, providing evidence that the workspace was passed through the ROS build toolchain.\n\n## ROS 2 Python Runtime\n\nExecutable examples import `rclpy` and derive classes from `rclpy.node.Node`.\n\nThey use `rclpy.init`, node construction, `rclpy.spin`, and `rclpy.shutdown`.\n\nThis is direct ROS 2 Python node development.\n\n## Publisher/Subscriber Communication\n\n### Publisher\n\n`testpublisher.py` creates a publisher on `Greeting_topic`.\n\nIt declares two parameters, reads them, creates a `String` publisher, schedules periodic publication with a timer, and publishes generated greeting content.\n\n### Subscriber\n\n`testsubscriber.py` subscribes to `Greeting_topic`.\n\nIts callback logs received message content.\n\nTogether the files establish a complete ROS publish/subscribe path.\n\n## ROS Parameters\n\nThe publisher declares:\n\n- `Str_to_publish`,\n- `freq_setting`.\n\nIt retrieves parameter values from the node.\n\nThat is concrete runtime configuration rather than constants only.\n\n## Custom Sensor Message\n\nThe repository defines:\n\n`custom_interfaces/msg/SensorState.msg`\n\nwith fields:\n\n- `string sensor_name`,\n- `bool new_readings_ready`,\n- `int64 reading_id`.\n\n`SensorPublisher.py` imports the generated type, creates a publisher on `Sensor_Readings`, fills the custom fields, and publishes every 0.5 seconds.\n\nThe example identifies the sensor as `\"Radar\"`.\n\nThis demonstrates the full custom-message flow from interface schema to generated Python type to topic publication.\n\n## Custom Service\n\nThe repository defines:\n\n`CalculateTriangleArea.srv`\n\nwith request values `a`, `b`, and `c`, plus an `area` response.\n\n`TriangleService.py` creates a ROS service named `Triangle_Area`.\n\nIts callback calculates semiperimeter and applies Heron's formula before writing the result to the response.\n\nThe repository therefore implements a custom request/response contract rather than only built-in message types.\n\n## ROS Communication Models\n\nThe repository exercises both major communication patterns:\n\n- asynchronous topic publish/subscribe,\n- service request/response.\n\nCommit history also contains explicit service- and interface-focused development steps.\n\n## Interface Package\n\n`custom_interfaces` includes:\n\n- `CMakeLists.txt`,\n- `package.xml`,\n- `msg/`,\n- `srv/`.\n\nIts visible custom definitions include `ColorState.msg`, `SensorState.msg`, and `CalculateTriangleArea.srv`.\n\nThis is a dedicated ROS interface package.\n\n## Build Evidence\n\nThe committed build tree contains generated output for `custom_interfaces`, including CMake cache/compiler metadata and ROS interface type-support exports.\n\nThat demonstrates actual interface generation through the ROS toolchain.\n\n## Operational Documentation\n\n`Command Cheat Sheet` contains material for nodes, topics, packages, visualization, and errors.\n\nThe repository therefore keeps both executable examples and operational commands needed to inspect and manage them.\n\n## Error Log\n\nA dedicated `Error Log.md` is maintained through several commits.\n\nThat is useful engineering evidence because development failures are retained as reusable operational knowledge rather than discarded after a successful run.\n\n## Visualization Context\n\n`Visual Ros.md` received repeated updates through the repository's final meaningful commit on 2024-08-22.\n\nThe adjacent Linux repository explicitly records `rviz2` and software-rendering troubleshooting, tying this period to hands-on ROS visualization work.\n\n## Engineering Skills Demonstrated\n\n### ROS 2 Node Development\n\nPython node classes participate in ROS initialization, spinning, callbacks, and shutdown.\n\n### Publish/Subscribe Messaging\n\nThe repository contains both producer and consumer implementations.\n\n### Service Development\n\nA custom service schema and server implement request/response middleware communication.\n\n### Custom Interface Definition\n\n`.msg` and `.srv` definitions create user-defined ROS types.\n\n### Parameters\n\nNode behavior reads ROS parameters.\n\n### Timers and Callbacks\n\nPeriodic publication and callback-driven execution demonstrate event-oriented middleware programming.\n\n### Workspace Packaging\n\nPython package setup, ROS package manifests, interface CMake files, and generated build outputs show package-level workflow.\n\n### Debugging\n\nCommand notes and an error log capture operational learning alongside code.\n\n## Capability Developed\n\nThis repository demonstrates a transition from using ROS as integration infrastructure to creating ROS 2 middleware primitives directly.\n\nThe developer creates nodes, topics, publishers, subscribers, services, custom messages, custom service definitions, parameters, timers, and workspace packages.\n\n## Portfolio Evolution\n\nROS appeared earlier in the collaborative autonomous-driving work as existing integration infrastructure.\n\nThis is the first processed repository dedicated specifically to implementing and learning ROS 2 primitives.\n\nThe chronological progression is coherent:\n\n**sensors → perception → estimation → Linux robotics environment → ROS middleware development**\n\n## Overall Project Narrative\n\n`ROS` is a compact but real ROS 2 workspace.\n\nIt progresses from command experiments into Python nodes, publisher/subscriber communication, parameters, services, and custom interfaces.\n\nA radar-oriented `SensorState` message and triangle-area service provide concrete custom data contracts. Build outputs show interface generation, while command sheets and error logs preserve the troubleshooting knowledge developed alongside the code.\n\n# Project Tags\n\n## Project Type\n- `robotics-learning-workspace`\n- `middleware-exercises`\n- `educational-project`\n- `individual-project`\n\n## Languages\n- `python`\n\n## Robotics and Autonomous Systems\n- `ros`\n- `ros2`\n- `rclpy`\n- `ros-node`\n- `ros-topics`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`\n- `ros-services`\n- `custom-ros-message`\n- `custom-ros-service`\n- `ros-parameters`\n- `ros-timers`\n- `ros-callbacks`\n- `sensor-message`\n\n## Build and Tooling\n- `ros-workspace`\n- `ament`\n- `colcon`\n- `rosidl`\n- `cmake`\n- `build-artifact-evidence`\n\n## Software Engineering Practices\n- `event-driven-programming`\n- `interface-definition`\n- `troubleshooting-notes`\n- `error-log`\n- `package-structure`\n\n## Portfolio Significance\n- `earliest-observed-ros2`\n- `earliest-observed-rclpy`\n- `earliest-observed-custom-ros-message`\n- `earliest-observed-custom-ros-service`\n- `earliest-observed-ros-parameters`\n"
+}

@@ -1,0 +1,553 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 131,
+  "repository_total": 134,
+  "repository_name": "5G-SA",
+  "header_title": "5G-SA",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-131-5G-SA/README.md",
+    "line_start": 1,
+    "line_end": 534,
+    "sha256": "1bd2ffcd52109d45c1ffed3b101369b0f20c642be722cbfb14be3af4c261c23c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "5g-standalone",
+    "private-5g-testbed",
+    "open5gs",
+    "srsran",
+    "usrp-b210",
+    "quectel-rm502q-ae",
+    "nr-band-n78",
+    "tdd",
+    "20mhz-channel",
+    "5g-core-network",
+    "amf-registration",
+    "smf",
+    "upf",
+    "pdu-session",
+    "n2-interface",
+    "qmi",
+    "at-commands",
+    "linux-networking",
+    "modem-configuration",
+    "iperf3",
+    "latency-measurement",
+    "rf-metrics",
+    "rsrp",
+    "rsrq",
+    "sinr",
+    "pci",
+    "arfcn",
+    "python-log-processing",
+    "json-processing",
+    "csv-export",
+    "measurement-alignment",
+    "research-testbed",
+    "wireless-experimentation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/5G-SA`\n- **Repository index:** 131\n- **Start date:** 2026-03-20\n- **Latest meaningful update:** 2026-03-27\n- **Latest meaningful commit:** `d17ca9d0f261cb5f1feaa19c2878cca1a4b57371` — `Create ExtractBi.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** private 5G Standalone testbed launch/runbook plus scenario-level performance/RF extraction"
+    },
+    "maturity": {
+      "section_ids": [
+        "s034"
+      ],
+      "titles": [
+        "Maturity Assessment"
+      ],
+      "text": "## Maturity Assessment\nThis repository is a **focused, experimentally grounded private-5G SA runbook and extraction utility**.\n\nThe operational README contains concrete successful-state checkpoints rather than generic setup instructions.\n\nThe Python processing script is a real scenario-normalization tool with explicit input discovery, unit conversion, temporal cropping, and stable CSV outputs.\n\nThe repository is narrower than the larger thesis/research repositories and should be retrieved when the query specifically concerns 5G SA bring-up, UE registration/PDU sessions, or aligning SA experiment metrics."
+    },
+    "testing": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "PDU Session Verification"
+      ],
+      "text": "## PDU Session Verification\nThe runbook points to SMF logs and modem IP-address queries as data-plane validation evidence.\n\nThis gives two perspectives on the same system state:\n\n- core-network session state;\n- UE-side assigned-address state."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/5G-SA`\n- **Repository index:** 131\n- **Start date:** 2026-03-20\n- **Latest meaningful update:** 2026-03-27\n- **Latest meaningful commit:** `d17ca9d0f261cb5f1feaa19c2878cca1a4b57371` — `Create ExtractBi.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** private 5G Standalone testbed launch/runbook plus scenario-level performance/RF extraction",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`5G-SA` is a focused research-engineering repository for bringing up and analyzing a private 5G Standalone testbed.\n\nThe operational side documents the launch sequence for a stack built from:\n\n- Open5GS core-network functions;\n- MongoDB;\n- srsRAN gNB;\n- USRP B210 radio hardware;\n- a Quectel RM502Q-AE modem as UE;\n- n78 TDD radio configuration;\n- QMI-based data-session setup.\n\nThe processing side contains a Python extractor that aligns three experiment data sources into scenario CSVs:\n\n- iperf3 throughput;\n- latency/ping measurements;\n- modem JSON RF metrics.\n\nThis is not a general-purpose 5G implementation.\n\nIt is evidence of operating, validating, and instrumenting an existing open-source 5G SA stack in a controlled research testbed.",
+      "source_line_start": 14,
+      "source_line_end": 38
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Boundary",
+      "normalized_title": "Evidence Boundary",
+      "key": "evidence_boundary",
+      "path": [
+        "Evidence Boundary"
+      ],
+      "content": "The repository integrates and operates external telecommunications software and hardware.\n\nThe project does not establish authorship of:\n\n- Open5GS;\n- MongoDB;\n- srsRAN;\n- UHD/USRP drivers;\n- Quectel modem firmware;\n- Quectel Connection Manager.\n\nThe owner-attributable work is the testbed procedure, configuration/diagnostic reasoning, experiment workflow, and Python data-extraction logic committed in this repository.",
+      "source_line_start": 38,
+      "source_line_end": 53
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "Observed tree:\n\n```text\nREADME.md\nProcessing/\n├── README.md\n├── ExtractingData.py\n├── ExtractBi.py\n└── NestedExtraction.py\n```\n\n`ExtractBi.py`, `NestedExtraction.py`, and `Processing/README.md` are effectively empty placeholders in the observed repository state.\n\nThe substantive processing implementation is `Processing/ExtractingData.py`.\n\nThat distinction matters: the corpus does not award implementation credit merely because a filename exists.",
+      "source_line_start": 53,
+      "source_line_end": 72
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Testbed Target",
+      "normalized_title": "Testbed Target",
+      "key": "testbed_target",
+      "path": [
+        "Testbed Target"
+      ],
+      "content": "The runbook identifies the intended radio/core combination as:\n\n- Quectel RM502Q-AE UE modem;\n- USRP B210;\n- srsRAN gNB;\n- Open5GS core;\n- 5G NR Standalone;\n- n78;\n- 20 MHz TDD.\n\nThe repository therefore sits at the intersection of:\n\n- Linux systems work;\n- cellular networking;\n- SDR/radio testbeds;\n- mobile-network core operation;\n- performance measurement.",
+      "source_line_start": 72,
+      "source_line_end": 92
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Operational Bring-Up Sequence",
+      "normalized_title": "Operational Bring-Up Sequence",
+      "key": "operational_bring_up_sequence",
+      "path": [
+        "Operational Bring-Up Sequence"
+      ],
+      "content": "The documented launch process is deliberately ordered.\n\nA simplified sequence is:\n\n```text\nMongoDB\n   |\n   v\nOpen5GS network functions\n   |\n   v\nsrsRAN gNB + USRP B210\n   |\n   v\nQuectel UE SA configuration\n   |\n   v\n5G registration verification\n   |\n   v\nQMI data-session establishment\n   |\n   v\nexperiment traffic + logs\n```\n\nThe sequence encodes dependencies between persistence, core-network functions, radio access, UE registration, and user-plane activation.",
+      "source_line_start": 92,
+      "source_line_end": 122
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "MongoDB Dependency",
+      "normalized_title": "MongoDB Dependency",
+      "key": "mongodb_dependency",
+      "path": [
+        "MongoDB Dependency"
+      ],
+      "content": "The runbook starts MongoDB before the Open5GS network functions.\n\nMongoDB is an external dependency used by Open5GS for subscriber/core state.\n\nThe operational skill is recognizing that the core's control-plane services depend on their data store being available first.",
+      "source_line_start": 122,
+      "source_line_end": 130
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Open5GS Core Network",
+      "normalized_title": "Open5GS Core Network",
+      "key": "open5gs_core_network",
+      "path": [
+        "Open5GS Core Network"
+      ],
+      "content": "The runbook starts multiple Open5GS network functions individually.\n\nDocumented functions include:\n\n- NRF;\n- AMF;\n- SMF;\n- UPF;\n- AUSF;\n- UDM;\n- UDR;\n- PCF.\n\nThis shows familiarity with the modular 5G core rather than treating Open5GS as one opaque process.",
+      "source_line_start": 130,
+      "source_line_end": 147
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Core-Network Validation",
+      "normalized_title": "Core-Network Validation",
+      "key": "core_network_validation",
+      "path": [
+        "Core-Network Validation"
+      ],
+      "content": "The runbook calls for sanity-checking service state and logs after launch.\n\nThat is a practical testbed discipline:\n\n1. start the dependency;\n2. confirm the process is active;\n3. inspect logs;\n4. only then move to the next layer.\n\nThe repository therefore captures operational debugging sequencing, not just command memorization.",
+      "source_line_start": 147,
+      "source_line_end": 160
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "gNB Configuration",
+      "normalized_title": "gNB Configuration",
+      "key": "gnb_configuration",
+      "path": [
+        "gNB Configuration"
+      ],
+      "content": "The srsRAN gNB is launched from a specific radio configuration for the B210/n78/TDD setup.\n\nThe README records representative successful startup evidence including:\n\n- B210 detection;\n- USB 3 operation;\n- configured sampling/clock information;\n- physical cell ID;\n- 20 MHz bandwidth;\n- n78 downlink ARFCN/frequency;\n- N2 connectivity toward the AMF.\n\nThis gives the runbook concrete checkpoints for distinguishing a successfully initialized radio/access network from a process that merely started.",
+      "source_line_start": 160,
+      "source_line_end": 176
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "N2 / AMF Connectivity",
+      "normalized_title": "N2 / AMF Connectivity",
+      "key": "n2_amf_connectivity",
+      "path": [
+        "N2 / AMF Connectivity"
+      ],
+      "content": "The gNB output includes an N2 connection toward the AMF.\n\nThat is an important architectural checkpoint because it confirms the radio access node is connected to the 5G core control plane.\n\nThe repository therefore understands testbed launch as layered connectivity:\n\n```text\nRF hardware ready\n+ gNB ready\n+ N2 control-plane connectivity\n+ UE registration\n+ PDU session\n```\n\nrather than one binary “5G works” state.",
+      "source_line_start": 176,
+      "source_line_end": 194
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Quectel UE Configuration",
+      "normalized_title": "Quectel UE Configuration",
+      "key": "quectel_ue_configuration",
+      "path": [
+        "Quectel UE Configuration"
+      ],
+      "content": "The modem is configured through a serial AT-command session.\n\nThe runbook uses `minicom` against the modem's USB serial interface.\n\nThe documented configuration includes forcing/preparing 5G NR operation and then triggering operator selection/registration.\n\nThe repository records that the preferred mode may reset after reboot, meaning test repeatability requires reapplying the relevant modem configuration.",
+      "source_line_start": 194,
+      "source_line_end": 204
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Standalone Registration",
+      "normalized_title": "Standalone Registration",
+      "key": "standalone_registration",
+      "path": [
+        "Standalone Registration"
+      ],
+      "content": "The runbook verifies registration through a 5G registration AT query.\n\nExpected successful states include registered-home or registered-roaming outcomes.\n\nA sample run is documented as reaching AMF registration for a configured test subscriber.\n\nThe corpus intentionally does not preserve subscriber identifiers because they are not necessary to establish the skill.",
+      "source_line_start": 204,
+      "source_line_end": 214
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "UE Context Release Interpretation",
+      "normalized_title": "UE Context Release Interpretation",
+      "key": "ue_context_release_interpretation",
+      "path": [
+        "UE Context Release Interpretation"
+      ],
+      "content": "The README explicitly notes that UE-context release after successful registration can represent normal idle behavior rather than a failed registration.\n\nThis is useful troubleshooting evidence.\n\nIt shows distinction between:\n\n- registration failure;\n- successful registration followed by normal control-plane state transition.",
+      "source_line_start": 214,
+      "source_line_end": 225
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Data-Plane Activation",
+      "normalized_title": "Data-Plane Activation",
+      "key": "data_plane_activation",
+      "path": [
+        "Data-Plane Activation"
+      ],
+      "content": "The runbook separates registration from data-session establishment.\n\nAfter registration, it brings the modem's network interface up and invokes Quectel Connection Manager using QMI.\n\nA configured DNN/APN must match the subscriber profile.\n\nThis shows understanding that successful 5G registration alone does not prove user-plane IP connectivity.",
+      "source_line_start": 225,
+      "source_line_end": 235
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "PDU Session Verification",
+      "normalized_title": "PDU Session Verification",
+      "key": "pdu_session_verification",
+      "path": [
+        "PDU Session Verification"
+      ],
+      "content": "The runbook points to SMF logs and modem IP-address queries as data-plane validation evidence.\n\nThis gives two perspectives on the same system state:\n\n- core-network session state;\n- UE-side assigned-address state.",
+      "source_line_start": 235,
+      "source_line_end": 244
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Operational Failure Reasoning",
+      "normalized_title": "Operational Failure Reasoning",
+      "key": "operational_failure_reasoning",
+      "path": [
+        "Operational Failure Reasoning"
+      ],
+      "content": "The documented notes capture several high-value testbed lessons:\n\n- the UE mode preference may revert after reboot;\n- SA registration and QMI PDU-session establishment are separate concerns;\n- manual attach commands are not necessarily the correct SA workflow;\n- DNN mismatch can prevent a usable session even if registration succeeded;\n- core, gNB, UE, and user-plane checks should be performed independently.",
+      "source_line_start": 244,
+      "source_line_end": 254
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Processing Pipeline",
+      "normalized_title": "Processing Pipeline",
+      "key": "processing_pipeline",
+      "path": [
+        "Processing Pipeline"
+      ],
+      "content": "`Processing/ExtractingData.py` turns raw scenario artifacts into aligned CSV outputs.\n\nIt expects a scenario directory roughly shaped as:\n\n```text\nscenario/\n├── <latency log>.txt\n├── logs/\n│   └── modem_status*.json\n└── C_*logs/\n    └── <iperf3 throughput log>\n```\n\nIt creates:\n\n```text\nextracted/\n├── <scenario>_throughput.csv\n├── <scenario>_latency.csv\n└── <scenario>_rf_metrics.csv\n```",
+      "source_line_start": 254,
+      "source_line_end": 278
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Automatic File Discovery",
+      "normalized_title": "Automatic File Discovery",
+      "key": "automatic_file_discovery",
+      "path": [
+        "Automatic File Discovery"
+      ],
+      "content": "The script searches for data by directory/file conventions rather than requiring every path as a CLI argument.\n\nIt identifies:\n\n- a throughput directory matching `C_*logs` case-insensitively;\n- a latency file in the scenario root, preferring names containing ping/latency/ICMP;\n- modem JSON under `logs/`, preferring `modem_status*.json`.\n\nThis reduces manual per-scenario configuration.",
+      "source_line_start": 278,
+      "source_line_end": 290
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Throughput Parsing",
+      "normalized_title": "Throughput Parsing",
+      "key": "throughput_parsing",
+      "path": [
+        "Throughput Parsing"
+      ],
+      "content": "The extractor parses timestamped iperf3 text output with regular expressions.\n\nFor each interval it extracts:\n\n- wall-clock time;\n- interval start;\n- interval end;\n- transferred data;\n- transfer unit;\n- bitrate;\n- bitrate unit.\n\nThe output normalizes transfer values to MB and throughput to Mbps.",
+      "source_line_start": 290,
+      "source_line_end": 306
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Unit Normalization",
+      "normalized_title": "Unit Normalization",
+      "key": "unit_normalization",
+      "path": [
+        "Unit Normalization"
+      ],
+      "content": "The script handles multiple iperf unit scales.\n\nExamples include conversion from:\n\n- Gbits/sec to Mbps;\n- Kbits/sec to Mbps;\n- bits/sec to Mbps;\n- GBytes/KBytes/Bytes to MB.\n\nThis is important when aggregating measurements because iperf may dynamically choose display units.",
+      "source_line_start": 306,
+      "source_line_end": 319
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Throughput Time Window",
+      "normalized_title": "Throughput Time Window",
+      "key": "throughput_time_window",
+      "path": [
+        "Throughput Time Window"
+      ],
+      "content": "The parser derives an interval-start clock time from the reported interval-end wall clock and duration.\n\nThe first throughput interval becomes the scenario start boundary and the last interval becomes the scenario end boundary.\n\nThat time window is then reused to crop latency and RF data.\n\nThe throughput log therefore acts as the alignment anchor.",
+      "source_line_start": 319,
+      "source_line_end": 329
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Latency Parsing",
+      "normalized_title": "Latency Parsing",
+      "key": "latency_parsing",
+      "path": [
+        "Latency Parsing"
+      ],
+      "content": "Latency lines are parsed from timestamped ICMP output.\n\nExtracted fields include:\n\n- timestamp;\n- ICMP sequence number;\n- latency in milliseconds.\n\nThe script accounts for the logger's repeated-second timestamp artifact and reconstructs a conventional microsecond timestamp string.",
+      "source_line_start": 329,
+      "source_line_end": 341
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Latency Cropping",
+      "normalized_title": "Latency Cropping",
+      "key": "latency_cropping",
+      "path": [
+        "Latency Cropping"
+      ],
+      "content": "Latency rows are retained only when their wall-clock time falls within the throughput-derived start/end window.\n\nThis creates scenario-level temporal alignment across independently recorded tools.",
+      "source_line_start": 341,
+      "source_line_end": 347
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Modem RF JSON Parsing",
+      "normalized_title": "Modem RF JSON Parsing",
+      "key": "modem_rf_json_parsing",
+      "path": [
+        "Modem RF JSON Parsing"
+      ],
+      "content": "The script reads modem JSON samples and extracts serving-cell information.\n\nObserved RF fields include:\n\n- RSRP;\n- RSRQ;\n- SINR;\n- cell state;\n- radio access technology;\n- PCI;\n- ARFCN;\n- band;\n- sample index;\n- timestamp.\n\nThis is direct evidence of cellular radio-metric processing.",
+      "source_line_start": 347,
+      "source_line_end": 366
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "RF Metric Cropping",
+      "normalized_title": "RF Metric Cropping",
+      "key": "rf_metric_cropping",
+      "path": [
+        "RF Metric Cropping"
+      ],
+      "content": "RF samples are also cropped to the throughput-derived clock window.\n\nThe result is three output tables that cover the same scenario interval:\n\n```text\nthroughput\nlatency\nRF metrics\n```\n\nThis supports later correlation or comparative analysis without repeatedly parsing the raw logs.",
+      "source_line_start": 366,
+      "source_line_end": 380
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "CSV Output Design",
+      "normalized_title": "CSV Output Design",
+      "key": "csv_output_design",
+      "path": [
+        "CSV Output Design"
+      ],
+      "content": "The script emits explicit tabular schemas instead of writing loosely formatted text.\n\nThroughput output includes normalized transfer/rate fields.\n\nLatency output includes timestamp, sequence, and latency.\n\nRF output includes timestamped signal-quality and cell metadata.\n\nThis creates a clean intermediate representation for downstream analysis.",
+      "source_line_start": 380,
+      "source_line_end": 392
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "CLI Usability",
+      "normalized_title": "CLI Usability",
+      "key": "cli_usability",
+      "path": [
+        "CLI Usability"
+      ],
+      "content": "The script supports:\n\n- `--out` to override the output directory;\n- `--name` to override the output prefix.\n\nOtherwise it uses the current scenario directory name as the label.",
+      "source_line_start": 392,
+      "source_line_end": 401
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Defensive Behavior",
+      "normalized_title": "Defensive Behavior",
+      "key": "defensive_behavior",
+      "path": [
+        "Defensive Behavior"
+      ],
+      "content": "The extractor aborts when the required throughput source cannot be found or parsed.\n\nLatency and RF sources are treated more permissively: missing optional inputs generate warnings and empty corresponding outputs rather than invalidating the throughput extraction.\n\nThis is evidence of differentiated required/optional input handling.",
+      "source_line_start": 401,
+      "source_line_end": 409
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Research Workflow Skills",
+      "normalized_title": "Research Workflow Skills",
+      "key": "research_workflow_skills",
+      "path": [
+        "Research Workflow Skills"
+      ],
+      "content": "The repository demonstrates:\n\n- controlled testbed bring-up;\n- layered cellular-network validation;\n- Linux service/process management;\n- AT-command modem configuration;\n- QMI data-session setup;\n- iperf3 measurement processing;\n- latency-log processing;\n- RF telemetry extraction;\n- temporal alignment across measurement sources;\n- reproducible scenario organization.",
+      "source_line_start": 409,
+      "source_line_end": 424
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Telecommunications Skills",
+      "normalized_title": "Telecommunications Skills",
+      "key": "telecommunications_skills",
+      "path": [
+        "Telecommunications Skills"
+      ],
+      "content": "The strongest telecommunications concepts evidenced here are:\n\n- 5G Standalone architecture;\n- core-network functions;\n- AMF registration;\n- SMF/PDU-session reasoning;\n- gNB operation;\n- N2 connectivity;\n- NR band n78;\n- TDD radio configuration;\n- RSRP;\n- RSRQ;\n- SINR;\n- PCI;\n- ARFCN;\n- DNN/APN matching;\n- UE modem control.",
+      "source_line_start": 424,
+      "source_line_end": 444
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Systems Skills",
+      "normalized_title": "Systems Skills",
+      "key": "systems_skills",
+      "path": [
+        "Systems Skills"
+      ],
+      "content": "The runbook shows practical work across:\n\n- Linux processes;\n- serial modem interfaces;\n- kernel/network interfaces;\n- QMI tooling;\n- SDR hardware;\n- IP networking;\n- service logs.",
+      "source_line_start": 444,
+      "source_line_end": 456
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Data-Engineering Skills",
+      "normalized_title": "Data-Engineering Skills",
+      "key": "data_engineering_skills",
+      "path": [
+        "Data-Engineering Skills"
+      ],
+      "content": "The Python extractor shows:\n\n- regex-based text parsing;\n- JSON parsing;\n- CSV generation;\n- path discovery;\n- unit normalization;\n- clock-window alignment;\n- data-shape normalization.",
+      "source_line_start": 456,
+      "source_line_end": 468
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Maturity Assessment",
+      "normalized_title": "Maturity Assessment",
+      "key": "maturity_assessment",
+      "path": [
+        "Maturity Assessment"
+      ],
+      "content": "This repository is a **focused, experimentally grounded private-5G SA runbook and extraction utility**.\n\nThe operational README contains concrete successful-state checkpoints rather than generic setup instructions.\n\nThe Python processing script is a real scenario-normalization tool with explicit input discovery, unit conversion, temporal cropping, and stable CSV outputs.\n\nThe repository is narrower than the larger thesis/research repositories and should be retrieved when the query specifically concerns 5G SA bring-up, UE registration/PDU sessions, or aligning SA experiment metrics.",
+      "source_line_start": 468,
+      "source_line_end": 478
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "RAG Retrieval Guidance",
+      "normalized_title": "RAG Retrieval Guidance",
+      "key": "rag_retrieval_guidance",
+      "path": [
+        "RAG Retrieval Guidance"
+      ],
+      "content": "Strong matches include:\n\n- private 5G SA testbed;\n- Open5GS operation;\n- srsRAN gNB;\n- USRP B210;\n- Quectel RM502Q-AE;\n- n78 20 MHz TDD;\n- AMF registration;\n- SMF PDU session;\n- QMI;\n- AT commands;\n- cellular RF metrics;\n- RSRP/RSRQ/SINR extraction;\n- iperf throughput parsing;\n- 5G experiment preprocessing;\n- multi-log temporal alignment.\n\nIt should not be retrieved as evidence that the owner implemented Open5GS, srsRAN, or the modem firmware themselves.\n\n# Project Tags\n\n- `5g-standalone`\n- `private-5g-testbed`\n- `open5gs`\n- `srsran`\n- `usrp-b210`\n- `quectel-rm502q-ae`\n- `nr-band-n78`\n- `tdd`\n- `20mhz-channel`\n- `5g-core-network`\n- `amf-registration`\n- `smf`\n- `upf`\n- `pdu-session`\n- `n2-interface`\n- `qmi`\n- `at-commands`\n- `linux-networking`\n- `modem-configuration`\n- `iperf3`\n- `latency-measurement`\n- `rf-metrics`\n- `rsrp`\n- `rsrq`\n- `sinr`\n- `pci`\n- `arfcn`\n- `python-log-processing`\n- `json-processing`\n- `csv-export`\n- `measurement-alignment`\n- `research-testbed`\n- `wireless-experimentation`",
+      "source_line_start": 478,
+      "source_line_end": 535
+    }
+  ],
+  "raw_analysis": "# Repository 131 — 5G-SA\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/5G-SA`\n- **Repository index:** 131\n- **Start date:** 2026-03-20\n- **Latest meaningful update:** 2026-03-27\n- **Latest meaningful commit:** `d17ca9d0f261cb5f1feaa19c2878cca1a4b57371` — `Create ExtractBi.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** private 5G Standalone testbed launch/runbook plus scenario-level performance/RF extraction\n\n## What This Repository Is\n\n`5G-SA` is a focused research-engineering repository for bringing up and analyzing a private 5G Standalone testbed.\n\nThe operational side documents the launch sequence for a stack built from:\n\n- Open5GS core-network functions;\n- MongoDB;\n- srsRAN gNB;\n- USRP B210 radio hardware;\n- a Quectel RM502Q-AE modem as UE;\n- n78 TDD radio configuration;\n- QMI-based data-session setup.\n\nThe processing side contains a Python extractor that aligns three experiment data sources into scenario CSVs:\n\n- iperf3 throughput;\n- latency/ping measurements;\n- modem JSON RF metrics.\n\nThis is not a general-purpose 5G implementation.\n\nIt is evidence of operating, validating, and instrumenting an existing open-source 5G SA stack in a controlled research testbed.\n\n## Evidence Boundary\n\nThe repository integrates and operates external telecommunications software and hardware.\n\nThe project does not establish authorship of:\n\n- Open5GS;\n- MongoDB;\n- srsRAN;\n- UHD/USRP drivers;\n- Quectel modem firmware;\n- Quectel Connection Manager.\n\nThe owner-attributable work is the testbed procedure, configuration/diagnostic reasoning, experiment workflow, and Python data-extraction logic committed in this repository.\n\n## Repository Shape\n\nObserved tree:\n\n```text\nREADME.md\nProcessing/\n├── README.md\n├── ExtractingData.py\n├── ExtractBi.py\n└── NestedExtraction.py\n```\n\n`ExtractBi.py`, `NestedExtraction.py`, and `Processing/README.md` are effectively empty placeholders in the observed repository state.\n\nThe substantive processing implementation is `Processing/ExtractingData.py`.\n\nThat distinction matters: the corpus does not award implementation credit merely because a filename exists.\n\n## Testbed Target\n\nThe runbook identifies the intended radio/core combination as:\n\n- Quectel RM502Q-AE UE modem;\n- USRP B210;\n- srsRAN gNB;\n- Open5GS core;\n- 5G NR Standalone;\n- n78;\n- 20 MHz TDD.\n\nThe repository therefore sits at the intersection of:\n\n- Linux systems work;\n- cellular networking;\n- SDR/radio testbeds;\n- mobile-network core operation;\n- performance measurement.\n\n## Operational Bring-Up Sequence\n\nThe documented launch process is deliberately ordered.\n\nA simplified sequence is:\n\n```text\nMongoDB\n   |\n   v\nOpen5GS network functions\n   |\n   v\nsrsRAN gNB + USRP B210\n   |\n   v\nQuectel UE SA configuration\n   |\n   v\n5G registration verification\n   |\n   v\nQMI data-session establishment\n   |\n   v\nexperiment traffic + logs\n```\n\nThe sequence encodes dependencies between persistence, core-network functions, radio access, UE registration, and user-plane activation.\n\n## MongoDB Dependency\n\nThe runbook starts MongoDB before the Open5GS network functions.\n\nMongoDB is an external dependency used by Open5GS for subscriber/core state.\n\nThe operational skill is recognizing that the core's control-plane services depend on their data store being available first.\n\n## Open5GS Core Network\n\nThe runbook starts multiple Open5GS network functions individually.\n\nDocumented functions include:\n\n- NRF;\n- AMF;\n- SMF;\n- UPF;\n- AUSF;\n- UDM;\n- UDR;\n- PCF.\n\nThis shows familiarity with the modular 5G core rather than treating Open5GS as one opaque process.\n\n## Core-Network Validation\n\nThe runbook calls for sanity-checking service state and logs after launch.\n\nThat is a practical testbed discipline:\n\n1. start the dependency;\n2. confirm the process is active;\n3. inspect logs;\n4. only then move to the next layer.\n\nThe repository therefore captures operational debugging sequencing, not just command memorization.\n\n## gNB Configuration\n\nThe srsRAN gNB is launched from a specific radio configuration for the B210/n78/TDD setup.\n\nThe README records representative successful startup evidence including:\n\n- B210 detection;\n- USB 3 operation;\n- configured sampling/clock information;\n- physical cell ID;\n- 20 MHz bandwidth;\n- n78 downlink ARFCN/frequency;\n- N2 connectivity toward the AMF.\n\nThis gives the runbook concrete checkpoints for distinguishing a successfully initialized radio/access network from a process that merely started.\n\n## N2 / AMF Connectivity\n\nThe gNB output includes an N2 connection toward the AMF.\n\nThat is an important architectural checkpoint because it confirms the radio access node is connected to the 5G core control plane.\n\nThe repository therefore understands testbed launch as layered connectivity:\n\n```text\nRF hardware ready\n+ gNB ready\n+ N2 control-plane connectivity\n+ UE registration\n+ PDU session\n```\n\nrather than one binary “5G works” state.\n\n## Quectel UE Configuration\n\nThe modem is configured through a serial AT-command session.\n\nThe runbook uses `minicom` against the modem's USB serial interface.\n\nThe documented configuration includes forcing/preparing 5G NR operation and then triggering operator selection/registration.\n\nThe repository records that the preferred mode may reset after reboot, meaning test repeatability requires reapplying the relevant modem configuration.\n\n## Standalone Registration\n\nThe runbook verifies registration through a 5G registration AT query.\n\nExpected successful states include registered-home or registered-roaming outcomes.\n\nA sample run is documented as reaching AMF registration for a configured test subscriber.\n\nThe corpus intentionally does not preserve subscriber identifiers because they are not necessary to establish the skill.\n\n## UE Context Release Interpretation\n\nThe README explicitly notes that UE-context release after successful registration can represent normal idle behavior rather than a failed registration.\n\nThis is useful troubleshooting evidence.\n\nIt shows distinction between:\n\n- registration failure;\n- successful registration followed by normal control-plane state transition.\n\n## Data-Plane Activation\n\nThe runbook separates registration from data-session establishment.\n\nAfter registration, it brings the modem's network interface up and invokes Quectel Connection Manager using QMI.\n\nA configured DNN/APN must match the subscriber profile.\n\nThis shows understanding that successful 5G registration alone does not prove user-plane IP connectivity.\n\n## PDU Session Verification\n\nThe runbook points to SMF logs and modem IP-address queries as data-plane validation evidence.\n\nThis gives two perspectives on the same system state:\n\n- core-network session state;\n- UE-side assigned-address state.\n\n## Operational Failure Reasoning\n\nThe documented notes capture several high-value testbed lessons:\n\n- the UE mode preference may revert after reboot;\n- SA registration and QMI PDU-session establishment are separate concerns;\n- manual attach commands are not necessarily the correct SA workflow;\n- DNN mismatch can prevent a usable session even if registration succeeded;\n- core, gNB, UE, and user-plane checks should be performed independently.\n\n## Processing Pipeline\n\n`Processing/ExtractingData.py` turns raw scenario artifacts into aligned CSV outputs.\n\nIt expects a scenario directory roughly shaped as:\n\n```text\nscenario/\n├── <latency log>.txt\n├── logs/\n│   └── modem_status*.json\n└── C_*logs/\n    └── <iperf3 throughput log>\n```\n\nIt creates:\n\n```text\nextracted/\n├── <scenario>_throughput.csv\n├── <scenario>_latency.csv\n└── <scenario>_rf_metrics.csv\n```\n\n## Automatic File Discovery\n\nThe script searches for data by directory/file conventions rather than requiring every path as a CLI argument.\n\nIt identifies:\n\n- a throughput directory matching `C_*logs` case-insensitively;\n- a latency file in the scenario root, preferring names containing ping/latency/ICMP;\n- modem JSON under `logs/`, preferring `modem_status*.json`.\n\nThis reduces manual per-scenario configuration.\n\n## Throughput Parsing\n\nThe extractor parses timestamped iperf3 text output with regular expressions.\n\nFor each interval it extracts:\n\n- wall-clock time;\n- interval start;\n- interval end;\n- transferred data;\n- transfer unit;\n- bitrate;\n- bitrate unit.\n\nThe output normalizes transfer values to MB and throughput to Mbps.\n\n## Unit Normalization\n\nThe script handles multiple iperf unit scales.\n\nExamples include conversion from:\n\n- Gbits/sec to Mbps;\n- Kbits/sec to Mbps;\n- bits/sec to Mbps;\n- GBytes/KBytes/Bytes to MB.\n\nThis is important when aggregating measurements because iperf may dynamically choose display units.\n\n## Throughput Time Window\n\nThe parser derives an interval-start clock time from the reported interval-end wall clock and duration.\n\nThe first throughput interval becomes the scenario start boundary and the last interval becomes the scenario end boundary.\n\nThat time window is then reused to crop latency and RF data.\n\nThe throughput log therefore acts as the alignment anchor.\n\n## Latency Parsing\n\nLatency lines are parsed from timestamped ICMP output.\n\nExtracted fields include:\n\n- timestamp;\n- ICMP sequence number;\n- latency in milliseconds.\n\nThe script accounts for the logger's repeated-second timestamp artifact and reconstructs a conventional microsecond timestamp string.\n\n## Latency Cropping\n\nLatency rows are retained only when their wall-clock time falls within the throughput-derived start/end window.\n\nThis creates scenario-level temporal alignment across independently recorded tools.\n\n## Modem RF JSON Parsing\n\nThe script reads modem JSON samples and extracts serving-cell information.\n\nObserved RF fields include:\n\n- RSRP;\n- RSRQ;\n- SINR;\n- cell state;\n- radio access technology;\n- PCI;\n- ARFCN;\n- band;\n- sample index;\n- timestamp.\n\nThis is direct evidence of cellular radio-metric processing.\n\n## RF Metric Cropping\n\nRF samples are also cropped to the throughput-derived clock window.\n\nThe result is three output tables that cover the same scenario interval:\n\n```text\nthroughput\nlatency\nRF metrics\n```\n\nThis supports later correlation or comparative analysis without repeatedly parsing the raw logs.\n\n## CSV Output Design\n\nThe script emits explicit tabular schemas instead of writing loosely formatted text.\n\nThroughput output includes normalized transfer/rate fields.\n\nLatency output includes timestamp, sequence, and latency.\n\nRF output includes timestamped signal-quality and cell metadata.\n\nThis creates a clean intermediate representation for downstream analysis.\n\n## CLI Usability\n\nThe script supports:\n\n- `--out` to override the output directory;\n- `--name` to override the output prefix.\n\nOtherwise it uses the current scenario directory name as the label.\n\n## Defensive Behavior\n\nThe extractor aborts when the required throughput source cannot be found or parsed.\n\nLatency and RF sources are treated more permissively: missing optional inputs generate warnings and empty corresponding outputs rather than invalidating the throughput extraction.\n\nThis is evidence of differentiated required/optional input handling.\n\n## Research Workflow Skills\n\nThe repository demonstrates:\n\n- controlled testbed bring-up;\n- layered cellular-network validation;\n- Linux service/process management;\n- AT-command modem configuration;\n- QMI data-session setup;\n- iperf3 measurement processing;\n- latency-log processing;\n- RF telemetry extraction;\n- temporal alignment across measurement sources;\n- reproducible scenario organization.\n\n## Telecommunications Skills\n\nThe strongest telecommunications concepts evidenced here are:\n\n- 5G Standalone architecture;\n- core-network functions;\n- AMF registration;\n- SMF/PDU-session reasoning;\n- gNB operation;\n- N2 connectivity;\n- NR band n78;\n- TDD radio configuration;\n- RSRP;\n- RSRQ;\n- SINR;\n- PCI;\n- ARFCN;\n- DNN/APN matching;\n- UE modem control.\n\n## Systems Skills\n\nThe runbook shows practical work across:\n\n- Linux processes;\n- serial modem interfaces;\n- kernel/network interfaces;\n- QMI tooling;\n- SDR hardware;\n- IP networking;\n- service logs.\n\n## Data-Engineering Skills\n\nThe Python extractor shows:\n\n- regex-based text parsing;\n- JSON parsing;\n- CSV generation;\n- path discovery;\n- unit normalization;\n- clock-window alignment;\n- data-shape normalization.\n\n## Maturity Assessment\n\nThis repository is a **focused, experimentally grounded private-5G SA runbook and extraction utility**.\n\nThe operational README contains concrete successful-state checkpoints rather than generic setup instructions.\n\nThe Python processing script is a real scenario-normalization tool with explicit input discovery, unit conversion, temporal cropping, and stable CSV outputs.\n\nThe repository is narrower than the larger thesis/research repositories and should be retrieved when the query specifically concerns 5G SA bring-up, UE registration/PDU sessions, or aligning SA experiment metrics.\n\n## RAG Retrieval Guidance\n\nStrong matches include:\n\n- private 5G SA testbed;\n- Open5GS operation;\n- srsRAN gNB;\n- USRP B210;\n- Quectel RM502Q-AE;\n- n78 20 MHz TDD;\n- AMF registration;\n- SMF PDU session;\n- QMI;\n- AT commands;\n- cellular RF metrics;\n- RSRP/RSRQ/SINR extraction;\n- iperf throughput parsing;\n- 5G experiment preprocessing;\n- multi-log temporal alignment.\n\nIt should not be retrieved as evidence that the owner implemented Open5GS, srsRAN, or the modem firmware themselves.\n\n# Project Tags\n\n- `5g-standalone`\n- `private-5g-testbed`\n- `open5gs`\n- `srsran`\n- `usrp-b210`\n- `quectel-rm502q-ae`\n- `nr-band-n78`\n- `tdd`\n- `20mhz-channel`\n- `5g-core-network`\n- `amf-registration`\n- `smf`\n- `upf`\n- `pdu-session`\n- `n2-interface`\n- `qmi`\n- `at-commands`\n- `linux-networking`\n- `modem-configuration`\n- `iperf3`\n- `latency-measurement`\n- `rf-metrics`\n- `rsrp`\n- `rsrq`\n- `sinr`\n- `pci`\n- `arfcn`\n- `python-log-processing`\n- `json-processing`\n- `csv-export`\n- `measurement-alignment`\n- `research-testbed`\n- `wireless-experimentation`\n"
+}

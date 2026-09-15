@@ -1,0 +1,827 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 11,
+  "repository_total": 134,
+  "repository_name": "Structural-Design-Patterns",
+  "header_title": "Structural-Design-Patterns",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-011-Structural-Design-Patterns/README.md",
+    "line_start": 1,
+    "line_end": 454,
+    "sha256": "bdf9f1f0a8c2a77cf36af2da79f2b5d9a291bbe2b178c99158df2acc9c22c4f0"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "design-pattern-learning",
+    "educational-project",
+    "personal-project",
+    "individual-project",
+    "java",
+    "maven",
+    "object-oriented-programming",
+    "interfaces",
+    "abstract-classes",
+    "inheritance",
+    "polymorphism",
+    "composition",
+    "delegation",
+    "adapter-pattern",
+    "bridge-pattern",
+    "composite-pattern",
+    "decorator-pattern",
+    "facade-pattern",
+    "flyweight-pattern",
+    "proxy-pattern",
+    "structural-design-patterns",
+    "object-wrapping",
+    "interface-adaptation",
+    "object-caching",
+    "access-mediation",
+    "build-artifact-evidence",
+    "manual-execution-demo",
+    "earliest-observed-structural-design-patterns",
+    "earliest-observed-adapter-pattern",
+    "earliest-observed-bridge-pattern",
+    "earliest-observed-composite-pattern",
+    "earliest-observed-decorator-pattern",
+    "earliest-observed-facade-pattern",
+    "earliest-observed-flyweight-pattern",
+    "earliest-observed-proxy-pattern"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 011 / 134\n- Name: `Structural-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven"
+    },
+    "architecture": {
+      "section_ids": [
+        "s026"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\nAt repository level, the architecture is intentionally repetitive:\n\n```text\nPattern-specific client\n        ↓\nStable interface / abstraction\n        ↓\nPattern-specific structural relationship\n        ↓\nConcrete implementation(s)\n```\n\nWhat changes from project to project is the relationship:\n\n```text\nAdapter   → translate incompatible interface\nBridge    → separate abstraction from implementation\nComposite → unify leaf and group treatment\nDecorator → add behavior through wrapping\nFacade    → simplify subsystem access\nFlyweight → share reusable intrinsic objects\nProxy     → mediate access to a real object\n```\n\nThis makes the repository useful as a comparative design-pattern corpus rather than seven unrelated Java examples."
+    },
+    "testing": {
+      "section_ids": [
+        "s027",
+        "s052"
+      ],
+      "titles": [
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### Maven Build Artifacts\n\nCompiled class files and Maven compiler-status files are present across the pattern subprojects.\n\nThis provides concrete build evidence for the examples.\n\n### Runtime Demonstrations\n\nSeveral `main()` methods explicitly exercise the relationships:\n\n- Adapter prints fit results for adapted square pegs;\n- Bridge toggles TV power and mutes a radio;\n- Decorator compares ordinary and decorated shapes;\n- Facade invokes the simplified shape interface;\n- Flyweight repeatedly requests cached color-based circles;\n- Proxy exercises allowed and denied connections.\n\nThese execution paths make the examples demonstrable rather than purely declarative class diagrams.\n\n## Testing and Verification\n- `build-artifact-evidence`\n- `manual-execution-demo`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s049"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible implementation commits are attributed to the repository owner. Java source files also carry the author marker `sedra`, supporting personal attribution of the pattern exercises.\n\nEach pattern is stored as its own Maven project. Checked-in `target/classes` output is treated as build evidence, while the Java under `src/main/java` is the relevant implementation evidence.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 011 / 134\n- Name: `Structural-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible implementation commits are attributed to the repository owner. Java source files also carry the author marker `sedra`, supporting personal attribution of the pattern exercises.\n\nEach pattern is stored as its own Maven project. Checked-in `target/classes` output is treated as build evidence, while the Java under `src/main/java` is the relevant implementation evidence.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in the repository tree, seven separate Maven subprojects, their Java implementations, generated Maven class output, and owner-attributed commit history through March 3, 2023.\n\nThe implemented structural patterns are:\n\n- Adapter;\n- Bridge;\n- Composite;\n- Decorator;\n- Facade;\n- Flyweight;\n- Proxy.",
+      "source_line_start": 22,
+      "source_line_end": 36
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Structural-Design-Patterns` is a Java learning repository devoted to the structural family of Gang-of-Four design patterns.\n\nIt follows the immediately preceding `Creational-Design-Patterns` repository chronologically, but changes the architectural question being studied. The earlier repository focuses on how objects are created. This repository focuses on how objects and abstractions can be connected, wrapped, grouped, shared, or mediated while preserving stable interfaces.\n\nEach pattern is isolated in its own small Maven project so the collaborating classes and interfaces are visible directly.",
+      "source_line_start": 36,
+      "source_line_end": 44
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "```text\nStructural-Design-Patterns/\n├── AdapterPattern/\n│   ├── pom.xml\n│   ├── src/main/java/...\n│   └── target/classes/...\n├── BridgePattern/\n├── CompositePattern/\n├── DecoratorPattern/\n├── FacadePattern/\n├── FlyweightPattern/\n└── ProxyPattern/\n```\n\nThe repeated Maven structure gives every pattern a separately compilable example.",
+      "source_line_start": 44,
+      "source_line_end": 62
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Java\n\nJava is used for:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- delegation;\n- collections;\n- polymorphic dispatch;\n- exception-based access control demonstrations.\n\n### Maven\n\nEach pattern has its own `pom.xml` and Maven compiler output under `target`.\n\nThis provides direct evidence of repeated Maven project organization and builds across multiple examples.\n\n### Java Collections\n\nThe examples use structures such as:\n\n- `ArrayList` in Composite;\n- `HashMap` in Flyweight;\n- `List<String>` in Proxy.\n\nCollections are used to support the structural relationships being demonstrated rather than as incidental imports.",
+      "source_line_start": 62,
+      "source_line_end": 93
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Technical Stack",
+        "Java"
+      ],
+      "content": "Java is used for:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- delegation;\n- collections;\n- polymorphic dispatch;\n- exception-based access control demonstrations.",
+      "source_line_start": 64,
+      "source_line_end": 77
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Maven",
+      "normalized_title": "Maven",
+      "key": "maven",
+      "path": [
+        "Technical Stack",
+        "Maven"
+      ],
+      "content": "Each pattern has its own `pom.xml` and Maven compiler output under `target`.\n\nThis provides direct evidence of repeated Maven project organization and builds across multiple examples.",
+      "source_line_start": 77,
+      "source_line_end": 83
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Java Collections",
+      "normalized_title": "Java Collections",
+      "key": "java_collections",
+      "path": [
+        "Technical Stack",
+        "Java Collections"
+      ],
+      "content": "The examples use structures such as:\n\n- `ArrayList` in Composite;\n- `HashMap` in Flyweight;\n- `List<String>` in Proxy.\n\nCollections are used to support the structural relationships being demonstrated rather than as incidental imports.",
+      "source_line_start": 83,
+      "source_line_end": 93
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Adapter Pattern",
+      "normalized_title": "Adapter Pattern",
+      "key": "adapter_pattern",
+      "path": [
+        "Adapter Pattern"
+      ],
+      "content": "The Adapter example models a `RoundHole` that accepts `RoundPeg` objects.\n\nA `SquarePeg` has an incompatible width-based interface.\n\n`SquarePegAdapter` extends the expected `RoundPeg` shape and wraps a `SquarePeg`.\n\nIts `getRadius()` converts square width into an effective radius using:\n\n```text\nwidth × sqrt(2) / 2\n```\n\nThis lets the existing `RoundHole.fits()` operation consume a square peg through a compatible interface.\n\n### Engineering concept represented\n\nThe example demonstrates interface adaptation through wrapping and conversion rather than changing the original consuming class.",
+      "source_line_start": 93,
+      "source_line_end": 113
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Adapter Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The example demonstrates interface adaptation through wrapping and conversion rather than changing the original consuming class.",
+      "source_line_start": 109,
+      "source_line_end": 113
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Bridge Pattern",
+      "normalized_title": "Bridge Pattern",
+      "key": "bridge_pattern",
+      "path": [
+        "Bridge Pattern"
+      ],
+      "content": "The Bridge example separates two dimensions:\n\n### Abstraction hierarchy\n\n- `RemoteControl`;\n- `AdvancedRemoteControl`.\n\n### Implementation hierarchy\n\n- `Device`;\n- `Tv`;\n- `Radio`.\n\n`RemoteControl` delegates power, volume, and channel operations to a `Device`.\n\n`AdvancedRemoteControl` adds a mute operation while remaining connected to the device abstraction.\n\nThe same control abstraction can therefore operate over different device implementations.\n\n### Engineering concept represented\n\nThe example demonstrates composition as a way to vary abstraction and implementation independently.",
+      "source_line_start": 113,
+      "source_line_end": 138
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Abstraction hierarchy",
+      "normalized_title": "Abstraction hierarchy",
+      "key": "abstraction_hierarchy",
+      "path": [
+        "Bridge Pattern",
+        "Abstraction hierarchy"
+      ],
+      "content": "- `RemoteControl`;\n- `AdvancedRemoteControl`.",
+      "source_line_start": 117,
+      "source_line_end": 122
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Implementation hierarchy",
+      "normalized_title": "Implementation hierarchy",
+      "key": "implementation_hierarchy",
+      "path": [
+        "Bridge Pattern",
+        "Implementation hierarchy"
+      ],
+      "content": "- `Device`;\n- `Tv`;\n- `Radio`.\n\n`RemoteControl` delegates power, volume, and channel operations to a `Device`.\n\n`AdvancedRemoteControl` adds a mute operation while remaining connected to the device abstraction.\n\nThe same control abstraction can therefore operate over different device implementations.",
+      "source_line_start": 122,
+      "source_line_end": 134
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Bridge Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The example demonstrates composition as a way to vary abstraction and implementation independently.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Composite Pattern",
+      "normalized_title": "Composite Pattern",
+      "key": "composite_pattern",
+      "path": [
+        "Composite Pattern"
+      ],
+      "content": "The Composite example defines a common `Graphic` interface:\n\n- `move(x, y)`;\n- `draw()`.\n\nLeaf objects include:\n\n- `Dot`;\n- `Circle`.\n\n`CompoundGraphic` also implements `Graphic`, but contains an `ArrayList<Graphic>` of children.\n\nIts `move()` and `draw()` methods iterate across children and delegate the same operation recursively.\n\n`ImageEditor` constructs a top-level compound and can group selected compounds into another compound.\n\n### Engineering concept represented\n\nIndividual objects and object groups share one interface, allowing client code to treat them uniformly.",
+      "source_line_start": 138,
+      "source_line_end": 160
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Composite Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "Individual objects and object groups share one interface, allowing client code to treat them uniformly.",
+      "source_line_start": 156,
+      "source_line_end": 160
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Decorator Pattern",
+      "normalized_title": "Decorator Pattern",
+      "key": "decorator_pattern",
+      "path": [
+        "Decorator Pattern"
+      ],
+      "content": "The Decorator example defines:\n\n- `Shape`;\n- `Circle`;\n- `Rectangle`;\n- abstract `ShapeDecorator`;\n- `RedShapeDecorator`.\n\n`ShapeDecorator` stores a wrapped `Shape`.\n\n`RedShapeDecorator.draw()` first delegates to the wrapped object's `draw()` behavior and then adds border behavior.\n\nThe main program demonstrates:\n\n- a normal circle;\n- a decorated circle;\n- a decorated rectangle.\n\n### Engineering concept represented\n\nThe example adds behavior through object wrapping while preserving the `Shape` contract.",
+      "source_line_start": 160,
+      "source_line_end": 184
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Decorator Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The example adds behavior through object wrapping while preserving the `Shape` contract.",
+      "source_line_start": 180,
+      "source_line_end": 184
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Facade Pattern",
+      "normalized_title": "Facade Pattern",
+      "key": "facade_pattern",
+      "path": [
+        "Facade Pattern"
+      ],
+      "content": "The Facade example defines several shape implementations:\n\n- `Circle`;\n- `Rectangle`;\n- `Square`.\n\n`ShapeMaker` owns these concrete objects and exposes a simplified surface:\n\n- `drawCircle()`;\n- `drawRectangle()`;\n- `drawSquare()`.\n\nClient code interacts with `ShapeMaker` rather than constructing and coordinating each concrete shape directly.\n\n### Engineering concept represented\n\nThe facade centralizes access to a small subsystem behind a simpler client-facing interface.",
+      "source_line_start": 184,
+      "source_line_end": 204
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Facade Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The facade centralizes access to a small subsystem behind a simpler client-facing interface.",
+      "source_line_start": 200,
+      "source_line_end": 204
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Flyweight Pattern",
+      "normalized_title": "Flyweight Pattern",
+      "key": "flyweight_pattern",
+      "path": [
+        "Flyweight Pattern"
+      ],
+      "content": "The Flyweight example uses a static `HashMap` in `ShapeFactory`.\n\nCircles are keyed by color.\n\nWhen `getCircle(color)` is called:\n\n1. the factory checks the cache;\n2. an existing circle is returned when present;\n3. a new intrinsic color-specific circle is created and stored when required.\n\nThe main loop requests twenty circles while supplying varying external coordinates and radius values.\n\n### Engineering concept represented\n\nThe example separates shared intrinsic state, represented by color-keyed circle instances, from changing extrinsic drawing state such as position.\n\nIt demonstrates object reuse through a factory-managed cache.",
+      "source_line_start": 204,
+      "source_line_end": 224
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Flyweight Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The example separates shared intrinsic state, represented by color-keyed circle instances, from changing extrinsic drawing state such as position.\n\nIt demonstrates object reuse through a factory-managed cache.",
+      "source_line_start": 218,
+      "source_line_end": 224
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Proxy Pattern",
+      "normalized_title": "Proxy Pattern",
+      "key": "proxy_pattern",
+      "path": [
+        "Proxy Pattern"
+      ],
+      "content": "The Proxy example defines a shared `Internet` interface.\n\n`RealInternet` performs the connection behavior.\n\n`ProxyInternet` also implements `Internet`, owns a `RealInternet`, and checks a list of banned hostnames before delegation.\n\nThe main program attempts a permitted connection and a blocked connection.\n\n### Engineering concept represented\n\nThe proxy controls access to another implementation while preserving the same client-facing contract.",
+      "source_line_start": 224,
+      "source_line_end": 238
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Engineering concept represented",
+      "normalized_title": "Engineering concept represented",
+      "key": "engineering_concept_represented",
+      "path": [
+        "Proxy Pattern",
+        "Engineering concept represented"
+      ],
+      "content": "The proxy controls access to another implementation while preserving the same client-facing contract.",
+      "source_line_start": 234,
+      "source_line_end": 238
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "At repository level, the architecture is intentionally repetitive:\n\n```text\nPattern-specific client\n        ↓\nStable interface / abstraction\n        ↓\nPattern-specific structural relationship\n        ↓\nConcrete implementation(s)\n```\n\nWhat changes from project to project is the relationship:\n\n```text\nAdapter   → translate incompatible interface\nBridge    → separate abstraction from implementation\nComposite → unify leaf and group treatment\nDecorator → add behavior through wrapping\nFacade    → simplify subsystem access\nFlyweight → share reusable intrinsic objects\nProxy     → mediate access to a real object\n```\n\nThis makes the repository useful as a comparative design-pattern corpus rather than seven unrelated Java examples.",
+      "source_line_start": 238,
+      "source_line_end": 266
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Maven Build Artifacts\n\nCompiled class files and Maven compiler-status files are present across the pattern subprojects.\n\nThis provides concrete build evidence for the examples.\n\n### Runtime Demonstrations\n\nSeveral `main()` methods explicitly exercise the relationships:\n\n- Adapter prints fit results for adapted square pegs;\n- Bridge toggles TV power and mutes a radio;\n- Decorator compares ordinary and decorated shapes;\n- Facade invokes the simplified shape interface;\n- Flyweight repeatedly requests cached color-based circles;\n- Proxy exercises allowed and denied connections.\n\nThese execution paths make the examples demonstrable rather than purely declarative class diagrams.",
+      "source_line_start": 266,
+      "source_line_end": 287
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Maven Build Artifacts",
+      "normalized_title": "Maven Build Artifacts",
+      "key": "maven_build_artifacts",
+      "path": [
+        "Verification",
+        "Maven Build Artifacts"
+      ],
+      "content": "Compiled class files and Maven compiler-status files are present across the pattern subprojects.\n\nThis provides concrete build evidence for the examples.",
+      "source_line_start": 268,
+      "source_line_end": 274
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Runtime Demonstrations",
+      "normalized_title": "Runtime Demonstrations",
+      "key": "runtime_demonstrations",
+      "path": [
+        "Verification",
+        "Runtime Demonstrations"
+      ],
+      "content": "Several `main()` methods explicitly exercise the relationships:\n\n- Adapter prints fit results for adapted square pegs;\n- Bridge toggles TV power and mutes a radio;\n- Decorator compares ordinary and decorated shapes;\n- Facade invokes the simplified shape interface;\n- Flyweight repeatedly requests cached color-based circles;\n- Proxy exercises allowed and denied connections.\n\nThese execution paths make the examples demonstrable rather than purely declarative class diagrams.",
+      "source_line_start": 274,
+      "source_line_end": 287
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Pattern Isolation\n\nEach structural pattern has its own project boundary.\n\n### Interface-Oriented Design\n\nInterfaces such as `Device`, `Graphic`, `Shape`, and `Internet` define stable contracts around variation.\n\n### Composition and Delegation\n\nComposition is central to multiple examples:\n\n- Bridge stores a `Device`;\n- Composite stores child `Graphic` objects;\n- Decorator stores a wrapped `Shape`;\n- Proxy stores a real `Internet` implementation.\n\n### Controlled Object Sharing\n\nFlyweight uses a map-backed factory to reuse objects keyed by intrinsic state.\n\n### Encapsulation of Subsystem Access\n\nFacade moves concrete subsystem object handling behind a dedicated access layer.",
+      "source_line_start": 287,
+      "source_line_end": 314
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Pattern Isolation",
+      "normalized_title": "Pattern Isolation",
+      "key": "pattern_isolation",
+      "path": [
+        "Engineering Practices",
+        "Pattern Isolation"
+      ],
+      "content": "Each structural pattern has its own project boundary.",
+      "source_line_start": 289,
+      "source_line_end": 293
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Interface-Oriented Design",
+      "normalized_title": "Interface-Oriented Design",
+      "key": "interface_oriented_design",
+      "path": [
+        "Engineering Practices",
+        "Interface-Oriented Design"
+      ],
+      "content": "Interfaces such as `Device`, `Graphic`, `Shape`, and `Internet` define stable contracts around variation.",
+      "source_line_start": 293,
+      "source_line_end": 297
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Composition and Delegation",
+      "normalized_title": "Composition and Delegation",
+      "key": "composition_and_delegation",
+      "path": [
+        "Engineering Practices",
+        "Composition and Delegation"
+      ],
+      "content": "Composition is central to multiple examples:\n\n- Bridge stores a `Device`;\n- Composite stores child `Graphic` objects;\n- Decorator stores a wrapped `Shape`;\n- Proxy stores a real `Internet` implementation.",
+      "source_line_start": 297,
+      "source_line_end": 306
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Controlled Object Sharing",
+      "normalized_title": "Controlled Object Sharing",
+      "key": "controlled_object_sharing",
+      "path": [
+        "Engineering Practices",
+        "Controlled Object Sharing"
+      ],
+      "content": "Flyweight uses a map-backed factory to reuse objects keyed by intrinsic state.",
+      "source_line_start": 306,
+      "source_line_end": 310
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Encapsulation of Subsystem Access",
+      "normalized_title": "Encapsulation of Subsystem Access",
+      "key": "encapsulation_of_subsystem_access",
+      "path": [
+        "Engineering Practices",
+        "Encapsulation of Subsystem Access"
+      ],
+      "content": "Facade moves concrete subsystem object handling behind a dedicated access layer.",
+      "source_line_start": 310,
+      "source_line_end": 314
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Implementation Scale\n\nThe source is made of seven focused Java/Maven examples.\n\n### Conceptual Scale\n\nThe repository covers the complete GoF structural-pattern family, which makes conceptual breadth the main scale dimension.\n\n### Comparative Architectural Scale\n\nThe repository is especially useful because similar Java mechanisms—interfaces, inheritance, composition, delegation, and collections—are used to solve different architectural relationship problems.",
+      "source_line_start": 314,
+      "source_line_end": 328
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Scale and Complexity",
+        "Implementation Scale"
+      ],
+      "content": "The source is made of seven focused Java/Maven examples.",
+      "source_line_start": 316,
+      "source_line_end": 320
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Conceptual Scale",
+      "normalized_title": "Conceptual Scale",
+      "key": "conceptual_scale",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Scale"
+      ],
+      "content": "The repository covers the complete GoF structural-pattern family, which makes conceptual breadth the main scale dimension.",
+      "source_line_start": 320,
+      "source_line_end": 324
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Comparative Architectural Scale",
+      "normalized_title": "Comparative Architectural Scale",
+      "key": "comparative_architectural_scale",
+      "path": [
+        "Scale and Complexity",
+        "Comparative Architectural Scale"
+      ],
+      "content": "The repository is especially useful because similar Java mechanisms—interfaces, inheritance, composition, delegation, and collections—are used to solve different architectural relationship problems.",
+      "source_line_start": 324,
+      "source_line_end": 328
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Java\n\n- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Delegation — strong evidence.**\n- **Java collections — moderate-to-strong evidence.**\n\n### Design Patterns\n\n- **Adapter — strong implemented evidence.**\n- **Bridge — strong implemented evidence.**\n- **Composite — strong implemented evidence.**\n- **Decorator — strong implemented evidence.**\n- **Facade — strong implemented evidence.**\n- **Flyweight — strong implemented evidence.**\n- **Proxy — strong implemented evidence.**\n\n### Build Tooling\n\n- **Maven — strong recurring evidence across seven subprojects.**",
+      "source_line_start": 328,
+      "source_line_end": 355
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Skills Demonstrated",
+        "Java"
+      ],
+      "content": "- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Delegation — strong evidence.**\n- **Java collections — moderate-to-strong evidence.**",
+      "source_line_start": 330,
+      "source_line_end": 341
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Design Patterns",
+      "normalized_title": "Design Patterns",
+      "key": "design_patterns",
+      "path": [
+        "Skills Demonstrated",
+        "Design Patterns"
+      ],
+      "content": "- **Adapter — strong implemented evidence.**\n- **Bridge — strong implemented evidence.**\n- **Composite — strong implemented evidence.**\n- **Decorator — strong implemented evidence.**\n- **Facade — strong implemented evidence.**\n- **Flyweight — strong implemented evidence.**\n- **Proxy — strong implemented evidence.**",
+      "source_line_start": 341,
+      "source_line_end": 351
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Build Tooling",
+      "normalized_title": "Build Tooling",
+      "key": "build_tooling",
+      "path": [
+        "Skills Demonstrated",
+        "Build Tooling"
+      ],
+      "content": "- **Maven — strong recurring evidence across seven subprojects.**",
+      "source_line_start": 351,
+      "source_line_end": 355
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository extends the explicit design-pattern learning phase begun in repository 010.\n\nThe capability moves from object-creation structures toward reasoning about object relationships and boundaries.\n\nThe examples repeatedly ask a systems-design question:\n\n> How can existing components collaborate while limiting coupling between the client and structural details?\n\nThe answers vary across adaptation, composition, delegation, wrapping, caching, simplification, and controlled access.",
+      "source_line_start": 355,
+      "source_line_end": 367
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Relative to repository 010:\n\n- Java and Maven recur immediately;\n- design patterns remain an explicit learning focus;\n- the pattern scope expands from creational to structural relationships;\n- composition and delegation become much more central.\n\nThis is the earliest observed repository in the processed corpus so far containing implemented:\n\n- Adapter pattern;\n- Bridge pattern;\n- Composite pattern;\n- Decorator pattern;\n- Facade pattern;\n- Flyweight pattern;\n- Proxy pattern;\n- a complete seven-pattern structural design-pattern study set.",
+      "source_line_start": 367,
+      "source_line_end": 387
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Structural-Design-Patterns` establishes a short but concentrated architecture-study sequence in February–March 2023.\n\nTogether with the preceding creational-pattern repository, it shows Java being used not merely as a programming language but as a vehicle for deliberately studying reusable software-design structures.",
+      "source_line_start": 387,
+      "source_line_end": 393
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Structural-Design-Patterns` is a seven-project Java/Maven study of structural software design.\n\nThe repository implements the full GoF structural family through concrete examples: square pegs are adapted to round-hole interfaces, remote controls bridge to multiple device implementations, graphics are grouped recursively through Composite, decorators add behavior around stable interfaces, facades simplify subsystem access, flyweights reuse color-keyed objects, and proxies mediate access to a real service.\n\nIts portfolio value is architectural vocabulary backed by implementation. It demonstrates direct work with interfaces, composition, delegation, polymorphism, caching, and access mediation across several deliberately contrasted designs.\n\n# Project Tags",
+      "source_line_start": 393,
+      "source_line_end": 403
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `design-pattern-learning`\n- `educational-project`\n- `personal-project`",
+      "source_line_start": 403,
+      "source_line_end": 409
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 409,
+      "source_line_end": 413
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `java`",
+      "source_line_start": 413,
+      "source_line_end": 417
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `maven`\n- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `inheritance`\n- `polymorphism`\n- `composition`\n- `delegation`\n- `adapter-pattern`\n- `bridge-pattern`\n- `composite-pattern`\n- `decorator-pattern`\n- `facade-pattern`\n- `flyweight-pattern`\n- `proxy-pattern`\n- `structural-design-patterns`\n- `object-wrapping`\n- `interface-adaptation`\n- `object-caching`\n- `access-mediation`",
+      "source_line_start": 417,
+      "source_line_end": 440
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `build-artifact-evidence`\n- `manual-execution-demo`",
+      "source_line_start": 440,
+      "source_line_end": 445
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-structural-design-patterns`\n- `earliest-observed-adapter-pattern`\n- `earliest-observed-bridge-pattern`\n- `earliest-observed-composite-pattern`\n- `earliest-observed-decorator-pattern`\n- `earliest-observed-facade-pattern`\n- `earliest-observed-flyweight-pattern`\n- `earliest-observed-proxy-pattern`",
+      "source_line_start": 445,
+      "source_line_end": 455
+    }
+  ],
+  "raw_analysis": "# Structural-Design-Patterns\n\n## Repository Identity\n\n- Repository: 011 / 134\n- Name: `Structural-Design-Patterns`\n- Repository start date: 2023-02-18\n- Latest meaningful update date: 2023-03-03\n- Primary type: Design-pattern learning repository\n- Technical field: Object-oriented software design\n- Project context: Personal educational implementation\n- Collaboration type: `individual-project`\n- Primary implementation language: Java\n- Build tooling: Maven\n\n## Collaboration and Authorship Context\n\nThe visible implementation commits are attributed to the repository owner. Java source files also carry the author marker `sedra`, supporting personal attribution of the pattern exercises.\n\nEach pattern is stored as its own Maven project. Checked-in `target/classes` output is treated as build evidence, while the Java under `src/main/java` is the relevant implementation evidence.\n\n## Evidence Basis\n\nThe analysis is grounded in the repository tree, seven separate Maven subprojects, their Java implementations, generated Maven class output, and owner-attributed commit history through March 3, 2023.\n\nThe implemented structural patterns are:\n\n- Adapter;\n- Bridge;\n- Composite;\n- Decorator;\n- Facade;\n- Flyweight;\n- Proxy.\n\n## What This Project Is\n\n`Structural-Design-Patterns` is a Java learning repository devoted to the structural family of Gang-of-Four design patterns.\n\nIt follows the immediately preceding `Creational-Design-Patterns` repository chronologically, but changes the architectural question being studied. The earlier repository focuses on how objects are created. This repository focuses on how objects and abstractions can be connected, wrapped, grouped, shared, or mediated while preserving stable interfaces.\n\nEach pattern is isolated in its own small Maven project so the collaborating classes and interfaces are visible directly.\n\n## Repository Structure\n\n```text\nStructural-Design-Patterns/\n├── AdapterPattern/\n│   ├── pom.xml\n│   ├── src/main/java/...\n│   └── target/classes/...\n├── BridgePattern/\n├── CompositePattern/\n├── DecoratorPattern/\n├── FacadePattern/\n├── FlyweightPattern/\n└── ProxyPattern/\n```\n\nThe repeated Maven structure gives every pattern a separately compilable example.\n\n## Technical Stack\n\n### Java\n\nJava is used for:\n\n- interfaces;\n- abstract classes;\n- inheritance;\n- composition;\n- delegation;\n- collections;\n- polymorphic dispatch;\n- exception-based access control demonstrations.\n\n### Maven\n\nEach pattern has its own `pom.xml` and Maven compiler output under `target`.\n\nThis provides direct evidence of repeated Maven project organization and builds across multiple examples.\n\n### Java Collections\n\nThe examples use structures such as:\n\n- `ArrayList` in Composite;\n- `HashMap` in Flyweight;\n- `List<String>` in Proxy.\n\nCollections are used to support the structural relationships being demonstrated rather than as incidental imports.\n\n## Adapter Pattern\n\nThe Adapter example models a `RoundHole` that accepts `RoundPeg` objects.\n\nA `SquarePeg` has an incompatible width-based interface.\n\n`SquarePegAdapter` extends the expected `RoundPeg` shape and wraps a `SquarePeg`.\n\nIts `getRadius()` converts square width into an effective radius using:\n\n```text\nwidth × sqrt(2) / 2\n```\n\nThis lets the existing `RoundHole.fits()` operation consume a square peg through a compatible interface.\n\n### Engineering concept represented\n\nThe example demonstrates interface adaptation through wrapping and conversion rather than changing the original consuming class.\n\n## Bridge Pattern\n\nThe Bridge example separates two dimensions:\n\n### Abstraction hierarchy\n\n- `RemoteControl`;\n- `AdvancedRemoteControl`.\n\n### Implementation hierarchy\n\n- `Device`;\n- `Tv`;\n- `Radio`.\n\n`RemoteControl` delegates power, volume, and channel operations to a `Device`.\n\n`AdvancedRemoteControl` adds a mute operation while remaining connected to the device abstraction.\n\nThe same control abstraction can therefore operate over different device implementations.\n\n### Engineering concept represented\n\nThe example demonstrates composition as a way to vary abstraction and implementation independently.\n\n## Composite Pattern\n\nThe Composite example defines a common `Graphic` interface:\n\n- `move(x, y)`;\n- `draw()`.\n\nLeaf objects include:\n\n- `Dot`;\n- `Circle`.\n\n`CompoundGraphic` also implements `Graphic`, but contains an `ArrayList<Graphic>` of children.\n\nIts `move()` and `draw()` methods iterate across children and delegate the same operation recursively.\n\n`ImageEditor` constructs a top-level compound and can group selected compounds into another compound.\n\n### Engineering concept represented\n\nIndividual objects and object groups share one interface, allowing client code to treat them uniformly.\n\n## Decorator Pattern\n\nThe Decorator example defines:\n\n- `Shape`;\n- `Circle`;\n- `Rectangle`;\n- abstract `ShapeDecorator`;\n- `RedShapeDecorator`.\n\n`ShapeDecorator` stores a wrapped `Shape`.\n\n`RedShapeDecorator.draw()` first delegates to the wrapped object's `draw()` behavior and then adds border behavior.\n\nThe main program demonstrates:\n\n- a normal circle;\n- a decorated circle;\n- a decorated rectangle.\n\n### Engineering concept represented\n\nThe example adds behavior through object wrapping while preserving the `Shape` contract.\n\n## Facade Pattern\n\nThe Facade example defines several shape implementations:\n\n- `Circle`;\n- `Rectangle`;\n- `Square`.\n\n`ShapeMaker` owns these concrete objects and exposes a simplified surface:\n\n- `drawCircle()`;\n- `drawRectangle()`;\n- `drawSquare()`.\n\nClient code interacts with `ShapeMaker` rather than constructing and coordinating each concrete shape directly.\n\n### Engineering concept represented\n\nThe facade centralizes access to a small subsystem behind a simpler client-facing interface.\n\n## Flyweight Pattern\n\nThe Flyweight example uses a static `HashMap` in `ShapeFactory`.\n\nCircles are keyed by color.\n\nWhen `getCircle(color)` is called:\n\n1. the factory checks the cache;\n2. an existing circle is returned when present;\n3. a new intrinsic color-specific circle is created and stored when required.\n\nThe main loop requests twenty circles while supplying varying external coordinates and radius values.\n\n### Engineering concept represented\n\nThe example separates shared intrinsic state, represented by color-keyed circle instances, from changing extrinsic drawing state such as position.\n\nIt demonstrates object reuse through a factory-managed cache.\n\n## Proxy Pattern\n\nThe Proxy example defines a shared `Internet` interface.\n\n`RealInternet` performs the connection behavior.\n\n`ProxyInternet` also implements `Internet`, owns a `RealInternet`, and checks a list of banned hostnames before delegation.\n\nThe main program attempts a permitted connection and a blocked connection.\n\n### Engineering concept represented\n\nThe proxy controls access to another implementation while preserving the same client-facing contract.\n\n## Architecture and System Shape\n\nAt repository level, the architecture is intentionally repetitive:\n\n```text\nPattern-specific client\n        ↓\nStable interface / abstraction\n        ↓\nPattern-specific structural relationship\n        ↓\nConcrete implementation(s)\n```\n\nWhat changes from project to project is the relationship:\n\n```text\nAdapter   → translate incompatible interface\nBridge    → separate abstraction from implementation\nComposite → unify leaf and group treatment\nDecorator → add behavior through wrapping\nFacade    → simplify subsystem access\nFlyweight → share reusable intrinsic objects\nProxy     → mediate access to a real object\n```\n\nThis makes the repository useful as a comparative design-pattern corpus rather than seven unrelated Java examples.\n\n## Verification\n\n### Maven Build Artifacts\n\nCompiled class files and Maven compiler-status files are present across the pattern subprojects.\n\nThis provides concrete build evidence for the examples.\n\n### Runtime Demonstrations\n\nSeveral `main()` methods explicitly exercise the relationships:\n\n- Adapter prints fit results for adapted square pegs;\n- Bridge toggles TV power and mutes a radio;\n- Decorator compares ordinary and decorated shapes;\n- Facade invokes the simplified shape interface;\n- Flyweight repeatedly requests cached color-based circles;\n- Proxy exercises allowed and denied connections.\n\nThese execution paths make the examples demonstrable rather than purely declarative class diagrams.\n\n## Engineering Practices\n\n### Pattern Isolation\n\nEach structural pattern has its own project boundary.\n\n### Interface-Oriented Design\n\nInterfaces such as `Device`, `Graphic`, `Shape`, and `Internet` define stable contracts around variation.\n\n### Composition and Delegation\n\nComposition is central to multiple examples:\n\n- Bridge stores a `Device`;\n- Composite stores child `Graphic` objects;\n- Decorator stores a wrapped `Shape`;\n- Proxy stores a real `Internet` implementation.\n\n### Controlled Object Sharing\n\nFlyweight uses a map-backed factory to reuse objects keyed by intrinsic state.\n\n### Encapsulation of Subsystem Access\n\nFacade moves concrete subsystem object handling behind a dedicated access layer.\n\n## Scale and Complexity\n\n### Implementation Scale\n\nThe source is made of seven focused Java/Maven examples.\n\n### Conceptual Scale\n\nThe repository covers the complete GoF structural-pattern family, which makes conceptual breadth the main scale dimension.\n\n### Comparative Architectural Scale\n\nThe repository is especially useful because similar Java mechanisms—interfaces, inheritance, composition, delegation, and collections—are used to solve different architectural relationship problems.\n\n## Skills Demonstrated\n\n### Java\n\n- **Java — strong evidence.**\n- **Interfaces — strong evidence.**\n- **Abstract classes — strong evidence.**\n- **Inheritance — strong evidence.**\n- **Polymorphism — strong evidence.**\n- **Composition — strong evidence.**\n- **Delegation — strong evidence.**\n- **Java collections — moderate-to-strong evidence.**\n\n### Design Patterns\n\n- **Adapter — strong implemented evidence.**\n- **Bridge — strong implemented evidence.**\n- **Composite — strong implemented evidence.**\n- **Decorator — strong implemented evidence.**\n- **Facade — strong implemented evidence.**\n- **Flyweight — strong implemented evidence.**\n- **Proxy — strong implemented evidence.**\n\n### Build Tooling\n\n- **Maven — strong recurring evidence across seven subprojects.**\n\n## Capability Developed\n\nThis repository extends the explicit design-pattern learning phase begun in repository 010.\n\nThe capability moves from object-creation structures toward reasoning about object relationships and boundaries.\n\nThe examples repeatedly ask a systems-design question:\n\n> How can existing components collaborate while limiting coupling between the client and structural details?\n\nThe answers vary across adaptation, composition, delegation, wrapping, caching, simplification, and controlled access.\n\n## Portfolio Evolution Context\n\nRelative to repository 010:\n\n- Java and Maven recur immediately;\n- design patterns remain an explicit learning focus;\n- the pattern scope expands from creational to structural relationships;\n- composition and delegation become much more central.\n\nThis is the earliest observed repository in the processed corpus so far containing implemented:\n\n- Adapter pattern;\n- Bridge pattern;\n- Composite pattern;\n- Decorator pattern;\n- Facade pattern;\n- Flyweight pattern;\n- Proxy pattern;\n- a complete seven-pattern structural design-pattern study set.\n\n## Historical Significance\n\n`Structural-Design-Patterns` establishes a short but concentrated architecture-study sequence in February–March 2023.\n\nTogether with the preceding creational-pattern repository, it shows Java being used not merely as a programming language but as a vehicle for deliberately studying reusable software-design structures.\n\n## Overall Repository Narrative\n\n`Structural-Design-Patterns` is a seven-project Java/Maven study of structural software design.\n\nThe repository implements the full GoF structural family through concrete examples: square pegs are adapted to round-hole interfaces, remote controls bridge to multiple device implementations, graphics are grouped recursively through Composite, decorators add behavior around stable interfaces, facades simplify subsystem access, flyweights reuse color-keyed objects, and proxies mediate access to a real service.\n\nIts portfolio value is architectural vocabulary backed by implementation. It demonstrates direct work with interfaces, composition, delegation, polymorphism, caching, and access mediation across several deliberately contrasted designs.\n\n# Project Tags\n\n## Project Type\n\n- `design-pattern-learning`\n- `educational-project`\n- `personal-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `java`\n\n## Software Engineering Practices\n\n- `maven`\n- `object-oriented-programming`\n- `interfaces`\n- `abstract-classes`\n- `inheritance`\n- `polymorphism`\n- `composition`\n- `delegation`\n- `adapter-pattern`\n- `bridge-pattern`\n- `composite-pattern`\n- `decorator-pattern`\n- `facade-pattern`\n- `flyweight-pattern`\n- `proxy-pattern`\n- `structural-design-patterns`\n- `object-wrapping`\n- `interface-adaptation`\n- `object-caching`\n- `access-mediation`\n\n## Testing and Verification\n\n- `build-artifact-evidence`\n- `manual-execution-demo`\n\n## Portfolio Significance\n\n- `earliest-observed-structural-design-patterns`\n- `earliest-observed-adapter-pattern`\n- `earliest-observed-bridge-pattern`\n- `earliest-observed-composite-pattern`\n- `earliest-observed-decorator-pattern`\n- `earliest-observed-facade-pattern`\n- `earliest-observed-flyweight-pattern`\n- `earliest-observed-proxy-pattern`\n"
+}

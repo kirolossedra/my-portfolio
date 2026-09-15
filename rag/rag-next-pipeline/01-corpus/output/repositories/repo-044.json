@@ -1,0 +1,414 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 44,
+  "repository_total": 134,
+  "repository_name": "StudyTree",
+  "header_title": "StudyTree",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-044-StudyTree/README.md",
+    "line_start": 1,
+    "line_end": 290,
+    "sha256": "29539f5f83a431e2471ddc0d3b6ed845478bbd71b54d443b52a3aea170d8961a"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "static-web-application",
+    "interactive-utility",
+    "individual-project",
+    "html",
+    "css",
+    "javascript",
+    "d3-js",
+    "svg",
+    "hierarchical-data",
+    "tree-visualization",
+    "data-visualization",
+    "dynamic-dom-generation",
+    "event-driven-ui",
+    "stateful-ui",
+    "color-scale",
+    "bezier-curves",
+    "learning-roadmap",
+    "github-pages",
+    "static-site-deployment",
+    "client-side-application",
+    "manual-verification"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/StudyTree`\n- **Repository start date:** 2024-08-30\n- **Last meaningful update date:** 2024-08-30\n- **Primary implementation format:** HTML with embedded CSS and JavaScript\n- **Visualization library:** D3.js v7\n- **Deployment:** GitHub Pages enabled\n- **Collaboration classification:** individual project\n- **Repository shape:** one self-contained interactive visualization page"
+    },
+    "testing": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Verification Evidence"
+      ],
+      "text": "## Verification Evidence\nThere is no automated test suite.\n\nThe repository history contains several rapid updates to `index.html` on its creation day.\n\nThe practical verification mode is browser rendering and clicking the generated controls.\n\nGitHub Pages provides a deployable execution surface."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Deployment Evidence"
+      ],
+      "text": "## Deployment Evidence\nGitHub repository metadata has Pages enabled.\n\nCombined with a root `index.html`, this supports classification as a deployed static visualization.\n\nThere is no separate server runtime."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/StudyTree`\n- **Repository start date:** 2024-08-30\n- **Last meaningful update date:** 2024-08-30\n- **Primary implementation format:** HTML with embedded CSS and JavaScript\n- **Visualization library:** D3.js v7\n- **Deployment:** GitHub Pages enabled\n- **Collaboration classification:** individual project\n- **Repository shape:** one self-contained interactive visualization page",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`StudyTree` is a small browser application for visualizing a technical learning roadmap as a hierarchical tree.\n\nIts initial data model contains two top-level tracks:\n\n- Robotics,\n- AI.\n\nThe Robotics branch records the sequence from ROS 2 basics through RViz/Gazebo and Nav2.\n\nThe AI branch begins with Machine Learning.\n\nThe application renders those relationships as an interactive D3 tree.",
+      "source_line_start": 14,
+      "source_line_end": 29
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Source Layout",
+      "normalized_title": "Source Layout",
+      "key": "source_layout",
+      "path": [
+        "Source Layout"
+      ],
+      "content": "The repository contains only:\n\n- `README.md`,\n- `index.html`.\n\nAll functional code is embedded in `index.html`.\n\nThis makes the project a self-contained static deployment.",
+      "source_line_start": 29,
+      "source_line_end": 40
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Data Model",
+      "normalized_title": "Data Model",
+      "key": "data_model",
+      "path": [
+        "Data Model"
+      ],
+      "content": "The hierarchy is encoded as nested JavaScript objects.\n\nThe root is `Courses`.\n\nChildren are nested through `children` arrays.\n\nThis is then converted into a D3 hierarchy with:\n\n`d3.hierarchy(data)`.\n\nThe structure is not hard-coded as absolute SVG coordinates.\n\nThe tree layout is computed from hierarchical data.",
+      "source_line_start": 40,
+      "source_line_end": 56
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "D3 Tree Layout",
+      "normalized_title": "D3 Tree Layout",
+      "key": "d3_tree_layout",
+      "path": [
+        "D3 Tree Layout"
+      ],
+      "content": "The implementation creates a D3 tree using:\n\n`d3.tree().size(...)`.\n\nThe root hierarchy is passed through the tree layout.\n\nD3 assigns coordinates to each node.\n\nThe page therefore separates logical hierarchy from final render positions.",
+      "source_line_start": 56,
+      "source_line_end": 68
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "SVG Rendering",
+      "normalized_title": "SVG Rendering",
+      "key": "svg_rendering",
+      "path": [
+        "SVG Rendering"
+      ],
+      "content": "The application creates a large SVG canvas.\n\nIt appends a translated group and renders tree links and nodes inside it.\n\nEach node is represented by an SVG group.\n\nThat group is transformed to the D3-computed coordinates.",
+      "source_line_start": 68,
+      "source_line_end": 78
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Link Geometry",
+      "normalized_title": "Link Geometry",
+      "key": "link_geometry",
+      "path": [
+        "Link Geometry"
+      ],
+      "content": "Edges between parent and child nodes are rendered as SVG paths.\n\nThe path uses a cubic Bézier curve.\n\nControl points are calculated from the parent/child x/y positions.\n\nThis produces visually smooth hierarchical branches.",
+      "source_line_start": 78,
+      "source_line_end": 88
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Dynamic Node Rendering",
+      "normalized_title": "Dynamic Node Rendering",
+      "key": "dynamic_node_rendering",
+      "path": [
+        "Dynamic Node Rendering"
+      ],
+      "content": "The application binds `root.descendants()` to node groups.\n\nIt appends:\n\n- rounded rectangles,\n- text labels,\n- checkboxes,\n- checkmark paths.\n\nThis is data-driven DOM/SVG generation using D3's enter pattern.",
+      "source_line_start": 88,
+      "source_line_end": 101
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Branch Coloring",
+      "normalized_title": "Branch Coloring",
+      "key": "branch_coloring",
+      "path": [
+        "Branch Coloring"
+      ],
+      "content": "The page defines `generateShades`.\n\nFor each top-level branch:\n\n- a base color is selected from `d3.schemeCategory10`,\n- darker variants are generated,\n- descendant nodes receive shades of that branch's base color.\n\nThis visually encodes hierarchy membership.",
+      "source_line_start": 101,
+      "source_line_end": 113
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Completion Interaction",
+      "normalized_title": "Completion Interaction",
+      "key": "completion_interaction",
+      "path": [
+        "Completion Interaction"
+      ],
+      "content": "Each node includes a checkbox-style rectangle and a hidden checkmark.\n\nClick handlers toggle:\n\n- the `checked` CSS class,\n- checkmark visibility.\n\nThis turns the static hierarchy into a lightweight progress-tracking interface.\n\nThe state is in-memory only.\n\nNo persistence layer is implemented.",
+      "source_line_start": 113,
+      "source_line_end": 128
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Duplicate Click Handler",
+      "normalized_title": "Duplicate Click Handler",
+      "key": "duplicate_click_handler",
+      "path": [
+        "Duplicate Click Handler"
+      ],
+      "content": "The file attaches a click handler when creating checkbox rectangles.\n\nLater it selects `.checkbox` and attaches another click handler.\n\nThe second handler replaces the earlier D3 event binding for the selected elements.\n\nThe checked-state logic still exists, but the duplication is an implementation-cleanliness issue.",
+      "source_line_start": 128,
+      "source_line_end": 138
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Styling",
+      "normalized_title": "Styling",
+      "key": "styling",
+      "path": [
+        "Styling"
+      ],
+      "content": "The page defines inline CSS for:\n\n- node rectangles,\n- text,\n- checkbox boundaries,\n- checked state,\n- checkmark paths.\n\nThe visualization is therefore entirely portable as a single HTML file plus the remotely loaded D3 library.",
+      "source_line_start": 138,
+      "source_line_end": 150
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "External Dependency",
+      "normalized_title": "External Dependency",
+      "key": "external_dependency",
+      "path": [
+        "External Dependency"
+      ],
+      "content": "D3 v7 is loaded from:\n\n`https://d3js.org/d3.v7.min.js`.\n\nThe deployed page therefore depends on that CDN resource being available.\n\nNo bundler or package manager is used.",
+      "source_line_start": 150,
+      "source_line_end": 160
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Deployment Evidence",
+      "normalized_title": "Deployment Evidence",
+      "key": "deployment_evidence",
+      "path": [
+        "Deployment Evidence"
+      ],
+      "content": "GitHub repository metadata has Pages enabled.\n\nCombined with a root `index.html`, this supports classification as a deployed static visualization.\n\nThere is no separate server runtime.",
+      "source_line_start": 160,
+      "source_line_end": 168
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Work Evidenced",
+      "normalized_title": "Engineering Work Evidenced",
+      "key": "engineering_work_evidenced",
+      "path": [
+        "Engineering Work Evidenced"
+      ],
+      "content": "The repository positively demonstrates:\n\n- hierarchical data modeling,\n- D3 hierarchy construction,\n- tree-layout computation,\n- SVG rendering,\n- data binding,\n- Bézier path generation,\n- dynamic DOM/SVG creation,\n- branch-based color encoding,\n- click-driven interaction,\n- static-site deployment.",
+      "source_line_start": 168,
+      "source_line_end": 183
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Verification Evidence",
+      "normalized_title": "Verification Evidence",
+      "key": "verification_evidence",
+      "path": [
+        "Verification Evidence"
+      ],
+      "content": "There is no automated test suite.\n\nThe repository history contains several rapid updates to `index.html` on its creation day.\n\nThe practical verification mode is browser rendering and clicking the generated controls.\n\nGitHub Pages provides a deployable execution surface.",
+      "source_line_start": 183,
+      "source_line_end": 193
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Frontend\n\n- HTML\n- CSS\n- JavaScript\n- SVG\n- event handling\n\n### Data Visualization\n\n- D3.js\n- hierarchical data\n- tree layouts\n- color scales\n- data joins\n- path generation\n\n### Product Thinking\n\nThe tool converts a learning plan into a visual navigable artifact rather than leaving it as plain notes.\n\nThe completion checkbox interaction introduces a minimal progress-tracking concept.",
+      "source_line_start": 193,
+      "source_line_end": 218
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Frontend",
+      "normalized_title": "Frontend",
+      "key": "frontend",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend"
+      ],
+      "content": "- HTML\n- CSS\n- JavaScript\n- SVG\n- event handling",
+      "source_line_start": 195,
+      "source_line_end": 203
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Data Visualization",
+      "normalized_title": "Data Visualization",
+      "key": "data_visualization",
+      "path": [
+        "Skills Demonstrated",
+        "Data Visualization"
+      ],
+      "content": "- D3.js\n- hierarchical data\n- tree layouts\n- color scales\n- data joins\n- path generation",
+      "source_line_start": 203,
+      "source_line_end": 212
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Product Thinking",
+      "normalized_title": "Product Thinking",
+      "key": "product_thinking",
+      "path": [
+        "Skills Demonstrated",
+        "Product Thinking"
+      ],
+      "content": "The tool converts a learning plan into a visual navigable artifact rather than leaving it as plain notes.\n\nThe completion checkbox interaction introduces a minimal progress-tracking concept.",
+      "source_line_start": 212,
+      "source_line_end": 218
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The project develops the ability to express structured knowledge visually.\n\nA nested data model is translated into:\n\n- spatial hierarchy,\n- visual grouping,\n- interactive completion controls.\n\nThis is a different frontend concern from the animation-focused sites seen earlier in the corpus.",
+      "source_line_start": 218,
+      "source_line_end": 230
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Historically, `StudyTree` appears immediately after the ROS/SLAM sequence.\n\nIts actual hierarchy directly reflects that learning route.\n\nThe repository is therefore both a frontend artifact and a meta-artifact documenting how technical learning was being organized at that point.",
+      "source_line_start": 230,
+      "source_line_end": 238
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed D3.js hierarchy/tree visualization.\n\nIt is also the earliest observed portfolio artifact that explicitly models a learning roadmap as structured data.",
+      "source_line_start": 238,
+      "source_line_end": 244
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "Progress state is not persisted.\n\nThere is no backend.\n\nThere is no authentication.\n\nThe roadmap data is embedded directly in source.\n\nThe viewport uses fixed SVG dimensions.\n\nNo automated accessibility or UI tests are present.\n\nA duplicate checkbox event binding exists.",
+      "source_line_start": 244,
+      "source_line_end": 260
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`StudyTree` is a compact, deployed visualization that turns an engineering learning roadmap into an interactive hierarchy.\n\nThe technical substance lies in the D3 data-to-SVG pipeline: nested course data becomes coordinates, curved links, shaded branches, labels, and stateful controls.\n\nIt also serves as historical evidence that robotics and AI learning were being organized deliberately rather than accumulated as disconnected repositories.\n\n# Project Tags\n\n- `static-web-application`\n- `interactive-utility`\n- `individual-project`\n- `html`\n- `css`\n- `javascript`\n- `d3-js`\n- `svg`\n- `hierarchical-data`\n- `tree-visualization`\n- `data-visualization`\n- `dynamic-dom-generation`\n- `event-driven-ui`\n- `stateful-ui`\n- `color-scale`\n- `bezier-curves`\n- `learning-roadmap`\n- `github-pages`\n- `static-site-deployment`\n- `client-side-application`\n- `manual-verification`",
+      "source_line_start": 260,
+      "source_line_end": 291
+    }
+  ],
+  "raw_analysis": "# Repository 044 — StudyTree\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/StudyTree`\n- **Repository start date:** 2024-08-30\n- **Last meaningful update date:** 2024-08-30\n- **Primary implementation format:** HTML with embedded CSS and JavaScript\n- **Visualization library:** D3.js v7\n- **Deployment:** GitHub Pages enabled\n- **Collaboration classification:** individual project\n- **Repository shape:** one self-contained interactive visualization page\n\n## What This Project Is\n\n`StudyTree` is a small browser application for visualizing a technical learning roadmap as a hierarchical tree.\n\nIts initial data model contains two top-level tracks:\n\n- Robotics,\n- AI.\n\nThe Robotics branch records the sequence from ROS 2 basics through RViz/Gazebo and Nav2.\n\nThe AI branch begins with Machine Learning.\n\nThe application renders those relationships as an interactive D3 tree.\n\n## Source Layout\n\nThe repository contains only:\n\n- `README.md`,\n- `index.html`.\n\nAll functional code is embedded in `index.html`.\n\nThis makes the project a self-contained static deployment.\n\n## Data Model\n\nThe hierarchy is encoded as nested JavaScript objects.\n\nThe root is `Courses`.\n\nChildren are nested through `children` arrays.\n\nThis is then converted into a D3 hierarchy with:\n\n`d3.hierarchy(data)`.\n\nThe structure is not hard-coded as absolute SVG coordinates.\n\nThe tree layout is computed from hierarchical data.\n\n## D3 Tree Layout\n\nThe implementation creates a D3 tree using:\n\n`d3.tree().size(...)`.\n\nThe root hierarchy is passed through the tree layout.\n\nD3 assigns coordinates to each node.\n\nThe page therefore separates logical hierarchy from final render positions.\n\n## SVG Rendering\n\nThe application creates a large SVG canvas.\n\nIt appends a translated group and renders tree links and nodes inside it.\n\nEach node is represented by an SVG group.\n\nThat group is transformed to the D3-computed coordinates.\n\n## Link Geometry\n\nEdges between parent and child nodes are rendered as SVG paths.\n\nThe path uses a cubic Bézier curve.\n\nControl points are calculated from the parent/child x/y positions.\n\nThis produces visually smooth hierarchical branches.\n\n## Dynamic Node Rendering\n\nThe application binds `root.descendants()` to node groups.\n\nIt appends:\n\n- rounded rectangles,\n- text labels,\n- checkboxes,\n- checkmark paths.\n\nThis is data-driven DOM/SVG generation using D3's enter pattern.\n\n## Branch Coloring\n\nThe page defines `generateShades`.\n\nFor each top-level branch:\n\n- a base color is selected from `d3.schemeCategory10`,\n- darker variants are generated,\n- descendant nodes receive shades of that branch's base color.\n\nThis visually encodes hierarchy membership.\n\n## Completion Interaction\n\nEach node includes a checkbox-style rectangle and a hidden checkmark.\n\nClick handlers toggle:\n\n- the `checked` CSS class,\n- checkmark visibility.\n\nThis turns the static hierarchy into a lightweight progress-tracking interface.\n\nThe state is in-memory only.\n\nNo persistence layer is implemented.\n\n## Duplicate Click Handler\n\nThe file attaches a click handler when creating checkbox rectangles.\n\nLater it selects `.checkbox` and attaches another click handler.\n\nThe second handler replaces the earlier D3 event binding for the selected elements.\n\nThe checked-state logic still exists, but the duplication is an implementation-cleanliness issue.\n\n## Styling\n\nThe page defines inline CSS for:\n\n- node rectangles,\n- text,\n- checkbox boundaries,\n- checked state,\n- checkmark paths.\n\nThe visualization is therefore entirely portable as a single HTML file plus the remotely loaded D3 library.\n\n## External Dependency\n\nD3 v7 is loaded from:\n\n`https://d3js.org/d3.v7.min.js`.\n\nThe deployed page therefore depends on that CDN resource being available.\n\nNo bundler or package manager is used.\n\n## Deployment Evidence\n\nGitHub repository metadata has Pages enabled.\n\nCombined with a root `index.html`, this supports classification as a deployed static visualization.\n\nThere is no separate server runtime.\n\n## Engineering Work Evidenced\n\nThe repository positively demonstrates:\n\n- hierarchical data modeling,\n- D3 hierarchy construction,\n- tree-layout computation,\n- SVG rendering,\n- data binding,\n- Bézier path generation,\n- dynamic DOM/SVG creation,\n- branch-based color encoding,\n- click-driven interaction,\n- static-site deployment.\n\n## Verification Evidence\n\nThere is no automated test suite.\n\nThe repository history contains several rapid updates to `index.html` on its creation day.\n\nThe practical verification mode is browser rendering and clicking the generated controls.\n\nGitHub Pages provides a deployable execution surface.\n\n## Skills Demonstrated\n\n### Frontend\n\n- HTML\n- CSS\n- JavaScript\n- SVG\n- event handling\n\n### Data Visualization\n\n- D3.js\n- hierarchical data\n- tree layouts\n- color scales\n- data joins\n- path generation\n\n### Product Thinking\n\nThe tool converts a learning plan into a visual navigable artifact rather than leaving it as plain notes.\n\nThe completion checkbox interaction introduces a minimal progress-tracking concept.\n\n## Capability Developed\n\nThe project develops the ability to express structured knowledge visually.\n\nA nested data model is translated into:\n\n- spatial hierarchy,\n- visual grouping,\n- interactive completion controls.\n\nThis is a different frontend concern from the animation-focused sites seen earlier in the corpus.\n\n## Portfolio Evolution\n\nHistorically, `StudyTree` appears immediately after the ROS/SLAM sequence.\n\nIts actual hierarchy directly reflects that learning route.\n\nThe repository is therefore both a frontend artifact and a meta-artifact documenting how technical learning was being organized at that point.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed D3.js hierarchy/tree visualization.\n\nIt is also the earliest observed portfolio artifact that explicitly models a learning roadmap as structured data.\n\n## Limitations\n\nProgress state is not persisted.\n\nThere is no backend.\n\nThere is no authentication.\n\nThe roadmap data is embedded directly in source.\n\nThe viewport uses fixed SVG dimensions.\n\nNo automated accessibility or UI tests are present.\n\nA duplicate checkbox event binding exists.\n\n## Overall Narrative\n\n`StudyTree` is a compact, deployed visualization that turns an engineering learning roadmap into an interactive hierarchy.\n\nThe technical substance lies in the D3 data-to-SVG pipeline: nested course data becomes coordinates, curved links, shaded branches, labels, and stateful controls.\n\nIt also serves as historical evidence that robotics and AI learning were being organized deliberately rather than accumulated as disconnected repositories.\n\n# Project Tags\n\n- `static-web-application`\n- `interactive-utility`\n- `individual-project`\n- `html`\n- `css`\n- `javascript`\n- `d3-js`\n- `svg`\n- `hierarchical-data`\n- `tree-visualization`\n- `data-visualization`\n- `dynamic-dom-generation`\n- `event-driven-ui`\n- `stateful-ui`\n- `color-scale`\n- `bezier-curves`\n- `learning-roadmap`\n- `github-pages`\n- `static-site-deployment`\n- `client-side-application`\n- `manual-verification`\n"
+}

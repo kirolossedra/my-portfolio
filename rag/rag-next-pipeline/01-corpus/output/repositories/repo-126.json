@@ -1,0 +1,823 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 126,
+  "repository_total": 134,
+  "repository_name": "SedraFTPVariant",
+  "header_title": "SedraFTPVariant",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-126-SedraFTPVariant/README.md",
+    "line_start": 1,
+    "line_end": 631,
+    "sha256": "5305627a7526c86f7a8f6c9f427d89cf771b31dc4085c1b887a636a1986c582c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "python",
+    "objective-c",
+    "ios",
+    "uikit",
+    "tkinter",
+    "ftp",
+    "ftp-client",
+    "ftp-server",
+    "ftplib",
+    "pyftpdlib",
+    "udp",
+    "udp-control-plane",
+    "socket-programming",
+    "threading",
+    "queue-based-ui-events",
+    "automated-network-testing",
+    "repeated-trials",
+    "transfer-timing",
+    "synthetic-workload",
+    "virtual-filesystem",
+    "generated-streaming-data",
+    "partial-file-download",
+    "atomic-file-replace",
+    "grand-central-dispatch",
+    "experiment-logging",
+    "white-raccoon",
+    "apple-simpleping",
+    "external-library-integration",
+    "research-test-harness"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 126 / 138\n- Name: `SedraFTPVariant`\n- Start date: 2025-11-19\n- Latest meaningful update: 2026-02-05\n- Latest meaningful commit: `6d517d5a6151f8ce870baf4b38c4e7f29d30afd4`\n- Primary repository language metadata: Objective-C\n- Technical field: network experiment automation, FTP transfer testing, UDP orchestration, iOS and desktop tooling\n- Context: research test harness for repeatable network-transfer experiments\n- Collaboration type: `individual-project-with-external-components`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThis repository combines substantial repository-specific Python and Objective-C experiment orchestration with explicitly external networking components.\n\nThe authorship boundary is important.\n\n`Client/WhiteRaccoon.h` retains the original statement that **Valentin Radu** created WhiteRaccoon in 2011.\n\n`Client/SimplePing.h` retains Apple's copyright and identifies itself as an Apple sample wrapping low-level BSD-socket ping behavior.\n\nThe generic `SceneDelegate` files are also carried from the preceding iOS project lineage.\n\nThose components provide network primitives and platform support, but they should not be counted as independently authored repository-owner implementations.\n\nThe repository-specific engineering is much clearer in:\n\n- `Client/client.py`,\n- `Client/main.m`,\n- `Server/server.py`,\n- `Server/main.py`,\n- `Server/starter.py`,\n- the integration and automation that connects transfer execution, test repetition, UDP control, timing, UI state, and logging."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 126 / 138\n- Name: `SedraFTPVariant`\n- Start date: 2025-11-19\n- Latest meaningful update: 2026-02-05\n- Latest meaningful commit: `6d517d5a6151f8ce870baf4b38c4e7f29d30afd4`\n- Primary repository language metadata: Objective-C\n- Technical field: network experiment automation, FTP transfer testing, UDP orchestration, iOS and desktop tooling\n- Context: research test harness for repeatable network-transfer experiments\n- Collaboration type: `individual-project-with-external-components`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "This repository combines substantial repository-specific Python and Objective-C experiment orchestration with explicitly external networking components.\n\nThe authorship boundary is important.\n\n`Client/WhiteRaccoon.h` retains the original statement that **Valentin Radu** created WhiteRaccoon in 2011.\n\n`Client/SimplePing.h` retains Apple's copyright and identifies itself as an Apple sample wrapping low-level BSD-socket ping behavior.\n\nThe generic `SceneDelegate` files are also carried from the preceding iOS project lineage.\n\nThose components provide network primitives and platform support, but they should not be counted as independently authored repository-owner implementations.\n\nThe repository-specific engineering is much clearer in:\n\n- `Client/client.py`,\n- `Client/main.m`,\n- `Server/server.py`,\n- `Server/main.py`,\n- `Server/starter.py`,\n- the integration and automation that connects transfer execution, test repetition, UDP control, timing, UI state, and logging.",
+      "source_line_start": 15,
+      "source_line_end": 38
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`SedraFTPVariant` turns FTP transfer from a manual networking operation into a controlled experiment workload.\n\nThe repository contains both client-side and server-side tools.\n\nThe client side supports:\n\n- manual FTP downloads,\n- automated repeated downloads,\n- configurable test counts,\n- configurable separation between trials,\n- transfer timing,\n- progress reporting,\n- status reporting,\n- UDP remote-control commands.\n\nThe server side provides FTP service and synthetic/generated content that can be consumed repeatedly without depending on a finite static test file.\n\nThe repository also contains an iOS client implementation whose UI and automation logic mirror the experiment-oriented workflow.\n\nThe result is not merely an FTP client.\n\nIt is a repeatability harness for inducing network traffic under controlled timing and observing transfer behavior.",
+      "source_line_start": 38,
+      "source_line_end": 63
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Evolution From the Initial Design Specification",
+      "normalized_title": "Evolution From the Initial Design Specification",
+      "key": "evolution_from_the_initial_design_specification",
+      "path": [
+        "Evolution From the Initial Design Specification"
+      ],
+      "content": "The root README records a concrete control concept.\n\nIt describes a network-scanning controller that:\n\n- scans a local subnet,\n- identifies responsive hosts,\n- represents clients in a GUI,\n- sends `START_DOWNLOAD` over UDP,\n- listens for completion/failure messages,\n- times the transaction,\n- returns each client to a ready state after completion.\n\nThe implemented repository develops the same broader idea of a control plane around network workloads.\n\nThe checked-in Python client uses explicit UDP commands:\n\n- `START_DOWNLOAD`,\n- `STOP_DOWNLOAD`,\n- `START_AUTOTESTS`,\n- `STOP_AUTOTESTS`.\n\nIt also has a UDP listener and a separate FTP data path.\n\nThat is a meaningful separation:\n\n```text\nUDP commands and status\n        ↓\nexperiment-control state\n        ↓\nFTP workload execution\n        ↓\ntiming / progress / result logging\n```\n\nThe control channel coordinates the experiment while FTP carries the actual bulk data.",
+      "source_line_start": 63,
+      "source_line_end": 102
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Python Desktop Client",
+      "normalized_title": "Python Desktop Client",
+      "key": "python_desktop_client",
+      "path": [
+        "Python Desktop Client"
+      ],
+      "content": "`Client/client.py` is a substantial Python 3 GUI application.\n\nIts module description identifies it as:\n\n- a Tkinter FTP client,\n- an automated-test runner,\n- a UDP-controlled application.\n\n### Configurable FTP Parameters\n\nThe client exposes configuration for:\n\n- FTP host,\n- FTP port,\n- username,\n- password,\n- remote filename,\n- local save directory.\n\nThe checked-in defaults point at a private-LAN research setup.\n\nThe code uses Python's standard `ftplib.FTP`.\n\n### Download Lifecycle\n\n`FTPDownloader.download()` implements the transfer lifecycle.\n\nThe sequence is:\n\n1. connect to the FTP server,\n2. log in,\n3. attempt to determine the remote file size,\n4. begin binary retrieval,\n5. write incoming chunks to a temporary `.part` file,\n6. update byte-level progress,\n7. atomically replace the final path when successful,\n8. remove a partial file on failure.\n\nThe final rename is performed through `os.replace`.\n\nThis is a stronger transfer workflow than writing directly to the destination because an incomplete test does not masquerade as a complete file.\n\n### Transfer Cancellation\n\n`FTPDownloader` owns a `threading.Event`.\n\nThe transfer callback checks the stop event while chunks are being received.\n\nA requested stop raises out of the active transfer path and is handled by the same cleanup logic.\n\n### Structured Result\n\nThe download engine returns a `DownloadResult` dataclass carrying:\n\n- success state,\n- error text,\n- bytes received,\n- elapsed seconds,\n- local path.\n\nThat gives the GUI and automation layer a structured result rather than requiring them to infer completion from console text.",
+      "source_line_start": 102,
+      "source_line_end": 166
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Configurable FTP Parameters",
+      "normalized_title": "Configurable FTP Parameters",
+      "key": "configurable_ftp_parameters",
+      "path": [
+        "Python Desktop Client",
+        "Configurable FTP Parameters"
+      ],
+      "content": "The client exposes configuration for:\n\n- FTP host,\n- FTP port,\n- username,\n- password,\n- remote filename,\n- local save directory.\n\nThe checked-in defaults point at a private-LAN research setup.\n\nThe code uses Python's standard `ftplib.FTP`.",
+      "source_line_start": 112,
+      "source_line_end": 127
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Download Lifecycle",
+      "normalized_title": "Download Lifecycle",
+      "key": "download_lifecycle",
+      "path": [
+        "Python Desktop Client",
+        "Download Lifecycle"
+      ],
+      "content": "`FTPDownloader.download()` implements the transfer lifecycle.\n\nThe sequence is:\n\n1. connect to the FTP server,\n2. log in,\n3. attempt to determine the remote file size,\n4. begin binary retrieval,\n5. write incoming chunks to a temporary `.part` file,\n6. update byte-level progress,\n7. atomically replace the final path when successful,\n8. remove a partial file on failure.\n\nThe final rename is performed through `os.replace`.\n\nThis is a stronger transfer workflow than writing directly to the destination because an incomplete test does not masquerade as a complete file.",
+      "source_line_start": 127,
+      "source_line_end": 146
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Transfer Cancellation",
+      "normalized_title": "Transfer Cancellation",
+      "key": "transfer_cancellation",
+      "path": [
+        "Python Desktop Client",
+        "Transfer Cancellation"
+      ],
+      "content": "`FTPDownloader` owns a `threading.Event`.\n\nThe transfer callback checks the stop event while chunks are being received.\n\nA requested stop raises out of the active transfer path and is handled by the same cleanup logic.",
+      "source_line_start": 146,
+      "source_line_end": 154
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Structured Result",
+      "normalized_title": "Structured Result",
+      "key": "structured_result",
+      "path": [
+        "Python Desktop Client",
+        "Structured Result"
+      ],
+      "content": "The download engine returns a `DownloadResult` dataclass carrying:\n\n- success state,\n- error text,\n- bytes received,\n- elapsed seconds,\n- local path.\n\nThat gives the GUI and automation layer a structured result rather than requiring them to infer completion from console text.",
+      "source_line_start": 154,
+      "source_line_end": 166
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Tkinter UI Engineering",
+      "normalized_title": "Tkinter UI Engineering",
+      "key": "tkinter_ui_engineering",
+      "path": [
+        "Tkinter UI Engineering"
+      ],
+      "content": "The desktop client contains custom-drawn Tkinter widgets rather than relying exclusively on default platform widgets.\n\n### Rounded Buttons\n\n`RoundedButton` is canvas-based.\n\nIt implements:\n\n- rounded geometry,\n- hover state,\n- pressed state,\n- disabled state,\n- custom fill colors,\n- border state,\n- cursor changes.\n\n### Pill Entries\n\n`PillEntry` wraps a text entry with:\n\n- custom rounded framing,\n- focus border changes,\n- placeholders,\n- optional password masking,\n- enabled/disabled state.\n\n### Segmented Controls\n\n`SegmentedChips` provides custom selection chips for preset values such as:\n\n- test counts,\n- separation intervals.\n\n### Progress Visualization\n\n`ModernProgress` supports:\n\n- determinate progress,\n- indeterminate animation,\n- custom canvas rendering.\n\nThe UI work matters because the tool is meant to be operated repeatedly during experiments rather than run once as a command-line script.",
+      "source_line_start": 166,
+      "source_line_end": 211
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Rounded Buttons",
+      "normalized_title": "Rounded Buttons",
+      "key": "rounded_buttons",
+      "path": [
+        "Tkinter UI Engineering",
+        "Rounded Buttons"
+      ],
+      "content": "`RoundedButton` is canvas-based.\n\nIt implements:\n\n- rounded geometry,\n- hover state,\n- pressed state,\n- disabled state,\n- custom fill colors,\n- border state,\n- cursor changes.",
+      "source_line_start": 170,
+      "source_line_end": 184
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Pill Entries",
+      "normalized_title": "Pill Entries",
+      "key": "pill_entries",
+      "path": [
+        "Tkinter UI Engineering",
+        "Pill Entries"
+      ],
+      "content": "`PillEntry` wraps a text entry with:\n\n- custom rounded framing,\n- focus border changes,\n- placeholders,\n- optional password masking,\n- enabled/disabled state.",
+      "source_line_start": 184,
+      "source_line_end": 194
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Segmented Controls",
+      "normalized_title": "Segmented Controls",
+      "key": "segmented_controls",
+      "path": [
+        "Tkinter UI Engineering",
+        "Segmented Controls"
+      ],
+      "content": "`SegmentedChips` provides custom selection chips for preset values such as:\n\n- test counts,\n- separation intervals.",
+      "source_line_start": 194,
+      "source_line_end": 201
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Progress Visualization",
+      "normalized_title": "Progress Visualization",
+      "key": "progress_visualization",
+      "path": [
+        "Tkinter UI Engineering",
+        "Progress Visualization"
+      ],
+      "content": "`ModernProgress` supports:\n\n- determinate progress,\n- indeterminate animation,\n- custom canvas rendering.\n\nThe UI work matters because the tool is meant to be operated repeatedly during experiments rather than run once as a command-line script.",
+      "source_line_start": 201,
+      "source_line_end": 211
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Concurrency and UI Isolation",
+      "normalized_title": "Concurrency and UI Isolation",
+      "key": "concurrency_and_ui_isolation",
+      "path": [
+        "Concurrency and UI Isolation"
+      ],
+      "content": "Network operations must not block Tkinter's main event loop.\n\nThe repository uses:\n\n- `threading`,\n- `queue.Queue`,\n- daemon threads,\n- periodic Tkinter polling.\n\nThe UDP listener runs independently and posts events into a queue.\n\nThe GUI processes those events on the UI side.\n\nThis establishes a basic thread-boundary pattern:\n\n```text\nnetwork thread\n    ↓\nthread-safe queue\n    ↓\nTkinter polling\n    ↓\nUI state update\n```\n\nThat prevents the background UDP receive loop from directly mutating widgets.",
+      "source_line_start": 211,
+      "source_line_end": 240
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "UDP Control Plane",
+      "normalized_title": "UDP Control Plane",
+      "key": "udp_control_plane",
+      "path": [
+        "UDP Control Plane"
+      ],
+      "content": "`UDPListener`:\n\n- creates an IPv4 datagram socket,\n- enables `SO_REUSEADDR`,\n- binds to `0.0.0.0`,\n- uses a finite socket timeout,\n- decodes incoming text messages,\n- places received messages into the UI queue.\n\nThe timeout allows the thread to periodically re-check its stop event rather than blocking forever inside `recvfrom`.\n\nThe client supports both inbound command reception and outbound status signaling.\n\nThis control plane is well matched to laboratory automation because the orchestration messages are tiny and independent of the FTP workload being measured.",
+      "source_line_start": 240,
+      "source_line_end": 257
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Automated Repetition",
+      "normalized_title": "Automated Repetition",
+      "key": "automated_repetition",
+      "path": [
+        "Automated Repetition"
+      ],
+      "content": "The Python client stores explicit experiment state including:\n\n- whether automation is running,\n- tests requested,\n- tests started,\n- tests completed,\n- tests succeeded,\n- separation interval,\n- current run log path.\n\nPreset test counts include:\n\n- 10,\n- 20,\n- 50,\n- 80,\n- 100.\n\nPreset separation values include:\n\n- 10,\n- 20,\n- 30,\n- 60 seconds.\n\nThis is direct evidence of designing for repeated trials rather than single manual transfers.",
+      "source_line_start": 257,
+      "source_line_end": 286
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "iOS Experiment Client",
+      "normalized_title": "iOS Experiment Client",
+      "key": "ios_experiment_client",
+      "path": [
+        "iOS Experiment Client"
+      ],
+      "content": "`Client/main.m` contains a repository-specific UIKit FTP experiment application.\n\nIt imports WhiteRaccoon as the FTP transport but builds experiment behavior around it.\n\n### iOS Experiment UI\n\nThe source creates controls programmatically for:\n\n- status indicator,\n- test count,\n- separation interval,\n- FTP host,\n- username,\n- password,\n- start/stop automated tests,\n- manual download,\n- progress.\n\nThe client therefore does not depend only on a storyboard for its experimental interface.\n\n### Automated Trial State\n\nThe Objective-C client tracks:\n\n- total tests,\n- tests started,\n- tests completed,\n- successful tests,\n- automation-running state,\n- separation interval,\n- current test number.\n\nPreset choices include:\n\n- 10,\n- 20,\n- 50,\n- 100 trials,\n- 30-second or 60-second separation.\n\n### Milestone Logging\n\nThe iOS client creates a timestamped milestone log file for an automated run.\n\nIt:\n\n- generates the output filename,\n- writes a header,\n- writes an immediate initialization record,\n- uses a serial dispatch queue for file operations,\n- records the path and current test state.\n\nThis is concrete evidence of trying to make repeated mobile transfer experiments traceable rather than relying only on transient UI state.\n\n### iOS UDP Listener\n\nThe Objective-C source also declares:\n\n- a UDP socket,\n- a dispatch queue,\n- a dispatch source.\n\nThis extends the same remote-control experiment architecture into the native iOS client.",
+      "source_line_start": 286,
+      "source_line_end": 352
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "iOS Experiment UI",
+      "normalized_title": "iOS Experiment UI",
+      "key": "ios_experiment_ui",
+      "path": [
+        "iOS Experiment Client",
+        "iOS Experiment UI"
+      ],
+      "content": "The source creates controls programmatically for:\n\n- status indicator,\n- test count,\n- separation interval,\n- FTP host,\n- username,\n- password,\n- start/stop automated tests,\n- manual download,\n- progress.\n\nThe client therefore does not depend only on a storyboard for its experimental interface.",
+      "source_line_start": 292,
+      "source_line_end": 308
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Automated Trial State",
+      "normalized_title": "Automated Trial State",
+      "key": "automated_trial_state",
+      "path": [
+        "iOS Experiment Client",
+        "Automated Trial State"
+      ],
+      "content": "The Objective-C client tracks:\n\n- total tests,\n- tests started,\n- tests completed,\n- successful tests,\n- automation-running state,\n- separation interval,\n- current test number.\n\nPreset choices include:\n\n- 10,\n- 20,\n- 50,\n- 100 trials,\n- 30-second or 60-second separation.",
+      "source_line_start": 308,
+      "source_line_end": 328
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Milestone Logging",
+      "normalized_title": "Milestone Logging",
+      "key": "milestone_logging",
+      "path": [
+        "iOS Experiment Client",
+        "Milestone Logging"
+      ],
+      "content": "The iOS client creates a timestamped milestone log file for an automated run.\n\nIt:\n\n- generates the output filename,\n- writes a header,\n- writes an immediate initialization record,\n- uses a serial dispatch queue for file operations,\n- records the path and current test state.\n\nThis is concrete evidence of trying to make repeated mobile transfer experiments traceable rather than relying only on transient UI state.",
+      "source_line_start": 328,
+      "source_line_end": 342
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "iOS UDP Listener",
+      "normalized_title": "iOS UDP Listener",
+      "key": "ios_udp_listener",
+      "path": [
+        "iOS Experiment Client",
+        "iOS UDP Listener"
+      ],
+      "content": "The Objective-C source also declares:\n\n- a UDP socket,\n- a dispatch queue,\n- a dispatch source.\n\nThis extends the same remote-control experiment architecture into the native iOS client.",
+      "source_line_start": 342,
+      "source_line_end": 352
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Synthetic FTP Server",
+      "normalized_title": "Synthetic FTP Server",
+      "key": "synthetic_ftp_server",
+      "path": [
+        "Synthetic FTP Server"
+      ],
+      "content": "`Server/server.py` uses `pyftpdlib`.\n\n### Virtual Generated Files\n\nThe server defines `InfiniteFile`, a file-like object that generates data as it is read.\n\nGenerated chunks include a counter/timestamp and are padded to the requested size.\n\nThe file can therefore continue producing data without storing a correspondingly large object on disk.\n\n### Virtual Filesystem\n\n`VirtualFS` extends `AbstractedFS`.\n\nIt advertises virtual paths including:\n\n- `/infinite.txt`,\n- `/stream.dat`.\n\nIt overrides filesystem behavior such as:\n\n- `open`,\n- `stat`,\n- `isfile`,\n- `listdir`,\n- `lexists`.\n\nFor virtual paths, the server returns generated data and synthetic metadata.\n\n### Why This Matters Experimentally\n\nA synthetic effectively unbounded source is useful for throughput work because the server can maintain transfer pressure without preparing or repeatedly replacing a huge static file.\n\nThe workload becomes:\n\n```text\nFTP client requests generated object\n           ↓\nVirtualFS intercepts path\n           ↓\nInfiniteFile emits chunks\n           ↓\nnetwork remains loaded until client/test stops\n```\n\n### FTP Server Configuration\n\nThe service binds to:\n\n- `0.0.0.0`,\n- TCP port `2121`.\n\nThe source configures multiple test users with read/list permissions.\n\nThat multi-user setup aligns with a laboratory environment where several clients can be assigned distinct credentials.",
+      "source_line_start": 352,
+      "source_line_end": 410
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Virtual Generated Files",
+      "normalized_title": "Virtual Generated Files",
+      "key": "virtual_generated_files",
+      "path": [
+        "Synthetic FTP Server",
+        "Virtual Generated Files"
+      ],
+      "content": "The server defines `InfiniteFile`, a file-like object that generates data as it is read.\n\nGenerated chunks include a counter/timestamp and are padded to the requested size.\n\nThe file can therefore continue producing data without storing a correspondingly large object on disk.",
+      "source_line_start": 356,
+      "source_line_end": 364
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Virtual Filesystem",
+      "normalized_title": "Virtual Filesystem",
+      "key": "virtual_filesystem",
+      "path": [
+        "Synthetic FTP Server",
+        "Virtual Filesystem"
+      ],
+      "content": "`VirtualFS` extends `AbstractedFS`.\n\nIt advertises virtual paths including:\n\n- `/infinite.txt`,\n- `/stream.dat`.\n\nIt overrides filesystem behavior such as:\n\n- `open`,\n- `stat`,\n- `isfile`,\n- `listdir`,\n- `lexists`.\n\nFor virtual paths, the server returns generated data and synthetic metadata.",
+      "source_line_start": 364,
+      "source_line_end": 383
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Why This Matters Experimentally",
+      "normalized_title": "Why This Matters Experimentally",
+      "key": "why_this_matters_experimentally",
+      "path": [
+        "Synthetic FTP Server",
+        "Why This Matters Experimentally"
+      ],
+      "content": "A synthetic effectively unbounded source is useful for throughput work because the server can maintain transfer pressure without preparing or repeatedly replacing a huge static file.\n\nThe workload becomes:\n\n```text\nFTP client requests generated object\n           ↓\nVirtualFS intercepts path\n           ↓\nInfiniteFile emits chunks\n           ↓\nnetwork remains loaded until client/test stops\n```",
+      "source_line_start": 383,
+      "source_line_end": 399
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "FTP Server Configuration",
+      "normalized_title": "FTP Server Configuration",
+      "key": "ftp_server_configuration",
+      "path": [
+        "Synthetic FTP Server",
+        "FTP Server Configuration"
+      ],
+      "content": "The service binds to:\n\n- `0.0.0.0`,\n- TCP port `2121`.\n\nThe source configures multiple test users with read/list permissions.\n\nThat multi-user setup aligns with a laboratory environment where several clients can be assigned distinct credentials.",
+      "source_line_start": 399,
+      "source_line_end": 410
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "External Networking Components",
+      "normalized_title": "External Networking Components",
+      "key": "external_networking_components",
+      "path": [
+        "External Networking Components"
+      ],
+      "content": "### WhiteRaccoon\n\nWhiteRaccoon provides the Objective-C FTP request/stream implementation.\n\nIt remains externally attributed to Valentin Radu.\n\nIts capabilities include download, upload, delete, directory creation/listing, queues, stream callbacks, and FTP error mapping.\n\nThose are library capabilities available to the project, not original design claims for this repository.\n\n### Apple SimplePing\n\n`SimplePing` is explicitly Apple's sample implementation.\n\nIt wraps BSD-socket ICMP behavior and supports IPv4/IPv6 ping operation.\n\nIts presence represents integration with an Apple-provided network diagnostic primitive.",
+      "source_line_start": 410,
+      "source_line_end": 430
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "WhiteRaccoon",
+      "normalized_title": "WhiteRaccoon",
+      "key": "whiteraccoon",
+      "path": [
+        "External Networking Components",
+        "WhiteRaccoon"
+      ],
+      "content": "WhiteRaccoon provides the Objective-C FTP request/stream implementation.\n\nIt remains externally attributed to Valentin Radu.\n\nIts capabilities include download, upload, delete, directory creation/listing, queues, stream callbacks, and FTP error mapping.\n\nThose are library capabilities available to the project, not original design claims for this repository.",
+      "source_line_start": 412,
+      "source_line_end": 422
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Apple SimplePing",
+      "normalized_title": "Apple SimplePing",
+      "key": "apple_simpleping",
+      "path": [
+        "External Networking Components",
+        "Apple SimplePing"
+      ],
+      "content": "`SimplePing` is explicitly Apple's sample implementation.\n\nIt wraps BSD-socket ICMP behavior and supports IPv4/IPv6 ping operation.\n\nIts presence represents integration with an Apple-provided network diagnostic primitive.",
+      "source_line_start": 422,
+      "source_line_end": 430
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython drives:\n\n- desktop GUI,\n- FTP client behavior,\n- concurrency,\n- UDP command handling,\n- automated test sequencing,\n- synthetic FTP serving.\n\n### Tkinter\n\nTkinter provides the operator-facing desktop GUI.\n\nThe project goes beyond standard widgets by implementing custom canvas-based controls.\n\n### `ftplib`\n\nThe standard-library FTP client performs actual download operations.\n\n### `pyftpdlib`\n\n`pyftpdlib` provides the server framework that is extended with the virtual filesystem.\n\n### Objective-C and UIKit\n\nThe repository includes an iOS client with a programmatically constructed UIKit interface and experiment automation state.\n\n### Grand Central Dispatch\n\nThe Objective-C implementation uses dispatch queues for:\n\n- UDP handling,\n- serialized log output.\n\n### UDP Sockets\n\nUDP provides the experiment control/status channel independent of FTP bulk transfer.",
+      "source_line_start": 430,
+      "source_line_end": 472
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python drives:\n\n- desktop GUI,\n- FTP client behavior,\n- concurrency,\n- UDP command handling,\n- automated test sequencing,\n- synthetic FTP serving.",
+      "source_line_start": 432,
+      "source_line_end": 443
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Tkinter",
+      "normalized_title": "Tkinter",
+      "key": "tkinter",
+      "path": [
+        "Technical Stack",
+        "Tkinter"
+      ],
+      "content": "Tkinter provides the operator-facing desktop GUI.\n\nThe project goes beyond standard widgets by implementing custom canvas-based controls.",
+      "source_line_start": 443,
+      "source_line_end": 449
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "`ftplib`",
+      "normalized_title": "ftplib",
+      "key": "ftplib",
+      "path": [
+        "Technical Stack",
+        "`ftplib`"
+      ],
+      "content": "The standard-library FTP client performs actual download operations.",
+      "source_line_start": 449,
+      "source_line_end": 453
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "`pyftpdlib`",
+      "normalized_title": "pyftpdlib",
+      "key": "pyftpdlib",
+      "path": [
+        "Technical Stack",
+        "`pyftpdlib`"
+      ],
+      "content": "`pyftpdlib` provides the server framework that is extended with the virtual filesystem.",
+      "source_line_start": 453,
+      "source_line_end": 457
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Objective-C and UIKit",
+      "normalized_title": "Objective-C and UIKit",
+      "key": "objective_c_and_uikit",
+      "path": [
+        "Technical Stack",
+        "Objective-C and UIKit"
+      ],
+      "content": "The repository includes an iOS client with a programmatically constructed UIKit interface and experiment automation state.",
+      "source_line_start": 457,
+      "source_line_end": 461
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Grand Central Dispatch",
+      "normalized_title": "Grand Central Dispatch",
+      "key": "grand_central_dispatch",
+      "path": [
+        "Technical Stack",
+        "Grand Central Dispatch"
+      ],
+      "content": "The Objective-C implementation uses dispatch queues for:\n\n- UDP handling,\n- serialized log output.",
+      "source_line_start": 461,
+      "source_line_end": 468
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "UDP Sockets",
+      "normalized_title": "UDP Sockets",
+      "key": "udp_sockets",
+      "path": [
+        "Technical Stack",
+        "UDP Sockets"
+      ],
+      "content": "UDP provides the experiment control/status channel independent of FTP bulk transfer.",
+      "source_line_start": 468,
+      "source_line_end": 472
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Engineering Practices Evidenced",
+      "normalized_title": "Engineering Practices Evidenced",
+      "key": "engineering_practices_evidenced",
+      "path": [
+        "Engineering Practices Evidenced"
+      ],
+      "content": "### Separation of Control and Data Paths\n\nUDP is used for low-volume experiment commands/status.\n\nFTP is used for the measured bulk transfer.\n\nThat makes the control channel conceptually distinct from the workload being exercised.\n\n### Temporary-File Safety\n\nDesktop downloads are written to `.part` files and renamed only after successful completion.\n\n### Thread-Safe UI Communication\n\nBackground network threads communicate with Tkinter through a queue rather than direct widget updates.\n\n### Structured Automation State\n\nBoth desktop and iOS clients explicitly track test counts and completion state.\n\n### Repeatability-Oriented Parameters\n\nTrial count and inter-test separation are explicit controls.\n\nThe harness is designed to reproduce the same workload multiple times under controlled spacing.\n\n### Server Workload Generation\n\nThe server generates transfer data dynamically.\n\nThis avoids coupling the test to a finite source-file lifecycle.",
+      "source_line_start": 472,
+      "source_line_end": 506
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Separation of Control and Data Paths",
+      "normalized_title": "Separation of Control and Data Paths",
+      "key": "separation_of_control_and_data_paths",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Separation of Control and Data Paths"
+      ],
+      "content": "UDP is used for low-volume experiment commands/status.\n\nFTP is used for the measured bulk transfer.\n\nThat makes the control channel conceptually distinct from the workload being exercised.",
+      "source_line_start": 474,
+      "source_line_end": 482
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Temporary-File Safety",
+      "normalized_title": "Temporary-File Safety",
+      "key": "temporary_file_safety",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Temporary-File Safety"
+      ],
+      "content": "Desktop downloads are written to `.part` files and renamed only after successful completion.",
+      "source_line_start": 482,
+      "source_line_end": 486
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Thread-Safe UI Communication",
+      "normalized_title": "Thread-Safe UI Communication",
+      "key": "thread_safe_ui_communication",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Thread-Safe UI Communication"
+      ],
+      "content": "Background network threads communicate with Tkinter through a queue rather than direct widget updates.",
+      "source_line_start": 486,
+      "source_line_end": 490
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Structured Automation State",
+      "normalized_title": "Structured Automation State",
+      "key": "structured_automation_state",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Structured Automation State"
+      ],
+      "content": "Both desktop and iOS clients explicitly track test counts and completion state.",
+      "source_line_start": 490,
+      "source_line_end": 494
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Repeatability-Oriented Parameters",
+      "normalized_title": "Repeatability-Oriented Parameters",
+      "key": "repeatability_oriented_parameters",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Repeatability-Oriented Parameters"
+      ],
+      "content": "Trial count and inter-test separation are explicit controls.\n\nThe harness is designed to reproduce the same workload multiple times under controlled spacing.",
+      "source_line_start": 494,
+      "source_line_end": 500
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Server Workload Generation",
+      "normalized_title": "Server Workload Generation",
+      "key": "server_workload_generation",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Server Workload Generation"
+      ],
+      "content": "The server generates transfer data dynamically.\n\nThis avoids coupling the test to a finite source-file lifecycle.",
+      "source_line_start": 500,
+      "source_line_end": 506
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Experimental Scale",
+      "normalized_title": "Experimental Scale",
+      "key": "experimental_scale",
+      "path": [
+        "Experimental Scale"
+      ],
+      "content": "The client is explicitly designed for repeated test sets reaching at least 100 automated runs.\n\nThe server can expose a generated stream much larger than a normal stored file.\n\nMultiple FTP user identities are configured.\n\nThe architecture spans:\n\n- desktop client,\n- iOS client,\n- UDP orchestration,\n- FTP server,\n- generated workload,\n- logging.\n\nThis makes the project a small distributed research test system rather than a single standalone script.",
+      "source_line_start": 506,
+      "source_line_end": 525
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "`SedraFTPVariant` is a clear evolution from the earlier FTP repositories.\n\nThe important shift is from **having an FTP implementation** to **instrumenting FTP as a repeatable experiment**.\n\nThe repository introduces or consolidates:\n\n- explicit automated trial counts,\n- remote UDP commands,\n- transfer timing,\n- result state,\n- cross-thread GUI coordination,\n- synthetic server data,\n- iOS-side trial logging.\n\nThis architecture later appears again in `Apple-Publication`, where the FTP harness is reused alongside an iperf3 automation DSL and publication-analysis tools.\n\nThat cross-repository continuity is positive evidence of iterative engineering.",
+      "source_line_start": 525,
+      "source_line_end": 545
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Network Experiment Automation\n\n- defining repeatable workloads,\n- controlling trial count,\n- controlling separation intervals,\n- timing transfers,\n- reporting completion/failure,\n- coordinating multiple hosts.\n\n### Python Desktop Engineering\n\n- Tkinter GUI development,\n- custom widgets,\n- background threading,\n- queue-based event delivery,\n- standard-library FTP integration.\n\n### Server Engineering\n\n- pyftpdlib extension,\n- virtual filesystem behavior,\n- synthetic data generation,\n- multi-user FTP configuration.\n\n### Native iOS Experiment Integration\n\n- UIKit programmatic controls,\n- Objective-C application state,\n- GCD queues,\n- UDP socket integration,\n- file logging,\n- external FTP-library integration.\n\n### Network Protocol Exposure\n\nThe repository concretely works with:\n\n- FTP,\n- UDP,\n- ICMP through an external Apple sample,\n- IP-based LAN addressing.",
+      "source_line_start": 545,
+      "source_line_end": 589
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Network Experiment Automation",
+      "normalized_title": "Network Experiment Automation",
+      "key": "network_experiment_automation",
+      "path": [
+        "Skills Demonstrated",
+        "Network Experiment Automation"
+      ],
+      "content": "- defining repeatable workloads,\n- controlling trial count,\n- controlling separation intervals,\n- timing transfers,\n- reporting completion/failure,\n- coordinating multiple hosts.",
+      "source_line_start": 547,
+      "source_line_end": 556
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Python Desktop Engineering",
+      "normalized_title": "Python Desktop Engineering",
+      "key": "python_desktop_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Python Desktop Engineering"
+      ],
+      "content": "- Tkinter GUI development,\n- custom widgets,\n- background threading,\n- queue-based event delivery,\n- standard-library FTP integration.",
+      "source_line_start": 556,
+      "source_line_end": 564
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Server Engineering",
+      "normalized_title": "Server Engineering",
+      "key": "server_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Server Engineering"
+      ],
+      "content": "- pyftpdlib extension,\n- virtual filesystem behavior,\n- synthetic data generation,\n- multi-user FTP configuration.",
+      "source_line_start": 564,
+      "source_line_end": 571
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Native iOS Experiment Integration",
+      "normalized_title": "Native iOS Experiment Integration",
+      "key": "native_ios_experiment_integration",
+      "path": [
+        "Skills Demonstrated",
+        "Native iOS Experiment Integration"
+      ],
+      "content": "- UIKit programmatic controls,\n- Objective-C application state,\n- GCD queues,\n- UDP socket integration,\n- file logging,\n- external FTP-library integration.",
+      "source_line_start": 571,
+      "source_line_end": 580
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Network Protocol Exposure",
+      "normalized_title": "Network Protocol Exposure",
+      "key": "network_protocol_exposure",
+      "path": [
+        "Skills Demonstrated",
+        "Network Protocol Exposure"
+      ],
+      "content": "The repository concretely works with:\n\n- FTP,\n- UDP,\n- ICMP through an external Apple sample,\n- IP-based LAN addressing.",
+      "source_line_start": 580,
+      "source_line_end": 589
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`SedraFTPVariant` is a research-oriented network workload harness that connects a Python desktop client, a native iOS client, a UDP experiment-control plane, and a generated-data FTP server.\n\nIts most important engineering contribution is orchestration.\n\nThe code is organized around making transfer experiments repeatable, remotely triggerable, measurable, and recoverable across many runs.\n\nExternally authored WhiteRaccoon and Apple SimplePing code remain clearly separated from the repository-specific experiment logic.\n\nThat provenance boundary makes the repository especially useful for RAG questions about what was integrated versus what was actually engineered around those primitives.\n\n# Project Tags\n\n- `python`\n- `objective-c`\n- `ios`\n- `uikit`\n- `tkinter`\n- `ftp`\n- `ftp-client`\n- `ftp-server`\n- `ftplib`\n- `pyftpdlib`\n- `udp`\n- `udp-control-plane`\n- `socket-programming`\n- `threading`\n- `queue-based-ui-events`\n- `automated-network-testing`\n- `repeated-trials`\n- `transfer-timing`\n- `synthetic-workload`\n- `virtual-filesystem`\n- `generated-streaming-data`\n- `partial-file-download`\n- `atomic-file-replace`\n- `grand-central-dispatch`\n- `experiment-logging`\n- `white-raccoon`\n- `apple-simpleping`\n- `external-library-integration`\n- `research-test-harness`",
+      "source_line_start": 589,
+      "source_line_end": 632
+    }
+  ],
+  "raw_analysis": "# SedraFTPVariant\n\n## Repository Identity\n\n- Repository: 126 / 138\n- Name: `SedraFTPVariant`\n- Start date: 2025-11-19\n- Latest meaningful update: 2026-02-05\n- Latest meaningful commit: `6d517d5a6151f8ce870baf4b38c4e7f29d30afd4`\n- Primary repository language metadata: Objective-C\n- Technical field: network experiment automation, FTP transfer testing, UDP orchestration, iOS and desktop tooling\n- Context: research test harness for repeatable network-transfer experiments\n- Collaboration type: `individual-project-with-external-components`\n\n## Collaboration and Authorship Context\n\nThis repository combines substantial repository-specific Python and Objective-C experiment orchestration with explicitly external networking components.\n\nThe authorship boundary is important.\n\n`Client/WhiteRaccoon.h` retains the original statement that **Valentin Radu** created WhiteRaccoon in 2011.\n\n`Client/SimplePing.h` retains Apple's copyright and identifies itself as an Apple sample wrapping low-level BSD-socket ping behavior.\n\nThe generic `SceneDelegate` files are also carried from the preceding iOS project lineage.\n\nThose components provide network primitives and platform support, but they should not be counted as independently authored repository-owner implementations.\n\nThe repository-specific engineering is much clearer in:\n\n- `Client/client.py`,\n- `Client/main.m`,\n- `Server/server.py`,\n- `Server/main.py`,\n- `Server/starter.py`,\n- the integration and automation that connects transfer execution, test repetition, UDP control, timing, UI state, and logging.\n\n## What This Project Is\n\n`SedraFTPVariant` turns FTP transfer from a manual networking operation into a controlled experiment workload.\n\nThe repository contains both client-side and server-side tools.\n\nThe client side supports:\n\n- manual FTP downloads,\n- automated repeated downloads,\n- configurable test counts,\n- configurable separation between trials,\n- transfer timing,\n- progress reporting,\n- status reporting,\n- UDP remote-control commands.\n\nThe server side provides FTP service and synthetic/generated content that can be consumed repeatedly without depending on a finite static test file.\n\nThe repository also contains an iOS client implementation whose UI and automation logic mirror the experiment-oriented workflow.\n\nThe result is not merely an FTP client.\n\nIt is a repeatability harness for inducing network traffic under controlled timing and observing transfer behavior.\n\n## Evolution From the Initial Design Specification\n\nThe root README records a concrete control concept.\n\nIt describes a network-scanning controller that:\n\n- scans a local subnet,\n- identifies responsive hosts,\n- represents clients in a GUI,\n- sends `START_DOWNLOAD` over UDP,\n- listens for completion/failure messages,\n- times the transaction,\n- returns each client to a ready state after completion.\n\nThe implemented repository develops the same broader idea of a control plane around network workloads.\n\nThe checked-in Python client uses explicit UDP commands:\n\n- `START_DOWNLOAD`,\n- `STOP_DOWNLOAD`,\n- `START_AUTOTESTS`,\n- `STOP_AUTOTESTS`.\n\nIt also has a UDP listener and a separate FTP data path.\n\nThat is a meaningful separation:\n\n```text\nUDP commands and status\n        ↓\nexperiment-control state\n        ↓\nFTP workload execution\n        ↓\ntiming / progress / result logging\n```\n\nThe control channel coordinates the experiment while FTP carries the actual bulk data.\n\n## Python Desktop Client\n\n`Client/client.py` is a substantial Python 3 GUI application.\n\nIts module description identifies it as:\n\n- a Tkinter FTP client,\n- an automated-test runner,\n- a UDP-controlled application.\n\n### Configurable FTP Parameters\n\nThe client exposes configuration for:\n\n- FTP host,\n- FTP port,\n- username,\n- password,\n- remote filename,\n- local save directory.\n\nThe checked-in defaults point at a private-LAN research setup.\n\nThe code uses Python's standard `ftplib.FTP`.\n\n### Download Lifecycle\n\n`FTPDownloader.download()` implements the transfer lifecycle.\n\nThe sequence is:\n\n1. connect to the FTP server,\n2. log in,\n3. attempt to determine the remote file size,\n4. begin binary retrieval,\n5. write incoming chunks to a temporary `.part` file,\n6. update byte-level progress,\n7. atomically replace the final path when successful,\n8. remove a partial file on failure.\n\nThe final rename is performed through `os.replace`.\n\nThis is a stronger transfer workflow than writing directly to the destination because an incomplete test does not masquerade as a complete file.\n\n### Transfer Cancellation\n\n`FTPDownloader` owns a `threading.Event`.\n\nThe transfer callback checks the stop event while chunks are being received.\n\nA requested stop raises out of the active transfer path and is handled by the same cleanup logic.\n\n### Structured Result\n\nThe download engine returns a `DownloadResult` dataclass carrying:\n\n- success state,\n- error text,\n- bytes received,\n- elapsed seconds,\n- local path.\n\nThat gives the GUI and automation layer a structured result rather than requiring them to infer completion from console text.\n\n## Tkinter UI Engineering\n\nThe desktop client contains custom-drawn Tkinter widgets rather than relying exclusively on default platform widgets.\n\n### Rounded Buttons\n\n`RoundedButton` is canvas-based.\n\nIt implements:\n\n- rounded geometry,\n- hover state,\n- pressed state,\n- disabled state,\n- custom fill colors,\n- border state,\n- cursor changes.\n\n### Pill Entries\n\n`PillEntry` wraps a text entry with:\n\n- custom rounded framing,\n- focus border changes,\n- placeholders,\n- optional password masking,\n- enabled/disabled state.\n\n### Segmented Controls\n\n`SegmentedChips` provides custom selection chips for preset values such as:\n\n- test counts,\n- separation intervals.\n\n### Progress Visualization\n\n`ModernProgress` supports:\n\n- determinate progress,\n- indeterminate animation,\n- custom canvas rendering.\n\nThe UI work matters because the tool is meant to be operated repeatedly during experiments rather than run once as a command-line script.\n\n## Concurrency and UI Isolation\n\nNetwork operations must not block Tkinter's main event loop.\n\nThe repository uses:\n\n- `threading`,\n- `queue.Queue`,\n- daemon threads,\n- periodic Tkinter polling.\n\nThe UDP listener runs independently and posts events into a queue.\n\nThe GUI processes those events on the UI side.\n\nThis establishes a basic thread-boundary pattern:\n\n```text\nnetwork thread\n    ↓\nthread-safe queue\n    ↓\nTkinter polling\n    ↓\nUI state update\n```\n\nThat prevents the background UDP receive loop from directly mutating widgets.\n\n## UDP Control Plane\n\n`UDPListener`:\n\n- creates an IPv4 datagram socket,\n- enables `SO_REUSEADDR`,\n- binds to `0.0.0.0`,\n- uses a finite socket timeout,\n- decodes incoming text messages,\n- places received messages into the UI queue.\n\nThe timeout allows the thread to periodically re-check its stop event rather than blocking forever inside `recvfrom`.\n\nThe client supports both inbound command reception and outbound status signaling.\n\nThis control plane is well matched to laboratory automation because the orchestration messages are tiny and independent of the FTP workload being measured.\n\n## Automated Repetition\n\nThe Python client stores explicit experiment state including:\n\n- whether automation is running,\n- tests requested,\n- tests started,\n- tests completed,\n- tests succeeded,\n- separation interval,\n- current run log path.\n\nPreset test counts include:\n\n- 10,\n- 20,\n- 50,\n- 80,\n- 100.\n\nPreset separation values include:\n\n- 10,\n- 20,\n- 30,\n- 60 seconds.\n\nThis is direct evidence of designing for repeated trials rather than single manual transfers.\n\n## iOS Experiment Client\n\n`Client/main.m` contains a repository-specific UIKit FTP experiment application.\n\nIt imports WhiteRaccoon as the FTP transport but builds experiment behavior around it.\n\n### iOS Experiment UI\n\nThe source creates controls programmatically for:\n\n- status indicator,\n- test count,\n- separation interval,\n- FTP host,\n- username,\n- password,\n- start/stop automated tests,\n- manual download,\n- progress.\n\nThe client therefore does not depend only on a storyboard for its experimental interface.\n\n### Automated Trial State\n\nThe Objective-C client tracks:\n\n- total tests,\n- tests started,\n- tests completed,\n- successful tests,\n- automation-running state,\n- separation interval,\n- current test number.\n\nPreset choices include:\n\n- 10,\n- 20,\n- 50,\n- 100 trials,\n- 30-second or 60-second separation.\n\n### Milestone Logging\n\nThe iOS client creates a timestamped milestone log file for an automated run.\n\nIt:\n\n- generates the output filename,\n- writes a header,\n- writes an immediate initialization record,\n- uses a serial dispatch queue for file operations,\n- records the path and current test state.\n\nThis is concrete evidence of trying to make repeated mobile transfer experiments traceable rather than relying only on transient UI state.\n\n### iOS UDP Listener\n\nThe Objective-C source also declares:\n\n- a UDP socket,\n- a dispatch queue,\n- a dispatch source.\n\nThis extends the same remote-control experiment architecture into the native iOS client.\n\n## Synthetic FTP Server\n\n`Server/server.py` uses `pyftpdlib`.\n\n### Virtual Generated Files\n\nThe server defines `InfiniteFile`, a file-like object that generates data as it is read.\n\nGenerated chunks include a counter/timestamp and are padded to the requested size.\n\nThe file can therefore continue producing data without storing a correspondingly large object on disk.\n\n### Virtual Filesystem\n\n`VirtualFS` extends `AbstractedFS`.\n\nIt advertises virtual paths including:\n\n- `/infinite.txt`,\n- `/stream.dat`.\n\nIt overrides filesystem behavior such as:\n\n- `open`,\n- `stat`,\n- `isfile`,\n- `listdir`,\n- `lexists`.\n\nFor virtual paths, the server returns generated data and synthetic metadata.\n\n### Why This Matters Experimentally\n\nA synthetic effectively unbounded source is useful for throughput work because the server can maintain transfer pressure without preparing or repeatedly replacing a huge static file.\n\nThe workload becomes:\n\n```text\nFTP client requests generated object\n           ↓\nVirtualFS intercepts path\n           ↓\nInfiniteFile emits chunks\n           ↓\nnetwork remains loaded until client/test stops\n```\n\n### FTP Server Configuration\n\nThe service binds to:\n\n- `0.0.0.0`,\n- TCP port `2121`.\n\nThe source configures multiple test users with read/list permissions.\n\nThat multi-user setup aligns with a laboratory environment where several clients can be assigned distinct credentials.\n\n## External Networking Components\n\n### WhiteRaccoon\n\nWhiteRaccoon provides the Objective-C FTP request/stream implementation.\n\nIt remains externally attributed to Valentin Radu.\n\nIts capabilities include download, upload, delete, directory creation/listing, queues, stream callbacks, and FTP error mapping.\n\nThose are library capabilities available to the project, not original design claims for this repository.\n\n### Apple SimplePing\n\n`SimplePing` is explicitly Apple's sample implementation.\n\nIt wraps BSD-socket ICMP behavior and supports IPv4/IPv6 ping operation.\n\nIts presence represents integration with an Apple-provided network diagnostic primitive.\n\n## Technical Stack\n\n### Python\n\nPython drives:\n\n- desktop GUI,\n- FTP client behavior,\n- concurrency,\n- UDP command handling,\n- automated test sequencing,\n- synthetic FTP serving.\n\n### Tkinter\n\nTkinter provides the operator-facing desktop GUI.\n\nThe project goes beyond standard widgets by implementing custom canvas-based controls.\n\n### `ftplib`\n\nThe standard-library FTP client performs actual download operations.\n\n### `pyftpdlib`\n\n`pyftpdlib` provides the server framework that is extended with the virtual filesystem.\n\n### Objective-C and UIKit\n\nThe repository includes an iOS client with a programmatically constructed UIKit interface and experiment automation state.\n\n### Grand Central Dispatch\n\nThe Objective-C implementation uses dispatch queues for:\n\n- UDP handling,\n- serialized log output.\n\n### UDP Sockets\n\nUDP provides the experiment control/status channel independent of FTP bulk transfer.\n\n## Engineering Practices Evidenced\n\n### Separation of Control and Data Paths\n\nUDP is used for low-volume experiment commands/status.\n\nFTP is used for the measured bulk transfer.\n\nThat makes the control channel conceptually distinct from the workload being exercised.\n\n### Temporary-File Safety\n\nDesktop downloads are written to `.part` files and renamed only after successful completion.\n\n### Thread-Safe UI Communication\n\nBackground network threads communicate with Tkinter through a queue rather than direct widget updates.\n\n### Structured Automation State\n\nBoth desktop and iOS clients explicitly track test counts and completion state.\n\n### Repeatability-Oriented Parameters\n\nTrial count and inter-test separation are explicit controls.\n\nThe harness is designed to reproduce the same workload multiple times under controlled spacing.\n\n### Server Workload Generation\n\nThe server generates transfer data dynamically.\n\nThis avoids coupling the test to a finite source-file lifecycle.\n\n## Experimental Scale\n\nThe client is explicitly designed for repeated test sets reaching at least 100 automated runs.\n\nThe server can expose a generated stream much larger than a normal stored file.\n\nMultiple FTP user identities are configured.\n\nThe architecture spans:\n\n- desktop client,\n- iOS client,\n- UDP orchestration,\n- FTP server,\n- generated workload,\n- logging.\n\nThis makes the project a small distributed research test system rather than a single standalone script.\n\n## Historical Portfolio Significance\n\n`SedraFTPVariant` is a clear evolution from the earlier FTP repositories.\n\nThe important shift is from **having an FTP implementation** to **instrumenting FTP as a repeatable experiment**.\n\nThe repository introduces or consolidates:\n\n- explicit automated trial counts,\n- remote UDP commands,\n- transfer timing,\n- result state,\n- cross-thread GUI coordination,\n- synthetic server data,\n- iOS-side trial logging.\n\nThis architecture later appears again in `Apple-Publication`, where the FTP harness is reused alongside an iperf3 automation DSL and publication-analysis tools.\n\nThat cross-repository continuity is positive evidence of iterative engineering.\n\n## Skills Demonstrated\n\n### Network Experiment Automation\n\n- defining repeatable workloads,\n- controlling trial count,\n- controlling separation intervals,\n- timing transfers,\n- reporting completion/failure,\n- coordinating multiple hosts.\n\n### Python Desktop Engineering\n\n- Tkinter GUI development,\n- custom widgets,\n- background threading,\n- queue-based event delivery,\n- standard-library FTP integration.\n\n### Server Engineering\n\n- pyftpdlib extension,\n- virtual filesystem behavior,\n- synthetic data generation,\n- multi-user FTP configuration.\n\n### Native iOS Experiment Integration\n\n- UIKit programmatic controls,\n- Objective-C application state,\n- GCD queues,\n- UDP socket integration,\n- file logging,\n- external FTP-library integration.\n\n### Network Protocol Exposure\n\nThe repository concretely works with:\n\n- FTP,\n- UDP,\n- ICMP through an external Apple sample,\n- IP-based LAN addressing.\n\n## Overall Project Narrative\n\n`SedraFTPVariant` is a research-oriented network workload harness that connects a Python desktop client, a native iOS client, a UDP experiment-control plane, and a generated-data FTP server.\n\nIts most important engineering contribution is orchestration.\n\nThe code is organized around making transfer experiments repeatable, remotely triggerable, measurable, and recoverable across many runs.\n\nExternally authored WhiteRaccoon and Apple SimplePing code remain clearly separated from the repository-specific experiment logic.\n\nThat provenance boundary makes the repository especially useful for RAG questions about what was integrated versus what was actually engineered around those primitives.\n\n# Project Tags\n\n- `python`\n- `objective-c`\n- `ios`\n- `uikit`\n- `tkinter`\n- `ftp`\n- `ftp-client`\n- `ftp-server`\n- `ftplib`\n- `pyftpdlib`\n- `udp`\n- `udp-control-plane`\n- `socket-programming`\n- `threading`\n- `queue-based-ui-events`\n- `automated-network-testing`\n- `repeated-trials`\n- `transfer-timing`\n- `synthetic-workload`\n- `virtual-filesystem`\n- `generated-streaming-data`\n- `partial-file-download`\n- `atomic-file-replace`\n- `grand-central-dispatch`\n- `experiment-logging`\n- `white-raccoon`\n- `apple-simpleping`\n- `external-library-integration`\n- `research-test-harness`\n"
+}

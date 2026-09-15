@@ -1,0 +1,1069 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 65,
+  "repository_total": 134,
+  "repository_name": "ETL-with-shell-kafka-airflow",
+  "header_title": "ETL-with-shell-kafka-airflow",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-065-ETL-with-shell-kafka-airflow/README.md",
+    "line_start": 1,
+    "line_end": 717,
+    "sha256": "6beac0e73ed736e210991476ae69eddea482bde1a1fbe49a225a68a424736625"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-coursework",
+    "data-engineering-coursework",
+    "etl-lab",
+    "streaming-lab",
+    "apache-airflow",
+    "airflow-dag",
+    "bashoperator",
+    "pythonoperator",
+    "task-dependencies",
+    "workflow-orchestration",
+    "scheduled-workflow",
+    "retries",
+    "apache-kafka",
+    "kraft",
+    "kafka-topic",
+    "kafka-partitions",
+    "kafka-producer",
+    "kafka-consumer",
+    "kafka-message-keys",
+    "kafka-consumer-groups",
+    "kafka-offsets",
+    "event-replay",
+    "etl",
+    "staging-area",
+    "csv",
+    "tsv",
+    "fixed-width-data",
+    "batch-processing",
+    "stream-processing",
+    "streaming-database-sink",
+    "python",
+    "bash",
+    "sql",
+    "mysql",
+    "database-ingestion",
+    "dependency-graph",
+    "failure-retry-awareness",
+    "event-ordering",
+    "replayability",
+    "heterogeneous-data-formats",
+    "earliest-observed-apache-airflow",
+    "earliest-observed-airflow-dag",
+    "earliest-observed-bashoperator",
+    "earliest-observed-pythonoperator",
+    "earliest-observed-apache-kafka",
+    "earliest-observed-kafka-partitions",
+    "earliest-observed-kafka-message-keys",
+    "earliest-observed-kafka-consumer-groups",
+    "earliest-observed-kafka-offsets",
+    "earliest-observed-streaming-database-sink"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/ETL-with-shell-kafka-airflow`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `44b2e3c385f10fa968c3d52322716470f86648f1`\n- **Primary technical field:** data engineering, workflow orchestration, and event streaming\n- **Primary technologies:** Apache Airflow, Apache Kafka, Bash, Python, MySQL\n- **Project context:** individual data-engineering coursework and lab documentation\n- **Collaboration classification:** `individual-coursework`"
+    },
+    "testing": {
+      "section_ids": [
+        "s038"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nVerification is lab-driven and operational.\n\n### Airflow\n\nThe instructions check:\n\n- DAG import errors;\n- DAG presence;\n- unpaused state;\n- triggered runs;\n- task visibility;\n- run status.\n\n### Kafka\n\nThe exercises validate:\n\n- topic creation;\n- topic descriptions;\n- visible produced/consumed messages;\n- partition behavior;\n- consumer-group offsets;\n- replay behavior.\n\n### MySQL\n\nThe streaming exercise expects records to be written to the live toll table.\n\nNo repository-level automated test suite is checked in."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s062"
+      ],
+      "titles": [
+        "Authorship and Evidence Boundary"
+      ],
+      "text": "## Authorship and Evidence Boundary\nThe repository has strong IBM/course-lab characteristics.\n\nSeveral files explicitly present instructions such as \"create this file\" and provide code to paste.\n\nThe final Git tree stores those examples in Markdown and does not retain the runtime `.py` files described by the lab.\n\nThe corpus therefore attributes:\n\n- completed/practiced workflow concepts;\n- technical understanding represented by the saved exercises;\n- system-integration experience at coursework scope;\n\nbut not authorship of the supplied toll generator, streaming reader, or instructional scaffold."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/ETL-with-shell-kafka-airflow`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `44b2e3c385f10fa968c3d52322716470f86648f1`\n- **Primary technical field:** data engineering, workflow orchestration, and event streaming\n- **Primary technologies:** Apache Airflow, Apache Kafka, Bash, Python, MySQL\n- **Project context:** individual data-engineering coursework and lab documentation\n- **Collaboration classification:** `individual-coursework`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a relatively broad set of Markdown lab artifacts:\n\n- `Airflow Project/README.md`;\n- `Airflow Project/python operator.md`;\n- `create dag using bash operator.md`;\n- `create_airflow_dag.md`;\n- `airflow_examples.md`;\n- `airflow_installation_log.md`;\n- `starting with kafka.md`;\n- `kafka with keys and offsets.md`;\n- `kafka with python.md`;\n- `KAFKA- Python - msql`;\n- `shell.md`.\n\nThe final tree does not contain the actual `.py` DAG or producer/consumer files described by the labs.\n\nCapability claims are therefore scoped to practiced coursework, embedded code, and documented execution workflows rather than a checked-in deployable Airflow/Kafka application.",
+      "source_line_start": 14,
+      "source_line_end": 34
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Repository Is",
+      "normalized_title": "What the Repository Is",
+      "key": "what_the_repository_is",
+      "path": [
+        "What the Repository Is"
+      ],
+      "content": "This repository is a compact data-engineering learning system spanning three related areas:\n\n1. shell-oriented ETL;\n2. Airflow orchestration;\n3. Kafka streaming and database ingestion.\n\nThe common theme is moving data through staged, ordered processing rather than manipulating data in isolated scripts.",
+      "source_line_start": 34,
+      "source_line_end": 44
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Data-Engineering System Shape",
+      "normalized_title": "Data-Engineering System Shape",
+      "key": "data_engineering_system_shape",
+      "path": [
+        "Data-Engineering System Shape"
+      ],
+      "content": "The repository contains two major pipeline patterns.\n\n### Batch ETL\n\n```text\nremote toll dataset\n  ↓\ndownload\n  ↓\nuntar\n  ↓\nextract CSV ─┐\nextract TSV ─┼─> consolidate\nfixed width ─┘\n  ↓\ntransform\n  ↓\ntransformed CSV\n```\n\n### Streaming Pipeline\n\n```text\ntoll traffic generator\n  ↓\nKafka topic\n  ↓\nconsumer / streaming reader\n  ↓\nMySQL livetolldata table\n```\n\nAirflow supplies orchestration for the batch pipeline; Kafka supplies ordered event transport for the streaming pipeline.",
+      "source_line_start": 44,
+      "source_line_end": 80
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Batch ETL",
+      "normalized_title": "Batch ETL",
+      "key": "batch_etl",
+      "path": [
+        "Data-Engineering System Shape",
+        "Batch ETL"
+      ],
+      "content": "```text\nremote toll dataset\n  ↓\ndownload\n  ↓\nuntar\n  ↓\nextract CSV ─┐\nextract TSV ─┼─> consolidate\nfixed width ─┘\n  ↓\ntransform\n  ↓\ntransformed CSV\n```",
+      "source_line_start": 48,
+      "source_line_end": 66
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Streaming Pipeline",
+      "normalized_title": "Streaming Pipeline",
+      "key": "streaming_pipeline",
+      "path": [
+        "Data-Engineering System Shape",
+        "Streaming Pipeline"
+      ],
+      "content": "```text\ntoll traffic generator\n  ↓\nKafka topic\n  ↓\nconsumer / streaming reader\n  ↓\nMySQL livetolldata table\n```\n\nAirflow supplies orchestration for the batch pipeline; Kafka supplies ordered event transport for the streaming pipeline.",
+      "source_line_start": 66,
+      "source_line_end": 80
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Shell-Based ETL",
+      "normalized_title": "Shell-Based ETL",
+      "key": "shell_based_etl",
+      "path": [
+        "Shell-Based ETL"
+      ],
+      "content": "The Airflow final-assignment notes define a staging directory:\n\n```text\n/home/project/airflow/dags/finalassignment/staging\n```\n\nThe workflow downloads a compressed toll dataset and then performs extraction with standard Unix tools.\n\n### Archive Extraction\n\n```bash\ntar -xvzf .../tolldata.tgz -C .../staging\n```\n\n### CSV Field Extraction\n\n```bash\ncut -d, -f1,2,3,4 vehicle-data.csv > csv_data.csv\n```\n\n### TSV Field Extraction\n\n```bash\ncut -f1,2,3 tollplaza-data.tsv > tsv_data.csv\n```\n\n### Fixed-Width Extraction\n\n```bash\ncut -c1-20,21-40 payment-data.txt > fixed_width_data.csv\n```\n\n### Consolidation\n\n```bash\npaste -d, csv_data.csv tsv_data.csv fixed_width_data.csv > extracted_data.csv\n```\n\n### Transformation\n\nThe vehicle-type field is uppercased with:\n\n```bash\ntr '[:lower:]' '[:upper:]'\n```\n\nThis demonstrates classical command-line ETL:\n\n- extract from heterogeneous formats;\n- normalize;\n- combine;\n- transform;\n- emit a staged artifact.",
+      "source_line_start": 80,
+      "source_line_end": 136
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Archive Extraction",
+      "normalized_title": "Archive Extraction",
+      "key": "archive_extraction",
+      "path": [
+        "Shell-Based ETL",
+        "Archive Extraction"
+      ],
+      "content": "```bash\ntar -xvzf .../tolldata.tgz -C .../staging\n```",
+      "source_line_start": 90,
+      "source_line_end": 96
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "CSV Field Extraction",
+      "normalized_title": "CSV Field Extraction",
+      "key": "csv_field_extraction",
+      "path": [
+        "Shell-Based ETL",
+        "CSV Field Extraction"
+      ],
+      "content": "```bash\ncut -d, -f1,2,3,4 vehicle-data.csv > csv_data.csv\n```",
+      "source_line_start": 96,
+      "source_line_end": 102
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "TSV Field Extraction",
+      "normalized_title": "TSV Field Extraction",
+      "key": "tsv_field_extraction",
+      "path": [
+        "Shell-Based ETL",
+        "TSV Field Extraction"
+      ],
+      "content": "```bash\ncut -f1,2,3 tollplaza-data.tsv > tsv_data.csv\n```",
+      "source_line_start": 102,
+      "source_line_end": 108
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Fixed-Width Extraction",
+      "normalized_title": "Fixed-Width Extraction",
+      "key": "fixed_width_extraction",
+      "path": [
+        "Shell-Based ETL",
+        "Fixed-Width Extraction"
+      ],
+      "content": "```bash\ncut -c1-20,21-40 payment-data.txt > fixed_width_data.csv\n```",
+      "source_line_start": 108,
+      "source_line_end": 114
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Consolidation",
+      "normalized_title": "Consolidation",
+      "key": "consolidation",
+      "path": [
+        "Shell-Based ETL",
+        "Consolidation"
+      ],
+      "content": "```bash\npaste -d, csv_data.csv tsv_data.csv fixed_width_data.csv > extracted_data.csv\n```",
+      "source_line_start": 114,
+      "source_line_end": 120
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Transformation",
+      "normalized_title": "Transformation",
+      "key": "transformation",
+      "path": [
+        "Shell-Based ETL",
+        "Transformation"
+      ],
+      "content": "The vehicle-type field is uppercased with:\n\n```bash\ntr '[:lower:]' '[:upper:]'\n```\n\nThis demonstrates classical command-line ETL:\n\n- extract from heterogeneous formats;\n- normalize;\n- combine;\n- transform;\n- emit a staged artifact.",
+      "source_line_start": 120,
+      "source_line_end": 136
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Apache Airflow",
+      "normalized_title": "Apache Airflow",
+      "key": "apache_airflow",
+      "path": [
+        "Apache Airflow"
+      ],
+      "content": "The repository introduces Airflow as the workflow controller rather than manually executing each stage.",
+      "source_line_start": 136,
+      "source_line_end": 140
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "DAG Definition",
+      "normalized_title": "DAG Definition",
+      "key": "dag_definition",
+      "path": [
+        "DAG Definition"
+      ],
+      "content": "The documented DAG is:\n\n```text\nETL_toll_data\n```\n\nwith daily scheduling.\n\nDefault arguments include:\n\n- owner;\n- start date;\n- email;\n- retries;\n- retry delay.\n\nA retry count of one and a five-minute delay are explicitly documented in the PythonOperator version.",
+      "source_line_start": 140,
+      "source_line_end": 160
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Bash-Oriented DAG",
+      "normalized_title": "Bash-Oriented DAG",
+      "key": "bash_oriented_dag",
+      "path": [
+        "Bash-Oriented DAG"
+      ],
+      "content": "The Bash-based final assignment models tasks for:\n\n- untar;\n- CSV extraction;\n- TSV extraction;\n- fixed-width extraction;\n- consolidation;\n- transformation.\n\nThe intended dependency order is explicit rather than accidental.",
+      "source_line_start": 160,
+      "source_line_end": 173
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "PythonOperator DAG",
+      "normalized_title": "PythonOperator DAG",
+      "key": "pythonoperator_dag",
+      "path": [
+        "PythonOperator DAG"
+      ],
+      "content": "The Python version goes further by embedding Python functions for:\n\n- downloading the dataset with `requests`;\n- extracting the tar archive;\n- reading CSV;\n- reading TSV;\n- parsing fixed-width input;\n- consolidating multiple inputs;\n- uppercasing vehicle type.\n\nThe DAG then maps each function to a `PythonOperator`.",
+      "source_line_start": 173,
+      "source_line_end": 187
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Parallelizable Extraction Stage",
+      "normalized_title": "Parallelizable Extraction Stage",
+      "key": "parallelizable_extraction_stage",
+      "path": [
+        "Parallelizable Extraction Stage"
+      ],
+      "content": "The documented dependency expression is:\n\n```python\ndownload_task >> untar_task >> [\n    extract_csv_task,\n    extract_tsv_task,\n    extract_fixed_width_task\n] >> consolidate_task >> transform_task\n```\n\nThat graph is important.\n\nIt models:\n\n```text\ndownload\n  ↓\nuntar\n  ↓\n ┌─────────┬─────────┬─────────────┐\n CSV       TSV       fixed-width\n └─────────┴─────────┴─────────────┘\n             ↓\n         consolidate\n             ↓\n          transform\n```\n\nThe extraction tasks can conceptually run independently before convergence.",
+      "source_line_start": 187,
+      "source_line_end": 219
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Airflow Operational Workflow",
+      "normalized_title": "Airflow Operational Workflow",
+      "key": "airflow_operational_workflow",
+      "path": [
+        "Airflow Operational Workflow"
+      ],
+      "content": "The repository documents:\n\n- submitting a DAG;\n- listing import errors;\n- unpausing;\n- manually triggering;\n- inspecting tasks;\n- inspecting DAG runs.\n\nThis is evidence of orchestration lifecycle awareness, not merely knowing the `DAG` class exists.",
+      "source_line_start": 219,
+      "source_line_end": 232
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Apache Kafka",
+      "normalized_title": "Apache Kafka",
+      "key": "apache_kafka",
+      "path": [
+        "Apache Kafka"
+      ],
+      "content": "The second major section introduces Kafka as an event-streaming platform.",
+      "source_line_start": 232,
+      "source_line_end": 236
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Topic Administration",
+      "normalized_title": "Topic Administration",
+      "key": "topic_administration",
+      "path": [
+        "Topic Administration"
+      ],
+      "content": "`kafka with python.md` uses:\n\n```python\nKafkaAdminClient\nNewTopic\n```\n\nto create:\n\n```text\nbankbranch\n```\n\nwith:\n\n- 2 partitions;\n- replication factor 1.\n\nThe command-line workflow also creates and describes the topic.",
+      "source_line_start": 236,
+      "source_line_end": 258
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Producers",
+      "normalized_title": "Producers",
+      "key": "producers",
+      "path": [
+        "Producers"
+      ],
+      "content": "A Python producer serializes JSON values and sends ATM transaction messages:\n\n```python\nproducer.send(\n    \"bankbranch\",\n    {\"atmid\": 1, \"transid\": 100}\n)\n```\n\nA later interactive producer:\n\n- asks whether another transaction should be added;\n- asks for ATM 1 or 2;\n- emits transaction IDs incrementally;\n- flushes the producer.",
+      "source_line_start": 258,
+      "source_line_end": 276
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Consumers",
+      "normalized_title": "Consumers",
+      "key": "consumers",
+      "path": [
+        "Consumers"
+      ],
+      "content": "A Python consumer subscribes to:\n\n```text\nbankbranch\n```\n\nwith:\n\n```text\nauto_offset_reset='earliest'\n```\n\nand prints decoded messages.",
+      "source_line_start": 276,
+      "source_line_end": 292
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Kafka Partitions",
+      "normalized_title": "Kafka Partitions",
+      "key": "kafka_partitions",
+      "path": [
+        "Kafka Partitions"
+      ],
+      "content": "The repository explicitly explores message distribution across two partitions.\n\nWithout keys, messages are distributed across partitions and global publication order is not guaranteed at consumption.\n\nThat becomes the motivation for keyed messages.",
+      "source_line_start": 292,
+      "source_line_end": 300
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Message Keys",
+      "normalized_title": "Message Keys",
+      "key": "message_keys",
+      "path": [
+        "Message Keys"
+      ],
+      "content": "The ATM ID is used as a key.\n\nThe repository documents the consequence:\n\n> messages with the same key are routed to the same partition and maintain order within that partition.\n\nThis is a meaningful distributed-systems concept, not just Kafka CLI syntax.",
+      "source_line_start": 300,
+      "source_line_end": 310
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Consumer Groups",
+      "normalized_title": "Consumer Groups",
+      "key": "consumer_groups",
+      "path": [
+        "Consumer Groups"
+      ],
+      "content": "A consumer group named:\n\n```text\natm-app\n```\n\nis introduced.\n\nThe repository practices inspecting group state with:\n\n```bash\nkafka-consumer-groups.sh ... --describe --group atm-app\n```",
+      "source_line_start": 310,
+      "source_line_end": 326
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Offsets",
+      "normalized_title": "Offsets",
+      "key": "offsets",
+      "path": [
+        "Offsets"
+      ],
+      "content": "Offsets are treated as the consumer's position in a partition's ordered log.\n\nThe exercises include:\n\n- inspecting offsets;\n- resetting to earliest;\n- shifting offsets backward.\n\n### Replay From Beginning\n\n```bash\n--reset-offsets --to-earliest --execute\n```\n\n### Relative Replay\n\n```bash\n--reset-offsets --shift-by -2 --execute\n```\n\nThat introduces event replay as an operational capability.",
+      "source_line_start": 326,
+      "source_line_end": 350
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Replay From Beginning",
+      "normalized_title": "Replay From Beginning",
+      "key": "replay_from_beginning",
+      "path": [
+        "Offsets",
+        "Replay From Beginning"
+      ],
+      "content": "```bash\n--reset-offsets --to-earliest --execute\n```",
+      "source_line_start": 336,
+      "source_line_end": 342
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Relative Replay",
+      "normalized_title": "Relative Replay",
+      "key": "relative_replay",
+      "path": [
+        "Offsets",
+        "Relative Replay"
+      ],
+      "content": "```bash\n--reset-offsets --shift-by -2 --execute\n```\n\nThat introduces event replay as an operational capability.",
+      "source_line_start": 342,
+      "source_line_end": 350
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Kafka with KRaft",
+      "normalized_title": "Kafka with KRaft",
+      "key": "kafka_with_kraft",
+      "path": [
+        "Kafka with KRaft"
+      ],
+      "content": "`KAFKA- Python - msql` documents Kafka 3.7 setup using KRaft.\n\nIt generates a cluster UUID:\n\n```bash\nKAFKA_CLUSTER_ID=\"$(bin/kafka-storage.sh random-uuid)\"\n```\n\nformats storage, and starts the server from KRaft configuration.\n\nThis provides exposure to Kafka without ZooKeeper in that lab context.",
+      "source_line_start": 350,
+      "source_line_end": 364
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Kafka-to-MySQL Streaming Pipeline",
+      "normalized_title": "Kafka-to-MySQL Streaming Pipeline",
+      "key": "kafka_to_mysql_streaming_pipeline",
+      "path": [
+        "Kafka-to-MySQL Streaming Pipeline"
+      ],
+      "content": "The same artifact creates a MySQL database:\n\n```sql\nCREATE DATABASE tolldata;\n```\n\nwith a live table:\n\n```sql\nCREATE TABLE livetolldata(\n    timestamp datetime,\n    vehicle_id int,\n    vehicle_type char(15),\n    toll_plaza_id smallint\n);\n```\n\nThe workflow then connects:\n\n```text\ntoll traffic generator\n  ↓\nKafka `toll` topic\n  ↓\nstreaming-data-reader.py\n  ↓\nMySQL `tolldata.livetolldata`\n```\n\nThe generator and streaming reader are downloaded course assets, so the corpus does not attribute their implementation as original code.\n\nThe system integration concepts remain demonstrated coursework.",
+      "source_line_start": 364,
+      "source_line_end": 399
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Orchestration\n\n- Apache Airflow\n- DAGs\n- BashOperator\n- PythonOperator\n- scheduling\n- retries\n- task dependencies\n\n### Streaming\n\n- Apache Kafka\n- KRaft\n- topics\n- partitions\n- producers\n- consumers\n- message keys\n- consumer groups\n- offsets\n- replay\n\n### Programming\n\n- Python\n- Bash\n- SQL\n\n### Data and Storage\n\n- CSV\n- TSV\n- fixed-width text\n- tar/gzip\n- MySQL\n\n### Python Libraries\n\n- `requests`\n- `tarfile`\n- `csv`\n- `kafka-python`\n- `mysql-connector-python`",
+      "source_line_start": 399,
+      "source_line_end": 446
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Orchestration",
+      "normalized_title": "Orchestration",
+      "key": "orchestration",
+      "path": [
+        "Technical Stack",
+        "Orchestration"
+      ],
+      "content": "- Apache Airflow\n- DAGs\n- BashOperator\n- PythonOperator\n- scheduling\n- retries\n- task dependencies",
+      "source_line_start": 401,
+      "source_line_end": 411
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Streaming",
+      "normalized_title": "Streaming",
+      "key": "streaming",
+      "path": [
+        "Technical Stack",
+        "Streaming"
+      ],
+      "content": "- Apache Kafka\n- KRaft\n- topics\n- partitions\n- producers\n- consumers\n- message keys\n- consumer groups\n- offsets\n- replay",
+      "source_line_start": 411,
+      "source_line_end": 424
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Programming",
+      "normalized_title": "Programming",
+      "key": "programming",
+      "path": [
+        "Technical Stack",
+        "Programming"
+      ],
+      "content": "- Python\n- Bash\n- SQL",
+      "source_line_start": 424,
+      "source_line_end": 430
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Data and Storage",
+      "normalized_title": "Data and Storage",
+      "key": "data_and_storage",
+      "path": [
+        "Technical Stack",
+        "Data and Storage"
+      ],
+      "content": "- CSV\n- TSV\n- fixed-width text\n- tar/gzip\n- MySQL",
+      "source_line_start": 430,
+      "source_line_end": 438
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Python Libraries",
+      "normalized_title": "Python Libraries",
+      "key": "python_libraries",
+      "path": [
+        "Technical Stack",
+        "Python Libraries"
+      ],
+      "content": "- `requests`\n- `tarfile`\n- `csv`\n- `kafka-python`\n- `mysql-connector-python`",
+      "source_line_start": 438,
+      "source_line_end": 446
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "Verification is lab-driven and operational.\n\n### Airflow\n\nThe instructions check:\n\n- DAG import errors;\n- DAG presence;\n- unpaused state;\n- triggered runs;\n- task visibility;\n- run status.\n\n### Kafka\n\nThe exercises validate:\n\n- topic creation;\n- topic descriptions;\n- visible produced/consumed messages;\n- partition behavior;\n- consumer-group offsets;\n- replay behavior.\n\n### MySQL\n\nThe streaming exercise expects records to be written to the live toll table.\n\nNo repository-level automated test suite is checked in.",
+      "source_line_start": 446,
+      "source_line_end": 478
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Airflow",
+      "normalized_title": "Airflow",
+      "key": "airflow",
+      "path": [
+        "Testing and Verification",
+        "Airflow"
+      ],
+      "content": "The instructions check:\n\n- DAG import errors;\n- DAG presence;\n- unpaused state;\n- triggered runs;\n- task visibility;\n- run status.",
+      "source_line_start": 450,
+      "source_line_end": 461
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Kafka",
+      "normalized_title": "Kafka",
+      "key": "kafka",
+      "path": [
+        "Testing and Verification",
+        "Kafka"
+      ],
+      "content": "The exercises validate:\n\n- topic creation;\n- topic descriptions;\n- visible produced/consumed messages;\n- partition behavior;\n- consumer-group offsets;\n- replay behavior.",
+      "source_line_start": 461,
+      "source_line_end": 472
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "MySQL",
+      "normalized_title": "MySQL",
+      "key": "mysql",
+      "path": [
+        "Testing and Verification",
+        "MySQL"
+      ],
+      "content": "The streaming exercise expects records to be written to the live toll table.\n\nNo repository-level automated test suite is checked in.",
+      "source_line_start": 472,
+      "source_line_end": 478
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "### Explicit Dependency Modeling\n\nAirflow expresses ordering constraints as a graph rather than procedural guesswork.\n\n### Retry Awareness\n\nThe DAG configuration includes retry behavior.\n\n### Staging Areas\n\nIntermediate files are written to a dedicated staging directory.\n\n### Format-Specific Extraction\n\nCSV, TSV, and fixed-width formats are treated differently instead of forcing one parser onto all input.\n\n### Event Ordering Awareness\n\nKafka message keys are introduced specifically to preserve ordering where business semantics need it.\n\n### Replayability\n\nOffset resets show awareness that event streams can be reprocessed.",
+      "source_line_start": 478,
+      "source_line_end": 504
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Explicit Dependency Modeling",
+      "normalized_title": "Explicit Dependency Modeling",
+      "key": "explicit_dependency_modeling",
+      "path": [
+        "Engineering Discipline",
+        "Explicit Dependency Modeling"
+      ],
+      "content": "Airflow expresses ordering constraints as a graph rather than procedural guesswork.",
+      "source_line_start": 480,
+      "source_line_end": 484
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Retry Awareness",
+      "normalized_title": "Retry Awareness",
+      "key": "retry_awareness",
+      "path": [
+        "Engineering Discipline",
+        "Retry Awareness"
+      ],
+      "content": "The DAG configuration includes retry behavior.",
+      "source_line_start": 484,
+      "source_line_end": 488
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Staging Areas",
+      "normalized_title": "Staging Areas",
+      "key": "staging_areas",
+      "path": [
+        "Engineering Discipline",
+        "Staging Areas"
+      ],
+      "content": "Intermediate files are written to a dedicated staging directory.",
+      "source_line_start": 488,
+      "source_line_end": 492
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Format-Specific Extraction",
+      "normalized_title": "Format-Specific Extraction",
+      "key": "format_specific_extraction",
+      "path": [
+        "Engineering Discipline",
+        "Format-Specific Extraction"
+      ],
+      "content": "CSV, TSV, and fixed-width formats are treated differently instead of forcing one parser onto all input.",
+      "source_line_start": 492,
+      "source_line_end": 496
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Event Ordering Awareness",
+      "normalized_title": "Event Ordering Awareness",
+      "key": "event_ordering_awareness",
+      "path": [
+        "Engineering Discipline",
+        "Event Ordering Awareness"
+      ],
+      "content": "Kafka message keys are introduced specifically to preserve ordering where business semantics need it.",
+      "source_line_start": 496,
+      "source_line_end": 500
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Replayability",
+      "normalized_title": "Replayability",
+      "key": "replayability",
+      "path": [
+        "Engineering Discipline",
+        "Replayability"
+      ],
+      "content": "Offset resets show awareness that event streams can be reprocessed.",
+      "source_line_start": 500,
+      "source_line_end": 504
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Business and Product Context",
+      "normalized_title": "Business and Product Context",
+      "key": "business_and_product_context",
+      "path": [
+        "Business and Product Context"
+      ],
+      "content": "The labs use two business-flavored domains.\n\n### Toll Operations\n\nThe batch and streaming pipelines process vehicle/toll data.\n\n### ATM Transactions\n\nKafka ordering examples use ATM and transaction identifiers.\n\nThese domains make orchestration and ordering requirements concrete.",
+      "source_line_start": 504,
+      "source_line_end": 518
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Toll Operations",
+      "normalized_title": "Toll Operations",
+      "key": "toll_operations",
+      "path": [
+        "Business and Product Context",
+        "Toll Operations"
+      ],
+      "content": "The batch and streaming pipelines process vehicle/toll data.",
+      "source_line_start": 508,
+      "source_line_end": 512
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "ATM Transactions",
+      "normalized_title": "ATM Transactions",
+      "key": "atm_transactions",
+      "path": [
+        "Business and Product Context",
+        "ATM Transactions"
+      ],
+      "content": "Kafka ordering examples use ATM and transaction identifiers.\n\nThese domains make orchestration and ordering requirements concrete.",
+      "source_line_start": 512,
+      "source_line_end": 518
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "This is one of the broader data-engineering learning repositories in the October 2024 sequence.\n\nIt spans:\n\n- batch processing;\n- event streaming;\n- multiple file formats;\n- scheduling;\n- retries;\n- parallel task branches;\n- persistent database sinks.\n\nThe repository does not prove production scale, but its system topology is materially more distributed than the immediately preceding SQL labs.",
+      "source_line_start": 518,
+      "source_line_end": 534
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Airflow\n\n- DAG construction;\n- operator selection;\n- dependencies;\n- scheduling;\n- retries;\n- run inspection.\n\n### Kafka\n\n- topic lifecycle;\n- partitioning;\n- keyed messages;\n- producer/consumer model;\n- consumer groups;\n- offsets;\n- replay.\n\n### ETL\n\n- extract heterogeneous formats;\n- stage;\n- consolidate;\n- transform;\n- load.\n\n### Streaming Integration\n\n- event generator;\n- Kafka broker/topic;\n- streaming reader;\n- MySQL sink.\n\n### Shell\n\n- `tar`;\n- `cut`;\n- `paste`;\n- `tr`;\n- filesystem staging.",
+      "source_line_start": 534,
+      "source_line_end": 578
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Airflow",
+      "normalized_title": "Airflow",
+      "key": "airflow",
+      "path": [
+        "Skills Demonstrated",
+        "Airflow"
+      ],
+      "content": "- DAG construction;\n- operator selection;\n- dependencies;\n- scheduling;\n- retries;\n- run inspection.",
+      "source_line_start": 536,
+      "source_line_end": 545
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Kafka",
+      "normalized_title": "Kafka",
+      "key": "kafka",
+      "path": [
+        "Skills Demonstrated",
+        "Kafka"
+      ],
+      "content": "- topic lifecycle;\n- partitioning;\n- keyed messages;\n- producer/consumer model;\n- consumer groups;\n- offsets;\n- replay.",
+      "source_line_start": 545,
+      "source_line_end": 555
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "ETL",
+      "normalized_title": "ETL",
+      "key": "etl",
+      "path": [
+        "Skills Demonstrated",
+        "ETL"
+      ],
+      "content": "- extract heterogeneous formats;\n- stage;\n- consolidate;\n- transform;\n- load.",
+      "source_line_start": 555,
+      "source_line_end": 563
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Streaming Integration",
+      "normalized_title": "Streaming Integration",
+      "key": "streaming_integration",
+      "path": [
+        "Skills Demonstrated",
+        "Streaming Integration"
+      ],
+      "content": "- event generator;\n- Kafka broker/topic;\n- streaming reader;\n- MySQL sink.",
+      "source_line_start": 563,
+      "source_line_end": 570
+    },
+    {
+      "id": "s058",
+      "level": 3,
+      "title": "Shell",
+      "normalized_title": "Shell",
+      "key": "shell",
+      "path": [
+        "Skills Demonstrated",
+        "Shell"
+      ],
+      "content": "- `tar`;\n- `cut`;\n- `paste`;\n- `tr`;\n- filesystem staging.",
+      "source_line_start": 570,
+      "source_line_end": 578
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops a core systems idea:\n\n> data processing is not just transformation logic; it is also orchestration, ordering, failure handling, state progression, and transport.\n\nThe Airflow portion turns scripts into a dependency graph.\n\nThe Kafka portion turns messages into a partitioned ordered log with consumer state.\n\nTogether they represent a significant jump from isolated data manipulation toward data-platform thinking.",
+      "source_line_start": 578,
+      "source_line_end": 590
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 062 builds shell automation.\n\nRepository 063 adds failure-safe database transactions.\n\nRepository 065 then combines shell, Python, databases, and orchestration into pipeline systems.\n\nWithin processed chronology, this is the earliest strong repository evidence of:\n\n- Apache Airflow;\n- Airflow DAGs;\n- BashOperator;\n- PythonOperator;\n- Apache Kafka;\n- Kafka partitions;\n- Kafka message keys;\n- Kafka consumer groups;\n- Kafka offsets and replay;\n- a Kafka-to-MySQL streaming sink.",
+      "source_line_start": 590,
+      "source_line_end": 611
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "This repository marks a clear expansion from \"data analysis\" and \"database use\" into data infrastructure concepts.\n\nIt introduces graph-based workflow orchestration and log-based event streaming in the same repository.\n\nThose ideas are foundational for later backend, fintech, and distributed-system engineering.",
+      "source_line_start": 611,
+      "source_line_end": 619
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Authorship and Evidence Boundary",
+      "normalized_title": "Authorship and Evidence Boundary",
+      "key": "authorship_and_evidence_boundary",
+      "path": [
+        "Authorship and Evidence Boundary"
+      ],
+      "content": "The repository has strong IBM/course-lab characteristics.\n\nSeveral files explicitly present instructions such as \"create this file\" and provide code to paste.\n\nThe final Git tree stores those examples in Markdown and does not retain the runtime `.py` files described by the lab.\n\nThe corpus therefore attributes:\n\n- completed/practiced workflow concepts;\n- technical understanding represented by the saved exercises;\n- system-integration experience at coursework scope;\n\nbut not authorship of the supplied toll generator, streaming reader, or instructional scaffold.",
+      "source_line_start": 619,
+      "source_line_end": 635
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`ETL-with-shell-kafka-airflow` is a concentrated data-engineering systems repository.\n\nIt moves from shell ETL to Airflow DAGs and then to Kafka topics, partitions, keys, consumer groups, offsets, replay, and MySQL streaming ingestion.\n\nIts strongest portfolio significance is architectural: it is where the portfolio first clearly treats data movement as a system with dependencies and state, not merely as a script that transforms a file.\n\n# Project Tags",
+      "source_line_start": 635,
+      "source_line_end": 645
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `individual-coursework`\n- `data-engineering-coursework`\n- `etl-lab`\n- `streaming-lab`",
+      "source_line_start": 645,
+      "source_line_end": 652
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Orchestration",
+      "normalized_title": "Orchestration",
+      "key": "orchestration",
+      "path": [
+        "Orchestration"
+      ],
+      "content": "- `apache-airflow`\n- `airflow-dag`\n- `bashoperator`\n- `pythonoperator`\n- `task-dependencies`\n- `workflow-orchestration`\n- `scheduled-workflow`\n- `retries`",
+      "source_line_start": 652,
+      "source_line_end": 663
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "Streaming",
+      "normalized_title": "Streaming",
+      "key": "streaming",
+      "path": [
+        "Streaming"
+      ],
+      "content": "- `apache-kafka`\n- `kraft`\n- `kafka-topic`\n- `kafka-partitions`\n- `kafka-producer`\n- `kafka-consumer`\n- `kafka-message-keys`\n- `kafka-consumer-groups`\n- `kafka-offsets`\n- `event-replay`",
+      "source_line_start": 663,
+      "source_line_end": 676
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Data Engineering"
+      ],
+      "content": "- `etl`\n- `staging-area`\n- `csv`\n- `tsv`\n- `fixed-width-data`\n- `batch-processing`\n- `stream-processing`\n- `streaming-database-sink`",
+      "source_line_start": 676,
+      "source_line_end": 687
+    },
+    {
+      "id": "s068",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`\n- `bash`\n- `sql`",
+      "source_line_start": 687,
+      "source_line_end": 693
+    },
+    {
+      "id": "s069",
+      "level": 2,
+      "title": "Database",
+      "normalized_title": "Database",
+      "key": "database",
+      "path": [
+        "Database"
+      ],
+      "content": "- `mysql`\n- `database-ingestion`",
+      "source_line_start": 693,
+      "source_line_end": 698
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "- `dependency-graph`\n- `failure-retry-awareness`\n- `event-ordering`\n- `replayability`\n- `heterogeneous-data-formats`",
+      "source_line_start": 698,
+      "source_line_end": 706
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-apache-airflow`\n- `earliest-observed-airflow-dag`\n- `earliest-observed-bashoperator`\n- `earliest-observed-pythonoperator`\n- `earliest-observed-apache-kafka`\n- `earliest-observed-kafka-partitions`\n- `earliest-observed-kafka-message-keys`\n- `earliest-observed-kafka-consumer-groups`\n- `earliest-observed-kafka-offsets`\n- `earliest-observed-streaming-database-sink`",
+      "source_line_start": 706,
+      "source_line_end": 717
+    }
+  ],
+  "raw_analysis": "# Repository 065 — ETL-with-shell-kafka-airflow\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/ETL-with-shell-kafka-airflow`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `44b2e3c385f10fa968c3d52322716470f86648f1`\n- **Primary technical field:** data engineering, workflow orchestration, and event streaming\n- **Primary technologies:** Apache Airflow, Apache Kafka, Bash, Python, MySQL\n- **Project context:** individual data-engineering coursework and lab documentation\n- **Collaboration classification:** `individual-coursework`\n\n## Evidence Basis\n\nThe repository contains a relatively broad set of Markdown lab artifacts:\n\n- `Airflow Project/README.md`;\n- `Airflow Project/python operator.md`;\n- `create dag using bash operator.md`;\n- `create_airflow_dag.md`;\n- `airflow_examples.md`;\n- `airflow_installation_log.md`;\n- `starting with kafka.md`;\n- `kafka with keys and offsets.md`;\n- `kafka with python.md`;\n- `KAFKA- Python - msql`;\n- `shell.md`.\n\nThe final tree does not contain the actual `.py` DAG or producer/consumer files described by the labs.\n\nCapability claims are therefore scoped to practiced coursework, embedded code, and documented execution workflows rather than a checked-in deployable Airflow/Kafka application.\n\n## What the Repository Is\n\nThis repository is a compact data-engineering learning system spanning three related areas:\n\n1. shell-oriented ETL;\n2. Airflow orchestration;\n3. Kafka streaming and database ingestion.\n\nThe common theme is moving data through staged, ordered processing rather than manipulating data in isolated scripts.\n\n## Data-Engineering System Shape\n\nThe repository contains two major pipeline patterns.\n\n### Batch ETL\n\n```text\nremote toll dataset\n  ↓\ndownload\n  ↓\nuntar\n  ↓\nextract CSV ─┐\nextract TSV ─┼─> consolidate\nfixed width ─┘\n  ↓\ntransform\n  ↓\ntransformed CSV\n```\n\n### Streaming Pipeline\n\n```text\ntoll traffic generator\n  ↓\nKafka topic\n  ↓\nconsumer / streaming reader\n  ↓\nMySQL livetolldata table\n```\n\nAirflow supplies orchestration for the batch pipeline; Kafka supplies ordered event transport for the streaming pipeline.\n\n## Shell-Based ETL\n\nThe Airflow final-assignment notes define a staging directory:\n\n```text\n/home/project/airflow/dags/finalassignment/staging\n```\n\nThe workflow downloads a compressed toll dataset and then performs extraction with standard Unix tools.\n\n### Archive Extraction\n\n```bash\ntar -xvzf .../tolldata.tgz -C .../staging\n```\n\n### CSV Field Extraction\n\n```bash\ncut -d, -f1,2,3,4 vehicle-data.csv > csv_data.csv\n```\n\n### TSV Field Extraction\n\n```bash\ncut -f1,2,3 tollplaza-data.tsv > tsv_data.csv\n```\n\n### Fixed-Width Extraction\n\n```bash\ncut -c1-20,21-40 payment-data.txt > fixed_width_data.csv\n```\n\n### Consolidation\n\n```bash\npaste -d, csv_data.csv tsv_data.csv fixed_width_data.csv > extracted_data.csv\n```\n\n### Transformation\n\nThe vehicle-type field is uppercased with:\n\n```bash\ntr '[:lower:]' '[:upper:]'\n```\n\nThis demonstrates classical command-line ETL:\n\n- extract from heterogeneous formats;\n- normalize;\n- combine;\n- transform;\n- emit a staged artifact.\n\n## Apache Airflow\n\nThe repository introduces Airflow as the workflow controller rather than manually executing each stage.\n\n## DAG Definition\n\nThe documented DAG is:\n\n```text\nETL_toll_data\n```\n\nwith daily scheduling.\n\nDefault arguments include:\n\n- owner;\n- start date;\n- email;\n- retries;\n- retry delay.\n\nA retry count of one and a five-minute delay are explicitly documented in the PythonOperator version.\n\n## Bash-Oriented DAG\n\nThe Bash-based final assignment models tasks for:\n\n- untar;\n- CSV extraction;\n- TSV extraction;\n- fixed-width extraction;\n- consolidation;\n- transformation.\n\nThe intended dependency order is explicit rather than accidental.\n\n## PythonOperator DAG\n\nThe Python version goes further by embedding Python functions for:\n\n- downloading the dataset with `requests`;\n- extracting the tar archive;\n- reading CSV;\n- reading TSV;\n- parsing fixed-width input;\n- consolidating multiple inputs;\n- uppercasing vehicle type.\n\nThe DAG then maps each function to a `PythonOperator`.\n\n## Parallelizable Extraction Stage\n\nThe documented dependency expression is:\n\n```python\ndownload_task >> untar_task >> [\n    extract_csv_task,\n    extract_tsv_task,\n    extract_fixed_width_task\n] >> consolidate_task >> transform_task\n```\n\nThat graph is important.\n\nIt models:\n\n```text\ndownload\n  ↓\nuntar\n  ↓\n ┌─────────┬─────────┬─────────────┐\n CSV       TSV       fixed-width\n └─────────┴─────────┴─────────────┘\n             ↓\n         consolidate\n             ↓\n          transform\n```\n\nThe extraction tasks can conceptually run independently before convergence.\n\n## Airflow Operational Workflow\n\nThe repository documents:\n\n- submitting a DAG;\n- listing import errors;\n- unpausing;\n- manually triggering;\n- inspecting tasks;\n- inspecting DAG runs.\n\nThis is evidence of orchestration lifecycle awareness, not merely knowing the `DAG` class exists.\n\n## Apache Kafka\n\nThe second major section introduces Kafka as an event-streaming platform.\n\n## Topic Administration\n\n`kafka with python.md` uses:\n\n```python\nKafkaAdminClient\nNewTopic\n```\n\nto create:\n\n```text\nbankbranch\n```\n\nwith:\n\n- 2 partitions;\n- replication factor 1.\n\nThe command-line workflow also creates and describes the topic.\n\n## Producers\n\nA Python producer serializes JSON values and sends ATM transaction messages:\n\n```python\nproducer.send(\n    \"bankbranch\",\n    {\"atmid\": 1, \"transid\": 100}\n)\n```\n\nA later interactive producer:\n\n- asks whether another transaction should be added;\n- asks for ATM 1 or 2;\n- emits transaction IDs incrementally;\n- flushes the producer.\n\n## Consumers\n\nA Python consumer subscribes to:\n\n```text\nbankbranch\n```\n\nwith:\n\n```text\nauto_offset_reset='earliest'\n```\n\nand prints decoded messages.\n\n## Kafka Partitions\n\nThe repository explicitly explores message distribution across two partitions.\n\nWithout keys, messages are distributed across partitions and global publication order is not guaranteed at consumption.\n\nThat becomes the motivation for keyed messages.\n\n## Message Keys\n\nThe ATM ID is used as a key.\n\nThe repository documents the consequence:\n\n> messages with the same key are routed to the same partition and maintain order within that partition.\n\nThis is a meaningful distributed-systems concept, not just Kafka CLI syntax.\n\n## Consumer Groups\n\nA consumer group named:\n\n```text\natm-app\n```\n\nis introduced.\n\nThe repository practices inspecting group state with:\n\n```bash\nkafka-consumer-groups.sh ... --describe --group atm-app\n```\n\n## Offsets\n\nOffsets are treated as the consumer's position in a partition's ordered log.\n\nThe exercises include:\n\n- inspecting offsets;\n- resetting to earliest;\n- shifting offsets backward.\n\n### Replay From Beginning\n\n```bash\n--reset-offsets --to-earliest --execute\n```\n\n### Relative Replay\n\n```bash\n--reset-offsets --shift-by -2 --execute\n```\n\nThat introduces event replay as an operational capability.\n\n## Kafka with KRaft\n\n`KAFKA- Python - msql` documents Kafka 3.7 setup using KRaft.\n\nIt generates a cluster UUID:\n\n```bash\nKAFKA_CLUSTER_ID=\"$(bin/kafka-storage.sh random-uuid)\"\n```\n\nformats storage, and starts the server from KRaft configuration.\n\nThis provides exposure to Kafka without ZooKeeper in that lab context.\n\n## Kafka-to-MySQL Streaming Pipeline\n\nThe same artifact creates a MySQL database:\n\n```sql\nCREATE DATABASE tolldata;\n```\n\nwith a live table:\n\n```sql\nCREATE TABLE livetolldata(\n    timestamp datetime,\n    vehicle_id int,\n    vehicle_type char(15),\n    toll_plaza_id smallint\n);\n```\n\nThe workflow then connects:\n\n```text\ntoll traffic generator\n  ↓\nKafka `toll` topic\n  ↓\nstreaming-data-reader.py\n  ↓\nMySQL `tolldata.livetolldata`\n```\n\nThe generator and streaming reader are downloaded course assets, so the corpus does not attribute their implementation as original code.\n\nThe system integration concepts remain demonstrated coursework.\n\n## Technical Stack\n\n### Orchestration\n\n- Apache Airflow\n- DAGs\n- BashOperator\n- PythonOperator\n- scheduling\n- retries\n- task dependencies\n\n### Streaming\n\n- Apache Kafka\n- KRaft\n- topics\n- partitions\n- producers\n- consumers\n- message keys\n- consumer groups\n- offsets\n- replay\n\n### Programming\n\n- Python\n- Bash\n- SQL\n\n### Data and Storage\n\n- CSV\n- TSV\n- fixed-width text\n- tar/gzip\n- MySQL\n\n### Python Libraries\n\n- `requests`\n- `tarfile`\n- `csv`\n- `kafka-python`\n- `mysql-connector-python`\n\n## Testing and Verification\n\nVerification is lab-driven and operational.\n\n### Airflow\n\nThe instructions check:\n\n- DAG import errors;\n- DAG presence;\n- unpaused state;\n- triggered runs;\n- task visibility;\n- run status.\n\n### Kafka\n\nThe exercises validate:\n\n- topic creation;\n- topic descriptions;\n- visible produced/consumed messages;\n- partition behavior;\n- consumer-group offsets;\n- replay behavior.\n\n### MySQL\n\nThe streaming exercise expects records to be written to the live toll table.\n\nNo repository-level automated test suite is checked in.\n\n## Engineering Discipline\n\n### Explicit Dependency Modeling\n\nAirflow expresses ordering constraints as a graph rather than procedural guesswork.\n\n### Retry Awareness\n\nThe DAG configuration includes retry behavior.\n\n### Staging Areas\n\nIntermediate files are written to a dedicated staging directory.\n\n### Format-Specific Extraction\n\nCSV, TSV, and fixed-width formats are treated differently instead of forcing one parser onto all input.\n\n### Event Ordering Awareness\n\nKafka message keys are introduced specifically to preserve ordering where business semantics need it.\n\n### Replayability\n\nOffset resets show awareness that event streams can be reprocessed.\n\n## Business and Product Context\n\nThe labs use two business-flavored domains.\n\n### Toll Operations\n\nThe batch and streaming pipelines process vehicle/toll data.\n\n### ATM Transactions\n\nKafka ordering examples use ATM and transaction identifiers.\n\nThese domains make orchestration and ordering requirements concrete.\n\n## Scale and Complexity\n\nThis is one of the broader data-engineering learning repositories in the October 2024 sequence.\n\nIt spans:\n\n- batch processing;\n- event streaming;\n- multiple file formats;\n- scheduling;\n- retries;\n- parallel task branches;\n- persistent database sinks.\n\nThe repository does not prove production scale, but its system topology is materially more distributed than the immediately preceding SQL labs.\n\n## Skills Demonstrated\n\n### Airflow\n\n- DAG construction;\n- operator selection;\n- dependencies;\n- scheduling;\n- retries;\n- run inspection.\n\n### Kafka\n\n- topic lifecycle;\n- partitioning;\n- keyed messages;\n- producer/consumer model;\n- consumer groups;\n- offsets;\n- replay.\n\n### ETL\n\n- extract heterogeneous formats;\n- stage;\n- consolidate;\n- transform;\n- load.\n\n### Streaming Integration\n\n- event generator;\n- Kafka broker/topic;\n- streaming reader;\n- MySQL sink.\n\n### Shell\n\n- `tar`;\n- `cut`;\n- `paste`;\n- `tr`;\n- filesystem staging.\n\n## Capability Developed\n\nThis repository develops a core systems idea:\n\n> data processing is not just transformation logic; it is also orchestration, ordering, failure handling, state progression, and transport.\n\nThe Airflow portion turns scripts into a dependency graph.\n\nThe Kafka portion turns messages into a partitioned ordered log with consumer state.\n\nTogether they represent a significant jump from isolated data manipulation toward data-platform thinking.\n\n## Portfolio Evolution Context\n\nRepository 062 builds shell automation.\n\nRepository 063 adds failure-safe database transactions.\n\nRepository 065 then combines shell, Python, databases, and orchestration into pipeline systems.\n\nWithin processed chronology, this is the earliest strong repository evidence of:\n\n- Apache Airflow;\n- Airflow DAGs;\n- BashOperator;\n- PythonOperator;\n- Apache Kafka;\n- Kafka partitions;\n- Kafka message keys;\n- Kafka consumer groups;\n- Kafka offsets and replay;\n- a Kafka-to-MySQL streaming sink.\n\n## Historical Significance\n\nThis repository marks a clear expansion from \"data analysis\" and \"database use\" into data infrastructure concepts.\n\nIt introduces graph-based workflow orchestration and log-based event streaming in the same repository.\n\nThose ideas are foundational for later backend, fintech, and distributed-system engineering.\n\n## Authorship and Evidence Boundary\n\nThe repository has strong IBM/course-lab characteristics.\n\nSeveral files explicitly present instructions such as \"create this file\" and provide code to paste.\n\nThe final Git tree stores those examples in Markdown and does not retain the runtime `.py` files described by the lab.\n\nThe corpus therefore attributes:\n\n- completed/practiced workflow concepts;\n- technical understanding represented by the saved exercises;\n- system-integration experience at coursework scope;\n\nbut not authorship of the supplied toll generator, streaming reader, or instructional scaffold.\n\n## Overall Repository Narrative\n\n`ETL-with-shell-kafka-airflow` is a concentrated data-engineering systems repository.\n\nIt moves from shell ETL to Airflow DAGs and then to Kafka topics, partitions, keys, consumer groups, offsets, replay, and MySQL streaming ingestion.\n\nIts strongest portfolio significance is architectural: it is where the portfolio first clearly treats data movement as a system with dependencies and state, not merely as a script that transforms a file.\n\n# Project Tags\n\n## Project Type\n\n- `individual-coursework`\n- `data-engineering-coursework`\n- `etl-lab`\n- `streaming-lab`\n\n## Orchestration\n\n- `apache-airflow`\n- `airflow-dag`\n- `bashoperator`\n- `pythonoperator`\n- `task-dependencies`\n- `workflow-orchestration`\n- `scheduled-workflow`\n- `retries`\n\n## Streaming\n\n- `apache-kafka`\n- `kraft`\n- `kafka-topic`\n- `kafka-partitions`\n- `kafka-producer`\n- `kafka-consumer`\n- `kafka-message-keys`\n- `kafka-consumer-groups`\n- `kafka-offsets`\n- `event-replay`\n\n## Data Engineering\n\n- `etl`\n- `staging-area`\n- `csv`\n- `tsv`\n- `fixed-width-data`\n- `batch-processing`\n- `stream-processing`\n- `streaming-database-sink`\n\n## Languages\n\n- `python`\n- `bash`\n- `sql`\n\n## Database\n\n- `mysql`\n- `database-ingestion`\n\n## Engineering Practices\n\n- `dependency-graph`\n- `failure-retry-awareness`\n- `event-ordering`\n- `replayability`\n- `heterogeneous-data-formats`\n\n## Portfolio Significance\n\n- `earliest-observed-apache-airflow`\n- `earliest-observed-airflow-dag`\n- `earliest-observed-bashoperator`\n- `earliest-observed-pythonoperator`\n- `earliest-observed-apache-kafka`\n- `earliest-observed-kafka-partitions`\n- `earliest-observed-kafka-message-keys`\n- `earliest-observed-kafka-consumer-groups`\n- `earliest-observed-kafka-offsets`\n- `earliest-observed-streaming-database-sink`"
+}

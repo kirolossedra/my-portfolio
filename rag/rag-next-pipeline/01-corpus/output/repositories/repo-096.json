@@ -1,0 +1,534 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 96,
+  "repository_total": 134,
+  "repository_name": "SocketLib",
+  "header_title": "SocketLib",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-096-SocketLib/README.md",
+    "line_start": 1,
+    "line_end": 405,
+    "sha256": "98ccdb70a8490b86c09c18e13af40c989a056206105982e302fe8d71781386ec"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "python",
+    "socket-programming",
+    "udp",
+    "udp-server",
+    "broadcast",
+    "dhcp",
+    "bootp",
+    "dhcp-server",
+    "binary-protocol",
+    "binary-packet-parsing",
+    "struct-pack",
+    "struct-unpack",
+    "tlv-options",
+    "dhcp-options",
+    "dhcp-magic-cookie",
+    "discover-offer",
+    "request-ack",
+    "dhcp-nak",
+    "dora",
+    "ipv4",
+    "mac-address",
+    "address-pool",
+    "lease-management",
+    "lease-expiration",
+    "in-memory-state",
+    "subnet-mask-option",
+    "router-option",
+    "dns-option",
+    "server-identifier",
+    "network-infrastructure",
+    "privileged-port",
+    "protocol-implementation",
+    "earliest-observed-manual-dhcp-server",
+    "earliest-observed-bootp-dhcp-binary-packet-construction"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/SocketLib`\n- **Corpus index:** 096\n- **Repository start date:** 2025-10-22\n- **Last meaningful update date:** 2025-10-22\n- **Latest meaningful commit:** `dbd763b5564f8b62f891b1c5176f458a2e788648`\n- **Primary repository language:** Python\n- **Project form:** manual DHCP/BOOTP server implementation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `main.py`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe server is a single-process event loop around a UDP socket:\n\n```text\nDHCP client broadcast\n        ↓ UDP :67\nPython socket server\n        ↓\nparse BOOTP header + DHCP options\n        ↓\nmessage type?\n   ┌────┴────┐\nDISCOVER    REQUEST\n   ↓           ↓\nallocate     validate requested IP\n   ↓           ↓\nOFFER       ACK / NAK\n   └────┬──────┘\n        ↓ broadcast UDP :68\n      client\n```\n\nLease state is held in process memory.\n\nThere is no external database."
+    },
+    "testing": {
+      "section_ids": [
+        "s024"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nThe source includes runtime logging/prints around message receipt and response behavior.\n\nThe strongest verification would be interoperability with real DHCP clients or packet captures, but such captures are not retained in this repository snapshot.\n\nThe code itself is sufficient to establish the intended protocol mechanics and packet-building logic.\n\nThe corpus does not claim RFC compliance certification from source inspection alone."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/SocketLib`\n- **Corpus index:** 096\n- **Repository start date:** 2025-10-22\n- **Last meaningful update date:** 2025-10-22\n- **Latest meaningful commit:** `dbd763b5564f8b62f891b1c5176f458a2e788648`\n- **Primary repository language:** Python\n- **Project form:** manual DHCP/BOOTP server implementation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `main.py`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains a minimal README and one substantive Python source file.\n\n`main.py` implements a DHCP server directly with Python UDP sockets and binary packet packing/parsing.\n\nIt does not rely on a high-level DHCP server framework.\n\nThe source manually handles core BOOTP/DHCP header fields and DHCP options.\n\nIt maintains an in-memory lease pool and responds to DISCOVER and REQUEST flows.\n\nThe repository is compact, but protocol-level work is meaningful because DHCP is a binary network protocol with broadcast behavior and strict field formats.\n\nThe implementation is educational/experimental rather than a full RFC-complete production DHCP daemon.",
+      "source_line_start": 15,
+      "source_line_end": 31
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "SocketLib is a hand-built Python DHCP server experiment.\n\nThe program binds to DHCP server UDP port 67.\n\nIt receives broadcast/client packets, parses BOOTP/DHCP fields, identifies message type, allocates an address from an in-memory pool, and constructs DHCP OFFER, ACK, or NAK replies.\n\nReplies are broadcast toward DHCP client port 68 where appropriate.\n\nThe source therefore demonstrates protocol implementation below the level of ordinary HTTP/TCP application programming.",
+      "source_line_start": 31,
+      "source_line_end": 43
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The retained server supports key DHCP mechanics including:\n\n- UDP server binding;\n- socket broadcast mode;\n- BOOTP header parsing;\n- transaction ID extraction;\n- client hardware/MAC address extraction;\n- DHCP option parsing;\n- DHCP magic cookie handling;\n- DHCP DISCOVER recognition;\n- address offer allocation;\n- DHCP OFFER construction;\n- DHCP REQUEST recognition;\n- requested-IP extraction;\n- ACK generation;\n- NAK generation;\n- subnet mask option;\n- router option;\n- DNS option;\n- lease-time option;\n- server-identifier option;\n- lease expiration/reuse;\n- in-memory MAC-to-IP lease tracking.\n\nThe implementation intentionally covers a core subset rather than every DHCP message/state.",
+      "source_line_start": 43,
+      "source_line_end": 71
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The server is a single-process event loop around a UDP socket:\n\n```text\nDHCP client broadcast\n        ↓ UDP :67\nPython socket server\n        ↓\nparse BOOTP header + DHCP options\n        ↓\nmessage type?\n   ┌────┴────┐\nDISCOVER    REQUEST\n   ↓           ↓\nallocate     validate requested IP\n   ↓           ↓\nOFFER       ACK / NAK\n   └────┬──────┘\n        ↓ broadcast UDP :68\n      client\n```\n\nLease state is held in process memory.\n\nThere is no external database.",
+      "source_line_start": 71,
+      "source_line_end": 98
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "- Python\n- `socket`\n- UDP\n- broadcast sockets\n- DHCP\n- BOOTP\n- binary packet parsing\n- `struct.pack`\n- `struct.unpack`\n- IPv4 address packing\n- in-memory lease management\n- lease expiration",
+      "source_line_start": 98,
+      "source_line_end": 113
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "DHCP / BOOTP Packet Model",
+      "normalized_title": "DHCP / BOOTP Packet Model",
+      "key": "dhcp_bootp_packet_model",
+      "path": [
+        "DHCP / BOOTP Packet Model"
+      ],
+      "content": "DHCP is built on the BOOTP message format.\n\nThe source manually works with fixed header fields rather than parsing JSON or text lines.\n\nIt extracts fields such as:\n\n- operation code;\n- hardware type/length context;\n- transaction ID;\n- client IP field;\n- client hardware address.\n\nThe DHCP options area begins after the fixed header and magic cookie.\n\nThis requires byte-offset reasoning.\n\nThat is significantly different from ordinary application-layer web protocol handling.",
+      "source_line_start": 113,
+      "source_line_end": 133
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Magic Cookie",
+      "normalized_title": "Magic Cookie",
+      "key": "magic_cookie",
+      "path": [
+        "Magic Cookie"
+      ],
+      "content": "The source uses the standard DHCP magic cookie value:\n\n```text\n0x63825363\n```\n\nThis marks the options section as DHCP-formatted.\n\nCorrect cookie construction/parsing is a basic interoperability requirement.\n\nIts explicit presence shows protocol-format awareness rather than an arbitrary custom UDP message.",
+      "source_line_start": 133,
+      "source_line_end": 147
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "DHCP Options Parsing",
+      "normalized_title": "DHCP Options Parsing",
+      "key": "dhcp_options_parsing",
+      "path": [
+        "DHCP Options Parsing"
+      ],
+      "content": "The server iterates over the options portion of a received packet.\n\nIt interprets option code and length fields.\n\nThis allows the implementation to identify values such as DHCP message type and requested IP.\n\nThe parser must advance carefully across variable-length option records.\n\nThis is a practical binary TLV-style parsing problem.",
+      "source_line_start": 147,
+      "source_line_end": 159
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Address Pool",
+      "normalized_title": "Address Pool",
+      "key": "address_pool",
+      "path": [
+        "Address Pool"
+      ],
+      "content": "The configured pool spans addresses from `192.168.1.100` through `192.168.1.200`.\n\nThe server tracks leases in memory.\n\nIt associates client MAC identities with leased IP addresses.\n\nAn existing unexpired lease can be reused for a known client.\n\nExpired leases can return to availability.\n\nThis is a basic stateful network-service behavior.",
+      "source_line_start": 159,
+      "source_line_end": 173
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Lease Time",
+      "normalized_title": "Lease Time",
+      "key": "lease_time",
+      "path": [
+        "Lease Time"
+      ],
+      "content": "The retained lease duration is 3600 seconds.\n\nLease expiry is therefore time-based rather than permanent.\n\nThe server compares current time with retained lease timestamps to determine reuse/reclamation.\n\nThere is no persistent lease database, so restarting the process resets this state.\n\nThat is appropriate to an experiment but not equivalent to durable network infrastructure.",
+      "source_line_start": 173,
+      "source_line_end": 185
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "DISCOVER → OFFER",
+      "normalized_title": "DISCOVER → OFFER",
+      "key": "discover_offer",
+      "path": [
+        "DISCOVER → OFFER"
+      ],
+      "content": "When a DHCP DISCOVER is received, the server selects an available address.\n\nIt creates a DHCP OFFER containing the candidate address and configuration options.\n\nThe reply is sent using broadcast behavior so a not-yet-configured client can receive it.\n\nThis implements the first half of the common DORA sequence:\n\n```text\nDiscover → Offer\n```",
+      "source_line_start": 185,
+      "source_line_end": 199
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "REQUEST → ACK / NAK",
+      "normalized_title": "REQUEST → ACK / NAK",
+      "key": "request_ack_nak",
+      "path": [
+        "REQUEST → ACK / NAK"
+      ],
+      "content": "For a DHCP REQUEST, the server inspects the requested address.\n\nIf the request is acceptable within the configured pool/state, it constructs an ACK.\n\nIf the requested address cannot be honored, the source includes NAK behavior.\n\nThis implements the second half of the typical allocation sequence:\n\n```text\nRequest → Acknowledge\n```\n\nwith an explicit negative path when needed.",
+      "source_line_start": 199,
+      "source_line_end": 215
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Configuration Options",
+      "normalized_title": "Configuration Options",
+      "key": "configuration_options",
+      "path": [
+        "Configuration Options"
+      ],
+      "content": "The response builder includes practical client configuration data.\n\nVisible options include:\n\n- subnet mask;\n- router/default gateway;\n- DNS server;\n- lease duration;\n- DHCP server identifier.\n\nThis makes the server more than a bare address allocator.\n\nIt constructs a useful configuration response similar to what a client expects from a real DHCP service.",
+      "source_line_start": 215,
+      "source_line_end": 231
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Binary Packing",
+      "normalized_title": "Binary Packing",
+      "key": "binary_packing",
+      "path": [
+        "Binary Packing"
+      ],
+      "content": "The implementation uses `struct.pack` to build reply packets.\n\nIP addresses are converted into packed binary form.\n\nNumeric fields must use the protocol's expected byte widths and byte order.\n\nThis is a strong low-level networking skill signal.\n\nThe server is not using a library that hides packet layout.",
+      "source_line_start": 231,
+      "source_line_end": 243
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Broadcast Socket Behavior",
+      "normalized_title": "Broadcast Socket Behavior",
+      "key": "broadcast_socket_behavior",
+      "path": [
+        "Broadcast Socket Behavior"
+      ],
+      "content": "The socket enables broadcast capability.\n\nThe server listens on `0.0.0.0:67`.\n\nDHCP clients frequently operate before they have a usable IP configuration, so broadcast behavior is fundamental to the protocol.\n\nThis is why the transport pattern differs from a normal client connecting to a known application server address.",
+      "source_line_start": 243,
+      "source_line_end": 253
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Privileged-Port / Environment Boundary",
+      "normalized_title": "Privileged-Port / Environment Boundary",
+      "key": "privileged_port_environment_boundary",
+      "path": [
+        "Privileged-Port / Environment Boundary"
+      ],
+      "content": "UDP port 67 is a privileged and infrastructure-sensitive port on many systems.\n\nRunning the server can require elevated privileges and an isolated/test network to avoid conflicting with an existing DHCP server.\n\nThe repository demonstrates protocol code.\n\nIt should not be casually interpreted as safe to run on an arbitrary production LAN without network isolation and configuration control.",
+      "source_line_start": 253,
+      "source_line_end": 263
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Manual Binary Protocol Parsing\n\nThe server reads DHCP/BOOTP fields from raw received bytes.\n\n### Manual Packet Construction\n\nReplies are built using explicit binary packing and protocol options.\n\n### Lease State\n\nThe program tracks address allocation by MAC and expiration time.\n\n### Broadcast Networking\n\nThe source handles the broadcast-centric request/reply model of initial DHCP configuration.\n\n### Positive and Negative Allocation Paths\n\nREQUEST handling can result in ACK or NAK rather than assuming every request succeeds.",
+      "source_line_start": 263,
+      "source_line_end": 285
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Manual Binary Protocol Parsing",
+      "normalized_title": "Manual Binary Protocol Parsing",
+      "key": "manual_binary_protocol_parsing",
+      "path": [
+        "Major Engineering Work",
+        "Manual Binary Protocol Parsing"
+      ],
+      "content": "The server reads DHCP/BOOTP fields from raw received bytes.",
+      "source_line_start": 265,
+      "source_line_end": 269
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Manual Packet Construction",
+      "normalized_title": "Manual Packet Construction",
+      "key": "manual_packet_construction",
+      "path": [
+        "Major Engineering Work",
+        "Manual Packet Construction"
+      ],
+      "content": "Replies are built using explicit binary packing and protocol options.",
+      "source_line_start": 269,
+      "source_line_end": 273
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Lease State",
+      "normalized_title": "Lease State",
+      "key": "lease_state",
+      "path": [
+        "Major Engineering Work",
+        "Lease State"
+      ],
+      "content": "The program tracks address allocation by MAC and expiration time.",
+      "source_line_start": 273,
+      "source_line_end": 277
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Broadcast Networking",
+      "normalized_title": "Broadcast Networking",
+      "key": "broadcast_networking",
+      "path": [
+        "Major Engineering Work",
+        "Broadcast Networking"
+      ],
+      "content": "The source handles the broadcast-centric request/reply model of initial DHCP configuration.",
+      "source_line_start": 277,
+      "source_line_end": 281
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Positive and Negative Allocation Paths",
+      "normalized_title": "Positive and Negative Allocation Paths",
+      "key": "positive_and_negative_allocation_paths",
+      "path": [
+        "Major Engineering Work",
+        "Positive and Negative Allocation Paths"
+      ],
+      "content": "REQUEST handling can result in ACK or NAK rather than assuming every request succeeds.",
+      "source_line_start": 281,
+      "source_line_end": 285
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "The source includes runtime logging/prints around message receipt and response behavior.\n\nThe strongest verification would be interoperability with real DHCP clients or packet captures, but such captures are not retained in this repository snapshot.\n\nThe code itself is sufficient to establish the intended protocol mechanics and packet-building logic.\n\nThe corpus does not claim RFC compliance certification from source inspection alone.",
+      "source_line_start": 285,
+      "source_line_end": 295
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The implementation demonstrates disciplined protocol decomposition:\n\n- constants for message/option types;\n- separate parsing/building responsibilities;\n- bounded address pool;\n- explicit lease duration;\n- reuse/expiration logic;\n- separate DISCOVER and REQUEST behavior;\n- standard network byte representation.\n\nThe educational nature is also visible in the limited message-state coverage.\n\nThe source prioritizes understanding core DHCP operation over implementing every edge case.",
+      "source_line_start": 295,
+      "source_line_end": 311
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "SocketLib is infrastructure/protocol software rather than an end-user application.\n\nIts “product” is a network service responding to DHCP clients.\n\nThere is no GUI because the relevant interaction surface is the wire protocol.\n\nThat makes observability/logging and correct packet semantics more important than visual UX in this repository.",
+      "source_line_start": 311,
+      "source_line_end": 321
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "The repository has one source file, but it crosses several low-level concerns:\n\n- binary serialization;\n- UDP networking;\n- broadcast semantics;\n- protocol option parsing;\n- network address representation;\n- stateful leases;\n- time-based expiration;\n- client identity by MAC;\n- protocol response branching.\n\nThe codebase is small in size but dense in protocol mechanics.",
+      "source_line_start": 321,
+      "source_line_end": 337
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "- Python socket programming\n- UDP servers\n- broadcast networking\n- DHCP\n- BOOTP\n- binary protocols\n- `struct.pack` / `struct.unpack`\n- byte-level parsing\n- TLV-style option parsing\n- IPv4 byte representation\n- MAC-address handling\n- DHCP DORA flow\n- DHCP OFFER\n- DHCP ACK\n- DHCP NAK\n- address-pool management\n- lease state\n- lease expiration\n- infrastructure-protocol reasoning",
+      "source_line_start": 337,
+      "source_line_end": 359
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository develops understanding of networking below application protocols like HTTP and FTP.\n\nIt shows that a protocol implementation must honor binary layout, byte order, special broadcast behavior, client state, and option semantics.\n\nIt also demonstrates that network services often manage time-dependent state even when they are implemented in one small process.\n\nThat is useful preparation for systems/network engineering beyond framework-based application development.",
+      "source_line_start": 359,
+      "source_line_end": 369
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repositories 094 and 095 focused heavily on file transfer, TCP behavior, measurement, and instrumentation.\n\nSocketLib moves one layer deeper into local-network infrastructure.\n\nInstead of implementing a file-transfer conversation on top of a configured IP network, this project implements part of the mechanism that gives hosts their IP configuration in the first place.\n\nThat is a meaningful expansion of network-protocol breadth.",
+      "source_line_start": 369,
+      "source_line_end": 379
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus, this is the earliest observed hand-built DHCP server with manual BOOTP/DHCP binary packing, lease-pool logic, and OFFER/ACK/NAK response construction.\n\nIt demonstrates a transition from using sockets for application data to implementing a standardized network configuration protocol directly.",
+      "source_line_start": 379,
+      "source_line_end": 385
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The retained server implements a useful core subset, not every DHCP state/message.\n\nLease state is in memory and resets when the process exits.\n\nThe repository does not establish formal RFC conformance or production-LAN deployment.\n\nThose boundaries keep the project accurately positioned as a low-level protocol implementation experiment.",
+      "source_line_start": 385,
+      "source_line_end": 395
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "SocketLib is a compact but technically dense Python DHCP server experiment.\n\nIt binds to the standard server port, parses raw BOOTP/DHCP packets, handles DHCP options, tracks an address pool and expiring leases, and manually constructs broadcast OFFER, ACK, and NAK responses using binary packing.\n\nIts value is direct protocol understanding: the code works at the byte and network-state level rather than hiding DHCP behind a high-level library.\n\n# Project Tags\n\n`individual-project`, `python`, `socket-programming`, `udp`, `udp-server`, `broadcast`, `dhcp`, `bootp`, `dhcp-server`, `binary-protocol`, `binary-packet-parsing`, `struct-pack`, `struct-unpack`, `tlv-options`, `dhcp-options`, `dhcp-magic-cookie`, `discover-offer`, `request-ack`, `dhcp-nak`, `dora`, `ipv4`, `mac-address`, `address-pool`, `lease-management`, `lease-expiration`, `in-memory-state`, `subnet-mask-option`, `router-option`, `dns-option`, `server-identifier`, `network-infrastructure`, `privileged-port`, `protocol-implementation`, `earliest-observed-manual-dhcp-server`, `earliest-observed-bootp-dhcp-binary-packet-construction`",
+      "source_line_start": 395,
+      "source_line_end": 406
+    }
+  ],
+  "raw_analysis": "# Repository 096 — SocketLib\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/SocketLib`\n- **Corpus index:** 096\n- **Repository start date:** 2025-10-22\n- **Last meaningful update date:** 2025-10-22\n- **Latest meaningful commit:** `dbd763b5564f8b62f891b1c5176f458a2e788648`\n- **Primary repository language:** Python\n- **Project form:** manual DHCP/BOOTP server implementation experiment\n- **Collaboration classification:** `individual-project`\n- **Substantive source:** `main.py`\n\n## Evidence Basis\n\nThe repository contains a minimal README and one substantive Python source file.\n\n`main.py` implements a DHCP server directly with Python UDP sockets and binary packet packing/parsing.\n\nIt does not rely on a high-level DHCP server framework.\n\nThe source manually handles core BOOTP/DHCP header fields and DHCP options.\n\nIt maintains an in-memory lease pool and responds to DISCOVER and REQUEST flows.\n\nThe repository is compact, but protocol-level work is meaningful because DHCP is a binary network protocol with broadcast behavior and strict field formats.\n\nThe implementation is educational/experimental rather than a full RFC-complete production DHCP daemon.\n\n## What the Project Is\n\nSocketLib is a hand-built Python DHCP server experiment.\n\nThe program binds to DHCP server UDP port 67.\n\nIt receives broadcast/client packets, parses BOOTP/DHCP fields, identifies message type, allocates an address from an in-memory pool, and constructs DHCP OFFER, ACK, or NAK replies.\n\nReplies are broadcast toward DHCP client port 68 where appropriate.\n\nThe source therefore demonstrates protocol implementation below the level of ordinary HTTP/TCP application programming.\n\n## Project Scope\n\nThe retained server supports key DHCP mechanics including:\n\n- UDP server binding;\n- socket broadcast mode;\n- BOOTP header parsing;\n- transaction ID extraction;\n- client hardware/MAC address extraction;\n- DHCP option parsing;\n- DHCP magic cookie handling;\n- DHCP DISCOVER recognition;\n- address offer allocation;\n- DHCP OFFER construction;\n- DHCP REQUEST recognition;\n- requested-IP extraction;\n- ACK generation;\n- NAK generation;\n- subnet mask option;\n- router option;\n- DNS option;\n- lease-time option;\n- server-identifier option;\n- lease expiration/reuse;\n- in-memory MAC-to-IP lease tracking.\n\nThe implementation intentionally covers a core subset rather than every DHCP message/state.\n\n## Architecture / System Shape\n\nThe server is a single-process event loop around a UDP socket:\n\n```text\nDHCP client broadcast\n        ↓ UDP :67\nPython socket server\n        ↓\nparse BOOTP header + DHCP options\n        ↓\nmessage type?\n   ┌────┴────┐\nDISCOVER    REQUEST\n   ↓           ↓\nallocate     validate requested IP\n   ↓           ↓\nOFFER       ACK / NAK\n   └────┬──────┘\n        ↓ broadcast UDP :68\n      client\n```\n\nLease state is held in process memory.\n\nThere is no external database.\n\n## Technical Stack\n\n- Python\n- `socket`\n- UDP\n- broadcast sockets\n- DHCP\n- BOOTP\n- binary packet parsing\n- `struct.pack`\n- `struct.unpack`\n- IPv4 address packing\n- in-memory lease management\n- lease expiration\n\n## DHCP / BOOTP Packet Model\n\nDHCP is built on the BOOTP message format.\n\nThe source manually works with fixed header fields rather than parsing JSON or text lines.\n\nIt extracts fields such as:\n\n- operation code;\n- hardware type/length context;\n- transaction ID;\n- client IP field;\n- client hardware address.\n\nThe DHCP options area begins after the fixed header and magic cookie.\n\nThis requires byte-offset reasoning.\n\nThat is significantly different from ordinary application-layer web protocol handling.\n\n## Magic Cookie\n\nThe source uses the standard DHCP magic cookie value:\n\n```text\n0x63825363\n```\n\nThis marks the options section as DHCP-formatted.\n\nCorrect cookie construction/parsing is a basic interoperability requirement.\n\nIts explicit presence shows protocol-format awareness rather than an arbitrary custom UDP message.\n\n## DHCP Options Parsing\n\nThe server iterates over the options portion of a received packet.\n\nIt interprets option code and length fields.\n\nThis allows the implementation to identify values such as DHCP message type and requested IP.\n\nThe parser must advance carefully across variable-length option records.\n\nThis is a practical binary TLV-style parsing problem.\n\n## Address Pool\n\nThe configured pool spans addresses from `192.168.1.100` through `192.168.1.200`.\n\nThe server tracks leases in memory.\n\nIt associates client MAC identities with leased IP addresses.\n\nAn existing unexpired lease can be reused for a known client.\n\nExpired leases can return to availability.\n\nThis is a basic stateful network-service behavior.\n\n## Lease Time\n\nThe retained lease duration is 3600 seconds.\n\nLease expiry is therefore time-based rather than permanent.\n\nThe server compares current time with retained lease timestamps to determine reuse/reclamation.\n\nThere is no persistent lease database, so restarting the process resets this state.\n\nThat is appropriate to an experiment but not equivalent to durable network infrastructure.\n\n## DISCOVER → OFFER\n\nWhen a DHCP DISCOVER is received, the server selects an available address.\n\nIt creates a DHCP OFFER containing the candidate address and configuration options.\n\nThe reply is sent using broadcast behavior so a not-yet-configured client can receive it.\n\nThis implements the first half of the common DORA sequence:\n\n```text\nDiscover → Offer\n```\n\n## REQUEST → ACK / NAK\n\nFor a DHCP REQUEST, the server inspects the requested address.\n\nIf the request is acceptable within the configured pool/state, it constructs an ACK.\n\nIf the requested address cannot be honored, the source includes NAK behavior.\n\nThis implements the second half of the typical allocation sequence:\n\n```text\nRequest → Acknowledge\n```\n\nwith an explicit negative path when needed.\n\n## Configuration Options\n\nThe response builder includes practical client configuration data.\n\nVisible options include:\n\n- subnet mask;\n- router/default gateway;\n- DNS server;\n- lease duration;\n- DHCP server identifier.\n\nThis makes the server more than a bare address allocator.\n\nIt constructs a useful configuration response similar to what a client expects from a real DHCP service.\n\n## Binary Packing\n\nThe implementation uses `struct.pack` to build reply packets.\n\nIP addresses are converted into packed binary form.\n\nNumeric fields must use the protocol's expected byte widths and byte order.\n\nThis is a strong low-level networking skill signal.\n\nThe server is not using a library that hides packet layout.\n\n## Broadcast Socket Behavior\n\nThe socket enables broadcast capability.\n\nThe server listens on `0.0.0.0:67`.\n\nDHCP clients frequently operate before they have a usable IP configuration, so broadcast behavior is fundamental to the protocol.\n\nThis is why the transport pattern differs from a normal client connecting to a known application server address.\n\n## Privileged-Port / Environment Boundary\n\nUDP port 67 is a privileged and infrastructure-sensitive port on many systems.\n\nRunning the server can require elevated privileges and an isolated/test network to avoid conflicting with an existing DHCP server.\n\nThe repository demonstrates protocol code.\n\nIt should not be casually interpreted as safe to run on an arbitrary production LAN without network isolation and configuration control.\n\n## Major Engineering Work\n\n### Manual Binary Protocol Parsing\n\nThe server reads DHCP/BOOTP fields from raw received bytes.\n\n### Manual Packet Construction\n\nReplies are built using explicit binary packing and protocol options.\n\n### Lease State\n\nThe program tracks address allocation by MAC and expiration time.\n\n### Broadcast Networking\n\nThe source handles the broadcast-centric request/reply model of initial DHCP configuration.\n\n### Positive and Negative Allocation Paths\n\nREQUEST handling can result in ACK or NAK rather than assuming every request succeeds.\n\n## Testing & Verification\n\nThe source includes runtime logging/prints around message receipt and response behavior.\n\nThe strongest verification would be interoperability with real DHCP clients or packet captures, but such captures are not retained in this repository snapshot.\n\nThe code itself is sufficient to establish the intended protocol mechanics and packet-building logic.\n\nThe corpus does not claim RFC compliance certification from source inspection alone.\n\n## Engineering Discipline\n\nThe implementation demonstrates disciplined protocol decomposition:\n\n- constants for message/option types;\n- separate parsing/building responsibilities;\n- bounded address pool;\n- explicit lease duration;\n- reuse/expiration logic;\n- separate DISCOVER and REQUEST behavior;\n- standard network byte representation.\n\nThe educational nature is also visible in the limited message-state coverage.\n\nThe source prioritizes understanding core DHCP operation over implementing every edge case.\n\n## Product Engineering\n\nSocketLib is infrastructure/protocol software rather than an end-user application.\n\nIts “product” is a network service responding to DHCP clients.\n\nThere is no GUI because the relevant interaction surface is the wire protocol.\n\nThat makes observability/logging and correct packet semantics more important than visual UX in this repository.\n\n## Scale / Complexity\n\nThe repository has one source file, but it crosses several low-level concerns:\n\n- binary serialization;\n- UDP networking;\n- broadcast semantics;\n- protocol option parsing;\n- network address representation;\n- stateful leases;\n- time-based expiration;\n- client identity by MAC;\n- protocol response branching.\n\nThe codebase is small in size but dense in protocol mechanics.\n\n## Skills Demonstrated\n\n- Python socket programming\n- UDP servers\n- broadcast networking\n- DHCP\n- BOOTP\n- binary protocols\n- `struct.pack` / `struct.unpack`\n- byte-level parsing\n- TLV-style option parsing\n- IPv4 byte representation\n- MAC-address handling\n- DHCP DORA flow\n- DHCP OFFER\n- DHCP ACK\n- DHCP NAK\n- address-pool management\n- lease state\n- lease expiration\n- infrastructure-protocol reasoning\n\n## What Was Learned / Capability Developed\n\nThe repository develops understanding of networking below application protocols like HTTP and FTP.\n\nIt shows that a protocol implementation must honor binary layout, byte order, special broadcast behavior, client state, and option semantics.\n\nIt also demonstrates that network services often manage time-dependent state even when they are implemented in one small process.\n\nThat is useful preparation for systems/network engineering beyond framework-based application development.\n\n## Portfolio Evolution Context\n\nRepositories 094 and 095 focused heavily on file transfer, TCP behavior, measurement, and instrumentation.\n\nSocketLib moves one layer deeper into local-network infrastructure.\n\nInstead of implementing a file-transfer conversation on top of a configured IP network, this project implements part of the mechanism that gives hosts their IP configuration in the first place.\n\nThat is a meaningful expansion of network-protocol breadth.\n\n## Historical Significance\n\nWithin the processed corpus, this is the earliest observed hand-built DHCP server with manual BOOTP/DHCP binary packing, lease-pool logic, and OFFER/ACK/NAK response construction.\n\nIt demonstrates a transition from using sockets for application data to implementing a standardized network configuration protocol directly.\n\n## Limitations & Missing Evidence\n\nThe retained server implements a useful core subset, not every DHCP state/message.\n\nLease state is in memory and resets when the process exits.\n\nThe repository does not establish formal RFC conformance or production-LAN deployment.\n\nThose boundaries keep the project accurately positioned as a low-level protocol implementation experiment.\n\n## Overall Narrative\n\nSocketLib is a compact but technically dense Python DHCP server experiment.\n\nIt binds to the standard server port, parses raw BOOTP/DHCP packets, handles DHCP options, tracks an address pool and expiring leases, and manually constructs broadcast OFFER, ACK, and NAK responses using binary packing.\n\nIts value is direct protocol understanding: the code works at the byte and network-state level rather than hiding DHCP behind a high-level library.\n\n# Project Tags\n\n`individual-project`, `python`, `socket-programming`, `udp`, `udp-server`, `broadcast`, `dhcp`, `bootp`, `dhcp-server`, `binary-protocol`, `binary-packet-parsing`, `struct-pack`, `struct-unpack`, `tlv-options`, `dhcp-options`, `dhcp-magic-cookie`, `discover-offer`, `request-ack`, `dhcp-nak`, `dora`, `ipv4`, `mac-address`, `address-pool`, `lease-management`, `lease-expiration`, `in-memory-state`, `subnet-mask-option`, `router-option`, `dns-option`, `server-identifier`, `network-infrastructure`, `privileged-port`, `protocol-implementation`, `earliest-observed-manual-dhcp-server`, `earliest-observed-bootp-dhcp-binary-packet-construction`\n"
+}

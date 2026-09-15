@@ -1,0 +1,404 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 35,
+  "repository_total": 134,
+  "repository_name": "Simple-Calculator",
+  "header_title": "Simple-Calculator",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-035-Simple-Calculator/README.md",
+    "line_start": 1,
+    "line_end": 169,
+    "sha256": "f6f6a31fa8a2aa7ecd8bafd82cb53fc30b932dfd6412997c031d04d28bb1cc8f"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "embedded-application",
+    "embedded-calculator",
+    "educational-project",
+    "individual-project",
+    "c",
+    "avr",
+    "keypad-interface",
+    "lcd-interface",
+    "gpio",
+    "fixed-buffer-processing",
+    "manual-numeric-parsing",
+    "decimal-place-reconstruction",
+    "arithmetic-dispatch",
+    "module-decomposition",
+    "hardware-abstraction",
+    "externally-attributed-support-code",
+    "earliest-observed-embedded-calculator",
+    "earliest-observed-lcd-interface"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Simple-Calculator`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Application type:** keypad/LCD embedded calculator\n- **Collaboration classification:** individual application logic with externally attributed support drivers"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s010"
+      ],
+      "titles": [
+        "Authorship Boundary"
+      ],
+      "text": "## Authorship Boundary\n`Calculator.c` contains creation date 7 November 2021 and author `kirol`.\n\nThe inspected GPIO and keypad drivers explicitly credit Mohamed Tarek.\n\nAccordingly, the strongest personally attributable work is the expression acquisition, fixed-buffer management, operator identification, operand reconstruction, arithmetic dispatch, and LCD-oriented workflow.\n\nThe support-driver presence is not converted into a personal authorship claim."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Simple-Calculator`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Application type:** keypad/LCD embedded calculator\n- **Collaboration classification:** individual application logic with externally attributed support drivers",
+      "source_line_start": 3,
+      "source_line_end": 13
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Simple-Calculator` is an AVR calculator application that accepts one arithmetic expression from a matrix keypad and displays both input and result on an LCD.\n\nThe repository is layered into `Calculator.c` plus GPIO, keypad, LCD, shared type, and macro modules.\n\nThe main calculator source explicitly identifies `kirol` as its author.\n\nSeveral supporting drivers, including GPIO and keypad, explicitly credit Mohamed Tarek. The corpus therefore treats the calculator parsing and application workflow as personally attributable while preserving the external provenance of those support modules.",
+      "source_line_start": 13,
+      "source_line_end": 23
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Functional Scope",
+      "normalized_title": "Functional Scope",
+      "key": "functional_scope",
+      "path": [
+        "Functional Scope"
+      ],
+      "content": "The calculator supports one binary arithmetic operation between two non-negative integer operands.\n\nImplemented operations are addition, subtraction, multiplication, and division.\n\nThe user enters characters through the keypad until `=` is received, and the result is rendered on the LCD.",
+      "source_line_start": 23,
+      "source_line_end": 31
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Input Pipeline",
+      "normalized_title": "Input Pipeline",
+      "key": "input_pipeline",
+      "path": [
+        "Input Pipeline"
+      ],
+      "content": "The application creates a fixed 30-byte RAM buffer.\n\nThe `read()` function performs the interaction cycle: displays a prompt, waits for keypad readiness, reads keys, echoes numbers or operators, stores keys into the buffer, and stops acquisition when `=` is pressed.\n\nA counter records the amount of expression content captured.",
+      "source_line_start": 31,
+      "source_line_end": 39
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Operator Detection",
+      "normalized_title": "Operator Detection",
+      "key": "operator_detection",
+      "path": [
+        "Operator Detection"
+      ],
+      "content": "After input collection, the application scans the buffered expression.\n\nA stored value greater than 9 is interpreted as the operator character, and its position is recorded as `OpIndex`.\n\nThat divides the expression into left digits, one operator, and right digits.\n\nThe design is intentionally narrow and targeted at one arithmetic operator per expression.",
+      "source_line_start": 39,
+      "source_line_end": 49
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Manual Decimal Parsing",
+      "normalized_title": "Manual Decimal Parsing",
+      "key": "manual_decimal_parsing",
+      "path": [
+        "Manual Decimal Parsing"
+      ],
+      "content": "The source manually reconstructs integer operands from individual keypad digits.\n\nFor each digit it builds the appropriate decimal place value by multiplying a temporary accumulator by 10 for every remaining digit position.\n\nThe right operand is reconstructed with the same technique.\n\nThe parser therefore does not depend on `atoi`, `strtol`, dynamic strings, or an expression library.",
+      "source_line_start": 49,
+      "source_line_end": 59
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Arithmetic Dispatch",
+      "normalized_title": "Arithmetic Dispatch",
+      "key": "arithmetic_dispatch",
+      "path": [
+        "Arithmetic Dispatch"
+      ],
+      "content": "The operator stored at `RAM[OpIndex]` drives a `switch`.\n\nThe application performs addition, subtraction, multiplication, or floating-point division.\n\nInteger-style results are sent to `LCD_longToString`.\n\nDivision casts both operands to `double` and uses `LCD_doubleToString`.",
+      "source_line_start": 59,
+      "source_line_end": 69
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Interaction Reset",
+      "normalized_title": "Interaction Reset",
+      "key": "interaction_reset",
+      "path": [
+        "Interaction Reset"
+      ],
+      "content": "After displaying a result, the application waits for a particular keypad code before clearing the LCD and beginning another calculation.\n\n`main()` initializes the LCD and repeatedly calls the application read/compute/display cycle.",
+      "source_line_start": 69,
+      "source_line_end": 75
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Hardware Abstraction Structure",
+      "normalized_title": "Hardware Abstraction Structure",
+      "key": "hardware_abstraction_structure",
+      "path": [
+        "Hardware Abstraction Structure"
+      ],
+      "content": "The calculator does not manipulate all pins directly in the application source.\n\nInstead, it consumes keypad and LCD interfaces built over GPIO.\n\nThis is an early layered embedded structure in which application semantics sit above lower-level peripheral handling.",
+      "source_line_start": 75,
+      "source_line_end": 83
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Authorship Boundary",
+      "normalized_title": "Authorship Boundary",
+      "key": "authorship_boundary",
+      "path": [
+        "Authorship Boundary"
+      ],
+      "content": "`Calculator.c` contains creation date 7 November 2021 and author `kirol`.\n\nThe inspected GPIO and keypad drivers explicitly credit Mohamed Tarek.\n\nAccordingly, the strongest personally attributable work is the expression acquisition, fixed-buffer management, operator identification, operand reconstruction, arithmetic dispatch, and LCD-oriented workflow.\n\nThe support-driver presence is not converted into a personal authorship claim.",
+      "source_line_start": 83,
+      "source_line_end": 93
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Engineering Skills Demonstrated",
+      "normalized_title": "Engineering Skills Demonstrated",
+      "key": "engineering_skills_demonstrated",
+      "path": [
+        "Engineering Skills Demonstrated"
+      ],
+      "content": "### Embedded Application Composition\n\nThe application combines keypad input and LCD output through reusable driver APIs.\n\n### Fixed-Buffer Processing\n\nInput is captured into a bounded RAM buffer with explicit indices.\n\n### Numeric Parsing\n\nDecimal integers are reconstructed manually from individual keypad digits.\n\n### Control Flow\n\nA small parser identifies the operator and dispatches arithmetic through a switch.\n\n### Hardware Abstraction Consumption\n\nThe application sits above GPIO/keypad/LCD layers instead of putting all register logic in one source file.",
+      "source_line_start": 93,
+      "source_line_end": 115
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Embedded Application Composition",
+      "normalized_title": "Embedded Application Composition",
+      "key": "embedded_application_composition",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Embedded Application Composition"
+      ],
+      "content": "The application combines keypad input and LCD output through reusable driver APIs.",
+      "source_line_start": 95,
+      "source_line_end": 99
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Fixed-Buffer Processing",
+      "normalized_title": "Fixed-Buffer Processing",
+      "key": "fixed_buffer_processing",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Fixed-Buffer Processing"
+      ],
+      "content": "Input is captured into a bounded RAM buffer with explicit indices.",
+      "source_line_start": 99,
+      "source_line_end": 103
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Numeric Parsing",
+      "normalized_title": "Numeric Parsing",
+      "key": "numeric_parsing",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Numeric Parsing"
+      ],
+      "content": "Decimal integers are reconstructed manually from individual keypad digits.",
+      "source_line_start": 103,
+      "source_line_end": 107
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Control Flow",
+      "normalized_title": "Control Flow",
+      "key": "control_flow",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Control Flow"
+      ],
+      "content": "A small parser identifies the operator and dispatches arithmetic through a switch.",
+      "source_line_start": 107,
+      "source_line_end": 111
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Hardware Abstraction Consumption",
+      "normalized_title": "Hardware Abstraction Consumption",
+      "key": "hardware_abstraction_consumption",
+      "path": [
+        "Engineering Skills Demonstrated",
+        "Hardware Abstraction Consumption"
+      ],
+      "content": "The application sits above GPIO/keypad/LCD layers instead of putting all register logic in one source file.",
+      "source_line_start": 111,
+      "source_line_end": 115
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The key capability is building an end-user workflow on top of embedded peripheral drivers.\n\nCompared with a register-level exercise, the focus moves upward toward input semantics, parsing, application state, presentation, and reuse of device abstractions.",
+      "source_line_start": 115,
+      "source_line_end": 121
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "`Simple-Calculator` follows the previous day's AVR stopwatch.\n\nThe stopwatch emphasized interrupts and timer hardware.\n\nThe calculator emphasizes peripheral abstraction, interactive input, numeric parsing, and LCD presentation.\n\nTogether they show two distinct embedded application styles: asynchronous timing/control and user-driven input/compute/output.",
+      "source_line_start": 121,
+      "source_line_end": 131
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`Simple-Calculator` turns a keypad and LCD into a self-contained arithmetic interface.\n\nThe user enters a fixed-format expression, the application stores keypad values, locates the operator, reconstructs decimal operands manually, executes the chosen operation, and renders the result.\n\nSource headers make it possible to distinguish personally authored application logic from externally attributed support drivers.\n\n# Project Tags",
+      "source_line_start": 131,
+      "source_line_end": 141
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `embedded-application`\n- `embedded-calculator`\n- `educational-project`\n- `individual-project`",
+      "source_line_start": 141,
+      "source_line_end": 147
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `c`",
+      "source_line_start": 147,
+      "source_line_end": 150
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `avr`\n- `keypad-interface`\n- `lcd-interface`\n- `gpio`",
+      "source_line_start": 150,
+      "source_line_end": 156
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Data and Algorithms",
+      "normalized_title": "Data and Algorithms",
+      "key": "data_and_algorithms",
+      "path": [
+        "Data and Algorithms"
+      ],
+      "content": "- `fixed-buffer-processing`\n- `manual-numeric-parsing`\n- `decimal-place-reconstruction`\n- `arithmetic-dispatch`",
+      "source_line_start": 156,
+      "source_line_end": 162
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `module-decomposition`\n- `hardware-abstraction`\n- `externally-attributed-support-code`",
+      "source_line_start": 162,
+      "source_line_end": 167
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-embedded-calculator`\n- `earliest-observed-lcd-interface`",
+      "source_line_start": 167,
+      "source_line_end": 170
+    }
+  ],
+  "raw_analysis": "# Repository 035 — Simple-Calculator\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Simple-Calculator`\n- **Repository start date:** 2024-06-01\n- **Last meaningful update date:** 2024-06-01\n- **Primary language:** C\n- **Runtime context:** AVR microcontroller\n- **Application type:** keypad/LCD embedded calculator\n- **Collaboration classification:** individual application logic with externally attributed support drivers\n\n## What This Project Is\n\n`Simple-Calculator` is an AVR calculator application that accepts one arithmetic expression from a matrix keypad and displays both input and result on an LCD.\n\nThe repository is layered into `Calculator.c` plus GPIO, keypad, LCD, shared type, and macro modules.\n\nThe main calculator source explicitly identifies `kirol` as its author.\n\nSeveral supporting drivers, including GPIO and keypad, explicitly credit Mohamed Tarek. The corpus therefore treats the calculator parsing and application workflow as personally attributable while preserving the external provenance of those support modules.\n\n## Functional Scope\n\nThe calculator supports one binary arithmetic operation between two non-negative integer operands.\n\nImplemented operations are addition, subtraction, multiplication, and division.\n\nThe user enters characters through the keypad until `=` is received, and the result is rendered on the LCD.\n\n## Input Pipeline\n\nThe application creates a fixed 30-byte RAM buffer.\n\nThe `read()` function performs the interaction cycle: displays a prompt, waits for keypad readiness, reads keys, echoes numbers or operators, stores keys into the buffer, and stops acquisition when `=` is pressed.\n\nA counter records the amount of expression content captured.\n\n## Operator Detection\n\nAfter input collection, the application scans the buffered expression.\n\nA stored value greater than 9 is interpreted as the operator character, and its position is recorded as `OpIndex`.\n\nThat divides the expression into left digits, one operator, and right digits.\n\nThe design is intentionally narrow and targeted at one arithmetic operator per expression.\n\n## Manual Decimal Parsing\n\nThe source manually reconstructs integer operands from individual keypad digits.\n\nFor each digit it builds the appropriate decimal place value by multiplying a temporary accumulator by 10 for every remaining digit position.\n\nThe right operand is reconstructed with the same technique.\n\nThe parser therefore does not depend on `atoi`, `strtol`, dynamic strings, or an expression library.\n\n## Arithmetic Dispatch\n\nThe operator stored at `RAM[OpIndex]` drives a `switch`.\n\nThe application performs addition, subtraction, multiplication, or floating-point division.\n\nInteger-style results are sent to `LCD_longToString`.\n\nDivision casts both operands to `double` and uses `LCD_doubleToString`.\n\n## Interaction Reset\n\nAfter displaying a result, the application waits for a particular keypad code before clearing the LCD and beginning another calculation.\n\n`main()` initializes the LCD and repeatedly calls the application read/compute/display cycle.\n\n## Hardware Abstraction Structure\n\nThe calculator does not manipulate all pins directly in the application source.\n\nInstead, it consumes keypad and LCD interfaces built over GPIO.\n\nThis is an early layered embedded structure in which application semantics sit above lower-level peripheral handling.\n\n## Authorship Boundary\n\n`Calculator.c` contains creation date 7 November 2021 and author `kirol`.\n\nThe inspected GPIO and keypad drivers explicitly credit Mohamed Tarek.\n\nAccordingly, the strongest personally attributable work is the expression acquisition, fixed-buffer management, operator identification, operand reconstruction, arithmetic dispatch, and LCD-oriented workflow.\n\nThe support-driver presence is not converted into a personal authorship claim.\n\n## Engineering Skills Demonstrated\n\n### Embedded Application Composition\n\nThe application combines keypad input and LCD output through reusable driver APIs.\n\n### Fixed-Buffer Processing\n\nInput is captured into a bounded RAM buffer with explicit indices.\n\n### Numeric Parsing\n\nDecimal integers are reconstructed manually from individual keypad digits.\n\n### Control Flow\n\nA small parser identifies the operator and dispatches arithmetic through a switch.\n\n### Hardware Abstraction Consumption\n\nThe application sits above GPIO/keypad/LCD layers instead of putting all register logic in one source file.\n\n## Capability Developed\n\nThe key capability is building an end-user workflow on top of embedded peripheral drivers.\n\nCompared with a register-level exercise, the focus moves upward toward input semantics, parsing, application state, presentation, and reuse of device abstractions.\n\n## Portfolio Evolution\n\n`Simple-Calculator` follows the previous day's AVR stopwatch.\n\nThe stopwatch emphasized interrupts and timer hardware.\n\nThe calculator emphasizes peripheral abstraction, interactive input, numeric parsing, and LCD presentation.\n\nTogether they show two distinct embedded application styles: asynchronous timing/control and user-driven input/compute/output.\n\n## Overall Project Narrative\n\n`Simple-Calculator` turns a keypad and LCD into a self-contained arithmetic interface.\n\nThe user enters a fixed-format expression, the application stores keypad values, locates the operator, reconstructs decimal operands manually, executes the chosen operation, and renders the result.\n\nSource headers make it possible to distinguish personally authored application logic from externally attributed support drivers.\n\n# Project Tags\n\n## Project Type\n- `embedded-application`\n- `embedded-calculator`\n- `educational-project`\n- `individual-project`\n\n## Languages\n- `c`\n\n## Embedded and Hardware\n- `avr`\n- `keypad-interface`\n- `lcd-interface`\n- `gpio`\n\n## Data and Algorithms\n- `fixed-buffer-processing`\n- `manual-numeric-parsing`\n- `decimal-place-reconstruction`\n- `arithmetic-dispatch`\n\n## Software Engineering Practices\n- `module-decomposition`\n- `hardware-abstraction`\n- `externally-attributed-support-code`\n\n## Portfolio Significance\n- `earliest-observed-embedded-calculator`\n- `earliest-observed-lcd-interface`\n"
+}

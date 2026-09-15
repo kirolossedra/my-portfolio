@@ -1,0 +1,470 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 28,
+  "repository_total": 134,
+  "repository_name": "JavaLibrary",
+  "header_title": "JavaLibrary",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-028-JavaLibrary/README.md",
+    "line_start": 1,
+    "line_end": 328,
+    "sha256": "4d2b19287ec00262d58dde4f963fb9590ec3d1998640009086b8bf9fb1d893ee"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "java",
+    "individual-project",
+    "developer-tooling",
+    "xml-processing",
+    "xml-parsing",
+    "json-parsing",
+    "dom-parsing",
+    "java-reflection",
+    "reflection",
+    "java-generics",
+    "runtime-instantiation",
+    "field-introspection",
+    "reflective-field-assignment",
+    "object-mapping",
+    "xml-object-mapping",
+    "json-object-mapping",
+    "data-binding-prototype",
+    "manual-execution-demo",
+    "object-oriented-programming",
+    "earliest-observed-java-reflection",
+    "earliest-observed-xml-object-mapping",
+    "earliest-observed-json-object-mapping"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 028 / 134\n- Name: `JavaLibrary`\n- Repository Start Date: 2024-04-30\n- Latest Meaningful Update Date: 2024-05-01\n- Primary Language: Java\n- Primary Type: Serialization / object-mapping prototype\n- Technical Field: Java reflection, XML parsing, JSON parsing\n- Collaboration Type: Individual Project"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture and Data Flow"
+      ],
+      "text": "## Architecture and Data Flow\nThe implementation can be summarized as:\n\n```text\nXML file\n   ↓\nDocumentBuilder / DOM\n   ↓\nElement\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nand:\n\n```text\nJSON string\n   ↓\nJSONObject\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nThe architectural idea is generic runtime data binding.\n\nThe mapper receives a `Class<T>` rather than being implemented separately for every model class."
+    },
+    "testing": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Verification Through Executable Demonstration"
+      ],
+      "text": "## Verification Through Executable Demonstration\nThe `main` method exercises both conversion paths.\n\nIt:\n\n- parses an employee from XML,\n- parses an animal from XML,\n- prints mapped field values,\n- parses an employee from JSON,\n- prints the resulting `name` and `id`.\n\nThis is an executable behavior demonstration of the mapping mechanism."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository history consists of owner-attributed uploads and cleanup activity.\n\nThe principal Java implementation is stored in `Doct2object.java`.\n\nThe code directly demonstrates repository-specific reflection and object-mapping logic."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 028 / 134\n- Name: `JavaLibrary`\n- Repository Start Date: 2024-04-30\n- Latest Meaningful Update Date: 2024-05-01\n- Primary Language: Java\n- Primary Type: Serialization / object-mapping prototype\n- Technical Field: Java reflection, XML parsing, JSON parsing\n- Collaboration Type: Individual Project",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository history consists of owner-attributed uploads and cleanup activity.\n\nThe principal Java implementation is stored in `Doct2object.java`.\n\nThe code directly demonstrates repository-specific reflection and object-mapping logic.",
+      "source_line_start": 14,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`JavaLibrary` is a small Java experiment that maps structured document data into ordinary Java objects.\n\nThe project demonstrates two input formats:\n\n- XML,\n- JSON.\n\nInstead of hard-coding every field assignment, the implementation uses Java reflection to inspect a target class at runtime.\n\nField names become the binding contract between the serialized data and the Java object.\n\nThe same generic mapping pattern is demonstrated against two model classes:\n\n- `Employee`,\n- `Animal`.",
+      "source_line_start": 22,
+      "source_line_end": 40
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The repository contains three files:\n\n```text\nJavaLibrary/\n├── Animal.xml\n├── Doct2object.java\n└── lib.xml\n```\n\nThe Java source performs both mapping demonstrations.\n\nThe XML files supply small source documents used by the parser.",
+      "source_line_start": 40,
+      "source_line_end": 55
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture and Data Flow",
+      "normalized_title": "Architecture and Data Flow",
+      "key": "architecture_and_data_flow",
+      "path": [
+        "Architecture and Data Flow"
+      ],
+      "content": "The implementation can be summarized as:\n\n```text\nXML file\n   ↓\nDocumentBuilder / DOM\n   ↓\nElement\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nand:\n\n```text\nJSON string\n   ↓\nJSONObject\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nThe architectural idea is generic runtime data binding.\n\nThe mapper receives a `Class<T>` rather than being implemented separately for every model class.",
+      "source_line_start": 55,
+      "source_line_end": 87
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "XML Parsing",
+      "normalized_title": "XML Parsing",
+      "key": "xml_parsing",
+      "path": [
+        "XML Parsing"
+      ],
+      "content": "The XML path begins with Java’s standard DOM stack:\n\n- `DocumentBuilderFactory`,\n- `DocumentBuilder`,\n- `Document`,\n- `NodeList`,\n- `Element`.\n\nThe program parses `lib.xml` and `Animal.xml`.\n\nIt selects top-level elements with `getElementsByTagName`.\n\nThose elements are then passed to the generic `mapXMLToObject` method.",
+      "source_line_start": 87,
+      "source_line_end": 103
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Generic XML-to-Object Mapping",
+      "normalized_title": "Generic XML-to-Object Mapping",
+      "key": "generic_xml_to_object_mapping",
+      "path": [
+        "Generic XML-to-Object Mapping"
+      ],
+      "content": "`mapXMLToObject(Element element, Class<T> clazz)` performs runtime construction and field assignment.\n\nThe method:\n\n1. constructs a new instance with `clazz.getDeclaredConstructor().newInstance()`;\n2. retrieves declared fields through `clazz.getDeclaredFields()`;\n3. uses each field name as an XML element name;\n4. obtains text content from the matching node;\n5. enables reflective field access with `setAccessible(true)`;\n6. converts and assigns supported values.\n\nThe demonstrated conversion logic handles:\n\n- `String`,\n- `Integer`.\n\nThis is a compact custom data-binding mechanism.\n\nIt demonstrates the principle behind larger serialization frameworks: mapping external field names into object state using runtime type information.",
+      "source_line_start": 103,
+      "source_line_end": 125
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "JSON Parsing",
+      "normalized_title": "JSON Parsing",
+      "key": "json_parsing",
+      "path": [
+        "JSON Parsing"
+      ],
+      "content": "The JSON path uses `org.json.JSONObject`.\n\nA JSON string containing `name` and `id` is parsed into a `JSONObject`.\n\nThe generic `mapJSONToObject` method again:\n\n- instantiates the requested target class,\n- enumerates declared fields,\n- checks whether JSON contains a matching field name,\n- obtains the value,\n- converts it,\n- assigns it reflectively.\n\nThis creates a parallel binding workflow between XML and JSON.",
+      "source_line_start": 125,
+      "source_line_end": 142
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Java Reflection",
+      "normalized_title": "Java Reflection",
+      "key": "java_reflection",
+      "path": [
+        "Java Reflection"
+      ],
+      "content": "Reflection is the central technical mechanism in this repository.\n\nThe code materially uses:\n\n- `Class<T>`,\n- `getDeclaredConstructor`,\n- `newInstance`,\n- `getDeclaredFields`,\n- `Field`,\n- `setAccessible`,\n- `Field.set`.\n\nThat allows the mapper implementation to work against multiple target model types without writing separate assignment code for each type.",
+      "source_line_start": 142,
+      "source_line_end": 158
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Java Generics",
+      "normalized_title": "Java Generics",
+      "key": "java_generics",
+      "path": [
+        "Java Generics"
+      ],
+      "content": "Both mapping functions are generic:\n\n```text\n<T> T mapXMLToObject(...)\n<T> T mapJSONToObject(...)\n```\n\nThis preserves the target type at the method boundary.\n\nCallers receive an `Employee` or `Animal` rather than a generic `Object`.\n\nThe use of `Class<T>` also connects generic typing to runtime reflection.",
+      "source_line_start": 158,
+      "source_line_end": 173
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Model Classes",
+      "normalized_title": "Model Classes",
+      "key": "model_classes",
+      "path": [
+        "Model Classes"
+      ],
+      "content": "### Employee\n\n`Employee` contains:\n\n- `name`,\n- `id`,\n- getters and setters.\n\n### Animal\n\n`Animal` contains:\n\n- `kind`,\n- `sound`,\n- getters and setters.\n\nThese two distinct model classes demonstrate that the mapper is not coupled to one schema.",
+      "source_line_start": 173,
+      "source_line_end": 193
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Employee",
+      "normalized_title": "Employee",
+      "key": "employee",
+      "path": [
+        "Model Classes",
+        "Employee"
+      ],
+      "content": "`Employee` contains:\n\n- `name`,\n- `id`,\n- getters and setters.",
+      "source_line_start": 175,
+      "source_line_end": 183
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Animal",
+      "normalized_title": "Animal",
+      "key": "animal",
+      "path": [
+        "Model Classes",
+        "Animal"
+      ],
+      "content": "`Animal` contains:\n\n- `kind`,\n- `sound`,\n- getters and setters.\n\nThese two distinct model classes demonstrate that the mapper is not coupled to one schema.",
+      "source_line_start": 183,
+      "source_line_end": 193
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Verification Through Executable Demonstration",
+      "normalized_title": "Verification Through Executable Demonstration",
+      "key": "verification_through_executable_demonstration",
+      "path": [
+        "Verification Through Executable Demonstration"
+      ],
+      "content": "The `main` method exercises both conversion paths.\n\nIt:\n\n- parses an employee from XML,\n- parses an animal from XML,\n- prints mapped field values,\n- parses an employee from JSON,\n- prints the resulting `name` and `id`.\n\nThis is an executable behavior demonstration of the mapping mechanism.",
+      "source_line_start": 193,
+      "source_line_end": 207
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Reusable Generic Functions\n\nMapping logic is centralized into reusable methods instead of duplicated per model.\n\n### Separation of Input Parsing and Model Types\n\nStructured-document parsing is separated conceptually from the domain classes that receive the data.\n\n### Runtime Type Inspection\n\nThe mapper derives behavior from class metadata at runtime.\n\n### Explicit Type Conversion\n\nThe code checks Java field types before assigning parsed values.",
+      "source_line_start": 207,
+      "source_line_end": 225
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Reusable Generic Functions",
+      "normalized_title": "Reusable Generic Functions",
+      "key": "reusable_generic_functions",
+      "path": [
+        "Engineering Practices",
+        "Reusable Generic Functions"
+      ],
+      "content": "Mapping logic is centralized into reusable methods instead of duplicated per model.",
+      "source_line_start": 209,
+      "source_line_end": 213
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Separation of Input Parsing and Model Types",
+      "normalized_title": "Separation of Input Parsing and Model Types",
+      "key": "separation_of_input_parsing_and_model_types",
+      "path": [
+        "Engineering Practices",
+        "Separation of Input Parsing and Model Types"
+      ],
+      "content": "Structured-document parsing is separated conceptually from the domain classes that receive the data.",
+      "source_line_start": 213,
+      "source_line_end": 217
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Runtime Type Inspection",
+      "normalized_title": "Runtime Type Inspection",
+      "key": "runtime_type_inspection",
+      "path": [
+        "Engineering Practices",
+        "Runtime Type Inspection"
+      ],
+      "content": "The mapper derives behavior from class metadata at runtime.",
+      "source_line_start": 217,
+      "source_line_end": 221
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Explicit Type Conversion",
+      "normalized_title": "Explicit Type Conversion",
+      "key": "explicit_type_conversion",
+      "path": [
+        "Engineering Practices",
+        "Explicit Type Conversion"
+      ],
+      "content": "The code checks Java field types before assigning parsed values.",
+      "source_line_start": 221,
+      "source_line_end": 225
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Implementation Scale",
+      "normalized_title": "Implementation Scale",
+      "key": "implementation_scale",
+      "path": [
+        "Implementation Scale"
+      ],
+      "content": "The source is small, but conceptually dense.\n\nIn one file it combines:\n\n- DOM parsing,\n- JSON parsing,\n- reflection,\n- generics,\n- dynamic instance creation,\n- type-aware assignment,\n- multiple model classes.\n\nThe repository therefore has more architectural significance than its raw file count suggests.",
+      "source_line_start": 225,
+      "source_line_end": 241
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Java\n\n- object-oriented programming,\n- generics,\n- reflection,\n- exceptions,\n- file handling,\n- class construction,\n- encapsulated model classes.\n\n### Structured Data\n\n- XML parsing,\n- DOM traversal,\n- JSON parsing,\n- field-name-based data binding.\n\n### Runtime Metaprogramming\n\n- class introspection,\n- field introspection,\n- dynamic object construction,\n- reflective assignment.\n\n### Software Design\n\n- reusable mapping abstraction,\n- schema-to-object mapping,\n- common processing path across multiple target types.",
+      "source_line_start": 241,
+      "source_line_end": 273
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Java",
+      "normalized_title": "Java",
+      "key": "java",
+      "path": [
+        "Skills Demonstrated",
+        "Java"
+      ],
+      "content": "- object-oriented programming,\n- generics,\n- reflection,\n- exceptions,\n- file handling,\n- class construction,\n- encapsulated model classes.",
+      "source_line_start": 243,
+      "source_line_end": 253
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Structured Data",
+      "normalized_title": "Structured Data",
+      "key": "structured_data",
+      "path": [
+        "Skills Demonstrated",
+        "Structured Data"
+      ],
+      "content": "- XML parsing,\n- DOM traversal,\n- JSON parsing,\n- field-name-based data binding.",
+      "source_line_start": 253,
+      "source_line_end": 260
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Runtime Metaprogramming",
+      "normalized_title": "Runtime Metaprogramming",
+      "key": "runtime_metaprogramming",
+      "path": [
+        "Skills Demonstrated",
+        "Runtime Metaprogramming"
+      ],
+      "content": "- class introspection,\n- field introspection,\n- dynamic object construction,\n- reflective assignment.",
+      "source_line_start": 260,
+      "source_line_end": 267
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Software Design",
+      "normalized_title": "Software Design",
+      "key": "software_design",
+      "path": [
+        "Skills Demonstrated",
+        "Software Design"
+      ],
+      "content": "- reusable mapping abstraction,\n- schema-to-object mapping,\n- common processing path across multiple target types.",
+      "source_line_start": 267,
+      "source_line_end": 273
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository demonstrates movement from ordinary application-level Java toward language/runtime mechanisms.\n\nRather than only using classes and interfaces, it uses Java’s metadata model to write behavior that adapts to arbitrary target classes.\n\nThat is relevant to later work involving frameworks, serialization, dependency injection, ORMs, and reflective infrastructure because those systems use related runtime concepts.",
+      "source_line_start": 273,
+      "source_line_end": 281
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Historical Portfolio Significance",
+      "normalized_title": "Historical Portfolio Significance",
+      "key": "historical_portfolio_significance",
+      "path": [
+        "Historical Portfolio Significance"
+      ],
+      "content": "This is the earliest processed repository centered specifically on Java reflection.\n\nIt is also the earliest processed repository that implements custom XML-to-object and JSON-to-object data binding through reflection.\n\nThe project therefore adds a new Java capability layer beyond the earlier design-pattern exercises.",
+      "source_line_start": 281,
+      "source_line_end": 289
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Overall Project Narrative",
+      "normalized_title": "Overall Project Narrative",
+      "key": "overall_project_narrative",
+      "path": [
+        "Overall Project Narrative"
+      ],
+      "content": "`JavaLibrary` is a compact experiment in building a lightweight serialization mapper.\n\nIts significance is not the amount of code.\n\nIt is the shift in abstraction level.\n\nThe implementation stops treating XML and JSON parsing as one-off field extraction and instead asks a reusable question:\n\n> Given a target Java class, can external fields be mapped into that class automatically?\n\nThe answer is implemented using generics, reflection, runtime construction and typed assignment.\n\nThat makes the repository a clear early example of framework-like thinking inside the portfolio.\n\n# Project Tags\n\n- `java`\n- `individual-project`\n- `developer-tooling`\n- `xml-processing`\n- `xml-parsing`\n- `json-parsing`\n- `dom-parsing`\n- `java-reflection`\n- `reflection`\n- `java-generics`\n- `runtime-instantiation`\n- `field-introspection`\n- `reflective-field-assignment`\n- `object-mapping`\n- `xml-object-mapping`\n- `json-object-mapping`\n- `data-binding-prototype`\n- `manual-execution-demo`\n- `object-oriented-programming`\n- `earliest-observed-java-reflection`\n- `earliest-observed-xml-object-mapping`\n- `earliest-observed-json-object-mapping`",
+      "source_line_start": 289,
+      "source_line_end": 329
+    }
+  ],
+  "raw_analysis": "# JavaLibrary\n\n## Repository Identity\n\n- Repository: 028 / 134\n- Name: `JavaLibrary`\n- Repository Start Date: 2024-04-30\n- Latest Meaningful Update Date: 2024-05-01\n- Primary Language: Java\n- Primary Type: Serialization / object-mapping prototype\n- Technical Field: Java reflection, XML parsing, JSON parsing\n- Collaboration Type: Individual Project\n\n## Collaboration and Authorship Context\n\nThe visible repository history consists of owner-attributed uploads and cleanup activity.\n\nThe principal Java implementation is stored in `Doct2object.java`.\n\nThe code directly demonstrates repository-specific reflection and object-mapping logic.\n\n## What This Project Is\n\n`JavaLibrary` is a small Java experiment that maps structured document data into ordinary Java objects.\n\nThe project demonstrates two input formats:\n\n- XML,\n- JSON.\n\nInstead of hard-coding every field assignment, the implementation uses Java reflection to inspect a target class at runtime.\n\nField names become the binding contract between the serialized data and the Java object.\n\nThe same generic mapping pattern is demonstrated against two model classes:\n\n- `Employee`,\n- `Animal`.\n\n## Project Scope\n\nThe repository contains three files:\n\n```text\nJavaLibrary/\n├── Animal.xml\n├── Doct2object.java\n└── lib.xml\n```\n\nThe Java source performs both mapping demonstrations.\n\nThe XML files supply small source documents used by the parser.\n\n## Architecture and Data Flow\n\nThe implementation can be summarized as:\n\n```text\nXML file\n   ↓\nDocumentBuilder / DOM\n   ↓\nElement\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nand:\n\n```text\nJSON string\n   ↓\nJSONObject\n   ↓\nreflection over target class fields\n   ↓\ntyped Java object\n```\n\nThe architectural idea is generic runtime data binding.\n\nThe mapper receives a `Class<T>` rather than being implemented separately for every model class.\n\n## XML Parsing\n\nThe XML path begins with Java’s standard DOM stack:\n\n- `DocumentBuilderFactory`,\n- `DocumentBuilder`,\n- `Document`,\n- `NodeList`,\n- `Element`.\n\nThe program parses `lib.xml` and `Animal.xml`.\n\nIt selects top-level elements with `getElementsByTagName`.\n\nThose elements are then passed to the generic `mapXMLToObject` method.\n\n## Generic XML-to-Object Mapping\n\n`mapXMLToObject(Element element, Class<T> clazz)` performs runtime construction and field assignment.\n\nThe method:\n\n1. constructs a new instance with `clazz.getDeclaredConstructor().newInstance()`;\n2. retrieves declared fields through `clazz.getDeclaredFields()`;\n3. uses each field name as an XML element name;\n4. obtains text content from the matching node;\n5. enables reflective field access with `setAccessible(true)`;\n6. converts and assigns supported values.\n\nThe demonstrated conversion logic handles:\n\n- `String`,\n- `Integer`.\n\nThis is a compact custom data-binding mechanism.\n\nIt demonstrates the principle behind larger serialization frameworks: mapping external field names into object state using runtime type information.\n\n## JSON Parsing\n\nThe JSON path uses `org.json.JSONObject`.\n\nA JSON string containing `name` and `id` is parsed into a `JSONObject`.\n\nThe generic `mapJSONToObject` method again:\n\n- instantiates the requested target class,\n- enumerates declared fields,\n- checks whether JSON contains a matching field name,\n- obtains the value,\n- converts it,\n- assigns it reflectively.\n\nThis creates a parallel binding workflow between XML and JSON.\n\n## Java Reflection\n\nReflection is the central technical mechanism in this repository.\n\nThe code materially uses:\n\n- `Class<T>`,\n- `getDeclaredConstructor`,\n- `newInstance`,\n- `getDeclaredFields`,\n- `Field`,\n- `setAccessible`,\n- `Field.set`.\n\nThat allows the mapper implementation to work against multiple target model types without writing separate assignment code for each type.\n\n## Java Generics\n\nBoth mapping functions are generic:\n\n```text\n<T> T mapXMLToObject(...)\n<T> T mapJSONToObject(...)\n```\n\nThis preserves the target type at the method boundary.\n\nCallers receive an `Employee` or `Animal` rather than a generic `Object`.\n\nThe use of `Class<T>` also connects generic typing to runtime reflection.\n\n## Model Classes\n\n### Employee\n\n`Employee` contains:\n\n- `name`,\n- `id`,\n- getters and setters.\n\n### Animal\n\n`Animal` contains:\n\n- `kind`,\n- `sound`,\n- getters and setters.\n\nThese two distinct model classes demonstrate that the mapper is not coupled to one schema.\n\n## Verification Through Executable Demonstration\n\nThe `main` method exercises both conversion paths.\n\nIt:\n\n- parses an employee from XML,\n- parses an animal from XML,\n- prints mapped field values,\n- parses an employee from JSON,\n- prints the resulting `name` and `id`.\n\nThis is an executable behavior demonstration of the mapping mechanism.\n\n## Engineering Practices\n\n### Reusable Generic Functions\n\nMapping logic is centralized into reusable methods instead of duplicated per model.\n\n### Separation of Input Parsing and Model Types\n\nStructured-document parsing is separated conceptually from the domain classes that receive the data.\n\n### Runtime Type Inspection\n\nThe mapper derives behavior from class metadata at runtime.\n\n### Explicit Type Conversion\n\nThe code checks Java field types before assigning parsed values.\n\n## Implementation Scale\n\nThe source is small, but conceptually dense.\n\nIn one file it combines:\n\n- DOM parsing,\n- JSON parsing,\n- reflection,\n- generics,\n- dynamic instance creation,\n- type-aware assignment,\n- multiple model classes.\n\nThe repository therefore has more architectural significance than its raw file count suggests.\n\n## Skills Demonstrated\n\n### Java\n\n- object-oriented programming,\n- generics,\n- reflection,\n- exceptions,\n- file handling,\n- class construction,\n- encapsulated model classes.\n\n### Structured Data\n\n- XML parsing,\n- DOM traversal,\n- JSON parsing,\n- field-name-based data binding.\n\n### Runtime Metaprogramming\n\n- class introspection,\n- field introspection,\n- dynamic object construction,\n- reflective assignment.\n\n### Software Design\n\n- reusable mapping abstraction,\n- schema-to-object mapping,\n- common processing path across multiple target types.\n\n## Capability Developed\n\nThis repository demonstrates movement from ordinary application-level Java toward language/runtime mechanisms.\n\nRather than only using classes and interfaces, it uses Java’s metadata model to write behavior that adapts to arbitrary target classes.\n\nThat is relevant to later work involving frameworks, serialization, dependency injection, ORMs, and reflective infrastructure because those systems use related runtime concepts.\n\n## Historical Portfolio Significance\n\nThis is the earliest processed repository centered specifically on Java reflection.\n\nIt is also the earliest processed repository that implements custom XML-to-object and JSON-to-object data binding through reflection.\n\nThe project therefore adds a new Java capability layer beyond the earlier design-pattern exercises.\n\n## Overall Project Narrative\n\n`JavaLibrary` is a compact experiment in building a lightweight serialization mapper.\n\nIts significance is not the amount of code.\n\nIt is the shift in abstraction level.\n\nThe implementation stops treating XML and JSON parsing as one-off field extraction and instead asks a reusable question:\n\n> Given a target Java class, can external fields be mapped into that class automatically?\n\nThe answer is implemented using generics, reflection, runtime construction and typed assignment.\n\nThat makes the repository a clear early example of framework-like thinking inside the portfolio.\n\n# Project Tags\n\n- `java`\n- `individual-project`\n- `developer-tooling`\n- `xml-processing`\n- `xml-parsing`\n- `json-parsing`\n- `dom-parsing`\n- `java-reflection`\n- `reflection`\n- `java-generics`\n- `runtime-instantiation`\n- `field-introspection`\n- `reflective-field-assignment`\n- `object-mapping`\n- `xml-object-mapping`\n- `json-object-mapping`\n- `data-binding-prototype`\n- `manual-execution-demo`\n- `object-oriented-programming`\n- `earliest-observed-java-reflection`\n- `earliest-observed-xml-object-mapping`\n- `earliest-observed-json-object-mapping`\n"
+}

@@ -1,0 +1,847 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 66,
+  "repository_total": 134,
+  "repository_name": "Data-Warehouse",
+  "header_title": "Data-Warehouse",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-066-Data-Warehouse/README.md",
+    "line_start": 1,
+    "line_end": 583,
+    "sha256": "c937cd80c79cddb38f398758626187ba75ff99775263686e002674780b1d1112"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-coursework",
+    "data-engineering-coursework",
+    "data-warehouse-lab",
+    "business-intelligence-foundations",
+    "data-warehouse",
+    "dimensional-modeling",
+    "star-schema",
+    "fact-table",
+    "dimension-table",
+    "fact-sales",
+    "foreign-keys",
+    "postgresql",
+    "pgadmin",
+    "sql",
+    "csv-import",
+    "grouping-sets",
+    "sql-rollup",
+    "sql-cube",
+    "materialized-view",
+    "aggregation",
+    "olap-style-querying",
+    "warehouse-data-quality",
+    "null-check",
+    "range-check",
+    "valid-value-check",
+    "duplicate-check",
+    "quality-report",
+    "psycopg2",
+    "retail-analytics",
+    "sales-analytics",
+    "business-reporting",
+    "earliest-observed-data-warehouse",
+    "earliest-observed-star-schema",
+    "earliest-observed-fact-table",
+    "earliest-observed-dimension-table",
+    "earliest-observed-grouping-sets",
+    "earliest-observed-sql-rollup",
+    "earliest-observed-sql-cube",
+    "earliest-observed-materialized-view",
+    "earliest-observed-warehouse-data-quality"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Data-Warehouse`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `97942093d4d2f59d9103e9f6c6ee094e0691c37f`\n- **Primary technical field:** data warehousing, analytical SQL, and warehouse data quality\n- **Primary database:** PostgreSQL\n- **Project context:** individual data-engineering coursework\n- **Collaboration classification:** `individual-coursework`"
+    },
+    "testing": {
+      "section_ids": [
+        "s031"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\nThe data-quality portion is itself a form of verification.\n\nThe repository practices explicit checks for:\n\n- completeness;\n- ranges;\n- allowed categories;\n- duplicates.\n\nThe course framework then generates a report of test statuses.\n\nFor the schema/query work, validation is exercise-driven through SQL execution and sample-result inspection."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s048"
+      ],
+      "titles": [
+        "Authorship and Evidence Boundary"
+      ],
+      "text": "## Authorship and Evidence Boundary\nThe lab text and testing framework are instructional.\n\nThe corpus attributes:\n\n- executed/practiced schema design;\n- SQL exercises;\n- configured quality tests;\n- warehouse concepts;\n\nat coursework scope.\n\nIt does not claim authorship of the supplied Python micro-framework or source datasets."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Data-Warehouse`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `97942093d4d2f59d9103e9f6c6ee094e0691c37f`\n- **Primary technical field:** data warehousing, analytical SQL, and warehouse data quality\n- **Primary database:** PostgreSQL\n- **Project context:** individual data-engineering coursework\n- **Collaboration classification:** `individual-coursework`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains four substantial learning artifacts:\n\n- `Checking quality of warehouse.md`;\n- `Final Project.md`;\n- `final lap.md`;\n- `querying the data warehouse.md`.\n\nThe content covers:\n\n- dimensional warehouse modeling;\n- PostgreSQL schema creation;\n- fact and dimension tables;\n- CSV loading;\n- aggregation;\n- grouping sets;\n- rollups;\n- cubes;\n- materialized views;\n- data-quality checks.\n\nThe source has course/lab characteristics, so the corpus treats it as completed learning and exercised SQL rather than claiming original invention of the assignments or supplied testing framework.",
+      "source_line_start": 14,
+      "source_line_end": 38
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Business Scenario",
+      "normalized_title": "Business Scenario",
+      "key": "business_scenario",
+      "path": [
+        "Business Scenario"
+      ],
+      "content": "The final project uses a consumer-electronics retail scenario.\n\nThe target reporting questions include:\n\n- sales revenue by year and city;\n- sales revenue by month and city;\n- sales revenue by quarter and city;\n- sales by product category;\n- category performance by city;\n- category performance by store.\n\nThis is important because it gives the warehouse a decision-support purpose rather than treating dimensional schemas as abstract database exercises.",
+      "source_line_start": 38,
+      "source_line_end": 53
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Warehouse Design",
+      "normalized_title": "Warehouse Design",
+      "key": "warehouse_design",
+      "path": [
+        "Warehouse Design"
+      ],
+      "content": "The repository explicitly separates descriptive dimensions from measurable events.",
+      "source_line_start": 53,
+      "source_line_end": 57
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Date Dimension",
+      "normalized_title": "Date Dimension",
+      "key": "date_dimension",
+      "path": [
+        "Date Dimension"
+      ],
+      "content": "An initial design includes:\n\n- `dateid`;\n- year;\n- month;\n- month name;\n- day;\n- weekday;\n- weekday name.\n\nA later load schema expands that to include:\n\n- quarter;\n- quarter name.",
+      "source_line_start": 57,
+      "source_line_end": 74
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Product Dimension",
+      "normalized_title": "Product Dimension",
+      "key": "product_dimension",
+      "path": [
+        "Product Dimension"
+      ],
+      "content": "The product dimension separates product identity/type from transaction facts.",
+      "source_line_start": 74,
+      "source_line_end": 78
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Customer-Segment Dimension",
+      "normalized_title": "Customer-Segment Dimension",
+      "key": "customer_segment_dimension",
+      "path": [
+        "Customer-Segment Dimension"
+      ],
+      "content": "The customer-segment dimension provides a categorical axis for slicing sales.\n\nIn the loaded version it maps segment identity to city.",
+      "source_line_start": 78,
+      "source_line_end": 84
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Sales Fact Table",
+      "normalized_title": "Sales Fact Table",
+      "key": "sales_fact_table",
+      "path": [
+        "Sales Fact Table"
+      ],
+      "content": "The fact table centralizes:\n\n- sales identity;\n- date identity;\n- product identity;\n- segment identity;\n- price per unit;\n- quantity sold.\n\nForeign keys connect facts to dimensions.",
+      "source_line_start": 84,
+      "source_line_end": 97
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Star-Schema Shape",
+      "normalized_title": "Star-Schema Shape",
+      "key": "star_schema_shape",
+      "path": [
+        "Star-Schema Shape"
+      ],
+      "content": "The resulting model is conceptually:\n\n```text\n           DimDate\n              |\n              |\nDimProduct — FactSales — DimCustomerSegment\n```\n\n`FactSales` contains measures and foreign keys.\n\nDimension tables provide descriptive context.\n\nThis is the core dimensional-modeling pattern of the repository.",
+      "source_line_start": 97,
+      "source_line_end": 114
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "PostgreSQL Schema Work",
+      "normalized_title": "PostgreSQL Schema Work",
+      "key": "postgresql_schema_work",
+      "path": [
+        "PostgreSQL Schema Work"
+      ],
+      "content": "The repository includes SQL such as:\n\n```sql\nCREATE TABLE DimDate (\n    Dateid INT PRIMARY KEY,\n    date DATE NOT NULL,\n    Year INT NOT NULL,\n    Quarter INT NOT NULL,\n    QuarterName VARCHAR(2) NOT NULL,\n    Month INT NOT NULL,\n    Monthname VARCHAR(255) NOT NULL,\n    Day INT NOT NULL,\n    Weekday INT NOT NULL,\n    WeekdayName VARCHAR(255) NOT NULL\n);\n```\n\nand:\n\n```sql\nCREATE TABLE FactSales (\n    Salesid VARCHAR(255) PRIMARY KEY,\n    Dateid INT NOT NULL,\n    Productid INT NOT NULL,\n    Segmentid INT NOT NULL,\n    Price_PerUnit DECIMAL(10, 2) NOT NULL,\n    QuantitySold INT NOT NULL,\n    FOREIGN KEY (Dateid) REFERENCES DimDate(Dateid),\n    FOREIGN KEY (Productid) REFERENCES DimProduct(Productid),\n    FOREIGN KEY (Segmentid) REFERENCES DimCustomerSegment(Segmentid)\n);\n```\n\nThis demonstrates relational enforcement inside a dimensional model.",
+      "source_line_start": 114,
+      "source_line_end": 151
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Data Loading",
+      "normalized_title": "Data Loading",
+      "key": "data_loading",
+      "path": [
+        "Data Loading"
+      ],
+      "content": "The project loads dimension and fact data from CSV files through pgAdmin.\n\nThe workflow is:\n\n```text\ndesign tables\n  ↓\ncreate PostgreSQL schema\n  ↓\nimport dimension CSVs\n  ↓\nimport fact CSV\n  ↓\ninspect sample rows\n  ↓\nrun analytical queries\n```",
+      "source_line_start": 151,
+      "source_line_end": 171
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Analytical SQL",
+      "normalized_title": "Analytical SQL",
+      "key": "analytical_sql",
+      "path": [
+        "Analytical SQL"
+      ],
+      "content": "The repository moves beyond ordinary `GROUP BY`.",
+      "source_line_start": 171,
+      "source_line_end": 175
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Grouping Sets",
+      "normalized_title": "Grouping Sets",
+      "key": "grouping_sets",
+      "path": [
+        "Grouping Sets"
+      ],
+      "content": "A grouping-set query calculates totals across different dimensions from one statement.\n\nThis supports multiple aggregation levels without writing separate queries for every slice.",
+      "source_line_start": 175,
+      "source_line_end": 181
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "ROLLUP",
+      "normalized_title": "ROLLUP",
+      "key": "rollup",
+      "path": [
+        "ROLLUP"
+      ],
+      "content": "`ROLLUP` is used for hierarchical subtotal/grand-total output, such as:\n\n```text\nyear\n  ↓\ncity\n  ↓\nproduct\n```",
+      "source_line_start": 181,
+      "source_line_end": 193
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "CUBE",
+      "normalized_title": "CUBE",
+      "key": "cube",
+      "path": [
+        "CUBE"
+      ],
+      "content": "`CUBE` is used to generate combinations across dimensions.\n\nThe important concept is multidimensional aggregation rather than one fixed grouping.",
+      "source_line_start": 193,
+      "source_line_end": 199
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Materialized Views",
+      "normalized_title": "Materialized Views",
+      "key": "materialized_views",
+      "path": [
+        "Materialized Views"
+      ],
+      "content": "The repository creates materialized views to persist precomputed analytical results.\n\nExamples include:\n\n```text\ncountrystats\n```\n\nand:\n\n```text\nmax_sales\n```\n\nThe repository also practices:\n\n```sql\nREFRESH MATERIALIZED VIEW countrystats;\n```\n\nThis introduces the tradeoff between query-time computation and stored/precomputed analytical data.",
+      "source_line_start": 199,
+      "source_line_end": 223
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Warehouse Querying Workflow",
+      "normalized_title": "Warehouse Querying Workflow",
+      "key": "warehouse_querying_workflow",
+      "path": [
+        "Warehouse Querying Workflow"
+      ],
+      "content": "The warehouse-querying artifact includes:\n\n- joins from facts to dimensions;\n- aggregation of billed/sales amounts;\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- materialized views;\n- materialized-view refresh.\n\nThis is a recognizable OLAP-style analytical SQL workflow.",
+      "source_line_start": 223,
+      "source_line_end": 237
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Data Quality",
+      "normalized_title": "Data Quality",
+      "key": "data_quality",
+      "path": [
+        "Data Quality"
+      ],
+      "content": "A separate artifact focuses specifically on warehouse data quality.\n\nThat separation matters: building the warehouse is not treated as the final step.\n\nThe repository also checks whether the data satisfies expected properties.",
+      "source_line_start": 237,
+      "source_line_end": 245
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Data-Quality Framework",
+      "normalized_title": "Data-Quality Framework",
+      "key": "data_quality_framework",
+      "path": [
+        "Data-Quality Framework"
+      ],
+      "content": "The lab downloads a supplied Python framework and support files.\n\nDependencies include:\n\n- `psycopg2`;\n- Pandas;\n- `tabulate`.\n\nThe learner then configures and runs specific checks.\n\nThe framework itself is instructional/supplied and should not be claimed as original infrastructure.",
+      "source_line_start": 245,
+      "source_line_end": 259
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Null Checks",
+      "normalized_title": "Null Checks",
+      "key": "null_checks",
+      "path": [
+        "Null Checks"
+      ],
+      "content": "A test is created to ensure a target column does not contain null values.\n\nExample target:\n\n```text\nDimMonth.year\n```",
+      "source_line_start": 259,
+      "source_line_end": 269
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Range Checks",
+      "normalized_title": "Range Checks",
+      "key": "range_checks",
+      "path": [
+        "Range Checks"
+      ],
+      "content": "A min/max test validates values such as quarter:\n\n```text\n1 <= quarter <= 4\n```",
+      "source_line_start": 269,
+      "source_line_end": 277
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Valid-Value Checks",
+      "normalized_title": "Valid-Value Checks",
+      "key": "valid_value_checks",
+      "path": [
+        "Valid-Value Checks"
+      ],
+      "content": "The repository validates categorical membership, for example:\n\n```text\nQ1\nQ2\nQ3\nQ4\n```",
+      "source_line_start": 277,
+      "source_line_end": 288
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Duplicate Checks",
+      "normalized_title": "Duplicate Checks",
+      "key": "duplicate_checks",
+      "path": [
+        "Duplicate Checks"
+      ],
+      "content": "A uniqueness-oriented data-quality test checks duplicate customer identifiers.",
+      "source_line_start": 288,
+      "source_line_end": 292
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Data-Quality System Shape",
+      "normalized_title": "Data-Quality System Shape",
+      "key": "data_quality_system_shape",
+      "path": [
+        "Data-Quality System Shape"
+      ],
+      "content": "```text\nPostgreSQL warehouse\n  ↓\nPython database connector\n  ↓\ntest definitions\n  ├─ null checks\n  ├─ min/max checks\n  ├─ valid-value checks\n  └─ duplicate checks\n  ↓\ngenerated quality report\n```",
+      "source_line_start": 292,
+      "source_line_end": 308
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Database\n\n- PostgreSQL\n- pgAdmin\n- SQL\n\n### Data Warehousing\n\n- star schema\n- fact tables\n- dimension tables\n- foreign keys\n- dimensional modeling\n\n### Analytical SQL\n\n- joins\n- aggregation\n- grouping sets\n- rollup\n- cube\n- materialized views\n\n### Data Quality\n\n- Python\n- psycopg2\n- Pandas\n- tabulate\n- rule-based data checks\n\n### Data Format\n\n- CSV",
+      "source_line_start": 308,
+      "source_line_end": 345
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Database",
+      "normalized_title": "Database",
+      "key": "database",
+      "path": [
+        "Technical Stack",
+        "Database"
+      ],
+      "content": "- PostgreSQL\n- pgAdmin\n- SQL",
+      "source_line_start": 310,
+      "source_line_end": 316
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Data Warehousing",
+      "normalized_title": "Data Warehousing",
+      "key": "data_warehousing",
+      "path": [
+        "Technical Stack",
+        "Data Warehousing"
+      ],
+      "content": "- star schema\n- fact tables\n- dimension tables\n- foreign keys\n- dimensional modeling",
+      "source_line_start": 316,
+      "source_line_end": 324
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Analytical SQL",
+      "normalized_title": "Analytical SQL",
+      "key": "analytical_sql",
+      "path": [
+        "Technical Stack",
+        "Analytical SQL"
+      ],
+      "content": "- joins\n- aggregation\n- grouping sets\n- rollup\n- cube\n- materialized views",
+      "source_line_start": 324,
+      "source_line_end": 333
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Data Quality",
+      "normalized_title": "Data Quality",
+      "key": "data_quality",
+      "path": [
+        "Technical Stack",
+        "Data Quality"
+      ],
+      "content": "- Python\n- psycopg2\n- Pandas\n- tabulate\n- rule-based data checks",
+      "source_line_start": 333,
+      "source_line_end": 341
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Data Format",
+      "normalized_title": "Data Format",
+      "key": "data_format",
+      "path": [
+        "Technical Stack",
+        "Data Format"
+      ],
+      "content": "- CSV",
+      "source_line_start": 341,
+      "source_line_end": 345
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "The data-quality portion is itself a form of verification.\n\nThe repository practices explicit checks for:\n\n- completeness;\n- ranges;\n- allowed categories;\n- duplicates.\n\nThe course framework then generates a report of test statuses.\n\nFor the schema/query work, validation is exercise-driven through SQL execution and sample-result inspection.",
+      "source_line_start": 345,
+      "source_line_end": 360
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "### Separation of Fact and Dimension Concerns\n\nMeasures are separated from descriptive entities.\n\n### Referential Integrity\n\nFact rows reference dimensions with foreign keys.\n\n### Query Optimization Awareness\n\nMaterialized views are introduced for reusable analytical outputs.\n\n### Data Quality as a Pipeline Concern\n\nThe repository explicitly treats quality checking as a repeatable process, not an informal visual inspection.\n\n### Multiple Aggregation Levels\n\nThe analytical model supports summary views at different dimensional grains.",
+      "source_line_start": 360,
+      "source_line_end": 382
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Separation of Fact and Dimension Concerns",
+      "normalized_title": "Separation of Fact and Dimension Concerns",
+      "key": "separation_of_fact_and_dimension_concerns",
+      "path": [
+        "Engineering Discipline",
+        "Separation of Fact and Dimension Concerns"
+      ],
+      "content": "Measures are separated from descriptive entities.",
+      "source_line_start": 362,
+      "source_line_end": 366
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Referential Integrity",
+      "normalized_title": "Referential Integrity",
+      "key": "referential_integrity",
+      "path": [
+        "Engineering Discipline",
+        "Referential Integrity"
+      ],
+      "content": "Fact rows reference dimensions with foreign keys.",
+      "source_line_start": 366,
+      "source_line_end": 370
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Query Optimization Awareness",
+      "normalized_title": "Query Optimization Awareness",
+      "key": "query_optimization_awareness",
+      "path": [
+        "Engineering Discipline",
+        "Query Optimization Awareness"
+      ],
+      "content": "Materialized views are introduced for reusable analytical outputs.",
+      "source_line_start": 370,
+      "source_line_end": 374
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Data Quality as a Pipeline Concern",
+      "normalized_title": "Data Quality as a Pipeline Concern",
+      "key": "data_quality_as_a_pipeline_concern",
+      "path": [
+        "Engineering Discipline",
+        "Data Quality as a Pipeline Concern"
+      ],
+      "content": "The repository explicitly treats quality checking as a repeatable process, not an informal visual inspection.",
+      "source_line_start": 374,
+      "source_line_end": 378
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Multiple Aggregation Levels",
+      "normalized_title": "Multiple Aggregation Levels",
+      "key": "multiple_aggregation_levels",
+      "path": [
+        "Engineering Discipline",
+        "Multiple Aggregation Levels"
+      ],
+      "content": "The analytical model supports summary views at different dimensional grains.",
+      "source_line_start": 378,
+      "source_line_end": 382
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Product Engineering Context",
+      "normalized_title": "Product Engineering Context",
+      "key": "product_engineering_context",
+      "path": [
+        "Product Engineering Context"
+      ],
+      "content": "The retail scenario makes the warehouse useful for business intelligence.\n\nStakeholders could ask questions such as:\n\n- which cities generate the most revenue;\n- how categories perform over time;\n- how sales change quarterly;\n- where product performance differs.\n\nThe repository therefore connects SQL/data modeling to business reporting.",
+      "source_line_start": 382,
+      "source_line_end": 395
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "No production row-count or runtime scale is demonstrated.\n\nThe conceptual scale is broader than a transactional database lab because the system contains:\n\n- multiple dimension tables;\n- a central fact table;\n- bulk data loading;\n- analytical joins;\n- multidimensional aggregations;\n- precomputed views;\n- automated quality rules.",
+      "source_line_start": 395,
+      "source_line_end": 409
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Data Modeling\n\n- dimensional modeling;\n- star schema;\n- facts;\n- dimensions;\n- surrogate/identifier keys;\n- foreign-key relationships.\n\n### PostgreSQL\n\n- DDL;\n- primary keys;\n- foreign keys;\n- imports;\n- analytical queries;\n- materialized views.\n\n### Analytical SQL\n\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- aggregate functions;\n- multidimensional reporting.\n\n### Data Quality\n\n- completeness checks;\n- valid-range checks;\n- valid-value checks;\n- duplicate checks;\n- report generation.",
+      "source_line_start": 409,
+      "source_line_end": 445
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Data Modeling",
+      "normalized_title": "Data Modeling",
+      "key": "data_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Data Modeling"
+      ],
+      "content": "- dimensional modeling;\n- star schema;\n- facts;\n- dimensions;\n- surrogate/identifier keys;\n- foreign-key relationships.",
+      "source_line_start": 411,
+      "source_line_end": 420
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "PostgreSQL",
+      "normalized_title": "PostgreSQL",
+      "key": "postgresql",
+      "path": [
+        "Skills Demonstrated",
+        "PostgreSQL"
+      ],
+      "content": "- DDL;\n- primary keys;\n- foreign keys;\n- imports;\n- analytical queries;\n- materialized views.",
+      "source_line_start": 420,
+      "source_line_end": 429
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Analytical SQL",
+      "normalized_title": "Analytical SQL",
+      "key": "analytical_sql",
+      "path": [
+        "Skills Demonstrated",
+        "Analytical SQL"
+      ],
+      "content": "- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- aggregate functions;\n- multidimensional reporting.",
+      "source_line_start": 429,
+      "source_line_end": 437
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Data Quality",
+      "normalized_title": "Data Quality",
+      "key": "data_quality",
+      "path": [
+        "Skills Demonstrated",
+        "Data Quality"
+      ],
+      "content": "- completeness checks;\n- valid-range checks;\n- valid-value checks;\n- duplicate checks;\n- report generation.",
+      "source_line_start": 437,
+      "source_line_end": 445
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops the ability to design data for analysis rather than only for transactional correctness.\n\nEarlier relational repositories focused on normalized structures and operational database use.\n\nHere the model is deliberately denormalized around analytical dimensions and measures.\n\nThe second major lesson is that a warehouse needs explicit quality gates if analytical results are to be trustworthy.",
+      "source_line_start": 445,
+      "source_line_end": 455
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 065 introduces data movement through Airflow and Kafka.\n\nRepository 066 provides a destination architecture for analytical data:\n\n```text\ningestion / orchestration\n  ↓\nwarehouse\n  ↓\nquality checks\n  ↓\nmultidimensional analysis\n```\n\nWithin the processed chronology, this is the earliest strong evidence of:\n\n- data-warehouse design;\n- star schemas;\n- fact and dimension tables;\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- materialized views;\n- warehouse-specific data-quality checks.",
+      "source_line_start": 455,
+      "source_line_end": 482
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "This repository completes a concentrated October 2024 data-engineering arc.\n\nThe portfolio moves from:\n\n- shell processing;\n- databases;\n- ETL orchestration;\n- streaming;\n\ninto:\n\n- dimensional storage;\n- analytical querying;\n- data quality.\n\nThat is a meaningful broadening from coding exercises to a simplified data-platform lifecycle.",
+      "source_line_start": 482,
+      "source_line_end": 501
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Authorship and Evidence Boundary",
+      "normalized_title": "Authorship and Evidence Boundary",
+      "key": "authorship_and_evidence_boundary",
+      "path": [
+        "Authorship and Evidence Boundary"
+      ],
+      "content": "The lab text and testing framework are instructional.\n\nThe corpus attributes:\n\n- executed/practiced schema design;\n- SQL exercises;\n- configured quality tests;\n- warehouse concepts;\n\nat coursework scope.\n\nIt does not claim authorship of the supplied Python micro-framework or source datasets.",
+      "source_line_start": 501,
+      "source_line_end": 516
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Data-Warehouse` is a structured data-engineering coursework repository that connects business reporting requirements to dimensional modeling, PostgreSQL, analytical SQL, materialized views, and repeatable data-quality checks.\n\nIts strongest contribution is completeness of the warehouse lifecycle: model, load, query, optimize, and verify.\n\n# Project Tags",
+      "source_line_start": 516,
+      "source_line_end": 524
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `individual-coursework`\n- `data-engineering-coursework`\n- `data-warehouse-lab`\n- `business-intelligence-foundations`",
+      "source_line_start": 524,
+      "source_line_end": 531
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Data Warehousing",
+      "normalized_title": "Data Warehousing",
+      "key": "data_warehousing",
+      "path": [
+        "Data Warehousing"
+      ],
+      "content": "- `data-warehouse`\n- `dimensional-modeling`\n- `star-schema`\n- `fact-table`\n- `dimension-table`\n- `fact-sales`\n- `foreign-keys`",
+      "source_line_start": 531,
+      "source_line_end": 541
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Database",
+      "normalized_title": "Database",
+      "key": "database",
+      "path": [
+        "Database"
+      ],
+      "content": "- `postgresql`\n- `pgadmin`\n- `sql`\n- `csv-import`",
+      "source_line_start": 541,
+      "source_line_end": 548
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Analytical SQL",
+      "normalized_title": "Analytical SQL",
+      "key": "analytical_sql",
+      "path": [
+        "Analytical SQL"
+      ],
+      "content": "- `grouping-sets`\n- `sql-rollup`\n- `sql-cube`\n- `materialized-view`\n- `aggregation`\n- `olap-style-querying`",
+      "source_line_start": 548,
+      "source_line_end": 557
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Data Quality",
+      "normalized_title": "Data Quality",
+      "key": "data_quality",
+      "path": [
+        "Data Quality"
+      ],
+      "content": "- `warehouse-data-quality`\n- `null-check`\n- `range-check`\n- `valid-value-check`\n- `duplicate-check`\n- `quality-report`\n- `psycopg2`",
+      "source_line_start": 557,
+      "source_line_end": 567
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Business Domain",
+      "normalized_title": "Business Domain",
+      "key": "business_domain",
+      "path": [
+        "Business Domain"
+      ],
+      "content": "- `retail-analytics`\n- `sales-analytics`\n- `business-reporting`",
+      "source_line_start": 567,
+      "source_line_end": 573
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-data-warehouse`\n- `earliest-observed-star-schema`\n- `earliest-observed-fact-table`\n- `earliest-observed-dimension-table`\n- `earliest-observed-grouping-sets`\n- `earliest-observed-sql-rollup`\n- `earliest-observed-sql-cube`\n- `earliest-observed-materialized-view`\n- `earliest-observed-warehouse-data-quality`",
+      "source_line_start": 573,
+      "source_line_end": 583
+    }
+  ],
+  "raw_analysis": "# Repository 066 — Data-Warehouse\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Data-Warehouse`\n- **Repository start date:** 2024-10-20\n- **Last meaningful update date:** 2024-10-20\n- **Latest meaningful commit:** `97942093d4d2f59d9103e9f6c6ee094e0691c37f`\n- **Primary technical field:** data warehousing, analytical SQL, and warehouse data quality\n- **Primary database:** PostgreSQL\n- **Project context:** individual data-engineering coursework\n- **Collaboration classification:** `individual-coursework`\n\n## Evidence Basis\n\nThe repository contains four substantial learning artifacts:\n\n- `Checking quality of warehouse.md`;\n- `Final Project.md`;\n- `final lap.md`;\n- `querying the data warehouse.md`.\n\nThe content covers:\n\n- dimensional warehouse modeling;\n- PostgreSQL schema creation;\n- fact and dimension tables;\n- CSV loading;\n- aggregation;\n- grouping sets;\n- rollups;\n- cubes;\n- materialized views;\n- data-quality checks.\n\nThe source has course/lab characteristics, so the corpus treats it as completed learning and exercised SQL rather than claiming original invention of the assignments or supplied testing framework.\n\n## Business Scenario\n\nThe final project uses a consumer-electronics retail scenario.\n\nThe target reporting questions include:\n\n- sales revenue by year and city;\n- sales revenue by month and city;\n- sales revenue by quarter and city;\n- sales by product category;\n- category performance by city;\n- category performance by store.\n\nThis is important because it gives the warehouse a decision-support purpose rather than treating dimensional schemas as abstract database exercises.\n\n## Warehouse Design\n\nThe repository explicitly separates descriptive dimensions from measurable events.\n\n## Date Dimension\n\nAn initial design includes:\n\n- `dateid`;\n- year;\n- month;\n- month name;\n- day;\n- weekday;\n- weekday name.\n\nA later load schema expands that to include:\n\n- quarter;\n- quarter name.\n\n## Product Dimension\n\nThe product dimension separates product identity/type from transaction facts.\n\n## Customer-Segment Dimension\n\nThe customer-segment dimension provides a categorical axis for slicing sales.\n\nIn the loaded version it maps segment identity to city.\n\n## Sales Fact Table\n\nThe fact table centralizes:\n\n- sales identity;\n- date identity;\n- product identity;\n- segment identity;\n- price per unit;\n- quantity sold.\n\nForeign keys connect facts to dimensions.\n\n## Star-Schema Shape\n\nThe resulting model is conceptually:\n\n```text\n           DimDate\n              |\n              |\nDimProduct — FactSales — DimCustomerSegment\n```\n\n`FactSales` contains measures and foreign keys.\n\nDimension tables provide descriptive context.\n\nThis is the core dimensional-modeling pattern of the repository.\n\n## PostgreSQL Schema Work\n\nThe repository includes SQL such as:\n\n```sql\nCREATE TABLE DimDate (\n    Dateid INT PRIMARY KEY,\n    date DATE NOT NULL,\n    Year INT NOT NULL,\n    Quarter INT NOT NULL,\n    QuarterName VARCHAR(2) NOT NULL,\n    Month INT NOT NULL,\n    Monthname VARCHAR(255) NOT NULL,\n    Day INT NOT NULL,\n    Weekday INT NOT NULL,\n    WeekdayName VARCHAR(255) NOT NULL\n);\n```\n\nand:\n\n```sql\nCREATE TABLE FactSales (\n    Salesid VARCHAR(255) PRIMARY KEY,\n    Dateid INT NOT NULL,\n    Productid INT NOT NULL,\n    Segmentid INT NOT NULL,\n    Price_PerUnit DECIMAL(10, 2) NOT NULL,\n    QuantitySold INT NOT NULL,\n    FOREIGN KEY (Dateid) REFERENCES DimDate(Dateid),\n    FOREIGN KEY (Productid) REFERENCES DimProduct(Productid),\n    FOREIGN KEY (Segmentid) REFERENCES DimCustomerSegment(Segmentid)\n);\n```\n\nThis demonstrates relational enforcement inside a dimensional model.\n\n## Data Loading\n\nThe project loads dimension and fact data from CSV files through pgAdmin.\n\nThe workflow is:\n\n```text\ndesign tables\n  ↓\ncreate PostgreSQL schema\n  ↓\nimport dimension CSVs\n  ↓\nimport fact CSV\n  ↓\ninspect sample rows\n  ↓\nrun analytical queries\n```\n\n## Analytical SQL\n\nThe repository moves beyond ordinary `GROUP BY`.\n\n## Grouping Sets\n\nA grouping-set query calculates totals across different dimensions from one statement.\n\nThis supports multiple aggregation levels without writing separate queries for every slice.\n\n## ROLLUP\n\n`ROLLUP` is used for hierarchical subtotal/grand-total output, such as:\n\n```text\nyear\n  ↓\ncity\n  ↓\nproduct\n```\n\n## CUBE\n\n`CUBE` is used to generate combinations across dimensions.\n\nThe important concept is multidimensional aggregation rather than one fixed grouping.\n\n## Materialized Views\n\nThe repository creates materialized views to persist precomputed analytical results.\n\nExamples include:\n\n```text\ncountrystats\n```\n\nand:\n\n```text\nmax_sales\n```\n\nThe repository also practices:\n\n```sql\nREFRESH MATERIALIZED VIEW countrystats;\n```\n\nThis introduces the tradeoff between query-time computation and stored/precomputed analytical data.\n\n## Warehouse Querying Workflow\n\nThe warehouse-querying artifact includes:\n\n- joins from facts to dimensions;\n- aggregation of billed/sales amounts;\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- materialized views;\n- materialized-view refresh.\n\nThis is a recognizable OLAP-style analytical SQL workflow.\n\n## Data Quality\n\nA separate artifact focuses specifically on warehouse data quality.\n\nThat separation matters: building the warehouse is not treated as the final step.\n\nThe repository also checks whether the data satisfies expected properties.\n\n## Data-Quality Framework\n\nThe lab downloads a supplied Python framework and support files.\n\nDependencies include:\n\n- `psycopg2`;\n- Pandas;\n- `tabulate`.\n\nThe learner then configures and runs specific checks.\n\nThe framework itself is instructional/supplied and should not be claimed as original infrastructure.\n\n## Null Checks\n\nA test is created to ensure a target column does not contain null values.\n\nExample target:\n\n```text\nDimMonth.year\n```\n\n## Range Checks\n\nA min/max test validates values such as quarter:\n\n```text\n1 <= quarter <= 4\n```\n\n## Valid-Value Checks\n\nThe repository validates categorical membership, for example:\n\n```text\nQ1\nQ2\nQ3\nQ4\n```\n\n## Duplicate Checks\n\nA uniqueness-oriented data-quality test checks duplicate customer identifiers.\n\n## Data-Quality System Shape\n\n```text\nPostgreSQL warehouse\n  ↓\nPython database connector\n  ↓\ntest definitions\n  ├─ null checks\n  ├─ min/max checks\n  ├─ valid-value checks\n  └─ duplicate checks\n  ↓\ngenerated quality report\n```\n\n## Technical Stack\n\n### Database\n\n- PostgreSQL\n- pgAdmin\n- SQL\n\n### Data Warehousing\n\n- star schema\n- fact tables\n- dimension tables\n- foreign keys\n- dimensional modeling\n\n### Analytical SQL\n\n- joins\n- aggregation\n- grouping sets\n- rollup\n- cube\n- materialized views\n\n### Data Quality\n\n- Python\n- psycopg2\n- Pandas\n- tabulate\n- rule-based data checks\n\n### Data Format\n\n- CSV\n\n## Testing and Verification\n\nThe data-quality portion is itself a form of verification.\n\nThe repository practices explicit checks for:\n\n- completeness;\n- ranges;\n- allowed categories;\n- duplicates.\n\nThe course framework then generates a report of test statuses.\n\nFor the schema/query work, validation is exercise-driven through SQL execution and sample-result inspection.\n\n## Engineering Discipline\n\n### Separation of Fact and Dimension Concerns\n\nMeasures are separated from descriptive entities.\n\n### Referential Integrity\n\nFact rows reference dimensions with foreign keys.\n\n### Query Optimization Awareness\n\nMaterialized views are introduced for reusable analytical outputs.\n\n### Data Quality as a Pipeline Concern\n\nThe repository explicitly treats quality checking as a repeatable process, not an informal visual inspection.\n\n### Multiple Aggregation Levels\n\nThe analytical model supports summary views at different dimensional grains.\n\n## Product Engineering Context\n\nThe retail scenario makes the warehouse useful for business intelligence.\n\nStakeholders could ask questions such as:\n\n- which cities generate the most revenue;\n- how categories perform over time;\n- how sales change quarterly;\n- where product performance differs.\n\nThe repository therefore connects SQL/data modeling to business reporting.\n\n## Scale and Complexity\n\nNo production row-count or runtime scale is demonstrated.\n\nThe conceptual scale is broader than a transactional database lab because the system contains:\n\n- multiple dimension tables;\n- a central fact table;\n- bulk data loading;\n- analytical joins;\n- multidimensional aggregations;\n- precomputed views;\n- automated quality rules.\n\n## Skills Demonstrated\n\n### Data Modeling\n\n- dimensional modeling;\n- star schema;\n- facts;\n- dimensions;\n- surrogate/identifier keys;\n- foreign-key relationships.\n\n### PostgreSQL\n\n- DDL;\n- primary keys;\n- foreign keys;\n- imports;\n- analytical queries;\n- materialized views.\n\n### Analytical SQL\n\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- aggregate functions;\n- multidimensional reporting.\n\n### Data Quality\n\n- completeness checks;\n- valid-range checks;\n- valid-value checks;\n- duplicate checks;\n- report generation.\n\n## Capability Developed\n\nThis repository develops the ability to design data for analysis rather than only for transactional correctness.\n\nEarlier relational repositories focused on normalized structures and operational database use.\n\nHere the model is deliberately denormalized around analytical dimensions and measures.\n\nThe second major lesson is that a warehouse needs explicit quality gates if analytical results are to be trustworthy.\n\n## Portfolio Evolution Context\n\nRepository 065 introduces data movement through Airflow and Kafka.\n\nRepository 066 provides a destination architecture for analytical data:\n\n```text\ningestion / orchestration\n  ↓\nwarehouse\n  ↓\nquality checks\n  ↓\nmultidimensional analysis\n```\n\nWithin the processed chronology, this is the earliest strong evidence of:\n\n- data-warehouse design;\n- star schemas;\n- fact and dimension tables;\n- `GROUPING SETS`;\n- `ROLLUP`;\n- `CUBE`;\n- materialized views;\n- warehouse-specific data-quality checks.\n\n## Historical Significance\n\nThis repository completes a concentrated October 2024 data-engineering arc.\n\nThe portfolio moves from:\n\n- shell processing;\n- databases;\n- ETL orchestration;\n- streaming;\n\ninto:\n\n- dimensional storage;\n- analytical querying;\n- data quality.\n\nThat is a meaningful broadening from coding exercises to a simplified data-platform lifecycle.\n\n## Authorship and Evidence Boundary\n\nThe lab text and testing framework are instructional.\n\nThe corpus attributes:\n\n- executed/practiced schema design;\n- SQL exercises;\n- configured quality tests;\n- warehouse concepts;\n\nat coursework scope.\n\nIt does not claim authorship of the supplied Python micro-framework or source datasets.\n\n## Overall Repository Narrative\n\n`Data-Warehouse` is a structured data-engineering coursework repository that connects business reporting requirements to dimensional modeling, PostgreSQL, analytical SQL, materialized views, and repeatable data-quality checks.\n\nIts strongest contribution is completeness of the warehouse lifecycle: model, load, query, optimize, and verify.\n\n# Project Tags\n\n## Project Type\n\n- `individual-coursework`\n- `data-engineering-coursework`\n- `data-warehouse-lab`\n- `business-intelligence-foundations`\n\n## Data Warehousing\n\n- `data-warehouse`\n- `dimensional-modeling`\n- `star-schema`\n- `fact-table`\n- `dimension-table`\n- `fact-sales`\n- `foreign-keys`\n\n## Database\n\n- `postgresql`\n- `pgadmin`\n- `sql`\n- `csv-import`\n\n## Analytical SQL\n\n- `grouping-sets`\n- `sql-rollup`\n- `sql-cube`\n- `materialized-view`\n- `aggregation`\n- `olap-style-querying`\n\n## Data Quality\n\n- `warehouse-data-quality`\n- `null-check`\n- `range-check`\n- `valid-value-check`\n- `duplicate-check`\n- `quality-report`\n- `psycopg2`\n\n## Business Domain\n\n- `retail-analytics`\n- `sales-analytics`\n- `business-reporting`\n\n## Portfolio Significance\n\n- `earliest-observed-data-warehouse`\n- `earliest-observed-star-schema`\n- `earliest-observed-fact-table`\n- `earliest-observed-dimension-table`\n- `earliest-observed-grouping-sets`\n- `earliest-observed-sql-rollup`\n- `earliest-observed-sql-cube`\n- `earliest-observed-materialized-view`\n- `earliest-observed-warehouse-data-quality`"
+}

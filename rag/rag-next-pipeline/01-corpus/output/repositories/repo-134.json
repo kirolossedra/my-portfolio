@@ -1,0 +1,935 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 134,
+  "repository_total": 134,
+  "repository_name": "Thesis",
+  "header_title": "Thesis",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-134-Thesis/README.md",
+    "line_start": 1,
+    "line_end": 760,
+    "sha256": "43b29a0119b0b5888c5177ec9edcfc0b18d55ec6f3f89a18b86e168bbbd083a1"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "thesis-data-pipeline",
+    "wireless-research",
+    "mobile-robot-networking",
+    "experimental-data-processing",
+    "python",
+    "iperf3-log-processing",
+    "hping-latency-processing",
+    "motion-log-processing",
+    "exact-timestamp-clipping",
+    "millisecond-precision",
+    "trajectory-normalization",
+    "elapsed-time-normalization",
+    "forward-backward-analysis",
+    "special-case-preprocessing",
+    "all-forward-trajectory",
+    "throughput-analysis",
+    "latency-analysis",
+    "p50-latency",
+    "p99-latency",
+    "tail-latency",
+    "run-weighted-aggregation",
+    "per-second-binning",
+    "multi-hz-measurements",
+    "midnight-timestamp-unwrapping",
+    "wifi-mcs",
+    "rssi",
+    "link-adaptation-analysis",
+    "repeated-run-statistics",
+    "mean-standard-deviation",
+    "min-max-statistics",
+    "csv-export",
+    "numpy",
+    "matplotlib",
+    "camera-ready-plots",
+    "grayscale-publication-plots",
+    "png-export",
+    "pdf-export",
+    "research-checklists",
+    "raw-derived-data-separation",
+    "stale-output-cleanup",
+    "reproducible-research",
+    "publication-figure-generation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Thesis`\n- **Repository index:** 134\n- **Start date:** 2026-06-15\n- **Latest meaningful update:** 2026-07-04\n- **Latest meaningful commit:** `1eda615dda92800f00c037594bf0e0e768d1a28c` — `Create plot-throughput-smartlegend.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** thesis-specific wireless/mobile-robot measurement extraction, motion clipping, direction assignment, aggregation, statistics, and publication plotting"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s045"
+      ],
+      "titles": [
+        "Direction as Experimental Metadata"
+      ],
+      "text": "## Direction as Experimental Metadata\nForward and backward are not arbitrary filenames.\n\nThey represent trajectory direction and can correspond to different RF/environmental geometry.\n\nThe standard pipeline therefore preserves direction as a first-class grouping variable."
+    },
+    "maturity": {
+      "section_ids": [
+        "s062"
+      ],
+      "titles": [
+        "Maturity Assessment"
+      ],
+      "text": "## Maturity Assessment\nThis repository is a **mature research-analysis script suite for a specific thesis data pipeline**.\n\nIts maturity is methodological rather than product/deployment oriented.\n\nIt has:\n\n- consistent directory contracts;\n- families of extractors and plotters;\n- special-case handling;\n- explicit statistical assumptions;\n- multiple output formats;\n- repeated-run aggregation;\n- publication-focused refinement.\n\nIt should not be described as a production SaaS application or general-purpose analytics library."
+    },
+    "documentation": {
+      "section_ids": [
+        "s047"
+      ],
+      "titles": [
+        "Reproducibility Checklists"
+      ],
+      "text": "## Reproducibility Checklists\nSeveral plotters generate checklist text alongside figures and CSVs.\n\nThis gives a human-readable audit surface for what inputs/runs were included and what the analysis produced.\n\nThe checklist is part of the research workflow rather than a UI feature."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Thesis`\n- **Repository index:** 134\n- **Start date:** 2026-06-15\n- **Latest meaningful update:** 2026-07-04\n- **Latest meaningful commit:** `1eda615dda92800f00c037594bf0e0e768d1a28c` — `Create plot-throughput-smartlegend.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** thesis-specific wireless/mobile-robot measurement extraction, motion clipping, direction assignment, aggregation, statistics, and publication plotting",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`Thesis` is a dedicated processing repository for wireless-performance experiments involving a moving robot.\n\nIt turns raw experiment logs into repeatable thesis-analysis artifacts.\n\nThe scripts coordinate three different kinds of time-dependent evidence:\n\n- robot motion intervals;\n- network performance measurements such as throughput and latency;\n- wireless-link measurements such as MCS and RSSI.\n\nThe repository is not the thesis manuscript itself.\n\nIt is the data-processing and plotting layer that prepares experimental results for interpretation and publication.",
+      "source_line_start": 14,
+      "source_line_end": 30
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Relationship to the Wider Research",
+      "normalized_title": "Relationship to the Wider Research",
+      "key": "relationship_to_the_wider_research",
+      "path": [
+        "Relationship to the Wider Research"
+      ],
+      "content": "The repository sits downstream of experiment acquisition.\n\nA simplified research pipeline is:\n\n```text\nwireless/mobile-robot experiment\n        |\n        +--> motion logs\n        +--> iperf throughput logs\n        +--> hping/SYN latency logs\n        +--> Wi-Fi MCS/RSSI logs\n        |\n        v\nexact temporal clipping\n        |\n        v\ndirection assignment / special trajectory handling\n        |\n        v\nprocessed per-run files\n        |\n        v\nper-run + aggregate statistics\n        |\n        v\nPNG / PDF / CSV / checklist outputs\n        |\n        v\nthesis figures and tables\n```\n\nThis separation is important because the repository focuses on analysis reproducibility rather than hardware control.",
+      "source_line_start": 30,
+      "source_line_end": 65
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The substantive implementation lives under `scripts/`.\n\nObserved files include:\n\n```text\nscripts/\n├── README.md\n├── extract-latency.py\n├── extract-latency-allfwd.py\n├── extract-mcs.py\n├── extract-mcs-allfwd.py\n├── extract-throughput.py\n├── extract-throughput-51.py\n├── extract-throughput-allfwd\n├── extract-throughput-notnormalized.py\n├── extract-wifi-mcs-rssi-notnormalized.py\n├── mcs-plot-x.py\n├── plot-latency-p50-only.py\n├── plot-latency-p50-only-allfwd.py\n├── plot-latency-p50-p99.py\n├── plot-mcs.py\n├── plot-throughput-allfwd\n├── plot-throughput-smartlegend.py\n└── plot-throughput.py\n```\n\nThe scripts form families rather than unrelated one-off utilities.",
+      "source_line_start": 65,
+      "source_line_end": 95
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Directory Contract",
+      "normalized_title": "Directory Contract",
+      "key": "directory_contract",
+      "path": [
+        "Directory Contract"
+      ],
+      "content": "The processing scripts assume an experiment directory structure with raw inputs such as:\n\n```text\nPerformance/\nWireless Link/\nmotion logs/\n```\n\nGenerated artifacts are written under:\n\n```text\nprocessed/\n```\n\nThis establishes a reproducible raw-vs-derived data boundary.",
+      "source_line_start": 95,
+      "source_line_end": 113
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Raw / Derived Separation",
+      "normalized_title": "Raw / Derived Separation",
+      "key": "raw_derived_separation",
+      "path": [
+        "Raw / Derived Separation"
+      ],
+      "content": "The scripts do not overwrite the original experiment sources as their normal analysis path.\n\nThey create generated processed directories for clipped and aggregated artifacts.\n\nThis is important for research reproducibility because raw logs remain distinguishable from transformed outputs.",
+      "source_line_start": 113,
+      "source_line_end": 121
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Motion Logs as the Temporal Authority",
+      "normalized_title": "Motion Logs as the Temporal Authority",
+      "key": "motion_logs_as_the_temporal_authority",
+      "path": [
+        "Motion Logs as the Temporal Authority"
+      ],
+      "content": "A major design choice is that robot motion logs define the interval of interest.\n\nNetwork logs are clipped against exact motion start/stop timestamps.\n\nThe motion trace therefore acts as an experimental ground-truth timeline for deciding when the robot is actually traversing the trajectory.",
+      "source_line_start": 121,
+      "source_line_end": 129
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Exact Motion Timestamp Handling",
+      "normalized_title": "Exact Motion Timestamp Handling",
+      "key": "exact_motion_timestamp_handling",
+      "path": [
+        "Exact Motion Timestamp Handling"
+      ],
+      "content": "The scripts explicitly preserve available millisecond precision in motion timestamps.\n\nThe throughput extractor documents:\n\n- no flooring;\n- no ceiling;\n- no timestamp approximation.\n\nThis is a strong methodological choice because coarse clipping can move samples across motion boundaries and distort short transient behavior.",
+      "source_line_start": 129,
+      "source_line_end": 141
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Throughput Processing Family",
+      "normalized_title": "Throughput Processing Family",
+      "key": "throughput_processing_family",
+      "path": [
+        "Throughput Processing Family"
+      ],
+      "content": "The throughput pipeline has multiple variants for different experimental conditions.\n\nCore scripts include:\n\n- normalized forward/back extraction;\n- non-normalized extraction;\n- all-forward special-case extraction;\n- special-duration variants;\n- aggregate plotting;\n- smart-legend plotting.",
+      "source_line_start": 141,
+      "source_line_end": 154
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Standard Throughput Extraction",
+      "normalized_title": "Standard Throughput Extraction",
+      "key": "standard_throughput_extraction",
+      "path": [
+        "Standard Throughput Extraction"
+      ],
+      "content": "`extract-throughput.py` scans the performance data and motion logs, parses motion events, sorts those events globally by exact start time, assigns direction, and clips timestamped iperf lines into motion-specific output files.\n\nThe documented direction rule is:\n\n```text\nevent 1 -> forward\nevent 2 -> backward\nevent 3 -> forward\nevent 4 -> backward\n...\n```\n\nDirection is assigned after global timestamp sorting.\n\nThis avoids relying on file enumeration order as a proxy for experimental order.",
+      "source_line_start": 154,
+      "source_line_end": 172
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Global Direction Assignment",
+      "normalized_title": "Global Direction Assignment",
+      "key": "global_direction_assignment",
+      "path": [
+        "Global Direction Assignment"
+      ],
+      "content": "The alternating forward/backward rule is based on the globally ordered motion-event sequence.\n\nThis matters when motion events are spread across multiple files.\n\nThe logic first gathers all events, sorts them, then applies odd/even direction.\n\nThat is more defensible than resetting the direction count inside every log file.",
+      "source_line_start": 172,
+      "source_line_end": 182
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Throughput Log Parsing",
+      "normalized_title": "Throughput Log Parsing",
+      "key": "throughput_log_parsing",
+      "path": [
+        "Throughput Log Parsing"
+      ],
+      "content": "Throughput input is timestamped iperf output.\n\nThe parser extracts the wall-clock prefix and interval fields from each line.\n\nThe script keeps raw lines associated with parsed timestamps so generated clips preserve the original measurement representation while rewriting interval columns only when normalization is requested.",
+      "source_line_start": 182,
+      "source_line_end": 190
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Throughput Interval Normalization",
+      "normalized_title": "Throughput Interval Normalization",
+      "key": "throughput_interval_normalization",
+      "path": [
+        "Throughput Interval Normalization"
+      ],
+      "content": "The standard extractor can normalize each clipped run so the first relevant iperf interval begins from a local zero-time origin.\n\nConceptually:\n\n```text\nabsolute experiment time\n        |\n        v\nmotion clip\n        |\n        v\nlocal elapsed time\n```\n\nThis makes multiple runs comparable on the same trajectory-relative x-axis.",
+      "source_line_start": 190,
+      "source_line_end": 208
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Fixed Analysis Horizon",
+      "normalized_title": "Fixed Analysis Horizon",
+      "key": "fixed_analysis_horizon",
+      "path": [
+        "Fixed Analysis Horizon"
+      ],
+      "content": "The standard throughput extractor retains normalized intervals whose start is at or before 57 seconds.\n\nThat creates a common motion-duration analysis window.\n\nThe script's comments explicitly distinguish the retained `57.00-58.00` interval from later intervals that fall outside the configured start-time threshold.",
+      "source_line_start": 208,
+      "source_line_end": 216
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Why Local Time Matters",
+      "normalized_title": "Why Local Time Matters",
+      "key": "why_local_time_matters",
+      "path": [
+        "Why Local Time Matters"
+      ],
+      "content": "Different experiment runs begin at different wall-clock times.\n\nNormalizing to motion-relative elapsed time permits cross-run aggregation without aligning unrelated clock timestamps.\n\nThe raw source time still determines clipping; local time is introduced only after the correct motion interval is identified.",
+      "source_line_start": 216,
+      "source_line_end": 224
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Non-Normalized Throughput Variant",
+      "normalized_title": "Non-Normalized Throughput Variant",
+      "key": "non_normalized_throughput_variant",
+      "path": [
+        "Non-Normalized Throughput Variant"
+      ],
+      "content": "`extract-throughput-notnormalized.py` preserves original timing rather than rewriting every run to a zero origin.\n\nThis variant is useful when the analysis needs to retain direct relationship to the original experiment clock or iperf interval numbering.\n\nThe existence of both normalized and non-normalized paths shows the preprocessing choice is explicit rather than accidental.",
+      "source_line_start": 224,
+      "source_line_end": 232
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "All-Forward Throughput Variant",
+      "normalized_title": "All-Forward Throughput Variant",
+      "key": "all_forward_throughput_variant",
+      "path": [
+        "All-Forward Throughput Variant"
+      ],
+      "content": "`extract-throughput-allfwd` exists for a trajectory/data condition where the standard alternating direction assumption is not correct.\n\nIn this special case, motion events are interpreted as forward instead of alternating forward/backward.\n\nThe script family therefore encodes experiment-specific exceptions rather than forcing every data set through one unsuitable assumption.",
+      "source_line_start": 232,
+      "source_line_end": 240
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Special Trajectory Handling",
+      "normalized_title": "Special Trajectory Handling",
+      "key": "special_trajectory_handling",
+      "path": [
+        "Special Trajectory Handling"
+      ],
+      "content": "The `allfwd` scripts are documented as addressing a special Trajectory 1 downlink situation.\n\nImportant behavior includes:\n\n- all valid motion events treated as forward;\n- exact timestamps retained;\n- no odd/even direction split;\n- deterministic input expectations;\n- local normalized time where applicable.\n\nThis is evidence of adapting the pipeline to an observed experimental protocol issue instead of silently relabeling the data.",
+      "source_line_start": 240,
+      "source_line_end": 254
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Deterministic Motion-Log Selection",
+      "normalized_title": "Deterministic Motion-Log Selection",
+      "key": "deterministic_motion_log_selection",
+      "path": [
+        "Deterministic Motion-Log Selection"
+      ],
+      "content": "The special all-forward workflow expects a prepared motion-log input and is designed to stop rather than ambiguously select from multiple possible prepared logs.\n\nThat reduces accidental preprocessing against the wrong motion reference.",
+      "source_line_start": 254,
+      "source_line_end": 260
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Old Output Cleanup",
+      "normalized_title": "Old Output Cleanup",
+      "key": "old_output_cleanup",
+      "path": [
+        "Old Output Cleanup"
+      ],
+      "content": "Several extractors intentionally clear old generated output before writing new derived files.\n\nThis prevents stale run artifacts from being mixed into a new analysis.\n\nFor research scripts, stale generated files are a real reproducibility risk because aggregate plotters may otherwise consume results that no longer correspond to the current raw inputs.",
+      "source_line_start": 260,
+      "source_line_end": 268
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Throughput Aggregation",
+      "normalized_title": "Throughput Aggregation",
+      "key": "throughput_aggregation",
+      "path": [
+        "Throughput Aggregation"
+      ],
+      "content": "`plot-throughput.py` and related plotters consume processed throughput runs rather than reparsing raw experiment directories each time.\n\nThe plotting layer computes summary data across multiple runs and writes both visual and machine-readable outputs.",
+      "source_line_start": 268,
+      "source_line_end": 274
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Aggregate Time Axis",
+      "normalized_title": "Aggregate Time Axis",
+      "key": "aggregate_time_axis",
+      "path": [
+        "Aggregate Time Axis"
+      ],
+      "content": "The plotter aligns runs onto a common elapsed-time axis.\n\nThis allows statistics such as mean and variability to be calculated at the same trajectory-relative time across repetitions.",
+      "source_line_start": 274,
+      "source_line_end": 280
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Throughput Summary Statistics",
+      "normalized_title": "Throughput Summary Statistics",
+      "key": "throughput_summary_statistics",
+      "path": [
+        "Throughput Summary Statistics"
+      ],
+      "content": "The throughput plotting family includes outputs for:\n\n- per-time aggregate behavior;\n- per-run statistics;\n- mean;\n- standard deviation;\n- minimum;\n- maximum;\n- sample count.\n\nThe scripts therefore preserve both central tendency and run-to-run variability.",
+      "source_line_start": 280,
+      "source_line_end": 294
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Camera-Ready Throughput Plots",
+      "normalized_title": "Camera-Ready Throughput Plots",
+      "key": "camera_ready_throughput_plots",
+      "path": [
+        "Camera-Ready Throughput Plots"
+      ],
+      "content": "The specialized aggregate plotting code is designed to produce thesis-ready figures rather than only interactive exploratory graphics.\n\nObserved outputs include:\n\n- PNG;\n- PDF;\n- CSV;\n- checklist/report text.\n\nThe plotting style includes grayscale-oriented publication output in relevant scripts.",
+      "source_line_start": 294,
+      "source_line_end": 307
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Smart Legend Variant",
+      "normalized_title": "Smart Legend Variant",
+      "key": "smart_legend_variant",
+      "path": [
+        "Smart Legend Variant"
+      ],
+      "content": "The latest commit adds `plot-throughput-smartlegend.py`.\n\nThat shows continued iteration on publication presentation after the main processing pipeline existed.\n\nThe latest repository update is therefore a figure/presentation refinement, not a new acquisition protocol.",
+      "source_line_start": 307,
+      "source_line_end": 315
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Latency Processing Family",
+      "normalized_title": "Latency Processing Family",
+      "key": "latency_processing_family",
+      "path": [
+        "Latency Processing Family"
+      ],
+      "content": "Latency processing mirrors the throughput architecture but accounts for the fact that hping produces multiple RTT observations per second.\n\nCore scripts include:\n\n- standard exact-motion clipping;\n- all-forward clipping;\n- P50-only plotting;\n- P50-only all-forward plotting;\n- joint P50/P99 plotting.",
+      "source_line_start": 315,
+      "source_line_end": 327
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Latency Acquisition Format",
+      "normalized_title": "Latency Acquisition Format",
+      "key": "latency_acquisition_format",
+      "path": [
+        "Latency Acquisition Format"
+      ],
+      "content": "The latency scripts parse timestamped SYN/hping response lines.\n\nThe analysis specifically uses response lines containing an RTT value.\n\nHeader/control lines are not treated as latency observations.",
+      "source_line_start": 327,
+      "source_line_end": 335
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Multiple Samples per Second",
+      "normalized_title": "Multiple Samples per Second",
+      "key": "multiple_samples_per_second",
+      "path": [
+        "Multiple Samples per Second"
+      ],
+      "content": "Unlike 1 Hz-style throughput summaries, latency can have multiple RTT samples inside each elapsed second.\n\nThe plotters explicitly account for this instead of pretending there is one latency datum per second.\n\nThis is one of the strongest statistical-design details in the repository.",
+      "source_line_start": 335,
+      "source_line_end": 343
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Per-Run Per-Second Reduction",
+      "normalized_title": "Per-Run Per-Second Reduction",
+      "key": "per_run_per_second_reduction",
+      "path": [
+        "Per-Run Per-Second Reduction"
+      ],
+      "content": "`plot-latency-p50-p99.py` first groups a run's raw RTT samples into one-second elapsed-time bins.\n\nWithin each run/bin it computes percentile summaries.\n\nThe pipeline therefore performs:\n\n```text\nraw multi-Hz RTT samples\n        |\n        v\none-second bins inside each run\n        |\n        +--> per-run P50\n        +--> per-run P99\n        |\n        v\ncross-run aggregation\n```",
+      "source_line_start": 343,
+      "source_line_end": 364
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Run-Weighted Aggregation",
+      "normalized_title": "Run-Weighted Aggregation",
+      "key": "run_weighted_aggregation",
+      "path": [
+        "Run-Weighted Aggregation"
+      ],
+      "content": "The latency plotter explicitly uses a run-weighted design.\n\nEach run contributes one P50 and one P99 value for a time bin rather than allowing a run with more hping replies to dominate the aggregate statistic.\n\nThis is a meaningful statistical choice.\n\nIt preserves the experimental run as the unit of repetition.",
+      "source_line_start": 364,
+      "source_line_end": 374
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Latency P50",
+      "normalized_title": "Latency P50",
+      "key": "latency_p50",
+      "path": [
+        "Latency P50"
+      ],
+      "content": "P50 represents median latency behavior inside the relevant sample set.\n\nThe repository uses it as a robust central latency statistic for time-dependent plots.",
+      "source_line_start": 374,
+      "source_line_end": 380
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Latency P99",
+      "normalized_title": "Latency P99",
+      "key": "latency_p99",
+      "path": [
+        "Latency P99"
+      ],
+      "content": "P99 is retained to capture tail latency.\n\nThis recognizes that wireless/network performance cannot be characterized adequately by a mean or median alone when rare spikes matter.",
+      "source_line_start": 380,
+      "source_line_end": 386
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "P50-Only Variants",
+      "normalized_title": "P50-Only Variants",
+      "key": "p50_only_variants",
+      "path": [
+        "P50-Only Variants"
+      ],
+      "content": "Some plotters present P50 as the primary figure while retaining P99 diagnostically in CSV/checklist outputs.\n\nThis supports a publication choice to simplify the visual while preserving tail-latency evidence for analysis.",
+      "source_line_start": 386,
+      "source_line_end": 392
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "P50/P99 Combined Variant",
+      "normalized_title": "P50/P99 Combined Variant",
+      "key": "p50_p99_combined_variant",
+      "path": [
+        "P50/P99 Combined Variant"
+      ],
+      "content": "`plot-latency-p50-p99.py` generates both central and tail latency curves.\n\nThis is useful when the thesis figure needs to communicate typical and high-percentile behavior together.",
+      "source_line_start": 392,
+      "source_line_end": 398
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Midnight Crossing",
+      "normalized_title": "Midnight Crossing",
+      "key": "midnight_crossing",
+      "path": [
+        "Midnight Crossing"
+      ],
+      "content": "The latency pipeline includes logic to unwrap seconds-of-day across midnight.\n\nIf a sequence wraps from late-day time to early-day time, the parser adds a day offset so elapsed time remains monotonic.\n\nThis is a defensive detail that prevents clock-of-day formatting from creating a negative run duration.",
+      "source_line_start": 398,
+      "source_line_end": 406
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "hping Timestamp Variants",
+      "normalized_title": "hping Timestamp Variants",
+      "key": "hping_timestamp_variants",
+      "path": [
+        "hping Timestamp Variants"
+      ],
+      "content": "The parser accepts more than one bracket timestamp representation.\n\nIt handles a logging format that repeats the seconds field as well as the conventional fractional-second form.\n\nThe repeated field is normalized rather than treated as an independent time component.",
+      "source_line_start": 406,
+      "source_line_end": 414
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Fixed Latency Time Axis",
+      "normalized_title": "Fixed Latency Time Axis",
+      "key": "fixed_latency_time_axis",
+      "path": [
+        "Fixed Latency Time Axis"
+      ],
+      "content": "The latency plotting configuration can use a fixed 0–57 second time axis.\n\nThis keeps figures comparable even when individual runs have missing samples in some seconds.",
+      "source_line_start": 414,
+      "source_line_end": 420
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Pooled Diagnostics",
+      "normalized_title": "Pooled Diagnostics",
+      "key": "pooled_diagnostics",
+      "path": [
+        "Pooled Diagnostics"
+      ],
+      "content": "The latency code can also write pooled raw-sample diagnostics.\n\nThese are kept separate from the run-weighted plot statistics.\n\nThis is methodologically useful because it permits inspection of raw-sample behavior without changing the primary experimental weighting rule.",
+      "source_line_start": 420,
+      "source_line_end": 428
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Latency Output Artifacts",
+      "normalized_title": "Latency Output Artifacts",
+      "key": "latency_output_artifacts",
+      "path": [
+        "Latency Output Artifacts"
+      ],
+      "content": "The latency analysis produces multiple evidence surfaces, including:\n\n- PNG plots;\n- PDF plots;\n- time-summary CSV;\n- per-run summary CSV;\n- per-run/per-second statistics CSV;\n- checklist text.",
+      "source_line_start": 428,
+      "source_line_end": 439
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "MCS / RSSI Processing",
+      "normalized_title": "MCS / RSSI Processing",
+      "key": "mcs_rssi_processing",
+      "path": [
+        "MCS / RSSI Processing"
+      ],
+      "content": "The repository also processes Wi-Fi link-layer metrics.\n\nScripts include extraction and plotting paths for MCS and RSSI.\n\nThis links application/network performance to radio/link adaptation behavior.",
+      "source_line_start": 439,
+      "source_line_end": 447
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Wi-Fi MCS/RSSI Extraction",
+      "normalized_title": "Wi-Fi MCS/RSSI Extraction",
+      "key": "wi_fi_mcs_rssi_extraction",
+      "path": [
+        "Wi-Fi MCS/RSSI Extraction"
+      ],
+      "content": "`extract-wifi-mcs-rssi-notnormalized.py` clips Wi-Fi link logs against exact motion timestamps while preserving original timing.\n\nThe script uses the same overall experimental discipline:\n\n- identify exact motion windows;\n- preserve measurement precision;\n- assign direction;\n- generate derived files separately from raw logs.",
+      "source_line_start": 447,
+      "source_line_end": 458
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "MCS Aggregation",
+      "normalized_title": "MCS Aggregation",
+      "key": "mcs_aggregation",
+      "path": [
+        "MCS Aggregation"
+      ],
+      "content": "`plot-mcs.py` reduces higher-rate MCS samples into one-second summaries before cross-run plotting.\n\nThe documented statistic is a per-second P50-style summary.\n\nThis creates a time scale comparable to the normalized trajectory-analysis figures.",
+      "source_line_start": 458,
+      "source_line_end": 466
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Why MCS Matters",
+      "normalized_title": "Why MCS Matters",
+      "key": "why_mcs_matters",
+      "path": [
+        "Why MCS Matters"
+      ],
+      "content": "MCS is not just another throughput field.\n\nIt is a link-adaptation state that can help explain why throughput changes as the robot moves through different channel conditions.\n\nIncluding MCS alongside RSSI and performance metrics gives the thesis a multi-layer view of wireless behavior.",
+      "source_line_start": 466,
+      "source_line_end": 474
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Exactness Versus Normalization",
+      "normalized_title": "Exactness Versus Normalization",
+      "key": "exactness_versus_normalization",
+      "path": [
+        "Exactness Versus Normalization"
+      ],
+      "content": "The repository repeatedly separates two different concerns:\n\n1. **exact raw temporal alignment** for deciding which samples belong to the motion interval;\n2. **normalized elapsed time** for comparing runs after clipping.\n\nThis is a strong research-processing design.\n\nNormalization does not replace exact clipping.\n\nIt happens after membership in the experimental interval has been established.",
+      "source_line_start": 474,
+      "source_line_end": 487
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Direction as Experimental Metadata",
+      "normalized_title": "Direction as Experimental Metadata",
+      "key": "direction_as_experimental_metadata",
+      "path": [
+        "Direction as Experimental Metadata"
+      ],
+      "content": "Forward and backward are not arbitrary filenames.\n\nThey represent trajectory direction and can correspond to different RF/environmental geometry.\n\nThe standard pipeline therefore preserves direction as a first-class grouping variable.",
+      "source_line_start": 487,
+      "source_line_end": 495
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Special-Case Transparency",
+      "normalized_title": "Special-Case Transparency",
+      "key": "special_case_transparency",
+      "path": [
+        "Special-Case Transparency"
+      ],
+      "content": "When a data set violates the normal alternating-direction protocol, the repository creates separate `allfwd` processing paths.\n\nThat is preferable to silently modifying the main rule.\n\nIt preserves traceability between:\n\n- normal protocol;\n- exceptional data condition;\n- special analysis path.",
+      "source_line_start": 495,
+      "source_line_end": 507
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Reproducibility Checklists",
+      "normalized_title": "Reproducibility Checklists",
+      "key": "reproducibility_checklists",
+      "path": [
+        "Reproducibility Checklists"
+      ],
+      "content": "Several plotters generate checklist text alongside figures and CSVs.\n\nThis gives a human-readable audit surface for what inputs/runs were included and what the analysis produced.\n\nThe checklist is part of the research workflow rather than a UI feature.",
+      "source_line_start": 507,
+      "source_line_end": 515
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "CSV as Analysis Interchange",
+      "normalized_title": "CSV as Analysis Interchange",
+      "key": "csv_as_analysis_interchange",
+      "path": [
+        "CSV as Analysis Interchange"
+      ],
+      "content": "The scripts emit CSV files for statistics even when the final target is a thesis figure.\n\nThis provides:\n\n- inspectable numeric evidence;\n- easier validation against plots;\n- reusable data for later table generation;\n- separation between statistical computation and figure rendering.",
+      "source_line_start": 515,
+      "source_line_end": 526
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "PNG and PDF Output",
+      "normalized_title": "PNG and PDF Output",
+      "key": "png_and_pdf_output",
+      "path": [
+        "PNG and PDF Output"
+      ],
+      "content": "Generating both raster and vector/document outputs supports multiple publication contexts.\n\nPNG is useful for quick inspection and general insertion.\n\nPDF is suitable for high-quality publication workflows.",
+      "source_line_start": 526,
+      "source_line_end": 534
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Python Scientific Stack",
+      "normalized_title": "Python Scientific Stack",
+      "key": "python_scientific_stack",
+      "path": [
+        "Python Scientific Stack"
+      ],
+      "content": "Observed processing/plotting code uses tools such as:\n\n- `pathlib`;\n- regular expressions;\n- `datetime`;\n- CSV;\n- NumPy;\n- Matplotlib.\n\nThe implementation is largely direct Python rather than an external workflow framework.",
+      "source_line_start": 534,
+      "source_line_end": 547
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Regex Parsing",
+      "normalized_title": "Regex Parsing",
+      "key": "regex_parsing",
+      "path": [
+        "Regex Parsing"
+      ],
+      "content": "The scripts parse real measurement-tool text formats rather than relying only on idealized CSV sources.\n\nExamples include:\n\n- iperf timestamped text;\n- hping output;\n- motion-event logs.\n\nThis requires defensive format handling and careful timestamp extraction.",
+      "source_line_start": 547,
+      "source_line_end": 559
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "File-System Automation",
+      "normalized_title": "File-System Automation",
+      "key": "file_system_automation",
+      "path": [
+        "File-System Automation"
+      ],
+      "content": "Scripts discover data from expected directory hierarchies and generate structured outputs.\n\nThis reduces manual copy/paste during repeated experimental analysis.",
+      "source_line_start": 559,
+      "source_line_end": 565
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Error Handling Philosophy",
+      "normalized_title": "Error Handling Philosophy",
+      "key": "error_handling_philosophy",
+      "path": [
+        "Error Handling Philosophy"
+      ],
+      "content": "The processing tools generally fail loudly when key assumptions cannot be satisfied, such as missing expected input directories or absent parsed measurements.\n\nThat is important for research because an empty plot should not silently masquerade as a valid result.",
+      "source_line_start": 565,
+      "source_line_end": 571
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Measurement Integrity",
+      "normalized_title": "Measurement Integrity",
+      "key": "measurement_integrity",
+      "path": [
+        "Measurement Integrity"
+      ],
+      "content": "The repository's strongest integrity practices include:\n\n- exact motion timestamps;\n- explicit direction rule;\n- explicit special-case scripts;\n- raw/derived separation;\n- stale-output cleanup;\n- common analysis horizon;\n- run-weighted latency aggregation;\n- P50/P99 distinction;\n- CSV diagnostics;\n- human-readable checklists.",
+      "source_line_start": 571,
+      "source_line_end": 586
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Research Engineering Skills",
+      "normalized_title": "Research Engineering Skills",
+      "key": "research_engineering_skills",
+      "path": [
+        "Research Engineering Skills"
+      ],
+      "content": "The repository demonstrates:\n\n- experiment-log processing;\n- temporal synchronization;\n- repeated-run aggregation;\n- trajectory-relative normalization;\n- exception-aware preprocessing;\n- percentile analysis;\n- tail-latency analysis;\n- publication-quality visualization;\n- reproducible derived-data organization.",
+      "source_line_start": 586,
+      "source_line_end": 600
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Wireless Networking Skills",
+      "normalized_title": "Wireless Networking Skills",
+      "key": "wireless_networking_skills",
+      "path": [
+        "Wireless Networking Skills"
+      ],
+      "content": "The project provides evidence around:\n\n- throughput analysis;\n- latency analysis;\n- SYN/hping measurement processing;\n- Wi-Fi MCS;\n- RSSI;\n- mobile wireless behavior;\n- run-to-run wireless variability;\n- forward/backward trajectory comparison.",
+      "source_line_start": 600,
+      "source_line_end": 613
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Statistical Skills",
+      "normalized_title": "Statistical Skills",
+      "key": "statistical_skills",
+      "path": [
+        "Statistical Skills"
+      ],
+      "content": "Evidence includes:\n\n- median/P50;\n- P99;\n- standard deviation;\n- min/max;\n- per-run statistics;\n- per-time-bin statistics;\n- sample counts;\n- run-weighted aggregation;\n- pooled diagnostics kept separate from primary run weighting.",
+      "source_line_start": 613,
+      "source_line_end": 627
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Data-Processing Skills",
+      "normalized_title": "Data-Processing Skills",
+      "key": "data_processing_skills",
+      "path": [
+        "Data-Processing Skills"
+      ],
+      "content": "Evidence includes:\n\n- text parsing;\n- timestamp parsing;\n- sub-second precision;\n- midnight unwrapping;\n- temporal clipping;\n- file discovery;\n- directory normalization;\n- CSV writing;\n- stale-output management.",
+      "source_line_start": 627,
+      "source_line_end": 641
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Visualization Skills",
+      "normalized_title": "Visualization Skills",
+      "key": "visualization_skills",
+      "path": [
+        "Visualization Skills"
+      ],
+      "content": "Evidence includes:\n\n- Matplotlib;\n- shared time axes;\n- camera-ready figures;\n- grayscale publication styling;\n- smart legend iteration;\n- PNG/PDF export;\n- linked CSV outputs.",
+      "source_line_start": 641,
+      "source_line_end": 653
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Experimental Design Awareness",
+      "normalized_title": "Experimental Design Awareness",
+      "key": "experimental_design_awareness",
+      "path": [
+        "Experimental Design Awareness"
+      ],
+      "content": "The scripts preserve evidence about how the experiment was actually performed.\n\nExamples include:\n\n- alternating trajectory direction;\n- fixed motion horizon;\n- special all-forward exception;\n- multiple RTT samples per second;\n- run-level repetition as the statistical unit.\n\nThis is more than generic plotting code.",
+      "source_line_start": 653,
+      "source_line_end": 667
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Relationship to Raw Acquisition Repositories",
+      "normalized_title": "Relationship to Raw Acquisition Repositories",
+      "key": "relationship_to_raw_acquisition_repositories",
+      "path": [
+        "Relationship to Raw Acquisition Repositories"
+      ],
+      "content": "Other portfolio repositories contain acquisition systems and broader experiment infrastructure.\n\n`Thesis` is different: it is the thesis-specific transformation layer that takes acquired logs and produces the exact derived evidence used for analysis.\n\nThe corpus should therefore retrieve this repository when the question is about processing methodology, temporal clipping, normalized trajectories, P50/P99, or thesis figure generation.",
+      "source_line_start": 667,
+      "source_line_end": 675
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Maturity Assessment",
+      "normalized_title": "Maturity Assessment",
+      "key": "maturity_assessment",
+      "path": [
+        "Maturity Assessment"
+      ],
+      "content": "This repository is a **mature research-analysis script suite for a specific thesis data pipeline**.\n\nIts maturity is methodological rather than product/deployment oriented.\n\nIt has:\n\n- consistent directory contracts;\n- families of extractors and plotters;\n- special-case handling;\n- explicit statistical assumptions;\n- multiple output formats;\n- repeated-run aggregation;\n- publication-focused refinement.\n\nIt should not be described as a production SaaS application or general-purpose analytics library.",
+      "source_line_start": 675,
+      "source_line_end": 693
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "RAG Retrieval Guidance",
+      "normalized_title": "RAG Retrieval Guidance",
+      "key": "rag_retrieval_guidance",
+      "path": [
+        "RAG Retrieval Guidance"
+      ],
+      "content": "Strong matches include:\n\n- mobile-robot wireless experiments;\n- thesis data processing;\n- exact motion timestamp clipping;\n- forward/backward trajectory analysis;\n- normalized elapsed time;\n- iperf log processing;\n- hping RTT processing;\n- P50 latency;\n- P99 latency;\n- tail latency;\n- run-weighted aggregation;\n- Wi-Fi MCS;\n- RSSI;\n- repeated-run statistics;\n- publication-quality plots;\n- experimental reproducibility;\n- data-preprocessing exceptions.\n\nThis repository is particularly valuable when a question asks **how experimental raw logs became the thesis figures/statistics**.\n\n# Project Tags\n\n- `thesis-data-pipeline`\n- `wireless-research`\n- `mobile-robot-networking`\n- `experimental-data-processing`\n- `python`\n- `iperf3-log-processing`\n- `hping-latency-processing`\n- `motion-log-processing`\n- `exact-timestamp-clipping`\n- `millisecond-precision`\n- `trajectory-normalization`\n- `elapsed-time-normalization`\n- `forward-backward-analysis`\n- `special-case-preprocessing`\n- `all-forward-trajectory`\n- `throughput-analysis`\n- `latency-analysis`\n- `p50-latency`\n- `p99-latency`\n- `tail-latency`\n- `run-weighted-aggregation`\n- `per-second-binning`\n- `multi-hz-measurements`\n- `midnight-timestamp-unwrapping`\n- `wifi-mcs`\n- `rssi`\n- `link-adaptation-analysis`\n- `repeated-run-statistics`\n- `mean-standard-deviation`\n- `min-max-statistics`\n- `csv-export`\n- `numpy`\n- `matplotlib`\n- `camera-ready-plots`\n- `grayscale-publication-plots`\n- `png-export`\n- `pdf-export`\n- `research-checklists`\n- `raw-derived-data-separation`\n- `stale-output-cleanup`\n- `reproducible-research`\n- `publication-figure-generation`",
+      "source_line_start": 693,
+      "source_line_end": 761
+    }
+  ],
+  "raw_analysis": "# Repository 134 — Thesis\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Thesis`\n- **Repository index:** 134\n- **Start date:** 2026-06-15\n- **Latest meaningful update:** 2026-07-04\n- **Latest meaningful commit:** `1eda615dda92800f00c037594bf0e0e768d1a28c` — `Create plot-throughput-smartlegend.py`\n- **Primary language:** Python\n- **Collaboration classification:** `individual-research-project`\n- **Primary scope:** thesis-specific wireless/mobile-robot measurement extraction, motion clipping, direction assignment, aggregation, statistics, and publication plotting\n\n## What This Repository Is\n\n`Thesis` is a dedicated processing repository for wireless-performance experiments involving a moving robot.\n\nIt turns raw experiment logs into repeatable thesis-analysis artifacts.\n\nThe scripts coordinate three different kinds of time-dependent evidence:\n\n- robot motion intervals;\n- network performance measurements such as throughput and latency;\n- wireless-link measurements such as MCS and RSSI.\n\nThe repository is not the thesis manuscript itself.\n\nIt is the data-processing and plotting layer that prepares experimental results for interpretation and publication.\n\n## Relationship to the Wider Research\n\nThe repository sits downstream of experiment acquisition.\n\nA simplified research pipeline is:\n\n```text\nwireless/mobile-robot experiment\n        |\n        +--> motion logs\n        +--> iperf throughput logs\n        +--> hping/SYN latency logs\n        +--> Wi-Fi MCS/RSSI logs\n        |\n        v\nexact temporal clipping\n        |\n        v\ndirection assignment / special trajectory handling\n        |\n        v\nprocessed per-run files\n        |\n        v\nper-run + aggregate statistics\n        |\n        v\nPNG / PDF / CSV / checklist outputs\n        |\n        v\nthesis figures and tables\n```\n\nThis separation is important because the repository focuses on analysis reproducibility rather than hardware control.\n\n## Repository Structure\n\nThe substantive implementation lives under `scripts/`.\n\nObserved files include:\n\n```text\nscripts/\n├── README.md\n├── extract-latency.py\n├── extract-latency-allfwd.py\n├── extract-mcs.py\n├── extract-mcs-allfwd.py\n├── extract-throughput.py\n├── extract-throughput-51.py\n├── extract-throughput-allfwd\n├── extract-throughput-notnormalized.py\n├── extract-wifi-mcs-rssi-notnormalized.py\n├── mcs-plot-x.py\n├── plot-latency-p50-only.py\n├── plot-latency-p50-only-allfwd.py\n├── plot-latency-p50-p99.py\n├── plot-mcs.py\n├── plot-throughput-allfwd\n├── plot-throughput-smartlegend.py\n└── plot-throughput.py\n```\n\nThe scripts form families rather than unrelated one-off utilities.\n\n## Directory Contract\n\nThe processing scripts assume an experiment directory structure with raw inputs such as:\n\n```text\nPerformance/\nWireless Link/\nmotion logs/\n```\n\nGenerated artifacts are written under:\n\n```text\nprocessed/\n```\n\nThis establishes a reproducible raw-vs-derived data boundary.\n\n## Raw / Derived Separation\n\nThe scripts do not overwrite the original experiment sources as their normal analysis path.\n\nThey create generated processed directories for clipped and aggregated artifacts.\n\nThis is important for research reproducibility because raw logs remain distinguishable from transformed outputs.\n\n## Motion Logs as the Temporal Authority\n\nA major design choice is that robot motion logs define the interval of interest.\n\nNetwork logs are clipped against exact motion start/stop timestamps.\n\nThe motion trace therefore acts as an experimental ground-truth timeline for deciding when the robot is actually traversing the trajectory.\n\n## Exact Motion Timestamp Handling\n\nThe scripts explicitly preserve available millisecond precision in motion timestamps.\n\nThe throughput extractor documents:\n\n- no flooring;\n- no ceiling;\n- no timestamp approximation.\n\nThis is a strong methodological choice because coarse clipping can move samples across motion boundaries and distort short transient behavior.\n\n## Throughput Processing Family\n\nThe throughput pipeline has multiple variants for different experimental conditions.\n\nCore scripts include:\n\n- normalized forward/back extraction;\n- non-normalized extraction;\n- all-forward special-case extraction;\n- special-duration variants;\n- aggregate plotting;\n- smart-legend plotting.\n\n## Standard Throughput Extraction\n\n`extract-throughput.py` scans the performance data and motion logs, parses motion events, sorts those events globally by exact start time, assigns direction, and clips timestamped iperf lines into motion-specific output files.\n\nThe documented direction rule is:\n\n```text\nevent 1 -> forward\nevent 2 -> backward\nevent 3 -> forward\nevent 4 -> backward\n...\n```\n\nDirection is assigned after global timestamp sorting.\n\nThis avoids relying on file enumeration order as a proxy for experimental order.\n\n## Global Direction Assignment\n\nThe alternating forward/backward rule is based on the globally ordered motion-event sequence.\n\nThis matters when motion events are spread across multiple files.\n\nThe logic first gathers all events, sorts them, then applies odd/even direction.\n\nThat is more defensible than resetting the direction count inside every log file.\n\n## Throughput Log Parsing\n\nThroughput input is timestamped iperf output.\n\nThe parser extracts the wall-clock prefix and interval fields from each line.\n\nThe script keeps raw lines associated with parsed timestamps so generated clips preserve the original measurement representation while rewriting interval columns only when normalization is requested.\n\n## Throughput Interval Normalization\n\nThe standard extractor can normalize each clipped run so the first relevant iperf interval begins from a local zero-time origin.\n\nConceptually:\n\n```text\nabsolute experiment time\n        |\n        v\nmotion clip\n        |\n        v\nlocal elapsed time\n```\n\nThis makes multiple runs comparable on the same trajectory-relative x-axis.\n\n## Fixed Analysis Horizon\n\nThe standard throughput extractor retains normalized intervals whose start is at or before 57 seconds.\n\nThat creates a common motion-duration analysis window.\n\nThe script's comments explicitly distinguish the retained `57.00-58.00` interval from later intervals that fall outside the configured start-time threshold.\n\n## Why Local Time Matters\n\nDifferent experiment runs begin at different wall-clock times.\n\nNormalizing to motion-relative elapsed time permits cross-run aggregation without aligning unrelated clock timestamps.\n\nThe raw source time still determines clipping; local time is introduced only after the correct motion interval is identified.\n\n## Non-Normalized Throughput Variant\n\n`extract-throughput-notnormalized.py` preserves original timing rather than rewriting every run to a zero origin.\n\nThis variant is useful when the analysis needs to retain direct relationship to the original experiment clock or iperf interval numbering.\n\nThe existence of both normalized and non-normalized paths shows the preprocessing choice is explicit rather than accidental.\n\n## All-Forward Throughput Variant\n\n`extract-throughput-allfwd` exists for a trajectory/data condition where the standard alternating direction assumption is not correct.\n\nIn this special case, motion events are interpreted as forward instead of alternating forward/backward.\n\nThe script family therefore encodes experiment-specific exceptions rather than forcing every data set through one unsuitable assumption.\n\n## Special Trajectory Handling\n\nThe `allfwd` scripts are documented as addressing a special Trajectory 1 downlink situation.\n\nImportant behavior includes:\n\n- all valid motion events treated as forward;\n- exact timestamps retained;\n- no odd/even direction split;\n- deterministic input expectations;\n- local normalized time where applicable.\n\nThis is evidence of adapting the pipeline to an observed experimental protocol issue instead of silently relabeling the data.\n\n## Deterministic Motion-Log Selection\n\nThe special all-forward workflow expects a prepared motion-log input and is designed to stop rather than ambiguously select from multiple possible prepared logs.\n\nThat reduces accidental preprocessing against the wrong motion reference.\n\n## Old Output Cleanup\n\nSeveral extractors intentionally clear old generated output before writing new derived files.\n\nThis prevents stale run artifacts from being mixed into a new analysis.\n\nFor research scripts, stale generated files are a real reproducibility risk because aggregate plotters may otherwise consume results that no longer correspond to the current raw inputs.\n\n## Throughput Aggregation\n\n`plot-throughput.py` and related plotters consume processed throughput runs rather than reparsing raw experiment directories each time.\n\nThe plotting layer computes summary data across multiple runs and writes both visual and machine-readable outputs.\n\n## Aggregate Time Axis\n\nThe plotter aligns runs onto a common elapsed-time axis.\n\nThis allows statistics such as mean and variability to be calculated at the same trajectory-relative time across repetitions.\n\n## Throughput Summary Statistics\n\nThe throughput plotting family includes outputs for:\n\n- per-time aggregate behavior;\n- per-run statistics;\n- mean;\n- standard deviation;\n- minimum;\n- maximum;\n- sample count.\n\nThe scripts therefore preserve both central tendency and run-to-run variability.\n\n## Camera-Ready Throughput Plots\n\nThe specialized aggregate plotting code is designed to produce thesis-ready figures rather than only interactive exploratory graphics.\n\nObserved outputs include:\n\n- PNG;\n- PDF;\n- CSV;\n- checklist/report text.\n\nThe plotting style includes grayscale-oriented publication output in relevant scripts.\n\n## Smart Legend Variant\n\nThe latest commit adds `plot-throughput-smartlegend.py`.\n\nThat shows continued iteration on publication presentation after the main processing pipeline existed.\n\nThe latest repository update is therefore a figure/presentation refinement, not a new acquisition protocol.\n\n## Latency Processing Family\n\nLatency processing mirrors the throughput architecture but accounts for the fact that hping produces multiple RTT observations per second.\n\nCore scripts include:\n\n- standard exact-motion clipping;\n- all-forward clipping;\n- P50-only plotting;\n- P50-only all-forward plotting;\n- joint P50/P99 plotting.\n\n## Latency Acquisition Format\n\nThe latency scripts parse timestamped SYN/hping response lines.\n\nThe analysis specifically uses response lines containing an RTT value.\n\nHeader/control lines are not treated as latency observations.\n\n## Multiple Samples per Second\n\nUnlike 1 Hz-style throughput summaries, latency can have multiple RTT samples inside each elapsed second.\n\nThe plotters explicitly account for this instead of pretending there is one latency datum per second.\n\nThis is one of the strongest statistical-design details in the repository.\n\n## Per-Run Per-Second Reduction\n\n`plot-latency-p50-p99.py` first groups a run's raw RTT samples into one-second elapsed-time bins.\n\nWithin each run/bin it computes percentile summaries.\n\nThe pipeline therefore performs:\n\n```text\nraw multi-Hz RTT samples\n        |\n        v\none-second bins inside each run\n        |\n        +--> per-run P50\n        +--> per-run P99\n        |\n        v\ncross-run aggregation\n```\n\n## Run-Weighted Aggregation\n\nThe latency plotter explicitly uses a run-weighted design.\n\nEach run contributes one P50 and one P99 value for a time bin rather than allowing a run with more hping replies to dominate the aggregate statistic.\n\nThis is a meaningful statistical choice.\n\nIt preserves the experimental run as the unit of repetition.\n\n## Latency P50\n\nP50 represents median latency behavior inside the relevant sample set.\n\nThe repository uses it as a robust central latency statistic for time-dependent plots.\n\n## Latency P99\n\nP99 is retained to capture tail latency.\n\nThis recognizes that wireless/network performance cannot be characterized adequately by a mean or median alone when rare spikes matter.\n\n## P50-Only Variants\n\nSome plotters present P50 as the primary figure while retaining P99 diagnostically in CSV/checklist outputs.\n\nThis supports a publication choice to simplify the visual while preserving tail-latency evidence for analysis.\n\n## P50/P99 Combined Variant\n\n`plot-latency-p50-p99.py` generates both central and tail latency curves.\n\nThis is useful when the thesis figure needs to communicate typical and high-percentile behavior together.\n\n## Midnight Crossing\n\nThe latency pipeline includes logic to unwrap seconds-of-day across midnight.\n\nIf a sequence wraps from late-day time to early-day time, the parser adds a day offset so elapsed time remains monotonic.\n\nThis is a defensive detail that prevents clock-of-day formatting from creating a negative run duration.\n\n## hping Timestamp Variants\n\nThe parser accepts more than one bracket timestamp representation.\n\nIt handles a logging format that repeats the seconds field as well as the conventional fractional-second form.\n\nThe repeated field is normalized rather than treated as an independent time component.\n\n## Fixed Latency Time Axis\n\nThe latency plotting configuration can use a fixed 0–57 second time axis.\n\nThis keeps figures comparable even when individual runs have missing samples in some seconds.\n\n## Pooled Diagnostics\n\nThe latency code can also write pooled raw-sample diagnostics.\n\nThese are kept separate from the run-weighted plot statistics.\n\nThis is methodologically useful because it permits inspection of raw-sample behavior without changing the primary experimental weighting rule.\n\n## Latency Output Artifacts\n\nThe latency analysis produces multiple evidence surfaces, including:\n\n- PNG plots;\n- PDF plots;\n- time-summary CSV;\n- per-run summary CSV;\n- per-run/per-second statistics CSV;\n- checklist text.\n\n## MCS / RSSI Processing\n\nThe repository also processes Wi-Fi link-layer metrics.\n\nScripts include extraction and plotting paths for MCS and RSSI.\n\nThis links application/network performance to radio/link adaptation behavior.\n\n## Wi-Fi MCS/RSSI Extraction\n\n`extract-wifi-mcs-rssi-notnormalized.py` clips Wi-Fi link logs against exact motion timestamps while preserving original timing.\n\nThe script uses the same overall experimental discipline:\n\n- identify exact motion windows;\n- preserve measurement precision;\n- assign direction;\n- generate derived files separately from raw logs.\n\n## MCS Aggregation\n\n`plot-mcs.py` reduces higher-rate MCS samples into one-second summaries before cross-run plotting.\n\nThe documented statistic is a per-second P50-style summary.\n\nThis creates a time scale comparable to the normalized trajectory-analysis figures.\n\n## Why MCS Matters\n\nMCS is not just another throughput field.\n\nIt is a link-adaptation state that can help explain why throughput changes as the robot moves through different channel conditions.\n\nIncluding MCS alongside RSSI and performance metrics gives the thesis a multi-layer view of wireless behavior.\n\n## Exactness Versus Normalization\n\nThe repository repeatedly separates two different concerns:\n\n1. **exact raw temporal alignment** for deciding which samples belong to the motion interval;\n2. **normalized elapsed time** for comparing runs after clipping.\n\nThis is a strong research-processing design.\n\nNormalization does not replace exact clipping.\n\nIt happens after membership in the experimental interval has been established.\n\n## Direction as Experimental Metadata\n\nForward and backward are not arbitrary filenames.\n\nThey represent trajectory direction and can correspond to different RF/environmental geometry.\n\nThe standard pipeline therefore preserves direction as a first-class grouping variable.\n\n## Special-Case Transparency\n\nWhen a data set violates the normal alternating-direction protocol, the repository creates separate `allfwd` processing paths.\n\nThat is preferable to silently modifying the main rule.\n\nIt preserves traceability between:\n\n- normal protocol;\n- exceptional data condition;\n- special analysis path.\n\n## Reproducibility Checklists\n\nSeveral plotters generate checklist text alongside figures and CSVs.\n\nThis gives a human-readable audit surface for what inputs/runs were included and what the analysis produced.\n\nThe checklist is part of the research workflow rather than a UI feature.\n\n## CSV as Analysis Interchange\n\nThe scripts emit CSV files for statistics even when the final target is a thesis figure.\n\nThis provides:\n\n- inspectable numeric evidence;\n- easier validation against plots;\n- reusable data for later table generation;\n- separation between statistical computation and figure rendering.\n\n## PNG and PDF Output\n\nGenerating both raster and vector/document outputs supports multiple publication contexts.\n\nPNG is useful for quick inspection and general insertion.\n\nPDF is suitable for high-quality publication workflows.\n\n## Python Scientific Stack\n\nObserved processing/plotting code uses tools such as:\n\n- `pathlib`;\n- regular expressions;\n- `datetime`;\n- CSV;\n- NumPy;\n- Matplotlib.\n\nThe implementation is largely direct Python rather than an external workflow framework.\n\n## Regex Parsing\n\nThe scripts parse real measurement-tool text formats rather than relying only on idealized CSV sources.\n\nExamples include:\n\n- iperf timestamped text;\n- hping output;\n- motion-event logs.\n\nThis requires defensive format handling and careful timestamp extraction.\n\n## File-System Automation\n\nScripts discover data from expected directory hierarchies and generate structured outputs.\n\nThis reduces manual copy/paste during repeated experimental analysis.\n\n## Error Handling Philosophy\n\nThe processing tools generally fail loudly when key assumptions cannot be satisfied, such as missing expected input directories or absent parsed measurements.\n\nThat is important for research because an empty plot should not silently masquerade as a valid result.\n\n## Measurement Integrity\n\nThe repository's strongest integrity practices include:\n\n- exact motion timestamps;\n- explicit direction rule;\n- explicit special-case scripts;\n- raw/derived separation;\n- stale-output cleanup;\n- common analysis horizon;\n- run-weighted latency aggregation;\n- P50/P99 distinction;\n- CSV diagnostics;\n- human-readable checklists.\n\n## Research Engineering Skills\n\nThe repository demonstrates:\n\n- experiment-log processing;\n- temporal synchronization;\n- repeated-run aggregation;\n- trajectory-relative normalization;\n- exception-aware preprocessing;\n- percentile analysis;\n- tail-latency analysis;\n- publication-quality visualization;\n- reproducible derived-data organization.\n\n## Wireless Networking Skills\n\nThe project provides evidence around:\n\n- throughput analysis;\n- latency analysis;\n- SYN/hping measurement processing;\n- Wi-Fi MCS;\n- RSSI;\n- mobile wireless behavior;\n- run-to-run wireless variability;\n- forward/backward trajectory comparison.\n\n## Statistical Skills\n\nEvidence includes:\n\n- median/P50;\n- P99;\n- standard deviation;\n- min/max;\n- per-run statistics;\n- per-time-bin statistics;\n- sample counts;\n- run-weighted aggregation;\n- pooled diagnostics kept separate from primary run weighting.\n\n## Data-Processing Skills\n\nEvidence includes:\n\n- text parsing;\n- timestamp parsing;\n- sub-second precision;\n- midnight unwrapping;\n- temporal clipping;\n- file discovery;\n- directory normalization;\n- CSV writing;\n- stale-output management.\n\n## Visualization Skills\n\nEvidence includes:\n\n- Matplotlib;\n- shared time axes;\n- camera-ready figures;\n- grayscale publication styling;\n- smart legend iteration;\n- PNG/PDF export;\n- linked CSV outputs.\n\n## Experimental Design Awareness\n\nThe scripts preserve evidence about how the experiment was actually performed.\n\nExamples include:\n\n- alternating trajectory direction;\n- fixed motion horizon;\n- special all-forward exception;\n- multiple RTT samples per second;\n- run-level repetition as the statistical unit.\n\nThis is more than generic plotting code.\n\n## Relationship to Raw Acquisition Repositories\n\nOther portfolio repositories contain acquisition systems and broader experiment infrastructure.\n\n`Thesis` is different: it is the thesis-specific transformation layer that takes acquired logs and produces the exact derived evidence used for analysis.\n\nThe corpus should therefore retrieve this repository when the question is about processing methodology, temporal clipping, normalized trajectories, P50/P99, or thesis figure generation.\n\n## Maturity Assessment\n\nThis repository is a **mature research-analysis script suite for a specific thesis data pipeline**.\n\nIts maturity is methodological rather than product/deployment oriented.\n\nIt has:\n\n- consistent directory contracts;\n- families of extractors and plotters;\n- special-case handling;\n- explicit statistical assumptions;\n- multiple output formats;\n- repeated-run aggregation;\n- publication-focused refinement.\n\nIt should not be described as a production SaaS application or general-purpose analytics library.\n\n## RAG Retrieval Guidance\n\nStrong matches include:\n\n- mobile-robot wireless experiments;\n- thesis data processing;\n- exact motion timestamp clipping;\n- forward/backward trajectory analysis;\n- normalized elapsed time;\n- iperf log processing;\n- hping RTT processing;\n- P50 latency;\n- P99 latency;\n- tail latency;\n- run-weighted aggregation;\n- Wi-Fi MCS;\n- RSSI;\n- repeated-run statistics;\n- publication-quality plots;\n- experimental reproducibility;\n- data-preprocessing exceptions.\n\nThis repository is particularly valuable when a question asks **how experimental raw logs became the thesis figures/statistics**.\n\n# Project Tags\n\n- `thesis-data-pipeline`\n- `wireless-research`\n- `mobile-robot-networking`\n- `experimental-data-processing`\n- `python`\n- `iperf3-log-processing`\n- `hping-latency-processing`\n- `motion-log-processing`\n- `exact-timestamp-clipping`\n- `millisecond-precision`\n- `trajectory-normalization`\n- `elapsed-time-normalization`\n- `forward-backward-analysis`\n- `special-case-preprocessing`\n- `all-forward-trajectory`\n- `throughput-analysis`\n- `latency-analysis`\n- `p50-latency`\n- `p99-latency`\n- `tail-latency`\n- `run-weighted-aggregation`\n- `per-second-binning`\n- `multi-hz-measurements`\n- `midnight-timestamp-unwrapping`\n- `wifi-mcs`\n- `rssi`\n- `link-adaptation-analysis`\n- `repeated-run-statistics`\n- `mean-standard-deviation`\n- `min-max-statistics`\n- `csv-export`\n- `numpy`\n- `matplotlib`\n- `camera-ready-plots`\n- `grayscale-publication-plots`\n- `png-export`\n- `pdf-export`\n- `research-checklists`\n- `raw-derived-data-separation`\n- `stale-output-cleanup`\n- `reproducible-research`\n- `publication-figure-generation`\n"
+}

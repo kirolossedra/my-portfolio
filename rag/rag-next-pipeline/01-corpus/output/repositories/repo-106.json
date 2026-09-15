@@ -1,0 +1,972 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 106,
+  "repository_total": 134,
+  "repository_name": "Satelitte-Project",
+  "header_title": "Satelitte-Project",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-106-Satelitte-Project/README.md",
+    "line_start": 1,
+    "line_end": 512,
+    "sha256": "16a53b2730fd58389304173e73b223a244ac5572e1caa09dcd05d83e319ea56b"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "automated-test-harness",
+    "network-validation-tool",
+    "hardware-integration-tool",
+    "individual-project",
+    "python",
+    "quectel-modem",
+    "cellular-modem",
+    "at-commands",
+    "lte",
+    "plmn-scan",
+    "manual-operator-selection",
+    "eps-registration",
+    "pdp-context",
+    "rrc-state",
+    "rsrp",
+    "cellular-signal-telemetry",
+    "serial-communication",
+    "pyserial",
+    "serial-port-discovery",
+    "timeout-management",
+    "device-state-restoration",
+    "automated-pass-fail",
+    "conditional-test-execution",
+    "sim-allowlist-validation",
+    "repeated-registration-monitoring",
+    "diagnostic-capture",
+    "test-case-model",
+    "json-reporting",
+    "text-reporting",
+    "latex-reporting",
+    "pdf-reporting",
+    "raw-command-log",
+    "timestamped-logging",
+    "earliest-observed-automated-quectel-network-validation-harness",
+    "earliest-observed-plmn-gated-modem-test-plan"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s007"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Preliminary Identity and SIM Validation"
+      ],
+      "text": "## Repository Identity\n- Repository: 106 / 134\n- Name: `Satelitte-Project`\n- Repository start date: 2026-04-02\n- Last meaningful update date: 2026-04-02\n- Latest meaningful commit: `b72aacfc19ed7ab1374b052913f4c6e97105c627`\n- Primary type: Automated cellular/satellite modem validation harness\n- Technical field: Cellular networking, modem control, serial communications, automated test engineering\n- Application domain: Rogers satellite-network validation using a Quectel RM520N modem\n- Collaboration type: `individual-project`\n- Primary language: Python\n\n## Preliminary Identity and SIM Validation\nThe first test stage collects:\n\n- IMSI;\n- IMEI;\n- SIM initialization state;\n- PDP contexts.\n\nThe IMSI is checked against an explicit approved-SIM allowlist.\n\nThis means the automated test does not proceed solely because a modem is reachable; it validates that the attached subscriber identity belongs to the intended test inventory."
+    },
+    "architecture": {
+      "section_ids": [
+        "s016"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nLinux serial-device discovery\n          ↓\nAT / ATI modem probe\n          ↓\nQuectel RM520N serial connection\n          ↓\nStaged test runner\n          ↓\nAT command execution + response collection\n          ↓\nProtocol-specific parser functions\n          ↓\nPer-step pass/fail evaluation\n          ↓\nRaw log + JSON + text + LaTeX/PDF reports\n```\n\nThe implementation separates several concerns even though they live in one file:\n\n- transport and serial handling;\n- response parsing;\n- test-case representation;\n- orchestration;\n- reporting."
+    },
+    "testing": {
+      "section_ids": [
+        "s031",
+        "s061"
+      ],
+      "titles": [
+        "Testing and Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\n### Automated Pass/Fail Evaluation\n\nThe repository is itself an automated test harness.\n\nEach test step computes a boolean result from actual modem/network evidence.\n\nExamples include:\n\n- allowed SIM identity;\n- modem identity/state availability;\n- successful configuration commands;\n- presence of the target PLMN;\n- manual selection response;\n- registration success;\n- restoration behavior.\n\n### Conditional Test Execution\n\nThe test plan contains executable prerequisite logic.\n\nIf the target PLMN is not visible during scanning, later forced-selection behavior is skipped and an explicit abort reason is retained.\n\n### Repeated Observation\n\nRegistration is not judged from a single sample.\n\nThe runner performs bounded repeated monitoring with delays and stops early on success.\n\n### Evidence-Rich Results\n\nPass/fail decisions retain the underlying commands, timestamps, raw responses, parsed values, and reason strings.\n\nThis makes the automated outcome auditable.\n\n## Testing and Verification\n- `automated-pass-fail`\n- `conditional-test-execution`\n- `sim-allowlist-validation`\n- `repeated-registration-monitoring`\n- `diagnostic-capture`\n- `test-case-model`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository history is owner-driven and the implementation is contained in a single Python test harness. The corpus therefore treats the modem-control, parsing, automated test flow, logging, and report-generation logic as personally attributable repository work.\n\nThe Rogers network identifiers, SIM inventory, and modem/network behavior are operational test inputs. The engineering claim is the automation around them rather than ownership of the external network infrastructure."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 106 / 134\n- Name: `Satelitte-Project`\n- Repository start date: 2026-04-02\n- Last meaningful update date: 2026-04-02\n- Latest meaningful commit: `b72aacfc19ed7ab1374b052913f4c6e97105c627`\n- Primary type: Automated cellular/satellite modem validation harness\n- Technical field: Cellular networking, modem control, serial communications, automated test engineering\n- Application domain: Rogers satellite-network validation using a Quectel RM520N modem\n- Collaboration type: `individual-project`\n- Primary language: Python",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository history is owner-driven and the implementation is contained in a single Python test harness. The corpus therefore treats the modem-control, parsing, automated test flow, logging, and report-generation logic as personally attributable repository work.\n\nThe Rogers network identifiers, SIM inventory, and modem/network behavior are operational test inputs. The engineering claim is the automation around them rather than ownership of the external network infrastructure.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in the current `test.py` implementation and repository history.\n\nThe script contains:\n\n- modem-port discovery;\n- direct AT-command execution;\n- parser functions for modem/network responses;\n- explicit test-case objects;\n- a staged validation runner;\n- conditional abort logic;\n- repeated registration monitoring;\n- success and failure diagnostics;\n- restoration of normal modem state;\n- raw command/response logging;\n- JSON, text, LaTeX, and optional PDF report generation.",
+      "source_line_start": 22,
+      "source_line_end": 40
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Satelitte-Project` is an automated validation harness for testing a Quectel RM520N cellular modem against a specific Rogers satellite-network test plan.\n\nRather than requiring a tester to manually enter commands and interpret modem responses, the program drives the modem over a serial connection, collects and parses responses, evaluates explicit pass/fail conditions, records evidence, and generates structured run reports.\n\nThe workflow is stateful. It begins by establishing that the connected hardware and SIM are appropriate, captures the current modem/network state, moves the modem into airplane mode, applies a dedicated LTE/network configuration, scans for the target network, conditionally performs manual operator selection, monitors registration, gathers diagnostics, and finally restores the modem to normal automatic behavior.",
+      "source_line_start": 40,
+      "source_line_end": 48
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Modem Discovery\n\nThe tool searches common Linux serial-device paths including:\n\n- `/dev/ttyUSB*`;\n- `/dev/ttyACM*`;\n- `/dev/serial/by-id/*`.\n\nCandidate ports are opened with PySerial and probed using `AT` and `ATI`.\n\nA successful modem response determines the serial interface used by the rest of the run.\n\n### Preliminary Identity and SIM Validation\n\nThe first test stage collects:\n\n- IMSI;\n- IMEI;\n- SIM initialization state;\n- PDP contexts.\n\nThe IMSI is checked against an explicit approved-SIM allowlist.\n\nThis means the automated test does not proceed solely because a modem is reachable; it validates that the attached subscriber identity belongs to the intended test inventory.\n\n### Modem and Network State Inspection\n\nThe script records current state through commands including:\n\n- `ATI`;\n- `AT+COPS?`;\n- `AT+CEREG?`;\n- `AT+QNWINFO`;\n- `AT+QENG=\"servingcell\"`.\n\nDedicated parser functions transform the raw text into structured fields such as operator mode, registration state, radio access technology, band, channel, and serving-cell state.\n\n### Satellite-Network Configuration\n\nThe harness drives the modem into airplane mode with `AT+CFUN=4`, then applies the target configuration.\n\nThe implemented settings include:\n\n- LTE-only mode preference;\n- roaming preference;\n- data-roaming configuration;\n- a target APN;\n- detailed EPS registration reporting.\n\nEach configuration command contributes to the test-case pass/fail result.\n\n### Network Scan and Conditional Progression\n\nAfter returning the modem to full functionality, the script performs a long-running `AT+COPS=?` network scan.\n\nThe scan output is parsed into operator entries.\n\nThe target PLMN is searched explicitly.\n\nIf the target network is absent, the runner records an abort reason and stops before the manual-selection stage.\n\nThis conditional progression is important test engineering: later actions are not executed when the prerequisite network evidence is absent.\n\n### Manual Operator Selection\n\nWhen the target PLMN is visible, the harness attempts explicit manual selection using the configured access technology.\n\nThe command outcome is captured as a dedicated test case.\n\n### Registration Monitoring\n\nThe registration stage performs repeated rounds of diagnostic sampling.\n\nEach round captures information from commands including:\n\n- network clock;\n- operator selection;\n- EPS registration;\n- RSSI/BER;\n- Quectel signal-quality output;\n- RSRP;\n- serving-cell state;\n- system mode.\n\nThe script waits between unsuccessful rounds and stops early when registration succeeds.\n\n### Success Diagnostics\n\nOn successful registration the harness additionally inspects:\n\n- PDP-context activation state;\n- assigned PDP addresses;\n- RRC state.\n\nThe report records whether context 1 is active and which IP address it received.\n\n### Failure Diagnostics\n\nIf registration does not succeed after the configured monitoring rounds, the program captures additional network rejection/error information through Quectel/network diagnostic commands.\n\nThe final test-case reason contains the terminal registration state and supporting diagnostic values.\n\n### State Restoration\n\nThe run contains a final restoration stage that returns the modem toward normal automatic operation.\n\nThat makes the test harness responsible not just for test setup and observation but also for post-test cleanup of the device state.",
+      "source_line_start": 48,
+      "source_line_end": 158
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Modem Discovery",
+      "normalized_title": "Modem Discovery",
+      "key": "modem_discovery",
+      "path": [
+        "Project Scope",
+        "Modem Discovery"
+      ],
+      "content": "The tool searches common Linux serial-device paths including:\n\n- `/dev/ttyUSB*`;\n- `/dev/ttyACM*`;\n- `/dev/serial/by-id/*`.\n\nCandidate ports are opened with PySerial and probed using `AT` and `ATI`.\n\nA successful modem response determines the serial interface used by the rest of the run.",
+      "source_line_start": 50,
+      "source_line_end": 62
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Preliminary Identity and SIM Validation",
+      "normalized_title": "Preliminary Identity and SIM Validation",
+      "key": "preliminary_identity_and_sim_validation",
+      "path": [
+        "Project Scope",
+        "Preliminary Identity and SIM Validation"
+      ],
+      "content": "The first test stage collects:\n\n- IMSI;\n- IMEI;\n- SIM initialization state;\n- PDP contexts.\n\nThe IMSI is checked against an explicit approved-SIM allowlist.\n\nThis means the automated test does not proceed solely because a modem is reachable; it validates that the attached subscriber identity belongs to the intended test inventory.",
+      "source_line_start": 62,
+      "source_line_end": 75
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Modem and Network State Inspection",
+      "normalized_title": "Modem and Network State Inspection",
+      "key": "modem_and_network_state_inspection",
+      "path": [
+        "Project Scope",
+        "Modem and Network State Inspection"
+      ],
+      "content": "The script records current state through commands including:\n\n- `ATI`;\n- `AT+COPS?`;\n- `AT+CEREG?`;\n- `AT+QNWINFO`;\n- `AT+QENG=\"servingcell\"`.\n\nDedicated parser functions transform the raw text into structured fields such as operator mode, registration state, radio access technology, band, channel, and serving-cell state.",
+      "source_line_start": 75,
+      "source_line_end": 87
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Satellite-Network Configuration",
+      "normalized_title": "Satellite-Network Configuration",
+      "key": "satellite_network_configuration",
+      "path": [
+        "Project Scope",
+        "Satellite-Network Configuration"
+      ],
+      "content": "The harness drives the modem into airplane mode with `AT+CFUN=4`, then applies the target configuration.\n\nThe implemented settings include:\n\n- LTE-only mode preference;\n- roaming preference;\n- data-roaming configuration;\n- a target APN;\n- detailed EPS registration reporting.\n\nEach configuration command contributes to the test-case pass/fail result.",
+      "source_line_start": 87,
+      "source_line_end": 101
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Network Scan and Conditional Progression",
+      "normalized_title": "Network Scan and Conditional Progression",
+      "key": "network_scan_and_conditional_progression",
+      "path": [
+        "Project Scope",
+        "Network Scan and Conditional Progression"
+      ],
+      "content": "After returning the modem to full functionality, the script performs a long-running `AT+COPS=?` network scan.\n\nThe scan output is parsed into operator entries.\n\nThe target PLMN is searched explicitly.\n\nIf the target network is absent, the runner records an abort reason and stops before the manual-selection stage.\n\nThis conditional progression is important test engineering: later actions are not executed when the prerequisite network evidence is absent.",
+      "source_line_start": 101,
+      "source_line_end": 113
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Manual Operator Selection",
+      "normalized_title": "Manual Operator Selection",
+      "key": "manual_operator_selection",
+      "path": [
+        "Project Scope",
+        "Manual Operator Selection"
+      ],
+      "content": "When the target PLMN is visible, the harness attempts explicit manual selection using the configured access technology.\n\nThe command outcome is captured as a dedicated test case.",
+      "source_line_start": 113,
+      "source_line_end": 119
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Registration Monitoring",
+      "normalized_title": "Registration Monitoring",
+      "key": "registration_monitoring",
+      "path": [
+        "Project Scope",
+        "Registration Monitoring"
+      ],
+      "content": "The registration stage performs repeated rounds of diagnostic sampling.\n\nEach round captures information from commands including:\n\n- network clock;\n- operator selection;\n- EPS registration;\n- RSSI/BER;\n- Quectel signal-quality output;\n- RSRP;\n- serving-cell state;\n- system mode.\n\nThe script waits between unsuccessful rounds and stops early when registration succeeds.",
+      "source_line_start": 119,
+      "source_line_end": 136
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Success Diagnostics",
+      "normalized_title": "Success Diagnostics",
+      "key": "success_diagnostics",
+      "path": [
+        "Project Scope",
+        "Success Diagnostics"
+      ],
+      "content": "On successful registration the harness additionally inspects:\n\n- PDP-context activation state;\n- assigned PDP addresses;\n- RRC state.\n\nThe report records whether context 1 is active and which IP address it received.",
+      "source_line_start": 136,
+      "source_line_end": 146
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Failure Diagnostics",
+      "normalized_title": "Failure Diagnostics",
+      "key": "failure_diagnostics",
+      "path": [
+        "Project Scope",
+        "Failure Diagnostics"
+      ],
+      "content": "If registration does not succeed after the configured monitoring rounds, the program captures additional network rejection/error information through Quectel/network diagnostic commands.\n\nThe final test-case reason contains the terminal registration state and supporting diagnostic values.",
+      "source_line_start": 146,
+      "source_line_end": 152
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "State Restoration",
+      "normalized_title": "State Restoration",
+      "key": "state_restoration",
+      "path": [
+        "Project Scope",
+        "State Restoration"
+      ],
+      "content": "The run contains a final restoration stage that returns the modem toward normal automatic operation.\n\nThat makes the test harness responsible not just for test setup and observation but also for post-test cleanup of the device state.",
+      "source_line_start": 152,
+      "source_line_end": 158
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nLinux serial-device discovery\n          ↓\nAT / ATI modem probe\n          ↓\nQuectel RM520N serial connection\n          ↓\nStaged test runner\n          ↓\nAT command execution + response collection\n          ↓\nProtocol-specific parser functions\n          ↓\nPer-step pass/fail evaluation\n          ↓\nRaw log + JSON + text + LaTeX/PDF reports\n```\n\nThe implementation separates several concerns even though they live in one file:\n\n- transport and serial handling;\n- response parsing;\n- test-case representation;\n- orchestration;\n- reporting.",
+      "source_line_start": 158,
+      "source_line_end": 186
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython implements the complete validation workflow, parsing layer, report generation, and device orchestration.\n\n### PySerial\n\nPySerial opens the modem interface, controls buffers, writes AT commands, and collects modem responses.\n\n### Regular Expressions\n\nRegex parsers extract structured state from modem responses such as:\n\n- IMSI and IMEI numbers;\n- PDP contexts;\n- operator-selection results;\n- registration state;\n- signal-quality metrics;\n- RSRP values;\n- system and RRC state.\n\n### JSON\n\nThe complete run is serialized to a machine-readable JSON report containing test cases, commands, extracted values, reasons, and overall status.\n\n### LaTeX and PDF\n\nThe script generates a LaTeX report with a run summary, pass/fail checkboxes, extracted data, and detailed command logs.\n\nWhen `pdflatex` is available, the LaTeX source is compiled into a PDF automatically.",
+      "source_line_start": 186,
+      "source_line_end": 218
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python implements the complete validation workflow, parsing layer, report generation, and device orchestration.",
+      "source_line_start": 188,
+      "source_line_end": 192
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "PySerial",
+      "normalized_title": "PySerial",
+      "key": "pyserial",
+      "path": [
+        "Technical Stack",
+        "PySerial"
+      ],
+      "content": "PySerial opens the modem interface, controls buffers, writes AT commands, and collects modem responses.",
+      "source_line_start": 192,
+      "source_line_end": 196
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Regular Expressions",
+      "normalized_title": "Regular Expressions",
+      "key": "regular_expressions",
+      "path": [
+        "Technical Stack",
+        "Regular Expressions"
+      ],
+      "content": "Regex parsers extract structured state from modem responses such as:\n\n- IMSI and IMEI numbers;\n- PDP contexts;\n- operator-selection results;\n- registration state;\n- signal-quality metrics;\n- RSRP values;\n- system and RRC state.",
+      "source_line_start": 196,
+      "source_line_end": 208
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "JSON",
+      "normalized_title": "JSON",
+      "key": "json",
+      "path": [
+        "Technical Stack",
+        "JSON"
+      ],
+      "content": "The complete run is serialized to a machine-readable JSON report containing test cases, commands, extracted values, reasons, and overall status.",
+      "source_line_start": 208,
+      "source_line_end": 212
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "LaTeX and PDF",
+      "normalized_title": "LaTeX and PDF",
+      "key": "latex_and_pdf",
+      "path": [
+        "Technical Stack",
+        "LaTeX and PDF"
+      ],
+      "content": "The script generates a LaTeX report with a run summary, pass/fail checkboxes, extracted data, and detailed command logs.\n\nWhen `pdflatex` is available, the LaTeX source is compiled into a PDF automatically.",
+      "source_line_start": 212,
+      "source_line_end": 218
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Robust AT-Command Transport\n\nThe `send_at` helper records timestamps, writes the command, waits for serial output, and recognizes terminal success and error conditions.\n\nIt distinguishes:\n\n- `OK`;\n- `ERROR`;\n- CME errors;\n- CMS errors;\n- timeout completion.\n\nIt also captures command duration and raw modem responses for later reporting.\n\n### Raw Audit Logging\n\nEvery transmitted command and received response line is appended to a timestamped raw log.\n\nThis creates an execution trace independent of the summarized pass/fail report.\n\n### Structured Response Parsing\n\nThe repository contains dedicated parsers rather than relying on ad-hoc string checks throughout the runner.\n\nExamples include parsers for:\n\n- `+CGDCONT`;\n- `+COPS` query and scan formats;\n- `+CEREG`;\n- `+QNWINFO`;\n- `+CSQ`;\n- `+QCSQ`;\n- `+QRSRP`;\n- `+CGACT`;\n- `+CGPADDR`;\n- Quectel system/RRC state.\n\nThis turns modem text protocols into structured test data.\n\n### Explicit Test Cases\n\nEach stage is represented by a `TestCase` object carrying:\n\n- case ID;\n- title;\n- description;\n- step;\n- command records;\n- pass/fail state;\n- reason;\n- extracted data.\n\nThat provides a reusable report contract between execution and output rendering.\n\n### Safety Through Preconditions\n\nThe script encodes important preconditions directly into execution:\n\n- modem must respond;\n- SIM identity must be approved;\n- target PLMN must appear before manual selection;\n- registration monitoring has a bounded number of rounds.\n\nThese are test-plan constraints represented as executable control flow.\n\n### Success/Failure Branch Diagnostics\n\nThe runner does not merely mark registration as passed or failed.\n\nSuccessful registration triggers context and RRC inspection, while unsuccessful registration triggers rejection/error diagnostics.\n\nThis preserves evidence useful for troubleshooting both outcomes.\n\n### Multi-Format Reporting\n\nOne run produces several complementary artifacts:\n\n- raw command/response log;\n- structured JSON;\n- human-readable text;\n- LaTeX source;\n- PDF when the local toolchain is available.\n\nThe LaTeX output includes per-test pass/fail checkboxes and detailed command evidence.",
+      "source_line_start": 218,
+      "source_line_end": 305
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Robust AT-Command Transport",
+      "normalized_title": "Robust AT-Command Transport",
+      "key": "robust_at_command_transport",
+      "path": [
+        "Major Engineering Work",
+        "Robust AT-Command Transport"
+      ],
+      "content": "The `send_at` helper records timestamps, writes the command, waits for serial output, and recognizes terminal success and error conditions.\n\nIt distinguishes:\n\n- `OK`;\n- `ERROR`;\n- CME errors;\n- CMS errors;\n- timeout completion.\n\nIt also captures command duration and raw modem responses for later reporting.",
+      "source_line_start": 220,
+      "source_line_end": 234
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Raw Audit Logging",
+      "normalized_title": "Raw Audit Logging",
+      "key": "raw_audit_logging",
+      "path": [
+        "Major Engineering Work",
+        "Raw Audit Logging"
+      ],
+      "content": "Every transmitted command and received response line is appended to a timestamped raw log.\n\nThis creates an execution trace independent of the summarized pass/fail report.",
+      "source_line_start": 234,
+      "source_line_end": 240
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Structured Response Parsing",
+      "normalized_title": "Structured Response Parsing",
+      "key": "structured_response_parsing",
+      "path": [
+        "Major Engineering Work",
+        "Structured Response Parsing"
+      ],
+      "content": "The repository contains dedicated parsers rather than relying on ad-hoc string checks throughout the runner.\n\nExamples include parsers for:\n\n- `+CGDCONT`;\n- `+COPS` query and scan formats;\n- `+CEREG`;\n- `+QNWINFO`;\n- `+CSQ`;\n- `+QCSQ`;\n- `+QRSRP`;\n- `+CGACT`;\n- `+CGPADDR`;\n- Quectel system/RRC state.\n\nThis turns modem text protocols into structured test data.",
+      "source_line_start": 240,
+      "source_line_end": 259
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Explicit Test Cases",
+      "normalized_title": "Explicit Test Cases",
+      "key": "explicit_test_cases",
+      "path": [
+        "Major Engineering Work",
+        "Explicit Test Cases"
+      ],
+      "content": "Each stage is represented by a `TestCase` object carrying:\n\n- case ID;\n- title;\n- description;\n- step;\n- command records;\n- pass/fail state;\n- reason;\n- extracted data.\n\nThat provides a reusable report contract between execution and output rendering.",
+      "source_line_start": 259,
+      "source_line_end": 274
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Safety Through Preconditions",
+      "normalized_title": "Safety Through Preconditions",
+      "key": "safety_through_preconditions",
+      "path": [
+        "Major Engineering Work",
+        "Safety Through Preconditions"
+      ],
+      "content": "The script encodes important preconditions directly into execution:\n\n- modem must respond;\n- SIM identity must be approved;\n- target PLMN must appear before manual selection;\n- registration monitoring has a bounded number of rounds.\n\nThese are test-plan constraints represented as executable control flow.",
+      "source_line_start": 274,
+      "source_line_end": 285
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Success/Failure Branch Diagnostics",
+      "normalized_title": "Success/Failure Branch Diagnostics",
+      "key": "success_failure_branch_diagnostics",
+      "path": [
+        "Major Engineering Work",
+        "Success/Failure Branch Diagnostics"
+      ],
+      "content": "The runner does not merely mark registration as passed or failed.\n\nSuccessful registration triggers context and RRC inspection, while unsuccessful registration triggers rejection/error diagnostics.\n\nThis preserves evidence useful for troubleshooting both outcomes.",
+      "source_line_start": 285,
+      "source_line_end": 293
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Multi-Format Reporting",
+      "normalized_title": "Multi-Format Reporting",
+      "key": "multi_format_reporting",
+      "path": [
+        "Major Engineering Work",
+        "Multi-Format Reporting"
+      ],
+      "content": "One run produces several complementary artifacts:\n\n- raw command/response log;\n- structured JSON;\n- human-readable text;\n- LaTeX source;\n- PDF when the local toolchain is available.\n\nThe LaTeX output includes per-test pass/fail checkboxes and detailed command evidence.",
+      "source_line_start": 293,
+      "source_line_end": 305
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "### Automated Pass/Fail Evaluation\n\nThe repository is itself an automated test harness.\n\nEach test step computes a boolean result from actual modem/network evidence.\n\nExamples include:\n\n- allowed SIM identity;\n- modem identity/state availability;\n- successful configuration commands;\n- presence of the target PLMN;\n- manual selection response;\n- registration success;\n- restoration behavior.\n\n### Conditional Test Execution\n\nThe test plan contains executable prerequisite logic.\n\nIf the target PLMN is not visible during scanning, later forced-selection behavior is skipped and an explicit abort reason is retained.\n\n### Repeated Observation\n\nRegistration is not judged from a single sample.\n\nThe runner performs bounded repeated monitoring with delays and stops early on success.\n\n### Evidence-Rich Results\n\nPass/fail decisions retain the underlying commands, timestamps, raw responses, parsed values, and reason strings.\n\nThis makes the automated outcome auditable.",
+      "source_line_start": 305,
+      "source_line_end": 341
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Automated Pass/Fail Evaluation",
+      "normalized_title": "Automated Pass/Fail Evaluation",
+      "key": "automated_pass_fail_evaluation",
+      "path": [
+        "Testing and Verification",
+        "Automated Pass/Fail Evaluation"
+      ],
+      "content": "The repository is itself an automated test harness.\n\nEach test step computes a boolean result from actual modem/network evidence.\n\nExamples include:\n\n- allowed SIM identity;\n- modem identity/state availability;\n- successful configuration commands;\n- presence of the target PLMN;\n- manual selection response;\n- registration success;\n- restoration behavior.",
+      "source_line_start": 307,
+      "source_line_end": 323
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Conditional Test Execution",
+      "normalized_title": "Conditional Test Execution",
+      "key": "conditional_test_execution",
+      "path": [
+        "Testing and Verification",
+        "Conditional Test Execution"
+      ],
+      "content": "The test plan contains executable prerequisite logic.\n\nIf the target PLMN is not visible during scanning, later forced-selection behavior is skipped and an explicit abort reason is retained.",
+      "source_line_start": 323,
+      "source_line_end": 329
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Repeated Observation",
+      "normalized_title": "Repeated Observation",
+      "key": "repeated_observation",
+      "path": [
+        "Testing and Verification",
+        "Repeated Observation"
+      ],
+      "content": "Registration is not judged from a single sample.\n\nThe runner performs bounded repeated monitoring with delays and stops early on success.",
+      "source_line_start": 329,
+      "source_line_end": 335
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Evidence-Rich Results",
+      "normalized_title": "Evidence-Rich Results",
+      "key": "evidence_rich_results",
+      "path": [
+        "Testing and Verification",
+        "Evidence-Rich Results"
+      ],
+      "content": "Pass/fail decisions retain the underlying commands, timestamps, raw responses, parsed values, and reason strings.\n\nThis makes the automated outcome auditable.",
+      "source_line_start": 335,
+      "source_line_end": 341
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Defensive Device Discovery\n\nThe modem is located by probing actual candidate serial ports rather than assuming one hard-coded path.\n\n### Bounded Waiting\n\nNormal commands, long network scans, and registration rounds all use explicit timeout or round limits.\n\n### State Cleanup\n\nThe test flow includes a restoration step after the experimental configuration.\n\n### Structured Logging\n\nRaw evidence and summarized outputs are separated into dedicated artifacts.\n\n### Local Parsing Contracts\n\nEach modem response family has a specific parser returning predictable structured dictionaries.",
+      "source_line_start": 341,
+      "source_line_end": 363
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Defensive Device Discovery",
+      "normalized_title": "Defensive Device Discovery",
+      "key": "defensive_device_discovery",
+      "path": [
+        "Engineering Practices",
+        "Defensive Device Discovery"
+      ],
+      "content": "The modem is located by probing actual candidate serial ports rather than assuming one hard-coded path.",
+      "source_line_start": 343,
+      "source_line_end": 347
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Bounded Waiting",
+      "normalized_title": "Bounded Waiting",
+      "key": "bounded_waiting",
+      "path": [
+        "Engineering Practices",
+        "Bounded Waiting"
+      ],
+      "content": "Normal commands, long network scans, and registration rounds all use explicit timeout or round limits.",
+      "source_line_start": 347,
+      "source_line_end": 351
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "State Cleanup",
+      "normalized_title": "State Cleanup",
+      "key": "state_cleanup",
+      "path": [
+        "Engineering Practices",
+        "State Cleanup"
+      ],
+      "content": "The test flow includes a restoration step after the experimental configuration.",
+      "source_line_start": 351,
+      "source_line_end": 355
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Structured Logging",
+      "normalized_title": "Structured Logging",
+      "key": "structured_logging",
+      "path": [
+        "Engineering Practices",
+        "Structured Logging"
+      ],
+      "content": "Raw evidence and summarized outputs are separated into dedicated artifacts.",
+      "source_line_start": 355,
+      "source_line_end": 359
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Local Parsing Contracts",
+      "normalized_title": "Local Parsing Contracts",
+      "key": "local_parsing_contracts",
+      "path": [
+        "Engineering Practices",
+        "Local Parsing Contracts"
+      ],
+      "content": "Each modem response family has a specific parser returning predictable structured dictionaries.",
+      "source_line_start": 359,
+      "source_line_end": 363
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Protocol Complexity\n\nThe tool coordinates many AT-command response formats and converts them into a consistent Python representation.\n\n### Temporal Complexity\n\nThe network scan may require a long timeout, and registration is observed across multiple delayed rounds.\n\n### Artifact Complexity\n\nA single run produces multiple report formats while preserving the full serial evidence trail.\n\n### Operational Complexity\n\nThe harness changes modem operating state, network preference, PDP configuration, and operator selection before restoring automatic behavior.",
+      "source_line_start": 363,
+      "source_line_end": 381
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Protocol Complexity",
+      "normalized_title": "Protocol Complexity",
+      "key": "protocol_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Protocol Complexity"
+      ],
+      "content": "The tool coordinates many AT-command response formats and converts them into a consistent Python representation.",
+      "source_line_start": 365,
+      "source_line_end": 369
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Temporal Complexity",
+      "normalized_title": "Temporal Complexity",
+      "key": "temporal_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Temporal Complexity"
+      ],
+      "content": "The network scan may require a long timeout, and registration is observed across multiple delayed rounds.",
+      "source_line_start": 369,
+      "source_line_end": 373
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Artifact Complexity",
+      "normalized_title": "Artifact Complexity",
+      "key": "artifact_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Artifact Complexity"
+      ],
+      "content": "A single run produces multiple report formats while preserving the full serial evidence trail.",
+      "source_line_start": 373,
+      "source_line_end": 377
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Operational Complexity",
+      "normalized_title": "Operational Complexity",
+      "key": "operational_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Operational Complexity"
+      ],
+      "content": "The harness changes modem operating state, network preference, PDP configuration, and operator selection before restoring automatic behavior.",
+      "source_line_start": 377,
+      "source_line_end": 381
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Languages\n\n- **Python — strong evidence.**\n\n### Cellular Networking\n\n- **AT-command modem control — strong evidence.**\n- **Quectel RM520N integration — strong evidence.**\n- **PLMN scanning and selection — strong evidence.**\n- **LTE registration-state interpretation — strong evidence.**\n- **PDP context inspection — strong evidence.**\n- **RRC-state inspection — strong evidence.**\n- **Cellular signal telemetry parsing — strong evidence.**\n\n### Systems Engineering\n\n- **Serial-device discovery — strong evidence.**\n- **PySerial communication — strong evidence.**\n- **Timeout management — strong evidence.**\n- **Device-state restoration — strong evidence.**\n\n### Test Engineering\n\n- **Automated test orchestration — strong evidence.**\n- **Pass/fail evaluation — strong evidence.**\n- **Conditional test-plan execution — strong evidence.**\n- **Diagnostic evidence capture — strong evidence.**\n- **SIM allowlist enforcement — strong evidence.**\n\n### Reporting\n\n- **Structured JSON reporting — strong evidence.**\n- **Text report generation — strong evidence.**\n- **LaTeX generation — strong evidence.**\n- **Optional PDF compilation — strong evidence.**\n- **Raw audit logging — strong evidence.**",
+      "source_line_start": 381,
+      "source_line_end": 420
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Skills Demonstrated",
+        "Languages"
+      ],
+      "content": "- **Python — strong evidence.**",
+      "source_line_start": 383,
+      "source_line_end": 387
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "Cellular Networking",
+      "normalized_title": "Cellular Networking",
+      "key": "cellular_networking",
+      "path": [
+        "Skills Demonstrated",
+        "Cellular Networking"
+      ],
+      "content": "- **AT-command modem control — strong evidence.**\n- **Quectel RM520N integration — strong evidence.**\n- **PLMN scanning and selection — strong evidence.**\n- **LTE registration-state interpretation — strong evidence.**\n- **PDP context inspection — strong evidence.**\n- **RRC-state inspection — strong evidence.**\n- **Cellular signal telemetry parsing — strong evidence.**",
+      "source_line_start": 387,
+      "source_line_end": 397
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Systems Engineering"
+      ],
+      "content": "- **Serial-device discovery — strong evidence.**\n- **PySerial communication — strong evidence.**\n- **Timeout management — strong evidence.**\n- **Device-state restoration — strong evidence.**",
+      "source_line_start": 397,
+      "source_line_end": 404
+    },
+    {
+      "id": "s051",
+      "level": 3,
+      "title": "Test Engineering",
+      "normalized_title": "Test Engineering",
+      "key": "test_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Test Engineering"
+      ],
+      "content": "- **Automated test orchestration — strong evidence.**\n- **Pass/fail evaluation — strong evidence.**\n- **Conditional test-plan execution — strong evidence.**\n- **Diagnostic evidence capture — strong evidence.**\n- **SIM allowlist enforcement — strong evidence.**",
+      "source_line_start": 404,
+      "source_line_end": 412
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Reporting",
+      "normalized_title": "Reporting",
+      "key": "reporting",
+      "path": [
+        "Skills Demonstrated",
+        "Reporting"
+      ],
+      "content": "- **Structured JSON reporting — strong evidence.**\n- **Text report generation — strong evidence.**\n- **LaTeX generation — strong evidence.**\n- **Optional PDF compilation — strong evidence.**\n- **Raw audit logging — strong evidence.**",
+      "source_line_start": 412,
+      "source_line_end": 420
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository demonstrates a move from using AT commands as an exploratory debugging interface toward encoding a modem/network validation procedure as software.\n\nThe important capability is executable test discipline around real hardware: preconditions, configuration, bounded waits, conditional progression, repeated observation, diagnostics, cleanup, and report artifacts are all represented directly in code.",
+      "source_line_start": 420,
+      "source_line_end": 426
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 098 already provided direct Quectel modem telemetry and NR5G-NSA serving-cell parsing in a broader wireless experiment workspace.\n\n`Satelitte-Project` narrows that capability into a dedicated automated cellular-network acceptance harness.\n\nCompared with the earlier exploratory telemetry use, the modem interaction here is organized as an explicit sequence of test cases with machine-computed results and generated reports.",
+      "source_line_start": 426,
+      "source_line_end": 434
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository centered on an end-to-end automated Quectel modem network-validation plan with:\n\n- SIM eligibility checks;\n- target-PLMN scan gating;\n- forced operator selection;\n- repeated registration monitoring;\n- success/failure diagnostics;\n- post-test state restoration;\n- machine-readable and printable run reports.",
+      "source_line_start": 434,
+      "source_line_end": 446
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Satelitte-Project` is a Python-based automated validation system for exercising a Quectel RM520N modem against a Rogers satellite-network test plan.\n\nIt discovers the appropriate serial interface, verifies modem and subscriber identity, applies cellular configuration, searches for the target PLMN, conditionally forces operator selection, monitors registration over time, captures success or failure diagnostics, and restores normal modem settings.\n\nThe implementation converts raw AT-command interaction into structured parser outputs and explicit test-case results. Every command can be retained in a raw audit log, while the completed run is also rendered into JSON, text, LaTeX, and optionally PDF.\n\nThe strongest engineering evidence is therefore not simply cellular networking knowledge but the conversion of a manual hardware/network test procedure into an auditable automated test harness.\n\n# Project Tags",
+      "source_line_start": 446,
+      "source_line_end": 458
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `automated-test-harness`\n- `network-validation-tool`\n- `hardware-integration-tool`\n- `individual-project`",
+      "source_line_start": 458,
+      "source_line_end": 465
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`",
+      "source_line_start": 465,
+      "source_line_end": 469
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Cellular Networking",
+      "normalized_title": "Cellular Networking",
+      "key": "cellular_networking",
+      "path": [
+        "Cellular Networking"
+      ],
+      "content": "- `quectel-modem`\n- `cellular-modem`\n- `at-commands`\n- `lte`\n- `plmn-scan`\n- `manual-operator-selection`\n- `eps-registration`\n- `pdp-context`\n- `rrc-state`\n- `rsrp`\n- `cellular-signal-telemetry`",
+      "source_line_start": 469,
+      "source_line_end": 483
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Systems Engineering",
+      "normalized_title": "Systems Engineering",
+      "key": "systems_engineering",
+      "path": [
+        "Systems Engineering"
+      ],
+      "content": "- `serial-communication`\n- `pyserial`\n- `serial-port-discovery`\n- `timeout-management`\n- `device-state-restoration`",
+      "source_line_start": 483,
+      "source_line_end": 491
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `automated-pass-fail`\n- `conditional-test-execution`\n- `sim-allowlist-validation`\n- `repeated-registration-monitoring`\n- `diagnostic-capture`\n- `test-case-model`",
+      "source_line_start": 491,
+      "source_line_end": 500
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Reporting",
+      "normalized_title": "Reporting",
+      "key": "reporting",
+      "path": [
+        "Reporting"
+      ],
+      "content": "- `json-reporting`\n- `text-reporting`\n- `latex-reporting`\n- `pdf-reporting`\n- `raw-command-log`\n- `timestamped-logging`",
+      "source_line_start": 500,
+      "source_line_end": 509
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-automated-quectel-network-validation-harness`\n- `earliest-observed-plmn-gated-modem-test-plan`",
+      "source_line_start": 509,
+      "source_line_end": 513
+    }
+  ],
+  "raw_analysis": "# Satelitte-Project\n\n## Repository Identity\n\n- Repository: 106 / 134\n- Name: `Satelitte-Project`\n- Repository start date: 2026-04-02\n- Last meaningful update date: 2026-04-02\n- Latest meaningful commit: `b72aacfc19ed7ab1374b052913f4c6e97105c627`\n- Primary type: Automated cellular/satellite modem validation harness\n- Technical field: Cellular networking, modem control, serial communications, automated test engineering\n- Application domain: Rogers satellite-network validation using a Quectel RM520N modem\n- Collaboration type: `individual-project`\n- Primary language: Python\n\n## Collaboration and Authorship Context\n\nThe repository history is owner-driven and the implementation is contained in a single Python test harness. The corpus therefore treats the modem-control, parsing, automated test flow, logging, and report-generation logic as personally attributable repository work.\n\nThe Rogers network identifiers, SIM inventory, and modem/network behavior are operational test inputs. The engineering claim is the automation around them rather than ownership of the external network infrastructure.\n\n## Evidence Basis\n\nThe analysis is grounded in the current `test.py` implementation and repository history.\n\nThe script contains:\n\n- modem-port discovery;\n- direct AT-command execution;\n- parser functions for modem/network responses;\n- explicit test-case objects;\n- a staged validation runner;\n- conditional abort logic;\n- repeated registration monitoring;\n- success and failure diagnostics;\n- restoration of normal modem state;\n- raw command/response logging;\n- JSON, text, LaTeX, and optional PDF report generation.\n\n## What This Project Is\n\n`Satelitte-Project` is an automated validation harness for testing a Quectel RM520N cellular modem against a specific Rogers satellite-network test plan.\n\nRather than requiring a tester to manually enter commands and interpret modem responses, the program drives the modem over a serial connection, collects and parses responses, evaluates explicit pass/fail conditions, records evidence, and generates structured run reports.\n\nThe workflow is stateful. It begins by establishing that the connected hardware and SIM are appropriate, captures the current modem/network state, moves the modem into airplane mode, applies a dedicated LTE/network configuration, scans for the target network, conditionally performs manual operator selection, monitors registration, gathers diagnostics, and finally restores the modem to normal automatic behavior.\n\n## Project Scope\n\n### Modem Discovery\n\nThe tool searches common Linux serial-device paths including:\n\n- `/dev/ttyUSB*`;\n- `/dev/ttyACM*`;\n- `/dev/serial/by-id/*`.\n\nCandidate ports are opened with PySerial and probed using `AT` and `ATI`.\n\nA successful modem response determines the serial interface used by the rest of the run.\n\n### Preliminary Identity and SIM Validation\n\nThe first test stage collects:\n\n- IMSI;\n- IMEI;\n- SIM initialization state;\n- PDP contexts.\n\nThe IMSI is checked against an explicit approved-SIM allowlist.\n\nThis means the automated test does not proceed solely because a modem is reachable; it validates that the attached subscriber identity belongs to the intended test inventory.\n\n### Modem and Network State Inspection\n\nThe script records current state through commands including:\n\n- `ATI`;\n- `AT+COPS?`;\n- `AT+CEREG?`;\n- `AT+QNWINFO`;\n- `AT+QENG=\"servingcell\"`.\n\nDedicated parser functions transform the raw text into structured fields such as operator mode, registration state, radio access technology, band, channel, and serving-cell state.\n\n### Satellite-Network Configuration\n\nThe harness drives the modem into airplane mode with `AT+CFUN=4`, then applies the target configuration.\n\nThe implemented settings include:\n\n- LTE-only mode preference;\n- roaming preference;\n- data-roaming configuration;\n- a target APN;\n- detailed EPS registration reporting.\n\nEach configuration command contributes to the test-case pass/fail result.\n\n### Network Scan and Conditional Progression\n\nAfter returning the modem to full functionality, the script performs a long-running `AT+COPS=?` network scan.\n\nThe scan output is parsed into operator entries.\n\nThe target PLMN is searched explicitly.\n\nIf the target network is absent, the runner records an abort reason and stops before the manual-selection stage.\n\nThis conditional progression is important test engineering: later actions are not executed when the prerequisite network evidence is absent.\n\n### Manual Operator Selection\n\nWhen the target PLMN is visible, the harness attempts explicit manual selection using the configured access technology.\n\nThe command outcome is captured as a dedicated test case.\n\n### Registration Monitoring\n\nThe registration stage performs repeated rounds of diagnostic sampling.\n\nEach round captures information from commands including:\n\n- network clock;\n- operator selection;\n- EPS registration;\n- RSSI/BER;\n- Quectel signal-quality output;\n- RSRP;\n- serving-cell state;\n- system mode.\n\nThe script waits between unsuccessful rounds and stops early when registration succeeds.\n\n### Success Diagnostics\n\nOn successful registration the harness additionally inspects:\n\n- PDP-context activation state;\n- assigned PDP addresses;\n- RRC state.\n\nThe report records whether context 1 is active and which IP address it received.\n\n### Failure Diagnostics\n\nIf registration does not succeed after the configured monitoring rounds, the program captures additional network rejection/error information through Quectel/network diagnostic commands.\n\nThe final test-case reason contains the terminal registration state and supporting diagnostic values.\n\n### State Restoration\n\nThe run contains a final restoration stage that returns the modem toward normal automatic operation.\n\nThat makes the test harness responsible not just for test setup and observation but also for post-test cleanup of the device state.\n\n## Architecture and System Shape\n\n```text\nLinux serial-device discovery\n          ↓\nAT / ATI modem probe\n          ↓\nQuectel RM520N serial connection\n          ↓\nStaged test runner\n          ↓\nAT command execution + response collection\n          ↓\nProtocol-specific parser functions\n          ↓\nPer-step pass/fail evaluation\n          ↓\nRaw log + JSON + text + LaTeX/PDF reports\n```\n\nThe implementation separates several concerns even though they live in one file:\n\n- transport and serial handling;\n- response parsing;\n- test-case representation;\n- orchestration;\n- reporting.\n\n## Technical Stack\n\n### Python\n\nPython implements the complete validation workflow, parsing layer, report generation, and device orchestration.\n\n### PySerial\n\nPySerial opens the modem interface, controls buffers, writes AT commands, and collects modem responses.\n\n### Regular Expressions\n\nRegex parsers extract structured state from modem responses such as:\n\n- IMSI and IMEI numbers;\n- PDP contexts;\n- operator-selection results;\n- registration state;\n- signal-quality metrics;\n- RSRP values;\n- system and RRC state.\n\n### JSON\n\nThe complete run is serialized to a machine-readable JSON report containing test cases, commands, extracted values, reasons, and overall status.\n\n### LaTeX and PDF\n\nThe script generates a LaTeX report with a run summary, pass/fail checkboxes, extracted data, and detailed command logs.\n\nWhen `pdflatex` is available, the LaTeX source is compiled into a PDF automatically.\n\n## Major Engineering Work\n\n### Robust AT-Command Transport\n\nThe `send_at` helper records timestamps, writes the command, waits for serial output, and recognizes terminal success and error conditions.\n\nIt distinguishes:\n\n- `OK`;\n- `ERROR`;\n- CME errors;\n- CMS errors;\n- timeout completion.\n\nIt also captures command duration and raw modem responses for later reporting.\n\n### Raw Audit Logging\n\nEvery transmitted command and received response line is appended to a timestamped raw log.\n\nThis creates an execution trace independent of the summarized pass/fail report.\n\n### Structured Response Parsing\n\nThe repository contains dedicated parsers rather than relying on ad-hoc string checks throughout the runner.\n\nExamples include parsers for:\n\n- `+CGDCONT`;\n- `+COPS` query and scan formats;\n- `+CEREG`;\n- `+QNWINFO`;\n- `+CSQ`;\n- `+QCSQ`;\n- `+QRSRP`;\n- `+CGACT`;\n- `+CGPADDR`;\n- Quectel system/RRC state.\n\nThis turns modem text protocols into structured test data.\n\n### Explicit Test Cases\n\nEach stage is represented by a `TestCase` object carrying:\n\n- case ID;\n- title;\n- description;\n- step;\n- command records;\n- pass/fail state;\n- reason;\n- extracted data.\n\nThat provides a reusable report contract between execution and output rendering.\n\n### Safety Through Preconditions\n\nThe script encodes important preconditions directly into execution:\n\n- modem must respond;\n- SIM identity must be approved;\n- target PLMN must appear before manual selection;\n- registration monitoring has a bounded number of rounds.\n\nThese are test-plan constraints represented as executable control flow.\n\n### Success/Failure Branch Diagnostics\n\nThe runner does not merely mark registration as passed or failed.\n\nSuccessful registration triggers context and RRC inspection, while unsuccessful registration triggers rejection/error diagnostics.\n\nThis preserves evidence useful for troubleshooting both outcomes.\n\n### Multi-Format Reporting\n\nOne run produces several complementary artifacts:\n\n- raw command/response log;\n- structured JSON;\n- human-readable text;\n- LaTeX source;\n- PDF when the local toolchain is available.\n\nThe LaTeX output includes per-test pass/fail checkboxes and detailed command evidence.\n\n## Testing and Verification\n\n### Automated Pass/Fail Evaluation\n\nThe repository is itself an automated test harness.\n\nEach test step computes a boolean result from actual modem/network evidence.\n\nExamples include:\n\n- allowed SIM identity;\n- modem identity/state availability;\n- successful configuration commands;\n- presence of the target PLMN;\n- manual selection response;\n- registration success;\n- restoration behavior.\n\n### Conditional Test Execution\n\nThe test plan contains executable prerequisite logic.\n\nIf the target PLMN is not visible during scanning, later forced-selection behavior is skipped and an explicit abort reason is retained.\n\n### Repeated Observation\n\nRegistration is not judged from a single sample.\n\nThe runner performs bounded repeated monitoring with delays and stops early on success.\n\n### Evidence-Rich Results\n\nPass/fail decisions retain the underlying commands, timestamps, raw responses, parsed values, and reason strings.\n\nThis makes the automated outcome auditable.\n\n## Engineering Practices\n\n### Defensive Device Discovery\n\nThe modem is located by probing actual candidate serial ports rather than assuming one hard-coded path.\n\n### Bounded Waiting\n\nNormal commands, long network scans, and registration rounds all use explicit timeout or round limits.\n\n### State Cleanup\n\nThe test flow includes a restoration step after the experimental configuration.\n\n### Structured Logging\n\nRaw evidence and summarized outputs are separated into dedicated artifacts.\n\n### Local Parsing Contracts\n\nEach modem response family has a specific parser returning predictable structured dictionaries.\n\n## Scale and Complexity\n\n### Protocol Complexity\n\nThe tool coordinates many AT-command response formats and converts them into a consistent Python representation.\n\n### Temporal Complexity\n\nThe network scan may require a long timeout, and registration is observed across multiple delayed rounds.\n\n### Artifact Complexity\n\nA single run produces multiple report formats while preserving the full serial evidence trail.\n\n### Operational Complexity\n\nThe harness changes modem operating state, network preference, PDP configuration, and operator selection before restoring automatic behavior.\n\n## Skills Demonstrated\n\n### Languages\n\n- **Python — strong evidence.**\n\n### Cellular Networking\n\n- **AT-command modem control — strong evidence.**\n- **Quectel RM520N integration — strong evidence.**\n- **PLMN scanning and selection — strong evidence.**\n- **LTE registration-state interpretation — strong evidence.**\n- **PDP context inspection — strong evidence.**\n- **RRC-state inspection — strong evidence.**\n- **Cellular signal telemetry parsing — strong evidence.**\n\n### Systems Engineering\n\n- **Serial-device discovery — strong evidence.**\n- **PySerial communication — strong evidence.**\n- **Timeout management — strong evidence.**\n- **Device-state restoration — strong evidence.**\n\n### Test Engineering\n\n- **Automated test orchestration — strong evidence.**\n- **Pass/fail evaluation — strong evidence.**\n- **Conditional test-plan execution — strong evidence.**\n- **Diagnostic evidence capture — strong evidence.**\n- **SIM allowlist enforcement — strong evidence.**\n\n### Reporting\n\n- **Structured JSON reporting — strong evidence.**\n- **Text report generation — strong evidence.**\n- **LaTeX generation — strong evidence.**\n- **Optional PDF compilation — strong evidence.**\n- **Raw audit logging — strong evidence.**\n\n## Capability Developed\n\nThis repository demonstrates a move from using AT commands as an exploratory debugging interface toward encoding a modem/network validation procedure as software.\n\nThe important capability is executable test discipline around real hardware: preconditions, configuration, bounded waits, conditional progression, repeated observation, diagnostics, cleanup, and report artifacts are all represented directly in code.\n\n## Portfolio Evolution Context\n\nRepository 098 already provided direct Quectel modem telemetry and NR5G-NSA serving-cell parsing in a broader wireless experiment workspace.\n\n`Satelitte-Project` narrows that capability into a dedicated automated cellular-network acceptance harness.\n\nCompared with the earlier exploratory telemetry use, the modem interaction here is organized as an explicit sequence of test cases with machine-computed results and generated reports.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository centered on an end-to-end automated Quectel modem network-validation plan with:\n\n- SIM eligibility checks;\n- target-PLMN scan gating;\n- forced operator selection;\n- repeated registration monitoring;\n- success/failure diagnostics;\n- post-test state restoration;\n- machine-readable and printable run reports.\n\n## Overall Repository Narrative\n\n`Satelitte-Project` is a Python-based automated validation system for exercising a Quectel RM520N modem against a Rogers satellite-network test plan.\n\nIt discovers the appropriate serial interface, verifies modem and subscriber identity, applies cellular configuration, searches for the target PLMN, conditionally forces operator selection, monitors registration over time, captures success or failure diagnostics, and restores normal modem settings.\n\nThe implementation converts raw AT-command interaction into structured parser outputs and explicit test-case results. Every command can be retained in a raw audit log, while the completed run is also rendered into JSON, text, LaTeX, and optionally PDF.\n\nThe strongest engineering evidence is therefore not simply cellular networking knowledge but the conversion of a manual hardware/network test procedure into an auditable automated test harness.\n\n# Project Tags\n\n## Project Type\n\n- `automated-test-harness`\n- `network-validation-tool`\n- `hardware-integration-tool`\n- `individual-project`\n\n## Languages\n\n- `python`\n\n## Cellular Networking\n\n- `quectel-modem`\n- `cellular-modem`\n- `at-commands`\n- `lte`\n- `plmn-scan`\n- `manual-operator-selection`\n- `eps-registration`\n- `pdp-context`\n- `rrc-state`\n- `rsrp`\n- `cellular-signal-telemetry`\n\n## Systems Engineering\n\n- `serial-communication`\n- `pyserial`\n- `serial-port-discovery`\n- `timeout-management`\n- `device-state-restoration`\n\n## Testing and Verification\n\n- `automated-pass-fail`\n- `conditional-test-execution`\n- `sim-allowlist-validation`\n- `repeated-registration-monitoring`\n- `diagnostic-capture`\n- `test-case-model`\n\n## Reporting\n\n- `json-reporting`\n- `text-reporting`\n- `latex-reporting`\n- `pdf-reporting`\n- `raw-command-log`\n- `timestamped-logging`\n\n## Portfolio Significance\n\n- `earliest-observed-automated-quectel-network-validation-harness`\n- `earliest-observed-plmn-gated-modem-test-plan`\n"
+}

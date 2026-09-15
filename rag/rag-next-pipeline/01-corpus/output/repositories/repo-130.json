@@ -1,0 +1,549 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 130,
+  "repository_total": 134,
+  "repository_name": "LogicApp",
+  "header_title": "LogicApp",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-130-LogicApp/README.md",
+    "line_start": 1,
+    "line_end": 503,
+    "sha256": "dfd48f3063109b40622bb641a41a0cf52db5b0f924b0306ad86b9b8b660b69ba"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "azure-logic-apps",
+    "workflow-orchestration",
+    "event-driven-workflow",
+    "azure-service-bus",
+    "queue-processing",
+    "sensor-event-processing",
+    "iot-integration",
+    "water-leak-alerting",
+    "base64-payload-decoding",
+    "json-schema-parsing",
+    "event-enrichment",
+    "azure-sql-connector",
+    "sql-data-enrichment",
+    "office365-email-automation",
+    "twilio-sms-automation",
+    "excel-online-integration",
+    "notification-routing",
+    "recipient-fan-out",
+    "conditional-workflow",
+    "managed-connectors",
+    "http-webhook-forwarding",
+    "business-process-automation",
+    "integration-engineering"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s008"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Message Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/LogicApp`\n- **Repository index:** 130\n- **Start date:** 2026-03-17\n- **Latest meaningful update:** 2026-03-17\n- **Latest meaningful commit:** `17652a95372c6c3284fde956d5b45079527a63c7` — `Create logicapp.json`\n- **Primary artifact type:** exported Azure Logic Apps workflow definition\n- **Collaboration classification:** `individual-project-with-external-services`\n- **Primary implementation:** `logicapp.json`\n\n## Message Identity\nThe workflow captures the Service Bus message identifier into an initialized variable.\n\nThat identifier is then persisted as the leak-event message UID.\n\nUsing the queue message identity as persisted event metadata provides a traceable bridge between transport-level events and SQL state."
+    },
+    "maturity": {
+      "section_ids": [
+        "s034"
+      ],
+      "titles": [
+        "Maturity Assessment"
+      ],
+      "text": "## Maturity Assessment\nThis is a **focused operational workflow artifact**, not a broad software product.\n\nIts maturity comes from the number of integrated systems and business branches represented in a single deployable Logic Apps definition.\n\nThe repository is strongest as evidence of:\n\n- Azure workflow orchestration;\n- event-driven integration;\n- SQL-backed enrichment;\n- multi-channel notification routing;\n- managed connector composition.\n\nIts small repository size should not be confused with trivial system interaction: the workflow coordinates several external services and domain-state decisions."
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s028"
+      ],
+      "titles": [
+        "Security and Privacy Boundary"
+      ],
+      "text": "## Security and Privacy Boundary\nThe source artifact contains operational integration configuration and notification templates.\n\nFor portfolio retrieval, the important skill evidence is architectural.\n\nSensitive operational values are not required to demonstrate:\n\n- connector composition;\n- data flow;\n- event parsing;\n- conditional routing;\n- SQL enrichment;\n- notification fan-out."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/LogicApp`\n- **Repository index:** 130\n- **Start date:** 2026-03-17\n- **Latest meaningful update:** 2026-03-17\n- **Latest meaningful commit:** `17652a95372c6c3284fde956d5b45079527a63c7` — `Create logicapp.json`\n- **Primary artifact type:** exported Azure Logic Apps workflow definition\n- **Collaboration classification:** `individual-project-with-external-services`\n- **Primary implementation:** `logicapp.json`",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Repository Is",
+      "normalized_title": "What This Repository Is",
+      "key": "what_this_repository_is",
+      "path": [
+        "What This Repository Is"
+      ],
+      "content": "`LogicApp` is a compact integration/orchestration repository centered on one exported Azure Logic Apps workflow.\n\nThe workflow consumes sensor events from Azure Service Bus, parses a Base64-encoded sensor payload, records leak-event metadata in SQL, resolves sensor/client ownership data, routes water-leak notifications through email and SMS, and forwards the sensor event to an HTTP dashboard endpoint.\n\nThe repository therefore represents integration engineering rather than a conventional application with a custom frontend and backend.\n\nIts value is in the workflow topology, branching logic, connector composition, event normalization, notification routing, and data-flow coordination across managed services.",
+      "source_line_start": 14,
+      "source_line_end": 24
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Boundary",
+      "normalized_title": "Evidence Boundary",
+      "key": "evidence_boundary",
+      "path": [
+        "Evidence Boundary"
+      ],
+      "content": "The repository contains Microsoft Logic Apps workflow configuration that references managed connectors and provider infrastructure.\n\nThose providers are external systems, not owner-authored implementations.\n\nThe evidence attributable to the project is the composition and orchestration of:\n\n- Service Bus event ingestion;\n- JSON parsing;\n- event identity and timestamp derivation;\n- SQL reads/writes;\n- leak-state branching;\n- client and linked-user lookup;\n- email notification routing;\n- SMS notification routing;\n- special-recipient routing through Excel Online;\n- HTTP forwarding;\n- explicit workflow termination paths.\n\nThe repository does **not** establish authorship of:\n\n- Azure Service Bus;\n- Azure SQL;\n- Microsoft Office 365;\n- Excel Online Business;\n- Twilio;\n- the Azure Logic Apps runtime;\n- the downstream dashboard service.",
+      "source_line_start": 24,
+      "source_line_end": 54
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Shape",
+      "normalized_title": "Repository Shape",
+      "key": "repository_shape",
+      "path": [
+        "Repository Shape"
+      ],
+      "content": "The repository is intentionally small.\n\nObserved source files are:\n\n```text\nREADME.md\nlogicapp.json\n```\n\nThe implementation is almost entirely declarative workflow JSON.\n\nThat makes this repository useful evidence of low-code/serverless orchestration skill rather than evidence of a large handwritten codebase.",
+      "source_line_start": 54,
+      "source_line_end": 69
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Core Business Scenario",
+      "normalized_title": "Core Business Scenario",
+      "key": "core_business_scenario",
+      "path": [
+        "Core Business Scenario"
+      ],
+      "content": "The workflow handles water-leak sensor events.\n\nA sensor message enters a queue-backed workflow, the payload identifies the sensor, the workflow records an event-level database row, loads sensor metadata, evaluates existing leak state, and conditionally sends human-facing alerts.\n\nThe workflow combines machine-event processing with business notification policy.\n\nA simplified flow is:\n\n```text\nService Bus queue event\n        |\n        v\nDecode Base64 message payload\n        |\n        v\nParse sensor JSON\n        |\n        +-----------------------> HTTP dashboard webhook\n        |\n        v\nCreate event identity + EST timestamp\n        |\n        v\nInsert leak event metadata in SQL\n        |\n        v\nLoad sensorDetails row by MAC\n        |\n        v\nEvaluate leak/update state\n        |\n        v\nLoad client + linked users\n        |\n        +--> email notifications\n        |\n        +--> SMS routing\n        |\n        +--> special institutional recipient branch\n        |\n        v\nTerminate successful workflow path\n```",
+      "source_line_start": 69,
+      "source_line_end": 115
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Event Ingestion",
+      "normalized_title": "Event Ingestion",
+      "key": "event_ingestion",
+      "path": [
+        "Event Ingestion"
+      ],
+      "content": "The workflow uses an Azure Service Bus API connection as its trigger.\n\nThe queue is `aquaqueue`.\n\nThe trigger is configured as a recurring batch-head read rather than a custom event-consumer process.\n\nImportant orchestration characteristics include:\n\n- recurrence-based polling;\n- a sub-second configured interval;\n- Eastern Standard Time configuration;\n- a maximum-message batch size;\n- `splitOn` processing so trigger-body items can be handled independently.\n\nThis demonstrates use of a managed queue as an integration boundary.",
+      "source_line_start": 115,
+      "source_line_end": 133
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Sensor Message Parsing",
+      "normalized_title": "Sensor Message Parsing",
+      "key": "sensor_message_parsing",
+      "path": [
+        "Sensor Message Parsing"
+      ],
+      "content": "The trigger body carries message data in encoded form.\n\nThe workflow explicitly decodes the Base64 content and converts the result to JSON before schema validation.\n\nThe parsed payload schema includes fields for:\n\n- `Data`;\n- `GWID`;\n- `MAC`;\n- `RSSI`.\n\nThe sensor MAC becomes an important lookup key later in the workflow.\n\nThe workflow therefore performs transport-to-domain normalization before business branching.",
+      "source_line_start": 133,
+      "source_line_end": 150
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Message Identity",
+      "normalized_title": "Message Identity",
+      "key": "message_identity",
+      "path": [
+        "Message Identity"
+      ],
+      "content": "The workflow captures the Service Bus message identifier into an initialized variable.\n\nThat identifier is then persisted as the leak-event message UID.\n\nUsing the queue message identity as persisted event metadata provides a traceable bridge between transport-level events and SQL state.",
+      "source_line_start": 150,
+      "source_line_end": 158
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Time Normalization",
+      "normalized_title": "Time Normalization",
+      "key": "time_normalization",
+      "path": [
+        "Time Normalization"
+      ],
+      "content": "The workflow initializes a timestamp variable by converting UTC to Eastern Standard Time.\n\nThe resulting timestamp is inserted with the leak-event metadata.\n\nThis is a practical integration concern because message transport, databases, and human-facing operations frequently use different time conventions.\n\nThe workflow makes the conversion explicit instead of relying on implicit local runtime time.",
+      "source_line_start": 158,
+      "source_line_end": 168
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "SQL Persistence",
+      "normalized_title": "SQL Persistence",
+      "key": "sql_persistence",
+      "path": [
+        "SQL Persistence"
+      ],
+      "content": "Azure SQL is used through the managed SQL connector.\n\nObserved tables include:\n\n- `leakParams`;\n- `sensorDetails`;\n- `clientInfo`;\n- `linkedUser`.\n\n### `leakParams`\n\nA leak-event row is inserted with at least:\n\n- the unique message ID;\n- the normalized event timestamp.\n\nThis creates an event-level persistence record before later notification logic.\n\n### `sensorDetails`\n\nThe workflow loads a sensor row using the parsed MAC address.\n\nSensor metadata supplies business context such as:\n\n- associated client identifier;\n- physical location;\n- building;\n- floor;\n- unit;\n- spot;\n- leak-state fields;\n- notification-related state.\n\n### `clientInfo`\n\nThe workflow resolves the client associated with the sensor.\n\nClient data is then used to route direct email/SMS notifications.\n\n### `linkedUser`\n\nThe workflow queries linked users by client identifier.\n\nThis supports one-to-many notification routing rather than assuming every sensor has only one human recipient.",
+      "source_line_start": 168,
+      "source_line_end": 215
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "`leakParams`",
+      "normalized_title": "leakParams",
+      "key": "leakparams",
+      "path": [
+        "SQL Persistence",
+        "`leakParams`"
+      ],
+      "content": "A leak-event row is inserted with at least:\n\n- the unique message ID;\n- the normalized event timestamp.\n\nThis creates an event-level persistence record before later notification logic.",
+      "source_line_start": 179,
+      "source_line_end": 188
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "`sensorDetails`",
+      "normalized_title": "sensorDetails",
+      "key": "sensordetails",
+      "path": [
+        "SQL Persistence",
+        "`sensorDetails`"
+      ],
+      "content": "The workflow loads a sensor row using the parsed MAC address.\n\nSensor metadata supplies business context such as:\n\n- associated client identifier;\n- physical location;\n- building;\n- floor;\n- unit;\n- spot;\n- leak-state fields;\n- notification-related state.",
+      "source_line_start": 188,
+      "source_line_end": 203
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "`clientInfo`",
+      "normalized_title": "clientInfo",
+      "key": "clientinfo",
+      "path": [
+        "SQL Persistence",
+        "`clientInfo`"
+      ],
+      "content": "The workflow resolves the client associated with the sensor.\n\nClient data is then used to route direct email/SMS notifications.",
+      "source_line_start": 203,
+      "source_line_end": 209
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "`linkedUser`",
+      "normalized_title": "linkedUser",
+      "key": "linkeduser",
+      "path": [
+        "SQL Persistence",
+        "`linkedUser`"
+      ],
+      "content": "The workflow queries linked users by client identifier.\n\nThis supports one-to-many notification routing rather than assuming every sensor has only one human recipient.",
+      "source_line_start": 209,
+      "source_line_end": 215
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Leak-State Logic",
+      "normalized_title": "Leak-State Logic",
+      "key": "leak_state_logic",
+      "path": [
+        "Leak-State Logic"
+      ],
+      "content": "The workflow contains conditional logic around the sensor's leak-update state.\n\nThe orchestration is therefore not simply:\n\n```text\nmessage -> send alert\n```\n\nIt incorporates persisted sensor state before deciding how to proceed.\n\nOne observed branch updates a drying-day field to a fixed value under a condition and participates in the broader `leak_update` handling path.\n\nThis is evidence of business-state-aware orchestration.",
+      "source_line_start": 215,
+      "source_line_end": 231
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Demo Sensor Branch",
+      "normalized_title": "Demo Sensor Branch",
+      "key": "demo_sensor_branch",
+      "path": [
+        "Demo Sensor Branch"
+      ],
+      "content": "The workflow includes a `Demo Sensor` condition based on sensor-location content.\n\nThis shows that the orchestration distinguishes special/demo devices from ordinary production routing inside the same workflow definition.\n\nThat distinction is implemented as workflow policy rather than a separate service.",
+      "source_line_start": 231,
+      "source_line_end": 239
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Snooze / Notification Suppression",
+      "normalized_title": "Snooze / Notification Suppression",
+      "key": "snooze_notification_suppression",
+      "path": [
+        "Snooze / Notification Suppression"
+      ],
+      "content": "The workflow contains conditions related to notification snoozing.\n\nThe important architectural point is that notification delivery is not treated as unconditional.\n\nStored business state can suppress or redirect outward communication.\n\nThis is a useful example of integrating operational state with notification side effects.",
+      "source_line_start": 239,
+      "source_line_end": 249
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Email Notification Flow",
+      "normalized_title": "Email Notification Flow",
+      "key": "email_notification_flow",
+      "path": [
+        "Email Notification Flow"
+      ],
+      "content": "Office 365 is used through a managed API connection.\n\nThe workflow composes high-importance water-leak email messages from resolved client and sensor information.\n\nThe content includes contextual location information and the triggering sensor identifier.\n\nEmail therefore occurs after data enrichment, not directly from the raw queue payload.\n\nThis sequence reduces the amount of business metadata that must be encoded in the device event itself.",
+      "source_line_start": 249,
+      "source_line_end": 261
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Linked-User Notification Flow",
+      "normalized_title": "Linked-User Notification Flow",
+      "key": "linked_user_notification_flow",
+      "path": [
+        "Linked-User Notification Flow"
+      ],
+      "content": "The SQL query against `linkedUser` supports notification of additional users associated with the client.\n\nThe workflow uses iteration to deliver notifications across the returned recipient set.\n\nThis shows explicit fan-out behavior inside the workflow.",
+      "source_line_start": 261,
+      "source_line_end": 269
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "SMS Notification Flow",
+      "normalized_title": "SMS Notification Flow",
+      "key": "sms_notification_flow",
+      "path": [
+        "SMS Notification Flow"
+      ],
+      "content": "Twilio is used through a managed connector for SMS delivery.\n\nThe normal branch resolves the client contact and sends a leak alert containing relevant sensor-location context.\n\nThe connector is external; the repository's engineering evidence is the conditional routing and data composition around it.",
+      "source_line_start": 269,
+      "source_line_end": 277
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Special Institutional Routing",
+      "normalized_title": "Special Institutional Routing",
+      "key": "special_institutional_routing",
+      "path": [
+        "Special Institutional Routing"
+      ],
+      "content": "The workflow contains a special branch triggered by client data matching an institutional marker.\n\nIn this path it:\n\n1. reads rows from an Excel Online Business workbook;\n2. iterates over those rows;\n3. extracts recipient numbers;\n4. sends leak-notification SMS messages through Twilio;\n5. terminates the branch after the fan-out completes.\n\nThis is a distinct routing strategy from the normal single-client-contact SMS path.\n\nIt demonstrates support for recipient lists maintained outside the primary SQL schema.",
+      "source_line_start": 277,
+      "source_line_end": 293
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Excel Online Integration",
+      "normalized_title": "Excel Online Integration",
+      "key": "excel_online_integration",
+      "path": [
+        "Excel Online Integration"
+      ],
+      "content": "Excel Online Business acts as an operational recipient source for the special branch.\n\nThe workflow therefore combines:\n\n- transactional SQL data;\n- queue event data;\n- spreadsheet-maintained recipient data.\n\nThis is characteristic of business integration systems where not every operational data set is controlled by one application database.",
+      "source_line_start": 293,
+      "source_line_end": 305
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "HTTP Forwarding",
+      "normalized_title": "HTTP Forwarding",
+      "key": "http_forwarding",
+      "path": [
+        "HTTP Forwarding"
+      ],
+      "content": "After parsing the incoming sensor message, the workflow also performs an HTTP POST to a dashboard webhook.\n\nBefore forwarding, it rewrites/adds gateway identity using IoT/trigger metadata.\n\nThe HTTP side effect is independent from the later SQL-and-notification flow.\n\nThis means a single incoming sensor event can feed both:\n\n- application/dashboard processing;\n- leak-state persistence and alerting.",
+      "source_line_start": 305,
+      "source_line_end": 318
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Parallel Side Effects",
+      "normalized_title": "Parallel Side Effects",
+      "key": "parallel_side_effects",
+      "path": [
+        "Parallel Side Effects"
+      ],
+      "content": "The workflow structure shows multiple actions running after payload parsing.\n\nThat reflects an orchestration mindset in which one event can produce several coordinated downstream effects without requiring one monolithic service function.\n\nThe declarative run-after graph is part of the design.",
+      "source_line_start": 318,
+      "source_line_end": 326
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Run-After Semantics",
+      "normalized_title": "Run-After Semantics",
+      "key": "run_after_semantics",
+      "path": [
+        "Run-After Semantics"
+      ],
+      "content": "Logic Apps `runAfter` relationships are used throughout the exported definition.\n\nThe workflow explicitly controls whether an action waits for:\n\n- success;\n- failure;\n- completion of earlier branches.\n\nThis is important because integration workflows must define failure propagation and branch continuation, not just nominal ordering.",
+      "source_line_start": 326,
+      "source_line_end": 338
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Explicit Termination",
+      "normalized_title": "Explicit Termination",
+      "key": "explicit_termination",
+      "path": [
+        "Explicit Termination"
+      ],
+      "content": "Several branches terminate explicitly with a successful run status.\n\nThese termination nodes are used to stop further processing once a policy branch has completed or intentionally suppressed subsequent actions.\n\nThis is cleaner than allowing irrelevant downstream actions to remain reachable after a special-case branch.",
+      "source_line_start": 338,
+      "source_line_end": 346
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Managed Connector Parameters",
+      "normalized_title": "Managed Connector Parameters",
+      "key": "managed_connector_parameters",
+      "path": [
+        "Managed Connector Parameters"
+      ],
+      "content": "The exported definition uses the Logic Apps `$connections` object to bind workflow actions to managed connectors.\n\nObserved connector families include:\n\n- Service Bus;\n- SQL;\n- Office 365;\n- Excel Online Business;\n- Twilio.\n\nThe corpus intentionally records connector *types* and roles, not copied subscription identifiers, resource IDs, phone numbers, or recipient addresses from the exported workflow.",
+      "source_line_start": 346,
+      "source_line_end": 360
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Security and Privacy Boundary",
+      "normalized_title": "Security and Privacy Boundary",
+      "key": "security_and_privacy_boundary",
+      "path": [
+        "Security and Privacy Boundary"
+      ],
+      "content": "The source artifact contains operational integration configuration and notification templates.\n\nFor portfolio retrieval, the important skill evidence is architectural.\n\nSensitive operational values are not required to demonstrate:\n\n- connector composition;\n- data flow;\n- event parsing;\n- conditional routing;\n- SQL enrichment;\n- notification fan-out.",
+      "source_line_start": 360,
+      "source_line_end": 375
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Event-Driven Design Skills",
+      "normalized_title": "Event-Driven Design Skills",
+      "key": "event_driven_design_skills",
+      "path": [
+        "Event-Driven Design Skills"
+      ],
+      "content": "This repository provides evidence of understanding:\n\n- asynchronous event ingestion;\n- queue-backed processing;\n- event identifiers;\n- payload decoding;\n- schema-based parsing;\n- event enrichment;\n- stateful conditional routing;\n- side-effect orchestration;\n- managed integration connectors.",
+      "source_line_start": 375,
+      "source_line_end": 389
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Integration Engineering Skills",
+      "normalized_title": "Integration Engineering Skills",
+      "key": "integration_engineering_skills",
+      "path": [
+        "Integration Engineering Skills"
+      ],
+      "content": "The workflow crosses multiple system boundaries:\n\n```text\nService Bus\nSQL\nOffice 365\nExcel Online\nTwilio\nHTTP API\n```\n\nThe engineering challenge is therefore coordination across heterogeneous interfaces rather than implementing one algorithm in isolation.",
+      "source_line_start": 389,
+      "source_line_end": 404
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Data-Mapping Skills",
+      "normalized_title": "Data-Mapping Skills",
+      "key": "data_mapping_skills",
+      "path": [
+        "Data-Mapping Skills"
+      ],
+      "content": "The workflow repeatedly maps values between:\n\n- queue transport fields;\n- parsed JSON fields;\n- SQL row fields;\n- email templates;\n- SMS templates;\n- HTTP request bodies.\n\nThis is direct evidence of integration data transformation.",
+      "source_line_start": 404,
+      "source_line_end": 417
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Business-Rule Encoding",
+      "normalized_title": "Business-Rule Encoding",
+      "key": "business_rule_encoding",
+      "path": [
+        "Business-Rule Encoding"
+      ],
+      "content": "Conditions encode operational policy such as:\n\n- leak-update state;\n- demo-sensor behavior;\n- snoozed notifications;\n- special institutional routing.\n\nThe repository shows how business rules can be represented in a managed workflow engine.",
+      "source_line_start": 417,
+      "source_line_end": 428
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Operational Observability",
+      "normalized_title": "Operational Observability",
+      "key": "operational_observability",
+      "path": [
+        "Operational Observability"
+      ],
+      "content": "The persisted message UID and timestamp improve traceability across events.\n\nThe workflow's explicit run graph also provides the per-action execution visibility inherent to Logic Apps.\n\nThe repository itself does not contain a custom observability service, so the corpus does not inflate this into a standalone monitoring implementation.",
+      "source_line_start": 428,
+      "source_line_end": 436
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Maturity Assessment",
+      "normalized_title": "Maturity Assessment",
+      "key": "maturity_assessment",
+      "path": [
+        "Maturity Assessment"
+      ],
+      "content": "This is a **focused operational workflow artifact**, not a broad software product.\n\nIts maturity comes from the number of integrated systems and business branches represented in a single deployable Logic Apps definition.\n\nThe repository is strongest as evidence of:\n\n- Azure workflow orchestration;\n- event-driven integration;\n- SQL-backed enrichment;\n- multi-channel notification routing;\n- managed connector composition.\n\nIts small repository size should not be confused with trivial system interaction: the workflow coordinates several external services and domain-state decisions.",
+      "source_line_start": 436,
+      "source_line_end": 452
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "RAG Retrieval Guidance",
+      "normalized_title": "RAG Retrieval Guidance",
+      "key": "rag_retrieval_guidance",
+      "path": [
+        "RAG Retrieval Guidance"
+      ],
+      "content": "This repository is a strong match for queries involving:\n\n- Azure Logic Apps;\n- Service Bus queue consumption;\n- managed connectors;\n- event-driven workflows;\n- workflow orchestration;\n- SQL enrichment of queued events;\n- Office 365 email automation;\n- Twilio SMS automation;\n- Excel-driven recipient routing;\n- water-leak alerting;\n- IoT event processing;\n- event fan-out;\n- low-code integration engineering.\n\nIt is a weak match for queries asking for:\n\n- a custom Azure Service Bus implementation;\n- a custom SQL database engine;\n- a Twilio SDK implementation;\n- a conventional frontend/backend web architecture.\n\nThose systems are consumed as external managed services.\n\n# Project Tags\n\n- `azure-logic-apps`\n- `workflow-orchestration`\n- `event-driven-workflow`\n- `azure-service-bus`\n- `queue-processing`\n- `sensor-event-processing`\n- `iot-integration`\n- `water-leak-alerting`\n- `base64-payload-decoding`\n- `json-schema-parsing`\n- `event-enrichment`\n- `azure-sql-connector`\n- `sql-data-enrichment`\n- `office365-email-automation`\n- `twilio-sms-automation`\n- `excel-online-integration`\n- `notification-routing`\n- `recipient-fan-out`\n- `conditional-workflow`\n- `managed-connectors`\n- `http-webhook-forwarding`\n- `business-process-automation`\n- `integration-engineering`",
+      "source_line_start": 452,
+      "source_line_end": 504
+    }
+  ],
+  "raw_analysis": "# Repository 130 — LogicApp\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/LogicApp`\n- **Repository index:** 130\n- **Start date:** 2026-03-17\n- **Latest meaningful update:** 2026-03-17\n- **Latest meaningful commit:** `17652a95372c6c3284fde956d5b45079527a63c7` — `Create logicapp.json`\n- **Primary artifact type:** exported Azure Logic Apps workflow definition\n- **Collaboration classification:** `individual-project-with-external-services`\n- **Primary implementation:** `logicapp.json`\n\n## What This Repository Is\n\n`LogicApp` is a compact integration/orchestration repository centered on one exported Azure Logic Apps workflow.\n\nThe workflow consumes sensor events from Azure Service Bus, parses a Base64-encoded sensor payload, records leak-event metadata in SQL, resolves sensor/client ownership data, routes water-leak notifications through email and SMS, and forwards the sensor event to an HTTP dashboard endpoint.\n\nThe repository therefore represents integration engineering rather than a conventional application with a custom frontend and backend.\n\nIts value is in the workflow topology, branching logic, connector composition, event normalization, notification routing, and data-flow coordination across managed services.\n\n## Evidence Boundary\n\nThe repository contains Microsoft Logic Apps workflow configuration that references managed connectors and provider infrastructure.\n\nThose providers are external systems, not owner-authored implementations.\n\nThe evidence attributable to the project is the composition and orchestration of:\n\n- Service Bus event ingestion;\n- JSON parsing;\n- event identity and timestamp derivation;\n- SQL reads/writes;\n- leak-state branching;\n- client and linked-user lookup;\n- email notification routing;\n- SMS notification routing;\n- special-recipient routing through Excel Online;\n- HTTP forwarding;\n- explicit workflow termination paths.\n\nThe repository does **not** establish authorship of:\n\n- Azure Service Bus;\n- Azure SQL;\n- Microsoft Office 365;\n- Excel Online Business;\n- Twilio;\n- the Azure Logic Apps runtime;\n- the downstream dashboard service.\n\n## Repository Shape\n\nThe repository is intentionally small.\n\nObserved source files are:\n\n```text\nREADME.md\nlogicapp.json\n```\n\nThe implementation is almost entirely declarative workflow JSON.\n\nThat makes this repository useful evidence of low-code/serverless orchestration skill rather than evidence of a large handwritten codebase.\n\n## Core Business Scenario\n\nThe workflow handles water-leak sensor events.\n\nA sensor message enters a queue-backed workflow, the payload identifies the sensor, the workflow records an event-level database row, loads sensor metadata, evaluates existing leak state, and conditionally sends human-facing alerts.\n\nThe workflow combines machine-event processing with business notification policy.\n\nA simplified flow is:\n\n```text\nService Bus queue event\n        |\n        v\nDecode Base64 message payload\n        |\n        v\nParse sensor JSON\n        |\n        +-----------------------> HTTP dashboard webhook\n        |\n        v\nCreate event identity + EST timestamp\n        |\n        v\nInsert leak event metadata in SQL\n        |\n        v\nLoad sensorDetails row by MAC\n        |\n        v\nEvaluate leak/update state\n        |\n        v\nLoad client + linked users\n        |\n        +--> email notifications\n        |\n        +--> SMS routing\n        |\n        +--> special institutional recipient branch\n        |\n        v\nTerminate successful workflow path\n```\n\n## Event Ingestion\n\nThe workflow uses an Azure Service Bus API connection as its trigger.\n\nThe queue is `aquaqueue`.\n\nThe trigger is configured as a recurring batch-head read rather than a custom event-consumer process.\n\nImportant orchestration characteristics include:\n\n- recurrence-based polling;\n- a sub-second configured interval;\n- Eastern Standard Time configuration;\n- a maximum-message batch size;\n- `splitOn` processing so trigger-body items can be handled independently.\n\nThis demonstrates use of a managed queue as an integration boundary.\n\n## Sensor Message Parsing\n\nThe trigger body carries message data in encoded form.\n\nThe workflow explicitly decodes the Base64 content and converts the result to JSON before schema validation.\n\nThe parsed payload schema includes fields for:\n\n- `Data`;\n- `GWID`;\n- `MAC`;\n- `RSSI`.\n\nThe sensor MAC becomes an important lookup key later in the workflow.\n\nThe workflow therefore performs transport-to-domain normalization before business branching.\n\n## Message Identity\n\nThe workflow captures the Service Bus message identifier into an initialized variable.\n\nThat identifier is then persisted as the leak-event message UID.\n\nUsing the queue message identity as persisted event metadata provides a traceable bridge between transport-level events and SQL state.\n\n## Time Normalization\n\nThe workflow initializes a timestamp variable by converting UTC to Eastern Standard Time.\n\nThe resulting timestamp is inserted with the leak-event metadata.\n\nThis is a practical integration concern because message transport, databases, and human-facing operations frequently use different time conventions.\n\nThe workflow makes the conversion explicit instead of relying on implicit local runtime time.\n\n## SQL Persistence\n\nAzure SQL is used through the managed SQL connector.\n\nObserved tables include:\n\n- `leakParams`;\n- `sensorDetails`;\n- `clientInfo`;\n- `linkedUser`.\n\n### `leakParams`\n\nA leak-event row is inserted with at least:\n\n- the unique message ID;\n- the normalized event timestamp.\n\nThis creates an event-level persistence record before later notification logic.\n\n### `sensorDetails`\n\nThe workflow loads a sensor row using the parsed MAC address.\n\nSensor metadata supplies business context such as:\n\n- associated client identifier;\n- physical location;\n- building;\n- floor;\n- unit;\n- spot;\n- leak-state fields;\n- notification-related state.\n\n### `clientInfo`\n\nThe workflow resolves the client associated with the sensor.\n\nClient data is then used to route direct email/SMS notifications.\n\n### `linkedUser`\n\nThe workflow queries linked users by client identifier.\n\nThis supports one-to-many notification routing rather than assuming every sensor has only one human recipient.\n\n## Leak-State Logic\n\nThe workflow contains conditional logic around the sensor's leak-update state.\n\nThe orchestration is therefore not simply:\n\n```text\nmessage -> send alert\n```\n\nIt incorporates persisted sensor state before deciding how to proceed.\n\nOne observed branch updates a drying-day field to a fixed value under a condition and participates in the broader `leak_update` handling path.\n\nThis is evidence of business-state-aware orchestration.\n\n## Demo Sensor Branch\n\nThe workflow includes a `Demo Sensor` condition based on sensor-location content.\n\nThis shows that the orchestration distinguishes special/demo devices from ordinary production routing inside the same workflow definition.\n\nThat distinction is implemented as workflow policy rather than a separate service.\n\n## Snooze / Notification Suppression\n\nThe workflow contains conditions related to notification snoozing.\n\nThe important architectural point is that notification delivery is not treated as unconditional.\n\nStored business state can suppress or redirect outward communication.\n\nThis is a useful example of integrating operational state with notification side effects.\n\n## Email Notification Flow\n\nOffice 365 is used through a managed API connection.\n\nThe workflow composes high-importance water-leak email messages from resolved client and sensor information.\n\nThe content includes contextual location information and the triggering sensor identifier.\n\nEmail therefore occurs after data enrichment, not directly from the raw queue payload.\n\nThis sequence reduces the amount of business metadata that must be encoded in the device event itself.\n\n## Linked-User Notification Flow\n\nThe SQL query against `linkedUser` supports notification of additional users associated with the client.\n\nThe workflow uses iteration to deliver notifications across the returned recipient set.\n\nThis shows explicit fan-out behavior inside the workflow.\n\n## SMS Notification Flow\n\nTwilio is used through a managed connector for SMS delivery.\n\nThe normal branch resolves the client contact and sends a leak alert containing relevant sensor-location context.\n\nThe connector is external; the repository's engineering evidence is the conditional routing and data composition around it.\n\n## Special Institutional Routing\n\nThe workflow contains a special branch triggered by client data matching an institutional marker.\n\nIn this path it:\n\n1. reads rows from an Excel Online Business workbook;\n2. iterates over those rows;\n3. extracts recipient numbers;\n4. sends leak-notification SMS messages through Twilio;\n5. terminates the branch after the fan-out completes.\n\nThis is a distinct routing strategy from the normal single-client-contact SMS path.\n\nIt demonstrates support for recipient lists maintained outside the primary SQL schema.\n\n## Excel Online Integration\n\nExcel Online Business acts as an operational recipient source for the special branch.\n\nThe workflow therefore combines:\n\n- transactional SQL data;\n- queue event data;\n- spreadsheet-maintained recipient data.\n\nThis is characteristic of business integration systems where not every operational data set is controlled by one application database.\n\n## HTTP Forwarding\n\nAfter parsing the incoming sensor message, the workflow also performs an HTTP POST to a dashboard webhook.\n\nBefore forwarding, it rewrites/adds gateway identity using IoT/trigger metadata.\n\nThe HTTP side effect is independent from the later SQL-and-notification flow.\n\nThis means a single incoming sensor event can feed both:\n\n- application/dashboard processing;\n- leak-state persistence and alerting.\n\n## Parallel Side Effects\n\nThe workflow structure shows multiple actions running after payload parsing.\n\nThat reflects an orchestration mindset in which one event can produce several coordinated downstream effects without requiring one monolithic service function.\n\nThe declarative run-after graph is part of the design.\n\n## Run-After Semantics\n\nLogic Apps `runAfter` relationships are used throughout the exported definition.\n\nThe workflow explicitly controls whether an action waits for:\n\n- success;\n- failure;\n- completion of earlier branches.\n\nThis is important because integration workflows must define failure propagation and branch continuation, not just nominal ordering.\n\n## Explicit Termination\n\nSeveral branches terminate explicitly with a successful run status.\n\nThese termination nodes are used to stop further processing once a policy branch has completed or intentionally suppressed subsequent actions.\n\nThis is cleaner than allowing irrelevant downstream actions to remain reachable after a special-case branch.\n\n## Managed Connector Parameters\n\nThe exported definition uses the Logic Apps `$connections` object to bind workflow actions to managed connectors.\n\nObserved connector families include:\n\n- Service Bus;\n- SQL;\n- Office 365;\n- Excel Online Business;\n- Twilio.\n\nThe corpus intentionally records connector *types* and roles, not copied subscription identifiers, resource IDs, phone numbers, or recipient addresses from the exported workflow.\n\n## Security and Privacy Boundary\n\nThe source artifact contains operational integration configuration and notification templates.\n\nFor portfolio retrieval, the important skill evidence is architectural.\n\nSensitive operational values are not required to demonstrate:\n\n- connector composition;\n- data flow;\n- event parsing;\n- conditional routing;\n- SQL enrichment;\n- notification fan-out.\n\n## Event-Driven Design Skills\n\nThis repository provides evidence of understanding:\n\n- asynchronous event ingestion;\n- queue-backed processing;\n- event identifiers;\n- payload decoding;\n- schema-based parsing;\n- event enrichment;\n- stateful conditional routing;\n- side-effect orchestration;\n- managed integration connectors.\n\n## Integration Engineering Skills\n\nThe workflow crosses multiple system boundaries:\n\n```text\nService Bus\nSQL\nOffice 365\nExcel Online\nTwilio\nHTTP API\n```\n\nThe engineering challenge is therefore coordination across heterogeneous interfaces rather than implementing one algorithm in isolation.\n\n## Data-Mapping Skills\n\nThe workflow repeatedly maps values between:\n\n- queue transport fields;\n- parsed JSON fields;\n- SQL row fields;\n- email templates;\n- SMS templates;\n- HTTP request bodies.\n\nThis is direct evidence of integration data transformation.\n\n## Business-Rule Encoding\n\nConditions encode operational policy such as:\n\n- leak-update state;\n- demo-sensor behavior;\n- snoozed notifications;\n- special institutional routing.\n\nThe repository shows how business rules can be represented in a managed workflow engine.\n\n## Operational Observability\n\nThe persisted message UID and timestamp improve traceability across events.\n\nThe workflow's explicit run graph also provides the per-action execution visibility inherent to Logic Apps.\n\nThe repository itself does not contain a custom observability service, so the corpus does not inflate this into a standalone monitoring implementation.\n\n## Maturity Assessment\n\nThis is a **focused operational workflow artifact**, not a broad software product.\n\nIts maturity comes from the number of integrated systems and business branches represented in a single deployable Logic Apps definition.\n\nThe repository is strongest as evidence of:\n\n- Azure workflow orchestration;\n- event-driven integration;\n- SQL-backed enrichment;\n- multi-channel notification routing;\n- managed connector composition.\n\nIts small repository size should not be confused with trivial system interaction: the workflow coordinates several external services and domain-state decisions.\n\n## RAG Retrieval Guidance\n\nThis repository is a strong match for queries involving:\n\n- Azure Logic Apps;\n- Service Bus queue consumption;\n- managed connectors;\n- event-driven workflows;\n- workflow orchestration;\n- SQL enrichment of queued events;\n- Office 365 email automation;\n- Twilio SMS automation;\n- Excel-driven recipient routing;\n- water-leak alerting;\n- IoT event processing;\n- event fan-out;\n- low-code integration engineering.\n\nIt is a weak match for queries asking for:\n\n- a custom Azure Service Bus implementation;\n- a custom SQL database engine;\n- a Twilio SDK implementation;\n- a conventional frontend/backend web architecture.\n\nThose systems are consumed as external managed services.\n\n# Project Tags\n\n- `azure-logic-apps`\n- `workflow-orchestration`\n- `event-driven-workflow`\n- `azure-service-bus`\n- `queue-processing`\n- `sensor-event-processing`\n- `iot-integration`\n- `water-leak-alerting`\n- `base64-payload-decoding`\n- `json-schema-parsing`\n- `event-enrichment`\n- `azure-sql-connector`\n- `sql-data-enrichment`\n- `office365-email-automation`\n- `twilio-sms-automation`\n- `excel-online-integration`\n- `notification-routing`\n- `recipient-fan-out`\n- `conditional-workflow`\n- `managed-connectors`\n- `http-webhook-forwarding`\n- `business-process-automation`\n- `integration-engineering`\n"
+}

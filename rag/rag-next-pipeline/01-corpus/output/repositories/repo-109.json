@@ -1,0 +1,1222 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 109,
+  "repository_total": 134,
+  "repository_name": "RobohubDemo",
+  "header_title": "RobohubDemo",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-109-RobohubDemo/README.md",
+    "line_start": 1,
+    "line_end": 616,
+    "sha256": "e0016cb4e34f2fa845dab3c798be2d240e18b7d242b662a3045fdec02deaeb0e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "network-measurement-tool",
+    "experiment-dashboard",
+    "individual-project",
+    "python",
+    "html",
+    "css",
+    "javascript",
+    "iperf3",
+    "throughput",
+    "tcp",
+    "udp",
+    "reverse-mode-iperf",
+    "parallel-streams",
+    "interface-binding",
+    "dual-interface-measurement",
+    "source-bound-http",
+    "ipv4-interface-discovery",
+    "firebase-realtime-database",
+    "firebase-stream-telemetry",
+    "csv",
+    "timestamp-alignment",
+    "measurement-timestamp-reconstruction",
+    "telemetry-normalization",
+    "schema-compatibility",
+    "multithreading",
+    "thread-safe-queue",
+    "producer-consumer",
+    "chartjs",
+    "multi-stream-plotting",
+    "stable-stream-identity",
+    "browser-diagnostics",
+    "finite-infinite-test-duration",
+    "measurement-reporting-path-separation",
+    "synchronized-plots",
+    "local-and-remote-measurement-logging",
+    "earliest-observed-dual-interface-iperf-firebase-measurement-agent",
+    "earliest-observed-stream-code-isolated-realtime-throughput-dashboard"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s022"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Explicit Stream Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 109 / 134\n- Name: `RobohubDemo`\n- Repository start date: 2026-06-10\n- Last meaningful update date: 2026-06-11\n- Latest meaningful commit: `e6ab848d95b8a5eebb30a1c2f234e00a87a9fd47`\n- Primary type: Network-performance measurement agent and synchronized telemetry dashboard\n- Technical field: Network measurement, experiment tooling, desktop applications, browser visualization\n- Application domain: RoboHub wireless/network performance demonstrations and experiments\n- Collaboration type: `individual-project`\n- Primary languages: Python, HTML, CSS, JavaScript\n\n## Explicit Stream Identity\nA critical rule in the dashboard is that grouping is based on an explicit `streamCode` / `interfaceCode` value.\n\nIt deliberately does not group only by interface name or sending interface.\n\nIf a record is missing a stream code, the dashboard isolates that record using its Firebase key rather than silently merging it into another series.\n\nThis is defensive data modeling against ambiguous stream identity."
+    },
+    "architecture": {
+      "section_ids": [
+        "s029"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nSelected probing interface\n        ↓ iperf3 -B\niperf3 reverse-mode test\n        ↓ stdout intervals\nPython parser\n        ↓\nTimestamped IperfSample\n        ├──────────────→ local CSV log\n        ↓\nPOST queue\n        ↓\nsource-bound Requests session\n        ↓\nSelected sending interface\n        ↓\nFirebase Realtime Database\n        ↓\nBrowser normalization\n        ↓\nstreamCode-based grouping\n        ↓\nChart.js synchronized plots + diagnostics\n```\n\nThe design explicitly keeps the measurement data path and telemetry-reporting data path separate."
+    },
+    "testing": {
+      "section_ids": [
+        "s046"
+      ],
+      "titles": [
+        "Testing and Verification"
+      ],
+      "text": "## Testing and Verification\n### Firebase Route Test\n\nThe GUI provides a dedicated POST test through the selected sending interface before a measurement run.\n\nThe test creates a distinct stream code and reports HTTP success/failure.\n\n### Configuration Validation\n\nBefore starting, the application validates items such as:\n\n- Firebase URL form;\n- stream code presence;\n- selected interfaces;\n- target IPv4 address;\n- port range;\n- protocol;\n- timing and stream configuration.\n\n### iperf3 Availability Check\n\nThe application checks whether `iperf3` is available before launching a run.\n\n### Runtime Diagnostics\n\nParsed counts, successful posts, failures, routes, raw lines, stream-code grouping, and timestamp sources are surfaced during operation."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository is owner-driven and contains the measurement agent and browser dashboard used for a RoboHub experiment/demo context. The corpus treats the software implementation as personally attributable while treating the surrounding RoboHub infrastructure and research environment as external experimental context.\n\nThe implementation therefore evidences ownership of the measurement and visualization tooling, not ownership of the network infrastructure on which the measurements are run."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 109 / 134\n- Name: `RobohubDemo`\n- Repository start date: 2026-06-10\n- Last meaningful update date: 2026-06-11\n- Latest meaningful commit: `e6ab848d95b8a5eebb30a1c2f234e00a87a9fd47`\n- Primary type: Network-performance measurement agent and synchronized telemetry dashboard\n- Technical field: Network measurement, experiment tooling, desktop applications, browser visualization\n- Application domain: RoboHub wireless/network performance demonstrations and experiments\n- Collaboration type: `individual-project`\n- Primary languages: Python, HTML, CSS, JavaScript",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository is owner-driven and contains the measurement agent and browser dashboard used for a RoboHub experiment/demo context. The corpus treats the software implementation as personally attributable while treating the surrounding RoboHub infrastructure and research environment as external experimental context.\n\nThe implementation therefore evidences ownership of the measurement and visualization tooling, not ownership of the network infrastructure on which the measurements are run.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `perfer.py`;\n- `index.html`;\n- the repository README;\n- repository history through June 11, 2026.\n\nThe short root README understates the implementation. The substantive evidence is in the Python agent and the browser application.",
+      "source_line_start": 22,
+      "source_line_end": 33
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`RobohubDemo` is an experiment-support system for running iperf3 throughput tests, publishing interval-level measurement telemetry to Firebase, and displaying multiple synchronized measurement streams in a browser dashboard.\n\nIts most important architectural decision is that the interface carrying the actual iperf3 probe traffic is modeled separately from the interface used to send telemetry to Firebase.\n\nThat separation matters in multi-interface hosts. A machine can measure a specific Wi-Fi, 5G, Ethernet, or USB-network path while using another internet-capable interface to report results without accidentally changing which interface the throughput test exercises.\n\nThe Python application manages the measurement run and produces timestamp-rich records. The browser application consumes those records, groups them by explicit stream identity, and plots them on synchronized timelines.",
+      "source_line_start": 33,
+      "source_line_end": 43
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "### Desktop Measurement Agent\n\n`perfer.py` implements a Tkinter-based iperf3 client agent.\n\nThe UI exposes configuration for:\n\n- Firebase POST endpoint;\n- stream code;\n- TCP or UDP;\n- UDP bandwidth;\n- telemetry-sending interface;\n- probing interface;\n- target iperf3 server address;\n- target port;\n- reporting interval;\n- parallel streams;\n- finite or infinite duration.\n\nThe application also displays:\n\n- generated iperf3 command;\n- latest throughput;\n- average throughput;\n- minimum/maximum throughput;\n- standard deviation;\n- parsed sample count;\n- successful POST count;\n- failed POST count;\n- active routing/interface descriptions;\n- raw iperf3 and telemetry logs.\n\n### Interface Discovery\n\nThe Python agent discovers active non-loopback IPv4 interfaces through `psutil`.\n\nEach discovered interface is represented by:\n\n- name;\n- IPv4 address;\n- netmask.\n\nThe operator selects two potentially different interfaces for the two different responsibilities.\n\n### Probing Interface\n\nThe probing interface is passed to iperf3 through `-B`.\n\nThis binds the throughput test to the selected local source address.\n\nThe agent therefore makes the measured network path explicit rather than leaving interface choice entirely to default routing behavior.\n\n### Telemetry-Sending Interface\n\nFirebase HTTP requests use a custom `requests` adapter that sets an explicit `source_address`.\n\nA bound `requests.Session` is constructed from the sending interface's IP address.\n\nThis creates a second explicit route selection for telemetry delivery.\n\n### Downlink Measurement\n\nThe agent uses iperf3 reverse mode (`-R`).\n\nThe server sends traffic toward the client, making the resulting measurement a downlink-oriented test from the configured server to the selected probing interface.\n\n### TCP and UDP Modes\n\nThe command builder supports both:\n\n- TCP;\n- UDP with configurable bandwidth.\n\nFor UDP, the command adds `-u` and `-b`.\n\n### Finite and Infinite Duration\n\nA normal run uses a configured `-t` duration.\n\nInfinite mode uses `-t 0` and continues until the user explicitly presses Stop.\n\nThis supports both bounded demonstrations and long-running measurement sessions.\n\n### Parallel Streams\n\nThe operator can configure iperf3 parallel streams with `-P`.\n\nThe parser handles iperf3 output differently depending on stream count:\n\n- one-stream mode consumes the individual interval line;\n- multi-stream mode consumes the `[SUM]` interval row.\n\nThis prevents double-counting per-stream rows when the desired measurement is aggregate throughput.\n\n### Interval Parsing\n\nA regular-expression parser extracts interval-level values from iperf3 output.\n\nEach `IperfSample` stores:\n\n- elapsed interval start;\n- elapsed interval end;\n- throughput Mbps;\n- transferred megabytes;\n- raw output line;\n- sample index;\n- parser timestamp;\n- reconstructed interval start/end timestamps.\n\n### Timestamp Reconstruction\n\nMeasurement timestamps are derived from the iperf interval relative to the run start.\n\nThe telemetry model distinguishes several moments:\n\n- interval start;\n- interval end;\n- parse time;\n- HTTP POST time;\n- Firebase server receive time.\n\nThe dashboard is instructed to plot from the actual measurement timestamp rather than the later network-post timestamp.\n\n### Firebase Telemetry\n\nEach parsed interval is queued for posting to Firebase Realtime Database.\n\nThe payload contains measurement values plus extensive traceability metadata including:\n\n- stream code;\n- probing interface name/IP;\n- sending interface name/IP;\n- target address/port;\n- protocol;\n- direction;\n- reverse-mode flag;\n- duration mode;\n- interval timing;\n- throughput;\n- transfer amount;\n- running statistics;\n- client platform information;\n- raw iperf3 line.\n\n### Request-Level Trace Headers\n\nThe POST request also carries custom headers describing:\n\n- direction;\n- reverse mode;\n- traffic path;\n- probing interface;\n- sending interface;\n- stream code;\n- timestamp;\n- target;\n- throughput;\n- sample index.\n\nThis preserves diagnostic context in both the request metadata and body.\n\n### Asynchronous Posting\n\nParsed measurements are placed onto a queue.\n\nA dedicated worker thread performs Firebase POST operations while the iperf reader and GUI continue independently.\n\nThe application tracks successful posts, failed responses, and exceptions separately.\n\n### CSV Logging\n\nThe agent creates local CSV logs for measurement runs in addition to Firebase telemetry.\n\nThis provides a local artifact independent of the remote visualization path.",
+      "source_line_start": 43,
+      "source_line_end": 219
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Desktop Measurement Agent",
+      "normalized_title": "Desktop Measurement Agent",
+      "key": "desktop_measurement_agent",
+      "path": [
+        "Project Scope",
+        "Desktop Measurement Agent"
+      ],
+      "content": "`perfer.py` implements a Tkinter-based iperf3 client agent.\n\nThe UI exposes configuration for:\n\n- Firebase POST endpoint;\n- stream code;\n- TCP or UDP;\n- UDP bandwidth;\n- telemetry-sending interface;\n- probing interface;\n- target iperf3 server address;\n- target port;\n- reporting interval;\n- parallel streams;\n- finite or infinite duration.\n\nThe application also displays:\n\n- generated iperf3 command;\n- latest throughput;\n- average throughput;\n- minimum/maximum throughput;\n- standard deviation;\n- parsed sample count;\n- successful POST count;\n- failed POST count;\n- active routing/interface descriptions;\n- raw iperf3 and telemetry logs.",
+      "source_line_start": 45,
+      "source_line_end": 76
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Interface Discovery",
+      "normalized_title": "Interface Discovery",
+      "key": "interface_discovery",
+      "path": [
+        "Project Scope",
+        "Interface Discovery"
+      ],
+      "content": "The Python agent discovers active non-loopback IPv4 interfaces through `psutil`.\n\nEach discovered interface is represented by:\n\n- name;\n- IPv4 address;\n- netmask.\n\nThe operator selects two potentially different interfaces for the two different responsibilities.",
+      "source_line_start": 76,
+      "source_line_end": 88
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Probing Interface",
+      "normalized_title": "Probing Interface",
+      "key": "probing_interface",
+      "path": [
+        "Project Scope",
+        "Probing Interface"
+      ],
+      "content": "The probing interface is passed to iperf3 through `-B`.\n\nThis binds the throughput test to the selected local source address.\n\nThe agent therefore makes the measured network path explicit rather than leaving interface choice entirely to default routing behavior.",
+      "source_line_start": 88,
+      "source_line_end": 96
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Telemetry-Sending Interface",
+      "normalized_title": "Telemetry-Sending Interface",
+      "key": "telemetry_sending_interface",
+      "path": [
+        "Project Scope",
+        "Telemetry-Sending Interface"
+      ],
+      "content": "Firebase HTTP requests use a custom `requests` adapter that sets an explicit `source_address`.\n\nA bound `requests.Session` is constructed from the sending interface's IP address.\n\nThis creates a second explicit route selection for telemetry delivery.",
+      "source_line_start": 96,
+      "source_line_end": 104
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Downlink Measurement",
+      "normalized_title": "Downlink Measurement",
+      "key": "downlink_measurement",
+      "path": [
+        "Project Scope",
+        "Downlink Measurement"
+      ],
+      "content": "The agent uses iperf3 reverse mode (`-R`).\n\nThe server sends traffic toward the client, making the resulting measurement a downlink-oriented test from the configured server to the selected probing interface.",
+      "source_line_start": 104,
+      "source_line_end": 110
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "TCP and UDP Modes",
+      "normalized_title": "TCP and UDP Modes",
+      "key": "tcp_and_udp_modes",
+      "path": [
+        "Project Scope",
+        "TCP and UDP Modes"
+      ],
+      "content": "The command builder supports both:\n\n- TCP;\n- UDP with configurable bandwidth.\n\nFor UDP, the command adds `-u` and `-b`.",
+      "source_line_start": 110,
+      "source_line_end": 119
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Finite and Infinite Duration",
+      "normalized_title": "Finite and Infinite Duration",
+      "key": "finite_and_infinite_duration",
+      "path": [
+        "Project Scope",
+        "Finite and Infinite Duration"
+      ],
+      "content": "A normal run uses a configured `-t` duration.\n\nInfinite mode uses `-t 0` and continues until the user explicitly presses Stop.\n\nThis supports both bounded demonstrations and long-running measurement sessions.",
+      "source_line_start": 119,
+      "source_line_end": 127
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Parallel Streams",
+      "normalized_title": "Parallel Streams",
+      "key": "parallel_streams",
+      "path": [
+        "Project Scope",
+        "Parallel Streams"
+      ],
+      "content": "The operator can configure iperf3 parallel streams with `-P`.\n\nThe parser handles iperf3 output differently depending on stream count:\n\n- one-stream mode consumes the individual interval line;\n- multi-stream mode consumes the `[SUM]` interval row.\n\nThis prevents double-counting per-stream rows when the desired measurement is aggregate throughput.",
+      "source_line_start": 127,
+      "source_line_end": 138
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Interval Parsing",
+      "normalized_title": "Interval Parsing",
+      "key": "interval_parsing",
+      "path": [
+        "Project Scope",
+        "Interval Parsing"
+      ],
+      "content": "A regular-expression parser extracts interval-level values from iperf3 output.\n\nEach `IperfSample` stores:\n\n- elapsed interval start;\n- elapsed interval end;\n- throughput Mbps;\n- transferred megabytes;\n- raw output line;\n- sample index;\n- parser timestamp;\n- reconstructed interval start/end timestamps.",
+      "source_line_start": 138,
+      "source_line_end": 153
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Timestamp Reconstruction",
+      "normalized_title": "Timestamp Reconstruction",
+      "key": "timestamp_reconstruction",
+      "path": [
+        "Project Scope",
+        "Timestamp Reconstruction"
+      ],
+      "content": "Measurement timestamps are derived from the iperf interval relative to the run start.\n\nThe telemetry model distinguishes several moments:\n\n- interval start;\n- interval end;\n- parse time;\n- HTTP POST time;\n- Firebase server receive time.\n\nThe dashboard is instructed to plot from the actual measurement timestamp rather than the later network-post timestamp.",
+      "source_line_start": 153,
+      "source_line_end": 167
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Firebase Telemetry",
+      "normalized_title": "Firebase Telemetry",
+      "key": "firebase_telemetry",
+      "path": [
+        "Project Scope",
+        "Firebase Telemetry"
+      ],
+      "content": "Each parsed interval is queued for posting to Firebase Realtime Database.\n\nThe payload contains measurement values plus extensive traceability metadata including:\n\n- stream code;\n- probing interface name/IP;\n- sending interface name/IP;\n- target address/port;\n- protocol;\n- direction;\n- reverse-mode flag;\n- duration mode;\n- interval timing;\n- throughput;\n- transfer amount;\n- running statistics;\n- client platform information;\n- raw iperf3 line.",
+      "source_line_start": 167,
+      "source_line_end": 188
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Request-Level Trace Headers",
+      "normalized_title": "Request-Level Trace Headers",
+      "key": "request_level_trace_headers",
+      "path": [
+        "Project Scope",
+        "Request-Level Trace Headers"
+      ],
+      "content": "The POST request also carries custom headers describing:\n\n- direction;\n- reverse mode;\n- traffic path;\n- probing interface;\n- sending interface;\n- stream code;\n- timestamp;\n- target;\n- throughput;\n- sample index.\n\nThis preserves diagnostic context in both the request metadata and body.",
+      "source_line_start": 188,
+      "source_line_end": 205
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Asynchronous Posting",
+      "normalized_title": "Asynchronous Posting",
+      "key": "asynchronous_posting",
+      "path": [
+        "Project Scope",
+        "Asynchronous Posting"
+      ],
+      "content": "Parsed measurements are placed onto a queue.\n\nA dedicated worker thread performs Firebase POST operations while the iperf reader and GUI continue independently.\n\nThe application tracks successful posts, failed responses, and exceptions separately.",
+      "source_line_start": 205,
+      "source_line_end": 213
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "CSV Logging",
+      "normalized_title": "CSV Logging",
+      "key": "csv_logging",
+      "path": [
+        "Project Scope",
+        "CSV Logging"
+      ],
+      "content": "The agent creates local CSV logs for measurement runs in addition to Firebase telemetry.\n\nThis provides a local artifact independent of the remote visualization path.",
+      "source_line_start": 213,
+      "source_line_end": 219
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Browser Dashboard",
+      "normalized_title": "Browser Dashboard",
+      "key": "browser_dashboard",
+      "path": [
+        "Browser Dashboard"
+      ],
+      "content": "### Multi-Stream Visualization\n\n`index.html` is a substantial browser dashboard built around Chart.js and Firebase data.\n\nThe page normalizes incoming records into a common sample shape and groups them into measurement streams.\n\n### Explicit Stream Identity\n\nA critical rule in the dashboard is that grouping is based on an explicit `streamCode` / `interfaceCode` value.\n\nIt deliberately does not group only by interface name or sending interface.\n\nIf a record is missing a stream code, the dashboard isolates that record using its Firebase key rather than silently merging it into another series.\n\nThis is defensive data modeling against ambiguous stream identity.\n\n### Timestamp Normalization\n\nThe dashboard accepts both Unix-second and JavaScript/Firebase millisecond timestamps.\n\nIts timestamp extraction has an explicit priority order beginning with measurement-oriented fields such as:\n\n- `sampleTimestampMs`;\n- `sentAt`;\n- `intervalEndAtMs`;\n- other compatibility timestamps.\n\nThe plot can use iperf elapsed time as its primary x-axis basis while keeping wall-clock timestamps available for diagnostics.\n\n### Compatibility Normalization\n\nThe browser accepts multiple historical/compatibility aliases for fields such as:\n\n- stream identity;\n- interface identity;\n- throughput;\n- timestamps.\n\nThis makes the visualization tolerant of telemetry schema evolution without forcing every existing record to have identical field names.\n\n### Stable Stream Presentation\n\nEach stream retains a stable plot identity and settings.\n\nThe interface supports user-facing stream presentation controls such as display naming and plotting choices without changing the underlying telemetry identity.\n\n### Stream Statistics\n\nThe dashboard computes per-stream statistics from the retained samples, including:\n\n- current throughput;\n- average throughput;\n- sample count.\n\nThe Python agent additionally computes min/max and population standard deviation during acquisition.\n\n### Diagnostics UI\n\nThe dashboard includes explicit diagnostics for:\n\n- number of grouped streams;\n- unique received stream codes;\n- records missing stream codes;\n- identity source;\n- sample count;\n- latest keys;\n- timestamp-source counts;\n- timestamp priority;\n- latest measurement samples.\n\nThis makes synchronization and grouping behavior inspectable rather than opaque.\n\n### Plot Control\n\nPlotting has explicit states such as:\n\n- running;\n- paused;\n- resumed;\n- stopped/restarted.\n\nReceiving data and rendering the chart can therefore be controlled independently.",
+      "source_line_start": 219,
+      "source_line_end": 304
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Multi-Stream Visualization",
+      "normalized_title": "Multi-Stream Visualization",
+      "key": "multi_stream_visualization",
+      "path": [
+        "Browser Dashboard",
+        "Multi-Stream Visualization"
+      ],
+      "content": "`index.html` is a substantial browser dashboard built around Chart.js and Firebase data.\n\nThe page normalizes incoming records into a common sample shape and groups them into measurement streams.",
+      "source_line_start": 221,
+      "source_line_end": 227
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Explicit Stream Identity",
+      "normalized_title": "Explicit Stream Identity",
+      "key": "explicit_stream_identity",
+      "path": [
+        "Browser Dashboard",
+        "Explicit Stream Identity"
+      ],
+      "content": "A critical rule in the dashboard is that grouping is based on an explicit `streamCode` / `interfaceCode` value.\n\nIt deliberately does not group only by interface name or sending interface.\n\nIf a record is missing a stream code, the dashboard isolates that record using its Firebase key rather than silently merging it into another series.\n\nThis is defensive data modeling against ambiguous stream identity.",
+      "source_line_start": 227,
+      "source_line_end": 237
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Timestamp Normalization",
+      "normalized_title": "Timestamp Normalization",
+      "key": "timestamp_normalization",
+      "path": [
+        "Browser Dashboard",
+        "Timestamp Normalization"
+      ],
+      "content": "The dashboard accepts both Unix-second and JavaScript/Firebase millisecond timestamps.\n\nIts timestamp extraction has an explicit priority order beginning with measurement-oriented fields such as:\n\n- `sampleTimestampMs`;\n- `sentAt`;\n- `intervalEndAtMs`;\n- other compatibility timestamps.\n\nThe plot can use iperf elapsed time as its primary x-axis basis while keeping wall-clock timestamps available for diagnostics.",
+      "source_line_start": 237,
+      "source_line_end": 250
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Compatibility Normalization",
+      "normalized_title": "Compatibility Normalization",
+      "key": "compatibility_normalization",
+      "path": [
+        "Browser Dashboard",
+        "Compatibility Normalization"
+      ],
+      "content": "The browser accepts multiple historical/compatibility aliases for fields such as:\n\n- stream identity;\n- interface identity;\n- throughput;\n- timestamps.\n\nThis makes the visualization tolerant of telemetry schema evolution without forcing every existing record to have identical field names.",
+      "source_line_start": 250,
+      "source_line_end": 261
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Stable Stream Presentation",
+      "normalized_title": "Stable Stream Presentation",
+      "key": "stable_stream_presentation",
+      "path": [
+        "Browser Dashboard",
+        "Stable Stream Presentation"
+      ],
+      "content": "Each stream retains a stable plot identity and settings.\n\nThe interface supports user-facing stream presentation controls such as display naming and plotting choices without changing the underlying telemetry identity.",
+      "source_line_start": 261,
+      "source_line_end": 267
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Stream Statistics",
+      "normalized_title": "Stream Statistics",
+      "key": "stream_statistics",
+      "path": [
+        "Browser Dashboard",
+        "Stream Statistics"
+      ],
+      "content": "The dashboard computes per-stream statistics from the retained samples, including:\n\n- current throughput;\n- average throughput;\n- sample count.\n\nThe Python agent additionally computes min/max and population standard deviation during acquisition.",
+      "source_line_start": 267,
+      "source_line_end": 277
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Diagnostics UI",
+      "normalized_title": "Diagnostics UI",
+      "key": "diagnostics_ui",
+      "path": [
+        "Browser Dashboard",
+        "Diagnostics UI"
+      ],
+      "content": "The dashboard includes explicit diagnostics for:\n\n- number of grouped streams;\n- unique received stream codes;\n- records missing stream codes;\n- identity source;\n- sample count;\n- latest keys;\n- timestamp-source counts;\n- timestamp priority;\n- latest measurement samples.\n\nThis makes synchronization and grouping behavior inspectable rather than opaque.",
+      "source_line_start": 277,
+      "source_line_end": 293
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Plot Control",
+      "normalized_title": "Plot Control",
+      "key": "plot_control",
+      "path": [
+        "Browser Dashboard",
+        "Plot Control"
+      ],
+      "content": "Plotting has explicit states such as:\n\n- running;\n- paused;\n- resumed;\n- stopped/restarted.\n\nReceiving data and rendering the chart can therefore be controlled independently.",
+      "source_line_start": 293,
+      "source_line_end": 304
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nSelected probing interface\n        ↓ iperf3 -B\niperf3 reverse-mode test\n        ↓ stdout intervals\nPython parser\n        ↓\nTimestamped IperfSample\n        ├──────────────→ local CSV log\n        ↓\nPOST queue\n        ↓\nsource-bound Requests session\n        ↓\nSelected sending interface\n        ↓\nFirebase Realtime Database\n        ↓\nBrowser normalization\n        ↓\nstreamCode-based grouping\n        ↓\nChart.js synchronized plots + diagnostics\n```\n\nThe design explicitly keeps the measurement data path and telemetry-reporting data path separate.",
+      "source_line_start": 304,
+      "source_line_end": 333
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Python\n\nPython implements interface discovery, iperf3 orchestration, parsing, statistics, timestamp reconstruction, Firebase posting, CSV logging, and the desktop GUI.\n\n### Tkinter\n\nTkinter provides configuration, controls, metrics, generated-command visibility, and runtime logs.\n\n### iperf3\n\niperf3 is the network-performance engine.\n\nThe application configures interface binding, reverse/downlink mode, interval output, parallel streams, TCP/UDP behavior, and finite/infinite duration.\n\n### psutil\n\n`psutil` discovers active network interfaces and IPv4 addresses.\n\n### Requests\n\n`requests` posts telemetry to Firebase.\n\nA custom `HTTPAdapter` binds the HTTP connection to a specific local source address.\n\n### Firebase Realtime Database\n\nFirebase stores interval-level measurement telemetry used by the web dashboard.\n\n### Chart.js\n\nChart.js renders multi-stream throughput plots in the browser.\n\n### HTML / CSS / JavaScript\n\nThe browser application implements normalization, grouping, statistics, diagnostics, controls, and visualization around incoming measurement records.",
+      "source_line_start": 333,
+      "source_line_end": 371
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Technical Stack",
+        "Python"
+      ],
+      "content": "Python implements interface discovery, iperf3 orchestration, parsing, statistics, timestamp reconstruction, Firebase posting, CSV logging, and the desktop GUI.",
+      "source_line_start": 335,
+      "source_line_end": 339
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "Tkinter",
+      "normalized_title": "Tkinter",
+      "key": "tkinter",
+      "path": [
+        "Technical Stack",
+        "Tkinter"
+      ],
+      "content": "Tkinter provides configuration, controls, metrics, generated-command visibility, and runtime logs.",
+      "source_line_start": 339,
+      "source_line_end": 343
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "iperf3",
+      "normalized_title": "iperf3",
+      "key": "iperf3",
+      "path": [
+        "Technical Stack",
+        "iperf3"
+      ],
+      "content": "iperf3 is the network-performance engine.\n\nThe application configures interface binding, reverse/downlink mode, interval output, parallel streams, TCP/UDP behavior, and finite/infinite duration.",
+      "source_line_start": 343,
+      "source_line_end": 349
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "psutil",
+      "normalized_title": "psutil",
+      "key": "psutil",
+      "path": [
+        "Technical Stack",
+        "psutil"
+      ],
+      "content": "`psutil` discovers active network interfaces and IPv4 addresses.",
+      "source_line_start": 349,
+      "source_line_end": 353
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Requests",
+      "normalized_title": "Requests",
+      "key": "requests",
+      "path": [
+        "Technical Stack",
+        "Requests"
+      ],
+      "content": "`requests` posts telemetry to Firebase.\n\nA custom `HTTPAdapter` binds the HTTP connection to a specific local source address.",
+      "source_line_start": 353,
+      "source_line_end": 359
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Firebase Realtime Database",
+      "normalized_title": "Firebase Realtime Database",
+      "key": "firebase_realtime_database",
+      "path": [
+        "Technical Stack",
+        "Firebase Realtime Database"
+      ],
+      "content": "Firebase stores interval-level measurement telemetry used by the web dashboard.",
+      "source_line_start": 359,
+      "source_line_end": 363
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Chart.js",
+      "normalized_title": "Chart.js",
+      "key": "chart_js",
+      "path": [
+        "Technical Stack",
+        "Chart.js"
+      ],
+      "content": "Chart.js renders multi-stream throughput plots in the browser.",
+      "source_line_start": 363,
+      "source_line_end": 367
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "HTML / CSS / JavaScript",
+      "normalized_title": "HTML / CSS / JavaScript",
+      "key": "html_css_javascript",
+      "path": [
+        "Technical Stack",
+        "HTML / CSS / JavaScript"
+      ],
+      "content": "The browser application implements normalization, grouping, statistics, diagnostics, controls, and visualization around incoming measurement records.",
+      "source_line_start": 367,
+      "source_line_end": 371
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Dual-Interface Routing Control\n\nThe core systems concern is making two paths explicit:\n\n- which interface is being measured;\n- which interface sends measurement telemetry.\n\nThe code controls both independently.\n\n### Source-Bound HTTP\n\nThe custom HTTP adapter pushes source-interface selection below application-level URL logic into socket creation through urllib3/Requests configuration.\n\n### Measurement-Time Semantics\n\nThe project distinguishes when a measurement occurred from when it was parsed, posted, or received remotely.\n\nThat is essential for synchronized plots because HTTP latency should not shift the measurement point on the graph.\n\n### Queue-Based Concurrency\n\nThe reader, poster, and GUI communicate through queues and background threads.\n\nRemote telemetry latency therefore does not need to block measurement-output parsing.\n\n### Schema Compatibility\n\nThe dashboard accepts multiple historical aliases while still maintaining one canonical internal sample representation.\n\n### Defensive Stream Grouping\n\nExplicit stream identity prevents two logically distinct tests on the same interface from being merged accidentally.\n\nMissing identities are isolated rather than guessed.",
+      "source_line_start": 371,
+      "source_line_end": 408
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Dual-Interface Routing Control",
+      "normalized_title": "Dual-Interface Routing Control",
+      "key": "dual_interface_routing_control",
+      "path": [
+        "Major Engineering Work",
+        "Dual-Interface Routing Control"
+      ],
+      "content": "The core systems concern is making two paths explicit:\n\n- which interface is being measured;\n- which interface sends measurement telemetry.\n\nThe code controls both independently.",
+      "source_line_start": 373,
+      "source_line_end": 382
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Source-Bound HTTP",
+      "normalized_title": "Source-Bound HTTP",
+      "key": "source_bound_http",
+      "path": [
+        "Major Engineering Work",
+        "Source-Bound HTTP"
+      ],
+      "content": "The custom HTTP adapter pushes source-interface selection below application-level URL logic into socket creation through urllib3/Requests configuration.",
+      "source_line_start": 382,
+      "source_line_end": 386
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Measurement-Time Semantics",
+      "normalized_title": "Measurement-Time Semantics",
+      "key": "measurement_time_semantics",
+      "path": [
+        "Major Engineering Work",
+        "Measurement-Time Semantics"
+      ],
+      "content": "The project distinguishes when a measurement occurred from when it was parsed, posted, or received remotely.\n\nThat is essential for synchronized plots because HTTP latency should not shift the measurement point on the graph.",
+      "source_line_start": 386,
+      "source_line_end": 392
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Queue-Based Concurrency",
+      "normalized_title": "Queue-Based Concurrency",
+      "key": "queue_based_concurrency",
+      "path": [
+        "Major Engineering Work",
+        "Queue-Based Concurrency"
+      ],
+      "content": "The reader, poster, and GUI communicate through queues and background threads.\n\nRemote telemetry latency therefore does not need to block measurement-output parsing.",
+      "source_line_start": 392,
+      "source_line_end": 398
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Schema Compatibility",
+      "normalized_title": "Schema Compatibility",
+      "key": "schema_compatibility",
+      "path": [
+        "Major Engineering Work",
+        "Schema Compatibility"
+      ],
+      "content": "The dashboard accepts multiple historical aliases while still maintaining one canonical internal sample representation.",
+      "source_line_start": 398,
+      "source_line_end": 402
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Defensive Stream Grouping",
+      "normalized_title": "Defensive Stream Grouping",
+      "key": "defensive_stream_grouping",
+      "path": [
+        "Major Engineering Work",
+        "Defensive Stream Grouping"
+      ],
+      "content": "Explicit stream identity prevents two logically distinct tests on the same interface from being merged accidentally.\n\nMissing identities are isolated rather than guessed.",
+      "source_line_start": 402,
+      "source_line_end": 408
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "### Firebase Route Test\n\nThe GUI provides a dedicated POST test through the selected sending interface before a measurement run.\n\nThe test creates a distinct stream code and reports HTTP success/failure.\n\n### Configuration Validation\n\nBefore starting, the application validates items such as:\n\n- Firebase URL form;\n- stream code presence;\n- selected interfaces;\n- target IPv4 address;\n- port range;\n- protocol;\n- timing and stream configuration.\n\n### iperf3 Availability Check\n\nThe application checks whether `iperf3` is available before launching a run.\n\n### Runtime Diagnostics\n\nParsed counts, successful posts, failures, routes, raw lines, stream-code grouping, and timestamp sources are surfaced during operation.",
+      "source_line_start": 408,
+      "source_line_end": 436
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Firebase Route Test",
+      "normalized_title": "Firebase Route Test",
+      "key": "firebase_route_test",
+      "path": [
+        "Testing and Verification",
+        "Firebase Route Test"
+      ],
+      "content": "The GUI provides a dedicated POST test through the selected sending interface before a measurement run.\n\nThe test creates a distinct stream code and reports HTTP success/failure.",
+      "source_line_start": 410,
+      "source_line_end": 416
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Configuration Validation",
+      "normalized_title": "Configuration Validation",
+      "key": "configuration_validation",
+      "path": [
+        "Testing and Verification",
+        "Configuration Validation"
+      ],
+      "content": "Before starting, the application validates items such as:\n\n- Firebase URL form;\n- stream code presence;\n- selected interfaces;\n- target IPv4 address;\n- port range;\n- protocol;\n- timing and stream configuration.",
+      "source_line_start": 416,
+      "source_line_end": 428
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "iperf3 Availability Check",
+      "normalized_title": "iperf3 Availability Check",
+      "key": "iperf3_availability_check",
+      "path": [
+        "Testing and Verification",
+        "iperf3 Availability Check"
+      ],
+      "content": "The application checks whether `iperf3` is available before launching a run.",
+      "source_line_start": 428,
+      "source_line_end": 432
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Runtime Diagnostics",
+      "normalized_title": "Runtime Diagnostics",
+      "key": "runtime_diagnostics",
+      "path": [
+        "Testing and Verification",
+        "Runtime Diagnostics"
+      ],
+      "content": "Parsed counts, successful posts, failures, routes, raw lines, stream-code grouping, and timestamp sources are surfaced during operation.",
+      "source_line_start": 432,
+      "source_line_end": 436
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Separation of Measurement and Reporting Paths\n\nThe architecture makes routing assumptions explicit instead of leaving them implicit in the operating system.\n\n### Separation of Reader and Poster Work\n\nA queued worker model prevents telemetry POSTs from being performed synchronously inside the iperf output-reading loop.\n\n### Traceability\n\nRaw iperf lines and multiple timestamp layers remain attached to the telemetry record.\n\n### Defensive Compatibility\n\nThe browser normalizes multiple field aliases but avoids unsafe guesses for missing stream identity.\n\n### Bounded Network Operations\n\nFirebase requests and connection tests use explicit timeouts.\n\n### Local and Remote Persistence\n\nRuns are retained locally in CSV while also being published remotely for visualization.",
+      "source_line_start": 436,
+      "source_line_end": 462
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Separation of Measurement and Reporting Paths",
+      "normalized_title": "Separation of Measurement and Reporting Paths",
+      "key": "separation_of_measurement_and_reporting_paths",
+      "path": [
+        "Engineering Practices",
+        "Separation of Measurement and Reporting Paths"
+      ],
+      "content": "The architecture makes routing assumptions explicit instead of leaving them implicit in the operating system.",
+      "source_line_start": 438,
+      "source_line_end": 442
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Separation of Reader and Poster Work",
+      "normalized_title": "Separation of Reader and Poster Work",
+      "key": "separation_of_reader_and_poster_work",
+      "path": [
+        "Engineering Practices",
+        "Separation of Reader and Poster Work"
+      ],
+      "content": "A queued worker model prevents telemetry POSTs from being performed synchronously inside the iperf output-reading loop.",
+      "source_line_start": 442,
+      "source_line_end": 446
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Traceability",
+      "normalized_title": "Traceability",
+      "key": "traceability",
+      "path": [
+        "Engineering Practices",
+        "Traceability"
+      ],
+      "content": "Raw iperf lines and multiple timestamp layers remain attached to the telemetry record.",
+      "source_line_start": 446,
+      "source_line_end": 450
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Defensive Compatibility",
+      "normalized_title": "Defensive Compatibility",
+      "key": "defensive_compatibility",
+      "path": [
+        "Engineering Practices",
+        "Defensive Compatibility"
+      ],
+      "content": "The browser normalizes multiple field aliases but avoids unsafe guesses for missing stream identity.",
+      "source_line_start": 450,
+      "source_line_end": 454
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Bounded Network Operations",
+      "normalized_title": "Bounded Network Operations",
+      "key": "bounded_network_operations",
+      "path": [
+        "Engineering Practices",
+        "Bounded Network Operations"
+      ],
+      "content": "Firebase requests and connection tests use explicit timeouts.",
+      "source_line_start": 454,
+      "source_line_end": 458
+    },
+    {
+      "id": "s057",
+      "level": 3,
+      "title": "Local and Remote Persistence",
+      "normalized_title": "Local and Remote Persistence",
+      "key": "local_and_remote_persistence",
+      "path": [
+        "Engineering Practices",
+        "Local and Remote Persistence"
+      ],
+      "content": "Runs are retained locally in CSV while also being published remotely for visualization.",
+      "source_line_start": 458,
+      "source_line_end": 462
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Network Complexity\n\nA single host can simultaneously involve multiple network interfaces with different measurement and internet-access responsibilities.\n\n### Temporal Complexity\n\nSynchronized visualization requires separation of measurement time from parse/post/receive time.\n\n### Stream Complexity\n\nThe dashboard can retain and plot multiple independently identified streams without collapsing them solely by interface name.\n\n### Runtime Complexity\n\nThe agent coordinates subprocess output, threads, queues, HTTP requests, live statistics, Tkinter updates, and local logging.",
+      "source_line_start": 462,
+      "source_line_end": 480
+    },
+    {
+      "id": "s059",
+      "level": 3,
+      "title": "Network Complexity",
+      "normalized_title": "Network Complexity",
+      "key": "network_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Network Complexity"
+      ],
+      "content": "A single host can simultaneously involve multiple network interfaces with different measurement and internet-access responsibilities.",
+      "source_line_start": 464,
+      "source_line_end": 468
+    },
+    {
+      "id": "s060",
+      "level": 3,
+      "title": "Temporal Complexity",
+      "normalized_title": "Temporal Complexity",
+      "key": "temporal_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Temporal Complexity"
+      ],
+      "content": "Synchronized visualization requires separation of measurement time from parse/post/receive time.",
+      "source_line_start": 468,
+      "source_line_end": 472
+    },
+    {
+      "id": "s061",
+      "level": 3,
+      "title": "Stream Complexity",
+      "normalized_title": "Stream Complexity",
+      "key": "stream_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Stream Complexity"
+      ],
+      "content": "The dashboard can retain and plot multiple independently identified streams without collapsing them solely by interface name.",
+      "source_line_start": 472,
+      "source_line_end": 476
+    },
+    {
+      "id": "s062",
+      "level": 3,
+      "title": "Runtime Complexity",
+      "normalized_title": "Runtime Complexity",
+      "key": "runtime_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Runtime Complexity"
+      ],
+      "content": "The agent coordinates subprocess output, threads, queues, HTTP requests, live statistics, Tkinter updates, and local logging.",
+      "source_line_start": 476,
+      "source_line_end": 480
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Network Measurement\n\n- **iperf3 automation — strong evidence.**\n- **Downlink/reverse-mode throughput testing — strong evidence.**\n- **TCP/UDP measurement — strong evidence.**\n- **Parallel-stream handling — strong evidence.**\n- **Explicit interface binding — strong evidence.**\n\n### Network Programming\n\n- **Source-address-bound HTTP — strong evidence.**\n- **Multi-interface route control — strong evidence.**\n- **IPv4 interface discovery — strong evidence.**\n\n### Concurrency\n\n- **Threaded subprocess/POST workflow — strong evidence.**\n- **Queue-based producer/consumer design — strong evidence.**\n\n### Data Engineering\n\n- **Interval parsing — strong evidence.**\n- **Timestamp reconstruction — strong evidence.**\n- **Telemetry normalization — strong evidence.**\n- **Schema compatibility handling — strong evidence.**\n- **CSV logging — strong evidence.**\n\n### Frontend and Visualization\n\n- **Chart.js — strong evidence.**\n- **Multi-stream plotting — strong evidence.**\n- **Browser diagnostics — strong evidence.**\n- **Stable stream identity — strong evidence.**\n\n### Experimental Engineering\n\n- **Synchronized measurement timelines — strong evidence.**\n- **Measurement/reporting path separation — strong evidence.**\n- **Finite and continuous experiment modes — strong evidence.**",
+      "source_line_start": 480,
+      "source_line_end": 522
+    },
+    {
+      "id": "s064",
+      "level": 3,
+      "title": "Network Measurement",
+      "normalized_title": "Network Measurement",
+      "key": "network_measurement",
+      "path": [
+        "Skills Demonstrated",
+        "Network Measurement"
+      ],
+      "content": "- **iperf3 automation — strong evidence.**\n- **Downlink/reverse-mode throughput testing — strong evidence.**\n- **TCP/UDP measurement — strong evidence.**\n- **Parallel-stream handling — strong evidence.**\n- **Explicit interface binding — strong evidence.**",
+      "source_line_start": 482,
+      "source_line_end": 490
+    },
+    {
+      "id": "s065",
+      "level": 3,
+      "title": "Network Programming",
+      "normalized_title": "Network Programming",
+      "key": "network_programming",
+      "path": [
+        "Skills Demonstrated",
+        "Network Programming"
+      ],
+      "content": "- **Source-address-bound HTTP — strong evidence.**\n- **Multi-interface route control — strong evidence.**\n- **IPv4 interface discovery — strong evidence.**",
+      "source_line_start": 490,
+      "source_line_end": 496
+    },
+    {
+      "id": "s066",
+      "level": 3,
+      "title": "Concurrency",
+      "normalized_title": "Concurrency",
+      "key": "concurrency",
+      "path": [
+        "Skills Demonstrated",
+        "Concurrency"
+      ],
+      "content": "- **Threaded subprocess/POST workflow — strong evidence.**\n- **Queue-based producer/consumer design — strong evidence.**",
+      "source_line_start": 496,
+      "source_line_end": 501
+    },
+    {
+      "id": "s067",
+      "level": 3,
+      "title": "Data Engineering",
+      "normalized_title": "Data Engineering",
+      "key": "data_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Data Engineering"
+      ],
+      "content": "- **Interval parsing — strong evidence.**\n- **Timestamp reconstruction — strong evidence.**\n- **Telemetry normalization — strong evidence.**\n- **Schema compatibility handling — strong evidence.**\n- **CSV logging — strong evidence.**",
+      "source_line_start": 501,
+      "source_line_end": 509
+    },
+    {
+      "id": "s068",
+      "level": 3,
+      "title": "Frontend and Visualization",
+      "normalized_title": "Frontend and Visualization",
+      "key": "frontend_and_visualization",
+      "path": [
+        "Skills Demonstrated",
+        "Frontend and Visualization"
+      ],
+      "content": "- **Chart.js — strong evidence.**\n- **Multi-stream plotting — strong evidence.**\n- **Browser diagnostics — strong evidence.**\n- **Stable stream identity — strong evidence.**",
+      "source_line_start": 509,
+      "source_line_end": 516
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Experimental Engineering",
+      "normalized_title": "Experimental Engineering",
+      "key": "experimental_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Experimental Engineering"
+      ],
+      "content": "- **Synchronized measurement timelines — strong evidence.**\n- **Measurement/reporting path separation — strong evidence.**\n- **Finite and continuous experiment modes — strong evidence.**",
+      "source_line_start": 516,
+      "source_line_end": 522
+    },
+    {
+      "id": "s070",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "`RobohubDemo` demonstrates a systems-level view of network measurement.\n\nThe project does not treat throughput as only a number returned by iperf3. It treats route selection, interface identity, measurement timestamps, telemetry delivery, stream identity, synchronization, and visualization as parts of the measurement system.",
+      "source_line_start": 522,
+      "source_line_end": 528
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Earlier networking repositories already contain iperf3 acquisition and synchronized wireless analysis.\n\n`RobohubDemo` makes the live measurement pipeline more explicit by publishing interval-level results into a realtime datastore and separating the probe interface from the reporting interface.\n\nIt also makes synchronization assumptions visible through a dedicated diagnostics layer in the browser.",
+      "source_line_start": 528,
+      "source_line_end": 536
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository with an explicit dual-interface network-measurement architecture in which:\n\n- iperf3 is bound to one selected interface;\n- Firebase HTTP telemetry is source-bound to another selected interface;\n- interval measurements are timestamped and streamed to a realtime dashboard;\n- explicit stream codes prevent ambiguous curve merging.",
+      "source_line_start": 536,
+      "source_line_end": 545
+    },
+    {
+      "id": "s073",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`RobohubDemo` is a network experiment system that couples an iperf3 desktop agent with a realtime browser visualization layer.\n\nThe Python application discovers interfaces, lets the operator choose separate measurement and telemetry routes, constructs finite or infinite TCP/UDP reverse-mode iperf3 tests, parses interval throughput, reconstructs measurement timestamps, computes running statistics, stores CSV output, and asynchronously posts detailed telemetry to Firebase.\n\nThe browser application normalizes incoming records, groups them strictly by explicit stream identity, aligns their measurement timestamps, renders Chart.js plots, and exposes diagnostics for grouping and timestamp interpretation.\n\nThe strongest engineering evidence is the explicit modeling of measurement correctness. The code recognizes that the network path being tested, the path used to report the result, the time the measurement occurred, and the logical identity of the stream are separate concerns that must all remain controlled and inspectable.\n\n# Project Tags",
+      "source_line_start": 545,
+      "source_line_end": 557
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `network-measurement-tool`\n- `experiment-dashboard`\n- `individual-project`",
+      "source_line_start": 557,
+      "source_line_end": 563
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `python`\n- `html`\n- `css`\n- `javascript`",
+      "source_line_start": 563,
+      "source_line_end": 570
+    },
+    {
+      "id": "s076",
+      "level": 2,
+      "title": "Networking",
+      "normalized_title": "Networking",
+      "key": "networking",
+      "path": [
+        "Networking"
+      ],
+      "content": "- `iperf3`\n- `throughput`\n- `tcp`\n- `udp`\n- `reverse-mode-iperf`\n- `parallel-streams`\n- `interface-binding`\n- `dual-interface-measurement`\n- `source-bound-http`\n- `ipv4-interface-discovery`",
+      "source_line_start": 570,
+      "source_line_end": 583
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "Data and Telemetry",
+      "normalized_title": "Data and Telemetry",
+      "key": "data_and_telemetry",
+      "path": [
+        "Data and Telemetry"
+      ],
+      "content": "- `firebase-realtime-database`\n- `firebase-stream-telemetry`\n- `csv`\n- `timestamp-alignment`\n- `measurement-timestamp-reconstruction`\n- `telemetry-normalization`\n- `schema-compatibility`",
+      "source_line_start": 583,
+      "source_line_end": 593
+    },
+    {
+      "id": "s078",
+      "level": 2,
+      "title": "Concurrency",
+      "normalized_title": "Concurrency",
+      "key": "concurrency",
+      "path": [
+        "Concurrency"
+      ],
+      "content": "- `multithreading`\n- `thread-safe-queue`\n- `producer-consumer`",
+      "source_line_start": 593,
+      "source_line_end": 599
+    },
+    {
+      "id": "s079",
+      "level": 2,
+      "title": "Frontend and Visualization",
+      "normalized_title": "Frontend and Visualization",
+      "key": "frontend_and_visualization",
+      "path": [
+        "Frontend and Visualization"
+      ],
+      "content": "- `chartjs`\n- `multi-stream-plotting`\n- `stable-stream-identity`\n- `browser-diagnostics`",
+      "source_line_start": 599,
+      "source_line_end": 606
+    },
+    {
+      "id": "s080",
+      "level": 2,
+      "title": "Experimental Engineering",
+      "normalized_title": "Experimental Engineering",
+      "key": "experimental_engineering",
+      "path": [
+        "Experimental Engineering"
+      ],
+      "content": "- `finite-infinite-test-duration`\n- `measurement-reporting-path-separation`\n- `synchronized-plots`\n- `local-and-remote-measurement-logging`",
+      "source_line_start": 606,
+      "source_line_end": 613
+    },
+    {
+      "id": "s081",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-dual-interface-iperf-firebase-measurement-agent`\n- `earliest-observed-stream-code-isolated-realtime-throughput-dashboard`",
+      "source_line_start": 613,
+      "source_line_end": 617
+    }
+  ],
+  "raw_analysis": "# RobohubDemo\n\n## Repository Identity\n\n- Repository: 109 / 134\n- Name: `RobohubDemo`\n- Repository start date: 2026-06-10\n- Last meaningful update date: 2026-06-11\n- Latest meaningful commit: `e6ab848d95b8a5eebb30a1c2f234e00a87a9fd47`\n- Primary type: Network-performance measurement agent and synchronized telemetry dashboard\n- Technical field: Network measurement, experiment tooling, desktop applications, browser visualization\n- Application domain: RoboHub wireless/network performance demonstrations and experiments\n- Collaboration type: `individual-project`\n- Primary languages: Python, HTML, CSS, JavaScript\n\n## Collaboration and Authorship Context\n\nThe repository is owner-driven and contains the measurement agent and browser dashboard used for a RoboHub experiment/demo context. The corpus treats the software implementation as personally attributable while treating the surrounding RoboHub infrastructure and research environment as external experimental context.\n\nThe implementation therefore evidences ownership of the measurement and visualization tooling, not ownership of the network infrastructure on which the measurements are run.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `perfer.py`;\n- `index.html`;\n- the repository README;\n- repository history through June 11, 2026.\n\nThe short root README understates the implementation. The substantive evidence is in the Python agent and the browser application.\n\n## What This Project Is\n\n`RobohubDemo` is an experiment-support system for running iperf3 throughput tests, publishing interval-level measurement telemetry to Firebase, and displaying multiple synchronized measurement streams in a browser dashboard.\n\nIts most important architectural decision is that the interface carrying the actual iperf3 probe traffic is modeled separately from the interface used to send telemetry to Firebase.\n\nThat separation matters in multi-interface hosts. A machine can measure a specific Wi-Fi, 5G, Ethernet, or USB-network path while using another internet-capable interface to report results without accidentally changing which interface the throughput test exercises.\n\nThe Python application manages the measurement run and produces timestamp-rich records. The browser application consumes those records, groups them by explicit stream identity, and plots them on synchronized timelines.\n\n## Project Scope\n\n### Desktop Measurement Agent\n\n`perfer.py` implements a Tkinter-based iperf3 client agent.\n\nThe UI exposes configuration for:\n\n- Firebase POST endpoint;\n- stream code;\n- TCP or UDP;\n- UDP bandwidth;\n- telemetry-sending interface;\n- probing interface;\n- target iperf3 server address;\n- target port;\n- reporting interval;\n- parallel streams;\n- finite or infinite duration.\n\nThe application also displays:\n\n- generated iperf3 command;\n- latest throughput;\n- average throughput;\n- minimum/maximum throughput;\n- standard deviation;\n- parsed sample count;\n- successful POST count;\n- failed POST count;\n- active routing/interface descriptions;\n- raw iperf3 and telemetry logs.\n\n### Interface Discovery\n\nThe Python agent discovers active non-loopback IPv4 interfaces through `psutil`.\n\nEach discovered interface is represented by:\n\n- name;\n- IPv4 address;\n- netmask.\n\nThe operator selects two potentially different interfaces for the two different responsibilities.\n\n### Probing Interface\n\nThe probing interface is passed to iperf3 through `-B`.\n\nThis binds the throughput test to the selected local source address.\n\nThe agent therefore makes the measured network path explicit rather than leaving interface choice entirely to default routing behavior.\n\n### Telemetry-Sending Interface\n\nFirebase HTTP requests use a custom `requests` adapter that sets an explicit `source_address`.\n\nA bound `requests.Session` is constructed from the sending interface's IP address.\n\nThis creates a second explicit route selection for telemetry delivery.\n\n### Downlink Measurement\n\nThe agent uses iperf3 reverse mode (`-R`).\n\nThe server sends traffic toward the client, making the resulting measurement a downlink-oriented test from the configured server to the selected probing interface.\n\n### TCP and UDP Modes\n\nThe command builder supports both:\n\n- TCP;\n- UDP with configurable bandwidth.\n\nFor UDP, the command adds `-u` and `-b`.\n\n### Finite and Infinite Duration\n\nA normal run uses a configured `-t` duration.\n\nInfinite mode uses `-t 0` and continues until the user explicitly presses Stop.\n\nThis supports both bounded demonstrations and long-running measurement sessions.\n\n### Parallel Streams\n\nThe operator can configure iperf3 parallel streams with `-P`.\n\nThe parser handles iperf3 output differently depending on stream count:\n\n- one-stream mode consumes the individual interval line;\n- multi-stream mode consumes the `[SUM]` interval row.\n\nThis prevents double-counting per-stream rows when the desired measurement is aggregate throughput.\n\n### Interval Parsing\n\nA regular-expression parser extracts interval-level values from iperf3 output.\n\nEach `IperfSample` stores:\n\n- elapsed interval start;\n- elapsed interval end;\n- throughput Mbps;\n- transferred megabytes;\n- raw output line;\n- sample index;\n- parser timestamp;\n- reconstructed interval start/end timestamps.\n\n### Timestamp Reconstruction\n\nMeasurement timestamps are derived from the iperf interval relative to the run start.\n\nThe telemetry model distinguishes several moments:\n\n- interval start;\n- interval end;\n- parse time;\n- HTTP POST time;\n- Firebase server receive time.\n\nThe dashboard is instructed to plot from the actual measurement timestamp rather than the later network-post timestamp.\n\n### Firebase Telemetry\n\nEach parsed interval is queued for posting to Firebase Realtime Database.\n\nThe payload contains measurement values plus extensive traceability metadata including:\n\n- stream code;\n- probing interface name/IP;\n- sending interface name/IP;\n- target address/port;\n- protocol;\n- direction;\n- reverse-mode flag;\n- duration mode;\n- interval timing;\n- throughput;\n- transfer amount;\n- running statistics;\n- client platform information;\n- raw iperf3 line.\n\n### Request-Level Trace Headers\n\nThe POST request also carries custom headers describing:\n\n- direction;\n- reverse mode;\n- traffic path;\n- probing interface;\n- sending interface;\n- stream code;\n- timestamp;\n- target;\n- throughput;\n- sample index.\n\nThis preserves diagnostic context in both the request metadata and body.\n\n### Asynchronous Posting\n\nParsed measurements are placed onto a queue.\n\nA dedicated worker thread performs Firebase POST operations while the iperf reader and GUI continue independently.\n\nThe application tracks successful posts, failed responses, and exceptions separately.\n\n### CSV Logging\n\nThe agent creates local CSV logs for measurement runs in addition to Firebase telemetry.\n\nThis provides a local artifact independent of the remote visualization path.\n\n## Browser Dashboard\n\n### Multi-Stream Visualization\n\n`index.html` is a substantial browser dashboard built around Chart.js and Firebase data.\n\nThe page normalizes incoming records into a common sample shape and groups them into measurement streams.\n\n### Explicit Stream Identity\n\nA critical rule in the dashboard is that grouping is based on an explicit `streamCode` / `interfaceCode` value.\n\nIt deliberately does not group only by interface name or sending interface.\n\nIf a record is missing a stream code, the dashboard isolates that record using its Firebase key rather than silently merging it into another series.\n\nThis is defensive data modeling against ambiguous stream identity.\n\n### Timestamp Normalization\n\nThe dashboard accepts both Unix-second and JavaScript/Firebase millisecond timestamps.\n\nIts timestamp extraction has an explicit priority order beginning with measurement-oriented fields such as:\n\n- `sampleTimestampMs`;\n- `sentAt`;\n- `intervalEndAtMs`;\n- other compatibility timestamps.\n\nThe plot can use iperf elapsed time as its primary x-axis basis while keeping wall-clock timestamps available for diagnostics.\n\n### Compatibility Normalization\n\nThe browser accepts multiple historical/compatibility aliases for fields such as:\n\n- stream identity;\n- interface identity;\n- throughput;\n- timestamps.\n\nThis makes the visualization tolerant of telemetry schema evolution without forcing every existing record to have identical field names.\n\n### Stable Stream Presentation\n\nEach stream retains a stable plot identity and settings.\n\nThe interface supports user-facing stream presentation controls such as display naming and plotting choices without changing the underlying telemetry identity.\n\n### Stream Statistics\n\nThe dashboard computes per-stream statistics from the retained samples, including:\n\n- current throughput;\n- average throughput;\n- sample count.\n\nThe Python agent additionally computes min/max and population standard deviation during acquisition.\n\n### Diagnostics UI\n\nThe dashboard includes explicit diagnostics for:\n\n- number of grouped streams;\n- unique received stream codes;\n- records missing stream codes;\n- identity source;\n- sample count;\n- latest keys;\n- timestamp-source counts;\n- timestamp priority;\n- latest measurement samples.\n\nThis makes synchronization and grouping behavior inspectable rather than opaque.\n\n### Plot Control\n\nPlotting has explicit states such as:\n\n- running;\n- paused;\n- resumed;\n- stopped/restarted.\n\nReceiving data and rendering the chart can therefore be controlled independently.\n\n## Architecture and System Shape\n\n```text\nSelected probing interface\n        ↓ iperf3 -B\niperf3 reverse-mode test\n        ↓ stdout intervals\nPython parser\n        ↓\nTimestamped IperfSample\n        ├──────────────→ local CSV log\n        ↓\nPOST queue\n        ↓\nsource-bound Requests session\n        ↓\nSelected sending interface\n        ↓\nFirebase Realtime Database\n        ↓\nBrowser normalization\n        ↓\nstreamCode-based grouping\n        ↓\nChart.js synchronized plots + diagnostics\n```\n\nThe design explicitly keeps the measurement data path and telemetry-reporting data path separate.\n\n## Technical Stack\n\n### Python\n\nPython implements interface discovery, iperf3 orchestration, parsing, statistics, timestamp reconstruction, Firebase posting, CSV logging, and the desktop GUI.\n\n### Tkinter\n\nTkinter provides configuration, controls, metrics, generated-command visibility, and runtime logs.\n\n### iperf3\n\niperf3 is the network-performance engine.\n\nThe application configures interface binding, reverse/downlink mode, interval output, parallel streams, TCP/UDP behavior, and finite/infinite duration.\n\n### psutil\n\n`psutil` discovers active network interfaces and IPv4 addresses.\n\n### Requests\n\n`requests` posts telemetry to Firebase.\n\nA custom `HTTPAdapter` binds the HTTP connection to a specific local source address.\n\n### Firebase Realtime Database\n\nFirebase stores interval-level measurement telemetry used by the web dashboard.\n\n### Chart.js\n\nChart.js renders multi-stream throughput plots in the browser.\n\n### HTML / CSS / JavaScript\n\nThe browser application implements normalization, grouping, statistics, diagnostics, controls, and visualization around incoming measurement records.\n\n## Major Engineering Work\n\n### Dual-Interface Routing Control\n\nThe core systems concern is making two paths explicit:\n\n- which interface is being measured;\n- which interface sends measurement telemetry.\n\nThe code controls both independently.\n\n### Source-Bound HTTP\n\nThe custom HTTP adapter pushes source-interface selection below application-level URL logic into socket creation through urllib3/Requests configuration.\n\n### Measurement-Time Semantics\n\nThe project distinguishes when a measurement occurred from when it was parsed, posted, or received remotely.\n\nThat is essential for synchronized plots because HTTP latency should not shift the measurement point on the graph.\n\n### Queue-Based Concurrency\n\nThe reader, poster, and GUI communicate through queues and background threads.\n\nRemote telemetry latency therefore does not need to block measurement-output parsing.\n\n### Schema Compatibility\n\nThe dashboard accepts multiple historical aliases while still maintaining one canonical internal sample representation.\n\n### Defensive Stream Grouping\n\nExplicit stream identity prevents two logically distinct tests on the same interface from being merged accidentally.\n\nMissing identities are isolated rather than guessed.\n\n## Testing and Verification\n\n### Firebase Route Test\n\nThe GUI provides a dedicated POST test through the selected sending interface before a measurement run.\n\nThe test creates a distinct stream code and reports HTTP success/failure.\n\n### Configuration Validation\n\nBefore starting, the application validates items such as:\n\n- Firebase URL form;\n- stream code presence;\n- selected interfaces;\n- target IPv4 address;\n- port range;\n- protocol;\n- timing and stream configuration.\n\n### iperf3 Availability Check\n\nThe application checks whether `iperf3` is available before launching a run.\n\n### Runtime Diagnostics\n\nParsed counts, successful posts, failures, routes, raw lines, stream-code grouping, and timestamp sources are surfaced during operation.\n\n## Engineering Practices\n\n### Separation of Measurement and Reporting Paths\n\nThe architecture makes routing assumptions explicit instead of leaving them implicit in the operating system.\n\n### Separation of Reader and Poster Work\n\nA queued worker model prevents telemetry POSTs from being performed synchronously inside the iperf output-reading loop.\n\n### Traceability\n\nRaw iperf lines and multiple timestamp layers remain attached to the telemetry record.\n\n### Defensive Compatibility\n\nThe browser normalizes multiple field aliases but avoids unsafe guesses for missing stream identity.\n\n### Bounded Network Operations\n\nFirebase requests and connection tests use explicit timeouts.\n\n### Local and Remote Persistence\n\nRuns are retained locally in CSV while also being published remotely for visualization.\n\n## Scale and Complexity\n\n### Network Complexity\n\nA single host can simultaneously involve multiple network interfaces with different measurement and internet-access responsibilities.\n\n### Temporal Complexity\n\nSynchronized visualization requires separation of measurement time from parse/post/receive time.\n\n### Stream Complexity\n\nThe dashboard can retain and plot multiple independently identified streams without collapsing them solely by interface name.\n\n### Runtime Complexity\n\nThe agent coordinates subprocess output, threads, queues, HTTP requests, live statistics, Tkinter updates, and local logging.\n\n## Skills Demonstrated\n\n### Network Measurement\n\n- **iperf3 automation — strong evidence.**\n- **Downlink/reverse-mode throughput testing — strong evidence.**\n- **TCP/UDP measurement — strong evidence.**\n- **Parallel-stream handling — strong evidence.**\n- **Explicit interface binding — strong evidence.**\n\n### Network Programming\n\n- **Source-address-bound HTTP — strong evidence.**\n- **Multi-interface route control — strong evidence.**\n- **IPv4 interface discovery — strong evidence.**\n\n### Concurrency\n\n- **Threaded subprocess/POST workflow — strong evidence.**\n- **Queue-based producer/consumer design — strong evidence.**\n\n### Data Engineering\n\n- **Interval parsing — strong evidence.**\n- **Timestamp reconstruction — strong evidence.**\n- **Telemetry normalization — strong evidence.**\n- **Schema compatibility handling — strong evidence.**\n- **CSV logging — strong evidence.**\n\n### Frontend and Visualization\n\n- **Chart.js — strong evidence.**\n- **Multi-stream plotting — strong evidence.**\n- **Browser diagnostics — strong evidence.**\n- **Stable stream identity — strong evidence.**\n\n### Experimental Engineering\n\n- **Synchronized measurement timelines — strong evidence.**\n- **Measurement/reporting path separation — strong evidence.**\n- **Finite and continuous experiment modes — strong evidence.**\n\n## Capability Developed\n\n`RobohubDemo` demonstrates a systems-level view of network measurement.\n\nThe project does not treat throughput as only a number returned by iperf3. It treats route selection, interface identity, measurement timestamps, telemetry delivery, stream identity, synchronization, and visualization as parts of the measurement system.\n\n## Portfolio Evolution Context\n\nEarlier networking repositories already contain iperf3 acquisition and synchronized wireless analysis.\n\n`RobohubDemo` makes the live measurement pipeline more explicit by publishing interval-level results into a realtime datastore and separating the probe interface from the reporting interface.\n\nIt also makes synchronization assumptions visible through a dedicated diagnostics layer in the browser.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository with an explicit dual-interface network-measurement architecture in which:\n\n- iperf3 is bound to one selected interface;\n- Firebase HTTP telemetry is source-bound to another selected interface;\n- interval measurements are timestamped and streamed to a realtime dashboard;\n- explicit stream codes prevent ambiguous curve merging.\n\n## Overall Repository Narrative\n\n`RobohubDemo` is a network experiment system that couples an iperf3 desktop agent with a realtime browser visualization layer.\n\nThe Python application discovers interfaces, lets the operator choose separate measurement and telemetry routes, constructs finite or infinite TCP/UDP reverse-mode iperf3 tests, parses interval throughput, reconstructs measurement timestamps, computes running statistics, stores CSV output, and asynchronously posts detailed telemetry to Firebase.\n\nThe browser application normalizes incoming records, groups them strictly by explicit stream identity, aligns their measurement timestamps, renders Chart.js plots, and exposes diagnostics for grouping and timestamp interpretation.\n\nThe strongest engineering evidence is the explicit modeling of measurement correctness. The code recognizes that the network path being tested, the path used to report the result, the time the measurement occurred, and the logical identity of the stream are separate concerns that must all remain controlled and inspectable.\n\n# Project Tags\n\n## Project Type\n\n- `network-measurement-tool`\n- `experiment-dashboard`\n- `individual-project`\n\n## Languages\n\n- `python`\n- `html`\n- `css`\n- `javascript`\n\n## Networking\n\n- `iperf3`\n- `throughput`\n- `tcp`\n- `udp`\n- `reverse-mode-iperf`\n- `parallel-streams`\n- `interface-binding`\n- `dual-interface-measurement`\n- `source-bound-http`\n- `ipv4-interface-discovery`\n\n## Data and Telemetry\n\n- `firebase-realtime-database`\n- `firebase-stream-telemetry`\n- `csv`\n- `timestamp-alignment`\n- `measurement-timestamp-reconstruction`\n- `telemetry-normalization`\n- `schema-compatibility`\n\n## Concurrency\n\n- `multithreading`\n- `thread-safe-queue`\n- `producer-consumer`\n\n## Frontend and Visualization\n\n- `chartjs`\n- `multi-stream-plotting`\n- `stable-stream-identity`\n- `browser-diagnostics`\n\n## Experimental Engineering\n\n- `finite-infinite-test-duration`\n- `measurement-reporting-path-separation`\n- `synchronized-plots`\n- `local-and-remote-measurement-logging`\n\n## Portfolio Significance\n\n- `earliest-observed-dual-interface-iperf-firebase-measurement-agent`\n- `earliest-observed-stream-code-isolated-realtime-throughput-dashboard`\n"
+}

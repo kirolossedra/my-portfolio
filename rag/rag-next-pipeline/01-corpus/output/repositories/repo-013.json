@@ -1,0 +1,768 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 13,
+  "repository_total": 134,
+  "repository_name": "Pipelined-MIPS-UVM-Based-Verification",
+  "header_title": "Pipelined-MIPS-UVM-Based-Verification",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-013-Pipelined-MIPS-UVM-Based-Verification/README.md",
+    "line_start": 1,
+    "line_end": 423,
+    "sha256": "ddd03470208ad5b28eab3648c8484e83314b3bfcc79dcfbed2bdb28e71177091"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "pipelined-processor-model",
+    "computer-architecture-exercise",
+    "educational-project",
+    "individual-project",
+    "systemverilog",
+    "digital-design",
+    "sequential-logic",
+    "mips-architecture",
+    "five-stage-pipeline",
+    "pipeline-registers",
+    "instruction-decoding",
+    "register-file",
+    "program-counter",
+    "instruction-memory",
+    "data-memory",
+    "alu-operations",
+    "memory-stage",
+    "writeback-stage",
+    "systemverilog-structs",
+    "systemverilog-enums",
+    "always-ff",
+    "readmemh",
+    "hdl-simulation",
+    "hdl-testbench",
+    "clock-generator",
+    "deterministic-memory-initialization",
+    "earliest-observed-systemverilog",
+    "earliest-observed-five-stage-pipeline",
+    "earliest-observed-pipeline-registers"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 013 / 134\n- Name: `Pipelined-MIPS-UVM-Based-Verification`\n- Repository start date: 2023-02-25\n- Latest meaningful update date: 2023-02-27\n- Primary type: Pipelined processor HDL model\n- Technical field: Computer architecture and SystemVerilog\n- Application domain: Five-stage MIPS-style processor pipeline\n- Project context: Personal educational hardware-modeling project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005",
+        "s038"
+      ],
+      "titles": [
+        "Architecture and System Shape",
+        "Computer Architecture"
+      ],
+      "text": "## Architecture and System Shape\n```text\nProgram Memory\n      ↓\n┌──────────────┐\n│ IF           │\n└──────┬───────┘\n       ↓ IF/ID register\n┌──────────────┐\n│ ID           │\n│ decode + RF  │\n└──────┬───────┘\n       ↓ ID/EX register\n┌──────────────┐\n│ EX           │\n│ ALU / branch │\n└──────┬───────┘\n       ↓ EX/MEM register\n┌──────────────┐\n│ MEM          │\n│ data memory  │\n└──────┬───────┘\n       ↓ MEM/WB register\n┌──────────────┐\n│ WB           │\n│ register RF  │\n└──────────────┘\n```\n\n## Computer Architecture\n- **Five-stage MIPS pipeline — strong evidence.**\n- **Pipeline registers — strong evidence.**\n- **Instruction decoding — strong evidence.**\n- **Register-file modeling — strong evidence.**\n- **ALU operation selection — strong evidence.**\n- **Memory stage — strong evidence.**\n- **Write-back stage — strong evidence.**\n- **Program-counter logic — strong evidence.**"
+    },
+    "testing": {
+      "section_ids": [
+        "s022",
+        "s039",
+        "s048"
+      ],
+      "titles": [
+        "Verification",
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification\n### HDL Testbench\n\nThe `CPU_tb` module provides direct simulation instantiation.\n\n### Memory Initialization\n\n`$readmemh` and hard-coded starting values provide deterministic initial program/register state for simulation work.\n\n### Compilation / Design Stabilization\n\nThe repository checklist marks the design as having reached an error-free state, providing repository-level evidence of syntax/elaboration-oriented stabilization during development.\n\n## Verification\n- **HDL simulation harness — moderate-to-strong evidence.**\n- **Clock generator — strong evidence.**\n- **Deterministic memory initialization — strong evidence.**\n\n## Testing and Verification\n- `hdl-simulation`\n- `hdl-testbench`\n- `clock-generator`\n- `deterministic-memory-initialization`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s045"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository commits are owner-authored, supporting personal attribution of the SystemVerilog pipeline implementation.\n\nThe analysis follows the implementation itself as the evidence source. The repository name reflects a broader verification direction, while the current committed implementation provides concrete evidence of the pipeline design and its simulation harness.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 013 / 134\n- Name: `Pipelined-MIPS-UVM-Based-Verification`\n- Repository start date: 2023-02-25\n- Latest meaningful update date: 2023-02-27\n- Primary type: Pipelined processor HDL model\n- Technical field: Computer architecture and SystemVerilog\n- Application domain: Five-stage MIPS-style processor pipeline\n- Project context: Personal educational hardware-modeling project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository commits are owner-authored, supporting personal attribution of the SystemVerilog pipeline implementation.\n\nThe analysis follows the implementation itself as the evidence source. The repository name reflects a broader verification direction, while the current committed implementation provides concrete evidence of the pipeline design and its simulation harness.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains only:\n\n- `PipelinedMIPS.sv`;\n- `README.md`.\n\n`PipelinedMIPS.sv` contains the processor design, stage state, pipeline-register structures, memories, clock generator, and testbench.\n\nThe README records a development checklist and marks the design as having reached an error-free compilation/design state.",
+      "source_line_start": 22,
+      "source_line_end": 33
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "This repository implements a MIPS-style processor as a five-stage SystemVerilog pipeline.\n\nThe design represents the classic stages:\n\n1. Instruction Fetch;\n2. Instruction Decode;\n3. Execute;\n4. Memory;\n5. Write Back.\n\nInstead of modeling each instruction as one monolithic procedural operation, information is carried between stages through explicit pipeline-register structures.\n\nThis is a significant architectural progression from the earlier simplified MIPS Verilog model.",
+      "source_line_start": 33,
+      "source_line_end": 49
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nProgram Memory\n      ↓\n┌──────────────┐\n│ IF           │\n└──────┬───────┘\n       ↓ IF/ID register\n┌──────────────┐\n│ ID           │\n│ decode + RF  │\n└──────┬───────┘\n       ↓ ID/EX register\n┌──────────────┐\n│ EX           │\n│ ALU / branch │\n└──────┬───────┘\n       ↓ EX/MEM register\n┌──────────────┐\n│ MEM          │\n│ data memory  │\n└──────┬───────┘\n       ↓ MEM/WB register\n┌──────────────┐\n│ WB           │\n│ register RF  │\n└──────────────┘\n```",
+      "source_line_start": 49,
+      "source_line_end": 79
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### SystemVerilog\n\nThe source uses SystemVerilog-specific constructs including:\n\n- `logic`;\n- `always_ff`;\n- `typedef enum`;\n- `typedef struct`;\n- typed pipeline-stage state;\n- structured pipeline registers.\n\nThis is the earliest processed repository where SystemVerilog is the primary implementation language.\n\n### `$readmemh`\n\nProgram memory, data memory, and register-file arrays are initialized from external memory files through `$readmemh`.\n\nThe source also assigns a small set of hard-coded initial instructions and register values for simulation.",
+      "source_line_start": 79,
+      "source_line_end": 100
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "SystemVerilog",
+      "normalized_title": "SystemVerilog",
+      "key": "systemverilog",
+      "path": [
+        "Technical Stack",
+        "SystemVerilog"
+      ],
+      "content": "The source uses SystemVerilog-specific constructs including:\n\n- `logic`;\n- `always_ff`;\n- `typedef enum`;\n- `typedef struct`;\n- typed pipeline-stage state;\n- structured pipeline registers.\n\nThis is the earliest processed repository where SystemVerilog is the primary implementation language.",
+      "source_line_start": 81,
+      "source_line_end": 94
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "`$readmemh`",
+      "normalized_title": "$readmemh",
+      "key": "readmemh",
+      "path": [
+        "Technical Stack",
+        "`$readmemh`"
+      ],
+      "content": "Program memory, data memory, and register-file arrays are initialized from external memory files through `$readmemh`.\n\nThe source also assigns a small set of hard-coded initial instructions and register values for simulation.",
+      "source_line_start": 94,
+      "source_line_end": 100
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Pipeline Stage Representation",
+      "normalized_title": "Pipeline Stage Representation",
+      "key": "pipeline_stage_representation",
+      "path": [
+        "Pipeline Stage Representation"
+      ],
+      "content": "The design defines a `PIPELINE_STAGE` enum:\n\n- `IF_STAGE`;\n- `ID_STAGE`;\n- `EX_STAGE`;\n- `MEM_STAGE`;\n- `WB_STAGE`.\n\nA stage variable advances through the five stages.\n\nThis makes pipeline phase state explicit and typed.",
+      "source_line_start": 100,
+      "source_line_end": 114
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Pipeline Registers",
+      "normalized_title": "Pipeline Registers",
+      "key": "pipeline_registers",
+      "path": [
+        "Pipeline Registers"
+      ],
+      "content": "Dedicated structs represent inter-stage state.\n\n### IF/ID\n\nCarries:\n\n- program counter;\n- instruction.\n\n### ID/EX\n\nCarries fields including:\n\n- ALU operation selector;\n- opcode;\n- `rs`;\n- `rt`;\n- `rd`;\n- destination register;\n- shift amount;\n- function code;\n- immediate;\n- program counter;\n- source register data;\n- write-data selection;\n- ALU result field.\n\n### EX/MEM\n\nCarries:\n\n- ALU operands/results;\n- shift;\n- program counter;\n- `rt` data;\n- memory data;\n- destination register;\n- write-data selection.\n\n### MEM/WB\n\nCarries:\n\n- memory data;\n- ALU result;\n- program counter;\n- destination register;\n- write-data selection.\n\nThese explicit inter-stage structures are the core architectural feature of the repository.",
+      "source_line_start": 114,
+      "source_line_end": 167
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "IF/ID",
+      "normalized_title": "IF/ID",
+      "key": "if_id",
+      "path": [
+        "Pipeline Registers",
+        "IF/ID"
+      ],
+      "content": "Carries:\n\n- program counter;\n- instruction.",
+      "source_line_start": 118,
+      "source_line_end": 125
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "ID/EX",
+      "normalized_title": "ID/EX",
+      "key": "id_ex",
+      "path": [
+        "Pipeline Registers",
+        "ID/EX"
+      ],
+      "content": "Carries fields including:\n\n- ALU operation selector;\n- opcode;\n- `rs`;\n- `rt`;\n- `rd`;\n- destination register;\n- shift amount;\n- function code;\n- immediate;\n- program counter;\n- source register data;\n- write-data selection;\n- ALU result field.",
+      "source_line_start": 125,
+      "source_line_end": 143
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "EX/MEM",
+      "normalized_title": "EX/MEM",
+      "key": "ex_mem",
+      "path": [
+        "Pipeline Registers",
+        "EX/MEM"
+      ],
+      "content": "Carries:\n\n- ALU operands/results;\n- shift;\n- program counter;\n- `rt` data;\n- memory data;\n- destination register;\n- write-data selection.",
+      "source_line_start": 143,
+      "source_line_end": 155
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "MEM/WB",
+      "normalized_title": "MEM/WB",
+      "key": "mem_wb",
+      "path": [
+        "Pipeline Registers",
+        "MEM/WB"
+      ],
+      "content": "Carries:\n\n- memory data;\n- ALU result;\n- program counter;\n- destination register;\n- write-data selection.\n\nThese explicit inter-stage structures are the core architectural feature of the repository.",
+      "source_line_start": 155,
+      "source_line_end": 167
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Instruction Fetch",
+      "normalized_title": "Instruction Fetch",
+      "key": "instruction_fetch",
+      "path": [
+        "Instruction Fetch"
+      ],
+      "content": "The design:\n\n- increments the program counter;\n- reads an instruction from program memory;\n- stores instruction and PC state into the IF/ID pipeline register.",
+      "source_line_start": 167,
+      "source_line_end": 175
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Instruction Decode",
+      "normalized_title": "Instruction Decode",
+      "key": "instruction_decode",
+      "path": [
+        "Instruction Decode"
+      ],
+      "content": "The decode stage extracts:\n\n- opcode;\n- source registers;\n- destination register;\n- shift amount;\n- function field;\n- immediate.\n\nIt reads values from the register-file array and sets internal control selectors.\n\nR-format, jump-style, and other opcode families are separated through decode logic.",
+      "source_line_start": 175,
+      "source_line_end": 190
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Execute Stage",
+      "normalized_title": "Execute Stage",
+      "key": "execute_stage",
+      "path": [
+        "Execute Stage"
+      ],
+      "content": "The execute stage selects ALU operands from:\n\n- register data;\n- immediate values;\n- shift values.\n\nImmediate values are sign-extended in the implemented path.\n\nVisible operations include:\n\n- addition;\n- subtraction;\n- bitwise AND;\n- bitwise OR;\n- set-less-than;\n- multiply-like behavior in one opcode/function branch.\n\nThe stage also calculates next-PC values for branch-like behavior.",
+      "source_line_start": 190,
+      "source_line_end": 211
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Memory Stage",
+      "normalized_title": "Memory Stage",
+      "key": "memory_stage",
+      "path": [
+        "Memory Stage"
+      ],
+      "content": "The memory stage reads or writes `data_memory` using the ALU-derived address and carries results forward into MEM/WB state.",
+      "source_line_start": 211,
+      "source_line_end": 215
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Write-Back Stage",
+      "normalized_title": "Write-Back Stage",
+      "key": "write_back_stage",
+      "path": [
+        "Write-Back Stage"
+      ],
+      "content": "The write-back stage selects an ALU or memory-derived value and stores it into the register-file array.\n\nThis closes the explicit five-stage flow.",
+      "source_line_start": 215,
+      "source_line_end": 221
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Processor State",
+      "normalized_title": "Processor State",
+      "key": "processor_state",
+      "path": [
+        "Processor State"
+      ],
+      "content": "The implementation contains:\n\n- 1024-word program memory;\n- 1024-word data memory;\n- 32-entry register file;\n- program counter;\n- ALU signals;\n- typed pipeline registers.",
+      "source_line_start": 221,
+      "source_line_end": 232
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Clock and Simulation Harness",
+      "normalized_title": "Clock and Simulation Harness",
+      "key": "clock_and_simulation_harness",
+      "path": [
+        "Clock and Simulation Harness"
+      ],
+      "content": "The file includes a `clock_Gen` module that toggles the clock every five simulation units.\n\n`CPU_tb` instantiates:\n\n- the clock;\n- the `Pipeline` module.\n\nThis gives the design an executable HDL simulation entry point.",
+      "source_line_start": 232,
+      "source_line_end": 243
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### HDL Testbench\n\nThe `CPU_tb` module provides direct simulation instantiation.\n\n### Memory Initialization\n\n`$readmemh` and hard-coded starting values provide deterministic initial program/register state for simulation work.\n\n### Compilation / Design Stabilization\n\nThe repository checklist marks the design as having reached an error-free state, providing repository-level evidence of syntax/elaboration-oriented stabilization during development.",
+      "source_line_start": 243,
+      "source_line_end": 257
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "HDL Testbench",
+      "normalized_title": "HDL Testbench",
+      "key": "hdl_testbench",
+      "path": [
+        "Verification",
+        "HDL Testbench"
+      ],
+      "content": "The `CPU_tb` module provides direct simulation instantiation.",
+      "source_line_start": 245,
+      "source_line_end": 249
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "Memory Initialization",
+      "normalized_title": "Memory Initialization",
+      "key": "memory_initialization",
+      "path": [
+        "Verification",
+        "Memory Initialization"
+      ],
+      "content": "`$readmemh` and hard-coded starting values provide deterministic initial program/register state for simulation work.",
+      "source_line_start": 249,
+      "source_line_end": 253
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Compilation / Design Stabilization",
+      "normalized_title": "Compilation / Design Stabilization",
+      "key": "compilation_design_stabilization",
+      "path": [
+        "Verification",
+        "Compilation / Design Stabilization"
+      ],
+      "content": "The repository checklist marks the design as having reached an error-free state, providing repository-level evidence of syntax/elaboration-oriented stabilization during development.",
+      "source_line_start": 253,
+      "source_line_end": 257
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Typed Architectural State\n\nEnums and structs make stage and pipeline-register state explicit rather than representing all control/data as unrelated primitive signals.\n\n### Pipeline Decomposition\n\nInstruction processing is separated into fetch, decode, execute, memory, and write-back responsibilities.\n\n### Inter-Stage State Modeling\n\nEach boundary carries only the state needed by downstream stages through dedicated structures.\n\n### External Memory Initialization\n\nMemory-file loading provides a reproducible way to seed program/data/register state for simulation.\n\n### Modular Simulation Entry Point\n\nClock generation and testbench instantiation are separated into dedicated modules.",
+      "source_line_start": 257,
+      "source_line_end": 279
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Typed Architectural State",
+      "normalized_title": "Typed Architectural State",
+      "key": "typed_architectural_state",
+      "path": [
+        "Engineering Practices",
+        "Typed Architectural State"
+      ],
+      "content": "Enums and structs make stage and pipeline-register state explicit rather than representing all control/data as unrelated primitive signals.",
+      "source_line_start": 259,
+      "source_line_end": 263
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Pipeline Decomposition",
+      "normalized_title": "Pipeline Decomposition",
+      "key": "pipeline_decomposition",
+      "path": [
+        "Engineering Practices",
+        "Pipeline Decomposition"
+      ],
+      "content": "Instruction processing is separated into fetch, decode, execute, memory, and write-back responsibilities.",
+      "source_line_start": 263,
+      "source_line_end": 267
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Inter-Stage State Modeling",
+      "normalized_title": "Inter-Stage State Modeling",
+      "key": "inter_stage_state_modeling",
+      "path": [
+        "Engineering Practices",
+        "Inter-Stage State Modeling"
+      ],
+      "content": "Each boundary carries only the state needed by downstream stages through dedicated structures.",
+      "source_line_start": 267,
+      "source_line_end": 271
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "External Memory Initialization",
+      "normalized_title": "External Memory Initialization",
+      "key": "external_memory_initialization",
+      "path": [
+        "Engineering Practices",
+        "External Memory Initialization"
+      ],
+      "content": "Memory-file loading provides a reproducible way to seed program/data/register state for simulation.",
+      "source_line_start": 271,
+      "source_line_end": 275
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Modular Simulation Entry Point",
+      "normalized_title": "Modular Simulation Entry Point",
+      "key": "modular_simulation_entry_point",
+      "path": [
+        "Engineering Practices",
+        "Modular Simulation Entry Point"
+      ],
+      "content": "Clock generation and testbench instantiation are separated into dedicated modules.",
+      "source_line_start": 275,
+      "source_line_end": 279
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository is only two files, with almost all implementation in one SystemVerilog source.\n\n### Architectural Scale\n\nThe model spans:\n\n- instruction fetch;\n- decode;\n- register access;\n- ALU execution;\n- program-counter logic;\n- data memory;\n- write back;\n- multiple inter-stage structures.\n\n### Conceptual Complexity\n\nThe key complexity increase is temporal overlap and state transfer between pipeline stages.\n\nThe programmer must reason about what information belongs at each stage boundary rather than only the semantics of one instruction operation.",
+      "source_line_start": 279,
+      "source_line_end": 304
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository is only two files, with almost all implementation in one SystemVerilog source.",
+      "source_line_start": 281,
+      "source_line_end": 285
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Architectural Scale",
+      "normalized_title": "Architectural Scale",
+      "key": "architectural_scale",
+      "path": [
+        "Scale and Complexity",
+        "Architectural Scale"
+      ],
+      "content": "The model spans:\n\n- instruction fetch;\n- decode;\n- register access;\n- ALU execution;\n- program-counter logic;\n- data memory;\n- write back;\n- multiple inter-stage structures.",
+      "source_line_start": 285,
+      "source_line_end": 298
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Conceptual Complexity",
+      "normalized_title": "Conceptual Complexity",
+      "key": "conceptual_complexity",
+      "path": [
+        "Scale and Complexity",
+        "Conceptual Complexity"
+      ],
+      "content": "The key complexity increase is temporal overlap and state transfer between pipeline stages.\n\nThe programmer must reason about what information belongs at each stage boundary rather than only the semantics of one instruction operation.",
+      "source_line_start": 298,
+      "source_line_end": 304
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### SystemVerilog\n\n- **SystemVerilog — strong evidence.**\n- **`logic`-based signal modeling — strong evidence.**\n- **`always_ff` sequential logic — strong evidence.**\n- **Enums — strong evidence.**\n- **Structs — strong evidence.**\n\n### Computer Architecture\n\n- **Five-stage MIPS pipeline — strong evidence.**\n- **Pipeline registers — strong evidence.**\n- **Instruction decoding — strong evidence.**\n- **Register-file modeling — strong evidence.**\n- **ALU operation selection — strong evidence.**\n- **Memory stage — strong evidence.**\n- **Write-back stage — strong evidence.**\n- **Program-counter logic — strong evidence.**\n\n### Verification\n\n- **HDL simulation harness — moderate-to-strong evidence.**\n- **Clock generator — strong evidence.**\n- **Deterministic memory initialization — strong evidence.**",
+      "source_line_start": 304,
+      "source_line_end": 331
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "SystemVerilog",
+      "normalized_title": "SystemVerilog",
+      "key": "systemverilog",
+      "path": [
+        "Skills Demonstrated",
+        "SystemVerilog"
+      ],
+      "content": "- **SystemVerilog — strong evidence.**\n- **`logic`-based signal modeling — strong evidence.**\n- **`always_ff` sequential logic — strong evidence.**\n- **Enums — strong evidence.**\n- **Structs — strong evidence.**",
+      "source_line_start": 306,
+      "source_line_end": 314
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Computer Architecture",
+      "normalized_title": "Computer Architecture",
+      "key": "computer_architecture",
+      "path": [
+        "Skills Demonstrated",
+        "Computer Architecture"
+      ],
+      "content": "- **Five-stage MIPS pipeline — strong evidence.**\n- **Pipeline registers — strong evidence.**\n- **Instruction decoding — strong evidence.**\n- **Register-file modeling — strong evidence.**\n- **ALU operation selection — strong evidence.**\n- **Memory stage — strong evidence.**\n- **Write-back stage — strong evidence.**\n- **Program-counter logic — strong evidence.**",
+      "source_line_start": 314,
+      "source_line_end": 325
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Skills Demonstrated",
+        "Verification"
+      ],
+      "content": "- **HDL simulation harness — moderate-to-strong evidence.**\n- **Clock generator — strong evidence.**\n- **Deterministic memory initialization — strong evidence.**",
+      "source_line_start": 325,
+      "source_line_end": 331
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository transforms the earlier MIPS work from a compact instruction-execution model into an explicitly staged architecture.\n\nThe major capability developed is reasoning about **state across time and stage boundaries**.\n\nEnums define the pipeline phase, structs bundle stage-specific data, and explicit IF/ID, ID/EX, EX/MEM, and MEM/WB structures preserve the values required as instructions progress.",
+      "source_line_start": 331,
+      "source_line_end": 339
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- SystemVerilog;\n- a five-stage processor pipeline;\n- explicit pipeline-register structs;\n- SystemVerilog enums for architectural state;\n- SystemVerilog `always_ff`;\n- `$readmemh`-based processor memory initialization.\n\nThe hardware thread progresses from:\n\n```text\nsimple CPU model\n    ↓\nreusable HDL utilities\n    ↓\nCPU/DMA system integration\n    ↓\nfive-stage pipelined processor\n```",
+      "source_line_start": 339,
+      "source_line_end": 362
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "This repository marks the point where the portfolio's computer-architecture work becomes explicitly pipelined and adopts SystemVerilog language features designed for clearer hardware modeling.\n\nIt provides a useful baseline for later questions about HDL sophistication and verification-oriented design structure.",
+      "source_line_start": 362,
+      "source_line_end": 368
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`Pipelined-MIPS-UVM-Based-Verification` contains a personally authored SystemVerilog five-stage MIPS-style pipeline.\n\nThe design represents stage identity with an enum, carries state across IF/ID, ID/EX, EX/MEM, and MEM/WB structs, initializes program/data/register memories, performs instruction decode and ALU work, accesses data memory, and writes results back to the register file. A clock module and testbench make the model executable in simulation.\n\nIts strongest corpus value is the transition from basic Verilog processor modeling to structured SystemVerilog architecture with explicit pipeline boundaries.\n\n# Project Tags",
+      "source_line_start": 368,
+      "source_line_end": 378
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `pipelined-processor-model`\n- `computer-architecture-exercise`\n- `educational-project`",
+      "source_line_start": 378,
+      "source_line_end": 384
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 384,
+      "source_line_end": 388
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `systemverilog`",
+      "source_line_start": 388,
+      "source_line_end": 392
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `digital-design`\n- `sequential-logic`\n- `mips-architecture`\n- `five-stage-pipeline`\n- `pipeline-registers`\n- `instruction-decoding`\n- `register-file`\n- `program-counter`\n- `instruction-memory`\n- `data-memory`\n- `alu-operations`\n- `memory-stage`\n- `writeback-stage`\n- `systemverilog-structs`\n- `systemverilog-enums`\n- `always-ff`\n- `readmemh`",
+      "source_line_start": 392,
+      "source_line_end": 412
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `hdl-simulation`\n- `hdl-testbench`\n- `clock-generator`\n- `deterministic-memory-initialization`",
+      "source_line_start": 412,
+      "source_line_end": 419
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-systemverilog`\n- `earliest-observed-five-stage-pipeline`\n- `earliest-observed-pipeline-registers`",
+      "source_line_start": 419,
+      "source_line_end": 424
+    }
+  ],
+  "raw_analysis": "# Pipelined-MIPS-UVM-Based-Verification\n\n## Repository Identity\n\n- Repository: 013 / 134\n- Name: `Pipelined-MIPS-UVM-Based-Verification`\n- Repository start date: 2023-02-25\n- Latest meaningful update date: 2023-02-27\n- Primary type: Pipelined processor HDL model\n- Technical field: Computer architecture and SystemVerilog\n- Application domain: Five-stage MIPS-style processor pipeline\n- Project context: Personal educational hardware-modeling project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog\n\n## Collaboration and Authorship Context\n\nThe visible repository commits are owner-authored, supporting personal attribution of the SystemVerilog pipeline implementation.\n\nThe analysis follows the implementation itself as the evidence source. The repository name reflects a broader verification direction, while the current committed implementation provides concrete evidence of the pipeline design and its simulation harness.\n\n## Evidence Basis\n\nThe repository contains only:\n\n- `PipelinedMIPS.sv`;\n- `README.md`.\n\n`PipelinedMIPS.sv` contains the processor design, stage state, pipeline-register structures, memories, clock generator, and testbench.\n\nThe README records a development checklist and marks the design as having reached an error-free compilation/design state.\n\n## What This Project Is\n\nThis repository implements a MIPS-style processor as a five-stage SystemVerilog pipeline.\n\nThe design represents the classic stages:\n\n1. Instruction Fetch;\n2. Instruction Decode;\n3. Execute;\n4. Memory;\n5. Write Back.\n\nInstead of modeling each instruction as one monolithic procedural operation, information is carried between stages through explicit pipeline-register structures.\n\nThis is a significant architectural progression from the earlier simplified MIPS Verilog model.\n\n## Architecture and System Shape\n\n```text\nProgram Memory\n      ↓\n┌──────────────┐\n│ IF           │\n└──────┬───────┘\n       ↓ IF/ID register\n┌──────────────┐\n│ ID           │\n│ decode + RF  │\n└──────┬───────┘\n       ↓ ID/EX register\n┌──────────────┐\n│ EX           │\n│ ALU / branch │\n└──────┬───────┘\n       ↓ EX/MEM register\n┌──────────────┐\n│ MEM          │\n│ data memory  │\n└──────┬───────┘\n       ↓ MEM/WB register\n┌──────────────┐\n│ WB           │\n│ register RF  │\n└──────────────┘\n```\n\n## Technical Stack\n\n### SystemVerilog\n\nThe source uses SystemVerilog-specific constructs including:\n\n- `logic`;\n- `always_ff`;\n- `typedef enum`;\n- `typedef struct`;\n- typed pipeline-stage state;\n- structured pipeline registers.\n\nThis is the earliest processed repository where SystemVerilog is the primary implementation language.\n\n### `$readmemh`\n\nProgram memory, data memory, and register-file arrays are initialized from external memory files through `$readmemh`.\n\nThe source also assigns a small set of hard-coded initial instructions and register values for simulation.\n\n## Pipeline Stage Representation\n\nThe design defines a `PIPELINE_STAGE` enum:\n\n- `IF_STAGE`;\n- `ID_STAGE`;\n- `EX_STAGE`;\n- `MEM_STAGE`;\n- `WB_STAGE`.\n\nA stage variable advances through the five stages.\n\nThis makes pipeline phase state explicit and typed.\n\n## Pipeline Registers\n\nDedicated structs represent inter-stage state.\n\n### IF/ID\n\nCarries:\n\n- program counter;\n- instruction.\n\n### ID/EX\n\nCarries fields including:\n\n- ALU operation selector;\n- opcode;\n- `rs`;\n- `rt`;\n- `rd`;\n- destination register;\n- shift amount;\n- function code;\n- immediate;\n- program counter;\n- source register data;\n- write-data selection;\n- ALU result field.\n\n### EX/MEM\n\nCarries:\n\n- ALU operands/results;\n- shift;\n- program counter;\n- `rt` data;\n- memory data;\n- destination register;\n- write-data selection.\n\n### MEM/WB\n\nCarries:\n\n- memory data;\n- ALU result;\n- program counter;\n- destination register;\n- write-data selection.\n\nThese explicit inter-stage structures are the core architectural feature of the repository.\n\n## Instruction Fetch\n\nThe design:\n\n- increments the program counter;\n- reads an instruction from program memory;\n- stores instruction and PC state into the IF/ID pipeline register.\n\n## Instruction Decode\n\nThe decode stage extracts:\n\n- opcode;\n- source registers;\n- destination register;\n- shift amount;\n- function field;\n- immediate.\n\nIt reads values from the register-file array and sets internal control selectors.\n\nR-format, jump-style, and other opcode families are separated through decode logic.\n\n## Execute Stage\n\nThe execute stage selects ALU operands from:\n\n- register data;\n- immediate values;\n- shift values.\n\nImmediate values are sign-extended in the implemented path.\n\nVisible operations include:\n\n- addition;\n- subtraction;\n- bitwise AND;\n- bitwise OR;\n- set-less-than;\n- multiply-like behavior in one opcode/function branch.\n\nThe stage also calculates next-PC values for branch-like behavior.\n\n## Memory Stage\n\nThe memory stage reads or writes `data_memory` using the ALU-derived address and carries results forward into MEM/WB state.\n\n## Write-Back Stage\n\nThe write-back stage selects an ALU or memory-derived value and stores it into the register-file array.\n\nThis closes the explicit five-stage flow.\n\n## Processor State\n\nThe implementation contains:\n\n- 1024-word program memory;\n- 1024-word data memory;\n- 32-entry register file;\n- program counter;\n- ALU signals;\n- typed pipeline registers.\n\n## Clock and Simulation Harness\n\nThe file includes a `clock_Gen` module that toggles the clock every five simulation units.\n\n`CPU_tb` instantiates:\n\n- the clock;\n- the `Pipeline` module.\n\nThis gives the design an executable HDL simulation entry point.\n\n## Verification\n\n### HDL Testbench\n\nThe `CPU_tb` module provides direct simulation instantiation.\n\n### Memory Initialization\n\n`$readmemh` and hard-coded starting values provide deterministic initial program/register state for simulation work.\n\n### Compilation / Design Stabilization\n\nThe repository checklist marks the design as having reached an error-free state, providing repository-level evidence of syntax/elaboration-oriented stabilization during development.\n\n## Engineering Practices\n\n### Typed Architectural State\n\nEnums and structs make stage and pipeline-register state explicit rather than representing all control/data as unrelated primitive signals.\n\n### Pipeline Decomposition\n\nInstruction processing is separated into fetch, decode, execute, memory, and write-back responsibilities.\n\n### Inter-Stage State Modeling\n\nEach boundary carries only the state needed by downstream stages through dedicated structures.\n\n### External Memory Initialization\n\nMemory-file loading provides a reproducible way to seed program/data/register state for simulation.\n\n### Modular Simulation Entry Point\n\nClock generation and testbench instantiation are separated into dedicated modules.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository is only two files, with almost all implementation in one SystemVerilog source.\n\n### Architectural Scale\n\nThe model spans:\n\n- instruction fetch;\n- decode;\n- register access;\n- ALU execution;\n- program-counter logic;\n- data memory;\n- write back;\n- multiple inter-stage structures.\n\n### Conceptual Complexity\n\nThe key complexity increase is temporal overlap and state transfer between pipeline stages.\n\nThe programmer must reason about what information belongs at each stage boundary rather than only the semantics of one instruction operation.\n\n## Skills Demonstrated\n\n### SystemVerilog\n\n- **SystemVerilog — strong evidence.**\n- **`logic`-based signal modeling — strong evidence.**\n- **`always_ff` sequential logic — strong evidence.**\n- **Enums — strong evidence.**\n- **Structs — strong evidence.**\n\n### Computer Architecture\n\n- **Five-stage MIPS pipeline — strong evidence.**\n- **Pipeline registers — strong evidence.**\n- **Instruction decoding — strong evidence.**\n- **Register-file modeling — strong evidence.**\n- **ALU operation selection — strong evidence.**\n- **Memory stage — strong evidence.**\n- **Write-back stage — strong evidence.**\n- **Program-counter logic — strong evidence.**\n\n### Verification\n\n- **HDL simulation harness — moderate-to-strong evidence.**\n- **Clock generator — strong evidence.**\n- **Deterministic memory initialization — strong evidence.**\n\n## Capability Developed\n\nThis repository transforms the earlier MIPS work from a compact instruction-execution model into an explicitly staged architecture.\n\nThe major capability developed is reasoning about **state across time and stage boundaries**.\n\nEnums define the pipeline phase, structs bundle stage-specific data, and explicit IF/ID, ID/EX, EX/MEM, and MEM/WB structures preserve the values required as instructions progress.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- SystemVerilog;\n- a five-stage processor pipeline;\n- explicit pipeline-register structs;\n- SystemVerilog enums for architectural state;\n- SystemVerilog `always_ff`;\n- `$readmemh`-based processor memory initialization.\n\nThe hardware thread progresses from:\n\n```text\nsimple CPU model\n    ↓\nreusable HDL utilities\n    ↓\nCPU/DMA system integration\n    ↓\nfive-stage pipelined processor\n```\n\n## Historical Significance\n\nThis repository marks the point where the portfolio's computer-architecture work becomes explicitly pipelined and adopts SystemVerilog language features designed for clearer hardware modeling.\n\nIt provides a useful baseline for later questions about HDL sophistication and verification-oriented design structure.\n\n## Overall Repository Narrative\n\n`Pipelined-MIPS-UVM-Based-Verification` contains a personally authored SystemVerilog five-stage MIPS-style pipeline.\n\nThe design represents stage identity with an enum, carries state across IF/ID, ID/EX, EX/MEM, and MEM/WB structs, initializes program/data/register memories, performs instruction decode and ALU work, accesses data memory, and writes results back to the register file. A clock module and testbench make the model executable in simulation.\n\nIts strongest corpus value is the transition from basic Verilog processor modeling to structured SystemVerilog architecture with explicit pipeline boundaries.\n\n# Project Tags\n\n## Project Type\n\n- `pipelined-processor-model`\n- `computer-architecture-exercise`\n- `educational-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `systemverilog`\n\n## Embedded and Hardware\n\n- `digital-design`\n- `sequential-logic`\n- `mips-architecture`\n- `five-stage-pipeline`\n- `pipeline-registers`\n- `instruction-decoding`\n- `register-file`\n- `program-counter`\n- `instruction-memory`\n- `data-memory`\n- `alu-operations`\n- `memory-stage`\n- `writeback-stage`\n- `systemverilog-structs`\n- `systemverilog-enums`\n- `always-ff`\n- `readmemh`\n\n## Testing and Verification\n\n- `hdl-simulation`\n- `hdl-testbench`\n- `clock-generator`\n- `deterministic-memory-initialization`\n\n## Portfolio Significance\n\n- `earliest-observed-systemverilog`\n- `earliest-observed-five-stage-pipeline`\n- `earliest-observed-pipeline-registers`\n"
+}

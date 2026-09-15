@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 41,
+  "repository_total": 134,
+  "repository_name": "Turtle-Hunter",
+  "header_title": "Turtle-Hunter",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-041-Turtle-Hunter/README.md",
+    "line_start": 1,
+    "line_end": 314,
+    "sha256": "248a68b931b479654784e2d4ae408e6a71468a16126aa357829eb7f9359487a5"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-project",
+    "python",
+    "ros",
+    "ros2",
+    "rclpy",
+    "ros-node",
+    "ros-services",
+    "publish-subscribe",
+    "topic-publication",
+    "topic-subscription",
+    "ros-timers",
+    "ros-callbacks",
+    "turtlesim",
+    "robot-motion-control",
+    "geometry-msgs",
+    "twist-command",
+    "pose-feedback",
+    "atan2",
+    "euclidean-distance",
+    "open-loop-control",
+    "randomized-simulation",
+    "asynchronous-service-call",
+    "manual-verification"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/Turtle-Hunter`\n- **Repository start date:** 2024-08-21\n- **Last meaningful update date:** 2024-08-23\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Runtime environment:** `turtlesim`\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** two executable ROS nodes plus concise architecture documentation"
+    },
+    "testing": {
+      "section_ids": [
+        "s014"
+      ],
+      "titles": [
+        "Verification Evidence"
+      ],
+      "text": "## Verification Evidence\nVerification is observable through runtime logging statements such as:\n\n- received position,\n- requested target,\n- current position,\n- calculated angle difference,\n- command publication.\n\nThe repository does not contain an automated test suite.\n\nIt does not contain assertions or a formal acceptance harness.\n\nThe observable validation mechanism is running the ROS nodes with `turtlesim` and observing turtle motion and logs."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/Turtle-Hunter`\n- **Repository start date:** 2024-08-21\n- **Last meaningful update date:** 2024-08-23\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Runtime environment:** `turtlesim`\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** two executable ROS nodes plus concise architecture documentation",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Turtle-Hunter` is a small ROS 2 navigation exercise built around the standard `turtlesim` environment.\n\nThe repository separates the workflow into two executable responsibilities:\n\n1. a turtle-control service that drives the primary turtle toward a requested target coordinate,\n2. a random turtle spawner that periodically asks the `turtlesim` spawn service to create new turtles.\n\nThe repository README describes a broader two-stage idea in which generated turtle targets can be queued and passed to the navigator one by one.\n\nThe checked-in code positively establishes the navigator and random-spawn components.\n\nThe queue/removal orchestration described in the README is not visibly implemented in the two inspected Python files, so it is recorded as described intent rather than as completed behavior.",
+      "source_line_start": 14,
+      "source_line_end": 29
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Source Layout",
+      "normalized_title": "Source Layout",
+      "key": "source_layout",
+      "path": [
+        "Source Layout"
+      ],
+      "content": "The repository contains:\n\n- `README.md`,\n- `turtlefinder.py`,\n- `turtlespawn.py`.\n\nThis is a deliberately small repository with essentially no generated workspace noise.",
+      "source_line_start": 29,
+      "source_line_end": 39
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Turtle Navigation Service",
+      "normalized_title": "Turtle Navigation Service",
+      "key": "turtle_navigation_service",
+      "path": [
+        "Turtle Navigation Service"
+      ],
+      "content": "`turtlefinder.py` defines `TurtleControlService`, a class derived from `rclpy.node.Node`.\n\nIts constructor creates three ROS interfaces:\n\n- a service named `control_turtle`,\n- a publisher to `/turtle1/cmd_vel`,\n- a subscriber to `/turtle1/pose`.\n\nThis gives the node both observation and actuation channels.",
+      "source_line_start": 39,
+      "source_line_end": 51
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Pose Feedback",
+      "normalized_title": "Pose Feedback",
+      "key": "pose_feedback",
+      "path": [
+        "Pose Feedback"
+      ],
+      "content": "The node subscribes to `turtlesim.msg.Pose`.\n\nIts pose callback stores the most recently received pose in `self.current_pose`.\n\nThe control service waits until a pose has been received before attempting navigation.\n\nThis provides current:\n\n- x position,\n- y position,\n- heading angle.\n\nThe code therefore uses live middleware state instead of assuming a fixed starting position.",
+      "source_line_start": 51,
+      "source_line_end": 67
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Target Geometry",
+      "normalized_title": "Target Geometry",
+      "key": "target_geometry",
+      "path": [
+        "Target Geometry"
+      ],
+      "content": "The service request supplies target `x` and `y` coordinates.\n\nThe navigator computes:\n\n- `delta_x`,\n- `delta_y`,\n- desired heading with `math.atan2(delta_y, delta_x)`.\n\nThis is a concrete geometric transformation from Cartesian target displacement to heading.\n\nThe code then compares desired heading with the current turtle heading to choose clockwise or counter-clockwise angular motion.",
+      "source_line_start": 67,
+      "source_line_end": 81
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Angular Motion",
+      "normalized_title": "Angular Motion",
+      "key": "angular_motion",
+      "path": [
+        "Angular Motion"
+      ],
+      "content": "A `geometry_msgs.msg.Twist` message is used for motion commands.\n\nDuring orientation:\n\n- linear velocity is set to zero,\n- angular velocity is set to `+2.0`, `-2.0`, or `0.0`.\n\nThe command is published to `/turtle1/cmd_vel`.\n\nThe code estimates rotation duration using the absolute heading difference divided by angular speed.\n\nThis is open-loop timed rotation rather than continuous closed-loop heading correction.",
+      "source_line_start": 81,
+      "source_line_end": 96
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Linear Motion",
+      "normalized_title": "Linear Motion",
+      "key": "linear_motion",
+      "path": [
+        "Linear Motion"
+      ],
+      "content": "After rotation, the node computes Euclidean target distance:\n\n`sqrt((target_x-current_x)^2 + (target_y-current_y)^2)`.\n\nIt then commands a linear speed of `4.0`.\n\nThe code repeatedly republishes the motion command for an estimated duration of `distance / 4.0`.\n\nFinally it publishes a zero-velocity command to stop.\n\nThis is open-loop distance traversal driven by current-pose initialization and speed/time estimation.",
+      "source_line_start": 96,
+      "source_line_end": 110
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Service Interface Reuse",
+      "normalized_title": "Service Interface Reuse",
+      "key": "service_interface_reuse",
+      "path": [
+        "Service Interface Reuse"
+      ],
+      "content": "The navigator uses `turtlesim.srv.Spawn` as the service type for `control_turtle`.\n\nThe request's `x` and `y` fields are reused as target coordinates.\n\nThe response's `name` field is repurposed to return a success string.\n\nThat is a pragmatic learning-stage reuse of an existing service definition rather than a custom semantic service contract.",
+      "source_line_start": 110,
+      "source_line_end": 120
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Random Turtle Spawner",
+      "normalized_title": "Random Turtle Spawner",
+      "key": "random_turtle_spawner",
+      "path": [
+        "Random Turtle Spawner"
+      ],
+      "content": "`turtlespawn.py` defines `TurtleSpawner`, another `rclpy` node.\n\nIt creates a client for the standard `spawn` service.\n\nAt startup it waits until the service becomes available.\n\nIt then schedules a timer every second.\n\nEach timer callback builds a `Spawn.Request`.",
+      "source_line_start": 120,
+      "source_line_end": 132
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Randomized Spawn Generation",
+      "normalized_title": "Randomized Spawn Generation",
+      "key": "randomized_spawn_generation",
+      "path": [
+        "Randomized Spawn Generation"
+      ],
+      "content": "The spawner randomizes:\n\n- x coordinate from 0 to 11,\n- y coordinate from 0 to 11,\n- heading from 0 to approximately `2π`,\n- turtle name using a random integer suffix.\n\nThe request is sent asynchronously with `call_async`.\n\nThis is concrete service-client behavior and timer-driven event generation.",
+      "source_line_start": 132,
+      "source_line_end": 145
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "ROS 2 Communication Patterns",
+      "normalized_title": "ROS 2 Communication Patterns",
+      "key": "ros_2_communication_patterns",
+      "path": [
+        "ROS 2 Communication Patterns"
+      ],
+      "content": "Across the two files the repository directly exercises:\n\n- node construction,\n- services,\n- service clients,\n- publishers,\n- subscribers,\n- timers,\n- asynchronous service calls,\n- middleware spin loops,\n- typed ROS messages,\n- typed ROS services.\n\nThis extends the immediately preceding `ROS` repository from isolated middleware examples into a small behavior-oriented robotics exercise.",
+      "source_line_start": 145,
+      "source_line_end": 162
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Control Characterization",
+      "normalized_title": "Control Characterization",
+      "key": "control_characterization",
+      "path": [
+        "Control Characterization"
+      ],
+      "content": "The navigator should not be described as a full navigation stack.\n\nIt does not visibly implement:\n\n- path planning,\n- obstacle avoidance,\n- feedback-controlled waypoint convergence,\n- PID control,\n- costmaps,\n- localization,\n- Nav2 integration.\n\nIts control is intentionally direct and educational.\n\nThe architecture demonstrates coordinate reasoning and ROS command flow rather than production navigation.",
+      "source_line_start": 162,
+      "source_line_end": 180
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Verification Evidence",
+      "normalized_title": "Verification Evidence",
+      "key": "verification_evidence",
+      "path": [
+        "Verification Evidence"
+      ],
+      "content": "Verification is observable through runtime logging statements such as:\n\n- received position,\n- requested target,\n- current position,\n- calculated angle difference,\n- command publication.\n\nThe repository does not contain an automated test suite.\n\nIt does not contain assertions or a formal acceptance harness.\n\nThe observable validation mechanism is running the ROS nodes with `turtlesim` and observing turtle motion and logs.",
+      "source_line_start": 180,
+      "source_line_end": 196
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Work Evidenced",
+      "normalized_title": "Engineering Work Evidenced",
+      "key": "engineering_work_evidenced",
+      "path": [
+        "Engineering Work Evidenced"
+      ],
+      "content": "The repository positively demonstrates work in:\n\n- ROS 2 Python node development,\n- service server construction,\n- service-client construction,\n- publish/subscribe integration,\n- live pose feedback,\n- geometry-based heading calculation,\n- Euclidean distance calculation,\n- velocity command generation,\n- timer-based event generation,\n- randomized simulation-object creation,\n- asynchronous ROS service calls.",
+      "source_line_start": 196,
+      "source_line_end": 212
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Robotics Middleware\n\n- ROS 2\n- `rclpy`\n- `turtlesim`\n- topics\n- services\n- timers\n- callbacks\n\n### Robotics Math\n\n- Cartesian displacement\n- `atan2` heading calculation\n- Euclidean distance\n- angular direction decisions\n- speed/time motion estimation\n\n### Python\n\n- classes\n- callbacks\n- standard-library `math`\n- standard-library `random`\n- standard-library `time`",
+      "source_line_start": 212,
+      "source_line_end": 240
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Robotics Middleware",
+      "normalized_title": "Robotics Middleware",
+      "key": "robotics_middleware",
+      "path": [
+        "Skills Demonstrated",
+        "Robotics Middleware"
+      ],
+      "content": "- ROS 2\n- `rclpy`\n- `turtlesim`\n- topics\n- services\n- timers\n- callbacks",
+      "source_line_start": 214,
+      "source_line_end": 224
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Robotics Math",
+      "normalized_title": "Robotics Math",
+      "key": "robotics_math",
+      "path": [
+        "Skills Demonstrated",
+        "Robotics Math"
+      ],
+      "content": "- Cartesian displacement\n- `atan2` heading calculation\n- Euclidean distance\n- angular direction decisions\n- speed/time motion estimation",
+      "source_line_start": 224,
+      "source_line_end": 232
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Python",
+      "normalized_title": "Python",
+      "key": "python",
+      "path": [
+        "Skills Demonstrated",
+        "Python"
+      ],
+      "content": "- classes\n- callbacks\n- standard-library `math`\n- standard-library `random`\n- standard-library `time`",
+      "source_line_start": 232,
+      "source_line_end": 240
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository develops the ability to turn middleware primitives into a small autonomous behavior.\n\nThe important transition is from \"publish a message / call a service\" exercises to composing:\n\n- state observation,\n- geometric reasoning,\n- actuation,\n- asynchronous environment manipulation.",
+      "source_line_start": 240,
+      "source_line_end": 251
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Portfolio Evolution",
+      "normalized_title": "Portfolio Evolution",
+      "key": "portfolio_evolution",
+      "path": [
+        "Portfolio Evolution"
+      ],
+      "content": "Historically, `Turtle-Hunter` follows the broader `ROS` practice repository by two days.\n\nIt is evidence that the learned ROS 2 primitives were immediately recombined into a task-specific behavior.\n\nThat makes it useful as a bridge between middleware syntax and later navigation/simulation repositories.",
+      "source_line_start": 251,
+      "source_line_end": 259
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this is the earliest observed repository centered on programmatic target seeking inside `turtlesim`.\n\nIt also provides an early compact example of a robot behavior being decomposed into separate navigation and environment-generation nodes.",
+      "source_line_start": 259,
+      "source_line_end": 265
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Limitations",
+      "normalized_title": "Limitations",
+      "key": "limitations",
+      "path": [
+        "Limitations"
+      ],
+      "content": "The queue workflow described in the README is not visible in the inspected source files.\n\nNavigation is time-based and open-loop after the initial pose read.\n\nThe code blocks inside a service callback during `time.sleep` and travel loops.\n\nThe service type is semantically reused rather than custom-designed.\n\nNo automated tests are checked in.\n\nNo package/workspace metadata is present in this repository itself.",
+      "source_line_start": 265,
+      "source_line_end": 279
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "`Turtle-Hunter` is a concise ROS 2 behavior exercise that combines services, topic feedback, geometry, and motion commands.\n\nIts value is not scale.\n\nIts value is the composition step: live robot state is turned into a target heading and distance, commands are emitted, and a second node dynamically changes the simulation environment.\n\nThat composition makes it a clear progression from isolated ROS examples toward robotics behaviors.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `python`\n- `ros`\n- `ros2`\n- `rclpy`\n- `ros-node`\n- `ros-services`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`\n- `ros-timers`\n- `ros-callbacks`\n- `turtlesim`\n- `robot-motion-control`\n- `geometry-msgs`\n- `twist-command`\n- `pose-feedback`\n- `atan2`\n- `euclidean-distance`\n- `open-loop-control`\n- `randomized-simulation`\n- `asynchronous-service-call`\n- `manual-verification`",
+      "source_line_start": 279,
+      "source_line_end": 315
+    }
+  ],
+  "raw_analysis": "# Repository 041 — Turtle-Hunter\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/Turtle-Hunter`\n- **Repository start date:** 2024-08-21\n- **Last meaningful update date:** 2024-08-23\n- **Primary implementation language:** Python\n- **Framework:** ROS 2 / `rclpy`\n- **Runtime environment:** `turtlesim`\n- **Collaboration classification:** individual learning repository\n- **Repository shape:** two executable ROS nodes plus concise architecture documentation\n\n## What This Project Is\n\n`Turtle-Hunter` is a small ROS 2 navigation exercise built around the standard `turtlesim` environment.\n\nThe repository separates the workflow into two executable responsibilities:\n\n1. a turtle-control service that drives the primary turtle toward a requested target coordinate,\n2. a random turtle spawner that periodically asks the `turtlesim` spawn service to create new turtles.\n\nThe repository README describes a broader two-stage idea in which generated turtle targets can be queued and passed to the navigator one by one.\n\nThe checked-in code positively establishes the navigator and random-spawn components.\n\nThe queue/removal orchestration described in the README is not visibly implemented in the two inspected Python files, so it is recorded as described intent rather than as completed behavior.\n\n## Source Layout\n\nThe repository contains:\n\n- `README.md`,\n- `turtlefinder.py`,\n- `turtlespawn.py`.\n\nThis is a deliberately small repository with essentially no generated workspace noise.\n\n## Turtle Navigation Service\n\n`turtlefinder.py` defines `TurtleControlService`, a class derived from `rclpy.node.Node`.\n\nIts constructor creates three ROS interfaces:\n\n- a service named `control_turtle`,\n- a publisher to `/turtle1/cmd_vel`,\n- a subscriber to `/turtle1/pose`.\n\nThis gives the node both observation and actuation channels.\n\n## Pose Feedback\n\nThe node subscribes to `turtlesim.msg.Pose`.\n\nIts pose callback stores the most recently received pose in `self.current_pose`.\n\nThe control service waits until a pose has been received before attempting navigation.\n\nThis provides current:\n\n- x position,\n- y position,\n- heading angle.\n\nThe code therefore uses live middleware state instead of assuming a fixed starting position.\n\n## Target Geometry\n\nThe service request supplies target `x` and `y` coordinates.\n\nThe navigator computes:\n\n- `delta_x`,\n- `delta_y`,\n- desired heading with `math.atan2(delta_y, delta_x)`.\n\nThis is a concrete geometric transformation from Cartesian target displacement to heading.\n\nThe code then compares desired heading with the current turtle heading to choose clockwise or counter-clockwise angular motion.\n\n## Angular Motion\n\nA `geometry_msgs.msg.Twist` message is used for motion commands.\n\nDuring orientation:\n\n- linear velocity is set to zero,\n- angular velocity is set to `+2.0`, `-2.0`, or `0.0`.\n\nThe command is published to `/turtle1/cmd_vel`.\n\nThe code estimates rotation duration using the absolute heading difference divided by angular speed.\n\nThis is open-loop timed rotation rather than continuous closed-loop heading correction.\n\n## Linear Motion\n\nAfter rotation, the node computes Euclidean target distance:\n\n`sqrt((target_x-current_x)^2 + (target_y-current_y)^2)`.\n\nIt then commands a linear speed of `4.0`.\n\nThe code repeatedly republishes the motion command for an estimated duration of `distance / 4.0`.\n\nFinally it publishes a zero-velocity command to stop.\n\nThis is open-loop distance traversal driven by current-pose initialization and speed/time estimation.\n\n## Service Interface Reuse\n\nThe navigator uses `turtlesim.srv.Spawn` as the service type for `control_turtle`.\n\nThe request's `x` and `y` fields are reused as target coordinates.\n\nThe response's `name` field is repurposed to return a success string.\n\nThat is a pragmatic learning-stage reuse of an existing service definition rather than a custom semantic service contract.\n\n## Random Turtle Spawner\n\n`turtlespawn.py` defines `TurtleSpawner`, another `rclpy` node.\n\nIt creates a client for the standard `spawn` service.\n\nAt startup it waits until the service becomes available.\n\nIt then schedules a timer every second.\n\nEach timer callback builds a `Spawn.Request`.\n\n## Randomized Spawn Generation\n\nThe spawner randomizes:\n\n- x coordinate from 0 to 11,\n- y coordinate from 0 to 11,\n- heading from 0 to approximately `2π`,\n- turtle name using a random integer suffix.\n\nThe request is sent asynchronously with `call_async`.\n\nThis is concrete service-client behavior and timer-driven event generation.\n\n## ROS 2 Communication Patterns\n\nAcross the two files the repository directly exercises:\n\n- node construction,\n- services,\n- service clients,\n- publishers,\n- subscribers,\n- timers,\n- asynchronous service calls,\n- middleware spin loops,\n- typed ROS messages,\n- typed ROS services.\n\nThis extends the immediately preceding `ROS` repository from isolated middleware examples into a small behavior-oriented robotics exercise.\n\n## Control Characterization\n\nThe navigator should not be described as a full navigation stack.\n\nIt does not visibly implement:\n\n- path planning,\n- obstacle avoidance,\n- feedback-controlled waypoint convergence,\n- PID control,\n- costmaps,\n- localization,\n- Nav2 integration.\n\nIts control is intentionally direct and educational.\n\nThe architecture demonstrates coordinate reasoning and ROS command flow rather than production navigation.\n\n## Verification Evidence\n\nVerification is observable through runtime logging statements such as:\n\n- received position,\n- requested target,\n- current position,\n- calculated angle difference,\n- command publication.\n\nThe repository does not contain an automated test suite.\n\nIt does not contain assertions or a formal acceptance harness.\n\nThe observable validation mechanism is running the ROS nodes with `turtlesim` and observing turtle motion and logs.\n\n## Engineering Work Evidenced\n\nThe repository positively demonstrates work in:\n\n- ROS 2 Python node development,\n- service server construction,\n- service-client construction,\n- publish/subscribe integration,\n- live pose feedback,\n- geometry-based heading calculation,\n- Euclidean distance calculation,\n- velocity command generation,\n- timer-based event generation,\n- randomized simulation-object creation,\n- asynchronous ROS service calls.\n\n## Skills Demonstrated\n\n### Robotics Middleware\n\n- ROS 2\n- `rclpy`\n- `turtlesim`\n- topics\n- services\n- timers\n- callbacks\n\n### Robotics Math\n\n- Cartesian displacement\n- `atan2` heading calculation\n- Euclidean distance\n- angular direction decisions\n- speed/time motion estimation\n\n### Python\n\n- classes\n- callbacks\n- standard-library `math`\n- standard-library `random`\n- standard-library `time`\n\n## Capability Developed\n\nThis repository develops the ability to turn middleware primitives into a small autonomous behavior.\n\nThe important transition is from \"publish a message / call a service\" exercises to composing:\n\n- state observation,\n- geometric reasoning,\n- actuation,\n- asynchronous environment manipulation.\n\n## Portfolio Evolution\n\nHistorically, `Turtle-Hunter` follows the broader `ROS` practice repository by two days.\n\nIt is evidence that the learned ROS 2 primitives were immediately recombined into a task-specific behavior.\n\nThat makes it useful as a bridge between middleware syntax and later navigation/simulation repositories.\n\n## Historical Significance\n\nWithin the processed corpus so far, this is the earliest observed repository centered on programmatic target seeking inside `turtlesim`.\n\nIt also provides an early compact example of a robot behavior being decomposed into separate navigation and environment-generation nodes.\n\n## Limitations\n\nThe queue workflow described in the README is not visible in the inspected source files.\n\nNavigation is time-based and open-loop after the initial pose read.\n\nThe code blocks inside a service callback during `time.sleep` and travel loops.\n\nThe service type is semantically reused rather than custom-designed.\n\nNo automated tests are checked in.\n\nNo package/workspace metadata is present in this repository itself.\n\n## Overall Narrative\n\n`Turtle-Hunter` is a concise ROS 2 behavior exercise that combines services, topic feedback, geometry, and motion commands.\n\nIts value is not scale.\n\nIts value is the composition step: live robot state is turned into a target heading and distance, commands are emitted, and a second node dynamically changes the simulation environment.\n\nThat composition makes it a clear progression from isolated ROS examples toward robotics behaviors.\n\n# Project Tags\n\n- `educational-project`\n- `individual-project`\n- `python`\n- `ros`\n- `ros2`\n- `rclpy`\n- `ros-node`\n- `ros-services`\n- `publish-subscribe`\n- `topic-publication`\n- `topic-subscription`\n- `ros-timers`\n- `ros-callbacks`\n- `turtlesim`\n- `robot-motion-control`\n- `geometry-msgs`\n- `twist-command`\n- `pose-feedback`\n- `atan2`\n- `euclidean-distance`\n- `open-loop-control`\n- `randomized-simulation`\n- `asynchronous-service-call`\n- `manual-verification`\n"
+}

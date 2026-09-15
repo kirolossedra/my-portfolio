@@ -1,0 +1,507 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 23,
+  "repository_total": 134,
+  "repository_name": "SQL-WORKSPACE",
+  "header_title": "SQL-WORKSPACE",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-023-SQL-WORKSPACE/README.md",
+    "line_start": 1,
+    "line_end": 207,
+    "sha256": "d2b3e483c65533e22a390084de26d33f8de346325842cc5952a1a14b2a303771"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "sql-utility",
+    "database-tooling",
+    "developer-tooling",
+    "individual-project",
+    "tsql",
+    "sql",
+    "sql-server",
+    "schema-introspection",
+    "system-catalog-query",
+    "metadata-query",
+    "relational-join",
+    "like-pattern-matching",
+    "earliest-observed-tsql",
+    "earliest-observed-sql-server",
+    "earliest-observed-schema-introspection"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 023 / 134\n- Name: `SQL-WORKSPACE`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2023-11-30\n- Primary type: SQL metadata-query utility\n- Technical field: Relational database inspection\n- Collaboration type: `individual-project`\n- Primary implementation language: T-SQL"
+    },
+    "rag_metadata": {
+      "section_ids": [
+        "s013",
+        "s016"
+      ],
+      "titles": [
+        "Pattern-Based Metadata Filtering",
+        "Metadata-First Database Inspection"
+      ],
+      "text": "## Pattern-Based Metadata Filtering\n`LIKE '%Fulfill%'` and `LIKE '%SME%'` provide partial-name discovery rather than requiring exact identifiers.\n\n## Metadata-First Database Inspection\nThe script uses SQL Server's own catalog views instead of hard-coded lists of table/column names."
+    },
+    "architecture": {
+      "section_ids": [
+        "s006"
+      ],
+      "titles": [
+        "Architecture and Query Shape"
+      ],
+      "text": "## Architecture and Query Shape\n```text\nSQL Server database\n      ↓\nsys.tables\n      ├── object_id ──┐\n      ↓               │\ntable metadata        │\n                      │ JOIN\nsys.columns           │\n      ├── object_id ──┘\n      ↓\ncolumn metadata\n      ↓\nLIKE filters\n      ↓\ntable-name + column-name result set\n```\n\nThis is schema introspection rather than business-row querying."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s028"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository contains one commit and one SQL script. The commit is directly attributed to `kirolossedra`, supporting personal attribution of the query artifact.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 023 / 134\n- Name: `SQL-WORKSPACE`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2023-11-30\n- Primary type: SQL metadata-query utility\n- Technical field: Relational database inspection\n- Collaboration type: `individual-project`\n- Primary implementation language: T-SQL",
+      "source_line_start": 3,
+      "source_line_end": 14
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository contains one commit and one SQL script. The commit is directly attributed to `kirolossedra`, supporting personal attribution of the query artifact.",
+      "source_line_start": 14,
+      "source_line_end": 18
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains one source file:\n\n- `FIND_COLUMN_DATABASE.sql`.\n\nThe commit that adds the file is dated 2023-11-30 and contains the complete query.",
+      "source_line_start": 18,
+      "source_line_end": 26
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`SQL-WORKSPACE` is a focused T-SQL workspace containing a schema-discovery query for Microsoft SQL Server.\n\nThe script searches SQL Server's system catalog to identify columns and their owning tables according to name patterns.\n\nThe artifact is small, but it is concrete database-engineering evidence because it works against metadata tables rather than application-domain rows.",
+      "source_line_start": 26,
+      "source_line_end": 34
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Query Purpose",
+      "normalized_title": "Query Purpose",
+      "key": "query_purpose",
+      "path": [
+        "Query Purpose"
+      ],
+      "content": "The script selects:\n\n- table name;\n- column name.\n\nIt reads from:\n\n- `sys.tables`;\n- `sys.columns`.\n\nThe tables are joined through the shared `object_id`.\n\nThe query then filters:\n\n- column names containing `Fulfill`;\n- table names containing `SME`.\n\nResults are ordered by table and column name.",
+      "source_line_start": 34,
+      "source_line_end": 55
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Architecture and Query Shape",
+      "normalized_title": "Architecture and Query Shape",
+      "key": "architecture_and_query_shape",
+      "path": [
+        "Architecture and Query Shape"
+      ],
+      "content": "```text\nSQL Server database\n      ↓\nsys.tables\n      ├── object_id ──┐\n      ↓               │\ntable metadata        │\n                      │ JOIN\nsys.columns           │\n      ├── object_id ──┘\n      ↓\ncolumn metadata\n      ↓\nLIKE filters\n      ↓\ntable-name + column-name result set\n```\n\nThis is schema introspection rather than business-row querying.",
+      "source_line_start": 55,
+      "source_line_end": 77
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### T-SQL\n\nThe file uses SQL Server-specific conventions including:\n\n- `USE <database>`;\n- `GO`;\n- `sys.tables`;\n- `sys.columns`.\n\n### SQL Server System Catalog\n\nThe query directly inspects metadata exposed by SQL Server system views.\n\n### Relational Join\n\n`sys.tables` and `sys.columns` are joined through `object_id`, connecting each column to its owning table.",
+      "source_line_start": 77,
+      "source_line_end": 96
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "T-SQL",
+      "normalized_title": "T-SQL",
+      "key": "t_sql",
+      "path": [
+        "Technical Stack",
+        "T-SQL"
+      ],
+      "content": "The file uses SQL Server-specific conventions including:\n\n- `USE <database>`;\n- `GO`;\n- `sys.tables`;\n- `sys.columns`.",
+      "source_line_start": 79,
+      "source_line_end": 88
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "SQL Server System Catalog",
+      "normalized_title": "SQL Server System Catalog",
+      "key": "sql_server_system_catalog",
+      "path": [
+        "Technical Stack",
+        "SQL Server System Catalog"
+      ],
+      "content": "The query directly inspects metadata exposed by SQL Server system views.",
+      "source_line_start": 88,
+      "source_line_end": 92
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Relational Join",
+      "normalized_title": "Relational Join",
+      "key": "relational_join",
+      "path": [
+        "Technical Stack",
+        "Relational Join"
+      ],
+      "content": "`sys.tables` and `sys.columns` are joined through `object_id`, connecting each column to its owning table.",
+      "source_line_start": 92,
+      "source_line_end": 96
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Schema Discovery\n\nThe script answers a practical metadata question: find database columns matching one naming pattern while restricting results to tables matching another naming pattern.\n\nThis is useful in a large or unfamiliar schema where manually opening every table would be inefficient.\n\n### Pattern-Based Metadata Filtering\n\n`LIKE '%Fulfill%'` and `LIKE '%SME%'` provide partial-name discovery rather than requiring exact identifiers.\n\n### Ordered Inspection Output\n\nThe result set is ordered by table and column names so discovery output is easier to inspect.",
+      "source_line_start": 96,
+      "source_line_end": 112
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Schema Discovery",
+      "normalized_title": "Schema Discovery",
+      "key": "schema_discovery",
+      "path": [
+        "Major Engineering Work",
+        "Schema Discovery"
+      ],
+      "content": "The script answers a practical metadata question: find database columns matching one naming pattern while restricting results to tables matching another naming pattern.\n\nThis is useful in a large or unfamiliar schema where manually opening every table would be inefficient.",
+      "source_line_start": 98,
+      "source_line_end": 104
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Pattern-Based Metadata Filtering",
+      "normalized_title": "Pattern-Based Metadata Filtering",
+      "key": "pattern_based_metadata_filtering",
+      "path": [
+        "Major Engineering Work",
+        "Pattern-Based Metadata Filtering"
+      ],
+      "content": "`LIKE '%Fulfill%'` and `LIKE '%SME%'` provide partial-name discovery rather than requiring exact identifiers.",
+      "source_line_start": 104,
+      "source_line_end": 108
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Ordered Inspection Output",
+      "normalized_title": "Ordered Inspection Output",
+      "key": "ordered_inspection_output",
+      "path": [
+        "Major Engineering Work",
+        "Ordered Inspection Output"
+      ],
+      "content": "The result set is ordered by table and column names so discovery output is easier to inspect.",
+      "source_line_start": 108,
+      "source_line_end": 112
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Metadata-First Database Inspection\n\nThe script uses SQL Server's own catalog views instead of hard-coded lists of table/column names.\n\n### Narrow Query Scope\n\nThe query isolates exactly the metadata fields needed for inspection.\n\n### Reusable Search Pattern\n\nThe database name and `LIKE` patterns can be changed to reuse the script for other schema-discovery tasks.",
+      "source_line_start": 112,
+      "source_line_end": 126
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Metadata-First Database Inspection",
+      "normalized_title": "Metadata-First Database Inspection",
+      "key": "metadata_first_database_inspection",
+      "path": [
+        "Engineering Practices",
+        "Metadata-First Database Inspection"
+      ],
+      "content": "The script uses SQL Server's own catalog views instead of hard-coded lists of table/column names.",
+      "source_line_start": 114,
+      "source_line_end": 118
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Narrow Query Scope",
+      "normalized_title": "Narrow Query Scope",
+      "key": "narrow_query_scope",
+      "path": [
+        "Engineering Practices",
+        "Narrow Query Scope"
+      ],
+      "content": "The query isolates exactly the metadata fields needed for inspection.",
+      "source_line_start": 118,
+      "source_line_end": 122
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Reusable Search Pattern",
+      "normalized_title": "Reusable Search Pattern",
+      "key": "reusable_search_pattern",
+      "path": [
+        "Engineering Practices",
+        "Reusable Search Pattern"
+      ],
+      "content": "The database name and `LIKE` patterns can be changed to reuse the script for other schema-discovery tasks.",
+      "source_line_start": 122,
+      "source_line_end": 126
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is one 16-line SQL utility.\n\nIts value is not implementation volume but the evidence of working directly with database schema metadata and SQL Server catalog structure.",
+      "source_line_start": 126,
+      "source_line_end": 132
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### SQL\n\n- **T-SQL — strong direct evidence.**\n- **SELECT queries — strong evidence.**\n- **INNER JOIN — strong evidence.**\n- **LIKE pattern matching — strong evidence.**\n- **ORDER BY — strong evidence.**\n\n### Database Engineering\n\n- **SQL Server system catalog inspection — strong evidence.**\n- **Schema introspection — strong evidence.**\n- **Table/column metadata discovery — strong evidence.**",
+      "source_line_start": 132,
+      "source_line_end": 148
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "SQL",
+      "normalized_title": "SQL",
+      "key": "sql",
+      "path": [
+        "Skills Demonstrated",
+        "SQL"
+      ],
+      "content": "- **T-SQL — strong direct evidence.**\n- **SELECT queries — strong evidence.**\n- **INNER JOIN — strong evidence.**\n- **LIKE pattern matching — strong evidence.**\n- **ORDER BY — strong evidence.**",
+      "source_line_start": 134,
+      "source_line_end": 142
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Database Engineering",
+      "normalized_title": "Database Engineering",
+      "key": "database_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Database Engineering"
+      ],
+      "content": "- **SQL Server system catalog inspection — strong evidence.**\n- **Schema introspection — strong evidence.**\n- **Table/column metadata discovery — strong evidence.**",
+      "source_line_start": 142,
+      "source_line_end": 148
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository introduces direct database-schema introspection into the processed corpus.\n\nThe engineering focus is not CRUD behavior; it is learning how to ask the database engine about its own structure.",
+      "source_line_start": 148,
+      "source_line_end": 154
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- T-SQL;\n- Microsoft SQL Server system catalog access;\n- schema introspection through `sys.tables` and `sys.columns`;\n- database metadata discovery.",
+      "source_line_start": 154,
+      "source_line_end": 163
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`SQL-WORKSPACE` is small but historically important because it marks the first direct SQL/database-engineering artifact in the processed chronology.\n\nIt establishes a baseline for later relational-database work where SQL becomes part of larger backend systems.",
+      "source_line_start": 163,
+      "source_line_end": 169
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`SQL-WORKSPACE` is a single-purpose T-SQL metadata tool.\n\nIt switches to a target SQL Server database, joins the system table and column catalogs, filters table and column names by partial patterns, and returns an ordered schema-discovery result.\n\nThe repository provides concise but direct evidence of SQL Server catalog querying and schema inspection.\n\n# Project Tags",
+      "source_line_start": 169,
+      "source_line_end": 179
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `sql-utility`\n- `database-tooling`\n- `developer-tooling`",
+      "source_line_start": 179,
+      "source_line_end": 185
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 185,
+      "source_line_end": 189
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `tsql`\n- `sql`",
+      "source_line_start": 189,
+      "source_line_end": 194
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Database and Data",
+      "normalized_title": "Database and Data",
+      "key": "database_and_data",
+      "path": [
+        "Database and Data"
+      ],
+      "content": "- `sql-server`\n- `schema-introspection`\n- `system-catalog-query`\n- `metadata-query`\n- `relational-join`\n- `like-pattern-matching`",
+      "source_line_start": 194,
+      "source_line_end": 203
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-tsql`\n- `earliest-observed-sql-server`\n- `earliest-observed-schema-introspection`",
+      "source_line_start": 203,
+      "source_line_end": 208
+    }
+  ],
+  "raw_analysis": "# SQL-WORKSPACE\n\n## Repository Identity\n\n- Repository: 023 / 134\n- Name: `SQL-WORKSPACE`\n- Repository start date: 2023-11-30\n- Last meaningful update date: 2023-11-30\n- Primary type: SQL metadata-query utility\n- Technical field: Relational database inspection\n- Collaboration type: `individual-project`\n- Primary implementation language: T-SQL\n\n## Collaboration and Authorship Context\n\nThe repository contains one commit and one SQL script. The commit is directly attributed to `kirolossedra`, supporting personal attribution of the query artifact.\n\n## Evidence Basis\n\nThe repository contains one source file:\n\n- `FIND_COLUMN_DATABASE.sql`.\n\nThe commit that adds the file is dated 2023-11-30 and contains the complete query.\n\n## What This Project Is\n\n`SQL-WORKSPACE` is a focused T-SQL workspace containing a schema-discovery query for Microsoft SQL Server.\n\nThe script searches SQL Server's system catalog to identify columns and their owning tables according to name patterns.\n\nThe artifact is small, but it is concrete database-engineering evidence because it works against metadata tables rather than application-domain rows.\n\n## Query Purpose\n\nThe script selects:\n\n- table name;\n- column name.\n\nIt reads from:\n\n- `sys.tables`;\n- `sys.columns`.\n\nThe tables are joined through the shared `object_id`.\n\nThe query then filters:\n\n- column names containing `Fulfill`;\n- table names containing `SME`.\n\nResults are ordered by table and column name.\n\n## Architecture and Query Shape\n\n```text\nSQL Server database\n      ↓\nsys.tables\n      ├── object_id ──┐\n      ↓               │\ntable metadata        │\n                      │ JOIN\nsys.columns           │\n      ├── object_id ──┘\n      ↓\ncolumn metadata\n      ↓\nLIKE filters\n      ↓\ntable-name + column-name result set\n```\n\nThis is schema introspection rather than business-row querying.\n\n## Technical Stack\n\n### T-SQL\n\nThe file uses SQL Server-specific conventions including:\n\n- `USE <database>`;\n- `GO`;\n- `sys.tables`;\n- `sys.columns`.\n\n### SQL Server System Catalog\n\nThe query directly inspects metadata exposed by SQL Server system views.\n\n### Relational Join\n\n`sys.tables` and `sys.columns` are joined through `object_id`, connecting each column to its owning table.\n\n## Major Engineering Work\n\n### Schema Discovery\n\nThe script answers a practical metadata question: find database columns matching one naming pattern while restricting results to tables matching another naming pattern.\n\nThis is useful in a large or unfamiliar schema where manually opening every table would be inefficient.\n\n### Pattern-Based Metadata Filtering\n\n`LIKE '%Fulfill%'` and `LIKE '%SME%'` provide partial-name discovery rather than requiring exact identifiers.\n\n### Ordered Inspection Output\n\nThe result set is ordered by table and column names so discovery output is easier to inspect.\n\n## Engineering Practices\n\n### Metadata-First Database Inspection\n\nThe script uses SQL Server's own catalog views instead of hard-coded lists of table/column names.\n\n### Narrow Query Scope\n\nThe query isolates exactly the metadata fields needed for inspection.\n\n### Reusable Search Pattern\n\nThe database name and `LIKE` patterns can be changed to reuse the script for other schema-discovery tasks.\n\n## Scale and Complexity\n\nThe repository is one 16-line SQL utility.\n\nIts value is not implementation volume but the evidence of working directly with database schema metadata and SQL Server catalog structure.\n\n## Skills Demonstrated\n\n### SQL\n\n- **T-SQL — strong direct evidence.**\n- **SELECT queries — strong evidence.**\n- **INNER JOIN — strong evidence.**\n- **LIKE pattern matching — strong evidence.**\n- **ORDER BY — strong evidence.**\n\n### Database Engineering\n\n- **SQL Server system catalog inspection — strong evidence.**\n- **Schema introspection — strong evidence.**\n- **Table/column metadata discovery — strong evidence.**\n\n## Capability Developed\n\nThis repository introduces direct database-schema introspection into the processed corpus.\n\nThe engineering focus is not CRUD behavior; it is learning how to ask the database engine about its own structure.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- T-SQL;\n- Microsoft SQL Server system catalog access;\n- schema introspection through `sys.tables` and `sys.columns`;\n- database metadata discovery.\n\n## Historical Significance\n\n`SQL-WORKSPACE` is small but historically important because it marks the first direct SQL/database-engineering artifact in the processed chronology.\n\nIt establishes a baseline for later relational-database work where SQL becomes part of larger backend systems.\n\n## Overall Repository Narrative\n\n`SQL-WORKSPACE` is a single-purpose T-SQL metadata tool.\n\nIt switches to a target SQL Server database, joins the system table and column catalogs, filters table and column names by partial patterns, and returns an ordered schema-discovery result.\n\nThe repository provides concise but direct evidence of SQL Server catalog querying and schema inspection.\n\n# Project Tags\n\n## Project Type\n\n- `sql-utility`\n- `database-tooling`\n- `developer-tooling`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `tsql`\n- `sql`\n\n## Database and Data\n\n- `sql-server`\n- `schema-introspection`\n- `system-catalog-query`\n- `metadata-query`\n- `relational-join`\n- `like-pattern-matching`\n\n## Portfolio Significance\n\n- `earliest-observed-tsql`\n- `earliest-observed-sql-server`\n- `earliest-observed-schema-introspection`\n"
+}

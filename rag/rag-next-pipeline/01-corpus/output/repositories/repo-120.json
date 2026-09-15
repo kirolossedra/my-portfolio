@@ -1,0 +1,710 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 120,
+  "repository_total": 134,
+  "repository_name": "Matlab-Experiments",
+  "header_title": "Matlab-Experiments",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-120-Matlab-Experiments/README.md",
+    "line_start": 1,
+    "line_end": 519,
+    "sha256": "280c87940f942f4a3f2d4a98614402b9512c86d73879a5a555742c98fb6acb7e"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "matlab",
+    "udp",
+    "udp-broadcast",
+    "ipv4",
+    "datagram-networking",
+    "shared-port-reception",
+    "callback-driven-networking",
+    "packet-indexing",
+    "packet-instrumentation",
+    "throughput-measurement",
+    "packet-rate-measurement",
+    "fixed-payload-traffic",
+    "traffic-generation",
+    "awgn",
+    "snr",
+    "communications-simulation",
+    "byte-error-measurement",
+    "packet-loss-simulation",
+    "packet-error-rate",
+    "network-experiment"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s014"
+      ],
+      "titles": [
+        "Repository Identity",
+        "Receiver identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 120 / 138\n- Name: `Matlab-Experiments`\n- Start Date: 2025-02-13\n- Latest Meaningful Update: 2025-02-20\n- Latest Meaningful Commit: `865e79f12922d1e687496c602ae252284d39fcff`\n- Primary Language: MATLAB\n- Primary Type: Networking and communications experiment repository\n- Technical Fields: UDP networking, packet instrumentation, communications-channel simulation, throughput observation\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set\n\n## Receiver identity\nEach receiver instance accepts a `receiverID`.\n\nThe ID is carried into logging and, in later variants, determines which counter and loss-index collection is updated.\n\nThis enables parallel instances to produce receiver-specific observations while using the same experiment logic."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 120 / 138\n- Name: `Matlab-Experiments`\n- Start Date: 2025-02-13\n- Latest Meaningful Update: 2025-02-20\n- Latest Meaningful Commit: `865e79f12922d1e687496c602ae252284d39fcff`\n- Primary Language: MATLAB\n- Primary Type: Networking and communications experiment repository\n- Technical Fields: UDP networking, packet instrumentation, communications-channel simulation, throughput observation\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Matlab-Experiments` is a compact experimental workspace for exercising packet transmission, reception, broadcast delivery, timing, packet indexing, throughput observation, and simulated channel impairment directly from MATLAB.\n\nThe repository is organized around a small family of sender and receiver programs rather than a single monolithic script.\n\nIts central experimental shape is:\n\n```text\nMATLAB broadcast sender\n        |\n        | UDP / IPv4 broadcast\n        | destination 255.255.255.255:55555\n        v\nshared UDP port 55555\n   |        |        |\nreceiver 1 receiver 2 receiver 3\n   |        |        |\npacket indices / timing / loss observations\n```\n\nA second branch of the repository introduces additive white Gaussian noise into the receiver-side experiment and converts the resulting byte-level corruption rate into a probabilistic packet-drop decision.\n\nThe repository therefore preserves two related kinds of engineering evidence:\n\n1. controlled local-network traffic generation and measurement;\n2. simulation of communications degradation over that packet stream.",
+      "source_line_start": 16,
+      "source_line_end": 44
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Repository Structure",
+      "normalized_title": "Repository Structure",
+      "key": "repository_structure",
+      "path": [
+        "Repository Structure"
+      ],
+      "content": "The inspected tree contains several experiment variants:\n\n```text\nMatlab-Experiments/\n├── ReceiverBroadcastParallel.m\n├── SenderBroadcast_Throughput.m\n├── AGWN/\n│   ├── README.md\n│   └── receiver.m\n├── AWGN With Improved Readability/\n│   ├── README.md\n│   └── receiver.m\n└── VersionALL/\n    ├── README.md\n    ├── receiver.m\n    └── sender.m\n```\n\nThe naming and commit history show iterative refinement around the same broadcast-receiver experiment.\n\n`SenderBroadcast_Throughput.m` is also reused as `VersionALL/sender.m`, preserving the same blob identity.\n\nThe receiver variants carry progressively richer instrumentation and impairment behavior.",
+      "source_line_start": 44,
+      "source_line_end": 70
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "UDP Broadcast Traffic Generation",
+      "normalized_title": "UDP Broadcast Traffic Generation",
+      "key": "udp_broadcast_traffic_generation",
+      "path": [
+        "UDP Broadcast Traffic Generation"
+      ],
+      "content": "### Sender configuration\n\n`SenderBroadcast_Throughput.m` creates an IPv4 datagram endpoint through MATLAB's `udpport` API.\n\nThe sender uses:\n\n- destination port `55555`;\n- local ephemeral port `0`;\n- `EnablePortSharing = true`;\n- broadcast enabled on the UDP endpoint;\n- destination IP `255.255.255.255`.\n\nThis directly demonstrates creation and configuration of a UDP broadcast socket from MATLAB.\n\n### Controlled message count\n\nThe experiment sends exactly:\n\n```text\nnumMessages = 1000\n```\n\nThis provides a bounded traffic population that can later be compared against receiver-side counts and lost packet indices.\n\n### Controlled payload size\n\nEach packet is normalized to:\n\n```text\npayloadSize = 1000 bytes\n```\n\nThe script creates a textual packet body containing the packet number and then pads or truncates the message so that the transmitted payload has the requested size.\n\nThat makes packet size an explicit experiment parameter rather than an incidental property of the message string.\n\n### Packet indexing\n\nEach message contains a marker of the form:\n\n```text\nPacket #<index>\n```\n\nThe receiver code later locates `#` and extracts the suffix as the packet index.\n\nThis creates a simple application-level sequence identifier that can support:\n\n- receive counts;\n- loss identification;\n- per-packet logging;\n- comparison across receiver instances.\n\n### Send-rate control\n\nThe sender defines:\n\n```text\nsendInterval = 0.001\n```\n\nand pauses after each datagram.\n\nThe intended offered-load schedule is therefore one packet attempt per millisecond within MATLAB's execution and scheduling limits.\n\nThe code makes the pacing parameter explicit and easily adjustable.",
+      "source_line_start": 70,
+      "source_line_end": 139
+    },
+    {
+      "id": "s005",
+      "level": 3,
+      "title": "Sender configuration",
+      "normalized_title": "Sender configuration",
+      "key": "sender_configuration",
+      "path": [
+        "UDP Broadcast Traffic Generation",
+        "Sender configuration"
+      ],
+      "content": "`SenderBroadcast_Throughput.m` creates an IPv4 datagram endpoint through MATLAB's `udpport` API.\n\nThe sender uses:\n\n- destination port `55555`;\n- local ephemeral port `0`;\n- `EnablePortSharing = true`;\n- broadcast enabled on the UDP endpoint;\n- destination IP `255.255.255.255`.\n\nThis directly demonstrates creation and configuration of a UDP broadcast socket from MATLAB.",
+      "source_line_start": 72,
+      "source_line_end": 86
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Controlled message count",
+      "normalized_title": "Controlled message count",
+      "key": "controlled_message_count",
+      "path": [
+        "UDP Broadcast Traffic Generation",
+        "Controlled message count"
+      ],
+      "content": "The experiment sends exactly:\n\n```text\nnumMessages = 1000\n```\n\nThis provides a bounded traffic population that can later be compared against receiver-side counts and lost packet indices.",
+      "source_line_start": 86,
+      "source_line_end": 96
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Controlled payload size",
+      "normalized_title": "Controlled payload size",
+      "key": "controlled_payload_size",
+      "path": [
+        "UDP Broadcast Traffic Generation",
+        "Controlled payload size"
+      ],
+      "content": "Each packet is normalized to:\n\n```text\npayloadSize = 1000 bytes\n```\n\nThe script creates a textual packet body containing the packet number and then pads or truncates the message so that the transmitted payload has the requested size.\n\nThat makes packet size an explicit experiment parameter rather than an incidental property of the message string.",
+      "source_line_start": 96,
+      "source_line_end": 108
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Packet indexing",
+      "normalized_title": "Packet indexing",
+      "key": "packet_indexing",
+      "path": [
+        "UDP Broadcast Traffic Generation",
+        "Packet indexing"
+      ],
+      "content": "Each message contains a marker of the form:\n\n```text\nPacket #<index>\n```\n\nThe receiver code later locates `#` and extracts the suffix as the packet index.\n\nThis creates a simple application-level sequence identifier that can support:\n\n- receive counts;\n- loss identification;\n- per-packet logging;\n- comparison across receiver instances.",
+      "source_line_start": 108,
+      "source_line_end": 125
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Send-rate control",
+      "normalized_title": "Send-rate control",
+      "key": "send_rate_control",
+      "path": [
+        "UDP Broadcast Traffic Generation",
+        "Send-rate control"
+      ],
+      "content": "The sender defines:\n\n```text\nsendInterval = 0.001\n```\n\nand pauses after each datagram.\n\nThe intended offered-load schedule is therefore one packet attempt per millisecond within MATLAB's execution and scheduling limits.\n\nThe code makes the pacing parameter explicit and easily adjustable.",
+      "source_line_start": 125,
+      "source_line_end": 139
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Parallel Shared-Port Reception",
+      "normalized_title": "Parallel Shared-Port Reception",
+      "key": "parallel_shared_port_reception",
+      "path": [
+        "Parallel Shared-Port Reception"
+      ],
+      "content": "### Multiple MATLAB receiver sessions\n\n`ReceiverBroadcastParallel.m` is documented to be launched in three separate MATLAB sessions.\n\nEach receiver binds the same UDP port:\n\n```text\n55555\n```\n\nwith port sharing enabled.\n\nThat experiment shape tests how multiple receiver processes can observe a common broadcast traffic stream.\n\n### Callback-driven packet handling\n\nThe receiver installs:\n\n```matlab\nu.DatagramReceivedFcn = @(udpObj, event) onDataReceived(...)\n```\n\nrather than continuously busy-polling for traffic in the main function.\n\nThe main function then remains alive with `pause(inf)` while the callback handles incoming datagrams.\n\nThis is direct evidence of event-driven network I/O in MATLAB.\n\n### Datagram draining\n\nInside the callback, the receiver processes buffered traffic while:\n\n```text\nNumDatagramsAvailable > 0\n```\n\nand reads one datagram at a time as `uint8`.\n\nThe byte data is converted to character form for packet-index extraction and diagnostic output.\n\n### Receiver identity\n\nEach receiver instance accepts a `receiverID`.\n\nThe ID is carried into logging and, in later variants, determines which counter and loss-index collection is updated.\n\nThis enables parallel instances to produce receiver-specific observations while using the same experiment logic.",
+      "source_line_start": 139,
+      "source_line_end": 189
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Multiple MATLAB receiver sessions",
+      "normalized_title": "Multiple MATLAB receiver sessions",
+      "key": "multiple_matlab_receiver_sessions",
+      "path": [
+        "Parallel Shared-Port Reception",
+        "Multiple MATLAB receiver sessions"
+      ],
+      "content": "`ReceiverBroadcastParallel.m` is documented to be launched in three separate MATLAB sessions.\n\nEach receiver binds the same UDP port:\n\n```text\n55555\n```\n\nwith port sharing enabled.\n\nThat experiment shape tests how multiple receiver processes can observe a common broadcast traffic stream.",
+      "source_line_start": 141,
+      "source_line_end": 155
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Callback-driven packet handling",
+      "normalized_title": "Callback-driven packet handling",
+      "key": "callback_driven_packet_handling",
+      "path": [
+        "Parallel Shared-Port Reception",
+        "Callback-driven packet handling"
+      ],
+      "content": "The receiver installs:\n\n```matlab\nu.DatagramReceivedFcn = @(udpObj, event) onDataReceived(...)\n```\n\nrather than continuously busy-polling for traffic in the main function.\n\nThe main function then remains alive with `pause(inf)` while the callback handles incoming datagrams.\n\nThis is direct evidence of event-driven network I/O in MATLAB.",
+      "source_line_start": 155,
+      "source_line_end": 169
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Datagram draining",
+      "normalized_title": "Datagram draining",
+      "key": "datagram_draining",
+      "path": [
+        "Parallel Shared-Port Reception",
+        "Datagram draining"
+      ],
+      "content": "Inside the callback, the receiver processes buffered traffic while:\n\n```text\nNumDatagramsAvailable > 0\n```\n\nand reads one datagram at a time as `uint8`.\n\nThe byte data is converted to character form for packet-index extraction and diagnostic output.",
+      "source_line_start": 169,
+      "source_line_end": 181
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Receiver identity",
+      "normalized_title": "Receiver identity",
+      "key": "receiver_identity",
+      "path": [
+        "Parallel Shared-Port Reception",
+        "Receiver identity"
+      ],
+      "content": "Each receiver instance accepts a `receiverID`.\n\nThe ID is carried into logging and, in later variants, determines which counter and loss-index collection is updated.\n\nThis enables parallel instances to produce receiver-specific observations while using the same experiment logic.",
+      "source_line_start": 181,
+      "source_line_end": 189
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Packet Timing and Rate Instrumentation",
+      "normalized_title": "Packet Timing and Rate Instrumentation",
+      "key": "packet_timing_and_rate_instrumentation",
+      "path": [
+        "Packet Timing and Rate Instrumentation"
+      ],
+      "content": "The baseline receiver captures timestamps with millisecond formatting:\n\n```text\nHH:MM:SS.FFF\n```\n\nIt records an initial reference time and computes elapsed wall-clock duration from MATLAB serial-date values.\n\nThe code reports packet count divided by elapsed time, giving a running packet-arrival rate estimate.\n\nThe receiver also prints:\n\n- receiver ID;\n- timestamp;\n- message body;\n- packet length;\n- extracted packet index.\n\nThis makes the packet path observable while the experiment is executing.",
+      "source_line_start": 189,
+      "source_line_end": 211
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Arrival Logging",
+      "normalized_title": "Arrival Logging",
+      "key": "arrival_logging",
+      "path": [
+        "Arrival Logging"
+      ],
+      "content": "The receiver maintains an `arrivalLog`.\n\nRows are intended to associate:\n\n- arrival timestamp;\n- packet size;\n- packet index.\n\nThe baseline source also includes a `summarizeResults` helper that derives:\n\n- start time;\n- end time;\n- elapsed seconds;\n- total packet count;\n- total bytes;\n- approximate throughput in bits per second.\n\nThe presence of both streaming diagnostics and a summary function shows an experiment pattern that combines immediate inspection with post-run aggregate metrics.",
+      "source_line_start": 211,
+      "source_line_end": 232
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Packet Index Extraction",
+      "normalized_title": "Packet Index Extraction",
+      "key": "packet_index_extraction",
+      "path": [
+        "Packet Index Extraction"
+      ],
+      "content": "The packet parser does not rely on a complex serialization format.\n\nIt scans the message for the first `#` and extracts everything after that marker.\n\nThis is intentionally lightweight, but it gives the experiment a deterministic way to associate received messages with sender sequence numbers.\n\nLater receiver variants use the parsed sequence number when recording simulated packet losses.",
+      "source_line_start": 232,
+      "source_line_end": 242
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "AWGN Receiver Experiment",
+      "normalized_title": "AWGN Receiver Experiment",
+      "key": "awgn_receiver_experiment",
+      "path": [
+        "AWGN Receiver Experiment"
+      ],
+      "content": "### Noise injection\n\n`AGWN/receiver.m` and the improved-readability AWGN variant convert each received datagram from `uint8` to `double` and invoke MATLAB's:\n\n```matlab\nawgn(dataDouble, snr, 'measured')\n```\n\nThe code therefore uses MATLAB communications tooling to perturb the received byte values with additive white Gaussian noise.\n\n### Randomized SNR\n\nFor each processed datagram, the receiver samples:\n\n```text\nSNR = 20 + 2 * randn\n```\n\nso the impairment condition varies around a 20 dB mean with a 2 dB standard-deviation term.\n\nThis produces packet-by-packet variation rather than one constant channel condition.\n\n### Re-quantization\n\nAfter noise is applied, the altered values are:\n\n1. rounded;\n2. clipped to the valid byte interval `0..255`;\n3. converted back to `uint8`.\n\nThe receiver can therefore compare the noisy quantized payload against the original datagram bytes.\n\n### Byte error-rate calculation\n\nThe code counts positions where:\n\n```text\nnoisyDataRounded ~= originalData\n```\n\nand divides by the total number of bytes.\n\nThe resulting `errorRate` is a byte-level corruption proportion for that simulated noise realization.\n\n### Error rate to packet-drop probability\n\nThe AGWN version scales the measured error rate and compares it with a random sample to decide whether to drop the packet from later processing.\n\nThis creates a stochastic packet-loss layer driven by the observed corruption level.\n\nThe improved-readability variant retains this mechanism while using a smaller scaling factor.\n\nThat is evidence of iterative calibration of the synthetic impairment model.",
+      "source_line_start": 242,
+      "source_line_end": 298
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Noise injection",
+      "normalized_title": "Noise injection",
+      "key": "noise_injection",
+      "path": [
+        "AWGN Receiver Experiment",
+        "Noise injection"
+      ],
+      "content": "`AGWN/receiver.m` and the improved-readability AWGN variant convert each received datagram from `uint8` to `double` and invoke MATLAB's:\n\n```matlab\nawgn(dataDouble, snr, 'measured')\n```\n\nThe code therefore uses MATLAB communications tooling to perturb the received byte values with additive white Gaussian noise.",
+      "source_line_start": 244,
+      "source_line_end": 254
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Randomized SNR",
+      "normalized_title": "Randomized SNR",
+      "key": "randomized_snr",
+      "path": [
+        "AWGN Receiver Experiment",
+        "Randomized SNR"
+      ],
+      "content": "For each processed datagram, the receiver samples:\n\n```text\nSNR = 20 + 2 * randn\n```\n\nso the impairment condition varies around a 20 dB mean with a 2 dB standard-deviation term.\n\nThis produces packet-by-packet variation rather than one constant channel condition.",
+      "source_line_start": 254,
+      "source_line_end": 266
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Re-quantization",
+      "normalized_title": "Re-quantization",
+      "key": "re_quantization",
+      "path": [
+        "AWGN Receiver Experiment",
+        "Re-quantization"
+      ],
+      "content": "After noise is applied, the altered values are:\n\n1. rounded;\n2. clipped to the valid byte interval `0..255`;\n3. converted back to `uint8`.\n\nThe receiver can therefore compare the noisy quantized payload against the original datagram bytes.",
+      "source_line_start": 266,
+      "source_line_end": 276
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Byte error-rate calculation",
+      "normalized_title": "Byte error-rate calculation",
+      "key": "byte_error_rate_calculation",
+      "path": [
+        "AWGN Receiver Experiment",
+        "Byte error-rate calculation"
+      ],
+      "content": "The code counts positions where:\n\n```text\nnoisyDataRounded ~= originalData\n```\n\nand divides by the total number of bytes.\n\nThe resulting `errorRate` is a byte-level corruption proportion for that simulated noise realization.",
+      "source_line_start": 276,
+      "source_line_end": 288
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Error rate to packet-drop probability",
+      "normalized_title": "Error rate to packet-drop probability",
+      "key": "error_rate_to_packet_drop_probability",
+      "path": [
+        "AWGN Receiver Experiment",
+        "Error rate to packet-drop probability"
+      ],
+      "content": "The AGWN version scales the measured error rate and compares it with a random sample to decide whether to drop the packet from later processing.\n\nThis creates a stochastic packet-loss layer driven by the observed corruption level.\n\nThe improved-readability variant retains this mechanism while using a smaller scaling factor.\n\nThat is evidence of iterative calibration of the synthetic impairment model.",
+      "source_line_start": 288,
+      "source_line_end": 298
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Receiver-Specific Loss Tracking",
+      "normalized_title": "Receiver-Specific Loss Tracking",
+      "key": "receiver_specific_loss_tracking",
+      "path": [
+        "Receiver-Specific Loss Tracking"
+      ],
+      "content": "The AWGN variants maintain separate lost-packet arrays for receiver instances.\n\nWhen a simulated drop occurs, the code:\n\n1. parses the original packet index;\n2. associates the loss with the current receiver ID;\n3. appends the index to that receiver's loss list;\n4. logs SNR and error rate;\n5. skips normal packet processing for that datagram.\n\nThis preserves which sequence numbers were considered lost rather than recording only an aggregate count.",
+      "source_line_start": 298,
+      "source_line_end": 312
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Cleanup-Time Experiment Reporting",
+      "normalized_title": "Cleanup-Time Experiment Reporting",
+      "key": "cleanup_time_experiment_reporting",
+      "path": [
+        "Cleanup-Time Experiment Reporting"
+      ],
+      "content": "The AWGN receivers register an `onCleanup` callback.\n\nThis means termination of the long-running receiver triggers final experiment reporting.\n\nThe improved-readability version reports, for the active receiver:\n\n- total packets processed;\n- total packets lost;\n- packet error rate as a percentage;\n- elapsed time;\n- explicit lost packet indices.\n\nUsing cleanup behavior for final statistics is useful in this particular experiment because the receiver's main lifetime is intentionally indefinite until manually interrupted.",
+      "source_line_start": 312,
+      "source_line_end": 328
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Packet Error Rate",
+      "normalized_title": "Packet Error Rate",
+      "key": "packet_error_rate",
+      "path": [
+        "Packet Error Rate"
+      ],
+      "content": "The improved AWGN variant computes:\n\n```text\ntotalPackets = receivedCount + lostCount\nPER = lostCount / totalPackets * 100\n```\n\nThis adds a direct packet-level reliability metric on top of the byte-level corruption calculation used to trigger synthetic losses.\n\nThe repository therefore distinguishes between:\n\n- byte disagreement after AWGN and quantization;\n- simulated packet loss;\n- packet error-rate summary.",
+      "source_line_start": 328,
+      "source_line_end": 345
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Experiment Evolution",
+      "normalized_title": "Experiment Evolution",
+      "key": "experiment_evolution",
+      "path": [
+        "Experiment Evolution"
+      ],
+      "content": "The commit sequence records a short but concrete development progression.\n\n### Initial broadcast experiment\n\nThe repository began with the broadcast receiver and throughput sender.\n\nThis establishes the core transport experiment first:\n\n```text\ncontrolled sender -> UDP broadcast -> shared receiver port\n```\n\n### Versioned combined sender/receiver\n\n`VersionALL` then collected sender and receiver variants under a common directory.\n\nThat provides a snapshot-style experiment grouping.\n\n### Noise-model experiment\n\nSubsequent commits introduced the AGWN/AWGN receiver.\n\nThe packet stream became a substrate for simulated channel degradation rather than only a transport-throughput exercise.\n\n### Readability refinement\n\nThe final repository state contains a separate `AWGN With Improved Readability` variant.\n\nIts code organizes final receiver reporting around the current receiver instance and exposes packet-loss statistics more directly.\n\nThis shows refinement not merely of the experiment's numerical behavior but also of how results are surfaced to the experimenter.",
+      "source_line_start": 345,
+      "source_line_end": 379
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Initial broadcast experiment",
+      "normalized_title": "Initial broadcast experiment",
+      "key": "initial_broadcast_experiment",
+      "path": [
+        "Experiment Evolution",
+        "Initial broadcast experiment"
+      ],
+      "content": "The repository began with the broadcast receiver and throughput sender.\n\nThis establishes the core transport experiment first:\n\n```text\ncontrolled sender -> UDP broadcast -> shared receiver port\n```",
+      "source_line_start": 349,
+      "source_line_end": 359
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Versioned combined sender/receiver",
+      "normalized_title": "Versioned combined sender/receiver",
+      "key": "versioned_combined_sender_receiver",
+      "path": [
+        "Experiment Evolution",
+        "Versioned combined sender/receiver"
+      ],
+      "content": "`VersionALL` then collected sender and receiver variants under a common directory.\n\nThat provides a snapshot-style experiment grouping.",
+      "source_line_start": 359,
+      "source_line_end": 365
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Noise-model experiment",
+      "normalized_title": "Noise-model experiment",
+      "key": "noise_model_experiment",
+      "path": [
+        "Experiment Evolution",
+        "Noise-model experiment"
+      ],
+      "content": "Subsequent commits introduced the AGWN/AWGN receiver.\n\nThe packet stream became a substrate for simulated channel degradation rather than only a transport-throughput exercise.",
+      "source_line_start": 365,
+      "source_line_end": 371
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Readability refinement",
+      "normalized_title": "Readability refinement",
+      "key": "readability_refinement",
+      "path": [
+        "Experiment Evolution",
+        "Readability refinement"
+      ],
+      "content": "The final repository state contains a separate `AWGN With Improved Readability` variant.\n\nIts code organizes final receiver reporting around the current receiver instance and exposes packet-loss statistics more directly.\n\nThis shows refinement not merely of the experiment's numerical behavior but also of how results are surfaced to the experimenter.",
+      "source_line_start": 371,
+      "source_line_end": 379
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### MATLAB\n\nMATLAB is the implementation and experiment runtime.\n\nIt is used for:\n\n- UDP socket configuration;\n- callback registration;\n- packet generation;\n- packet parsing;\n- timing;\n- random-variable generation;\n- AWGN simulation;\n- byte-array transformation;\n- experiment logging.\n\n### `udpport`\n\nMATLAB's `udpport` API provides both transmission and reception.\n\nThe code exercises:\n\n- IPv4 datagram mode;\n- broadcast transmission;\n- shared local-port reception;\n- datagram callbacks;\n- reading buffered datagrams.\n\n### Communications Toolbox `awgn`\n\nThe AWGN variants use MATLAB's `awgn` function with measured signal power.\n\nIts role is specifically to perturb received byte-valued data for the impairment experiment.",
+      "source_line_start": 379,
+      "source_line_end": 415
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "MATLAB",
+      "normalized_title": "MATLAB",
+      "key": "matlab",
+      "path": [
+        "Technical Stack",
+        "MATLAB"
+      ],
+      "content": "MATLAB is the implementation and experiment runtime.\n\nIt is used for:\n\n- UDP socket configuration;\n- callback registration;\n- packet generation;\n- packet parsing;\n- timing;\n- random-variable generation;\n- AWGN simulation;\n- byte-array transformation;\n- experiment logging.",
+      "source_line_start": 381,
+      "source_line_end": 397
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "`udpport`",
+      "normalized_title": "udpport",
+      "key": "udpport",
+      "path": [
+        "Technical Stack",
+        "`udpport`"
+      ],
+      "content": "MATLAB's `udpport` API provides both transmission and reception.\n\nThe code exercises:\n\n- IPv4 datagram mode;\n- broadcast transmission;\n- shared local-port reception;\n- datagram callbacks;\n- reading buffered datagrams.",
+      "source_line_start": 397,
+      "source_line_end": 409
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Communications Toolbox `awgn`",
+      "normalized_title": "Communications Toolbox awgn",
+      "key": "communications_toolbox_awgn",
+      "path": [
+        "Technical Stack",
+        "Communications Toolbox `awgn`"
+      ],
+      "content": "The AWGN variants use MATLAB's `awgn` function with measured signal power.\n\nIts role is specifically to perturb received byte-valued data for the impairment experiment.",
+      "source_line_start": 409,
+      "source_line_end": 415
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Engineering Practices Evidenced",
+      "normalized_title": "Engineering Practices Evidenced",
+      "key": "engineering_practices_evidenced",
+      "path": [
+        "Engineering Practices Evidenced"
+      ],
+      "content": "### Explicit experiment parameters\n\nThe sender exposes packet count, payload size, send interval, destination port, and destination address as named values.\n\nThe AWGN receiver similarly exposes the SNR model and drop scaling in source.\n\nThis keeps the important experiment conditions inspectable.\n\n### Sequence-aware instrumentation\n\nPacket indexes survive from sender generation into receiver logging and loss tracking.\n\nThat makes individual packet outcomes traceable.\n\n### Variant preservation\n\nRather than replacing every prior experiment, the repository preserves multiple receiver variants.\n\nFor a learning/experimental repository, this helps retain how the test logic changed across iterations.\n\n### Termination hooks\n\n`onCleanup` is used to surface final reliability statistics when a receiver is interrupted.\n\nThis is a practical lifecycle mechanism for an otherwise indefinite callback-driven process.",
+      "source_line_start": 415,
+      "source_line_end": 443
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Explicit experiment parameters",
+      "normalized_title": "Explicit experiment parameters",
+      "key": "explicit_experiment_parameters",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Explicit experiment parameters"
+      ],
+      "content": "The sender exposes packet count, payload size, send interval, destination port, and destination address as named values.\n\nThe AWGN receiver similarly exposes the SNR model and drop scaling in source.\n\nThis keeps the important experiment conditions inspectable.",
+      "source_line_start": 417,
+      "source_line_end": 425
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Sequence-aware instrumentation",
+      "normalized_title": "Sequence-aware instrumentation",
+      "key": "sequence_aware_instrumentation",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Sequence-aware instrumentation"
+      ],
+      "content": "Packet indexes survive from sender generation into receiver logging and loss tracking.\n\nThat makes individual packet outcomes traceable.",
+      "source_line_start": 425,
+      "source_line_end": 431
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Variant preservation",
+      "normalized_title": "Variant preservation",
+      "key": "variant_preservation",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Variant preservation"
+      ],
+      "content": "Rather than replacing every prior experiment, the repository preserves multiple receiver variants.\n\nFor a learning/experimental repository, this helps retain how the test logic changed across iterations.",
+      "source_line_start": 431,
+      "source_line_end": 437
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Termination hooks",
+      "normalized_title": "Termination hooks",
+      "key": "termination_hooks",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Termination hooks"
+      ],
+      "content": "`onCleanup` is used to surface final reliability statistics when a receiver is interrupted.\n\nThis is a practical lifecycle mechanism for an otherwise indefinite callback-driven process.",
+      "source_line_start": 437,
+      "source_line_end": 443
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### MATLAB programming\n\nThe repository demonstrates MATLAB functions, nested helper logic, global experiment state, arrays, string/character manipulation, timing functions, and callback use.\n\n### Network programming\n\nConcrete networking skills include:\n\n- UDP datagrams;\n- IPv4 broadcast;\n- shared local ports;\n- broadcast enablement;\n- asynchronous receive callbacks;\n- packet payload handling.\n\n### Communications experimentation\n\nThe repository materially uses:\n\n- SNR;\n- AWGN;\n- byte corruption comparison;\n- stochastic drop modeling;\n- packet error rate.\n\n### Performance instrumentation\n\nThe source computes or prepares:\n\n- packet rate;\n- elapsed time;\n- packet counts;\n- byte totals;\n- approximate throughput;\n- packet-loss indices;\n- PER.\n\n### Experiment design\n\nThe sender controls offered traffic characteristics while receiver variants control observation and impairment behavior.\n\nThis separation supports repeatable changes to one side of the experiment without rewriting the other.",
+      "source_line_start": 443,
+      "source_line_end": 488
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "MATLAB programming",
+      "normalized_title": "MATLAB programming",
+      "key": "matlab_programming",
+      "path": [
+        "Skills Demonstrated",
+        "MATLAB programming"
+      ],
+      "content": "The repository demonstrates MATLAB functions, nested helper logic, global experiment state, arrays, string/character manipulation, timing functions, and callback use.",
+      "source_line_start": 445,
+      "source_line_end": 449
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Network programming",
+      "normalized_title": "Network programming",
+      "key": "network_programming",
+      "path": [
+        "Skills Demonstrated",
+        "Network programming"
+      ],
+      "content": "Concrete networking skills include:\n\n- UDP datagrams;\n- IPv4 broadcast;\n- shared local ports;\n- broadcast enablement;\n- asynchronous receive callbacks;\n- packet payload handling.",
+      "source_line_start": 449,
+      "source_line_end": 460
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Communications experimentation",
+      "normalized_title": "Communications experimentation",
+      "key": "communications_experimentation",
+      "path": [
+        "Skills Demonstrated",
+        "Communications experimentation"
+      ],
+      "content": "The repository materially uses:\n\n- SNR;\n- AWGN;\n- byte corruption comparison;\n- stochastic drop modeling;\n- packet error rate.",
+      "source_line_start": 460,
+      "source_line_end": 470
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "Performance instrumentation",
+      "normalized_title": "Performance instrumentation",
+      "key": "performance_instrumentation",
+      "path": [
+        "Skills Demonstrated",
+        "Performance instrumentation"
+      ],
+      "content": "The source computes or prepares:\n\n- packet rate;\n- elapsed time;\n- packet counts;\n- byte totals;\n- approximate throughput;\n- packet-loss indices;\n- PER.",
+      "source_line_start": 470,
+      "source_line_end": 482
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Experiment design",
+      "normalized_title": "Experiment design",
+      "key": "experiment_design",
+      "path": [
+        "Skills Demonstrated",
+        "Experiment design"
+      ],
+      "content": "The sender controls offered traffic characteristics while receiver variants control observation and impairment behavior.\n\nThis separation supports repeatable changes to one side of the experiment without rewriting the other.",
+      "source_line_start": 482,
+      "source_line_end": 488
+    },
+    {
+      "id": "s047",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "Within the portfolio, `Matlab-Experiments` is evidence of using MATLAB outside purely offline numerical analysis.\n\nThe repository applies MATLAB to live socket behavior, packet timing, multiple listener instances, and communications impairment simulation.\n\nIt connects networking concepts with quantitative experiment instrumentation.\n\nIt also demonstrates a recurring engineering pattern in the portfolio: build a small traffic/control mechanism, observe its behavior with explicit metrics, then add controlled adverse conditions to study reliability.\n\n# Project Tags\n\n- `matlab`\n- `udp`\n- `udp-broadcast`\n- `ipv4`\n- `datagram-networking`\n- `shared-port-reception`\n- `callback-driven-networking`\n- `packet-indexing`\n- `packet-instrumentation`\n- `throughput-measurement`\n- `packet-rate-measurement`\n- `fixed-payload-traffic`\n- `traffic-generation`\n- `awgn`\n- `snr`\n- `communications-simulation`\n- `byte-error-measurement`\n- `packet-loss-simulation`\n- `packet-error-rate`\n- `network-experiment`",
+      "source_line_start": 488,
+      "source_line_end": 520
+    }
+  ],
+  "raw_analysis": "# Matlab-Experiments\n\n## Repository Identity\n\n- Repository: 120 / 138\n- Name: `Matlab-Experiments`\n- Start Date: 2025-02-13\n- Latest Meaningful Update: 2025-02-20\n- Latest Meaningful Commit: `865e79f12922d1e687496c602ae252284d39fcff`\n- Primary Language: MATLAB\n- Primary Type: Networking and communications experiment repository\n- Technical Fields: UDP networking, packet instrumentation, communications-channel simulation, throughput observation\n- Collaboration Type: `individual-project`\n- Processing Context: chronology backfill from the connected private-repository set\n\n## What This Project Is\n\n`Matlab-Experiments` is a compact experimental workspace for exercising packet transmission, reception, broadcast delivery, timing, packet indexing, throughput observation, and simulated channel impairment directly from MATLAB.\n\nThe repository is organized around a small family of sender and receiver programs rather than a single monolithic script.\n\nIts central experimental shape is:\n\n```text\nMATLAB broadcast sender\n        |\n        | UDP / IPv4 broadcast\n        | destination 255.255.255.255:55555\n        v\nshared UDP port 55555\n   |        |        |\nreceiver 1 receiver 2 receiver 3\n   |        |        |\npacket indices / timing / loss observations\n```\n\nA second branch of the repository introduces additive white Gaussian noise into the receiver-side experiment and converts the resulting byte-level corruption rate into a probabilistic packet-drop decision.\n\nThe repository therefore preserves two related kinds of engineering evidence:\n\n1. controlled local-network traffic generation and measurement;\n2. simulation of communications degradation over that packet stream.\n\n## Repository Structure\n\nThe inspected tree contains several experiment variants:\n\n```text\nMatlab-Experiments/\n├── ReceiverBroadcastParallel.m\n├── SenderBroadcast_Throughput.m\n├── AGWN/\n│   ├── README.md\n│   └── receiver.m\n├── AWGN With Improved Readability/\n│   ├── README.md\n│   └── receiver.m\n└── VersionALL/\n    ├── README.md\n    ├── receiver.m\n    └── sender.m\n```\n\nThe naming and commit history show iterative refinement around the same broadcast-receiver experiment.\n\n`SenderBroadcast_Throughput.m` is also reused as `VersionALL/sender.m`, preserving the same blob identity.\n\nThe receiver variants carry progressively richer instrumentation and impairment behavior.\n\n## UDP Broadcast Traffic Generation\n\n### Sender configuration\n\n`SenderBroadcast_Throughput.m` creates an IPv4 datagram endpoint through MATLAB's `udpport` API.\n\nThe sender uses:\n\n- destination port `55555`;\n- local ephemeral port `0`;\n- `EnablePortSharing = true`;\n- broadcast enabled on the UDP endpoint;\n- destination IP `255.255.255.255`.\n\nThis directly demonstrates creation and configuration of a UDP broadcast socket from MATLAB.\n\n### Controlled message count\n\nThe experiment sends exactly:\n\n```text\nnumMessages = 1000\n```\n\nThis provides a bounded traffic population that can later be compared against receiver-side counts and lost packet indices.\n\n### Controlled payload size\n\nEach packet is normalized to:\n\n```text\npayloadSize = 1000 bytes\n```\n\nThe script creates a textual packet body containing the packet number and then pads or truncates the message so that the transmitted payload has the requested size.\n\nThat makes packet size an explicit experiment parameter rather than an incidental property of the message string.\n\n### Packet indexing\n\nEach message contains a marker of the form:\n\n```text\nPacket #<index>\n```\n\nThe receiver code later locates `#` and extracts the suffix as the packet index.\n\nThis creates a simple application-level sequence identifier that can support:\n\n- receive counts;\n- loss identification;\n- per-packet logging;\n- comparison across receiver instances.\n\n### Send-rate control\n\nThe sender defines:\n\n```text\nsendInterval = 0.001\n```\n\nand pauses after each datagram.\n\nThe intended offered-load schedule is therefore one packet attempt per millisecond within MATLAB's execution and scheduling limits.\n\nThe code makes the pacing parameter explicit and easily adjustable.\n\n## Parallel Shared-Port Reception\n\n### Multiple MATLAB receiver sessions\n\n`ReceiverBroadcastParallel.m` is documented to be launched in three separate MATLAB sessions.\n\nEach receiver binds the same UDP port:\n\n```text\n55555\n```\n\nwith port sharing enabled.\n\nThat experiment shape tests how multiple receiver processes can observe a common broadcast traffic stream.\n\n### Callback-driven packet handling\n\nThe receiver installs:\n\n```matlab\nu.DatagramReceivedFcn = @(udpObj, event) onDataReceived(...)\n```\n\nrather than continuously busy-polling for traffic in the main function.\n\nThe main function then remains alive with `pause(inf)` while the callback handles incoming datagrams.\n\nThis is direct evidence of event-driven network I/O in MATLAB.\n\n### Datagram draining\n\nInside the callback, the receiver processes buffered traffic while:\n\n```text\nNumDatagramsAvailable > 0\n```\n\nand reads one datagram at a time as `uint8`.\n\nThe byte data is converted to character form for packet-index extraction and diagnostic output.\n\n### Receiver identity\n\nEach receiver instance accepts a `receiverID`.\n\nThe ID is carried into logging and, in later variants, determines which counter and loss-index collection is updated.\n\nThis enables parallel instances to produce receiver-specific observations while using the same experiment logic.\n\n## Packet Timing and Rate Instrumentation\n\nThe baseline receiver captures timestamps with millisecond formatting:\n\n```text\nHH:MM:SS.FFF\n```\n\nIt records an initial reference time and computes elapsed wall-clock duration from MATLAB serial-date values.\n\nThe code reports packet count divided by elapsed time, giving a running packet-arrival rate estimate.\n\nThe receiver also prints:\n\n- receiver ID;\n- timestamp;\n- message body;\n- packet length;\n- extracted packet index.\n\nThis makes the packet path observable while the experiment is executing.\n\n## Arrival Logging\n\nThe receiver maintains an `arrivalLog`.\n\nRows are intended to associate:\n\n- arrival timestamp;\n- packet size;\n- packet index.\n\nThe baseline source also includes a `summarizeResults` helper that derives:\n\n- start time;\n- end time;\n- elapsed seconds;\n- total packet count;\n- total bytes;\n- approximate throughput in bits per second.\n\nThe presence of both streaming diagnostics and a summary function shows an experiment pattern that combines immediate inspection with post-run aggregate metrics.\n\n## Packet Index Extraction\n\nThe packet parser does not rely on a complex serialization format.\n\nIt scans the message for the first `#` and extracts everything after that marker.\n\nThis is intentionally lightweight, but it gives the experiment a deterministic way to associate received messages with sender sequence numbers.\n\nLater receiver variants use the parsed sequence number when recording simulated packet losses.\n\n## AWGN Receiver Experiment\n\n### Noise injection\n\n`AGWN/receiver.m` and the improved-readability AWGN variant convert each received datagram from `uint8` to `double` and invoke MATLAB's:\n\n```matlab\nawgn(dataDouble, snr, 'measured')\n```\n\nThe code therefore uses MATLAB communications tooling to perturb the received byte values with additive white Gaussian noise.\n\n### Randomized SNR\n\nFor each processed datagram, the receiver samples:\n\n```text\nSNR = 20 + 2 * randn\n```\n\nso the impairment condition varies around a 20 dB mean with a 2 dB standard-deviation term.\n\nThis produces packet-by-packet variation rather than one constant channel condition.\n\n### Re-quantization\n\nAfter noise is applied, the altered values are:\n\n1. rounded;\n2. clipped to the valid byte interval `0..255`;\n3. converted back to `uint8`.\n\nThe receiver can therefore compare the noisy quantized payload against the original datagram bytes.\n\n### Byte error-rate calculation\n\nThe code counts positions where:\n\n```text\nnoisyDataRounded ~= originalData\n```\n\nand divides by the total number of bytes.\n\nThe resulting `errorRate` is a byte-level corruption proportion for that simulated noise realization.\n\n### Error rate to packet-drop probability\n\nThe AGWN version scales the measured error rate and compares it with a random sample to decide whether to drop the packet from later processing.\n\nThis creates a stochastic packet-loss layer driven by the observed corruption level.\n\nThe improved-readability variant retains this mechanism while using a smaller scaling factor.\n\nThat is evidence of iterative calibration of the synthetic impairment model.\n\n## Receiver-Specific Loss Tracking\n\nThe AWGN variants maintain separate lost-packet arrays for receiver instances.\n\nWhen a simulated drop occurs, the code:\n\n1. parses the original packet index;\n2. associates the loss with the current receiver ID;\n3. appends the index to that receiver's loss list;\n4. logs SNR and error rate;\n5. skips normal packet processing for that datagram.\n\nThis preserves which sequence numbers were considered lost rather than recording only an aggregate count.\n\n## Cleanup-Time Experiment Reporting\n\nThe AWGN receivers register an `onCleanup` callback.\n\nThis means termination of the long-running receiver triggers final experiment reporting.\n\nThe improved-readability version reports, for the active receiver:\n\n- total packets processed;\n- total packets lost;\n- packet error rate as a percentage;\n- elapsed time;\n- explicit lost packet indices.\n\nUsing cleanup behavior for final statistics is useful in this particular experiment because the receiver's main lifetime is intentionally indefinite until manually interrupted.\n\n## Packet Error Rate\n\nThe improved AWGN variant computes:\n\n```text\ntotalPackets = receivedCount + lostCount\nPER = lostCount / totalPackets * 100\n```\n\nThis adds a direct packet-level reliability metric on top of the byte-level corruption calculation used to trigger synthetic losses.\n\nThe repository therefore distinguishes between:\n\n- byte disagreement after AWGN and quantization;\n- simulated packet loss;\n- packet error-rate summary.\n\n## Experiment Evolution\n\nThe commit sequence records a short but concrete development progression.\n\n### Initial broadcast experiment\n\nThe repository began with the broadcast receiver and throughput sender.\n\nThis establishes the core transport experiment first:\n\n```text\ncontrolled sender -> UDP broadcast -> shared receiver port\n```\n\n### Versioned combined sender/receiver\n\n`VersionALL` then collected sender and receiver variants under a common directory.\n\nThat provides a snapshot-style experiment grouping.\n\n### Noise-model experiment\n\nSubsequent commits introduced the AGWN/AWGN receiver.\n\nThe packet stream became a substrate for simulated channel degradation rather than only a transport-throughput exercise.\n\n### Readability refinement\n\nThe final repository state contains a separate `AWGN With Improved Readability` variant.\n\nIts code organizes final receiver reporting around the current receiver instance and exposes packet-loss statistics more directly.\n\nThis shows refinement not merely of the experiment's numerical behavior but also of how results are surfaced to the experimenter.\n\n## Technical Stack\n\n### MATLAB\n\nMATLAB is the implementation and experiment runtime.\n\nIt is used for:\n\n- UDP socket configuration;\n- callback registration;\n- packet generation;\n- packet parsing;\n- timing;\n- random-variable generation;\n- AWGN simulation;\n- byte-array transformation;\n- experiment logging.\n\n### `udpport`\n\nMATLAB's `udpport` API provides both transmission and reception.\n\nThe code exercises:\n\n- IPv4 datagram mode;\n- broadcast transmission;\n- shared local-port reception;\n- datagram callbacks;\n- reading buffered datagrams.\n\n### Communications Toolbox `awgn`\n\nThe AWGN variants use MATLAB's `awgn` function with measured signal power.\n\nIts role is specifically to perturb received byte-valued data for the impairment experiment.\n\n## Engineering Practices Evidenced\n\n### Explicit experiment parameters\n\nThe sender exposes packet count, payload size, send interval, destination port, and destination address as named values.\n\nThe AWGN receiver similarly exposes the SNR model and drop scaling in source.\n\nThis keeps the important experiment conditions inspectable.\n\n### Sequence-aware instrumentation\n\nPacket indexes survive from sender generation into receiver logging and loss tracking.\n\nThat makes individual packet outcomes traceable.\n\n### Variant preservation\n\nRather than replacing every prior experiment, the repository preserves multiple receiver variants.\n\nFor a learning/experimental repository, this helps retain how the test logic changed across iterations.\n\n### Termination hooks\n\n`onCleanup` is used to surface final reliability statistics when a receiver is interrupted.\n\nThis is a practical lifecycle mechanism for an otherwise indefinite callback-driven process.\n\n## Skills Demonstrated\n\n### MATLAB programming\n\nThe repository demonstrates MATLAB functions, nested helper logic, global experiment state, arrays, string/character manipulation, timing functions, and callback use.\n\n### Network programming\n\nConcrete networking skills include:\n\n- UDP datagrams;\n- IPv4 broadcast;\n- shared local ports;\n- broadcast enablement;\n- asynchronous receive callbacks;\n- packet payload handling.\n\n### Communications experimentation\n\nThe repository materially uses:\n\n- SNR;\n- AWGN;\n- byte corruption comparison;\n- stochastic drop modeling;\n- packet error rate.\n\n### Performance instrumentation\n\nThe source computes or prepares:\n\n- packet rate;\n- elapsed time;\n- packet counts;\n- byte totals;\n- approximate throughput;\n- packet-loss indices;\n- PER.\n\n### Experiment design\n\nThe sender controls offered traffic characteristics while receiver variants control observation and impairment behavior.\n\nThis separation supports repeatable changes to one side of the experiment without rewriting the other.\n\n## Portfolio Significance\n\nWithin the portfolio, `Matlab-Experiments` is evidence of using MATLAB outside purely offline numerical analysis.\n\nThe repository applies MATLAB to live socket behavior, packet timing, multiple listener instances, and communications impairment simulation.\n\nIt connects networking concepts with quantitative experiment instrumentation.\n\nIt also demonstrates a recurring engineering pattern in the portfolio: build a small traffic/control mechanism, observe its behavior with explicit metrics, then add controlled adverse conditions to study reliability.\n\n# Project Tags\n\n- `matlab`\n- `udp`\n- `udp-broadcast`\n- `ipv4`\n- `datagram-networking`\n- `shared-port-reception`\n- `callback-driven-networking`\n- `packet-indexing`\n- `packet-instrumentation`\n- `throughput-measurement`\n- `packet-rate-measurement`\n- `fixed-payload-traffic`\n- `traffic-generation`\n- `awgn`\n- `snr`\n- `communications-simulation`\n- `byte-error-measurement`\n- `packet-loss-simulation`\n- `packet-error-rate`\n- `network-experiment`\n"
+}

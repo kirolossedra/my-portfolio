@@ -1,0 +1,632 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 104,
+  "repository_total": 134,
+  "repository_name": "test2",
+  "header_title": "test2",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-104-test2/README.md",
+    "line_start": 1,
+    "line_end": 254,
+    "sha256": "336fe98b9742a090e85e1061c2f765180704798f592bfeca1ebedb003bc1b604"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "developer-tooling",
+    "environment-bootstrap",
+    "build-automation",
+    "individual-project",
+    "bash",
+    "git",
+    "autotools",
+    "make",
+    "tmux",
+    "source-build",
+    "parallel-build",
+    "user-local-installation",
+    "linux-shell",
+    "bashrc",
+    "path-management",
+    "strict-shell-mode",
+    "dependency-diagnostics",
+    "earliest-observed-user-local-source-build-bootstrap"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 104 / 134\n- Name: `test2`\n- Repository start date: 2026-02-07\n- Last meaningful update date: 2026-02-07\n- Latest meaningful commit: `60e7375f1714df345749c97aa090293744ad8d4f`\n- Primary type: Linux environment bootstrap/build utility\n- Technical field: Shell automation and source compilation\n- Application domain: User-local tmux installation for constrained Linux/Mininet environments\n- Collaboration type: `individual-project`\n- Primary language: Bash"
+    },
+    "architecture": {
+      "section_ids": [
+        "s006"
+      ],
+      "titles": [
+        "Architecture and System Shape"
+      ],
+      "text": "## Architecture and System Shape\n```text\nscripts.sh\n   |\n   +-- detect CPU count\n   +-- create ~/.local\n   +-- clone/update ~/tmux\n   +-- autogen.sh\n   +-- ./configure --prefix=$HOME/.local\n   +-- make -j <CPU count>\n   +-- make install\n   +-- persist ~/.local/bin in PATH\n   +-- verify tmux version\n```"
+    },
+    "testing": {
+      "section_ids": [
+        "s019",
+        "s020"
+      ],
+      "titles": [
+        "Installation Verification",
+        "Verification"
+      ],
+      "text": "## Installation Verification\nThe installed binary is invoked with `tmux -V`, turning the end of the script into a direct sanity check.\n\n## Verification\n### Configure Result Check\n\nThe configure command is wrapped in an explicit conditional and terminates with guidance when it fails.\n\n### Installed Binary Check\n\nThe script executes the exact installed binary path and prints its version.\n\n### Strict-Mode Failure Propagation\n\n`set -euo pipefail` ensures failed commands and unset variables propagate as script failures."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository contains one substantive script, and the commit history shows a short owner-driven iteration sequence on the creation date.\n\nCapability claims are therefore anchored directly to `scripts.sh` rather than inferred from the generic repository name."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 104 / 134\n- Name: `test2`\n- Repository start date: 2026-02-07\n- Last meaningful update date: 2026-02-07\n- Latest meaningful commit: `60e7375f1714df345749c97aa090293744ad8d4f`\n- Primary type: Linux environment bootstrap/build utility\n- Technical field: Shell automation and source compilation\n- Application domain: User-local tmux installation for constrained Linux/Mininet environments\n- Collaboration type: `individual-project`\n- Primary language: Bash",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository contains one substantive script, and the commit history shows a short owner-driven iteration sequence on the creation date.\n\nCapability claims are therefore anchored directly to `scripts.sh` rather than inferred from the generic repository name.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The analysis is grounded in:\n\n- `scripts.sh`;\n- the minimal root README;\n- five commits from repository creation through the final script update.",
+      "source_line_start": 22,
+      "source_line_end": 30
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`test2` is a focused Bash installer that builds `tmux` from source into a user-local prefix.\n\nThe script targets an environment where a package-manager/system-wide installation may not be the intended path.\n\nIt automates:\n\n- local prefix creation;\n- processor-count detection;\n- tmux repository cloning or refreshing;\n- Autotools bootstrapping;\n- configuration;\n- parallel compilation;\n- local installation;\n- persistent PATH modification;\n- post-install version verification.",
+      "source_line_start": 30,
+      "source_line_end": 48
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The script uses:\n\n```text\n$HOME/tmux       source checkout\n$HOME/.local     installation prefix\n$HOME/.bashrc    persistent PATH update\n```\n\nIt supports both:\n\n- first-run cloning;\n- repeated runs against an already cloned tmux repository.",
+      "source_line_start": 48,
+      "source_line_end": 63
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nscripts.sh\n   |\n   +-- detect CPU count\n   +-- create ~/.local\n   +-- clone/update ~/tmux\n   +-- autogen.sh\n   +-- ./configure --prefix=$HOME/.local\n   +-- make -j <CPU count>\n   +-- make install\n   +-- persist ~/.local/bin in PATH\n   +-- verify tmux version\n```",
+      "source_line_start": 63,
+      "source_line_end": 79
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Bash\n\nThe entire workflow is implemented in Bash.\n\n### Git\n\nGit is used to clone the upstream tmux repository and refresh an existing checkout.\n\n### Autotools / Make\n\n`autogen.sh`, `configure`, and `make` are used to build tmux from source.\n\n### Linux Shell Environment\n\nThe script modifies the user's shell environment through `.bashrc`.",
+      "source_line_start": 79,
+      "source_line_end": 97
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Bash",
+      "normalized_title": "Bash",
+      "key": "bash",
+      "path": [
+        "Technical Stack",
+        "Bash"
+      ],
+      "content": "The entire workflow is implemented in Bash.",
+      "source_line_start": 81,
+      "source_line_end": 85
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Git",
+      "normalized_title": "Git",
+      "key": "git",
+      "path": [
+        "Technical Stack",
+        "Git"
+      ],
+      "content": "Git is used to clone the upstream tmux repository and refresh an existing checkout.",
+      "source_line_start": 85,
+      "source_line_end": 89
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Autotools / Make",
+      "normalized_title": "Autotools / Make",
+      "key": "autotools_make",
+      "path": [
+        "Technical Stack",
+        "Autotools / Make"
+      ],
+      "content": "`autogen.sh`, `configure`, and `make` are used to build tmux from source.",
+      "source_line_start": 89,
+      "source_line_end": 93
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Linux Shell Environment",
+      "normalized_title": "Linux Shell Environment",
+      "key": "linux_shell_environment",
+      "path": [
+        "Technical Stack",
+        "Linux Shell Environment"
+      ],
+      "content": "The script modifies the user's shell environment through `.bashrc`.",
+      "source_line_start": 93,
+      "source_line_end": 97
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Strict Shell Mode\n\nThe script begins with:\n\n```text\nset -euo pipefail\n```\n\nwhich converts common silent shell failures into immediate errors.\n\n### Portable CPU Parallelism\n\n`getconf _NPROCESSORS_ONLN` determines an available parallel build count, with a fallback value.\n\n### Idempotent-ish Repository Setup\n\nThe script handles two cases:\n\n- existing tmux Git checkout → fetch tags and reset to upstream master;\n- missing checkout → clone the repository.\n\n### User-Local Installation\n\nThe build uses:\n\n```text\n--prefix=$HOME/.local\n```\n\nso installed binaries live under the user's home directory.\n\n### Dependency-Failure Guidance\n\nIf `configure` fails, the script emits targeted guidance explaining likely missing `libevent`/`ncurses` headers and points to `screen` as an already-available terminal-multiplexer alternative in many Mininet VM environments.\n\n### Persistent PATH Setup\n\nThe script checks `.bashrc` before appending the `~/.local/bin` export, avoiding repeated duplicate lines.\n\n### Installation Verification\n\nThe installed binary is invoked with `tmux -V`, turning the end of the script into a direct sanity check.",
+      "source_line_start": 97,
+      "source_line_end": 142
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Strict Shell Mode",
+      "normalized_title": "Strict Shell Mode",
+      "key": "strict_shell_mode",
+      "path": [
+        "Major Engineering Work",
+        "Strict Shell Mode"
+      ],
+      "content": "The script begins with:\n\n```text\nset -euo pipefail\n```\n\nwhich converts common silent shell failures into immediate errors.",
+      "source_line_start": 99,
+      "source_line_end": 109
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Portable CPU Parallelism",
+      "normalized_title": "Portable CPU Parallelism",
+      "key": "portable_cpu_parallelism",
+      "path": [
+        "Major Engineering Work",
+        "Portable CPU Parallelism"
+      ],
+      "content": "`getconf _NPROCESSORS_ONLN` determines an available parallel build count, with a fallback value.",
+      "source_line_start": 109,
+      "source_line_end": 113
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Idempotent-ish Repository Setup",
+      "normalized_title": "Idempotent-ish Repository Setup",
+      "key": "idempotent_ish_repository_setup",
+      "path": [
+        "Major Engineering Work",
+        "Idempotent-ish Repository Setup"
+      ],
+      "content": "The script handles two cases:\n\n- existing tmux Git checkout → fetch tags and reset to upstream master;\n- missing checkout → clone the repository.",
+      "source_line_start": 113,
+      "source_line_end": 120
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "User-Local Installation",
+      "normalized_title": "User-Local Installation",
+      "key": "user_local_installation",
+      "path": [
+        "Major Engineering Work",
+        "User-Local Installation"
+      ],
+      "content": "The build uses:\n\n```text\n--prefix=$HOME/.local\n```\n\nso installed binaries live under the user's home directory.",
+      "source_line_start": 120,
+      "source_line_end": 130
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Dependency-Failure Guidance",
+      "normalized_title": "Dependency-Failure Guidance",
+      "key": "dependency_failure_guidance",
+      "path": [
+        "Major Engineering Work",
+        "Dependency-Failure Guidance"
+      ],
+      "content": "If `configure` fails, the script emits targeted guidance explaining likely missing `libevent`/`ncurses` headers and points to `screen` as an already-available terminal-multiplexer alternative in many Mininet VM environments.",
+      "source_line_start": 130,
+      "source_line_end": 134
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Persistent PATH Setup",
+      "normalized_title": "Persistent PATH Setup",
+      "key": "persistent_path_setup",
+      "path": [
+        "Major Engineering Work",
+        "Persistent PATH Setup"
+      ],
+      "content": "The script checks `.bashrc` before appending the `~/.local/bin` export, avoiding repeated duplicate lines.",
+      "source_line_start": 134,
+      "source_line_end": 138
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Installation Verification",
+      "normalized_title": "Installation Verification",
+      "key": "installation_verification",
+      "path": [
+        "Major Engineering Work",
+        "Installation Verification"
+      ],
+      "content": "The installed binary is invoked with `tmux -V`, turning the end of the script into a direct sanity check.",
+      "source_line_start": 138,
+      "source_line_end": 142
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Verification"
+      ],
+      "content": "### Configure Result Check\n\nThe configure command is wrapped in an explicit conditional and terminates with guidance when it fails.\n\n### Installed Binary Check\n\nThe script executes the exact installed binary path and prints its version.\n\n### Strict-Mode Failure Propagation\n\n`set -euo pipefail` ensures failed commands and unset variables propagate as script failures.",
+      "source_line_start": 142,
+      "source_line_end": 156
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Configure Result Check",
+      "normalized_title": "Configure Result Check",
+      "key": "configure_result_check",
+      "path": [
+        "Verification",
+        "Configure Result Check"
+      ],
+      "content": "The configure command is wrapped in an explicit conditional and terminates with guidance when it fails.",
+      "source_line_start": 144,
+      "source_line_end": 148
+    },
+    {
+      "id": "s022",
+      "level": 3,
+      "title": "Installed Binary Check",
+      "normalized_title": "Installed Binary Check",
+      "key": "installed_binary_check",
+      "path": [
+        "Verification",
+        "Installed Binary Check"
+      ],
+      "content": "The script executes the exact installed binary path and prints its version.",
+      "source_line_start": 148,
+      "source_line_end": 152
+    },
+    {
+      "id": "s023",
+      "level": 3,
+      "title": "Strict-Mode Failure Propagation",
+      "normalized_title": "Strict-Mode Failure Propagation",
+      "key": "strict_mode_failure_propagation",
+      "path": [
+        "Verification",
+        "Strict-Mode Failure Propagation"
+      ],
+      "content": "`set -euo pipefail` ensures failed commands and unset variables propagate as script failures.",
+      "source_line_start": 152,
+      "source_line_end": 156
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Environment-Aware Tooling\n\nThe script is designed around restricted/non-root Linux environments.\n\n### Repeatable Bootstrap\n\nSource retrieval, build, install, PATH configuration, and verification are automated in one workflow.\n\n### Defensive Configuration\n\nThe `.bashrc` edit is guarded by `grep` before appending.\n\n### Rebuild Efficiency\n\nParallel `make` uses the detected number of online processors.",
+      "source_line_start": 156,
+      "source_line_end": 174
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "Environment-Aware Tooling",
+      "normalized_title": "Environment-Aware Tooling",
+      "key": "environment_aware_tooling",
+      "path": [
+        "Engineering Practices",
+        "Environment-Aware Tooling"
+      ],
+      "content": "The script is designed around restricted/non-root Linux environments.",
+      "source_line_start": 158,
+      "source_line_end": 162
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "Repeatable Bootstrap",
+      "normalized_title": "Repeatable Bootstrap",
+      "key": "repeatable_bootstrap",
+      "path": [
+        "Engineering Practices",
+        "Repeatable Bootstrap"
+      ],
+      "content": "Source retrieval, build, install, PATH configuration, and verification are automated in one workflow.",
+      "source_line_start": 162,
+      "source_line_end": 166
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Defensive Configuration",
+      "normalized_title": "Defensive Configuration",
+      "key": "defensive_configuration",
+      "path": [
+        "Engineering Practices",
+        "Defensive Configuration"
+      ],
+      "content": "The `.bashrc` edit is guarded by `grep` before appending.",
+      "source_line_start": 166,
+      "source_line_end": 170
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Rebuild Efficiency",
+      "normalized_title": "Rebuild Efficiency",
+      "key": "rebuild_efficiency",
+      "path": [
+        "Engineering Practices",
+        "Rebuild Efficiency"
+      ],
+      "content": "Parallel `make` uses the detected number of online processors.",
+      "source_line_start": 170,
+      "source_line_end": 174
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This is a developer-environment utility rather than an end-user application.\n\nIts product value is reducing a manual build/install procedure to one repeatable script.",
+      "source_line_start": 174,
+      "source_line_end": 180
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "The repository is intentionally small: one substantive Bash file.\n\nIts complexity comes from environment handling rather than code volume:\n\n- source-control state;\n- build dependencies;\n- user-local installation paths;\n- shell persistence;\n- failure messaging.",
+      "source_line_start": 180,
+      "source_line_end": 192
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "- **Bash scripting — strong evidence.**\n- **Git automation — strong evidence.**\n- **Source compilation — strong evidence.**\n- **Autotools — strong evidence.**\n- **Make — strong evidence.**\n- **Linux environment configuration — strong evidence.**\n- **User-local software installation — strong evidence.**\n- **Shell failure handling — strong evidence.**",
+      "source_line_start": 192,
+      "source_line_end": 203
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "This repository demonstrates practical environment bootstrapping: solving a tooling availability problem by compiling software from source without relying on a system-level package installation.",
+      "source_line_start": 203,
+      "source_line_end": 207
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "The repository is a useful companion to the Mininet/grading work around the same period: it shows engineering attention moving below application code into the reproducibility of the development/lab environment itself.",
+      "source_line_start": 207,
+      "source_line_end": 211
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`test2` records a compact but concrete operations skill: turning upstream source into a reusable user-local tool installation with persistent shell configuration.",
+      "source_line_start": 211,
+      "source_line_end": 215
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`test2` is a small Bash automation utility for installing tmux into a user's home environment.\n\nIt clones or refreshes the upstream source, bootstraps/configures the build, compiles in parallel, installs to `~/.local`, updates PATH persistently, and verifies the resulting binary.\n\n# Project Tags",
+      "source_line_start": 215,
+      "source_line_end": 223
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `developer-tooling`\n- `environment-bootstrap`\n- `build-automation`\n- `individual-project`",
+      "source_line_start": 223,
+      "source_line_end": 230
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `bash`",
+      "source_line_start": 230,
+      "source_line_end": 234
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Tooling",
+      "normalized_title": "Tooling",
+      "key": "tooling",
+      "path": [
+        "Tooling"
+      ],
+      "content": "- `git`\n- `autotools`\n- `make`\n- `tmux`\n- `source-build`\n- `parallel-build`\n- `user-local-installation`",
+      "source_line_start": 234,
+      "source_line_end": 244
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Linux",
+      "normalized_title": "Linux",
+      "key": "linux",
+      "path": [
+        "Linux"
+      ],
+      "content": "- `linux-shell`\n- `bashrc`\n- `path-management`\n- `strict-shell-mode`\n- `dependency-diagnostics`",
+      "source_line_start": 244,
+      "source_line_end": 252
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-user-local-source-build-bootstrap`",
+      "source_line_start": 252,
+      "source_line_end": 255
+    }
+  ],
+  "raw_analysis": "# test2\n\n## Repository Identity\n\n- Repository: 104 / 134\n- Name: `test2`\n- Repository start date: 2026-02-07\n- Last meaningful update date: 2026-02-07\n- Latest meaningful commit: `60e7375f1714df345749c97aa090293744ad8d4f`\n- Primary type: Linux environment bootstrap/build utility\n- Technical field: Shell automation and source compilation\n- Application domain: User-local tmux installation for constrained Linux/Mininet environments\n- Collaboration type: `individual-project`\n- Primary language: Bash\n\n## Collaboration and Authorship Context\n\nThe repository contains one substantive script, and the commit history shows a short owner-driven iteration sequence on the creation date.\n\nCapability claims are therefore anchored directly to `scripts.sh` rather than inferred from the generic repository name.\n\n## Evidence Basis\n\nThe analysis is grounded in:\n\n- `scripts.sh`;\n- the minimal root README;\n- five commits from repository creation through the final script update.\n\n## What This Project Is\n\n`test2` is a focused Bash installer that builds `tmux` from source into a user-local prefix.\n\nThe script targets an environment where a package-manager/system-wide installation may not be the intended path.\n\nIt automates:\n\n- local prefix creation;\n- processor-count detection;\n- tmux repository cloning or refreshing;\n- Autotools bootstrapping;\n- configuration;\n- parallel compilation;\n- local installation;\n- persistent PATH modification;\n- post-install version verification.\n\n## Project Scope\n\nThe script uses:\n\n```text\n$HOME/tmux       source checkout\n$HOME/.local     installation prefix\n$HOME/.bashrc    persistent PATH update\n```\n\nIt supports both:\n\n- first-run cloning;\n- repeated runs against an already cloned tmux repository.\n\n## Architecture and System Shape\n\n```text\nscripts.sh\n   |\n   +-- detect CPU count\n   +-- create ~/.local\n   +-- clone/update ~/tmux\n   +-- autogen.sh\n   +-- ./configure --prefix=$HOME/.local\n   +-- make -j <CPU count>\n   +-- make install\n   +-- persist ~/.local/bin in PATH\n   +-- verify tmux version\n```\n\n## Technical Stack\n\n### Bash\n\nThe entire workflow is implemented in Bash.\n\n### Git\n\nGit is used to clone the upstream tmux repository and refresh an existing checkout.\n\n### Autotools / Make\n\n`autogen.sh`, `configure`, and `make` are used to build tmux from source.\n\n### Linux Shell Environment\n\nThe script modifies the user's shell environment through `.bashrc`.\n\n## Major Engineering Work\n\n### Strict Shell Mode\n\nThe script begins with:\n\n```text\nset -euo pipefail\n```\n\nwhich converts common silent shell failures into immediate errors.\n\n### Portable CPU Parallelism\n\n`getconf _NPROCESSORS_ONLN` determines an available parallel build count, with a fallback value.\n\n### Idempotent-ish Repository Setup\n\nThe script handles two cases:\n\n- existing tmux Git checkout → fetch tags and reset to upstream master;\n- missing checkout → clone the repository.\n\n### User-Local Installation\n\nThe build uses:\n\n```text\n--prefix=$HOME/.local\n```\n\nso installed binaries live under the user's home directory.\n\n### Dependency-Failure Guidance\n\nIf `configure` fails, the script emits targeted guidance explaining likely missing `libevent`/`ncurses` headers and points to `screen` as an already-available terminal-multiplexer alternative in many Mininet VM environments.\n\n### Persistent PATH Setup\n\nThe script checks `.bashrc` before appending the `~/.local/bin` export, avoiding repeated duplicate lines.\n\n### Installation Verification\n\nThe installed binary is invoked with `tmux -V`, turning the end of the script into a direct sanity check.\n\n## Verification\n\n### Configure Result Check\n\nThe configure command is wrapped in an explicit conditional and terminates with guidance when it fails.\n\n### Installed Binary Check\n\nThe script executes the exact installed binary path and prints its version.\n\n### Strict-Mode Failure Propagation\n\n`set -euo pipefail` ensures failed commands and unset variables propagate as script failures.\n\n## Engineering Practices\n\n### Environment-Aware Tooling\n\nThe script is designed around restricted/non-root Linux environments.\n\n### Repeatable Bootstrap\n\nSource retrieval, build, install, PATH configuration, and verification are automated in one workflow.\n\n### Defensive Configuration\n\nThe `.bashrc` edit is guarded by `grep` before appending.\n\n### Rebuild Efficiency\n\nParallel `make` uses the detected number of online processors.\n\n## Product Engineering\n\nThis is a developer-environment utility rather than an end-user application.\n\nIts product value is reducing a manual build/install procedure to one repeatable script.\n\n## Scale and Complexity\n\nThe repository is intentionally small: one substantive Bash file.\n\nIts complexity comes from environment handling rather than code volume:\n\n- source-control state;\n- build dependencies;\n- user-local installation paths;\n- shell persistence;\n- failure messaging.\n\n## Skills Demonstrated\n\n- **Bash scripting — strong evidence.**\n- **Git automation — strong evidence.**\n- **Source compilation — strong evidence.**\n- **Autotools — strong evidence.**\n- **Make — strong evidence.**\n- **Linux environment configuration — strong evidence.**\n- **User-local software installation — strong evidence.**\n- **Shell failure handling — strong evidence.**\n\n## Capability Developed\n\nThis repository demonstrates practical environment bootstrapping: solving a tooling availability problem by compiling software from source without relying on a system-level package installation.\n\n## Portfolio Evolution Context\n\nThe repository is a useful companion to the Mininet/grading work around the same period: it shows engineering attention moving below application code into the reproducibility of the development/lab environment itself.\n\n## Historical Significance\n\n`test2` records a compact but concrete operations skill: turning upstream source into a reusable user-local tool installation with persistent shell configuration.\n\n## Overall Repository Narrative\n\n`test2` is a small Bash automation utility for installing tmux into a user's home environment.\n\nIt clones or refreshes the upstream source, bootstraps/configures the build, compiles in parallel, installs to `~/.local`, updates PATH persistently, and verifies the resulting binary.\n\n# Project Tags\n\n## Project Type\n\n- `developer-tooling`\n- `environment-bootstrap`\n- `build-automation`\n- `individual-project`\n\n## Languages\n\n- `bash`\n\n## Tooling\n\n- `git`\n- `autotools`\n- `make`\n- `tmux`\n- `source-build`\n- `parallel-build`\n- `user-local-installation`\n\n## Linux\n\n- `linux-shell`\n- `bashrc`\n- `path-management`\n- `strict-shell-mode`\n- `dependency-diagnostics`\n\n## Portfolio Significance\n\n- `earliest-observed-user-local-source-build-bootstrap`\n"
+}

@@ -1,0 +1,1531 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 114,
+  "repository_total": 134,
+  "repository_name": "KiroQuestionsBank",
+  "header_title": "KiroQuestionsBank",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-114-KiroQuestionsBank/README.md",
+    "line_start": 1,
+    "line_end": 1181,
+    "sha256": "0ae4e6ed0fd72882e2c4121ba4d8fd8beeac7e87930ca8e9dc1efe5e5acbfb25"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "question-bank-application",
+    "study-tool",
+    "portable-content-application",
+    "full-stack-web-application",
+    "serverless-web-application",
+    "individual-project",
+    "typescript",
+    "react-19",
+    "hono",
+    "vite",
+    "cloudflare-workers",
+    "cloudflare-d1",
+    "wrangler",
+    "sql",
+    "category-subcategory-question-model",
+    "generic-question-grouping",
+    "mcq",
+    "multi-select-question",
+    "question-options",
+    "question-explanations",
+    "markdown-content-storage",
+    "explicit-position-ordering",
+    "cascade-delete",
+    "uuid-identifiers",
+    "shared-domain-validation",
+    "question-cardinality-validation",
+    "correct-answer-cardinality",
+    "sql-check-constraints",
+    "foreign-key-constraints",
+    "prepared-statements",
+    "d1-batch",
+    "parent-updated-at-propagation",
+    "category-import-export",
+    "versioned-json-format",
+    "kiroq-json",
+    "database-id-independent-export",
+    "fresh-id-import",
+    "whole-document-import-validation",
+    "json-each-bulk-insert",
+    "json-to-relational-import",
+    "relational-to-json-export",
+    "content-disposition-download",
+    "portable-question-bank-package",
+    "category-sidebar",
+    "question-editor",
+    "radio-correctness-control",
+    "checkbox-correctness-control",
+    "dynamic-answer-options",
+    "file-import-ui",
+    "browser-export-download",
+    "delete-confirmation",
+    "api-error-display",
+    "cloudflare-static-assets",
+    "spa-fallback",
+    "worker-first-api-routing",
+    "d1-migration",
+    "github-actions",
+    "node-22-ci",
+    "typescript-build-gate",
+    "vite-production-build",
+    "successful-ci-build",
+    "deployment-configuration",
+    "relational-storage-json-transport-separation",
+    "storage-interchange-separation",
+    "generic-domain-abstraction",
+    "book-schema-decoupling",
+    "reusable-question-bank-schema",
+    "versioned-interchange-contract",
+    "ordered-hierarchy-reconstruction",
+    "parallel-relational-read-assembly",
+    "build-verified-application-scaffold",
+    "earliest-observed-versioned-question-bank-category-package",
+    "earliest-observed-d1-question-bank-import-export",
+    "earliest-observed-book-schema-decoupled-question-bank",
+    "earliest-observed-json-to-relational-question-bank-import"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001",
+        "s024",
+        "s074"
+      ],
+      "titles": [
+        "Repository Identity",
+        "File Identity",
+        "Architectural Decision: Fresh Identity on Import"
+      ],
+      "text": "## Repository Identity\n- Repository: 114 / 134\n- Name: `KiroQuestionsBank`\n- Repository start date: 2026-09-06\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3`\n- Latest commit message: `fix: align D1 migration and CI setup`\n- Primary type: Portable question-bank web application\n- Technical field: Full-stack web engineering, schema design, data interchange, serverless APIs\n- Application domain: Study tooling, reusable question-bank authoring, category import/export\n- Collaboration type: `individual-project`\n- Primary language: TypeScript\n- Frontend: React 19 + Vite\n- Backend: Hono on Cloudflare Workers\n- Persistence: Cloudflare D1\n- Current verification evidence: GitHub Actions build succeeds on latest commit\n\n## File Identity\nA category export is a versioned JSON object with:\n\n- `schemaVersion`;\n- `kind`;\n- `exportedAt`;\n- category content.\n\nThe fixed kind is:\n\n`kiro-question-bank-category`.\n\nCurrent schema version is `1`.\n\n## Architectural Decision: Fresh Identity on Import\nImported category packages receive fresh UUIDs for every persisted entity.\n\nThe application therefore treats exported IDs as non-existent rather than attempting to merge database identities from one installation into another.\n\nFor a portable question bank this keeps transfer semantics simple:\n\n`content package → new local category tree`."
+    },
+    "architecture": {
+      "section_ids": [
+        "s061",
+        "s101"
+      ],
+      "titles": [
+        "Cloudflare Static Assets Architecture",
+        "Architecture and Product Design"
+      ],
+      "text": "## Cloudflare Static Assets Architecture\n`wrangler.jsonc` configures:\n\n- Worker entry point `src/worker/index.ts`;\n- static asset directory `./dist`;\n- SPA not-found handling;\n- Worker-first execution for `/api/*`.\n\nThis allows one Cloudflare application boundary to serve:\n\n- built React assets;\n- Hono API routes.\n\n## Architecture and Product Design\n- `relational-storage-json-transport-separation`\n- `storage-interchange-separation`\n- `generic-domain-abstraction`\n- `book-schema-decoupling`\n- `reusable-question-bank-schema`\n- `versioned-interchange-contract`\n- `ordered-hierarchy-reconstruction`\n- `parallel-relational-read-assembly`\n- `build-verified-application-scaffold`"
+    },
+    "testing": {
+      "section_ids": [
+        "s066"
+      ],
+      "titles": [
+        "GitHub Actions Build Verification"
+      ],
+      "text": "## GitHub Actions Build Verification\nThe repository includes a Build workflow triggered by:\n\n- pushes to `main`;\n- pull requests.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures Node 22;\n3. installs dependencies;\n4. runs `npm run build`.\n\nThe latest workflow run for commit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` completed with conclusion `success`.\n\nThis provides direct evidence that the committed TypeScript/Vite application builds successfully in GitHub Actions."
+    },
+    "deployment_cicd": {
+      "section_ids": [
+        "s065"
+      ],
+      "titles": [
+        "Deployment Script"
+      ],
+      "text": "## Deployment Script\n`npm run deploy` executes the build and then `wrangler deploy`.\n\nDatabase setup has separate scripts for:\n\n- creating the D1 database;\n- applying remote D1 migrations.\n\nThe repository documents the required manual step of replacing the placeholder database ID before deployment."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe repository is a compact owner-authored application created through a short sequence of commits on 2026-09-06.\n\nThe implementation is organized across:\n\n- React client code;\n- shared TypeScript contracts and validators;\n- Hono Worker routes;\n- D1 migration SQL;\n- Cloudflare Worker/static-assets configuration;\n- a versioned example category package;\n- a GitHub Actions build workflow.\n\nThe project uses external frameworks and infrastructure including React, Hono, Vite, Cloudflare Workers, and Cloudflare D1.\n\nThe repository-specific engineering evidence is the domain model, relational schema, shared validation logic, portable import/export format, all-or-unit import construction, API design, browser authoring workflow, and deployment/build configuration built around those services."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 114 / 134\n- Name: `KiroQuestionsBank`\n- Repository start date: 2026-09-06\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3`\n- Latest commit message: `fix: align D1 migration and CI setup`\n- Primary type: Portable question-bank web application\n- Technical field: Full-stack web engineering, schema design, data interchange, serverless APIs\n- Application domain: Study tooling, reusable question-bank authoring, category import/export\n- Collaboration type: `individual-project`\n- Primary language: TypeScript\n- Frontend: React 19 + Vite\n- Backend: Hono on Cloudflare Workers\n- Persistence: Cloudflare D1\n- Current verification evidence: GitHub Actions build succeeds on latest commit",
+      "source_line_start": 3,
+      "source_line_end": 21
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The repository is a compact owner-authored application created through a short sequence of commits on 2026-09-06.\n\nThe implementation is organized across:\n\n- React client code;\n- shared TypeScript contracts and validators;\n- Hono Worker routes;\n- D1 migration SQL;\n- Cloudflare Worker/static-assets configuration;\n- a versioned example category package;\n- a GitHub Actions build workflow.\n\nThe project uses external frameworks and infrastructure including React, Hono, Vite, Cloudflare Workers, and Cloudflare D1.\n\nThe repository-specific engineering evidence is the domain model, relational schema, shared validation logic, portable import/export format, all-or-unit import construction, API design, browser authoring workflow, and deployment/build configuration built around those services.",
+      "source_line_start": 21,
+      "source_line_end": 39
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "This analysis is grounded directly in:\n\n- `README.md`;\n- `src/shared/contracts.ts`;\n- `src/worker/index.ts`;\n- `src/client/App.tsx`;\n- `migrations/0001_initial.sql`;\n- `examples/example-category.kiroq.json`;\n- `package.json`;\n- `wrangler.jsonc`;\n- `.github/workflows/build.yml`;\n- repository commit history;\n- latest GitHub Actions run.\n\nThe latest workflow run for commit `1f5589c2...` completed successfully.\n\nThe current Wrangler configuration still contains a placeholder D1 database ID, so this corpus records concrete deployment plumbing without elevating it to verified production deployment.",
+      "source_line_start": 39,
+      "source_line_end": 59
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`KiroQuestionsBank` is a small full-stack application for creating, organizing, exporting, and importing reusable question banks.\n\nIts most important design choice is conceptual rather than visual: the persistent model deliberately avoids treating one learning source type as the schema.\n\nThe hierarchy is:\n\n```text\nCategory\n   ↓\nSubcategory\n   ↓\nQuestion\n   ↓\nOption\n```\n\nA book is one possible organizational convention, not a database entity.\n\nFor example:\n\n```text\nCategory: Fundamentals of Software Architecture\nSubcategory: Chapter 4 Questions\nSubcategory: Chapter 5 Questions\nSubcategory: Cross-Chapter Exam\n```\n\n`Chapter 4 Questions` is simply a subcategory name.\n\nThe backend does not encode chapter number, chapter metadata, or book semantics into its data model.\n\nThat keeps the application usable for:\n\n- book-oriented study;\n- topic-oriented question banks;\n- course units;\n- cross-topic exams;\n- other category/grouping strategies.",
+      "source_line_start": 59,
+      "source_line_end": 100
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Domain Modeling",
+      "normalized_title": "Domain Modeling",
+      "key": "domain_modeling",
+      "path": [
+        "Domain Modeling"
+      ],
+      "content": "### Category\n\nA category is the top-level question-bank grouping.\n\nPersistent category fields are:\n\n- ID;\n- name;\n- optional description;\n- creation timestamp;\n- update timestamp.\n\n### Subcategory\n\nA subcategory belongs to exactly one category.\n\nIt contains:\n\n- ID;\n- category ID;\n- name;\n- optional description;\n- explicit position;\n- creation timestamp.\n\nThe generic term allows the application to support chapter-question groups without pretending that the system models chapters themselves.\n\n### Question\n\nA question belongs to exactly one subcategory.\n\nPersistent question fields include:\n\n- ID;\n- subcategory ID;\n- question type;\n- Markdown body text;\n- optional Markdown explanation text;\n- explicit position;\n- creation timestamp;\n- update timestamp.\n\n### Option\n\nEach question has ordered answer options.\n\nAn option stores:\n\n- ID;\n- question ID;\n- Markdown body text;\n- correctness flag;\n- explicit position.",
+      "source_line_start": 100,
+      "source_line_end": 156
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Category",
+      "normalized_title": "Category",
+      "key": "category",
+      "path": [
+        "Domain Modeling",
+        "Category"
+      ],
+      "content": "A category is the top-level question-bank grouping.\n\nPersistent category fields are:\n\n- ID;\n- name;\n- optional description;\n- creation timestamp;\n- update timestamp.",
+      "source_line_start": 102,
+      "source_line_end": 114
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Subcategory",
+      "normalized_title": "Subcategory",
+      "key": "subcategory",
+      "path": [
+        "Domain Modeling",
+        "Subcategory"
+      ],
+      "content": "A subcategory belongs to exactly one category.\n\nIt contains:\n\n- ID;\n- category ID;\n- name;\n- optional description;\n- explicit position;\n- creation timestamp.\n\nThe generic term allows the application to support chapter-question groups without pretending that the system models chapters themselves.",
+      "source_line_start": 114,
+      "source_line_end": 129
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Question",
+      "normalized_title": "Question",
+      "key": "question",
+      "path": [
+        "Domain Modeling",
+        "Question"
+      ],
+      "content": "A question belongs to exactly one subcategory.\n\nPersistent question fields include:\n\n- ID;\n- subcategory ID;\n- question type;\n- Markdown body text;\n- optional Markdown explanation text;\n- explicit position;\n- creation timestamp;\n- update timestamp.",
+      "source_line_start": 129,
+      "source_line_end": 144
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Option",
+      "normalized_title": "Option",
+      "key": "option",
+      "path": [
+        "Domain Modeling",
+        "Option"
+      ],
+      "content": "Each question has ordered answer options.\n\nAn option stores:\n\n- ID;\n- question ID;\n- Markdown body text;\n- correctness flag;\n- explicit position.",
+      "source_line_start": 144,
+      "source_line_end": 156
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Question Types",
+      "normalized_title": "Question Types",
+      "key": "question_types",
+      "path": [
+        "Question Types"
+      ],
+      "content": "The type contract supports two question kinds:\n\n- `mcq`;\n- `multi_select`.\n\nThe same shared TypeScript union is used by the client and Worker-side validation contract.\n\n### MCQ Invariant\n\nAn MCQ must contain:\n\n- at least two options;\n- exactly one correct option.\n\n### Multi-Select Invariant\n\nA multi-select question must contain:\n\n- at least two options;\n- at least two correct options.\n\nThe validator rejects invalid correct-answer cardinality before persistence.",
+      "source_line_start": 156,
+      "source_line_end": 181
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "MCQ Invariant",
+      "normalized_title": "MCQ Invariant",
+      "key": "mcq_invariant",
+      "path": [
+        "Question Types",
+        "MCQ Invariant"
+      ],
+      "content": "An MCQ must contain:\n\n- at least two options;\n- exactly one correct option.",
+      "source_line_start": 165,
+      "source_line_end": 172
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Multi-Select Invariant",
+      "normalized_title": "Multi-Select Invariant",
+      "key": "multi_select_invariant",
+      "path": [
+        "Question Types",
+        "Multi-Select Invariant"
+      ],
+      "content": "A multi-select question must contain:\n\n- at least two options;\n- at least two correct options.\n\nThe validator rejects invalid correct-answer cardinality before persistence.",
+      "source_line_start": 172,
+      "source_line_end": 181
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Shared TypeScript Contract",
+      "normalized_title": "Shared TypeScript Contract",
+      "key": "shared_typescript_contract",
+      "path": [
+        "Shared TypeScript Contract"
+      ],
+      "content": "`src/shared/contracts.ts` defines both transport shapes and persisted API view shapes.\n\nPortable types include:\n\n- `PortableOption`;\n- `PortableQuestion`;\n- `PortableSubcategory`;\n- `PortableCategory`;\n- `CategoryExportFile`.\n\nRuntime/API view types include:\n\n- `CategorySummary`;\n- `QuestionOption`;\n- `Question`;\n- `Subcategory`;\n- `CategoryDetail`.\n\nThis keeps browser and Worker code aligned around one domain vocabulary.",
+      "source_line_start": 181,
+      "source_line_end": 203
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Markdown as Stored Content",
+      "normalized_title": "Markdown as Stored Content",
+      "key": "markdown_as_stored_content",
+      "path": [
+        "Markdown as Stored Content"
+      ],
+      "content": "Question bodies are stored in `body_markdown`.\n\nExplanations are stored in `explanation_markdown`.\n\nOption bodies are also represented as Markdown text in the portable contract.\n\nThe design therefore keeps source content as portable plain text with lightweight formatting semantics rather than persisting rendered HTML.\n\nThe current React question display places the stored string directly into the page rather than passing it through a Markdown renderer.\n\nThat means Markdown is currently a storage/interchange contract, not evidence of rendered rich-text presentation.\n\nThis distinction is important for accurately describing the implementation.",
+      "source_line_start": 203,
+      "source_line_end": 219
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Relational D1 Schema",
+      "normalized_title": "Relational D1 Schema",
+      "key": "relational_d1_schema",
+      "path": [
+        "Relational D1 Schema"
+      ],
+      "content": "The initial migration creates four tables:\n\n- `categories`;\n- `subcategories`;\n- `questions`;\n- `question_options`.\n\nThe design intentionally does not store an entire question bank as one JSON blob.\n\n### Category Relationship\n\n`subcategories.category_id` references `categories.id`.\n\nThe foreign key uses `ON DELETE CASCADE`.\n\nDeleting a category therefore removes its subordinate question groups through the relational lifecycle.\n\n### Question Relationship\n\n`questions.subcategory_id` references `subcategories.id` with cascade deletion.\n\n### Option Relationship\n\n`question_options.question_id` references `questions.id` with cascade deletion.\n\n### Type Constraint\n\nThe database constrains question type to:\n\n```text\nmcq\nmulti_select\n```\n\n### Correctness Constraint\n\n`question_options.is_correct` is constrained to integer values `0` or `1`.\n\n### Explicit Ordering\n\nSubcategories, questions, and options each contain explicit `position` columns.\n\nIndexes align with those ordered parent-child access patterns:\n\n- category + subcategory position;\n- subcategory + question position;\n- question + option position.\n\nThis makes order a first-class part of the model rather than depending on insertion order accidentally.",
+      "source_line_start": 219,
+      "source_line_end": 271
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Category Relationship",
+      "normalized_title": "Category Relationship",
+      "key": "category_relationship",
+      "path": [
+        "Relational D1 Schema",
+        "Category Relationship"
+      ],
+      "content": "`subcategories.category_id` references `categories.id`.\n\nThe foreign key uses `ON DELETE CASCADE`.\n\nDeleting a category therefore removes its subordinate question groups through the relational lifecycle.",
+      "source_line_start": 230,
+      "source_line_end": 238
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Question Relationship",
+      "normalized_title": "Question Relationship",
+      "key": "question_relationship",
+      "path": [
+        "Relational D1 Schema",
+        "Question Relationship"
+      ],
+      "content": "`questions.subcategory_id` references `subcategories.id` with cascade deletion.",
+      "source_line_start": 238,
+      "source_line_end": 242
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Option Relationship",
+      "normalized_title": "Option Relationship",
+      "key": "option_relationship",
+      "path": [
+        "Relational D1 Schema",
+        "Option Relationship"
+      ],
+      "content": "`question_options.question_id` references `questions.id` with cascade deletion.",
+      "source_line_start": 242,
+      "source_line_end": 246
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Type Constraint",
+      "normalized_title": "Type Constraint",
+      "key": "type_constraint",
+      "path": [
+        "Relational D1 Schema",
+        "Type Constraint"
+      ],
+      "content": "The database constrains question type to:\n\n```text\nmcq\nmulti_select\n```",
+      "source_line_start": 246,
+      "source_line_end": 255
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Correctness Constraint",
+      "normalized_title": "Correctness Constraint",
+      "key": "correctness_constraint",
+      "path": [
+        "Relational D1 Schema",
+        "Correctness Constraint"
+      ],
+      "content": "`question_options.is_correct` is constrained to integer values `0` or `1`.",
+      "source_line_start": 255,
+      "source_line_end": 259
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Explicit Ordering",
+      "normalized_title": "Explicit Ordering",
+      "key": "explicit_ordering",
+      "path": [
+        "Relational D1 Schema",
+        "Explicit Ordering"
+      ],
+      "content": "Subcategories, questions, and options each contain explicit `position` columns.\n\nIndexes align with those ordered parent-child access patterns:\n\n- category + subcategory position;\n- subcategory + question position;\n- question + option position.\n\nThis makes order a first-class part of the model rather than depending on insertion order accidentally.",
+      "source_line_start": 259,
+      "source_line_end": 271
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Why Relational Storage Is Appropriate Here",
+      "normalized_title": "Why Relational Storage Is Appropriate Here",
+      "key": "why_relational_storage_is_appropriate_here",
+      "path": [
+        "Why Relational Storage Is Appropriate Here"
+      ],
+      "content": "The application needs to:\n\n- list categories;\n- count subcategories/questions;\n- read one category hierarchy;\n- append subcategories;\n- append questions;\n- preserve option order;\n- delete a full category tree.\n\nRelational D1 tables support those operations at entity level.\n\nImport/export JSON serves a different concern: portability across installations and workflows.\n\nThe repository therefore separates internal persistence shape from interchange shape.",
+      "source_line_start": 271,
+      "source_line_end": 289
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Portable Category Package",
+      "normalized_title": "Portable Category Package",
+      "key": "portable_category_package",
+      "path": [
+        "Portable Category Package"
+      ],
+      "content": "### File Identity\n\nA category export is a versioned JSON object with:\n\n- `schemaVersion`;\n- `kind`;\n- `exportedAt`;\n- category content.\n\nThe fixed kind is:\n\n`kiro-question-bank-category`.\n\nCurrent schema version is `1`.\n\n### File Suffix\n\nExports use:\n\n`.kiroq.json`.\n\nThe file remains ordinary JSON while carrying a recognizable application-specific suffix.\n\n### IDs Deliberately Excluded\n\nExported categories omit database IDs.\n\nThe exported package contains logical content:\n\n- names;\n- descriptions;\n- question types;\n- Markdown bodies;\n- explanations;\n- option text;\n- correctness.\n\nFresh UUIDs are generated on import.\n\nThis avoids coupling portable content to one D1 installation's identifiers.\n\n### Order Preserved Structurally\n\nArray order represents:\n\n- subcategory order;\n- question order;\n- option order.\n\nOn import, array indexes become explicit relational `position` values.\n\nThis translates portable ordered JSON into queryable ordered relational data.",
+      "source_line_start": 289,
+      "source_line_end": 344
+    },
+    {
+      "id": "s024",
+      "level": 3,
+      "title": "File Identity",
+      "normalized_title": "File Identity",
+      "key": "file_identity",
+      "path": [
+        "Portable Category Package",
+        "File Identity"
+      ],
+      "content": "A category export is a versioned JSON object with:\n\n- `schemaVersion`;\n- `kind`;\n- `exportedAt`;\n- category content.\n\nThe fixed kind is:\n\n`kiro-question-bank-category`.\n\nCurrent schema version is `1`.",
+      "source_line_start": 291,
+      "source_line_end": 306
+    },
+    {
+      "id": "s025",
+      "level": 3,
+      "title": "File Suffix",
+      "normalized_title": "File Suffix",
+      "key": "file_suffix",
+      "path": [
+        "Portable Category Package",
+        "File Suffix"
+      ],
+      "content": "Exports use:\n\n`.kiroq.json`.\n\nThe file remains ordinary JSON while carrying a recognizable application-specific suffix.",
+      "source_line_start": 306,
+      "source_line_end": 314
+    },
+    {
+      "id": "s026",
+      "level": 3,
+      "title": "IDs Deliberately Excluded",
+      "normalized_title": "IDs Deliberately Excluded",
+      "key": "ids_deliberately_excluded",
+      "path": [
+        "Portable Category Package",
+        "IDs Deliberately Excluded"
+      ],
+      "content": "Exported categories omit database IDs.\n\nThe exported package contains logical content:\n\n- names;\n- descriptions;\n- question types;\n- Markdown bodies;\n- explanations;\n- option text;\n- correctness.\n\nFresh UUIDs are generated on import.\n\nThis avoids coupling portable content to one D1 installation's identifiers.",
+      "source_line_start": 314,
+      "source_line_end": 332
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "Order Preserved Structurally",
+      "normalized_title": "Order Preserved Structurally",
+      "key": "order_preserved_structurally",
+      "path": [
+        "Portable Category Package",
+        "Order Preserved Structurally"
+      ],
+      "content": "Array order represents:\n\n- subcategory order;\n- question order;\n- option order.\n\nOn import, array indexes become explicit relational `position` values.\n\nThis translates portable ordered JSON into queryable ordered relational data.",
+      "source_line_start": 332,
+      "source_line_end": 344
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Versioned Interchange Design",
+      "normalized_title": "Versioned Interchange Design",
+      "key": "versioned_interchange_design",
+      "path": [
+        "Versioned Interchange Design"
+      ],
+      "content": "The importer requires:\n\n```text\nschemaVersion = 1\nkind = kiro-question-bank-category\n```\n\nAn unsupported version is rejected explicitly.\n\nA wrong package kind is also rejected explicitly.\n\nThe design therefore leaves room for future transport evolution without forcing all stored database rows into an opaque versioned JSON payload.",
+      "source_line_start": 344,
+      "source_line_end": 359
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Import Validation",
+      "normalized_title": "Import Validation",
+      "key": "import_validation",
+      "path": [
+        "Import Validation"
+      ],
+      "content": "### Whole-Document Validation Before Write Construction\n\n`validateCategoryImport()` traverses the complete incoming structure before the Worker constructs persistence statements.\n\nIt validates:\n\n- top-level object shape;\n- schema version;\n- package kind;\n- category object;\n- category name;\n- optional category description;\n- subcategory array;\n- each subcategory object;\n- subcategory name/description;\n- each question;\n- each option;\n- question-type rules.\n\n### Reuse of Question Validation\n\nImported questions use the same `validateQuestion()` logic as questions created through the normal API.\n\nThis prevents import from becoming a lower-validation bypass around interactive authoring rules.",
+      "source_line_start": 359,
+      "source_line_end": 386
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Whole-Document Validation Before Write Construction",
+      "normalized_title": "Whole-Document Validation Before Write Construction",
+      "key": "whole_document_validation_before_write_construction",
+      "path": [
+        "Import Validation",
+        "Whole-Document Validation Before Write Construction"
+      ],
+      "content": "`validateCategoryImport()` traverses the complete incoming structure before the Worker constructs persistence statements.\n\nIt validates:\n\n- top-level object shape;\n- schema version;\n- package kind;\n- category object;\n- category name;\n- optional category description;\n- subcategory array;\n- each subcategory object;\n- subcategory name/description;\n- each question;\n- each option;\n- question-type rules.",
+      "source_line_start": 361,
+      "source_line_end": 380
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Reuse of Question Validation",
+      "normalized_title": "Reuse of Question Validation",
+      "key": "reuse_of_question_validation",
+      "path": [
+        "Import Validation",
+        "Reuse of Question Validation"
+      ],
+      "content": "Imported questions use the same `validateQuestion()` logic as questions created through the normal API.\n\nThis prevents import from becoming a lower-validation bypass around interactive authoring rules.",
+      "source_line_start": 380,
+      "source_line_end": 386
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Import Persistence Strategy",
+      "normalized_title": "Import Persistence Strategy",
+      "key": "import_persistence_strategy",
+      "path": [
+        "Import Persistence Strategy"
+      ],
+      "content": "After validation, the Worker creates fresh IDs for the entire imported hierarchy.\n\nIt collects three flat row arrays:\n\n- subcategory rows;\n- question rows;\n- option rows.\n\nThe import then builds a D1 batch containing:\n\n1. category insert;\n2. optional bulk subcategory insert;\n3. optional bulk question insert;\n4. optional bulk option insert.\n\n### JSON-to-SQL Bulk Expansion\n\nInstead of issuing one prepared statement per imported entity, the Worker serializes each row collection to JSON and uses SQLite/D1 `json_each()` plus `json_extract()` to expand it into relational insert rows.\n\nThis is a compact bulk-import technique especially appropriate for a portable JSON source format.\n\n### Unit-Oriented Batch\n\nThe category and all of its nested content are submitted through one D1 batch.\n\nThe design aims to treat a category package as one import operation rather than exposing a partially imported hierarchy to the application.",
+      "source_line_start": 386,
+      "source_line_end": 415
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "JSON-to-SQL Bulk Expansion",
+      "normalized_title": "JSON-to-SQL Bulk Expansion",
+      "key": "json_to_sql_bulk_expansion",
+      "path": [
+        "Import Persistence Strategy",
+        "JSON-to-SQL Bulk Expansion"
+      ],
+      "content": "Instead of issuing one prepared statement per imported entity, the Worker serializes each row collection to JSON and uses SQLite/D1 `json_each()` plus `json_extract()` to expand it into relational insert rows.\n\nThis is a compact bulk-import technique especially appropriate for a portable JSON source format.",
+      "source_line_start": 403,
+      "source_line_end": 409
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Unit-Oriented Batch",
+      "normalized_title": "Unit-Oriented Batch",
+      "key": "unit_oriented_batch",
+      "path": [
+        "Import Persistence Strategy",
+        "Unit-Oriented Batch"
+      ],
+      "content": "The category and all of its nested content are submitted through one D1 batch.\n\nThe design aims to treat a category package as one import operation rather than exposing a partially imported hierarchy to the application.",
+      "source_line_start": 409,
+      "source_line_end": 415
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Export Logic",
+      "normalized_title": "Export Logic",
+      "key": "export_logic",
+      "path": [
+        "Export Logic"
+      ],
+      "content": "`GET /api/categories/:id/export` first reconstructs the full category hierarchy from D1.\n\nIt then maps the runtime objects into the portable representation.\n\nIDs and installation timestamps are omitted from the nested domain data.\n\nThe route sets:\n\n- JSON content type;\n- attachment `Content-Disposition`;\n- sanitized lowercase file name;\n- `.kiroq.json` suffix.\n\nThis makes export usable directly from the browser as a category package.",
+      "source_line_start": 415,
+      "source_line_end": 432
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Category Reconstruction",
+      "normalized_title": "Category Reconstruction",
+      "key": "category_reconstruction",
+      "path": [
+        "Category Reconstruction"
+      ],
+      "content": "`readCategory()` rebuilds a nested category from relational tables.\n\nIt performs parallel queries for:\n\n- subcategories;\n- questions;\n- options.\n\nIt then groups:\n\n- options by question ID;\n- questions by subcategory ID.\n\nFinally it assembles the hierarchical `CategoryDetail` object.\n\nThis avoids an explosion of one-query-per-child reads while still returning a nested frontend-friendly structure.",
+      "source_line_start": 432,
+      "source_line_end": 451
+    },
+    {
+      "id": "s037",
+      "level": 2,
+      "title": "Category Listing",
+      "normalized_title": "Category Listing",
+      "key": "category_listing",
+      "path": [
+        "Category Listing"
+      ],
+      "content": "`GET /api/categories` returns summary records.\n\nFor each category, SQL computes:\n\n- subcategory count;\n- question count.\n\nCategories are ordered by most recently updated, then creation time.\n\nThe frontend uses these counts to make the category sidebar informative without loading every full category first.",
+      "source_line_start": 451,
+      "source_line_end": 464
+    },
+    {
+      "id": "s038",
+      "level": 2,
+      "title": "Category Creation",
+      "normalized_title": "Category Creation",
+      "key": "category_creation",
+      "path": [
+        "Category Creation"
+      ],
+      "content": "`POST /api/categories`:\n\n- requires an object payload;\n- validates non-empty name;\n- normalizes optional description;\n- generates a UUID;\n- inserts the category;\n- returns HTTP 201 with the new ID.",
+      "source_line_start": 464,
+      "source_line_end": 475
+    },
+    {
+      "id": "s039",
+      "level": 2,
+      "title": "Subcategory Creation",
+      "normalized_title": "Subcategory Creation",
+      "key": "subcategory_creation",
+      "path": [
+        "Subcategory Creation"
+      ],
+      "content": "`POST /api/categories/:id/subcategories`:\n\n- validates category existence;\n- validates name/description;\n- calculates the next position from the current maximum;\n- generates a UUID;\n- inserts the subcategory;\n- updates the parent category's `updated_at` timestamp;\n- groups the writes in a D1 batch.\n\nThis makes category recency respond to edits inside the hierarchy.",
+      "source_line_start": 475,
+      "source_line_end": 489
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Question Creation",
+      "normalized_title": "Question Creation",
+      "key": "question_creation",
+      "path": [
+        "Question Creation"
+      ],
+      "content": "`POST /api/subcategories/:id/questions`:\n\n- validates the complete question using the shared contract;\n- validates subcategory existence;\n- calculates the next question position;\n- creates a UUID for the question;\n- creates fresh UUIDs for options;\n- inserts question and options;\n- updates the parent category's update timestamp;\n- sends the related writes through one D1 batch.\n\nThe question's correctness invariants are therefore enforced before the batch reaches persistence.",
+      "source_line_start": 489,
+      "source_line_end": 504
+    },
+    {
+      "id": "s041",
+      "level": 2,
+      "title": "Category Deletion",
+      "normalized_title": "Category Deletion",
+      "key": "category_deletion",
+      "path": [
+        "Category Deletion"
+      ],
+      "content": "`DELETE /api/categories/:id` first checks category existence.\n\nIt then deletes the top-level category.\n\nRelational `ON DELETE CASCADE` removes subordinate:\n\n- subcategories;\n- questions;\n- options.\n\nThe route returns HTTP 204 after successful deletion.",
+      "source_line_start": 504,
+      "source_line_end": 518
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "HTTP Error Semantics",
+      "normalized_title": "HTTP Error Semantics",
+      "key": "http_error_semantics",
+      "path": [
+        "HTTP Error Semantics"
+      ],
+      "content": "The Worker distinguishes several common outcomes:\n\n- malformed create/import input → HTTP 400;\n- missing category/subcategory → HTTP 404;\n- successful creation/import → HTTP 201;\n- successful deletion → HTTP 204;\n- unhandled Worker failure → HTTP 500.\n\nA Hono `notFound` handler returns a JSON 404 response for unknown routes.\n\nA global `onError` handler logs unexpected failures and returns a generic internal-server-error response.",
+      "source_line_start": 518,
+      "source_line_end": 532
+    },
+    {
+      "id": "s043",
+      "level": 2,
+      "title": "Hono Backend",
+      "normalized_title": "Hono Backend",
+      "key": "hono_backend",
+      "path": [
+        "Hono Backend"
+      ],
+      "content": "The backend uses Hono as a thin HTTP framework over the Cloudflare Worker runtime.\n\nThe route layer remains small enough that domain validation and relational reconstruction are directly visible rather than hidden behind a large framework abstraction.\n\nD1 access uses prepared statements and bound values throughout the implementation.",
+      "source_line_start": 532,
+      "source_line_end": 540
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "API Surface",
+      "normalized_title": "API Surface",
+      "key": "api_surface",
+      "path": [
+        "API Surface"
+      ],
+      "content": "Implemented routes are:\n\n- `GET /api/health`;\n- `GET /api/categories`;\n- `POST /api/categories`;\n- `GET /api/categories/:id`;\n- `POST /api/categories/:id/subcategories`;\n- `POST /api/subcategories/:id/questions`;\n- `DELETE /api/categories/:id`;\n- `GET /api/categories/:id/export`;\n- `POST /api/import`.",
+      "source_line_start": 540,
+      "source_line_end": 554
+    },
+    {
+      "id": "s045",
+      "level": 2,
+      "title": "Current API Access Model",
+      "normalized_title": "Current API Access Model",
+      "key": "current_api_access_model",
+      "path": [
+        "Current API Access Model"
+      ],
+      "content": "The Worker enables CORS for `/api/*`.\n\nCurrent write routes execute directly when called; the implementation does not wrap those routes in a session/role check.\n\nThis is concrete evidence about the current application boundary and is important when interpreting maturity.\n\nThe repository is therefore best understood as a personal/portable question-bank application scaffold rather than evidence of a multi-user authorization model.",
+      "source_line_start": 554,
+      "source_line_end": 564
+    },
+    {
+      "id": "s046",
+      "level": 2,
+      "title": "React Client",
+      "normalized_title": "React Client",
+      "key": "react_client",
+      "path": [
+        "React Client"
+      ],
+      "content": "### Application Layout\n\nThe client uses a two-region working layout:\n\n- category sidebar;\n- selected-category workspace.\n\nThe top bar exposes category import.\n\n### Category Sidebar\n\nEach category card shows:\n\n- category name;\n- question-group count;\n- question count.\n\nSelecting a category loads its full hierarchy.\n\n### New Category Flow\n\nThe sidebar includes inline category creation.\n\nAfter creation, the client:\n\n- refreshes category summaries;\n- automatically selects the newly created category.\n\n### Subcategory / Question-Group Flow\n\nInside a category, the UI uses the wording:\n\n`Add question group / subcategory`.\n\nExample placeholders explicitly include:\n\n- `Chapter 4 Questions`;\n- `Cross-Chapter Exam`.\n\nThis reinforces that chapter organization is a naming convention rather than a schema entity.",
+      "source_line_start": 564,
+      "source_line_end": 607
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Application Layout",
+      "normalized_title": "Application Layout",
+      "key": "application_layout",
+      "path": [
+        "React Client",
+        "Application Layout"
+      ],
+      "content": "The client uses a two-region working layout:\n\n- category sidebar;\n- selected-category workspace.\n\nThe top bar exposes category import.",
+      "source_line_start": 566,
+      "source_line_end": 575
+    },
+    {
+      "id": "s048",
+      "level": 3,
+      "title": "Category Sidebar",
+      "normalized_title": "Category Sidebar",
+      "key": "category_sidebar",
+      "path": [
+        "React Client",
+        "Category Sidebar"
+      ],
+      "content": "Each category card shows:\n\n- category name;\n- question-group count;\n- question count.\n\nSelecting a category loads its full hierarchy.",
+      "source_line_start": 575,
+      "source_line_end": 585
+    },
+    {
+      "id": "s049",
+      "level": 3,
+      "title": "New Category Flow",
+      "normalized_title": "New Category Flow",
+      "key": "new_category_flow",
+      "path": [
+        "React Client",
+        "New Category Flow"
+      ],
+      "content": "The sidebar includes inline category creation.\n\nAfter creation, the client:\n\n- refreshes category summaries;\n- automatically selects the newly created category.",
+      "source_line_start": 585,
+      "source_line_end": 594
+    },
+    {
+      "id": "s050",
+      "level": 3,
+      "title": "Subcategory / Question-Group Flow",
+      "normalized_title": "Subcategory / Question-Group Flow",
+      "key": "subcategory_question_group_flow",
+      "path": [
+        "React Client",
+        "Subcategory / Question-Group Flow"
+      ],
+      "content": "Inside a category, the UI uses the wording:\n\n`Add question group / subcategory`.\n\nExample placeholders explicitly include:\n\n- `Chapter 4 Questions`;\n- `Cross-Chapter Exam`.\n\nThis reinforces that chapter organization is a naming convention rather than a schema entity.",
+      "source_line_start": 594,
+      "source_line_end": 607
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Question Editor",
+      "normalized_title": "Question Editor",
+      "key": "question_editor",
+      "path": [
+        "Question Editor"
+      ],
+      "content": "### Type Switching\n\nThe editor offers:\n\n- MCQ;\n- Select multiple.\n\nFor MCQ, correctness controls are radio inputs.\n\nFor multi-select, correctness controls are checkboxes.\n\n### Correctness UI Behavior\n\nWhen switching to MCQ, the editor resets correctness so the first option is selected and other options are false.\n\nClicking an MCQ option makes that option the sole selected answer in frontend state.\n\nMulti-select controls toggle answers independently.\n\nBackend validation remains the authority that checks final correctness cardinality.\n\n### Dynamic Option Count\n\nThe editor begins with four answer options.\n\nUsers can add more options.\n\nOptions can be removed while at least two remain.\n\nThis aligns the UI floor with the domain validator's minimum option count.\n\n### Optional Explanation\n\nThe question editor provides an optional explanation field.\n\nThe browser sends empty explanation input as `null`.\n\n### Post-Save Reset\n\nAfter successful question creation, the editor resets:\n\n- body;\n- explanation;\n- type to MCQ;\n- default option list;\n- default first correct option.\n\nIt then reloads the selected category.",
+      "source_line_start": 607,
+      "source_line_end": 658
+    },
+    {
+      "id": "s052",
+      "level": 3,
+      "title": "Type Switching",
+      "normalized_title": "Type Switching",
+      "key": "type_switching",
+      "path": [
+        "Question Editor",
+        "Type Switching"
+      ],
+      "content": "The editor offers:\n\n- MCQ;\n- Select multiple.\n\nFor MCQ, correctness controls are radio inputs.\n\nFor multi-select, correctness controls are checkboxes.",
+      "source_line_start": 609,
+      "source_line_end": 620
+    },
+    {
+      "id": "s053",
+      "level": 3,
+      "title": "Correctness UI Behavior",
+      "normalized_title": "Correctness UI Behavior",
+      "key": "correctness_ui_behavior",
+      "path": [
+        "Question Editor",
+        "Correctness UI Behavior"
+      ],
+      "content": "When switching to MCQ, the editor resets correctness so the first option is selected and other options are false.\n\nClicking an MCQ option makes that option the sole selected answer in frontend state.\n\nMulti-select controls toggle answers independently.\n\nBackend validation remains the authority that checks final correctness cardinality.",
+      "source_line_start": 620,
+      "source_line_end": 630
+    },
+    {
+      "id": "s054",
+      "level": 3,
+      "title": "Dynamic Option Count",
+      "normalized_title": "Dynamic Option Count",
+      "key": "dynamic_option_count",
+      "path": [
+        "Question Editor",
+        "Dynamic Option Count"
+      ],
+      "content": "The editor begins with four answer options.\n\nUsers can add more options.\n\nOptions can be removed while at least two remain.\n\nThis aligns the UI floor with the domain validator's minimum option count.",
+      "source_line_start": 630,
+      "source_line_end": 640
+    },
+    {
+      "id": "s055",
+      "level": 3,
+      "title": "Optional Explanation",
+      "normalized_title": "Optional Explanation",
+      "key": "optional_explanation",
+      "path": [
+        "Question Editor",
+        "Optional Explanation"
+      ],
+      "content": "The question editor provides an optional explanation field.\n\nThe browser sends empty explanation input as `null`.",
+      "source_line_start": 640,
+      "source_line_end": 646
+    },
+    {
+      "id": "s056",
+      "level": 3,
+      "title": "Post-Save Reset",
+      "normalized_title": "Post-Save Reset",
+      "key": "post_save_reset",
+      "path": [
+        "Question Editor",
+        "Post-Save Reset"
+      ],
+      "content": "After successful question creation, the editor resets:\n\n- body;\n- explanation;\n- type to MCQ;\n- default option list;\n- default first correct option.\n\nIt then reloads the selected category.",
+      "source_line_start": 646,
+      "source_line_end": 658
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Import UI",
+      "normalized_title": "Import UI",
+      "key": "import_ui",
+      "path": [
+        "Import UI"
+      ],
+      "content": "The browser uses a hidden file input triggered by the `Import category` button.\n\nAccepted file hints include:\n\n- `.json`;\n- `.kiroq.json`;\n- `application/json`.\n\nThe browser:\n\n1. reads the selected file as text;\n2. parses JSON locally;\n3. posts the parsed object to `/api/import`;\n4. refreshes category summaries;\n5. selects the imported category.\n\nThe browser-level JSON parse gives fast syntax failure, while the Worker still performs authoritative schema/domain validation.",
+      "source_line_start": 658,
+      "source_line_end": 678
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Export UI",
+      "normalized_title": "Export UI",
+      "key": "export_ui",
+      "path": [
+        "Export UI"
+      ],
+      "content": "The selected category exposes a direct browser link to:\n\n`/api/categories/:id/export`.\n\nThe Worker responds as an attachment, so export requires no extra client-side transformation logic.",
+      "source_line_start": 678,
+      "source_line_end": 686
+    },
+    {
+      "id": "s059",
+      "level": 2,
+      "title": "Delete UX",
+      "normalized_title": "Delete UX",
+      "key": "delete_ux",
+      "path": [
+        "Delete UX"
+      ],
+      "content": "Before deleting a category, the React client shows a confirmation dialog that states the category and its questions will be deleted.\n\nAfter deletion, selected state is cleared and the category list is refreshed.",
+      "source_line_start": 686,
+      "source_line_end": 692
+    },
+    {
+      "id": "s060",
+      "level": 2,
+      "title": "Client Error Handling",
+      "normalized_title": "Client Error Handling",
+      "key": "client_error_handling",
+      "path": [
+        "Client Error Handling"
+      ],
+      "content": "A shared `api<T>()` helper:\n\n- sends JSON content type when a request body exists;\n- detects non-2xx responses;\n- attempts to parse backend JSON errors;\n- falls back to an HTTP-status message;\n- handles 204 without attempting JSON parsing.\n\nFeature actions expose caught errors in the application UI.",
+      "source_line_start": 692,
+      "source_line_end": 704
+    },
+    {
+      "id": "s061",
+      "level": 2,
+      "title": "Cloudflare Static Assets Architecture",
+      "normalized_title": "Cloudflare Static Assets Architecture",
+      "key": "cloudflare_static_assets_architecture",
+      "path": [
+        "Cloudflare Static Assets Architecture"
+      ],
+      "content": "`wrangler.jsonc` configures:\n\n- Worker entry point `src/worker/index.ts`;\n- static asset directory `./dist`;\n- SPA not-found handling;\n- Worker-first execution for `/api/*`.\n\nThis allows one Cloudflare application boundary to serve:\n\n- built React assets;\n- Hono API routes.",
+      "source_line_start": 704,
+      "source_line_end": 718
+    },
+    {
+      "id": "s062",
+      "level": 2,
+      "title": "Cloudflare D1 Binding",
+      "normalized_title": "Cloudflare D1 Binding",
+      "key": "cloudflare_d1_binding",
+      "path": [
+        "Cloudflare D1 Binding"
+      ],
+      "content": "The Worker expects a binding named:\n\n`DB`.\n\nWrangler names the intended database:\n\n`kiro-questions-bank`.\n\nThe migration directory is explicitly configured as:\n\n`migrations`.\n\nThe committed database ID is still the placeholder:\n\n`REPLACE_WITH_D1_DATABASE_ID`.\n\nThis means the repository contains the deployment contract and setup flow, while final environment-specific D1 binding remains a setup step.",
+      "source_line_start": 718,
+      "source_line_end": 738
+    },
+    {
+      "id": "s063",
+      "level": 2,
+      "title": "Local Development",
+      "normalized_title": "Local Development",
+      "key": "local_development",
+      "path": [
+        "Local Development"
+      ],
+      "content": "`package.json` provides concurrent frontend/API development:\n\n```text\nnpm run dev\n```\n\nIt starts:\n\n- Wrangler dev on port 8787;\n- Vite on port 5173.\n\nThe Vite development surface and Worker API can therefore be exercised together.",
+      "source_line_start": 738,
+      "source_line_end": 753
+    },
+    {
+      "id": "s064",
+      "level": 2,
+      "title": "Build Pipeline",
+      "normalized_title": "Build Pipeline",
+      "key": "build_pipeline",
+      "path": [
+        "Build Pipeline"
+      ],
+      "content": "`npm run build` executes:\n\n1. TypeScript checking with `tsc --noEmit`;\n2. Vite production build.\n\nThe build therefore rejects TypeScript errors before producing frontend assets.",
+      "source_line_start": 753,
+      "source_line_end": 762
+    },
+    {
+      "id": "s065",
+      "level": 2,
+      "title": "Deployment Script",
+      "normalized_title": "Deployment Script",
+      "key": "deployment_script",
+      "path": [
+        "Deployment Script"
+      ],
+      "content": "`npm run deploy` executes the build and then `wrangler deploy`.\n\nDatabase setup has separate scripts for:\n\n- creating the D1 database;\n- applying remote D1 migrations.\n\nThe repository documents the required manual step of replacing the placeholder database ID before deployment.",
+      "source_line_start": 762,
+      "source_line_end": 773
+    },
+    {
+      "id": "s066",
+      "level": 2,
+      "title": "GitHub Actions Build Verification",
+      "normalized_title": "GitHub Actions Build Verification",
+      "key": "github_actions_build_verification",
+      "path": [
+        "GitHub Actions Build Verification"
+      ],
+      "content": "The repository includes a Build workflow triggered by:\n\n- pushes to `main`;\n- pull requests.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures Node 22;\n3. installs dependencies;\n4. runs `npm run build`.\n\nThe latest workflow run for commit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` completed with conclusion `success`.\n\nThis provides direct evidence that the committed TypeScript/Vite application builds successfully in GitHub Actions.",
+      "source_line_start": 773,
+      "source_line_end": 791
+    },
+    {
+      "id": "s067",
+      "level": 2,
+      "title": "Repository Evolution",
+      "normalized_title": "Repository Evolution",
+      "key": "repository_evolution",
+      "path": [
+        "Repository Evolution"
+      ],
+      "content": "The repository history is short and explicit.\n\n### Initial Commit\n\nThe repository is initialized on 2026-09-06.\n\n### Full React/Hono/D1 Scaffold\n\nCommit `79f8a90b4a2fe7a04c605031f22fc22d8a2305bb` adds the full question-bank application scaffold.\n\nThe implementation already includes:\n\n- relational D1 schema;\n- React authoring UI;\n- Hono routes;\n- portable JSON import/export;\n- shared contracts;\n- Cloudflare configuration.\n\n### D1 / CI Alignment Fix\n\nCommit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` adjusts D1 migration and CI setup.\n\nThe associated main-branch Build workflow then succeeds.\n\nThis makes the repository a compact example of taking a product concept from schema decision to build-verified implementation in a very short history.",
+      "source_line_start": 791,
+      "source_line_end": 820
+    },
+    {
+      "id": "s068",
+      "level": 3,
+      "title": "Initial Commit",
+      "normalized_title": "Initial Commit",
+      "key": "initial_commit",
+      "path": [
+        "Repository Evolution",
+        "Initial Commit"
+      ],
+      "content": "The repository is initialized on 2026-09-06.",
+      "source_line_start": 795,
+      "source_line_end": 799
+    },
+    {
+      "id": "s069",
+      "level": 3,
+      "title": "Full React/Hono/D1 Scaffold",
+      "normalized_title": "Full React/Hono/D1 Scaffold",
+      "key": "full_react_hono_d1_scaffold",
+      "path": [
+        "Repository Evolution",
+        "Full React/Hono/D1 Scaffold"
+      ],
+      "content": "Commit `79f8a90b4a2fe7a04c605031f22fc22d8a2305bb` adds the full question-bank application scaffold.\n\nThe implementation already includes:\n\n- relational D1 schema;\n- React authoring UI;\n- Hono routes;\n- portable JSON import/export;\n- shared contracts;\n- Cloudflare configuration.",
+      "source_line_start": 799,
+      "source_line_end": 812
+    },
+    {
+      "id": "s070",
+      "level": 3,
+      "title": "D1 / CI Alignment Fix",
+      "normalized_title": "D1 / CI Alignment Fix",
+      "key": "d1_ci_alignment_fix",
+      "path": [
+        "Repository Evolution",
+        "D1 / CI Alignment Fix"
+      ],
+      "content": "Commit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` adjusts D1 migration and CI setup.\n\nThe associated main-branch Build workflow then succeeds.\n\nThis makes the repository a compact example of taking a product concept from schema decision to build-verified implementation in a very short history.",
+      "source_line_start": 812,
+      "source_line_end": 820
+    },
+    {
+      "id": "s071",
+      "level": 2,
+      "title": "Architectural Decision: Do Not Encode the Book",
+      "normalized_title": "Architectural Decision: Do Not Encode the Book",
+      "key": "architectural_decision_do_not_encode_the_book",
+      "path": [
+        "Architectural Decision: Do Not Encode the Book"
+      ],
+      "content": "The strongest product-modeling decision is the refusal to create a permanent chapter entity merely because one intended use case is book study.\n\nThe application instead models the stable relationship:\n\n```text\nquestion bank grouping\n  → question group\n  → question\n  → answer options\n```\n\nBook/chapter terminology is kept at the user-authored naming layer.\n\nThis reduces schema connascence between:\n\n- one content-source type;\n- persistent backend entities;\n- import/export format;\n- frontend workflows.\n\nA future non-book category can use the same API and schema without requiring a backend migration just to remove chapter assumptions.",
+      "source_line_start": 820,
+      "source_line_end": 844
+    },
+    {
+      "id": "s072",
+      "level": 2,
+      "title": "Architectural Decision: Relational Persistence, JSON Transport",
+      "normalized_title": "Architectural Decision: Relational Persistence, JSON Transport",
+      "key": "architectural_decision_relational_persistence_json_transport",
+      "path": [
+        "Architectural Decision: Relational Persistence, JSON Transport"
+      ],
+      "content": "The project deliberately gives persistence and portability different representations.\n\nD1 uses normalized tables because the application needs entity-level editing, counts, ordering, and cascade behavior.\n\nExport uses nested JSON because a portable category package benefits from:\n\n- readability;\n- easy scripting;\n- easy AI/tool generation;\n- independence from database IDs;\n- explicit format versioning.\n\nThis is a clean separation of storage model and interchange model.",
+      "source_line_start": 844,
+      "source_line_end": 860
+    },
+    {
+      "id": "s073",
+      "level": 2,
+      "title": "Architectural Decision: Shared Validation",
+      "normalized_title": "Architectural Decision: Shared Validation",
+      "key": "architectural_decision_shared_validation",
+      "path": [
+        "Architectural Decision: Shared Validation"
+      ],
+      "content": "Question validation lives in the shared contract module rather than being implemented differently for interactive creation and file import.\n\nBoth paths enforce the same answer-cardinality semantics.\n\nThat prevents a common import feature failure mode where bulk input bypasses the rules used by the normal product UI.",
+      "source_line_start": 860,
+      "source_line_end": 868
+    },
+    {
+      "id": "s074",
+      "level": 2,
+      "title": "Architectural Decision: Fresh Identity on Import",
+      "normalized_title": "Architectural Decision: Fresh Identity on Import",
+      "key": "architectural_decision_fresh_identity_on_import",
+      "path": [
+        "Architectural Decision: Fresh Identity on Import"
+      ],
+      "content": "Imported category packages receive fresh UUIDs for every persisted entity.\n\nThe application therefore treats exported IDs as non-existent rather than attempting to merge database identities from one installation into another.\n\nFor a portable question bank this keeps transfer semantics simple:\n\n`content package → new local category tree`.",
+      "source_line_start": 868,
+      "source_line_end": 878
+    },
+    {
+      "id": "s075",
+      "level": 2,
+      "title": "Architectural Decision: Explicit Ordering",
+      "normalized_title": "Architectural Decision: Explicit Ordering",
+      "key": "architectural_decision_explicit_ordering",
+      "path": [
+        "Architectural Decision: Explicit Ordering"
+      ],
+      "content": "Position is persisted at every ordered level below category.\n\nThe exported JSON naturally preserves array order.\n\nThe importer converts that array order into persistent relational positions.\n\nThis prevents data ordering from depending on incidental UUID or timestamp order.",
+      "source_line_start": 878,
+      "source_line_end": 888
+    },
+    {
+      "id": "s076",
+      "level": 2,
+      "title": "Product Engineering Significance",
+      "normalized_title": "Product Engineering Significance",
+      "key": "product_engineering_significance",
+      "path": [
+        "Product Engineering Significance"
+      ],
+      "content": "The repository is small but conceptually disciplined.\n\nIts useful engineering signals are not raw code volume.\n\nThey are:\n\n- resisting unnecessary domain entities;\n- separating persistence from interchange;\n- using versioned import format;\n- validating entire imported content before persistence;\n- preserving explicit order;\n- using relational cascade semantics;\n- keeping shared question rules reusable across API paths;\n- exposing import/export as first-class product capabilities.",
+      "source_line_start": 888,
+      "source_line_end": 905
+    },
+    {
+      "id": "s077",
+      "level": 2,
+      "title": "Portability Design",
+      "normalized_title": "Portability Design",
+      "key": "portability_design",
+      "path": [
+        "Portability Design"
+      ],
+      "content": "The `.kiroq.json` format makes a category transferable without requiring:\n\n- original D1 row IDs;\n- direct database export;\n- access to the source installation.\n\nBecause the package is normal JSON, it can also be:\n\n- generated by scripts;\n- reviewed manually;\n- stored in source control;\n- produced by AI-assisted question-generation workflows;\n- validated through the same importer.\n\nThe example file in `examples/` documents the expected package structure as a concrete artifact.",
+      "source_line_start": 905,
+      "source_line_end": 923
+    },
+    {
+      "id": "s078",
+      "level": 2,
+      "title": "Data Integrity Behaviors",
+      "normalized_title": "Data Integrity Behaviors",
+      "key": "data_integrity_behaviors",
+      "path": [
+        "Data Integrity Behaviors"
+      ],
+      "content": "The implementation combines multiple integrity layers:\n\n### TypeScript Validation\n\n- question type validation;\n- non-empty strings;\n- nullable-string normalization;\n- option cardinality;\n- correctness cardinality;\n- import package version/kind validation.\n\n### SQL Constraints\n\n- non-null IDs/names/bodies;\n- constrained question type;\n- constrained correctness bit;\n- foreign keys;\n- cascade deletion.\n\n### Ordered Write Logic\n\n- next subcategory/question position derived explicitly;\n- import positions derived from arrays;\n- option position persisted explicitly.\n\nThis gives the data model more structure than a frontend-only question-list representation.",
+      "source_line_start": 923,
+      "source_line_end": 952
+    },
+    {
+      "id": "s079",
+      "level": 3,
+      "title": "TypeScript Validation",
+      "normalized_title": "TypeScript Validation",
+      "key": "typescript_validation",
+      "path": [
+        "Data Integrity Behaviors",
+        "TypeScript Validation"
+      ],
+      "content": "- question type validation;\n- non-empty strings;\n- nullable-string normalization;\n- option cardinality;\n- correctness cardinality;\n- import package version/kind validation.",
+      "source_line_start": 927,
+      "source_line_end": 936
+    },
+    {
+      "id": "s080",
+      "level": 3,
+      "title": "SQL Constraints",
+      "normalized_title": "SQL Constraints",
+      "key": "sql_constraints",
+      "path": [
+        "Data Integrity Behaviors",
+        "SQL Constraints"
+      ],
+      "content": "- non-null IDs/names/bodies;\n- constrained question type;\n- constrained correctness bit;\n- foreign keys;\n- cascade deletion.",
+      "source_line_start": 936,
+      "source_line_end": 944
+    },
+    {
+      "id": "s081",
+      "level": 3,
+      "title": "Ordered Write Logic",
+      "normalized_title": "Ordered Write Logic",
+      "key": "ordered_write_logic",
+      "path": [
+        "Data Integrity Behaviors",
+        "Ordered Write Logic"
+      ],
+      "content": "- next subcategory/question position derived explicitly;\n- import positions derived from arrays;\n- option position persisted explicitly.\n\nThis gives the data model more structure than a frontend-only question-list representation.",
+      "source_line_start": 944,
+      "source_line_end": 952
+    },
+    {
+      "id": "s082",
+      "level": 2,
+      "title": "Build and Maturity Boundary",
+      "normalized_title": "Build and Maturity Boundary",
+      "key": "build_and_maturity_boundary",
+      "path": [
+        "Build and Maturity Boundary"
+      ],
+      "content": "The latest committed application has successful CI build evidence.\n\nIt also has concrete Cloudflare Worker, static-assets, D1 migration, and deployment scripts.\n\nThe placeholder D1 database ID is a current environment-configuration boundary.\n\nAccordingly, the strongest defensible maturity description is:\n\n**build-verified full-stack Cloudflare application scaffold with a complete portable question-bank workflow and deployment configuration.**\n\nThat is stronger than a UI mockup, while remaining more precise than claiming a verified production deployment.",
+      "source_line_start": 952,
+      "source_line_end": 966
+    },
+    {
+      "id": "s083",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### Domain and Data Modeling\n\n- **generic domain abstraction — strong evidence.**\n- **relational schema design — strong evidence.**\n- **parent-child lifecycle modeling — strong evidence.**\n- **explicit ordering design — strong evidence.**\n- **domain invariant validation — strong evidence.**\n- **schema-level constraints — strong evidence.**\n\n### TypeScript and Full-Stack Development\n\n- **TypeScript — strong evidence.**\n- **React 19 — strong evidence.**\n- **Hono — strong evidence.**\n- **shared frontend/backend contracts — strong evidence.**\n- **browser API integration — strong evidence.**\n- **error-state handling — strong evidence.**\n\n### Cloudflare Backend\n\n- **Cloudflare Workers — strong evidence.**\n- **Cloudflare D1 — strong evidence.**\n- **Wrangler configuration — strong evidence.**\n- **D1 migration authoring — strong evidence.**\n- **prepared SQL statements — strong evidence.**\n- **D1 batch operations — strong evidence.**\n\n### Import / Export Engineering\n\n- **versioned JSON schema — strong evidence.**\n- **portable package design — strong evidence.**\n- **database-ID-independent export — strong evidence.**\n- **whole-document import validation — strong evidence.**\n- **fresh-identity import — strong evidence.**\n- **JSON-to-relational bulk import — strong evidence.**\n- **content-disposition export — strong evidence.**\n\n### Product Engineering\n\n- **question-bank authoring workflow — strong evidence.**\n- **category/subcategory information architecture — strong evidence.**\n- **MCQ/multi-select editor design — strong evidence.**\n- **import/export as first-class product flows — strong evidence.**\n- **destructive-action confirmation — strong evidence.**\n- **schema-generalization reasoning — strong evidence.**\n\n### CI and Build\n\n- **GitHub Actions — concrete evidence.**\n- **Node 22 CI environment — concrete evidence.**\n- **TypeScript build gate — concrete evidence.**\n- **Vite production build — concrete evidence.**\n- **successful latest CI build — concrete evidence.**",
+      "source_line_start": 966,
+      "source_line_end": 1022
+    },
+    {
+      "id": "s084",
+      "level": 3,
+      "title": "Domain and Data Modeling",
+      "normalized_title": "Domain and Data Modeling",
+      "key": "domain_and_data_modeling",
+      "path": [
+        "Skills Demonstrated",
+        "Domain and Data Modeling"
+      ],
+      "content": "- **generic domain abstraction — strong evidence.**\n- **relational schema design — strong evidence.**\n- **parent-child lifecycle modeling — strong evidence.**\n- **explicit ordering design — strong evidence.**\n- **domain invariant validation — strong evidence.**\n- **schema-level constraints — strong evidence.**",
+      "source_line_start": 968,
+      "source_line_end": 977
+    },
+    {
+      "id": "s085",
+      "level": 3,
+      "title": "TypeScript and Full-Stack Development",
+      "normalized_title": "TypeScript and Full-Stack Development",
+      "key": "typescript_and_full_stack_development",
+      "path": [
+        "Skills Demonstrated",
+        "TypeScript and Full-Stack Development"
+      ],
+      "content": "- **TypeScript — strong evidence.**\n- **React 19 — strong evidence.**\n- **Hono — strong evidence.**\n- **shared frontend/backend contracts — strong evidence.**\n- **browser API integration — strong evidence.**\n- **error-state handling — strong evidence.**",
+      "source_line_start": 977,
+      "source_line_end": 986
+    },
+    {
+      "id": "s086",
+      "level": 3,
+      "title": "Cloudflare Backend",
+      "normalized_title": "Cloudflare Backend",
+      "key": "cloudflare_backend",
+      "path": [
+        "Skills Demonstrated",
+        "Cloudflare Backend"
+      ],
+      "content": "- **Cloudflare Workers — strong evidence.**\n- **Cloudflare D1 — strong evidence.**\n- **Wrangler configuration — strong evidence.**\n- **D1 migration authoring — strong evidence.**\n- **prepared SQL statements — strong evidence.**\n- **D1 batch operations — strong evidence.**",
+      "source_line_start": 986,
+      "source_line_end": 995
+    },
+    {
+      "id": "s087",
+      "level": 3,
+      "title": "Import / Export Engineering",
+      "normalized_title": "Import / Export Engineering",
+      "key": "import_export_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Import / Export Engineering"
+      ],
+      "content": "- **versioned JSON schema — strong evidence.**\n- **portable package design — strong evidence.**\n- **database-ID-independent export — strong evidence.**\n- **whole-document import validation — strong evidence.**\n- **fresh-identity import — strong evidence.**\n- **JSON-to-relational bulk import — strong evidence.**\n- **content-disposition export — strong evidence.**",
+      "source_line_start": 995,
+      "source_line_end": 1005
+    },
+    {
+      "id": "s088",
+      "level": 3,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Skills Demonstrated",
+        "Product Engineering"
+      ],
+      "content": "- **question-bank authoring workflow — strong evidence.**\n- **category/subcategory information architecture — strong evidence.**\n- **MCQ/multi-select editor design — strong evidence.**\n- **import/export as first-class product flows — strong evidence.**\n- **destructive-action confirmation — strong evidence.**\n- **schema-generalization reasoning — strong evidence.**",
+      "source_line_start": 1005,
+      "source_line_end": 1014
+    },
+    {
+      "id": "s089",
+      "level": 3,
+      "title": "CI and Build",
+      "normalized_title": "CI and Build",
+      "key": "ci_and_build",
+      "path": [
+        "Skills Demonstrated",
+        "CI and Build"
+      ],
+      "content": "- **GitHub Actions — concrete evidence.**\n- **Node 22 CI environment — concrete evidence.**\n- **TypeScript build gate — concrete evidence.**\n- **Vite production build — concrete evidence.**\n- **successful latest CI build — concrete evidence.**",
+      "source_line_start": 1014,
+      "source_line_end": 1022
+    },
+    {
+      "id": "s090",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "`KiroQuestionsBank` shows a more defensive approach to modeling than many simpler CRUD applications.\n\nThe implementation begins by asking what part of the domain is genuinely stable.\n\nThe stable entities are not “Book” and “Chapter.”\n\nThey are category, question grouping, question, and option.\n\nThat decision reduces future backend change when the organizational meaning changes.\n\nThe second important capability is separating database concerns from transfer concerns.\n\nD1 remains normalized and queryable, while `.kiroq.json` provides a clean portable boundary.\n\nThe importer validates the package and reconstructs a fresh local identity graph, which makes the file usable as a true transfer artifact rather than a raw database dump.",
+      "source_line_start": 1022,
+      "source_line_end": 1040
+    },
+    {
+      "id": "s091",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This repository follows `my-portfolio`, where architecture governance is broad and production-oriented.\n\n`KiroQuestionsBank` applies a similar design discipline to a much smaller domain.\n\nThe notable progression is that the project does not need a large platform to demonstrate careful architecture decisions.\n\nEven in a compact application, the implementation explicitly addresses:\n\n- unnecessary schema coupling;\n- portable data contracts;\n- shared validation;\n- deterministic order;\n- transactional/unit-oriented import;\n- CI build verification.\n\nIt therefore provides complementary evidence: system-design thinking is being applied at small-project scale rather than only inside the large portfolio platform.",
+      "source_line_start": 1040,
+      "source_line_end": 1059
+    },
+    {
+      "id": "s092",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, repository 114 is the earliest observed project centered on a **versioned, database-ID-independent question-bank category package** that round-trips between nested JSON transport and normalized D1 storage.\n\nIt is also the earliest observed processed repository where an explicit design requirement avoids a book/chapter database model in favor of a generic category/subcategory/question hierarchy specifically to preserve reuse across different study organizations.",
+      "source_line_start": 1059,
+      "source_line_end": 1065
+    },
+    {
+      "id": "s093",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "`KiroQuestionsBank` is a compact React/Hono/D1 application built around one careful domain decision: a question bank should model question organization, not assume that every category is literally a book and every subgroup is literally a chapter.\n\nThe application persists categories, subcategories, questions, and answer options relationally in D1. Question bodies, explanations, and options use Markdown text as their content contract. The frontend lets a user create categories, create question groups, add MCQ or multi-select questions, mark correct answers, export a category, import a package, and delete a category hierarchy.\n\nThe portable `.kiroq.json` format has explicit version and kind metadata but deliberately excludes database IDs. Export maps the relational hierarchy into nested portable content; import validates the whole package, generates fresh UUIDs, translates array order into relational positions, expands collected JSON rows through SQLite `json_each()`, and writes the resulting hierarchy through one D1 batch.\n\nShared TypeScript validation is reused between ordinary question creation and imported questions, preventing the import path from bypassing MCQ/multi-select correctness rules. SQL constraints and foreign-key cascades reinforce the domain model below the TypeScript layer.\n\nThe repository also includes Cloudflare static-asset/Worker routing, D1 migration configuration, deployment scripts, and a GitHub Actions build. The latest commit's workflow succeeds. Because the Wrangler D1 database ID remains a placeholder, the evidence supports a build-verified deployable scaffold rather than a claim of confirmed production deployment.\n\nThe repository's strongest signal is not size. It is disciplined generalization: encode the stable question-bank structure in the backend, keep book/chapter semantics at the naming layer, and use a separate versioned JSON transport format for portability.\n\n# Project Tags",
+      "source_line_start": 1065,
+      "source_line_end": 1081
+    },
+    {
+      "id": "s094",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `question-bank-application`\n- `study-tool`\n- `portable-content-application`\n- `full-stack-web-application`\n- `serverless-web-application`\n- `individual-project`",
+      "source_line_start": 1081,
+      "source_line_end": 1090
+    },
+    {
+      "id": "s095",
+      "level": 2,
+      "title": "Languages and Frameworks",
+      "normalized_title": "Languages and Frameworks",
+      "key": "languages_and_frameworks",
+      "path": [
+        "Languages and Frameworks"
+      ],
+      "content": "- `typescript`\n- `react-19`\n- `hono`\n- `vite`\n- `cloudflare-workers`\n- `cloudflare-d1`\n- `wrangler`\n- `sql`",
+      "source_line_start": 1090,
+      "source_line_end": 1101
+    },
+    {
+      "id": "s096",
+      "level": 2,
+      "title": "Domain Model",
+      "normalized_title": "Domain Model",
+      "key": "domain_model",
+      "path": [
+        "Domain Model"
+      ],
+      "content": "- `category-subcategory-question-model`\n- `generic-question-grouping`\n- `mcq`\n- `multi-select-question`\n- `question-options`\n- `question-explanations`\n- `markdown-content-storage`\n- `explicit-position-ordering`\n- `cascade-delete`\n- `uuid-identifiers`",
+      "source_line_start": 1101,
+      "source_line_end": 1114
+    },
+    {
+      "id": "s097",
+      "level": 2,
+      "title": "Data Integrity",
+      "normalized_title": "Data Integrity",
+      "key": "data_integrity",
+      "path": [
+        "Data Integrity"
+      ],
+      "content": "- `shared-domain-validation`\n- `question-cardinality-validation`\n- `correct-answer-cardinality`\n- `sql-check-constraints`\n- `foreign-key-constraints`\n- `prepared-statements`\n- `d1-batch`\n- `parent-updated-at-propagation`",
+      "source_line_start": 1114,
+      "source_line_end": 1125
+    },
+    {
+      "id": "s098",
+      "level": 2,
+      "title": "Import and Export",
+      "normalized_title": "Import and Export",
+      "key": "import_and_export",
+      "path": [
+        "Import and Export"
+      ],
+      "content": "- `category-import-export`\n- `versioned-json-format`\n- `kiroq-json`\n- `database-id-independent-export`\n- `fresh-id-import`\n- `whole-document-import-validation`\n- `json-each-bulk-insert`\n- `json-to-relational-import`\n- `relational-to-json-export`\n- `content-disposition-download`\n- `portable-question-bank-package`",
+      "source_line_start": 1125,
+      "source_line_end": 1139
+    },
+    {
+      "id": "s099",
+      "level": 2,
+      "title": "Frontend Product Behavior",
+      "normalized_title": "Frontend Product Behavior",
+      "key": "frontend_product_behavior",
+      "path": [
+        "Frontend Product Behavior"
+      ],
+      "content": "- `category-sidebar`\n- `question-editor`\n- `radio-correctness-control`\n- `checkbox-correctness-control`\n- `dynamic-answer-options`\n- `file-import-ui`\n- `browser-export-download`\n- `delete-confirmation`\n- `api-error-display`",
+      "source_line_start": 1139,
+      "source_line_end": 1151
+    },
+    {
+      "id": "s100",
+      "level": 2,
+      "title": "Cloud and Build",
+      "normalized_title": "Cloud and Build",
+      "key": "cloud_and_build",
+      "path": [
+        "Cloud and Build"
+      ],
+      "content": "- `cloudflare-static-assets`\n- `spa-fallback`\n- `worker-first-api-routing`\n- `d1-migration`\n- `github-actions`\n- `node-22-ci`\n- `typescript-build-gate`\n- `vite-production-build`\n- `successful-ci-build`\n- `deployment-configuration`",
+      "source_line_start": 1151,
+      "source_line_end": 1164
+    },
+    {
+      "id": "s101",
+      "level": 2,
+      "title": "Architecture and Product Design",
+      "normalized_title": "Architecture and Product Design",
+      "key": "architecture_and_product_design",
+      "path": [
+        "Architecture and Product Design"
+      ],
+      "content": "- `relational-storage-json-transport-separation`\n- `storage-interchange-separation`\n- `generic-domain-abstraction`\n- `book-schema-decoupling`\n- `reusable-question-bank-schema`\n- `versioned-interchange-contract`\n- `ordered-hierarchy-reconstruction`\n- `parallel-relational-read-assembly`\n- `build-verified-application-scaffold`",
+      "source_line_start": 1164,
+      "source_line_end": 1176
+    },
+    {
+      "id": "s102",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-versioned-question-bank-category-package`\n- `earliest-observed-d1-question-bank-import-export`\n- `earliest-observed-book-schema-decoupled-question-bank`\n- `earliest-observed-json-to-relational-question-bank-import`",
+      "source_line_start": 1176,
+      "source_line_end": 1182
+    }
+  ],
+  "raw_analysis": "# KiroQuestionsBank\n\n## Repository Identity\n\n- Repository: 114 / 134\n- Name: `KiroQuestionsBank`\n- Repository start date: 2026-09-06\n- Last meaningful update date: 2026-09-06\n- Latest meaningful commit: `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3`\n- Latest commit message: `fix: align D1 migration and CI setup`\n- Primary type: Portable question-bank web application\n- Technical field: Full-stack web engineering, schema design, data interchange, serverless APIs\n- Application domain: Study tooling, reusable question-bank authoring, category import/export\n- Collaboration type: `individual-project`\n- Primary language: TypeScript\n- Frontend: React 19 + Vite\n- Backend: Hono on Cloudflare Workers\n- Persistence: Cloudflare D1\n- Current verification evidence: GitHub Actions build succeeds on latest commit\n\n## Collaboration and Authorship Context\n\nThe repository is a compact owner-authored application created through a short sequence of commits on 2026-09-06.\n\nThe implementation is organized across:\n\n- React client code;\n- shared TypeScript contracts and validators;\n- Hono Worker routes;\n- D1 migration SQL;\n- Cloudflare Worker/static-assets configuration;\n- a versioned example category package;\n- a GitHub Actions build workflow.\n\nThe project uses external frameworks and infrastructure including React, Hono, Vite, Cloudflare Workers, and Cloudflare D1.\n\nThe repository-specific engineering evidence is the domain model, relational schema, shared validation logic, portable import/export format, all-or-unit import construction, API design, browser authoring workflow, and deployment/build configuration built around those services.\n\n## Evidence Basis\n\nThis analysis is grounded directly in:\n\n- `README.md`;\n- `src/shared/contracts.ts`;\n- `src/worker/index.ts`;\n- `src/client/App.tsx`;\n- `migrations/0001_initial.sql`;\n- `examples/example-category.kiroq.json`;\n- `package.json`;\n- `wrangler.jsonc`;\n- `.github/workflows/build.yml`;\n- repository commit history;\n- latest GitHub Actions run.\n\nThe latest workflow run for commit `1f5589c2...` completed successfully.\n\nThe current Wrangler configuration still contains a placeholder D1 database ID, so this corpus records concrete deployment plumbing without elevating it to verified production deployment.\n\n## What This Project Is\n\n`KiroQuestionsBank` is a small full-stack application for creating, organizing, exporting, and importing reusable question banks.\n\nIts most important design choice is conceptual rather than visual: the persistent model deliberately avoids treating one learning source type as the schema.\n\nThe hierarchy is:\n\n```text\nCategory\n   ↓\nSubcategory\n   ↓\nQuestion\n   ↓\nOption\n```\n\nA book is one possible organizational convention, not a database entity.\n\nFor example:\n\n```text\nCategory: Fundamentals of Software Architecture\nSubcategory: Chapter 4 Questions\nSubcategory: Chapter 5 Questions\nSubcategory: Cross-Chapter Exam\n```\n\n`Chapter 4 Questions` is simply a subcategory name.\n\nThe backend does not encode chapter number, chapter metadata, or book semantics into its data model.\n\nThat keeps the application usable for:\n\n- book-oriented study;\n- topic-oriented question banks;\n- course units;\n- cross-topic exams;\n- other category/grouping strategies.\n\n## Domain Modeling\n\n### Category\n\nA category is the top-level question-bank grouping.\n\nPersistent category fields are:\n\n- ID;\n- name;\n- optional description;\n- creation timestamp;\n- update timestamp.\n\n### Subcategory\n\nA subcategory belongs to exactly one category.\n\nIt contains:\n\n- ID;\n- category ID;\n- name;\n- optional description;\n- explicit position;\n- creation timestamp.\n\nThe generic term allows the application to support chapter-question groups without pretending that the system models chapters themselves.\n\n### Question\n\nA question belongs to exactly one subcategory.\n\nPersistent question fields include:\n\n- ID;\n- subcategory ID;\n- question type;\n- Markdown body text;\n- optional Markdown explanation text;\n- explicit position;\n- creation timestamp;\n- update timestamp.\n\n### Option\n\nEach question has ordered answer options.\n\nAn option stores:\n\n- ID;\n- question ID;\n- Markdown body text;\n- correctness flag;\n- explicit position.\n\n## Question Types\n\nThe type contract supports two question kinds:\n\n- `mcq`;\n- `multi_select`.\n\nThe same shared TypeScript union is used by the client and Worker-side validation contract.\n\n### MCQ Invariant\n\nAn MCQ must contain:\n\n- at least two options;\n- exactly one correct option.\n\n### Multi-Select Invariant\n\nA multi-select question must contain:\n\n- at least two options;\n- at least two correct options.\n\nThe validator rejects invalid correct-answer cardinality before persistence.\n\n## Shared TypeScript Contract\n\n`src/shared/contracts.ts` defines both transport shapes and persisted API view shapes.\n\nPortable types include:\n\n- `PortableOption`;\n- `PortableQuestion`;\n- `PortableSubcategory`;\n- `PortableCategory`;\n- `CategoryExportFile`.\n\nRuntime/API view types include:\n\n- `CategorySummary`;\n- `QuestionOption`;\n- `Question`;\n- `Subcategory`;\n- `CategoryDetail`.\n\nThis keeps browser and Worker code aligned around one domain vocabulary.\n\n## Markdown as Stored Content\n\nQuestion bodies are stored in `body_markdown`.\n\nExplanations are stored in `explanation_markdown`.\n\nOption bodies are also represented as Markdown text in the portable contract.\n\nThe design therefore keeps source content as portable plain text with lightweight formatting semantics rather than persisting rendered HTML.\n\nThe current React question display places the stored string directly into the page rather than passing it through a Markdown renderer.\n\nThat means Markdown is currently a storage/interchange contract, not evidence of rendered rich-text presentation.\n\nThis distinction is important for accurately describing the implementation.\n\n## Relational D1 Schema\n\nThe initial migration creates four tables:\n\n- `categories`;\n- `subcategories`;\n- `questions`;\n- `question_options`.\n\nThe design intentionally does not store an entire question bank as one JSON blob.\n\n### Category Relationship\n\n`subcategories.category_id` references `categories.id`.\n\nThe foreign key uses `ON DELETE CASCADE`.\n\nDeleting a category therefore removes its subordinate question groups through the relational lifecycle.\n\n### Question Relationship\n\n`questions.subcategory_id` references `subcategories.id` with cascade deletion.\n\n### Option Relationship\n\n`question_options.question_id` references `questions.id` with cascade deletion.\n\n### Type Constraint\n\nThe database constrains question type to:\n\n```text\nmcq\nmulti_select\n```\n\n### Correctness Constraint\n\n`question_options.is_correct` is constrained to integer values `0` or `1`.\n\n### Explicit Ordering\n\nSubcategories, questions, and options each contain explicit `position` columns.\n\nIndexes align with those ordered parent-child access patterns:\n\n- category + subcategory position;\n- subcategory + question position;\n- question + option position.\n\nThis makes order a first-class part of the model rather than depending on insertion order accidentally.\n\n## Why Relational Storage Is Appropriate Here\n\nThe application needs to:\n\n- list categories;\n- count subcategories/questions;\n- read one category hierarchy;\n- append subcategories;\n- append questions;\n- preserve option order;\n- delete a full category tree.\n\nRelational D1 tables support those operations at entity level.\n\nImport/export JSON serves a different concern: portability across installations and workflows.\n\nThe repository therefore separates internal persistence shape from interchange shape.\n\n## Portable Category Package\n\n### File Identity\n\nA category export is a versioned JSON object with:\n\n- `schemaVersion`;\n- `kind`;\n- `exportedAt`;\n- category content.\n\nThe fixed kind is:\n\n`kiro-question-bank-category`.\n\nCurrent schema version is `1`.\n\n### File Suffix\n\nExports use:\n\n`.kiroq.json`.\n\nThe file remains ordinary JSON while carrying a recognizable application-specific suffix.\n\n### IDs Deliberately Excluded\n\nExported categories omit database IDs.\n\nThe exported package contains logical content:\n\n- names;\n- descriptions;\n- question types;\n- Markdown bodies;\n- explanations;\n- option text;\n- correctness.\n\nFresh UUIDs are generated on import.\n\nThis avoids coupling portable content to one D1 installation's identifiers.\n\n### Order Preserved Structurally\n\nArray order represents:\n\n- subcategory order;\n- question order;\n- option order.\n\nOn import, array indexes become explicit relational `position` values.\n\nThis translates portable ordered JSON into queryable ordered relational data.\n\n## Versioned Interchange Design\n\nThe importer requires:\n\n```text\nschemaVersion = 1\nkind = kiro-question-bank-category\n```\n\nAn unsupported version is rejected explicitly.\n\nA wrong package kind is also rejected explicitly.\n\nThe design therefore leaves room for future transport evolution without forcing all stored database rows into an opaque versioned JSON payload.\n\n## Import Validation\n\n### Whole-Document Validation Before Write Construction\n\n`validateCategoryImport()` traverses the complete incoming structure before the Worker constructs persistence statements.\n\nIt validates:\n\n- top-level object shape;\n- schema version;\n- package kind;\n- category object;\n- category name;\n- optional category description;\n- subcategory array;\n- each subcategory object;\n- subcategory name/description;\n- each question;\n- each option;\n- question-type rules.\n\n### Reuse of Question Validation\n\nImported questions use the same `validateQuestion()` logic as questions created through the normal API.\n\nThis prevents import from becoming a lower-validation bypass around interactive authoring rules.\n\n## Import Persistence Strategy\n\nAfter validation, the Worker creates fresh IDs for the entire imported hierarchy.\n\nIt collects three flat row arrays:\n\n- subcategory rows;\n- question rows;\n- option rows.\n\nThe import then builds a D1 batch containing:\n\n1. category insert;\n2. optional bulk subcategory insert;\n3. optional bulk question insert;\n4. optional bulk option insert.\n\n### JSON-to-SQL Bulk Expansion\n\nInstead of issuing one prepared statement per imported entity, the Worker serializes each row collection to JSON and uses SQLite/D1 `json_each()` plus `json_extract()` to expand it into relational insert rows.\n\nThis is a compact bulk-import technique especially appropriate for a portable JSON source format.\n\n### Unit-Oriented Batch\n\nThe category and all of its nested content are submitted through one D1 batch.\n\nThe design aims to treat a category package as one import operation rather than exposing a partially imported hierarchy to the application.\n\n## Export Logic\n\n`GET /api/categories/:id/export` first reconstructs the full category hierarchy from D1.\n\nIt then maps the runtime objects into the portable representation.\n\nIDs and installation timestamps are omitted from the nested domain data.\n\nThe route sets:\n\n- JSON content type;\n- attachment `Content-Disposition`;\n- sanitized lowercase file name;\n- `.kiroq.json` suffix.\n\nThis makes export usable directly from the browser as a category package.\n\n## Category Reconstruction\n\n`readCategory()` rebuilds a nested category from relational tables.\n\nIt performs parallel queries for:\n\n- subcategories;\n- questions;\n- options.\n\nIt then groups:\n\n- options by question ID;\n- questions by subcategory ID.\n\nFinally it assembles the hierarchical `CategoryDetail` object.\n\nThis avoids an explosion of one-query-per-child reads while still returning a nested frontend-friendly structure.\n\n## Category Listing\n\n`GET /api/categories` returns summary records.\n\nFor each category, SQL computes:\n\n- subcategory count;\n- question count.\n\nCategories are ordered by most recently updated, then creation time.\n\nThe frontend uses these counts to make the category sidebar informative without loading every full category first.\n\n## Category Creation\n\n`POST /api/categories`:\n\n- requires an object payload;\n- validates non-empty name;\n- normalizes optional description;\n- generates a UUID;\n- inserts the category;\n- returns HTTP 201 with the new ID.\n\n## Subcategory Creation\n\n`POST /api/categories/:id/subcategories`:\n\n- validates category existence;\n- validates name/description;\n- calculates the next position from the current maximum;\n- generates a UUID;\n- inserts the subcategory;\n- updates the parent category's `updated_at` timestamp;\n- groups the writes in a D1 batch.\n\nThis makes category recency respond to edits inside the hierarchy.\n\n## Question Creation\n\n`POST /api/subcategories/:id/questions`:\n\n- validates the complete question using the shared contract;\n- validates subcategory existence;\n- calculates the next question position;\n- creates a UUID for the question;\n- creates fresh UUIDs for options;\n- inserts question and options;\n- updates the parent category's update timestamp;\n- sends the related writes through one D1 batch.\n\nThe question's correctness invariants are therefore enforced before the batch reaches persistence.\n\n## Category Deletion\n\n`DELETE /api/categories/:id` first checks category existence.\n\nIt then deletes the top-level category.\n\nRelational `ON DELETE CASCADE` removes subordinate:\n\n- subcategories;\n- questions;\n- options.\n\nThe route returns HTTP 204 after successful deletion.\n\n## HTTP Error Semantics\n\nThe Worker distinguishes several common outcomes:\n\n- malformed create/import input → HTTP 400;\n- missing category/subcategory → HTTP 404;\n- successful creation/import → HTTP 201;\n- successful deletion → HTTP 204;\n- unhandled Worker failure → HTTP 500.\n\nA Hono `notFound` handler returns a JSON 404 response for unknown routes.\n\nA global `onError` handler logs unexpected failures and returns a generic internal-server-error response.\n\n## Hono Backend\n\nThe backend uses Hono as a thin HTTP framework over the Cloudflare Worker runtime.\n\nThe route layer remains small enough that domain validation and relational reconstruction are directly visible rather than hidden behind a large framework abstraction.\n\nD1 access uses prepared statements and bound values throughout the implementation.\n\n## API Surface\n\nImplemented routes are:\n\n- `GET /api/health`;\n- `GET /api/categories`;\n- `POST /api/categories`;\n- `GET /api/categories/:id`;\n- `POST /api/categories/:id/subcategories`;\n- `POST /api/subcategories/:id/questions`;\n- `DELETE /api/categories/:id`;\n- `GET /api/categories/:id/export`;\n- `POST /api/import`.\n\n## Current API Access Model\n\nThe Worker enables CORS for `/api/*`.\n\nCurrent write routes execute directly when called; the implementation does not wrap those routes in a session/role check.\n\nThis is concrete evidence about the current application boundary and is important when interpreting maturity.\n\nThe repository is therefore best understood as a personal/portable question-bank application scaffold rather than evidence of a multi-user authorization model.\n\n## React Client\n\n### Application Layout\n\nThe client uses a two-region working layout:\n\n- category sidebar;\n- selected-category workspace.\n\nThe top bar exposes category import.\n\n### Category Sidebar\n\nEach category card shows:\n\n- category name;\n- question-group count;\n- question count.\n\nSelecting a category loads its full hierarchy.\n\n### New Category Flow\n\nThe sidebar includes inline category creation.\n\nAfter creation, the client:\n\n- refreshes category summaries;\n- automatically selects the newly created category.\n\n### Subcategory / Question-Group Flow\n\nInside a category, the UI uses the wording:\n\n`Add question group / subcategory`.\n\nExample placeholders explicitly include:\n\n- `Chapter 4 Questions`;\n- `Cross-Chapter Exam`.\n\nThis reinforces that chapter organization is a naming convention rather than a schema entity.\n\n## Question Editor\n\n### Type Switching\n\nThe editor offers:\n\n- MCQ;\n- Select multiple.\n\nFor MCQ, correctness controls are radio inputs.\n\nFor multi-select, correctness controls are checkboxes.\n\n### Correctness UI Behavior\n\nWhen switching to MCQ, the editor resets correctness so the first option is selected and other options are false.\n\nClicking an MCQ option makes that option the sole selected answer in frontend state.\n\nMulti-select controls toggle answers independently.\n\nBackend validation remains the authority that checks final correctness cardinality.\n\n### Dynamic Option Count\n\nThe editor begins with four answer options.\n\nUsers can add more options.\n\nOptions can be removed while at least two remain.\n\nThis aligns the UI floor with the domain validator's minimum option count.\n\n### Optional Explanation\n\nThe question editor provides an optional explanation field.\n\nThe browser sends empty explanation input as `null`.\n\n### Post-Save Reset\n\nAfter successful question creation, the editor resets:\n\n- body;\n- explanation;\n- type to MCQ;\n- default option list;\n- default first correct option.\n\nIt then reloads the selected category.\n\n## Import UI\n\nThe browser uses a hidden file input triggered by the `Import category` button.\n\nAccepted file hints include:\n\n- `.json`;\n- `.kiroq.json`;\n- `application/json`.\n\nThe browser:\n\n1. reads the selected file as text;\n2. parses JSON locally;\n3. posts the parsed object to `/api/import`;\n4. refreshes category summaries;\n5. selects the imported category.\n\nThe browser-level JSON parse gives fast syntax failure, while the Worker still performs authoritative schema/domain validation.\n\n## Export UI\n\nThe selected category exposes a direct browser link to:\n\n`/api/categories/:id/export`.\n\nThe Worker responds as an attachment, so export requires no extra client-side transformation logic.\n\n## Delete UX\n\nBefore deleting a category, the React client shows a confirmation dialog that states the category and its questions will be deleted.\n\nAfter deletion, selected state is cleared and the category list is refreshed.\n\n## Client Error Handling\n\nA shared `api<T>()` helper:\n\n- sends JSON content type when a request body exists;\n- detects non-2xx responses;\n- attempts to parse backend JSON errors;\n- falls back to an HTTP-status message;\n- handles 204 without attempting JSON parsing.\n\nFeature actions expose caught errors in the application UI.\n\n## Cloudflare Static Assets Architecture\n\n`wrangler.jsonc` configures:\n\n- Worker entry point `src/worker/index.ts`;\n- static asset directory `./dist`;\n- SPA not-found handling;\n- Worker-first execution for `/api/*`.\n\nThis allows one Cloudflare application boundary to serve:\n\n- built React assets;\n- Hono API routes.\n\n## Cloudflare D1 Binding\n\nThe Worker expects a binding named:\n\n`DB`.\n\nWrangler names the intended database:\n\n`kiro-questions-bank`.\n\nThe migration directory is explicitly configured as:\n\n`migrations`.\n\nThe committed database ID is still the placeholder:\n\n`REPLACE_WITH_D1_DATABASE_ID`.\n\nThis means the repository contains the deployment contract and setup flow, while final environment-specific D1 binding remains a setup step.\n\n## Local Development\n\n`package.json` provides concurrent frontend/API development:\n\n```text\nnpm run dev\n```\n\nIt starts:\n\n- Wrangler dev on port 8787;\n- Vite on port 5173.\n\nThe Vite development surface and Worker API can therefore be exercised together.\n\n## Build Pipeline\n\n`npm run build` executes:\n\n1. TypeScript checking with `tsc --noEmit`;\n2. Vite production build.\n\nThe build therefore rejects TypeScript errors before producing frontend assets.\n\n## Deployment Script\n\n`npm run deploy` executes the build and then `wrangler deploy`.\n\nDatabase setup has separate scripts for:\n\n- creating the D1 database;\n- applying remote D1 migrations.\n\nThe repository documents the required manual step of replacing the placeholder database ID before deployment.\n\n## GitHub Actions Build Verification\n\nThe repository includes a Build workflow triggered by:\n\n- pushes to `main`;\n- pull requests.\n\nThe workflow:\n\n1. checks out the repository;\n2. configures Node 22;\n3. installs dependencies;\n4. runs `npm run build`.\n\nThe latest workflow run for commit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` completed with conclusion `success`.\n\nThis provides direct evidence that the committed TypeScript/Vite application builds successfully in GitHub Actions.\n\n## Repository Evolution\n\nThe repository history is short and explicit.\n\n### Initial Commit\n\nThe repository is initialized on 2026-09-06.\n\n### Full React/Hono/D1 Scaffold\n\nCommit `79f8a90b4a2fe7a04c605031f22fc22d8a2305bb` adds the full question-bank application scaffold.\n\nThe implementation already includes:\n\n- relational D1 schema;\n- React authoring UI;\n- Hono routes;\n- portable JSON import/export;\n- shared contracts;\n- Cloudflare configuration.\n\n### D1 / CI Alignment Fix\n\nCommit `1f5589c22abc7d29a6d79ac017ad4c4c4ae925d3` adjusts D1 migration and CI setup.\n\nThe associated main-branch Build workflow then succeeds.\n\nThis makes the repository a compact example of taking a product concept from schema decision to build-verified implementation in a very short history.\n\n## Architectural Decision: Do Not Encode the Book\n\nThe strongest product-modeling decision is the refusal to create a permanent chapter entity merely because one intended use case is book study.\n\nThe application instead models the stable relationship:\n\n```text\nquestion bank grouping\n  → question group\n  → question\n  → answer options\n```\n\nBook/chapter terminology is kept at the user-authored naming layer.\n\nThis reduces schema connascence between:\n\n- one content-source type;\n- persistent backend entities;\n- import/export format;\n- frontend workflows.\n\nA future non-book category can use the same API and schema without requiring a backend migration just to remove chapter assumptions.\n\n## Architectural Decision: Relational Persistence, JSON Transport\n\nThe project deliberately gives persistence and portability different representations.\n\nD1 uses normalized tables because the application needs entity-level editing, counts, ordering, and cascade behavior.\n\nExport uses nested JSON because a portable category package benefits from:\n\n- readability;\n- easy scripting;\n- easy AI/tool generation;\n- independence from database IDs;\n- explicit format versioning.\n\nThis is a clean separation of storage model and interchange model.\n\n## Architectural Decision: Shared Validation\n\nQuestion validation lives in the shared contract module rather than being implemented differently for interactive creation and file import.\n\nBoth paths enforce the same answer-cardinality semantics.\n\nThat prevents a common import feature failure mode where bulk input bypasses the rules used by the normal product UI.\n\n## Architectural Decision: Fresh Identity on Import\n\nImported category packages receive fresh UUIDs for every persisted entity.\n\nThe application therefore treats exported IDs as non-existent rather than attempting to merge database identities from one installation into another.\n\nFor a portable question bank this keeps transfer semantics simple:\n\n`content package → new local category tree`.\n\n## Architectural Decision: Explicit Ordering\n\nPosition is persisted at every ordered level below category.\n\nThe exported JSON naturally preserves array order.\n\nThe importer converts that array order into persistent relational positions.\n\nThis prevents data ordering from depending on incidental UUID or timestamp order.\n\n## Product Engineering Significance\n\nThe repository is small but conceptually disciplined.\n\nIts useful engineering signals are not raw code volume.\n\nThey are:\n\n- resisting unnecessary domain entities;\n- separating persistence from interchange;\n- using versioned import format;\n- validating entire imported content before persistence;\n- preserving explicit order;\n- using relational cascade semantics;\n- keeping shared question rules reusable across API paths;\n- exposing import/export as first-class product capabilities.\n\n## Portability Design\n\nThe `.kiroq.json` format makes a category transferable without requiring:\n\n- original D1 row IDs;\n- direct database export;\n- access to the source installation.\n\nBecause the package is normal JSON, it can also be:\n\n- generated by scripts;\n- reviewed manually;\n- stored in source control;\n- produced by AI-assisted question-generation workflows;\n- validated through the same importer.\n\nThe example file in `examples/` documents the expected package structure as a concrete artifact.\n\n## Data Integrity Behaviors\n\nThe implementation combines multiple integrity layers:\n\n### TypeScript Validation\n\n- question type validation;\n- non-empty strings;\n- nullable-string normalization;\n- option cardinality;\n- correctness cardinality;\n- import package version/kind validation.\n\n### SQL Constraints\n\n- non-null IDs/names/bodies;\n- constrained question type;\n- constrained correctness bit;\n- foreign keys;\n- cascade deletion.\n\n### Ordered Write Logic\n\n- next subcategory/question position derived explicitly;\n- import positions derived from arrays;\n- option position persisted explicitly.\n\nThis gives the data model more structure than a frontend-only question-list representation.\n\n## Build and Maturity Boundary\n\nThe latest committed application has successful CI build evidence.\n\nIt also has concrete Cloudflare Worker, static-assets, D1 migration, and deployment scripts.\n\nThe placeholder D1 database ID is a current environment-configuration boundary.\n\nAccordingly, the strongest defensible maturity description is:\n\n**build-verified full-stack Cloudflare application scaffold with a complete portable question-bank workflow and deployment configuration.**\n\nThat is stronger than a UI mockup, while remaining more precise than claiming a verified production deployment.\n\n## Skills Demonstrated\n\n### Domain and Data Modeling\n\n- **generic domain abstraction — strong evidence.**\n- **relational schema design — strong evidence.**\n- **parent-child lifecycle modeling — strong evidence.**\n- **explicit ordering design — strong evidence.**\n- **domain invariant validation — strong evidence.**\n- **schema-level constraints — strong evidence.**\n\n### TypeScript and Full-Stack Development\n\n- **TypeScript — strong evidence.**\n- **React 19 — strong evidence.**\n- **Hono — strong evidence.**\n- **shared frontend/backend contracts — strong evidence.**\n- **browser API integration — strong evidence.**\n- **error-state handling — strong evidence.**\n\n### Cloudflare Backend\n\n- **Cloudflare Workers — strong evidence.**\n- **Cloudflare D1 — strong evidence.**\n- **Wrangler configuration — strong evidence.**\n- **D1 migration authoring — strong evidence.**\n- **prepared SQL statements — strong evidence.**\n- **D1 batch operations — strong evidence.**\n\n### Import / Export Engineering\n\n- **versioned JSON schema — strong evidence.**\n- **portable package design — strong evidence.**\n- **database-ID-independent export — strong evidence.**\n- **whole-document import validation — strong evidence.**\n- **fresh-identity import — strong evidence.**\n- **JSON-to-relational bulk import — strong evidence.**\n- **content-disposition export — strong evidence.**\n\n### Product Engineering\n\n- **question-bank authoring workflow — strong evidence.**\n- **category/subcategory information architecture — strong evidence.**\n- **MCQ/multi-select editor design — strong evidence.**\n- **import/export as first-class product flows — strong evidence.**\n- **destructive-action confirmation — strong evidence.**\n- **schema-generalization reasoning — strong evidence.**\n\n### CI and Build\n\n- **GitHub Actions — concrete evidence.**\n- **Node 22 CI environment — concrete evidence.**\n- **TypeScript build gate — concrete evidence.**\n- **Vite production build — concrete evidence.**\n- **successful latest CI build — concrete evidence.**\n\n## Capability Developed\n\n`KiroQuestionsBank` shows a more defensive approach to modeling than many simpler CRUD applications.\n\nThe implementation begins by asking what part of the domain is genuinely stable.\n\nThe stable entities are not “Book” and “Chapter.”\n\nThey are category, question grouping, question, and option.\n\nThat decision reduces future backend change when the organizational meaning changes.\n\nThe second important capability is separating database concerns from transfer concerns.\n\nD1 remains normalized and queryable, while `.kiroq.json` provides a clean portable boundary.\n\nThe importer validates the package and reconstructs a fresh local identity graph, which makes the file usable as a true transfer artifact rather than a raw database dump.\n\n## Portfolio Evolution Context\n\nThis repository follows `my-portfolio`, where architecture governance is broad and production-oriented.\n\n`KiroQuestionsBank` applies a similar design discipline to a much smaller domain.\n\nThe notable progression is that the project does not need a large platform to demonstrate careful architecture decisions.\n\nEven in a compact application, the implementation explicitly addresses:\n\n- unnecessary schema coupling;\n- portable data contracts;\n- shared validation;\n- deterministic order;\n- transactional/unit-oriented import;\n- CI build verification.\n\nIt therefore provides complementary evidence: system-design thinking is being applied at small-project scale rather than only inside the large portfolio platform.\n\n## Historical Significance\n\nWithin the processed corpus so far, repository 114 is the earliest observed project centered on a **versioned, database-ID-independent question-bank category package** that round-trips between nested JSON transport and normalized D1 storage.\n\nIt is also the earliest observed processed repository where an explicit design requirement avoids a book/chapter database model in favor of a generic category/subcategory/question hierarchy specifically to preserve reuse across different study organizations.\n\n## Overall Repository Narrative\n\n`KiroQuestionsBank` is a compact React/Hono/D1 application built around one careful domain decision: a question bank should model question organization, not assume that every category is literally a book and every subgroup is literally a chapter.\n\nThe application persists categories, subcategories, questions, and answer options relationally in D1. Question bodies, explanations, and options use Markdown text as their content contract. The frontend lets a user create categories, create question groups, add MCQ or multi-select questions, mark correct answers, export a category, import a package, and delete a category hierarchy.\n\nThe portable `.kiroq.json` format has explicit version and kind metadata but deliberately excludes database IDs. Export maps the relational hierarchy into nested portable content; import validates the whole package, generates fresh UUIDs, translates array order into relational positions, expands collected JSON rows through SQLite `json_each()`, and writes the resulting hierarchy through one D1 batch.\n\nShared TypeScript validation is reused between ordinary question creation and imported questions, preventing the import path from bypassing MCQ/multi-select correctness rules. SQL constraints and foreign-key cascades reinforce the domain model below the TypeScript layer.\n\nThe repository also includes Cloudflare static-asset/Worker routing, D1 migration configuration, deployment scripts, and a GitHub Actions build. The latest commit's workflow succeeds. Because the Wrangler D1 database ID remains a placeholder, the evidence supports a build-verified deployable scaffold rather than a claim of confirmed production deployment.\n\nThe repository's strongest signal is not size. It is disciplined generalization: encode the stable question-bank structure in the backend, keep book/chapter semantics at the naming layer, and use a separate versioned JSON transport format for portability.\n\n# Project Tags\n\n## Project Type\n\n- `question-bank-application`\n- `study-tool`\n- `portable-content-application`\n- `full-stack-web-application`\n- `serverless-web-application`\n- `individual-project`\n\n## Languages and Frameworks\n\n- `typescript`\n- `react-19`\n- `hono`\n- `vite`\n- `cloudflare-workers`\n- `cloudflare-d1`\n- `wrangler`\n- `sql`\n\n## Domain Model\n\n- `category-subcategory-question-model`\n- `generic-question-grouping`\n- `mcq`\n- `multi-select-question`\n- `question-options`\n- `question-explanations`\n- `markdown-content-storage`\n- `explicit-position-ordering`\n- `cascade-delete`\n- `uuid-identifiers`\n\n## Data Integrity\n\n- `shared-domain-validation`\n- `question-cardinality-validation`\n- `correct-answer-cardinality`\n- `sql-check-constraints`\n- `foreign-key-constraints`\n- `prepared-statements`\n- `d1-batch`\n- `parent-updated-at-propagation`\n\n## Import and Export\n\n- `category-import-export`\n- `versioned-json-format`\n- `kiroq-json`\n- `database-id-independent-export`\n- `fresh-id-import`\n- `whole-document-import-validation`\n- `json-each-bulk-insert`\n- `json-to-relational-import`\n- `relational-to-json-export`\n- `content-disposition-download`\n- `portable-question-bank-package`\n\n## Frontend Product Behavior\n\n- `category-sidebar`\n- `question-editor`\n- `radio-correctness-control`\n- `checkbox-correctness-control`\n- `dynamic-answer-options`\n- `file-import-ui`\n- `browser-export-download`\n- `delete-confirmation`\n- `api-error-display`\n\n## Cloud and Build\n\n- `cloudflare-static-assets`\n- `spa-fallback`\n- `worker-first-api-routing`\n- `d1-migration`\n- `github-actions`\n- `node-22-ci`\n- `typescript-build-gate`\n- `vite-production-build`\n- `successful-ci-build`\n- `deployment-configuration`\n\n## Architecture and Product Design\n\n- `relational-storage-json-transport-separation`\n- `storage-interchange-separation`\n- `generic-domain-abstraction`\n- `book-schema-decoupling`\n- `reusable-question-bank-schema`\n- `versioned-interchange-contract`\n- `ordered-hierarchy-reconstruction`\n- `parallel-relational-read-assembly`\n- `build-verified-application-scaffold`\n\n## Portfolio Significance\n\n- `earliest-observed-versioned-question-bank-category-package`\n- `earliest-observed-d1-question-bank-import-export`\n- `earliest-observed-book-schema-decoupled-question-bank`\n- `earliest-observed-json-to-relational-question-bank-import`\n"
+}

@@ -1,0 +1,880 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 21,
+  "repository_total": 134,
+  "repository_name": "Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+  "header_title": "Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-021-Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification/README.md",
+    "line_start": 1,
+    "line_end": 498,
+    "sha256": "b863d73ca74a2d0e12af4f3c48777d2c56a177983c0e62ef08baecd144b03bed"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "educational-project",
+    "individual-project",
+    "systemverilog",
+    "digital-design",
+    "sequential-logic",
+    "counter-design",
+    "reset-logic",
+    "hdl-simulation",
+    "hdl-testbench",
+    "self-checking-testbench",
+    "scenario-based-verification",
+    "automated-pass-fail",
+    "test-result-aggregation",
+    "reset-verification",
+    "boundary-condition-testing",
+    "timed-stimulus",
+    "functional-decomposition",
+    "earliest-observed-self-checking-hdl-testbench",
+    "earliest-observed-automated-hdl-pass-fail",
+    "earliest-observed-hdl-test-result-aggregation"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 021 / 134\n- Name: `Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification`\n- Repository start date: 2023-03-23\n- Latest meaningful update date: 2023-04-17\n- Primary type: SystemVerilog design-and-verification exercise\n- Technical field: Digital design and HDL verification\n- Application domain: Multi-mode counter game with winner/loser scoring\n- Project context: Personal educational hardware project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog"
+    },
+    "architecture": {
+      "section_ids": [
+        "s019",
+        "s021"
+      ],
+      "titles": [
+        "Architecture and System Shape",
+        "Verification Architecture"
+      ],
+      "text": "## Architecture and System Shape\n```text\nctrl / init / reset\n        ↓\n  multi-mode counter\n        ↓\n  count = 0 or 7?\n     ↙       ↘\n loser      winner\n   ↓           ↓\nloser_count winner_count\n      \\       /\n       \\     /\n      score == 15?\n           ↓\n       gameover\n           ↓\n          who\n```\n\nThis decomposition is visible directly in separate sequential blocks.\n\n## Verification Architecture\n`MMTB_Final` instantiates the design under test and a clock source.\n\nIt drives stimulus through one `initial` scenario and records test results in:\n\n```text\nint Testcases[15]\n```\n\nIndividual checks write either:\n\n- `Test_Success`;\n- `Test_Failed`.\n\nAt the end, the testbench iterates through the test-case array and prints a status line for each slot.\n\nThis is self-checking simulation behavior rather than only manual waveform inspection."
+    },
+    "testing": {
+      "section_ids": [
+        "s021",
+        "s032",
+        "s036",
+        "s043",
+        "s046",
+        "s056"
+      ],
+      "titles": [
+        "Verification Architecture",
+        "Verification Evolution Inside the Commit History",
+        "Scenario-Based Verification",
+        "Verification Scale",
+        "Verification",
+        "Testing and Verification"
+      ],
+      "text": "## Verification Architecture\n`MMTB_Final` instantiates the design under test and a clock source.\n\nIt drives stimulus through one `initial` scenario and records test results in:\n\n```text\nint Testcases[15]\n```\n\nIndividual checks write either:\n\n- `Test_Success`;\n- `Test_Failed`.\n\nAt the end, the testbench iterates through the test-case array and prints a status line for each slot.\n\nThis is self-checking simulation behavior rather than only manual waveform inspection.\n\n## Verification Evolution Inside the Commit History\nThe final April 17 commit expands `GameDesign.sv` with additional test cases and result checks.\n\nThe diff adds checks for:\n\n- Test Case 3;\n- Test Case 4;\n- Test Case 5;\n- Test Case 6 reset behavior;\n- Test Case 7 decrement-by-one;\n- Test Case 8 decrement-by-two.\n\nIt also improves the final status display formatting.\n\nThe commit history therefore captures a visible evolution from design/test planning toward broader automated simulation checking.\n\n## Scenario-Based Verification\nThe README begins from behavioral scenarios rather than only signal-level toggling.\n\n## Verification Scale\nThe testbench drives long timed sequences rather than checking only one combinational result.\n\nMultiple scenarios are evaluated and summarized in one run.\n\n## Verification\n- **HDL testbench — strong evidence.**\n- **Scenario-based verification — strong evidence.**\n- **Self-checking conditions — strong evidence.**\n- **Pass/fail result storage — strong evidence.**\n- **Aggregated test reporting — strong evidence.**\n- **Reset verification — strong evidence.**\n- **Boundary-condition verification — strong evidence.**\n\n## Testing and Verification\n- `hdl-simulation`\n- `hdl-testbench`\n- `self-checking-testbench`\n- `scenario-based-verification`\n- `automated-pass-fail`\n- `test-result-aggregation`\n- `reset-verification`\n- `boundary-condition-testing`\n- `timed-stimulus`"
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s053"
+      ],
+      "titles": [
+        "Collaboration and Authorship Context",
+        "Collaboration and Authorship"
+      ],
+      "text": "## Collaboration and Authorship Context\nThe visible repository commits are owner-attributed, including the final expansion of the testbench on April 17, 2023.\n\nThe design, README test plan, and self-checking simulation logic are therefore treated as personally attributable repository work.\n\n## Collaboration and Authorship\n- `individual-project`"
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 021 / 134\n- Name: `Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification`\n- Repository start date: 2023-03-23\n- Latest meaningful update date: 2023-04-17\n- Primary type: SystemVerilog design-and-verification exercise\n- Technical field: Digital design and HDL verification\n- Application domain: Multi-mode counter game with winner/loser scoring\n- Project context: Personal educational hardware project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Collaboration and Authorship Context",
+      "normalized_title": "Collaboration and Authorship Context",
+      "key": "collaboration_and_authorship_context",
+      "path": [
+        "Collaboration and Authorship Context"
+      ],
+      "content": "The visible repository commits are owner-attributed, including the final expansion of the testbench on April 17, 2023.\n\nThe design, README test plan, and self-checking simulation logic are therefore treated as personally attributable repository work.",
+      "source_line_start": 16,
+      "source_line_end": 22
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains two central files:\n\n- `GameDesign.sv`;\n- `README.md`.\n\n`GameDesign.sv` contains both:\n\n- the `MMC_Game` design-under-test;\n- the `MMTB_Final` testbench.\n\nThe README documents concrete test scenarios, input values, control sequences, and expected winner/loser outcomes.\n\nThe final commit materially expands the testbench with additional result checks and pass/fail reporting.",
+      "source_line_start": 22,
+      "source_line_end": 38
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "This repository implements and verifies a small stateful game around a three-bit multi-mode counter.\n\nThe counter can:\n\n- increment by 1;\n- increment by 2;\n- decrement by 1;\n- decrement by 2;\n- initialize from a supplied value;\n- reset.\n\nLanding on one boundary produces a `winner` event, while landing on the other produces a `loser` event.\n\nEach event increments a corresponding score counter.\n\nWhen either score reaches the configured winning score, the design asserts `gameover` and reports which side won.\n\nThe repository combines functional design and explicit simulation verification in one SystemVerilog source.",
+      "source_line_start": 38,
+      "source_line_end": 59
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Design Interface",
+      "normalized_title": "Design Interface",
+      "key": "design_interface",
+      "path": [
+        "Design Interface"
+      ],
+      "content": "`MMC_Game` exposes:\n\n### Inputs\n\n- `clk`;\n- `rst`;\n- two-bit `ctrl`;\n- `init`;\n- three-bit `init_val`.\n\n### Outputs\n\n- three-bit `count`;\n- `winner`;\n- `loser`;\n- `gameover`;\n- two-bit `who`.\n\nThe interface therefore exposes both the immediate counter state and higher-level game outcome state.",
+      "source_line_start": 59,
+      "source_line_end": 81
+    },
+    {
+      "id": "s006",
+      "level": 3,
+      "title": "Inputs",
+      "normalized_title": "Inputs",
+      "key": "inputs",
+      "path": [
+        "Design Interface",
+        "Inputs"
+      ],
+      "content": "- `clk`;\n- `rst`;\n- two-bit `ctrl`;\n- `init`;\n- three-bit `init_val`.",
+      "source_line_start": 63,
+      "source_line_end": 71
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Outputs",
+      "normalized_title": "Outputs",
+      "key": "outputs",
+      "path": [
+        "Design Interface",
+        "Outputs"
+      ],
+      "content": "- three-bit `count`;\n- `winner`;\n- `loser`;\n- `gameover`;\n- two-bit `who`.\n\nThe interface therefore exposes both the immediate counter state and higher-level game outcome state.",
+      "source_line_start": 71,
+      "source_line_end": 81
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Symbolic Control Definitions",
+      "normalized_title": "Symbolic Control Definitions",
+      "key": "symbolic_control_definitions",
+      "path": [
+        "Symbolic Control Definitions"
+      ],
+      "content": "The source defines macros for control and outcome values.\n\nExamples include:\n\n- `UP_1`;\n- `UP_2`;\n- `DW_1`;\n- `DW_2`;\n- `LOSER_WON`;\n- `WINNER_WON`;\n- `WIN_SCORE`.\n\nNamed definitions make the testbench and design easier to read than repeated raw bit patterns.",
+      "source_line_start": 81,
+      "source_line_end": 97
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "Counter Modes",
+      "normalized_title": "Counter Modes",
+      "key": "counter_modes",
+      "path": [
+        "Counter Modes"
+      ],
+      "content": "### Increment by 1\n\n`UP_1` advances the counter one step and wraps from the maximum value back to the minimum.\n\n### Increment by 2\n\n`UP_2` advances two steps with special handling around the upper edge.\n\n### Decrement by 1\n\n`DW_1` decrements one step and wraps the minimum back to the maximum.\n\n### Decrement by 2\n\n`DW_2` decrements two steps with explicit edge cases near the lower boundary.\n\nThese modes deliberately create different visitation patterns over the counter states.\n\nThat visitation behavior is what drives winner/loser scoring.",
+      "source_line_start": 97,
+      "source_line_end": 119
+    },
+    {
+      "id": "s010",
+      "level": 3,
+      "title": "Increment by 1",
+      "normalized_title": "Increment by 1",
+      "key": "increment_by_1",
+      "path": [
+        "Counter Modes",
+        "Increment by 1"
+      ],
+      "content": "`UP_1` advances the counter one step and wraps from the maximum value back to the minimum.",
+      "source_line_start": 99,
+      "source_line_end": 103
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Increment by 2",
+      "normalized_title": "Increment by 2",
+      "key": "increment_by_2",
+      "path": [
+        "Counter Modes",
+        "Increment by 2"
+      ],
+      "content": "`UP_2` advances two steps with special handling around the upper edge.",
+      "source_line_start": 103,
+      "source_line_end": 107
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Decrement by 1",
+      "normalized_title": "Decrement by 1",
+      "key": "decrement_by_1",
+      "path": [
+        "Counter Modes",
+        "Decrement by 1"
+      ],
+      "content": "`DW_1` decrements one step and wraps the minimum back to the maximum.",
+      "source_line_start": 107,
+      "source_line_end": 111
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Decrement by 2",
+      "normalized_title": "Decrement by 2",
+      "key": "decrement_by_2",
+      "path": [
+        "Counter Modes",
+        "Decrement by 2"
+      ],
+      "content": "`DW_2` decrements two steps with explicit edge cases near the lower boundary.\n\nThese modes deliberately create different visitation patterns over the counter states.\n\nThat visitation behavior is what drives winner/loser scoring.",
+      "source_line_start": 111,
+      "source_line_end": 119
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Initialization",
+      "normalized_title": "Initialization",
+      "key": "initialization",
+      "path": [
+        "Initialization"
+      ],
+      "content": "When `init` is asserted, the current count is loaded from `init_val`.\n\nThis lets the verification scenarios start from controlled states rather than always beginning from zero.",
+      "source_line_start": 119,
+      "source_line_end": 125
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "Reset Behavior",
+      "normalized_title": "Reset Behavior",
+      "key": "reset_behavior",
+      "path": [
+        "Reset Behavior"
+      ],
+      "content": "An asynchronous reset path initializes major state including:\n\n- counter value;\n- winner/loser outputs;\n- game-over state;\n- winner identity state;\n- score counters.\n\nThe testbench contains a dedicated reset check that verifies the count returns to zero.",
+      "source_line_start": 125,
+      "source_line_end": 137
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Round Decision Logic",
+      "normalized_title": "Round Decision Logic",
+      "key": "round_decision_logic",
+      "path": [
+        "Round Decision Logic"
+      ],
+      "content": "A separate sequential block determines whether the current count represents a round result.\n\nThe implemented decision points are:\n\n- count `0` → loser event;\n- count `7` → winner event.\n\nIntermediate values clear both event outputs.\n\nThis separates counter movement from round-outcome detection.",
+      "source_line_start": 137,
+      "source_line_end": 150
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Score Tracking",
+      "normalized_title": "Score Tracking",
+      "key": "score_tracking",
+      "path": [
+        "Score Tracking"
+      ],
+      "content": "The design maintains:\n\n- `winner_count`;\n- `loser_count`.\n\nWhen a winner or loser event is observed, the corresponding score counter increments.\n\nThis creates state that persists across many individual counter transitions.",
+      "source_line_start": 150,
+      "source_line_end": 161
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Game-Over Detection",
+      "normalized_title": "Game-Over Detection",
+      "key": "game_over_detection",
+      "path": [
+        "Game-Over Detection"
+      ],
+      "content": "A separate sequential block checks whether either side reaches `WIN_SCORE`, defined as hexadecimal `F` / decimal 15.\n\nWhen the threshold is reached:\n\n- `gameover` is asserted;\n- `who` is set to the winner code;\n- both score counters are cleared;\n- the main counter is reset.\n\nThe design therefore models both round-level and game-level state.",
+      "source_line_start": 161,
+      "source_line_end": 174
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Architecture and System Shape",
+      "normalized_title": "Architecture and System Shape",
+      "key": "architecture_and_system_shape",
+      "path": [
+        "Architecture and System Shape"
+      ],
+      "content": "```text\nctrl / init / reset\n        ↓\n  multi-mode counter\n        ↓\n  count = 0 or 7?\n     ↙       ↘\n loser      winner\n   ↓           ↓\nloser_count winner_count\n      \\       /\n       \\     /\n      score == 15?\n           ↓\n       gameover\n           ↓\n          who\n```\n\nThis decomposition is visible directly in separate sequential blocks.",
+      "source_line_start": 174,
+      "source_line_end": 197
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "SystemVerilog",
+      "normalized_title": "SystemVerilog",
+      "key": "systemverilog",
+      "path": [
+        "SystemVerilog"
+      ],
+      "content": "The source uses SystemVerilog `logic` signals and array declarations for verification state.\n\nThe project continues the SystemVerilog work already visible in the pipelined MIPS repository but applies it to a more verification-focused exercise.",
+      "source_line_start": 197,
+      "source_line_end": 203
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Verification Architecture",
+      "normalized_title": "Verification Architecture",
+      "key": "verification_architecture",
+      "path": [
+        "Verification Architecture"
+      ],
+      "content": "`MMTB_Final` instantiates the design under test and a clock source.\n\nIt drives stimulus through one `initial` scenario and records test results in:\n\n```text\nint Testcases[15]\n```\n\nIndividual checks write either:\n\n- `Test_Success`;\n- `Test_Failed`.\n\nAt the end, the testbench iterates through the test-case array and prints a status line for each slot.\n\nThis is self-checking simulation behavior rather than only manual waveform inspection.",
+      "source_line_start": 203,
+      "source_line_end": 222
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "README Test Plan",
+      "normalized_title": "README Test Plan",
+      "key": "readme_test_plan",
+      "path": [
+        "README Test Plan"
+      ],
+      "content": "The README documents a scenario table with:\n\n- test-case number;\n- behavioral intention;\n- initialization value;\n- control sequence.\n\nThe scenarios explicitly reason about which side should reach fifteen points first under different counter trajectories.\n\nThe README also marks some explored scenarios as useless/redundant, showing test-case pruning during design of the verification plan.",
+      "source_line_start": 222,
+      "source_line_end": 235
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Test Case 1: Increment by 2",
+      "normalized_title": "Test Case 1: Increment by 2",
+      "key": "test_case_1_increment_by_2",
+      "path": [
+        "Test Case 1: Increment by 2"
+      ],
+      "content": "The documented goal is to make the loser side win because incrementing by two avoids the winner boundary in the intended progression.\n\nThe testbench waits for the simulated game and checks:\n\n```text\nwho == LOSER_WON\n```\n\nThe result is stored into the first test-case slot.",
+      "source_line_start": 235,
+      "source_line_end": 247
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Test Case 2: Increment by 1",
+      "normalized_title": "Test Case 2: Increment by 1",
+      "key": "test_case_2_increment_by_1",
+      "path": [
+        "Test Case 2: Increment by 1"
+      ],
+      "content": "The design is allowed to run with one-step increments.\n\nThe scenario expects the loser score to reach the game threshold before the winner score.\n\nThe testbench again checks the encoded game result.",
+      "source_line_start": 247,
+      "source_line_end": 255
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Test Case 3: Alternating Around the Winner Boundary",
+      "normalized_title": "Test Case 3: Alternating Around the Winner Boundary",
+      "key": "test_case_3_alternating_around_the_winner_boundary",
+      "path": [
+        "Test Case 3: Alternating Around the Winner Boundary"
+      ],
+      "content": "The testbench initializes the counter near the upper boundary and repeatedly alternates decrement/increment operations so the count revisits the winning state.\n\nAfter the sequence, it checks for `WINNER_WON`.\n\nThis exercises score accumulation from a deliberately constructed trajectory rather than a single direct transition.",
+      "source_line_start": 255,
+      "source_line_end": 263
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Test Case 4: Initialized Winner-Oriented Sequence",
+      "normalized_title": "Test Case 4: Initialized Winner-Oriented Sequence",
+      "key": "test_case_4_initialized_winner_oriented_sequence",
+      "path": [
+        "Test Case 4: Initialized Winner-Oriented Sequence"
+      ],
+      "content": "The testbench asserts initialization and then runs a control mode intended to drive repeated winner events.\n\nIt checks the resulting winner identity after the simulation interval.",
+      "source_line_start": 263,
+      "source_line_end": 269
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Test Case 5: Mixed Increment Sequence",
+      "normalized_title": "Test Case 5: Mixed Increment Sequence",
+      "key": "test_case_5_mixed_increment_sequence",
+      "path": [
+        "Test Case 5: Mixed Increment Sequence"
+      ],
+      "content": "The stimulus alternates one-step and two-step increment modes across a long sequence.\n\nThe testbench then checks that the expected winner side reaches the terminal score.\n\nThis exercises a more varied path through counter state.",
+      "source_line_start": 269,
+      "source_line_end": 277
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Test Case 6: Reset",
+      "normalized_title": "Test Case 6: Reset",
+      "key": "test_case_6_reset",
+      "path": [
+        "Test Case 6: Reset"
+      ],
+      "content": "The testbench asserts reset after previous game activity.\n\nIt directly checks:\n\n```text\ncount == 0\n```\n\nThis makes reset behavior an explicit verification target rather than relying only on initial conditions.",
+      "source_line_start": 277,
+      "source_line_end": 289
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Test Case 7: Decrement by 1",
+      "normalized_title": "Test Case 7: Decrement by 1",
+      "key": "test_case_7_decrement_by_1",
+      "path": [
+        "Test Case 7: Decrement by 1"
+      ],
+      "content": "The control input switches to the one-step decrement mode and the testbench checks the expected loser result after the required simulation duration.",
+      "source_line_start": 289,
+      "source_line_end": 293
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "Test Case 8: Decrement by 2",
+      "normalized_title": "Test Case 8: Decrement by 2",
+      "key": "test_case_8_decrement_by_2",
+      "path": [
+        "Test Case 8: Decrement by 2"
+      ],
+      "content": "A second decrement scenario exercises the two-step path and checks the encoded loser result.",
+      "source_line_start": 293,
+      "source_line_end": 297
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Self-Checking Result Reporting",
+      "normalized_title": "Self-Checking Result Reporting",
+      "key": "self_checking_result_reporting",
+      "path": [
+        "Self-Checking Result Reporting"
+      ],
+      "content": "After applying the scenarios, the testbench loops through the `Testcases` array with `foreach`.\n\nEach entry is printed as either:\n\n- `Success`;\n- `Failed`.\n\nThis is the earliest processed repository where HDL verification clearly stores multiple test outcomes programmatically and emits a consolidated pass/fail report.",
+      "source_line_start": 297,
+      "source_line_end": 308
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Verification Evolution Inside the Commit History",
+      "normalized_title": "Verification Evolution Inside the Commit History",
+      "key": "verification_evolution_inside_the_commit_history",
+      "path": [
+        "Verification Evolution Inside the Commit History"
+      ],
+      "content": "The final April 17 commit expands `GameDesign.sv` with additional test cases and result checks.\n\nThe diff adds checks for:\n\n- Test Case 3;\n- Test Case 4;\n- Test Case 5;\n- Test Case 6 reset behavior;\n- Test Case 7 decrement-by-one;\n- Test Case 8 decrement-by-two.\n\nIt also improves the final status display formatting.\n\nThe commit history therefore captures a visible evolution from design/test planning toward broader automated simulation checking.",
+      "source_line_start": 308,
+      "source_line_end": 325
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Engineering Practices",
+      "normalized_title": "Engineering Practices",
+      "key": "engineering_practices",
+      "path": [
+        "Engineering Practices"
+      ],
+      "content": "### Functional Block Separation\n\nCounter movement, round decision, score accumulation, and terminal game detection are implemented in separate sequential blocks.\n\n### Named Constants\n\nMacros give semantic names to control values, outcome codes, boundaries, and test results.\n\n### Scenario-Based Verification\n\nThe README begins from behavioral scenarios rather than only signal-level toggling.\n\n### Self-Checking Testbench\n\nExpected results are encoded as conditions and stored programmatically.\n\n### Result Aggregation\n\nA test-case array and final `foreach` report consolidate multiple checks into one simulation summary.\n\n### Incremental Test Expansion\n\nCommit history shows the testbench gaining additional cases and explicit pass/fail checks over time.",
+      "source_line_start": 325,
+      "source_line_end": 351
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "Functional Block Separation",
+      "normalized_title": "Functional Block Separation",
+      "key": "functional_block_separation",
+      "path": [
+        "Engineering Practices",
+        "Functional Block Separation"
+      ],
+      "content": "Counter movement, round decision, score accumulation, and terminal game detection are implemented in separate sequential blocks.",
+      "source_line_start": 327,
+      "source_line_end": 331
+    },
+    {
+      "id": "s035",
+      "level": 3,
+      "title": "Named Constants",
+      "normalized_title": "Named Constants",
+      "key": "named_constants",
+      "path": [
+        "Engineering Practices",
+        "Named Constants"
+      ],
+      "content": "Macros give semantic names to control values, outcome codes, boundaries, and test results.",
+      "source_line_start": 331,
+      "source_line_end": 335
+    },
+    {
+      "id": "s036",
+      "level": 3,
+      "title": "Scenario-Based Verification",
+      "normalized_title": "Scenario-Based Verification",
+      "key": "scenario_based_verification",
+      "path": [
+        "Engineering Practices",
+        "Scenario-Based Verification"
+      ],
+      "content": "The README begins from behavioral scenarios rather than only signal-level toggling.",
+      "source_line_start": 335,
+      "source_line_end": 339
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "Self-Checking Testbench",
+      "normalized_title": "Self-Checking Testbench",
+      "key": "self_checking_testbench",
+      "path": [
+        "Engineering Practices",
+        "Self-Checking Testbench"
+      ],
+      "content": "Expected results are encoded as conditions and stored programmatically.",
+      "source_line_start": 339,
+      "source_line_end": 343
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Result Aggregation",
+      "normalized_title": "Result Aggregation",
+      "key": "result_aggregation",
+      "path": [
+        "Engineering Practices",
+        "Result Aggregation"
+      ],
+      "content": "A test-case array and final `foreach` report consolidate multiple checks into one simulation summary.",
+      "source_line_start": 343,
+      "source_line_end": 347
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Incremental Test Expansion",
+      "normalized_title": "Incremental Test Expansion",
+      "key": "incremental_test_expansion",
+      "path": [
+        "Engineering Practices",
+        "Incremental Test Expansion"
+      ],
+      "content": "Commit history shows the testbench gaining additional cases and explicit pass/fail checks over time.",
+      "source_line_start": 347,
+      "source_line_end": 351
+    },
+    {
+      "id": "s040",
+      "level": 2,
+      "title": "Scale and Complexity",
+      "normalized_title": "Scale and Complexity",
+      "key": "scale_and_complexity",
+      "path": [
+        "Scale and Complexity"
+      ],
+      "content": "### Source Scale\n\nThe repository is compact: one README and one large SystemVerilog file.\n\n### Behavioral Scale\n\nThe design maintains several layers of state:\n\n- counter state;\n- winner/loser event state;\n- persistent winner score;\n- persistent loser score;\n- terminal game-over state;\n- winning-side code.\n\n### Verification Scale\n\nThe testbench drives long timed sequences rather than checking only one combinational result.\n\nMultiple scenarios are evaluated and summarized in one run.",
+      "source_line_start": 351,
+      "source_line_end": 374
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Source Scale",
+      "normalized_title": "Source Scale",
+      "key": "source_scale",
+      "path": [
+        "Scale and Complexity",
+        "Source Scale"
+      ],
+      "content": "The repository is compact: one README and one large SystemVerilog file.",
+      "source_line_start": 353,
+      "source_line_end": 357
+    },
+    {
+      "id": "s042",
+      "level": 3,
+      "title": "Behavioral Scale",
+      "normalized_title": "Behavioral Scale",
+      "key": "behavioral_scale",
+      "path": [
+        "Scale and Complexity",
+        "Behavioral Scale"
+      ],
+      "content": "The design maintains several layers of state:\n\n- counter state;\n- winner/loser event state;\n- persistent winner score;\n- persistent loser score;\n- terminal game-over state;\n- winning-side code.",
+      "source_line_start": 357,
+      "source_line_end": 368
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "Verification Scale",
+      "normalized_title": "Verification Scale",
+      "key": "verification_scale",
+      "path": [
+        "Scale and Complexity",
+        "Verification Scale"
+      ],
+      "content": "The testbench drives long timed sequences rather than checking only one combinational result.\n\nMultiple scenarios are evaluated and summarized in one run.",
+      "source_line_start": 368,
+      "source_line_end": 374
+    },
+    {
+      "id": "s044",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### SystemVerilog and Digital Design\n\n- **SystemVerilog — strong evidence.**\n- **Sequential logic — strong evidence.**\n- **Counter design — strong evidence.**\n- **Wrap-around state handling — strong evidence.**\n- **Reset logic — strong evidence.**\n- **Multi-block state decomposition — strong evidence.**\n\n### Verification\n\n- **HDL testbench — strong evidence.**\n- **Scenario-based verification — strong evidence.**\n- **Self-checking conditions — strong evidence.**\n- **Pass/fail result storage — strong evidence.**\n- **Aggregated test reporting — strong evidence.**\n- **Reset verification — strong evidence.**\n- **Boundary-condition verification — strong evidence.**\n\n### Test Design\n\n- **Input-sequence design — strong evidence.**\n- **Expected-outcome reasoning — strong evidence.**\n- **Redundant-case pruning in documentation — moderate evidence.**",
+      "source_line_start": 374,
+      "source_line_end": 401
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "SystemVerilog and Digital Design",
+      "normalized_title": "SystemVerilog and Digital Design",
+      "key": "systemverilog_and_digital_design",
+      "path": [
+        "Skills Demonstrated",
+        "SystemVerilog and Digital Design"
+      ],
+      "content": "- **SystemVerilog — strong evidence.**\n- **Sequential logic — strong evidence.**\n- **Counter design — strong evidence.**\n- **Wrap-around state handling — strong evidence.**\n- **Reset logic — strong evidence.**\n- **Multi-block state decomposition — strong evidence.**",
+      "source_line_start": 376,
+      "source_line_end": 385
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Verification",
+      "normalized_title": "Verification",
+      "key": "verification",
+      "path": [
+        "Skills Demonstrated",
+        "Verification"
+      ],
+      "content": "- **HDL testbench — strong evidence.**\n- **Scenario-based verification — strong evidence.**\n- **Self-checking conditions — strong evidence.**\n- **Pass/fail result storage — strong evidence.**\n- **Aggregated test reporting — strong evidence.**\n- **Reset verification — strong evidence.**\n- **Boundary-condition verification — strong evidence.**",
+      "source_line_start": 385,
+      "source_line_end": 395
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Test Design",
+      "normalized_title": "Test Design",
+      "key": "test_design",
+      "path": [
+        "Skills Demonstrated",
+        "Test Design"
+      ],
+      "content": "- **Input-sequence design — strong evidence.**\n- **Expected-outcome reasoning — strong evidence.**\n- **Redundant-case pruning in documentation — moderate evidence.**",
+      "source_line_start": 395,
+      "source_line_end": 401
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Capability Developed",
+      "normalized_title": "Capability Developed",
+      "key": "capability_developed",
+      "path": [
+        "Capability Developed"
+      ],
+      "content": "The repository's central portfolio contribution is the move from merely having an HDL testbench to building a **self-checking verification harness**.\n\nEarlier hardware repositories used simulation harnesses and waveform inspection.\n\nHere, the testbench itself decides whether each scenario succeeded and emits a consolidated status report.\n\nThat changes verification from:\n\n```text\napply stimulus → inspect signals manually\n```\n\ninto:\n\n```text\napply scenario\n      ↓\ncompute/check expected outcome\n      ↓\nstore pass/fail\n      ↓\naggregate results\n```\n\nThis is a meaningful step toward verification-oriented engineering practice.",
+      "source_line_start": 401,
+      "source_line_end": 429
+    },
+    {
+      "id": "s049",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "This is the earliest observed occurrence in the processed corpus so far of:\n\n- a self-checking HDL testbench;\n- programmatic HDL pass/fail recording;\n- aggregated multi-test HDL reporting;\n- explicit scenario table paired with executable checks;\n- reset behavior checked as an automated test outcome.\n\nIt builds directly on the earlier SystemVerilog pipeline and Verilog simulation work but makes verification itself a first-class project concern.",
+      "source_line_start": 429,
+      "source_line_end": 441
+    },
+    {
+      "id": "s050",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "`Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification` marks a verification-focused milestone in the early hardware portfolio.\n\nIts significance is not the counter alone; it is the explicit effort to derive scenarios, encode expected outcomes, expand the suite through commits, and report success/failure programmatically.\n\nThat creates a useful baseline for later verification, automated testing, and CI-oriented work elsewhere in the portfolio.",
+      "source_line_start": 441,
+      "source_line_end": 449
+    },
+    {
+      "id": "s051",
+      "level": 2,
+      "title": "Overall Repository Narrative",
+      "normalized_title": "Overall Repository Narrative",
+      "key": "overall_repository_narrative",
+      "path": [
+        "Overall Repository Narrative"
+      ],
+      "content": "This repository implements a SystemVerilog multi-mode counter game and an accompanying scenario-driven verification environment.\n\nThe design supports initialization, reset, four count directions/steps, round winner/loser detection, persistent scoring, and game-over reporting. The testbench then exercises several long-running trajectories, checks encoded outcomes, verifies reset behavior, stores results in a test array, and prints a consolidated Success/Failed report.\n\nIts strongest corpus evidence is the transition from HDL simulation as observation to HDL simulation as automated correctness checking.\n\n# Project Tags",
+      "source_line_start": 449,
+      "source_line_end": 459
+    },
+    {
+      "id": "s052",
+      "level": 2,
+      "title": "Project Type",
+      "normalized_title": "Project Type",
+      "key": "project_type",
+      "path": [
+        "Project Type"
+      ],
+      "content": "- `educational-project`",
+      "source_line_start": 459,
+      "source_line_end": 463
+    },
+    {
+      "id": "s053",
+      "level": 2,
+      "title": "Collaboration and Authorship",
+      "normalized_title": "Collaboration and Authorship",
+      "key": "collaboration_and_authorship",
+      "path": [
+        "Collaboration and Authorship"
+      ],
+      "content": "- `individual-project`",
+      "source_line_start": 463,
+      "source_line_end": 467
+    },
+    {
+      "id": "s054",
+      "level": 2,
+      "title": "Languages",
+      "normalized_title": "Languages",
+      "key": "languages",
+      "path": [
+        "Languages"
+      ],
+      "content": "- `systemverilog`",
+      "source_line_start": 467,
+      "source_line_end": 471
+    },
+    {
+      "id": "s055",
+      "level": 2,
+      "title": "Embedded and Hardware",
+      "normalized_title": "Embedded and Hardware",
+      "key": "embedded_and_hardware",
+      "path": [
+        "Embedded and Hardware"
+      ],
+      "content": "- `digital-design`\n- `sequential-logic`\n- `counter-design`\n- `reset-logic`",
+      "source_line_start": 471,
+      "source_line_end": 478
+    },
+    {
+      "id": "s056",
+      "level": 2,
+      "title": "Testing and Verification",
+      "normalized_title": "Testing and Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing and Verification"
+      ],
+      "content": "- `hdl-simulation`\n- `hdl-testbench`\n- `self-checking-testbench`\n- `scenario-based-verification`\n- `automated-pass-fail`\n- `test-result-aggregation`\n- `reset-verification`\n- `boundary-condition-testing`\n- `timed-stimulus`",
+      "source_line_start": 478,
+      "source_line_end": 490
+    },
+    {
+      "id": "s057",
+      "level": 2,
+      "title": "Software Engineering Practices",
+      "normalized_title": "Software Engineering Practices",
+      "key": "software_engineering_practices",
+      "path": [
+        "Software Engineering Practices"
+      ],
+      "content": "- `functional-decomposition`",
+      "source_line_start": 490,
+      "source_line_end": 494
+    },
+    {
+      "id": "s058",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "- `earliest-observed-self-checking-hdl-testbench`\n- `earliest-observed-automated-hdl-pass-fail`\n- `earliest-observed-hdl-test-result-aggregation`",
+      "source_line_start": 494,
+      "source_line_end": 499
+    }
+  ],
+  "raw_analysis": "# Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification\n\n## Repository Identity\n\n- Repository: 021 / 134\n- Name: `Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification`\n- Repository start date: 2023-03-23\n- Latest meaningful update date: 2023-04-17\n- Primary type: SystemVerilog design-and-verification exercise\n- Technical field: Digital design and HDL verification\n- Application domain: Multi-mode counter game with winner/loser scoring\n- Project context: Personal educational hardware project\n- Collaboration type: `individual-project`\n- Primary implementation language: SystemVerilog\n\n## Collaboration and Authorship Context\n\nThe visible repository commits are owner-attributed, including the final expansion of the testbench on April 17, 2023.\n\nThe design, README test plan, and self-checking simulation logic are therefore treated as personally attributable repository work.\n\n## Evidence Basis\n\nThe repository contains two central files:\n\n- `GameDesign.sv`;\n- `README.md`.\n\n`GameDesign.sv` contains both:\n\n- the `MMC_Game` design-under-test;\n- the `MMTB_Final` testbench.\n\nThe README documents concrete test scenarios, input values, control sequences, and expected winner/loser outcomes.\n\nThe final commit materially expands the testbench with additional result checks and pass/fail reporting.\n\n## What This Project Is\n\nThis repository implements and verifies a small stateful game around a three-bit multi-mode counter.\n\nThe counter can:\n\n- increment by 1;\n- increment by 2;\n- decrement by 1;\n- decrement by 2;\n- initialize from a supplied value;\n- reset.\n\nLanding on one boundary produces a `winner` event, while landing on the other produces a `loser` event.\n\nEach event increments a corresponding score counter.\n\nWhen either score reaches the configured winning score, the design asserts `gameover` and reports which side won.\n\nThe repository combines functional design and explicit simulation verification in one SystemVerilog source.\n\n## Design Interface\n\n`MMC_Game` exposes:\n\n### Inputs\n\n- `clk`;\n- `rst`;\n- two-bit `ctrl`;\n- `init`;\n- three-bit `init_val`.\n\n### Outputs\n\n- three-bit `count`;\n- `winner`;\n- `loser`;\n- `gameover`;\n- two-bit `who`.\n\nThe interface therefore exposes both the immediate counter state and higher-level game outcome state.\n\n## Symbolic Control Definitions\n\nThe source defines macros for control and outcome values.\n\nExamples include:\n\n- `UP_1`;\n- `UP_2`;\n- `DW_1`;\n- `DW_2`;\n- `LOSER_WON`;\n- `WINNER_WON`;\n- `WIN_SCORE`.\n\nNamed definitions make the testbench and design easier to read than repeated raw bit patterns.\n\n## Counter Modes\n\n### Increment by 1\n\n`UP_1` advances the counter one step and wraps from the maximum value back to the minimum.\n\n### Increment by 2\n\n`UP_2` advances two steps with special handling around the upper edge.\n\n### Decrement by 1\n\n`DW_1` decrements one step and wraps the minimum back to the maximum.\n\n### Decrement by 2\n\n`DW_2` decrements two steps with explicit edge cases near the lower boundary.\n\nThese modes deliberately create different visitation patterns over the counter states.\n\nThat visitation behavior is what drives winner/loser scoring.\n\n## Initialization\n\nWhen `init` is asserted, the current count is loaded from `init_val`.\n\nThis lets the verification scenarios start from controlled states rather than always beginning from zero.\n\n## Reset Behavior\n\nAn asynchronous reset path initializes major state including:\n\n- counter value;\n- winner/loser outputs;\n- game-over state;\n- winner identity state;\n- score counters.\n\nThe testbench contains a dedicated reset check that verifies the count returns to zero.\n\n## Round Decision Logic\n\nA separate sequential block determines whether the current count represents a round result.\n\nThe implemented decision points are:\n\n- count `0` → loser event;\n- count `7` → winner event.\n\nIntermediate values clear both event outputs.\n\nThis separates counter movement from round-outcome detection.\n\n## Score Tracking\n\nThe design maintains:\n\n- `winner_count`;\n- `loser_count`.\n\nWhen a winner or loser event is observed, the corresponding score counter increments.\n\nThis creates state that persists across many individual counter transitions.\n\n## Game-Over Detection\n\nA separate sequential block checks whether either side reaches `WIN_SCORE`, defined as hexadecimal `F` / decimal 15.\n\nWhen the threshold is reached:\n\n- `gameover` is asserted;\n- `who` is set to the winner code;\n- both score counters are cleared;\n- the main counter is reset.\n\nThe design therefore models both round-level and game-level state.\n\n## Architecture and System Shape\n\n```text\nctrl / init / reset\n        ↓\n  multi-mode counter\n        ↓\n  count = 0 or 7?\n     ↙       ↘\n loser      winner\n   ↓           ↓\nloser_count winner_count\n      \\       /\n       \\     /\n      score == 15?\n           ↓\n       gameover\n           ↓\n          who\n```\n\nThis decomposition is visible directly in separate sequential blocks.\n\n## SystemVerilog\n\nThe source uses SystemVerilog `logic` signals and array declarations for verification state.\n\nThe project continues the SystemVerilog work already visible in the pipelined MIPS repository but applies it to a more verification-focused exercise.\n\n## Verification Architecture\n\n`MMTB_Final` instantiates the design under test and a clock source.\n\nIt drives stimulus through one `initial` scenario and records test results in:\n\n```text\nint Testcases[15]\n```\n\nIndividual checks write either:\n\n- `Test_Success`;\n- `Test_Failed`.\n\nAt the end, the testbench iterates through the test-case array and prints a status line for each slot.\n\nThis is self-checking simulation behavior rather than only manual waveform inspection.\n\n## README Test Plan\n\nThe README documents a scenario table with:\n\n- test-case number;\n- behavioral intention;\n- initialization value;\n- control sequence.\n\nThe scenarios explicitly reason about which side should reach fifteen points first under different counter trajectories.\n\nThe README also marks some explored scenarios as useless/redundant, showing test-case pruning during design of the verification plan.\n\n## Test Case 1: Increment by 2\n\nThe documented goal is to make the loser side win because incrementing by two avoids the winner boundary in the intended progression.\n\nThe testbench waits for the simulated game and checks:\n\n```text\nwho == LOSER_WON\n```\n\nThe result is stored into the first test-case slot.\n\n## Test Case 2: Increment by 1\n\nThe design is allowed to run with one-step increments.\n\nThe scenario expects the loser score to reach the game threshold before the winner score.\n\nThe testbench again checks the encoded game result.\n\n## Test Case 3: Alternating Around the Winner Boundary\n\nThe testbench initializes the counter near the upper boundary and repeatedly alternates decrement/increment operations so the count revisits the winning state.\n\nAfter the sequence, it checks for `WINNER_WON`.\n\nThis exercises score accumulation from a deliberately constructed trajectory rather than a single direct transition.\n\n## Test Case 4: Initialized Winner-Oriented Sequence\n\nThe testbench asserts initialization and then runs a control mode intended to drive repeated winner events.\n\nIt checks the resulting winner identity after the simulation interval.\n\n## Test Case 5: Mixed Increment Sequence\n\nThe stimulus alternates one-step and two-step increment modes across a long sequence.\n\nThe testbench then checks that the expected winner side reaches the terminal score.\n\nThis exercises a more varied path through counter state.\n\n## Test Case 6: Reset\n\nThe testbench asserts reset after previous game activity.\n\nIt directly checks:\n\n```text\ncount == 0\n```\n\nThis makes reset behavior an explicit verification target rather than relying only on initial conditions.\n\n## Test Case 7: Decrement by 1\n\nThe control input switches to the one-step decrement mode and the testbench checks the expected loser result after the required simulation duration.\n\n## Test Case 8: Decrement by 2\n\nA second decrement scenario exercises the two-step path and checks the encoded loser result.\n\n## Self-Checking Result Reporting\n\nAfter applying the scenarios, the testbench loops through the `Testcases` array with `foreach`.\n\nEach entry is printed as either:\n\n- `Success`;\n- `Failed`.\n\nThis is the earliest processed repository where HDL verification clearly stores multiple test outcomes programmatically and emits a consolidated pass/fail report.\n\n## Verification Evolution Inside the Commit History\n\nThe final April 17 commit expands `GameDesign.sv` with additional test cases and result checks.\n\nThe diff adds checks for:\n\n- Test Case 3;\n- Test Case 4;\n- Test Case 5;\n- Test Case 6 reset behavior;\n- Test Case 7 decrement-by-one;\n- Test Case 8 decrement-by-two.\n\nIt also improves the final status display formatting.\n\nThe commit history therefore captures a visible evolution from design/test planning toward broader automated simulation checking.\n\n## Engineering Practices\n\n### Functional Block Separation\n\nCounter movement, round decision, score accumulation, and terminal game detection are implemented in separate sequential blocks.\n\n### Named Constants\n\nMacros give semantic names to control values, outcome codes, boundaries, and test results.\n\n### Scenario-Based Verification\n\nThe README begins from behavioral scenarios rather than only signal-level toggling.\n\n### Self-Checking Testbench\n\nExpected results are encoded as conditions and stored programmatically.\n\n### Result Aggregation\n\nA test-case array and final `foreach` report consolidate multiple checks into one simulation summary.\n\n### Incremental Test Expansion\n\nCommit history shows the testbench gaining additional cases and explicit pass/fail checks over time.\n\n## Scale and Complexity\n\n### Source Scale\n\nThe repository is compact: one README and one large SystemVerilog file.\n\n### Behavioral Scale\n\nThe design maintains several layers of state:\n\n- counter state;\n- winner/loser event state;\n- persistent winner score;\n- persistent loser score;\n- terminal game-over state;\n- winning-side code.\n\n### Verification Scale\n\nThe testbench drives long timed sequences rather than checking only one combinational result.\n\nMultiple scenarios are evaluated and summarized in one run.\n\n## Skills Demonstrated\n\n### SystemVerilog and Digital Design\n\n- **SystemVerilog — strong evidence.**\n- **Sequential logic — strong evidence.**\n- **Counter design — strong evidence.**\n- **Wrap-around state handling — strong evidence.**\n- **Reset logic — strong evidence.**\n- **Multi-block state decomposition — strong evidence.**\n\n### Verification\n\n- **HDL testbench — strong evidence.**\n- **Scenario-based verification — strong evidence.**\n- **Self-checking conditions — strong evidence.**\n- **Pass/fail result storage — strong evidence.**\n- **Aggregated test reporting — strong evidence.**\n- **Reset verification — strong evidence.**\n- **Boundary-condition verification — strong evidence.**\n\n### Test Design\n\n- **Input-sequence design — strong evidence.**\n- **Expected-outcome reasoning — strong evidence.**\n- **Redundant-case pruning in documentation — moderate evidence.**\n\n## Capability Developed\n\nThe repository's central portfolio contribution is the move from merely having an HDL testbench to building a **self-checking verification harness**.\n\nEarlier hardware repositories used simulation harnesses and waveform inspection.\n\nHere, the testbench itself decides whether each scenario succeeded and emits a consolidated status report.\n\nThat changes verification from:\n\n```text\napply stimulus → inspect signals manually\n```\n\ninto:\n\n```text\napply scenario\n      ↓\ncompute/check expected outcome\n      ↓\nstore pass/fail\n      ↓\naggregate results\n```\n\nThis is a meaningful step toward verification-oriented engineering practice.\n\n## Portfolio Evolution Context\n\nThis is the earliest observed occurrence in the processed corpus so far of:\n\n- a self-checking HDL testbench;\n- programmatic HDL pass/fail recording;\n- aggregated multi-test HDL reporting;\n- explicit scenario table paired with executable checks;\n- reset behavior checked as an automated test outcome.\n\nIt builds directly on the earlier SystemVerilog pipeline and Verilog simulation work but makes verification itself a first-class project concern.\n\n## Historical Significance\n\n`Multi-Mode-Counter-Winner-Loser-Game-SystemVerilog-Design-and-Verification` marks a verification-focused milestone in the early hardware portfolio.\n\nIts significance is not the counter alone; it is the explicit effort to derive scenarios, encode expected outcomes, expand the suite through commits, and report success/failure programmatically.\n\nThat creates a useful baseline for later verification, automated testing, and CI-oriented work elsewhere in the portfolio.\n\n## Overall Repository Narrative\n\nThis repository implements a SystemVerilog multi-mode counter game and an accompanying scenario-driven verification environment.\n\nThe design supports initialization, reset, four count directions/steps, round winner/loser detection, persistent scoring, and game-over reporting. The testbench then exercises several long-running trajectories, checks encoded outcomes, verifies reset behavior, stores results in a test array, and prints a consolidated Success/Failed report.\n\nIts strongest corpus evidence is the transition from HDL simulation as observation to HDL simulation as automated correctness checking.\n\n# Project Tags\n\n## Project Type\n\n- `educational-project`\n\n## Collaboration and Authorship\n\n- `individual-project`\n\n## Languages\n\n- `systemverilog`\n\n## Embedded and Hardware\n\n- `digital-design`\n- `sequential-logic`\n- `counter-design`\n- `reset-logic`\n\n## Testing and Verification\n\n- `hdl-simulation`\n- `hdl-testbench`\n- `self-checking-testbench`\n- `scenario-based-verification`\n- `automated-pass-fail`\n- `test-result-aggregation`\n- `reset-verification`\n- `boundary-condition-testing`\n- `timed-stimulus`\n\n## Software Engineering Practices\n\n- `functional-decomposition`\n\n## Portfolio Significance\n\n- `earliest-observed-self-checking-hdl-testbench`\n- `earliest-observed-automated-hdl-pass-fail`\n- `earliest-observed-hdl-test-result-aggregation`\n"
+}

@@ -1,0 +1,559 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 90,
+  "repository_total": 134,
+  "repository_name": "NLP_ENDPOINT",
+  "header_title": "NLP_ENDPOINT",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-090-NLP_ENDPOINT/README.md",
+    "line_start": 1,
+    "line_end": 496,
+    "sha256": "01012d8d9966e6335f90b2c851425e30c8a6c9b1dd2e952f293e5b992f38d28c"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "individual-project",
+    "nlp",
+    "generative-nlp",
+    "story-generation",
+    "gpt2",
+    "tinystories",
+    "hugging-face",
+    "hugging-face-datasets",
+    "transformers",
+    "pytorch",
+    "jupyter-notebook",
+    "executed-notebook",
+    "gpu-experiment",
+    "tesla-t4",
+    "causal-language-modeling",
+    "tokenization",
+    "data-collator",
+    "training-arguments",
+    "model-finetuning",
+    "train-validation-split",
+    "model-evaluation",
+    "perplexity-oriented-evaluation",
+    "text-generation",
+    "temperature-sampling",
+    "top-k-sampling",
+    "top-p-sampling",
+    "frontend-model-integration",
+    "http-endpoint",
+    "json-api-consumption",
+    "fetch-api",
+    "html",
+    "javascript",
+    "tailwind-css",
+    "storyverse",
+    "prompt-interface",
+    "loading-state",
+    "error-state",
+    "cloudflare-quick-tunnel",
+    "transient-endpoint",
+    "ml-product-prototype",
+    "earliest-observed-executed-gpt2-tinystories-finetuning",
+    "earliest-observed-model-backed-story-generation-client"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- **Repository:** `kirolossedra/NLP_ENDPOINT`\n- **Corpus index:** 090\n- **Repository start date:** 2025-07-15\n- **Last meaningful update date:** 2025-08-03\n- **Latest meaningful commit:** `0d5de619a41ee07b25ab3f5c5bb07c10d36d7ba5`\n- **Primary repository form:** executed Jupyter model-training notebook plus browser story-generation client\n- **Primary model family:** GPT-2\n- **Primary dataset:** TinyStories\n- **Collaboration classification:** `individual-project`"
+    },
+    "architecture": {
+      "section_ids": [
+        "s005"
+      ],
+      "titles": [
+        "Architecture / System Shape"
+      ],
+      "text": "## Architecture / System Shape\nThe visible system can be represented as:\n\n```text\nTinyStories dataset\n      ↓\nHugging Face Datasets\n      ↓\nGPT-2 tokenizer + preprocessing\n      ↓\ncausal-LM training/evaluation notebook\n      ↓\ntrained model / generation behavior\n      ↓\nexperimental HTTP generation endpoint\n      ↓\nStoryVerse browser client\n      ↓\nuser prompt → generated story\n```\n\nThis is a compact ML application pipeline rather than a conventional database-backed web application.\n\nThe notebook is the experimentation/training plane.\n\nThe browser is the interaction plane.\n\nThe HTTP endpoint is the integration boundary between them.\n\nThe exact server implementation is not retained as a standalone source file in the repository evidence inspected for this corpus.\n\nThat distinction prevents the browser's endpoint URL from being mistaken for proof of a complete checked-in backend service."
+    },
+    "testing": {
+      "section_ids": [
+        "s022"
+      ],
+      "titles": [
+        "Testing & Verification"
+      ],
+      "text": "## Testing & Verification\nVerification evidence is primarily experimental rather than test-suite based.\n\nThe notebook's executed cells verify that dataset/model operations were run in a notebook environment.\n\nGenerated story samples verify inference paths.\n\nValidation evaluation verifies that the model is not assessed solely from training loss.\n\nFrontend request/error handling provides basic runtime handling at the product boundary.\n\nThese forms of verification are appropriate to an ML prototype.\n\nThey should not be relabeled as automated software regression testing."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- **Repository:** `kirolossedra/NLP_ENDPOINT`\n- **Corpus index:** 090\n- **Repository start date:** 2025-07-15\n- **Last meaningful update date:** 2025-08-03\n- **Latest meaningful commit:** `0d5de619a41ee07b25ab3f5c5bb07c10d36d7ba5`\n- **Primary repository form:** executed Jupyter model-training notebook plus browser story-generation client\n- **Primary model family:** GPT-2\n- **Primary dataset:** TinyStories\n- **Collaboration classification:** `individual-project`",
+      "source_line_start": 3,
+      "source_line_end": 15
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence Basis",
+      "normalized_title": "Evidence Basis",
+      "key": "evidence_basis",
+      "path": [
+        "Evidence Basis"
+      ],
+      "content": "The repository contains two substantive artifacts: `code.ipynb` and `index.html`.\n\nThe notebook is materially different from repository 087 `NLP-Project`.\n\nRepository 087 documented a proposed fine-tuning workflow in Markdown.\n\nThis repository contains an executed notebook with training-oriented cells, runtime output, model loading, dataset loading, generation code, and evaluation logic.\n\nThe notebook imports PyTorch, Hugging Face Transformers, and Hugging Face Datasets.\n\nIt loads `roneneldan/TinyStories` and builds a GPT-2 causal-language-modeling pipeline.\n\nVisible notebook output records a CUDA-capable Tesla T4 environment.\n\nThe browser client is a separate user-facing artifact branded as `StoryVerse`.\n\nIt submits prompt text to a `/generate` HTTP endpoint hosted at a hard-coded `trycloudflare.com` tunnel URL.\n\nThe checked-in frontend therefore proves endpoint integration behavior.\n\nIt does not by itself prove that the transient tunnel remains reachable after the historical experiment.\n\nThe repository contains no durable infrastructure definition establishing a permanent production deployment.\n\nThe corpus therefore treats the endpoint as an experimental model-serving integration rather than a continuously operated production service.",
+      "source_line_start": 15,
+      "source_line_end": 43
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What the Project Is",
+      "normalized_title": "What the Project Is",
+      "key": "what_the_project_is",
+      "path": [
+        "What the Project Is"
+      ],
+      "content": "NLP_ENDPOINT is an applied generative-NLP prototype that moves beyond a training recipe into an executed model experiment and a user-facing generation interface.\n\nThe project has two connected concerns.\n\nThe first is fine-tuning GPT-2 on short-form story data.\n\nThe second is exposing story generation through a browser workflow.\n\nThe notebook handles model/data experimentation.\n\nThe HTML page handles product presentation, prompt entry, examples, request state, and result display.\n\nTogether they form a small end-to-end model-application experiment.",
+      "source_line_start": 43,
+      "source_line_end": 59
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Project Scope",
+      "normalized_title": "Project Scope",
+      "key": "project_scope",
+      "path": [
+        "Project Scope"
+      ],
+      "content": "The retained scope includes:\n\n- loading TinyStories from Hugging Face;\n- selecting a bounded training subset;\n- preparing a GPT-2 tokenizer;\n- adapting padding behavior for causal language modeling;\n- tokenizing story text;\n- preparing training and validation data;\n- configuring model training;\n- generating text from prompts;\n- evaluating the trained model with validation-oriented metrics;\n- presenting a polished web prompt interface;\n- sending prompts to a generation endpoint;\n- rendering returned stories in the client.\n\nThe repository is not simply a static UI mockup.\n\nThe notebook gives executable ML evidence and the client contains concrete remote-request integration.\n\nAt the same time, the repository does not establish durable production hosting, production traffic, or a persistent model-serving platform.",
+      "source_line_start": 59,
+      "source_line_end": 82
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "Architecture / System Shape",
+      "normalized_title": "Architecture / System Shape",
+      "key": "architecture_system_shape",
+      "path": [
+        "Architecture / System Shape"
+      ],
+      "content": "The visible system can be represented as:\n\n```text\nTinyStories dataset\n      ↓\nHugging Face Datasets\n      ↓\nGPT-2 tokenizer + preprocessing\n      ↓\ncausal-LM training/evaluation notebook\n      ↓\ntrained model / generation behavior\n      ↓\nexperimental HTTP generation endpoint\n      ↓\nStoryVerse browser client\n      ↓\nuser prompt → generated story\n```\n\nThis is a compact ML application pipeline rather than a conventional database-backed web application.\n\nThe notebook is the experimentation/training plane.\n\nThe browser is the interaction plane.\n\nThe HTTP endpoint is the integration boundary between them.\n\nThe exact server implementation is not retained as a standalone source file in the repository evidence inspected for this corpus.\n\nThat distinction prevents the browser's endpoint URL from being mistaken for proof of a complete checked-in backend service.",
+      "source_line_start": 82,
+      "source_line_end": 116
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Machine Learning\n\n- Python notebook execution\n- PyTorch\n- Hugging Face Transformers\n- Hugging Face Datasets\n- GPT-2\n- TinyStories\n- causal language modeling\n- tokenizer preprocessing\n- train/validation separation\n- model generation parameters\n\n### Browser Layer\n\n- HTML\n- CSS\n- JavaScript\n- Tailwind CSS via CDN\n- Google Fonts\n- Fetch API\n- JSON request/response handling\n\n### Experimental Serving Boundary\n\nThe browser sends a `POST` request containing JSON with a prompt field.\n\nThe expected response contains a `story` field.\n\nThe configured destination is a Cloudflare quick-tunnel hostname.\n\nA quick-tunnel hostname is best understood here as experimental connectivity evidence.\n\nIt is not evidence of a stable DNS/service contract.",
+      "source_line_start": 116,
+      "source_line_end": 153
+    },
+    {
+      "id": "s007",
+      "level": 3,
+      "title": "Machine Learning",
+      "normalized_title": "Machine Learning",
+      "key": "machine_learning",
+      "path": [
+        "Technical Stack",
+        "Machine Learning"
+      ],
+      "content": "- Python notebook execution\n- PyTorch\n- Hugging Face Transformers\n- Hugging Face Datasets\n- GPT-2\n- TinyStories\n- causal language modeling\n- tokenizer preprocessing\n- train/validation separation\n- model generation parameters",
+      "source_line_start": 118,
+      "source_line_end": 131
+    },
+    {
+      "id": "s008",
+      "level": 3,
+      "title": "Browser Layer",
+      "normalized_title": "Browser Layer",
+      "key": "browser_layer",
+      "path": [
+        "Technical Stack",
+        "Browser Layer"
+      ],
+      "content": "- HTML\n- CSS\n- JavaScript\n- Tailwind CSS via CDN\n- Google Fonts\n- Fetch API\n- JSON request/response handling",
+      "source_line_start": 131,
+      "source_line_end": 141
+    },
+    {
+      "id": "s009",
+      "level": 3,
+      "title": "Experimental Serving Boundary",
+      "normalized_title": "Experimental Serving Boundary",
+      "key": "experimental_serving_boundary",
+      "path": [
+        "Technical Stack",
+        "Experimental Serving Boundary"
+      ],
+      "content": "The browser sends a `POST` request containing JSON with a prompt field.\n\nThe expected response contains a `story` field.\n\nThe configured destination is a Cloudflare quick-tunnel hostname.\n\nA quick-tunnel hostname is best understood here as experimental connectivity evidence.\n\nIt is not evidence of a stable DNS/service contract.",
+      "source_line_start": 141,
+      "source_line_end": 153
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "Dataset Handling",
+      "normalized_title": "Dataset Handling",
+      "key": "dataset_handling",
+      "path": [
+        "Dataset Handling"
+      ],
+      "content": "The notebook selects TinyStories as the model-training corpus.\n\nThe visible workflow uses a bounded training subset rather than attempting to consume the entire dataset indiscriminately.\n\nThe training sample count is 100,000 stories in the retained workflow.\n\nA validation subset is also prepared.\n\nThis demonstrates awareness of the distinction between training data and held-out evaluation data.\n\nThe dataset choice is aligned with the product objective: short narrative generation.\n\nThat alignment is stronger than using an unrelated general-purpose corpus purely because it is convenient.",
+      "source_line_start": 153,
+      "source_line_end": 169
+    },
+    {
+      "id": "s011",
+      "level": 2,
+      "title": "Tokenization and Model Preparation",
+      "normalized_title": "Tokenization and Model Preparation",
+      "key": "tokenization_and_model_preparation",
+      "path": [
+        "Tokenization and Model Preparation"
+      ],
+      "content": "The model family is GPT-2.\n\nThe tokenizer is loaded from the same family.\n\nGPT-2 does not define a conventional padding token by default.\n\nThe notebook handles this by assigning the end-of-sequence token for padding behavior.\n\nThe workflow uses a bounded token length rather than leaving sequence length unconstrained.\n\nThe retained maximum sequence length is 256 tokens.\n\nThe data collator is configured for causal language modeling with masked-language modeling disabled.\n\nThat is the correct training paradigm for autoregressive GPT-2-style next-token generation.\n\nThis is a useful distinction from the masked-token objectives used by BERT-family models.",
+      "source_line_start": 169,
+      "source_line_end": 189
+    },
+    {
+      "id": "s012",
+      "level": 2,
+      "title": "Training Workflow",
+      "normalized_title": "Training Workflow",
+      "key": "training_workflow",
+      "path": [
+        "Training Workflow"
+      ],
+      "content": "The notebook imports and configures Hugging Face `TrainingArguments`.\n\nThe output directory is configured for the TinyStories GPT-2 experiment.\n\nEvaluation is configured during training rather than being treated solely as an afterthought.\n\nCheckpoint-oriented training arguments are present.\n\nThe notebook records executed output rather than only displaying code fences or pseudocode.\n\nThe retained runtime indicates GPU execution on a Tesla T4.\n\nThat establishes actual accelerator-backed notebook experimentation.\n\nIt does not establish a dedicated production GPU deployment.",
+      "source_line_start": 189,
+      "source_line_end": 207
+    },
+    {
+      "id": "s013",
+      "level": 2,
+      "title": "Generation Workflow",
+      "normalized_title": "Generation Workflow",
+      "key": "generation_workflow",
+      "path": [
+        "Generation Workflow"
+      ],
+      "content": "The notebook defines story-generation behavior around a text prompt.\n\nGeneration uses stochastic decoding controls rather than only greedy decoding.\n\nVisible controls include:\n\n- temperature;\n- top-k filtering;\n- top-p / nucleus sampling;\n- maximum generated length.\n\nThese parameters expose the practical tradeoff between determinism, diversity, and coherence.\n\nThe generated examples in the notebook are evidence of inference execution.\n\nSome visible generations become repetitive or semantically weak.\n\nThe corpus preserves that fact as an experimental quality boundary rather than describing the model as production-quality storytelling AI.",
+      "source_line_start": 207,
+      "source_line_end": 228
+    },
+    {
+      "id": "s014",
+      "level": 2,
+      "title": "Evaluation",
+      "normalized_title": "Evaluation",
+      "key": "evaluation",
+      "path": [
+        "Evaluation"
+      ],
+      "content": "The notebook contains validation-oriented evaluation logic after training.\n\nThe workflow discusses loss/perplexity-style model quality rather than relying only on subjective generated samples.\n\nThat is a step toward quantitative model assessment.\n\nThe corpus does not promote an isolated notebook number into a general benchmark claim.\n\nThere is no controlled comparison against a separate baseline model family in the repository.\n\nThere is also no human-evaluation protocol for story quality.\n\nThe strongest supported statement is that the project combines automated validation metrics with qualitative generation inspection.",
+      "source_line_start": 228,
+      "source_line_end": 244
+    },
+    {
+      "id": "s015",
+      "level": 2,
+      "title": "StoryVerse Frontend",
+      "normalized_title": "StoryVerse Frontend",
+      "key": "storyverse_frontend",
+      "path": [
+        "StoryVerse Frontend"
+      ],
+      "content": "The browser interface is significantly more polished than a raw notebook text box.\n\nIt presents the product as a story-generation experience.\n\nThe page contains:\n\n- a branded title area;\n- model-description content;\n- prompt entry;\n- example prompts;\n- live input/word-count behavior;\n- a generation action;\n- loading/error/result states;\n- generated-story presentation.\n\nThe UI therefore demonstrates productization effort around an ML experiment.\n\nIt is not merely a screenshot or design specification.\n\nThe interaction code is retained directly in the HTML.",
+      "source_line_start": 244,
+      "source_line_end": 267
+    },
+    {
+      "id": "s016",
+      "level": 2,
+      "title": "Endpoint Integration",
+      "normalized_title": "Endpoint Integration",
+      "key": "endpoint_integration",
+      "path": [
+        "Endpoint Integration"
+      ],
+      "content": "The frontend invokes the Fetch API.\n\nIt sends a JSON body shaped around the user's prompt.\n\nThe endpoint contract expected by the client is simple and explicit:\n\n```text\nPOST /generate\nContent-Type: application/json\nbody: { prompt: ... }\nresponse: { story: ... }\n```\n\nThe hard-coded hostname belongs to a Cloudflare quick tunnel.\n\nThis is evidence that the model experiment was being connected to a remotely reachable interface.\n\nIt is not evidence that the same hostname is intended as a durable deployment address.\n\nThe frontend has no fallback endpoint or environment-based configuration in the retained snapshot.\n\nThat makes the deployment coupling visible and historically informative.",
+      "source_line_start": 267,
+      "source_line_end": 292
+    },
+    {
+      "id": "s017",
+      "level": 2,
+      "title": "Major Engineering Work",
+      "normalized_title": "Major Engineering Work",
+      "key": "major_engineering_work",
+      "path": [
+        "Major Engineering Work"
+      ],
+      "content": "### Turning a Training Recipe into Executed Work\n\nThe most important change relative to repository 087 is execution.\n\nThe portfolio moves from describing how a GPT-2 pipeline could be assembled to retaining an actual training notebook.\n\nThat shift matters more than the shared terminology between the repositories.\n\n### Dataset-to-Model Integration\n\nThe project joins Hugging Face dataset retrieval, tokenization, model initialization, training configuration, evaluation, and generation.\n\nEach stage has an explicit role in the pipeline.\n\n### Frontend-to-Model Integration\n\nA separate web client sends prompts to a remote generation endpoint.\n\nThis shows an attempt to move model behavior out of notebook-only interaction.\n\n### Product Framing\n\nStoryVerse wraps the technical model in a narrow product concept.\n\nThe UI explains what users can do instead of exposing training details as the primary experience.",
+      "source_line_start": 292,
+      "source_line_end": 320
+    },
+    {
+      "id": "s018",
+      "level": 3,
+      "title": "Turning a Training Recipe into Executed Work",
+      "normalized_title": "Turning a Training Recipe into Executed Work",
+      "key": "turning_a_training_recipe_into_executed_work",
+      "path": [
+        "Major Engineering Work",
+        "Turning a Training Recipe into Executed Work"
+      ],
+      "content": "The most important change relative to repository 087 is execution.\n\nThe portfolio moves from describing how a GPT-2 pipeline could be assembled to retaining an actual training notebook.\n\nThat shift matters more than the shared terminology between the repositories.",
+      "source_line_start": 294,
+      "source_line_end": 302
+    },
+    {
+      "id": "s019",
+      "level": 3,
+      "title": "Dataset-to-Model Integration",
+      "normalized_title": "Dataset-to-Model Integration",
+      "key": "dataset_to_model_integration",
+      "path": [
+        "Major Engineering Work",
+        "Dataset-to-Model Integration"
+      ],
+      "content": "The project joins Hugging Face dataset retrieval, tokenization, model initialization, training configuration, evaluation, and generation.\n\nEach stage has an explicit role in the pipeline.",
+      "source_line_start": 302,
+      "source_line_end": 308
+    },
+    {
+      "id": "s020",
+      "level": 3,
+      "title": "Frontend-to-Model Integration",
+      "normalized_title": "Frontend-to-Model Integration",
+      "key": "frontend_to_model_integration",
+      "path": [
+        "Major Engineering Work",
+        "Frontend-to-Model Integration"
+      ],
+      "content": "A separate web client sends prompts to a remote generation endpoint.\n\nThis shows an attempt to move model behavior out of notebook-only interaction.",
+      "source_line_start": 308,
+      "source_line_end": 314
+    },
+    {
+      "id": "s021",
+      "level": 3,
+      "title": "Product Framing",
+      "normalized_title": "Product Framing",
+      "key": "product_framing",
+      "path": [
+        "Major Engineering Work",
+        "Product Framing"
+      ],
+      "content": "StoryVerse wraps the technical model in a narrow product concept.\n\nThe UI explains what users can do instead of exposing training details as the primary experience.",
+      "source_line_start": 314,
+      "source_line_end": 320
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Testing & Verification",
+      "normalized_title": "Testing & Verification",
+      "key": "testing_and_verification",
+      "path": [
+        "Testing & Verification"
+      ],
+      "content": "Verification evidence is primarily experimental rather than test-suite based.\n\nThe notebook's executed cells verify that dataset/model operations were run in a notebook environment.\n\nGenerated story samples verify inference paths.\n\nValidation evaluation verifies that the model is not assessed solely from training loss.\n\nFrontend request/error handling provides basic runtime handling at the product boundary.\n\nThese forms of verification are appropriate to an ML prototype.\n\nThey should not be relabeled as automated software regression testing.",
+      "source_line_start": 320,
+      "source_line_end": 336
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Engineering Discipline",
+      "normalized_title": "Engineering Discipline",
+      "key": "engineering_discipline",
+      "path": [
+        "Engineering Discipline"
+      ],
+      "content": "The project demonstrates several useful discipline choices:\n\n- bounded dataset subsets for manageable experimentation;\n- explicit train/validation separation;\n- deterministic library/model selection;\n- random-seed-oriented reproducibility setup in the workflow;\n- explicit sequence-length bounds;\n- causal-LM-specific data collation;\n- generation controls exposed as named parameters;\n- user-facing error/loading handling;\n- separation between notebook experimentation and browser UX.\n\nA major reproducibility limitation is the transient serving URL.\n\nThe model-serving environment is not represented as a durable deployment configuration in the retained snapshot.",
+      "source_line_start": 336,
+      "source_line_end": 354
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Product Engineering",
+      "normalized_title": "Product Engineering",
+      "key": "product_engineering",
+      "path": [
+        "Product Engineering"
+      ],
+      "content": "This repository is notable because model work is attached to a concrete product surface.\n\nThe user is not expected to know what GPT-2 tokenization or causal language modeling means.\n\nThe product interaction reduces the workflow to:\n\n1. enter a prompt;\n2. request a story;\n3. wait for generation;\n4. read the result.\n\nExample prompts reduce blank-state friction.\n\nLoading behavior acknowledges model latency.\n\nError behavior acknowledges remote-service failure.\n\nThe model-details section gives technical transparency without making it the main interaction.",
+      "source_line_start": 354,
+      "source_line_end": 375
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Scale / Complexity",
+      "normalized_title": "Scale / Complexity",
+      "key": "scale_complexity",
+      "path": [
+        "Scale / Complexity"
+      ],
+      "content": "Complexity comes from crossing multiple engineering domains:\n\n- dataset management;\n- NLP preprocessing;\n- transformer fine-tuning;\n- GPU notebook execution;\n- generation decoding;\n- model evaluation;\n- HTTP integration;\n- frontend interaction design.\n\nThe repository remains a prototype-scale system.\n\nThere is no evidence here of autoscaling inference, model registry, production telemetry, distributed training, or large user traffic.\n\nThose are not required to recognize the real integration complexity that is present.",
+      "source_line_start": 375,
+      "source_line_end": 394
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Skills Demonstrated",
+      "normalized_title": "Skills Demonstrated",
+      "key": "skills_demonstrated",
+      "path": [
+        "Skills Demonstrated"
+      ],
+      "content": "### NLP / ML\n\n- transformer-model experimentation\n- GPT-2 fine-tuning workflow\n- Hugging Face ecosystem use\n- causal language modeling\n- tokenizer configuration\n- sequence-length management\n- dataset subsetting\n- validation-data handling\n- stochastic text generation\n- inference-parameter tuning\n- loss/perplexity-oriented evaluation\n\n### Software Integration\n\n- notebook-to-application transition\n- REST-like JSON endpoint consumption\n- asynchronous browser requests\n- frontend result-state management\n- error handling around remote inference\n\n### Product\n\n- narrowing a model into a user-facing use case\n- prompt UX\n- example-driven onboarding\n- generated-content presentation\n- technical-detail disclosure",
+      "source_line_start": 394,
+      "source_line_end": 426
+    },
+    {
+      "id": "s027",
+      "level": 3,
+      "title": "NLP / ML",
+      "normalized_title": "NLP / ML",
+      "key": "nlp_ml",
+      "path": [
+        "Skills Demonstrated",
+        "NLP / ML"
+      ],
+      "content": "- transformer-model experimentation\n- GPT-2 fine-tuning workflow\n- Hugging Face ecosystem use\n- causal language modeling\n- tokenizer configuration\n- sequence-length management\n- dataset subsetting\n- validation-data handling\n- stochastic text generation\n- inference-parameter tuning\n- loss/perplexity-oriented evaluation",
+      "source_line_start": 396,
+      "source_line_end": 410
+    },
+    {
+      "id": "s028",
+      "level": 3,
+      "title": "Software Integration",
+      "normalized_title": "Software Integration",
+      "key": "software_integration",
+      "path": [
+        "Skills Demonstrated",
+        "Software Integration"
+      ],
+      "content": "- notebook-to-application transition\n- REST-like JSON endpoint consumption\n- asynchronous browser requests\n- frontend result-state management\n- error handling around remote inference",
+      "source_line_start": 410,
+      "source_line_end": 418
+    },
+    {
+      "id": "s029",
+      "level": 3,
+      "title": "Product",
+      "normalized_title": "Product",
+      "key": "product",
+      "path": [
+        "Skills Demonstrated",
+        "Product"
+      ],
+      "content": "- narrowing a model into a user-facing use case\n- prompt UX\n- example-driven onboarding\n- generated-content presentation\n- technical-detail disclosure",
+      "source_line_start": 418,
+      "source_line_end": 426
+    },
+    {
+      "id": "s030",
+      "level": 2,
+      "title": "What Was Learned / Capability Developed",
+      "normalized_title": "What Was Learned / Capability Developed",
+      "key": "what_was_learned_capability_developed",
+      "path": [
+        "What Was Learned / Capability Developed"
+      ],
+      "content": "The repository demonstrates the practical distance between “knowing the training steps” and actually wiring a model experiment into an application.\n\nThe work requires handling dataset shape, tokenizer quirks, padding semantics, model constraints, training configuration, generation behavior, and evaluation.\n\nIt also surfaces a second class of problems after model training: exposing inference reliably to a user interface.\n\nThe transient tunnel makes that transition visible.\n\nThe project therefore develops both model-engineering and integration instincts.",
+      "source_line_start": 426,
+      "source_line_end": 438
+    },
+    {
+      "id": "s031",
+      "level": 2,
+      "title": "Portfolio Evolution Context",
+      "normalized_title": "Portfolio Evolution Context",
+      "key": "portfolio_evolution_context",
+      "path": [
+        "Portfolio Evolution Context"
+      ],
+      "content": "Repository 087 `NLP-Project` was documentation-heavy and described a story-generation training pipeline.\n\nRepository 090 is the implementation/execution continuation of that direction.\n\nThe progression is not simply “more NLP.”\n\nIt is:\n\n```text\nworkflow documentation\n        ↓\nexecuted notebook experiment\n        ↓\nmodel generation/evaluation\n        ↓\nremote endpoint integration\n        ↓\nuser-facing story product\n```\n\nThis is one of the clearest examples in the corpus of moving from learning material into application behavior.",
+      "source_line_start": 438,
+      "source_line_end": 462
+    },
+    {
+      "id": "s032",
+      "level": 2,
+      "title": "Historical Significance",
+      "normalized_title": "Historical Significance",
+      "key": "historical_significance",
+      "path": [
+        "Historical Significance"
+      ],
+      "content": "Within the processed corpus so far, this repository is the earliest observed evidence of a GPT-2/TinyStories fine-tuning workflow retained as an executed notebook and connected to a dedicated browser generation client.\n\nEarlier NLP repositories demonstrate classification, vector-space, probabilistic, or sequence-model learning, and repository 087 documents GPT-2 fine-tuning.\n\nRepository 090 adds execution and product integration.\n\nThat makes it historically useful for tracing the portfolio's transition from ML coursework/workflows toward model-backed applications.",
+      "source_line_start": 462,
+      "source_line_end": 472
+    },
+    {
+      "id": "s033",
+      "level": 2,
+      "title": "Limitations & Missing Evidence",
+      "normalized_title": "Limitations & Missing Evidence",
+      "key": "limitations_and_missing_evidence",
+      "path": [
+        "Limitations & Missing Evidence"
+      ],
+      "content": "The frontend's quick-tunnel hostname is inherently transient and should not be treated as a permanent deployment address.\n\nThe exact standalone server implementation behind `/generate` is not established by the retained source inspected for this corpus.\n\nGenerated notebook samples show quality limitations such as repetition, so the project does not support claims of production-grade story quality.\n\nThe notebook experiment does not establish a controlled benchmark against competing model families.\n\nThese boundaries narrow the claim without weakening the evidence of real model execution and integration.",
+      "source_line_start": 472,
+      "source_line_end": 484
+    },
+    {
+      "id": "s034",
+      "level": 2,
+      "title": "Overall Narrative",
+      "normalized_title": "Overall Narrative",
+      "key": "overall_narrative",
+      "path": [
+        "Overall Narrative"
+      ],
+      "content": "NLP_ENDPOINT is the point where an earlier documented generative-NLP workflow becomes an executed model/application prototype.\n\nIt combines TinyStories data, GPT-2 causal-language-modeling preparation, GPU-backed notebook execution, generation and evaluation, and a polished browser client that calls a remote generation endpoint.\n\nThe repository's value is not that it proves a production LLM platform.\n\nIts value is that it records the full practical transition from model-training mechanics to a user-facing AI feature.\n\n# Project Tags\n\n`individual-project`, `nlp`, `generative-nlp`, `story-generation`, `gpt2`, `tinystories`, `hugging-face`, `hugging-face-datasets`, `transformers`, `pytorch`, `jupyter-notebook`, `executed-notebook`, `gpu-experiment`, `tesla-t4`, `causal-language-modeling`, `tokenization`, `data-collator`, `training-arguments`, `model-finetuning`, `train-validation-split`, `model-evaluation`, `perplexity-oriented-evaluation`, `text-generation`, `temperature-sampling`, `top-k-sampling`, `top-p-sampling`, `frontend-model-integration`, `http-endpoint`, `json-api-consumption`, `fetch-api`, `html`, `javascript`, `tailwind-css`, `storyverse`, `prompt-interface`, `loading-state`, `error-state`, `cloudflare-quick-tunnel`, `transient-endpoint`, `ml-product-prototype`, `earliest-observed-executed-gpt2-tinystories-finetuning`, `earliest-observed-model-backed-story-generation-client`",
+      "source_line_start": 484,
+      "source_line_end": 497
+    }
+  ],
+  "raw_analysis": "# Repository 090 — NLP_ENDPOINT\n\n## Repository Identity\n\n- **Repository:** `kirolossedra/NLP_ENDPOINT`\n- **Corpus index:** 090\n- **Repository start date:** 2025-07-15\n- **Last meaningful update date:** 2025-08-03\n- **Latest meaningful commit:** `0d5de619a41ee07b25ab3f5c5bb07c10d36d7ba5`\n- **Primary repository form:** executed Jupyter model-training notebook plus browser story-generation client\n- **Primary model family:** GPT-2\n- **Primary dataset:** TinyStories\n- **Collaboration classification:** `individual-project`\n\n## Evidence Basis\n\nThe repository contains two substantive artifacts: `code.ipynb` and `index.html`.\n\nThe notebook is materially different from repository 087 `NLP-Project`.\n\nRepository 087 documented a proposed fine-tuning workflow in Markdown.\n\nThis repository contains an executed notebook with training-oriented cells, runtime output, model loading, dataset loading, generation code, and evaluation logic.\n\nThe notebook imports PyTorch, Hugging Face Transformers, and Hugging Face Datasets.\n\nIt loads `roneneldan/TinyStories` and builds a GPT-2 causal-language-modeling pipeline.\n\nVisible notebook output records a CUDA-capable Tesla T4 environment.\n\nThe browser client is a separate user-facing artifact branded as `StoryVerse`.\n\nIt submits prompt text to a `/generate` HTTP endpoint hosted at a hard-coded `trycloudflare.com` tunnel URL.\n\nThe checked-in frontend therefore proves endpoint integration behavior.\n\nIt does not by itself prove that the transient tunnel remains reachable after the historical experiment.\n\nThe repository contains no durable infrastructure definition establishing a permanent production deployment.\n\nThe corpus therefore treats the endpoint as an experimental model-serving integration rather than a continuously operated production service.\n\n## What the Project Is\n\nNLP_ENDPOINT is an applied generative-NLP prototype that moves beyond a training recipe into an executed model experiment and a user-facing generation interface.\n\nThe project has two connected concerns.\n\nThe first is fine-tuning GPT-2 on short-form story data.\n\nThe second is exposing story generation through a browser workflow.\n\nThe notebook handles model/data experimentation.\n\nThe HTML page handles product presentation, prompt entry, examples, request state, and result display.\n\nTogether they form a small end-to-end model-application experiment.\n\n## Project Scope\n\nThe retained scope includes:\n\n- loading TinyStories from Hugging Face;\n- selecting a bounded training subset;\n- preparing a GPT-2 tokenizer;\n- adapting padding behavior for causal language modeling;\n- tokenizing story text;\n- preparing training and validation data;\n- configuring model training;\n- generating text from prompts;\n- evaluating the trained model with validation-oriented metrics;\n- presenting a polished web prompt interface;\n- sending prompts to a generation endpoint;\n- rendering returned stories in the client.\n\nThe repository is not simply a static UI mockup.\n\nThe notebook gives executable ML evidence and the client contains concrete remote-request integration.\n\nAt the same time, the repository does not establish durable production hosting, production traffic, or a persistent model-serving platform.\n\n## Architecture / System Shape\n\nThe visible system can be represented as:\n\n```text\nTinyStories dataset\n      ↓\nHugging Face Datasets\n      ↓\nGPT-2 tokenizer + preprocessing\n      ↓\ncausal-LM training/evaluation notebook\n      ↓\ntrained model / generation behavior\n      ↓\nexperimental HTTP generation endpoint\n      ↓\nStoryVerse browser client\n      ↓\nuser prompt → generated story\n```\n\nThis is a compact ML application pipeline rather than a conventional database-backed web application.\n\nThe notebook is the experimentation/training plane.\n\nThe browser is the interaction plane.\n\nThe HTTP endpoint is the integration boundary between them.\n\nThe exact server implementation is not retained as a standalone source file in the repository evidence inspected for this corpus.\n\nThat distinction prevents the browser's endpoint URL from being mistaken for proof of a complete checked-in backend service.\n\n## Technical Stack\n\n### Machine Learning\n\n- Python notebook execution\n- PyTorch\n- Hugging Face Transformers\n- Hugging Face Datasets\n- GPT-2\n- TinyStories\n- causal language modeling\n- tokenizer preprocessing\n- train/validation separation\n- model generation parameters\n\n### Browser Layer\n\n- HTML\n- CSS\n- JavaScript\n- Tailwind CSS via CDN\n- Google Fonts\n- Fetch API\n- JSON request/response handling\n\n### Experimental Serving Boundary\n\nThe browser sends a `POST` request containing JSON with a prompt field.\n\nThe expected response contains a `story` field.\n\nThe configured destination is a Cloudflare quick-tunnel hostname.\n\nA quick-tunnel hostname is best understood here as experimental connectivity evidence.\n\nIt is not evidence of a stable DNS/service contract.\n\n## Dataset Handling\n\nThe notebook selects TinyStories as the model-training corpus.\n\nThe visible workflow uses a bounded training subset rather than attempting to consume the entire dataset indiscriminately.\n\nThe training sample count is 100,000 stories in the retained workflow.\n\nA validation subset is also prepared.\n\nThis demonstrates awareness of the distinction between training data and held-out evaluation data.\n\nThe dataset choice is aligned with the product objective: short narrative generation.\n\nThat alignment is stronger than using an unrelated general-purpose corpus purely because it is convenient.\n\n## Tokenization and Model Preparation\n\nThe model family is GPT-2.\n\nThe tokenizer is loaded from the same family.\n\nGPT-2 does not define a conventional padding token by default.\n\nThe notebook handles this by assigning the end-of-sequence token for padding behavior.\n\nThe workflow uses a bounded token length rather than leaving sequence length unconstrained.\n\nThe retained maximum sequence length is 256 tokens.\n\nThe data collator is configured for causal language modeling with masked-language modeling disabled.\n\nThat is the correct training paradigm for autoregressive GPT-2-style next-token generation.\n\nThis is a useful distinction from the masked-token objectives used by BERT-family models.\n\n## Training Workflow\n\nThe notebook imports and configures Hugging Face `TrainingArguments`.\n\nThe output directory is configured for the TinyStories GPT-2 experiment.\n\nEvaluation is configured during training rather than being treated solely as an afterthought.\n\nCheckpoint-oriented training arguments are present.\n\nThe notebook records executed output rather than only displaying code fences or pseudocode.\n\nThe retained runtime indicates GPU execution on a Tesla T4.\n\nThat establishes actual accelerator-backed notebook experimentation.\n\nIt does not establish a dedicated production GPU deployment.\n\n## Generation Workflow\n\nThe notebook defines story-generation behavior around a text prompt.\n\nGeneration uses stochastic decoding controls rather than only greedy decoding.\n\nVisible controls include:\n\n- temperature;\n- top-k filtering;\n- top-p / nucleus sampling;\n- maximum generated length.\n\nThese parameters expose the practical tradeoff between determinism, diversity, and coherence.\n\nThe generated examples in the notebook are evidence of inference execution.\n\nSome visible generations become repetitive or semantically weak.\n\nThe corpus preserves that fact as an experimental quality boundary rather than describing the model as production-quality storytelling AI.\n\n## Evaluation\n\nThe notebook contains validation-oriented evaluation logic after training.\n\nThe workflow discusses loss/perplexity-style model quality rather than relying only on subjective generated samples.\n\nThat is a step toward quantitative model assessment.\n\nThe corpus does not promote an isolated notebook number into a general benchmark claim.\n\nThere is no controlled comparison against a separate baseline model family in the repository.\n\nThere is also no human-evaluation protocol for story quality.\n\nThe strongest supported statement is that the project combines automated validation metrics with qualitative generation inspection.\n\n## StoryVerse Frontend\n\nThe browser interface is significantly more polished than a raw notebook text box.\n\nIt presents the product as a story-generation experience.\n\nThe page contains:\n\n- a branded title area;\n- model-description content;\n- prompt entry;\n- example prompts;\n- live input/word-count behavior;\n- a generation action;\n- loading/error/result states;\n- generated-story presentation.\n\nThe UI therefore demonstrates productization effort around an ML experiment.\n\nIt is not merely a screenshot or design specification.\n\nThe interaction code is retained directly in the HTML.\n\n## Endpoint Integration\n\nThe frontend invokes the Fetch API.\n\nIt sends a JSON body shaped around the user's prompt.\n\nThe endpoint contract expected by the client is simple and explicit:\n\n```text\nPOST /generate\nContent-Type: application/json\nbody: { prompt: ... }\nresponse: { story: ... }\n```\n\nThe hard-coded hostname belongs to a Cloudflare quick tunnel.\n\nThis is evidence that the model experiment was being connected to a remotely reachable interface.\n\nIt is not evidence that the same hostname is intended as a durable deployment address.\n\nThe frontend has no fallback endpoint or environment-based configuration in the retained snapshot.\n\nThat makes the deployment coupling visible and historically informative.\n\n## Major Engineering Work\n\n### Turning a Training Recipe into Executed Work\n\nThe most important change relative to repository 087 is execution.\n\nThe portfolio moves from describing how a GPT-2 pipeline could be assembled to retaining an actual training notebook.\n\nThat shift matters more than the shared terminology between the repositories.\n\n### Dataset-to-Model Integration\n\nThe project joins Hugging Face dataset retrieval, tokenization, model initialization, training configuration, evaluation, and generation.\n\nEach stage has an explicit role in the pipeline.\n\n### Frontend-to-Model Integration\n\nA separate web client sends prompts to a remote generation endpoint.\n\nThis shows an attempt to move model behavior out of notebook-only interaction.\n\n### Product Framing\n\nStoryVerse wraps the technical model in a narrow product concept.\n\nThe UI explains what users can do instead of exposing training details as the primary experience.\n\n## Testing & Verification\n\nVerification evidence is primarily experimental rather than test-suite based.\n\nThe notebook's executed cells verify that dataset/model operations were run in a notebook environment.\n\nGenerated story samples verify inference paths.\n\nValidation evaluation verifies that the model is not assessed solely from training loss.\n\nFrontend request/error handling provides basic runtime handling at the product boundary.\n\nThese forms of verification are appropriate to an ML prototype.\n\nThey should not be relabeled as automated software regression testing.\n\n## Engineering Discipline\n\nThe project demonstrates several useful discipline choices:\n\n- bounded dataset subsets for manageable experimentation;\n- explicit train/validation separation;\n- deterministic library/model selection;\n- random-seed-oriented reproducibility setup in the workflow;\n- explicit sequence-length bounds;\n- causal-LM-specific data collation;\n- generation controls exposed as named parameters;\n- user-facing error/loading handling;\n- separation between notebook experimentation and browser UX.\n\nA major reproducibility limitation is the transient serving URL.\n\nThe model-serving environment is not represented as a durable deployment configuration in the retained snapshot.\n\n## Product Engineering\n\nThis repository is notable because model work is attached to a concrete product surface.\n\nThe user is not expected to know what GPT-2 tokenization or causal language modeling means.\n\nThe product interaction reduces the workflow to:\n\n1. enter a prompt;\n2. request a story;\n3. wait for generation;\n4. read the result.\n\nExample prompts reduce blank-state friction.\n\nLoading behavior acknowledges model latency.\n\nError behavior acknowledges remote-service failure.\n\nThe model-details section gives technical transparency without making it the main interaction.\n\n## Scale / Complexity\n\nComplexity comes from crossing multiple engineering domains:\n\n- dataset management;\n- NLP preprocessing;\n- transformer fine-tuning;\n- GPU notebook execution;\n- generation decoding;\n- model evaluation;\n- HTTP integration;\n- frontend interaction design.\n\nThe repository remains a prototype-scale system.\n\nThere is no evidence here of autoscaling inference, model registry, production telemetry, distributed training, or large user traffic.\n\nThose are not required to recognize the real integration complexity that is present.\n\n## Skills Demonstrated\n\n### NLP / ML\n\n- transformer-model experimentation\n- GPT-2 fine-tuning workflow\n- Hugging Face ecosystem use\n- causal language modeling\n- tokenizer configuration\n- sequence-length management\n- dataset subsetting\n- validation-data handling\n- stochastic text generation\n- inference-parameter tuning\n- loss/perplexity-oriented evaluation\n\n### Software Integration\n\n- notebook-to-application transition\n- REST-like JSON endpoint consumption\n- asynchronous browser requests\n- frontend result-state management\n- error handling around remote inference\n\n### Product\n\n- narrowing a model into a user-facing use case\n- prompt UX\n- example-driven onboarding\n- generated-content presentation\n- technical-detail disclosure\n\n## What Was Learned / Capability Developed\n\nThe repository demonstrates the practical distance between “knowing the training steps” and actually wiring a model experiment into an application.\n\nThe work requires handling dataset shape, tokenizer quirks, padding semantics, model constraints, training configuration, generation behavior, and evaluation.\n\nIt also surfaces a second class of problems after model training: exposing inference reliably to a user interface.\n\nThe transient tunnel makes that transition visible.\n\nThe project therefore develops both model-engineering and integration instincts.\n\n## Portfolio Evolution Context\n\nRepository 087 `NLP-Project` was documentation-heavy and described a story-generation training pipeline.\n\nRepository 090 is the implementation/execution continuation of that direction.\n\nThe progression is not simply “more NLP.”\n\nIt is:\n\n```text\nworkflow documentation\n        ↓\nexecuted notebook experiment\n        ↓\nmodel generation/evaluation\n        ↓\nremote endpoint integration\n        ↓\nuser-facing story product\n```\n\nThis is one of the clearest examples in the corpus of moving from learning material into application behavior.\n\n## Historical Significance\n\nWithin the processed corpus so far, this repository is the earliest observed evidence of a GPT-2/TinyStories fine-tuning workflow retained as an executed notebook and connected to a dedicated browser generation client.\n\nEarlier NLP repositories demonstrate classification, vector-space, probabilistic, or sequence-model learning, and repository 087 documents GPT-2 fine-tuning.\n\nRepository 090 adds execution and product integration.\n\nThat makes it historically useful for tracing the portfolio's transition from ML coursework/workflows toward model-backed applications.\n\n## Limitations & Missing Evidence\n\nThe frontend's quick-tunnel hostname is inherently transient and should not be treated as a permanent deployment address.\n\nThe exact standalone server implementation behind `/generate` is not established by the retained source inspected for this corpus.\n\nGenerated notebook samples show quality limitations such as repetition, so the project does not support claims of production-grade story quality.\n\nThe notebook experiment does not establish a controlled benchmark against competing model families.\n\nThese boundaries narrow the claim without weakening the evidence of real model execution and integration.\n\n## Overall Narrative\n\nNLP_ENDPOINT is the point where an earlier documented generative-NLP workflow becomes an executed model/application prototype.\n\nIt combines TinyStories data, GPT-2 causal-language-modeling preparation, GPU-backed notebook execution, generation and evaluation, and a polished browser client that calls a remote generation endpoint.\n\nThe repository's value is not that it proves a production LLM platform.\n\nIts value is that it records the full practical transition from model-training mechanics to a user-facing AI feature.\n\n# Project Tags\n\n`individual-project`, `nlp`, `generative-nlp`, `story-generation`, `gpt2`, `tinystories`, `hugging-face`, `hugging-face-datasets`, `transformers`, `pytorch`, `jupyter-notebook`, `executed-notebook`, `gpu-experiment`, `tesla-t4`, `causal-language-modeling`, `tokenization`, `data-collator`, `training-arguments`, `model-finetuning`, `train-validation-split`, `model-evaluation`, `perplexity-oriented-evaluation`, `text-generation`, `temperature-sampling`, `top-k-sampling`, `top-p-sampling`, `frontend-model-integration`, `http-endpoint`, `json-api-consumption`, `fetch-api`, `html`, `javascript`, `tailwind-css`, `storyverse`, `prompt-interface`, `loading-state`, `error-state`, `cloudflare-quick-tunnel`, `transient-endpoint`, `ml-product-prototype`, `earliest-observed-executed-gpt2-tinystories-finetuning`, `earliest-observed-model-backed-story-generation-client`\n"
+}

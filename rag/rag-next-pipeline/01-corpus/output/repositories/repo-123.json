@@ -1,0 +1,737 @@
+{
+  "schema_version": "1.0.0",
+  "repository_index": 123,
+  "repository_total": 134,
+  "repository_name": "Apple-Project",
+  "header_title": "Apple-Project",
+  "repository_slug": null,
+  "repository_url": null,
+  "repository_url_source": null,
+  "source": {
+    "file": "repositories/repo-123-Apple-Project/README.md",
+    "line_start": 1,
+    "line_end": 474,
+    "sha256": "64fed1805a166464c4f3f6314b7e7339529aeb93429e6f20b7180e30a7a1b25d"
+  },
+  "chronology_summary": {
+    "created": null,
+    "first_commit": null,
+    "last_commit_or_push": null,
+    "active_span": null
+  },
+  "classification_summary": {
+    "technical_realm": null,
+    "business_realm": null,
+    "maturity": null,
+    "portfolio_evidence_weight": null
+  },
+  "metadata": {},
+  "retrieval_tags": [
+    "objective-c",
+    "ios",
+    "xcode",
+    "cocoapods",
+    "local-pod-integration",
+    "ftp",
+    "ftp-client",
+    "file-transfer",
+    "upload-download",
+    "network-progress-callbacks",
+    "corewifi",
+    "wifi-scanning",
+    "wifi-association",
+    "rssi",
+    "ssid",
+    "network-selection",
+    "external-library-integration",
+    "vendored-dependencies",
+    "source-attribution",
+    "certificate-cleanup",
+    "provisioning-profile-cleanup",
+    "research-networking-integration"
+  ],
+  "skill_ratings": [],
+  "intro": "",
+  "canonical_sections": {
+    "identity": {
+      "section_ids": [
+        "s001"
+      ],
+      "titles": [
+        "Repository Identity"
+      ],
+      "text": "## Repository Identity\n- Repository: 123 / 138\n- Name: `Apple-Project`\n- Start Date: 2025-09-17\n- Latest Meaningful Update: 2025-09-17\n- Latest Meaningful Commit: `d3b96569321baf88d0bee0e03bcebcd2a0da1d7a`\n- Primary Repository Language: Objective-C\n- Primary Type: iOS networking project archive and integration workspace\n- Technical Fields: iOS networking, FTP file transfer, Wi-Fi interface control, Xcode/CocoaPods integration\n- Collaboration Type: `research-collaboration-with-external-components`\n- Processing Context: chronology backfill from the connected private-repository set"
+    },
+    "security_privacy": {
+      "section_ids": [
+        "s021"
+      ],
+      "titles": [
+        "Credential Mapping"
+      ],
+      "text": "## Credential Mapping\nNetwork name acts as the lookup key for the supplied password dictionary.\n\nOnce a qualifying scan result is selected, the corresponding password is assigned to association parameters.\n\nThis is a compact SSID-to-credential selection mechanism."
+    },
+    "authorship_attribution": {
+      "section_ids": [
+        "s002",
+        "s028",
+        "s037"
+      ],
+      "titles": [
+        "Evidence and Authorship Boundary",
+        "Imported-Code Attribution",
+        "External-source attribution"
+      ],
+      "text": "## Evidence and Authorship Boundary\nThis repository requires a particularly explicit authorship boundary because substantial source inside it is externally attributed.\n\nThe embedded `Project/STFTPNetwork/README.md` identifies STFTPNetwork as an iOS FTP library and names its author as:\n\n```text\nSuta\n```\n\nThe repository also contains `Wificonnection.m`, whose file header states:\n\n```text\nCreated by Evangelos Tsikandyalkis on 27/01/2023\n```\n\nThe large checked-in `Pods/` directory additionally contains third-party CocoaPods dependencies such as:\n\n- IQKeyboardManager;\n- SVProgressHUD;\n- STFTPNetwork integration artifacts.\n\nThose files are repository capabilities and integration context, but they are not treated here as proof that the repository owner authored those libraries.\n\nThe owner-attributable evidence that can safely be preserved from the repository itself is therefore centered on:\n\n- selecting and assembling an iOS networking codebase for an experimental/project context;\n- maintaining the Git repository;\n- incorporating the STFTPNetwork Xcode project and example application;\n- integrating local CocoaPods dependencies;\n- preserving Wi-Fi connection/scanning functionality alongside FTP behavior;\n- cleaning sensitive provisioning/certificate artifacts from repository history;\n- creating the final merged project archive.\n\nThis README deliberately does not turn vendored library size into owner skill claims.\n\n## Imported-Code Attribution\nThe repository illustrates an important distinction for portfolio analysis.\n\nA project can demonstrate meaningful engineering exposure and integration work even when large subsystems originate elsewhere.\n\nHere, the evidence supports familiarity with a stack involving:\n\n- Objective-C;\n- Xcode;\n- CocoaPods;\n- FTP client behavior;\n- asynchronous network callbacks;\n- iOS networking project structure;\n- CoreWiFi scanning/association;\n- provisioning/certificate hygiene.\n\nBut the code-level authorship evidence explicitly places major components with other authors.\n\nThe correct RAG interpretation is therefore **integration and experimental use of external networking components**, not invention of the underlying libraries.\n\n## External-source attribution\nThe imported library and Wi-Fi component both preserve author attribution.\n\nThat makes it possible to distinguish library capability from personally attributable capability."
+    }
+  },
+  "sections": [
+    {
+      "id": "s001",
+      "level": 2,
+      "title": "Repository Identity",
+      "normalized_title": "Repository Identity",
+      "key": "repository_identity",
+      "path": [
+        "Repository Identity"
+      ],
+      "content": "- Repository: 123 / 138\n- Name: `Apple-Project`\n- Start Date: 2025-09-17\n- Latest Meaningful Update: 2025-09-17\n- Latest Meaningful Commit: `d3b96569321baf88d0bee0e03bcebcd2a0da1d7a`\n- Primary Repository Language: Objective-C\n- Primary Type: iOS networking project archive and integration workspace\n- Technical Fields: iOS networking, FTP file transfer, Wi-Fi interface control, Xcode/CocoaPods integration\n- Collaboration Type: `research-collaboration-with-external-components`\n- Processing Context: chronology backfill from the connected private-repository set",
+      "source_line_start": 3,
+      "source_line_end": 16
+    },
+    {
+      "id": "s002",
+      "level": 2,
+      "title": "Evidence and Authorship Boundary",
+      "normalized_title": "Evidence and Authorship Boundary",
+      "key": "evidence_and_authorship_boundary",
+      "path": [
+        "Evidence and Authorship Boundary"
+      ],
+      "content": "This repository requires a particularly explicit authorship boundary because substantial source inside it is externally attributed.\n\nThe embedded `Project/STFTPNetwork/README.md` identifies STFTPNetwork as an iOS FTP library and names its author as:\n\n```text\nSuta\n```\n\nThe repository also contains `Wificonnection.m`, whose file header states:\n\n```text\nCreated by Evangelos Tsikandyalkis on 27/01/2023\n```\n\nThe large checked-in `Pods/` directory additionally contains third-party CocoaPods dependencies such as:\n\n- IQKeyboardManager;\n- SVProgressHUD;\n- STFTPNetwork integration artifacts.\n\nThose files are repository capabilities and integration context, but they are not treated here as proof that the repository owner authored those libraries.\n\nThe owner-attributable evidence that can safely be preserved from the repository itself is therefore centered on:\n\n- selecting and assembling an iOS networking codebase for an experimental/project context;\n- maintaining the Git repository;\n- incorporating the STFTPNetwork Xcode project and example application;\n- integrating local CocoaPods dependencies;\n- preserving Wi-Fi connection/scanning functionality alongside FTP behavior;\n- cleaning sensitive provisioning/certificate artifacts from repository history;\n- creating the final merged project archive.\n\nThis README deliberately does not turn vendored library size into owner skill claims.",
+      "source_line_start": 16,
+      "source_line_end": 52
+    },
+    {
+      "id": "s003",
+      "level": 2,
+      "title": "What This Project Is",
+      "normalized_title": "What This Project Is",
+      "key": "what_this_project_is",
+      "path": [
+        "What This Project Is"
+      ],
+      "content": "`Apple-Project` is a private iOS networking project archive assembled around the STFTPNetwork Objective-C library, its demo application, a Wi-Fi connection component, and the complete Xcode/CocoaPods environment needed to exercise those pieces.\n\nThe checked-in structure is substantially larger than the repository's own authored surface because it includes vendored Pods and external library source.\n\nAt a system level, the material represents an iOS networking experimentation stack of the form:\n\n```text\niOS / Objective-C application context\n        |\n        +--> CoreWiFi-based Wi-Fi scan / association component\n        |\n        +--> STFTPNetwork FTP API\n                 |\n                 +--> connect\n                 +--> query\n                 +--> create\n                 +--> remove\n                 +--> download\n                 +--> upload\n                 +--> disconnect\n        |\n        +--> CocoaPods-managed UI / library dependencies\n```",
+      "source_line_start": 52,
+      "source_line_end": 78
+    },
+    {
+      "id": "s004",
+      "level": 2,
+      "title": "Repository Assembly",
+      "normalized_title": "Repository Assembly",
+      "key": "repository_assembly",
+      "path": [
+        "Repository Assembly"
+      ],
+      "content": "The Git history on 2025-09-17 shows a concentrated project-import and cleanup sequence.\n\nCommits include:\n\n- repository initialization;\n- multiple uploaded project fragments;\n- README creation;\n- deletion of a `.p12` certificate artifact;\n- deletion of a mobile provisioning artifact;\n- removal/reorganization of an earlier STFTP project directory;\n- `Adding the actual project`;\n- a final merge commit.\n\nThis gives the repository the character of a project consolidation/archive operation rather than a long-lived greenfield library implementation.",
+      "source_line_start": 78,
+      "source_line_end": 95
+    },
+    {
+      "id": "s005",
+      "level": 2,
+      "title": "STFTPNetwork External Library",
+      "normalized_title": "STFTPNetwork External Library",
+      "key": "stftpnetwork_external_library",
+      "path": [
+        "STFTPNetwork External Library"
+      ],
+      "content": "The embedded STFTPNetwork README describes the library as:\n\n> a simple FTP network library for iOS\n\nIts documented API covers:\n\n- FTP server connection;\n- file/folder query;\n- new folder creation;\n- file/folder deletion;\n- download;\n- upload;\n- disconnect.\n\nThese capabilities are materially present in the repository through the imported external library.\n\nThey are useful context for understanding what the Apple project could exercise, but the README's own author attribution prevents treating the underlying FTP library implementation as personally authored evidence.",
+      "source_line_start": 95,
+      "source_line_end": 115
+    },
+    {
+      "id": "s006",
+      "level": 2,
+      "title": "Objective-C Integration Context",
+      "normalized_title": "Objective-C Integration Context",
+      "key": "objective_c_integration_context",
+      "path": [
+        "Objective-C Integration Context"
+      ],
+      "content": "The project is primarily Objective-C.\n\nThe checked-in source and project files include:\n\n- `.h` interfaces;\n- `.m` implementations;\n- Xcode project metadata;\n- CocoaPods configuration;\n- Objective-C library source.\n\nThis is evidence of working in an Objective-C/iOS codebase and of assembling that codebase for project use.\n\nIt is not, by itself, evidence that every Objective-C file was authored by the repository owner.",
+      "source_line_start": 115,
+      "source_line_end": 131
+    },
+    {
+      "id": "s007",
+      "level": 2,
+      "title": "CocoaPods Dependency Management",
+      "normalized_title": "CocoaPods Dependency Management",
+      "key": "cocoapods_dependency_management",
+      "path": [
+        "CocoaPods Dependency Management"
+      ],
+      "content": "The example application's `Podfile` targets iOS 15 and declares:\n\n```ruby\npod 'STFTPNetwork', :path => \"../\"\npod 'SVProgressHUD'\npod 'IQKeyboardManager'\n```\n\nThis shows a local-development integration pattern:\n\n```text\nexample app\n    |\n    +--> local STFTPNetwork pod\n    +--> SVProgressHUD\n    +--> IQKeyboardManager\n```\n\nThe `Podfile.lock` records the resolved versions and CocoaPods 1.10.0.\n\nThe repository also checks the `Pods/` directory into source control.\n\nFor RAG purposes, the dependency tree is important as build/integration evidence but should not be interpreted as owner authorship of those packages.",
+      "source_line_start": 131,
+      "source_line_end": 157
+    },
+    {
+      "id": "s008",
+      "level": 2,
+      "title": "Local Pod Development",
+      "normalized_title": "Local Pod Development",
+      "key": "local_pod_development",
+      "path": [
+        "Local Pod Development"
+      ],
+      "content": "The use of:\n\n```ruby\npod 'STFTPNetwork', :path => \"../\"\n```\n\nmeans the demo consumes the library from the adjacent checked-in source rather than fetching that library solely from a remote package registry.\n\nThis arrangement supports editing/testing the local library and example application together.",
+      "source_line_start": 157,
+      "source_line_end": 169
+    },
+    {
+      "id": "s009",
+      "level": 2,
+      "title": "STFTPNetwork Podspec",
+      "normalized_title": "STFTPNetwork Podspec",
+      "key": "stftpnetwork_podspec",
+      "path": [
+        "STFTPNetwork Podspec"
+      ],
+      "content": "The repository contains `STFTPNetwork.podspec`.\n\nThat places the imported library within the CocoaPods package model and explains why the demo can reference it by local path.\n\nThe package structure provides concrete exposure to:\n\n- CocoaPods package metadata;\n- local pod integration;\n- example-app dependency resolution.",
+      "source_line_start": 169,
+      "source_line_end": 181
+    },
+    {
+      "id": "s010",
+      "level": 2,
+      "title": "FTP Operations Represented",
+      "normalized_title": "FTP Operations Represented",
+      "key": "ftp_operations_represented",
+      "path": [
+        "FTP Operations Represented"
+      ],
+      "content": "The STFTPNetwork public interface represented in the repository covers several FTP workflows.\n\n### Connection\n\nThe documented API accepts:\n\n- FTP URL;\n- username;\n- password;\n- completion handler.\n\n### Remote listing / query\n\nThe query API returns an array of results through an asynchronous success handler.\n\n### Directory creation\n\nA create call supports creating a remote folder with success/failure handlers.\n\n### Removal\n\nThe remove call handles files or folders and returns an STFTP error code on failure.\n\n### Download\n\nThe download interface exposes:\n\n- progress bytes completed;\n- progress bytes total;\n- downloaded `NSData`;\n- success/failure callbacks.\n\n### Upload\n\nThe upload interface similarly exposes byte-progress reporting and success/failure callbacks.\n\n### Disconnect\n\nThe library includes an explicit disconnect operation.\n\nAgain, these are incorporated library capabilities, not a claim of owner implementation.",
+      "source_line_start": 181,
+      "source_line_end": 225
+    },
+    {
+      "id": "s011",
+      "level": 3,
+      "title": "Connection",
+      "normalized_title": "Connection",
+      "key": "connection",
+      "path": [
+        "FTP Operations Represented",
+        "Connection"
+      ],
+      "content": "The documented API accepts:\n\n- FTP URL;\n- username;\n- password;\n- completion handler.",
+      "source_line_start": 185,
+      "source_line_end": 194
+    },
+    {
+      "id": "s012",
+      "level": 3,
+      "title": "Remote listing / query",
+      "normalized_title": "Remote listing / query",
+      "key": "remote_listing_query",
+      "path": [
+        "FTP Operations Represented",
+        "Remote listing / query"
+      ],
+      "content": "The query API returns an array of results through an asynchronous success handler.",
+      "source_line_start": 194,
+      "source_line_end": 198
+    },
+    {
+      "id": "s013",
+      "level": 3,
+      "title": "Directory creation",
+      "normalized_title": "Directory creation",
+      "key": "directory_creation",
+      "path": [
+        "FTP Operations Represented",
+        "Directory creation"
+      ],
+      "content": "A create call supports creating a remote folder with success/failure handlers.",
+      "source_line_start": 198,
+      "source_line_end": 202
+    },
+    {
+      "id": "s014",
+      "level": 3,
+      "title": "Removal",
+      "normalized_title": "Removal",
+      "key": "removal",
+      "path": [
+        "FTP Operations Represented",
+        "Removal"
+      ],
+      "content": "The remove call handles files or folders and returns an STFTP error code on failure.",
+      "source_line_start": 202,
+      "source_line_end": 206
+    },
+    {
+      "id": "s015",
+      "level": 3,
+      "title": "Download",
+      "normalized_title": "Download",
+      "key": "download",
+      "path": [
+        "FTP Operations Represented",
+        "Download"
+      ],
+      "content": "The download interface exposes:\n\n- progress bytes completed;\n- progress bytes total;\n- downloaded `NSData`;\n- success/failure callbacks.",
+      "source_line_start": 206,
+      "source_line_end": 215
+    },
+    {
+      "id": "s016",
+      "level": 3,
+      "title": "Upload",
+      "normalized_title": "Upload",
+      "key": "upload",
+      "path": [
+        "FTP Operations Represented",
+        "Upload"
+      ],
+      "content": "The upload interface similarly exposes byte-progress reporting and success/failure callbacks.",
+      "source_line_start": 215,
+      "source_line_end": 219
+    },
+    {
+      "id": "s017",
+      "level": 3,
+      "title": "Disconnect",
+      "normalized_title": "Disconnect",
+      "key": "disconnect",
+      "path": [
+        "FTP Operations Represented",
+        "Disconnect"
+      ],
+      "content": "The library includes an explicit disconnect operation.\n\nAgain, these are incorporated library capabilities, not a claim of owner implementation.",
+      "source_line_start": 219,
+      "source_line_end": 225
+    },
+    {
+      "id": "s018",
+      "level": 2,
+      "title": "Wi-Fi Connection Component",
+      "normalized_title": "Wi-Fi Connection Component",
+      "key": "wi_fi_connection_component",
+      "path": [
+        "Wi-Fi Connection Component"
+      ],
+      "content": "The repository includes a `Wificonnection` Xcode project.\n\nIts Objective-C implementation uses:\n\n```objective-c\n#import <CoreWiFi/CoreWiFi.h>\n```\n\nand works with CoreWiFi classes including:\n\n- `CWFInterface`;\n- `CWFScanParameters`;\n- `CWFScanResult`;\n- `CWFAssocParameters`.\n\nThe file is explicitly attributed to Evangelos Tsikandyalkis, so this is recorded as external/collaborative infrastructure incorporated into the repository.",
+      "source_line_start": 225,
+      "source_line_end": 244
+    },
+    {
+      "id": "s019",
+      "level": 2,
+      "title": "Wi-Fi Active Scanning",
+      "normalized_title": "Wi-Fi Active Scanning",
+      "key": "wi_fi_active_scanning",
+      "path": [
+        "Wi-Fi Active Scanning"
+      ],
+      "content": "`performActualScan:` creates scan parameters and configures:\n\n- hidden-network inclusion;\n- AP BSS mode;\n- active scanning;\n- automatic PHY mode;\n- supported channels derived from interface country code.\n\nThe function executes the scan and returns `CWFScanResult` objects.\n\nThis is concrete capability of the incorporated Wi-Fi component.",
+      "source_line_start": 244,
+      "source_line_end": 258
+    },
+    {
+      "id": "s020",
+      "level": 2,
+      "title": "RSSI-Threshold Network Selection",
+      "normalized_title": "RSSI-Threshold Network Selection",
+      "key": "rssi_threshold_network_selection",
+      "path": [
+        "RSSI-Threshold Network Selection"
+      ],
+      "content": "`scanAndConnect:credential:` accepts an RSSI threshold and a credential dictionary.\n\nThe code iterates scanned networks and considers only network names represented in the credential dictionary.\n\nIt logs each matching network and its RSSI.\n\nA network is selected when its RSSI meets the supplied threshold.\n\nThis represents signal-strength-aware association logic in the incorporated component.",
+      "source_line_start": 258,
+      "source_line_end": 270
+    },
+    {
+      "id": "s021",
+      "level": 2,
+      "title": "Credential Mapping",
+      "normalized_title": "Credential Mapping",
+      "key": "credential_mapping",
+      "path": [
+        "Credential Mapping"
+      ],
+      "content": "Network name acts as the lookup key for the supplied password dictionary.\n\nOnce a qualifying scan result is selected, the corresponding password is assigned to association parameters.\n\nThis is a compact SSID-to-credential selection mechanism.",
+      "source_line_start": 270,
+      "source_line_end": 278
+    },
+    {
+      "id": "s022",
+      "level": 2,
+      "title": "Wi-Fi Association",
+      "normalized_title": "Wi-Fi Association",
+      "key": "wi_fi_association",
+      "path": [
+        "Wi-Fi Association"
+      ],
+      "content": "The component configures `CWFAssocParameters` with:\n\n- selected scan result;\n- password;\n- `RememberUponSuccessfulAssociation = NO`.\n\nIt calls the CoreWiFi association API and returns a dictionary describing:\n\n- connection success;\n- accumulated scan/association log.",
+      "source_line_start": 278,
+      "source_line_end": 291
+    },
+    {
+      "id": "s023",
+      "level": 2,
+      "title": "Wi-Fi Disconnection",
+      "normalized_title": "Wi-Fi Disconnection",
+      "key": "wi_fi_disconnection",
+      "path": [
+        "Wi-Fi Disconnection"
+      ],
+      "content": "The incorporated Wi-Fi component creates/resumes a CoreWiFi interface and disassociates with a forget-network reason.\n\nThis makes connection lifecycle behavior explicit within the checked-in codebase.",
+      "source_line_start": 291,
+      "source_line_end": 297
+    },
+    {
+      "id": "s024",
+      "level": 2,
+      "title": "Experiment-Oriented Logging",
+      "normalized_title": "Experiment-Oriented Logging",
+      "key": "experiment_oriented_logging",
+      "path": [
+        "Experiment-Oriented Logging"
+      ],
+      "content": "The Wi-Fi component builds textual log data containing network names and RSSI values.\n\nOn successful association it adds the connected network and RSSI to the log.\n\nThis structure is consistent with using the component in an experiment where network selection and signal conditions need to be recorded.",
+      "source_line_start": 297,
+      "source_line_end": 305
+    },
+    {
+      "id": "s025",
+      "level": 2,
+      "title": "Xcode Project Structure",
+      "normalized_title": "Xcode Project Structure",
+      "key": "xcode_project_structure",
+      "path": [
+        "Xcode Project Structure"
+      ],
+      "content": "The repository includes `.xcodeproj` files for the Wi-Fi component and the STFTPNetwork demo/application context.\n\nThe project archive therefore preserves a buildable-development environment shape rather than isolated Objective-C snippets.",
+      "source_line_start": 305,
+      "source_line_end": 311
+    },
+    {
+      "id": "s026",
+      "level": 2,
+      "title": "Dependency Boundary",
+      "normalized_title": "Dependency Boundary",
+      "key": "dependency_boundary",
+      "path": [
+        "Dependency Boundary"
+      ],
+      "content": "The complete repository tree contains large quantities of dependency files under `Pods/`.\n\nThis includes framework headers, build-support files, and source from external packages.\n\nFor the portfolio corpus, those files support these claims:\n\n- CocoaPods dependency resolution was part of the project environment;\n- the project was assembled with an iOS dependency ecosystem;\n- the example application could consume its local STFTPNetwork pod plus external UI helpers.\n\nThey do not support claims of personally implementing IQKeyboardManager, SVProgressHUD, or the original STFTPNetwork library.",
+      "source_line_start": 311,
+      "source_line_end": 325
+    },
+    {
+      "id": "s027",
+      "level": 2,
+      "title": "Sensitive-Artifact Cleanup in Git History",
+      "normalized_title": "Sensitive-Artifact Cleanup in Git History",
+      "key": "sensitive_artifact_cleanup_in_git_history",
+      "path": [
+        "Sensitive-Artifact Cleanup in Git History"
+      ],
+      "content": "Two explicit commit messages record deletion of sensitive development artifacts:\n\n```text\nDelete STFTP Core/Supplementary Files/2027_iPhone-Ops-Certificates.p12\nDelete STFTP Core/Supplementary Files/wifiexperimentapp.mobileprovision\n```\n\nThis is positive evidence that repository cleanup recognized certificate/provisioning material as inappropriate to keep in the active tree.\n\nThe corpus does not expose or reproduce the contents of those artifacts.",
+      "source_line_start": 325,
+      "source_line_end": 338
+    },
+    {
+      "id": "s028",
+      "level": 2,
+      "title": "Imported-Code Attribution",
+      "normalized_title": "Imported-Code Attribution",
+      "key": "imported_code_attribution",
+      "path": [
+        "Imported-Code Attribution"
+      ],
+      "content": "The repository illustrates an important distinction for portfolio analysis.\n\nA project can demonstrate meaningful engineering exposure and integration work even when large subsystems originate elsewhere.\n\nHere, the evidence supports familiarity with a stack involving:\n\n- Objective-C;\n- Xcode;\n- CocoaPods;\n- FTP client behavior;\n- asynchronous network callbacks;\n- iOS networking project structure;\n- CoreWiFi scanning/association;\n- provisioning/certificate hygiene.\n\nBut the code-level authorship evidence explicitly places major components with other authors.\n\nThe correct RAG interpretation is therefore **integration and experimental use of external networking components**, not invention of the underlying libraries.",
+      "source_line_start": 338,
+      "source_line_end": 359
+    },
+    {
+      "id": "s029",
+      "level": 2,
+      "title": "Technical Stack",
+      "normalized_title": "Technical Stack",
+      "key": "technical_stack",
+      "path": [
+        "Technical Stack"
+      ],
+      "content": "### Objective-C\n\nObjective-C is the dominant repository language and the language of the incorporated FTP and Wi-Fi components.\n\n### Xcode\n\nXcode project files define the application/library project structure.\n\n### CocoaPods\n\nCocoaPods manages the example application's dependency graph and local STFTPNetwork reference.\n\n### CoreWiFi\n\nCoreWiFi APIs are used by the incorporated Wi-Fi connector for scanning and network association.\n\n### FTP\n\nFTP operations are represented through the incorporated STFTPNetwork API.",
+      "source_line_start": 359,
+      "source_line_end": 381
+    },
+    {
+      "id": "s030",
+      "level": 3,
+      "title": "Objective-C",
+      "normalized_title": "Objective-C",
+      "key": "objective_c",
+      "path": [
+        "Technical Stack",
+        "Objective-C"
+      ],
+      "content": "Objective-C is the dominant repository language and the language of the incorporated FTP and Wi-Fi components.",
+      "source_line_start": 361,
+      "source_line_end": 365
+    },
+    {
+      "id": "s031",
+      "level": 3,
+      "title": "Xcode",
+      "normalized_title": "Xcode",
+      "key": "xcode",
+      "path": [
+        "Technical Stack",
+        "Xcode"
+      ],
+      "content": "Xcode project files define the application/library project structure.",
+      "source_line_start": 365,
+      "source_line_end": 369
+    },
+    {
+      "id": "s032",
+      "level": 3,
+      "title": "CocoaPods",
+      "normalized_title": "CocoaPods",
+      "key": "cocoapods",
+      "path": [
+        "Technical Stack",
+        "CocoaPods"
+      ],
+      "content": "CocoaPods manages the example application's dependency graph and local STFTPNetwork reference.",
+      "source_line_start": 369,
+      "source_line_end": 373
+    },
+    {
+      "id": "s033",
+      "level": 3,
+      "title": "CoreWiFi",
+      "normalized_title": "CoreWiFi",
+      "key": "corewifi",
+      "path": [
+        "Technical Stack",
+        "CoreWiFi"
+      ],
+      "content": "CoreWiFi APIs are used by the incorporated Wi-Fi connector for scanning and network association.",
+      "source_line_start": 373,
+      "source_line_end": 377
+    },
+    {
+      "id": "s034",
+      "level": 3,
+      "title": "FTP",
+      "normalized_title": "FTP",
+      "key": "ftp",
+      "path": [
+        "Technical Stack",
+        "FTP"
+      ],
+      "content": "FTP operations are represented through the incorporated STFTPNetwork API.",
+      "source_line_start": 377,
+      "source_line_end": 381
+    },
+    {
+      "id": "s035",
+      "level": 2,
+      "title": "Networking Concepts Represented",
+      "normalized_title": "Networking Concepts Represented",
+      "key": "networking_concepts_represented",
+      "path": [
+        "Networking Concepts Represented"
+      ],
+      "content": "The repository materially contains code and integration around:\n\n- FTP session connection;\n- remote directory/file operations;\n- data upload/download;\n- progress callbacks;\n- Wi-Fi scanning;\n- RSSI;\n- SSID/credential matching;\n- Wi-Fi association;\n- Wi-Fi disassociation.\n\nThese concepts explain why the repository belongs within the networking/research part of the portfolio even with strict authorship boundaries.",
+      "source_line_start": 381,
+      "source_line_end": 397
+    },
+    {
+      "id": "s036",
+      "level": 2,
+      "title": "Engineering Practices Evidenced",
+      "normalized_title": "Engineering Practices Evidenced",
+      "key": "engineering_practices_evidenced",
+      "path": [
+        "Engineering Practices Evidenced"
+      ],
+      "content": "### External-source attribution\n\nThe imported library and Wi-Fi component both preserve author attribution.\n\nThat makes it possible to distinguish library capability from personally attributable capability.\n\n### Dependency management\n\nThe example application declares and locks CocoaPods dependencies.\n\n### Local package integration\n\nThe demo points at the local adjacent STFTPNetwork package.\n\n### Repository cleanup\n\nCertificate and provisioning artifacts were removed through dedicated commits.\n\n### Project consolidation\n\nThe short commit history shows iterative cleanup followed by addition of the final project directory and merge.",
+      "source_line_start": 397,
+      "source_line_end": 421
+    },
+    {
+      "id": "s037",
+      "level": 3,
+      "title": "External-source attribution",
+      "normalized_title": "External-source attribution",
+      "key": "external_source_attribution",
+      "path": [
+        "Engineering Practices Evidenced",
+        "External-source attribution"
+      ],
+      "content": "The imported library and Wi-Fi component both preserve author attribution.\n\nThat makes it possible to distinguish library capability from personally attributable capability.",
+      "source_line_start": 399,
+      "source_line_end": 405
+    },
+    {
+      "id": "s038",
+      "level": 3,
+      "title": "Dependency management",
+      "normalized_title": "Dependency management",
+      "key": "dependency_management",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Dependency management"
+      ],
+      "content": "The example application declares and locks CocoaPods dependencies.",
+      "source_line_start": 405,
+      "source_line_end": 409
+    },
+    {
+      "id": "s039",
+      "level": 3,
+      "title": "Local package integration",
+      "normalized_title": "Local package integration",
+      "key": "local_package_integration",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Local package integration"
+      ],
+      "content": "The demo points at the local adjacent STFTPNetwork package.",
+      "source_line_start": 409,
+      "source_line_end": 413
+    },
+    {
+      "id": "s040",
+      "level": 3,
+      "title": "Repository cleanup",
+      "normalized_title": "Repository cleanup",
+      "key": "repository_cleanup",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Repository cleanup"
+      ],
+      "content": "Certificate and provisioning artifacts were removed through dedicated commits.",
+      "source_line_start": 413,
+      "source_line_end": 417
+    },
+    {
+      "id": "s041",
+      "level": 3,
+      "title": "Project consolidation",
+      "normalized_title": "Project consolidation",
+      "key": "project_consolidation",
+      "path": [
+        "Engineering Practices Evidenced",
+        "Project consolidation"
+      ],
+      "content": "The short commit history shows iterative cleanup followed by addition of the final project directory and merge.",
+      "source_line_start": 417,
+      "source_line_end": 421
+    },
+    {
+      "id": "s042",
+      "level": 2,
+      "title": "Skills Supported by the Repository",
+      "normalized_title": "Skills Supported by the Repository",
+      "key": "skills_supported_by_the_repository",
+      "path": [
+        "Skills Supported by the Repository"
+      ],
+      "content": "### iOS project integration\n\nThe repository demonstrates working with a full iOS/Xcode project layout and its dependency environment.\n\n### Objective-C codebase navigation\n\nThe project required handling Objective-C headers, implementations, Xcode projects, and pod package organization.\n\n### CocoaPods\n\nThe checked-in Podfile and lock file support concrete exposure to package declaration and resolution.\n\n### Network experiment integration\n\nThe selected components combine Wi-Fi association behavior with an FTP transfer stack.\n\n### Source-provenance judgment\n\nFor portfolio interpretation, this repository itself provides evidence of distinguishing incorporated code from owner-attributable work because explicit author metadata is retained.",
+      "source_line_start": 421,
+      "source_line_end": 443
+    },
+    {
+      "id": "s043",
+      "level": 3,
+      "title": "iOS project integration",
+      "normalized_title": "iOS project integration",
+      "key": "ios_project_integration",
+      "path": [
+        "Skills Supported by the Repository",
+        "iOS project integration"
+      ],
+      "content": "The repository demonstrates working with a full iOS/Xcode project layout and its dependency environment.",
+      "source_line_start": 423,
+      "source_line_end": 427
+    },
+    {
+      "id": "s044",
+      "level": 3,
+      "title": "Objective-C codebase navigation",
+      "normalized_title": "Objective-C codebase navigation",
+      "key": "objective_c_codebase_navigation",
+      "path": [
+        "Skills Supported by the Repository",
+        "Objective-C codebase navigation"
+      ],
+      "content": "The project required handling Objective-C headers, implementations, Xcode projects, and pod package organization.",
+      "source_line_start": 427,
+      "source_line_end": 431
+    },
+    {
+      "id": "s045",
+      "level": 3,
+      "title": "CocoaPods",
+      "normalized_title": "CocoaPods",
+      "key": "cocoapods",
+      "path": [
+        "Skills Supported by the Repository",
+        "CocoaPods"
+      ],
+      "content": "The checked-in Podfile and lock file support concrete exposure to package declaration and resolution.",
+      "source_line_start": 431,
+      "source_line_end": 435
+    },
+    {
+      "id": "s046",
+      "level": 3,
+      "title": "Network experiment integration",
+      "normalized_title": "Network experiment integration",
+      "key": "network_experiment_integration",
+      "path": [
+        "Skills Supported by the Repository",
+        "Network experiment integration"
+      ],
+      "content": "The selected components combine Wi-Fi association behavior with an FTP transfer stack.",
+      "source_line_start": 435,
+      "source_line_end": 439
+    },
+    {
+      "id": "s047",
+      "level": 3,
+      "title": "Source-provenance judgment",
+      "normalized_title": "Source-provenance judgment",
+      "key": "source_provenance_judgment",
+      "path": [
+        "Skills Supported by the Repository",
+        "Source-provenance judgment"
+      ],
+      "content": "For portfolio interpretation, this repository itself provides evidence of distinguishing incorporated code from owner-attributable work because explicit author metadata is retained.",
+      "source_line_start": 439,
+      "source_line_end": 443
+    },
+    {
+      "id": "s048",
+      "level": 2,
+      "title": "Portfolio Significance",
+      "normalized_title": "Portfolio Significance",
+      "key": "portfolio_significance",
+      "path": [
+        "Portfolio Significance"
+      ],
+      "content": "`Apple-Project` is best understood as evidence of adapting and assembling an existing iOS networking ecosystem for project/research use.\n\nIt is especially important to the corpus because a naive file-count analysis would dramatically overstate owner implementation: the tree contains a large vendored dependency graph and externally authored networking components.\n\nWith provenance preserved, the repository still contributes meaningful evidence of iOS networking integration, Objective-C/Xcode exposure, CocoaPods usage, FTP workflow understanding, Wi-Fi signal/association concepts, and repository hygiene around signing material.\n\n# Project Tags\n\n- `objective-c`\n- `ios`\n- `xcode`\n- `cocoapods`\n- `local-pod-integration`\n- `ftp`\n- `ftp-client`\n- `file-transfer`\n- `upload-download`\n- `network-progress-callbacks`\n- `corewifi`\n- `wifi-scanning`\n- `wifi-association`\n- `rssi`\n- `ssid`\n- `network-selection`\n- `external-library-integration`\n- `vendored-dependencies`\n- `source-attribution`\n- `certificate-cleanup`\n- `provisioning-profile-cleanup`\n- `research-networking-integration`",
+      "source_line_start": 443,
+      "source_line_end": 475
+    }
+  ],
+  "raw_analysis": "# Apple-Project\n\n## Repository Identity\n\n- Repository: 123 / 138\n- Name: `Apple-Project`\n- Start Date: 2025-09-17\n- Latest Meaningful Update: 2025-09-17\n- Latest Meaningful Commit: `d3b96569321baf88d0bee0e03bcebcd2a0da1d7a`\n- Primary Repository Language: Objective-C\n- Primary Type: iOS networking project archive and integration workspace\n- Technical Fields: iOS networking, FTP file transfer, Wi-Fi interface control, Xcode/CocoaPods integration\n- Collaboration Type: `research-collaboration-with-external-components`\n- Processing Context: chronology backfill from the connected private-repository set\n\n## Evidence and Authorship Boundary\n\nThis repository requires a particularly explicit authorship boundary because substantial source inside it is externally attributed.\n\nThe embedded `Project/STFTPNetwork/README.md` identifies STFTPNetwork as an iOS FTP library and names its author as:\n\n```text\nSuta\n```\n\nThe repository also contains `Wificonnection.m`, whose file header states:\n\n```text\nCreated by Evangelos Tsikandyalkis on 27/01/2023\n```\n\nThe large checked-in `Pods/` directory additionally contains third-party CocoaPods dependencies such as:\n\n- IQKeyboardManager;\n- SVProgressHUD;\n- STFTPNetwork integration artifacts.\n\nThose files are repository capabilities and integration context, but they are not treated here as proof that the repository owner authored those libraries.\n\nThe owner-attributable evidence that can safely be preserved from the repository itself is therefore centered on:\n\n- selecting and assembling an iOS networking codebase for an experimental/project context;\n- maintaining the Git repository;\n- incorporating the STFTPNetwork Xcode project and example application;\n- integrating local CocoaPods dependencies;\n- preserving Wi-Fi connection/scanning functionality alongside FTP behavior;\n- cleaning sensitive provisioning/certificate artifacts from repository history;\n- creating the final merged project archive.\n\nThis README deliberately does not turn vendored library size into owner skill claims.\n\n## What This Project Is\n\n`Apple-Project` is a private iOS networking project archive assembled around the STFTPNetwork Objective-C library, its demo application, a Wi-Fi connection component, and the complete Xcode/CocoaPods environment needed to exercise those pieces.\n\nThe checked-in structure is substantially larger than the repository's own authored surface because it includes vendored Pods and external library source.\n\nAt a system level, the material represents an iOS networking experimentation stack of the form:\n\n```text\niOS / Objective-C application context\n        |\n        +--> CoreWiFi-based Wi-Fi scan / association component\n        |\n        +--> STFTPNetwork FTP API\n                 |\n                 +--> connect\n                 +--> query\n                 +--> create\n                 +--> remove\n                 +--> download\n                 +--> upload\n                 +--> disconnect\n        |\n        +--> CocoaPods-managed UI / library dependencies\n```\n\n## Repository Assembly\n\nThe Git history on 2025-09-17 shows a concentrated project-import and cleanup sequence.\n\nCommits include:\n\n- repository initialization;\n- multiple uploaded project fragments;\n- README creation;\n- deletion of a `.p12` certificate artifact;\n- deletion of a mobile provisioning artifact;\n- removal/reorganization of an earlier STFTP project directory;\n- `Adding the actual project`;\n- a final merge commit.\n\nThis gives the repository the character of a project consolidation/archive operation rather than a long-lived greenfield library implementation.\n\n## STFTPNetwork External Library\n\nThe embedded STFTPNetwork README describes the library as:\n\n> a simple FTP network library for iOS\n\nIts documented API covers:\n\n- FTP server connection;\n- file/folder query;\n- new folder creation;\n- file/folder deletion;\n- download;\n- upload;\n- disconnect.\n\nThese capabilities are materially present in the repository through the imported external library.\n\nThey are useful context for understanding what the Apple project could exercise, but the README's own author attribution prevents treating the underlying FTP library implementation as personally authored evidence.\n\n## Objective-C Integration Context\n\nThe project is primarily Objective-C.\n\nThe checked-in source and project files include:\n\n- `.h` interfaces;\n- `.m` implementations;\n- Xcode project metadata;\n- CocoaPods configuration;\n- Objective-C library source.\n\nThis is evidence of working in an Objective-C/iOS codebase and of assembling that codebase for project use.\n\nIt is not, by itself, evidence that every Objective-C file was authored by the repository owner.\n\n## CocoaPods Dependency Management\n\nThe example application's `Podfile` targets iOS 15 and declares:\n\n```ruby\npod 'STFTPNetwork', :path => \"../\"\npod 'SVProgressHUD'\npod 'IQKeyboardManager'\n```\n\nThis shows a local-development integration pattern:\n\n```text\nexample app\n    |\n    +--> local STFTPNetwork pod\n    +--> SVProgressHUD\n    +--> IQKeyboardManager\n```\n\nThe `Podfile.lock` records the resolved versions and CocoaPods 1.10.0.\n\nThe repository also checks the `Pods/` directory into source control.\n\nFor RAG purposes, the dependency tree is important as build/integration evidence but should not be interpreted as owner authorship of those packages.\n\n## Local Pod Development\n\nThe use of:\n\n```ruby\npod 'STFTPNetwork', :path => \"../\"\n```\n\nmeans the demo consumes the library from the adjacent checked-in source rather than fetching that library solely from a remote package registry.\n\nThis arrangement supports editing/testing the local library and example application together.\n\n## STFTPNetwork Podspec\n\nThe repository contains `STFTPNetwork.podspec`.\n\nThat places the imported library within the CocoaPods package model and explains why the demo can reference it by local path.\n\nThe package structure provides concrete exposure to:\n\n- CocoaPods package metadata;\n- local pod integration;\n- example-app dependency resolution.\n\n## FTP Operations Represented\n\nThe STFTPNetwork public interface represented in the repository covers several FTP workflows.\n\n### Connection\n\nThe documented API accepts:\n\n- FTP URL;\n- username;\n- password;\n- completion handler.\n\n### Remote listing / query\n\nThe query API returns an array of results through an asynchronous success handler.\n\n### Directory creation\n\nA create call supports creating a remote folder with success/failure handlers.\n\n### Removal\n\nThe remove call handles files or folders and returns an STFTP error code on failure.\n\n### Download\n\nThe download interface exposes:\n\n- progress bytes completed;\n- progress bytes total;\n- downloaded `NSData`;\n- success/failure callbacks.\n\n### Upload\n\nThe upload interface similarly exposes byte-progress reporting and success/failure callbacks.\n\n### Disconnect\n\nThe library includes an explicit disconnect operation.\n\nAgain, these are incorporated library capabilities, not a claim of owner implementation.\n\n## Wi-Fi Connection Component\n\nThe repository includes a `Wificonnection` Xcode project.\n\nIts Objective-C implementation uses:\n\n```objective-c\n#import <CoreWiFi/CoreWiFi.h>\n```\n\nand works with CoreWiFi classes including:\n\n- `CWFInterface`;\n- `CWFScanParameters`;\n- `CWFScanResult`;\n- `CWFAssocParameters`.\n\nThe file is explicitly attributed to Evangelos Tsikandyalkis, so this is recorded as external/collaborative infrastructure incorporated into the repository.\n\n## Wi-Fi Active Scanning\n\n`performActualScan:` creates scan parameters and configures:\n\n- hidden-network inclusion;\n- AP BSS mode;\n- active scanning;\n- automatic PHY mode;\n- supported channels derived from interface country code.\n\nThe function executes the scan and returns `CWFScanResult` objects.\n\nThis is concrete capability of the incorporated Wi-Fi component.\n\n## RSSI-Threshold Network Selection\n\n`scanAndConnect:credential:` accepts an RSSI threshold and a credential dictionary.\n\nThe code iterates scanned networks and considers only network names represented in the credential dictionary.\n\nIt logs each matching network and its RSSI.\n\nA network is selected when its RSSI meets the supplied threshold.\n\nThis represents signal-strength-aware association logic in the incorporated component.\n\n## Credential Mapping\n\nNetwork name acts as the lookup key for the supplied password dictionary.\n\nOnce a qualifying scan result is selected, the corresponding password is assigned to association parameters.\n\nThis is a compact SSID-to-credential selection mechanism.\n\n## Wi-Fi Association\n\nThe component configures `CWFAssocParameters` with:\n\n- selected scan result;\n- password;\n- `RememberUponSuccessfulAssociation = NO`.\n\nIt calls the CoreWiFi association API and returns a dictionary describing:\n\n- connection success;\n- accumulated scan/association log.\n\n## Wi-Fi Disconnection\n\nThe incorporated Wi-Fi component creates/resumes a CoreWiFi interface and disassociates with a forget-network reason.\n\nThis makes connection lifecycle behavior explicit within the checked-in codebase.\n\n## Experiment-Oriented Logging\n\nThe Wi-Fi component builds textual log data containing network names and RSSI values.\n\nOn successful association it adds the connected network and RSSI to the log.\n\nThis structure is consistent with using the component in an experiment where network selection and signal conditions need to be recorded.\n\n## Xcode Project Structure\n\nThe repository includes `.xcodeproj` files for the Wi-Fi component and the STFTPNetwork demo/application context.\n\nThe project archive therefore preserves a buildable-development environment shape rather than isolated Objective-C snippets.\n\n## Dependency Boundary\n\nThe complete repository tree contains large quantities of dependency files under `Pods/`.\n\nThis includes framework headers, build-support files, and source from external packages.\n\nFor the portfolio corpus, those files support these claims:\n\n- CocoaPods dependency resolution was part of the project environment;\n- the project was assembled with an iOS dependency ecosystem;\n- the example application could consume its local STFTPNetwork pod plus external UI helpers.\n\nThey do not support claims of personally implementing IQKeyboardManager, SVProgressHUD, or the original STFTPNetwork library.\n\n## Sensitive-Artifact Cleanup in Git History\n\nTwo explicit commit messages record deletion of sensitive development artifacts:\n\n```text\nDelete STFTP Core/Supplementary Files/2027_iPhone-Ops-Certificates.p12\nDelete STFTP Core/Supplementary Files/wifiexperimentapp.mobileprovision\n```\n\nThis is positive evidence that repository cleanup recognized certificate/provisioning material as inappropriate to keep in the active tree.\n\nThe corpus does not expose or reproduce the contents of those artifacts.\n\n## Imported-Code Attribution\n\nThe repository illustrates an important distinction for portfolio analysis.\n\nA project can demonstrate meaningful engineering exposure and integration work even when large subsystems originate elsewhere.\n\nHere, the evidence supports familiarity with a stack involving:\n\n- Objective-C;\n- Xcode;\n- CocoaPods;\n- FTP client behavior;\n- asynchronous network callbacks;\n- iOS networking project structure;\n- CoreWiFi scanning/association;\n- provisioning/certificate hygiene.\n\nBut the code-level authorship evidence explicitly places major components with other authors.\n\nThe correct RAG interpretation is therefore **integration and experimental use of external networking components**, not invention of the underlying libraries.\n\n## Technical Stack\n\n### Objective-C\n\nObjective-C is the dominant repository language and the language of the incorporated FTP and Wi-Fi components.\n\n### Xcode\n\nXcode project files define the application/library project structure.\n\n### CocoaPods\n\nCocoaPods manages the example application's dependency graph and local STFTPNetwork reference.\n\n### CoreWiFi\n\nCoreWiFi APIs are used by the incorporated Wi-Fi connector for scanning and network association.\n\n### FTP\n\nFTP operations are represented through the incorporated STFTPNetwork API.\n\n## Networking Concepts Represented\n\nThe repository materially contains code and integration around:\n\n- FTP session connection;\n- remote directory/file operations;\n- data upload/download;\n- progress callbacks;\n- Wi-Fi scanning;\n- RSSI;\n- SSID/credential matching;\n- Wi-Fi association;\n- Wi-Fi disassociation.\n\nThese concepts explain why the repository belongs within the networking/research part of the portfolio even with strict authorship boundaries.\n\n## Engineering Practices Evidenced\n\n### External-source attribution\n\nThe imported library and Wi-Fi component both preserve author attribution.\n\nThat makes it possible to distinguish library capability from personally attributable capability.\n\n### Dependency management\n\nThe example application declares and locks CocoaPods dependencies.\n\n### Local package integration\n\nThe demo points at the local adjacent STFTPNetwork package.\n\n### Repository cleanup\n\nCertificate and provisioning artifacts were removed through dedicated commits.\n\n### Project consolidation\n\nThe short commit history shows iterative cleanup followed by addition of the final project directory and merge.\n\n## Skills Supported by the Repository\n\n### iOS project integration\n\nThe repository demonstrates working with a full iOS/Xcode project layout and its dependency environment.\n\n### Objective-C codebase navigation\n\nThe project required handling Objective-C headers, implementations, Xcode projects, and pod package organization.\n\n### CocoaPods\n\nThe checked-in Podfile and lock file support concrete exposure to package declaration and resolution.\n\n### Network experiment integration\n\nThe selected components combine Wi-Fi association behavior with an FTP transfer stack.\n\n### Source-provenance judgment\n\nFor portfolio interpretation, this repository itself provides evidence of distinguishing incorporated code from owner-attributable work because explicit author metadata is retained.\n\n## Portfolio Significance\n\n`Apple-Project` is best understood as evidence of adapting and assembling an existing iOS networking ecosystem for project/research use.\n\nIt is especially important to the corpus because a naive file-count analysis would dramatically overstate owner implementation: the tree contains a large vendored dependency graph and externally authored networking components.\n\nWith provenance preserved, the repository still contributes meaningful evidence of iOS networking integration, Objective-C/Xcode exposure, CocoaPods usage, FTP workflow understanding, Wi-Fi signal/association concepts, and repository hygiene around signing material.\n\n# Project Tags\n\n- `objective-c`\n- `ios`\n- `xcode`\n- `cocoapods`\n- `local-pod-integration`\n- `ftp`\n- `ftp-client`\n- `file-transfer`\n- `upload-download`\n- `network-progress-callbacks`\n- `corewifi`\n- `wifi-scanning`\n- `wifi-association`\n- `rssi`\n- `ssid`\n- `network-selection`\n- `external-library-integration`\n- `vendored-dependencies`\n- `source-attribution`\n- `certificate-cleanup`\n- `provisioning-profile-cleanup`\n- `research-networking-integration`\n"
+}
