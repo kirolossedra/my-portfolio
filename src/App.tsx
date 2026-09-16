@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import AdminPage from './admin/admin-page.tsx';
 import AuthCallbackPage from './admin/auth-callback-page.tsx';
+import AdminNavLink from './components/admin-nav-link.tsx';
 import LifeTimeline from './components/life-timeline.tsx';
 import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import OpinionsPage from './opinions-page.tsx';
@@ -93,6 +94,7 @@ function PublicPortfolio() {
           <a href="/opinions">Opinions</a>
           <a href="/kiro-rag">Kiro Rag</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <AdminNavLink />
         </nav>
       </header>
 

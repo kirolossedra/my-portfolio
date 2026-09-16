@@ -1,4 +1,5 @@
 import KiroChat from './features/kiro-rag/kiro-chat.tsx';
+import AdminNavLink from './components/admin-nav-link.tsx';
 
 export default function KiroRagPage() {
   return (
@@ -11,6 +12,7 @@ export default function KiroRagPage() {
           <a href="/opinions">Opinions</a>
           <a href="/kiro-rag" aria-current="page">Kiro Rag</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <AdminNavLink />
         </nav>
       </header>
 

@@ -96,6 +96,25 @@ button {
   color: var(--text);
 }
 
+.site-nav nav .admin-nav-link {
+  flex: 0 0 auto;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: var(--faint);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.site-nav nav .admin-nav-link:hover {
+  border-color: rgba(158, 215, 163, 0.42);
+  color: var(--text);
+}
+
+.admin-nav-link__compact {
+  display: none;
+}
+
 .hero {
   width: min(calc(100% - 48px), 930px);
   margin: 0 auto;
@@ -3008,6 +3027,14 @@ button {
   .opinions-shell .site-nav nav a:first-child {
     display: none;
   }
+
+  .admin-nav-link__full {
+    display: none;
+  }
+
+  .admin-nav-link__compact {
+    display: inline;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3828,6 +3855,14 @@ button {
 
   .site-nav nav a[href^="https://github.com/"] {
     display: none;
+  }
+
+  .site-nav nav .admin-nav-link {
+    display: inline-flex;
+    min-height: 34px;
+    align-items: center;
+    padding-inline: 9px;
+    font-size: 0.72rem;
   }
 }
 

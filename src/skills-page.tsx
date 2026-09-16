@@ -1,4 +1,5 @@
 import ProjectSkillsShowcase from './components/project-skills-showcase.tsx';
+import AdminNavLink from './components/admin-nav-link.tsx';
 import { projectSkillProfiles } from './data/project-skills.ts';
 
 export default function SkillsPage() {
@@ -12,6 +13,7 @@ export default function SkillsPage() {
           <a href="/opinions">Opinions</a>
           <a href="/kiro-rag">Kiro Rag</a>
           <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <AdminNavLink />
         </nav>
       </header>
 
