@@ -1,4 +1,4 @@
-import { AnimationAction, AnimationClip, AnimationMixer, Bone, Euler, Group, LoopOnce, Mesh, Object3D, Quaternion } from 'three';
+import { AnimationAction, AnimationClip, AnimationMixer, Bone, Euler, Group, LoopOnce, Mesh, Object3D, Quaternion, Skeleton, SkinnedMesh } from 'three';
 import { KIRO_BONE_ALIASES, KIRO_MORPH_ALIASES } from './kiro-model-contract.ts';
 import { findMorphBindings, findObjectByAliases, inspectKiroModel, type MorphBinding } from './kiro-model-inspector.ts';
 import type { KiroBoneRole, KiroModelCapabilities, KiroMorphRole } from './kiro-model.types.ts';
@@ -36,6 +36,7 @@ export class KiroAnimationController {
   private readonly mixer: AnimationMixer;
   private readonly bones = new Map<KiroBoneRole, ObjectRestPose>();
   private readonly morphs = new Map<KiroMorphRole, MorphBinding[]>();
+  private readonly skeletons = new Set<Skeleton>();
   private readonly authoredClips: AnimationClip[];
   private readonly random: () => number;
   private readonly currentPose = pose({});
@@ -61,6 +62,7 @@ export class KiroAnimationController {
     this.authoredClips = options.clips.filter((clip) => clip.duration >= .4 && clip.tracks.length > 0);
     (Object.keys(KIRO_BONE_ALIASES) as KiroBoneRole[]).forEach((role) => { const object = findObjectByAliases(this.root, KIRO_BONE_ALIASES[role]); if (object) this.bones.set(role, { object, quaternion: object.quaternion.clone() }); });
     (Object.keys(KIRO_MORPH_ALIASES) as KiroMorphRole[]).forEach((role) => { const bindings = findMorphBindings(this.root, KIRO_MORPH_ALIASES[role]); if (bindings.length) this.morphs.set(role, bindings); });
+    this.root.traverse((object) => { const mesh = object as SkinnedMesh; if (mesh.isSkinnedMesh && mesh.skeleton) this.skeletons.add(mesh.skeleton); });
     this.capabilities = inspectKiroModel(options.modelUrl, this.root, options.clips);
     this.beginProcedural(RELAXED, 0, true);
   }
@@ -69,17 +71,24 @@ export class KiroAnimationController {
   setState() {}
   setTalking() {}
   setLook(x: number, y: number) { this.lookX = clamp(x, -1, 1); this.lookY = clamp(y, -1, 1); }
-  setReducedMotion(value: boolean) { this.reducedMotion = value; if (value) this.beginProcedural(RELAXED, this.motionStartedAt, true); }
+  setReducedMotion(value: boolean) { this.reducedMotion = value; }
 
   update(deltaSeconds: number, elapsed: number) {
     this.mixer.update(clamp(deltaSeconds, 0, .05));
-    if (!this.reducedMotion && elapsed >= this.motionEndsAt) this.chooseNext(elapsed);
+    if (elapsed >= this.motionEndsAt) this.chooseNext(elapsed);
     this.applyProceduralPose(elapsed);
     this.applyBlink(elapsed);
+    this.root.updateMatrixWorld(true);
+    this.skeletons.forEach((skeleton) => skeleton.update());
   }
   dispose() { this.mixer.stopAllAction(); this.mixer.uncacheRoot(this.root); }
 
   private chooseNext(elapsed: number) {
+    if (this.reducedMotion) {
+      const calm = MOTIONS.filter((motion) => motion.kind === 'calm' && motion.name !== this.currentName);
+      this.beginProcedural(calm[Math.floor(this.random() * calm.length)] ?? RELAXED, elapsed);
+      return;
+    }
     if (this.authoredClips.length && this.random() < .36) {
       const choices = this.authoredClips.filter((clip) => `clip:${clip.name}` !== this.currentName);
       this.beginAuthored(choices[Math.floor(this.random() * choices.length)] ?? this.authoredClips[0]!, elapsed); return;
@@ -109,7 +118,8 @@ export class KiroAnimationController {
   private applyProceduralPose(elapsed: number) {
     if (this.currentAction) return;
     const blend = this.reducedMotion ? 1 : smoothstep((elapsed - this.motionStartedAt) / Math.max(.001, this.transitionEndsAt - this.motionStartedAt));
-    const wave = this.reducedMotion ? 0 : Math.sin((elapsed - this.motionStartedAt) * (this.currentMotion.pulseRate ?? 1));
+    const motionScale = this.reducedMotion ? .3 : 1;
+    const wave = Math.sin((elapsed - this.motionStartedAt) * (this.currentMotion.pulseRate ?? 1)) * motionScale;
     for (const key of POSE_KEYS) {
       const extra = this.currentMotion.pulse?.[key] ?? Z(); const target = this.targetPose[key]; const start = this.startPose[key];
       this.currentPose[key] = [
@@ -119,10 +129,10 @@ export class KiroAnimationController {
       ];
     }
     if (!this.reducedMotion) { this.currentPose.head[1] += this.lookX * .16; this.currentPose.head[0] -= this.lookY * .1; }
-    this.applyBone('hips', this.currentPose.hips, .75); this.applyBone('spine', this.currentPose.spine); this.applyBone('head', this.currentPose.head);
-    this.applyBone('leftUpperArm', this.currentPose.leftUpper); this.applyBone('rightUpperArm', this.currentPose.rightUpper); this.applyBone('leftForearm', this.currentPose.leftFore); this.applyBone('rightForearm', this.currentPose.rightFore);
-    this.applyBone('leftUpperLeg', this.currentPose.leftLeg, .55); this.applyBone('rightUpperLeg', this.currentPose.rightLeg, .55);
-    this.modelContainer.position.y = this.reducedMotion ? 0 : Math.sin(elapsed * 1.45) * .0014;
+    this.applyBone('hips', this.currentPose.hips, .75 * motionScale); this.applyBone('spine', this.currentPose.spine, motionScale); this.applyBone('head', this.currentPose.head, motionScale);
+    this.applyBone('leftUpperArm', this.currentPose.leftUpper, motionScale); this.applyBone('rightUpperArm', this.currentPose.rightUpper, motionScale); this.applyBone('leftForearm', this.currentPose.leftFore, motionScale); this.applyBone('rightForearm', this.currentPose.rightFore, motionScale);
+    this.applyBone('leftUpperLeg', this.currentPose.leftLeg, .55 * motionScale); this.applyBone('rightUpperLeg', this.currentPose.rightLeg, .55 * motionScale);
+    this.modelContainer.position.y = Math.sin(elapsed * 1.45) * .0014 * motionScale;
   }
 
   private applyBone(role: KiroBoneRole, rotation: Vec3, strength = 1) {
@@ -131,7 +141,6 @@ export class KiroAnimationController {
   }
 
   private applyBlink(elapsed: number) {
-    if (this.reducedMotion) { this.setMorph('blinkLeft', 0); this.setMorph('blinkRight', 0); return; }
     if (this.blinkStartedAt < 0 && elapsed >= this.nextBlinkAt) this.blinkStartedAt = elapsed;
     let amount = 0;
     if (this.blinkStartedAt >= 0) { const phase = (elapsed - this.blinkStartedAt) / .16; if (phase >= 1) { this.blinkStartedAt = -1; this.nextBlinkAt = elapsed + 2.7 + this.random() * 3.4; } else amount = phase < .5 ? phase * 2 : (1 - phase) * 2; }

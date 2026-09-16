@@ -12,14 +12,16 @@
 <a id="current-deployed-application"></a>
 ## Current Deployed Application
 
-Frontend deployment is Netlify; API deployment is a Cloudflare Worker; persistence is Cloudflare D1. CI/CD is repository-driven.
+Frontend deployment is Netlify; API deployment is a Cloudflare Worker; persistence is Cloudflare D1. Automated GitHub CI/CD is temporarily disabled to avoid consuming Actions minutes.
 
-On pull requests and pushes, the quality job installs with Node 22, runs policy gates, lint, type checking, tests, local migration validation, a production Vite build, and a Worker dry-run. On a successful push to `main`, the workflow applies remote D1 migrations, deploys the Worker, then builds and deploys the frontend to Netlify.
+The former workflow remains preserved as comments in `.github/workflows/portfolio-ci-cd.yml`. Pushes do not start its quality or deployment jobs. Frontend production releases run directly from an authenticated, linked checkout with `npm run deploy:netlify`.
 
 <a id="netlify"></a>
 ## Netlify
 
 `netlify.toml` runs `npm run verify && npm run build`, publishes `dist`, pins Node 22, injects the production Worker base URL at build time, and rewrites all routes to `index.html` for SPA navigation.
+
+`npm run deploy:netlify` runs the local production build and deploys `dist` directly to the linked production site with Netlify CLI. Run `netlify login` and `netlify link` once if the checkout is not authenticated or linked; select the existing `kirolos.dev` site and do not create another site.
 
 <a id="cloudflare"></a>
 ## Cloudflare

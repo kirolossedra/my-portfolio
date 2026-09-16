@@ -20,8 +20,8 @@
 | Worker | D1 | SQL reads/writes | ACTIVE |
 | Worker auth | GitHub OAuth | authorization-code identity lookup | ACTIVE |
 | Netlify build | Vite | static frontend bundle | ACTIVE |
-| GitHub Actions | Wrangler | D1 migrations + Worker deployment | ACTIVE |
-| GitHub Actions | Netlify CLI | prebuilt `dist/` deployment | ACTIVE |
+| GitHub Actions | Wrangler | D1 migrations + Worker deployment | DISABLED; workflow preserved as comments |
+| Local operator | Netlify CLI | prebuilt `dist/` production deployment | ACTIVE |
 | Kiro page | Kiro GLB runtime | semantic avatar state / capabilities | ACTIVE |
 | Kiro behavior probe | real RAG API | question | **NOT YET WIRED** |
 | Python runtime | Pinecone | dense ANN query / vector fetch | ACTIVE in local runtime |

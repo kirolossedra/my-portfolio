@@ -8,6 +8,7 @@
     "dev": "vite",
     "prebuild": "node scripts/sync-kiro-model.mjs",
     "build": "vite build",
+    "deploy:netlify": "node scripts/deploy-netlify.mjs",
     "preview": "vite preview",
     "lint": "eslint src shared worker scripts rag/runtime vite.config.ts --max-warnings=0 --no-error-on-unmatched-pattern",
     "typecheck": "npm run typecheck:app && npm run typecheck:worker",

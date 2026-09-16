@@ -30,7 +30,9 @@ export function findObjectByAliases(root: Object3D, aliases: readonly string[]):
   let winnerScore = 0;
   root.traverse((object) => {
     if (!object.name) return;
-    const score = aliasScore(object.name, aliases) + (object.type === 'Bone' ? 4 : 0);
+    const matchedScore = aliasScore(object.name, aliases);
+    if (matchedScore === 0) return;
+    const score = matchedScore + (object.type === 'Bone' ? 4 : 0);
     if (score > winnerScore) {
       winner = object;
       winnerScore = score;

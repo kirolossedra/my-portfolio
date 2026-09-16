@@ -397,7 +397,7 @@ Never commit `.dev.vars`. It is a local secret file, not a Netlify-managed envir
 <a id="cicd"></a>
 ## CI/CD
 
-`.github/workflows/portfolio-ci-cd.yml` runs on pull requests and pushes to `main`. The quality job uses Node 22 and performs the policy gates, lint, type checks, tests, local D1 migrations, frontend build and Worker dry-run. A successful `main` push then applies remote D1 migrations and deploys the Worker, after which the frontend is built and deployed to Netlify.
+`.github/workflows/portfolio-ci-cd.yml` is preserved but fully commented out. GitHub Actions does not run on pull requests or pushes while this temporary cost-control measure is active.
 
 The quality gate remains explicitly ordered as:
 
@@ -414,7 +414,7 @@ legacy-file gate
   -> Wrangler dry-run
 ```
 
-A successful `main` push continues as:
+The preserved workflow previously continued a successful `main` push as:
 
 ```text
 apply remote D1 migrations
@@ -426,6 +426,8 @@ apply remote D1 migrations
 GitHub Actions deployment secrets are `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `NETLIFY_AUTH_TOKEN`, and `NETLIFY_SITE_ID`. OAuth runtime secrets are Worker secrets, not Netlify or Actions secrets.
 
 Netlify also defines `npm run verify && npm run build` as its build command, publishes `dist`, pins Node 22, sets the production Worker API base URL, and performs the SPA rewrite.
+
+Deploy the frontend directly from an authenticated checkout with `npm run deploy:netlify`. The command builds the frontend and sends the prebuilt `dist/` directory to the already linked Netlify production site. If necessary, run `netlify login` followed by `netlify link` and select the existing `kirolos.dev` site.
 
 The Kiro chat rollout passed 68/68 tests across 12 test files, frontend/Worker typechecks, ESLint, local D1 migrations, Vite production build, Worker dry-run, Cloudflare deployment, and Netlify production deployment.
 
