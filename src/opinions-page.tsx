@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import type { PublicOpinion } from '../shared/opinion.ts';
 import FloatingOpinions from './components/floating-opinions.tsx';
-import AdminNavLink from './components/admin-nav-link.tsx';
+import PublicSiteNav from './components/public-site-nav.tsx';
 import { loadOpinions, submitOpinion } from './data/opinions.ts';
 
 type FormModel = {
@@ -59,16 +59,7 @@ export default function OpinionsPage() {
 
   return (
     <div className="site-shell opinions-shell">
-      <header className="site-nav">
-        <a className="brand" href="/" aria-label="kirolos.dev home">kirolos<span>.dev</span></a>
-        <nav aria-label="Primary navigation">
-          <a href="/#history">History</a>
-          <a href="/skills">Skills</a>
-          <a href="/kiro-rag">Kiro Rag</a>
-          <a href="#leave-opinion">Leave an opinion</a>
-          <AdminNavLink />
-        </nav>
-      </header>
+      <PublicSiteNav active="opinions" />
 
       <main className="opinions-page">
         <section className="opinions-intro">

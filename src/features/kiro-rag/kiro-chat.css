@@ -11,6 +11,7 @@
   --kiro-agent-accent-soft: rgba(158, 215, 163, 0.1);
   --kiro-agent-warm: #e7bc70;
   min-height: 100vh;
+  overflow-x: clip;
   color: var(--kiro-agent-text);
   background:
     radial-gradient(circle at 76% 17%, rgba(231, 188, 112, 0.08), transparent 24rem),
@@ -23,6 +24,7 @@
 }
 
 .kiro-chat-main {
+  min-width: 0;
   width: min(calc(100% - 40px), 1440px);
   margin: 0 auto;
   padding: 22px 0 34px;
@@ -30,7 +32,7 @@
 
 .kiro-agent-workspace {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 330px;
+  grid-template-columns: minmax(0, 1fr) 290px;
   gap: 18px;
   height: calc(100vh - 132px);
   min-height: 660px;
@@ -39,6 +41,8 @@
 
 .kiro-agent-chat,
 .kiro-agent-presence {
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--kiro-agent-line);
   background: var(--kiro-agent-panel);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
@@ -123,6 +127,7 @@
 }
 
 .kiro-chat-thread {
+  min-width: 0;
   min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -545,6 +550,16 @@
   margin-top: 2px;
 }
 
+.kiro-chat-turn,
+.kiro-user-message,
+.kiro-assistant-message,
+.kiro-answer-copy,
+.kiro-agent-sources,
+.kiro-agent-sources article {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .kiro-agent-sources article blockquote {
   display: -webkit-box;
   overflow: hidden;
@@ -719,6 +734,7 @@
   position: relative;
   min-height: 0;
   overflow: hidden;
+  contain: layout paint size;
 }
 
 .kiro-agent-avatar__model {
@@ -731,6 +747,9 @@
 
 .kiro-agent-avatar__model canvas {
   display: block;
+  width: 100% !important;
+  max-width: 100%;
+  height: 100% !important;
 }
 
 .kiro-agent-avatar__glow {
@@ -815,7 +834,7 @@
 
 @media (max-width: 1050px) {
   .kiro-agent-workspace {
-    grid-template-columns: minmax(0, 1fr) 270px;
+    grid-template-columns: minmax(0, 1fr) 250px;
   }
 }
 
@@ -867,92 +886,157 @@
 }
 
 @media (max-width: 640px) {
-  .kiro-chat-shell .site-nav,
-  .kiro-chat-main,
-  .kiro-chat-shell .site-footer {
-    width: min(calc(100% - 24px), 1440px);
-  }
-
-  .kiro-chat-shell .site-nav nav {
-    gap: 12px;
-  }
-
-  .kiro-chat-shell .site-nav nav a:nth-child(1),
-  .kiro-chat-shell .site-nav nav a:nth-child(3) {
-    display: none;
+  .kiro-chat-main {
+    width: 100%;
+    padding: 0;
   }
 
   .kiro-agent-workspace {
-    gap: 10px;
-  }
-
-  .kiro-agent-presence {
-    min-height: 142px;
-    grid-template-columns: 128px minmax(0, 1fr);
-    grid-template-rows: 142px;
-    border-radius: 20px;
-  }
-
-  .kiro-agent-presence__copy {
-    padding: 14px;
-  }
-
-  .kiro-agent-presence__copy h2 {
-    margin-top: 8px;
-    font-size: 1.05rem;
-  }
-
-  .kiro-agent-presence__copy > p {
+    display: block;
+    width: 100%;
+    height: auto;
     min-height: 0;
-    margin-top: 6px;
-    font-size: 0.7rem;
-  }
-
-  .kiro-agent-stats {
-    display: none;
   }
 
   .kiro-agent-chat {
-    height: calc(100dvh - 238px);
-    min-height: 540px;
-    border-radius: 20px;
+    display: block;
+    height: auto;
+    min-height: calc(100svh - 76px);
+    overflow: visible;
+    border-width: 0;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
   }
 
   .kiro-agent-chat__header {
-    padding: 17px 17px 14px;
+    position: relative;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(9, 12, 16, 0.94);
   }
 
-  .kiro-agent-chat__header p {
+  .kiro-agent-presence.is-compact {
+    display: grid;
+    flex: 1 1 auto;
+    grid-template-columns: 76px minmax(0, 1fr);
+    grid-template-rows: 76px;
+    min-width: 0;
+    min-height: 76px;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .kiro-agent-presence.is-compact::before,
+  .kiro-agent-presence.is-compact .kiro-agent-avatar__glow {
     display: none;
+  }
+
+  .kiro-agent-presence.is-compact .kiro-agent-avatar {
+    width: 76px;
+    height: 76px;
+    min-height: 0;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .kiro-agent-presence.is-compact .kiro-agent-presence__copy {
+    justify-content: center;
+    min-width: 0;
+    padding: 7px 10px;
+    border: 0;
+    background: transparent;
+  }
+
+  .kiro-agent-presence.is-compact .kiro-agent-presence__copy h2 {
+    margin: 4px 0 0;
+    font-size: 1.05rem;
+  }
+
+  .kiro-agent-presence.is-compact .kiro-agent-presence__copy > p {
+    min-height: 0;
+    margin: 3px 0 0;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .kiro-agent-presence.is-compact .kiro-agent-live {
+    font-size: 0.62rem;
+  }
+
+  .kiro-new-chat {
+    min-height: 34px;
+    padding-inline: 10px;
+    font-size: 0.7rem;
+  }
+
+  .kiro-chat-thread {
+    min-height: calc(100svh - 252px);
+    overflow: visible;
+    overscroll-behavior: auto;
   }
 
   .kiro-chat-empty,
   .kiro-chat-turns {
-    width: calc(100% - 28px);
+    width: min(calc(100% - 28px), 850px);
   }
 
   .kiro-chat-empty {
-    padding: 38px 0 42px;
+    min-height: 0;
+    padding: 30px 0 34px;
+  }
+
+  .kiro-chat-empty__mark {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 15px;
+    border-radius: 12px;
   }
 
   .kiro-chat-empty h2 {
-    font-size: 2.05rem;
+    font-size: clamp(1.7rem, 8vw, 2.15rem);
+  }
+
+  .kiro-chat-empty > p {
+    margin-top: 12px;
+    font-size: 0.86rem;
+    line-height: 1.55;
   }
 
   .kiro-suggestion-grid {
     grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 22px;
   }
 
   .kiro-suggestion-grid button {
-    min-height: 64px;
+    min-height: 52px;
+    align-items: center;
+    padding: 11px 13px;
+    border-radius: 14px;
+  }
+
+  .kiro-suggestion-grid button span {
+    font-size: 0.8rem;
+    line-height: 1.35;
   }
 
   .kiro-chat-turns {
-    padding: 23px 0 36px;
+    padding: 22px 0 28px;
   }
 
   .kiro-user-message p {
-    max-width: 90%;
+    max-width: 94%;
+  }
+
+  .kiro-answer-copy {
+    font-size: 1rem;
+    line-height: 1.7;
   }
 
   .kiro-agent-sources__grid {
@@ -960,17 +1044,29 @@
   }
 
   .kiro-agent-composer {
-    padding: 10px 10px 12px;
+    position: sticky;
+    z-index: 12;
+    bottom: 0;
+    padding: 9px 10px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(7, 9, 13, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .kiro-agent-composer__box {
+    padding: 9px 9px 8px 13px;
+    border-radius: 17px;
   }
 
   .kiro-agent-composer__actions > span {
-    max-width: 180px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: none;
   }
 
   .kiro-agent-composer > p {
+    display: none;
+  }
+
+  .kiro-chat-shell .site-footer {
     display: none;
   }
 }

@@ -1,21 +1,11 @@
 import ProjectSkillsShowcase from './components/project-skills-showcase.tsx';
-import AdminNavLink from './components/admin-nav-link.tsx';
+import PublicSiteNav from './components/public-site-nav.tsx';
 import { projectSkillProfiles } from './data/project-skills.ts';
 
 export default function SkillsPage() {
   return (
     <div className="site-shell skills-shell">
-      <header className="site-nav">
-        <a className="brand" href="/" aria-label="kirolos.dev home">kirolos<span>.dev</span></a>
-        <nav aria-label="Primary navigation">
-          <a href="/#history">History</a>
-          <a href="/skills" aria-current="page">Skills</a>
-          <a href="/opinions">Opinions</a>
-          <a href="/kiro-rag">Kiro Rag</a>
-          <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <AdminNavLink />
-        </nav>
-      </header>
+      <PublicSiteNav active="skills" />
 
       <main className="skills-page">
         <section className="skills-hero">

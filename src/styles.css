@@ -61,11 +61,29 @@ button {
 }
 
 .site-nav {
+  position: relative;
+  z-index: 40;
   min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-nav-menu__toggle {
+  display: none;
+}
+
+.site-nav-menu__icon {
+  display: grid;
+  gap: 5px;
+}
+
+.site-nav-menu__icon i {
+  display: block;
+  width: 17px;
+  height: 1px;
+  background: currentColor;
 }
 
 .brand {
@@ -4394,5 +4412,88 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .kiro-glb-avatar.is-loading .kiro-glb-avatar__status::before {
     animation: none;
+  }
+}
+
+/* Mobile public navigation uses a real disclosure menu instead of squeezing desktop links. */
+@media (max-width: 720px) {
+  .site-nav {
+    width: min(calc(100% - 24px), var(--content));
+    min-height: 64px;
+  }
+
+  .site-nav-menu__toggle {
+    display: flex;
+    min-height: 38px;
+    align-items: center;
+    gap: 9px;
+    padding: 0 11px;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 999px;
+    color: var(--muted);
+    background: rgba(10, 13, 17, 0.92);
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.76rem;
+  }
+
+  .site-nav-menu.is-open > .site-nav-menu__toggle {
+    color: var(--text);
+    border-color: rgba(158, 215, 163, 0.35);
+  }
+
+  .site-nav-menu > nav {
+    position: absolute;
+    z-index: 60;
+    top: calc(100% - 2px);
+    right: 0;
+    display: none;
+    width: min(280px, calc(100vw - 24px));
+    padding: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 18px;
+    background: rgba(9, 12, 16, 0.985);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.48);
+  }
+
+  .site-nav-menu.is-open > nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .site-nav .site-nav-menu nav > a,
+  .skills-shell .site-nav .site-nav-menu nav > a:first-child,
+  .opinions-shell .site-nav .site-nav-menu nav > a:first-child,
+  .kiro-rag-shell .site-nav .site-nav-menu nav > a:first-child,
+  .kiro-rag-shell .site-nav .site-nav-menu nav > a:nth-child(3),
+  .site-nav .site-nav-menu nav > a[href^="https://github.com/"] {
+    display: flex;
+    min-height: 42px;
+    align-items: center;
+    padding: 8px 11px;
+    border-radius: 11px;
+    font-size: 0.86rem;
+  }
+
+  .site-nav .site-nav-menu nav > a:hover,
+  .site-nav .site-nav-menu nav > a[aria-current="page"] {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.045);
+  }
+
+  .site-nav .site-nav-menu .admin-nav-link {
+    justify-content: center;
+    margin-top: 5px;
+    border-radius: 11px;
+    color: var(--muted);
+  }
+
+  .site-nav .admin-nav-link__full {
+    display: inline;
+  }
+
+  .site-nav .admin-nav-link__compact {
+    display: none;
   }
 }

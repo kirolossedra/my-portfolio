@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import AdminPage from './admin/admin-page.tsx';
 import AuthCallbackPage from './admin/auth-callback-page.tsx';
-import AdminNavLink from './components/admin-nav-link.tsx';
+import PublicSiteNav from './components/public-site-nav.tsx';
 import LifeTimeline from './components/life-timeline.tsx';
 import MilestoneDetailPage from './components/milestone-detail-page.tsx';
 import OpinionsPage from './opinions-page.tsx';
@@ -84,19 +84,7 @@ function PublicPortfolio() {
 
   return (
     <div className="site-shell">
-      <header className="site-nav">
-        <a className="brand" href="/" aria-label="kirolos.dev home">
-          kirolos<span>.dev</span>
-        </a>
-        <nav aria-label="Primary navigation">
-          <a href="#history">History</a>
-          <a href="/skills">Skills</a>
-          <a href="/opinions">Opinions</a>
-          <a href="/kiro-rag">Kiro Rag</a>
-          <a href="https://github.com/kirolossedra" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <AdminNavLink />
-        </nav>
-      </header>
+      <PublicSiteNav />
 
       <main>
         <section className="hero" aria-labelledby="hero-title">

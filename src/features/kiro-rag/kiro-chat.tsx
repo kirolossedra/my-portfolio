@@ -262,12 +262,44 @@ const AVATAR_STATUS: Record<KiroAvatarState, string> = {
   error: 'Something interrupted the request',
 };
 
+function KiroPresence({
+  compact = false,
+  state,
+  corpusDocuments,
+}: {
+  compact?: boolean;
+  state: KiroAvatarState;
+  corpusDocuments: number | null;
+}) {
+  return (
+    <aside className={`kiro-agent-presence${compact ? ' is-compact' : ''}`} aria-label="Kiro agent presence">
+      <div className="kiro-agent-avatar">
+        <KiroGlbAvatar interactiveGaze className="kiro-agent-avatar__model" />
+        <div className="kiro-agent-avatar__glow" aria-hidden="true" />
+      </div>
+      <div className="kiro-agent-presence__copy">
+        <div className="kiro-agent-live"><span aria-hidden="true" /><strong>Live</strong></div>
+        <h2>{compact ? 'Kiro' : 'Kiro is evidence-bound.'}</h2>
+        <p aria-live="polite">{compact ? 'Portfolio assistant' : AVATAR_STATUS[state]}</p>
+        {!compact && (
+          <div className="kiro-agent-stats">
+            <span><strong>134</strong> repositories</span>
+            <span><strong>{corpusDocuments?.toLocaleString() ?? 'Live'}</strong> evidence notes</span>
+            <span><strong>E#</strong> grounded citations</span>
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
 export default function KiroChat() {
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [draft, setDraft] = useState('');
   const [activeTurnId, setActiveTurnId] = useState<string | null>(null);
   const [avatarState, setAvatarState] = useState<KiroAvatarState>('idle');
   const [corpusDocuments, setCorpusDocuments] = useState<number | null>(null);
+  const [mobileLayout, setMobileLayout] = useState(() => window.matchMedia('(max-width: 640px)').matches);
   const controllerRef = useRef<AbortController | null>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const stickToBottomRef = useRef(true);
@@ -276,6 +308,14 @@ export default function KiroChat() {
   const canSend = !isRunning && draft.trim().length >= 3;
 
   useEffect(() => () => controllerRef.current?.abort(), []);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 640px)');
+    const updateLayout = (event: MediaQueryListEvent) => setMobileLayout(event.matches);
+    setMobileLayout(media.matches);
+    media.addEventListener('change', updateLayout);
+    return () => media.removeEventListener('change', updateLayout);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -287,8 +327,12 @@ export default function KiroChat() {
 
   useEffect(() => {
     if (!stickToBottomRef.current || !threadRef.current) return;
-    threadRef.current.scrollTop = threadRef.current.scrollHeight;
-  }, [turns, activeTurnId]);
+    if (mobileLayout) {
+      if (turns.length > 0) window.scrollTo({ top: document.documentElement.scrollHeight });
+    } else {
+      threadRef.current.scrollTop = threadRef.current.scrollHeight;
+    }
+  }, [turns, activeTurnId, mobileLayout]);
 
   const updateTurn = (id: string, updater: (turn: ChatTurn) => ChatTurn) => {
     setTurns((current) => current.map((turn) => turn.id === id ? updater(turn) : turn));
@@ -426,6 +470,7 @@ export default function KiroChat() {
   };
 
   const onThreadScroll = () => {
+    if (mobileLayout) return;
     const node = threadRef.current;
     if (!node) return;
     const distanceFromBottom = node.scrollHeight - node.scrollTop - node.clientHeight;
@@ -436,11 +481,15 @@ export default function KiroChat() {
     <div className="kiro-agent-workspace">
       <section className="kiro-agent-chat" aria-label="Kiro portfolio agent chat">
         <header className="kiro-agent-chat__header">
-          <div>
-            <span className="kiro-agent-kicker">Portfolio intelligence</span>
-            <h1>Kiro</h1>
-            <p>Ask about projects, skills, engineering growth, tradeoffs, testing, ownership, and gaps.</p>
-          </div>
+          {mobileLayout ? (
+            <KiroPresence compact state={avatarState} corpusDocuments={corpusDocuments} />
+          ) : (
+            <div>
+              <span className="kiro-agent-kicker">Portfolio intelligence</span>
+              <h1>Kiro</h1>
+              <p>Ask about projects, skills, engineering growth, tradeoffs, testing, ownership, and gaps.</p>
+            </div>
+          )}
           <button type="button" className="kiro-new-chat" onClick={clearChat} disabled={turns.length === 0 && !isRunning}>
             New chat
           </button>
@@ -498,30 +547,7 @@ export default function KiroChat() {
         </form>
       </section>
 
-      <aside className="kiro-agent-presence" aria-label="Kiro agent presence">
-        <div className="kiro-agent-avatar">
-          <KiroGlbAvatar
-            state={avatarState}
-            talking={avatarState === 'answering'}
-            interactiveGaze
-            className="kiro-agent-avatar__model"
-          />
-          <div className="kiro-agent-avatar__glow" aria-hidden="true" />
-        </div>
-        <div className="kiro-agent-presence__copy">
-          <div className="kiro-agent-live">
-            <span aria-hidden="true" />
-            <strong>Live portfolio agent</strong>
-          </div>
-          <h2>Kiro is evidence-bound.</h2>
-          <p aria-live="polite">{AVATAR_STATUS[avatarState]}</p>
-          <div className="kiro-agent-stats">
-            <span><strong>134</strong> repositories</span>
-            <span><strong>{corpusDocuments?.toLocaleString() ?? 'Live'}</strong> evidence notes</span>
-            <span><strong>E#</strong> grounded citations</span>
-          </div>
-        </div>
-      </aside>
+      {!mobileLayout && <KiroPresence state={avatarState} corpusDocuments={corpusDocuments} />}
     </div>
   );
 }
