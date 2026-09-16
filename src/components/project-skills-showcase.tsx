@@ -44,21 +44,21 @@ function LincLook() {
   );
 }
 
-function EurekaLook() {
+function PhanoLook() {
   return (
-    <div className="project-look project-look--eureka" aria-label="EurekaVault visual preview">
+    <div className="project-look project-look--eureka" aria-label="PhanoSesh visual preview">
       <div className="project-look-window project-look-window--eureka">
         <div className="project-look-window-bar">
           <span /><span /><span />
-          <small>EurekaVault</small>
+          <small>PhanoSesh</small>
         </div>
         <div className="eureka-look-shell">
           <aside>
-            <b>ε</b>
+            <b>P</b>
             <i /><i /><i /><i /><i />
           </aside>
           <div className="eureka-look-main">
-            <div className="eureka-look-heading"><span>PERSONAL VAULT</span><strong>Prompt Blocks</strong></div>
+            <div className="eureka-look-heading"><span>INTELLECTUAL WORKSPACE</span><strong>Prompt Blocks</strong></div>
             <div className="eureka-look-graph">
               <div className="eureka-node eureka-node--input">Prompt</div>
               <div className="eureka-wire eureka-wire--one" />
@@ -74,14 +74,14 @@ function EurekaLook() {
       </div>
       <div className="project-evidence-card project-evidence-card--eureka">
         <span>Commit-backed growth</span>
-        <div className="eureka-velocity-thumb"><img src="/media/projects/eureka-vault/weekly-velocity.svg" alt="EurekaVault weekly commit velocity chart" /></div>
+        <div className="eureka-velocity-thumb"><img src="/media/projects/phanosesh/weekly-velocity.svg" alt="PhanoSesh weekly commit velocity chart" /></div>
       </div>
     </div>
   );
 }
 
 function ProjectLook({ project }: { project: ProjectSkillProfile }) {
-  return project.id === 'linc-one' ? <LincLook /> : <EurekaLook />;
+  return project.id === 'linc-one' ? <LincLook /> : <PhanoLook />;
 }
 
 export default function ProjectSkillsShowcase({ project, reverse = false }: { project: ProjectSkillProfile; reverse?: boolean }) {

@@ -18,7 +18,7 @@ export default function SkillsPage() {
           </p>
           <div className="skills-hero-jump">
             <a href="#linc-one">LInC One ↓</a>
-            <a href="#eureka-vault">EurekaVault ↓</a>
+            <a href="#phanosesh">PhanoSesh ↓</a>
           </div>
         </section>
 

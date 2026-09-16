@@ -5,7 +5,7 @@ const rank: Record<SkillPriority, number> = { major: 0, strong: 1, detail: 2 };
 
 describe('project skill evidence', () => {
   it('keeps an exhaustive skill set for both source projects', () => {
-    expect(projectSkillProfiles.map((project) => project.name)).toEqual(['LInC One', 'EurekaVault']);
+    expect(projectSkillProfiles.map((project) => project.name)).toEqual(['LInC One', 'PhanoSesh']);
     expect(projectSkillProfiles.every((project) => project.skills.length >= 80)).toBe(true);
   });
 
