@@ -79,9 +79,13 @@ rag/3d-kiro/athletic+man+3d+model.fbx
 
 The validated skinned model is stored at `rag/3d-kiro/athletic+man+3d+model.fbx`. The build synchronizer generates `public/models/kiro/kiro.fbx`; the runtime uses the named skeleton through the existing alias resolver and can drive head, spine, upper-arm and forearm motion without letting the LLM directly manipulate arbitrary joints.
 
+Additional Mixamo clips may be added as `rag/3d-kiro/animations/*.fbx`. Builds create a public manifest automatically; the runtime loads compatible clips, removes root-position tracks to keep the feet anchored, and adds them to the autonomous pool.
+
 The component loads the generated production FBX through Three.js `FBXLoader`.
 
 ## Motion strategy
+
+Avatar motion is autonomous and does not follow chat state. A randomized scheduler moves between breathing, weight shifts, gaze changes, stance changes and several expressive arm/torso sequences. Procedural transitions are eased; authored clips crossfade through Three.js `AnimationMixer`. Reduced-motion mode holds a quiet breathing stance.
 
 The supplied base FBX is essentially a rigged master pose rather than a library of authored conversational clips. Therefore the active runtime now provides safe procedural movement:
 

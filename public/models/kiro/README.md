@@ -17,6 +17,8 @@ Vite exposes it at:
 
 The validated production model lives at `rag/3d-kiro/athletic+man+3d+model.fbx`. `scripts/sync-kiro-model.mjs` copies it byte-for-byte to `public/models/kiro/kiro.fbx` before development and production builds.
 
+Optional authored motion clips live in `rag/3d-kiro/animations/*.fbx`. The same synchronizer copies them into the generated public asset directory and writes `animations.json`, which the browser uses to discover clips.
+
 The file should contain the character mesh, skinning and Mixamo skeleton. It is suitable for bounded runtime bone motion.
 
 ## Runtime behavior
@@ -24,6 +26,12 @@ The file should contain the character mesh, skinning and Mixamo skeleton. It is 
 `src/features/kiro-rag/model3d/kiro-glb-avatar.tsx` loads the production asset through Three.js `FBXLoader`.
 
 `kiro-animation-controller.ts`:
+
+- runs independently from chat state,
+- randomly alternates calm full-body motion and expressive gestures,
+- prevents immediate repetition and forces an expressive gesture after two calm sequences,
+- uses eased procedural transitions and crossfades authored Mixamo clips,
+- substantially reduces autonomous motion for `prefers-reduced-motion`.
 
 - resolves common Mixamo bone names;
 - lowers the base T-pose into a calm standing pose;

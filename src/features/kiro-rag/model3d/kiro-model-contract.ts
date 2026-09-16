@@ -6,8 +6,10 @@ import type {
 } from './kiro-model.types.ts';
 
 export const KIRO_MODEL_URL = '/models/kiro/kiro.fbx';
+export const KIRO_ANIMATION_MANIFEST_URL = '/models/kiro/animations.json';
 
 export const KIRO_BONE_ALIASES: Record<KiroBoneRole, readonly string[]> = {
+  hips: ['hips', 'pelvis', 'mixamorighips'],
   head: ['head', 'mixamorighead', 'ccbasehead', 'jhead'],
   neck: ['neck', 'mixamorigneck', 'ccbaseneck', 'jneck'],
   spine: ['spine2', 'spine1', 'spine', 'chest', 'upperchest', 'mixamorigspine2'],

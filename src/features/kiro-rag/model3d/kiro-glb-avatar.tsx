@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react';
 import {
   ACESFilmicToneMapping,
+  AnimationClip,
   Box3,
   Clock,
   Color,
@@ -17,7 +18,7 @@ import {
 } from 'three';
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
 import { KiroAnimationController } from './kiro-animation-controller.ts';
-import { KIRO_MODEL_URL } from './kiro-model-contract.ts';
+import { KIRO_ANIMATION_MANIFEST_URL, KIRO_MODEL_URL } from './kiro-model-contract.ts';
 import type {
   KiroAvatarState,
   KiroLoadState,
@@ -71,6 +72,42 @@ function disposeModel(root: Group) {
   });
 }
 
+interface AnimationManifest { files?: string[] }
+
+function anchoredClip(clip: AnimationClip, fallbackName: string) {
+  const anchored = clip.clone();
+  anchored.name = clip.name && clip.name !== 'mixamo.com' ? clip.name : fallbackName;
+  anchored.tracks = anchored.tracks.filter((track) => !track.name.toLowerCase().endsWith('.position'));
+  anchored.resetDuration();
+  return anchored;
+}
+
+async function loadExternalAnimations(loader: FBXLoader) {
+  try {
+    const response = await fetch(KIRO_ANIMATION_MANIFEST_URL, { cache: 'no-cache' });
+    if (!response.ok) return [];
+    const manifest = await response.json() as AnimationManifest;
+    const files = Array.isArray(manifest.files) ? manifest.files : [];
+    const loaded = await Promise.all(files.map(async (file) => {
+      try {
+        const root = await loader.loadAsync(`/models/kiro/animations/${encodeURIComponent(file)}`);
+        const clips = root.animations
+          .filter((clip) => clip.duration >= 0.4)
+          .map((clip) => anchoredClip(clip, file.replace(/\.fbx$/i, '')));
+        disposeModel(root);
+        return clips;
+      } catch (error) {
+        console.warn('kiro_animation_clip_failed', { file, error });
+        return [];
+      }
+    }));
+    return loaded.flat();
+  } catch (error) {
+    console.warn('kiro_animation_manifest_failed', error);
+    return [];
+  }
+}
+
 function frameModel(camera: PerspectiveCamera, model: Group, viewportAspect: number) {
   const box = new Box3().setFromObject(model);
   if (box.isEmpty()) return;
@@ -95,30 +132,16 @@ function frameModel(camera: PerspectiveCamera, model: Group, viewportAspect: num
 }
 
 export default function KiroGlbAvatar({
-  state = 'idle',
   modelUrl = KIRO_MODEL_URL,
-  talking = state === 'answering',
   interactiveGaze = true,
   className = '',
   onCapabilities,
 }: KiroGlbAvatarProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const controllerRef = useRef<KiroAnimationController | null>(null);
-  const stateRef = useRef(state);
-  const talkingRef = useRef(talking);
   const onCapabilitiesRef = useRef(onCapabilities);
   const [loadState, setLoadState] = useState<KiroLoadState>('loading');
   const [message, setMessage] = useState('Loading Kiro…');
-
-  useEffect(() => {
-    stateRef.current = state;
-    controllerRef.current?.setState(state);
-  }, [state]);
-
-  useEffect(() => {
-    talkingRef.current = talking;
-    controllerRef.current?.setTalking(talking);
-  }, [talking]);
 
   useEffect(() => {
     onCapabilitiesRef.current = onCapabilities;
@@ -182,24 +205,28 @@ export default function KiroGlbAvatar({
     const loader = new FBXLoader();
     loader.load(
       modelUrl,
-      (model) => {
+      async (model) => {
         if (disposed) return;
 
         prepareModel(model);
         modelContainer.add(model);
         frameModel(camera, model, camera.aspect);
 
+        const externalClips = await loadExternalAnimations(loader);
+        if (disposed) {
+          disposeModel(model);
+          return;
+        }
+        const clips = [...model.animations, ...externalClips];
         const controller = new KiroAnimationController({
           modelUrl,
           root: model,
           modelContainer,
-          clips: model.animations,
+          clips,
           reducedMotion: reducedMotionQuery.matches,
         });
 
         controllerRef.current = controller;
-        controller.setState(stateRef.current, true);
-        controller.setTalking(talkingRef.current);
         console.info('kiro_avatar_ready', controller.capabilities);
         onCapabilitiesRef.current?.(controller.capabilities);
 

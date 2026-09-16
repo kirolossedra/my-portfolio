@@ -39,6 +39,7 @@ export interface KiroModelCapabilities {
 }
 
 export type KiroBoneRole =
+  | 'hips'
   | 'head'
   | 'neck'
   | 'spine'
