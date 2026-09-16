@@ -36,6 +36,7 @@ async function fixture(t, count = 3) {
   });
   const documentsPath = join(root, '02-retrieval-documents/output/documents.jsonl');
   const manifestPath = join(root, '02-retrieval-documents/output/document-manifest.json');
+  const releasePath = join(root, '02-retrieval-documents/output/release.json');
   const checkpoint = join(root, '03-embeddings/.embedding-cloudflare-v1-checkpoint');
   const output = join(root, '03-embeddings/output/embeddings-cloudflare-v1');
   await fs.writeFile(join(root, '01-corpus/output/repositories.jsonl'), '[]\n');
@@ -48,11 +49,20 @@ async function fixture(t, count = 3) {
     }
     const content = documents.map(x => JSON.stringify(x)).join('\n') + '\n';
     await fs.mkdir(dirname(documentsPath), { recursive: true }); await fs.writeFile(documentsPath, content);
+    const documentsSha256 = sha(content);
     await write(manifestPath, { schema_version: '2.0.0',
       statistics: { documents: documents.length, repository_total: 1, repositories_covered: 1 },
       input: { repository_count: 1, manifest_sha256: sha(await fs.readFile(join(root, '01-corpus/output/manifest.json'))),
         sha256: sha(await fs.readFile(join(root, '01-corpus/output/repositories.jsonl'))) },
-      artifacts: { 'documents.jsonl': { sha256: sha(content) } } });
+      artifacts: { 'documents.jsonl': { sha256: documentsSha256 } } });
+    await write(releasePath, {
+      schema_version: 'rag-release-v1',
+      release_id: `rag-${sha(`fixture-source\n${documentsSha256}`).slice(0, 24)}`,
+      source_commit: '0000000000000000000000000000000000000000',
+      retrieval_documents_sha256: documentsSha256,
+      document_count: documents.length,
+      repository_count: 1
+    });
   }
   await update();
   const { main } = await import(pathToFileURL(join(root, relativeScript)).href);

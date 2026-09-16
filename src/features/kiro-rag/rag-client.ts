@@ -1,4 +1,4 @@
-import type { RagCitation } from '../../../shared/rag.ts';
+import type { RagCitation, RagHealthResponse } from '../../../shared/rag.ts';
 import { API_BASE_URL, responseError } from '../../lib/api.ts';
 
 export interface RagStreamRetrieval {
@@ -6,6 +6,8 @@ export interface RagStreamRetrieval {
   d1Documents: number;
   rerankedDocuments: number;
   selectedEvidence: number;
+  evidenceTokenBudget: number;
+  estimatedEvidenceTokens: number;
 }
 
 export interface RagStreamModels {
@@ -84,6 +86,7 @@ export async function streamRagQuery(
   question: string,
   handlers: RagStreamHandlers,
   signal: AbortSignal,
+  conversationContext = '',
 ): Promise<void> {
   const response = await fetch(`${API_BASE_URL}/api/rag/query/stream`, {
     method: 'POST',
@@ -91,7 +94,7 @@ export async function streamRagQuery(
       'Content-Type': 'application/json',
       Accept: 'text/event-stream',
     },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, ...(conversationContext ? { conversationContext } : {}) }),
     signal,
   });
 
@@ -150,4 +153,11 @@ export async function streamRagQuery(
   if (!sawDone && !signal.aborted) {
     throw new Error('The portfolio agent stream ended before completion.');
   }
+}
+
+export async function getRagHealth(signal?: AbortSignal): Promise<RagHealthResponse['data']> {
+  const response = await fetch(`${API_BASE_URL}/api/rag/health`, { signal });
+  if (!response.ok) throw await responseError(response);
+  const payload = await response.json() as RagHealthResponse;
+  return payload.data;
 }

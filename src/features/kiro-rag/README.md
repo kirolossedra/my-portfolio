@@ -14,7 +14,8 @@ src/features/kiro-rag/kiro-chat.tsx
 src/features/kiro-rag/kiro-chat.css
 src/features/kiro-rag/rag-client.ts
 src/features/kiro-rag/model3d/
-public/models/kiro/kiro.fbx
+rag/3d-kiro/athletic+man+3d+model.fbx
+public/models/kiro/kiro.fbx (generated)
 ```
 
 ## Chat interaction model
@@ -73,12 +74,12 @@ The active production asset is:
 Source location:
 
 ```text
-public/models/kiro/kiro.fbx
+rag/3d-kiro/athletic+man+3d+model.fbx
 ```
 
-Place the validated Mixamo-rigged skinned FBX at `public/models/kiro/kiro.fbx`. The runtime uses the named skeleton through the existing alias resolver and can drive head, spine, upper-arm and forearm motion without letting the LLM directly manipulate arbitrary joints.
+The validated skinned model is stored at `rag/3d-kiro/athletic+man+3d+model.fbx`. The build synchronizer generates `public/models/kiro/kiro.fbx`; the runtime uses the named skeleton through the existing alias resolver and can drive head, spine, upper-arm and forearm motion without letting the LLM directly manipulate arbitrary joints.
 
-The historical component filename `kiro-glb-avatar.tsx` is retained for import compatibility, but its active loader is now Three.js `FBXLoader`.
+The component loads the generated production FBX through Three.js `FBXLoader`.
 
 ## Motion strategy
 

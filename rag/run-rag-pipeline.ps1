@@ -5,6 +5,8 @@ param(
     [switch]$LocalOnly,
     [switch]$Resume,
     [switch]$SkipSourceSync,
+    [switch]$Rollback,
+    [switch]$CleanupReleases,
     [switch]$ApproveRemote
 )
 
@@ -13,6 +15,12 @@ $ErrorActionPreference = 'Stop'
 
 if ($LocalOnly -and $ApproveRemote) {
     throw '-LocalOnly and -ApproveRemote cannot be used together.'
+}
+if ($Rollback -and ($LocalOnly -or $Resume -or $SkipSourceSync -or $CleanupReleases -or $ApproveRemote)) {
+    throw '-Rollback must be used by itself.'
+}
+if ($CleanupReleases -and ($LocalOnly -or $Resume -or $SkipSourceSync -or $Rollback -or $ApproveRemote)) {
+    throw '-CleanupReleases must be used by itself.'
 }
 
 $RagRoot = $PSScriptRoot
@@ -34,6 +42,7 @@ $Paths = @{
     EmbeddingManifest = Join-Path $PipelineRoot '03-embeddings/output/embeddings-cloudflare-v1/embedding-manifest.json'
     D1Sql = Join-Path $PipelineRoot '04-runtime-metadata/output/d1-runtime-v1/rag-documents.sql'
     VectorizeManifest = Join-Path $PipelineRoot '05-vector-index/output/vectorize-cloudflare-v1/vectorize-publication-manifest.json'
+    Release = Join-Path $PipelineRoot '02-retrieval-documents/output/release.json'
 }
 
 function Get-FileFingerprint {
@@ -64,6 +73,27 @@ function Get-WorkerFingerprint {
     )
     $bytes = [Text.Encoding]::UTF8.GetBytes(($parts -join "`n"))
     return [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
+}
+
+function New-RagRelease {
+    param(
+        [Parameter(Mandatory)][System.Collections.IDictionary]$SourceProvenance,
+        [Parameter(Mandatory)][string]$DocumentsSha256
+    )
+    $material = "rag-release-v1`n$($SourceProvenance.sourceCommit)`n$DocumentsSha256"
+    $bytes = [Text.Encoding]::UTF8.GetBytes($material)
+    $digest = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
+    $release = [ordered]@{
+        schema_version = 1
+        release_id = "rag-$($digest.Substring(0, 24))"
+        source_commit = $SourceProvenance.sourceCommit
+        retrieval_documents_sha256 = $DocumentsSha256
+        derivation_sha256 = $digest
+        created_at = (Get-Date).ToUniversalTime().ToString('o')
+    }
+    $release | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $Paths.Release -Encoding utf8
+    $release | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $RunLogRoot 'rag-release.json') -Encoding utf8
+    return $release
 }
 
 function New-RunState {
@@ -266,6 +296,16 @@ Start-Transcript -LiteralPath $OverallLog -Force | Out-Null
 $runSucceeded = $false
 
 try {
+    if ($Rollback) {
+        Invoke-PipelineStage 6 'Rollback active RAG release' 'rollback.log' $ProjectRoot 'npm' @('run', 'rag:release', '--', '--rollback')
+        $runSucceeded = $true
+        return
+    }
+    if ($CleanupReleases) {
+        Invoke-PipelineStage 6 'Clean obsolete RAG releases' 'release-cleanup.log' $ProjectRoot 'npm' @('run', 'rag:release', '--', '--cleanup')
+        $runSucceeded = $true
+        return
+    }
     foreach ($requiredPath in @($PipelineRoot, $ProjectRoot, $Paths.SourceRoot, $Paths.Source)) {
         if (-not (Test-Path -LiteralPath $requiredPath)) { throw "Required path is missing: $requiredPath" }
     }
@@ -305,6 +345,10 @@ try {
         }
     }
     Write-SourceProvenance $sourceProvenance (Join-Path $PipelineRoot '02-retrieval-documents/output/source-provenance.json')
+    $release = New-RagRelease $sourceProvenance $stage2DocumentsFingerprint
+    $state['release'] = $release
+    Save-RunState $state
+    Write-Host "Built release: $($release.release_id)"
 
     if ($LocalOnly) {
         Invoke-PipelineStage 3 'Validate embedding inputs (local only)' '03-embeddings-validation.log' $RagRoot 'node' @('rag-next-pipeline/03-embeddings/scripts/cloudflare/generate-rag-embeddings-v4-cloudflare.mjs', '--validate-only')
@@ -334,16 +378,19 @@ try {
             embeddingManifest = $embeddingFingerprint
         }
     }
-    Write-SourceProvenance $sourceProvenance (Join-Path $PipelineRoot '03-embeddings/output/embeddings-cloudflare-v1/source-provenance.json')
     else {
         Write-SkippedStage 3 'Generate/reuse embeddings' 'resume fingerprints match' '03-embeddings.log'
     }
+    Write-SourceProvenance $sourceProvenance (Join-Path $PipelineRoot '03-embeddings/output/embeddings-cloudflare-v1/source-provenance.json')
+    $release.embedding_manifest_sha256 = $embeddingFingerprint
+    $release | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $Paths.Release -Encoding utf8
 
     $d1Fingerprint = Get-FileFingerprint $Paths.D1Sql
     if (Test-StageComplete $state '04-d1' @{ stage2Documents = $stage2DocumentsFingerprint; d1Sql = $d1Fingerprint }) {
         Write-SkippedStage 4 'Build/import D1 corpus' 'resume fingerprints match' '04-d1.log'
     }
     else {
+        Invoke-PipelineStage 4 'Apply D1 release schema' '04-d1-migrations.log' $ProjectRoot 'npm' @('run', 'db:migrate:remote')
         Invoke-PipelineStage 4 'Build D1 corpus' '04-d1-build.log' $RagRoot 'node' @('rag-next-pipeline/04-runtime-metadata/scripts/build-d1-rag-import.mjs')
         Invoke-PipelineStage 4 'Import D1 corpus' '04-d1-import.log' $ProjectRoot 'npm' @('run', 'rag:d1:import:remote')
         $d1Fingerprint = Get-FileFingerprint $Paths.D1Sql
@@ -356,6 +403,7 @@ try {
     }
     else {
         Invoke-PipelineStage 5 'Publish Vectorize corpus' '05-vectorize.log' $RagRoot 'node' @('rag-next-pipeline/05-vector-index/scripts/cloudflare-vectorize/publish-vectorize-v1.mjs')
+        Invoke-PipelineStage 5 'Mark Vectorize release ready' '05-vectorize-d1-marker.log' $ProjectRoot 'npm' @('run', 'rag:vectorize:mark:remote')
         Complete-Stage $state '05-vectorize' @{
             embeddingManifest = $embeddingFingerprint
             vectorizeManifest = (Get-FileFingerprint $Paths.VectorizeManifest)
@@ -363,6 +411,8 @@ try {
     }
     Write-SourceProvenance $sourceProvenance (Join-Path $PipelineRoot '05-vector-index/output/vectorize-cloudflare-v1/source-provenance.json')
 
+    $releaseBuildPath = Join-Path $ProjectRoot 'worker/rag-release-build.ts'
+    "// Generated by rag/run-rag-pipeline.ps1.`nexport const DEPLOYED_RAG_RELEASE_ID = '$($release.release_id)';`n" | Set-Content -LiteralPath $releaseBuildPath -Encoding utf8
     $workerFingerprint = Get-WorkerFingerprint
     if (Test-StageComplete $state '06-worker' @{ worker = $workerFingerprint }) {
         Write-SkippedStage 6 'Deploy Worker' 'resume fingerprints match' '06-worker.log'
@@ -370,6 +420,19 @@ try {
     else {
         Invoke-PipelineStage 6 'Deploy Worker' '06-worker.log' $ProjectRoot 'npm' @('run', 'worker:deploy')
         Complete-Stage $state '06-worker' @{ worker = $workerFingerprint }
+    }
+
+    Invoke-PipelineStage 6 'Switch active RAG release' '06-cutover.log' $ProjectRoot 'npm' @('run', 'rag:release', '--', '--activate', $release.release_id, '--deployed-release', $release.release_id)
+    Write-Host 'D1 published'
+    Write-Host 'Vectorize published'
+    Write-Host 'Worker deployed'
+    Write-Host "Active release switched: $($release.release_id)"
+
+    try {
+        Invoke-PipelineStage 6 'Clean obsolete RAG releases' '06-release-cleanup.log' $ProjectRoot 'npm' @('run', 'rag:release', '--', '--cleanup')
+    }
+    catch {
+        throw "Release $($release.release_id) is active and production was not rolled back, but obsolete-release cleanup failed. $($_.Exception.Message)"
     }
 
     $runSucceeded = $true

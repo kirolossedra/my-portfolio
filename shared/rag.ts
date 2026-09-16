@@ -12,6 +12,7 @@ export interface RagCitationSourceFragment {
 
 export interface RagCitation {
   label: string;
+  releaseId: string;
   documentId: string;
   repositoryIndex: number;
   repositoryName: string;
@@ -23,6 +24,9 @@ export interface RagCitation {
   specificityScore: number;
   denseScore: number;
   rerankScore: number;
+  selectionScore: number;
+  retrievalTags: string[];
+  evidenceExcerpt: string;
   sourceFragments: RagCitationSourceFragment[];
 }
 
@@ -31,6 +35,8 @@ export interface RagRetrievalDiagnostics {
   d1Documents: number;
   rerankedDocuments: number;
   selectedEvidence: number;
+  evidenceTokenBudget: number;
+  estimatedEvidenceTokens: number;
   citedEvidenceLabels: string[];
   groundingWarning: string | null;
 }
@@ -55,5 +61,7 @@ export interface RagHealthResponse {
     corpusRepositories: number;
     expectedDocuments: number;
     vectorIndex: string;
+    activeRelease: string;
+    deployedRelease: string;
   };
 }

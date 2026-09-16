@@ -10,6 +10,7 @@ import type { RagCitation } from '../../../shared/rag.ts';
 import KiroGlbAvatar from './model3d/kiro-glb-avatar.tsx';
 import type { KiroAvatarState } from './model3d/kiro-model.types.ts';
 import {
+  getRagHealth,
   streamRagQuery,
   type RagStreamContextPayload,
   type RagStreamDonePayload,
@@ -138,18 +139,7 @@ function ActivityPanel({ turn }: { turn: ChatTurn }) {
   return (
     <details className="kiro-agent-activity">
       <summary>How Kiro answered</summary>
-      <div className="kiro-agent-activity__steps">
-        <span><strong>{turn.retrieval.vectorCandidates}</strong> retrieved</span>
-        <b aria-hidden="true">→</b>
-        <span><strong>{turn.retrieval.rerankedDocuments}</strong> reranked</span>
-        <b aria-hidden="true">→</b>
-        <span><strong>{turn.retrieval.selectedEvidence}</strong> evidence notes</span>
-      </div>
-      {turn.models && (
-        <p>
-          Qwen3 embedding → BGE reranking → GLM answer generation. Each question is grounded independently against the portfolio corpus.
-        </p>
-      )}
+      <p>Kiro searched the portfolio, compared the strongest matching evidence, removed overlap, and wrote the answer from the sources shown above.</p>
     </details>
   );
 }
@@ -182,6 +172,7 @@ function SourcesPanel({ turn }: { turn: ChatTurn }) {
               <h4>{citation.repositoryName}</h4>
               <p>{humanize(citation.semanticArea)} · {humanize(citation.evidenceLevel)}</p>
               {fragment?.section_title && <small>{fragment.section_title}</small>}
+              <blockquote>{citation.evidenceExcerpt}</blockquote>
               {typeof fragment?.source_line_start === 'number' && (
                 <small>
                   Analysis lines {fragment.source_line_start}
@@ -265,7 +256,7 @@ function TurnView({ turn, onRetry }: { turn: ChatTurn; onRetry: (turn: ChatTurn)
 const AVATAR_STATUS: Record<KiroAvatarState, string> = {
   idle: 'Ready for a question',
   thinking: 'Understanding your question',
-  retrieving: 'Searching 2,808 evidence notes',
+  retrieving: 'Searching portfolio evidence',
   answering: 'Writing the grounded answer',
   success: 'Answer complete',
   error: 'Something interrupted the request',
@@ -276,6 +267,7 @@ export default function KiroChat() {
   const [draft, setDraft] = useState('');
   const [activeTurnId, setActiveTurnId] = useState<string | null>(null);
   const [avatarState, setAvatarState] = useState<KiroAvatarState>('idle');
+  const [corpusDocuments, setCorpusDocuments] = useState<number | null>(null);
   const controllerRef = useRef<AbortController | null>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const stickToBottomRef = useRef(true);
@@ -286,6 +278,14 @@ export default function KiroChat() {
   useEffect(() => () => controllerRef.current?.abort(), []);
 
   useEffect(() => {
+    const controller = new AbortController();
+    void getRagHealth(controller.signal)
+      .then((health) => setCorpusDocuments(health.corpusDocuments))
+      .catch(() => setCorpusDocuments(null));
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
     if (!stickToBottomRef.current || !threadRef.current) return;
     threadRef.current.scrollTop = threadRef.current.scrollHeight;
   }, [turns, activeTurnId]);
@@ -294,11 +294,11 @@ export default function KiroChat() {
     setTurns((current) => current.map((turn) => turn.id === id ? updater(turn) : turn));
   };
 
-  const runTurn = async (id: string, question: string) => {
+  const runTurn = async (id: string, question: string, context = '') => {
     const controller = new AbortController();
     controllerRef.current = controller;
     setActiveTurnId(id);
-    setAvatarState('retrieving');
+    setAvatarState('thinking');
 
     try {
       await streamRagQuery(question, {
@@ -317,7 +317,7 @@ export default function KiroChat() {
           updateTurn(id, (turn) => ({ ...turn, status: 'answering', answer: turn.answer + text }));
         },
         onDone: (done: RagStreamDonePayload) => {
-          setAvatarState('success');
+          setAvatarState('idle');
           updateTurn(id, (turn) => ({
             ...turn,
             status: 'complete',
@@ -325,17 +325,20 @@ export default function KiroChat() {
             groundingWarning: done.groundingWarning,
           }));
         },
-      }, controller.signal);
+      }, controller.signal, context);
 
       updateTurn(id, (turn) => ({ ...turn, status: 'complete' }));
-      setAvatarState('success');
+      setAvatarState('idle');
     } catch (error) {
       const aborted = error instanceof Error && error.name === 'AbortError';
       if (aborted) {
         updateTurn(id, (turn) => ({ ...turn, status: 'stopped', error: null }));
         setAvatarState('idle');
       } else {
-        const message = error instanceof Error ? error.message : 'The portfolio agent could not complete this request.';
+        const rawMessage = error instanceof Error ? error.message : '';
+        const message = rawMessage === 'Failed to fetch'
+          ? 'The connection ended before Kiro could finish. Please try again.'
+          : rawMessage || 'The portfolio agent could not complete this request.';
         updateTurn(id, (turn) => ({ ...turn, status: 'error', error: message }));
         setAvatarState('error');
       }
@@ -345,6 +348,19 @@ export default function KiroChat() {
         setActiveTurnId(null);
       }
     }
+  };
+
+  const contextBefore = (turnId?: string) => {
+    const boundary = turnId ? turns.findIndex((turn) => turn.id === turnId) : turns.length;
+    const eligible = turns.slice(0, boundary < 0 ? turns.length : boundary);
+    const previous = [...eligible].reverse().find((turn) => turn.status === 'complete' && turn.answer);
+    if (!previous) return '';
+    const repositories = [...new Set(previous.citations.map((citation) => citation.repositoryName))];
+    return [
+      `Previous question: ${previous.question}`,
+      `Previous answer: ${previous.answer.slice(0, 500)}`,
+      repositories.length ? `Previously discussed repositories: ${repositories.join(', ')}` : '',
+    ].filter(Boolean).join('\n');
   };
 
   const startNewTurn = (question: string) => {
@@ -364,9 +380,10 @@ export default function KiroChat() {
       error: null,
     };
     stickToBottomRef.current = true;
+    const context = contextBefore();
     setTurns((current) => [...current, turn]);
     setDraft('');
-    void runTurn(id, trimmed);
+    void runTurn(id, trimmed, context);
   };
 
   const retryTurn = (turn: ChatTurn) => {
@@ -382,7 +399,7 @@ export default function KiroChat() {
       groundingWarning: null,
       error: null,
     }));
-    void runTurn(turn.id, turn.question);
+    void runTurn(turn.id, turn.question, contextBefore(turn.id));
   };
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -435,7 +452,7 @@ export default function KiroChat() {
               <span className="kiro-chat-empty__mark" aria-hidden="true">K</span>
               <h2>Ask the portfolio, not a résumé.</h2>
               <p>
-                Kiro searches 2,808 evidence-aware notes across 134 repositories, reranks the strongest context, then writes a cited answer.
+                Kiro searches {corpusDocuments?.toLocaleString() ?? 'the portfolio’s'} evidence notes across 134 repositories, compares the strongest context, then writes a cited answer.
               </p>
               <div className="kiro-suggestion-grid" aria-label="Suggested questions">
                 {SUGGESTIONS.map((suggestion) => (
@@ -477,7 +494,7 @@ export default function KiroChat() {
               )}
             </div>
           </div>
-          <p>Each answer is grounded independently to portfolio evidence. Chat history stays in this browser session only.</p>
+          <p>Follow-ups use the previous answer and cited projects. Chat history stays in this browser session only.</p>
         </form>
       </section>
 
@@ -500,7 +517,7 @@ export default function KiroChat() {
           <p aria-live="polite">{AVATAR_STATUS[avatarState]}</p>
           <div className="kiro-agent-stats">
             <span><strong>134</strong> repositories</span>
-            <span><strong>2,808</strong> evidence notes</span>
+            <span><strong>{corpusDocuments?.toLocaleString() ?? 'Live'}</strong> evidence notes</span>
             <span><strong>E#</strong> grounded citations</span>
           </div>
         </div>

@@ -25,7 +25,7 @@
  *   Index:      portfolio-career-rag-cloudflare-v1
  *   Dimensions: 1024
  *   Metric:     cosine
- *   Vector IDs: exact Stage 03 document_id values
+ *   Vector IDs: <release_id>:<document_id>
  *
  * OUTPUT
  * ------
@@ -82,14 +82,15 @@ const RECORDS_PATH = join(EMBEDDING_DIR, "embedding-records.jsonl");
 const EMBEDDING_MANIFEST_PATH = join(EMBEDDING_DIR, "embedding-manifest.json");
 
 const OUTPUT_DIR = join(RAG_ROOT, "05-vector-index", "output", "vectorize-cloudflare-v1");
-const PREVIOUS_RECORDS_PATH = join(RAG_ROOT, "..", "old-rag-pipeline", "rag-corpus", "embeddings-cloudflare-v1", "embedding-records.jsonl");
 const PUBLICATION_MANIFEST_PATH = join(OUTPUT_DIR, "vectorize-publication-manifest.json");
 const PUBLICATION_REPORT_PATH = join(OUTPUT_DIR, "vectorize-publication-validation-report.txt");
+const READY_SQL_PATH = join(OUTPUT_DIR, "mark-vectorize-published.sql");
 
 const PUBLICATION_SCHEMA_VERSION = "1.0.0";
 const INDEX_NAME = "portfolio-career-rag-cloudflare-v1";
 const INDEX_DESCRIPTION = "Portfolio career RAG — Qwen3 evidence-document vectors v1";
 let EXPECTED_COUNT;
+let RELEASE_ID;
 const EXPECTED_REPOSITORIES = 134;
 const DIMENSIONS = 1024;
 const METRIC = "cosine";
@@ -135,6 +136,10 @@ function stableStringify(value) {
     return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${stableStringify(value[key])}`).join(",")}}`;
   }
   return JSON.stringify(value);
+}
+
+function vectorId(documentId) {
+  return `${RELEASE_ID}:${documentId}`;
 }
 
 async function sha256File(path) {
@@ -421,6 +426,8 @@ async function validateLocalInputs() {
   }
 
   const manifest = loadJson(EMBEDDING_MANIFEST_PATH);
+  RELEASE_ID = String(manifest.rag_release?.release_id || "");
+  if (!/^rag-[0-9a-f]{24}$/.test(RELEASE_ID)) throw new PipelineError("Embedding manifest has no valid RAG release ID.");
   EXPECTED_COUNT = Number(manifest.input?.document_count);
   if (!Number.isInteger(EXPECTED_COUNT) || EXPECTED_COUNT < 1 || manifest.artifacts?.["embedding-records.jsonl"]?.records !== EXPECTED_COUNT) throw new PipelineError("Invalid manifest-derived document count.");
   if (String(manifest.embedding_schema_version || "").split(".", 1)[0] !== EXPECTED_EMBEDDING_SCHEMA_MAJOR) {
@@ -474,6 +481,8 @@ async function validateLocalInputs() {
 
 function compactMetadata(record) {
   const metadata = {
+    release_id: RELEASE_ID,
+    document_id: String(record.document_id),
     repository_index: Number(record.repository_index),
     repository_name: String(record.repository_name || ""),
     retrieval_class: String(record.retrieval_class || ""),
@@ -537,6 +546,28 @@ async function ensureIndex(accountId, authHeaders, { allowCreate = true } = {}) 
   return { created, index: result };
 }
 
+async function ensureReleaseMetadataIndex(accountId, authHeaders, { allowCreate = true } = {}) {
+  const listed = await apiJson({
+    accountId, authHeaders, method: "GET",
+    suffix: `/${encodeURIComponent(INDEX_NAME)}/metadata_index/list`,
+    label: "list Vectorize metadata indexes",
+  });
+  const indexes = listed.parsed?.result?.metadataIndexes ?? listed.parsed?.result?.metadata_indexes ?? [];
+  const existing = indexes.find((item) => (item.propertyName ?? item.property_name) === "release_id");
+  if (existing) {
+    if ((existing.indexType ?? existing.index_type) !== "string") throw new PipelineError("Vectorize release_id metadata index is not type string.");
+    return null;
+  }
+  if (!allowCreate) throw new PipelineError("Vectorize release_id metadata index is missing.");
+  const created = await apiJson({
+    accountId, authHeaders, method: "POST",
+    suffix: `/${encodeURIComponent(INDEX_NAME)}/metadata_index/create`,
+    body: { propertyName: "release_id", indexType: "string" },
+    label: "create release_id metadata index",
+  });
+  return String(created.parsed?.result?.mutationId ?? created.parsed?.result?.mutation_id ?? "") || null;
+}
+
 async function getIndexInfo(accountId, authHeaders) {
   const response = await apiJson({
     accountId,
@@ -553,7 +584,7 @@ function buildNdjsonBatch(local, start, end) {
   for (let i = start; i < end; i += 1) {
     const record = local.records[i];
     lines.push(JSON.stringify({
-      id: record.document_id,
+      id: vectorId(record.document_id),
       values: vectorAt(local.matrixBuffer, local.matrixHeader, i),
       metadata: compactMetadata(record),
     }));
@@ -580,22 +611,6 @@ async function upsertCorpus(accountId, authHeaders, local) {
   return mutationIds;
 }
 
-async function deleteObsoleteVectors(accountId, authHeaders, local) {
-  if (!existsSync(PREVIOUS_RECORDS_PATH)) return [];
-  const previousIds = loadJsonl(PREVIOUS_RECORDS_PATH).map(row => String(row.document_id));
-  const obsolete = [...new Set(previousIds)].filter(id => !local.ids.has(id));
-  const mutations = [];
-  for (let start = 0; start < obsolete.length; start += 100) {
-    const ids = obsolete.slice(start, start + 100);
-    const response = await apiJson({ accountId, authHeaders, method: "POST",
-      suffix: `/${encodeURIComponent(INDEX_NAME)}/delete_by_ids`, body: { ids }, label: `delete obsolete vectors ${start}-${start + ids.length - 1}` });
-    const mutation = String(response.parsed?.result?.mutationId ?? response.parsed?.result?.mutation_id ?? "");
-    if (!mutation) throw new PipelineError("Vectorize delete did not return a mutation ID.");
-    mutations.push(mutation);
-  }
-  return { mutations, obsoleteCount: obsolete.length };
-}
-
 async function waitForMutationVisibility(accountId, authHeaders, lastMutationId) {
   const deadline = Date.now() + MUTATION_VISIBILITY_TIMEOUT_MS;
   let lastInfo = {};
@@ -603,8 +618,8 @@ async function waitForMutationVisibility(accountId, authHeaders, lastMutationId)
     lastInfo = await getIndexInfo(accountId, authHeaders);
     const count = Number(lastInfo.vectorCount ?? lastInfo.vector_count ?? -1);
     const processed = String(lastInfo.processedUpToMutation ?? lastInfo.processed_up_to_mutation ?? "");
-    if (count === EXPECTED_COUNT && processed === lastMutationId) return lastInfo;
-    process.stdout.write(`\r      visible vectors ${Math.max(0, count)}/${EXPECTED_COUNT}; processed mutation ${processed || "pending"}   `);
+    if (processed === lastMutationId) return lastInfo;
+    process.stdout.write(`\r      visible vectors ${Math.max(0, count)} total; processed mutation ${processed || "pending"}   `);
     await sleep(MUTATION_POLL_MS);
   }
   process.stdout.write("\n");
@@ -695,17 +710,17 @@ async function fetchExpectedIdsExhaustively(accountId, authHeaders, expectedIds)
 
 async function verifyExactRemoteIdSet(accountId, authHeaders, local, finalInfo) {
   const remoteCount = Number(finalInfo.vectorCount ?? finalInfo.vector_count ?? -1);
-  if (remoteCount !== EXPECTED_COUNT) {
-    throw new PipelineError(`Remote Vectorize vectorCount ${remoteCount} != ${EXPECTED_COUNT}; exact ID-set proof is impossible.`);
+  if (remoteCount < EXPECTED_COUNT) {
+    throw new PipelineError(`Remote Vectorize vectorCount ${remoteCount} is smaller than release size ${EXPECTED_COUNT}.`);
   }
 
-  const expectedIds = local.records.map((record) => record.document_id);
+  const expectedIds = local.records.map((record) => vectorId(record.document_id));
   const expectedSet = new Set(expectedIds);
   if (expectedSet.size !== EXPECTED_COUNT) throw new PipelineError("Local expected document IDs are not unique.");
 
   const listing = await listVectorIdsDiagnostic(accountId, authHeaders);
   const listedSet = new Set(listing.ids);
-  if (listing.complete && listedSet.size === EXPECTED_COUNT && [...expectedSet].every((id) => listedSet.has(id))) {
+  if (listing.complete && [...expectedSet].every((id) => listedSet.has(id))) {
     return {
       method: "list-vectors-cursor-pagination",
       exactCount: EXPECTED_COUNT,
@@ -722,12 +737,8 @@ async function verifyExactRemoteIdSet(accountId, authHeaders, local, finalInfo) 
     throw new PipelineError(`Exhaustive get_by_ids verification did not return all ${EXPECTED_COUNT} expected IDs.`);
   }
 
-  // vectorCount == EXPECTED_COUNT plus successful retrieval of every one of the
-  // EXPECTED_COUNT unique expected IDs is a complete set proof: there is no
-  // remaining cardinality for an extra remote ID. This also avoids treating a
-  // stale/incomplete list-vectors snapshot as data loss.
   return {
-    method: "vector-count-plus-exhaustive-get-by-ids",
+    method: "release-scoped-exhaustive-get-by-ids",
     exactCount: EXPECTED_COUNT,
     listObservedCount: listing.ids.length,
     listPages: listing.pages,
@@ -781,7 +792,7 @@ async function validateRoundTripSamples(accountId, authHeaders, local) {
   const fetched = new Map();
   for (let start = 0; start < positions.length; start += ROUND_TRIP_FETCH_BATCH_SIZE) {
     const batchPositions = positions.slice(start, start + ROUND_TRIP_FETCH_BATCH_SIZE);
-    const batchIds = batchPositions.map((position) => local.records[position].document_id);
+    const batchIds = batchPositions.map((position) => vectorId(local.records[position].document_id));
     const batchFetched = await fetchVectors(accountId, authHeaders, batchIds);
     if (batchFetched.size !== batchIds.length) {
       throw new PipelineError(`Round-trip fetched ${batchFetched.size}/${batchIds.length} vectors for sample batch ${start}.`);
@@ -793,7 +804,7 @@ async function validateRoundTripSamples(accountId, authHeaders, local) {
   let maxDelta = 0;
   for (const position of positions) {
     const record = local.records[position];
-    const remote = fetched.get(record.document_id);
+    const remote = fetched.get(vectorId(record.document_id));
     if (!remote) throw new PipelineError(`Round-trip missing sample ${record.document_id}.`);
     if (!Array.isArray(remote.values) || remote.values.length !== DIMENSIONS) {
       throw new PipelineError(`Round-trip vector ${record.document_id} has invalid values shape.`);
@@ -838,6 +849,7 @@ async function writePublicationArtifacts({ local, accountSource, authSource, ind
       embeddings_npy_sha256: local.matrixSha,
       embedding_records_sha256: local.recordsSha,
       document_count: EXPECTED_COUNT,
+      release_id: RELEASE_ID,
       repository_count: EXPECTED_REPOSITORIES,
       provider_artifact_generation: PROVIDER_ARTIFACT_GENERATION,
       embedding_provider: PROVIDER,
@@ -853,7 +865,8 @@ async function writePublicationArtifacts({ local, accountSource, authSource, ind
       dimensions: DIMENSIONS,
       metric: METRIC,
       namespace: null,
-      vector_id_contract: "document_id",
+      metadata_filter: { release_id: RELEASE_ID },
+      vector_id_contract: "release_id:document_id",
       execution_mode: mutationIds.length ? "publish-upsert" : "verify-only",
       upsert_batch_size: UPSERT_BATCH_SIZE,
       get_by_ids_max_per_request: GET_BY_IDS_MAX,
@@ -977,6 +990,8 @@ async function main() {
   console.log("[3/9] Create or validate the dedicated Vectorize v1 index ...");
   const indexState = await ensureIndex(account.accountId, auth.headers, { allowCreate: !verifyOnly });
   console.log(`      SUCCESS (${indexState.created ? "created" : "existing compatible index"}; ${DIMENSIONS}D ${METRIC})`);
+  const metadataMutation = await ensureReleaseMetadataIndex(account.accountId, auth.headers, { allowCreate: !verifyOnly });
+  if (metadataMutation) await waitForMutationVisibility(account.accountId, auth.headers, metadataMutation);
 
   console.log("[4/9] Read pre-publication Vectorize index state ...");
   const beforeInfo = await getIndexInfo(account.accountId, auth.headers);
@@ -990,16 +1005,14 @@ async function main() {
     console.log("[6/9] Verify the existing index is fully query-visible ...");
     finalInfo = await getIndexInfo(account.accountId, auth.headers);
     const visibleCount = Number(finalInfo.vectorCount ?? finalInfo.vector_count ?? -1);
-    if (visibleCount !== EXPECTED_COUNT) {
-      throw new PipelineError(`--verify-only requires ${EXPECTED_COUNT} visible vectors; Vectorize reports ${visibleCount}.`);
+    if (visibleCount < EXPECTED_COUNT) {
+      throw new PipelineError(`--verify-only requires at least ${EXPECTED_COUNT} visible vectors; Vectorize reports ${visibleCount}.`);
     }
     console.log(`      SUCCESS (${visibleCount}/${EXPECTED_COUNT} visible)`);
   } else {
     console.log(`[5/9] Upsert ${EXPECTED_COUNT} vectors with compact evidence metadata ...`);
     mutationIds = await upsertCorpus(account.accountId, auth.headers, local);
-    const cleanup = await deleteObsoleteVectors(account.accountId, auth.headers, local);
-    mutationIds.push(...cleanup.mutations);
-    console.log(`      SUCCESS (${mutationIds.length} mutations accepted; ${cleanup.obsoleteCount} obsolete IDs deleted)`);
+    console.log(`      SUCCESS (${mutationIds.length} mutations accepted; previous releases retained)`);
 
     console.log("[6/9] Wait for the final Vectorize mutation to become query-visible ...");
     finalInfo = await waitForMutationVisibility(account.accountId, auth.headers, mutationIds.at(-1));
@@ -1030,6 +1043,8 @@ async function main() {
     idSetValidation,
     roundTrip,
   });
+  await atomicWrite(READY_SQL_PATH,
+    `UPDATE rag_releases SET vectorize_published = 1 WHERE release_id = '${RELEASE_ID}' AND d1_published = 1;\n`);
   console.log("      SUCCESS");
 
   console.log();

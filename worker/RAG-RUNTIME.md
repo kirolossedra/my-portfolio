@@ -1,5 +1,11 @@
 # Portfolio RAG Worker Runtime
 
+Production corpus selection is release-scoped. D1 stores `active_rag_release` and `previous_rag_release` in `rag_runtime_config`; document hydration uses the active release, and Vectorize queries use its indexed `release_id` metadata. The health response exposes both the active release and the release embedded in the deployed Worker. Pointer-only rollback restores the immediately previous retained release.
+
+Retrieval requests 64 semantic candidates, then applies the local `deterministic-evidence-reranker-v1`. Its score combines dense similarity (55%), exact query-term coverage (16%), repository/title relevance (8%), corpus tags (10%), source-section context (7%), and evidence quality/intent alignment (4%). Selection collapses shared-source or highly overlapping evidence, applies a soft per-repository penalty capped at 0.07, and fills a manifest-independent context budget instead of a fixed chunk count. The default evidence budget is 2,600 estimated tokens and can be changed with `RAG_EVIDENCE_TOKEN_BUDGET` within the enforced 800–6,000 range.
+
+Set `RAG_RETRIEVAL_DEBUG=true` only in an internal environment to log the query, Vectorize candidates, scoring signals, duplicate/budget decisions, and final evidence. This trace is not included in public API responses.
+
 ## Table of Contents
 
 - [Purpose](#purpose)
@@ -58,7 +64,7 @@ The generator is intentionally bounded to 700 completion tokens and receives onl
 
 ### `GET /api/rag/health`
 
-Checks that the D1 runtime corpus is present with exactly 2,808 documents across 134 repositories.
+Checks that the active D1 release matches its manifest-derived document count across 134 repositories. The response includes the active release and the release identifier embedded in the deployed Worker.
 
 ### `POST /api/rag/query`
 
@@ -123,4 +129,4 @@ Then test:
 Invoke-RestMethod -Method Get -Uri "https://kirolos-portfolio-api.linc-ministry.workers.dev/api/rag/health"
 ```
 
-Do not deploy before the D1 evidence count is verified as 2,808 documents / 134 repositories.
+Use `rag/run-rag-pipeline.ps1` for production publication. It deploys only after the manifest-derived D1 release and matching Vectorize release are ready, then switches the active release pointer.

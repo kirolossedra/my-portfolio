@@ -4,7 +4,9 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/sync-kiro-model.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/sync-kiro-model.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src shared worker scripts rag/runtime vite.config.ts --max-warnings=0 --no-error-on-unmatched-pattern",
@@ -21,6 +23,8 @@
     "rag:d1:build": "node rag/rag-next-pipeline/04-runtime-metadata/scripts/build-d1-rag-import.mjs",
     "rag:d1:import:local": "wrangler d1 execute kirolos-portfolio-db --local --file=rag/rag-next-pipeline/04-runtime-metadata/output/d1-runtime-v1/rag-documents.sql --yes",
     "rag:d1:import:remote": "wrangler d1 execute kirolos-portfolio-db --remote --file=rag/rag-next-pipeline/04-runtime-metadata/output/d1-runtime-v1/rag-documents.sql --yes",
+    "rag:vectorize:mark:remote": "wrangler d1 execute kirolos-portfolio-db --remote --file=rag/rag-next-pipeline/05-vector-index/output/vectorize-cloudflare-v1/mark-vectorize-published.sql --yes",
+    "rag:release": "node rag/rag-next-pipeline/06-release/scripts/manage-rag-release.mjs",
     "verify": "npm run check:legacy && npm run check:no-r2 && npm run check:no-legacy-auth && npm run lint && npm run typecheck && npm run test && npm run worker:dry-run",
     "milestone": "node scripts/milestone-cli.mjs",
     "cleanup:legacy": "node scripts/cleanup-legacy.mjs",

@@ -41,11 +41,17 @@ interface RagDocumentRow {
 }
 
 interface RagCorpusMetaRow {
+  release_id: string;
   document_count: number;
   repository_count: number;
   documents_sha256: string;
   document_schema_version: string;
   imported_at: string;
+}
+
+export async function getActiveRagRelease(db: D1Database): Promise<string | null> {
+  const row = await db.prepare("SELECT config_value FROM rag_runtime_config WHERE config_key = 'active_rag_release'").first<{ config_value: string }>();
+  return row?.config_value ?? null;
 }
 
 function parseJson<T>(value: string, fallback: T): T {
@@ -79,27 +85,27 @@ function mapRow(row: RagDocumentRow): RagDocument {
   };
 }
 
-export async function getRagCorpusMeta(db: D1Database): Promise<RagCorpusMetaRow | null> {
+export async function getRagCorpusMeta(db: D1Database, releaseId: string): Promise<RagCorpusMetaRow | null> {
   return db
     .prepare(`
-      SELECT document_count, repository_count, documents_sha256,
-             document_schema_version, imported_at
-      FROM rag_corpus_meta
-      WHERE corpus_key = ?
+      SELECT release_id, document_count, repository_count, retrieval_sha256 AS documents_sha256,
+             document_schema_version, created_at AS imported_at
+      FROM rag_releases WHERE release_id = ?
     `)
-    .bind('portfolio-career-rag-v1')
+    .bind(releaseId)
     .first<RagCorpusMetaRow>();
 }
 
-export async function countRagDocuments(db: D1Database): Promise<number> {
+export async function countRagDocuments(db: D1Database, releaseId: string): Promise<number> {
   const result = await db
-    .prepare('SELECT COUNT(*) AS count FROM rag_documents')
+    .prepare('SELECT COUNT(*) AS count FROM rag_documents WHERE release_id = ?1').bind(releaseId)
     .first<{ count: number }>();
   return Number(result?.count ?? 0);
 }
 
 export async function getRagDocumentsByIds(
   db: D1Database,
+  releaseId: string,
   documentIds: string[],
 ): Promise<Map<string, RagDocument>> {
   const uniqueIds = [...new Set(documentIds)];
@@ -119,15 +125,15 @@ export async function getRagDocumentsByIds(
                text, topics_json, evidence_areas_json, related_skill_ratings_json,
                source_fragments_json, provenance_json
         FROM rag_documents
-        WHERE document_id IN (${placeholders})
+        WHERE release_id = ? AND document_id IN (${placeholders})
       `)
-      .bind(...batch)
+      .bind(releaseId, ...batch)
       .all<RagDocumentRow>();
     rows.push(...result.results);
   }
 
   return new Map(rows.map((row) => {
     const document = mapRow(row);
-    return [document.documentId, document];
+    return [releaseId === 'legacy-v1' ? document.documentId : `${releaseId}:${document.documentId}`, document];
   }));
 }

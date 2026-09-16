@@ -6,6 +6,28 @@ Canonical location: `P:/Github/AI-accelerated/my-portfolio/rag/rag-next-pipeline
 
 **00 Source → 01 Corpus → 02 Retrieval Documents → 03 Embeddings → D1 → Vectorize → Worker**
 
+## Atomic releases and rollback
+
+Each build receives a deterministic release ID of the form `rag-<24 hex>`, derived from SHA-256 over the exact source commit and Stage 02 `documents.jsonl` SHA-256. The descriptor is written to `02-retrieval-documents/output/release.json`, timestamped run metadata, the embedding manifest, D1 release metadata, Vectorize metadata, and the generated Worker release constant.
+
+D1 stores documents under `(release_id, document_id)`. Vectorize uses the existing index with `<release_id>:<document_id>` IDs and an indexed `release_id` metadata field. The Worker reads `active_rag_release` from `rag_runtime_config`, filters Vectorize by that release, and hydrates only matching D1 rows.
+
+Publication leaves the active release untouched while it imports D1, upserts release-scoped vectors, and deploys the Worker. After all three succeed, the release manager atomically moves the current pointer to `previous_rag_release` and activates the candidate. Failed publication never reaches cutover. Current and previous releases remain retained.
+
+After a successful cutover, the runner removes releases older than the active and previous releases. Cleanup deletes and verifies the obsolete release's Vectorize IDs first, then transactionally removes its D1 documents and `rag_releases` entry. Cleanup is idempotent. A cleanup failure is reported after cutover and never rolls production back.
+
+Rollback changes only the pointer and does not regenerate or republish data:
+
+```powershell
+.\run-rag-pipeline.ps1 -Rollback
+```
+
+Run retention cleanup independently without rebuilding or deploying:
+
+```powershell
+.\run-rag-pipeline.ps1 -CleanupReleases
+```
+
 | Stage | Location | Verified state |
 |---|---|---|
 | 00 Source | `00-source/portfolio-rag/` | 134 unchanged repository-analysis READMEs; source manifest lists 137 total, 3 remaining |

@@ -82,6 +82,7 @@ const RAG_ROOT = findRagRoot(SCRIPT_DIR);
 const PORTFOLIO_ROOT = dirname(dirname(RAG_ROOT));
 const RAG_CORPUS_DIR = join(RAG_ROOT, "01-corpus", "output");
 const INPUT_PATH = join(RAG_ROOT, "02-retrieval-documents", "output", "documents.jsonl");
+const RELEASE_PATH = join(RAG_ROOT, "02-retrieval-documents", "output", "release.json");
 const OUTPUT_DIR = join(RAG_ROOT, "03-embeddings", "output", "embeddings-cloudflare-v1");
 const TEMP_OUTPUT_DIR = join(RAG_ROOT, "03-embeddings", ".embeddings-cloudflare-v1.tmp");
 const CACHE_DIR = join(RAG_ROOT, "03-embeddings", "cache", "cloudflare-v1");
@@ -594,7 +595,7 @@ async function missingDocumentCount(documents) {
   }
   return missing;
 }
-async function reuseCompletedBuild(inputSha256, documents) {
+async function reuseCompletedBuild(inputSha256, documents, release) {
   if (!existsSync(OUTPUT_DIR)) return false;
   const path = join(OUTPUT_DIR, "embedding-manifest.json");
   if (!existsSync(path)) throw new PipelineError("Existing embedding output is incomplete; refusing to replace it");
@@ -616,6 +617,10 @@ async function reuseCompletedBuild(inputSha256, documents) {
   if (count !== documents.length) throw new PipelineError("Existing output input/count mismatch");
   validateRecords(records, documents);
   if (!existsSync(join(OUTPUT_DIR, "embedding-validation-report.txt"))) throw new PipelineError("Existing output validation report missing");
+  if (manifest.rag_release?.release_id !== release.release_id) {
+    manifest.rag_release = release;
+    await writeJson(path, manifest);
+  }
   return true;
 }
 
@@ -931,7 +936,7 @@ function validateRecords(records, documents) {
   return { duplicate_document_ids: 0, repository_count: repositories.size };
 }
 
-async function writeTempOutputs({ documents, inputSha256, inputStats, runStats, smokeStats, authSource, accountSource, counters }) {
+async function writeTempOutputs({ documents, inputSha256, inputStats, runStats, smokeStats, authSource, accountSource, counters, release }) {
   rmSync(TEMP_OUTPUT_DIR, { recursive: true, force: true });
   mkdirSync(TEMP_OUTPUT_DIR, { recursive: true });
 
@@ -960,6 +965,7 @@ async function writeTempOutputs({ documents, inputSha256, inputStats, runStats, 
     pipeline_step: 3,
     generated_at_utc: utcNow(),
     script: SCRIPT_NAME,
+    rag_release: release,
     input: {
       path: rel(INPUT_PATH),
       sha256: inputSha256,
@@ -1196,6 +1202,11 @@ async function executeMain({ argv = process.argv.slice(2), dependencies = {} } =
   const documents = loadJsonlSync(INPUT_PATH);
   const inputStats = validateDocuments(documents);
   const inputSha256 = await sha256File(INPUT_PATH);
+  if (!existsSync(RELEASE_PATH)) throw new PipelineError(`Missing release descriptor: ${rel(RELEASE_PATH)}`);
+  const release = JSON.parse(readFileSync(RELEASE_PATH, "utf8"));
+  if (!/^rag-[0-9a-f]{24}$/.test(String(release.release_id || "")) || release.retrieval_documents_sha256 !== inputSha256) {
+    throw new PipelineError("Release descriptor does not match the current Stage 02 input.");
+  }
   console.log(`      SUCCESS (${documents.length} documents; ${inputStats.repository_count}/${inputStats.repository_total} repositories)`);
 
   if (argv[0] === "--validate-only") {
@@ -1210,7 +1221,7 @@ async function executeMain({ argv = process.argv.slice(2), dependencies = {} } =
 
   const identity = checkpointIdentity(inputSha256, documents);
   await inspectCheckpoint(identity, documents);
-  if (await reuseCompletedBuild(inputSha256, documents)) {
+  if (await reuseCompletedBuild(inputSha256, documents, release)) {
     console.log("Compatible completed build reused; zero remote requests.");
     return { mode: "completed-build-reuse", remote_calls: 0, document_count: documents.length };
   }
@@ -1247,6 +1258,7 @@ async function executeMain({ argv = process.argv.slice(2), dependencies = {} } =
     authSource: auth.source,
     accountSource: account.source,
     counters,
+    release,
   });
   console.log(`      SUCCESS (${outputStats.matrix.matrix_shape[0]} x ${outputStats.matrix.matrix_shape[1]})`);
 

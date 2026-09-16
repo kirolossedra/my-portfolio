@@ -6,6 +6,7 @@ import {
   extractGenerationDelta,
   extractGenerationText,
   RAG_GENERATION_OPTIONS,
+  rerankEvidence,
   selectEvidence,
   validateRagQueryInput,
   type RankedEvidence,
@@ -40,13 +41,25 @@ function document(
   };
 }
 
-function ranked(id: string, repositoryIndex: number, score: number, rank: number): Omit<RankedEvidence, 'selectionScore'> {
+function ranked(id: string, repositoryIndex: number, score: number, rank: number): RankedEvidence {
   return {
     document: document(id, repositoryIndex),
     denseScore: 1 - rank * 0.01,
     denseRank: rank,
     rerankScore: score,
     rerankRank: rank,
+    selectionScore: score,
+    estimatedTokens: 170,
+    signals: {
+      denseSimilarity: score,
+      exactTermMatch: 0,
+      repositoryTitleRelevance: 0,
+      tagRelevance: 0,
+      sectionContextRelevance: 0,
+      evidenceQuality: 0,
+    },
+    overlapTokens: new Set(['evidence', id]),
+    sourceHashSet: new Set(),
   };
 }
 
@@ -73,7 +86,7 @@ describe('evidence selection', () => {
       ranked('d1', 4, 0.94, 5),
     ];
 
-    const selected = selectEvidence(input, 'What systems were implemented?', 5);
+    const selected = selectEvidence(input, 'What systems were implemented?', 900).selected;
     expect(selected).toHaveLength(5);
     expect(new Set(selected.map((item) => item.document.repositoryIndex)).size).toBeGreaterThanOrEqual(3);
   });
@@ -89,8 +102,29 @@ describe('evidence selection', () => {
       }),
     };
 
-    const selected = selectEvidence([positive, limitation], 'What limitations or missing production evidence exist?', 1);
-    expect(selected[0]?.document.documentId).toBe('limitation');
+    const reranked = rerankEvidence([
+      { document: positive.document, denseScore: 0.80, denseRank: 0 },
+      { document: limitation.document, denseScore: 0.79, denseRank: 1 },
+    ], 'What limitations or missing production evidence exist?');
+    expect(reranked[0]?.document.documentId).toBe('limitation');
+  });
+
+  it('collapses duplicate source evidence and respects the token budget', () => {
+    const sharedHash = 'same-source';
+    const first = ranked('first', 1, 0.99, 0);
+    first.document.sourceFragments = [{ text_sha256: sharedHash }];
+    first.sourceHashSet = new Set([sharedHash]);
+    const duplicate = ranked('duplicate', 1, 0.98, 1);
+    duplicate.document.sourceFragments = [{ text_sha256: sharedHash }];
+    duplicate.sourceHashSet = new Set([sharedHash]);
+    const independent = ranked('independent', 2, 0.97, 2);
+    independent.estimatedTokens = 700;
+
+    const result = selectEvidence([first, duplicate, independent], 'implemented systems', 800);
+    expect(result.selected.map((item) => item.document.documentId)).toEqual(['first']);
+    expect(result.duplicateDocumentIds).toContain('duplicate');
+    expect(result.budgetRejectedDocumentIds).toContain('independent');
+    expect(result.estimatedTokens).toBeLessThanOrEqual(result.tokenBudget);
   });
 });
 
@@ -170,7 +204,7 @@ describe('generation response normalization', () => {
     expect(RAG_GENERATION_OPTIONS).toEqual({
       temperature: 0.2,
       top_p: 0.9,
-      max_completion_tokens: 700,
+      max_completion_tokens: 480,
       chat_template_kwargs: {
         enable_thinking: false,
       },

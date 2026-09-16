@@ -3,7 +3,8 @@
 The production character is served from:
 
 ```text
-public/models/kiro/kiro.fbx
+rag/3d-kiro/athletic+man+3d+model.fbx (canonical source)
+public/models/kiro/kiro.fbx (generated build input)
 ```
 
 Vite exposes it at:
@@ -14,13 +15,13 @@ Vite exposes it at:
 
 ## Required master asset
 
-Place the validated Mixamo-rigged FBX at `public/models/kiro/kiro.fbx`. Keep this runtime filename stable. Version source assets through Git history rather than changing the browser URL.
+The validated production model lives at `rag/3d-kiro/athletic+man+3d+model.fbx`. `scripts/sync-kiro-model.mjs` copies it byte-for-byte to `public/models/kiro/kiro.fbx` before development and production builds.
 
 The file should contain the character mesh, skinning and Mixamo skeleton. It is suitable for bounded runtime bone motion.
 
 ## Runtime behavior
 
-`src/features/kiro-rag/model3d/kiro-glb-avatar.tsx` retains its historical filename for import compatibility, but now loads the production asset through Three.js `FBXLoader`.
+`src/features/kiro-rag/model3d/kiro-glb-avatar.tsx` loads the production asset through Three.js `FBXLoader`.
 
 `kiro-animation-controller.ts`:
 

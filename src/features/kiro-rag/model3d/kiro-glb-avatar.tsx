@@ -108,7 +108,7 @@ export default function KiroGlbAvatar({
   const talkingRef = useRef(talking);
   const onCapabilitiesRef = useRef(onCapabilities);
   const [loadState, setLoadState] = useState<KiroLoadState>('loading');
-  const [message, setMessage] = useState('Loading Mixamo-rigged Kiro…');
+  const [message, setMessage] = useState('Loading Kiro…');
 
   useEffect(() => {
     stateRef.current = state;
@@ -200,22 +200,24 @@ export default function KiroGlbAvatar({
         controllerRef.current = controller;
         controller.setState(stateRef.current, true);
         controller.setTalking(talkingRef.current);
+        console.info('kiro_avatar_ready', controller.capabilities);
         onCapabilitiesRef.current?.(controller.capabilities);
 
         setLoadState('ready');
-        setMessage('Mixamo rig loaded');
+        setMessage('Kiro loaded');
       },
       undefined,
       (error) => {
         if (disposed) return;
         const status = (error as { target?: { status?: number } })?.target?.status;
+        console.error('kiro_avatar_load_failed', { modelUrl, status: status ?? null, error });
 
         if (status === 404 || String(error).includes('404')) {
           setLoadState('missing');
-          setMessage('Place the Mixamo FBX at public/models/kiro/kiro.fbx');
+          setMessage('The Kiro model asset is unavailable.');
         } else {
           setLoadState('error');
-          setMessage('The Mixamo FBX could not be loaded. Check the browser console and exported rig.');
+          setMessage('Kiro could not be loaded. The chat remains available.');
         }
       },
     );
@@ -274,18 +276,14 @@ export default function KiroGlbAvatar({
       aria-label="Interactive Mixamo-rigged Kiro 3D model"
       data-model-format="fbx"
     >
-      {loadState !== 'ready' && (
+      {loadState === 'loading' && (
         <div className="kiro-glb-avatar__status" role="status">
-          <strong>
-            {loadState === 'missing'
-              ? 'Mixamo model slot ready'
-              : loadState === 'error'
-                ? 'Model load failed'
-                : 'Loading model'}
-          </strong>
+          <strong>Loading Kiro</strong>
           <span>{message}</span>
-          {loadState === 'missing' && <code>public/models/kiro/kiro.fbx</code>}
         </div>
+      )}
+      {(loadState === 'missing' || loadState === 'error') && (
+        <div className="kiro-glb-avatar__fallback" aria-hidden="true">K</div>
       )}
     </div>
   );
